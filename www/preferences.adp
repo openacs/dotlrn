@@ -31,7 +31,7 @@
   <li><a href="applets/bboard/alerts">Edit My Bulletin Board Email Alerts</a></li>
   <li><a href="configure">Customize This Portal</a></li>
 <if @admin_p@ eq 1>
-  <li><a href="@admin_url@">dotLRN Administration</a></li>
+  <li><a href="@admin_url@">@admin_pretty_name@</a></li>
 </if>
 </ul>
 

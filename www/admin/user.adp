@@ -177,8 +177,10 @@
 
 <ul>
   <li><a href="/user/password-update?@export_edit_vars@">Update this user's password</a></li>
-  <br>
-  <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
-  <br>
+  <if @portrait_p@>
+    <br>
+    <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
+    <br>
+  </if>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">Become this user!</a></li>
 </ul>

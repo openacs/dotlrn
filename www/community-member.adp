@@ -22,16 +22,18 @@
 <property name="title">@first_names@ @last_name@</property>
 <property name="context_bar">@context_bar@</property>
 
-<if @inline_portrait_state@ eq "inline">
-
-  <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
-
+<if @portrait_p@ eq 1>
+  <if @inline_portrait_state@ eq "inline">
+  
+    <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
+  
+  </if>
+  <else><if @inline_portrait_state eq "link">
+  
+    <li><a href="portrait?@portrait_export_vars@">Portrait</a>
+  
+  </if></else>
 </if>
-<else><if @inline_portrait_state eq "link">
-
-  <li><a href="portrait?@portrait_export_vars@">Portrait</a>
-
-</if></else>
 
 A member of the @system_name@ community since @pretty_creation_date@
 

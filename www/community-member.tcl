@@ -47,7 +47,6 @@ ad_page_contract {
 
 set verified_user_id [ad_verify_and_get_user_id]
 
-# XXX add portraits to this page
 set user_info_sql {
     select first_names,
            last_name,
@@ -75,31 +74,35 @@ set bio [db_string biography {
                         and attribute_name = 'bio')
 } -default ""]
 
-set inline_portrait_state ""
-set portrait_export_vars [export_vars user_id]
+set portrait_p 0
+if {[ad_parameter "show_portrait_p" dotlrn]} {
+    set portrait_p 1
+    set inline_portrait_state ""
+    set portrait_export_vars [export_vars user_id]
 
-set user_portrait_sql {
-    select images.width,
-           images.height,
-           cr_revisions.title,
-           cr_revisions.description,
-           cr_revisions.publish_date
-    from acs_rels,
-         cr_items,
-         cr_revisions,
-         images
-    where acs_rels.object_id_two = cr_items.item_id
-    and cr_items.live_revision = cr_revisions.revision_id
-    and cr_revisions.revision_id = images.image_id
-    and acs_rels.object_id_one = :user_id
-    and acs_rels.rel_type = 'user_portrait_rel'
-}
+    set user_portrait_sql {
+        select images.width,
+               images.height,
+               cr_revisions.title,
+               cr_revisions.description,
+               cr_revisions.publish_date
+        from acs_rels,
+             cr_items,
+             cr_revisions,
+             images
+        where acs_rels.object_id_two = cr_items.item_id
+        and cr_items.live_revision = cr_revisions.revision_id
+        and cr_revisions.revision_id = images.image_id
+        and acs_rels.object_id_one = :user_id
+        and acs_rels.rel_type = 'user_portrait_rel'
+    }
 
-if {[db_0or1row portrait_info $user_portrait_sql]} {
-    if {![empty_string_p $width] && $width < 300 } {
-	set inline_portrait_state "inline"
-    } else {
-	set inline_portrait_state "link"
+    if {[db_0or1row portrait_info $user_portrait_sql]} {
+        if {![empty_string_p $width] && $width < 300 } {
+            set inline_portrait_state "inline"
+        } else {
+            set inline_portrait_state "link"
+        }
     }
 }
 

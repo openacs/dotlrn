@@ -63,7 +63,7 @@ if {[db_0or1row select_dotlrn_user_info {}]} {
 }
 
 set portrait_p 0
-if {[db_0or1row select_portrait_info {}]} {
+if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info {}]} {
     set portrait_p 1
 }
 

@@ -104,21 +104,20 @@ lappend table_def [list \
 if {$site_wide_admin_p} {
     lappend table_def [list \
 	    manage \
-	    "" \
+	    "Action" \
 	    {} \
-	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]
-             \[<a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a>\]</td>}]
+	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>&nbsp;| <a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a>\]</td>}]
 } elseif {$admin_p} {
     lappend table_def [list \
 	    manage \
-	    "" \
+	    "Action" \
 	    {} \
 	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]}
 ]
 } else {
     lappend table_def [list \
 	    manage \
-	    "" \
+	    "Action" \
 	    {} \
 	    {[eval {if {$my_user_id == $user_id} {
 	                return "<td>\[<a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a>\]</td>"

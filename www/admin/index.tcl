@@ -22,6 +22,7 @@ ad_page_contract {
 } -query {
 }
 
+set admin_pretty_name [ad_parameter "dotlrn_admin_pretty_name" dotlrn]
 set context_bar {}
 
 ad_return_template
