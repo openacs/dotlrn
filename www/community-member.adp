@@ -36,6 +36,8 @@
 </if></else>
 
 <if @show_email_p@ eq 1>
+<table>
+<tr><td valign="top">
   <ul>
     <li>#dotlrn.email#: <a href="mailto:@email@">@email@</a></li>
 
@@ -48,7 +50,7 @@
         </multiple>
         </if>
     <if @bio@ not nil>
-      <p> <em>#dotlrn.Biography#</em> @bio@
+      <p> <em>#dotlrn.Biography#</em> @bio;noquote@
     </if>
   </ul>
 </if>
@@ -57,20 +59,6 @@
     <ul><li>#dotlrn.Personal_home_page# <a href="@url@">@url@</a></li></ul>
   </if>
 </else>
-
-<if @portrait_p@ eq 1>
-
-  <if @inline_portrait_state@ eq "inline">
-  
-    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
-  
-  </if>
-  <if @inline_portrait_state@ eq "link">
-  
-      <ul><li><a href="/shared/portrait?@portrait_export_vars@">#dotlrn.Portrait_1#</a></li></ul>
-  
-  </if>
-</if>
 
 <if @folder_id@ not nil>
 <h3>#dotlrn.Shared_Files#</h3>
@@ -86,3 +74,21 @@
 </group>
   </ul>
 </multiple>
+</td>
+<td valign="top">
+<if @portrait_p@ eq 1>
+
+  <if @inline_portrait_state@ eq "inline">
+  
+    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@" border="0"></a><br>
+  
+  </if>
+  <if @inline_portrait_state@ eq "link">
+  
+      <ul><li><a href="/shared/portrait?@portrait_export_vars@">#dotlrn.Portrait_1#</a></li></ul>
+  
+  </if>
+</if>
+</td>
+</tr>
+</table>
