@@ -17,6 +17,7 @@
       <td>Sender's Email Address</td>
     </tr>
 
+<!--
     <tr>
       <td>&#60sender_first_names&#62</td>
       <td> = </td>
@@ -28,6 +29,7 @@
       <td> = </td>
       <td>Sender's Last Name</td>
     </tr>
+-->
 
     <tr>
       <td>&#60community_name&#62</td>

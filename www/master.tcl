@@ -2,9 +2,6 @@
 # sloan specifc master
 #
 
-
-
-
 # if we have a portal_id show navbar
 set user_id [ad_verify_and_get_user_id]
 
@@ -40,15 +37,16 @@ if {[ad_parameter community_level_p] == 1} {
     if {[info exists portal_id] && ![empty_string_p $portal_id] && ![exists_and_not_null no_navbar_p]} {
         set navbar "<table border=0 cellpadding=5><tr>"
         
-        append navbar [portal::list_pages -link_all $link_all -return_url $return_url -portal_id $portal_id -link "switch-page" -pre_html "<td><font face=arial,helvetica size=-1 color=black><b> <center>" -separator " </center></td> <td><font face=arial,helvetica size=-1 color=black><b> <center>" -post_html "</a></center></td>"]
+        append navbar [portal::list_pages -link_all $link_all -return_url $return_url -portal_id $portal_id -link "switch-page" -pre_html "<td><font face=arial,helvetica size=-1 color=black><b><center>" -separator "</center></td> <td><font face=arial,helvetica size=-1 color=black><b><center>" -post_html "</a></center></td>"]
         if {$show_control_panel} {
             if {$link_control_panel} {
-                append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center><a href=one-community-admin>Group Admin</a></center></td> </tr></table>"
+                append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center><a href=one-community-admin>Group Admin</a></center></td></tr></table>"
             } else {
-                append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center>Group Admin</center></td> </tr></table>"
+                append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center>Group Admin</center></td></tr></table>"
             }
+        } else {
+            append navbar "</tr></table>"
         }
-        
     } else {
         set navbar ""
         set portal_id ""
@@ -61,7 +59,7 @@ if {[ad_parameter community_level_p] == 1} {
     if {[info exists portal_id] && ![empty_string_p $portal_id] && ![exists_and_not_null no_navbar_p]} {
         set navbar "<table border=0 cellpadding=5><tr>"
         
-        append navbar [portal::list_pages -link_all $link_all -return_url $return_url -portal_id $portal_id -link "switch-page" -pre_html "<td><font face=arial,helvetica size=-1 color=black><b> <center>" -separator " </center></td> <td><font face=arial,helvetica size=-1 color=black><b> <center>" -post_html "</a></center></td>"]
+        append navbar [portal::list_pages -link_all $link_all -return_url $return_url -portal_id $portal_id -link "switch-page" -pre_html "<td><font face=arial,helvetica size=-1 color=black><b><center>" -separator "</center></td> <td><font face=arial,helvetica size=-1 color=black><b><center>" -post_html "</a></center></td>"]
         
         append navbar "</tr></table>"
         
@@ -79,9 +77,9 @@ if {[ad_parameter community_level_p] == 1} {
         append navbar [portal::list_pages -return_url $return_url -portal_id $portal_id -link_all $link_all -link "switch-page" -pre_html "\n<td><font face=arial,helvetica size=-1 color=black><b> <center>" -separator " </center></td>\n<td><font face=arial,helvetica size=-1 color=black><b> <center>" -post_html "</a></center></td>\n"]
         
         if {$link_control_panel} {
-            append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center><a href=preferences>Control Panel</a></center></td> </tr></table>"
+            append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center><a href=preferences>Control Panel</a></center></td></tr></table>"
         } else {
-            append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center>Control Panel</center></td> </tr></table>"
+            append navbar "<td><font face=arial,helvetica size=-1 color=black><b><center>Control Panel</center></td></tr></table>"
         }
         
     } else {

@@ -24,6 +24,16 @@ dotlrn::require_user_admin_community $community_id
 set sender_id [ad_conn user_id]
 set portal_id [dotlrn_community::get_portal_id $community_id $sender_id]
 
+db_1row select_sender_info {
+    select parties.email as sender_email,
+           persons.first_names as sender_first_names,
+           persons.last_name as sender_last_name
+    from parties,
+         persons
+    where parties.party_id = :sender_id
+    and persons.person_id = :sender_id
+}
+
 form create spam_message
 
 element create spam_message community_id \
@@ -31,6 +41,13 @@ element create spam_message community_id \
     -datatype integer \
     -widget hidden \
     -value $community_id
+
+element create spam_message from \
+    -label From \
+    -datatype text \
+    -widget text \
+    -html {size 60} \
+    -value $sender_email
 
 element create spam_message rel_type \
     -label To \
@@ -43,7 +60,7 @@ element create spam_message subject \
     -label Subject \
     -datatype text \
     -widget text \
-    -html {size 50}
+    -html {size 60}
 
 element create spam_message message \
     -label Message \
@@ -58,7 +75,8 @@ element create spam_message referer \
     -value $referer
 
 if {[form is_valid spam_message]} {
-    form get_values spam_message community_id rel_type subject message referer
+    form get_values spam_message \
+        community_id from rel_type subject message referer
 
     # YON: should redirect and close the connection here so that the user
     #      doesn't have to wait for the emails to get sent out.
@@ -84,26 +102,16 @@ if {[form is_valid spam_message]} {
     #      send all the emails ourselves.
 
     # let's get some data we might need
-    db_1row select_sender_info {
-        select parties.email as sender_email,
-               persons.first_names as sender_first_names,
-               persons.last_name as sender_last_name
-        from parties,
-             persons
-        where parties.party_id = :sender_id
-        and persons.person_id = :sender_id
-    }
-
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url [dotlrn_community::get_community_url $community_id]
 
     # replace some values in the subject and the message
-    regsub -all {<sender_email>} $subject $sender_email subject
-    regsub -all {<sender_email>} $message $sender_email message
-    regsub -all {<sender_first_names>} $subject $sender_first_names subject
-    regsub -all {<sender_first_names>} $message $sender_first_names message
-    regsub -all {<sender_last_name>} $subject $sender_last_name subject
-    regsub -all {<sender_last_name>} $message $sender_last_name message
+    regsub -all {<sender_email>} $subject $from subject
+    regsub -all {<sender_email>} $message $from message
+#    regsub -all {<sender_first_names>} $subject $sender_first_names subject
+#    regsub -all {<sender_first_names>} $message $sender_first_names message
+#    regsub -all {<sender_last_name>} $subject $sender_last_name subject
+#    regsub -all {<sender_last_name>} $message $sender_last_name message
     regsub -all {<community_name>} $subject $community_name subject
     regsub -all {<community_name>} $message $community_name message
     regsub -all {<community_url>} $subject $community_url subject
@@ -150,7 +158,7 @@ if {[form is_valid spam_message]} {
         regsub -all {<last_name>} $message $last_name message
 
         # send the email
-        if {[catch {ns_sendmail $email $sender_email $subject $message} errmsg]} {
+        if {[catch {ns_sendmail $email $from $subject $message} errmsg]} {
             append errors "
 <p>
   Failed to deliver to $email because:

@@ -33,17 +33,16 @@
   </tr>
 </table>
 
-<P>
-
+<p>
 
 <small>@navbar@</small>
-<P>
+<p>
 
 <slave>
 
 <small>@navbar@</small>
-<P>
-<P>
-<P>
+<p>
+<p>
+<p>
 <hr>
 <small><a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> | <a href="http://web.mit.edu">MIT</a></small>

@@ -1,7 +1,6 @@
 <master src="master">
 <property name="title">@first_names@ @last_name@</property>
 <property name="context_bar">@context_bar@</property>
-<property name="portal_id">@portal_id@</property>
 
 <if @inline_portrait_state@ eq "inline">
 
