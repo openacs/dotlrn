@@ -60,14 +60,6 @@ namespace eval dotlrn_community {
             parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
             parameter::set_value -package_id $package_id -parameter community_type_level_p -value 1
             parameter::set_value -package_id $package_id -parameter community_level_p -value 0
-
-            # create a "dummy" community for this community
-            # type to get a portal template with all of the
-            # types portlets - aks
-            dotlrn_community::new \
-                -community_type $community_type \
-                -pretty_name $pretty_name \
-                -dummy_comm_p 1
         }
     }
 
@@ -121,39 +113,7 @@ namespace eval dotlrn_community {
             # Set the site node
             dotlrn_community::set_type_package_id $community_type_key $package_id
 
-            # since new_type is only called when creating a dept or a class,
-            # not a class instance, club, or subcomm, we just do this
-            set type_portal_id [get_type_portal_id \
-                               -community_type [dotlrn_class::community_type]
-            ]
-
-            dotlrn_community::set_type_portal_id \
-                -community_type $community_type_key \
-                -portal_id $type_portal_id
-        }
-
-        return $community_type_key
-    }
-
-    ad_proc -public get_type_portal_id {
-        {-community_type:required}
-    } {
-        Get the portal_id for this community type
-    } {
-        return [db_string select_type_portal_id {
-            select portal_id
-            from dotlrn_community_types
-            where community_type = :community_type
-        }]
-    }
-
-    ad_proc -public set_type_portal_id {
-        {-community_type:required}
-        {-portal_id:required}
-    } {
-        set the portal_id for this community type
-    } {
-        db_dml set_type_portal_id {}
+            return $community_type_key
     }
 
     ad_proc -public set_type_package_id {
@@ -181,20 +141,6 @@ namespace eval dotlrn_community {
         return [db_string select_node_id {}]
     }
 
-    ad_proc -public dummy_comm_p {
-        {-community_id:required}
-    } {
-        is this a dummy comm?
-    } {
-        return [db_0or1row select_node_id {
-            select 1
-            from dotlrn_communities
-            where community_id = :community_id
-            and portal_id is not null
-            and admin_portal_id is null
-        }]
-    }
-
     ad_proc -public new {
         {-parent_community_id ""}
         {-description ""}
@@ -203,20 +149,18 @@ namespace eval dotlrn_community {
         {-community_key ""}
         {-pretty_name:required}
         {-extra_vars ""}
-        {-dummy_comm_p ""}
     } {
         create a new community
     } {
 
         if {[empty_string_p $community_key]} {
-            if {![empty_string_p $dummy_comm_p]} {
-                # mung the comm key so that it wont conflict with a real comm
-                set community_key "[dotlrn::generate_key -name $pretty_name]-dummy"
-            } else {
-                # generate the key from the passed in name
-                set community_key [dotlrn::generate_key -name $pretty_name]
-            }
+            set community_key [dotlrn::generate_key -name $pretty_name]
         }
+
+        check_community_key_valid_p \
+            -complain_if_invalid \
+            -community_key $community_key \
+            -parent_community_id $parent_community_id
 
         set package_id [dotlrn::get_package_id]
 
@@ -225,13 +169,6 @@ namespace eval dotlrn_community {
             set extra_vars [ns_set create]
         }
 
-        # check if the name is already in use, if so, complain loudly
-        check_community_key_valid_p \
-            -complain_if_invalid \
-            -community_key $community_key \
-            -parent_community_id $parent_community_id
-        
-        # Add core vars
         ns_set put $extra_vars parent_community_id $parent_community_id
         ns_set put $extra_vars community_type $community_type
         ns_set put $extra_vars community_key $community_key
@@ -241,112 +178,93 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars context_id $package_id
 
         db_transaction {
-            # Insert the community
-            set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
+            set user_id [ad_conn user_id]
+            set community_id \
+                [package_instantiate_object -extra_vars $extra_vars $object_type]
+            
 
-            # based on the community_type:
-            # 1. get the page_names and layouts
-            # 2. the the list of default applets for this type
-            if {[string equal $community_type "dotlrn_community"]} {
-                set csv_list [parameter::get -package_id $package_id -parameter subcomm_pages_csv]
-                set default_applets [parameter::get -package_id $package_id -parameter default_subcomm_applets]
-            } elseif {[string equal $community_type "dotlrn_club"]} {
-                set csv_list [parameter::get -package_id $package_id -parameter club_pages_csv]
-                set default_applets [parameter::get -package_id $package_id -parameter default_club_applets]
-            } elseif {[string equal $community_type "user_workspace"]} {
-                set csv_list [parameter::get -package_id $package_id -parameter user_wsp_page_names]
-                set default_applets [list]
-             } else {
-                set csv_list [parameter::get -package_id $package_id -parameter class_instance_pages_csv]
-                set default_applets [parameter::get -package_id $package_id -parameter default_class_instance_applets]
-            }
+            set template_id [dotlrn::get_portal_id_from_type -type $community_type]
 
-            set non_member_page_name [parameter::get -package_id $package_id -parameter non_member_page_name]
-            set admin_page_name [parameter::get -package_id $package_id -parameter admin_page_name]
-
-            if {[empty_string_p $dummy_comm_p]} {
-                set user_id [ad_conn user_id]
-
-                # Create portal template page
-                set portal_id [portal::create \
-                    -template_id [get_type_portal_id -community_type $community_type] \
-                    -name "$pretty_name Portal" \
-                    -csv_list $csv_list \
-                    -context_id $community_id \
-                    $user_id \
-                ]
-
-                # Create the non-member page
-                set non_member_portal_id [portal::create \
-                    -name "$pretty_name Non-Member Portal" \
-                    -default_page_name $non_member_page_name \
-                    -context_id $community_id \
-                    $user_id \
-                ]
-
-                # Create the admin page
-                set admin_portal_id [portal::create \
-                    -name "$pretty_name Administration Portal" \
-                    -default_page_name $admin_page_name \
-                    -context_id $community_id \
-                    $user_id \
-                ]
-
-                # Set up the rel segments
-                dotlrn_community::create_rel_segments -community_id $community_id
-
-                # Set up the node
-                if {[empty_string_p $parent_community_id]} {
-                    set parent_node_id [get_type_node_id $community_type]
-                } else {
-                    set parent_node_id [get_community_node_id $parent_community_id]
-                }
-
-                # Create the node
-                set new_node_id [site_node_create $parent_node_id $community_key]
-
-                # Instantiate the package
-                set package_id [site_node_create_package_instance \
-                    $new_node_id \
-                    $pretty_name \
-                    $community_id \
-                    [one_community_package_key] \
-                ]
-
-                # Set the right parameters
-                parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
-                parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
-                parameter::set_value -package_id $package_id -parameter community_level_p -value 1
-
-                # Set up the node
-                dotlrn_community::set_package_id $community_id $package_id
-
+            # Create comm's portal page
+            set portal_id [portal::create \
+                               -template_id $template_id \
+                               -name "$pretty_name Portal" \
+                               -context_id $community_id \
+                               $user_id
+            ]
+            
+            # Create the comm's non-member page
+            set non_member_portal_id [portal::create \
+                -name "$pretty_name Non-Member Portal" \
+                -default_page_name [dotlrn::parameter -name non_member_page_name] \
+                -context_id $community_id \
+                $user_id
+            ]
+            
+            # Create the comm's admin page
+            set admin_portal_id [portal::create \
+                -name "$pretty_name Administration Portal" \
+                -default_page_name [dotlrn::parameter -name admin_page_name] \
+                -context_id $community_id \
+                $user_id
+            ]
+            
+            # Set up the rel segments
+            dotlrn_community::create_rel_segments -community_id $community_id
+            
+            # Set up the node
+            if {[empty_string_p $parent_community_id]} {
+                set parent_node_id [get_type_node_id $community_type]
             } else {
-                # AKS FIXME nasty hack
-                set user_id -1
-
-                set portal_id [portal::create \
-                    -name "$pretty_name Default Portal" \
-                    -csv_list $csv_list \
-                    -portal_template_p "t" \
-                    $user_id
-                ]
-
-                # set a dummy non-member and admin_portals
-                set non_member_portal_id ""
-                set admin_portal_id ""
-
-                # associate this portal_id with the comm type
-                dotlrn_community::set_type_portal_id \
-                    -community_type $community_type \
-                    -portal_id $portal_id
+                set parent_node_id [get_community_node_id $parent_community_id]
             }
-
+            
+            # Create the node
+            set new_node_id [site_node_create $parent_node_id $community_key]
+            
+            # Instantiate the package
+            set package_id [site_node_create_package_instance \
+                $new_node_id \
+                $pretty_name \
+                $community_id \
+                [one_community_package_key] \
+            ]
+            
+            # Set the right parameters
+            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+            ad_parameter -package_id $package_id -set 0 community_type_level_p
+            ad_parameter -package_id $package_id -set 1 community_level_p
+            
+            # Set up the node
+            dotlrn_community::set_package_id $community_id $package_id
+            
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
-            # Add the default applets specified above. They are
-            # different per community type!
+            # Add the default applets based on the community type
+            # 2. the the list of default applets for this type
+            if {[string equal $community_type "dotlrn_community"]} {
+                set default_applets [parameter::get \
+                                         -package_id $package_id \
+                                         -parameter default_subcomm_applets
+                ]
+            } elseif {[string equal $community_type "dotlrn_club"]} {
+                set default_applets [parameter::get \
+                                         -package_id $package_id \
+                                         -parameter default_club_applets
+                ]
+            } elseif {[string equal $community_type "user"]} {
+                set default_applets [parameter::get \
+                                         -package_id $package_id \
+                                         -parameter default_user_portal_applets
+                ]
+            } else {
+                set default_applets [parameter::get \
+                                         -package_id $package_id \
+                                         -parameter default_class_instance_applets
+                ]
+            }
+
             set default_applets_list [string trim [split $default_applets {,}]]
 
             foreach applet_key $default_applets_list {
@@ -358,6 +276,7 @@ namespace eval dotlrn_community {
 
         return $community_id
     }
+
 
     ad_proc set_active_dates {
         {-community_id:required}
@@ -838,7 +757,6 @@ namespace eval dotlrn_community {
 
             applets_dispatch -community_id $community_id \
                 -op AddUserToCommunity \
-                -reorder_hack_p 1 \
                 -list_args [list $community_id $user_id]
         }
     }
@@ -1331,7 +1249,7 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_community_description {
-        community_id
+        {-community_id:required}
     } {
         get the description for a community
     } {
@@ -1373,7 +1291,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_portal_id {
         {-community_id ""}
     } {
-        get the id of the portal template for a community
+        get the id of the comm's portal
     } {
         if {[empty_string_p $community_id]} {
             set community_id [get_community_id]
@@ -1385,7 +1303,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_portal_id_not_cached {
         {-community_id:required}
     } {
-        get the id of the portal template for a community
+        get the id of the comm's portal
     } {
         return [db_string select_portal_id {} -default ""]
     }
@@ -1477,9 +1395,7 @@ namespace eval dotlrn_community {
             }
 
             # Callback
-            ns_log notice "aks3 $applet_key"
             applet_call $applet_key RemoveAppletFromCommunity [list $community_id]
-            ns_log notice "aks4 $applet_key"
 
             # Delete from the DB
             set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
@@ -1489,6 +1405,7 @@ namespace eval dotlrn_community {
 
     ad_proc -public clone {
         {-community_id:required}
+        {-key:required}
         {-description ""}
     } {
         Clones a community. Cloning is a deep copy of the 
@@ -1527,8 +1444,8 @@ namespace eval dotlrn_community {
             set user_id [ad_conn user_id]
 
             # clone the comm's portal by using it as a template
-            # this will get the pages, layouts, and theme, but not
-            # the elements and parameters
+            # this will get the pages, layouts, and theme, elements,
+            # and element  parameters
             set portal_id [portal::create \
                     -template_id [get_portal_id -community_id $community_id] \
                     -name "$pretty_name Portal" \
@@ -1580,21 +1497,15 @@ namespace eval dotlrn_community {
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
-            #ad_return_complaint 1 "aks77 got here"
-            #ad_script_abort
-            
-            # Add the default applets specified above. They are
-            # different per community type!
-#             set default_applets_list [string trim [split $default_applets {,}]]
-# 
-#             foreach applet_key $default_applets_list {
-#                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
-#                     dotlrn_community::add_applet_to_community $community_id $applet_key
-#                 }
-#             }
-# 
-#         return $community_id
-# 
+            foreach applet [list_applets -community_id $community_id] {
+                # do the clone call on each applet in this community
+                applet_call $applet "Clone" [list $community_id $clone_id]
+            }
+
+            # TODO:
+            # recursively clone the subcommunities
+            ad_return_complaint 1 "aks77 got here"
+            ad_script_abort
         }
     }
 
@@ -1702,22 +1613,10 @@ namespace eval dotlrn_community {
                 portal::delete $portal_id
             }
 
-            # a useful bit of code to find packages
-            # set foo [db_list_of_lists select_outstanding_packages {
-            #     select o.object_id, o.object_type, package_key, 
-            #     from acs_objects o, apm_packages
-            #     where o.context_id = :community_id
-            #     and o.object_id = package_id
-            # }]
-            # ad_return_complaint 1 "$foo"
-            
-
             # call the communitie's delete pl/sql, which removes the group
             db_exec_plsql \
                     remove_community \
                     "begin dotlrn_community.delete(:community_id); end;"
-
-            ad_return_complaint 1 "aks6" 
 
             # Remove the package
             db_exec_plsql delete_package "begin acs_object.delete(:package_id) end;"
@@ -1775,9 +1674,13 @@ namespace eval dotlrn_community {
         set list_of_applets [list_active_applets -community_id $community_id]
 
         if {![empty_string_p $reorder_hack_p]} {
-            ns_log notice "aks1: applets_dispatch: reorder hack!"
+            ns_log notice "applets_dispatch: reorder hack!"
 
-            set reorder_applets_string [parameter::get -parameter user_wsp_applet_ordering -default "dotlrn_news,dotlrn_bboard,dotlrn_faq"]
+            set reorder_applets_string [parameter::get  \
+                                            -parameter user_wsp_applet_ordering \
+                                            -default "dotlrn_news,dotlrn_bboard,dotlrn_faq"
+            ]
+
 
             set reorder_applets_list [string trim [split $reorder_applets_string {,}]]
 

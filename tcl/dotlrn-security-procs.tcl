@@ -122,7 +122,10 @@ namespace eval dotlrn {
         ns_set put $extra_vars access_level $access_level
         ns_set put $extra_vars id $id
 
-        set template_id [dotlrn_community::get_type_portal_id -community_type "user_workspace"]
+        set template_id [dotlrn::get_portal_id_from_type \
+                             -type "user"
+        ]
+
         db_transaction {
             set portal_id [portal::create \
                 -template_id $template_id \
@@ -141,9 +144,6 @@ namespace eval dotlrn {
                 "" \
                 $user_id \
             ]
-
-            # add the "dotlrn main" portlet to the user's workspace
-            dotlrn_main_portlet::add_self_to_page -portal_id $portal_id
 
             dotlrn_community::applets_dispatch -op AddUser -list_args [list $user_id]
 

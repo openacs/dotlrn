@@ -77,6 +77,12 @@ create table dotlrn_communities_all (
                                 references portals (portal_id),
     package_id                  constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),
+    font                        varchar2(100)
+                                default '',
+    font_size                   integer
+                                default 0,
+    header_img                  varchar2(100)
+                                default '',
     constraint dotlrn_c_community_key_un
     unique (community_key, parent_community_id)
 );

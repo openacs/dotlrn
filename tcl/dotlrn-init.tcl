@@ -55,12 +55,11 @@ if {[dotlrn::is_instantiated]} {
     }
 
 
-    # aks debug
     db_transaction {
     
         ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn_applet::init"
-    
-        # this may seems strange, but init the applets first - aks
+
+        # this may seems strange, but init the applets first
         # initialize the applets subsystem (ooh, I'm using big words - ben)
         if {![dotlrn_applet::is_initalized]} { dotlrn_applet::init }
     
@@ -69,7 +68,6 @@ if {[dotlrn::is_instantiated]} {
         # The applet_add proc in the dotlrn_applet contract is for one-time
         # init of each applet NOTE: this applet_add proc _must_ be able to be
         # called repeatedly since this script is eval'd at every server startup
-        # - aks
         foreach applet [dotlrn_community::list_applets] {
             # Callback on all applets
             dotlrn_community::applet_call $applet "AddApplet" [list]

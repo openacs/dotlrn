@@ -15,27 +15,10 @@
 --
 
 --
--- The DotLRN basic system
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
+-- DotLRN portal templates - drop script
 --
--- for Oracle 8/8i. (We're guessing 9i works, too).
---
--- ben@openforce.net
--- started August 18th, 2001
+-- @author arjun (arjun@openforce.net)
+-- @version $Id$
 --
 
-@@ users-create.sql
-@@ portal-types-create.sql
-@@ communities-create.sql
-@@ community-memberships-create.sql
-@@ communities-package-create.sql
-@@ dotlrn-init.sql
-@@ clubs-create.sql
-@@ classes-create.sql
-@@ classes-memberships-create.sql
-@@ applet-sc-create.sql
-@@ community-memberships-packages-create.sql
-@@ main-portlet-create.sql
-@@ security-create.sql
-@@ user-extension-create.sql
+drop table dotlrn_portal_types_map;

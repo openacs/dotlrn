@@ -41,6 +41,7 @@ namespace eval dotlrn_department {
                     1 \
                     "The name <strong>$pretty_name</strong> is already in use. \n
                        Please select a different name."
+            ad_script_abort
         }
 
         db_transaction {

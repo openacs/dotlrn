@@ -74,10 +74,20 @@ namespace eval dotlrn_class {
     ad_proc -public init {} {
         create base community_type for dotlrn_classes
     } {
-        dotlrn_community::init \
-            -community_type [community_type] \
-            -community_type_url_part [get_url_part] \
-            -pretty_name [parameter::get -package_id [dotlrn::get_package_id] -parameter classes_pretty_plural]
+        db_transaction {
+            dotlrn::new_type_portal \
+                -type [community_type] \
+                -pretty_name [parameter::get \
+                                  -package_id [dotlrn::get_package_id] \
+                                  -parameter class_instance_portal_pretty_name]
+            
+            dotlrn_community::init \
+                -community_type [community_type] \
+                -community_type_url_part [get_url_part] \
+                -pretty_name [parameter::get \
+                                  -package_id [dotlrn::get_package_id] \
+                                  -parameter classes_pretty_plural]
+        }
     }
 
     ad_proc -public check_class_key_valid_p {

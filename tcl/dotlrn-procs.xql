@@ -28,7 +28,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn::get_workspace_portal_id_not_cached.select_user_portal_id">
+    <fullquery name="dotlrn::get_portal_id_not_cached.select_user_portal_id">
         <querytext>
             select portal_id
             from dotlrn_users
@@ -49,6 +49,27 @@
             select dotlrn_user_types.group_id
             from dotlrn_user_types
             where dotlrn_user_types.type = :type
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::set_type_portal_id.insert">
+        <querytext>
+            insert into dotlrn_portal_types_map
+            (type, portal_id)
+            values
+            (:type, :portal_id)
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::get_type_from_portal_id.select">
+        <querytext>
+            select type from dotlrn_portal_types_map where portal_id = :portal_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::get_portal_id_from_type.select">
+        <querytext>
+            select portal_id from dotlrn_portal_types_map where type = :type
         </querytext>
     </fullquery>
 

@@ -34,7 +34,7 @@
 </head>
 <body>
 
-<!-- Sloan Header Begin -->
+<!-- Header Begin -->
 <table width="100%">
   <tr>
     <td colspan=3>
@@ -75,21 +75,21 @@
   
 </table>
 
-<!-- Sloan wants navbars on every page -->
+<!-- navbars on every page -->
 
 <small>@navbar@</small>
 
 <P>
-<!-- Sloan Header End -->
+<!-- Header End -->
 
 
 
 <slave>
 
 
-<!-- Sloan Footer Begin -->
+<!-- Footer Begin -->
 
-<!-- Sloan wants navbars on every page -->
+<!-- navbars on every page -->
 <P>
 
 <small>@navbar@</small>

@@ -43,14 +43,14 @@ namespace eval dotlrn {
     } {
 	Returns the group type key used for class groups
     } {
-	return [parameter class_group_type_key]
+	return [dotlrn::parameter -name class_group_type_key]
     }
 
     ad_proc -public group_type_key {
     } {
 	Returns the group_type key that is being used for class management
     } {
-	return [parameter group_type_key]
+	return [dotlrn::parameter -name group_type_key]
     }
 
     ad_proc -public package_key {} {
@@ -84,23 +84,21 @@ namespace eval dotlrn {
     }
 
     ad_proc -public init {} {
-        create base community_type for dotlrn
+        create base community_type for dotlrn and create the  "user" and
+        "subgroups" portal templates
     } {
-        dotlrn_community::set_type_package_id [community_type] [get_package_id]
-
-        # we need to create a portal for the user workspace and 
-        # it's a sin
-        dotlrn_community::init \
-            -community_type "user_workspace" \
-            -community_type_url_part "user-workspace-dummy-url" \
-            -pretty_name "User Workspace"
-
-
-        # do the same for subgroups (dotlrn_community type)
-        dotlrn_community::init \
-            -community_type "dotlrn_community" \
-            -community_type_url_part "subgroups-dummy-url" \
-            -pretty_name "Subgroups"
+        db_transaction {
+            dotlrn_community::set_type_package_id [community_type] [get_package_id]
+            
+            dotlrn::new_type_portal \
+                -type "user" \
+                -pretty_name [dotlrn::parameter -name user_portal_pretty_name]
+            
+            # do the same for subgroups (the dotlrn_community type)
+            dotlrn::new_type_portal \
+                -type "dotlrn_community" \
+                -pretty_name [dotlrn::parameter -name subcommunities_pretty_plural]
+        }
     }
 
     ad_proc -public is_package_mounted {
@@ -270,18 +268,18 @@ namespace eval dotlrn {
 	db_dml update_user_theme {}
     }
 
-    ad_proc -public get_workspace_portal_id {
-	user_id
+    ad_proc -public get_portal_id {
+	{-user_id:required}
     } {
-	Get the workspace page ID for a particular user
+	Get the portal_id for a particular user
     } {
-        return [util_memoize "dotlrn::get_workspace_portal_id_not_cached $user_id"]
+        return [util_memoize "dotlrn::get_portal_id_not_cached -user_id $user_id"]
     }
 
-    ad_proc -private get_workspace_portal_id_not_cached {
-	user_id
+    ad_proc -private get_portal_id_not_cached {
+	{-user_id:required}
     } {
-	Get the workspace page ID for a particular user
+	Get the portal_id for a particular user
     } {
 	return [db_string select_user_portal_id {} -default ""]
     }
@@ -374,6 +372,99 @@ namespace eval dotlrn {
         wrap 
     } {
         return [parameter::get -package_id [get_package_id] -parameter $name -default $default]
+    }
+
+    ad_proc -public set_type_portal_id {
+        {-type:required}
+        {-portal_id:required}
+    } {
+        set the portal_id for this template type in the dotlrn_portal_types_map table
+    } {
+        db_dml insert {}
+    }
+
+    ad_proc -public get_type_from_portal_id {
+        {-portal_id:required}
+    } {
+        Get the type from the passed in portal_id from the dotlrn_portal_types_map table
+    } {
+        return [db_string select {}]
+    }
+
+    ad_proc -public get_portal_id_from_type {
+        {-type:required}
+    } {
+        What's this type's portal_id? If the type is not matched, 
+        return the id of "dotlrn_class_instance" by default
+    } {
+        set id [db_string select {} -default ""]
+
+        if {[empty_string_p $id]} {
+            set type "dotlrn_class_instance"
+            set id [db_string select {}]
+        } 
+
+        return $id
+    }
+
+    ad_proc -public new_type_portal {
+        {-type:required}
+        {-pretty_name:required}
+    } {
+        Create a portal for the given type. This is how "portal templates"
+        (actually just regular portals) are created for things like the
+        "user" portal, "communities", or "class instances". We can't just
+        associate a portal_id with a dotlrn community_type since there's 
+        no community type for a "user" portal. So we use the 
+        dotlrn_portal_types_map table instead.
+
+        @param type
+        @param pretty_name
+        @return portal_id
+    } {
+        # based on the type:
+        # 1. get the page_names and layouts
+        # 2. the the list of default applets for this type
+        if {[string equal $type "dotlrn_community"]} {
+            set csv_list [dotlrn::parameter -name subcomm_pages_csv]
+            set default_applets [dotlrn::parameter -name default_subcomm_applets]
+        } elseif {[string equal $type "dotlrn_club"]} {
+            set csv_list [dotlrn::parameter -name club_pages_csv]
+            set default_applets [dotlrn::parameter -name default_club_applets]
+        } elseif {[string equal $type "user"]} {
+            set csv_list [dotlrn::parameter -name user_portal_pages_csv]
+            set default_applets [dotlrn::parameter -name default_user_portal_applets]
+        } else {
+            set csv_list [dotlrn::parameter -name class_instance_pages_csv]
+            set default_applets [dotlrn::parameter -name default_class_instance_applets]
+        }
+        
+        # FIXME - if there's a proc to get the admin user_id w/o 
+        # a connection put it here. This needs to be a vaild
+        # grantee for the perms
+        set user_id -1        
+        
+        set portal_id [portal::create \
+                           -name "$pretty_name Portal" \
+                           -csv_list $csv_list \
+                           $user_id
+                           
+        ]
+        
+        # Associate this type with portal_id, must be before applet
+        # callbacks, since they use this info
+        set_type_portal_id \
+            -type $type \
+            -portal_id $portal_id
+
+        # Add the default applets 
+        set default_applets_list [string trim [split $default_applets {,}]]
+        
+        foreach applet_key $default_applets_list {
+            if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
+                dotlrn_community::applet_call $applet_key AddPortlet [list $portal_id]
+            }
+        }
     }
 
 }

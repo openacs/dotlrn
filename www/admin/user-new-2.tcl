@@ -25,6 +25,9 @@ ad_page_contract {
     {referer "/dotlrn/admin/users"}
 }
 
+
+set context_bar {{users Users} {New}}
+
 db_1row select_user_info {
     select email,
            first_names,

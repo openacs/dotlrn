@@ -71,7 +71,7 @@ if {![dotlrn::user_can_browse_p]} {
     return
 }
 
-set portal_id [dotlrn::get_workspace_portal_id $user_id]
+set portal_id [dotlrn::get_portal_id -user_id $user_id]
 
 set rendered_page \
     [dotlrn::render_page \

@@ -179,9 +179,6 @@ namespace eval site_nodes {
 
         @author arjun@openforce.net
     } {
-
-        #ns_log notice "aks12 llength [llength $site_nodes_list]"
-
         array set snlv [get_site_nodes_list_value \
                 -site_nodes_list $site_nodes_list \
                 -index $index]
@@ -258,8 +255,6 @@ namespace eval site_nodes {
         }
 
         set site_nodes_list [get_site_nodes_list]
-
-        #        ad_return_complaint 1 "aks 17 $site_nodes_list"
 
         # iterate through the array, counting the number of times the
         # passed in package key is in the site_nodes array

@@ -44,14 +44,11 @@
 # $Id$
 
 
-# aks sloan "navbar everywhere" hack - must come back and sort this
-# out (again) sometime
-
 set user_id [ad_get_user_id] 
 set community_id [dotlrn_community::get_community_id]
 
 if {[dotlrn::user_p -user_id $user_id]} {
-    set portal_id [dotlrn::get_workspace_portal_id $user_id]
+    set portal_id [dotlrn::get_portal_id -user_id $user_id]
 }
 
 if {![empty_string_p $community_id]} {

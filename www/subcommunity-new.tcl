@@ -15,7 +15,7 @@
 #
 
 ad_page_contract {
-    create a new subcommunity (aks subgroup)
+    create a new subcommunity (aka subgroup)
 
     @author arjun (arjun@openforce.net)
     @creation-date 2001-02-12
@@ -78,21 +78,25 @@ if {[form is_valid add_subcomm]} {
             set term_id [dotlrn_class::get_term_id -class_instance_id $parent_community_id]
         
             ns_set put $extra_vars term_id $term_id
-    } 
+        } 
 
     db_transaction {
         set subcomm_id [dotlrn_community::new \
-                -parent_community_id $parent_community_id \
-                -description $description \
-                -community_type "dotlrn_community" \
-                -pretty_name $pretty_name \
-                -extra_vars $extra_vars]
-        
+                            -parent_community_id $parent_community_id \
+                            -description $description \
+                            -community_type "dotlrn_community" \
+                            -pretty_name $pretty_name \
+                            -extra_vars $extra_vars]
+
         # let admins of the parent comm, be admins of the subcomm
         set parent_admin_segment_id [dotlrn_community::get_rel_segment_id \
                 -community_id $parent_community_id \
                 -rel_type "dotlrn_admin_rel"]
-        ad_permission_grant $parent_admin_segment_id $subcomm_id admin
+
+        permission::grant \
+            -party_id $parent_admin_segment_id \
+            -object_id $subcomm_id \
+            -privilege admin
 
         # add self as admin
         dotlrn_community::add_user \

@@ -237,20 +237,9 @@ begin
     );
   
     -- AddPortlet: Adds the underlying portlet to the given portal
-    -- with the given args. Why do we need this when we have AddAppletToCommunity?
-    -- Because there are 3 distinct types of portals that need to
-    -- have the underlying portlet added to them they are: 1. user portals
-    -- 2. community portals 3. portal templates. This proc takes in a 
-    -- portal_id and a key-value pair list that it uses to do the right 
-    -- thing based on the portal type without undue duplication
-    --
-    -- user portals will pass: user_id
-    -- comm portals will pass: community_id
-    -- templates will pass: NULL
-    --
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.AddPortlet.InputType',
-        msg_type_spec => 'portal_id:integer,args:string'
+        msg_type_spec => 'portal_id:integer'
     );
   
     foo := acs_sc_msg_type.new(
@@ -263,7 +252,7 @@ begin
         'AddPortlet',
         'Adds the underlying portlet to the portal specified',
         'f', -- not cacheable
-        2,   -- n_args
+        1,   -- n_args
         'dotlrn_applet.AddPortlet.InputType',
         'dotlrn_applet.AddPortlet.OutputType'
     );

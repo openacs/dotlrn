@@ -58,10 +58,21 @@ namespace eval dotlrn_club {
     ad_proc -public init {} {
         create base community_type for dotlrn_clubs
     } {
-        dotlrn_community::init \
-            -community_type [community_type] \
-            -community_type_url_part [get_url_part] \
-            -pretty_name [parameter::get -package_id [dotlrn::get_package_id] -parameter clubs_pretty_plural]
+        set clubs_pretty_plural [parameter::get \
+                                     -package_id [dotlrn::get_package_id] \
+                                     -parameter clubs_pretty_plural
+        ]
+
+        db_transaction {
+            dotlrn::new_type_portal \
+                -type [community_type] \
+                -pretty_name $clubs_pretty_plural
+            
+            dotlrn_community::init \
+                -community_type [community_type] \
+                -community_type_url_part [get_url_part] \
+                -pretty_name $clubs_pretty_plural
+        }
     }
 
     ad_proc -public new {

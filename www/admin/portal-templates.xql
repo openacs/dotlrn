@@ -4,14 +4,10 @@
 
     <fullquery name="select_portal_templates">
         <querytext>
-            select p.portal_id,
-                   name
-            from portals p,
-                 dotlrn_communities dc
-            where dc.portal_id = p.portal_id
-            and dc.non_member_portal_id is null
-            and dc.admin_portal_id is null
-            and dc.community_type != 'user_workspace'
+            select dptm.portal_id, p.name, fyck
+            from portals p, dotlrn_portal_types_map dptm
+            where p.portal_id = dptm.portal_id
+            order by p.name descasdsfda
         </querytext>
     </fullquery>
 

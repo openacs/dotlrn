@@ -20,14 +20,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::set_type_portal_id.set_type_portal_id">
-        <querytext>
-            update dotlrn_community_types
-            set portal_id = :portal_id
-            where community_type = :community_type
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::set_type_package_id.update_package_id">
         <querytext>
             update dotlrn_community_types set package_id= :package_id where community_type= :community_type
