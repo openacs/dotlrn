@@ -27,7 +27,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar [[list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Add_Users_to_Group]]
+set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Add_Users_to_Group]]
 
 form create select_community
 
