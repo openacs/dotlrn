@@ -1625,6 +1625,9 @@ namespace eval dotlrn_community {
             ns_set put $extra_vars description $description
             ns_set put $extra_vars context_id [dotlrn::get_package_id]
 
+            # LARS 2003-10-22: Shouldn't we set the join_policy, too? Otherwise they'll get created as 'closed'
+            #ns_set put $extra_vars join_policy $join_policy
+
             # Create the clone object - "dotlrn community A"
             # Note: the "object_type" to pass into package_instantiate_object
             # is just the community_type
