@@ -346,6 +346,14 @@
             where community_id = :community_id
         </querytext>
     </fullquery>
+ 
+    <fullquery name="dotlrn_community::set_community_description.update_community_description">
+        <querytext>
+            update dotlrn_communities
+            set description = :description
+            where community_id = :community_id
+        </querytext>
+    </fullquery>
 
     <fullquery name="dotlrn_community::get_community_key.select_community_key">
         <querytext>

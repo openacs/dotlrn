@@ -1277,6 +1277,15 @@ namespace eval dotlrn_community {
         return [db_string select_community_description {} -default ""]
     }
 
+    ad_proc -public set_community_description {
+        {-community_id:required}
+        {-description:required}
+    } {
+        update the description for a community
+    } {
+        db_dml update_community_description {}
+    }
+
     ad_proc -public get_community_key {
         {-community_id:required}
     } {
@@ -1877,6 +1886,10 @@ namespace eval dotlrn_community {
 
     ad_proc -private get_available_attributes_not_cached {} {
         return [db_list_of_lists select_available_attributes {}]
+    }
+
+    ad_proc -private get_available_attributes_flush {} {
+        util_memoize_flush {dotlrn_community::get_available_attributes_not_cached}
     }
 
     ad_proc -public get_attributes {
