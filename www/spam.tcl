@@ -53,10 +53,15 @@ ad_page_contract {
 	    set recipients_p 1
 	} elseif { [info exists recipients_str] && ![empty_string_p $recipients_str] } {
 	    set recipients_p 1
-	}
+	} 
 	
 	if { $recipients_p == 0} {
-	    ad_complain "[_ dotlrn.Must_specify_recipients]"
+	    if {[exists_and_not_null community_id]} {
+		# This is call using the old URL reference
+		ad_returnredirect "spam-recipients?referer=$referer"
+	    } else {
+		ad_complain "[_ dotlrn.Must_specify_recipients]"
+	    }
 	}
     }
     if_bad_combination {
