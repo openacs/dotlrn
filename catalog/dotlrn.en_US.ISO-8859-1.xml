@@ -144,6 +144,7 @@
   <msg key="Drop">Drop</msg>
   <msg key="Drop_Membership">Drop Membership</msg>
   <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Drop Membership&quot; border=0&gt;</msg>
+  <msg key="Drop_selected_members">Drop selected members</msg>
   <msg key="Edit">Edit</msg>
   <msg key="Edit_a_User">Edit a User</msg>
   <msg key="edit_approved_email_servers">Edit Pre-approved Email Servers</msg>
