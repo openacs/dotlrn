@@ -61,16 +61,18 @@ if {[form is_valid add_user]} {
 
     db_transaction {
         # create the ACS user
-        set target_user_id [ad_user_new $email $first_names $last_name [ad_generate_random_string] "" "" "" "t" "approved" $target_user_id]
+        set password [ad_generate_random_string]
+        set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" "t" "approved" $target_user_id]
 
         # make the user a dotLRN user
-        dotlrn::user_add -rel_type $rel_type -user_id $target_user_id -type_id [dotrln::get_user_type_id_from_type -type $type]
+        dotlrn::user_add -rel_type $rel_type -user_id $target_user_id -type_id [dotlrn::get_user_type_id_from_type -type $type]
 
         # can this user read private data?
         acs_privacy::set_user_read_private_data -user_id $target_user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
     }
 
-    ad_returnredirect "member-add-2?user_id=$target_user_id"
+    set redirect "user-add-2?[export_vars {{user_id $target_user_id} email password first_names last_name referer}]"
+    ad_returnredirect "member-add-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
     ad_script_abort
 }
 
