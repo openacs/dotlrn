@@ -113,6 +113,13 @@ if { $tmp_size > 0 } {
         }
 
         cr_set_imported_content_live $mime_type $revision_id
+        # since it's just the header logo, which can't be accessed outside of
+
+        # the community anyway, let everyone have access to see it.  That way
+        # it won't cause any trouble later on when we try to implement
+        # try-before-you-buy for non-members.
+        permission::grant -party_id [acs_magic_object registered_users] -obje
+ct_id $revision_id -privilege read
 
         ns_log notice "aks1: new revision_id $revision_id"
 
