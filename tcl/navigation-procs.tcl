@@ -182,7 +182,7 @@ namespace eval dotlrn {
                 set extra_td_html \
                     " &nbsp; <a href=$link$control_panel_name>$control_panel_text</a>"
             } else {
-                set extra_td_html " &nbsp; $control_panel_text"
+                set extra_td_html " &nbsp; <strong>$control_panel_text</strong>"
                 set link_all 1
             } 
         } else {
