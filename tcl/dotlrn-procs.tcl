@@ -83,18 +83,23 @@ namespace eval dotlrn {
     } {
         returns 1 if package is mounted under dotlrn, 0 otherwise
     } {
-        set package_list [nsv_array get site_nodes {*${package_key}*}]
+        set package_list [nsv_array get site_nodes "*$package_key*"]
         set dotlrn_ancestor_p 0
+
+        # ns_log notice "is_package_mounted: pakage_list is $package_list"
 
         for {set x 1} {$x < [llength $package_list]} {incr x 2} {
             array set package_info [lindex $package_list $x]
-
+            
+            # ns_log notice "is_package_mounted: [array get package_info]"
+            
             if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) "dotlrn"] != 0} {
                 set dotlrn_ancestor_p 1
+
+                # ns_log notice "is_package_mounted: found dotlrn ancestor of $package_key with url $package_info(url)"
                 break
             }
         }
-
         return $dotlrn_ancestor_p
     }
 
