@@ -1306,6 +1306,12 @@ namespace eval dotlrn_community {
         if {[empty_string_p $user_id]} {
             set user_id [ad_get_user_id]
         }
+
+	set show_drop_link_p [parameter::get_from_package_key \
+				  -package_key dotlrn-portlet \
+				  -parameter AllowMembersDropGroups \
+				  -default 0]
+
         foreach sc_id [get_subcomm_list -community_id $community_id] {
             if {[has_subcommunity_p -community_id $sc_id] \
                     && [member_p $sc_id $user_id]} {
@@ -1314,8 +1320,10 @@ namespace eval dotlrn_community {
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-		append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
-		 
+		if {$show_drop_link_p} {
+		    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
+		}
+
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif {[member_p $sc_id $user_id] || [not_closed_p -community_id $sc_id]} {
 
@@ -1356,8 +1364,9 @@ namespace eval dotlrn_community {
                 }  elseif {[member_p $sc_id $user_id]} {
 
 		    # User is a member.
-		    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
-		    
+		    if {$show_drop_link_p} {
+			append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
+		    }
 		}
             }
         }
