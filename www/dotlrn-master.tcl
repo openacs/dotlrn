@@ -502,7 +502,7 @@ TD.center {
 }
 
 #admin-portlet {
-    background-color: $scope_z_light;
+    background-color: white;
     padding: 4px;
     padding-top: 1px;
     padding-bottom: 1px;
