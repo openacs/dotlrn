@@ -307,7 +307,7 @@ returns boolean as '
 DECLARE
         p_community_id                    alias for $1;
         p_party_id                        alias for $2;
-        v_rv				  char(1);
+        r_rv				  char(1);
 BEGIN
 	-- THIS NEEDS TO BE CHECKED!
 	-- chak, 2002-07-01
@@ -336,7 +336,7 @@ BEGIN
         where dotlrn_communities_all.community_id = p_community_id
         and site_nodes.object_id = dotlrn_communities_all.package_id;
 
-	return v_node_id;
+	return site_node__url(v_node_id);
 
 --        exception
 --            when no_data_found then
@@ -349,7 +349,7 @@ create function dotlrn_community__has_subcomm_p(integer)
 returns varchar as '
 DECLARE
 	p_community_id		alias for $1;
-	v_rv char(1);
+	r_rv char(1);
 BEGIN
 	select CASE
 		WHEN count(*) = 0

@@ -111,19 +111,7 @@ if { $priv_email <= [ad_privacy_threshold] } {
     set show_email_p 1
 }
 
-db_multirow user_contributions user_contributions {
-    select acs_object_types.pretty_name,
-           acs_object_types.pretty_plural,
-           acs_objects.creation_date,
-           acs_object.name(acs_objects.object_id) object_name
-    from acs_objects,
-         acs_object_types
-    where acs_objects.creation_user = :user_id
-    and acs_objects.object_type in ('acs_message')
-    and acs_objects.object_type = acs_object_types.object_type
-    order by object_name,
-             creation_date
-}
+db_multirow user_contributions user_contributions {}
 
 set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
 

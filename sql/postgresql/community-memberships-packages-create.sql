@@ -61,9 +61,9 @@ BEGIN
 
         insert
         into dotlrn_member_rels
-        (rel_id, portal_id)
+        (rel_id)
         values
-        (v_rel_id, p_portal_id);
+        (v_rel_id);
 
         return v_rel_id;
 END;
