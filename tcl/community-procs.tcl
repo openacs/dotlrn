@@ -418,67 +418,139 @@ namespace eval dotlrn_community {
         return [db_string select_node_url {} -default ""]
     }
 
-    ad_proc set_attribute {
-        community_id
-        attribute_name
-        attribute_value
+    ad_proc -public get_default_roles {
+        {-community_id ""}
     } {
-        Set an attribute for a community
+        get default rel_type data for this community
     } {
-        # Not sure what to do here yet
-    }
-
-    ad_proc -public get_allowed_rel_types {
-        {-community_id:required}
-    } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
         set community_type [get_community_type_from_community_id $community_id]
 
-        # Subcomm
-        if {$community_type == "dotlrn_community"} {
-            return {dotlrn_member_rel dotlrn_admin_rel}
-        }
-
-        # club
-        if {$community_type == "dotlrn_club"} {
-            return {dotlrn_member_rel dotlrn_admin_rel}
-        }
-
-        # else, it's a class instance
-        return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_cadmin_rel}
+        return [util_memoize "dotlrn_community::get_default_roles_not_cached -community_type $community_type"]
     }
 
-    ad_proc -public get_all_roles {} {
-        return the list of roles used in dotLRN
+    ad_proc -private get_default_roles_not_cached {
+        {-community_type:required}
     } {
-        return {dotlrn_admin_rel dotlrn_member_rel dotlrn_instructor_rel dotlrn_cadmin_rel dotlrn_ca_rel dotlrn_ta_rel dotlrn_student_rel}
+        if {[string match $community_type dotlrn_club]} {
+            set community_type dotlrn_community
+        } elseif {![string match $community_type dotlrn_community]} {
+            set community_type dotlrn_class_instance
+        }
+
+        return [db_list_of_lists select_role_data {}]
     }
 
-    ad_proc -public get_all_roles_as_options {} {
-        return the list of roles used in dotLRN
+    ad_proc -private get_roles {
+        {-community_id:required}
     } {
+        set default_roles [eval concat [get_default_roles -community_id $community_id]]
+        set attributes [eval concat [get_attributes -community_id $community_id]]
+
         set roles [list]
+        foreach {rel_type role pretty_name pretty_plural} $default_roles {
+            set new_role [list]
 
-        foreach role [get_all_roles] {
-            lappend roles [list [get_role_pretty_name_from_rel_type -rel_type $role] $role]
+            lappend new_role $rel_type
+            lappend new_role $role
+
+            set i [lsearch -exact $attributes "${role}_pretty_name"]
+            if {$i > -1} {
+                lappend new_role [lindex $attributes [expr $i + 1]]
+            } else {
+                lappend new_role $pretty_name
+            }
+
+            set i [lsearch -exact $attributes "${role}_pretty_plural"]
+            if {$i > -1} {
+                lappend new_role [lindex $attributes [expr $i + 1]]
+            } else {
+                lappend new_role $pretty_plural
+            }
+
+            lappend roles $new_role
         }
 
         return $roles
     }
 
-    ad_proc -public get_role_from_rel_type {
-        {-rel_type:required}
+    ad_proc -public get_all_roles {} {
+        return the list of roles used in dotLRN
     } {
-        returns the role associated with this rel_type
-    } {
-        return [db_string select_role {} -default ""]
+        return [util_memoize {dotlrn_community::get_all_roles_not_cached}]
     }
 
-    ad_proc -public get_role_pretty_name_from_rel_type {
+    ad_proc -private get_all_roles_not_cached {} {
+        return [db_list_of_lists select_all_roles {}]
+    }
+
+    ad_proc -public get_all_roles_as_options {} {
+        return the list of roles used in dotLRN
+    } {
+        set role_options [list]
+
+        foreach {rel_type role pretty_name pretty_plural} [eval concat [get_all_roles]] {
+            lappend role_options [list $pretty_name $rel_type]
+        }
+
+        return $role_options
+    }
+
+    ad_proc -public set_roles_pretty_data {
+        {-community_id ""}
+        {-roles_data:required}
+    } {
+        set the pretty_name and pretty_plural for several roles
+    } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        foreach {rel_type role pretty_name pretty_plural} [eval concat $roles_data] {
+            set_role_pretty_data \
+                -community_id $community_id \
+                -rel_type $rel_type \
+                -role $role \
+                -pretty_name $pretty_name \
+                -pretty_plural $pretty_plural
+        }
+    }
+
+    ad_proc -public set_role_pretty_data {
+        {-community_id ""}
         {-rel_type:required}
+        {-role:required}
+        {-pretty_name:required}
+        {-pretty_plural:required}
     } {
-        Returns the pretty version of the role
+        set the pretty_name and pretty_plural of a role for a community
     } {
-        return [db_string select_role_pretty_name {} -default ""]
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        set roles [eval concat [get_roles -community_id $community_id]]
+        set i [lsearch -exact $roles $rel_type]
+
+        if {$i > -1} {
+            set old_pretty_name [lindex $roles [expr $i + 2]]
+            if {![string match $pretty_name $old_pretty_name]} {
+                set_attribute \
+                    -community_id $community_id \
+                    -attribute_name "${role}_pretty_name" \
+                    -attribute_value $pretty_name
+            }
+
+            set old_pretty_plural [lindex $roles [expr $i + 3]]
+            if {![string match $pretty_plural $old_pretty_plural]} {
+                set_attribute \
+                    -community_id $community_id \
+                    -attribute_name "${role}_pretty_plural" \
+                    -attribute_value $pretty_plural
+            }
+        }
     }
 
     ad_proc -public get_rel_segment_id {
@@ -493,21 +565,13 @@ namespace eval dotlrn_community {
     ad_proc -private get_members_rel_id {
         {-community_id:required}
     } {
-    } {
-        return [get_rel_segment_id \
-                    -community_id $community_id \
-                    -rel_type "dotlrn_member_rel"
-        ]
+        return [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
     }
 
     ad_proc -private get_admin_rel_id {
         {-community_id:required}
     } {
-    } {
-        return [get_rel_segment_id \
-                    -community_id $community_id \
-                    -rel_type "dotlrn_admin_rel"
-        ]
+        return [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
     }
 
     ad_proc -private rel_segments_grant_permission {
@@ -1813,7 +1877,7 @@ namespace eval dotlrn_community {
         # acs_attribute_values.attr_value column does not have a "not null"
         # constraint but we will enforce it via our api. if someone circumvents
         # our api then they can die and rot in hell.
-        if {[empty_string_p [get_attribute -community_id $community_id -attribute_name $attribute_name]} {
+        if {[empty_string_p [get_attribute -community_id $community_id -attribute_name $attribute_name]]} {
             db_dml insert_attribute {}
         } else {
             db_dml update_attribute_value {}
@@ -1831,7 +1895,7 @@ namespace eval dotlrn_community {
 
         foreach {attr_id attr_name} [eval concat [get_available_attributes]] {
             if {[string match $attribute_name $attr_name]} {
-                set attribute_id $attr_id]
+                set attribute_id $attr_id
                 break
             }
         }

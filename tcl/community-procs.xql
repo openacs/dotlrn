@@ -95,21 +95,32 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_role_from_rel_type.select_role">
+    <fullquery name="dotlrn_community::get_default_roles_not_cached.select_role_data">
         <querytext>
-            select role_two
-            from acs_rel_types
-            where rel_type = :rel_type
+            select acs_rel_types.rel_type,
+                   acs_rel_roles.role,
+                   acs_rel_roles.pretty_name,
+                   acs_rel_roles.pretty_plural
+            from acs_rel_types,
+                 acs_rel_roles
+            where acs_rel_types.object_type_one = :community_type
+            and acs_rel_types.role_two = acs_rel_roles.role
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_role_pretty_name_from_rel_type.select_role_pretty_name">
+    <fullquery name="dotlrn_community::get_all_roles_not_cached.select_all_roles">
         <querytext>
-            select pretty_name
-            from acs_rel_roles
-            where role = (select role_two
-                          from acs_rel_types
-                          where rel_type = :rel_type)
+            select acs_rel_types.rel_type,
+                   acs_rel_roles.role,
+                   acs_rel_roles.pretty_name,
+                   acs_rel_roles.pretty_plural
+            from acs_rel_types,
+                 acs_rel_roles
+            where acs_rel_types.object_type_one in (select dotlrn_community_types.community_type
+                                                    from dotlrn_community_types
+                                                    where dotlrn_community_types.supertype is null
+                                                    or dotlrn_community_types.supertype = 'dotlrn_community')
+            and acs_rel_types.role_two = acs_rel_roles.role
         </querytext>
     </fullquery>
 
@@ -545,7 +556,8 @@
         <querytext>
             update acs_attribute_values
             set attr_value = :attribute_value
-            where object_id = :community_id
+            where attribute_id = :attribute_id
+            and object_id = :community_id
         </querytext>
     </fullquery>
 

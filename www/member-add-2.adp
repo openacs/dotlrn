@@ -29,7 +29,7 @@ You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
   Role:
   <select name="rel_type">
 <multiple name="roles">
-    <option value="@roles.rel_type@"> @roles.pretty_name@
+    <option value="@roles.rel_type@">@roles.pretty_name@</option>
 </multiple>
   </select>
   <input type="submit" value="add">

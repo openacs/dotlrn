@@ -37,7 +37,7 @@ set community_id [dotlrn_community::get_community_id]
 set user_id [ad_get_user_id]
 
 # Permissions
-dotlrn::require_user_admin_community $community_id
+dotlrn::require_user_admin_community -user_id $user_id $community_id
 
 db_1row select_community_info {}
 

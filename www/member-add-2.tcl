@@ -42,12 +42,12 @@ db_1row select_user_info {
 }
 
 # Depending on the community_type, we have allowable rel_types
-set rel_types [dotlrn_community::get_allowed_rel_types -community_id $community_id]
+set rel_types [dotlrn_community::get_roles -community_id $community_id]
 
 template::multirow create roles rel_type pretty_name
 
-foreach rel_type $rel_types {
-    template::multirow append roles $rel_type [dotlrn_community::get_role_pretty_name_from_rel_type -rel_type $rel_type]
+foreach role $rel_types {
+    template::multirow append roles [lindex $role 0] [lindex $role 2]
 }
 
 ad_return_template
