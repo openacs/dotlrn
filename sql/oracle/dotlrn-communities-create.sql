@@ -184,8 +184,8 @@ is
             object_type => community_type,
             pretty_name => community_type,
             pretty_plural => community_type,
-            table_name => 'dotlrn_communities',
-            id_column => 'community_id',
+            table_name => v_unique_name,
+            id_column => v_unique_name,
             package_name => v_unique_name,
             name_method => 'acs_group.name'
         );
