@@ -407,6 +407,13 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::remove_applet_from_community.delete_applet_from_community">
+      <querytext>
+        delete from dotlrn_community_applets 
+          where community_id= :community_id and applet_id = :applet_id
+      </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::get_portal_template_id_not_cached.select_portal_template_id">
         <querytext>
             select portal_template_id
