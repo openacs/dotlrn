@@ -264,7 +264,7 @@
     <fullquery name="dotlrn_community::get_community_type_from_community_id_not_cached.select_community_type">
         <querytext>
             select community_type
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -292,9 +292,11 @@
             select community_id, 
                    community_key, 
                    pretty_name,   
-                   url
-            from dotlrn_communities_full 
+                   archived_p,
+                   dotlrn_community.url(community_id) as url
+            from dotlrn_communities_all 
             where parent_community_id = :community_id 
+            and archived_p = 'f'
             order by pretty_name
         </querytext>
     </fullquery>
@@ -345,7 +347,7 @@
     <fullquery name="dotlrn_community::get_community_name_not_cached.select_community_name">
         <querytext>
             select pretty_name
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -451,7 +453,7 @@
     <fullquery name="dotlrn_community::get_portal_id_not_cached.select_portal_id">
         <querytext>
             select portal_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -459,7 +461,7 @@
     <fullquery name="dotlrn_community::get_non_member_portal_id_not_cached.select_non_member_portal_id">
         <querytext>
             select non_member_portal_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>

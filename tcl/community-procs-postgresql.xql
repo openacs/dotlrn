@@ -6,7 +6,7 @@
     <fullquery name="dotlrn_community::get_community_id_not_cached.select_community">
         <querytext>
             select community_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where package_id = :package_id
         </querytext>
     </fullquery>
