@@ -78,7 +78,7 @@ namespace eval dotlrn {
         mount a package under dotlrn
     } {
         db_transaction {
-            sete parent_node [site_node [site_node_closest_ancestor_package_url $url]]
+            set parent_node [site_node [site_node_closest_ancestor_package_url -package_key $package_key]]
             set parent_id $parent_node(node_id)
             set parent_package_id $parent_node(object_id)
 
