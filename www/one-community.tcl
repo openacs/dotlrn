@@ -37,7 +37,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
 
     # Possible that there is no portal page for non-members
     if {! [empty_string_p $portal_id]} {
-	set rendered_page [dotlrn::render_page $portal_id]
+	set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
     } else {
 	set rendered_page ""
     }
@@ -48,7 +48,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     # Pull out the NPP page ID and render it!
     set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
 
-    set rendered_page [dotlrn::render_page $portal_id]
+    set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
 
     set context_bar {View}
 
