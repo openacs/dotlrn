@@ -40,7 +40,7 @@ if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]
 }
 
-dotlrn::require_user_admin_community $community_id
+dotlrn::require_user_admin_community -community_id $community_id
 
 db_dml update_join_policy {}
 

@@ -35,7 +35,7 @@ set user_id [ad_maybe_redirect_for_registration]
 if {[parameter::get -parameter community_level_p] == 1} {
 
     set community_id [dotlrn_community::get_community_id]
-    set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]
+    set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
 
     if {[dotlrn_community::member_p $community_id $user_id] || $admin_p} {
 	portal::configure_element $element_id $op "one-community"

@@ -34,7 +34,7 @@ ad_page_contract {
 set user_id [ad_conn user_id]
 set creation_ip [ad_conn peeraddr]
 set community_id [dotlrn_community::get_community_id]
-dotlrn::require_user_admin_community -user_id $user_id $community_id
+dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
 set page_title Preview
 set header_text [dotlrn_community::get_community_header_name $community_id]
 

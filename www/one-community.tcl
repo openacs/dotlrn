@@ -37,7 +37,7 @@ set community_id [dotlrn_community::get_community_id]
 set pretty_name [dotlrn_community::get_community_name $community_id]
 set admin_p [dotlrn::user_can_admin_community_p \
         -user_id $user_id \
-        $community_id
+        -community_id $community_id
 ]
 
 # Check that this user is a member

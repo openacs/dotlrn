@@ -1114,12 +1114,12 @@ namespace eval dotlrn_community {
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-                if {[dotlrn::user_can_admin_community_p $sc_id]} {
+                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
                     append chunk "\[<small> <a href=${url}one-community-admin>admin</a> </small>\]"
                 }
 
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
-            } elseif {[member_p $sc_id $user_id] || [dotlrn::user_can_admin_community_p $sc_id] || [not_closed_p -community_id $sc_id]} {
+            } elseif {[member_p $sc_id $user_id] || [dotlrn::user_can_admin_community_p -community_id $sc_id] || [not_closed_p -community_id $sc_id]} {
 
                 # Shows the subcomm if:
                 # 1. I'm a member of this subcomm OR
@@ -1150,7 +1150,7 @@ namespace eval dotlrn_community {
                       append chunk " </small>\]</nobr>\n"
                 }
 
-                if {[dotlrn::user_can_admin_community_p $sc_id]} {
+                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
                     append chunk "<nobr>\[<small> <a href=\"${url}one-community-admin\">Administer</a> </small>\]</nobr>\n"
                 }
             }

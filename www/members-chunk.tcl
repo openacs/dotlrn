@@ -34,7 +34,7 @@ set referer [ns_conn url]
 
 set site_wide_admin_p [ad_permission_p -user_id $user_id [acs_magic_object "security_context_root"] "admin"]
 if {!$site_wide_admin_p} {
-    set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]
+    set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
     set read_private_data_p [dotlrn::user_can_read_private_data_p -user_id $user_id]
 } else {
     set admin_p 1

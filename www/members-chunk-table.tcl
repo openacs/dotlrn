@@ -43,8 +43,8 @@ set site_wide_admin_p [permission::permission_p \
 ]
 
 if {!$site_wide_admin_p} {
-    set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id $community_id]
-    set read_private_data_p [dotlrn::user_can_read_private_data_p $my_user_id]
+    set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id -community_id $community_id]
+    set read_private_data_p [dotlrn::user_can_read_private_data_p -user_id $my_user_id]
 } else {
     set admin_p 1
     set read_private_data_p 1

@@ -32,7 +32,7 @@ if {[empty_string_p $community_id]} {
 
 
 set user_id [ad_get_user_id]
-dotlrn::require_user_admin_community $community_id
+dotlrn::require_user_admin_community -community_id $community_id
 set pretty_name [dotlrn_community::get_community_name $community_id]
 set title "Archive group $pretty_name"
 

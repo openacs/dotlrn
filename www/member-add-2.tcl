@@ -30,7 +30,7 @@ ad_page_contract {
 
 set community_id [dotlrn_community::get_community_id]
 
-dotlrn::require_user_admin_community $community_id
+dotlrn::require_user_admin_community -community_id $community_id
 
 # Get user information
 db_1row select_user_info {

@@ -38,7 +38,7 @@ set user_id [ad_maybe_redirect_for_registration]
 set community_id [dotlrn_community::get_community_id]
 
 if {![empty_string_p $community_id]} {
-    dotlrn::require_user_admin_community [dotlrn_community::get_community_id]
+    dotlrn::require_user_admin_community -community_id [dotlrn_community::get_community_id]
     set context_bar {{"one-community-admin" Admin} {Add User}}
 } else {
     dotlrn::require_admin

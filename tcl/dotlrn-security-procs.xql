@@ -27,14 +27,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn::user_get_type.select_user_type">
-        <querytext>
-            select type
-            from dotlrn_users
-            where user_id = :user_id
-        </querytext>>
-    </fullquery>
-
     <fullquery name="dotlrn::user_add.update_user_portal_id">
         <querytext>
             update dotlrn_user_profile_rels

@@ -36,7 +36,7 @@ if {[empty_string_p $community_id]} {
 if {[empty_string_p $user_id]} {
     set user_id [ad_conn user_id]
 } else {
-    dotlrn::require_user_admin_community $community_id
+    dotlrn::require_user_admin_community -community_id $community_id
 }
 
 dotlrn_community::remove_user $community_id $user_id

@@ -36,7 +36,7 @@ if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]
 }
 
-dotlrn::require_user_admin_community $community_id
+dotlrn::require_user_admin_community -community_id $community_id
 
 set sender_id [ad_conn user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]

@@ -14,16 +14,6 @@
 #  details.
 #
 
-
-#
-# Procs for dotLRN Security
-# Copyright 2001 OpenForce, inc.
-# Distributed under the GNU GPL v2
-#
-# October 30th, 2001
-# ben@openforce.net
-#
-
 ad_library {
 
     Procs to manage DOTLRN Security
@@ -221,14 +211,6 @@ namespace eval dotlrn {
         }
     }
 
-    ad_proc -private user_get_type {
-        user_id
-    } {
-        returns the dotLRN user role or empty string if not a dotLRN user
-    } {
-        return [db_string select_user_type {} -default ""]
-    }
-
     ad_proc -public set_can_browse {
         {-user_id ""}
         {-can_browse:boolean}
@@ -261,7 +243,7 @@ namespace eval dotlrn {
     }
 
     ad_proc -public require_user_browse {
-        {user_id ""}
+        {-user_id ""}
     } {
         Require that a user be able to browse dotLRN
     } {
@@ -270,27 +252,11 @@ namespace eval dotlrn {
         }
     }
 
-    ad_proc -public set_user_read_private_data {
-        {-user_id:required}
-        val
-    } {
-        set whether or not a user can read private data
-    } {
-        acs_privacy::set_user_read_private_data \
-            -user_id $user_id \
-            -object_id [dotlrn::get_package_id] \
-            $val
-    }
-
     ad_proc -public user_can_read_private_data_p {
-        {user_id ""}
+        {-user_id ""}
     } {
         Check if a user can read sensitive data in dotLRN
     } {
-        if {[empty_string_p $user_id]} {
-            set user_id [ad_conn user_id]
-        }
-
         return [acs_privacy::user_can_read_private_data_p \
             -user_id $user_id \
             -object_id [dotlrn::get_package_id] \
@@ -298,7 +264,7 @@ namespace eval dotlrn {
     }
 
     ad_proc -public require_user_read_private_data {
-        {user_id ""}
+        {-user_id ""}
     } {
         Require that a user be able to read sensitive data
     } {
@@ -309,7 +275,7 @@ namespace eval dotlrn {
 
     ad_proc -public user_can_read_community_type_p {
         {-user_id ""}
-        community_type
+        {-community_type:required}
     } {
         Check if a user can read a community type
     } {
@@ -320,18 +286,18 @@ namespace eval dotlrn {
 
     ad_proc -public require_user_read_community_type {
         {-user_id ""}
-        community_type
+        {-community_type:required}
     } {
         require that a user be able to read a community type
     } {
-        if {![user_can_read_community_type_p -user_id $user_id $community_type]} {
+        if {![user_can_read_community_type_p -user_id $user_id -community_type $community_type]} {
             do_abort
         }
     }
 
     ad_proc -public user_can_read_community_p {
         {-user_id ""}
-        community_id
+        {-community_id:required}
     } {
         Check if a user can read a community
     } {
@@ -344,18 +310,18 @@ namespace eval dotlrn {
 
     ad_proc -public require_user_read_community {
         {-user_id ""}
-        community_id
+        {community_id:required}
     } {
         require that a user be able to read a community
     } {
-        if {![user_can_read_community_p -user_id $user_id $community_id]} {
+        if {![user_can_read_community_p -user_id $user_id -community_id $community_id]} {
             do_abort
         }
     }
 
     ad_proc -public user_is_community_member_p {
         {-user_id ""}
-        community_id
+        {-community_id:required}
     } {
         check if a user is a member of a community
     } {
@@ -372,14 +338,14 @@ namespace eval dotlrn {
     } {
         require that a user be member of a particular community
     } {
-        if {![user_is_community_member_p -user_id $user_id $community_id]} {
+        if {![user_is_community_member_p -user_id $user_id -community_id $community_id]} {
             do_abort
         }
     }
 
     ad_proc -public user_can_admin_community_p {
         {-user_id ""}
-        community_id
+        {-community_id:required}
     } {
         check if a user can admin a community
     } {
@@ -388,11 +354,11 @@ namespace eval dotlrn {
 
     ad_proc -public require_user_admin_community {
         {-user_id ""}
-        community_id
+        {-community_id:required}
     } {
         require that user be able to admin a community
     } {
-        if {![user_can_admin_community_p -user_id $user_id $community_id]} {
+        if {![user_can_admin_community_p -user_id $user_id -community_id $community_id]} {
             do_abort
         }
     }

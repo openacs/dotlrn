@@ -39,7 +39,6 @@ db_1row select_community_info {}
 # Check that this user is a member
 if {![dotlrn_community::member_p $community_id $user_id]} {
     set context_bar [list "Not a member"]
-
     set portal_id [dotlrn_community::get_non_member_portal_id -community_id $community_id]
 
     # Possible that there is no portal page for non-members
@@ -53,12 +52,9 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     return
 } else {
     set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
-
     set rendered_page [dotlrn::render_page $portal_id]
-
     set context_bar {View}
-
-    set admin_p [dotlrn::user_can_admin_community_p $community_id]
+    set admin_p [dotlrn::user_can_admin_community_p -community_id $community_id]
 
     ad_return_template
 }

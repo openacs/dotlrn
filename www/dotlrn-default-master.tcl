@@ -82,7 +82,7 @@ if {![info exists return_url]} {
     set link $return_url
 }
 
-set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]
+set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
 
 if {![info exists show_control_panel]} {
     if {$have_comm_id_p && $admin_p } {
