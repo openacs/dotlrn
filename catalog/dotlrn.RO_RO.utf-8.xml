@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="dotlrn" package_version="2.0a3" locale="RO_RO" charset="utf-8">
+
+  <msg key="Ask_a_question">Pune o întrebare</msg>
+  <msg key="Change_Locale">Schimbă Localizarea</msg>
+  <msg key="control_panel">Control Panel</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Grupuri</msg>
+  <msg key="help">Ajutor</msg>
+  <msg key="logout">Logout</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Alătură-te/Renunţă la un Curs sau Grup Comunitar</msg>
+  <msg key="lt_JoinDrop_Classes_or_C">Alătură-te/Renunţă la Cursuri sau Comunităţi</msg>
+  <msg key="Personal_Options">Opţiuni Personale</msg>
+  <msg key="user_portal_page_calendar_title">Calendarul meu</msg>
+  <msg key="user_portal_page_file_storage_title">Fişierele mele</msg>
+  <msg key="user_portal_page_home_title">Spaţiul meu</msg>
+</message_catalog>
