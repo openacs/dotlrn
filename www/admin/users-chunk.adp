@@ -83,16 +83,16 @@
      #dotlrn.NA#
      </if>
      <else>
-     <if @users.read_private_data_p@ eq t>#dotlrn.no#</if><else>#dotlrn.yes#</else>
+     <if @users.read_private_data_p@ eq t>#dotlrn.No#</if><else>#dotlrn.Yes#</else>
      </else>
     </td>
     <td align="center">
   <if @user_id@ ne @users.user_id@>
-    <if @users.site_wide_admin_p@ eq t>
-      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@">#dotlrn.yes#</a>
+    <if @users.site_wide_admin_p@ true>
+      <b>#dotlrn.Yes#</b> | <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
     </if>
     <else>
-      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@">#dotlrn.no#</a>
+      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <b>#dotlrn.No#</b>
     </else>
   </if>
       <else>#dotlrn.yes#</else>
