@@ -26,9 +26,13 @@ ad_page_contract {
 
 } -query {
     term_id:integer,notnull
-    term_pretty_name:notnull
 } -properties {
     context_bar:onevalue
+}
+
+if {![db_0or1row select_term_info {}]} {
+    ad_return_complaint 1 "<li>[_ dotlrn.Invalid] term_key $term_id</li>"
+    ad_script_abort
 }
 
 set referer "term?[export_vars {term_id}]"
