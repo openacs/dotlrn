@@ -101,7 +101,7 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	    label "[_ dotlrn.Email_1]"
 	    html "align left"
 	    display_template {
-		<a href="mailto:@members.email@">@members.email@</a>
+		@members.user_email;noquote@
 	    }
 	} role {
 	    label "[_ dotlrn.Role]"
@@ -129,8 +129,9 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 
 set member_page [acs_community_member_page]
 
-db_multirow -extend { member_url referer } members select_current_members {} {
+db_multirow -extend { member_url referer user_email } members select_current_members {} {
     set member_url "$member_page?user_id=$user_id"
+    set user_email [email_image::get_user_email -user_id $user_id]
     set referer $referer
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
