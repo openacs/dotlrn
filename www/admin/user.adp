@@ -119,6 +119,21 @@
   </blockquote>
 </if>
 
+<if @member_subgroups:rowcount@ gt 0>
+  <blockquote>
+    <h4><%= [ad_parameter "subcommunities_pretty_name"] %> Memberships</h4>
+
+    <ul>
+<multiple name="member_subgroups">
+      <li>
+        <a href="@member_subgroups.url@">@member_subgroups.pretty_name@</a>
+        (@member_subgroups.role@)
+      </li>
+</multiple>
+    </ul>
+  </blockquote>
+</if>
+
   <ul>
     <li>
       <a

@@ -18,7 +18,11 @@ ad_page_contract {
     export_edit_vars:onevalue
     portrait_p:onevalue
     portrait_title:onevalue
-    user_finite_state_links:onevalue
+    change_state_links:onevalue
+    return_url:onevalue
+    dotlrn_user_p:onevalue
+    member_classes:multirow
+    member_clubs:multirow
 }
 
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
@@ -52,5 +56,6 @@ set change_state_links "\[<small>[join [ad_registration_finite_state_machine_adm
 
 db_multirow member_classes select_member_classes {}
 db_multirow member_clubs select_member_clubs {}
+db_multirow member_subgroups select_member_subgroups {}
 
 ad_return_template

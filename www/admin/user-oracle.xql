@@ -63,4 +63,20 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="select_member_subgroups">
+        <querytext>
+            select dotlrn_communities.*,
+                   dotlrn_community.url(dotlrn_communities.community_id) as url,
+                   dotlrn_member_rels_approved.role,
+                   acs_permission.permission_p(dotlrn_communities.community_id, :user_id, 'admin') as admin_p
+            from dotlrn_communities,
+                 dotlrn_member_rels_approved
+            where dotlrn_member_rels_approved.user_id = :user_id
+            and dotlrn_member_rels_approved.community_id = dotlrn_communities.community_id
+            and dotlrn_communities.community_type = 'dotlrn_community'
+            order by dotlrn_communities.pretty_name,
+                     dotlrn_communities.community_key
+        </querytext>
+    </fullquery>
+
 </queryset>
