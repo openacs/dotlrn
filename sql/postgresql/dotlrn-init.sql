@@ -55,6 +55,10 @@ begin
         'e.g. Alumni'
     );
 
+    update acs_object_types set table_name = 'dotlrn_community', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
+    update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
+    update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
+
     -- create roles
     acs_rel_type__create_role('student', 'Student', 'Students');
     acs_rel_type__create_role('course_assistant', 'Course Assistant', 'Course Assistants');

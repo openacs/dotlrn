@@ -33,7 +33,7 @@ begin
     -- Create the base community type
     foo := dotlrn_community_type.new (
         community_type => 'dotlrn_community',
-        parent_type => NULL,
+        parent_type => null,
         pretty_name => 'Community',
         pretty_plural => 'Communities',
         description => 'Communities - the base community type'
@@ -56,6 +56,10 @@ begin
         pretty_plural => 'Clubs',
         description => 'e.g. Alumni'
     );
+
+    update acs_object_types set table_name = 'dotlrn_community', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
+    update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
+    update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
 
     -- create roles
     acs_rel_type.create_role ('student', 'Student', 'Students');
