@@ -206,7 +206,7 @@
 
     <fullquery name="dotlrn_community::remove_user.select_rel_info">
         <querytext>
-            select rel_id
+            select rel_id, rel_type
             from dotlrn_member_rels_full
             where community_id = :community_id
             and user_id = :user_id
