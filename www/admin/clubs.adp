@@ -37,7 +37,7 @@
 <multiple name="clubs">
   <tr>
     <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
-    <td>@clubs.description@</td>
+    <td><pre>@clubs.description@</pre></td>
     <td>@clubs.n_members@</td>
     <td>[<small> <a href="@clubs.url@one-community-admin">Administer</a> </small>]</td>
   </tr>
