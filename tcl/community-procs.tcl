@@ -323,7 +323,10 @@ namespace eval dotlrn_community {
     } {
 	db_transaction {
 	    # Set up a portal page for that user and that community
-	    set portal_id [portal::create -template_id [get_portal_template_id $community_id] $user_id]
+	    set portal_id [portal::create \
+		    -name "Your [get_community_name $community_id] page" \
+		    -template_id [get_portal_template_id $community_id] \
+		    $user_id]
 	    
 	    # Create the form with the portal_id
 	    set extra_vars [ns_set create]
