@@ -42,13 +42,12 @@
 #
 # $Id$
 
-
 set user_id [ad_get_user_id] 
 set community_id [dotlrn_community::get_community_id]
 set dotlrn_url [dotlrn::get_url]
 
-#Scope Related graphics/css parameters
 
+#Scope Related graphics/css parameters
 # Set everything for user level scope as default then modify it later as we refine the scope.
 set scope_name "user"
 set scope_main_color "#003366"
@@ -62,12 +61,12 @@ set header_font "Arial, Helvetica, sans-serif"
 set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
-set header_img_url "/graphics/logo" 
+set header_img_url "$dotlrn_url/graphics/logo" 
+set header_img_file "[acs_root_dir]/packages/dotlrn/www/graphics/logo"
 set header_img_alt_text "Header Logo"
 
 set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
-
 
 if {[dotlrn::user_p -user_id $user_id]} {
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
@@ -101,17 +100,23 @@ if {![info exists return_url]} {
     set link $return_url
 }
 
-
 if {![info exists link_control_panel]} {
     set link_control_panel 1
 }
 
-if {![info exists control_panel_text]} {
-    set control_panel_text "Control Panel"
+if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
+    # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance 
+    # (i.e. in a news instance of a class)
+    # and we want all links in the navbar to be active so the user can return easily to the class homepage
+    # or to the My Space page
+    set link_all 1
 }
 
 if {$have_comm_id_p} {
+    # in a community or just under one in a mounted package like /calendar 
     # get this comm's info
+    set control_panel_text "Administer"
+
     set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
     set text [dotlrn_community::get_community_header_name $community_id] 
     set link [dotlrn_community::get_community_url $community_id]
@@ -130,6 +135,8 @@ if {$have_comm_id_p} {
         set portal_id ""
     }
 } elseif {[parameter::get -parameter community_type_level_p] == 1} {
+    set control_panel_text "Administer"
+
     set extra_td_html ""
     set link_all 1
     set link [dotlrn::get_url]
@@ -145,6 +152,7 @@ if {$have_comm_id_p} {
     }
 } else {
     # we could be anywhere (maybe under /dotlrn, maybe not)
+    set control_panel_text "My Account"
     set link "[dotlrn::get_url]/"
     set community_id ""
     set text ""
@@ -177,10 +185,10 @@ if { $make_navbar_p } {
 
 # Set up some basic stuff
 set user_id [ad_get_user_id]
-set full_name "[dotlrn::get_user_name $user_id]"
+set user_name "[dotlrn::get_user_name $user_id]"
 
 if {![exists_and_not_null title]} {
-    set title "SloanSpace"
+    set title ".LRN"
 }
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
@@ -225,9 +233,18 @@ if {![empty_string_p $community_id]} {
 	}
     }
   
-    set header_img_url "$header_img_url-$scope_name.gif"
+    # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
+    # be replaced by custom gifs if prefered (as is done by SloanSpace)
 
-    # font hack
+    if { [file exists "$header_img_file-$scope_name.jpg"] } {
+        set header_img_url "$header_img_url-$scope_name.jpg"
+    } elseif { [file exists "$header_img_file-$scope_name.gif"] } {
+        set header_img_url "$header_img_url-$scope_name.gif"
+    }
+  
+   # set header_img_url "$header_img_url-$scope_name.gif"
+
+   # font hack
    set community_header_font [dotlrn_community::get_attribute \
         -community_id $community_id \
         -attribute_name header_font
@@ -270,17 +287,29 @@ if {![empty_string_p $community_id]} {
         set header_img_alt_text $header_logo_alt_text
     } 
 
-    # The header text is the name of the community
-    set text [dotlrn_community::get_community_header_name $community_id] 
+    set text [dotlrn::user_context_bar -community_id $community_id]
+
+    if { [string equal [ad_conn package_key] [dotlrn::package_key]] } {
+        set text "<span class=\"header-text\">$text</span>"
+    }
 
 } elseif {[parameter::get -parameter community_type_level_p] == 1} {
-    # in a community type
+    # in a community type (subject)
     set text \
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
 } else {
     # under /dotlrn
-    set header_img_url "$header_img_url-$scope_name.gif" 
-    set text $full_name    
+
+    # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
+    # be replaced by custom gifs if prefered (as is done by SloanSpace)
+
+    if { [file exists "$header_img_file-$scope_name.jpg"] } {
+        set header_img_url "$header_img_url-$scope_name.jpg"
+    } elseif { [file exists "$header_img_file-$scope_name.gif"] } {
+        set header_img_url "$header_img_url-$scope_name.gif"
+    }
+
+    set text ""
 }
 
 if { ![info exists header_stuff] } {
@@ -314,7 +343,6 @@ H3 {
    FONT-WEIGHT: bold;
    MARGIN-BOTTOM: 0px;
 }
-
 
 
 H2.portal-page-name {
@@ -540,13 +568,21 @@ TD.center {
     ALIGN: center;
 }
 
-.new_flag {
-    color: #CD0000;
-}
 
 </STYLE>
 
 "
+
+# Focus
+multirow create attribute key value
+
+if { ![template::util::is_nil focus] } {
+    # Handle elements wohse name contains a dot
+    regexp {^([^.]*)\.(.*)$} $focus match form_name element_name
+    
+    template::multirow append \
+            attribute onload "javascript:document.forms\['${form_name}'\].elements\['${element_name}'\].focus()"
+}
 
 # Developer-support support
 set ds_enabled_p [parameter::get_from_package_key \
@@ -560,7 +596,5 @@ if {$ds_enabled_p} {
 } else {
     set ds_link {}
 }
-
-set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 204 } { g 0 } { b 0 }}]"
 
 set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_id]" } }]"

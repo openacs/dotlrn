@@ -31,7 +31,7 @@ set is_dotlrn_user [db_string is_dotlrn_user {}]
 # if the user isn't already a dotLRN user make him so
 if {!${is_dotlrn_user}} {
     dotlrn::user_add -user_id $user_id -type professor -can_browse
-    acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn_community::get_package_id $community_id] -value t
+    acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value t
 }
 
 # Add the relation

@@ -139,10 +139,6 @@ namespace eval dotlrn {
 
             ns_log notice "dotlrn::mount_package: [array get parent_node]"
 
-            if {[empty_string_p $pretty_name]} {
-                set pretty_name $package_key
-            }
-
             set package_id [site_node_apm_integration::new_site_node_and_package \
                 -name $url \
                 -parent_id $parent_node_id \

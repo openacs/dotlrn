@@ -182,6 +182,16 @@
   <br>
   <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
 </if>
+<if @dotlrn_user_p@ eq 1>
+  <br>
+  <li>    
+<if @site_wide_admin_p@ eq t>
+This user is a site-wide admin. (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">revoke</a>)
+    </if>
+    <else>
+      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">Make this user a site wide admin.</a>
+    </else>
+</if>
   <br>
   <li>    
 <if @dotlrn_user_p@ eq 1>

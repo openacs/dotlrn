@@ -30,20 +30,20 @@
   your password, correct or change your full name, publish a URL for a your website, 
   and change your login name/email address. If you do not keep this login name 
   the same as your current email address or a forwarding address, you will not 
-  receive group emails and forum alerts from SloanSpace. </p>
+  receive group emails and forum alerts from .LRN. </p>
 <p><b>To Change Password:</b><br>
  
-<li> Login and go to your Control Panel page<br>
+<li> Login and go to your My Account page<br>
  
 <li>If you do not have a personal portal, click on the Help icon in the group 
-  banner to get to your Control Panel.<br>
+  banner to get to your My Account.<br>
   <li> Click on &quot;Change My Password&quot;<br>
   <li> Enter your new password twice and click &quot;Update.&quot;
 <p>To change personal information:<br>
   
-<li> Login and go to your Control Panel page<br>
+<li> Login and go to your My Account page<br>
 <li>If you do not have a personal portal, click on the Help icon in the group 
-  banner to get to your Control Panel.<br>
+  banner to get to your My Account.<br>
   <li>  Click on &quot;Edit My Personal Information&quot;<br>
   <li>  Edit your full name, your email address (which also changes your login 
   name to the system) and/or your personal URL.<br>
@@ -54,7 +54,7 @@
     and communities). Limited Access users (non-affiliated) cannot join 
     or drop groups.</p>
   <p><b>To join/drop classes and communities:</b><br>
-<li> Go to your personal Home page, MySpace.<br>
+<li> Go to your personal Home page, My Space.<br>
   <li> Click on &quot;Join/Drop a Class or Community Group&quot; in the Groups 
   portlet.<br>
   <li>  On the top of the page, you will see the list of your current class 
@@ -71,7 +71,7 @@
 <p><b>To join/drop subgroups:</b><br>
   <li>  Since subgroups are subsets of groups, their memberships are handled 
   within the groups.<br>
-  <li>  Go to your personal Home page, MySpace.<br>
+  <li>  Go to your personal Home page, My Space.<br>
   <li>  Go to the class or community through the link in the Groups portlet.<br>
   <li> Locate the Subgroups portlet on the class or community portal pages.<br>
   <li> Click the &quot;Join/Drop a Subgroup&quot; link.<br>
@@ -79,7 +79,7 @@
   subgroup.<br>
   <li> Your membership status will change when the page reloads.<br>
   
-<li> Then, return to the Subgroup Home page or MySpace to continue.
+<li> Then, return to the Subgroup Home page or My Space to continue.
   <p><b><font size="4"><a name="RequestGroup">Requesting a New Class or Community</a></font></b><br>
   The Site Wide Administrator handles class and community requests. </p>
 <p>To request a new class or to copy and reuse a class from a previous semester:<br>
@@ -96,12 +96,12 @@
     of any persons who will need to be administrators of this community. You will 
     be notified by email when the community shell has been created. </p>
   <p><b><font size="4"><a name="BulkEmail">Bulk Mail</a></font></b><br>
-  Class and community administrators can send group emails through the group Control 
-  Panel page. If enabled, class and community members can send group emails through 
-  the &quot;Email Members&quot; links on the user Control Panel page.</p>
+  Class and community administrators can send group emails through the group administration
+ page. If enabled, class and community members can send group emails through 
+  the &quot;Email Members&quot; links on the user's My Account page.</p>
 <p><b>To send a group email:</b><br>
   
-<li> For admins, go to group Control Panel and click &quot;New Bulk Mail.&quot; 
+<li> For admins, go to the administration page and click &quot;New Bulk Mail.&quot; 
   <br>
   
 <li> For students in classes, go to the Staff List portlet and click on Member 
@@ -113,20 +113,13 @@
   <li>  Review the message and click &quot;Confirm.&quot;<br>
   
 <li> The email is sent to all members with the role chosen. Group admins can view 
-  the bulk mail history from the group Control Panel page.
+  the bulk mail history from the group administration page.
   
   <p><b><font size="4"><a name="Alerts">Modifying Your Forum Email Alerts</a></font></b><br>
     You can subscribe and unsubscribe to email alerts for any forum open to you 
-    through the "Edit My Forum Email Alerts" link on the user Control Panel page. 
-    Limited Access users can access their Control Panel through the Help icon 
+    through the "Edit My Forum Email Alerts" link on the My Account page. 
+    Limited Access users can access their My Account page through the Help icon 
     in the group banner.</p>
-  
-  <p><b><font size="4"><a name=Help">Additional Help</a></font></b><br>
-    If your specific question is not answered here, consult the User or Admin 
-    Handbooks located in the file storage area of the STS-Sloanwide community. 
-    If you still cannot find the answer to your question or problem, email the 
-    Site Wide Administrator at sloanspace-help@sloan.mit.edu.</p>
 <p></p>
 <p><br>
 </p>
-

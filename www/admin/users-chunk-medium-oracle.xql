@@ -52,6 +52,7 @@
             and persons.person_id = acs_rels.object_id_two
 	    and acs_rels.object_id_one =  acs.magic_object_id('registered_users')	
             and acs_rels.rel_id = membership_rels.rel_id
+            and users.email_verified_p = 't'
             and not exists (select 1
                             from acs_rels a,
                                  dotlrn_user_types

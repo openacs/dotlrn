@@ -134,7 +134,7 @@ set revision_id [dotlrn_community::get_attribute \
       -attribute_name header_logo_item_id
   ]
 
-# Default logos are served from know locations in the file system
+# Default logos are served from known locations in the file system
 # based on community type.
 
 # Customized logos are stored in the public file-storage folder
@@ -171,3 +171,10 @@ set title [_ dotlrn.Edit_Properties]
 set context_bar [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
 
 ad_return_template
+
+
+
+
+
+
+

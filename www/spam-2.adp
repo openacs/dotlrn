@@ -20,9 +20,6 @@
 <property name="title">@spam_name@</property>
 <property name="context_bar">@context_bar@</property>
 
-
-
-
 <p>
   #dotlrn.are_you_sure_you_want_to_send# @spam_name@ #dotlrn.Message#?
 </p>
@@ -56,7 +53,3 @@
   @confirm_data@
   <input type="submit" value="#dotlrn.Confirm#"></input>
 </form>
-
-
-
-

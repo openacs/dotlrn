@@ -16,7 +16,7 @@ create table new_dotlrn_terms (
                                 constraint dotlrn_t_start_date_nn
                                 not null,
     end_date                    date
-                                default (now() + '180 days'::timespan)
+                                default (now() + '180 days'::interval)
                                 constraint dotlrn_t_end_date_nn
                                 not null
 );

@@ -26,40 +26,31 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-form create add_term
+ad_form -name add_term -export referer -form {
 
-element create add_term term_name \
-    -label "[_ dotlrn.Term_eg_Spring_Fall]" \
-    -datatype text \
-    -widget text \
-    -html {size 30}
+    {term_name:text          {label "Term (e.g. Spring, Fall)"} {maxlength 20}
+    {html {size 30}}}
 
-element create add_term start_date \
-    -label "[_ dotlrn.Start_Date]" \
-    -datatype date \
-    -widget date \
-    -format {MONTH DD YYYY}
+    {start_date:date
+                             {label "Start Date"}
+                             {format {MONTH DD YYYY}}}
 
-element create add_term end_date \
-    -label "[_ dotlrn.End_Date]" \
-    -datatype date \
-    -widget date \
-    -format {MONTH DD YYYY}
-
-element create add_term referer \
-    -label "[_ dotlrn.Referer]" \
-    -datatype text \
-    -widget hidden \
-    -value $referer
-
-if {[form is_valid add_term]} {
-    form get_values add_term \
-        term_name start_date end_date referer
+    {end_date:date
+                             {label "End Date"}
+                             {format {MONTH DD YYYY}}}
+} -validate {
+    {start_date
+        { [template::util::date::compare $start_date $end_date] <= 0 }
+        "The term must start before it ends"
+    }
+} -on_submit {
 
     set term_year [dotlrn_term::start_end_dates_to_term_year \
         -start_date $start_date \
         -end_date $end_date
     ]
+
+#    error [string bytelength $term_name]
 
     dotlrn_term::new \
         -term_name $term_name \

@@ -122,7 +122,7 @@ namespace eval dotlrn_community {
                 -community_type $community_type_key \
             ]
 
-            # Create type
+            # Delete the type
             db_exec_plsql delete_community_type {}
 
             # blow away the package_id and ALL associated site nodes
@@ -145,7 +145,7 @@ namespace eval dotlrn_community {
     } {
         get the type's package_id 
     } {
-        db_string select_package_id {}
+        return [db_string select_package_id {}]
     }
 
     ad_proc -public get_type_node_id {
@@ -253,11 +253,11 @@ namespace eval dotlrn_community {
                 set parent_node_id [get_community_node_id $parent_community_id]
             }
 
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name $community_key \
-                -parent_id $parent_node_id \
+            set package_id [site_node::instantiate_and_mount \
+                -parent_node_id $parent_node_id \
+                -node_name $community_key \
                 -package_key [one_community_package_key] \
-                -instance_name $pretty_name \
+                -package_name $pretty_name \
                 -context_id $community_id \
             ]
 
@@ -1319,6 +1319,31 @@ namespace eval dotlrn_community {
         } else {
             return [get_community_name $community_id]
         }
+    }
+
+    ad_proc -public navigation_context {
+        community_id
+    } {
+        Get the navigation context (list of url and name pairs) 
+        of the given community. Used for generating context bar.
+
+        @author Peter Marklund
+    } {
+        set context [list]
+
+        if {[subcommunity_p -community_id $community_id]} {
+            set parent_name [get_parent_name -community_id $community_id]
+	    set parent_url [get_community_url [get_parent_id -community_id $community_id]]
+
+            lappend context [list $parent_url $parent_name]
+        }
+
+        set community_name [get_community_name $community_id]
+	set community_url [get_community_url $community_id]
+
+        lappend context [list $community_url $community_name]
+
+        return $context
     }
 
     ad_proc -public get_community_description {

@@ -48,7 +48,7 @@ element create edit_class pretty_name \
     -label [_ dotlrn.Name] \
     -datatype text \
     -widget text \
-    -html {size 60}
+    -html {size 60 maxlength 100}
 
 element create edit_class description \
     -label [_ dotlrn.Description] \

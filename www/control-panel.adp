@@ -29,11 +29,11 @@
     <td valign="top" width="50%">
 <table class="element" border=0 cellpadding="0" cellspacing="0" width="100%">
 <tr> 
-  <td colspan=3 class="element-header-text">#dotlrn.lt_Help_and_Personal_Con#</td>
+  <td colspan="3" class="element-header-text">#dotlrn.lt_Help_and_Personal_Con#</td>
 </tr>
-<tr><td colspan=3 class="dark-line" height="0"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan="3" class="dark-line" height="0"><img src="graphics/spacer.gif"></td></tr>
 <tr>
-  <td class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+  <td class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
   <td class="element-text" width="100%">
 <table cellspacing="0" cellpadding="0" class="element-content" width="100%">
 	<tr><td>
@@ -44,7 +44,6 @@
 </ul>
 <h3>#dotlrn.Personal_Options#</h3>
 <ul>
-<li><include src="weblog-control-panel">
   <li>
     <a href="/user/basic-info-update?return_url=@referer@">#dotlrn.lt_Edit_My_Personal_Info#</a>
     <li>
@@ -62,26 +61,26 @@
 </ul>
 </td></tr></table>
  </td>
-	  <td align="right" class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+	  <td align="right" class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
 
 </tr>
-<tr><td colspan=3 class="light-line" width="1"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan="3" class="light-line" width="1"><img src="graphics/spacer.gif"></td></tr>
 </table>
 
     <td valign="top" width="50%">
-<table class="element" border=0 cellpadding="0" cellspacing="0" width="100%">
+<table class="element" border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr> 
-  <td colspan=3 class="element-header-text">#dotlrn.lt_JoinDrop_Classes_or_C#</td>
+  <td colspan="3" class="element-header-text">#dotlrn.lt_JoinDrop_Classes_or_C#</td>
 </tr>
-<tr><td colspan=3 class="dark-line" height="0"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan="3" class="dark-line" height="0"><img src="graphics/spacer.gif"></td></tr>
 <tr>
-  <td class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+  <td class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
   <td class="element-text" width="100%">
-  <include src="dotlrn-main-portlet" show_buttons_p=1 title="Groups" referer="@dotlrn_url@/control-panel">
+  <include src="dotlrn-main-portlet" show_buttons_p="1" title="Groups" referer="@dotlrn_url@/control-panel">
  </td>
-	  <td align="right" class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+	  <td align="right" class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
 
 </tr>
-<tr><td colspan=3 class="light-line" width="1"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan="3" class="light-line" width="1"><img src="graphics/spacer.gif"></td></tr>
 </table>
 </table>

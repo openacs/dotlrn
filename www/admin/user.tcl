@@ -93,4 +93,6 @@ set class_instances_pretty_name [parameter::get -localize -parameter class_insta
 set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
 set subcommunities_pretty_name [parameter::get -localize -parameter subcommunities_pretty_name]
 
+set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
+
 ad_return_template

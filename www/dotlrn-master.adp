@@ -35,60 +35,77 @@
 
 
 </head>
-<body>
+<body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 
 <!-- Header Begin -->
-<table width="100%" cellpadding=0 cellspacing=0> 
- <tr>
-    <td width="10%" class="header-logo">
-      <a href="@dotlrn_url@/?">
-      <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
-    </td>
+<if @user_id@ ne 0>
+  <!-- User is logged in with user id @user_id@ -->
+  <table width="100%" cellpadding=0 cellspacing=0> 
+   <tr>
+      <td class="header-logo">
+        <a href="@dotlrn_url@/?">
+        <img class="header-img" border="0" src="@header_img_url@" alt="@header_img_alt_text@"></a>
+      </td>
 
-    <td width="50%"><div class=header-text><nobr>@text@<nobr></div></td>
+      <td>@text@</td>
 
-    <td width="40%" class="header-buttons" align="right" valign="bottom">
-       <img src="@color_1pixel@" width="9" height="9"> <a href="@dotlrn_url@">#dotlrn.user_portal_page_home_title#</a>
-       <img src="@color_1pixel@" width="9" height="9"> <a href="@help_url@">#dotlrn.help#</a>
-       <img src="@color_1pixel@" width="9" height="9"> <a href="/register/logout">#dotlrn.logout#</a>
-    </td>
+      <td align="right" class="header-text">
+        @user_name@
+      </td>
+    </tr>
+    <tr>
 
-  </tr>
+      <td colspan=3 class="header-buttons" align="right" valign="bottom">
+        <a href="@dotlrn_url@/?">#dotlrn.user_portal_page_home_title#</a>
+        <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
+        <a href="@help_url@">#dotlrn.help#</a>
+        <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
+        <a href="/register/logout">#dotlrn.logout#</a>
+      </td>
+  
+    </tr>
 
-<tr><td colspan=3 class="dark-line" height="1"><img src="/graphics/spacer.gif"></td></tr>
+  <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
 
-<!-- navbars on every page -->
-<tr><td colspan=3 valign=top>@navbar@</td></tr>
-</table>
-<p>
-<p>
+  <!-- navbars on every page -->
+  <tr><td colspan=3 valign=top>@navbar@</td></tr>
+  </table>
+  <p>
+  <p>
+</if>
+<else>
+  <!-- User is not logged in so we cannot use pretty header with graphics under dotlrn -->
+  <h1> .LRN </h1>
+  <hr />
+</else>
 <!-- Header End -->
-
-
 
 <slave>
 
 
 <!-- Footer Begin -->
+<if @user_id@ ne 0>
+  <!-- User is logged in -->
 
-<!-- navbars on every page -->
+  <!-- dotLRN info links -->
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr><td><small>@navbar@</small></td></tr>
+    <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
+  </table>
+</if>
+<else>
+  <!-- User is not logged in so we cannot display pretty footer with graphics under dotlrn -->
+  <hr />
+</else>
 
-
-      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr><td><div style="font-size: small">@navbar@</div></td></tr>
-<tr><td colspan=3 class="dark-line" height="1"><img src="/graphics/spacer.gif"></td></tr>
-      </table>
-<p>
-<div class="footer">
-  <a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> 
-  | 
-  <a href="http://web.mit.edu">MIT</a>
-  | 
-  <a href="@change_locale_url@">#dotlrn.Change_Locale#</a>
-</div>
-
-<div class="footer">@ds_link@</div>
+  <p>
+    <div class="footer">
+      <a href="http://www.dotlrn.org">dotLRN Home</a> | 
+      <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a> | 
+      <a href="@change_locale_url@">#dotlrn.Change_Locale#</a>
+    </div>
+    <div class="footer">@ds_link@</div>
+  </p>
 
 </body>
 </html>
-

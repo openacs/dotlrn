@@ -76,6 +76,29 @@ if {[form is_valid select_community]} {
                 dotlrn_community::add_user $community_id $user
             }
         }
+
+        # Now notify the users that they've been added to the community.
+
+        set sender_email [cc_email_from_party [ad_conn user_id]]
+        foreach {community} $communities {
+            if { $community_id == [lindex $community 1] } {
+                set community_name [lindex $community 0]
+                break
+            }
+        }
+
+        set subject "You have been added to the \"$community_name\" community at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]"
+        set message "To visit the community's home page, point your browser at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL],
+log in, and click on the \"$community_name\" link in the \"Groups\" portlet.
+"
+
+        spam::send \
+          -recepients $users \
+          -from $sender_email \
+          -real_from $sender_email \
+          -subject $subject \
+          -message $message \
+          -message_values [list]
     }
 
     ad_returnredirect $referer

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!-- This must be moved to the OpenACS page root when making a release tarball -->
+
+<application name="dotlrn" pretty-name=".LRN" home="http://openacs.org/projects/dotlrn">
+
+  <actions>
+    <install package="*"/>
+    <mount package="dotlrn" mount-point="dotlrn" instance-name="dotLRN"/>
+    <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master"/>
+    <set-parameter package="acs-kernel" name="IndexRedirectUrl" value="/dotlrn/index"/>
+    <set-parameter package="acs-kernel" name="CommunityMemberURL" value="/dotlrn/community-member"/>
+    <set-parameter package="acs-kernel" name="CommunityMemberAdminURL" value="/dotlrn/admin/user"/>
+  </actions>
+
+</application>

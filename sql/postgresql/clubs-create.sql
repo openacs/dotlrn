@@ -51,7 +51,7 @@ select define_function_args ('dotlrn_club__new','club_id,community_key,pretty_na
 select define_function_args ('dotlrn_club__delete','club_id');
 
 
-create function dotlrn_club__new(integer,varchar,varchar,varchar,integer,integer,integer,varchar,timestamp,integer,varchar,integer)
+create function dotlrn_club__new(integer,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
 returns integer as '
 DECLARE
         p_club_id                        alias for $1;

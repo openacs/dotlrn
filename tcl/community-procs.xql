@@ -579,4 +579,12 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::get_type_package_id.select_package_id">
+        <querytext>
+            select package_id
+              from dotlrn_community_types
+              where community_type = :community_type
+        </querytext>
+    </fullquery>
+
 </queryset>

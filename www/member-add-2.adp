@@ -41,7 +41,3 @@
   </select>
   <input type="submit" value="#dotlrn.add#">
 </form>
-
-
-
-

@@ -30,6 +30,8 @@ ad_page_contract {
     n_parent_users:onevalue
 }
 
+set dotlrn_url [dotlrn::get_url]
+
 # use my_user_id here so we don't confuse with user_id from the query
 set my_user_id [ad_conn user_id]
 
@@ -61,15 +63,16 @@ if {![exists_and_not_null referer]} {
 
 
 if {[string compare $order_direction "asc"]==0} {
-    set order_html "<img src=/graphics/down.gif height=15 width=15>"
+    set order_html "<img src=${dotlrn_url}/graphics/down.gif height=15 width=15>"
     set opposite_order_direction "desc"
 } else {
-    set order_html "<img src=/graphics/up.gif height=15 width=15>"
+    set order_html "<img src=${dotlrn_url}/graphics/up.gif height=15 width=15>"
     set opposite_order_direction "asc"
 }
 
 # Variables that will be used if the column
 # is not selected.
+
 set first_names_order_html ""
 set last_name_order_html ""
 set email_order_html ""
@@ -77,7 +80,6 @@ set email_order_html ""
 set first_names_order_direction $order_direction
 set last_name_order_direction $order_direction
 set email_order_direction $order_direction
-
 
 # Special case for the selected column.
 switch $order {

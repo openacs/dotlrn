@@ -50,9 +50,9 @@ set mime_type [ns_guesstype $header_img]
 if {[empty_string_p $tmp_filename]} {
       set tmp_size 0
       set revision_id 0
-  } else {
+} else {
       set tmp_size [file size $tmp_filename]
-  }
+}
 
 set title "$header_img-[db_nextval acs_object_id_seq]"
 
@@ -118,8 +118,6 @@ if { $tmp_size > 0 } {
         -community_id $community_id \
         -attribute_name header_logo_item_id
     ]
-
-    ns_log notice "aks2: old revision_id $revision_id"
 }
 
 #

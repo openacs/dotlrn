@@ -127,3 +127,6 @@ Message: $message"
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 ad_return_template
+
+
+

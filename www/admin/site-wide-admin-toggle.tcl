@@ -34,3 +34,5 @@ if {[string equal $value "grant"] == 1} {
 
 util_memoize_flush_regexp  $user_id
 ad_returnredirect $referer
+
+

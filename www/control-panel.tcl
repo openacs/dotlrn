@@ -16,7 +16,7 @@
 
 ad_page_contract {
 
-    Control panel page for user's portal
+    My account page for a user.
 
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)

@@ -66,7 +66,7 @@
 
      <tr>
            <td>&nbsp;&nbsp;</td>
-           <td><input type=file name=header_img size=20></tr>
+           <td><input type="file" name="header_img" size="20"></tr>
       </tr>
 
       <tr>

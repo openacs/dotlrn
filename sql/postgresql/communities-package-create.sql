@@ -55,7 +55,7 @@ BEGIN
 END;
 ' language 'plpgsql';
 
-create function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar,integer,timestamp,integer,varchar,integer)
+create function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
 returns varchar as '
 DECLARE
         p_community_type                        alias for $1;
@@ -86,9 +86,9 @@ BEGIN
             p_community_type,
             p_community_type,
 	    v_parent_object_type,
-            v_unique_name,
-            v_unique_name,
-            v_unique_name,
+            cast(v_unique_name as varchar),
+            cast(v_unique_name as varchar),
+            cast(v_unique_name as varchar),
 	    ''f'',
 	    null,
             ''acs_group.name''
@@ -158,7 +158,7 @@ END;
 
 select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,archived_p;f,portal_id,non_member_portal_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
 
-create function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamp,integer,varchar,integer)
+create function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
 returns integer as '
 DECLARE
         p_community_id                  alias for $1;

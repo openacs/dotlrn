@@ -35,30 +35,11 @@ namespace eval dotlrn {
         chars to a dash. Yes, this is not unique, grows rapidly, will
         need collision detection and resolution, yada yada.
     } {
-        set next ""
-        regsub -all {\W+} $name "-" name
-        regsub -all -- {-+} $name "-" name
-        set name [string tolower [string trim $name {-}]]
-
-        if {$increment_p} {
-            # increment the key by checking if the last 2 chars are -int
-            # if so, incr the int. if not add "-1" to the key
-            regexp -- {^(.*)-(\d+)$} $name match namepart intpart
-
-            if {[info exists intpart]} {
-                set name "$namepart-[incr intpart]"
-            } else {
-                set name "$name-1"
-            }
-        }
-
-	#bad things happen if the group name is the same as a dotlrn file name.
-	set conflicting_names [list members configure spam index not-allowed clone help]
-	if { [lsearch -exact $conflicting_names $name] != -1 } {
-	    lappend name "-1"
-	}
-
-        return $name
+        return [util_text_to_url \
+                -replacement {} \
+                -existing_urls { members configure spam index not-allowed clone help } \
+                -no_resolve=[expr !$increment_p] \
+                $name]
     }
 
     ad_proc -private do_abort {} {
@@ -132,8 +113,7 @@ namespace eval dotlrn {
             set portal_id [portal::create \
                 -template_id $template_id \
                 -name "[_ dotlrn.lt_Your_dotLRN_Workspace]" \
-                $user_id
-            ]
+                $user_id]
 
             ns_set put $extra_vars portal_id $portal_id
 

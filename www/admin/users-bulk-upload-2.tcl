@@ -37,14 +37,23 @@ set admin_email [db_string select_admin_email {
 
 doc_body_append "[_ dotlrn.Bulk_Uploading]<p>"
 
-set list_of_user_ids [list]
+set list_of_user [list]
+set list_of_addresses_and_passwords [list]
 
 # Do the stuff
 # We can't do this too generically, so we'll just do the CSV stuff right here
 db_transaction {
-    set fail_p 0
 
     oacs_util::csv_foreach -file $file_location -array_name row {
+
+        # First make sure the required data is there
+
+        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
+            doc_body_append "<br>Datafile must include at least the email, first_names and last_name fields<br>"
+            db_abort_transaction
+            return
+        }
+
         # We need to insert the ACS user
         set password [ad_generate_random_string]
 
@@ -52,11 +61,11 @@ db_transaction {
         set user_id [cc_lookup_email_user $row(email)]
         if {![empty_string_p $user_id]} {
             doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
-            lappend list_of_user_ids $user_id            
+            lappend list_of_users $user_id
         } else {
             set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
             
-            lappend list_of_user_ids $user_id
+            lappend list_of_users $user_id
             
             if {![info exists row(type)]} {
                 set row(type) student
@@ -69,7 +78,13 @@ db_transaction {
             if {![info exists row(guest)]} {
                 set row(guest) f
             }
+
+            if {![info exists row(id)]} {
+                set row(id) $row(email)
+            }
             
+            doc_body_append "Creating user $row(email)...."
+
             # Now we make them a dotLRN user
             switch -exact $row(access_level) {
                 limited {
@@ -105,10 +120,37 @@ db_transaction {
             } else {
                 doc_body_append "[_ dotlrn.email_sent]"
             }
+
+            lappend list_of_addresses_and_passwords $row(email) $password
         }
 
         doc_body_append "<br>"
         
+    }
+} on_error {
+    doc_body_append "<p>The database choked while trying to create the last user in the list above!<br>  The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.<p>"
+    ad_script_abort
+}
+
+set fail_p 0
+
+doc_body_append "<p>Sending email notifications to users...<p>"
+
+foreach {email password} $list_of_addresses_and_passwords {
+    if { ![string equal $password ""] } {
+        set message "
+You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL].
+            
+Login: $email
+Password: $password
+"
+        # Send note to new user
+        if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]" "$message"} errmsg] {
+            doc_body_append "emailing \"$email\" failed!<br>"
+            set fail_p 1
+        } else {
+            doc_body_append "email sent to \"$email\"<br>"
+        }
     }
 }
 
@@ -121,4 +163,3 @@ doc_body_append "<FORM method=post action=users-add-to-community>
 <INPUT TYPE=hidden name=referer values=users>
 [_ dotlrn.lt_You_may_now_choose_to] <INPUT TYPE=submit value=\"[_ dotlrn.lt_Add_These_Users_To_A_]\"></FORM><p>"
 doc_body_append "[_ dotlrn.or_return_to] <a href=\"users\">[_ dotlrn.User_Management]</a>."
-

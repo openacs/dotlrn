@@ -47,4 +47,3 @@
 <center>
 <formtemplate id="add_user"></formtemplate>
 </center>
-

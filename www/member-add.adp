@@ -32,6 +32,10 @@
 
 <ul>
 <multiple name="users">
-  <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a>  </li>
+  <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a> 
+ 
+  </li>
 </multiple>
 </ul>
+
+
