@@ -38,10 +38,6 @@
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 
-<p>
-<a href="/register/admin-login">Admin login</a> | <a href="/register/professor-login">Professor login</a> | <a href="/register/student-login">Student login</a>
-</p>
-
   <!-- Header Begin -->
 
   <table width="100%" cellpadding=0 cellspacing=0> 
