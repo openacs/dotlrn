@@ -27,21 +27,39 @@ ad_page_contract {
     {referer "control-panel"}
     {spam_all 0}
 } -validate {
-    recipients_specified {
-      if { ![info exists recipients_str] && ![info exists recipients] } {
-        ad_complain "[_ dotlrn.Must_specify_recipients]"
-      }
-    }
-    recipients_split {
-      if { [info exists recipients_str] && ![info exists recipients] } {
-        set recipients [split $recipients_str]
-      }
-    }
+
+   recipients_split {
+       if { [info exists recipients_str] && ![info exists recipients] } {
+            set recipients [split $recipients_str]
+       }
+   }
+
     rel_types_split {
-      if { [info exists rel_types_str] && ![info exists rel_types] } {
-        set rel_types [split $rel_types_str]
-      }
-  }
+        if { [info exists rel_types_str] && ![info exists rel_types] } {
+            set rel_types [split $rel_types_str]
+        }
+    }
+
+    recipients_specified {
+ 
+	set recipients_p 0
+        if {[info exists rel_types] && ![empty_string_p $rel_types]} {
+            set recipients_p 1
+        } elseif  {[info exists recipients] && ![empty_string_p $recipients]} {
+            set recipients_p 1
+        } elseif {[info exists spam_all] && $spam_all != 0} {
+            set recipients_p 1
+        } elseif { [info exists rel_types_str] && ![empty_string_p rel_types_str] } {
+            set recipients_p 1
+        } elseif { [info exists recipients_str] && ![empty_string_p recipients_str] } {
+            set recipients_p 1
+        }
+
+        if { $recipients_p == 0} {
+            ad_complain "[_ dotlrn.Must_specify_recipients]"
+        }
+    }
+
 } -properties {
     context_bar:onevalue
     portal_id:onevalue
