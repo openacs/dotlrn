@@ -32,6 +32,7 @@
 \i dotlrn-applet-sc-create.sql
 \i dotlrn-init.sql
 \i dotlrn-community-memberships-create.sql
+\i dotlrn-communities-package-create.sql
 \i dotlrn-community-memberships-packages-create.sql
 \i dotlrn-main-portlet-create.sql
 \i dotlrn-security-create.sql
