@@ -116,7 +116,9 @@ if {[empty_string_p $header_font]} {
 } else {
     set header_font_text $header_font
     # CSS requies quoting of font names with spaces
-    set header_font "'$header_font'"
+    if {![regexp "^'.*'$" $header_font]} {
+        set header_font "'$header_font'"
+    }
     set header_font_fragment "$header_font, "
 }
 
