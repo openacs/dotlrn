@@ -28,9 +28,9 @@ begin
 
     -- create the implementation
     foo := acs_sc_impl.new (
-        'UserData',
-        'dotlrn_user_extension',
-        'dotlrn_user_extension'
+        impl_contract_name => 'UserData',
+        impl_name => 'dotlrn_user_extension',
+        impl_owner_name => 'dotlrn_user_extension'
     );
 
     -- UserNew
