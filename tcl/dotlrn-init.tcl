@@ -98,6 +98,10 @@ if {[dotlrn::is_instantiated]} {
         set grantee_id [dotlrn::get_users_rel_segment_id]
         permission::grant -party_id $grantee_id -object_id $package_id -privilege read
 
+        # Granting 'read' privilege to 'The Public', otherwise people can't get to the dotlrn index page
+        # which causes a 'security violation' right after registration when you have registration
+        # redirect to pages inside dotlrn
+        permission::grant -party_id [acs_magic_object "the_public"] -object_id $package_id -privilege read
     }
 }
 
