@@ -29,12 +29,20 @@
 </ul>
 
 
-This is what the header will look like:
-
+This is what the header title will look like:
 <hr>
-<div style="@style_fragment@">
-<img src=community-image?revision_id=@revision_id@ alt="@header_alt_text@" border=0>&nbsp;&nbsp;@header_text@
-</div>
+<table width="100%" cellpadding=0 cellspacing=0>
+  <tr>
+    <td width="10%" class="header-logo">
+     <img src=@header_url@ border=0 alt="@header_alt_text@">
+    </td>
+    <td>
+	<div style="@style_fragment@" class=header-text>
+	@header_text@
+	</div>
+    </td>
+  </tr>
+</table>
 <hr>
 
 <p>

@@ -59,6 +59,7 @@ set user_info_sql {
     where user_id = :user_id
 }
 
+
 if {![db_0or1row user_information $user_info_sql]} {
     ad_return_error "No user found" "There is no community member with the user_id of $user_id"
     ad_script_abort
@@ -73,6 +74,17 @@ set bio [db_string biography {
                         where object_type = 'person'
                         and attribute_name = 'bio')
 } -default ""]
+
+set weblog_p 0
+if {1} {
+    set weblog_package_id  [site_node_apm_integration::get_child_package_id  -package_key "forums"]
+    set weblog_url "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view"
+#set to check if you are using webloggers
+
+    db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id 
+    and o.creation_user = :user_id and f.package_id = :weblog_package_id}
+    set weblog_p 1
+}
 
 set portrait_p 0
 if {[ad_parameter "show_portrait_p" dotlrn]} {
@@ -114,6 +126,9 @@ if { $priv_email <= [ad_privacy_threshold] } {
 db_multirow user_contributions user_contributions {}
 
 set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
+set scope_fs_url "/packages/file-storage/www/folder-chunk"
+set n_past_days ""
+set url [site_node_object_map::get_url -object_id $folder_id]
 
 set context_bar [ad_context_bar_ws_or_index "Community member"]
 set system_name [ad_system_name]

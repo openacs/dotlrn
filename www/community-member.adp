@@ -56,7 +56,11 @@ A member of the @system_name@ community since @pretty_creation_date@
     <if @url@ not nil>
       <li>Personal home page: <a href="@url@">@url@</a></li>
     </if>
-
+	<if @weblog_p@ true>
+	<multiple name="weblogs">
+	<li><a href=@weblog_url@?forum_id=@weblogs.forum_id@>@weblogs.name@</a> - Lastest post: @weblogs.lastest_post@
+        </multiple>
+        </if>
     <if @bio@ not nil>
       <p> <em>Biography:</em> @bio@
     </if>
@@ -71,7 +75,7 @@ A member of the @system_name@ community since @pretty_creation_date@
 <if @folder_id@ not nil>
 <h3>Shared Files</h3>
 
-  <include src="folder-chunk" folder_id=@folder_id@>
+<include src=@scope_fs_url@ folder_id=@folder_id@ viewing_user_id=@user_id@ n_past_days=@n_past_days@ fs_url="@url@">
 </if>
 
 <multiple name="user_contributions">
