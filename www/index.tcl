@@ -51,9 +51,6 @@ if {![dotlrn::user_can_browse_p -user_id $user_id]} {
         ad_script_abort
     }
 
-    ad_return_template "index-no-browse"
-    return
-
 }
 
 set portal_id [dotlrn::get_portal_id -user_id $user_id]

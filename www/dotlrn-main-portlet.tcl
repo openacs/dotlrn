@@ -24,20 +24,15 @@ ad_page_contract {
 }
 
 set user_id [ad_conn user_id]
+set user_can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
 set comm_type ""
 db_multirow communities select_communities {} {
-
-    ns_log notice "XXX0 $simple_community_type $comm_type"
-
     if {![string equal $simple_community_type dotlrn_community]} {
         set comm_type $simple_community_type
     } else {
         set simple_community_type $comm_type
     }
-
-    ns_log notice "XXX1 $simple_community_type $comm_type"
-
 }
 
 ad_return_template

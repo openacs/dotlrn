@@ -20,11 +20,13 @@
 
 <% set dotlrn_url [dotlrn::get_url] %>
 
-<small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]</small>
+<if @user_can_browse_p@>
+  <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]</small>
+  <br></br>
+</if>
 
 <if @communities:rowcount@ gt 0>
 
-  <ul>
 <multiple name="communities">
 
 <%
@@ -76,6 +78,5 @@
 %>
 
 </multiple>
-  </ul>
 
 </if>
