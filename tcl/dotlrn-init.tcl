@@ -17,5 +17,5 @@ ad_library {
     
 }
 
-ad_register_filter preauth GET /* dotlrn_filter
+# ad_register_filter preauth GET /* dotlrn_filter
 

@@ -29,7 +29,7 @@ namespace eval dotlrn {
     } {
 	
 	# If we've already set things up, bail
-	set group_type_key [ad_parameter class_group_type_key]
+	set group_type_key [ad_parameter group_type_key]
 	if {![empty_string_p $group_type_key]} {
 	    if {[db_string check_group_type_exist {}] == 1} {
 		return
@@ -37,90 +37,82 @@ namespace eval dotlrn {
 	}
 
 	# If lower levels, no install
-	if {[ad_parameter class_level_p] == 1 || [ad_parameter class_instance_level_p] == 1} {
+	if {[ad_parameter community_type_level_p] == 1 || [ad_parameter community_level_p] == 1} {
 	    return
 	}
 
 	# Make sure we don't call this proc multiple times simultaneously
 	## We should really add a critical section here
 
-	# Set up the Class group type
-	set group_type_key [group_type::new -group_type "dotlrn_class" "dotLRN Class" "dotLRN Classes"]
+	# Set up the top-level group type
+	set group_type_key [group_type::new -group_type "dotlrn_community" "dotLRN Community" "dotLRN Communities"]
 
 	# Store the group_type_key somewhere for future reference
-	ad_parameter -set $group_type_key class_group_type_key
+	ad_parameter -set $group_type_key group_type_key
 	ad_parameter -set 1 dotlrn_level_p
 	ad_parameter -set 0 class_level_p
 	ad_parameter -set 0 class_instance_level_p
 
-	# Set up the attributes
-	set term_attr_id [attribute::add -min_n_values 1 -max_n_values 1 $group_type_key enumeration Term Terms]
-	set year_attr_id [attribute::add -min_n_values 1 -max_n_values 1 $group_type_key integer Year Years]
-	
-	# Add years 2001-2020 as capabilities in system
-	for {set year 2001} {$year < 2020} {incr year} {
-	    attribute::value_add $year_attr_id $year $year
-	}
+	# Set up attributes
+	set start_date_attr_id [attribute::add -min_n_values 1 -max_n_values 1 $group_type_key date "Start Date" "Start Dates"]
+	set end_date_attr_id [attribute::add -min_n_values 1 -max_n_values 1 $group_type_key date "End Date" "End Dates"]
 
-	# Set up some relationship types and permissible relationships
+	# Add the general role of administrator
+	set role administrator
+	set pretty_name Administrator
+	set pretty_plural Administrators
 	
-	# Set up some roles
-	set roles {
-	    {instructor Instructor Instructors}
-	    {ta "Teaching Assistant" "Teaching Assistants"}
-	    {student Student Students}
-	    {admin Administrator Administrators}
-	}
+	db_exec_plsql add_role {}
 
-	foreach role $roles {
-	    set role_key [lindex $role 0]
-	    set pretty_name [lindex $role 1]
-	    set pretty_plural [lindex $role 2]
-
-	    db_exec_plsql add_role {}
-	}
-
-	# The Instructor relationship comes from membership_rel
-	rel_types::new -supertype "membership_rel" -role_two instructor \
-		instruction_rel Instruction Instructions \
-		$group_type_key 0 "" \
-		person 0 ""
-	
-	# The Assistant relationship comes from membership_rel, too
-	rel_types::new -supertype "membership_rel" -role_two ta \
-		assistance_rel Assistance Assistance \
-		$group_type_key 0 "" \
-		person 0 ""
-	
-	# The Student relationship comes from membership_rel, too
-	rel_types::new -supertype "membership_rel" -role_two student \
-		student_rel Student Students \
-		$group_type_key 0 "" \
-		person 0 ""
-	
-	# The Admin relationship, same thing.
-	rel_types::new -supertype "membership_rel" -role_two admin \
+	# Add the administrator relationship
+	rel_types::new -supertype "membership_rel" -role_two administrator \
 		administration_rel Administration Administrations \
 		$group_type_key 0 "" \
 		person 0 ""
+	
 
 	# Add permissible relationships
-	rel_types::add_permissible $group_type_key instruction_rel
-	rel_types::add_permissible $group_type_key assistance_rel
-	rel_types::add_permissible $group_type_key student_rel
-	rel_types::add_permissible $group_type_key administration_rel
-
-	# Remove the default permissible rels
-	rel_types::remove_permissible $group_type_key membership_rel
+	rel_types::add_permissible $group_type_key administrator_rel
 	rel_types::remove_permissible $group_type_key composition_rel
+
+	# Install a few other things
+	install_classes $group_type_key
+	install_clubs $group_type_key
+    }
+
+    ad_proc -private install_classes {
+	supertype
+    } {
+	Install classes
+    } {
+    }
+
+    ad_proc -private install_clubs {
+	supertype
+    } {
+	Install clubs
+    } {
+
+	# Add the group type for classes
+	set club_group_type_key [ad_parameter club_group_type_key]
+	if {![empty_string_p $club_group_type_key]} {
+	    if {[db_string check_group_type_exist {}] == 1} {
+		return
+	    }
+	}
+
+	set club_group_type_key [group_type::new -supertype $supertype -group_type "dotlrn_club" "dotLRN Club" "dotLRN Clubs"]
+
+	# Set parameters
+	ad_parameter -set $club_group_type_key club_group_type_key
 
     }
 	
-    ad_proc -public class_group_type_key {
+    ad_proc -public group_type_key {
     } {
 	Returns the group_type key that is being used for class management
     } {
-	return [ad_parameter class_group_type_key]
+	return [ad_parameter group_type_key]
     }
 
     ad_proc -public node_id {

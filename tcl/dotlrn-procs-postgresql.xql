@@ -9,4 +9,10 @@ select acs_rel_type__create_role(:role_key, :pretty_name, :pretty_plural)
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn::install_classes.add_role">
+<querytext>
+select acs_rel_type__create_role(:role_key, :pretty_name, :pretty_plural)
+</querytext>
+</fullquery>
+
 </queryset>

@@ -49,9 +49,11 @@
         </files>
         <parameters>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="class_level_p"  description="Whether this is a Class Level instance of the package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="class_instance_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  description="Class Group Type"/>
         </parameters>
 
     </version>
