@@ -22,6 +22,27 @@ begin
     description      => 'Displays the list of communities a user belongs to'
   );
 
+  --  the standard 4 params
+
+  -- shadeable_p 
+  portal_datasource.set_def_param (
+	datasource_id => ds_id,
+	config_required_p => 't',
+	configured_p => 't',
+	key => 'shadeable_p',
+	value => 'f'
+);	
+
+
+  -- hideable_p 
+  portal_datasource.set_def_param (
+	datasource_id => ds_id,
+	config_required_p => 't',
+	configured_p => 't',
+	key => 'hideable_p',
+	value => 'f'
+);	
+
   -- user_editable_p 
   portal_datasource.set_def_param (
 	datasource_id => ds_id,
@@ -30,6 +51,16 @@ begin
 	key => 'user_editable_p',
 	value => 'f'
 );	
+
+  -- shaded_p 
+  portal_datasource.set_def_param (
+	datasource_id => ds_id,
+	config_required_p => 't',
+	configured_p => 't',
+	key => 'shaded_p',
+	value => 'f'
+);	
+
 
 end;
 /
