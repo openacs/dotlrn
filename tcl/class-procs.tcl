@@ -158,7 +158,7 @@ namespace eval dotlrn_class {
         ns_set put $extra_vars join_policy $join_policy
 
         if {[empty_string_p $pretty_name]} {
-            set pretty_name "[dotlrn_community::get_community_type_name $class_key]; $term $year"
+            set pretty_name  "[dotlrn_community::get_community_type_name $class_key]; $term $year"
         }
 
         db_transaction {
@@ -194,13 +194,18 @@ namespace eval dotlrn_class {
     }
 
     ad_proc -public add_user {
-        {-rel_type "dotlrn_student_rel"}
+        {-rel_type ""}
         {-community_id:required}
         {-user_id:required}
         {-member_state "approved"}
     } {
-        Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
+        Assigns a user to a particular role for that class. 
+        Roles in DOTLRN can be student, prof, ta, admin
     } {
+        if {[empty_string_p $rel_type]} {
+            set rel_type "dotlrn_student_rel"
+        }
+
         set extra_vars [ns_set create]
         ns_set put $extra_vars class_instance_id $community_id
 
@@ -233,7 +238,9 @@ namespace eval dotlrn_class {
     } {
         get the term for this class instance
     } {
-        return [dotlrn_term::get_term_name -term_id [get_term_id -class_instance_id $class_instance_id]]
+        return [dotlrn_term::get_term_name \
+                -term_id [get_term_id -class_instance_id $class_instance_id]
+        ]
     }
 
     ad_proc -public get_term_year {
@@ -241,7 +248,9 @@ namespace eval dotlrn_class {
     } {
         get the term year for this class instance
     } {
-        return [dotlrn_term::get_term_year -term_id [get_term_id -class_instance_id $class_instance_id]]
+        return [dotlrn_term::get_term_year \
+                -term_id [get_term_id -class_instance_id $class_instance_id]
+        ]
     }
 
     ad_proc -public can_create {

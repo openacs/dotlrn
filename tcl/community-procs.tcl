@@ -90,17 +90,28 @@ namespace eval dotlrn_community {
     } {
         # Figure out parent_node_id
         set parent_node_id [get_type_node_id $parent_type]
-        array set parent_node [site_node [site_nodes::get_url_from_node_id -node_id $parent_node_id]]
+        array set parent_node [site_node \
+                [site_nodes::get_url_from_node_id \
+                -node_id $parent_node_id]
+        ]
 
         db_transaction {
             # Create the class directly using PL/SQL API
             set community_type_key [db_exec_plsql create_community_type {}]
 
             # Create the node
-            set new_node_id [site_node_create $parent_node_id [ad_decode $url_part "" $community_type_key $url_part]]
+            set new_node_id [site_node_create \
+                    $parent_node_id \
+                    [ad_decode $url_part "" $community_type_key $url_part]
+            ]
 
             # Instantiate the package
-            set package_id [site_node_create_package_instance $new_node_id $pretty_name $parent_node(object_id) [one_community_type_package_key]]
+            set package_id [site_node_create_package_instance \
+                    $new_node_id \
+                    $pretty_name \
+                    $parent_node(object_id) \
+                    [one_community_type_package_key]
+            ]
 
             # Set some parameters
             ad_parameter -package_id $package_id -set 0 dotlrn_level_p
@@ -112,11 +123,13 @@ namespace eval dotlrn_community {
 
             # since new_type is only called when creating a dept or a class,
             # not a class instance, club, or subcomm, we just do this
-            dotlrn_community::set_type_portal_id \
-                -community_type $community_type_key \
-                -portal_id [get_type_portal_id -community_type [dotlrn_class::community_type] \
+            set type_portal_id [get_type_portal_id \
+                               -community_type [dotlrn_class::community_type]
             ]
 
+            dotlrn_community::set_type_portal_id \
+                -community_type $community_type_key \
+                -portal_id $type_portal_id
         }
 
         return $community_type_key
@@ -602,47 +615,29 @@ namespace eval dotlrn_community {
         community_id
         user_id
     } {
-        add a user to a particular community
+        add a user to a particular community based on the community type
     } {
-        if {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_class_instance"]} {
-            if {![empty_string_p $rel_type]} {
-                dotlrn_class::add_user \
-                    -rel_type $rel_type \
-                    -community_id $community_id \
-                    -user_id $user_id \
-                    -member_state $member_state
-            } else {
-                dotlrn_class::add_user \
-                    -community_id $community_id \
-                    -user_id $user_id \
-                    -member_state $member_state
-            }
-        } elseif {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_club"]} {
-            if {![empty_string_p $rel_type]} {
-                dotlrn_club::add_user \
-                    -rel_type $rel_type \
-                    -community_id $community_id \
-                    -user_id $user_id \
-                    -member_state $member_state
-            } else {
-                dotlrn_club::add_user \
-                    -community_id $community_id \
-                    -user_id $user_id \
-                    -member_state $member_state
-            }
+        set toplevel_community_type \
+                [get_toplevel_community_type_from_community_id $community_id]
+
+        if {[string equal $toplevel_community_type "dotlrn_class_instance"]} {
+            dotlrn_class::add_user \
+                -rel_type $rel_type \
+                -community_id $community_id \
+                -user_id $user_id \
+                -member_state $member_state
+        } elseif {[string equal $toplevel_community_type "dotlrn_club"]} {
+            dotlrn_club::add_user \
+                -rel_type $rel_type \
+                -community_id $community_id \
+                -user_id $user_id \
+                -member_state $member_state
         } else {
-            if {![empty_string_p $rel_type]} {
-                add_user_to_community \
-                    -rel_type $rel_type \
-                    -community_id $community_id \
-                    -user_id $user_id \
-                    -member_state $member_state
-            } else {
-                add_user_to_community \
-                    -community_id $community_id \
-                    -user_id $user_id \
-                    -member_state $member_state
-            }
+            add_user_to_community \
+                -rel_type $rel_type \
+                -community_id $community_id \
+                -user_id $user_id \
+                -member_state $member_state
         }
     }
 
@@ -653,7 +648,8 @@ namespace eval dotlrn_community {
         {-member_state "approved"}
         {-extra_vars ""}
     } {
-        Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
+        Assigns a user to a particular role for that class. 
+        Roles in DOTLRN can be student, prof, ta, admin
     } {
         if {[member_p $community_id $user_id]} {
             return
@@ -1328,7 +1324,7 @@ namespace eval dotlrn_community {
 
             # Callback
             ns_log notice "aks3 $applet_key"
-            applet_call $applet_key RemoveAppletFromCommunity [list $community_id $package_id]
+            applet_call $applet_key RemoveAppletFromCommunity [list $community_id]
             ns_log notice "aks4 $applet_key"
 
             # Delete from the DB
@@ -1363,11 +1359,19 @@ namespace eval dotlrn_community {
                 where community_id = :community_id
             }
 
+            # call the communitie's delete pl/sql, which removes
+            # the group
+
+            ad_return_complaint 1 "aks4" 
+
+            db_exec_plsql \
+                    remove_community \
+                    "begin dotlrn_community.delete(:community_id); end;"
+
+            ad_return_complaint 1 "aks3" 
+
             # delete the rel segments
             delete_rel_segments -community_id $community_id
-
-            # Remove the row
-            db_exec_plsql remove_community "begin dotlrn_community.delete(:community_id); end;"
 
             if {![empty_string_p $admin_portal_id]} {
                 portal::delete $admin_portal_id

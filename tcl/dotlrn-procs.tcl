@@ -161,6 +161,44 @@ namespace eval dotlrn {
         return $package_id
     }
 
+    ad_proc -public unmount_package {
+        {-package_id:required}
+    } {
+        unmount a package previously mounted with dotlrn::mount_package.
+        just a nice wrapper for the dotrn-*-procs so they don't have to 
+        deal with site_nodes and apm directly.
+    } {
+        db_transaction {
+            # site node del package instance
+            site_node_delete_package_instance \
+                    -package_id $package_id \
+                    -node_id [site_nodes::get_node_id_from_package_id \
+                                 -package_id $package_id
+                             ]
+        }
+    }
+
+    ad_proc -public unmount_community_applet_package {
+        {-community_id:required}
+        {-package_key:required}
+    } {
+        unmount a package from under a community. 
+        should be in dotlrn_community::
+    } {
+        db_transaction {
+            set parent_node_id [site_nodes::get_node_id_from_package_id \
+                    -package_id [dotlrn_community::get_package_id $community_id]
+            ]
+
+            set child_node_id [site_nodes::get_node_id_from_child_name \
+                    -parent_node_id $parent_node_id \
+                    -name $package_key]
+
+            # site node del package instance
+            site_node_delete_package_instance -node_id $child_node_id
+        }
+    }
+
     ad_proc -public get_node_id {} {
 	return the root node id for dotLRN
     } {
