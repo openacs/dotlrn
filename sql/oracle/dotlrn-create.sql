@@ -13,3 +13,6 @@
 @dotlrn-communities-create.sql
 @dotlrn-clubs-create.sql
 @dotlrn-classes-create.sql
+@dotlrn-applet-sc-create.sql
+@dotlrn-init.sql
+

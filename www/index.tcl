@@ -9,10 +9,7 @@ ad_page_contract {
     classes:multirow
 }
 
-# Temporary Hack to make sure things are installed
-dotlrn::install
-
 # Select the classes that exist
-db_multirow classes select_classes {}
+db_multirow communities select_communities {}
 
 ad_return_template

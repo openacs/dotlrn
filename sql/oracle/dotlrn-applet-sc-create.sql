@@ -14,10 +14,10 @@
 -- This is the service contract for dotLRN components
 
 declare
-	sc_dotlrn_contract	integer;
-	foo			integer;
+	sc_dotlrn_contract integer;
+	foo integer;
 begin
-	sc_dotlrn_contract := acs_sc_contract.new(
+	sc_dotlrn_contract := acs_sc_contract.new (
 		  contract_name => 'dotLRN_Applet',
 		  contract_desc => 'dotLRN Applet implement a specific interface'
 	);

@@ -18,6 +18,13 @@ ad_library {
 
 namespace eval dotlrn {
 
+    ad_proc -public class_group_type_key {
+    } {
+	Returns the group type key used for class groups
+    } {
+	return [ad_parameter class_group_type_key]
+    }
+
     ad_proc -public group_type_key {
     } {
 	Returns the group_type key that is being used for class management

@@ -55,6 +55,8 @@ namespace eval dotlrn_class {
 	    # insert the class into the DB
 	    db_dml insert_class {}
 	}
+
+	return $class_group_type_key
     }
 
 

@@ -175,7 +175,7 @@ namespace eval dotlrn_community {
     } {
 	foreach applet [list_applets] {
 	    # Callback on applet
-	    acs_sc_call dotlrn $op $list_args $applet
+	    acs_sc_call dotLRN_Applet $op $list_args $applet
 	}
     }
 

@@ -50,7 +50,7 @@ create table dotlrn_community_memberships (
        user_id				  integer not null
 					  constraint dlrn_comm_mem_user_id_fk references users(user_id),
        page_id				  integer not null
-					  -- constraint pointing to NPP
+					  constraint dlrn_comm_mem_page_id_fk references portals(portal_id)
 );					  
 
 
