@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="pt_BR" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="pt_BR" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Uma cópia de</msg>
   <msg key="Access">Acesso</msg>
@@ -59,6 +59,7 @@
   <msg key="Bulk_Uploading">Fazendo Upload em massa...</msg>
   <msg key="cannot_be_removed">não pode ser removido</msg>
   <msg key="Change_Locale">Mudar Idioma</msg>
+  <msg key="Choose_members_to_receive">Escolha os membros do grupo %community_name% que receberão esta mensagem:</msg>
   <msg key="class_instance_portal_pretty_name">Disciplinas</msg>
   <msg key="class_instances_pretty_name">Disciplina</msg>
   <msg key="class_instances_pretty_plural">Disciplinas</msg>
@@ -91,6 +92,7 @@
   <msg key="Community_Type">Tipo de Comunidade</msg>
   <msg key="Community_Types">Tipos de Comunidade</msg>
   <msg key="Communitys_Name">Nome da Comunidade</msg>
+  <msg key="Compose_bulk_message">Redigir Mensagem em Massa</msg>
   <msg key="Configure_Element">Configurar Elemento</msg>
   <msg key="Configure_name">Configurar %name%</msg>
   <msg key="Confirm">Confirme</msg>
@@ -106,6 +108,7 @@
   <msg key="course_assistant_role_pretty_plural">Assistente de Curso</msg>
   <msg key="Create_A_New_User">Criar um Novo Usuário</msg>
   <msg key="Create_a_Web_Log">Crie um Web Log</msg>
+  <msg key="Created">Criado</msg>
   <msg key="CSV_File_Format">Formato de Arquivo CSV</msg>
   <msg key="Customize_Layout">Personalizar Layout</msg>
   <msg key="Deactivate_">Desativar ...</msg>
@@ -197,6 +200,7 @@
   <msg key="Header_Logo_Alt_Text">Texto para Logotipo do Cabeçalho</msg>
   <msg key="Header_Logo_Item_ID">ID do Item Logotipo do Cabeçalho</msg>
   <msg key="help">Ajuda</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Professor</msg>
@@ -343,7 +347,9 @@
   <msg key="Memberships">Associações</msg>
   <msg key="Memberships_1">Associações:</msg>
   <msg key="Message">Mensagem</msg>
+  <msg key="Message_Type">Tipo de Mensagem</msg>
   <msg key="must_have_values">O campo deve conter um dos seguintes valores:</msg>
+  <msg key="Must_specify_recipients">Você deve especificar ao menos um destinatário para sua mensagem</msg>
   <msg key="My_Communities">Minhas Comunidades</msg>
   <msg key="NA">N/D</msg>
   <msg key="Name">Nome</msg>
@@ -385,6 +391,8 @@
   <msg key="not_a_user">Não-Usuário</msg>
   <msg key="Not_Allowed">Não Permitido</msg>
   <msg key="Note">Nota:</msg>
+  <msg key="Note_if_you_make">Obs.: se qualquer alteração for feita utilizando este formulário, a personalização dos portais será perdida.</msg>
+  <msg key="Note_the_term_column">Obs.: a coluna &quot;Período&quot; se aplica a classes e subgupos de classes. Para os subgrupos de classes, a coluna &quot;Período&quot; contém o período da classe à qual estes estão subordinados. Não é exibido o período para os subgrupos e outros níveis inferiores.</msg>
   <msg key="Nuke">Destruir (Nuke)</msg>
   <msg key="Nuke_">Destruir ...</msg>
   <msg key="Nuke_Users">Destruir Usuários (Nuke)</msg>
@@ -394,10 +402,13 @@
   <msg key="Or">Ou</msg>
   <msg key="or_by_RGB_number">ou pelo número RGB</msg>
   <msg key="or_return_to">ou, retornar a</msg>
+  <msg key="Parent">Origem</msg>
   <msg key="Pending">Pendente</msg>
   <msg key="Pending_Approval">Aprovação Pendente</msg>
+  <msg key="Person_name">Nome</msg>
   <msg key="Personal_home_page">Página Pessoal:</msg>
   <msg key="Personal_Options">Opções Pessoais</msg>
+  <msg key="Plain_Text">Texto Simples</msg>
   <msg key="portal_templates">Modelos de Portal</msg>
   <msg key="Portrait">Retrato:</msg>
   <msg key="Portrait_1">Retrato</msg>
@@ -405,6 +416,7 @@
   <msg key="Pretty_Name">Nome Adequado</msg>
   <msg key="Pretty_Plural">Plural Adequado</msg>
   <msg key="Preview">Visualizar Impressão</msg>
+  <msg key="prv_policy_must_be_one_of">A política de privacidade deve ser &quot;sim&quot; ou &quot;não&quot;.</msg>
   <msg key="Public_Web_Log">Web Log Público</msg>
   <msg key="purple">roxo</msg>
   <msg key="Recipients_Email">Email do Destinatário</msg>
@@ -433,6 +445,7 @@
   <msg key="seconds">segundos.</msg>
   <msg key="Send_Date">Data de Envio</msg>
   <msg key="send_email">Enviar Email</msg>
+  <msg key="Send_to_all">Enviar para todos no grupo</msg>
   <msg key="Shared_Files">Arquivos Compartilhados</msg>
   <msg key="silver">cinza</msg>
   <msg key="Site-wide_Admin">Administrador Geral do Site?</msg>

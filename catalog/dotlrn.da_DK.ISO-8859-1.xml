@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="da_DK" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="da_DK" charset="ISO-8859-1">
 
   <msg key="A_copy_of">En kopi af</msg>
   <msg key="Access">Adgang</msg>
@@ -59,6 +59,7 @@
   <msg key="Bulk_Uploading">Masseuploader...</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
   <msg key="Change_Locale">Skift Sprog</msg>
+  <msg key="Choose_members_to_receive">Vælg medlemmerne af %community_name% til at modtage denne besked</msg>
   <msg key="class_instance_portal_pretty_name">Klasser</msg>
   <msg key="class_instances_pretty_name">Klasse</msg>
   <msg key="class_instances_pretty_plural">Klasser</msg>
@@ -93,6 +94,7 @@ Gå venligst tilbage og vælg et andet navn.</msg>
   <msg key="Community_Type">Gruppetype</msg>
   <msg key="Community_Types">Gruppetyper</msg>
   <msg key="Communitys_Name">Gruppens Navn</msg>
+  <msg key="Compose_bulk_message">Sammensæt en massebesked</msg>
   <msg key="Configure_Element">Konfigurer Element</msg>
   <msg key="Configure_name">Konfigurer %name%</msg>
   <msg key="Confirm">Bekræft</msg>
@@ -108,6 +110,7 @@ Gå venligst tilbage og vælg et andet navn.</msg>
   <msg key="course_assistant_role_pretty_plural">Kursusassistenter</msg>
   <msg key="Create_A_New_User">Opret en ny bruger</msg>
   <msg key="Create_a_Web_Log">Opret en Weblog</msg>
+  <msg key="Created">Oprettet</msg>
   <msg key="CSV_File_Format">CSV-format</msg>
   <msg key="Customize_Layout">Tilpas Layout</msg>
   <msg key="Deactivate_">Deaktivér...</msg>
@@ -200,6 +203,7 @@ Vælg venligst et andet navn.</msg>
   <msg key="Header_Logo_Alt_Text">Altertiv tekst til overskiftslogo</msg>
   <msg key="Header_Logo_Item_ID">Emne ID til overskiftslogo</msg>
   <msg key="help">Hjælp</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Lektor</msg>
@@ -352,7 +356,9 @@ Besked:
   <msg key="Memberships">Medlemskaber</msg>
   <msg key="Memberships_1">Medlemskaber:</msg>
   <msg key="Message">Besked</msg>
+  <msg key="Message_Type">Besked Type</msg>
   <msg key="must_have_values">Feltet skal have en af følgende værdier:</msg>
+  <msg key="Must_specify_recipients">Du skal specificere mindst en modtager til din besked</msg>
   <msg key="My_Communities">Mine Grupper</msg>
   <msg key="NA">Ingen</msg>
   <msg key="Name">Navn</msg>
@@ -394,6 +400,8 @@ Besked:
   <msg key="not_a_user">Ikke en bruger</msg>
   <msg key="Not_Allowed">Ikke tilladt</msg>
   <msg key="Note">NB:</msg>
+  <msg key="Note_if_you_make">Bemærk: hvis du bruger denne fomular til at lave ændringer, vil brugeren tabe deres   portals specialfremstillelser. </msg>
+  <msg key="Note_the_term_column">Bemærk: &quot;Term&quot; kolonnen anvendes i klasser og klassernes underbrugergrupper. For underbrugergrupper holder &quot;Term&quot; kolonnen terminen for underbrugergruppens forælder klasse. For under-underbrugergrupper og videre underordnede underbrugergrupper bliver ingen term vist.</msg>
   <msg key="Nuke">Slet Totalt</msg>
   <msg key="Nuke_">Slet totalt...</msg>
   <msg key="Nuke_Users">Slet bruger totalt</msg>
@@ -403,10 +411,12 @@ Besked:
   <msg key="Or">Eller</msg>
   <msg key="or_by_RGB_number">eller efter RGB-værdi</msg>
   <msg key="or_return_to">eller vend tilbage til</msg>
+  <msg key="Parent">Forælder</msg>
   <msg key="Pending">Afventer</msg>
   <msg key="Pending_Approval">Afventer Godkendelse</msg>
   <msg key="Personal_home_page">Personlig hjemmeside:</msg>
   <msg key="Personal_Options">Personlige Muligheder</msg>
+  <msg key="Plain_Text">Ren Tekst</msg>
   <msg key="portal_templates">Skabeloner til Portal</msg>
   <msg key="Portrait">Portræt:</msg>
   <msg key="Portrait_1">Portræt</msg>
@@ -454,6 +464,7 @@ Tak
   <msg key="seconds">sekunder.</msg>
   <msg key="Send_Date">Afsendelsesdato</msg>
   <msg key="send_email">Send E-mail</msg>
+  <msg key="Send_to_all">Send til alle i gruppen</msg>
   <msg key="Shared_Files">Delte Filer</msg>
   <msg key="silver">sølv</msg>
   <msg key="Site-wide_Admin">Administrator for hele sitet?</msg>

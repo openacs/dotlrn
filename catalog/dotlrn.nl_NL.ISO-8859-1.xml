@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="nl_NL" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="nl_NL" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Een kopie van</msg>
   <msg key="Access">Toegang</msg>
@@ -35,7 +35,7 @@
   <msg key="Administrators">Beheerders</msg>
   <msg key="Admins_of">Beheerders van</msg>
   <msg key="All">Alle</msg>
-  <msg key="All_Terms">Alle termijnen</msg>
+  <msg key="All_Terms">Alle semesters</msg>
   <msg key="And">En</msg>
   <msg key="Any">Alle</msg>
   <msg key="Applets_to_Add">Beschikbare Applets</msg>
@@ -59,6 +59,7 @@
   <msg key="Bulk_Uploading">Groepsgewijs importeren in gang gezet....</msg>
   <msg key="cannot_be_removed">kan niet verwijderd worden </msg>
   <msg key="Change_Locale">Taal instellen</msg>
+  <msg key="Choose_members_to_receive">Leden van %community_name%, die dit bericht moeten ontvangen, selecteren:</msg>
   <msg key="class_instance_portal_pretty_name">Vakken</msg>
   <msg key="class_instances_pretty_name">Vak</msg>
   <msg key="class_instances_pretty_plural">Vakken</msg>
@@ -91,6 +92,7 @@
   <msg key="Community_Type">Groepssoort</msg>
   <msg key="Community_Types">Groepssoorten</msg>
   <msg key="Communitys_Name">Groepsnaam</msg>
+  <msg key="Compose_bulk_message">Mailingbericht samenstellen</msg>
   <msg key="Configure_Element">Portlet samenstellen</msg>
   <msg key="Configure_name">%name% instellen</msg>
   <msg key="Confirm">Bevestigen</msg>
@@ -106,6 +108,7 @@
   <msg key="course_assistant_role_pretty_plural">Cursusbegeleiders</msg>
   <msg key="Create_A_New_User">Nieuwe gebruiker aanmaken </msg>
   <msg key="Create_a_Web_Log">Weblog aanmaken</msg>
+  <msg key="Created">Aangemaakt</msg>
   <msg key="CSV_File_Format">CSV bestandsformaat</msg>
   <msg key="Customize_Layout">Pagina-indeling aanpassen</msg>
   <msg key="Deactivate_">Deactiveren ...</msg>
@@ -198,6 +201,7 @@ Klik daarna op &quot;E-mail verzenden&quot; om de gebruiker te informeren. </msg
   <msg key="Header_Logo_Alt_Text">Top logo alt tekst</msg>
   <msg key="Header_Logo_Item_ID">Top logo item ID</msg>
   <msg key="help">Hulp</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Docent</msg>
@@ -351,7 +355,9 @@ Dit was de foutmelding:</msg>
   <msg key="Memberships">Inschrijvingen</msg>
   <msg key="Memberships_1">Inschrijvingen:</msg>
   <msg key="Message">Bericht</msg>
+  <msg key="Message_Type">Berichtsoort</msg>
   <msg key="must_have_values">Dit veld moet één van de volgende waarden hebben:</msg>
+  <msg key="Must_specify_recipients">Er moet tenminste 1 ontvanger voor dit bericht zijn geselecteerd </msg>
   <msg key="My_Communities">Mijn groepen</msg>
   <msg key="NA">n.v.t.</msg>
   <msg key="Name">Naam</msg>
@@ -368,7 +374,7 @@ Dit was de foutmelding:</msg>
   <msg key="new_community">Nieuwe %clubs_pretty_name% </msg>
   <msg key="new_department">Nieuwe %departments_pretty_name% </msg>
   <msg key="New_Password">Nieuw wachtwoord:</msg>
-  <msg key="New_Term">Nieuw Semester</msg>
+  <msg key="New_Term">Nieuw semester</msg>
   <msg key="New_User">Nieuwe Gebruiker</msg>
   <msg key="No">Geen (andere)</msg>
   <msg key="no">nee</msg>
@@ -383,7 +389,7 @@ Dit was de foutmelding:</msg>
   <msg key="no_description">geen aangemaakt</msg>
   <msg key="No_dont_delete_it">Nee, niet verwijderen</msg>
   <msg key="No_groups_to_add_to">Geen groepen om toe te voegen aan</msg>
-  <msg key="No_Terms">Geen Semesters</msg>
+  <msg key="No_Terms">Geen semesters</msg>
   <msg key="No_user_found">Geen gebruikers beschikbaar</msg>
   <msg key="No_Users">Geen gebruikers beschikbaar</msg>
   <msg key="non_member_page_name">Geen-lid</msg>
@@ -393,6 +399,8 @@ Dit was de foutmelding:</msg>
   <msg key="not_a_user">Geen gebruiker</msg>
   <msg key="Not_Allowed">Niet toegestaan</msg>
   <msg key="Note">Toelichting:</msg>
+  <msg key="Note_if_you_make">Toelichting: Indien via dit formulier veranderingen worden aangebracht, zullen gebruikers hun persoonlijke instellingen helaas kwijtraken.</msg>
+  <msg key="Note_the_term_column">Toelichting: de kolom &quot;Semester&quot; verwijst naar vakken en subgroepen van vakken. Voor subgroepen van vakken verwijst de kolom &quot;Semester&quot; naar het het vak waar de subgroep onder valt. Voor sub-subgroepen en diepere uitsplistingen wordt geen semester getoond.</msg>
   <msg key="Nuke">Vernietigen</msg>
   <msg key="Nuke_">Vernietigen ...</msg>
   <msg key="Nuke_Users">Gebruikers vernietigen</msg>
@@ -402,11 +410,13 @@ Dit was de foutmelding:</msg>
   <msg key="Or">Of</msg>
   <msg key="or_by_RGB_number">of met het RGB nummer</msg>
   <msg key="or_return_to">of, keer terug naar</msg>
+  <msg key="Parent">Bovenliggend element</msg>
   <msg key="Pending">In behandeling</msg>
   <msg key="Pending_Approval">In afwachting van toestemming</msg>
   <msg key="Person_name">Naam</msg>
   <msg key="Personal_home_page">Persoonlijke website:</msg>
   <msg key="Personal_Options">Persoonlijke instellingen</msg>
+  <msg key="Plain_Text">Platte tekst</msg>
   <msg key="portal_templates">Portaal sjabloon</msg>
   <msg key="Portrait">Portretfoto:</msg>
   <msg key="Portrait_1">Portretfoto</msg>
@@ -450,6 +460,7 @@ Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="seconds">seconden.</msg>
   <msg key="Send_Date">Verzenddatum</msg>
   <msg key="send_email">Verzend E-mail</msg>
+  <msg key="Send_to_all">Aan iedereen in de groep zenden</msg>
   <msg key="Shared_Files">Gedeelde bestanden</msg>
   <msg key="silver">zilver</msg>
   <msg key="Site-wide_Admin">Hoofdbeheerder?</msg>
@@ -487,7 +498,7 @@ Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="this_user_is_deleted">deze gebruiker is verwijderd</msg>
   <msg key="To">Lidsoorten om te e-mailen:</msg>
   <msg key="Type">Type</msg>
-  <msg key="Unknown_Term">Onbekend Semester</msg>
+  <msg key="Unknown_Term">Onbekend semester</msg>
   <msg key="Update_Password">Wachtwoord bijwerken</msg>
   <msg key="upload">aanbieden</msg>
   <msg key="User">Gebruiker</msg>
