@@ -9,7 +9,7 @@ ad_page_contract {
 } -query {
     {type "any"}
     {access_level "any"}
-    {private_data_p 1}
+    {private_data_p "any"}
     {join_criteria "and"}
     {n_users 0}
     {action "none"}
@@ -87,7 +87,7 @@ element create user_search private_data_p \
     -label "Can Read Private Data?" \
     -datatype text \
     -widget radio \
-    -options {{Yes 1} {No 0}} \
+    -options {{Any any} {Yes yes} {No no}} \
     -value $private_data_p
 
 element create user_search role \
@@ -185,10 +185,13 @@ if {[form is_valid user_search]} {
         lappend wheres "dotlrn_users.rel_id = dotlrn_full_users.rel_id"
     }
 
-    if {$private_data_p} {
-        lappend wheres "\'t\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
-    } else {
-        lappend wheres "\'f\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+    switch -exact $private_data_p {
+        "yes" {
+            lappend wheres "\'t\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+        }
+        "no" {
+            lappend wheres "\'f\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+        }
     }
 
     if {![empty_string_p $last_visit_greater]} {
