@@ -5,8 +5,10 @@ ad_page_contract {
     @creation-date Jan 08, 2002
     @version $Id$
 } -query {
+    parent_user_role:multiple,array,optional
 } -properties {
     users:multirow
+    n_parent_users:onevalue
 }
 
 set user_id [ad_conn user_id]
@@ -60,11 +62,36 @@ db_multirow pending_users select_pending_users {
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 
 if {$subcomm_p} {
-    template::util::list_of_ns_sets_to_multirow \
-        -rows [dotlrn_community::list_possible_subcomm_users -subcomm_id $community_id] \
-        -var_name "parent_users"
 
     form create parent_users_form
+
+    element create parent_users_form selected_users \
+        -label "&nbsp;" \
+        -datatype text \
+        -widget checkbox \
+        -optional
+
+    set parent_user_list [dotlrn_community::list_possible_subcomm_users -subcomm_id $community_id]
+    set n_parent_users [llength $parent_user_list]
+
+    if {[form is_valid parent_users_form]} {
+        set selected_users [element get_values parent_users_form selected_users]
+
+        foreach selected_user $selected_users {
+            dotlrn_community::add_user -rel_type $parent_user_role($selected_user) $community_id $selected_user
+        }
+
+        ad_returnredirect [ns_conn url]
+    }
+
+    set selected_users_options [list]
+
+    foreach user $parent_user_list {
+        lappend selected_users_options [list "<table width=\"100%\" border=\"0\"><tr><td width=\"15%\" align=\"center\"><input type=\"radio\" name=\"parent_user_role.[ns_set get $user user_id]\" value=\"dotlrn_member_rel\" checked></td><td width=\"15%\" align=\"center\"><input type=\"radio\" name=\"parent_user_role.[ns_set get $user user_id]\" value=\"dotlrn_admin_rel\"></td><td>[ns_set get $user last_name], [ns_set get $user first_names] ([ns_set get $user email])</td></tr></table>" [ns_set get $user user_id]]
+    }
+
+    element set_properties parent_users_form selected_users -options $selected_users_options
+
 }
 
 ad_return_template

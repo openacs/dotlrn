@@ -61,7 +61,7 @@
 
 </if>
 
-<if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @parent_users:rowcount@ gt 0>
+<if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
 
   <h3>
     Members of 
@@ -69,8 +69,35 @@
     That Are Not Members of <%= [dotlrn_community::get_community_name $community_id] %>
   </h3>
 
-  NOT DONE YET!
+<formtemplate id="parent_users_form">
+  <table width="75%" border="0">
 
-  <formtemplate id="parent_users_form"></formtemplate>
+    <tr>
+      <td width="5%">&nbsp;</td>
+      <td width="95%">
+        <table width="100%" border="0">
+          <tr>
+            <td width="15%" align="center"><strong>Member</strong></td>
+            <td width="15%" align="center"><strong>Administrator</strong></td>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+<formgroup id="selected_users">
+    <tr>
+      <td>@formgroup.widget@</td>
+      <td>@formgroup.label@</td>
+    </tr>
+</formgroup>
+
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" value="Add Selected Members"></td>
+    </tr>
+
+  </table>
+</formtemplate>
 
 </if>
