@@ -38,4 +38,12 @@ select node_id from site_nodes where object_id= :package_id
 </querytext>
 </fullquery>
 
+  <fullquery name="dotlrn::get_user_type_id_from_type.select_user_type_id_from_type">
+    <querytext>
+      select type_id
+      from dotlrn_user_types
+      where type = :type
+    </querytext>
+  </fullquery>
+
 </queryset>

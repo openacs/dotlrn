@@ -8,7 +8,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     {referer "members"}
-    {type_id "1"}
+    {type "student"}
     {rel_type "dotlrn_full_user_rel"}
     {read_private_data_p "t"}
 } -properties {
@@ -50,21 +50,21 @@ element create add_user referer \
 element create add_user rel_type \
     -label "Rel Type" -value $rel_type -datatype text -widget hidden
 
-element create add_user type_id \
-    -label "Type ID" -value $type_id -datatype text -widget hidden
+element create add_user type \
+    -label "Type" -value $type -datatype text -widget hidden
 
 element create add_user read_private_data_p \
     -label "Can Read Private Data" -value $read_private_data_p -datatype text -widget hidden
 
 if {[form is_valid add_user]} {
-    template::form get_values add_user target_user_id email first_names last_name referer rel_type type_id read_private_data_p
+    template::form get_values add_user target_user_id email first_names last_name referer rel_type type read_private_data_p
 
     db_transaction {
         # create the ACS user
         set target_user_id [ad_user_new $email $first_names $last_name [ad_generate_random_string] "" "" "" "t" "approved" $target_user_id]
 
         # make the user a dotLRN user
-        dotlrn::user_add -rel_type $rel_type -user_id $target_user_id -type_id $type_id
+        dotlrn::user_add -rel_type $rel_type -user_id $target_user_id -type_id [dotrln::get_user_type_id_from_type -type $type]
 
         # can this user read private data?
         acs_privacy::set_user_read_private_data -user_id $target_user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p

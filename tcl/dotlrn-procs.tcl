@@ -8,12 +8,12 @@
 #
 
 ad_library {
-    
+
     Procs for basic dotLRN
-    
+
     @author ben@openforce.net
     @creation-date 2001-08-18
-    
+
 }
 
 namespace eval dotlrn {
@@ -62,7 +62,7 @@ namespace eval dotlrn {
     } {
         returns 1 if dotlrn is instantiaed under the url specified, 0
         otherwise
-        
+
         XXX - aks -  I think there a bug in here somewhere - use the 
         procs in  site_nodes:: instead. Thanks.
     } {
@@ -120,9 +120,9 @@ namespace eval dotlrn {
 
         for {set x 1} {$x < [llength $package_list]} {incr x 2} {
             array set package_info [lindex $package_list $x]
-            
+
             # ns_log notice "is_package_mounted: [array get package_info]"
-            
+
             if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) "dotlrn"] != 0} {
                 set dotlrn_ancestor_p 1
 
@@ -202,7 +202,7 @@ namespace eval dotlrn {
     } {
 	return [db_string select_user_rel_segment {}]
     }
-    
+
     ad_proc -public get_user_theme {
 	user_id
     } {
@@ -219,7 +219,7 @@ namespace eval dotlrn {
     } {
 	db_dml update_user_theme {}
     }
-    
+
     ad_proc -public get_workspace_portal_id {
 	user_id
     } {
@@ -273,4 +273,11 @@ namespace eval dotlrn {
 	return [portal::render -hide_links_p $hide_links_p -render_style $render_style $portal_id $theme_id]
     }
 
+    ad_proc -public get_user_type_id_from_type {
+        -type
+    } {
+        return the type_id of a dotlrn_user type
+    } {
+        return [db_string select_user_type_id_from_type {} -default ""]
+    }
 }
