@@ -68,7 +68,6 @@ set header_img_alt_text "Header Logo"
 set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
-
 if {[dotlrn::user_p -user_id $user_id]} {
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
 }
@@ -119,8 +118,10 @@ if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
 }
 
 if {$have_comm_id_p} {
-    # We are under a dotlrn package instance
+    # in a community or just under one in a mounted package like /calendar 
     # get this comm's info
+    set control_panel_text "Administer"
+
     set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
     set text [dotlrn_community::get_community_header_name $community_id] 
     set link [dotlrn_community::get_community_url $community_id]
@@ -139,6 +140,8 @@ if {$have_comm_id_p} {
         set portal_id ""
     }
 } elseif {[parameter::get -parameter community_type_level_p] == 1} {
+    set control_panel_text "Administer"
+
     set extra_td_html ""
     set link_all 1
     set link [dotlrn::get_url]
@@ -154,6 +157,7 @@ if {$have_comm_id_p} {
     }
 } else {
     # we could be anywhere (maybe under /dotlrn, maybe not)
+    set control_panel_text "My Account"
     set link "[dotlrn::get_url]/"
     set community_id ""
     set text ""
@@ -175,7 +179,7 @@ if { $make_navbar_p } {
     set navbar [dotlrn::portal_navbar \
         -user_id $user_id \
         -link_control_panel $link_control_panel \
-        -control_panel_text "Control Panel" \
+        -control_panel_text $control_panel_text \
 	-pre_html "$extra_spaces" \
 	-post_html $extra_spaces \
         -link_all $link_all
