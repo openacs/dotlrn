@@ -29,6 +29,13 @@ select node_id from site_nodes where object_id= (select package_id from dotlrn_c
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::new.update_portal_ids">
+<querytext>
+update dotlrn_communities set portal_template_id = :portal_template_id, portal_id = :portal_id where community_id = :community_id
+</querytext>
+</fullquery>
+
+
 <fullquery name="dotlrn_community::get_rel_segment_id.select_rel_segment_id">
 <querytext>
 select segment_id from rel_segments where group_id= :community_id and rel_type= :rel_type
