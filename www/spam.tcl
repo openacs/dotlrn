@@ -80,7 +80,7 @@ element create spam_message send_date \
     -datatype date \
     -widget date \
     -format {MONTH DD YYYY HH12 MI AM} \
-    -value [template::util::date::now]
+    -value [template::util::date::now_min_interval]
 
 element create spam_message referer \
     -label Referer \
