@@ -74,14 +74,14 @@ foreach {rel_type role pretty_name pretty_plural} [eval concat $roles] {
         -datatype text \
         -widget text \
         -html {size 40} \
-        -value $pretty_name
+        -value [lang::util::localize $pretty_name]
 
     element create edit_community_role_names "${role}_pretty_plural" \
         -label "$role [_ dotlrn.Pretty_Plural]" \
         -datatype text \
         -widget text \
         -html {size 40} \
-        -value $pretty_plural
+        -value [lang::util::localize $pretty_plural]
 }
 
 if {[form is_valid edit_community_role_names]} {
