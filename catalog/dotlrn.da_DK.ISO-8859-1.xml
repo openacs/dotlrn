@@ -142,6 +142,7 @@
   <msg key="Drop">Slet</msg>
   <msg key="Drop_Membership">Slet medlemsskab</msg>
   <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Slet medlemsskab&quot; border=0&gt;  </msg>
+  <msg key="Drop_selected_members">Fjern de valgte medlemmer fra gruppen</msg>
   <msg key="Edit">Redigér</msg>
   <msg key="Edit_a_User">Redigér en bruger</msg>
   <msg key="edit_approved_email_servers">Redigér forhåndsgodkendte mailservere</msg>
@@ -261,7 +262,7 @@
   <msg key="lt_Make_this_user_a_site">Gør denne bruger til site-wide administrator</msg>
   <msg key="lt_Manage_this_users_por">Administrér brugerens portræt</msg>
   <msg key="lt_No_I_dont_want_to_arc">Nej, jeg vil ikke arkivere denne gruppe.</msg>
-  <msg key="lt_Note_The_script_will_">Bemærk: Dette script vil blive ved at køre, også selvom du lukker din browser.</msg>
+  <msg key="lt_Note_The_script_will_">Bemærk: Denne process vil fortsætte, også selvom du lukker din browser.</msg>
   <msg key="lt_Note_This_process_is_">Bemærk: Denne proces forventes at tage %num_seconds% sekunder.</msg>
   <msg key="lt_Note_This_process_is__1">Bemærk: Denne proces forventes at tage %num_minutes% sekunder.</msg>
   <msg key="lt_Note_use_this_feature">Bemærk: Brug denne funktionalitet ansvarligt og &lt;i&gt;tænk&lt;/i&gt; først.</msg>
@@ -355,7 +356,7 @@
   <msg key="New_Password">Ny adgangskode:</msg>
   <msg key="New_Term">Nyt termin</msg>
   <msg key="New_User">Ny bruger</msg>
-  <msg key="No">Ingen</msg>
+  <msg key="No">Nej</msg>
   <msg key="no">nej</msg>
   <msg key="no_arhived_groups">Ingen arkiverede %groups_pretty_plural%</msg>
   <msg key="no_class_instances">Ingen %class_instances_pretty_plural%</msg>
