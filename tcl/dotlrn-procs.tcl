@@ -48,4 +48,31 @@ namespace eval dotlrn {
     } {
 	db_dml update_user_theme {}
     }
+
+    ad_proc -public instantiate_and_mount {
+	{-mount_point ""}
+	community_id
+	package_key
+    } {
+	Mount an application under a particular community
+    } {
+	if {[empty_string_p $mount_point]} {
+	    set mount_point $package_key
+	}
+
+	# Get the parent node_id correctly
+	set package_id [dotlrn_community:get_package_id $community_id]
+
+	# We only take the first node right now
+	# FIXME: in case of multi-mounting, which is doubtful, but possible
+	# we have a proble here.
+	set parent_node_id [db_string select_node_id {}]
+
+	# Mount
+	set new_package_id [site_node_mount_application -return package_id $parent_node_id $mount_point $package_key $package_key]
+
+	# Return the newly created package_id
+	return $new_package_id
+    }
+	
 }
