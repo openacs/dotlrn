@@ -72,7 +72,7 @@ namespace eval dotlrn_class {
     }
 
     ad_proc -public init {} {
-        create base community_type for dotlrn_clubs
+        create base community_type for dotlrn_classes
     } {
         dotlrn_community::init \
             -community_type [community_type] \
@@ -107,9 +107,9 @@ namespace eval dotlrn_class {
         {-pretty_name:required}
         {-description ""}
     } {
-        Creates a new class, like "Structure and Interpretation of Computer Programs."
-        The return value is the short class name, a key that works in SQL, and that uniquely
-        identifies the class.
+        Creates a new class, like "Structure and Interpretation of
+        Computer Programs." The return value is the short class name,
+        a key that works in SQL, and that uniquely identifies the class.
 
         This class can then be instantiated for a particular semester.
     } {
@@ -122,8 +122,8 @@ namespace eval dotlrn_class {
                 -department_key $department_key]} {
             ad_return_complaint \
                     1 \
-                    "The name <strong>$pretty_name</strong> is already in use. \n
-                       Please select a different name."
+                    "The name <strong>$pretty_name</strong> is already in use.
+                     <p>Please select a different name."
         }        
 
         db_transaction {

@@ -34,23 +34,23 @@ ad_library {
 # We check to see if dotLRN has been installed, and if so, if permissions
 # have been granted
 
-ns_log notice "aks: dotlrn-init: starting"
+ns_log notice "dotlrn-init: starting..."
 
 # if installed
 if {[dotlrn::is_instantiated]} {
-    ns_log notice "aks: dotlrn-init: got here 1"
+    ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn::init"
 
     if {![dotlrn::is_initialized]} { dotlrn::init }
 
-    ns_log notice "aks: dotlrn-init: got here 2"
+    ns_log notice "dotlrn-init: about to call dotlrn_class:init"
 
     if {![dotlrn_class::is_initialized]} { dotlrn_class::init }
 
-    ns_log notice "aks: dotlrn-init: got here 3"
+    ns_log notice "dotlrn-init: about to call dotlrn_club::init"
 
     if {![dotlrn_club::is_initialized]} { dotlrn_club::init }
 
-    ns_log notice "aks: dotlrn-init: got here 4"
+    ns_log notice "dotlrn-init: done with dotlrn_club::init"
 
     # Grantee
     set grantee_id [dotlrn::get_full_users_rel_segment_id]
@@ -76,16 +76,26 @@ if {[dotlrn::is_instantiated]} {
         # Callback on all applets
         dotlrn_community::applet_call $applet "AddApplet" [list]
     }
-
 }
 
-set portal_package_key "new-portal"
-if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
-    ns_log notice "aks: dotlrn-init: new-portal being automounted"
 
-    dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
+set portal_package_key [portal::package_key]
+set portal_mount_point [portal::automount_point]
+
+# we now mount new-portal at the automount point if it's not already mounted, of course 
+if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
+
+    ns_log notice "dotlrn-init: $portal_package_key being automounted at /$portal_mount_point"
+
+    dotlrn::mount_package \
+            -parent_node_id [site_node_id "/"] \
+            -package_key $portal_package_key \
+            -url $portal_mount_point \
+            -directory_p "t"
 }
 
 
 # Make sure that privacy is turned on
 acs_privacy::privacy_control_set 1
+
+ns_log notice "dotlrn-init: done"
