@@ -168,9 +168,8 @@
 </if>
 <else>
 <p>
-  This user is not yet a member of dotLRN. Click <a
-  href="user-new-2?user_id=@user_id@&referer=@return_url@">here</a> to make
-  them one.
+  This user is not yet a member of dotLRN.
+  <a href="user-new-2?user_id=@user_id@&referer=@return_url@">Make</a> them one.
 </p>
 </else>
 
