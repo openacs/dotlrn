@@ -44,11 +44,9 @@ namespace eval dotlrn_main_portlet {
         @author arjun@openforce.net
         @creation-date Nov 2001
     } {
+
         # Tell portal to add this element to the page
-        set element_id [portal::add_element \
-                -page_id $page_id \
-                -force_region 2 \
-                $portal_id [my_name]]
+        set element_id [portal::add_element -force_region 2 -page_id $page_id -pretty_name [get_pretty_name] $portal_id [my_name]]
 
         return $element_id
     }
