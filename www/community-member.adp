@@ -40,7 +40,7 @@
     <li>#dotlrn.email#: <a href="mailto:@email@">@email@</a></li>
 
     <if @url@ not nil>
-      <li>#dotlrn.Personal_home_page# <a href="@url@">@url@</a></li>
+      <li>#dotlrn.Personal_home_page# <a href="@homepage_url@">@homepage_url@</a></li>
     </if>
 	<if @weblog_p@ true>
 	<multiple name="weblogs">

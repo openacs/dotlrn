@@ -52,7 +52,7 @@ set user_info_sql {
            last_name,
            email,
            priv_email,
-           url,
+           url as homepage_url,
            creation_date,
            member_state
     from cc_users

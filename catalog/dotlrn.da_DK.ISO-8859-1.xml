@@ -214,7 +214,7 @@
   <msg key="logout">Log ud</msg>
   <msg key="lt_a_secondary">- en sekundær identificering af brugeren.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Tilføj en ny dotLRN-bruger:</msg>
-  <msg key="lt_Add_a_new_user_to_Slo">Tilføj en ny bruger til SloanSpace</msg>
+  <msg key="lt_Add_a_new_user_to_Slo">Tilføj en ny bruger til .LRN</msg>
   <msg key="lt_Add_community_name_Me">Tilføj medlemmer af %community_name% til et nyt fællesskab</msg>
   <msg key="lt_Add_Members_to_Anothe">Tilføj medlemmer til et nyt fællesskab</msg>
   <msg key="lt_Add_members_to_anothe">Tilføj medlemmer til en anden gruppe</msg>
