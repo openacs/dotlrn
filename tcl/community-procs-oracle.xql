@@ -102,4 +102,18 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::get_subcomm_info_list.select_subcomms_info">
+        <querytext>
+            select community_id, 
+                   community_key, 
+                   pretty_name,   
+                   archived_p,
+                   dotlrn_community.url(community_id) as url
+            from dotlrn_communities_all 
+            where parent_community_id = :community_id 
+            and archived_p = 'f'
+            order by pretty_name
+        </querytext>
+    </fullquery>
+
 </queryset>
