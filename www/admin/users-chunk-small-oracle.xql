@@ -9,10 +9,10 @@
                dotlrn_users.first_names,
                dotlrn_users.last_name,
                dotlrn_users.email,
-               nvl((select 'f'
-                    from dotlrn_full_user_rels
-                    where dotlrn_full_user_rels.rel_id = dotlrn_users.rel_id),
-                   't') as limited_access_p,
+               nvl((select 'full'
+                    from dotlrn_full_user_profile_rels
+                    where dotlrn_full_user_profile_rels.rel_id = dotlrn_users.rel_id),
+                   'limited') as access_level,
                acs_permission.permission_p(:dotlrn_package_id, dotlrn_users.user_id, 'read_private_data') as read_private_data_p,
                acs_permission.permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p
         from dotlrn_users
@@ -27,7 +27,7 @@
                persons.first_names,
                persons.last_name,
                parties.email,
-               't' as limited_access_p,
+               'limited' as access_level,
                'f' as read_private_data_p,
                acs_permission.permission_p(:root_object_id, persons.person_id, 'admin') as site_wide_admin_p
         from persons,

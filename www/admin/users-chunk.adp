@@ -27,7 +27,7 @@
               <a href="user-edit?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
             </else>
           </td>
-          <td align="center"><if @users.limited_access_p@ eq t>limited</if><else>full</else></td>
+          <td align="center">@users.access_level@</td>
           <td align="center"><if @users.read_private_data_p@ eq t>yes</if><else>no</else></td>
           <td align="center">
             <if @user_id@ ne @users.user_id@>
