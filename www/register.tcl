@@ -75,7 +75,7 @@ if {[catch {
             
             set query [db_map bulk_mail_query]
 
-            set full_name "[dotlrn::get_user_name $user_id]"
+            set full_name [acs_user::get_element -user_id $user_id -element name]
             set email "[cc_email_from_party $user_id]"
             set subject "$full_name ($email) has requested to join $community_name."
             

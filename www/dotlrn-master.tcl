@@ -185,7 +185,7 @@ if { $make_navbar_p } {
 
 # Set up some basic stuff
 set user_id [ad_get_user_id]
-set user_name "[dotlrn::get_user_name $user_id]"
+set user_name [acs_user::get_element -user_id $user_id -element name]
 
 if {![exists_and_not_null title]} {
     set title [ad_system_name]
