@@ -56,34 +56,6 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
 
-    # check if the portal_id is the default_portal_id
- 
-    set default_portal_p [db_string default_portal_p {
-	select count(*) from dotlrn_portal_types_map where portal_id = :portal_id
-    }]
-
-
-    if {$default_portal_p  == 1} {
-	# user is set as the default portal
-	# give the user their own portal
-
-
-	set portal_id    [portal::create \
-                -template_id $portal_id \
-                -name "[_ dotlrn.lt_Your_dotLRN_Workspace]" \
-                $user_id]
-
-	db_exec_plsql update_user_portal_id {
-	    update dotlrn_user_profile_rels set portal_id = :portal_id 
-	    where dotlrn_user_profile_rels.rel_id = 
-	    (select rel_id from acs_rels, dotlrn_user_types 
-	     where acs_rels.object_id_two = :user_id
-	     and acs_rels.object_id_one = dotlrn_user_types.group_id)
-	}
-
-	util_memoize_flush "dotlrn::get_portal_id_not_cached -user_id $user_id"
-    }
-
     
     set name [portal::get_name $portal_id]
     set rendered_page [portal::configure -allow_theme_change_p 0 $portal_id "index"]

@@ -105,15 +105,17 @@ namespace eval dotlrn {
         ns_set put $extra_vars user_id $user_id
         ns_set put $extra_vars id $id
 
-        set portal_id [dotlrn::get_portal_id_from_type -type user]
+        set template_id [dotlrn::get_portal_id_from_type -type user]
+
+	set portal_id [portal::create \          
+                 -template_id $template_id \     
+                 -name "[_ dotlrn.lt_Your_dotLRN_Workspace]" \   
+                 $user_id] 
 
         db_transaction {
             set_can_browse -user_id $user_id -can_browse\=$can_browse_p
 
-	    # The user will start with a the default portal.
-	    # A new one will be created when they go to configure
-
-            ns_set put $extra_vars portal_id $portal_id
+	    ns_set put $extra_vars portal_id $portal_id
 
             # Add the relation (no need to feed in anything for object_id_one,
             # or two for that matter).
@@ -124,7 +126,7 @@ namespace eval dotlrn {
                 "" \
                 $user_id \
             ]
-
+	    
             dotlrn_applet::dispatch -op AddUser -list_args [list $user_id]
 
             # if the user is a member of communities (from some previous
