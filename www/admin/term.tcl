@@ -84,7 +84,7 @@ if {![empty_string_p $department_key]} {
 
 db_multirow classes $query {}
 
-set title "Term"
-set context_bar "Term"
+set title "One Term"
+set context_bar {{terms Terms} One}
 
 ad_return_template
