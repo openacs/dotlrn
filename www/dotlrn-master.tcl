@@ -68,9 +68,6 @@ set header_img_alt_text "Header Logo"
 set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
-if {[dotlrn::user_p -user_id $user_id]} {
-    set portal_id [dotlrn::get_portal_id -user_id $user_id]
-}
 
 if {![empty_string_p $community_id]} {
     set have_comm_id_p 1
@@ -78,11 +75,7 @@ if {![empty_string_p $community_id]} {
     set have_comm_id_p 0
 }
 
-if {[exists_and_not_null portal_id]} {
-    set have_portal_id_p 1
-} else {
-    set have_portal_id_p 0 
-}
+
 
 # navbar vars
 set show_navbar_p 1
@@ -117,22 +110,15 @@ if {$have_comm_id_p} {
     # get this comm's info
     set control_panel_text "Administer"
 
-    set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
     set text [dotlrn_community::get_community_header_name $community_id] 
     set link [dotlrn_community::get_community_url $community_id]
     set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
 
-    if {[empty_string_p $portal_id] && !$admin_p } {
-        # not a member yet
-        set portal_id [dotlrn_community::get_non_member_portal_id -community_id $community_id]
-    }
-
-    if { $have_portal_id_p && $show_navbar_p } {
-	set make_navbar_p 1
-
+   if { $show_navbar_p } {
+         set make_navbar_p 1
     } else {
 	set make_navbar_p 0
-        set portal_id ""
+
     }
 } elseif {[parameter::get -parameter community_type_level_p] == 1} {
     set control_panel_text "Administer"
@@ -144,12 +130,12 @@ if {$have_comm_id_p} {
     set text \
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
     
-    if {$have_portal_id_p && $show_navbar_p} {
+   if {$show_navbar_p} {
 	set make_navbar_p 1
     } else {
 	set make_navbar_p 0
-        set portal_id ""
     }
+
 } else {
     # we could be anywhere (maybe under /dotlrn, maybe not)
     set control_panel_text "My Account"
@@ -157,10 +143,9 @@ if {$have_comm_id_p} {
     set community_id ""
     set text ""
     set make_navbar_p 1
-    if {$have_portal_id_p && $show_navbar_p} {
+    if {$show_navbar_p} {
     } else {
-	set make_navbar_p 0
-	set portal_id ""
+    set make_navbar_p 0
     }
 }
 
