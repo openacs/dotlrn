@@ -70,7 +70,7 @@
   <li>
     #dotlrn.Member_state#
     @member_state@
-    @change_state_links@
+    @change_state_links;noquote@
   </li>
 
 </ul>

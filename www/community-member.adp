@@ -62,7 +62,7 @@
 
   <if @inline_portrait_state@ eq "inline">
   
-    <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
+    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
   
   </if>
   <if @inline_portrait_state@ eq "link">
