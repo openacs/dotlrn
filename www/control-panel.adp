@@ -35,7 +35,7 @@
      </small>
   </li>
   <li><a href="/user/password-update?return_url=@referer@">Change My Password</a></li>
-  <li><a href="applets/bboard/alerts">Edit My Bulletin Board Email Alerts</a></li>
+  <li><a href="/notifications/manage">Edit My Notifications</a></li>
   <li><a href="configure">Customize Layout</a></li>
 <if @admin_p@>
   <li><a href="@admin_url@">@admin_pretty_name@</a></li>
