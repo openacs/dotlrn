@@ -68,7 +68,8 @@ namespace eval dotlrn {
         
         upvar context context
     
-        if { [exists_and_not_null context] } {
+        # Need to handle empty context as well
+        if { [info exists context] } {
             # The application context doesn't contain the application node itself so we need to prepend that
             array set node_array [site_node::get -node_id [ad_conn node_id]]
             set application_name $node_array(instance_name)
