@@ -5,7 +5,7 @@ ad_page_contract {
     @creation-date 2001-12-13
     @version $Id$
 } -query {
-    {referer ""}
+    {referer "terms"}
 } -properties {
     context_bar:onevalue
 }
@@ -31,10 +31,6 @@ if {[form is_valid add_term]} {
     form get_values add_term term_name term_year start_date end_date referer
 
     dotlrn_term::new -term_name $term_name -term_year $term_year -start_date $start_date -end_date $end_date
-
-    if {[empty_string_p $referer]} {
-        set referer "terms"
-    }
 
     ad_returnredirect $referer
     ad_script_abort

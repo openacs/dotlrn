@@ -35,17 +35,45 @@ update dotlrn_communities set portal_template_id = :portal_template_id, portal_i
 </querytext>
 </fullquery>
 
+  <fullquery name="dotlrn_community::get_role_pretty_name.select_role_pretty_name">
+    <querytext>
+      select pretty_name
+      from acs_rel_roles
+      where role = :role
+    </querytext>
+  </fullquery>
+
+  <fullquery name="dotlrn_community::get_role_pretty_name_from_rel_type.select_role_pretty_name">
+    <querytext>
+      select pretty_name
+      from acs_rel_roles
+      where role = (select role_two
+                    from acs_rel_types
+                    where rel_type = :rel_type)
+    </querytext>
+  </fullquery>
+
 <fullquery name="dotlrn_community::get_rel_segment_id.select_rel_segment_id">
 <querytext>
 select segment_id from rel_segments where group_id= :community_id and rel_type= :rel_type
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::list_users.select_users">
-<querytext>
-select rel_id, rel_type, users.user_id, first_names, last_name, email from registered_users users, dotlrn_member_rels_full where community_id= :community_id and users.user_id = dotlrn_member_rels_full.user_id order by rel_type
-</querytext>
-</fullquery>
+  <fullquery name="dotlrn_community::list_users.select_users">
+    <querytext>
+      select rel_id,
+             rel_type,
+             users.user_id,
+             first_names,
+             last_name,
+             email
+      from registered_users users,
+           dotlrn_member_rels_full
+      where community_id = :community_id
+      and users.user_id = dotlrn_member_rels_full.user_id
+      order by rel_type
+    </querytext>
+  </fullquery>
 
 <fullquery name="dotlrn_community::member_p.select_count_membership">
 <querytext>

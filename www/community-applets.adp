@@ -1,22 +1,25 @@
-<master src="master">
-<property name="context_bar">@context_bar@</property>
-<property name="title">dotLRN Community Admin: @pretty_name@</property>
-
-Here you can do all sorts of administrative stuff.
-
-<p>
-
+<if @active_applets:rowcount@ gt 0>
 <h3>Active Applets</h3>
 <ul>
-<multiple name=active_applets>
-<li> @active_applets.applet_pretty_name@ - (cannot be removed yet)
+<multiple name="active_applets">
+  <li>@active_applets.applet_pretty_name@ - (cannot be removed)</li>
 </multiple>
 </ul>
+</if>
 
-<p>
+<if @all_applets:rowcount@ gt 0>
+<p></p>
+
 <h3>Applets to Add</h3>
 <ul>
-<multiple name=all_applets>
-<li> @all_applets.applet_pretty_name@ - [<a href=community-applet-add?applet_key=@all_applets.applet_key@>add</a>]
+<multiple name="all_applets">
+  <li>
+    @all_applets.applet_pretty_name@ - [
+      <font size="-1">
+        <a href=community-applet-add?applet_key=@all_applets.applet_key@>add</a>
+      </font>
+    ]
+  </li>
 </multiple>
 </ul>
+</if>

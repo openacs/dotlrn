@@ -89,9 +89,10 @@ namespace eval dotlrn_class {
     }
 
     ad_proc -public new_instance {
-        {-description ""}
         {-class_type:required}
         {-term_id:required}
+        {-pretty_name ""}
+        {-description ""}
         {-join_policy "needs approval"}
     } {
         Creates a new instance of a class for a particular term and year,
@@ -107,7 +108,9 @@ namespace eval dotlrn_class {
         ns_set put $extra_vars class_key $class_type
         ns_set put $extra_vars join_policy $join_policy
 
-        set pretty_name "[dotlrn_community::get_community_type_name $class_type]; $term $year"
+        if {[empty_string_p $pretty_name]} {
+            set pretty_name "[dotlrn_community::get_community_type_name $class_type]; $term $year"
+        }
 
         db_transaction {
             # Create the community

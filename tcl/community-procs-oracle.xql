@@ -82,4 +82,14 @@
       connect by object_type = prior supertype 
     </querytext>
   </fullquery>
+
+  <fullquery name="dotlrn_community::get_toplevel_community_type.select_community_type">
+    <querytext>
+      select object_type
+      from acs_object_types
+      where supertype = 'dotlrn_community'
+      start with object_type = :community_type
+      connect by object_type = prior supertype 
+    </querytext>
+  </fullquery>
 </queryset>

@@ -4,8 +4,18 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-10-04
+    @version $Id$
 } -query {
 } -properties {
+    context_bar:onevalue
+    pretty_name:onevalue
+    description:onevalue
+    supertype:onevalue
+    community_type:onevalue
+    ancestor_type:onevalue
+    community_type_title:onevalue
+    communities_title:onevalue
+    title:onevalue
 }
 
 # Check that this is a community type
@@ -16,12 +26,31 @@ if {[ad_parameter community_type_level_p] != 1} {
 
 set user_id [ad_conn user_id]
 
+set context_bar {View}
+
 # What community type are we at?
 set community_type [dotlrn_community::get_community_type]
+set ancestor_type [dotlrn_community::get_toplevel_community_type -community_type $community_type]
 
 # Load some community type info
 db_1row select_community_type_info {}
 
-set context_bar {View}
+if {[string equal ${community_type} "dotlrn_class_instance"] != 0} {
+    set community_type_title "Classes"
+    set communities_title "Class Instances"
+    set title "Classes"
+} elseif {[string equal ${community_type} "dotlrn_club"] != 0} {
+    set community_type_title "Clubs"
+    set communities_title "Clubs"
+    set title "Clubs"
+} elseif {[string equal ${ancestor_type} "dotlrn_class_instance"] != 0} {
+    set community_type_title "Classes"
+    set communities_title "Class Instances"
+    set title $pretty_name
+} else {
+    set community_type_title "Community Types"
+    set communities_title "Communities"
+    set title "Community Type"
+}
 
 ad_return_template

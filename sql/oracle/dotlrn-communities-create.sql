@@ -16,10 +16,10 @@ create table dotlrn_community_types (
                                 references group_types (group_type)
                                 constraint dotlrn_community_types_pk
                                 primary key,
-    pretty_name                 varchar(100)
+    pretty_name                 varchar2(100)
                                 constraint dotlrn_ct_pretty_name_nn
                                 not null,
-    description                 varchar(4000),
+    description                 varchar2(4000),
     package_id                  constraint dotlrn_ct_package_id_fk
                                 references apm_packages (package_id),
     supertype                   constraint dotlrn_ct_supertype_fk
@@ -34,15 +34,15 @@ create table dotlrn_communities (
     community_type              not null
                                 constraint dotlrn_c_community_type_fk
                                 references dotlrn_community_types (community_type),
-    community_key               varchar(100)
+    community_key               varchar2(100)
                                 constraint dotlrn_c_community_key_nn
                                 not null
                                 constraint dotlrn_c_community_key_un
                                 unique,
-    pretty_name                 varchar(100)
+    pretty_name                 varchar2(100)
                                 constraint dotlrn_c_pretty_name_nn
                                 not null,
-    description                 varchar(4000),
+    description                 varchar2(4000),
     active_start_date           date,
     active_end_date             date,
     portal_id                   constraint dotlrn_c_portal_id_fk

@@ -1,12 +1,16 @@
 <master src="master">
 <property name="title">dotLRN</property>
 
+[
+  <font size="-1">
+    <a href="configure">customize</a>
 <if @admin_p@ eq 1>
-  Visit <a href=@admin_url@>dotLRN Administration</a>.<br>
+    |
+    <a href="@admin_url@">dotLRN Admin</a>
 </if>
+  </font>
+]
 
-<a href=configure>Configure</a> this page.
-
-<p>
+<p></p>
 
 @rendered_page@

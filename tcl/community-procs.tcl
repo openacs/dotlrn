@@ -258,27 +258,19 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_allowed_rel_types {
-        { -community_type "" }
-        { -community_id "" }
+        {-community_type ""}
+        {-community_id ""}
     } {
         if {[empty_string_p $community_type]} {
             set community_type [get_toplevel_community_type_from_community_id $community_id]
         }
 
         if {$community_type == "dotlrn_class_instance"} {
-            return {
-                {dotlrn_student_rel Student}
-                {dotlrn_ta_rel TA}
-                {dotlrn_instructor_rel Instructor}
-                {dotlrn_admin_rel Admin}
-            }
+            return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_admin_rel}
         }
 
         if {$community_type == "dotlrn_club"} {
-            return {
-                {dotlrn_member_rel Member}
-                {dotlrn_admin_rel Admin}
-            }
+            return {dotlrn_member_rel dotlrn_admin_rel}
         }
 
         return {}
@@ -291,6 +283,22 @@ namespace eval dotlrn_community {
     } {
         set pretty_name [db_string select_pretty_name "select pretty_name from acs_object_types where object_type=:rel_type"]
         return $pretty_name
+    }
+
+    ad_proc -public get_role_pretty_name {
+        {-role:required}
+    } {
+        Returns teh pretty version of the role
+    } {
+        return [db_string select_role_pretty_name {} -default ""]
+    }
+
+    ad_proc -public get_role_pretty_name_from_rel_type {
+        {-rel_type:required}
+    } {
+        Returns teh pretty version of the role
+    } {
+        return [db_string select_role_pretty_name {} -default ""]
     }
 
     ad_proc -public get_rel_segment_id {
@@ -498,6 +506,15 @@ namespace eval dotlrn_community {
         Returns a list of all communities, and whether or not they are active.
     } {
         return [db_list_of_lists select_all_communities {}]
+    }
+
+    ad_proc -public get_toplevel_community_type {
+        {-community_type:required}
+    } {
+        returns the toplevel community_type which is the ancestor of this
+        community_type
+    } {
+        return [db_string select_community_type {}]
     }
 
     ad_proc -public get_toplevel_community_type_from_community_id {

@@ -5,6 +5,7 @@ ad_page_contract {
     @creation-date Dec 07, 2001
     @version $Id$
 } -query {
+    {referer "./"}
 } -properties {
     communities:multirow
 }

@@ -6,7 +6,7 @@ ad_page_contract {
     @creation-date 2001-08-20
     @version $Id$
 } -query {
-    {referer ""}
+    {referer "classes"}
 }
 
 form create add_class
@@ -27,10 +27,6 @@ if {[form is_valid add_class]} {
     form get_values add_class class_key name description referer
 
     set class_key [dotlrn_class::new -class_key $class_key -pretty_name $name -description $description]
-
-    if {[empty_string_p $referer]} {
-        set referer "classes"
-    }
 
     ad_returnredirect $referer
     ad_script_abort

@@ -6,6 +6,3 @@ You're editing <strong>@first_names@ @last_name@</strong>.
 <p>
 
 <formtemplate id=edit_user></formtemplate>
-
-
-

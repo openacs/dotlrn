@@ -7,12 +7,12 @@
 #
 
 ad_library {
-    
+
     Procs for initializing basic dotLRN
-    
+
     @author ben@openforce.net
     @creation-date 2001-08-18
-    
+
 }
 
 # We check to see if dotLRN has been installed, and if so, if permissions

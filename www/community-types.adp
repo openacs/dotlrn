@@ -1,5 +1,5 @@
 <if @community_types:rowcount@ gt 0>
-  <h3>Community Types</h3>
+  <h3><if @title@ nil>Community Types</if><else>@title@</else></h3>
   <table cellpadding="5" cellspacing="5">
 <multiple name="community_types">
     <tr>

@@ -5,7 +5,7 @@ ad_page_contract {
     @creation-date 2001-12-03
     @version $Id$
 } -query {
-    {referer ""}
+    {referer "clubs"}
 } -properties {
     context_bar:onevalue
 }
@@ -31,10 +31,6 @@ if {[form is_valid add_club]} {
     form get_values add_club club_key name description join_policy referer
 
     set key [dotlrn_club::new -description $description -key $club_key -pretty_name $name -join_policy $join_policy]
-
-    if {[empty_string_p $referer]} {
-        set referer "clubs"
-    }
 
     ad_returnredirect $referer
     ad_script_abort

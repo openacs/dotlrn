@@ -14,6 +14,9 @@ form create add_class_instance
 element create add_class_instance term \
     -label "Term" -datatype integer -widget select -options [db_list_of_lists select_terms_for_select_widget {}]
 
+element create add_class_instance name \
+    -label "Name" -datatype text -widget text -html {size 50} -optional
+
 element create add_class_instance description \
     -label "Description" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft} -optional
 
@@ -27,9 +30,15 @@ element create add_class_instance referer \
     -label "Referer" -value $referer -datatype text -widget hidden
 
 if {[form is_valid add_class_instance]} {
-    template::form get_values add_class_instance term description join_policy class_key referer
+    template::form get_values add_class_instance class_key term name description join_policy referer
 
-    set class_instance_id [dotlrn_class::new_instance -description $description -class_type $class_key -term_id $term -join_policy $join_policy]
+    set class_instance_id [dotlrn_class::new_instance \
+        -class_type $class_key \
+        -term_id $term \
+        -pretty_name $name \
+        -description $description \
+        -join_policy $join_policy \
+    ]
 
     if {[empty_string_p $referer]} {
         set referer "one-class?class_key=$class_key"

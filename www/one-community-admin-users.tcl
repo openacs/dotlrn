@@ -1,5 +1,3 @@
-
-
 ad_page_contract {
     Admin the admin users of a community
     

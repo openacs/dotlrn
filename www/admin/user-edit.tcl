@@ -3,7 +3,9 @@ ad_page_contract {
     Edit a User
     
     @author Ben Adida (ben@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-12-10
+    @version $Id$
 } {
     user_id
 }
@@ -38,7 +40,11 @@ set dotlrn_package_id [dotlrn::get_package_id]
 if {[form is_valid verif_edit_user]} {
     template::form get_values verif_edit_user user_id type_id rel_type read_private_data_p
     
-    set rel_id [db_string select_rel_id "select rel_id from dotlrn_users where user_id=:user_id"]
+    set rel_id [db_string select_rel_id {
+        select rel_id
+        from dotlrn_users
+        where user_id = :user_id
+    }]
 
     db_transaction {
         # remove the user
@@ -61,9 +67,24 @@ if {[form is_valid edit_user]} {
 
     # Do something
     set new_rel_type $rel_type
-    db_1row select_limited_user_info "select first_names,last_name,object_type as old_rel_type from dotlrn_users, acs_objects where dotlrn_users.user_id= :user_id and dotlrn_users.rel_id= acs_objects.object_id"
 
-    set old_rel_type [db_string select_rel_type "select 'dotlrn_full_user_rel' from dual where exists (select 1 from dotlrn_full_users where user_id=:user_id)" -default "dotlrn_user_rel"]
+    db_1row select_limited_user_info {
+        select first_names,
+               last_name,
+               object_type as old_rel_type
+        from dotlrn_users,
+             acs_objects
+        where dotlrn_users.user_id = :user_id
+        and dotlrn_users.rel_id = acs_objects.object_id
+    }
+
+    set old_rel_type [db_string select_rel_type {
+        select 'dotlrn_full_user_rel'
+        from dual
+        where exists (select 1
+                      from dotlrn_full_users
+                      where user_id = :user_id)
+    } -default "dotlrn_user_rel"]
 
     if {$new_rel_type == $old_rel_type} {
         # Simply update things

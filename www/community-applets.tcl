@@ -1,19 +1,17 @@
-
-
 ad_page_contract {
     Community Applets
     
     @author Ben Adida (ben@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-10-05
-} {
+    @version $Id$
+} -query {
+} -properties {
 }
 
 set community_id [dotlrn_community::get_community_id]
 
 set user_id [ad_conn user_id]
-
-# Load some community type info
-db_1row select_community_info {}
 
 # Get active applets
 set list_of_active_applets [dotlrn_community::list_applets -community_id $community_id]
@@ -23,7 +21,6 @@ template::multirow create active_applets applet_key applet_pretty_name
 foreach applet_key $list_of_active_applets {
     template::multirow append active_applets $applet_key [dotlrn_community::applet_call $applet_key GetPrettyName]
 }
-
 
 # List all applets
 set list_of_applets [dotlrn_community::list_applets]
@@ -35,7 +32,5 @@ foreach applet_key $list_of_applets {
 	template::multirow append all_applets $applet_key [dotlrn_community::applet_call $applet_key GetPrettyName]
     }
 }
-
-set context_bar {{one-community-admin Admin} Applets}
 
 ad_return_template

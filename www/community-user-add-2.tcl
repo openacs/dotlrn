@@ -1,11 +1,14 @@
-
 ad_page_contract {
     Search for a new user for dotLRN
     
     @author Ben Adida (ben@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-11-04
-} {
+    @version $Id$
+} -query {
     user_id
+} -properties {
+    roles:multirow
 }
 
 set community_id [dotlrn_community::get_community_id]
@@ -19,7 +22,8 @@ set rel_types [dotlrn_community::get_allowed_rel_types -community_id $community_
 template::multirow create roles rel_type pretty_name
 
 foreach rel_type $rel_types {
-    template::multirow append roles [lindex $rel_type 0] [lindex $rel_type 1]
+    ns_log notice "XXX: $rel_type [dotlrn_community::get_role_pretty_name_from_rel_type -rel_type $rel_type]"
+    template::multirow append roles $rel_type [dotlrn_community::get_role_pretty_name_from_rel_type -rel_type $rel_type]
 }
 
 ad_return_template

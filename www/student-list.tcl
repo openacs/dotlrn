@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Displays a community student list
     
@@ -26,7 +25,7 @@ set list_of_students [dotlrn_community::list_users $community_id]
 template::multirow create students user_id first_names last_name email role
 
 foreach student $list_of_students {
-    template::multirow append students [lindex $student 2] [lindex $student 3] [lindex $student 4] [lindex $student 5] [dotlrn_community::get_pretty_rel_type [lindex $student 1]]
+    template::multirow append students [lindex $student 2] [lindex $student 3] [lindex $student 4] [lindex $student 5] [dotlrn_community::get_role_pretty_name_from_rel_type -rel_type [lindex $student 1]]
 }
 
 ad_return_template

@@ -2,14 +2,17 @@ ad_page_contract {
     Displays a community
     
     @author Ben Adida (ben@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-10-04
-} {
+    @version $Id$
+} -query {
+} -properties {
 }
 
 # Check that this is a community type
 if {[ad_parameter community_level_p] != 1} {
     ns_returnredirect "./"
-    return
+    ad_script_abort
 }
 
 set user_id [ad_conn user_id]
