@@ -4,5 +4,7 @@
 
 You are registered! You may <a href=community-deregister>deregister</a> if you'd like.
 <p>
+<a href=one-community-configure>Configure</a> this page.
+<p>
 
 @rendered_page@
