@@ -48,6 +48,7 @@ template::list::create \
     -multirow clubs \
     -actions $actions \
     -key community_id \
+    -page_flush_p t \
     -page_size 50 \
     -page_query_name clubs_pagination \
     -elements {

@@ -39,6 +39,7 @@ template::list::create \
     -name terms \
     -multirow terms \
     -actions $actions \
+    -page_flush_p t \
     -key term_id \
     -page_size 50 \
     -page_query_name terms_pagination \
