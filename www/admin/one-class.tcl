@@ -17,10 +17,10 @@ if {![db_0or1row select_class_info {}]} {
 # Get all class instances
 set list_of_class_instances [dotlrn_community::get_all_communities $class_key]
 
-template::multirow create class_instances class_instance_id pretty_name description
+template::multirow create class_instances class_instance_id community_key pretty_name description
 
 foreach instance $list_of_class_instances {
-    template::multirow append class_instances [lindex $instance 0] [lindex $instance 2] [lindex $instance 3]
+    template::multirow append class_instances [lindex $instance 0] [lindex $instance 5] [lindex $instance 2] [lindex $instance 3]
 }
 
 ad_return_template

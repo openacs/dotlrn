@@ -95,7 +95,7 @@ where community_type= :community_type
 
 <fullquery name="dotlrn_community::get_all_communities.select_all_communities">
 <querytext>
-select community_id, community_type, pretty_name, description, package_id
+select community_id, community_type, pretty_name, description, package_id, community_key
 from dotlrn_communities
 where community_type= :community_type
 </querytext>
