@@ -86,7 +86,9 @@ namespace eval dotlrn {
         portal templates
     } {
         db_transaction {
-            dotlrn_community::set_type_package_id [community_type] [get_package_id]
+            dotlrn_community::set_type_package_id \
+                -community_type [community_type] \
+                -package_id [get_package_id]
             
             dotlrn::new_type_portal \
                 -type user \
