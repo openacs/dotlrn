@@ -207,7 +207,7 @@ namespace eval dotlrn_community {
             # YON MAJOR HACK
             # acs_object.new() initializes the acs_attributes for us if the
             # object_type of this community matches the object_type of the
-            # acs_attributes. this fucks us because we use dotlrn_community
+            # acs_attributes. this screws us because we use dotlrn_community
             # as the object_type for subgroups which means that their
             # attributes will be defaulted to empty strings but we will think
             # that they are set. we must delete them.
