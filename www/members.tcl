@@ -28,9 +28,11 @@ ad_page_contract {
 }
 
 set my_user_id [ad_conn user_id]
+set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Members]]
 set community_id [dotlrn_community::get_community_id]
 set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_get_user_id] -community_id $community_id]
 set referer [ns_conn url]
+set return_url "[ns_conn url]?[ns_conn query]"
 set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
 
 if {!$site_wide_admin_p} {

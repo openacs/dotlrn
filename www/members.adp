@@ -19,6 +19,16 @@
 %>
 
 <master>
+<property name="title">#dotlrn.Manage_Membership#</property>
+<property name="link_all">1</property>
+<property name="context">@context;noquote@</property>
+
+<if @spam_p@ true>
+<p>
+  <a href="spam-recipients?community_id=@community_id@">#dotlrn.Email_Members#</a>
+</p>
+</if>
+
 <if @admin_p@ eq 1 and @subcomm_p@ eq 0>
 <form method="get" action="member-add">
    #dotlrn.Add_A_Member# <input type="text" name="search_text"><input
@@ -72,6 +82,42 @@
   </blockquote>
 
 <formtemplate id="parent_users_form">
+  <table width="75%" border="0">
+
+    <tr>
+      <td width="15%" align="center"><strong>#dotlrn.Dont_Add#</strong></td>
+      <td width="15%" align="center"><strong>#dotlrn.Member#</strong></td>
+      <td width="15%" align="center"><strong>#dotlrn.Administrator#</strong></td>
+      <td>&nbsp;</td>
+    </tr>
+
+<%
+    foreach user $parent_user_list {
+        set this_user_id [ns_set get $user user_id]
+        set this_first_names [ns_set get $user first_names]
+        set this_last_name [ns_set get $user last_name]
+        set this_email [ns_set get $user email]
+%>
+
+    <tr>
+<formgroup id="selected_user.@this_user_id@" cols="3">
+      <td width="15%" align="center">@formgroup.widget;noquote@</td>
+</formgroup>
+      <td>@this_last_name@, @this_first_names@ (@this_email@)</td>
+    </tr>
+
+<%
+    }
+%>
+
+    <tr><td colspan="4">&nbsp;</td></tr>
+
+    <tr>
+      <td><input type="submit" value="#dotlrn.add_selected_members#"></td>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+
+  </table>
 </formtemplate>
 
 </if>
