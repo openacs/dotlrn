@@ -17,7 +17,7 @@
            dotlrn_member_rels_approved
       where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
       and dotlrn_member_rels_approved.user_id = :user_id
-      order by dotlrn_communities.community_type, dotlrn_communities.pretty_name
+      order by dotlrn_communities.pretty_name
     </querytext>
   </fullquery>
 </queryset>
