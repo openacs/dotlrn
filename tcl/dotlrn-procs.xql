@@ -4,13 +4,13 @@
 
 <fullquery name="dotlrn::get_users_rel_segment_id.select_user_rel_segment">
 <querytext>
-select segment_id from rel_segments where segment_name='dotLRN Users'
+select segment_id from rel_segments where segment_name='dotLRN Profiled Users'
 </querytext>
 </fullquery>
 
 <fullquery name="dotlrn::get_full_users_rel_segment_id.select_user_rel_segment">
 <querytext>
-select segment_id from rel_segments where segment_name='dotLRN Full Access Users'
+select segment_id from rel_segments where segment_name='dotLRN Full Profiled Users'
 </querytext>
 </fullquery>
 
