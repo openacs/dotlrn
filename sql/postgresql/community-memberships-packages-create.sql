@@ -235,7 +235,7 @@ BEGIN
         from dotlrn_ta_rels
         where rel_id = p_rel_id;
 
-        PERFORM dotlrn_admin_rel__delete(rel_id);
+        PERFORM dotlrn_admin_rel__delete(p_rel_id);
         
         return 0;
 END;
@@ -293,7 +293,7 @@ BEGIN
         from dotlrn_ca_rels
         where rel_id = p_rel_id;
 
-        PERFORM dotlrn_admin_rel__delete(rel_id);
+        PERFORM dotlrn_admin_rel__delete(p_rel_id);
         
         return 0;
 END;
@@ -351,7 +351,7 @@ BEGIN
         from dotlrn_cadmin_rels
         where rel_id = p_rel_id;
 
-        PERFORM dotlrn_admin_rel__delete(rel_id);
+        PERFORM dotlrn_admin_rel__delete(p_rel_id);
         
         return 0;
 END;
@@ -409,7 +409,7 @@ BEGIN
         from dotlrn_instructor_rels
         where rel_id = p_rel_id;
 
-        PERFORM dotlrn_admin_rel__delete(rel_id);
+        PERFORM dotlrn_admin_rel__delete(p_rel_id);
         
         return 0;
 END;
