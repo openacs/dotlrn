@@ -109,9 +109,7 @@ db_transaction {
             
             if {![info exists row(notify)]} {
                 set row(notify) f
-            } else {
-                set row(notify) t
-            }
+	    }
 
             ns_log Debug "%%% $row(username)...$row(access_level)...$row(type)"
 
