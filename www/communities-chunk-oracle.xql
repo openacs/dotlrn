@@ -25,7 +25,7 @@
               where supertype = 'dotlrn_community'
               start with community_type = dotlrn_communities.community_type
               connect by community_type = prior supertype) as root_community_type
-      from dotlrn_active_comms_not_closed dotlrn_communities,
+      from dotlrn_active_communities dotlrn_communities,
            dotlrn_member_rels_full
       where dotlrn_member_rels_full.user_id = :user_id
       and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id
@@ -48,7 +48,7 @@
               where supertype = 'dotlrn_community'
               start with community_type = dotlrn_communities.community_type
               connect by community_type = prior supertype) as root_community_type
-      from dotlrn_communities_not_closed dotlrn_communities,
+      from dotlrn_communities dotlrn_communities,
            dotlrn_member_rels_full
       where dotlrn_member_rels_full.user_id = :user_id
       and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id
@@ -127,7 +127,7 @@
               where supertype = 'dotlrn_community'
               start with community_type = dotlrn_communities.community_type
               connect by community_type = prior supertype) as root_community_type
-      from dotlrn_active_comms_not_closed dotlrn_communities,
+      from dotlrn_active_communities dotlrn_communities,
            dotlrn_member_rels_full
       where dotlrn_member_rels_full.user_id = :user_id
       and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id
@@ -151,7 +151,7 @@
               where supertype = 'dotlrn_community'
               start with community_type = dotlrn_communities.community_type
               connect by community_type = prior supertype) as root_community_type
-      from dotlrn_communities_not_closed dotlrn_communities,
+      from dotlrn_communities dotlrn_communities,
            dotlrn_member_rels_full
       where dotlrn_member_rels_full.user_id = :user_id
       and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id

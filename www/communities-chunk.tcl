@@ -24,12 +24,10 @@ if {![empty_string_p $community_type]} {
 }
 
 set filter_bar [ad_dimensional {
-    {filter "Membership:" select_all_non_memberships
+    {filter "Memberships:" select_all_non_memberships
         {
-            {select_current_memberships current {}}
-            {select_all_memberships all {}}
-            {select_current_non_memberships {join current} {}}
-            {select_all_non_memberships {join any} {}}
+            {select_all_memberships current {}}
+            {select_all_non_memberships join {}}
         }
     }
 }]
