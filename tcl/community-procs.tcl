@@ -295,7 +295,7 @@ namespace eval dotlrn_community {
 
 	    # Go through current users and make sure they are added!
 	    foreach user [list_users $community_id] {
-		set user_id [lindex $user 1]
+		set user_id [lindex $user 2]
 
 		# do the callbacks
 		applet_call $applet_key AddUser [list $community_id $user_id]
@@ -315,7 +315,7 @@ namespace eval dotlrn_community {
 	db_transaction {
 	    # Take care of all existing users
 	    foreach user [list_users $community_id] {
-		set user_id [lindex $user 1]
+		set user_id [lindex $user 2]
 
 		# do the callbacks
 		applet_call $applet_key RemoveUser [list $community_id $user_id]
