@@ -40,6 +40,8 @@ set admin_p [dotlrn::user_can_admin_community_p \
         -community_id $community_id
 ]
 
+set title [dotlrn_community::get_community_name $community_id]
+
 # Check that this user is a member
 if {![dotlrn_community::member_p $community_id $user_id] && !$admin_p} {
 
