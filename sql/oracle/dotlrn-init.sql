@@ -83,6 +83,17 @@ begin
         storage => 'generic'
     );
 
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'header_logo_alt_text',
+        datatype => 'integer',
+        pretty_name => 'Header Logo Alt Text',
+        pretty_plural => 'Header Logo Alt Text',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
     -- create the dotlrn_class community type
     foo := dotlrn_community_type.new(
         community_type => 'dotlrn_class_instance',

@@ -26,8 +26,6 @@
 
 %>    
 
-<% set dotlrn_url [dotlrn::get_url] %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,7 +50,7 @@
   <tr>
     <td width="10%" class="header-logo">
       <a href="@dotlrn_url@">
-      <img class="header-img" border=0 src="@dotlrn_url@/graphics/logowhite.gif" width="100" height="65" alt="SloanSpaceLogo"></a>
+      <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
     </td>
 
     <td width="50%"><div class=header-text>@text@</div></td>

@@ -46,6 +46,8 @@
 
 set user_id [ad_get_user_id] 
 set community_id [dotlrn_community::get_community_id]
+set dotlrn_url [dotlrn::get_url]
+
 
 if {[dotlrn::user_p -user_id $user_id]} {
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
@@ -199,12 +201,16 @@ set full_name "[dotlrn::get_user_name $user_id]"
 set title "SloanSpace"
 
 
-# the ColorHack and fonthack!
+# the ColorHack and FontHack and LogoHack!
 set color_hack "#cc0000"
 set color_hack_name "red"
 set header_font ""
 set header_font_size "medium"
 set header_font_color "black"
+set header_logo_item_id ""
+set header_img_url "$dotlrn_url/graphics/logowhite.gif" 
+set header_img_alt_text "Header Logo"
+
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
     set parent_comm_p 0
@@ -248,6 +254,26 @@ if {[parameter::get -parameter community_level_p] == 1 || $parent_comm_p } {
         -community_id $community_id \
         -attribute_name header_font_color
     ]
+
+    # logo hack 
+    set header_logo_item_id [dotlrn_community::get_attribute \
+        -community_id $community_id \
+        -attribute_name header_logo_item_id
+    ]
+
+    if {![empty_string_p $header_logo_item_id]} {
+
+        set header_img_url "community-image?revision_id=$header_logo_item_id" 
+    } 
+
+    set header_logo_alt_text [dotlrn_community::get_attribute \
+        -community_id $community_id \
+        -attribute_name header_logo_alt_text
+    ]
+
+    if {![empty_string_p $header_logo_alt_text]} {
+        set header_img_alt_text $header_logo_alt_text
+    } 
 
     # The header text is the name of the community
     set text [dotlrn_community::get_community_header_name $community_id] 
