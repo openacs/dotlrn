@@ -1,4 +1,4 @@
-<h3>Members</h3>
+<h3>Members of <%= [dotlrn_community::get_community_name $community_id] %></h3>
 <ul>
 <multiple name="users">
   <li>
@@ -6,9 +6,13 @@
 <if @read_private_data_p@ eq 1 or @user_id@ eq @users.user_id@>
     (<a href="mailto:@users.email@">@users.email@</a>)
 </if>
-    , <i>@users.rel_type@</i>
+
+&nbsp;
+
+<i>@users.rel_type@</i>
+
 <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
-    &nbsp; (<include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">) </li>
+    &nbsp; <small>[<include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">]</small></li>
 </if>
 </multiple>
 <if @admin_p@ eq 1>
