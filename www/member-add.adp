@@ -35,10 +35,6 @@ The results of your search are:
 <multiple name="users">
   <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a> 
  
-  <if @users.rel_type@ ne "">
-	(<%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @users.rel_type@] "Student"]%>)
-  </if>
-
   </li>
 </multiple>
 </ul>
