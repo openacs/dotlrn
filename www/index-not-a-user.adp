@@ -1,4 +1,4 @@
-<master src="master">
+<master>
 <property name="title">dotLRN - Not a User</property>
 
 <if @admin_p@>Visit <a href=@admin_url@>dotLRN Administration</a>.<p>

@@ -1,4 +1,4 @@
-<master src="master">
+<master>
 <property name="title">Configure @name@</property>
 <property name="portal_id">@portal_id@</property>
 <property name="link_all">1</property>

@@ -1,4 +1,4 @@
-<master src="master">
+<master>
 <property name="title">Add A Member To A Community</property>
 <property name="context_bar">@context_bar@</property>
 

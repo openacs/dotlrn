@@ -1,4 +1,4 @@
-<master src="master">
+<master>
 <property name="title">dotLRN Help</property>
 
 This page will eventually include help
