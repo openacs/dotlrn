@@ -15,7 +15,11 @@
 #
 
 ad_page_contract {
-    Configuration page for an instance's portal template
+
+    Displays a configuration page for COMMUNITY'S portal ONLY!
+    This page is restricted to admins of the community.
+
+    User portals are configured by the configure.tcl page.
 
     @author Arjun Sanyal (arjun@openforce.net)
     @version $Id$
@@ -23,9 +27,13 @@ ad_page_contract {
     {referer "one-community-admin"}
 }
 
-set portal_id [dotlrn_community::get_portal_id]
+dotlrn::require_user_admin_community \
+    -user_id [ad_conn user_id] \
+    -community_id [dotlrn_community::get_community_id]
 
-# don't use the template config proc here since it's not a template anymore!
-set rendered_page [portal::configure $portal_id $referer]
+set rendered_page [portal::configure \
+    [dotlrn_community::get_portal_id] \
+    $referer
+]
 
 ad_return_template
