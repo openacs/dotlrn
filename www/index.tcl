@@ -53,6 +53,6 @@ if {[empty_string_p $portal_id]} {
     ad_script_abort
 }
 
-set rendered_page [dotlrn::render_page $portal_id]
-
+set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
+ 
 ad_return_template
