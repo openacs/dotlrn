@@ -22,7 +22,7 @@
   <li><a href="/dotlrn/admin/term?term_id=-1">#dotlrn.class_instances_pretty_plural#</a></li>
   <li><a href="/dotlrn/admin/clubs">#dotlrn.clubs_pretty_plural#</a></li>
   <li><a href="/dotlrn/admin/portal-templates">#dotlrn.portal_templates#</a></li>
-  <li><a href="/dotlrn/admin/archived-communities">#dotlrn.Archived_classes_and_communities#</a></li>
+  <li><a href="/dotlrn/admin/archived-communities">#dotlrn.Archive#</a></li>
   <li><a href="/dotlrn/admin/edit-preapproved-emails">#dotlrn.lt_Pre-approved_Email_Se#</a></li>
 </ul>
 </ul>
