@@ -284,6 +284,7 @@
             select community_id as subcomm_id
             from dotlrn_communities
             where parent_community_id = :community_id
+	    order by pretty_name 
         </querytext>
     </fullquery>
 
