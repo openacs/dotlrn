@@ -51,13 +51,15 @@ foreach var_name [array names user] {
 
 set dotlrn_user_p [dotlrn::user_p -user_id $user_id]
 
-db_transaction {
-    # can this user read private data?
-    acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+if {!$dotlrn_user_p} {
+    db_transaction {
+        # can this user read private data?
+        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
 
-    if {!${dotlrn_interactive_p} && !$dotlrn_user_p} {
-        # make the user a dotLRN user
-        dotlrn::user_add -type $type -can_browse\=$can_browse_p -user_id $user_id
+        if {!${dotlrn_interactive_p}} {
+            # make the user a dotLRN user
+            dotlrn::user_add -type $type -can_browse\=$can_browse_p -user_id $user_id
+        }
     }
 }
 
