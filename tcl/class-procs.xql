@@ -11,7 +11,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_department::delete.delete_department">
+    <fullquery name="dotlrn_class::delete.delete_class">
         <querytext>
             delete from dotlrn_classes
             where class_key = :class_key
