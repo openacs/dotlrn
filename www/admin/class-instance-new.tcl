@@ -76,6 +76,14 @@ element create add_class_instance add_instructor \
     -options [list [list [_ dotlrn.Yes] 1] [list [_ dotlrn.No] 0]] \
     -value 1
 
+element create add_class_instance class_instance_key \
+    -label [_ dotlrn.Class_instance_key] \
+    -datatype text \
+    -widget text \
+    -html {size 60} \
+    -value "" \
+    -optional
+
 element create add_class_instance referer \
     -label [_ dotlrn.Referer] \
     -datatype text \
@@ -84,9 +92,10 @@ element create add_class_instance referer \
 
 if {[form is_valid add_class_instance]} {
     form get_values add_class_instance \
-        class_key term pretty_name description join_policy add_instructor referer
+        class_key term pretty_name description join_policy add_instructor referer class_instance_key
 
     set class_instance_id [dotlrn_class::new_instance \
+        -class_instance_key $class_instance_key \
         -class_key $class_key \
         -term_id $term \
         -pretty_name $pretty_name \
