@@ -26,12 +26,6 @@
 </head>
 <body>
 
-<p>
-<blockquote>
-<include src="/packages/acs-lang/www/change-locale-include">
-</blockquote>
-</p>
-
 <!-- Header Begin -->
 <table width="100%">
   <tr>
