@@ -95,11 +95,11 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_role_pretty_name.select_role_pretty_name">
+    <fullquery name="dotlrn_community::get_role_from_rel_type.select_role">
         <querytext>
-            select pretty_name
-            from acs_rel_roles
-            where role = :role
+            select role_two
+            from acs_rel_types
+            where rel_type = :rel_type
         </querytext>
     </fullquery>
 
@@ -110,18 +110,6 @@
             where role = (select role_two
                           from acs_rel_types
                           where rel_type = :rel_type)
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::get_role_pretty_name_from_rel_id.select_role_pretty_name">
-        <querytext>
-            select pretty_name
-            from acs_rel_roles
-            where role = (select acs_rel_types.role_two
-                          from acs_rel_types,
-                               acs_rels
-                          where acs_rel_types.rel_type = acs_rels.rel_type
-                          and acs_rels.rel_id = :rel_id)
         </querytext>
     </fullquery>
 

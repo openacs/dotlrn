@@ -445,7 +445,6 @@ namespace eval dotlrn_community {
 
         # else, it's a class instance
         return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_cadmin_rel}
-
     }
 
     ad_proc -public get_all_roles {} {
@@ -466,36 +465,16 @@ namespace eval dotlrn_community {
         return $roles
     }
 
-    ad_proc -public get_pretty_rel_type {
-        rel_type
+    ad_proc -public get_role_from_rel_type {
+        {-rel_type:required}
     } {
-        Returns a pretty version of the rel_type
+        returns the role associated with this rel_type
     } {
-        return [db_string select_pretty_name {
-            select pretty_name
-            from acs_object_types
-            where object_type = :rel_type
-        }]
-    }
-
-    ad_proc -public get_role_pretty_name {
-        {-role:required}
-    } {
-        Returns the pretty version of the role
-    } {
-        return [db_string select_role_pretty_name {} -default ""]
+        return [db_string select_role {} -default ""]
     }
 
     ad_proc -public get_role_pretty_name_from_rel_type {
         {-rel_type:required}
-    } {
-        Returns the pretty version of the role
-    } {
-        return [db_string select_role_pretty_name {} -default ""]
-    }
-
-    ad_proc -public get_role_pretty_name_from_rel_id {
-        {-rel_id:required}
     } {
         Returns the pretty version of the role
     } {
@@ -1755,7 +1734,7 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -private get_available_attributes_not_cached {} {
-        return [db_list_of_ns_sets select_available_attributes {}]
+        return [db_list_of_lists select_available_attributes {}]
     }
 
     ad_proc -public get_attributes {
@@ -1773,7 +1752,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_attributes_not_cached {
         {-community_id:required}
     } {
-        return [db_list_of_ns_sets select_attributes {}]
+        return [db_list_of_lists select_attributes {}]
     }
 
     ad_proc -public get_attribute {
@@ -1782,15 +1761,15 @@ namespace eval dotlrn_community {
     } {
         get the value for an attribute of this community
     } {
-        set attr_value ""
-        foreach pair [get_attributes -community_id $community_id] {
-            if {[string match $attribute_name [ns_set get $pair attribute_name]]} {
-                set attr_value [ns_set get $pair attr_value]
+        set attribute_value ""
+        foreach {attr_name attr_value} [get_attributes -community_id $community_id] {
+            if {[string match $attribute_name $attr_name]} {
+                set attribute_value $attr_value
                 break
             }
         }
 
-        return $attr_value
+        return $attribute_value
     }
 
     ad_proc -public set_attributes {
@@ -1799,8 +1778,8 @@ namespace eval dotlrn_community {
     } {
         set attributes for a certain community
     } {
-        foreach pair $pairs {
-            set_attribute -community_id $community_id -attribute_name [lindex $pair 0] -attribute_value [lindex $pair 1]
+        foreach {attr_name attr_value} $pairs {
+            set_attribute -community_id $community_id -attribute_name $attr_name -attribute_value $attr_value
         }
     }
 
@@ -1850,9 +1829,9 @@ namespace eval dotlrn_community {
     } {
         set attribute_id ""
 
-        foreach pair [get_available_attributes] {
-            if {[string match $attribute_name [ns_set get $pair attribute_name]]} {
-                set attribute_id [ns_set get $pair attribute_id]
+        foreach {attr_id attr_name} [get_available_attributes] {
+            if {[string match $attribute_name $attr_name]} {
+                set attribute_id $attr_id]
                 break
             }
         }

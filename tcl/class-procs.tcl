@@ -180,19 +180,6 @@ namespace eval dotlrn_class {
         return $community_id
     }
 
-    ad_proc -public available_roles {
-    } {
-        Returns the available roles
-    } {
-        return {
-            {instructor_rel "Professor"}
-            {aa_rel "Course Assistant"}
-            {ta_rel "Teaching Assistant"}
-            {student_rel "Student"}
-            {admin_rel "Administrator"}
-        }
-    }
-
     ad_proc -public add_user {
         {-rel_type ""}
         {-community_id:required}

@@ -84,15 +84,6 @@ namespace eval dotlrn_club {
             -extra_vars $extra_vars]
     }
 
-    ad_proc -public available_roles {} {
-        returns the available roles
-    } {
-        return {
-            {admin_rel "Administrator"}
-            {member_rel "Member"}
-        }
-    }
-
     ad_proc -public add_user {
         {-rel_type "" }
         {-community_id:required}
