@@ -1,5 +1,5 @@
 <div class="note">
-[&nbsp;<a href="/dotlrn/all-communities">Join/Drop a Class or Community Group</a>&nbsp;]
+[&nbsp;<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]
 </div>
 
 <br>
