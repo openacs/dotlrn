@@ -18,6 +18,12 @@ ad_library {
 
 namespace eval dotlrn {
 
+    ad_proc -public community_type {} {
+        returns the base community type
+    } {
+        return "dotlrn_community"
+    }
+
     ad_proc -public class_group_type_key {
     } {
 	Returns the group type key used for class groups
@@ -78,6 +84,24 @@ namespace eval dotlrn {
         return $result
     }
 
+    ad_proc -public is_initialized {} {
+        is dotlrn initialized with the right community_type?
+    } {
+        set community_type [community_type]
+        return [db_string dotlrn_is_initialized {
+            select count(*)
+            from dotlrn_community_types
+            where community_type = :community_type
+            and package_id is not null
+        }]
+    }
+
+    ad_proc -public init {} {
+        create base community_type for dotlrn
+    } {
+        dotlrn_community::set_type_package_id [community_type] [get_package_id]
+    }
+
     ad_proc -public is_package_mounted {
         {-package_key:required}
     } {
@@ -112,6 +136,7 @@ namespace eval dotlrn {
         mount a package under dotlrn
     } {
         set parent_node_id [ad_decode $parent_node_id "" [get_node_id] $parent_node_id]
+
         db_transaction {
             set node_id [db_string get_next_seq_val {
                 select acs_object_id_seq.nextval from dual
@@ -132,8 +157,10 @@ namespace eval dotlrn {
                 end;
             }]
 
-            return [site_node_create_package_instance $node_id $package_key $parent_package_id $package_key]
+            set package_id [site_node_create_package_instance $node_id $package_key $parent_package_id $package_key]
         }
+
+        return $package_id
     }
 
     ad_proc -public get_node_id {} {

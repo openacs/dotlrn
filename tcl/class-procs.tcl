@@ -18,6 +18,39 @@ ad_library {
 
 namespace eval dotlrn_class {
 
+    ad_proc -public community_type {} {
+        returns the base community type for classes
+    } {
+        return "dotlrn_class_instance"
+    }
+
+    ad_proc -public is_initialized {} {
+        is dotlrn_class initialized with the right community_type?
+    } {
+        set community_type [community_type]
+        return [db_string is_dotlrn_class_initialized {
+            select count(*)
+            from dotlrn_community_types
+            where community_type = :community_type
+            and package_id is not null
+        }]
+    }
+
+    ad_proc -public init {} {
+        create base community_type for dotlrn_class
+    } {
+        db_transaction {
+            set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]/"
+            if {![dotlrn::is_instantiated_here -url $dotlrn_classes_url]} {
+                set package_id [dotlrn::mount_package \
+                    -package_key [dotlrn::package_key] \
+                    -url [dotlrn_class::get_url_part] \
+                    -directory_p "t"]
+                dotlrn_community::set_type_package_id [community_type] $package_id
+            }
+        }
+    }
+
     ad_proc -public new {
         {-description ""}
         {-class_key:required}
@@ -67,7 +100,7 @@ namespace eval dotlrn_class {
         return [dotlrn_community::new \
                 -description $description \
                 -community_type $class_type \
-                -object_type dotlrn_class_instance \
+                -object_type [community_type] \
                 -community_key $community_key \
                 -pretty_name $class_name \
                 -extra_vars $extra_vars]

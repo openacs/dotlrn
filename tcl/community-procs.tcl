@@ -35,22 +35,23 @@ namespace eval dotlrn_community {
 	{-community_type_key:required}
 	{-parent_type "dotlrn_community"}
 	{-pretty_name:required}
+        {-url_part ""}
     } {
 	Create a new community type.
     } {
 	# Figure out parent_node_id
         set parent_node_id [get_type_node_id $parent_type]
+        array set parent_node [site_node [site_nodes::get_url_from_node_id -node_id $parent_node_id]]
 
 	db_transaction {
 	    # Create the class directly using PL/SQL API
 	    set community_type_key [db_exec_plsql create_community_type {}]
 
 	    # Create the node
-	    set new_node_id [site_node_create $parent_node_id $community_type_key]
+	    set new_node_id [site_node_create $parent_node_id [ad_decode $url_part "" $community_type_key $url_part]]
 
 	    # Instantiate the package
-	    # Note that the context_id is the dotLRN package
-	    set package_id [site_node_create_package_instance $new_node_id $pretty_name [dotlrn::get_package_id] [one_community_type_package_key]]
+	    set package_id [site_node_create_package_instance $new_node_id $pretty_name $parent_node(object_id) [one_community_type_package_key]]
 
 	    # Set some parameters
 	    ad_parameter -package_id $package_id -set 0 dotlrn_level_p
