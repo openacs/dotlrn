@@ -32,7 +32,7 @@
 create table dotlrn_clubs (
     club_id                     integer
                                 constraint dotlrn_clubs_club_id_fk
-                                references dotlrn_communities (community_id)
+                                references dotlrn_communities_all (community_id)
                                 constraint dotlrn_clubs_pk
                                 primary key
 );
@@ -41,7 +41,7 @@ create view dotlrn_clubs_full
 as
     select dotlrn_clubs.club_id,
 	   dotlrn_communities.*,
-           dotlrn_community__url(dotlrn_communities.community_id) as url,
+           dotlrn_community__url(dotlrn_communities.community_id::integer) as url,
            groups.join_policy
     from dotlrn_communities,
          dotlrn_clubs,

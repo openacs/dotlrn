@@ -34,18 +34,24 @@
 create function inline_0 ()
 returns integer as '
 declare
-begin
     ds_id portal_datasources.datasource_id%TYPE;
+    foo integer;
 begin
     ds_id := portal_datasource__new(
+        null,
         ''dotlrn_main_portlet'',
-        ''Displays the list of communities a user belongs to''
+        ''Displays the list of communities a user belongs to'',
+	''portal_datasource'',
+	now(),
+	null,
+	null,
+	null
     );
 
     --  the standard 4 params
 
     -- shadeable_p
-    perform portal_datasource.set_def_param(
+    perform portal_datasource__set_def_param(
         ds_id, ''t'', ''t'', ''shadeable_p'', ''f''
     );
 

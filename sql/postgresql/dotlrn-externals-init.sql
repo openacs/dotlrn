@@ -31,12 +31,13 @@ declare
 begin
 
     PERFORM acs_rel_type__create_type(
-	''dotlrn_user_profile_rel'',
+	''dotlrn_external_profile_rel'',
         ''dotLRN Profile External'',
         ''dotLRN External Externals'',
-        ''dotlrn_external_profile_rel'',
+	''dotlrn_user_profile_rel'',
         ''dotlrn_external_profile_rels'',
         ''rel_id'',
+        ''dotlrn_external_profile_rel'',
         ''profiled_group'',
         null,
         0,
@@ -61,7 +62,7 @@ begin
     into dotlrn_user_types
     (type, pretty_name, group_id)
     values
-    (''external'', ''External'', group_id);
+    (''external'', ''dotLRN Externals'', group_id);
 
     foo := rel_segment__new(
         ''dotLRN Externals'',

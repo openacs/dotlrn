@@ -26,153 +26,161 @@
 -- @note We remember September 11th, 2001
 --
 
+create function inline_0() 
+returns integer as '
 begin
 
-    select acs_rel_type__drop_type(
-        'dotlrn_admin_rel',
-        't'
+    perform acs_rel_type__drop_type(
+        ''dotlrn_admin_rel'',
+        ''t''
     );
 
     -- all rels to communities must have a portal_id
-    select acs_attribute__drop_attribute(
-        'dotlrn_member_rel',
-        'portal_id'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_member_rel'',
+        ''portal_id''
     );
 
     -- drop basic rel_types
-    select acs_rel_type__drop_type(
-        'dotlrn_member_rel',
-        't'
+    perform acs_rel_type__drop_type(
+        ''dotlrn_member_rel'',
+        ''t''
     );
 
     -- drop roles
-    select acs_rel_type__drop_role(
-        'student'
+    perform acs_rel_type__drop_role(
+        ''student''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'student_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''student_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'student_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''student_pretty_plural''
     );
 
-    select acs_rel_type__drop_role(
-        'course_assistant'
+    perform acs_rel_type__drop_role(
+        ''course_assistant''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'course_assistant_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''course_assistant_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'course_assistant_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''course_assistant_pretty_plural''
     );
 
-    select acs_rel_type__drop_role(
-        'teaching_assistant'
+    perform acs_rel_type__drop_role(
+        ''teaching_assistant''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'teaching_assistant_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''teaching_assistant_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'teaching_assistant_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''teaching_assistant_pretty_plural''
     );
 
-    select acs_rel_type__drop_role(
-        'instructor'
+    perform acs_rel_type__drop_role(
+        ''instructor''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'instructor_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''instructor_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'instructor_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''instructor_pretty_plural''
     );
 
-    select acs_rel_type__drop_role(
-        'course_admin'
+    perform acs_rel_type__drop_role(
+        ''course_admin''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'course_admin_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''course_admin_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'course_admin_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''course_admin_pretty_plural''
     );
 
-    select acs_rel_type__drop_role(
-        'admin'
+    perform acs_rel_type__drop_role(
+        ''admin''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'admin_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''admin_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'admin_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''admin_pretty_plural''
     );
 
     -- drop the dotlrn_club community type
-    select dotlrn_community_type__delete(
-        'dotlrn_club'
+    perform dotlrn_community_type__delete(
+        ''dotlrn_club''
     );
 
     -- drop the dotlrn_class community type
-    select dotlrn_community_type__delete(
-        'dotlrn_class_instance'
+    perform dotlrn_community_type__delete(
+        ''dotlrn_class_instance''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'header_font'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''header_font''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'header_font_size'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''header_font_size''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'header_font_color'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''header_font_color''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'header_logo_item_id'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''header_logo_item_id''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'member_pretty_name'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''member_pretty_name''
     );
 
-    select acs_attribute__drop_attribute(
-        'dotlrn_community',
-        'member_pretty_plural'
+    perform acs_attribute__drop_attribute(
+        ''dotlrn_community'',
+        ''member_pretty_plural''
     );
 
     -- drop the base community type
-    select dotlrn_community_type__delete(
-        'dotlrn_community'
+    perform dotlrn_community_type__delete(
+        ''dotlrn_community''
     );
 
-end;
+    return 0;
+
+end;' language 'plpgsql';
+
+select inline_0();
+drop function inline_0();
+

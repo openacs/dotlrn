@@ -59,7 +59,7 @@ begin
     select min(segment_id)
     into foo
     from rel_segments
-    where segment_name = ''dotLRN Profiled Users'';
+    where segment_name = ''Profiled Users'';
 
     perform rel_segment__delete(
         foo

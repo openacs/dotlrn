@@ -54,7 +54,7 @@ BEGIN
             null,
             null,
             null,
-            null,
+            null
         );
 END;
 ' language 'plpgsql';
@@ -75,10 +75,10 @@ DECLARE
         v_parent_object_type acs_object_types.object_type%TYPE;
         v_unique_name acs_objects.object_id%TYPE;
 BEGIN
-        if parent_type is null then
+        if p_parent_type is null then
             v_parent_object_type:= ''group'';
         else
-            v_parent_object_type:= parent_type;
+            v_parent_object_type:= p_parent_type;
         end if;
 
         select acs_object_id_seq.nextval
@@ -86,13 +86,15 @@ BEGIN
         from dual;
 
         PERFORM acs_object_type__create_type (
+            p_community_type,
+            p_community_type,
+            p_community_type,
 	    v_parent_object_type,
-            p_community_type,
-            p_community_type,
-            p_community_type,
             v_unique_name,
             v_unique_name,
             v_unique_name,
+	    ''f'',
+	    null,
             ''acs_group.name''
         );
 
@@ -131,7 +133,7 @@ BEGIN
         where community_type = p_community_type;
 
         PERFORM acs_object_type__drop_type(p_community_type);
-        return(0);
+        return 0;
 END;
 ' language 'plpgsql';
 
@@ -254,7 +256,7 @@ BEGIN
         where community_id = p_community_id;
 
         PERFORM acs_group__delete(p_community_id);
-        return(0);
+        return 0;
 END;
 ' language 'plpgsql';
 
@@ -337,7 +339,7 @@ END;
 ' language 'plpgsql';
 
 
-create dotlrn_community__function has_subcomm_p(integer)
+create function dotlrn_community__has_subcomm_p(integer)
 returns varchar as '
 DECLARE
 	p_community_id		alias for $1;
@@ -345,8 +347,8 @@ DECLARE
 BEGIN
 	select CASE
 		WHEN count(*) = 0
-		THEN 'f'
-		ELSE 't'
+		THEN ''f''
+		ELSE ''t''
 	       END
 	  into r_rv
 	  from dual 

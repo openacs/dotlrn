@@ -99,7 +99,7 @@ create table dotlrn_communities_all (
     max_child_sortkey		varbit
 );
 
-create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id;
+create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id);
 create index dtlrn_com_all_archived_p_idx on dotlrn_communities_all (archived_p);
 
 create view dotlrn_communities
@@ -157,7 +157,7 @@ create table dotlrn_community_applets (
                                 constraint dotlrn_ca_community_id_nn
                                 not null
                                 constraint dotlrn_ca_community_id_fk
-                                references dotlrn_communities (community_id),
+                                references dotlrn_communities_all (community_id),
     applet_id                   integer
                                 constraint dotlrn_ca_applet_key_nn
                                 not null

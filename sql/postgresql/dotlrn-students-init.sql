@@ -32,13 +32,13 @@ begin
 
     PERFORM acs_rel_type__create_type(
         ''dotlrn_student_profile_rel'',
-	''dotlrn_user_profile_rel'',
         ''dotLRN Profile Student'',
         ''dotLRN Profile Students'',
+	''dotlrn_user_profile_rel'',
         ''dotlrn_student_profile_rel'',
+        ''profiled_group'',
         ''dotlrn_student_profile_rels'',
         ''rel_id'',
-        ''profiled_group'',
         null,
         0,
         null,

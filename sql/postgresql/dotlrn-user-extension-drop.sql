@@ -27,49 +27,54 @@
 -- 
 --
 
-
+create function inline_0() 
+returns integer as '
 begin
 
-    select acs_sc_binding__delete (
-        'UserData',
-        'dotlrn_user_extension'
+    perform acs_sc_binding__delete (
+        ''UserData'',
+        ''dotlrn_user_extension''
     );
 
-    select acs_sc_impl_alias__delete (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserNew'
+    perform acs_sc_impl_alias__delete (
+        ''UserData'',
+        ''dotlrn_user_extension'',
+        ''UserNew''
     );
 
-    select acs_sc_impl_alias__delete (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserApprove'
+    perform acs_sc_impl_alias__delete (
+        ''UserData'',
+        ''dotlrn_user_extension'',
+        ''UserApprove''
     );
 
-    select acs_sc_impl_alias__delete (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserDeapprove'
+    perform acs_sc_impl_alias__delete (
+        ''UserData'',
+        ''dotlrn_user_extension'',
+        ''UserDeapprove''
     );
 
-    select acs_sc_impl_alias__delete (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserModify'
+    perform acs_sc_impl_alias__delete (
+        ''UserData'',
+        ''dotlrn_user_extension'',
+        ''UserModify''
     );
 
-    select acs_sc_impl_alias__delete (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserDelete'
+    perform acs_sc_impl_alias__delete (
+        ''UserData'',
+        ''dotlrn_user_extension'',
+        ''UserDelete''
     );
 
     -- create the implementation
-    select acs_sc_impl__delete(
-        'UserData',
-        'dotlrn_user_extension'
+    perform acs_sc_impl__delete(
+        ''UserData'',
+        ''dotlrn_user_extension''
     );
 
-end;
+    return 0;
 
+end;' language 'plpgsql';
+
+select inline_0();
+drop function inline_0();

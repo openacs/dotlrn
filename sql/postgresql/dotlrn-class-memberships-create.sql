@@ -125,94 +125,101 @@ as
     where dotlrn_admin_rels_full.rel_id = dotlrn_instructor_rels.rel_id;
 
 
-
+create function inline_0()
+returns integer as '
 begin
     perform acs_rel_type__create_type (
-        'dotlrn_student_rel',
-        'dotlrn_member_rel',
-        'dotLRN Student Community Membership',
-        'dotLRN Student Community Memberships',
-        'dotlrn_student_rel',
-        'dotlrn_student_rels',        
-        'rel_id',
-        'dotlrn_class_instance', 
+        ''dotlrn_student_rel'',
+        ''dotlrn_member_rel'',
+        ''dotLRN Student Community Membership'',
+        ''dotLRN Student Community Memberships'',
+        ''dotlrn_student_rel'',
+        ''dotlrn_student_rels'',        
+        ''rel_id'',
+        ''dotlrn_class_instance'', 
 	null, 
         0, 
 	null,
-        'user',
-	'student',
+        ''user'',
+	''student'',
         0, 
 	null
     );
 
     perform acs_rel_type__create_type (
-        'dotlrn_ta_rel',
-        'dotlrn_admin_rel',
-        'dotLRN Teaching Assistant Community Membership',
-        'dotLRN Teaching Assistant Community Memberships',
-        'dotlrn_ta_rel',
-        'dotlrn_ta_rels',        
-        'rel_id',
-        'dotlrn_class_instance', 
+        ''dotlrn_ta_rel'',
+        ''dotlrn_admin_rel'',
+        ''dotLRN Teaching Assistant Community Membership'',
+        ''dotLRN Teaching Assistant Community Memberships'',
+        ''dotlrn_ta_rel'',
+        ''dotlrn_ta_rels'',        
+        ''rel_id'',
+        ''dotlrn_class_instance'', 
 	null, 
         0,
 	null,
-        'user'
-	'teaching_assistant',
+        ''user'',
+	''teaching_assistant'',
         0,
 	null
     );
 
     perform acs_rel_type__create_type (
-        'dotlrn_ca_rel',
-        'dotlrn_admin_rel',
-        'dotLRN Course Assitant Community Membership',
-        'dotLRN Course Assitant Community Memberships',
-        'dotlrn_ca_rel',
-        'dotlrn_ca_rels',        
-        'rel_id',
-        'dotlrn_class_instance', role_one => null, 
+        ''dotlrn_ca_rel'',
+        ''dotlrn_admin_rel'',
+        ''dotLRN Course Assitant Community Membership'',
+        ''dotLRN Course Assitant Community Memberships'',
+        ''dotlrn_ca_rel'',
+        ''dotlrn_ca_rels'',        
+        ''rel_id'',
+        ''dotlrn_class_instance'', null, 
         0, 
 	null,
-        'user'
-	'course_assistant',
+        ''user'',
+	''course_assistant'',
         0, 
 	null
     );
 
     perform acs_rel_type__create_type (
-        'dotlrn_cadmin_rel',
-        'dotlrn_admin_rel',
-        'dotLRN Course Administrator Community Membership',
-        'dotLRN Course Administrator Community Memberships',
-        'dotlrn_cadmin_rel',
-        'dotlrn_cadmin_rels',        
-        'rel_id',
-        'dotlrn_class_instance', 
+        ''dotlrn_cadmin_rel'',
+        ''dotlrn_admin_rel'',
+        ''dotLRN Course Administrator Community Membership'',
+        ''dotLRN Course Administrator Community Memberships'',
+        ''dotlrn_cadmin_rel'',
+        ''dotlrn_cadmin_rels'',        
+        ''rel_id'',
+        ''dotlrn_class_instance'', 
 	null, 
         0, 
 	null,
-        'user',	
-	'course_admin',
+        ''user'',	
+	''course_admin'',
         0, 
 	null
     );
 
     perform acs_rel_type__create_type (
-        'dotlrn_instructor_rel',
-        'dotlrn_admin_rel',
-        'dotLRN Instructor Community Membership',
-        'dotLRN Instructor Community Memberships',
-        'dotlrn_instructor_rel',
-        'dotlrn_instructor_rels',        
-        'rel_id',
-        'dotlrn_class_instance', role_one => null, 
+        ''dotlrn_instructor_rel'',
+        ''dotlrn_admin_rel'',
+        ''dotLRN Instructor Community Membership'',
+        ''dotLRN Instructor Community Memberships'',
+        ''dotlrn_instructor_rel'',
+        ''dotlrn_instructor_rels'',        
+        ''rel_id'',
+        ''dotlrn_class_instance'', null, 
         0, 
 	null,
-        'user', 
-	'instructor',
+        ''user'', 
+	''instructor'',
         0, 
 	null
     );
+    
+    return 0;
+
 END;
 ' language 'plpgsql';
+
+select inline_0();
+drop function inline_0();

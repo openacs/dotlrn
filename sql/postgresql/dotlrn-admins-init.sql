@@ -32,12 +32,12 @@ begin
 
     PERFORM acs_rel_type__create_type(
         ''dotlrn_admin_profile_rel'',
-	''dotlrn_user_profile_rel'',
         ''dotLRN Profile Admin'',
         ''dotLRN Profile Admins'',
-        ''dotlrn_admin_profile_rel'',
+	''dotlrn_user_profile_rel'',
         ''dotlrn_admin_profile_rels'',
         ''rel_id'',
+        ''dotlrn_admin_profile_rel'',
         ''profiled_group'',
         null,
         0,

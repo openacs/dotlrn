@@ -27,7 +27,7 @@
 \i dotlrn-main-portlet-drop.sql
 \i dotlrn-community-membership-packages-drop.sql
 \i dotlrn-applet-sc-drop.sql
-\i dotlrn-class-memberships-drop.sql
+\i dotlrn-class-membership-drop.sql
 \i dotlrn-classes-drop.sql
 \i dotlrn-clubs-drop.sql
 \i dotlrn-dotlrn-sanitize.sql

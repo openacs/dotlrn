@@ -75,7 +75,7 @@ begin
     from dotlrn_user_types
     where group_id = foo;
 
-    perform profiled_groupd__delete(
+    perform profiled_group__delete(
         foo
     );
 

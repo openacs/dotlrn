@@ -103,7 +103,7 @@ as
 create table dotlrn_class_instances (
     class_instance_id           integer 
 				constraint dotlrn_ci_class_instance_id_fk
-                                references dotlrn_communities (community_id)
+                                references dotlrn_communities_all (community_id)
                                 constraint dotlrn_class_instances_pk
                                 primary key,
     class_key                   varchar(100) 
@@ -127,7 +127,7 @@ as
            dotlrn_terms.term_year,
            dotlrn_terms.start_date,
            dotlrn_terms.end_date,
-           dotlrn_communities.*
+           dotlrn_communities.*,
            dotlrn_community__url(dotlrn_communities.community_id) as url,
            dotlrn_classes_full.pretty_name as class_name,
            dotlrn_classes_full.url as class_url,
