@@ -145,7 +145,7 @@ namespace eval dotlrn_community {
     } {
         get the type's package_id 
     } {
-        db_string select_package_id {}
+        return [db_string select_package_id {}]
     }
 
     ad_proc -public get_type_node_id {
