@@ -17,7 +17,6 @@
 # dotlrn/tcl/club-procs.tcl
 #
 # procedures for dotlrn clubs
-# copyright 2001 openforce, inc
 # distributed under the gnu gpl v2
 #
 # december 3, 2001
