@@ -100,6 +100,7 @@
       <a href="http://www.dotlrn.org">dotLRN Home</a> | 
       <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a> | 
       <a href="@change_locale_url@">#dotlrn.Change_Locale#</a>
+      <if @lang_admin_p@ true>| <a href="@toggle_translator_mode_url@">Toggle translator mode</a></if>
     </div>
     <div class="footer">@ds_link;noquote@</div>
   </p>

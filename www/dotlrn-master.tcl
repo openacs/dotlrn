@@ -607,3 +607,10 @@ set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
 if { [info exists context] } {
     set context_bar [eval ad_context_bar $context]
 }
+
+set acs_lang_url [apm_package_url_from_key "acs-lang"]
+set lang_admin_p [permission::permission_p \
+                      -object_id [site_node::get_element -url $acs_lang_url -element object_id] \
+                      -privilege admin \
+                      -party_id [ad_conn untrusted_user_id]]
+set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translator-mode-toggle" { { return_url [ad_return_url] } }]
