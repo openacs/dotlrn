@@ -7,12 +7,18 @@ ad_page_contract {
     @version $Id$
 } -query {
     {referer "classes"}
+} -properties {
+    title:onevalue
+    context_bar:onevalue
 }
+
+set title "New [ad_parameter classes_pretty_name]"
+set context_bar [list [list classes [ad_parameter classes_pretty_plural]] New]
 
 form create add_class
 
 element create add_class class_key \
-    -label "Class Key (a short name, no spaces)" -datatype text -widget text -html {size 50}
+    -label "[ad_parameter classes_pretty_name] Key (a short name, no spaces)" -datatype text -widget text -html {size 50}
 
 element create add_class name \
     -label "Name" -datatype text -widget text -html {size 50}
@@ -31,7 +37,5 @@ if {[form is_valid add_class]} {
     ad_returnredirect $referer
     ad_script_abort
 }
-
-set context_bar {{classes Classes} New}
 
 ad_return_template

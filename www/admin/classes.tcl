@@ -8,11 +8,14 @@ ad_page_contract {
 } -query {
     {filter "select_current_class_instances"}
 } -properties {
+    title:onevalue
+    context_bar:onevalue
     filter_bar:onevalue
     classes:multirow
 }
 
-set context_bar "Classes"
+set title {[ad_parameter classes_pretty_plural]}
+set context_bar {[ad_parameter classes_pretty_plural]}
 
 set filter_bar [ad_dimensional {
     {filter "Term:" select_current_class_instances

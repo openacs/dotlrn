@@ -2,14 +2,14 @@
 <if @can_instantiate@ gt 0>
 [
   <font size="-1">
-    <a href="class-instance-new?class_key=@class_key@&referer=classes?filter=@filter@">new instance</a>
+    <a href="class-instance-new?class_key=@class_key@&referer=classes?filter=@filter@">New Instance</a>
   </font>
 ]
 </if>
 <else>
 [
   <font size="-1" color="#aaaaaa">
-    <i>new instance</i>
+    <i>New Instance</i>
   </font>
 ]
 </else>

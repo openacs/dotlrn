@@ -8,11 +8,13 @@ ad_page_contract {
     @version $Id$
 } {
 } -properties {
+    title:onevalue
     context_bar:onevalue
     clubs:multirow
 }
 
-set context_bar "Clubs"
+set title "[ad_parameter clubs_pretty_plural]"
+set context_bar [list [ad_parameter clubs_pretty_plural]]
 
 db_multirow clubs select_clubs {}
 

@@ -16,7 +16,7 @@ ad_page_contract {
     description:onevalue
 }
 
-set context_bar {{clubs Clubs} One}
+set context_bar [list [list clubs [ad_parameter clubs_pretty_plural]] One]
 
 db_1row select_club {}
 

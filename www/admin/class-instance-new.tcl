@@ -24,7 +24,7 @@ element create add_class_instance join_policy \
     -label "Join Policy" -datatype text -widget select -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
 
 element create add_class_instance class_key \
-    -label "Class Key" -value $class_key -datatype text -widget hidden
+    -label "[ad_parameter classes_pretty_name] Key" -value $class_key -datatype text -widget hidden
 
 element create add_class_instance referer \
     -label "Referer" -value $referer -datatype text -widget hidden

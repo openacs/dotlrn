@@ -1,8 +1,8 @@
 <master src="master">
-<property name="title">Clubs</property>
+<property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[ <a href="club-new">new club</a> ]
+[ <a href="club-new">New <%= [ad_parameter clubs_pretty_name] %></a> ]
 
 <p></p>
 
@@ -18,5 +18,5 @@
 </if>
 
 <if @clubs:rowcount@ gt 10>
-[ <a href="club-new">new club</a> ]
+[ <a href="club-new">New <%= [ad_parameter clubs_pretty_name] %></a> ]
 </if>

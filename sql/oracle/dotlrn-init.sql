@@ -29,7 +29,7 @@ begin
         parent_type => 'dotlrn_community',
         pretty_name => 'Class',
         pretty_plural => 'Classes',
-        description => 'Classes - e.g. 6.001'
+        description => 'e.g. 6.001'
     );
 
     -- create the dotlrn_club community type
@@ -38,7 +38,7 @@ begin
         parent_type => 'dotlrn_community',
         pretty_name => 'Club',
         pretty_plural => 'Clubs',
-        description => 'Clubs - e.g. Alumni'
+        description => 'e.g. Alumni'
     );
 
     -- create roles

@@ -17,13 +17,13 @@ ad_page_contract {
 # Get information about that class
 if {![db_0or1row select_class_info {}]} {
     ad_returnredirect "classes"
-    return
+    ad_script_abort
 }
 
 db_multirow class_instances select_class_instances {}
 
 set can_instantiate [db_string can_instantiate_class {}]
 
-set context_bar {{classes Classes} One}
+set context_bar [list [list classes [ad_parameter classes_pretty_plural]] One]
 
 ad_return_template

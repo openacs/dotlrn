@@ -60,7 +60,14 @@ namespace eval dotlrn {
 
 	set first_args []
 	lappend first_args [list [root_url] dotLRN]
-	lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [dotlrn_community::get_community_type_name $community_type]]
+
+        if {[string equal ${community_type} "dotlrn_class_instance"] != 0} {
+            lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [ad_parameter classes_pretty_plural]]
+        } elseif {[string equal ${community_type} "dotlrn_club"] != 0} {
+            lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [ad_parameter clubs_pretty_plural]]
+        } else {
+            lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [dotlrn_community::get_community_type_name $community_type]]
+        }
 
 	if {![empty_string_p $community_id]} {
 	    lappend first_args [list [dotlrn_community::get_community_url $community_id] [dotlrn_community::get_community_name $community_id]]

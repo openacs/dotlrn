@@ -5,4 +5,4 @@
 You've chosen to add <strong>@first_names@ @last_name@</strong>. 
 <p>
 
-<formtemplate id=add_user></formtemplate>
+<formtemplate id="add_user"></formtemplate>

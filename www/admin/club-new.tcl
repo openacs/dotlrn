@@ -7,13 +7,17 @@ ad_page_contract {
 } -query {
     {referer "clubs"}
 } -properties {
+    title:onevalue
     context_bar:onevalue
 }
+
+set title "New [ad_parameter clubs_pretty_name]"
+set context_bar [list [list clubs [ad_parameter clubs_pretty_plural]] New]
 
 form create add_club
 
 element create add_club club_key \
-    -label "Club Key (a short name, no spaces)" -datatype text -widget text -html {size 50}
+    -label "[ad_parameter clubs_pretty_name] Key (a short name, no spaces)" -datatype text -widget text -html {size 50}
 
 element create add_club name \
     -label "Name" -datatype text -widget text -html {size 50}
@@ -35,7 +39,5 @@ if {[form is_valid add_club]} {
     ad_returnredirect $referer
     ad_script_abort
 }
-
-set context_bar {{clubs Clubs} New}
 
 ad_return_template

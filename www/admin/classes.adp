@@ -1,8 +1,8 @@
 <master src="master">
-<property name="title">Classes</property>
+<property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[ <a href="class-new?referer=classes?filter=@filter@">new class</a> ]
+[ <a href="class-new?referer=classes?filter=@filter@">New <%= [ad_parameter classes_pretty_name] %></a> ]
 
 <p>
 <include src="need-term-note">
@@ -20,5 +20,5 @@
 </if>
 
 <if @classes:rowcount@ gt 10>
-[ <a href="class-new?referer=classes?filter=@filter@">new class</a> ]
+[ <a href="class-new?referer=classes?filter=@filter@">New <%= [ad_parameter classes_pretty_name] %></a> ]
 </if>

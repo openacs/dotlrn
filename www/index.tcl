@@ -34,7 +34,7 @@ if {![dotlrn::user_can_browse_p]} {
     set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
     if {[llength $communities] == 0} {
-        ad_returnredirect index-not-a-user
+        ad_returnredirect "index-not-a-user"
         ad_script_abort
     }
 
@@ -49,7 +49,7 @@ if {![dotlrn::user_can_browse_p]} {
 set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
 if {[empty_string_p $portal_id]} {
-    ad_returnredirect index-not-a-user
+    ad_returnredirect "index-not-a-user"
     ad_script_abort
 }
 
