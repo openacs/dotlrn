@@ -665,13 +665,6 @@ namespace eval dotlrn_community {
     } {
         Returns list of admin users
     } {
-        set bio_attribute_id [db_string bio_attribute_id {
-            select attribute_id
-            from acs_attributes
-            where object_type = 'person'
-            and attribute_name = 'bio'
-        }]
-
         return [list_users -rel_type dotlrn_admin_rel $community_id]
     }
 
@@ -681,8 +674,6 @@ namespace eval dotlrn_community {
     } {
         Returns the list of users with a membership_id, a user_id, first name,
         last name, email, and role. 
-
-        AKS: uncaching this until we figure out how to cache ns_sets correctly
     } {
         return [dotlrn_community::list_users_not_cached \
             -rel_type $rel_type \
@@ -696,6 +687,13 @@ namespace eval dotlrn_community {
     } {
         Memoizing helper
     } {
+        set bio_attribute_id [db_string bio_attribute_id {
+            select attribute_id
+            from acs_attributes
+            where object_type = 'person'
+            and attribute_name = 'bio'
+        }]
+
         return [db_list_of_ns_sets select_users {}]
     }
 
@@ -1195,7 +1193,7 @@ namespace eval dotlrn_community {
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-		append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>\n"
+		append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
 		 
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif {[member_p $sc_id $user_id] || [not_closed_p -community_id $sc_id]} {
@@ -1230,14 +1228,14 @@ namespace eval dotlrn_community {
                       } elseif {[needs_approval_p -community_id $sc_id]} {
                           append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Request_Membership]</a>\n"
                       } else {
-                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Join]</a>\n"
+                          append chunk "(<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Join]</a>)\n"
                       }
 
                       append chunk "\n"
                 }  elseif {[member_p $sc_id $user_id]} {
 
 		    # User is a member.
-		    append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>\n"
+		    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
 		    
 		}
             }
