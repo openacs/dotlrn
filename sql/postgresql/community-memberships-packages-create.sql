@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2001, 2002 OpenForce, Inc.
+--  Copyright (C) 2001, 2002 MIT
 --
 --  This file is part of dotLRN.
 --
@@ -17,11 +17,6 @@
 
 --
 -- The DotLRN memberships packages
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
---
--- for Oracle 8/8i. (We're guessing 9i works, too).
--- ported to PG by Yon and Ben
 --
 -- ben@openforce.net
 -- started November 6th, 2001

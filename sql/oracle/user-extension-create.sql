@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2001, 2002 OpenForce, Inc.
+--  Copyright (C) 2001, 2002 MIT
 --
 --  This file is part of dotLRN.
 --
@@ -14,16 +14,11 @@
 --  details.
 --
 
-
 --
 -- The dotLRN extension to user data notifications
--- copyright 2002, OpenForce
--- distributed under GPL v2.0
 --
---
--- ben@openforce.net
---
--- 01/22/2002
+-- @author Ben Adida (ben@openforce.net)
+-- @creation-date 2002-01-22
 --
 
 

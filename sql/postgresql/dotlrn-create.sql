@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2001, 2002 OpenForce, Inc.
+--  Copyright (C) 2001, 2002 MIT
 --
 --  This file is part of dotLRN.
 --
@@ -16,10 +16,6 @@
 
 --
 -- The DotLRN basic system
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
---
--- for PG 7.1.3 and above
 --
 -- ben@openforce.net
 -- started August 18th, 2001

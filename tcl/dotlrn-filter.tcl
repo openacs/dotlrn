@@ -1,5 +1,5 @@
 #
-#  Copyright (C) 2001, 2002 OpenForce, Inc.
+#  Copyright (C) 2001, 2002 MIT
 #
 #  This file is part of dotLRN.
 #
@@ -12,15 +12,6 @@
 #  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 #  details.
-#
-
-
-#
-# Procs for DOTLRN filters
-# Copyright 2001 OpenForce, inc.
-# Distributed under the GNU GPL v2
-#
-# August 20th, 2001
 #
 
 ad_library {

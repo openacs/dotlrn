@@ -1,7 +1,7 @@
 --
---  Copyright (C) 2001, 2002 OpenForce, Inc__
+--  Copyright (C) 2001, 2002 MIT, Inc.
 --
---  This file is part of dotLRN__
+--  This file is part of dotLRN.
 --
 --  dotLRN is free software; you can redistribute it and/or modify it under the
 --  terms of the GNU General Public License as published by the Free Software
@@ -10,16 +10,16 @@
 --
 --  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
 --  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE__  See the GNU General Public License for more
---  details__
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
 --
 
 --
 -- drop the dotLRN class membership model
 --
--- @author Ben Adida (ben@openforce__net)
--- @author yon (yon@openforce__net)
--- @author dan chak (chak@openforce__net)
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
+-- @author dan chak (chak@openforce.net)
 -- @creation-date 2001-08-18
 -- @version $Id$
 --

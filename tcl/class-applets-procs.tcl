@@ -1,5 +1,5 @@
 #
-#  Copyright (C) 2001, 2002 OpenForce, Inc.
+#  Copyright (C) 2001, 2002 MIT
 #
 #  This file is part of dotLRN.
 #
@@ -14,11 +14,8 @@
 #  details.
 #
 
-
 #
 # Procs for DOTLRN Class Management, Applets
-# Copyright 2001 OpenForce, inc.
-# Distributed under the GNU GPL v2
 #
 # August 18th, 2001
 #

@@ -1,5 +1,5 @@
 --
---  Copyright (C) 2001, 2002 OpenForce, Inc.
+--  Copyright (C) 2001, 2002 MIT
 --
 --  This file is part of dotLRN.
 --
@@ -20,7 +20,7 @@
 
 -- Creates a dotLRN datasource for including on a user's main portal page.
 
--- Copyright (C) 2001 OpenForce, Inc.
+-- Copyright (C) 2001 MIT
 -- @author Ben Adida (ben@openforce.net)
 -- @creation-date 2001-11-05
 
