@@ -22,18 +22,6 @@
 <property name="title">@first_names@ @last_name@</property>
 <property name="context_bar">@context_bar@</property>
 
-<if @portrait_p@ eq 1>
-  <if @inline_portrait_state@ eq "inline">
-  
-    <a href="portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
-  
-  </if>
-  <else><if @inline_portrait_state eq "link">
-  
-    <li><a href="/shared/portrait?@portrait_export_vars@">Portrait</a>
-  
-  </if></else>
-</if>
 
 A member of the @system_name@ community since @pretty_creation_date@
 
@@ -71,6 +59,20 @@ A member of the @system_name@ community since @pretty_creation_date@
     <ul><li>Personal home page: <a href="@url@">@url@</a></li></ul>
   </if>
 </else>
+
+<if @portrait_p@ eq 1>
+
+  <if @inline_portrait_state@ eq "inline">
+  
+    <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
+  
+  </if>
+  <if @inline_portrait_state@ eq "link">
+  
+      <ul><li><a href="/user/portrait?@portrait_export_vars@">Portrait</a></li></ul>
+  
+  </if>
+</if>
 
 <if @folder_id@ not nil>
 <h3>Shared Files</h3>
