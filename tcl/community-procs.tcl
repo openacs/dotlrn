@@ -323,14 +323,14 @@ namespace eval dotlrn_community {
         }
 
         # else, it's a class instance
-        return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_admin_rel}
+        return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_cadmin_rel dotlrn_admin_rel}
 
     }
 
     ad_proc -public get_all_roles {} {
         return the list of roles used in dotLRN
     } {
-        return {dotlrn_admin_rel dotlrn_member_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_ta_rel dotlrn_student_rel}
+        return {dotlrn_admin_rel dotlrn_member_rel dotlrn_instructor_rel dotlrn_cadmin_rel dotlrn_ca_rel dotlrn_ta_rel dotlrn_student_rel}
     }
 
     ad_proc -public get_all_roles_as_options {} {
@@ -472,18 +472,30 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public add_user {
-        {-rel_type "dotlrn_member_rel"}
+        {-rel_type ""}
         community_id
         user_id
     } {
         add a user to a particular community
     } {
         if {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_class_instance"]} {
-            dotlrn_class::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+            if {![empty_string_p $rel_type]} {
+                dotlrn_class::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+            } else {
+                dotlrn_class::add_user -community_id $community_id -user_id $user_id
+            }
         } elseif {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_club"]} {
-            dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+            if {![empty_string_p $rel_type]} {
+                dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+            } else {
+                dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+            }
         } else {
-            add_user_to_community -rel_type $rel_type -community_id $community_id -user_id $user_id
+            if {![empty_string_p $rel_type]} {
+                add_user_to_community -rel_type $rel_type -community_id $community_id -user_id $user_id
+            } else {
+                add_user_to_community -community_id $community_id -user_id $user_id
+            }
         }
     }
 

@@ -107,6 +107,23 @@ as
          acs_rels
     where dotlrn_ca_rels.rel_id = acs_rels.rel_id;
 
+create table dotlrn_cadmin_rels (
+    rel_id                      constraint dotlrn_cadmin_rels_rel_id_fk
+                                references dotlrn_admin_rels (rel_id)
+                                constraint dotlrn_cadmin_rels_rel_id_pk
+                                primary key
+);
+
+create or replace view dotlrn_cadmin_rels_full
+as
+    select acs_rels.rel_id,
+           acs_rels.object_id_one as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type
+    from dotlrn_cadmin_rels,
+         acs_rels
+    where dotlrn_cadmin_rels.rel_id = acs_rels.rel_id;
+
 create table dotlrn_instructor_rels (
     rel_id                      constraint dotlrn_instructor_rels_rel_fk
                                 references dotlrn_admin_rels(rel_id)

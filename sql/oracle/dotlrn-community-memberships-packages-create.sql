@@ -368,6 +368,77 @@ end;
 /
 show errors;
 
+create or replace package dotlrn_cadmin_rel
+is
+
+    function new (
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default NULL,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_cadmin_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_cadmin_rels.rel_id%TYPE;
+
+    procedure delete (
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package body dotlrn_cadmin_rel
+is
+
+    function new (
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default NULL,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_cadmin_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_cadmin_rels.rel_id%TYPE
+    is
+        v_rel_id                dotlrn_cadmin_rels.rel_id%TYPE;
+    begin
+        v_rel_id:= dotlrn_admin_rel.new(
+            rel_id => rel_id,
+            rel_type => rel_type,
+            community_id => class_instance_id,
+            user_id => user_id,
+            portal_id => portal_id,
+            creation_user => creation_user,
+            creation_ip => creation_ip
+        );
+
+        insert
+        into dotlrn_cadmin_rels
+        (rel_id)
+        values
+        (v_rel_id);
+
+        return v_rel_id;
+    end;
+
+    procedure delete (
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE
+    )
+    is
+    begin
+        delete
+        from dotlrn_cadmin_rels
+        where rel_id = dotlrn_cadmin_rel.delete.rel_id;
+
+        dotlrn_admin_rel.delete(rel_id);
+    end;
+
+end;
+/
+show errors;
+
 create or replace package dotlrn_instructor_rel
 is
 

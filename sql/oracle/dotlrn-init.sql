@@ -46,6 +46,7 @@ begin
     acs_rel_type.create_role ('course_assistant', 'Course Assistant', 'Course Assistants');
     acs_rel_type.create_role ('teaching_assistant', 'Teaching Assistant', 'Teaching Assistants');
     acs_rel_type.create_role ('instructor', 'Professor', 'Professors');
+    acs_rel_type.create_role ('course_admin', 'Course Administrator', 'Course Administrators');
     acs_rel_type.create_role ('admin', 'Administrator', 'Administrators');
 end;
 /
