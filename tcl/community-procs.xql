@@ -100,6 +100,24 @@ select segment_id from rel_segments where group_id= :community_id and rel_type= 
     </querytext>
   </fullquery>
 
+
+  <fullquery name="dotlrn_community::list_users_in_role.select_users_in_role">
+    <querytext>
+      select rel_id,
+             rel_type,
+             users.user_id,
+             first_names,
+             last_name,
+             email
+      from registered_users users,
+           dotlrn_member_rels_full
+      where community_id = :community_id
+      and users.user_id = dotlrn_member_rels_full.user_id
+      and rel_type = :rel_type
+    </querytext>
+  </fullquery>
+
+
 <fullquery name="dotlrn_community::member_p.select_count_membership">
 <querytext>
 select count(*) from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id

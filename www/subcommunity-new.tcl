@@ -28,6 +28,12 @@ element create add_subcomm pretty_name \
     -widget text \
     -html {size 60}
 
+element create add_subcomm description \
+    -label "Description (Text or HTML)" \
+    -datatype text \
+    -widget text \
+    -html {size 60}
+
 element create add_subcomm join_policy \
     -label "Join Policy" \
     -datatype text \
@@ -42,7 +48,7 @@ element create add_subcomm referer \
 
 if {[form is_valid add_subcomm]} {
     form get_values add_subcomm \
-        subcomm_key pretty_name join_policy referer
+        subcomm_key pretty_name join_policy referer description
 
     # we set some extra vars based on the community_type of the parent
     set parent_type  \
@@ -69,7 +75,7 @@ if {[form is_valid add_subcomm]} {
     db_transaction {
         set subcomm_id [dotlrn_community::new \
                 -parent_community_id $parent_community_id \
-                -description "" \
+                -description $description \
                 -community_type "dotlrn_community" \
                 -community_key $subcomm_key \
                 -pretty_name $pretty_name \
