@@ -21,7 +21,7 @@
 <if @n_communities@ gt 0>
   <h3><if @title@ nil>#dotlrn.Communities#</if><else>@title@</else></h3>
 
-  <p>@filter_bar@</p>
+  <p>@filter_bar;noquote@</p>
 
 <if @communities:rowcount@ gt 0>
 <multiple name="communities">

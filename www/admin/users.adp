@@ -20,7 +20,7 @@
 
 <master src="dotlrn-admin-master">
 <property name="title">#dotlrn.Users#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context_bar">@context_bar;noquote@</property>
 
 <% set referer "[dotlrn::get_admin_url]/users" %>
 
@@ -47,7 +47,7 @@
 
 <p></p>
 
-<p>@control_bar@</p>
+<p>@control_bar;noquote@</p>
 
 <if @n_users@ gt 500>
   <include src="users-chunk-large" type=@type@ referer="@referer@?type=@type@">

@@ -35,13 +35,13 @@
     <tr class="table-header">
       <td>&nbsp;</td>
       <td><a href=@referer@?order=first_names&order_direction=@first_names_order_direction@>
-	#dotlrn.First_Name#</a> @first_names_order_html@
+	#dotlrn.First_Name#</a> @first_names_order_html;noquote@
       </td>	
       <td><a href=@referer@?order=last_name&order_direction=@last_name_order_direction@>
-	#dotlrn.Last_Name#</a> @last_name_order_html@
+	#dotlrn.Last_Name#</a> @last_name_order_html;noquote@
       </td>
       <td><a href=@referer@?order=email&order_direction=@email_order_direction@>
-	#dotlrn.Email_1#</a> @email_order_html@
+	#dotlrn.Email_1#</a> @email_order_html;noquote@
       </td>
       <td>#dotlrn.Role#</td>
       <td>#dotlrn.Actions#</td>

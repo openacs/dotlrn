@@ -20,4 +20,4 @@
 
 <master>
 
-@rendered_page@
+@rendered_page;noquote@
