@@ -55,7 +55,7 @@ if {[ad_parameter community_level_p] == 1} {
     # this not a community, it is the "workspace" deal
 
     # Get the page
-    set portal_id [get_workspace_portal_id $user_id]
+    set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
     # If there is no portal_id, this user is either a guest or something else
     if {[empty_string_p $portal_id]} {
