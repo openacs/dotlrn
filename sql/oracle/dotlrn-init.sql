@@ -290,7 +290,7 @@ begin
         attribute_name => 'admin_pretty_name',
         datatype => 'string',
         pretty_name => 'Administrator Pretty Name',
-        pretty_plural => 'RAdministrator Pretty Name',
+        pretty_plural => 'Administrator Pretty Name',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
