@@ -218,6 +218,8 @@ namespace eval dotlrn_community {
             }
         }
 
+        set package_id [dotlrn::get_package_id]
+
         # Set up extra vars
         if {[empty_string_p $extra_vars]} {
             set extra_vars [ns_set create]
@@ -236,7 +238,7 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars pretty_name $pretty_name
         ns_set put $extra_vars pretty_plural $pretty_name
         ns_set put $extra_vars description $description
-        ns_set put $extra_vars context_id [dotlrn::get_package_id]
+        ns_set put $extra_vars context_id $package_id
 
         db_transaction {
             # Insert the community
@@ -246,21 +248,21 @@ namespace eval dotlrn_community {
             # 1. get the page_names and layouts
             # 2. the the list of default applets for this type
             if {[string equal $community_type "dotlrn_community"]} {
-                set csv_list [dotlrn::parameter subcomm_pages_csv]
-                set default_applets [dotlrn::parameter default_subcomm_applets]
+                set csv_list [dotlrn::parameter -package_id $package_id subcomm_pages_csv]
+                set default_applets [dotlrn::parameter -package_id $package_id default_subcomm_applets]
             } elseif {[string equal $community_type "dotlrn_club"]} {
-                set csv_list [dotlrn::parameter club_pages_csv]
-                set default_applets [dotlrn::parameter default_club_applets]
+                set csv_list [dotlrn::parameter -package_id $package_id club_pages_csv]
+                set default_applets [dotlrn::parameter -package_id $package_id default_club_applets]
             } elseif {[string equal $community_type "user_workspace"]} {
-                set csv_list [dotlrn::parameter user_wsp_page_names]
+                set csv_list [dotlrn::parameter -package_id $package_id user_wsp_page_names]
                 set default_applets [list]
              } else {
-                set csv_list [dotlrn::parameter class_instance_pages_csv]
-                set default_applets [dotlrn::parameter default_class_instance_applets]
+                set csv_list [dotlrn::parameter -package_id $package_id class_instance_pages_csv]
+                set default_applets [dotlrn::parameter -package_id $package_id default_class_instance_applets]
             }
 
-            set non_member_page_name [dotlrn::parameter non_member_page_name]
-            set admin_page_name [dotlrn::parameter admin_page_name]
+            set non_member_page_name [dotlrn::parameter -package_id $package_id non_member_page_name]
+            set admin_page_name [dotlrn::parameter -package_id $package_id admin_page_name]
 
             if {[empty_string_p $dummy_comm_p]} {
                 set user_id [ad_conn user_id]
