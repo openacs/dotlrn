@@ -28,4 +28,16 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_department::count_classes.select_count_classes">
+        <querytext>
+            select count(*) from dotlrn_classes where department_key = :department_key
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_department::delete.delete_department">
+        <querytext>
+            delete from dotlrn_departments where department_key = :department_key
+        </querytext>
+    </fullquery>
+
 </queryset>

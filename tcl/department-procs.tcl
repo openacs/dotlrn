@@ -75,4 +75,34 @@ namespace eval dotlrn_department {
         return [db_list_of_lists select_departments {}]
     }
 
+    ad_proc -public count_classes {
+        {-department_key:required}
+    } {
+        retuns the number of classes under this department
+    } {
+        return [db_string select_count_classes {} -default 0]
+    }
+
+    ad_proc -public delete {
+        {-department_key:required}
+    } {
+        Deletes an empty department. Use count_classes to verify it's empty.
+    } {
+        # check that it's empty
+        if {![count_classes -department_key $department_key] == 0} {
+            ad_return_complaint 1 "Error: [parameter::get -parameter departments_pretty_name] 
+                                   must be empty to be deleted"
+            ad_script_abort
+        } 
+
+        db_transaction {
+            # delete the dept from the table
+            db_dml delete_department {}
+
+            # since depts are types, delete the type
+            dotlrn_community::delete_type -community_type_key $department_key
+
+        }
+    }
+
 }
