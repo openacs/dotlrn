@@ -121,7 +121,7 @@ namespace eval dotlrn_community {
 
 	    # Create the non-member page
 	    set portal_id \
-		    [portal::create -name \
+		    [portal::create \
 		    -template_id $portal_template_id \
 		    -name "$pretty_name Non-Member Portal" \
 		    -context_id $community_id \
