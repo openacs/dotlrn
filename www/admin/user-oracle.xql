@@ -5,8 +5,7 @@
 
     <fullquery name="select_dotlrn_user_info">
         <querytext>
-            select dotlrn_users.*, guest_p,
-                   acs_permission.permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p
+            select dotlrn_users.*, guest_p
             from dotlrn_users, dotlrn_guest_status
             where dotlrn_users.user_id = :user_id
               and dotlrn_guest_status.user_id(+) = dotlrn_users.user_id
