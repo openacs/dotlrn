@@ -230,19 +230,7 @@ namespace eval dotlrn {
     } {
 	Get the names the the user
     } {
-        return [util_memoize "dotlrn::get_user_name_not_cached $user_id"]
-    }
-
-    ad_proc -private get_user_name_not_cached {
-	user_id
-    } {
-        helper
-    } {
-	return [db_string select_user_name {
-            select first_names || ' ' || last_name
-            from cc_users
-            where user_id = :user_id
-        } -default ""]
+        return [acs_user::get_element -user_id $user_id -element name]
     }
 
     ad_proc -public instantiate_and_mount {
