@@ -40,7 +40,7 @@ element create add_user id \
     -label "ID" \
     -datatype text \
     -widget text \
-    -html {size 30}
+    -html {size 30} \
     -value $id
 
 element create add_user email \

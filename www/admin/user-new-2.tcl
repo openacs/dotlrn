@@ -21,7 +21,7 @@ element create add_user id \
     -label "ID" \
     -datatype text \
     -widget text \
-    -html {size 60} \
+    -html {size 30} \
     -optional
 
 element create add_user type \
