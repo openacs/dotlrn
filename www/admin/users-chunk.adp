@@ -73,7 +73,7 @@
 <if @type@ eq "pending">
     <td align="left">
     <% # We had to escape to Tcl to get the desired behavior. AG %>
-    <small><a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=<%= [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$users(user_id)&referer=$referer] %>">#dotlrn.lt_approve_and_add_to_do#</a> | <a href="user-nuke?user_id=@users.user_id@&referer=@referer@">#dotlrn.nuke#</small>
+    <small><a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=<%= [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$users(user_id)&referer=$referer] %>">#dotlrn.lt_approve_and_add_to_do#</a> | <a href="user-nuke?user_id=@users.user_id@&referer=@referer@">#acs-kernel.common_delete#</small>
     </td>
 </if>
 <else>

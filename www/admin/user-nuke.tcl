@@ -38,7 +38,7 @@ set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Nuke]]
 if [form is_valid confirm_delete] {
     form get_values confirm_delete user_id confirmed_p
     if [string equal $confirmed_p t] {
-	if [catch { db_exec_plsql nuke_user { begin acs.remove_user(:user_id); end; } } errMsg ] {
+	if [catch { db_exec_plsql nuke_user {} } errMsg ] {
 	    ad_return_template user-nuke-error
 	} else {
 	    # Nuke was successful.
