@@ -103,12 +103,17 @@ if {![empty_string_p $department_key]} {
 
 db_multirow classes $query {}
 
-if {![db_0or1row select_term_info {}]} {
+if {$term_id == -1} {
     set title "All Terms"
     set context_bar {{terms Terms} {All Terms}}
 } else {
-    set title "$term_name $term_year ($start_date - $end_date)"
-    set context_bar [list [list terms Terms] "$term_name $term_year"]
+    if {[db_0or1row select_term_info {}]} {
+        set title "$term_name $term_year ($start_date - $end_date)"
+        set context_bar [list {terms Terms} "$term_name $term_year"]
+    } else {
+        set title "Unknown Term"
+        set context_bar {{terms Terms} {Unknown Term}}
+    }
 }
 
 ad_return_template
