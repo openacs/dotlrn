@@ -188,7 +188,7 @@ select community_type from dotlrn_communities where community_id=:community_id
 
 <fullquery name="dotlrn_community::has_subcommunity_p.select_subcomm_check">
 <querytext>
-select count(*) from dual where exists (select 1 from dotlrn_communities where parent_community_id = :community_id)
+select 1 from dual where exists (select 1 from dotlrn_communities where parent_community_id = :community_id)
 </querytext>
 </fullquery>
 
