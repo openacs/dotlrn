@@ -30,7 +30,7 @@ set page_id [db_string select_page_id {} -default ""]
 if {[empty_string_p $page_id]} {
     # do something
 } else {
-    set rendered_page [portal::configure $page_id]
+    set rendered_page [portal::configure $page_id "index"]
     set name [portal::get_name $page_id]
 }
 
