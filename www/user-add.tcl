@@ -64,7 +64,7 @@ element create add_user email \
     -html {size 50} \
     -validate {
         {expr (([util_email_valid_p $value] == 1) && ([util_email_unique_p $value] == 1))}
-        {E-mail address must be complete and unique. <br>This user probably already has a SloanSpace account. <br>Try adding this user through <a href=members>Manage Membership</a>.}
+        {E-mail address must be complete and unique. <br>This user probably already has a .LRN account. <br>Try adding this user through <a href=members>Manage Membership</a>.}
     }
 
 element create add_user first_names \

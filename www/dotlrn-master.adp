@@ -54,7 +54,7 @@
     </tr>
     <tr>
       <td colspan=3 class="header-buttons" align="right" valign="bottom">
-        <a href="@dotlrn_url@/?"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@scope_name@.gif" alt="MySloanSpace"></a>
+        <a href="@dotlrn_url@/?"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@scope_name@.gif"></a>
         <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
         <a href="@help_url@"><img class="header-img" border="0" src="@dotlrn_url@/graphics/help-@scope_name@.gif" alt="Help"></a>
         <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">

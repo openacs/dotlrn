@@ -29,7 +29,7 @@
   your password, correct or change your full name, publish a URL for a your website, 
   and change your login name/email address. If you do not keep this login name 
   the same as your current email address or a forwarding address, you will not 
-  receive group emails and forum alerts from SloanSpace. </p>
+  receive group emails and forum alerts from .LRN. </p>
 <p><b>To Change Password:</b><br>
  
 <li> Login and go to your My Account page<br>
@@ -119,12 +119,6 @@
     through the "Edit My Forum Email Alerts" link on the My Account page. 
     Limited Access users can access their My Account page through the Help icon 
     in the group banner.</p>
-  
-  <p><b><font size="4"><a name=Help">Additional Help</a></font></b><br>
-    If your specific question is not answered here, consult the User or Admin 
-    Handbooks located in the file storage area of the STS-Sloanwide community. 
-    If you still cannot find the answer to your question or problem, email the 
-    Site Wide Administrator at sloanspace-help@sloan.mit.edu.</p>
 <p></p>
 <p><br>
 </p>
