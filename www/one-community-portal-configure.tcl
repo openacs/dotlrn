@@ -14,19 +14,18 @@
 #  details.
 #
 
-# /dotlrn/www/admin/one-instance-portal-template-2.tcl
 ad_page_contract {
-    Form target for the Configuration page for an instance's portal template
+    Configuration page for an instance's portal template
 
     @author Arjun Sanyal (arjun@openforce.net)
     @version $Id$
 } -query {
+    {referer "one-community-admin"}
 }
 
-set form [ns_getform]
-set portal_id [ns_set get $form portal_id]
-set return_url [ns_set get $form return_url]
+set portal_id [dotlrn_community::get_portal_id]
 
-portal::template_configure_dispatch -portal_id $portal_id -form $form
+# don't use the template config proc here since it's not a template anymore!
+set rendered_page [portal::configure $portal_id $referer]
 
-ns_returnredirect "one-community-portal-template?portal_id=$portal_id&return_url=$return_url"
+ad_return_template
