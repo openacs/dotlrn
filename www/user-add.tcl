@@ -15,8 +15,6 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set portal_id ""
-
 set user_id [ad_maybe_redirect_for_registration]
 
 if {![dotlrn::admin_p -user_id $user_id]} {

@@ -28,7 +28,6 @@ ad_page_contract {
     user_contributions:multirow
 }
 
-set portal_id ""
 set verified_user_id [ad_verify_and_get_user_id]
 
 # XXX add portraits to this page

@@ -10,8 +10,6 @@ ad_page_contract {
     op:notnull
 }
 
-set portal_id ""
-
 # Check if this is a community type level thing
 if {[ad_parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"

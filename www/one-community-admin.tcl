@@ -15,8 +15,6 @@ ad_page_contract {
     users:multirow
 }
 
-set portal_id ""
-
 set community_id [dotlrn_community::get_community_id]
 
 # Permissions

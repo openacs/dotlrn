@@ -13,6 +13,5 @@ ad_page_contract {
 
 set admin_p [dotlrn::admin_p]
 set admin_url [dotlrn::get_url]/admin
-set portal_id ""
 
 ad_return_template
