@@ -45,6 +45,4 @@
 </blockquote>
 </if>
 
-<center>
-  <include src="/packages/acs-subsite/lib/user-new" next_url="@next_url;noquote@" self_register_p="0"/>
-</center>
+<include src="/packages/acs-subsite/lib/user-new" next_url="@next_url;noquote@" self_register_p="0"/>
