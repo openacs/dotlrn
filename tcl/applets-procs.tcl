@@ -29,7 +29,7 @@ namespace eval dotlrn_applet {
 
     ad_proc -public init {} {
         # Create the applets node
-        dotlrn::site_node_create -parent_node_id [dotlrn::get_node_id] -name "applets"
+        site_nodes::site_node_create -parent_node_id [dotlrn::get_node_id] -name "applets"
     }
 
     ad_proc -public register {
