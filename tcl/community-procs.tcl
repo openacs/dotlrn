@@ -488,7 +488,7 @@ namespace eval dotlrn_community {
             if {![empty_string_p $rel_type]} {
                 dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
             } else {
-                dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+                dotlrn_club::add_user -community_id $community_id -user_id $user_id
             }
         } else {
             if {![empty_string_p $rel_type]} {
