@@ -158,7 +158,7 @@
             and dotlrn_communities.parent_community_id = dotlrn_member_rels_approved.community_id
             and registered_users.user_id = dotlrn_member_rels_approved.user_id
             and registered_users.user_id not in (select dm.user_id
-                                                 from dotlrn_member_rels_approved dm
+                                                 from dotlrn_member_rels_full dm
                                                  where dm.community_id = :subcomm_id)
             order by dotlrn_member_rels_approved.rel_type
         </querytext>
