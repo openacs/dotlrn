@@ -17,19 +17,15 @@ update dotlrn_community_types set package_id= :package_id where community_type= 
 </querytext>
 </fullquery>
 
-
-<fullquery name="dotlrn_community::new">
-<querytext>
-insert into dotlrn_communities
-(community_id, community_type, community_key, pretty_name, description)
-values
-(:community_id, :community_type, :name, :pretty_name, :description)
-</querytext>
-</fullquery>
-
 <fullquery name="dotlrn_community::set_package_id.update_package_id">
 <querytext>
 update dotlrn_communities set package_id= :package_id where community_id= :community_id
+</querytext>
+</fullquery>
+
+<fullquery name="dotlrn_community::get_rel_segment_id.select_rel_segment_id">
+<querytext>
+select segment_id from rel_segments where group_id= :community_id and rel_type= :rel_type
 </querytext>
 </fullquery>
 

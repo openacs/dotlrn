@@ -52,6 +52,9 @@ namespace eval dotlrn_community {
 	# Create the community
 	set community_id [db_exec_plsql create_community {}]
 
+	# Rel segments
+	create_rel_segments -community_id $community_id
+
 	return $community_id
     }
 
@@ -140,6 +143,59 @@ namespace eval dotlrn_community {
 	set pretty_name [db_string select_pretty_name "select pretty_name from acs_object_types where object_type=:rel_type"]
 	return $pretty_name
     }
+
+    ad_proc -public get_rel_segment_id {
+	{-community_id:required}
+	{-rel_type:required}
+    } {
+	get the relational segment ID for a community and a rel type
+    } {
+	return [db_string select_rel_segment_id {} -default ""]
+    }
+
+    ad_proc -public create_rel_segments {
+	{-community_id:required}
+    } {
+	create all the relational segments for a community
+    } {
+	# Get some information about the community
+	set community_name [get_community_name $community_id]
+
+	db_transaction {
+	    # Go through the allowed rel types
+	    foreach rel_type [get_allowed_rel_types -community_id $community_id] {
+		set rel_type_key [lindex $rel_type 0]
+		set rel_type_name [lindex $rel_type 1]
+		set name "${rel_type_name}s for $community_name"
+
+		# Create the segment
+		rel_segments_new $community_id $rel_type_key $name
+	    }
+	}
+    }
+
+    ad_proc -public delete_rel_segments {
+	{-community_id:required}
+    } {
+	remove the rel segments for a community
+    } {
+	set rel_types [get_allowed_rel_types -community_id $community_id]
+	set segment_ids [list]
+	
+	# Collect the segment IDs
+	foreach rel_type $rel_types {
+	    lappend segment_ids [get_rel_segment_id -community_id $community_id -rel_type [lindex $rel_type 0]]
+	}
+
+	db_transaction {
+	    # Go through the segment IDs
+	    foreach segment_id $segment_ids {
+		# Delete the segment
+		rel_segments_delete $segment_id
+	    }
+	}
+    }
+	
 
     ad_proc -public list_admin_users {
 	community_id

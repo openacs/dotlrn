@@ -22,6 +22,7 @@ namespace eval dotlrn {
     ad_proc -private do_abort {} {
 	do an abort if security violation
     } {
+	ad_returnredirect "not-allowed"
 	return -code error
     }
 
@@ -42,6 +43,8 @@ namespace eval dotlrn {
 
 	    # Update the user and set the portal page correctly
 	    db_dml update_user_page_id {}
+
+	    # FIXME: what do we do about permissions?
 	}
     }
 
@@ -76,6 +79,8 @@ namespace eval dotlrn {
 
 	    # Subscribe the guest to that community
 	    dotlrn_community::add_user $community_id $user_id
+
+	    # FIXME: what do we do about permissions?
 	}
     }
 
@@ -109,7 +114,9 @@ namespace eval dotlrn {
     } {
 	Require that a user be able to browse dotLRN
     } {
-
+	if {![user_can_browse_p -user_id $user_id]} {
+	    do_abort
+	}
     }
 
     ad_proc -public user_can_read_sensitive_data_p {
@@ -133,6 +140,9 @@ namespace eval dotlrn {
     } {
 	Require that a user be able to read sensitive data
     } {
+	if {![user_can_read_sensitive_data_p -user_id $user_id]} {
+	    do_abort
+	}
     }
 
     ad_proc -public user_can_read_community_type_p {
@@ -141,6 +151,8 @@ namespace eval dotlrn {
     } {
 	Check if a user can read a community type
     } {
+	# FIXME: permission hack
+	return 1
     }
 
     ad_proc -public require_user_read_community_type {
@@ -149,6 +161,9 @@ namespace eval dotlrn {
     } {
 	require that a user be able to read a community type
     } {
+	if {![user_can_read_community_type_p -user_id $user_id $community_type]} {
+	    do_abort
+	}
     }
 
     ad_proc -public user_can_read_community_p {
@@ -157,6 +172,7 @@ namespace eval dotlrn {
     } {
 	Check if a user can read a community 
     } {
+	return [ad_permission_p -user_id $user_id $community_id dotlrn_view_community]
     }
 
     ad_proc -public require_user_read_community {
@@ -165,6 +181,9 @@ namespace eval dotlrn {
     } {
 	require that a user be able to read a community 
     } {
+	if {![user_can_read_community_p -user_id $user_id $community_id]} {
+	    do_abort
+	}
     }
 
     ad_proc -public user_is_community_member_p {
@@ -173,6 +192,8 @@ namespace eval dotlrn {
     } {
 	check if a user is a member of a community
     } {
+	# FIXME: security hack
+	return 1
     }
 
     ad_proc -public require_user_community_member {
@@ -181,6 +202,9 @@ namespace eval dotlrn {
     } {
 	require that a user be member of a particular community
     } {
+	if {![user_is_community_member_p -user_id $user_id $community_id]} {
+	    do_abort
+	}
     }
 	
     ad_proc -public user_can_admin_community_p {
@@ -189,8 +213,7 @@ namespace eval dotlrn {
     } {
 	check if a user can admin a community
     } {
-	# FIXME
-	return 1
+	return [ad_permission_p -user_id $user_id $community_id dotlrn_admin_community]
     }
 
     ad_proc -public require_user_admin_community {
