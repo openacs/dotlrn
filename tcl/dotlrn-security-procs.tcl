@@ -91,11 +91,8 @@ namespace eval dotlrn {
                             -layout_name [lindex $layout_name_list $i]
                 }
                 
-                # manually switch back to the first page 
+                # manually switch back to the first page
                 set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
-                
-                portal::set_current_page -portal_id $portal_id \
-                        -page_id $page_id
 
                 # aks test adding applets on new pages
                 # make a test page to the wsp
