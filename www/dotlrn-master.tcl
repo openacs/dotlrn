@@ -501,6 +501,45 @@ TD.center {
     ALIGN: center;
 }
 
+#admin-portlet {
+    background-color: $scope_z_light;
+    padding: 4px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    font-size: 100%;
+    color: $scope_main_color;
+    text-align: left;
+    border-style: solid;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+#admin-portlet h1 {
+    font-size:  $header_font_size;
+    color: $scope_header_color;
+    FONT-FAMILY: $header_font;
+    border-style: outset;
+    border-bottom-width: 2px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 2px;
+}
+
+#admin-portlet ul {
+    font-size: 85%;
+    border: none;
+    color: black;
+}
+
+#admin-portlet ul li {
+    margin-left: 0;
+    padding-left: 2px;
+    border: none;
+    list-style-type: disk;
+    list-style-position: outside;
+}
 
 </STYLE>
 
