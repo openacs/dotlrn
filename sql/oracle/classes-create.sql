@@ -98,7 +98,7 @@ as
 
 create table dotlrn_class_instances (
     class_instance_id           constraint dotlrn_ci_class_instance_id_fk
-                                references dotlrn_communities (community_id)
+                                references dotlrn_communities_all (community_id)
                                 constraint dotlrn_class_instances_pk
                                 primary key,
     class_key                   constraint dotlrn_ci_class_key_fk
@@ -313,12 +313,12 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE default null,
         class_key in dotlrn_class_instances.class_key%TYPE,
         term_id in dotlrn_class_instances.term_id%TYPE,
-        community_key in dotlrn_communities.community_key%TYPE,
-        pretty_name in dotlrn_communities.pretty_name%TYPE,
-        description in dotlrn_communities.description%TYPE,
-        package_id in dotlrn_communities.package_id%TYPE default null,
-        portal_id in dotlrn_communities.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities.non_member_portal_id%TYPE default null,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
         join_policy in groups.join_policy%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
         creation_user in acs_objects.creation_user%TYPE default null,
@@ -339,12 +339,12 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE default null,
         class_key in dotlrn_class_instances.class_key%TYPE,
         term_id in dotlrn_class_instances.term_id%TYPE,
-        community_key in dotlrn_communities.community_key%TYPE,
-        pretty_name in dotlrn_communities.pretty_name%TYPE,
-        description in dotlrn_communities.description%TYPE,
-        package_id in dotlrn_communities.package_id%TYPE default null,
-        portal_id in dotlrn_communities.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities.non_member_portal_id%TYPE default null,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
         join_policy in groups.join_policy%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
         creation_user in acs_objects.creation_user%TYPE default null,

@@ -133,53 +133,55 @@ show errors
 
 create or replace package dotlrn_community
 is
+
     function new (
-        community_id in dotlrn_communities.community_id%TYPE default null,
-        parent_community_id in dotlrn_communities.parent_community_id%TYPE default null,
-        community_type in dotlrn_communities.community_type%TYPE,
-        community_key in dotlrn_communities.community_key%TYPE,
-        pretty_name in dotlrn_communities.pretty_name%TYPE,
-        description in dotlrn_communities.description%TYPE,
-        portal_id in dotlrn_communities.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities.non_member_portal_id%TYPE default null,
-        package_id in dotlrn_communities.package_id%TYPE default null,
+        community_id in dotlrn_communities_all.community_id%TYPE default null,
+        parent_community_id in dotlrn_communities_all.parent_community_id%TYPE default null,
+        community_type in dotlrn_communities_all.community_type%TYPE,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        archived_p in dotlrn_communities_all.archived_p%TYPE default 'f',
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
         join_policy in groups.join_policy%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null,
         context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_communities.community_id%TYPE;
+    ) return dotlrn_communities_all.community_id%TYPE;
 
     procedure set_active_dates (
-        community_id in dotlrn_communities.community_id%TYPE,
-        start_date in dotlrn_communities.active_start_date%TYPE,
-        end_date in dotlrn_communities.active_end_date%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        start_date in dotlrn_communities_all.active_start_date%TYPE,
+        end_date in dotlrn_communities_all.active_end_date%TYPE
     );
 
     procedure delete (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     );
 
     function name (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     ) return varchar; 
 
     function member_p (
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         party_id in parties.party_id%TYPE
     ) return char;
 
     function admin_p (
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         party_id in parties.party_id%TYPE
     ) return char;
 
     function url (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     ) return varchar2;
 
     function has_subcomm_p (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     ) return char;
 
 end dotlrn_community;
@@ -188,22 +190,24 @@ show errors
 
 create or replace package body dotlrn_community
 as
+
     function new (
-        community_id in dotlrn_communities.community_id%TYPE default null,
-        parent_community_id in dotlrn_communities.parent_community_id%TYPE default null,
-        community_type in dotlrn_communities.community_type%TYPE,
-        community_key in dotlrn_communities.community_key%TYPE,
-        pretty_name in dotlrn_communities.pretty_name%TYPE,
-        description in dotlrn_communities.description%TYPE,
-        portal_id in dotlrn_communities.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities.non_member_portal_id%TYPE default null,
-        package_id in dotlrn_communities.package_id%TYPE default null,
+        community_id in dotlrn_communities_all.community_id%TYPE default null,
+        parent_community_id in dotlrn_communities_all.parent_community_id%TYPE default null,
+        community_type in dotlrn_communities_all.community_type%TYPE,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        archived_p in dotlrn_communities_all.archived_p%TYPE default 'f',
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
         join_policy in groups.join_policy%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null,
         context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_communities.community_id%TYPE
+    ) return dotlrn_communities_all.community_id%TYPE
     is
         c_id integer;
     begin
@@ -218,7 +222,7 @@ as
             join_policy => dotlrn_community.new.join_policy
         );
 
-        insert into dotlrn_communities
+        insert into dotlrn_communities_all
           (community_id, 
            parent_community_id,
            community_type, 
@@ -226,6 +230,7 @@ as
            pretty_name,  
            description, 
            package_id, 
+           archived_p,
            portal_id, 
            non_member_portal_id)
         values
@@ -236,6 +241,7 @@ as
            dotlrn_community.new.pretty_name, 
            dotlrn_community.new.description,    
            dotlrn_community.new.package_id, 
+           dotlrn_community.new.archived_p, 
            dotlrn_community.new.portal_id, 
            dotlrn_community.new.non_member_portal_id);
 
@@ -243,32 +249,32 @@ as
     end;
 
     procedure set_active_dates (
-        community_id in dotlrn_communities.community_id%TYPE,
-        start_date in dotlrn_communities.active_start_date%TYPE,
-        end_date in dotlrn_communities.active_end_date%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        start_date in dotlrn_communities_all.active_start_date%TYPE,
+        end_date in dotlrn_communities_all.active_end_date%TYPE
     )
     is
     begin
-        update dotlrn_communities
+        update dotlrn_communities_all
         set active_start_date = dotlrn_community.set_active_dates.start_date,
             active_end_date = dotlrn_community.set_active_dates.end_date
-        where dotlrn_communities.community_id = dotlrn_community.set_active_dates.community_id;
+        where dotlrn_communities_all.community_id = dotlrn_community.set_active_dates.community_id;
     end;
 
     procedure delete (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     )
     is
     begin
         delete
-        from dotlrn_communities
-        where dotlrn_communities.community_id = dotlrn_community.delete.community_id;
+        from dotlrn_communities_all
+        where dotlrn_communities_all.community_id = dotlrn_community.delete.community_id;
 
         acs_group.delete(dotlrn_community.delete.community_id);
     end;
 
     function name (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     ) return varchar
     is
     begin
@@ -276,7 +282,7 @@ as
     end;
 
     function member_p (
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         party_id in parties.party_id%TYPE
     ) return char
     is
@@ -294,7 +300,7 @@ as
     end;
 
     function admin_p (
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         party_id in parties.party_id%TYPE
     ) return char
     is
@@ -312,16 +318,16 @@ as
     end;
 
     function url (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     ) return varchar2
     is
         v_node_id site_nodes.node_id%TYPE;
     begin
         select site_nodes.node_id into v_node_id
-        from dotlrn_communities,
+        from dotlrn_communities_all,
              site_nodes
-        where dotlrn_communities.community_id = dotlrn_community.url.community_id
-        and site_nodes.object_id = dotlrn_communities.package_id;
+        where dotlrn_communities_all.community_id = dotlrn_community.url.community_id
+        and site_nodes.object_id = dotlrn_communities_all.package_id;
 
         return site_node.url(v_node_id);
 
@@ -331,7 +337,7 @@ as
     end;
 
     function has_subcomm_p (
-        community_id in dotlrn_communities.community_id%TYPE
+        community_id in dotlrn_communities_all.community_id%TYPE
     ) return char
     is
         v_rv char(1);
@@ -340,8 +346,8 @@ as
         into v_rv
         from dual
         where exists (select 1
-                      from dotlrn_communities
-                      where dotlrn_communities.parent_community_id = dotlrn_community.has_subcomm_p.community_id);
+                      from dotlrn_communities_all
+                      where dotlrn_communities_all.parent_community_id = dotlrn_community.has_subcomm_p.community_id);
         return v_rv;
     end;
 

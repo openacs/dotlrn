@@ -43,14 +43,15 @@ create table dotlrn_community_types (
                                 references portals (portal_id)
 );
 
-create table dotlrn_communities (
+create table dotlrn_communities_all (
     community_id                constraint dotlrn_c_community_id_fk
                                 references groups (group_id)
-                                constraint dotlrn_communities_pk
+                                constraint dotlrn_communities_all_pk
                                 primary key,
     parent_community_id         constraint dotlrn_c_parent_comm_id_fk
-                                references dotlrn_communities (community_id),
-    community_type              not null
+                                references dotlrn_communities_all (community_id),
+    community_type              constraint dotlrn_c_community_type_nn
+                                not null
                                 constraint dotlrn_c_community_type_fk
                                 references dotlrn_community_types (community_type),
     community_key               varchar2(100)
@@ -62,6 +63,12 @@ create table dotlrn_communities (
     description                 varchar2(4000),
     active_start_date           date,
     active_end_date             date,
+    archived_p                  char(1)
+                                default 'f'
+                                constraint dotlrn_c_archived_p_ck
+                                check (archived_p in ('t', 'f'))
+                                constraint dotlrn_c_archived_p_nn
+                                not null,
     portal_id                   constraint dotlrn_c_portal_id_fk
                                 references portals (portal_id),
     non_member_portal_id        constraint dotlrn_c_non_member_portal_fk
@@ -70,11 +77,15 @@ create table dotlrn_communities (
                                 references portals (portal_id),
     package_id                  constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),
-    -- We can't have two communities with the same parent with the same key (url)
-    -- even if the parent_community_id is null, which it will be for non-subcommunities
     constraint dotlrn_c_community_key_un
     unique (community_key, parent_community_id)
 );
+
+create or replace view dotlrn_communities
+as
+    select dotlrn_communities_all.*
+    from dotlrn_communities_all
+    where dotlrn_communities_all.archived_p = 'f';
 
 create or replace view dotlrn_communities_not_closed
 as
@@ -87,10 +98,10 @@ as
 
 create or replace view dotlrn_active_communities
 as
-    select *
+    select dotlrn_communities.*
     from dotlrn_communities
-    where (active_start_date is null or active_start_date < sysdate)
-    and (active_end_date is null or active_end_date > sysdate);
+    where (dotlrn_communities.active_start_date is null or dotlrn_communities.active_start_date < sysdate)
+    and (dotlrn_communities.active_end_date is null or dotlrn_communities.active_end_date > sysdate);
 
 create or replace view dotlrn_active_comms_not_closed
 as
@@ -103,40 +114,39 @@ as
 
 create table dotlrn_applets (
     applet_id                   integer
-                                constraint dotlrn_applets_applet_id_nn
-                                not null
                                 constraint dotlrn_applets_applet_pk 
                                 primary key,
     applet_key                  varchar(100)
                                 constraint dotlrn_applets_applet_key_nn
                                 not null
-                                constraint dotlrn_applets_applet_key_uk
+                                constraint dotlrn_applets_applet_key_un
                                 unique,
     status                      char(10)
                                 default 'active'
+                                constraint dotlrn_applets_status_ck
+                                check (status in ('active', 'inactive'))
                                 constraint dotlrn_applets_status_nn
                                 not null
-                                constraint dotlrn_applets_status_ck
-                                check (status in ('active','inactive'))
 );
 
 create table dotlrn_community_applets (
-    community_id                integer
+    community_id                constraint dotlrn_ca_community_id_fk
+                                references dotlrn_communities_all (community_id)
                                 constraint dotlrn_ca_community_id_nn
-                                not null
-                                constraint dotlrn_ca_community_id_fk
-                                references dotlrn_communities (community_id),
-    applet_id                   integer
+                                not null,
+    applet_id                   constraint dotlrn_ca_applet_key_fk
+                                references dotlrn_applets (applet_id)
                                 constraint dotlrn_ca_applet_key_nn
-                                not null
-                                references dotlrn_applets (applet_id),
-    constraint dotlrn_community_applets_pk primary key (community_id, applet_id),
+                                not null,
     -- this is the package_id of the package this applet represents
-    package_id                  integer,
+    package_id                  constraint dotlrn_ca_package_id_fk
+                                references apm_packages (package_id),
     active_p                    char(1)
                                 default 't'
-                                constraint dotlrn_ca_active_p_nn
-                                not null
                                 constraint dotlrn_ca_active_p_ck
                                 check (active_p in ('t','f'))
+                                constraint dotlrn_ca_active_p_nn
+                                not null,
+    constraint dotlrn_community_applets_pk
+    primary key (community_id, applet_id)
 );

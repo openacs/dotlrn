@@ -34,7 +34,7 @@ is
     function new (
         rel_id in dotlrn_member_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
         creation_user in acs_objects.creation_user%TYPE default null,
@@ -55,7 +55,7 @@ is
     function new (
         rel_id in dotlrn_member_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
         creation_user in acs_objects.creation_user%TYPE default null,
@@ -105,7 +105,7 @@ is
     function new (
         rel_id in dotlrn_admin_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
         creation_user in acs_objects.creation_user%TYPE default null,
@@ -126,7 +126,7 @@ is
     function new (
         rel_id in dotlrn_admin_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
-        community_id in dotlrn_communities.community_id%TYPE,
+        community_id in dotlrn_communities_all.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
         creation_user in acs_objects.creation_user%TYPE default null,
