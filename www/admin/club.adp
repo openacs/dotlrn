@@ -1,1 +1,1 @@
-<a href=@url@one-community-admin>@pretty_name@</a> - @description@
+<a href=@url@>@pretty_name@</a> - [<a href=@url@one-community-admin>admin</a>] @description@
