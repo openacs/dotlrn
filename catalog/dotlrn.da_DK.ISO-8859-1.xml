@@ -77,8 +77,8 @@
   <msg key="club_page_home_title">Hjem for Fællesskabet</msg>
   <msg key="club_page_people_title">Folk</msg>
   <msg key="clubs_name_header">%clubs_pretty_name%-navn</msg>
-  <msg key="clubs_pretty_name">Fællesskab</msg>
-  <msg key="clubs_pretty_plural">Fællesskaber</msg>
+  <msg key="clubs_pretty_name">Gruppe</msg>
+  <msg key="clubs_pretty_plural">Grupper</msg>
   <msg key="Communities">Fællesskaber</msg>
   <msg key="Community">Fællesskab</msg>
   <msg key="community_header_name">%clubs_pretty_name%-navn</msg>
@@ -123,7 +123,7 @@
   <msg key="Description_1">Beskrivelse:</msg>
   <msg key="Dont_Add">Tilføj ikke</msg>
   <msg key="dotLRN_Admin">Administrator af dotLRN</msg>
-  <msg key="dotlrn_admin_pretty_name">Administration af hele webstedet</msg>
+  <msg key="dotlrn_admin_pretty_name">.LRN Administration</msg>
   <msg key="dotlrn_admin_rel_pretty_name">Medlemsskab af fællesskabet for administrator af dotLRN </msg>
   <msg key="dotlrn_admin_rel_pretty_plural">Medlemsskaber af fællesskabet for administrator af dotLRN</msg>
   <msg key="dotlrn_class_instance_description">eksempelvis 6.001</msg>
@@ -382,7 +382,7 @@
   <msg key="Nuke_">Tilintetgør...</msg>
   <msg key="Nuke_Users">Tilintetgør brugere</msg>
   <msg key="olive">olivengrøn</msg>
-  <msg key="Open">Åbn</msg>
+  <msg key="Open">Åben</msg>
   <msg key="optional_defaults_to">valgfri, normalsvaret er</msg>
   <msg key="Or">Eller</msg>
   <msg key="or_by_RGB_number">eller efter RGB-værdi</msg>
