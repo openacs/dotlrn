@@ -18,6 +18,10 @@ if {![exists_and_not_null type]} {
     set type admin
 }
 
+if {![exists_and_not_null referer]} {
+    set referer users
+}
+
 set default_section Z
 foreach dimension {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} {
     if {[string equal $type "pending"] == 1} {

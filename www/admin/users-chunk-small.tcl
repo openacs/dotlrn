@@ -16,6 +16,10 @@ if {![exists_and_not_null type]} {
     set type admin
 }
 
+if {![exists_and_not_null referer]} {
+    set referer users
+}
+
 # Currently, just present a list of dotLRN users
 if {[string equal $type "pending"] == 1} {
     db_multirow users select_non_dotlrn_users {}
