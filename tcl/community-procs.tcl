@@ -254,6 +254,7 @@ namespace eval dotlrn_community {
 	    set admin_segment_id [rel_segments_new $community_id dotlrn_admin_rel "Admins of $community_name"]
 
 	    # Grant permissions
+	    ad_permission_grant $member_segment_id $community_id read
 	    ad_permission_grant $member_segment_id $community_id write
 	    ad_permission_grant $admin_segment_id $community_id admin
 	}

@@ -7,6 +7,9 @@ ad_page_contract {
 } {
 }
 
+ns_log Notice "BEN TEST!"
+
+
 # Check that this is a community type
 if {[ad_parameter community_level_p] != 1} {
     ns_returnredirect "./"

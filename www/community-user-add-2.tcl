@@ -11,7 +11,7 @@ ad_page_contract {
 set community_id [dotlrn_community::get_community_id]
 
 # Get user information
-db_1row select_user_info "select first_names, last_name, email from dotlrn_users_full where user_id=:user_id"
+db_1row select_user_info "select first_names, last_name, email from dotlrn_full_users where user_id=:user_id"
 
 # Depending on the community_type, we have allowable rel_types
 set rel_types [dotlrn_community::get_allowed_rel_types -community_id $community_id]

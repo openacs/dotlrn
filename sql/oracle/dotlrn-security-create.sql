@@ -15,6 +15,9 @@
 
 DECLARE
 BEGIN
+	-- the ability to browse dotLRN in general
+	acs_privilege.create_privilege('dotlrn_browse');
+
 	-- the ability to even view that a community exists
 	acs_privilege.create_privilege('dotlrn_view_community');
 
@@ -48,6 +51,9 @@ BEGIN
 	acs_privilege.add_child('read', 'dotlrn_view_community_type');
 	acs_privilege.add_child('admin', 'dotlrn_admin_community');
 	acs_privilege.add_child('admin', 'dotlrn_admin_community_type');
+
+	-- for now, we only want admins to be able to browse by default
+	acs_privilege.add_child('admin', 'dotlrn_browse');
 
 	-- no default permissions
 

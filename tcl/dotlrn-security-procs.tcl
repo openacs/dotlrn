@@ -90,12 +90,7 @@ namespace eval dotlrn {
     } {
 	Check is a user can browse dotLRN
     } {
-	if {[empty_string_p $user_id]} {
-	    set user_id [ad_conn user_id]
-	}
-
-	# FIXME: must check that a user can browse
-	return 1
+	return [ad_permission_p -user_id $user_id [dotlrn::get_package_id] dotlrn_browse]
     }
 
     ad_proc -public require_user_browse {
@@ -108,7 +103,16 @@ namespace eval dotlrn {
 	}
     }
 
-    ad_proc -public user_can_read_sensitive_data_p {
+    ad_proc -public set_user_read_private_data {
+	{-user_id:required}
+	val
+    } {
+	set whether or not a user can read private data
+    } {
+	acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] $val
+    }
+    
+    ad_proc -public user_can_read_private_data_p {
 	{user_id ""}
     } {
 	Check if a user can read sensitive data in dotLRN
@@ -116,17 +120,18 @@ namespace eval dotlrn {
 	if {[empty_string_p $user_id]} {
 	    set user_id [ad_conn user_id]
 	}
+	
+	ns_log Notice "BEN: dotlrn::user_can_read_private_data_p -- got the call, user_id = $user_id"
 
-	# FIXME
-	return 1
+	return [acs_privacy::user_can_read_private_data_p -user_id $user_id -object_id [dotlrn::get_package_id]]
     }
-
-    ad_proc -public require_user_read_sensitive_data {
+    
+    ad_proc -public require_user_read_private_data {
 	{user_id ""}
     } {
 	Require that a user be able to read sensitive data
     } {
-	if {![user_can_read_sensitive_data_p -user_id $user_id]} {
+	if {![user_can_read_private_data_p -user_id $user_id]} {
 	    do_abort
 	}
     }
@@ -138,9 +143,10 @@ namespace eval dotlrn {
 	Check if a user can read a community type
     } {
 	# FIXME: permission hack
+	# NOT SURE HOW TO FIX THIS WITHOUT object_ids on community types
 	return 1
     }
-
+    
     ad_proc -public require_user_read_community_type {
 	{-user_id ""}
 	community_type
@@ -151,7 +157,7 @@ namespace eval dotlrn {
 	    do_abort
 	}
     }
-
+    
     ad_proc -public user_can_read_community_p {
 	{-user_id ""}
 	community_id
@@ -178,8 +184,11 @@ namespace eval dotlrn {
     } {
 	check if a user is a member of a community
     } {
-	# FIXME: security hack
-	return 1
+	if {[empty_string_p $user_id]} {
+	    set user_id [ad_conn user_id]
+	}
+	
+	return [dotlrn_community::member_p $community_id $user_id]
     }
 
     ad_proc -public require_user_community_member {
@@ -192,7 +201,7 @@ namespace eval dotlrn {
 	    do_abort
 	}
     }
-	
+    
     ad_proc -public user_can_admin_community_p {
 	{-user_id ""}
 	community_id
@@ -201,7 +210,7 @@ namespace eval dotlrn {
     } {
 	return [ad_permission_p -user_id $user_id $community_id dotlrn_admin_community]
     }
-
+    
     ad_proc -public require_user_admin_community {
 	{-user_id ""}
 	community_id

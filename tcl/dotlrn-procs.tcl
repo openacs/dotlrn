@@ -52,6 +52,18 @@ namespace eval dotlrn {
 	return $node(object_id)
     }
 
+    ad_proc -public get_users_rel_segment_id {} {
+	returns the rel_segment_id of the dotLRN users segment
+    } {
+	return [db_string select_user_rel_segment {}]
+    }
+
+    ad_proc -public get_full_users_rel_segment_id {} {
+	returns the rel_segment_id of the dotLRN full users segment
+    } {
+	return [db_string select_user_rel_segment {}]
+    }
+    
     ad_proc -public get_user_theme {
 	user_id
     } {
