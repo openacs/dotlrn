@@ -26,7 +26,7 @@ ad_page_contract {
     departments:multirow
 }
 
-set title "Portal Templates"
+set title {Templates}
 set context_bar $title
 set url "[portal::mount_point]admin"
 set referer [ad_conn url]

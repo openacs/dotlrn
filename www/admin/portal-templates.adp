@@ -18,7 +18,10 @@
 
 %>
 
-<master>
+<master src="dotlrn-admin-master">
+<property name="title">@title@</property>
+<property name="context_bar">@context_bar@</property>
+
   <ul>
     <multiple name=templates>
       <li>@templates.name@ [<a href="@url@/portal-show.tcl?portal_id=@templates.portal_id@&referer=@referer@">view</a>|<a href="@url@/portal-config?portal_id=@templates.portal_id@&referer=@referer@">edit</a>]</li>

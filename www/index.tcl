@@ -76,7 +76,6 @@ set portal_id [dotlrn::get_workspace_portal_id $user_id]
 # O glorious portal page!
 set rendered_page \
         [dotlrn::render_page \
-            -user_id $user_id \
             -page_num $page_num \
             -hide_links_p "t" \
             $portal_id
