@@ -99,7 +99,7 @@ set header_font ""
 set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
-set header_img_url "$dotlrn_graphics_url/logowhite.gif" 
+set header_img_url "$dotlrn_graphics_url/dotlrn.gif" 
 set header_img_alt_text "Header Logo"
 
 
@@ -208,7 +208,12 @@ img.header-img {
 .header-logo {
     color: white;
     background: white;
-    width: 100px;
+    width: 140px;
+}
+
+.header-buttons {
+    vertical-align: middle;
+    text-align: right;
 }
 
 .header-text {
@@ -216,8 +221,8 @@ img.header-img {
     font-size: $header_font_size;
     color: $header_font_color;
     background: white;
-    width: 100px;
     white-space: nowrap;
+    padding-left: 20px;
 }
 
 table.element {
@@ -266,5 +271,18 @@ img.element-header-button {
 
 </STYLE>
 "
+
+# Developer-support support
+set ds_enabled_p [parameter::get_from_package_key \
+    -package_key acs-developer-support \
+    -parameter EnabledOnStartupP \
+    -default 0
+]
+
+if {$ds_enabled_p} {
+    set ds_link [ds_link]
+} else {
+    set ds_link {}
+}
 
 ad_return_template

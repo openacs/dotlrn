@@ -40,15 +40,15 @@
   </tr>
 
   <tr>
-    <td width="10%" class="header-logo">
+    <td class="header-logo">
       <a href="@dotlrn_url@">
       <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
     </td>
 
-    <td width="50%"><div class=header-text>@text@</div></td>
+    <td><div class=header-text>@text@</div></td>
 
-    <td width="40%" class="header-buttons" align="right">
-      <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_graphics_url@/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
+    <td class="header-buttons">
+      <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_graphics_url@/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySpace"></a>
       <a href="@dotlrn_url@/control-panel"><img class="header-img" border="0" src="@dotlrn_graphics_url@/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
       <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_graphics_url@/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
     </td>
@@ -82,4 +82,17 @@
 
 <hr>
 
-<div class="footer"><a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> | <a href="http://web.mit.edu">MIT</a></div>
+<div class="footer">
+  <table width="100%" border="0" cellpadding="1" cellspacing="0">
+    <tr>
+      <td align=left valign=top>
+        <a href="http://dotlrn.openforce.net">dotLRN</a>
+        | 
+        <a href="http://openacs.org">OpenACS</a>
+      </td>
+      <td align=right>
+        @ds_link@
+      </td>
+    </tr>
+  </table>
+</div>
