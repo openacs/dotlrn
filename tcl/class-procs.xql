@@ -11,6 +11,21 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_department::delete.delete_department">
+        <querytext>
+            delete from dotlrn_classes
+            where class_key = :class_key
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_class::count_class_instances.select_count_class_instaces">
+        <querytext>
+          select count(*)
+          from dotlrn_class_instances
+          where class_key = :class_key
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_class::new_instance.select_parent_node_id">
         <querytext>
             select node_id

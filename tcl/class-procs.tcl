@@ -109,7 +109,10 @@ namespace eval dotlrn_class {
         {-pretty_name:required}
         {-description ""}
     } {
-        Creates a new class, like "Structure and Interpretation of
+        Creates a new class - a class is a new community TYPE, not an actual
+        class instance
+
+        A class is like "Structure and Interpretation of
         Computer Programs." The return value is the short class name,
         a key that works in SQL, and that uniquely identifies the class.
 
@@ -138,6 +141,37 @@ namespace eval dotlrn_class {
 
             db_dml insert_class {}
         }
+    }
+
+    ad_proc -public delete  {
+        {-class_key:required}
+    } {
+        Deletes an empty class (the TYPE), if there are no
+        instanciated classes of this type.
+    } {
+        # check that it's empty
+        if {![count_class_instances -class_key $class_key] == 0} {
+            ad_return_complaint 1 "Error: A [parameter::get -parameter classes_pretty_name] 
+            must have <em>no</em>[parameter::get -parameter class_instances_pretty_plural] to be deleted"
+            ad_script_abort
+        } 
+
+        db_transaction {
+            # delete the dept from the table
+            db_dml delete_class {}
+
+            # since depts are types, delete the type
+            dotlrn_community::delete_type -community_type_key $class_key
+
+        }
+    }
+
+    ad_proc -public count_class_instances {
+        {-class_key:required}
+    } {
+        returns the number of class instances with the given class key
+    } {
+        return [db_string select_count_class_instaces {} -default 0]
     }
 
     ad_proc -public new_instance {
