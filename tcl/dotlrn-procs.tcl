@@ -50,6 +50,53 @@ namespace eval dotlrn {
         return [ad_decode [apm_num_instances [package_key]] 0 0 1]
     }
 
+    ad_proc -public is_package_mounted {
+        {-package_key:required}
+    } {
+        returns 1 if package is mounted under dotlrn, 0 otherwise
+    } {
+        set package_list [nsv_array get site_nodes {*${package_key}*}]
+        set dotlrn_ancestor_p 0
+
+        for {set x 1} {$x < [llength $package_list]} {incr x 2} {
+            array set package_info [lindex $package_list $x]
+
+            if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) "dotlrn"] != 0} {
+                set dotlrn_ancestor_p 1
+                break
+            }
+        }
+
+        return $dotlrn_ancestor_p
+    }
+
+    ad_proc -public mount_package {
+        {-package_key:required}
+        {-url:required}
+        {-directory_p:required}
+    } {
+        mount a package under dotlrn
+    } {
+        db_transaction {
+            sete parent_node [site_node [site_node_closest_ancestor_package_url $url]]
+            set parent_id $parent_node(node_id)
+            set parent_package_id $parent_node(object_id)
+
+            set node_id [db_exec_plsql mount_package {
+                begin
+                    :1 := site_node.new(
+                        node_id => acs_object_id_seq.nextval,
+                        parent_id => :parent_id,
+                        name => :url,
+                        directory_p => :directory_p
+                    );
+                end;
+            }
+
+            return [site_node_create_package_instance $node_id $package_key $parent_package_id $package_key]
+        }
+    }
+
     ad_proc -public get_node_id {} {
 	return the root node id for dotLRN
     } {
