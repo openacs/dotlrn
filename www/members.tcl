@@ -14,18 +14,23 @@
 #  details.
 #
 
-# dotlrn/www/members.tcl
-
 ad_page_contract {
+
     @author yon (yon@openforce.net)
     @author arjun (arjun@openforce.net)
     @creation-date Jan 19, 2002
     @version $Id$
+
 } -query {
 }
 
-set context_bar {{"one-community-admin" Admin} {Manage Members}}
+# prevent this page from being called when not in a community
+# (i.e. the main dotlrn instance
+if {[empty_string_p [dotlrn_community::get_community_id]]} {
+    ad_returnredirect "[dotlrn::get_url]"
+}
 
+set context_bar {{"one-community-admin" Admin} {Manage Members}}
 set community_id [dotlrn_community::get_community_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 set admin_p [dotlrn::user_can_admin_community_p -user_id [ad_get_user_id] -community_id $community_id]
