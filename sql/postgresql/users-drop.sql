@@ -15,15 +15,29 @@
 --
 
 --
--- Drop the dotLRN Professors package
+-- Drop the User Profile package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
-\i dotlrn-professors-package-drop.sql
-\i dotlrn-professors-sanitize.sql
-\i dotlrn-professor-profile-provider-drop.sql
+-- drop external users
+\i externals-drop.sql
 
-drop table dotlrn_professor_profile_rels;
+-- drop students
+\i students-drop.sql
+
+-- drop professors
+\i professors-drop.sql
+
+-- drop admins
+\i admins-drop.sql
+
+\i users-package-drop.sql
+\i users-sanitize.sql
+\i user-profile-provider-drop.sql
+
+drop view dotlrn_users;
+
+drop table dotlrn_user_types;
+drop table dotlrn_user_profile_rels;

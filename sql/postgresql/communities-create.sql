@@ -174,4 +174,4 @@ create table dotlrn_community_applets (
     primary key (community_id, applet_id)
 );
 
-\i dotlrn-communities-tree-create.sql
+\i communities-tree-create.sql

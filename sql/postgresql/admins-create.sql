@@ -15,20 +15,20 @@
 --
 
 --
--- Create the dotLRN Externals package
+-- Create the dotLRN Admins package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
 -- @version $Id$
 --
 
-create table dotlrn_external_profile_rels (
+create table dotlrn_admin_profile_rels (
     rel_id                      integer
-                                constraint dotlrn_external_p_rels_rel_fk
+                                constraint dotlrn_adm_prfl_rels_rel_id_fk
                                 references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_external_p_rels_pk
+                                constraint dotlrn_admin_prfl_rels_pk
                                 primary key
 );
 
-\i dotlrn-external-profile-provider-create.sql
-\i dotlrn-externals-init.sql
-\i dotlrn-externals-package-create.sql
+\i admin-profile-provider-create.sql
+\i admins-init.sql
+\i admins-package-create.sql

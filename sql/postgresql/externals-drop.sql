@@ -15,20 +15,15 @@
 --
 
 --
--- Create the dotLRN Students package
+-- Drop the dotLRN Externals package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @author dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
-create table dotlrn_student_profile_rels (
-    rel_id                      integer
-                                constraint dotlrn_student_p_rels_rel_fk
-                                references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_student_p_rels_pk
-                                primary key
-);
+\i externals-package-drop.sql
+\i externals-sanitize.sql
+\i external-profile-provider-drop.sql
 
-\i dotlrn-student-profile-provider-create.sql
-\i dotlrn-students-init.sql
-\i dotlrn-students-package-create.sql
+drop table dotlrn_external_profile_rels;

@@ -15,29 +15,20 @@
 --
 
 --
--- Drop the User Profile package
+-- Create the dotLRN Professors package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
 -- @version $Id$
 --
 
--- drop external users
-\i dotlrn-externals-drop.sql
+create table dotlrn_professor_profile_rels (
+    rel_id                      integer
+                                constraint dotlrn_prof_rels_rel_id_fk
+                                references dotlrn_user_profile_rels (rel_id)
+                                constraint dotlrn_prof_profile_rels_pk
+                                primary key
+);
 
--- drop students
-\i dotlrn-students-drop.sql
-
--- drop professors
-\i dotlrn-professors-drop.sql
-
--- drop admins
-\i dotlrn-admins-drop.sql
-
-\i dotlrn-users-package-drop.sql
-\i dotlrn-users-sanitize.sql
-\i dotlrn-user-profile-provider-drop.sql
-
-drop view dotlrn_users;
-
-drop table dotlrn_user_types;
-drop table dotlrn_user_profile_rels;
+\i professor-profile-provider-create.sql
+\i professors-init.sql
+\i professors-package-create.sql

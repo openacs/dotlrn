@@ -15,24 +15,16 @@
 --
 
 --
--- drop the dotLRN communities model
+-- Drop the dotLRN Students package
 --
--- @author Ben Adida (ben@openforce.net)
--- @author yon (yon@openforce.net
--- @author arjun (arjun@openforce.net)
--- @author dan chak (chak@openforce.net)
--- @creation-date September 20th, 2001 (redone)
--- ported to pg 2002-07-01
+-- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- author dan chak (chak@openforce.net)
+-- pg port on 2002-07-01
 -- @version $Id$
 --
 
-\i dotlrn-communities-tree-drop.sql;
+\i students-package-drop.sql
+\i students-sanitize.sql
+\i student-profile-provider-drop.sql
 
-drop table dotlrn_community_applets;
-drop table dotlrn_applets;
-drop view dotlrn_active_comms_not_closed;
-drop view dotlrn_active_communities;
-drop view dotlrn_communities_not_closed;
-drop view dotlrn_communities;
-drop table dotlrn_communities_all;
-drop table dotlrn_community_types;
+drop table dotlrn_student_profile_rels;

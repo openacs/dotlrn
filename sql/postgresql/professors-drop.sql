@@ -15,15 +15,15 @@
 --
 
 --
--- Drop the dotLRN Externals package
+-- Drop the dotLRN Professors package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- @author dan chak (chak@openforce.net)
+-- author dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
-\i dotlrn-externals-package-drop.sql
-\i dotlrn-externals-sanitize.sql
-\i dotlrn-external-profile-provider-drop.sql
+\i professors-package-drop.sql
+\i professors-sanitize.sql
+\i professor-profile-provider-drop.sql
 
-drop table dotlrn_external_profile_rels;
+drop table dotlrn_professor_profile_rels;

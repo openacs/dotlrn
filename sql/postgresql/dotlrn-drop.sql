@@ -22,17 +22,17 @@
 -- @version $Id$
 --
 
-\i dotlrn-user-extension-drop.sql
-\i dotlrn-security-drop.sql
-\i dotlrn-main-portlet-drop.sql
-\i dotlrn-community-membership-packages-drop.sql
-\i dotlrn-applet-sc-drop.sql
-\i dotlrn-class-membership-drop.sql
-\i dotlrn-classes-drop.sql
+\i user-extension-drop.sql
+\i security-drop.sql
+\i main-portlet-drop.sql
+\i community-membership-packages-drop.sql
+\i applet-sc-drop.sql
+\i class-membership-drop.sql
+\i classes-drop.sql
 \i dotlrn-clubs-drop.sql
-\i dotlrn-dotlrn-sanitize.sql
-\i dotlrn-communities-package-drop.sql
-\i dotlrn-community-memberships-drop.sql
-\i dotlrn-communities-drop.sql
-\i dotlrn-portal-types-drop.sql
-\i dotlrn-users-drop.sql
+\i dotlrn-sanitize.sql
+\i communities-package-drop.sql
+\i community-memberships-drop.sql
+\i communities-drop.sql
+\i portal-types-drop.sql
+\i users-drop.sql

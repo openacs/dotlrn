@@ -25,17 +25,17 @@
 -- started August 18th, 2001
 --
 
-\i dotlrn-users-create.sql
-\i dotlrn-portal-types-create.sql
-\i dotlrn-communities-create.sql
-\i dotlrn-community-memberships-create.sql
-\i dotlrn-communities-package-create.sql
+\i users-create.sql
+\i portal-types-create.sql
+\i communities-create.sql
+\i community-memberships-create.sql
+\i communities-package-create.sql
 \i dotlrn-init.sql
-\i dotlrn-clubs-create.sql
-\i dotlrn-classes-create.sql
-\i dotlrn-class-memberships-create.sql
-\i dotlrn-applet-sc-create.sql
-\i dotlrn-community-memberships-packages-create.sql
-\i dotlrn-main-portlet-create.sql
-\i dotlrn-security-create.sql
-\i dotlrn-user-extension-create.sql
+\i clubs-create.sql
+\i classes-create.sql
+\i class-memberships-create.sql
+\i applet-sc-create.sql
+\i community-memberships-packages-create.sql
+\i main-portlet-create.sql
+\i security-create.sql
+\i user-extension-create.sql
