@@ -561,3 +561,6 @@ set lang_admin_p [permission::permission_p \
                       -privilege admin \
                       -party_id [ad_conn untrusted_user_id]]
 set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translator-mode-toggle" { { return_url [ad_return_url] } }]
+
+# Curriculum bar
+set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
