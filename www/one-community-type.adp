@@ -27,7 +27,5 @@
 </else>
 
 <p>
-<a href=community-new>New Community of this Type</a>
-<p>
 </ul>
 

@@ -1,6 +1,11 @@
 <master src="./master">
 <property name="title">dotLRN Class Instance</property>
 
+<h3>Applets</h3>
+<a href=community-applets?community_id=@class_instance_id@>manage applets</a>
+
+<p>
+
 <h3>Users</h3>
 <ul>
 <multiple name="users">

@@ -1,15 +1,13 @@
 
 ad_page_contract {
-    Remove an applet from a community
+    Add an applet to a community
     
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-08
 } {
+    community_id
     applet_key
 }
-
-# Get the community ID
-set community_id [dotlrn_community::get_community_id]
 
 # Check access
 if {![dotlrn_community::admin_access_p $community_id]} {
@@ -18,7 +16,7 @@ if {![dotlrn_community::admin_access_p $community_id]} {
 }
 
 # Add the applet
-dotlrn_community::remove_applet $community_id $applet_key
+dotlrn_community::add_applet $community_id $applet_key
 
 # Get back to where you once belonged
-ns_returnredirect one-community-admin
+ns_returnredirect community-applets?community_id=$community_id

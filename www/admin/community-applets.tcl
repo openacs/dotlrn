@@ -1,11 +1,12 @@
 
 
 ad_page_contract {
-    Admin a community
+    Community Applets
     
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-05
 } {
+    community_id
 }
 
 # Check that this is a community type
@@ -15,9 +16,6 @@ if {[ad_parameter community_level_p] != 1} {
 }
 
 set user_id [ad_conn user_id]
-
-# What community are we at?
-set community_id [dotlrn_community::get_community_id]
 
 # Load some community type info
 db_1row select_community_info {}
