@@ -118,10 +118,9 @@ namespace eval dotlrn {
         set link_all 0
     
         if {[empty_string_p $community_id]} {
-            #
-            # We are not under a dotlrn community. However we could be under /dotlrn
-            # (i.e. in the user's portal) or anywhere else on the site
-            #
+            # We are not under a dotlrn community. However we could be
+            # under /dotlrn (i.e. in the user's portal) or anywhere
+            # else on the site
             set link "[dotlrn::get_url]/"
             
             if {[dotlrn::user_p -user_id $user_id]} {
@@ -132,6 +131,7 @@ namespace eval dotlrn {
             } else {
                 # not a dotlrn user, so no user portal to show
                 set portal_id {}
+                set show_control_panel 0
             }
 
         } else {
