@@ -36,3 +36,4 @@
 \i main-portlet-create.sql
 \i security-create.sql
 \i user-extension-create.sql
+\i custom-permissions.sql

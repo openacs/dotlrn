@@ -39,6 +39,8 @@ begin
 
     perform acs_privilege__remove_child(''dotlrn_edit_community'', ''dotlrn_view_community'');
     perform acs_privilege__remove_child(''dotlrn_admin_community'', ''dotlrn_edit_community'');
+    perform acs_privilege__remove_child(''dotlrn_admin_community'', ''dotlrn_spam_community'');
+
 
     delete
     from acs_permissions
@@ -59,7 +61,7 @@ begin
     perform acs_privilege__drop_privilege(''dotlrn_edit_community'');
     perform acs_privilege__drop_privilege(''dotlrn_view_community'');
     perform acs_privilege__drop_privilege(''dotlrn_view_community_type'');
-
+    perform acs_privilege__drop_privilege(''dotlrn_spam_community'');
     return 0;
 
 end;' language 'plpgsql';

@@ -26,7 +26,7 @@
 -- @version $Id$
 --
 
-\i communities-tree-drop.sql;
+\i communities-tree-drop.sql
 
 drop view dotlrn_active_comms_not_closed;
 drop view dotlrn_active_communities;
