@@ -115,10 +115,31 @@ namespace eval dotlrn {
 
             if {[string equal $access_level "full"] == 1} {
                 # must be here since wsp must exist in the dotlrn_full_users table,
-                #do the callbacks on the active dotlrn-wide applets
+                # do the callbacks on the active dotlrn-wide applets
                 dotlrn_community::applets_dispatch \
                         -op AddUser \
                         -list_args [list $user_id]
+            }
+
+            # if the user is a member of communities (from some previous
+            # dotlrn relation, like if the user was limited user and is now
+            # being made a full user) then we must remove them from the
+            # community and re-add them so that all the portals will work
+            # properly.
+            # NOTE: we cannot do this in a db_foreach beacause of the table we
+            # are selecting from changes inside the loop causing all kinds of
+            # dead lock issues.
+            set current_memberships [db_list_of_lists select_current_memberships {
+                select community_id,
+                       rel_type,
+                       member_state
+                from dotlrn_member_rels_full
+                where user_id = :user_id
+            }]
+
+            foreach row $current_memberships {
+                dotlrn_community::remove_user [lindex $row 0] $user_id
+                dotlrn_community::add_user -rel_type [lindex $row 1] -member_state [lindex $row 2] [lindex $row 0] $user_id
             }
         }
 
