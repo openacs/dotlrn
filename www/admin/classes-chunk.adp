@@ -47,6 +47,7 @@
 	<listtemplate name="classes"></listtemplate>
       </if>
       <else>
+        <p align="right"><a href="class-new" class="button">#dotlrn.new_class_1#</a> </p>
 	<table>
 	  <tr bgcolor="#eeeeee">
 	    <td align="left" colspan="4">
