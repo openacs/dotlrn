@@ -16,7 +16,7 @@
 
 -->
 
-<master>
+<master src="dotlrn-master">
 <property name="title">Manage Memberships</property>
 <property name="context_bar">Manage Memberships</property>
 

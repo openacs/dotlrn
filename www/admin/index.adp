@@ -4,7 +4,7 @@
   @version $Id$
 -->
 
-<master src="master">
+<master src="dotlrn-admin-master">
 <property name="title">dotLRN Admin</property>
 <property name="context_bar">@context_bar@</property>
 

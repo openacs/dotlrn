@@ -1,4 +1,4 @@
-<master>
+<master src="dotlrn-master">
 <property name="title">Manage Applets</property>
 <property name="link_all">1</property>
 <property name="return_url">one-community</property>

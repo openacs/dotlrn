@@ -1,4 +1,4 @@
-<master src="master">
+<master src="dotlrn-admin-master">
 <property name="title">Users</property>
 <property name="context_bar">@context_bar@</property>
 

@@ -1,4 +1,4 @@
-<master>
+<master src="dotlrn-master">
 <property name="title">@title@</property>
 <property name="portal_id">@admin_portal_id@</property>
 <property name="show_control_panel">1</property>

@@ -1,4 +1,4 @@
-<master>
+<master src="dotlrn-master">
 <property name="context_bar">@context_bar@</property>
 <property name="pretext">@pretext@</property>
 <property name="portal_id">@portal_id@</property>

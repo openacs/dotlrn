@@ -1,4 +1,4 @@
-<master>
+<master src="dotlrn-master">
 <property name="title">Spam Community</property>
 <property name="context_bar">@context_bar@</property>
 <property name="portal_id">@portal_id@</property>

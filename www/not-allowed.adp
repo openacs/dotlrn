@@ -1,4 +1,4 @@
-<master>
+<master src="dotlrn-master">
 <property name="title">Not Allowed</property>
 <property name="portal_id"></property>
 

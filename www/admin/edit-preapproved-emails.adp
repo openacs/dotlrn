@@ -16,7 +16,7 @@
 
 -->
 
-<master src="master">
+<master src="dotlrn-admin-master">
 <property name="title">Edit Pre-approved Email Servers</property>
 <property name="context_bar">{Edit Pre-approved Email Servers}</property>
 

@@ -1,4 +1,4 @@
-<master>
+<master src="dotlrn-master">
 <property name="title">Configure Element</property>
 <property name="portal_id">@portal_id@</property>
 
