@@ -177,9 +177,7 @@ namespace eval dotlrn_community {
     } {
 
         if {[empty_string_p $community_key]} {
-            # LARS 2003-10-21: Should be replaced with a direct call to util_text_to_url
-            # which resolves conflicts with existing community-keys
-            set community_key [dotlrn::generate_key -name $pretty_name]
+            set community_key [dotlrn_community::generate_key -name $pretty_name]
         }
 
         check_community_key_valid_p \
