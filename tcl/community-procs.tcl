@@ -316,7 +316,7 @@ namespace eval dotlrn_community {
         }
 
         if {$community_type == "dotlrn_class_instance"} {
-            return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_admin_rel}
+            return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_admin_rel}
         }
 
         if {$community_type == "dotlrn_club"} {
@@ -333,7 +333,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_all_roles {} {
         return the list of roles used in dotLRN
     } {
-        return {dotlrn_admin_rel dotlrn_member_rel dotlrn_instructor_rel dotlrn_ta_rel dotlrn_student_rel}
+        return {dotlrn_admin_rel dotlrn_member_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_ta_rel dotlrn_student_rel}
     }
 
     ad_proc -public get_all_roles_as_options {} {
@@ -353,8 +353,11 @@ namespace eval dotlrn_community {
     } {
         Returns a pretty version of the rel_type
     } {
-        set pretty_name [db_string select_pretty_name "select pretty_name from acs_object_types where object_type = :rel_type"]
-        return $pretty_name
+        return [db_string select_pretty_name {
+            select pretty_name
+            from acs_object_types
+            where object_type = :rel_type
+        }]
     }
 
     ad_proc -public get_role_pretty_name {

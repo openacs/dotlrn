@@ -135,6 +135,7 @@ namespace eval dotlrn_class {
     } {
         return {
             {instructor_rel "Professor"}
+            {aa_rel "Course Assistant"}
             {ta_rel "Teaching Assistant"}
             {student_rel "Student"}
             {admin_rel "Administrator"}

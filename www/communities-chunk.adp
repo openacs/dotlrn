@@ -5,7 +5,7 @@
 
 <if @communities:rowcount@ gt 0>
 <multiple name="communities">
-  <table width="85%" cellpadding="5" cellspacing="5">
+  <table>
 <group column="root_community_type">
     <tr>
       <td width="65%"><a href="@communities.url@">@communities.pretty_name@</a></td>

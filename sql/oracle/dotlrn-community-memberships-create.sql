@@ -13,13 +13,11 @@
 --
 
 create table dotlrn_member_rels (
-    rel_id                      integer
-                                constraint dlrn_mem_fk
+    rel_id                      constraint dotlrn_member_rels_rel_id_fk
                                 references membership_rels (rel_id)
-                                constraint dlrn_mem_pk
+                                constraint dotlrn_member_rels_rel_id_pk
                                 primary key,
-    portal_id                   integer
-                                constraint dlrn_mem_portal_id_fk
+    portal_id                   constraint dotlrn_member_rels_portal_fk
                                 references portals (portal_id)
 );                                          
 
@@ -35,79 +33,93 @@ as
     where dotlrn_member_rels.rel_id = acs_rels.rel_id;
 
 create table dotlrn_admin_rels (
-    rel_id                      integer
-                                constraint dlrn_adm_fk
+    rel_id                      constraint dotlrn_admin_rels_rel_id_fk
                                 references dotlrn_member_rels (rel_id)
-                                constraint dlrn_adm_pk
+                                constraint dotlrn_admin_rels_rel_id_pk
                                 primary key
 );
 
 create or replace view dotlrn_admin_rels_full
 as
     select acs_rels.rel_id as rel_id,
-           object_id_one as community_id,
-           object_id_two as user_id,
-           rel_type,
-           portal_id
+           acs_rels.object_id_one as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type,
+           dotlrn_member_rels.portal_id
     from dotlrn_member_rels,
          dotlrn_admin_rels,
          acs_rels
     where dotlrn_member_rels.rel_id = acs_rels.rel_id
     and dotlrn_admin_rels.rel_id = acs_rels.rel_id;
 
-
 --
 -- For Classes
 --
 
 create table dotlrn_student_rels (
-    rel_id                      integer
-                                constraint dlrn_stud_fk
+    rel_id                      constraint dotlrn_student_rels_rel_id_fk
                                 references dotlrn_member_rels (rel_id)
-                                constraint dlrn_stud_pk
+                                constraint dotlrn_student_rels_rel_id_pk
                                 primary key
 );
 
 create or replace view dotlrn_student_rels_full
 as
     select acs_rels.rel_id as rel_id,
-           object_id_one as community_id,
-           object_id_two as user_id,
-           rel_type
+           acs_rels.object_id_one as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type
     from dotlrn_student_rels,
          acs_rels
     where dotlrn_student_rels.rel_id = acs_rels.rel_id;
 
 create table dotlrn_ta_rels (
-    rel_id                      integer
-                                constraint dlrn_ta_fk
+    rel_id                      constraint dotlrn_ta_rels_rel_id_fk
                                 references dotlrn_admin_rels (rel_id)
-                                constraint dlrn_ta_pk
+                                constraint dotlrn_ta_rels_rel_id_pk
                                 primary key
 );
 
 create or replace view dotlrn_ta_rels_full
 as
     select acs_rels.rel_id as rel_id,
-           object_id_two as community_id,
-           object_id_two as user_id,
-           rel_type
+           acs_rels.object_id_one as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type
     from dotlrn_ta_rels,
          acs_rels
     where dotlrn_ta_rels.rel_id = acs_rels.rel_id;
 
+create table dotlrn_ca_rels (
+    rel_id                      constraint dotlrn_ca_rels_rel_id_fk
+                                references dotlrn_admin_rels (rel_id)
+                                constraint dotlrn_ca_rels_rel_id_pk
+                                primary key
+);
+
+create or replace view dotlrn_ca_rels_full
+as
+    select acs_rels.rel_id,
+           acs_rels.object_id_one as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type
+    from dotlrn_ca_rels,
+         acs_rels
+    where dotlrn_ca_rels.rel_id = acs_rels.rel_id;
+
 create table dotlrn_instructor_rels (
-    rel_id                      integer
-                                constraint dlrn_instruct_fk references dotlrn_admin_rels(rel_id)
-                                constraint dlrn_instruct_pk primary key
+    rel_id                      constraint dotlrn_instructor_rels_rel_fk
+                                references dotlrn_admin_rels(rel_id)
+                                constraint dotlrn_instructor_rels_rel_pk
+                                primary key
 );
 
 create view dotlrn_instructor_rels_full
 as
     select acs_rels.rel_id as rel_id,
-           object_id_two as community_id,
-           object_id_two as user_id,
-           rel_type
+           acs_rels.object_id_two as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type
     from dotlrn_instructor_rels,
          acs_rels
     where dotlrn_instructor_rels.rel_id = acs_rels.rel_id;
@@ -164,14 +176,28 @@ begin
     acs_rel_type.create_type (
         rel_type => 'dotlrn_ta_rel',
         supertype => 'dotlrn_admin_rel',
-        pretty_name => 'dotLRN TA Community Membership',
-        pretty_plural => 'dotLRN TA Community Memberships',
+        pretty_name => 'dotLRN Teaching Assistant Community Membership',
+        pretty_plural => 'dotLRN Teaching Assistant Community Memberships',
         package_name => 'dotlrn_ta_rel',
         table_name => 'dotlrn_ta_rels',        
         id_column => 'rel_id',
         object_type_one => 'dotlrn_class_instance', role_one => null, 
         min_n_rels_one => 0, max_n_rels_one => null,
         object_type_two => 'user', role_two => 'teaching_assistant',
+        min_n_rels_two => 0, max_n_rels_two => null
+    );
+
+    acs_rel_type.create_type (
+        rel_type => 'dotlrn_ca_rel',
+        supertype => 'dotlrn_admin_rel',
+        pretty_name => 'dotLRN Course Assitant Community Membership',
+        pretty_plural => 'dotLRN Course Assitant Community Memberships',
+        package_name => 'dotlrn_ca_rel',
+        table_name => 'dotlrn_ca_rels',        
+        id_column => 'rel_id',
+        object_type_one => 'dotlrn_class_instance', role_one => null, 
+        min_n_rels_one => 0, max_n_rels_one => null,
+        object_type_two => 'user', role_two => 'course_assistant',
         min_n_rels_two => 0, max_n_rels_two => null
     );
 
