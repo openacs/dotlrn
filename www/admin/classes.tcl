@@ -22,6 +22,9 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
+    department_key:optional
+    {orderby "department_name,asc"}
+    page:optional
 } -properties {
     title:onevalue
     context_bar:onevalue

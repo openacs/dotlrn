@@ -75,60 +75,19 @@
 
   <br>
 
-  <table bgcolor="#cccccc" cellpadding="5" width="95%">
-    <tr>
-      <th align="left" width="20%"><%= [parameter::get -localize -parameter departments_pretty_name] %></th>
-      <th align="left" width="20%"><%= [parameter::get -localize -parameter classes_pretty_name] %></th>
-<if @term_id@ eq -1>
-      <th align="left" width="10%">#dotlrn.term#</th>
-</if>
-      <th align="left" width="25%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %></th>
-      <th align="center" width="10%">#dotlrn.members#</th>
-      <th align="center">#dotlrn.actions#</th>
-    </tr>
-
 <if @classes:rowcount@ gt 0>
-
-<multiple name="classes">
-
-<if @classes.rownum@ odd>
-    <tr bgcolor="#eeeeee">
+  <listtemplate name="classes"></listtemplate>
 </if>
 <else>
-    <tr bgcolor="#d9e4f9">
-</else>
-      <td align="left"><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
-      <td align="left"><a href="class?class_key=@classes.class_key@">@classes.class_name@</a></td>
-<if @term_id@ eq -1>
-      <td align="left">@classes.term_name@ @classes.term_year@</td>
-</if>
-      <td align="left"><a href="@classes.url@">@classes.pretty_name@</a></td>
-      <td align="center">@classes.n_members@</td>
-      <td align="center">
-        <nobr>
-          <small>
-            <a href="@classes.url@one-community-admin">#dotlrn.administer_link#</a>
-          </small>
-        </nobr>
-      </td>
-    </tr>
-
-</multiple>
-
-</if>
-<else>
+ <table>
   <tr bgcolor="#eeeeee">
-<if @term_id@ eq -1>
-    <td align="left" colspan="6">
-</if>
-<else>
-    <td align="left" colspan="5">
-</else>
+    <td>
       <i>#dotlrn.no_class_instances#</i>
     </td>
   </tr>
+ </table>
 </else>
 
-  </table>
+<br>
 
 </center>

@@ -58,11 +58,12 @@ if {![exists_and_not_null referer]} {
 }
 
 set query select_classes
+set page_query select_classes_paginator
 if {![empty_string_p $department_key]} {
     set query select_classes_by_department
+    set page_query select_classes_by_department_paginator
 }
 
-db_multirow classes $query {}
 
 set can_create [dotlrn_class::can_create]
 set can_instantiate [dotlrn_class::can_instantiate]
@@ -71,5 +72,55 @@ set can_instantiate [dotlrn_class::can_instantiate]
 set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
 set classes_pretty_plural [parameter::get -localize -parameter classes_pretty_plural]
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
+
+set actions ""
+
+if { $can_create } {
+    set actions [list "[_ dotlrn.new_class_1]" "[export_vars -base "class-new" -url { department_key referer }]"]
+}
+
+template::list::create \
+    -name classes \
+    -multirow classes \
+    -actions $actions \
+    -pass_properties { can_instantiate {} } \
+    -filters { department_key {} } \
+    -key class_key \
+    -page_size 50 \
+    -page_flush_p t \
+    -page_query_name $page_query \
+    -elements {
+        department_name {
+            label "[parameter::get -localize -parameter departments_pretty_name]"
+	    orderby_asc {department_name asc}
+	    orderby_desc {department_name desc}
+            link_url_eval {[export_vars -base "department" { department_key }]}
+        }
+	class_name {
+	    label "[_ dotlrn.class_name]"
+	    orderby_asc {class_name asc}
+	    orderby_desc {class_name desc}
+            link_url_eval {[export_vars -base "class" { class_key }]}
+        }
+        n_instances {
+	    label "[parameter::get -localize -parameter class_instances_pretty_plural]"
+	    orderby_asc {n_instances asc}
+	    orderby_desc {n_instances desc}
+        }
+        actions {
+            label "[_ dotlrn.Actions]"
+	    display_template {
+		<if @can_instantiate@>
+		<nobr>
+		<small>\[
+		<a href="class-instance-new?class_key=@classes.class_key@">[_ dotlrn.new_class_instance]</a>
+		       \]</small>
+		</nobr>
+		</if>
+	    }
+        }
+    }
+
+db_multirow classes $query {}
 
 ad_return_template

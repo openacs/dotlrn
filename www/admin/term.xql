@@ -21,12 +21,20 @@
                     where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.term_id = :term_id
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.class_name,
-                     dotlrn_class_instances_full.class_key,
-                     dotlrn_class_instances_full.pretty_name,
-                     dotlrn_class_instances_full.community_key
+	    [template::list::page_where_clause -and -name "classes" -key "dotlrn_class_instances_full.class_instance_id"]
+	    [template::list::orderby_clause -orderby -name "classes"]
+        </querytext>
+    </fullquery>
+
+    <fullquery name="select_classes_paginator">
+        <querytext>
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
+            from dotlrn_class_instances_full
+            where dotlrn_class_instances_full.term_id = :term_id
+            [template::list::orderby_clause -orderby -name "classes"]
         </querytext>
     </fullquery>
 
@@ -39,12 +47,21 @@
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.term_id = :term_id
             and dotlrn_class_instances_full.department_key = :department_key
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.class_name,
-                     dotlrn_class_instances_full.class_key,
-                     dotlrn_class_instances_full.pretty_name,
-                     dotlrn_class_instances_full.community_key
+	    [template::list::page_where_clause -and -name "classes" -key "dotlrn_class_instances_full.class_instance_id"]
+	    [template::list::orderby_clause -orderby -name "classes"]
+        </querytext>
+    </fullquery>
+
+    <fullquery name="select_classes_paginator_by_department">
+        <querytext>
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
+            from dotlrn_class_instances_full
+            where dotlrn_class_instances_full.term_id = :term_id
+            and dotlrn_class_instances_full.department_key = :department_key
+            [template::list::orderby_clause -orderby -name "classes"]
         </querytext>
     </fullquery>
 
@@ -55,12 +72,20 @@
                     from dotlrn_member_rels_approved
                     where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.class_name,
-                     dotlrn_class_instances_full.class_key,
-                     dotlrn_class_instances_full.pretty_name,
-                     dotlrn_class_instances_full.community_key
+	    where 1 = 1	
+	    [template::list::page_where_clause -and -name "classes" -key "dotlrn_class_instances_full.class_instance_id"]
+	    [template::list::orderby_clause -orderby -name "classes"]
+        </querytext>
+    </fullquery>
+
+    <fullquery name="select_all_classes_paginator">
+        <querytext>
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
+            from dotlrn_class_instances_full
+            [template::list::orderby_clause -orderby -name "classes"]
         </querytext>
     </fullquery>
 
@@ -72,12 +97,20 @@
                     where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.department_key = :department_key
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.class_name,
-                     dotlrn_class_instances_full.class_key,
-                     dotlrn_class_instances_full.pretty_name,
-                     dotlrn_class_instances_full.community_key
+	    [template::list::page_where_clause -and -name "classes" -key "dotlrn_class_instances_full.class_instance_id"]
+	    [template::list::orderby_clause -orderby -name "classes"]
+        </querytext>
+    </fullquery>
+
+    <fullquery name="select_all_classes_paginator_by_department">
+        <querytext>
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
+            from dotlrn_class_instances_full
+            where dotlrn_class_instances_full.department_key = :department_key
+            [template::list::orderby_clause -orderby -name "classes"]
         </querytext>
     </fullquery>
 

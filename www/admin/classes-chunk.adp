@@ -20,22 +20,6 @@
 
 <center>
 
-<if @can_create@>
-  <table cellpadding="5" width="95%">
-    <tr>
-      <td align="left">
-        <nobr>
-          <small>[
-            <a href="class-new?department_key=@department_key@&referer=@referer@">#dotlrn.new_class_1#</a>
-          ]</small>
-        </nobr>
-      </td>
-    </tr>
-  </table>
-
-  <br>
-</if>
-
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
     <tr bgcolor="#eeeeee">
       <th align="left" width="50%">
@@ -48,63 +32,18 @@
 
   <br>
 
-  <table bgcolor="#cccccc" cellpadding="5" width="95%">
-
-    <tr>
-      <th align="left" width="30%"><%= [parameter::get -localize -parameter departments_pretty_name] %></th>
-      <th align="left">#dotlrn.class_name#</th>
-      <th align="center" width="5%"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></th>
-      <th align="center" width="10%">#dotlrn.Actions#</th>
-    </tr>
-
 <if @classes:rowcount@ gt 0>
-<multiple name="classes">
-
-<if @classes.rownum@ odd>
-    <tr bgcolor="#eeeeee">
+        <listtemplate name="classes"></listtemplate>
 </if>
 <else>
-    <tr bgcolor="#d9e4f9">
-</else>
-      <td align="left"><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
-      <td align="left"><a href="class?class_key=@classes.class_key@">@classes.pretty_name@</a></td>
-      <td align="center">@classes.n_instances@</td>
-      <td align="center">
-<if @can_instantiate@>
-        <nobr>
-          <small>[
-            <a href="class-instance-new?class_key=@classes.class_key@">#dotlrn.new_class_instance#</a>
-          ]</small>
-        </nobr>
-</if>
-    </td>
-  </tr>
-
-</multiple>
-</if>
-<else>
+<table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
       <i>#dotlrn.no_classes#</i>
     </td>
   </tr>
+</table>
 </else>
-  </table>
 
-<if @can_create@ and @classes:rowcount@ gt 10>
-  <br>
-
-  <table cellpadding="5" width="95%">
-    <tr>
-      <td align="left">
-        <nobr>
-          <small>[
-            <a href="class-new?department_key=@department_key@&referer=@referer@">#dotlrn.new_class_1#</a>
-          ]</small>
-        </nobr>
-      </td>
-    </tr>
-  </table>
-</if>
-
+<br>
 </center>
