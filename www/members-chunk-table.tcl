@@ -118,7 +118,7 @@ if {$site_wide_admin_p} {
         {}
         {
             [eval {
-                if {$my_user_id == \$user_id} {
+                if {$my_user_id == $user_id} {
                     return "<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a> </small>\]</td>"
                 } else {
                     return "<td>&nbsp;</td>"
