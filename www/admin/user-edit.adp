@@ -1,4 +1,4 @@
-<master src="./master">
+<master src="master">
 <property name="title">dotLRN Admin: Edit a User</property>
 <property name="context_bar">@context_bar@</property>
 
