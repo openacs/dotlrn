@@ -58,11 +58,6 @@ begin
         -- the ability to spam a community
         perform acs_privilege__create_privilege(''dotlrn_spam_community'');
 
-        -- temporarily drop this trigger to avoid a data-change violation 
-        -- on acs_privilege_hierarchy_index while updating the child privileges.
-
-        drop trigger acs_priv_hier_ins_del_tr on acs_privilege_hierarchy;
-
         -- Consistent permissions
         perform acs_privilege__add_child(''dotlrn_edit_community'', ''dotlrn_view_community'');
         perform acs_privilege__add_child(''dotlrn_admin_community'', ''dotlrn_edit_community'');
@@ -79,14 +74,9 @@ begin
         -- for now, we only want admins to be able to browse by default
         perform acs_privilege__add_child(''admin'', ''dotlrn_browse'');
 
-        -- re-enable the trigger before the last insert to force the 
-        -- acs_privilege_hierarchy_index table to be updated.
-        create trigger acs_priv_hier_ins_del_tr after insert or delete
-        on acs_privilege_hierarchy for each row
-        execute procedure acs_priv_hier_ins_del_tr ();
-
         -- no default permissions
         return 0;
+
 end;' language 'plpgsql';
 
 select inline0();
