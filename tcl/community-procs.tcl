@@ -1458,7 +1458,7 @@ namespace eval dotlrn_community {
             if {[string equal "dotlrn_community" $community_type]} {
                 set subcomm_p 1
                 
-                # we needs this here in case we are being called from ourself
+                # we need this here in case we are being called from ourself
                 if {[empty_string_p $parent_community_id]} {
                     set parent_community_id [get_parent_id -community_id $community_id]
                 }
