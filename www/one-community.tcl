@@ -49,7 +49,6 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     if {! [empty_string_p $portal_id]} {
 	set rendered_page [dotlrn::render_page -hide_links_p "t" -page_num $page_num $portal_id]
         
-
     } else {
 	set rendered_page ""
     }

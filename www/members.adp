@@ -7,5 +7,4 @@
 <property name="portal_id">@portal_id@</property>
 
 
-
 <include src="members-chunk" referer="members">

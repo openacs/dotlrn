@@ -1,5 +1,3 @@
-
-
 <master>
 <property name="pretext">@pretext@</property>
 <property name="portal_id">@portal_id@</property>
