@@ -34,7 +34,7 @@ if {[ad_parameter community_type_level_p] == 1} {
 
 # Check if this is a community level thing
 if {[ad_parameter community_level_p] == 1} {
-    ad_returnredirect "one-community"
+    ad_returnredirect "one-community?page_num=$page_num"
     ad_script_abort
 }
 
