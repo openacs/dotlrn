@@ -20,6 +20,7 @@
     <install package="dotlrn-survey"/>
     <install package="dotlrn-syllabus"/>
     <install package="dotlrn-weblogger"/>
+    <install package="dotlrn-curriculum"/>
 
     <mount package="dotlrn" mount-point="dotlrn" instance-name="dotLRN"/>
     <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master"/>
