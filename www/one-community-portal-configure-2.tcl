@@ -26,6 +26,6 @@ set form [ns_getform]
 set portal_id [ns_set get $form portal_id]
 set return_url [ns_set get $form return_url]
 
-portal::template_configure_dispatch -portal_id $portal_id -form $form
+portal::configure_dispatch -portal_id $portal_id -form $form
 
 ns_returnredirect "one-community-portal-configure?portal_id=$portal_id&return_url=$return_url"
