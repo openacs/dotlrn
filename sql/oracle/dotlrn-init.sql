@@ -57,6 +57,17 @@ begin
         description => 'e.g. Alumni'
     );
 
+    -- create the user_workspace community_type
+    -- aks - it's a hack for portal templates
+    foo := dotlrn_community_type.new (
+        community_type => 'user_workspace',
+        parent_type => 'dotlrn_community',
+        pretty_name => 'User Workspace',
+        pretty_plural => 'User Workspaces',
+        description => 'dummy type for User Workspace portal templates'
+    );
+
+
     update acs_object_types set table_name = 'dotlrn_community', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
     update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
     update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';

@@ -38,43 +38,52 @@ ns_log notice "dotlrn-init: starting..."
 
 # if installed
 if {[dotlrn::is_instantiated]} {
-    ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn::init"
 
-    if {![dotlrn::is_initialized]} { dotlrn::init }
+    # aks debug
+    db_transaction {
+    
+        ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn_applet::init"
+    
+        # this may seems strange, but init the applets first - aks
+        # initialize the applets subsystem (ooh, I'm using big words - ben)
+        if {![dotlrn_applet::is_initalized]} { dotlrn_applet::init }
+    
+        # We go through all Applets and make sure they are added.
+    
+        # The applet_add proc in the dotlrn_applet contract is for one-time
+        # init of each applet NOTE: this applet_add proc _must_ be able to be
+        # called repeatedly since this script is eval'd at every server startup
+        # - aks
+        foreach applet [dotlrn_community::list_applets] {
+            # Callback on all applets
+            dotlrn_community::applet_call $applet "AddApplet" [list]
+        }
+    
+        ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn::init"
+    
+        if {![dotlrn::is_initialized]} { dotlrn::init }
+    
+        ns_log notice "dotlrn-init: about to call dotlrn_class:init"
+    
+        if {![dotlrn_class::is_initialized]} { dotlrn_class::init }
+    
+        ns_log notice "dotlrn-init: about to call dotlrn_club::init"
+    
+        if {![dotlrn_club::is_initialized]} { dotlrn_club::init }
+    
+        ns_log notice "dotlrn-init: done with dotlrn_club::init"
+    
+        # Grantee
+        set grantee_id [dotlrn::get_full_users_rel_segment_id]
+        set package_id [dotlrn::get_package_id]
+    
+        # Grant the permission
+        permission::grant -party_id $grantee_id -object_id $package_id -privilege "dotlrn_browse"
+    
+        # check read permission on dotLRN for all users
+        set grantee_id [dotlrn::get_users_rel_segment_id]
+        permission::grant -party_id $grantee_id -object_id $package_id -privilege "read"
 
-    ns_log notice "dotlrn-init: about to call dotlrn_class:init"
-
-    if {![dotlrn_class::is_initialized]} { dotlrn_class::init }
-
-    ns_log notice "dotlrn-init: about to call dotlrn_club::init"
-
-    if {![dotlrn_club::is_initialized]} { dotlrn_club::init }
-
-    ns_log notice "dotlrn-init: done with dotlrn_club::init"
-
-    # Grantee
-    set grantee_id [dotlrn::get_full_users_rel_segment_id]
-    set package_id [dotlrn::get_package_id]
-
-    # Grant the permission
-    permission::grant -party_id $grantee_id -object_id $package_id -privilege "dotlrn_browse"
-
-    # check read permission on dotLRN for all users
-    set grantee_id [dotlrn::get_users_rel_segment_id]
-    permission::grant -party_id $grantee_id -object_id $package_id -privilege "read"
-
-    # initialize the applets subsystem (ooh, I'm using big words - ben)
-    dotlrn_applet::init
-
-    # We go through all Applets and make sure they are added.
-
-    # The applet_add proc in the dotlrn_applet contract is for one-time
-    # init of each applet NOTE: this applet_add proc _must_ be able to be
-    # called repeatedly since this script is eval'd at every server startup
-    # - aks
-    foreach applet [dotlrn_community::list_applets] {
-        # Callback on all applets
-        dotlrn_community::applet_call $applet "AddApplet" [list]
     }
 }
 

@@ -49,19 +49,25 @@ namespace eval dotlrn_community {
         create base community_type for dotlrn_community type
     } {
         db_transaction {
-            if {![dotlrn::is_instantiated_here -url "[dotlrn::get_url]/${community_type_url_part}/"]} {
-                set package_id [dotlrn::mount_package \
+            set package_id [dotlrn::mount_package \
                     -package_key [dotlrn::package_key] \
                     -url $community_type_url_part \
                     -pretty_name $pretty_name \
                     -directory_p "t"]
-
-                dotlrn_community::set_type_package_id $community_type $package_id
-
-                ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-                ad_parameter -package_id $package_id -set 1 community_type_level_p
-                ad_parameter -package_id $package_id -set 0 community_level_p
-            }
+            
+            dotlrn_community::set_type_package_id $community_type $package_id
+            
+            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+            ad_parameter -package_id $package_id -set 1 community_type_level_p
+            ad_parameter -package_id $package_id -set 0 community_level_p
+            
+            # create a "dummy" community for this community 
+            # type to get a portal template with all of the 
+            # types portlets - aks
+            dotlrn_community::new \
+                    -community_type $community_type \
+                    -pretty_name $pretty_name \
+                    -dummy_comm_p 1           
         }
     }
 
@@ -103,9 +109,35 @@ namespace eval dotlrn_community {
 
             # Set the site node
             dotlrn_community::set_type_package_id $community_type_key $package_id
-        }
 
+            # since new_type is only called when creating a dept or a class, 
+            # not a class instance, club, or subcomm, we just do this
+            dotlrn_community::set_type_template_id \
+                    -community_type $community_type_key \
+                    -template_id [get_type_template_id -community_type [dotlrn_class::community_type]]
+
+        }
         return $community_type_key
+    }
+
+    ad_proc -public get_type_template_id {
+        {-community_type:required}
+    } {
+        Get the portal template id for this comm type
+    } {
+        return [db_string get_community_type_template_id_select  \
+                "select portal_template_id 
+        from dotlrn_community_types 
+        where community_type = :community_type"]
+    }
+
+    ad_proc -public set_type_template_id {
+        {-community_type:required}
+        {-template_id:required}
+    } {
+        set the portal template id for this comm type
+    } {
+        db_dml update_template_id {}
     }
 
     ad_proc -public set_type_package_id {
@@ -134,6 +166,19 @@ namespace eval dotlrn_community {
         return [db_string select_node_id {}]
     }
 
+    ad_proc -public dummy_comm_p {
+        {-community_id:required}
+    } {
+        is this a dummy comm?
+    } {
+        return [db_0or1row select_node_id "
+            select 1 from dotlrn_communities 
+            where community_id = :community_id
+            and portal_template_id is not NULL 
+            and portal_id is NULL 
+            and admin_portal_id is NULL"]
+    }
+
     ad_proc -public new {
         {-parent_community_id ""}
         {-description ""}
@@ -142,16 +187,23 @@ namespace eval dotlrn_community {
         {-community_key ""}
         {-pretty_name:required}
         {-extra_vars ""}
+        {-dummy_comm_p ""}
     } {
         create a new community
     } {
+        if {![empty_string_p $dummy_comm_p]} {
+            # mung the comm key so that it wont conflict with a real comm
+            set community_key "[dotlrn::generate_key -name $pretty_name]-dummy"
+        } else {
+            # generate the key from the passed in name
+            set community_key [dotlrn::generate_key -name $pretty_name]
+        }
+
         # Set up extra vars
         if {[empty_string_p $extra_vars]} {
             set extra_vars [ns_set create]
         }
 
-        # generate the key from the passed in name
-        set community_key [dotlrn::generate_key -name $pretty_name]
 
         # check if the name is already in use, if so, complain loudly
         if {![check_community_key_valid_p \
@@ -177,85 +229,108 @@ namespace eval dotlrn_community {
             set community_id [package_instantiate_object \
                     -extra_vars $extra_vars $object_type]
 
-            set user_id [ad_conn user_id]
-
             # based on the community_type:
             # 1. get the page_names and layouts
             # 2. the the list of default applets for this type
             if {[string equal $community_type "dotlrn_community"]} {
-                set csv_list [ad_parameter subcomm_pages_csv]
-                set default_applets [ad_parameter default_subcomm_applets]
+                set csv_list [dotlrn::parameter subcomm_pages_csv]
+                set default_applets [dotlrn::parameter default_subcomm_applets]
             } elseif {[string equal $community_type "dotlrn_club"]} {
-                set csv_list [ad_parameter club_pages_csv]
-                set default_applets [ad_parameter default_club_applets]
+                set csv_list [dotlrn::parameter club_pages_csv]
+                set default_applets [dotlrn::parameter default_club_applets]
+            } elseif {[string equal $community_type "user_workspace"]} {
+                set csv_list [dotlrn::parameter user_wsp_page_names]
+                set default_applets [list]
              } else {
-                set csv_list [ad_parameter class_instance_pages_csv]
-                set default_applets \
-                        [ad_parameter default_class_instance_applets]
+                set csv_list [dotlrn::parameter class_instance_pages_csv]
+                set default_applets\
+                        [dotlrn::parameter default_class_instance_applets]
             }
 
-            set non_member_page_name [ad_parameter non_member_page_name]
-            set admin_page_name [ad_parameter admin_page_name]
+            set non_member_page_name [dotlrn::parameter non_member_page_name]
+            set admin_page_name [dotlrn::parameter admin_page_name]
 
-            # Create portal template page
-            set portal_template_id \
-                    [portal::create \
-                    -portal_template_p "t" \
-                    -name "$pretty_name Portal Template" \
-                    -csv_list $csv_list \
-                    -context_id $community_id \
-                    $user_id ]
+            if {[empty_string_p $dummy_comm_p]} {
+                set user_id [ad_conn user_id]
+                
+                # Create portal template page
+                set portal_template_id \
+                        [portal::create \
+                        -template_id [get_type_template_id -community_type $community_type] \
+                        -name "$pretty_name Portal Template" \
+                        -csv_list $csv_list \
+                        -context_id $community_id \
+                        $user_id ]
 
-            # Create the non-member page
-            set portal_id \
-                    [portal::create \
-                    -template_id $portal_template_id \
-                    -name "$pretty_name Non-Member Portal" \
-                    -default_page_name $non_member_page_name \
-                    -context_id $community_id \
-                    $user_id]
+                # Create the non-member page
+                set portal_id \
+                        [portal::create \
+                        -name "$pretty_name Non-Member Portal" \
+                        -default_page_name $non_member_page_name \
+                        -context_id $community_id \
+                        $user_id]
+                
+                # Create the admin page
+                set admin_portal_id \
+                        [portal::create \
+                        -name "$pretty_name Administration Portal" \
+                        -default_page_name $admin_page_name \
+                        -context_id $community_id \
+                        $user_id]
 
-            # Create the admin page
-            set admin_portal_id \
-                    [portal::create \
-                    -name "$pretty_name Administration Portal" \
-                    -default_page_name $admin_page_name \
-                    -context_id $community_id \
-                    -layout_name "Simple 1-Column" \
-                    $user_id]
+
+                # Set up the rel segments
+                dotlrn_community::create_rel_segments -community_id $community_id
+                
+                # Set up the node
+                if {[empty_string_p $parent_community_id]} {
+                    set parent_node_id [get_type_node_id $community_type]
+                } else {
+                    set parent_node_id [get_community_node_id $parent_community_id]
+                }
+                
+                # Create the node
+                set new_node_id [site_node_create $parent_node_id $community_key]
+                
+                # Instantiate the package
+                set package_id \
+                        [site_node_create_package_instance \
+                        $new_node_id \
+                        $pretty_name \
+                        $community_id \
+                        [one_community_package_key] \
+                        ]
+                
+                # Set the right parameters
+                ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+                ad_parameter -package_id $package_id -set 0 community_type_level_p
+                ad_parameter -package_id $package_id -set 1 community_level_p
+                
+                # Set up the node
+                dotlrn_community::set_package_id $community_id $package_id
+
+            } else {
+                # AKS FIXME nasty hack
+                set user_id -1
+
+                set portal_template_id [portal::create  \
+                        -name "$pretty_name Default Portal Template" \
+                        -csv_list $csv_list \
+                        -portal_template_p "t" \
+                        $user_id ]
+
+                # set a dummy non-member and admin_portals
+                set portal_id ""
+                set admin_portal_id ""
+
+                # associate this portal_id with the comm type
+                dotlrn_community::set_type_template_id \
+                        -community_type $community_type \
+                        -template_id $portal_template_id
+            }
 
             # update the portal_template_id and non_member_portal_id
             db_dml update_portal_ids {}
-
-            # Set up the rel segments
-            dotlrn_community::create_rel_segments -community_id $community_id
-
-            # Set up the node
-            if {[empty_string_p $parent_community_id]} {
-                set parent_node_id [get_type_node_id $community_type]
-            } else {
-                set parent_node_id [get_community_node_id $parent_community_id]
-            }
-
-            # Create the node
-            set new_node_id [site_node_create $parent_node_id $community_key]
-
-            # Instantiate the package
-            set package_id \
-                    [site_node_create_package_instance \
-                      $new_node_id \
-                      $pretty_name \
-                      $community_id \
-                      [one_community_package_key] \
-                    ]
-
-            # Set the right parameters
-            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-            ad_parameter -package_id $package_id -set 0 community_type_level_p
-            ad_parameter -package_id $package_id -set 1 community_level_p
-
-            # Set up the node
-            dotlrn_community::set_package_id $community_id $package_id
 
             # Add the default applets specified above. They are
             # different per community type!

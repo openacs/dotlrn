@@ -40,7 +40,9 @@ create table dotlrn_community_types (
     package_id                  constraint dotlrn_ct_package_id_fk
                                 references apm_packages (package_id),
     supertype                   constraint dotlrn_ct_supertype_fk
-                                references dotlrn_community_types (community_type)
+                                references dotlrn_community_types (community_type),
+    portal_template_id          constraint dotlrn_ct_portal_templ_id_fk
+                                references portals (portal_id)
 );
 
 create table dotlrn_communities (

@@ -44,6 +44,152 @@
 # $Id$
 
 
+# aks sloan "navbar everywhere" hack - must come back and sort this
+# out (again) sometime
+
+set user_id [ad_get_user_id]
+set portal_id [dotlrn::get_workspace_portal_id $user_id]
+set community_id [dotlrn_community::get_community_id]
+
+# ad_return_complaint 1 "$portal_id |$community_id|"
+
+
+if {![empty_string_p $community_id]} {
+    set have_comm_id_p 1
+} else {
+    set have_comm_id_p 0
+}
+
+if {[exists_and_not_null portal_id]} {
+    set have_portal_id_p 1
+} else {
+    set have_portal_id_p 0 
+}
+
+# navbar vars
+set show_navbar_p 1
+if {[exists_and_not_null no_navbar_p]} {
+    set show_navbar_p 0
+} 
+
+if {![info exists link_all]} {
+    set link_all 0
+}
+
+if {![info exists return_url]} {
+    set link [ad_conn -get extra_url]
+} else {
+    set link $return_url
+}
+
+if {![info exists show_control_panel]} {
+    if {$have_comm_id_p 
+    && [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]} {
+        set show_control_panel 1
+    } else {
+        set show_control_panel 0
+    }
+}
+
+if {![info exists link_control_panel]} {
+    set link_control_panel 1
+}
+
+if {![info exists control_panel_text]} {
+    set control_panel_text "Control Panel"
+}
+
+
+if {$have_comm_id_p} {
+    # get this comm's info
+    set portal_id [dotlrn_community::get_portal_template_id $community_id]
+    set text [dotlrn_community::get_community_header_name $community_id] 
+    set link [dotlrn_community::get_community_url $community_id]
+
+#    ad_return_complaint 1 "$portal_id | $text | $link"
+    if {[empty_string_p $portal_id]} {
+        # not a member yet
+        set portal_id [dotlrn_community::get_community_non_members_portal_id $community_id]
+    }
+
+
+    if { $have_portal_id_p && $show_navbar_p } {
+        if {$show_control_panel} {
+            if {$link_control_panel} {
+                set extra_td_html " &nbsp; <a href=one-community-admin> $control_panel_text</a>"
+            } else {
+                set extra_td_html " &nbsp; $control_panel_text"
+            }
+        } else {
+            # don't show control panel
+            set extra_td_html ""
+        }
+            
+        set navbar [portal::navbar \
+                -portal_id $portal_id \
+                -link_all $link_all \
+                -link $link \
+                -pre_html "" \
+                -post_html "" \
+                -extra_td_html $extra_td_html \
+                -table_html_args "class=\"navbar\""]
+    } else {
+        set navbar "<br>"
+        set portal_id ""
+    }
+} elseif {[ad_parameter -package_id [ad_conn package_id] community_type_level_p] == 1} {
+    set extra_td_html ""
+    set link_all 1
+    set link [dotlrn::get_url]
+    # in a community type
+    set text \
+            [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
+    
+    if {$have_portal_id_p && $show_navbar_p} {
+        
+        set navbar [portal::navbar \
+                -portal_id $portal_id \
+                -link_all $link_all \
+                -link $link \
+                -pre_html "" \
+                -post_html "" \
+                -extra_td_html $extra_td_html \
+                -table_html_args "class=\"navbar\""]
+    } else {
+        set navbar "<br>"
+        set portal_id ""
+    }
+ 
+} else {
+    # we could be anywhere (maybe under /dotlrn, maybe not)
+    set link "[dotlrn::get_url]/"
+    set link_all 0
+    set community_id ""
+    set text ""
+    
+    if {$have_portal_id_p && $show_navbar_p} {
+        if {$link_control_panel} {
+            set extra_td_html " &nbsp; <a href=${link}preferences>Control Panel</a>"
+        } else {
+            set extra_td_html " &nbsp; Control Panel"
+        }
+
+        set navbar [portal::navbar \
+                -portal_id $portal_id \
+                -link_all $link_all \
+                -link $link \
+                -pre_html "" \
+                -post_html "" \
+                -extra_td_html $extra_td_html  \
+                -table_html_args "class=\"navbar\""]
+    } else {
+        set navbar "<br>"
+        set portal_id ""
+    }
+}
+
+
+
 
 # Developer-support support
 if { [llength [namespace eval :: info procs ds_link]] == 1 } {

@@ -104,10 +104,11 @@ namespace eval dotlrn {
 
         db_transaction {
             if {[string equal $access_level "full"] == 1} {
-                # Create a portal page for this user
+                # Create a portal page for this user, 
+                # the template for the user WSP is create in dotlrn::init
                 set portal_id [portal::create \
+                        -template_id [dotlrn_community::get_type_template_id -community_type "user_workspace"] \
                         -name "Your dotLRN Workspace" \
-                        -csv_list [ad_parameter user_wsp_page_names] \
                         $user_id
                 ]
 

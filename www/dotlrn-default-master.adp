@@ -75,12 +75,25 @@
   
 </table>
 
+<!-- Sloan wants navbars on every page -->
+
+<small>@navbar@</small>
+
+<P>
 <!-- Sloan Header End -->
+
+
 
 <slave>
 
 
 <!-- Sloan Footer Begin -->
+
+<!-- Sloan wants navbars on every page -->
+<P>
+
+<small>@navbar@</small>
+
 
 <hr>
 

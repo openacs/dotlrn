@@ -72,40 +72,6 @@ namespace eval dotlrn {
         return [ad_decode [apm_num_instances [package_key]] 0 0 1]
     }
 
-    ad_proc -public is_instantiated_here {
-        {-url:required}
-        {-package_key ""}
-    } {
-        returns 1 if dotlrn is instantiaed under the url specified, 0
-        otherwise
-
-        XXX - aks -  I think there a bug in here somewhere - use the
-        procs in  site_nodes:: instead. Thanks.
-    } {
-        set result 0
-
-        if {[empty_string_p $package_key]} {
-            set package_key [dotlrn::package_key]
-        }
-
-        if {[catch {nsv_array get site_nodes $url} site_node_list] == 0} {
-            for {set x 0} {$x < [llength $site_node_list]} {incr x 2} {
-                if {[string match $url [lindex $site_node_list $x]]} {
-                    array set site_node [lindex $site_node_list [expr $x + 1]]
-                    if {[string equal $package_key $site_node(package_key)]} {
-                        set result 1
-                        break
-                    } else {
-                        # XXX need to figure out how to error out of here, this
-                        #     really bad
-                    }
-                }
-            }
-        }
-
-        return $result
-    }
-
     ad_proc -public is_initialized {} {
         is dotlrn initialized with the right community_type?
     } {
@@ -122,27 +88,36 @@ namespace eval dotlrn {
         create base community_type for dotlrn
     } {
         dotlrn_community::set_type_package_id [community_type] [get_package_id]
+
+        # we need to create a portal template for the user workspace and 
+        # it's a sin
+        dotlrn_community::init \
+                -community_type "user_workspace" \
+                -community_type_url_part "user-workspace-dummy-url" \
+                -pretty_name "User Workspace"
+
+
+        # do the same for subgroups (dotlrn_community type)
+        dotlrn_community::init \
+                -community_type "dotlrn_community" \
+                -community_type_url_part "subgroups-dummy-url" \
+                -pretty_name "Subgroups"
     }
 
     ad_proc -public is_package_mounted {
         {-package_key:required}
     } {
         returns 1 if package is mounted under dotlrn, 0 otherwise
+        FIXME: refactor
     } {
         set package_list [nsv_array get site_nodes "*$package_key*"]
         set dotlrn_ancestor_p 0
 
-        # ns_log notice "is_package_mounted: package_list is $package_list"
-
         for {set x 1} {$x < [llength $package_list]} {incr x 2} {
             array set package_info [lindex $package_list $x]
 
-            # ns_log notice "is_package_mounted: [array get package_info]"
-
             if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) "dotlrn"] != 0} {
                 set dotlrn_ancestor_p 1
-
-                # ns_log notice "is_package_mounted: found dotlrn ancestor of $package_key with url $package_info(url)"
                 break
             }
         }
@@ -360,7 +335,7 @@ namespace eval dotlrn {
         if {[info exists set]} {
             return [ad_parameter -set -package_id [get_package_id] -default $default $name]
         } else {
-            return [ad_parameter -package_id [get_package_id] -default $default $name]
+            return [ad_parameter -package_id [get_package_id] $name]
         }
     }
 

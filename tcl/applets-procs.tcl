@@ -43,6 +43,14 @@ namespace eval dotlrn_applet {
         return [site_nodes::get_info -return url -package_key $applet_key]
     }
 
+    ad_proc -public is_initalized {} {
+        if {[site_nodes::get_node_id_from_url -url [get_url]] != [dotlrn::get_node_id] } {
+            return 1 
+        } else { 
+            return 0
+        }
+    }
+
     ad_proc -public init {} {
         # Create the applets node
         site_nodes::site_node_create -parent_node_id [dotlrn::get_node_id] -name "applets"
@@ -153,6 +161,17 @@ namespace eval dotlrn_applet {
                 -pretty_name $pretty_name]
 
         return $package_id
+    }
+
+    ad_proc -public is_applet_mounted {
+        {-url:required}
+    } {
+        if {[site_nodes::get_node_id_from_url -url "/dotlrn/applets/$url"] 
+        ==  [site_nodes::get_node_id_from_url -url "/dotlrn/applets"]} {
+            return 0
+        } else {
+            return 1
+        }
     }
         
         
