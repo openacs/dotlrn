@@ -38,6 +38,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-init.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-main-portlet-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-main-portlet-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-security-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-package-create.sql"/>
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
@@ -46,6 +47,7 @@
             <file type="query_file" db_type="oracle" path="tcl/class-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/class-procs.tcl"/>
             <file type="query_file" path="tcl/class-procs.xql"/>
+            <file type="tcl_procs" path="tcl/club-procs.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/community-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/community-procs.tcl"/>
             <file type="query_file" path="tcl/community-procs.xql"/>
@@ -76,12 +78,8 @@
             <file type="content_page" path="www/admin/one-class.adp"/>
             <file type="content_page" path="www/admin/one-class.tcl"/>
             <file type="query_file" path="www/admin/one-class.xql"/>
-            <file type="content_page" path="www/admin/one-instance-portal-template-2.tcl"/>
-            <file type="content_page" path="www/admin/one-instance-portal-template.adp"/>
-            <file type="content_page" path="www/admin/one-instance-portal-template.tcl"/>
             <file type="content_page" path="www/admin/user-new-2.adp"/>
             <file type="content_page" path="www/admin/user-new-2.tcl"/>
-            <file type="content_page" path="www/admin/user-new-3.tcl"/>
             <file type="content_page" path="www/admin/user-new.adp"/>
             <file type="content_page" path="www/admin/user-new.tcl"/>
             <file type="query_file" path="www/admin/user-new.xql"/>
@@ -112,6 +110,7 @@
             <file type="content_page" path="www/configure.adp"/>
             <file type="content_page" path="www/configure.tcl"/>
             <file type="query_file" path="www/configure.xql"/>
+            <file type="content_page" path="www/index-not-a-user.adp"/>
             <file type="query_file" db_type="oracle" path="www/index-oracle.xql"/>
             <file type="query_file" db_type="postgresql" path="www/index-postgresql.xql"/>
             <file path="www/index.adp"/>
@@ -124,6 +123,9 @@
             <file type="content_page" path="www/one-community-admin.tcl"/>
             <file type="query_file" path="www/one-community-admin.xql"/>
             <file type="content_page" path="www/one-community-not-member.adp"/>
+            <file type="content_page" path="www/one-community-portal-template-2.tcl"/>
+            <file type="content_page" path="www/one-community-portal-template.adp"/>
+            <file type="content_page" path="www/one-community-portal-template.tcl"/>
             <file type="content_page" path="www/one-community-type.adp"/>
             <file type="content_page" path="www/one-community-type.tcl"/>
             <file type="query_file" path="www/one-community-type.xql"/>
