@@ -619,6 +619,7 @@ namespace eval dotlrn_community {
 
             applets_dispatch -community_id $community_id \
                 -op AddUserToCommunity \
+                -reorder_hack_p 1 \
                 -list_args [list $community_id $user_id]
         }
     }
@@ -1245,15 +1246,39 @@ namespace eval dotlrn_community {
         {-community_id ""}
         {-op:required}
         {-list_args {}}
+        {-reorder_hack_p ""}
     } {
         Dispatch an operation to every applet, either in one communtiy or
         on all the active dotlrn applets
     } {
-
-        ns_log notice "aks 20 debug applets_dispatch called with comm_id = $community_id, op $op,
-        list args $list_args length is [llength $list_args]"
-
         set list_of_applets [list_active_applets -community_id $community_id]
+
+        if {![empty_string_p $reorder_hack_p]} { 
+            ns_log notice "aks1: applets_dispatch: reorder hack!"
+
+            set reorder_applets_string [ad_parameter user_wsp_applet_ordering "dotlrn" "dotlrn_news,dotlrn_bboard,dotlrn_survey,dotlrn_faq"]
+
+            set reorder_applets_list [string trim [split $reorder_applets_string {,}]]
+            
+            # check if the applet is both in the reorder list and the applet list
+            # if so, put it into the right place in the result list
+            # if not, skip it
+            set result_list [list]
+            foreach applet $reorder_applets_list {
+                set index [lsearch -exact $list_of_applets $applet]
+
+                if {$index != -1 } {
+                    ns_log notice "aks2: reorder HIT with '$applet' against '$list_of_applets' // $index"
+                    set list_of_applets [lreplace $list_of_applets $index $index]
+                    lappend result_list $applet
+                } else {
+                    ns_log notice "aks3: reorder MISS with '$applet' against '$list_of_applets'"
+                }
+            }
+
+            set list_of_applets [concat $result_list $list_of_applets]
+        }
+
 
         foreach applet $list_of_applets {
             # Callback on applet

@@ -45,7 +45,7 @@ namespace eval dotlrn {
         need collision detection and resolution, yada yada. 
     } {
         
-        regsub -all {\W+} $name "-" name
+        regsub -all {\W+} [string tolower $name] "-" name
         regsub -all -- {-+} $name "-" name
         
         return "[string trim $name {-}]"
