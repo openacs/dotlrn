@@ -24,10 +24,12 @@ ad_page_contract {
 } -query {
 }
 
+set community_id [dotlrn_community::get_community_id]
+
 # this chunk must be restricted to admins of the community only
 dotlrn::require_user_admin_community \
     -user_id [ad_conn user_id] \
-    -community_id [dotlrn_community::get_community_id]
+    -community_id $community_id
 
 # Get active applets
 set list_of_active_applets [dotlrn_community::list_active_applets -community_id $community_id]

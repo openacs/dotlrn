@@ -19,10 +19,9 @@
 <master src="dotlrn-master">
 <property name="title">@spam_name@ Community</property>
 <property name="context_bar">@context_bar@</property>
-<property name="portal_id">@portal_id@</property>
+
 <property name="show_control_panel">1</property>
-<property name="control_panel_text">Group Admin</property>
-<property name="link_control_panel">1</property>
+
 
 <p>
   Are you sure you want to send the following @spam_name@ Message?

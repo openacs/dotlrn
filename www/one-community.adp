@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-master">
-<property name="portal_id">@portal_id@</property>
+
 <property name="show_control_panel">@admin_p@</property>
 
 <p></p>

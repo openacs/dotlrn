@@ -25,14 +25,19 @@ ad_page_contract {
     title:onevalue
 }
 
-set class_instance_p 0
 set user_id [ad_get_user_id]
 set community_id [dotlrn_community::get_community_id]
+
+# this page must be restricted to admins of the community only
+dotlrn::require_user_admin_community \
+    -user_id $user_id \
+    -community_id $community_id
+
+set class_instance_p 0
 set community_name [dotlrn_community::get_community_name $community_id]
 set title "Copy $community_name]"
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 set top_community_type [dotlrn_community::get_toplevel_community_type_from_community_id $community_id]
-
 
 if { $top_community_type != "dotlrn_club" 
      && $top_community_type != "dotlrn_community" } {

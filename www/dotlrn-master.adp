@@ -18,38 +18,71 @@
 
 %>
 
-<master>
+<property name="header_stuff">@header_stuff@</property>
+<property name="title">@title@</property>
 
-<!-- A list of all the properties that pages in dotlrn _may_ set, passing them
-     up to the dotlrn-default-master -->
+<!-- Header Begin -->
+<table width="100%">
+  <tr>
+    <td colspan=3>
+    <!-- Ugly NN4 bar hack -->
+      <table width="100%" bgcolor="@color_hack@" border="0" cellpadding="1" cellspacing="0">
+         <tr bgcolor="@color_hack@"> 
+            <td><img src="@dotlrn_graphics_url@/spacer.gif" width="1" height="1" alt=""></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="10%" class="header-logo">
+      <a href="@dotlrn_url@">
+      <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
+    </td>
+
+    <td width="50%"><div class=header-text>@text@</div></td>
+
+    <td width="40%" class="header-buttons" align="right">
+      <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_graphics_url@/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
+      <a href="@dotlrn_url@/preferences"><img class="header-img" border="0" src="@dotlrn_graphics_url@/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
+      <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_graphics_url@/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
+    </td>
+
+  </tr>
+
+  <tr>
+    <td colspan=3>
+      <table width="100%" bgcolor="@color_hack@" border="0" cellpadding="1" cellspacing="0">
+         <tr bgcolor="@color_hack@"> 
+            <td><img src="@dotlrn_graphics_url@/spacer.gif" width="1" height="1" alt=""></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  
+</table>
+
+<!-- navbars on every page -->
+
+<small>@navbar@</small>
+
+<P>
+<!-- Header End -->
 
 
-<if @title@ defined>
-  <property name="title">@title@</property>
-</if>
-
-<if @link_all@ defined>
-  <property name="link_all">@link_all@</property>
-</if>
-
-<if @return_url@ defined>
-  <property name="return_url">@return_url@</property>
-</if>
-
-<if @show_control_panel@ defined>
-  <property name="show_control_panel">@show_control_panel@</property>
-</if>
-
-<if @link_control_panel@ defined>
-  <property name="link_control_panel">@link_control_panel@</property>
-</if>
-
-<if @no_navbar_p@ defined>
-  <property name="no_navbar_p">@no_navbar_p@</property>
-</if>
-
-<if @portal_id@ defined>
-  <property name="portal_id">@portal_id@</property>
-</if>
 
 <slave>
+
+
+<!-- Footer Begin -->
+
+<!-- navbars on every page -->
+<P>
+
+<small>@navbar@</small>
+
+
+<hr>
+
+<div class="footer"><a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> | <a href="http://web.mit.edu">MIT</a></div>
+

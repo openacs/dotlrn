@@ -21,7 +21,7 @@
 
 <master>
 <property name="title">@title@</property>
-<property name="portal_id">@portal_id@</property>
+
 
 <% set dotlrn_url [dotlrn::get_url] %>
 
