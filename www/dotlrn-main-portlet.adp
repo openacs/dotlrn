@@ -55,7 +55,7 @@
 		incr depth -1 
 	} 
 	%>
-	@close_tags@
+	@close_tags;noquote@
         </if>
      </if>
 
