@@ -29,6 +29,7 @@
           <th align="left">Site-wide Admin?</th>
         </tr>
 
+<if @users:rowcount@ gt 0>
 <multiple name="users">
 
 <if @users.rownum@ odd>
@@ -66,6 +67,12 @@
         </tr>
 
 </multiple>
+</if>
+<else>
+        <tr bgcolor="#eeeeee">
+          <td colspan="4"><i>No Users</i></td>
+        </tr>
+</else>
 
       </table>
     </td>
