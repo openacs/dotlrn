@@ -22,9 +22,25 @@
 <property name="title">Add A Member</property>
 <property name="context_bar">@context_bar@</property>
 
+
+<if @users:rowcount@ eq 0>
+     There are no users matching @search_text@.
+  </tr>
+</if>
+<else>
 The results of your search are:
+</else>
+
 <ul>
 <multiple name="users">
-  <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a></li>
+  <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a> 
+ 
+  <if @users.rel_type@ ne "">
+	(<%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @users.rel_type@] "Student"]%>)
+  </if>
+
+  </li>
 </multiple>
 </ul>
+
+

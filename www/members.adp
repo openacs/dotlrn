@@ -20,5 +20,13 @@
 
 <master src="dotlrn-master">
 <property name="title">Manage Membership</property>
+<property name="link_all">1</property>
 
 <include src="members-chunk-table" referer="members">
+
+<if @spam_p@ true>
+  <ul>
+    <li>        <a href="spam?community_id=@community_id@&referer=@return_url@">Email Members</a>
+  </ul>
+</if>
+

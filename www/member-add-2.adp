@@ -21,7 +21,15 @@
 <master src="dotlrn-master">
 <property name="title">Add A Member</property>
 
-You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
+<if @member_p@ eq 1>
+
+<strong>@first_names@ @last_name@ (@email@)</strong> is a @existing_role@ in @community_name@. You may select a new role below:
+
+</if>
+<else>
+You're adding <strong>@first_names@ @last_name@ (@email@)</strong> to @community_name@:<p>
+</else>
+
 
 <form method="get" action="member-add-3">
   <input type="hidden" name="user_id" value="@user_id@">
