@@ -181,13 +181,15 @@
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
   <li>    
-  <if @site_wide_admin_p@>
-    #dotlrn.lt_This_user_is_a_site-w# 
-    (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">#dotlrn.revoke#</a>)
+  <if @dotlrn_user_p@>
+    <if @site_wide_admin_p@>
+      #dotlrn.lt_This_user_is_a_site-w# 
+      (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">#dotlrn.revoke#</a>)
+    </if>
+    <else>
+      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">
+      #dotlrn.lt_Make_this_user_a_site#</a>
+    </else>
   </if>
-  <else>
-    <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">
-    #dotlrn.lt_Make_this_user_a_site#</a>
-  </else>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
 </ul>
