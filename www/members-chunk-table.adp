@@ -99,7 +99,7 @@
 
 <if @admin_p@ eq 1>
 <input type=hidden name=referer value="@referer@">
-<input type=submit value="Drop selected members">
+<input type=submit value="#dotlrn.Drop_selected_members#">
 </form>
 </if>
 
