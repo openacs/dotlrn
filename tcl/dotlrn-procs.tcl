@@ -50,6 +50,32 @@ namespace eval dotlrn {
         return [ad_decode [apm_num_instances [package_key]] 0 0 1]
     }
 
+    ad_proc -public is_instantiated_here {
+        {-url:required}
+    } {
+        returns 1 if dotlrn is instantiaed under the url specified, 0
+        otherwise
+    } {
+        set result 0
+        set site_node_list [nsv_array get site_nodes {${url}/?}]
+
+        for {set x 0} {$x < [llength $site_node_list]} {incr x 2} {
+            if {[string match {${url}/?} [lindex $site_node_list $x]]} {
+                set site_node [lindex $site_node_list [expr $x + 1]]
+
+                if {[string equals [dotlrn::package_key] $site_node(package_key)]} {
+                    set result 1
+                    break
+                } else {
+                    # XXX need to figure out how to error out of here, this
+                    # really bad
+                }
+            }
+        }
+
+        return $result
+    }
+
     ad_proc -public is_package_mounted {
         {-package_key:required}
     } {
@@ -78,7 +104,7 @@ namespace eval dotlrn {
         mount a package under dotlrn
     } {
         db_transaction {
-            set parent_node [site_node [site_node_closest_ancestor_package_url -package_key $package_key]]
+            set parent_node [site_node [site_node::get_url_from_node_id [site_node::get_parent_id [site_node::get_node_id_from_url $url]]]]
             set parent_id $parent_node(node_id)
             set parent_package_id $parent_node(object_id)
 

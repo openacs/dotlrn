@@ -1,5 +1,3 @@
-
-
 #
 # Procs for initializing DOTLRN basic system
 # Copyright 2001 OpenForce, inc.
@@ -17,10 +15,8 @@ ad_library {
     
 }
 
-
 # We check to see if dotLRN has been installed, and if so, if permissions
 # have been granted
-
 
 # if installed
 if {[dotlrn::is_instantiated]} {
@@ -40,13 +36,27 @@ if {[dotlrn::is_instantiated]} {
     # init of each applet NOTE: this applet_add proc _must_ be able to be
     # called repeatedly since this script is eval'd at every server startup
     # - aks
-    
     foreach applet [dotlrn_community::list_applets] {
 	# Callback on all applets
 	dotlrn_community::applet_call $applet "AddApplet" [list]
+    }
+
+    set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]"
+    if {![dotlrn::is_instantiated_here $dotlrn_classes_url]} {
+        dotlrn::mount_package
+            -package_key [dotlrn::package_key] \
+            -url $dotlrn_classes_url \
+            -directory_p 1
+    }
+
+    set dotlrn_clubs_url "[dotlrn::get_url][dotlrn_club::get_url]"
+    if {![dotlrn::is_instantiated_here $dotlrn_clubs_url]} {
+        dotlrn::mount_package
+            -package_key [dotlrn::package_key] \
+            -url $dotlrn_clubs_url \
+            -directory_p 1
     }
 }
 
 # Make sure that privacy is turned on
 acs_privacy::privacy_control_set 1
-
