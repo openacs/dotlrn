@@ -6,58 +6,61 @@
     <pretty-plural>dotLRN</pretty-plural>
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
-
-    <version name="2.0d1" url="http://software.openforce.net/openacs/packages/dotlrn">
-    <database-support>
-        <database>oracle</database>
-        <database>postgresql</database>
-    </database-support>
+    
+    <version name="2.0a3" url="http://software.openforce.net/openacs/packages/dotlrn-2.0a3.apm">
         <owner url="mailto:dotlrn@openforce.net">OpenForce dotLRN</owner>
         <summary>A Course Management System</summary>
         <release-date>2001-10-03</release-date>
         <vendor url="http://openforce.net/">OpenForce</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.0d1"/>
+        <provides url="dotlrn" version="2.0a3"/>
         <requires url="acs-kernel" version="5.0d13"/>
+        <requires url="attachments" version="0.5"/>
         <requires url="new-portal" version="0.1a"/>
         <requires url="user-profile" version="0.1d"/>
-        <requires url="attachments" version="0.5"/>
 
+        <callbacks>
+        </callbacks>
         <parameters>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoAddUsersP"  default="0" description="Automatically add OpenACS users to .LRN. 1 = yes, 0 = no."/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserAccessLevel"  default="1" description="The access level of auto-added users. 1 = Full access user, 0 = Limited access user"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserReadPrivateDataP"  default="1" description="Auto-added user's guest status. 1 = Not a guest , 0 = Guest."/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoUserType"  default="student" description="The user type for auto-approved users."/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="#dotlrn.admin_page_name#" description="The name of the admin page"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="#dotlrn.departments_pretty_name#" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="#dotlrn.departments_pretty_plural#" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="#dotlrn.classes_pretty_name#" description="used to display everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="#dotlrn.classes_pretty_plural#" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="#dotlrn.class_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.class_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.class_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="cvs list of the page_name/layout to create"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="#dotlrn.class_instance_portal_pretty_name#" description="the nice name for the class instance portal template"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="#dotlrn.class_instances_pretty_name#" description="used to display everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="#dotlrn.class_instances_pretty_plural#" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="#dotlrn.classes_pretty_name#" description="used to display everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="#dotlrn.classes_pretty_plural#" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="#dotlrn.club_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.club_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_file_storage_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_people_title#,#new-portal.simple_1column_layout_name#" description="same"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="#dotlrn.clubs_pretty_name#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="#dotlrn.clubs_pretty_plural#" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="#dotlrn.dotlrn_main_portlet_pretty_name#" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus,dotlrn_homework_applet" description="dotLRN applets to add by default to each new community"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="#dotlrn.subcommunities_pretty_name#" description="what subcomms are called"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="#dotlrn.subcommunities_pretty_plural#" description="the plural"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="#dotlrn.class_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.class_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.class_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="cvs list of the page_name/layout to create"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="#dotlrn.club_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.club_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_file_storage_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_people_title#,#new-portal.simple_1column_layout_name#" description="same"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="#dotlrn.subcomm_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.subcomm_page_info_title#,#new-portal.simple_1column_layout_name#;#dotlrn.subcomm_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.subcomm_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="default page names and layouts for subcomms"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="#dotlrn.non_member_page_name#" description="The name of the not a member page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="#dotlrn.admin_page_name#" description="The name of the admin page"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="#dotlrn.dotlrn_admin_pretty_name#" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="#dotlrn.class_instance_portal_pretty_name#" description="the nice name for the class instance portal template"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="#dotlrn.departments_pretty_name#" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="#dotlrn.departments_pretty_plural#" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="#dotlrn.dotlrn_admin_pretty_name#" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="#dotlrn.dotlrn_main_portlet_pretty_name#" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="#dotlrn.non_member_page_name#" description="The name of the not a member page"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="#dotlrn.subcomm_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.subcomm_page_info_title#,#new-portal.simple_1column_layout_name#;#dotlrn.subcomm_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.subcomm_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="default page names and layouts for subcomms"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="#dotlrn.subcommunities_pretty_name#" description="what subcomms are called"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="#dotlrn.subcommunities_pretty_plural#" description="the plural"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="a csv list of the other pages to create on the user wsp by default"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
         </parameters>
+
     </version>
 </package>

@@ -22,12 +22,48 @@ ad_page_contract {
     @version $Id$
 }
 
+if { [dotlrn::user_p -user_id $user_id] } {
+    # Already a user
+    ad_returnredirect .
+    ad_script_abort
+} 
+
 if { [dotlrn::admin_p] } {
     set return_url [export_vars -base "[dotlrn::get_admin_url]/user-new-2" { { user_id {[ad_conn user_id]} } { referer "[dotlrn::get_url]/"} }]
     set self_approve_url [export_vars -base "[apm_package_url_from_key "acs-admin"]users/member-state-change" { { user_id {[ad_conn user_id]} } { member_state approved} return_url }]
     ad_returnredirect $self_approve_url
     ad_script_abort
+} elseif { [parameter::get -parameter AutoAddUsersP -package_id [dotlrn::get_package_id] -default 0] } {
+
+    set user_id [auth::require_login]
+
+    set type [parameter::get \
+                  -parameter AutoUserType \
+                  -package_id [dotlrn::get_package_id] \
+                  -default "student"]
+    
+    set can_browse_p [parameter::get \
+                          -parameter AutoUserAccessLevel \
+                          -package_id [dotlrn::get_package_id] \
+                          -default 1]
+    
+    set read_private_data_p [parameter::get \
+                                 -parameter AutoUserReadPrivateDataP \
+                                 -package_id [dotlrn::get_package_id] \
+                                 -default 1]
+
+    db_transaction {
+        dotlrn::user_add \
+            -type $type \
+            -can_browse=$can_browse_p \
+            -user_id $user_id
+        
+        acs_privacy::set_user_read_private_data \
+            -user_id $user_id \
+            -object_id [dotlrn::get_package_id] \
+            -value $read_private_data_p
+    }
+
+    ad_returnredirect .
+    ad_script_abort
 }
-
-
-
