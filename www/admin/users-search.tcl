@@ -95,10 +95,10 @@ element create user_search access_level \
     -value $access_level
 
 element create user_search private_data_p \
-    -label "Can Read Private Data?" \
+    -label "Guest?" \
     -datatype text \
     -widget radio \
-    -options {{Any any} {Yes yes} {No no}} \
+    -options {{Any any} {Yes f} {No t}} \
     -value $private_data_p
 
 element create user_search role \
@@ -180,11 +180,9 @@ if {[form is_valid user_search]} {
     }
 
     switch -exact $private_data_p {
-        "yes" {
-            lappend wheres "\'t\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
-        }
-        "no" {
-            lappend wheres "\'f\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+        any {}
+        default {
+            lappend wheres ":private_data_p = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
         }
     }
 
