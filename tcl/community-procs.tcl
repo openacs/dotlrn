@@ -182,6 +182,18 @@ namespace eval dotlrn_community {
             set user_id [ad_conn user_id]
             set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
 
+            # YON MAJOR HACK
+            # acs_object.new() initializes the acs_attributes for us if the
+            # object_type of this community matches the object_type of the
+            # acs_attributes. this fucks us because we use dotlrn_community
+            # as the object_type for subgroups which means that their
+            # attributes will be defaulted to empty strings but we will think
+            # that they are set. we must delete them.
+            db_dml delete_acs_attribute_values {
+                delete
+                from acs_attribute_values
+                where object_id = :community_id
+            }
 
             set template_id [dotlrn::get_portal_id_from_type -type $community_type]
 
