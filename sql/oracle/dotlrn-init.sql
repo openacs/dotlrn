@@ -129,6 +129,7 @@ begin
         pretty_name => 'Page ID',
         pretty_plural => 'Page IDs'
     );
+
 end;
 /
 show errors

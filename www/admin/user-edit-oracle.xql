@@ -10,12 +10,10 @@
                    dotlrn_users.last_name,
                    dotlrn_users.email,
                    dotlrn_users.type,
-                   case when dotlrn_full_user_profile_rels.rel_id is null then 'limited' else 'full' end as access_level,
+                   dotlrn_users.access_level,
                    acs_permission.permission_p(:dotlrn_package_id, :user_id, 'read_private_data') as read_private_data_p
-            from dotlrn_users,
-                 dotlrn_full_user_profile_rels
+            from dotlrn_users
             where dotlrn_users.user_id = :user_id
-            and dotlrn_users.rel_id = dotlrn_full_user_profile_rels.rel_id(+)
         </querytext>
   </fullquery>
 

@@ -25,5 +25,4 @@
 @@ dotlrn-admins-sanitize.sql
 @@ dotlrn-admin-profile-provider-drop.sql
 
-drop table dotlrn_full_admin_profile_rels;
 drop table dotlrn_admin_profile_rels;

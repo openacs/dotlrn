@@ -22,31 +22,29 @@
 --
 
 create table dotlrn_user_profile_rels (
-    rel_id                      constraint dotlrn_usr_prfl_rels_rel_id_fk
+    rel_id                      constraint dotlrn_user_p_rels_rel_id_fk
                                 references user_profile_rels (rel_id)
                                 constraint dotlrn_user_profile_rels_pk
                                 primary key,
-    id                          varchar2(100)
-);
-
-create table dotlrn_full_user_profile_rels (
-    rel_id                      constraint dotlrn_fup_rels_rel_fk
-                                references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_full_user_prfl_rels_pk
-                                primary key,
-    portal_id                   constraint dotlrn_fup_rels_portal_fk
+    portal_id                   constraint dotlrn_user_p_rels_portal_fk
                                 references portals (portal_id)
-                                constraint dotlrn_fup_rels_portal_nn
+                                constraint dotlrn_user_p_rels_portal_nn
                                 not null,
-    theme_id                    constraint dotlrn_fup_rels_theme_fk
-                                references portal_element_themes (theme_id)
+    theme_id                    constraint dotlrn_user_p_rels_theme_id_fk
+                                references portal_element_themes (theme_id),
+    access_level                varchar(100)
+                                constraint dotlrn_user_p_rels_access_ck
+                                check (access_level in ('full', 'limited'))
+                                constraint dotlrn_user_p_rels_access_nn
+                                not null,
+    id                          varchar(100)
 );
 
 create table dotlrn_user_types (
-    type                        varchar2(100)
+    type                        varchar(100)
                                 constraint dotlrn_user_types_pk
                                 primary key,
-    pretty_name                 varchar2(200),
+    pretty_name                 varchar(200),
     group_id                    constraint dotlrn_user_types_group_id_fk
                                 references profiled_groups (group_id)
                                 constraint dotlrn_user_types_group_id_nn
@@ -56,6 +54,9 @@ create table dotlrn_user_types (
 create or replace view dotlrn_users
 as
     select acs_rels.rel_id,
+           dotlrn_user_profile_rels.portal_id,
+           dotlrn_user_profile_rels.theme_id,
+           dotlrn_user_profile_rels.access_level,
            dotlrn_user_profile_rels.id,
            users.user_id,
            persons.first_names,
@@ -75,15 +76,6 @@ as
     and acs_rels.object_id_two = parties.party_id
     and parties.party_id = users.user_id
     and users.user_id = persons.person_id;
-
-create or replace view dotlrn_full_users
-as
-    select dotlrn_users.*,
-           dotlrn_full_user_profile_rels.portal_id,
-           dotlrn_full_user_profile_rels.theme_id
-    from dotlrn_users,
-         dotlrn_full_user_profile_rels
-    where dotlrn_users.rel_id = dotlrn_full_user_profile_rels.rel_id;
 
 @@ dotlrn-user-profile-provider-create.sql
 @@ dotlrn-users-init.sql

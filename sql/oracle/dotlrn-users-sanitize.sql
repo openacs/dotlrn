@@ -28,29 +28,7 @@ begin
     select min(segment_id)
     into foo
     from rel_segments
-    where segment_name = 'dotLRN Full Profiled Users';
-
-    rel_segment.delete(
-        segment_id => foo
-    );
-
-    acs_rel_type.drop_type(
-        rel_type => 'dotlrn_full_user_profile_rel',
-        cascade_p => 't'
-    );
-
-end;
-/
-show errors
-
-declare
-    foo                         integer;
-begin
-
-    select min(segment_id)
-    into foo
-    from rel_segments
-    where segment_name = 'dotLRN Profiled Users';
+    where segment_name = 'dotLRN Users';
 
     rel_segment.delete(
         segment_id => foo

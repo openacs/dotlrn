@@ -90,7 +90,7 @@ if {[dotlrn::is_instantiated]} {
         ns_log notice "dotlrn-init: done with dotlrn_club::init"
     
         # Grantee
-        set grantee_id [dotlrn::get_full_users_rel_segment_id]
+        set grantee_id [dotlrn::get_users_rel_segment_id]
         set package_id [dotlrn::get_package_id]
     
         # Grant the permission

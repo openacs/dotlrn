@@ -60,9 +60,9 @@ if {![dotlrn::user_can_browse_p]} {
     # If just one community
     if {[llength $communities] == 1} {
         ad_returnredirect \
-                [dotlrn_community::get_url_from_package_id  \
-                    -package_id [lindex [lindex $communities 0] 4]
-        ]
+            [dotlrn_community::get_url_from_package_id  \
+                -package_id [lindex [lindex $communities 0] 4] \
+            ]
         ad_script_abort
     }
 
@@ -73,12 +73,11 @@ if {![dotlrn::user_can_browse_p]} {
 
 set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
-# O glorious portal page!
 set rendered_page \
-        [dotlrn::render_page \
-            -page_num $page_num \
-            -hide_links_p "t" \
-            $portal_id
-        ]
+    [dotlrn::render_page \
+        -page_num $page_num \
+        -hide_links_p "t" \
+        $portal_id \
+    ]
 
 ad_return_template

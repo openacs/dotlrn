@@ -21,5 +21,4 @@
 -- @version $Id$
 --
 
-drop package dotlrn_full_stud_profile_rel;
 drop package dotlrn_student_profile_rel;

@@ -22,16 +22,9 @@
 --
 
 create table dotlrn_admin_profile_rels (
-    rel_id                      constraint dotlrn_adm_prfl_rels_rel_id_fk
+    rel_id                      constraint dotlrn_admin_p_rels_rel_id_fk
                                 references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_admin_prfl_rels_pk
-                                primary key
-);
-
-create table dotlrn_full_admin_profile_rels (
-    rel_id                      constraint dotlrn_fl_adm_prfl_rels_rel_fk
-                                references dotlrn_full_user_profile_rels (rel_id)
-                                constraint dotlrn_full_admin_prfl_rels_pk
+                                constraint dotlrn_admin_profile_rels_pk
                                 primary key
 );
 

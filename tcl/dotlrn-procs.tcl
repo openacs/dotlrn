@@ -188,12 +188,6 @@ namespace eval dotlrn {
 	return [db_string select_user_rel_segment {}]
     }
 
-    ad_proc -public get_full_users_rel_segment_id {} {
-	returns the rel_segment_id of the dotLRN full users segment
-    } {
-	return [db_string select_user_rel_segment {}]
-    }
-
     ad_proc -public get_user_theme {
 	user_id
     } {
@@ -310,17 +304,10 @@ namespace eval dotlrn {
 
     ad_proc -public get_rel_type_from_user_type {
         -type
-        {-access_level "full"}
     } {
         return the appropriate rel_type base on user type and access level
     } {
-        if {[string equal $access_level "full"] == 1} {
-            set rel_type "dotlrn_full_"
-        } else {
-            set rel_type "dotlrn_"
-        }
-
-        return "${rel_type}${type}_profile_rel"
+        return "dotlrn_${type}_profile_rel"
     }
 
     ad_proc -public parameter {

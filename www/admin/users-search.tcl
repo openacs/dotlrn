@@ -167,6 +167,7 @@ if {[form is_valid user_search]} {
         "dotlrn_users.last_name" \
         "dotlrn_users.email" \
         "dotlrn_users.type" \
+        "dotlrn_users.access_level" \
     ]
     set wheres [list]
 
@@ -186,13 +187,8 @@ if {[form is_valid user_search]} {
         }
     }
 
-    switch -exact $access_level {
-        "full" {
-            lappend wheres "exists (select 1 from dotlrn_full_users where dotlrn_full_users.rel_id = dotlrn_users.rel_id)"
-        }
-        "limited" {
-            lappend wheres "not exists (select 1 from dotlrn_full_users where dotlrn_full_users.rel_id = dotlrn_users.rel_id)"
-        }
+    if {![string equal "any" $access_level]} {
+        lappend wheres "dotlrn_users.access_level = :access_level"
     }
 
     switch -exact $private_data_p {

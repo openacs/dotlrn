@@ -9,10 +9,7 @@
                dotlrn_users.first_names,
                dotlrn_users.last_name,
                dotlrn_users.email,
-               nvl((select 'full'
-                    from dotlrn_full_user_profile_rels
-                    where dotlrn_full_user_profile_rels.rel_id = dotlrn_users.rel_id),
-                   'limited') as access_level,
+               dotlrn_users.access_level,
                acs_permission.permission_p(:dotlrn_package_id, dotlrn_users.user_id, 'read_private_data') as read_private_data_p,
                acs_permission.permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p
         from dotlrn_users

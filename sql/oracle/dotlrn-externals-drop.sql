@@ -25,5 +25,4 @@
 @@ dotlrn-externals-sanitize.sql
 @@ dotlrn-external-profile-provider-drop.sql
 
-drop table dotlrn_full_ext_profile_rels;
 drop table dotlrn_external_profile_rels;

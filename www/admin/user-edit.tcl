@@ -58,7 +58,7 @@ element create edit_user access_level \
     -label "Access Level" \
     -datatype text \
     -widget select \
-    -options {{"Full Access" "full"} {"Limited Access" "limited"}} \
+    -options {{"Full" "full"} {"Limited" "limited"}} \
     -value $access_level
 
 element create edit_user read_private_data_p \

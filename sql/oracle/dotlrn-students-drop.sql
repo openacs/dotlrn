@@ -25,5 +25,4 @@
 @@ dotlrn-students-sanitize.sql
 @@ dotlrn-student-profile-provider-drop.sql
 
-drop table dotlrn_full_stud_profile_rels;
 drop table dotlrn_student_profile_rels;

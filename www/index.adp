@@ -25,5 +25,3 @@
 <p></p>
 
 @rendered_page@
-
-

@@ -100,53 +100,39 @@ namespace eval dotlrn {
         # set up extra vars
         set extra_vars [ns_set create]
         ns_set put $extra_vars user_id $user_id
+        ns_set put $extra_vars access_level $access_level
         ns_set put $extra_vars id $id
 
         db_transaction {
-            if {[string equal $access_level "full"] == 1} {
-                # Create a portal page for this user, 
-                # the template for the user WSP is create in dotlrn::init
-                set portal_id [portal::create \
-                        -template_id [dotlrn_community::get_type_template_id -community_type "user_workspace"] \
-                        -name "Your dotLRN Workspace" \
-                        $user_id
-                ]
+            set portal_id [portal::create \
+                -template_id [dotlrn_community::get_type_template_id -community_type "user_workspace"] \
+                -name "Your dotLRN Workspace" \
+                $user_id
+            ]
 
-                set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
+            ns_set put $extra_vars portal_id $portal_id
 
-                dotlrn_main_portlet::add_self_to_page \
-                        -page_id $page_id \
-                        $portal_id ""
+            set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
+            dotlrn_main_portlet::add_self_to_page -page_id $page_id $portal_id ""
                 
-                # Update the user and set the portal page correctly
-                ns_set put $extra_vars portal_id $portal_id
-            }
-
             # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
             set rel_id [relation_add \
                 -extra_vars $extra_vars \
                 -member_state approved \
-                [get_rel_type_from_user_type -type $type -access_level $access_level] \
+                [get_rel_type_from_user_type -type $type] \
                 "" \
-                $user_id]
+                $user_id \
+            ]
 
-            if {[string equal $access_level "full"] == 1} {
-                # must be here since wsp must exist in the dotlrn_full_users table,
-                # do the callbacks on the active dotlrn-wide applets
-                dotlrn_community::applets_dispatch \
-                        -op AddUser \
-                        -list_args [list $user_id]
-            }
+            dotlrn_community::applets_dispatch -op AddUser -list_args [list $user_id]
 
             # if the user is a member of communities (from some previous
-            # dotlrn relation, like if the user was limited user and is now
-            # being made a full user) then we must remove them from the
-            # community and re-add them so that all the portals will work
-            # properly.
+            # dotlrn relation) then we must remove them from the community and
+            # re-add them so that all the portals will work properly.
             # NOTE: we cannot do this in a db_foreach beacause of the table we
             # are selecting from changes inside the loop causing all kinds of
             # dead lock issues.
-            set current_memberships [db_list_of_lists select_current_memberships {
+            set current_memberships [db_list_of_ns_sets select_current_memberships {
                 select community_id,
                        rel_type,
                        member_state
@@ -155,8 +141,12 @@ namespace eval dotlrn {
             }]
 
             foreach row $current_memberships {
-                dotlrn_community::remove_user [lindex $row 0] $user_id
-                dotlrn_community::add_user -rel_type [lindex $row 1] -member_state [lindex $row 2] [lindex $row 0] $user_id
+                dotlrn_community::remove_user [ns_set get $row community_id] $user_id
+                dotlrn_community::add_user \
+                    -rel_type [ns_set get $row rel_type] \
+                    -member_state [ns_set get $row member_state] \
+                    [ns_set get $row community_id] \
+                    $user_id
             }
         }
 
@@ -224,7 +214,11 @@ namespace eval dotlrn {
     } {
         Check is a user can browse dotLRN
     } {
-        return [permission::permission_p -party_id $user_id -object_id [dotlrn::get_package_id] -privilege "dotlrn_browse"]
+        return [permission::permission_p \
+            -party_id $user_id \
+            -object_id [dotlrn::get_package_id] \
+            -privilege "dotlrn_browse" \
+        ]
     }
 
     ad_proc -public require_user_browse {
@@ -243,7 +237,10 @@ namespace eval dotlrn {
     } {
         set whether or not a user can read private data
     } {
-        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] $val
+        acs_privacy::set_user_read_private_data \
+            -user_id $user_id \
+            -object_id [dotlrn::get_package_id] \
+            $val
     }
 
     ad_proc -public user_can_read_private_data_p {
@@ -255,7 +252,10 @@ namespace eval dotlrn {
             set user_id [ad_conn user_id]
         }
 
-        return [acs_privacy::user_can_read_private_data_p -user_id $user_id -object_id [dotlrn::get_package_id]]
+        return [acs_privacy::user_can_read_private_data_p \
+            -user_id $user_id \
+            -object_id [dotlrn::get_package_id] \
+        ]
     }
 
     ad_proc -public require_user_read_private_data {
@@ -296,7 +296,11 @@ namespace eval dotlrn {
     } {
         Check if a user can read a community
     } {
-        return [permission::permission_p -party_id $user_id -object_id $community_id -privilege "dotlrn_view_community"]
+        return [permission::permission_p \
+            -party_id $user_id \
+            -object_id $community_id \
+            -privilege "dotlrn_view_community" \
+        ]
     }
 
     ad_proc -public require_user_read_community {
@@ -340,7 +344,11 @@ namespace eval dotlrn {
     } {
         check if a user can admin a community
     } {
-        return [permission::permission_p -party_id $user_id -object_id $community_id -privilege "dotlrn_admin_community"]
+        return [permission::permission_p \
+            -party_id $user_id \
+            -object_id $community_id \
+            -privilege "dotlrn_admin_community" \
+        ]
     }
 
     ad_proc -public require_user_admin_community {

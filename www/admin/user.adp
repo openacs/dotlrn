@@ -89,7 +89,7 @@
 
   <li>
     Access level:
-    @access_level@
+    <if @access_level@ eq "full">Full</if><else>Limited</else>
   </li>
 
   <li>

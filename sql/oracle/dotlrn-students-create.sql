@@ -22,16 +22,9 @@
 --
 
 create table dotlrn_student_profile_rels (
-    rel_id                      constraint dotlrn_std_rels_rel_id_fk
+    rel_id                      constraint dotlrn_student_p_rels_rel_fk
                                 references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_student_profile_rels_pk
-                                primary key
-);
-
-create table dotlrn_full_stud_profile_rels (
-    rel_id                      constraint dotlrn_fs_prfl_rels_rel_fk
-                                references dotlrn_full_user_profile_rels (rel_id)
-                                constraint dotlrn_fs_prfl_rels_pk
+                                constraint dotlrn_student_p_rels_pk
                                 primary key
 );
 
