@@ -36,13 +36,17 @@ ad_page_contract {
 set current_user_id [ad_maybe_redirect_for_registration]
 set community_id [dotlrn_community::get_community_id]
 
+if {$read_private_data_p || $can_browse_p} {
+    dotlrn::require_admin
+}
+    
 if {![empty_string_p $community_id]} {
     dotlrn::require_user_admin_community -community_id [dotlrn_community::get_community_id]
-    set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
+    set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
     set community_p 1
 } else {
     dotlrn::require_admin
-    set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Add_User]]
+    set context [list [list users [_ dotlrn.Users]] [_ dotlrn.Add_User]]
     set community_p 0
 }
 
