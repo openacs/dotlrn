@@ -65,6 +65,7 @@
   <msg key="Bulk_Uploading">Bulk uploading in progress.</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
+  <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -97,6 +98,7 @@
   <msg key="Community_Type">Community Type</msg>
   <msg key="Community_Types">Community Types</msg>
   <msg key="Communitys_Name">Community's Name</msg>
+  <msg key="Compose_bulk_message">Compose Bulk Message</msg>
   <msg key="Configure_Element">Configure Element</msg>
   <description key="Configure_Element">Used in title on page for configuring a portal element, i.e. a portal application mini window.
 </description>
@@ -209,6 +211,7 @@ notify this user.</msg>
   <msg key="Header_Logo_Alt_Text">Header Logo Alt Text</msg>
   <msg key="Header_Logo_Item_ID">Header Logo Item ID</msg>
   <msg key="help">Help</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Professor</msg>
@@ -388,7 +391,9 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Memberships">Memberships</msg>
   <msg key="Memberships_1">Memberships:</msg>
   <msg key="Message">Message</msg>
+  <msg key="Message_Type">Message Type</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
+  <msg key="Must_specify_recipients">You must specify at least one recipient for your message</msg>
   <msg key="My_Communities">My Communities</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
@@ -444,6 +449,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Person_name">Name</msg>
   <msg key="Personal_home_page">Personal home page:</msg>
   <msg key="Personal_Options">Personal Options</msg>
+  <msg key="Plain_Text">Plain Text</msg>
   <msg key="portal_templates">Portal Templates</msg>
   <msg key="Portrait">Portrait:</msg>
   <msg key="Portrait_1">Portrait</msg>
@@ -492,6 +498,7 @@ Thank you
   <msg key="seconds">seconds.</msg>
   <msg key="Send_Date">Send Date</msg>
   <msg key="send_email">Send Email</msg>
+  <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Shared_Files">Shared Files</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
