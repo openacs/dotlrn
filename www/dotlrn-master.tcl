@@ -318,9 +318,6 @@ if { ![info exists header_stuff] } {
 
 # This style sheet should be moved over to an external file for performance
 append header_stuff "
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">
-
-
 <STYLE TYPE=\"text/css\">
 BODY {
     FONT-WEIGHT: normal; 
