@@ -50,10 +50,10 @@ element create edit_term term_name \
     -html {size 30}
 
 element create edit_term term_year \
-    -label "Year" \
+    -label "Year (e.g. 2003, 2003/2004)" \
     -datatype text \
     -widget text \
-    -html {size 5 maxsize 4}
+    -html {size 9 maxlength 9}
 
 element create edit_term start_date \
     -label "Start Date" \
@@ -87,7 +87,7 @@ if {[form is_valid edit_term]} {
     dotlrn_term::edit \
         -term_id $term_id \
         -term_name $term_name \
-        -term_year $term_year \
+        -term_year [string trim $term_year] \
         -start_date $start_date \
         -end_date $end_date
 

@@ -34,12 +34,6 @@ element create add_term term_name \
     -widget text \
     -html {size 30}
 
-element create add_term term_year \
-    -label "Year" \
-    -datatype text \
-    -widget text \
-    -html {size 5 maxsize 4}
-
 element create add_term start_date \
     -label "Start Date" \
     -datatype date \
@@ -60,7 +54,12 @@ element create add_term referer \
 
 if {[form is_valid add_term]} {
     form get_values add_term \
-        term_name term_year start_date end_date referer
+        term_name start_date end_date referer
+
+    set term_year [dotlrn_term::start_end_dates_to_term_year \
+        -start_date $start_date \
+        -end_date $end_date
+    ]
 
     dotlrn_term::new \
         -term_name $term_name \

@@ -48,7 +48,7 @@ element create edit_department pretty_name \
     -label "Name" \
     -datatype text \
     -widget text \
-    -html {size 60}
+    -html {size 60 maxlength 100}
 
 element create edit_department description \
     -label "Description" \

@@ -33,7 +33,7 @@ element create add_club pretty_name \
     -label "Name" \
     -datatype text \
     -widget text \
-    -html {size 60}
+    -html {size 60 maxlength 100}
 
 element create add_club description \
     -label "Description" \

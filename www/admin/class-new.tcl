@@ -45,7 +45,7 @@ element create add_class pretty_name \
     -label Name \
     -datatype text \
     -widget text \
-    -html {size 60}
+    -html {size 60 maxlength 100}
 
 element create add_class description \
     -label Description \
