@@ -28,6 +28,9 @@
         <listtemplate name="departments"></listtemplate>
     </if>
     <else>
+    </center>
+    <p align="right"><a href="department-new?referer=@referer@">#dotlrn.new_department#</a> </p>
+    <center>
      <table>
       <tr bgcolor="#eeeeee">
         <td align="left" colspan="2">

@@ -36,6 +36,9 @@
         <listtemplate name="classes"></listtemplate>
 </if>
 <else>
+</center>
+<p align="right"><a href="class-new?department_key=@department_key@&referer=@referer@">#dotlrn.new_class_1#</a> </p>
+<center>
 <table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">

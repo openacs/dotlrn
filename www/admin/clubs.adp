@@ -32,6 +32,9 @@
 
 </if>
 <else>
+ </center>
+ <p align="right"><a href="club-new">#dotlrn.new_community#</a> </p>
+ <center>
  <table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">

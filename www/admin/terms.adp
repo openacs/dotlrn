@@ -29,6 +29,9 @@
   <listtemplate name="terms"></listtemplate>
 </if>
 <else>
+</center>
+<p align="right"><a href="term-new">#dotlrn.New_Term#</a> </p>
+<center>
 <table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
