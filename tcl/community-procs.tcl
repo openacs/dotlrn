@@ -585,14 +585,15 @@ namespace eval dotlrn_community {
 	set parent_id [dotlrn_community::get_parent_id -community_id $community_id]
         set parent_admin_segment_id [get_admin_rel_id -community_id $parent_id]
 
-        permission::grant \
-            -party_id $member_segment_id \
-            -object_id $community_id \
-            -privilege read
-        permission::grant \
-            -party_id $member_segment_id \
-            -object_id $community_id \
-            -privilege write
+        # Member privs
+        foreach priv { read create write } {
+            permission::grant \
+                -party_id $member_segment_id \
+                -object_id $community_id \
+                -privilege $priv
+        }
+
+        # Admin privs
         permission::grant \
             -party_id $admin_segment_id \
             -object_id $community_id \
