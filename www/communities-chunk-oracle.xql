@@ -24,9 +24,14 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id)) as member_p,
-             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p
+             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
+             (select community_type
+              from dotlrn_community_types
+              where supertype = 'dotlrn_community'
+              start with community_type = dotlrn_communities.community_type
+              connect by community_type = prior supertype) as root_community_type
       from dotlrn_communities_not_closed dotlrn_communities
-      order by dotlrn_communities.community_type, dotlrn_communities.pretty_name
+      order by root_community_type, dotlrn_communities.community_type, dotlrn_communities.pretty_name
     </querytext>
   </fullquery>
 
@@ -44,9 +49,14 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id)) as member_p,
-             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p
+             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
+             (select community_type
+              from dotlrn_community_types
+              where supertype = 'dotlrn_community'
+              start with community_type = dotlrn_communities.community_type
+              connect by community_type = prior supertype) as root_community_type
       from dotlrn_active_comms_not_closed dotlrn_communities
-      order by dotlrn_communities.community_type, dotlrn_communities.pretty_name
+      order by root_community_type, dotlrn_communities.community_type, dotlrn_communities.pretty_name
     </querytext>
   </fullquery>
 
@@ -72,10 +82,15 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id)) as member_p,
-             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p
+             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
+             (select community_type
+              from dotlrn_community_types
+              where supertype = 'dotlrn_community'
+              start with community_type = dotlrn_communities.community_type
+              connect by community_type = prior supertype) as root_community_type
       from dotlrn_communities_not_closed dotlrn_communities
       where dotlrn_communities.community_type = :community_type
-      order by dotlrn_communities.pretty_name
+      order by root_community_type, dotlrn_communities.pretty_name
     </querytext>
   </fullquery>
 
@@ -93,10 +108,15 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id)) as member_p,
-             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p
+             decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
+             (select community_type
+              from dotlrn_community_types
+              where supertype = 'dotlrn_community'
+              start with community_type = dotlrn_communities.community_type
+              connect by community_type = prior supertype) as root_community_type
       from dotlrn_active_comms_not_closed dotlrn_communities
       where dotlrn_communities.community_type = :community_type
-      order by dotlrn_communities.pretty_name
+      order by root_community_type, dotlrn_communities.pretty_name
     </querytext>
   </fullquery>
 </queryset>

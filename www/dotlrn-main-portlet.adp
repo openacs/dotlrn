@@ -6,15 +6,20 @@
 
 <p></p>
 
-<table border="0" cellpadding="2" cellspacing="2" width="100%">
-<multiple name="communities">
-<group column="community_type">
-  <tr>
-    <td>
-      <font face="arial,helvetica" size="-1" color="black">
-        <a href="@communities.url@">@communities.pretty_name@</a></td>
-      </font>
-  </tr>
-</group>
+<if @classes:rowcount@ gt 0>
+  <%= [ad_parameter classes_pretty_plural] %>
+  <ul>
+<multiple name="classes">
+  <li><a href="@classes.url@">@classes.pretty_name@</a></li>
 </multiple>
-</table>
+  </ul>
+</if>
+
+<if @clubs:rowcount@ gt 0>
+  <%= [ad_parameter clubs_pretty_plural] %>
+  <ul>
+<multiple name="clubs">
+  <li><a href="@clubs.url@">@clubs.pretty_name@</a></li>
+</multiple>
+  </ul>
+</if>

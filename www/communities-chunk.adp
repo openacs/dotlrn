@@ -4,10 +4,11 @@
   <p>@filter_bar@</p>
 
 <if @communities:rowcount@ gt 0>
-  <table cellpadding="5" cellspacing="5">
 <multiple name="communities">
+  <table width="85%" cellpadding="5" cellspacing="5">
+<group column="root_community_type">
     <tr>
-      <td><a href="@communities.url@">@communities.pretty_name@</a></td>
+      <td width="65%"><a href="@communities.url@">@communities.pretty_name@</a></td>
       <td>
 <if @communities.member_p@ eq 0>
         (<include src="register-link" url="register?community_id=@communities.community_id@&referer=@referer@">)
@@ -22,7 +23,10 @@
 </if>
       </td>
     </tr>
-</multiple>
+</group>
   </table>
+
+  <p></p>
+</multiple>
 </if>
 </if>
