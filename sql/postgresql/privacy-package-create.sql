@@ -1,9 +1,9 @@
 
 select define_function_args('dotlrn_privacy__guest_p','user_id');
 select define_function_args('dotlrn_privacy__set_user_non_guest','user_id');
-select define_function_args('dotlrn_privacy__set_user_guest,'user_id');
-select define_function_args('dotlrn_privacy__grant_rd_prv_dt_for_rel','object_id,rel_type');
-select define_function_args('dotlrn_privacy__revoke_rd_prv_dt_for_rel','object_id,rel_type');
+select define_function_args('dotlrn_privacy__set_user_guest','user_id');
+select define_function_args('dotlrn_privacy__grant_rd_prv_dt_to_rel','object_id,rel_type');
+select define_function_args('dotlrn_privacy__revoke_rd_prv_dt_from_rel','object_id,rel_type');
 
 --
 -- provides extra checking to a simple view query, since Guest status is not
@@ -91,7 +91,7 @@ begin
   return 0;
 end;' language 'plpgsql';
 
-create or replace function dotlrn_privacy__grant_rd_prv_dt_for_rel (integer,varchar)
+create or replace function dotlrn_privacy__grant_rd_prv_dt_to_rel (integer,varchar)
 returns integer as '
 declare
   v_object_id alias for $1;
@@ -106,7 +106,7 @@ begin
   return 0;
 end;' language 'plpgsql';
 
-create or replace function dotlrn_privacy__revoke_rd_prv_dt_for_rel (integer,varchar)
+create or replace function dotlrn_privacy__revoke_rd_prv_dt_from_rel (integer,varchar)
 returns integer as '
 declare
   v_object_id alias for $1;
