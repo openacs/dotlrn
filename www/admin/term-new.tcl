@@ -29,7 +29,7 @@ ad_page_contract {
 ad_form -name add_term -export referer -form {
 
     {term_name:text          {label "Term (e.g. Spring, Fall)"}
-                             {html {size 30}}}
+    {html {size 30 maxlength 20}}}
 
     {start_date:date
                              {label "Start Date"}
