@@ -1,28 +1,21 @@
-# dotlrn/www/spam.tcl
+# dotlrn/www/admin/users-spam.tcl
 
 ad_page_contract {
-    @author yon (yon@milliped.com)
-    @creation-date Jan 19, 2002
+    Spam a set of users.
+
+    @author yon (yon@openforce.net)
+    @creation-date 2002-02-14
     @version $Id$
 } -query {
-    {community_id ""}
-    {rel_type "dotlrn_member_rel"}
-    {referer "preferences"}
+    users
+    {referer "users-search"}
 } -properties {
     context_bar:onevalue
-    portal_id:onevalue
 }
 
-set context_bar {{$referer Admin} {Spam Community}}
-
-if {[empty_string_p $community_id]} {
-    set community_id [dotlrn_community::get_community_id]
-}
-
-dotlrn::require_user_admin_community $community_id
+set context_bar {{users Users} {users-search {User Search}} {Spam Users}}
 
 set sender_id [ad_conn user_id]
-set portal_id [dotlrn_community::get_portal_id $community_id $sender_id]
 
 db_1row select_sender_info {
     select parties.email as sender_email,
@@ -36,11 +29,11 @@ db_1row select_sender_info {
 
 form create spam_message
 
-element create spam_message community_id \
-    -label "Community ID" \
-    -datatype integer \
+element create spam_message users \
+    -label "&nbsp;" \
+    -datatype text \
     -widget hidden \
-    -value $community_id
+    -value $users
 
 element create spam_message from \
     -label From \
@@ -48,13 +41,6 @@ element create spam_message from \
     -widget text \
     -html {size 60} \
     -value $sender_email
-
-element create spam_message rel_type \
-    -label To \
-    -datatype text \
-    -widget select \
-    -options {{Members dotlrn_member_rel} {Administrators dotlrn_admin_rel}} \
-    -value $rel_type
 
 element create spam_message subject \
     -label Subject \
@@ -76,25 +62,16 @@ element create spam_message referer \
 
 if {[form is_valid spam_message]} {
     form get_values spam_message \
-        community_id from rel_type subject message referer
+        users from subject message referer
 
     # YON: should redirect and close the connection here so that the user
     #      doesn't have to wait for the emails to get sent out.
 
-    set segment_id [db_string select_rel_segment_id {}]
-    set community_name [dotlrn_community::get_community_name $community_id]
-    set community_url [dotlrn_community::get_community_url $community_id]
-
-    # replace some values in the subject and the message
     set message_values [list]
     lappend message_values [list {<sender_email>} $from]
-    lappend message_values [list {<community_name>} $community_name]
-    lappend message_values [list {<community_url>} $community_url]
-
-    set recepients [db_list select_recepients {}]
 
     spam::send \
-        -recepients $recepients \
+        -recepients $users \
         -from $from \
         -real_from $sender_email \
         -subject $subject \

@@ -10,6 +10,7 @@ ad_page_contract {
     {type "any"}
     {join_criteria "and"}
     {n_users 0}
+    {action "none"}
 } -properties {
     context_bar:onevalue
     is_request:onevalue
@@ -25,35 +26,32 @@ element create user_search_results selected_users \
     -datatype text \
     -widget checkbox
 
-set communities [db_list_of_lists select_all_communities {
-    select pretty_name, community_id
-    from dotlrn_communities
-}]
-
-if {[llength $communities]} {
-    element create user_search_results community_id \
-        -label "Add to" \
-        -datatype text \
-        -widget select \
-        -options "{{} {}} $communities"
-} else {
-    element create user_search_results community_id \
-        -label "No communities to add to" \
-        -datatype text \
-        -widget hidden \
-        -value ""
-}
+element create user_search_results action \
+    -label "Action" \
+    -datatype text \
+    -widget radio \
+    -options {
+        {None none}
+        {{Spam ...} spam}
+        {{Delete ...} delete}
+        {{Add to community ...} add_to_community}
+    } \
+    -value $action
 
 if {[form is_valid user_search_results]} {
-    form get_values user_search_results community_id
+    form get_values user_search_results action
 
     set selected_users [element get_values user_search_results selected_users]
 
-    if {![empty_string_p $community_id]} {
-        db_transaction {
-            foreach selected_user $selected_users {
-                dotlrn_community::add_user $community_id $selected_user
-            }
+    switch -exact $action {
+        "spam" {
+            ad_returnredirect "users-spam?[export_vars {{users $selected_users}}]"
+        }
+        "delete" {
+            ad_returnredirect "users-delete?[export_vars {{users $selected_users}}]"
+        }
+        "add_to_community" {
+            ad_returnredirect "users-add-to-community?[export_vars {{users $selected_users}}]"
         }
     }
 }

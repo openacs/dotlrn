@@ -64,13 +64,20 @@ if {[form is_valid edit_user]} {
 
     db_transaction {
         # remove the user
-        dotlrn::user_remove $user_id
+        dotlrn::user_remove -user_id $user_id
 
         # add the user
-        dotlrn::user_add -id $id -type $type -access_level $access_level -user_id $user_id
+        dotlrn::user_add \
+            -id $id \
+            -type $type \
+            -access_level $access_level \
+            -user_id $user_id
 
         # Update permissions
-        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+        acs_privacy::set_user_read_private_data \
+            -user_id $user_id \
+            -object_id [dotlrn::get_package_id] \
+            -value $read_private_data_p
     }
 
     # redirect

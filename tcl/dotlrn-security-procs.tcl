@@ -12,7 +12,8 @@ ad_library {
 
     Procs to manage DOTLRN Security
 
-    @author ben@openforce.net
+    @author Ben Adida (ben@openforce.net)
+    @author yon (yon@milliped.com)
     @creation-date 2001-10-30
     @version $Id$
 
@@ -132,7 +133,7 @@ namespace eval dotlrn {
     }
 
     ad_proc -public user_remove {
-        user_id
+        {-user_id:required}
     } {
         Remove a user from the set of dotLRN users
     } {
@@ -140,6 +141,42 @@ namespace eval dotlrn {
 
         if {![empty_string_p $rel_id]} {
             relation_remove $rel_id
+        }
+    }
+
+    ad_proc -public users_remove {
+        {-users:required}
+    } {
+        Remove a set of users from dotLRN
+    } {
+        db_transaction {
+            foreach user $users {
+                user_remove -user_id $user
+            }
+        }
+    }
+
+    ad_proc -public remove_user_completely {
+        {-user_id:required}
+    } {
+        Remove the user from ACS as well
+    } {
+        if {[user_p -user_id $user_id]} {
+            user_remove -user_id $user_id
+        }
+
+        acs_user::delete -user_id $user_id
+    }
+
+    ad_proc -public remove_users_completely {
+        {-users:required}
+    } {
+        Remove a set of users from the ACS
+    } {
+        db_transaction {
+            foreach user $users {
+                remove_user_completely -user_id $user
+            }
         }
     }
 

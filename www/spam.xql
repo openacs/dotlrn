@@ -10,6 +10,17 @@
     </querytext>
   </fullquery>
 
+  <fullquery name="select_recepients">
+    <querytext>
+      select parties.party_id
+      from party_approved_member_map,
+           parties
+      where party_approved_member_map.party_id = :segment_id
+      and party_approved_member_map.member_id <> :segment_id
+      and party_approved_member_map.member_id = parties.party_id
+    </querytext>
+  </fullquery>
+
   <fullquery name="select_recepient_info">
     <querytext>
       select parties.email,
