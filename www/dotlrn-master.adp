@@ -38,32 +38,40 @@
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 
 <!-- Header Begin -->
-<table width="100%" cellpadding=0 cellspacing=0> 
- <tr>
-    <td width="10%" class="header-logo">
-      <a href="@dotlrn_url@/?">
-      <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
-    </td>
+<if @user_id@ ne 0>
+  <!-- User is logged in with user id @user_id@ -->
+  <table width="100%" cellpadding=0 cellspacing=0> 
+   <tr>
+      <td width="10%" class="header-logo">
+        <a href="@dotlrn_url@/?">
+        <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
+      </td>
 
-    <td width="50%"><div class=header-text><nobr>@text@<nobr></div></td>
+      <td width="50%"><div class=header-text><nobr>@text@<nobr></div></td>
 
-    <td width="40%" class="header-buttons" align="right" valign="bottom">
-      <a href="@dotlrn_url@/?"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@scope_name@.gif" alt="MySloanSpace"></a>
-      <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
-      <a href="@help_url@"><img class="header-img" border="0" src="@dotlrn_url@/graphics/help-@scope_name@.gif" alt="Help"></a>
-      <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
-      <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_url@/graphics/logout-@scope_name@.gif" alt="Logout"></a>
-    </td>
+      <td width="40%" class="header-buttons" align="right" valign="bottom">
+        <a href="@dotlrn_url@/?"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@scope_name@.gif" alt="MySloanSpace"></a>
+        <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
+        <a href="@help_url@"><img class="header-img" border="0" src="@dotlrn_url@/graphics/help-@scope_name@.gif" alt="Help"></a>
+        <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
+        <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_url@/graphics/logout-@scope_name@.gif" alt="Logout"></a>
+      </td>
 
-  </tr>
+    </tr>
 
-<tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
+  <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
 
-<!-- navbars on every page -->
-<tr><td colspan=3 valign=top>@navbar@</td></tr>
-</table>
-<p>
-<p>
+  <!-- navbars on every page -->
+  <tr><td colspan=3 valign=top>@navbar@</td></tr>
+  </table>
+  <p>
+  <p>
+</if>
+<else>
+  <!-- User is not logged in so we cannot use pretty header with graphics under dotlrn -->
+  <h1> .LRN </h1>
+  <hr />
+</else>
 <!-- Header End -->
 
 
@@ -72,18 +80,28 @@
 
 
 <!-- Footer Begin -->
+<if @user_id@ ne 0>
+  <!-- User is logged in -->
 
-<!-- navbars on every page -->
+  <!-- dotLRN info links -->
+  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr><td><small>@navbar@</small></td></tr>
+    <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
+  </table>
+</if>
+<else>
+  <!-- User is not logged in so we cannot display pretty footer with graphics under dotlrn -->
+  <hr />
+</else>
 
+  <p>
+    <div class="footer">
+      <a href="http://www.dotlrn.org">dotLRN Home</a> | 
+      <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a>
+    </div>
 
-      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr><td><small>@navbar@</small></td></tr>
-<tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
-      </table>
-<p>
-<div class="footer"><a href="http://www.dotlrn.org">dotLRN Home</a> | <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a></div>
-
-<div class="footer">@ds_link@</div>
+    <div class="footer">@ds_link@</div>
+  </p>
 
 </body>
 </html>
