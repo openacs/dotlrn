@@ -26,7 +26,7 @@ if {[dotlrn::is_instantiated]} {
     if {![dotlrn_club::is_initialized]} { dotlrn_club::init }
 
     set portal_package_key "new-portal"
-    if {![dotlrn::is_instantiated_here -url [portal::mount_point] -package_key $portal_package_key]} {
+    if {![dotlrn::is_instantiated_here -url [portal::automount_point] -package_key $portal_package_key]} {
         dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
     }
 
