@@ -24,7 +24,7 @@ ad_page_contract {
 } -query {
     department_key:optional
     {orderby "department_name,asc"}
-    page:optional
+    {page ""}
 } -properties {
     title:onevalue
     context_bar:onevalue
