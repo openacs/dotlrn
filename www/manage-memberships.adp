@@ -97,7 +97,7 @@
 <if @member_clubs:rowcount@ gt 0>
     <table cellpadding="0" cellspacing="0" width="100%">
       <tr class="table-title">
-        <th align="left" colspan="2" width="70%">#dotlrn.clubs_name_header#</th>
+        <th align="left" width="70%">#dotlrn.clubs_name_header#</th>
         <th align="left" width="15%">#dotlrn.Role#</th>
         <th align="center" width="15%">#dotlrn.Actions#</th>
       </tr>
@@ -110,16 +110,13 @@
     <else>
       <tr class="even">
     </else>
-        <td colspan="2"><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
+        <td><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
         <td>@member_clubs.role@</td>
 <if @member_clubs.member_state@ eq "needs approval">
         <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
-        <td>
-          <if @show_drop_button_p@ eq 1>
-            <small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
-          </if>
+        <td align=center><small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
 </else>
       </tr>
 </multiple>
@@ -187,44 +184,77 @@
 
 </if>
 
-<if @non_member_clubs:rowcount@ gt 0>
 <a name="join_club"><p></a>
     <table cellpadding="0" cellspacing="0" width="100%">
       <tr class="table-title">
-        <th align="left" width="55%">#dotlrn.clubs_name_header#</th>
-        <th align="left" width="15%">&nbsp;</th>
+        <th align="left" width="70%">#dotlrn.clubs_name_header#</th>
         <th align="left" width="15%">&nbsp;</th>
         <th align="center">#dotlrn.Actions#</th>
       </tr>
-
-<multiple name="non_member_clubs">
-
-    <if @non_member_clubs.rownum@ odd>
       <tr class="odd">
-    </if>
-    <else>
-      <tr class="even">
-    </else>
-        <td>@non_member_clubs.pretty_name@</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-<if @non_member_clubs.join_policy@ eq "open">
-        <td><small><include src="register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small></td>
-</if>
-<else>
-        <td><small><include src="register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small></td>
-</else>
+      <td colspan="3"><b>EABIS Main<b></td>
       </tr>
-</multiple>
+	<tr class="even">
+	      <td>&nbsp;&nbsp;&nbsp; EABIS Main</td>
+	      <td>&nbsp;</td>
+	      <td align="center"><small><include src="register-link"
+    community_id="2306" referer=@referer@
+    label="Request Membership"></small></td>		
+        </tr>		   
+	<tr class="even">
+	      <td>&nbsp;&nbsp;&nbsp; Management Committee</td>
+	      <td>&nbsp;</td>
+	      <td align="center"><small><include src="register-link"
+    community_id="4699" referer=@referer@
+    label="Request Membership"></small></td>		
+        </tr>		   
+
+	<tr class="even">
+	      <td>&nbsp;&nbsp;&nbsp; Central Coordination Team</td>
+	      <td>&nbsp;</td>
+	      <td align="center"><small><include src="register-link"
+    community_id="2707" referer=@referer@
+    label="Request Membership"></small></td>		
+        </tr>		   
+      <tr class="odd">
+      <td colspan="3"><b>Business Network</b></td>
+      </tr>
+
+      <tr class="odd">
+      <td colspan="3"><b>Academic Network</b></td>
+      </tr>
+
+      <tr class="odd">
+      <td colspan="3"><b>Research</b></td>
+      </tr>
+	<tr class="even">
+	      <td>&nbsp;&nbsp;&nbsp; PhD Network</td>
+	      <td>&nbsp;</td>
+	      <td align="center"><small><include src="register-link"
+    community_id="3459" referer=@referer@
+    label="Request Membership"></small></td>		
+        </tr>		   
+	<tr class="even">
+	      <td>&nbsp;&nbsp;&nbsp; RESPONSE</td>
+	      <td>&nbsp;</td>
+	      <td align="center"><small><include src="register-link"
+    community_id="6201" referer=@referer@
+    label="Request Membership"></small></td>		
+        </tr>		   
+
+      <tr class="odd">
+      <td colspan="3"><b>Education</b></td>
+      </tr>
+      <tr class="odd">
+      <td colspan="3"><b>Training</b></td>
+      </tr>
+
+
     </table>
 
-</if>
-<else>
-  <p><small>#dotlrn.no_clubs#</small></p>
-</else>
 
 </if>
-
+<p>
 
 
 

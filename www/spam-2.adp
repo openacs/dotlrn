@@ -21,10 +21,10 @@
 <property name="context_bar">@context_bar@</property>
 
 <p>
- #dotlrn.lt_Are_you_sure_you_want_1#?
+ #dotlrn.lt_Are_you_sure_you_want_to_send#?
 </p>
 
-<if @message_type@ eq "html">
+<if @format@ eq "text/html">
   <table class="z_dark" bgcolor="#eeeeee" width="95%" cellpadding="3" cellspacing="3">
     <tr>
       <td width="10%">#dotlrn.Subject#</td>
@@ -32,7 +32,7 @@
     </tr>
     <tr>
       <td>#dotlrn.Message#</td>
-      <td>@preview_message@</td>
+      <td>@preview_message;noquote@</td>
     </tr>
   </table>
 </if>
@@ -44,7 +44,7 @@
     </tr>
     <tr>
       <td>#dotlrn.Message#</td>
-      <td>        <%= [ad_text_to_html --  "$preview_message"] %></td>
+      <td>@preview_message;noquote@</td>
     </tr>
   </table>
 </else>

@@ -180,4 +180,15 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="select_non_member_club_ids">
+        <querytext>
+                select f.club_id
+                from dotlrn_clubs_full f
+                where f.join_policy <> 'closed'
+                  and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
+                                          from dotlrn_member_rels_full
+                                         where dotlrn_member_rels_full.user_id = :user_id)
+        </querytext>
+    </fullquery>
+
 </queryset>
