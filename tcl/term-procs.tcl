@@ -24,6 +24,12 @@ ad_library {
 
 namespace eval dotlrn_term {
 
+    ad_proc -private get_date_format {} {
+        get default date format
+    } {
+        return "YYYY MM DD"
+    }
+
     ad_proc -public new {
         {-term_name:required}
         {-term_year:required}
@@ -34,7 +40,7 @@ namespace eval dotlrn_term {
     } {
         set start_date "[template::util::date::get_property year $start_date] [template::util::date::get_property month $start_date] [template::util::date::get_property day $start_date]"
         set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
-        set date_format "YYYY MM DD"
+        set date_format [get_date_format]
 
         db_dml insert_term {}
     }
@@ -50,7 +56,7 @@ namespace eval dotlrn_term {
     } {
         set start_date "[template::util::date::get_property year $start_date] [template::util::date::get_property month $start_date] [template::util::date::get_property day $start_date]"
         set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
-        set date_format "YYYY MM DD"
+        set date_format [get_date_format]
 
         db_dml update_term {}
     }
@@ -87,7 +93,7 @@ namespace eval dotlrn_term {
     } {
         get the start date of this term
     } {
-        set date_format "YYYY MM DD"
+        set date_format [get_date_format]
         db_1row get_start_date {}
 
         return [template::util::date::create $year $month $day "" "" "" $date_format]
@@ -98,7 +104,7 @@ namespace eval dotlrn_term {
     } {
         get the end date of this term
     } {
-        set date_format "YYYY MM DD"
+        set date_format [get_date_format]
         db_1row get_end_date {}
 
         return [template::util::date::create $year $month $day "" "" "" $date_format]

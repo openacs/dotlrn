@@ -148,7 +148,6 @@ namespace eval dotlrn_class {
         Creates a new instance of a class for a particular term and year,
         and returns the class instance key.
     } {
-#        dotlrn_term::get_term_info -term_id $term_id -term_name_var "term" -term_year_var "year"
         set term [dotlrn_term::get_term_name -term_id $term_id]
         set year [dotlrn_term::get_term_year -term_id $term_id]
         set community_key "${class_key}-${term}-${year}"
