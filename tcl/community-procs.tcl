@@ -323,7 +323,7 @@ namespace eval dotlrn_community {
 	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type $community_id $user_id]
 	    
 	    # do the callbacks
-	    applets_dispatch $community_id AddUser [list $community_id $user_id]
+	    applets_dispatch $community_id AddUserToCommunity [list $community_id $user_id]
 	}
     }
 
@@ -521,7 +521,7 @@ namespace eval dotlrn_community {
     } {
 	db_transaction {
 	    # Callback
-	    set package_id [applet_call $applet_key AddApplet [list $community_id]]
+	    set package_id [applet_call $applet_key AddAppletToCommunity [list $community_id]]
 
 	    # Insert in the DB
 	    db_dml insert_applet {}	    
@@ -531,7 +531,7 @@ namespace eval dotlrn_community {
 		set user_id [lindex $user 2]
 
 		# do the callbacks
-		applet_call $applet_key AddUser [list $community_id $user_id]
+		applet_call $applet_key AddUserToCommunity [list $community_id $user_id]
 	    }
 	}
     }

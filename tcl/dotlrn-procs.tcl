@@ -35,7 +35,7 @@ namespace eval dotlrn {
     ad_proc -public get_url {} {
 	returns the root URL for dotLRN
     } {
-	return [apm_package_url_from_key dotlrn]
+	return "/dotlrn"
     }
 
     ad_proc -public get_node_id {} {
