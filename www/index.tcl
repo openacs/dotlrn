@@ -22,6 +22,9 @@ if {[ad_parameter community_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
+set admin_p [dotlrn::admin_p]
+set admin_url [dotlrn::get_url]/admin
+
 # Permission dotLRN
 if {![dotlrn::user_can_browse_p]} {
     ns_log Notice "DOTLRN- CANNOT BROWSE!"

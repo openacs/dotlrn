@@ -32,13 +32,14 @@ if {[dotlrn::is_instantiated]} {
 
     # Grantee
     set grantee_id [dotlrn::get_full_users_rel_segment_id]
-
     set package_id [dotlrn::get_package_id]
 
     # Grant the permission
-    if {![ad_permission_p -user_id $grantee_id $package_id dotlrn_browse]} {
-        ad_permission_grant $grantee_id $package_id dotlrn_browse
-    }
+    ad_permission_grant $grantee_id $package_id dotlrn_browse
+
+    # check read permission on dotLRN for all users
+    set grantee_id [dotlrn::get_users_rel_segment_id]
+    ad_permission_grant $grantee_id $package_id read
 
     # We go through all Applets and make sure they are added.
 

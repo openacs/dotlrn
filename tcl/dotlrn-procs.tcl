@@ -180,6 +180,14 @@ namespace eval dotlrn {
 	return $node(object_id)
     }
 
+    ad_proc -public admin_p {
+        {-user_id ""}
+    } {
+        check if a user is admin for dotLRN
+    } {
+        return [ad_permission_p -user_id $user_id [dotlrn::get_package_id] admin]
+    }
+
     ad_proc -public get_users_rel_segment_id {} {
 	returns the rel_segment_id of the dotLRN users segment
     } {
