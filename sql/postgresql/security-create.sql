@@ -31,53 +31,59 @@
 -- Security Setup for dotLRN
 -- privileges, privilege inheritance
 --
-create function inline_0() 
-returns integer as '
-BEGIN
+begin;
         -- the ability to browse dotLRN in general
-        perform acs_privilege__create_privilege(''dotlrn_browse'');
+        select acs_privilege__create_privilege('dotlrn_browse');
 
         -- the ability to even view that a community exists
-        perform acs_privilege__create_privilege(''dotlrn_view_community'');
+        select acs_privilege__create_privilege('dotlrn_view_community');
 
         -- the ability to participate in a community
-        perform acs_privilege__create_privilege(''dotlrn_edit_community'');
+        select acs_privilege__create_privilege('dotlrn_edit_community');
 
         -- the ability to admin a community
-        perform acs_privilege__create_privilege(''dotlrn_admin_community'');
+        select acs_privilege__create_privilege('dotlrn_admin_community');
 
         -- the ability to create a community
-        perform acs_privilege__create_privilege(''dotlrn_create_community'');
+        select acs_privilege__create_privilege('dotlrn_create_community');
 
         -- the ability to even view a community type
-        perform acs_privilege__create_privilege(''dotlrn_view_community_type'');
+        select acs_privilege__create_privilege('dotlrn_view_community_type');
 
         -- the ability to admin a community type
-        perform acs_privilege__create_privilege(''dotlrn_admin_community_type'');
+        select acs_privilege__create_privilege('dotlrn_admin_community_type');
         
         -- the ability to create a community type
-        perform acs_privilege__create_privilege(''dotlrn_create_community_type'');
+        select acs_privilege__create_privilege('dotlrn_create_community_type');
+
+        -- temporarily drop this trigger to avoid a data-change violation 
+        -- on acs_privilege_hierarchy_index while updating the child privileges.
+
+        drop trigger acs_priv_hier_ins_del_tr on acs_privilege_hierarchy;
 
         -- Consistent permissions
-        perform acs_privilege__add_child(''dotlrn_edit_community'', ''dotlrn_view_community'');
-        perform acs_privilege__add_child(''dotlrn_admin_community'', ''dotlrn_edit_community'');
+        select acs_privilege__add_child('dotlrn_edit_community', 'dotlrn_view_community');
+        select acs_privilege__add_child('dotlrn_admin_community', 'dotlrn_edit_community');
 
         -- inheritance
-        perform acs_privilege__add_child(''create'', ''dotlrn_create_community_type'');
-        perform acs_privilege__add_child(''create'', ''dotlrn_create_community'');
-        perform acs_privilege__add_child(''write'', ''dotlrn_edit_community'');
-        perform acs_privilege__add_child(''read'', ''dotlrn_view_community'');
-        perform acs_privilege__add_child(''read'', ''dotlrn_view_community_type'');
-        perform acs_privilege__add_child(''admin'', ''dotlrn_admin_community'');
-        perform acs_privilege__add_child(''admin'', ''dotlrn_admin_community_type'');
+        select acs_privilege__add_child('create', 'dotlrn_create_community_type');
+        select acs_privilege__add_child('create', 'dotlrn_create_community');
+        select acs_privilege__add_child('write', 'dotlrn_edit_community');
+        select acs_privilege__add_child('read', 'dotlrn_view_community');
+        select acs_privilege__add_child('read', 'dotlrn_view_community_type');
+        select acs_privilege__add_child('admin', 'dotlrn_admin_community');
+        select acs_privilege__add_child('admin', 'dotlrn_admin_community_type');
+
+        -- re-enable the trigger before the last insert to force the 
+        -- acs_privilege_hierarchy_index table to be updated.
+
+        create trigger acs_priv_hier_ins_del_tr after insert or delete
+        on acs_privilege_hierarchy for each row
+        execute procedure acs_priv_hier_ins_del_tr ();
 
         -- for now, we only want admins to be able to browse by default
-        perform acs_privilege__add_child(''admin'', ''dotlrn_browse'');
+        select acs_privilege__add_child('admin', 'dotlrn_browse');
 
         -- no default permissions
 
-	return 0;
-end;' language 'plpgsql';
-
-select inline_0();
-drop function inline_0();
+end;
