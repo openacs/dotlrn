@@ -43,7 +43,7 @@ begin
 		  'dotlrn_applet.GetPrettyName.OutputType'
 	);
 
-	-- Add the applet to a community
+	-- Add the applet to dotlrn (used for one-time initialization)
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.AddApplet.InputType',
 		  msg_type_spec => 'community_id:integer'
@@ -57,14 +57,35 @@ begin
 	foo := acs_sc_operation.new (
 	          'dotlrn_applet',
 		  'AddApplet',
-		  'Add the Applet to a community',
+		  'Add the Applet to dotlrn - used for one-time initialization',
 		  'f', -- not cacheable
 		  1,   -- n_args
 		  'dotlrn_applet.AddApplet.InputType',
 		  'dotlrn_applet.AddApplet.OutputType'
 	);
 
-	-- add a user to the community
+	-- Add the applet to a community
+	foo := acs_sc_msg_type.new(
+		  msg_type_name => 'dotlrn_applet.AddAppletToCommunity.InputType',
+		  msg_type_spec => 'community_id:integer'
+	);
+
+	foo := acs_sc_msg_type.new(
+	          msg_type_name => 'dotlrn_applet.AddAppletToCommunity.OutputType',
+		  msg_type_spec => 'success_p:boolean,error_message:string'
+	);
+	
+	foo := acs_sc_operation.new (
+	          'dotlrn_applet',
+		  'AddAppletToCommunity',
+		  'Add the Applet to a specific dotlrn community',
+		  'f', -- not cacheable
+		  1,   -- n_args
+		  'dotlrn_applet.AddAppletToCommunity.InputType',
+		  'dotlrn_applet.AddAppletToCommunity.OutputType'
+	);
+
+	-- add a user to dotlrn (used for user-specific one time stuff)
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.AddUser.InputType',
 		  msg_type_spec => 'community_id:integer,user_id:integer'
@@ -78,11 +99,33 @@ begin
 	foo := acs_sc_operation.new (
 	          'dotlrn_applet',
 		  'AddUser',
-		  'Add a user to a community, and set up appropriate things for that applet',
+		  'Add a user to dotlrn, used for user-specific one-time stuff',
 		  'f', -- not cacheable
 		  2,   -- n_args
 		  'dotlrn_applet.AddUser.InputType',
 		  'dotlrn_applet.AddUser.OutputType'
+	);
+
+
+	-- add a user to the a specfic dotlrn community
+	foo := acs_sc_msg_type.new(
+		  msg_type_name => 'dotlrn_applet.AddUserToCommunity.InputType',
+		  msg_type_spec => 'community_id:integer,user_id:integer'
+	);
+
+	foo := acs_sc_msg_type.new(
+	          msg_type_name => 'dotlrn_applet.AddUserToCommunity.OutputType',
+		  msg_type_spec => 'success_p:boolean,error_message:string'
+	);
+	
+	foo := acs_sc_operation.new (
+	          'dotlrn_applet',
+		  'AddUserToCommunity',
+		  'Add a user to a community, and set up appropriate things for that applet',
+		  'f', -- not cacheable
+		  2,   -- n_args
+		  'dotlrn_applet.AddUserToCommunity.InputType',
+		  'dotlrn_applet.AddUserToCommunity.OutputType'
 	);
 
 
