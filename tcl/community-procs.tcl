@@ -191,19 +191,21 @@ namespace eval dotlrn_community {
     } {
         create a new community
     } {
-        if {![empty_string_p $dummy_comm_p]} {
-            # mung the comm key so that it wont conflict with a real comm
-            set community_key "[dotlrn::generate_key -name $pretty_name]-dummy"
-        } else {
-            # generate the key from the passed in name
-            set community_key [dotlrn::generate_key -name $pretty_name]
+
+        if {[empty_string_p $community_key]} {
+            if {![empty_string_p $dummy_comm_p]} {
+                # mung the comm key so that it wont conflict with a real comm
+                set community_key "[dotlrn::generate_key -name $pretty_name]-dummy"
+            } else {
+                # generate the key from the passed in name
+                set community_key [dotlrn::generate_key -name $pretty_name]
+            }
         }
 
         # Set up extra vars
         if {[empty_string_p $extra_vars]} {
             set extra_vars [ns_set create]
         }
-
 
         # check if the name is already in use, if so, complain loudly
         if {![check_community_key_valid_p \
