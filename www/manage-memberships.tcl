@@ -1,21 +1,5 @@
 #
-#  Copyright (C) 2001, 2002 MIT
-#
-#  This file is part of dotLRN.
-#
-#  dotLRN is free software; you can redistribute it and/or modify it under the
-#  terms of the GNU General Public License as published by the Free Software
-#  Foundation; either version 2 of the License, or (at your option) any later
-#  version.
-#
-#  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
-#  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-#  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-#  details.
-#
-
-#
-#  Copyright (C) 2001, 2002 MIT
+#  Copyright (C) 2001, 2002 OpenForce, Inc.
 #
 #  This file is part of dotLRN.
 #
@@ -46,11 +30,6 @@ ad_page_contract {
 
 set user_id [ad_conn user_id]
 
-if {![dotlrn::user_can_browse_p]} {
-    ad_returnredirect "not-allowed"
-    ad_script_abort
-}
-
 set departments [db_list_of_lists select_departments_for_select_widget {
     select dotlrn_departments_full.pretty_name,
            dotlrn_departments_full.department_key
@@ -72,7 +51,7 @@ set terms [linsert $terms 0 {All -1}]
 form create member_form
 
 element create member_form member_department_key \
-    -label "[_ dotlrn.Department]" \
+    -label "Department" \
     -datatype text \
     -widget select \
     -options $departments \
@@ -80,7 +59,7 @@ element create member_form member_department_key \
     -value $member_department_key
 
 element create member_form member_term_id \
-    -label "[_ dotlrn.Term]" \
+    -label "Term" \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -88,13 +67,13 @@ element create member_form member_term_id \
     -value $member_term_id
 
 element create member_form non_member_department_key \
-    -label "[_ dotlrn.Department]" \
+    -label "Department" \
     -datatype text \
     -widget hidden \
     -value $non_member_department_key
 
 element create member_form non_member_term_id \
-    -label "[_ dotlrn.Term]" \
+    -label "Term" \
     -datatype text \
     -widget hidden \
     -value $non_member_term_id
@@ -116,19 +95,13 @@ if {$member_term_id != -1} {
 }
 
 set n_member_classes [db_string select_n_member_classes {}]
-
-db_multirow member_classes $member_query {} {
-    set role [template::util::nvl [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type] [_ dotlrn.student_role_pretty_name]]
-}
-
-db_multirow member_clubs select_member_clubs {} {
-    set role [dotlrn_community::get_role_pretty_name -community_id $club_id -rel_type $rel_type]
-}
+db_multirow member_classes $member_query {}
+db_multirow member_clubs select_member_clubs {}
 
 form create non_member_form
 
 element create non_member_form non_member_department_key \
-    -label "[_ dotlrn.Department]" \
+    -label "Department" \
     -datatype text \
     -widget select \
     -options $departments \
@@ -136,7 +109,7 @@ element create non_member_form non_member_department_key \
     -value $non_member_department_key
 
 element create non_member_form non_member_term_id \
-    -label "[_ dotlrn.Term]" \
+    -label "Term" \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -144,13 +117,13 @@ element create non_member_form non_member_term_id \
     -value $non_member_term_id
 
 element create non_member_form member_department_key \
-    -label "[_ dotlrn.Department]" \
+    -label "Department" \
     -datatype text \
     -widget hidden \
     -value $member_department_key
 
 element create non_member_form member_term_id \
-    -label "[_ dotlrn.Term]" \
+    -label "Term" \
     -datatype text \
     -widget hidden \
     -value $member_term_id
@@ -175,11 +148,6 @@ set n_non_member_classes [db_string select_n_non_member_classes {}]
 db_multirow non_member_classes $non_member_query {}
 db_multirow non_member_clubs select_non_member_clubs {}
 
-set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
-
-# en_US messages make use of these configurable pretty names
-set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
-set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
-set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
+set referer [ns_urlencode "/dotlrn/manage-memberships?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
 
 ad_return_template
