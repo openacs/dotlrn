@@ -5,12 +5,10 @@
 
   <fullquery name="select_class_instance">
     <querytext>
-      select dotlrn_communities.pretty_name,
-             (select site_node.url(site_nodes.node_id)
-              from site_nodes
-              where site_nodes.object_id = dotlrn_communities.package_id) as url
-      from dotlrn_active_comms dotlrn_communities
-      where dotlrn_communities.community_id = :class_instance_id
+      select dotlrn_class_instances.pretty_name,
+             dotlrn_class_instances.url
+      from dotlrn_class_instances_full dotlrn_class_instances
+      where dotlrn_class_instances.class_instance_id = :class_instance_id
     </querytext>
   </fullquery>
 </queryset>

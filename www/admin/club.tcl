@@ -9,9 +9,10 @@ ad_page_contract {
     club_id:onevalue
     pretty_name:onevalue
     descrition:onevalue
+    url:onevalue
 }
 
-if {![exists_and_not_null pretty_name]} {
+if {![exists_and_not_null url]} {
     db_1row select_club {}
 }
 

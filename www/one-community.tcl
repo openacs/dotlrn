@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Displays a community
     
@@ -6,9 +5,6 @@ ad_page_contract {
     @creation-date 2001-10-04
 } {
 }
-
-# ns_log Notice "BEN TEST!"
-
 
 # Check that this is a community type
 if {[ad_parameter community_level_p] != 1} {
@@ -27,6 +23,11 @@ db_1row select_community_info {}
 # Check that this user is a member
 if {![dotlrn_community::member_p $community_id $user_id]} {
     set context_bar [list "Not a member"]
+
+    if {[dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]} {
+        set member_pending_p "t"
+        set context_bar [list "Pending approbal"]
+    }
 
     set portal_id [dotlrn_community::get_community_non_members_portal_id $community_id]
 

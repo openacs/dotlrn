@@ -35,7 +35,6 @@ update dotlrn_communities set portal_template_id = :portal_template_id, portal_i
 </querytext>
 </fullquery>
 
-
 <fullquery name="dotlrn_community::get_rel_segment_id.select_rel_segment_id">
 <querytext>
 select segment_id from rel_segments where group_id= :community_id and rel_type= :rel_type
@@ -53,6 +52,18 @@ select rel_id, rel_type, users.user_id, first_names, last_name, email from regis
 select count(*) from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
+
+  <fullquery name="dotlrn_community::member_pending_p.is_pending_membership">
+    <querytext>
+      select count(*)
+      from group_member_map,
+           membership_rels
+      where group_member_map.group_id = :community_id
+      and group_member_map.member_id = :user_id
+      and group_member_map.rel_id = membership_rels.rel_id
+      and membership_rels.member_state = 'needs approval'
+    </querytext>
+  </fullquery>
 
 <fullquery name="dotlrn_community::remove_user.select_rel_info">
 <querytext>
@@ -93,14 +104,6 @@ from dotlrn_communities, dotlrn_member_rels_full
 where community_type= :community_type
 and user_id= :user_id
 and dotlrn_communities.community_id = dotlrn_member_rels_full.community_id
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_community::get_active_communities.select_active_communities">
-<querytext>
-select community_id, community_type, pretty_name, description, package_id
-from dotlrn_active_not_closed_comms
-where community_type= :community_type
 </querytext>
 </fullquery>
 

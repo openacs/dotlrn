@@ -26,8 +26,8 @@ set i [expr 1 - $i]
 <tr bgcolor=@bgcolor@>
 <td><a href=user-edit?user_id=@users.user_id@>@users.last_name@, @users.first_names@</a> (<a href=mailto:@users.email@>@users.email@</a>)</td>
 <td><i>@users.type@</i></td>
-<td><if @users.limited_access_p@ eq t>Limited</if><else>Full</else></td>
-<td><if @users.read_private_data_p@ eq t>YES</if><else>NO</else></td>
+<td><if @users.limited_access_p@ eq t>limited</if><else>full</else></td>
+<td><if @users.read_private_data_p@ eq t>yes</if><else>no</else></td>
 </tr>
 </multiple>
 </table>

@@ -194,6 +194,20 @@ namespace eval dotlrn_community {
         return $community_id
     }
 
+    ad_proc set_active_dates {
+        {-community_id:required}
+        {-start_date:required}
+        {-end_date:required}
+    } {
+        set the community active ebgin and end dates
+    } {
+        set start_date "[template::util::date::get_property year $start_date] [template::util::date::get_property month $start_date] [template::util::date::get_property day $start_date]"
+        set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
+        set date_format "YYYY MM DD"
+
+        db_dml set_active_dates {}
+    }
+
     ad_proc set_package_id {
         community_id
         package_id
@@ -350,6 +364,15 @@ namespace eval dotlrn_community {
         return [db_string select_count_membership {}]
     }
 
+    ad_proc -public member_pending_p {
+        {-community_id:required}
+        {-user_id:required}
+    } {
+        is this user awaiting membership in this community?
+    } {
+        return [db_string is_pending_membership {}]
+    }
+
     ad_proc -public add_user {
         {-rel_type "dotlrn_member_rel"}
         community_id
@@ -390,7 +413,7 @@ namespace eval dotlrn_community {
             ns_set put $extra_vars community_id $community_id
 
             # Set up the relationship
-            set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type $community_id $user_id]
+            set rel_id [relation_add -extra_vars $extra_vars $rel_type $community_id $user_id]
 
             # do the callbacks
             applets_dispatch $community_id AddUserToCommunity [list $community_id $user_id]
@@ -456,20 +479,6 @@ namespace eval dotlrn_community {
         set list_of_communities [list]
 
         db_foreach select_communities {} {
-            lappend list_of_communities [list $community_id $community_type $pretty_name $description [get_url -package_id $package_id]]
-        }
-
-        return $list_of_communities
-    }
-
-    ad_proc -public get_active_communities {
-        community_type
-    } {
-        Returns a list of active communities for a given type.
-    } {
-        set list_of_communities [list]
-
-        db_foreach select_active_communities {} {
             lappend list_of_communities [list $community_id $community_type $pretty_name $description [get_url -package_id $package_id]]
         }
 

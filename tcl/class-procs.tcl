@@ -1,4 +1,3 @@
-
 #
 # Procs for DOTLRN Class Management
 # Copyright 2001 OpenForce, inc.
@@ -8,12 +7,12 @@
 #
 
 ad_library {
-
     Procs to manage DOTLRN Classes
 
-    @author ben@openforce.net
+    @author Ben Adida (ben@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-08-18
-
+    @version $Id$
 }
 
 namespace eval dotlrn_class {
@@ -92,34 +91,41 @@ namespace eval dotlrn_class {
     ad_proc -public new_instance {
         {-description ""}
         {-class_type:required}
-        {-term:required}
-        {-year:required}
+        {-term_id:required}
         {-join_policy "needs approval"}
     } {
         Creates a new instance of a class for a particular term and year,
         and returns the class instance key.
     } {
-        set term [string trim $term]
-        set year [string trim $year]
-
-        set community_key "$class_type-$term-$year"
+#        dotlrn_term::get_term_info -term_id $term_id -term_name_var "term" -term_year_var "year"
+        set term [dotlrn_term::get_term_name -term_id $term_id]
+        set year [dotlrn_term::get_term_year -term_id $term_id]
+        set community_key "${class_type}-${term}-${year}"
 
         set extra_vars [ns_set create]
-        ns_set put $extra_vars year $year
-        ns_set put $extra_vars term $term
+        ns_set put $extra_vars term_id $term_id
         ns_set put $extra_vars class_key $class_type
         ns_set put $extra_vars join_policy $join_policy
 
         set pretty_name "[dotlrn_community::get_community_type_name $class_type]; $term $year"
 
-        # Create the community
-        return [dotlrn_community::new \
-                -description $description \
-                -community_type $class_type \
-                -object_type [community_type] \
-                -community_key $community_key \
-                -pretty_name $pretty_name \
-                -extra_vars $extra_vars]
+        db_transaction {
+            # Create the community
+            set community_id [dotlrn_community::new \
+                    -description $description \
+                    -community_type $class_type \
+                    -object_type [community_type] \
+                    -community_key $community_key \
+                    -pretty_name $pretty_name \
+                    -extra_vars $extra_vars]
+
+            dotlrn_community::set_active_dates \
+                -community_id $community_id \
+                -start_date [dotlrn_term::get_start_date -term_id $term_id] \
+                -end_date [dotlrn_term::get_end_date -term_id $term_id]
+        }
+
+        return $community_id
     }
 
     ad_proc -public available_roles {
@@ -155,5 +161,29 @@ namespace eval dotlrn_class {
         gets the pretty name for a particular class
     } {
         return [db_string select_class_pretty_name {} -default ""]
+    }
+
+    ad_proc -public get_term_id {
+        {-class_instance_id:required}
+    } {
+        get the term_id for this class instance
+    } {
+        return [db_string get_term_id {}]
+    }
+
+    ad_proc -public get_term_name {
+        {-class_instance_id:required}
+    } {
+        get the term for this class instance
+    } {
+        return [dotlrn_term::get_term_name -term_id [get_term_id -class_instance_id $class_instance_id]]
+    }
+
+    ad_proc -public get_term_year {
+        {-class_instance_id:required}
+    } {
+        get the term year for this class instance
+    } {
+        return [dotlrn_term::get_term_year -term_id [get_term_id -class_instance_id $class_instance_id]]
     }
 }

@@ -17,10 +17,10 @@ element create add_user type_id \
 	-label "User Type" -datatype text -widget select -options [dotlrn::get_user_types]
 
 element create add_user rel_type \
-	-label "Access" -datatype text -widget select -options {{{Limited Access} dotlrn_user_rel} {{Full Access} dotlrn_full_user_rel}}
+	-label "Access" -datatype text -widget select -options {{{limited access} dotlrn_user_rel} {{full access} dotlrn_full_user_rel}}
 
 element create add_user read_private_data_p \
-        -label "Can Access Private Information?" -datatype text -widget select -options {{Yes t} {No f}}
+        -label "Can Access Private Information?" -datatype text -widget select -options {{yes t} {no f}}
 
 if {[form is_valid add_user]} {
     template::form get_values add_user user_id type_id rel_type read_private_data_p

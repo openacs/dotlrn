@@ -6,20 +6,39 @@
 --
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --
--- ben@openforce.net
--- started August 18th, 2001
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
+-- @creation-date August 18th, 2001
+-- @version $Id$
 --
 
-create table dotlrn_clubs(
+create table dotlrn_clubs (
     club_id                     constraint dotlrn_clubs_club_id_fk
                                 references dotlrn_communities (community_id)
                                 constraint dotlrn_clubs_pk
                                 primary key
 );
 
+create or replace view dotlrn_clubs_full
+as
+    select dotlrn_clubs.club_id,
+           dotlrn_communities.community_type,
+           dotlrn_communities.community_key,
+           dotlrn_communities.pretty_name,
+           dotlrn_communities.description,
+           dotlrn_communities.active_start_date,
+           dotlrn_communities.active_end_date,
+           dotlrn_communities.portal_id,
+           dotlrn_communities.portal_template_id,
+           dotlrn_communities.package_id,
+           dotlrn_community.url(dotlrn_communities.community_id) as url
+    from dotlrn_communities,
+         dotlrn_clubs
+    where dotlrn_communities.community_id = dotlrn_clubs.club_id;
+
 create or replace package dotlrn_club
 is
-    function new(
+    function new (
         club_id in dotlrn_clubs.club_id%TYPE default null,
         community_key in dotlrn_communities.community_key%TYPE,
         pretty_name in dotlrn_communities.pretty_name%TYPE,
@@ -34,7 +53,7 @@ is
         context_id in acs_objects.context_id%TYPE default null
     ) return dotlrn_clubs.club_id%TYPE;
 
-    procedure delete(
+    procedure delete (
         club_id in dotlrn_clubs.club_id%TYPE
     );
 end;
@@ -43,7 +62,7 @@ show errors
 
 create or replace package body dotlrn_club
 is
-    function new(
+    function new (
         club_id in dotlrn_clubs.club_id%TYPE default null,
         community_key in dotlrn_communities.community_key%TYPE,
         pretty_name in dotlrn_communities.pretty_name%TYPE,
@@ -83,7 +102,7 @@ is
         return v_club_id;
     end;
 
-    procedure delete(
+    procedure delete (
         club_id in dotlrn_clubs.club_id%TYPE
     )
     is

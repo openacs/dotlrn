@@ -1,9 +1,18 @@
 <a href="one-class?class_key=@class_key@">@pretty_name@</a>
+<if @can_instantiate@ gt 0>
 [
   <font size="-1">
     <a href="class-instance-new?class_key=@class_key@&referer=classes">new instance</a>
   </font>
 ]
+</if>
+<else>
+[
+  <font size="-1" color="#aaaaaa">
+    <i>new instance</i>
+  </font>
+]
+</else>
 
 <if @instances:rowcount@ gt 0>
 <blockquote>

@@ -5,34 +5,31 @@ ad_page_contract {
     @creation-date 2001-10-05
     @version $Id$
 } -query {
-    class_key
+    class_key:notnull
     {referer ""}
 }
 
 form create add_class_instance
 
-element create add_class_instance year \
-    -label "Year" -datatype text -widget text -html {size 50}
-
 element create add_class_instance term \
-    -label "Term" -datatype text -widget text -html {size 50}
+    -label "Term" -datatype integer -widget select -options [db_list_of_lists select_terms_for_select_widget {}]
 
 element create add_class_instance description \
-    -label "Description" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft}
-
-element create add_class_instance class_key \
-    -label "Class Key" -value $class_key -datatype text -widget hidden
+    -label "Description" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft} -optional
 
 element create add_class_instance join_policy \
     -label "Join Policy" -datatype text -widget select -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+
+element create add_class_instance class_key \
+    -label "Class Key" -value $class_key -datatype text -widget hidden
 
 element create add_class_instance referer \
     -label "Referer" -value $referer -datatype text -widget hidden
 
 if {[form is_valid add_class_instance]} {
-    template::form get_values add_class_instance class_key year term description join_policy referer
+    template::form get_values add_class_instance term description join_policy class_key referer
 
-    set class_instance_id [dotlrn_class::new_instance -description $description -class_type $class_key -term $term -year $year -join_policy $join_policy]
+    set class_instance_id [dotlrn_class::new_instance -description $description -class_type $class_key -term_id $term -join_policy $join_policy]
 
     if {[empty_string_p $referer]} {
         set referer "one-class?class_key=$class_key"

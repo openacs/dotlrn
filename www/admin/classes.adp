@@ -4,7 +4,9 @@
 
 [ <a href="class-new">new class</a> ]
 
-<p></p>
+<p>
+<include src="need-term-note">
+</p>
 
 <if @classes:rowcount@ gt 0>
 <multiple name="classes">

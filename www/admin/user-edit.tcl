@@ -17,10 +17,10 @@ element create edit_user type_id \
 	-label "User Type" -datatype text -widget select -options [dotlrn::get_user_types]
 
 element create edit_user rel_type \
-	-label "Access" -datatype text -widget select -options {{{Limited Access} dotlrn_user_rel} {{Full Access} dotlrn_full_user_rel}}
+	-label "Access" -datatype text -widget select -options {{{limited access} dotlrn_user_rel} {{full access} dotlrn_full_user_rel}}
 
 element create edit_user read_private_data_p \
-        -label "Can Access Private Information?" -datatype text -widget select -options {{Yes t} {No f}}
+        -label "Can Access Private Information?" -datatype text -widget select -options {{yes t} {no f}}
 
 
 # Create a form of hidden vars
@@ -36,8 +36,6 @@ set dotlrn_package_id [dotlrn::get_package_id]
 
 # We verified everything, now we make the change
 if {[form is_valid verif_edit_user]} {
-    ns_log Notice "BENLOG - verif_edit_user is VALID!"
-
     template::form get_values verif_edit_user user_id type_id rel_type read_private_data_p
     
     set rel_id [db_string select_rel_id "select rel_id from dotlrn_users where user_id=:user_id"]
@@ -59,9 +57,7 @@ if {[form is_valid verif_edit_user]} {
 
 
 if {[form is_valid edit_user]} {
-    ns_log Notice "BENLOG - edit_user is VALID!"
     template::form get_values edit_user user_id type_id rel_type read_private_data_p
-    ns_log Notice "BENLOG - immediate read_private_data_p is $read_private_data_p"
 
     # Do something
     set new_rel_type $rel_type
@@ -70,22 +66,16 @@ if {[form is_valid edit_user]} {
     set old_rel_type [db_string select_rel_type "select 'dotlrn_full_user_rel' from dual where exists (select 1 from dotlrn_full_users where user_id=:user_id)" -default "dotlrn_user_rel"]
 
     if {$new_rel_type == $old_rel_type} {
-        ns_log Notice "BENLOG - new_type is the same!"
-
         # Simply update things
-        
         db_transaction {
             # Update straight user info
             db_dml update_user {}
 
             # Update permissions
-            ns_log Notice "BENLOG - read_private_data set to $read_private_data_p"
             acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
         }
     } else {
-        ns_log Notice "BENLOG - new_type is different!"
         # Warn about the change
-        
         element set_properties verif_edit_user user_id -value $user_id
         element set_properties verif_edit_user type_id -value $type_id
         element set_properties verif_edit_user rel_type -value $rel_type
@@ -114,4 +104,3 @@ if {$limited_access_p == "t"} {
 element set_properties edit_user read_private_data_p -value $read_private_data_p
 
 ad_return_template
-

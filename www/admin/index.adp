@@ -9,7 +9,8 @@
 <property name="context_bar">@context_bar@</property>
 
 <ul>
-<li><a href=classes>dotLRN Classes</a>
-<li><a href=clubs>dotLRN Clubs</a>
-<li><a href=users>dotLRN Users</a>
+  <li><a href="terms">dotLRN Terms</a></li>
+  <li><a href="classes">dotLRN Classes</a></li>
+  <li><a href="clubs">dotLRN Clubs</a></li>
+  <li><a href="users">dotLRN Users</a></li>
 </ul>

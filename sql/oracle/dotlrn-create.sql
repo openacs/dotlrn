@@ -1,4 +1,3 @@
-
 --
 -- The DotLRN basic system
 -- copyright 2001, OpenForce, Inc.
@@ -21,4 +20,3 @@
 @dotlrn-community-memberships-packages-create.sql
 @dotlrn-main-portlet-create.sql
 @dotlrn-security-create.sql
-

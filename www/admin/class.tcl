@@ -9,8 +9,11 @@ ad_page_contract {
     class_key:onevalue
     pretty_name:onevalue
     instances:multirow
+    can_instantiate:onevalue
 }
 
 db_multirow instances select_class_instances {}
+
+set can_instantiate [db_string can_instantiate_class {}]
 
 ad_return_template

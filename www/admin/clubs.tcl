@@ -1,3 +1,5 @@
+# dotlrn/www/admin/clubs.tcl
+
 ad_page_contract {
     displays dotLRN clubs admin page
     
@@ -6,11 +8,11 @@ ad_page_contract {
     @version $Id$
 } {
 } -properties {
-    clubs:multirow
     context_bar:onevalue
+    clubs:multirow
 }
 
-set context_bar "clubs"
+set context_bar "Clubs"
 
 db_multirow clubs select_clubs {}
 
