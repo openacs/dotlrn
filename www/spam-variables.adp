@@ -23,45 +23,48 @@
   <table>
 
     <tr>
-      <th colspan=3>The following variables can be used to insert user/community specific data:</th>
+      <th colspan=3>#dotlrn.lt_The_following_variabl#</th>
     </tr>
 
     <tr>
       <td>{from_addr}</td>
       <td> = </td>
-      <td>Sender's Email Address</td>
+      <td>#dotlrn.lt_Senders_Email_Address#</td>
     </tr>
 
     <tr>
       <td>{community_name}</td>
       <td> = </td>
-      <td>Community's Name</td>
+      <td>#dotlrn.Communitys_Name#</td>
     </tr>
 
     <tr>
       <td>{community_url}</td>
       <td> = </td>
-      <td>Community's Web Address</td>
+      <td>#dotlrn.lt_Communitys_Web_Addres#</td>
     </tr>
 
     <tr>
       <td>{email}</td>
       <td> = </td>
-      <td>Recipient's Email</td>
+      <td>#dotlrn.Recipients_Email#</td>
     </tr>
 
     <tr>
       <td>{first_names}</td>
       <td> = </td>
-      <td>Recipient's First Name</td>
+      <td>#dotlrn.lt_Recipients_First_Name#</td>
     </tr>
 
     <tr>
       <td>{last_name}</td>
       <td> = </td>
-      <td>Recipient's Last Name</td>
+      <td>#dotlrn.Recipients_Last_Name#</td>
     </tr>
 
   </table>
 
 </blockquote>
+
+
+

@@ -29,43 +29,43 @@ ad_page_contract {
 }
 
 if {![db_0or1row select_department_info {}]} {
-    ad_return_complaint 1 "<li>Invalid department_key $department_key</li>"
+    ad_return_complaint 1 "<li>[_ dotlrn.Invalid] department_key $department_key</li>"
     ad_script_abort
 }
 
-set title "Edit [parameter::get -parameter departments_pretty_name] $pretty_name"
-set context_bar [list [list departments [parameter::get -parameter departments_pretty_plural]] Edit]
+set title "[_ dotlrn.Edit] [parameter::get -localize -parameter departments_pretty_name] $pretty_name"
+set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] [_ dotlrn.Edit]]
 
 form create edit_department
 
 element create edit_department department_key \
-    -label "[parameter::get -parameter departments_pretty_name] Key (a short name, no spaces)" \
+    -label "[parameter::get -localize -parameter departments_pretty_name] [_ dotlrn.lt_Key_a_short_name_no_s]" \
     -datatype text \
     -widget hidden \
     -value $department_key
 
 element create edit_department pretty_name \
-    -label "Name" \
+    -label "[_ dotlrn.Name]" \
     -datatype text \
     -widget text \
     -html {size 60 maxlength 100}
 
 element create edit_department description \
-    -label "Description" \
+    -label "[_ dotlrn.Description]" \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create edit_department external_url \
-    -label "External URL" \
+    -label "[_ dotlrn.External_URL]" \
     -datatype text \
     -widget text \
     -html {size 60} \
     -optional
 
 element create edit_department referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -90,3 +90,4 @@ if {[form is_valid edit_department]} {
 }
 
 ad_return_template
+

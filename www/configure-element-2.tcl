@@ -38,3 +38,4 @@ set user_id [ad_maybe_redirect_for_registration]
 portal::set_element_param $element_id $key $value
 
 ad_returnredirect "."
+

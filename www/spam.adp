@@ -28,3 +28,6 @@
 <formtemplate id="spam_message"></formtemplate>
 
 <include src="spam-variables">
+
+
+

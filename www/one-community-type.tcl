@@ -35,14 +35,14 @@ ad_page_contract {
 }
 
 # Check that this is a community type
-if {[parameter::get -parameter community_type_level_p] != 1} {
+if {[parameter::get -localize -parameter community_type_level_p] != 1} {
     ad_returnredirect "./"
     ad_script_abort
 }
 
 set user_id [ad_conn user_id]
 
-set context_bar {View}
+set context_bar [_ dotlrn.View]
 
 # What community type are we at?
 set community_type [dotlrn_community::get_community_type]
@@ -52,21 +52,22 @@ set ancestor_type [dotlrn_community::get_toplevel_community_type -community_type
 db_1row select_community_type_info {}
 
 if {[string equal ${community_type} dotlrn_class_instance] != 0} {
-    set community_type_title [parameter::get -parameter classes_pretty_plural]
-    set communities_title [parameter::get -parameter class_instances_pretty_name]
-    set title [parameter::get -parameter classes_pretty_plural]
+    set community_type_title [parameter::get -localize -parameter classes_pretty_plural]
+    set communities_title [parameter::get -localize -parameter class_instances_pretty_name]
+    set title [parameter::get -localize -parameter classes_pretty_plural]
 } elseif {[string equal ${community_type} dotlrn_club] != 0} {
-    set community_type_title [parameter::get -parameter clubs_pretty_plural]
-    set communities_title [parameter::get -parameter clubs_pretty_plural]
-    set title [parameter::get -parameter clubs_pretty_plural]
+    set community_type_title [parameter::get -localize -parameter clubs_pretty_plural]
+    set communities_title [parameter::get -localize -parameter clubs_pretty_plural]
+    set title [parameter::get -localize -parameter clubs_pretty_plural]
 } elseif {[string equal ${ancestor_type} dotlrn_class_instance] != 0} {
-    set community_type_title [parameter::get -parameter classes_pretty_plural]
-    set communities_title [parameter::get -parameter class_instances_pretty_name]
+    set community_type_title [parameter::get -localize -parameter classes_pretty_plural]
+    set communities_title [parameter::get -localize -parameter class_instances_pretty_name]
     set title $pretty_name
 } else {
-    set community_type_title "Community Types"
-    set communities_title "Communities"
-    set title "Community Type"
+    set community_type_title "[_ dotlrn.Community_Types]"
+    set communities_title "[_ dotlrn.Communities]"
+    set title "[_ dotlrn.Community_Type]"
 }
 
 ad_return_template
+

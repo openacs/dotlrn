@@ -33,8 +33,10 @@ set admin_email [db_string select_admin_email {
     where party_id = :admin_user_id
 }]
 
-if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
-    ad_return_error "Mail Failed" "The system was unable to send email. Please notify the user personally. This problem is probably caused by a misconfiguration of your email system. Here is the error:
+set msg_subst_values [list system_name [ad_system_name] system_url [ad_parameter SystemUrl]]
+set email_subject [_ [ad_conn locale] dotlrn.user_add_confirm_email_subject "" $msg_subst_values]
+if [catch {ns_sendmail "$email" "$admin_email" "$email_subject" "$message"} errmsg] {
+    ad_return_error "[_ dotlrn.Mail_Failed]" "[_ dotlrn.lt_The_system_was_unable]
 <blockquote><pre>
 [ad_quotehtml $errmsg]
 </pre></blockquote>"
@@ -42,3 +44,4 @@ if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to
 }
 
 ad_returnredirect $referer
+

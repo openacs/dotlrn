@@ -45,11 +45,11 @@ set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdmi
 set export_edit_vars "user_id=$user_id&return_url=$return_url"
 
 if {![db_0or1row select_user_info {}]} {
-    ad_return_complaint 1 "<li>We couldn't find user #$user_id; perhaps this person was deleted?</li>"
+    ad_return_complaint 1 "<li>[_ [ad_conn locale] dotlrn.couldnt_find_user_id "" [list user_id $user_id]]</li>"
     ad_script_abort
 }
 if {[empty_string_p $screen_name]} {
-    set screen_name "&lt;none set up&gt;"
+    set screen_name "&lt;[_ dotlrn.none_set_up]&gt;"
 }
 set registration_date [util_AnsiDatetoPrettyDate $registration_date] 
 if {![empty_string_p $last_visit]} {
@@ -80,6 +80,7 @@ db_multirow member_subgroups select_member_subgroups {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-set context_bar [list [list users Users] "$first_names $last_name"]
+set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 
 ad_return_template
+

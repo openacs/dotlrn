@@ -19,8 +19,11 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Not Allowed</property>
+<property name="title">#dotlrn.Not_Allowed#</property>
 
 <p>
-  You are not allowed to perform that action.
+  #dotlrn.lt_You_are_not_allowed_t#
 </p>
+
+
+

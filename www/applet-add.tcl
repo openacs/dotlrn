@@ -38,3 +38,4 @@ if {![dotlrn_community::admin_access_p $community_id]} {
 dotlrn_community::add_applet_to_community $community_id $applet_key
 
 ad_returnredirect $referer
+

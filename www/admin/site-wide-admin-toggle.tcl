@@ -33,3 +33,4 @@ if {[string equal $value "grant"] == 1} {
 }
 
 ad_returnredirect $referer
+

@@ -19,10 +19,11 @@
 %>
 
 <if @active_applets:rowcount@ gt 0>
-<h3>Active Applets</h3>
+<h3>#dotlrn.Active_Applets#</h3>
 <ul>
+
 <multiple name="active_applets">
-  <li>@active_applets.applet_pretty_name@ - (cannot be removed)</li>
+  <li>@active_applets.applet_pretty_name@ - (#dotlrn.cannot_be_removed#)</li>
 </multiple>
 </ul>
 </if>
@@ -30,15 +31,18 @@
 <if @all_applets:rowcount@ gt 0>
 <p></p>
 
-<h3>Applets To Add</h3>
+<h3>#dotlrn.Applets_to_Add#</h3>
 <ul>
 <multiple name="all_applets">
   <li>
     @all_applets.applet_pretty_name@
     [<small>
-      <a href=applet-add?applet_key=@all_applets.applet_key@>Add</a>
+      <a href=applet-add?applet_key=@all_applets.applet_key@>#dotlrn.Add#</a>
     </small>]
   </li>
 </multiple>
 </ul>
 </if>
+
+
+

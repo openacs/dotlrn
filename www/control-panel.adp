@@ -25,18 +25,18 @@
 <% set dotlrn_url [dotlrn::get_url] %>
 
 <ul>
-  <li><a href="@dotlrn_url@/help">Help</a></li>
+  <li><a href="@dotlrn_url@/help">#dotlrn.Help#</a></li>
   <li>
-    <a href="/user/basic-info-update?return_url=@referer@">Edit My Personal Information</a>
+    <a href="/user/basic-info-update?return_url=@referer@">#dotlrn.lt_Edit_My_Personal_Info#</a>
     <br>
     <small>
-      (What others see about me:
+      #dotlrn.lt_What_others_see_about#
       <%= [acs_community_member_link -user_id $user_id -label "[ad_url][acs_community_member_url -user_id $user_id]"] %>)
      </small>
   </li>
-  <li><a href="/user/password-update?return_url=@referer@">Change My Password</a></li>
-  <li><a href="/notifications/manage">Edit My Notifications</a></li>
-  <li><a href="configure">Customize Layout</a></li>
+  <li><a href="/user/password-update?return_url=@referer@">#dotlrn.Change_My_Password#</a></li>
+  <li><a href="applets/bboard/alerts">#dotlrn.lt_Edit_My_Bulletin_Boar#</a></li>
+  <li><a href="configure">#dotlrn.Customize_Layout#</a></li>
 <if @admin_p@>
   <li><a href="@admin_url@">@admin_pretty_name@</a></li>
 </if>
@@ -45,3 +45,6 @@
 <blockquote>
   <include src="my-communities" title="Groups" referer="control_panel">
 </blockquote>
+
+
+

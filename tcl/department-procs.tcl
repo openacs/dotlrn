@@ -39,8 +39,7 @@ namespace eval dotlrn_department {
                 -department_key $department_key]} {
             ad_return_complaint \
                     1 \
-                    "The name <strong>$pretty_name</strong> is already in use. \n
-                       Please select a different name."
+                    [_ [ad_conn locale] dotlrn.department_name_already_in_use "" [list department_pretty_name $pretty_name]]
             ad_script_abort
         }
 
@@ -90,8 +89,9 @@ namespace eval dotlrn_department {
     } {
         # check that it's empty
         if {![count_classes -department_key $department_key] == 0} {
-            ad_return_complaint 1 "Error: [parameter::get -parameter departments_pretty_name] 
-                                   must be empty to be deleted"
+            set msg_subst_list [list departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]]
+            ad_return_complaint 1 [_ [ad_conn locale] dotlrn.department_must_be_empty_to_be_deleted "" $msg_subst_list]
+
             ad_script_abort
         } 
 
@@ -106,3 +106,4 @@ namespace eval dotlrn_department {
     }
 
 }
+

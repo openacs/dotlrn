@@ -88,3 +88,4 @@ namespace eval dotlrn_class_applets {
 	}
     }
 }
+

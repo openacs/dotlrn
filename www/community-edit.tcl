@@ -35,14 +35,14 @@ set pretty_name [dotlrn_community::get_community_name $community_id]
 form create edit_community_info
 
 element create edit_community_info pretty_name \
-    -label Name \
+    -label [_ dotlrn.Name] \
     -datatype text \
     -widget text \
     -html {size 60} \
     -value $pretty_name
 
 element create edit_community_info description \
-    -label Description \
+    -label [_ dotlrn.Description] \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
@@ -70,14 +70,14 @@ form create edit_community_role_names
 
 foreach {rel_type role pretty_name pretty_plural} [eval concat $roles] {
     element create edit_community_role_names "${role}_pretty_name" \
-        -label "$role Pretty Name" \
+        -label "$role [_ dotlrn.Pretty_Name]" \
         -datatype text \
         -widget text \
         -html {size 40} \
         -value $pretty_name
 
     element create edit_community_role_names "${role}_pretty_plural" \
-        -label "$role Pretty Plural" \
+        -label "$role [_ dotlrn.Pretty_Plural]" \
         -datatype text \
         -widget text \
         -html {size 40} \
@@ -116,7 +116,7 @@ set header_font_size [dotlrn_community::get_attribute \
 ]
 
 set size_list [list medium small large x-large]
-set pretty_size_list [list Normal Small Large {Extra Large}]
+set pretty_size_list [list [_ dotlrn.Normal] [_ dotlrn.Small] [_ dotlrn.Large] [_ dotlrn.Extra_Large]]
 set size_option_list [ad_generic_optionlist $pretty_size_list $size_list $header_font_size]
 
 set header_font_color [dotlrn_community::get_attribute \
@@ -129,7 +129,8 @@ set header_alt_text [dotlrn_community::get_attribute \
     -attribute_name header_logo_alt_text
 ]
   
-set title {Edit Properties}
-set context_bar {{one-community-admin Administer} {Edit Properties}}
+set title [_ dotlrn.Edit_Properties]
+set context_bar [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
 
 ad_return_template
+

@@ -30,7 +30,8 @@ if {[empty_string_p [dotlrn_community::get_community_id]]} {
     ad_returnredirect "[dotlrn::get_url]"
 }
 
-set context_bar {{"one-community-admin" Admin} {Manage Members}}
+set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Members]]
 set community_id [dotlrn_community::get_community_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 set admin_p [dotlrn::user_can_admin_community_p -user_id [ad_get_user_id] -community_id $community_id]
+

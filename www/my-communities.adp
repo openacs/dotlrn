@@ -18,7 +18,7 @@
 
 %>
 
-<h3><if @title@ nil>My Communities</if><else>@title@</else></h3>
+<h3><if @title@ nil>#dotlrn.My_Communities#</if><else>@title@</else></h3>
 
 <table>
 <multiple name="communities">
@@ -28,9 +28,9 @@
     <td>
       [<small>
 <if @communities.admin_p@ eq 1>
-        <a href="@communities.url@one-community-admin">Administer</a>
+        <a href="@communities.url@one-community-admin">#dotlrn.Administer#</a>
         |
-        <a href="@communities.url@spam?community_id=@communities.community_id@&referer=@referer@">Email Members</a>
+        <a href="@communities.url@spam?community_id=@communities.community_id@&referer=@referer@">#dotlrn.Email_Members#</a>
         |
 </if>
         <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">
@@ -43,7 +43,10 @@
     <td colspan="3">&nbsp;</td>
   </tr>
   <tr>
-    <td colspan="3"><a href="manage-memberships">Join A Group</a></td>
+    <td colspan="3"><a href="manage-memberships">#dotlrn.Join_A_Group#</a></td>
   </tr>
 </if>
 </table>
+
+
+

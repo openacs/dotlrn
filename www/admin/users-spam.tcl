@@ -29,7 +29,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar {{users Users} {users-search {User Search}} {Spam Users}}
+set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Spam_Users]]
 
 set sender_id [ad_conn user_id]
 
@@ -52,26 +52,26 @@ element create spam_message users \
     -value $users
 
 element create spam_message from \
-    -label From \
+    -label [_ dotlrn.From] \
     -datatype text \
     -widget text \
     -html {size 60} \
     -value $sender_email
 
 element create spam_message subject \
-    -label Subject \
+    -label [_ dotlrn.Subject] \
     -datatype text \
     -widget text \
     -html {size 60}
 
 element create spam_message message \
-    -label Message \
+    -label [_ dotlrn.Message] \
     -datatype text \
     -widget textarea \
     -html {rows 10 cols 80 wrap soft}
 
 element create spam_message referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -99,3 +99,4 @@ if {[form is_valid spam_message]} {
 }
 
 ad_return_template
+

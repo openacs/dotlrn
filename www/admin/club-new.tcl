@@ -30,26 +30,26 @@ ad_page_contract {
 form create add_club
 
 element create add_club pretty_name \
-    -label "Name" \
+    -label "[_ dotlrn.Name]" \
     -datatype text \
     -widget text \
     -html {size 60 maxlength 100}
 
 element create add_club description \
-    -label "Description" \
+    -label "[_ dotlrn.Description]" \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create add_club join_policy \
-    -label "Join Policy" \
+    -label "[_ dotlrn.Join_Policy]" \
     -datatype text \
     -widget select \
-    -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+    -options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approval]" "needs approval"] [list [_ dotlrn.Closed] closed]]
 
 element create add_club referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -67,7 +67,8 @@ if {[form is_valid add_club]} {
     ad_script_abort
 }
 
-set title "New [parameter::get -parameter clubs_pretty_name]"
-set context_bar [list [list clubs [parameter::get -parameter clubs_pretty_plural]] $title]
+set title "[_ dotlrn.New] [parameter::get -localize -parameter clubs_pretty_name]"
+set context_bar [list [list clubs [parameter::get -localize -parameter clubs_pretty_plural]] $title]
 
 ad_return_template
+

@@ -19,12 +19,15 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Add A Member</property>
+<property name="title">#dotlrn.Add_A_Member#</property>
 <property name="context_bar">@context_bar@</property>
 
-The results of your search are:
+#dotlrn.lt_The_results_of_your_s#
 <ul>
 <multiple name="users">
   <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a></li>
 </multiple>
 </ul>
+
+
+

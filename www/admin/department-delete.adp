@@ -23,7 +23,11 @@
 
 <property name="title">@title@</property>
 
-Are you sure you want to delete the empty department <strong>@pretty_name@</strong>?
+#dotlrn.lt_Are_you_sure_you_want# <strong>@pretty_name@</strong>?
 <br>
 
 <formtemplate id="delete_department"></formtemplate>
+
+
+
+

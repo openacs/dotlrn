@@ -65,14 +65,14 @@ set table_def [list]
 
 lappend table_def {
     first_names
-    "First Names"
+    "[_ dotlrn.First_Names]"
     {upper(first_names) $order}
     {<td>[acs_community_member_link -user_id $user_id -label $first_names</td>]}
 }
 
 lappend table_def {
     last_name
-    "Last Name"
+    "[_ dotlrn.Last_Name]"
     {upper(last_name) $order}
     {<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]}
 }
@@ -80,14 +80,14 @@ lappend table_def {
 if {$read_private_data_p || [string equal $my_user_id \$user_id]} {
     lappend table_def {
         email
-        Email
+        [_ dotlrn.Email_1]
         {upper(email) $order, upper(role)}
         {<td><a href="mailto:$email">$email</a></td>}
     }
 } else {
     lappend table_def {
         email
-        Email
+        [_ dotlrn.Email_1]
         {upper(email) $order, upper(role)}
         {<td>&nbsp;</td>}
     }
@@ -95,7 +95,7 @@ if {$read_private_data_p || [string equal $my_user_id \$user_id]} {
 
 lappend table_def {
     role
-    Role
+    [_ dotlrn.Role]
     {decode(role,'instructor',1,'admin',2,'teaching_assistant',3,'course_assistant',4,'course_admin',5,'student',6,'member',7) asc, last_name $order}
     {<td><nobr>[dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]</nobr></td>}
 }
@@ -103,26 +103,26 @@ lappend table_def {
 if {$site_wide_admin_p} {
     lappend table_def {
         manage
-        Actions
+        [_ dotlrn.Actions]
         {}
         {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> | <a href="[dotlrn::get_url]/admin/user?user_id=$user_id">Manage</a> </small>\]</td>}
     }
 } elseif {$admin_p} {
     lappend table_def {
         manage
-        Actions
+        [_ dotlrn.Actions]
         {}
         {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> <small>\]}
     }
 } else {
     lappend table_def {
         manage
-        Actions
+        [_ dotlrn.Actions]
         {}
         {
             [eval {
                 if {$my_user_id == $user_id} {
-                    return "<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a> </small>\]</td>"
+                    return "<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">[_ dotlrn.Drop_nbsp_Membership]</a> </small>\]</td>"
                 } else {
                     return "<td>&nbsp;</td>"
                 }
@@ -132,7 +132,7 @@ if {$site_wide_admin_p} {
 }
 
 set table [ad_table \
-    -Tmissing_text {<blockquote><i>No members</i></blockquote>} \
+    -Tmissing_text "<blockquote><i>[_ dotlrn.No_members]</i></blockquote>" \
     -Textra_vars {referer my_user_id community_id rel_type} \
     -Torderby $orderby \
     select_current_members \
@@ -194,3 +194,4 @@ if {$subcomm_p} {
 }
 
 ad_return_template
+

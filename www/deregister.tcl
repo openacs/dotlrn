@@ -42,3 +42,4 @@ if {[empty_string_p $user_id]} {
 dotlrn_community::remove_user $community_id $user_id
 
 ad_returnredirect $referer
+

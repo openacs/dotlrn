@@ -19,11 +19,14 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Nuke Users</property>
+<property name="title">#dotlrn.Nuke_Users#</property>
 <property name="context_bar">@context_bar@</property>
 
 <p>
-  Are you sure you want to nuke the selected users?
+  #dotlrn.lt_Are_you_sure_you_want#
 </p>
 
 <formtemplate id="confirm_delete"></formtemplate>
+
+
+

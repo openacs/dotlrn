@@ -60,3 +60,4 @@ if {[string equal $type deactivated] == 1} {
 }
 
 ad_return_template
+

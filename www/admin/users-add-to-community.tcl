@@ -27,7 +27,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar {{users Users} {users-search {User Search}} {Add Users to Group}}
+set context_bar [[list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Add_Users_to_Group]]
 
 form create select_community
 
@@ -38,7 +38,7 @@ element create select_community users \
     -value $users
 
 element create select_community referer \
-        -label "Referer" \
+        -label "[_ dotlrn.Referer]" \
         -datatype text \
         -widget hidden \
         -value $referer
@@ -54,13 +54,13 @@ set communities [db_list_of_lists select_all_communities {
 
 if {[llength $communities]} {
     element create select_community community_id \
-        -label "Add users to" \
+        -label "[_ dotlrn.Add_users_to]" \
         -datatype text \
         -widget select \
         -options "{{} {}} $communities"
 } else {
     element create select_community community_id \
-        -label "No groups to add to" \
+        -label "[_ dotlrn.No_groups_to_add_to]" \
         -datatype text \
         -widget hidden \
         -value ""
@@ -83,3 +83,4 @@ if {[form is_valid select_community]} {
 }
 
 ad_return_template
+

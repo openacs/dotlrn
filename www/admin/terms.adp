@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Terms</property>
+<property name="title">#dotlrn.Terms#</property>
 <property name="context_bar">@context_bar@</property>
 
 <center>
@@ -29,7 +29,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="term-new">New Term</a>
+            <a href="term-new">#dotlrn.New_Term#</a>
           ]</small>
         </nobr>
       </td>
@@ -40,10 +40,10 @@
 
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
     <tr>
-      <th align="left">Term</th>
-      <th align="center" width="15%">Start Date</th>
-      <th align="center" width="15%">End Date</th>
-      <th align="center" width="15%">Classes</th>
+      <th align="left">#dotlrn.Term#</th>
+      <th align="center" width="15%">#dotlrn.Start_Date#</th>
+      <th align="center" width="15%">#dotlrn.End_Date#</th>
+      <th align="center" width="15%">#dotlrn.Classes#</th>
     </tr>
 
 <if @terms:rowcount@ gt 0>
@@ -68,7 +68,7 @@
 <else>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
-      <i>No Terms</i>
+      <i>#dotlrn.No_Terms#</i>
     </td>
   </tr>
 </else>
@@ -82,7 +82,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="term-new">New Term</a>
+            <a href="term-new">#dotlrn.New_Term#</a>
           ]</small>
         </nobr>
       </td>
@@ -91,3 +91,6 @@
 </if>
 
 </center>
+
+
+

@@ -39,10 +39,10 @@ set community_id [dotlrn_community::get_community_id]
 
 if {![empty_string_p $community_id]} {
     dotlrn::require_user_admin_community -community_id [dotlrn_community::get_community_id]
-    set context_bar {{"one-community-admin" Admin} {Add User}}
+    set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
 } else {
     dotlrn::require_admin
-    set context_bar {{users Users} {Add User}}
+    set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Add_User]]
 }
 
 set target_user_id [db_nextval acs_object_id_seq]
@@ -50,72 +50,70 @@ set target_user_id [db_nextval acs_object_id_seq]
 form create add_user
 
 element create add_user target_user_id \
-    -label "User ID" \
+    -label "[_ dotlrn.User_ID_1]" \
     -datatype integer \
     -widget hidden \
     -value $target_user_id
 
 element create add_user id \
-    -label ID \
+    -label [_ dotlrn.ID_1] \
     -datatype text \
     -widget text \
     -html {size 30} \
     -value $id
 
 element create add_user email \
-    -label Email \
+    -label [_ dotlrn.Email_1] \
     -datatype text \
     -widget text \
     -html {size 50} \
-    -validate {
-        {expr (([util_email_valid_p $value] == 1) && ([util_email_unique_p $value] == 1))}
-        {E-mail address must be valid and unique}
-    }
+    -validate [list {expr (([util_email_valid_p $value] == 1) && ([util_email_unique_p $value] == 1))} \
+                    [_ dotlrn.lt_E-mail_address_must_b]]
 
 element create add_user first_names \
-    -label "First Names" \
+    -label "[_ dotlrn.First_Names]" \
     -datatype text \
     -widget text \
     -html {size 50}
 
 element create add_user last_name \
-    -label "Last Name" \
+    -label "[_ dotlrn.Last_Name]" \
     -datatype text \
     -widget text \
     -html {size 50}
 
 element create add_user referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
 
 element create add_user type \
-    -label Type \
+    -label [_ dotlrn.Type] \
     -datatype text \
     -widget hidden \
     -value $type
 
 element create add_user can_browse_p \
-    -label "Access Level" \
+    -label "[_ dotlrn.Access_Level]" \
     -datatype text \
     -widget hidden \
     -value $can_browse_p
 
 element create add_user read_private_data_p \
-    -label "Guest?" \
+    -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget hidden \
     -value $read_private_data_p
 
 element create add_user add_membership_p \
-    -label "Add Membership To Community" \
+    -label "[_ dotlrn.lt_Add_Membership_To_Com]" \
     -datatype text \
     -widget hidden \
     -value $add_membership_p
 
 element create add_user dotlrn_interactive_p \
-    -label "Interactive setting of dotLRN parameters" \
+    -label "[_ dotlrn.lt_Interactive_setting_o]" \
     -datatype text \
     -widget hidden \
     -value $dotlrn_interactive_p
@@ -157,3 +155,4 @@ if {[form is_valid add_user]} {
 }
 
 ad_return_template
+

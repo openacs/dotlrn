@@ -28,6 +28,7 @@ ad_page_contract {
 
 set admin_p [dotlrn::admin_p]
 set admin_url [dotlrn::get_url]/admin
-set admin_pretty_name [parameter::get -parameter dotlrn_admin_pretty_name]
+set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
 
 ad_return_template
+

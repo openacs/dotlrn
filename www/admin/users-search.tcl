@@ -33,7 +33,7 @@ ad_page_contract {
     n_users:onevalue
 }
 
-set context_bar {{users Users} {User Search}}
+set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.User_Search]]
 
 set package_id [ad_conn package_id]
 
@@ -45,16 +45,16 @@ element create user_search_results selected_users \
     -widget checkbox
 
 element create user_search_results action \
-    -label "Action" \
+    -label "[_ dotlrn.Action]" \
     -datatype text \
     -widget radio \
-    -options {
-        {None none}
-        {{Spam ...} spam}
-        {{Add to group ...} add_to_community}
-        {{Deactivate ...} deactivate}
-        {{Nuke ...} delete}
-    } \
+    -options [list \
+        [list [_ dotlrn.None] none] \
+        [list [_ dotlrn.Spam_] spam] \
+        [list [_ dotlrn.Add_to_group_] add_to_community] \
+        [list [_ dotlrn.Deactivate_] deactivate] \
+        [list [_ dotlrn.Nuke_] delete] \
+    ] \
     -value $action
 
 if {[form is_valid user_search_results]} {
@@ -81,66 +81,66 @@ if {[form is_valid user_search_results]} {
 form create user_search
 
 element create user_search name \
-    -label "Name / Email" \
+    -label "[_ dotlrn.Name__Email]" \
     -datatype text \
     -widget text \
     -html {size 30} \
     -optional
 
 element create user_search id \
-    -label "ID" \
+    -label "[_ dotlrn.ID_1]" \
     -datatype text \
     -widget text \
     -html {size 10} \
     -optional
 
 element create user_search type \
-    -label "Type" \
+    -label "[_ dotlrn.Type]" \
     -datatype text \
     -widget select \
-    -options "{Any any} [dotlrn::get_user_types_as_options]" \
+    -options "[list [_ dotlrn.Any] any] [dotlrn::get_user_types_as_options]" \
     -value $type
 
 element create user_search can_browse_p \
-    -label "Access Level" \
+    -label "[_ dotlrn.Access_Level]" \
     -datatype text \
     -widget select \
-    -options {{Any any} {Limited 0} {Full 1}} \
+    -options [list [list [_ dotlrn.Any] any] [list [_ dotlrn.Limited] 0] [list [_ dotlrn.Full] 1]] \
     -value $can_browse_p
 
 element create user_search private_data_p \
-    -label "Guest?" \
+    -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget select \
-    -options {{Any any} {Yes f} {No t}} \
+    -options [list [list [_ dotlrn.Any] any] [list [_ dotlrn.Yes] f] [list [_ dotlrn.No] t]] \
     -value $private_data_p
 
 element create user_search role \
-    -label "Role" \
+    -label "[_ dotlrn.Role]" \
     -datatype text \
     -widget checkbox \
     -options [dotlrn_community::get_all_roles_as_options] \
     -optional
 
 element create user_search last_visit_greater \
-    -label "Last Visit Over (in days)" \
+    -label "[_ dotlrn.lt_Last_Visit_Over_in_da]" \
     -datatype text \
     -widget text \
     -html {size 10} \
     -optional
 
 element create user_search last_visit_less \
-    -label "Last Visit Within (in days)" \
+    -label "[_ dotlrn.lt_Last_Visit_Within_in_]" \
     -datatype text \
     -widget text \
     -html {size 10} \
     -optional
 
 element create user_search join_criteria \
-    -label "Join the above criteria by" \
+    -label "[_ dotlrn.lt_Join_the_above_criter_1]" \
     -datatype text \
     -widget select \
-    -options {{And and} {Or or}} \
+    -options [list [list [_ dotlrn.And] and] [list [_ dotlrn.Or] or]] \
     -value $join_criteria
 
 set is_request [form is_request user_search]
@@ -151,11 +151,11 @@ if {[form is_valid user_search]} {
 
     if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
         ad_return_error \
-            "There was a bug in this page" \
-            "There was a bug in this page. Please report this problem."
+            "[_ dotlrn.lt_There_was_a_bug_in_th]" \
+            "[_ dotlrn.lt_There_was_a_bug_in_th_1]"
     }
 
-    set context_bar {{users Users} {users-search {User Search}} {Results}}
+    set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Results]]
 
     set tables [list "dotlrn_users"]
     set cols [list \
@@ -266,3 +266,4 @@ if {[form is_valid user_search]} {
 }
 
 ad_return_template
+

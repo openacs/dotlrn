@@ -19,7 +19,7 @@
 %>
 
 <if @n_communities@ gt 0>
-  <h3><if @title@ nil>Communities</if><else>@title@</else></h3>
+  <h3><if @title@ nil>#dotlrn.Communities#</if><else>@title@</else></h3>
 
   <p>@filter_bar@</p>
 
@@ -39,7 +39,7 @@
       </td>
       <td>
 <if @communities.admin_p@ eq 1>
-        (<a href="@communities.url@one-community-admin">admin</a>)
+        (<a href="@communities.url@one-community-admin">#dotlrn.admin#</a>)
 </if>
       </td>
     </tr>
@@ -50,3 +50,6 @@
 </multiple>
 </if>
 </if>
+
+
+

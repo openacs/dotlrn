@@ -26,29 +26,29 @@
 <ul>
 
   <li>
-    Name:
+    #dotlrn.Name#
     @term_name@
   </li>
 
   <li>
-    Year:
+    #dotlrn.Year#
     @term_year@
   </li>
 
   <li>
-    Start date:
+    #dotlrn.Start_date#
     @start_date@
   </li>
 
   <li>
-    End date:
+    #dotlrn.End_date#
     @end_date@
   </li>
 
   <br>
 
   <li>
-    <a href="term-edit?term_id=@term_id@&referer=@referer@">Edit</a> term properties.
+    <a href="term-edit?term_id=@term_id@&referer=@referer@">#dotlrn.Edit#</a> #dotlrn.term_properties#
   </li>
 
 </ul>
@@ -62,12 +62,12 @@
     <tr bgcolor="#eeeeee">
       <th align="left" width="50%">
 <formtemplate id="department_form">
-        <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+        <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
       </th>
       <th align="left" width="50%">
 <formtemplate id="term_form">
-        Term:&nbsp;<formwidget id="term_id">
+        #dotlrn.term#:&nbsp;<formwidget id="term_id">
 </formtemplate>
       </th>
     </tr>
@@ -77,14 +77,14 @@
 
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
     <tr>
-      <th align="left" width="20%"><%= [parameter::get -parameter departments_pretty_name] %></th>
-      <th align="left" width="20%"><%= [parameter::get -parameter classes_pretty_name] %></th>
+      <th align="left" width="20%"><%= [parameter::get -localize -parameter departments_pretty_name] %></th>
+      <th align="left" width="20%"><%= [parameter::get -localize -parameter classes_pretty_name] %></th>
 <if @term_id@ eq -1>
-      <th align="left" width="10%">Term</th>
+      <th align="left" width="10%">#dotlrn.term#</th>
 </if>
-      <th align="left" width="25%"><%= [parameter::get -parameter class_instances_pretty_name] %></th>
-      <th align="center" width="10%">Members</th>
-      <th align="center">Actions</th>
+      <th align="left" width="25%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %></th>
+      <th align="center" width="10%">#dotlrn.members#</th>
+      <th align="center">#dotlrn.actions#</th>
     </tr>
 
 <if @classes:rowcount@ gt 0>
@@ -107,7 +107,7 @@
       <td align="center">
         <nobr>
           <small>[
-            <a href="@classes.url@one-community-admin">Administer</a>
+            <a href="@classes.url@one-community-admin">#dotlrn.Administer#</a>
           ]</small>
         </nobr>
       </td>
@@ -124,7 +124,7 @@
 <else>
     <td align="left" colspan="5">
 </else>
-      <i>No <%= [parameter::get -parameter class_instances_pretty_plural] %></i>
+      <i>#dotlrn.No# <%= [parameter::get -localize -parameter class_instances_pretty_plural] %></i>
     </td>
   </tr>
 </else>
@@ -132,3 +132,6 @@
   </table>
 
 </center>
+
+
+

@@ -19,9 +19,12 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Configure Element</property>
+<property name="title">#dotlrn.Configure_Element#</property>
 
 
 <p></p>
 
 @rendered_page@
+
+
+

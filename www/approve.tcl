@@ -41,3 +41,4 @@ if {[empty_string_p $user_id]} {
 dotlrn_community::membership_approve -community_id $community_id -user_id $user_id
 
 ad_returnredirect $referer
+

@@ -26,6 +26,12 @@
 </head>
 <body>
 
+<p>
+<blockquote>
+<include src="/packages/acs-lang/www/change-locale-include">
+</blockquote>
+</p>
+
 <!-- Header Begin -->
 <table width="100%">
   <tr>
@@ -48,9 +54,9 @@
     <td><div class=header-text>@text@</div></td>
 
     <td class="header-buttons">
-      <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_graphics_url@/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySpace"></a>
-      <a href="@dotlrn_url@/control-panel"><img class="header-img" border="0" src="@dotlrn_graphics_url@/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
-      <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_graphics_url@/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
+      <img src="/shared/1pixel.tcl?r=204&g=0&b=0" width="9" height="9"> <a href="@dotlrn_url@">#dotlrn.myspace#</a>
+      <img src="/shared/1pixel.tcl?r=204&g=0&b=0" width="9" height="9"> <a href="@dotlrn_url@/control-panel">#dotlrn.help#</a>
+      <img src="/shared/1pixel.tcl?r=204&g=0&b=0" width="9" height="9"> <a href="/register/logout">#dotlrn.logout#</a>
     </td>
 
   </tr>
@@ -86,9 +92,9 @@
   <table width="100%" border="0" cellpadding="1" cellspacing="0">
     <tr>
       <td align=left valign=top>
-        <a href="http://dotlrn.openforce.net">dotLRN</a>
+        <a href="http://dotlrn.openforce.net">#dotlrn.dotLRN#</a>
         | 
-        <a href="http://openacs.org">OpenACS</a>
+        <a href="http://openacs.org">#dotlrn.OpenACS#</a>
       </td>
       <td align=right>
         @ds_link@
@@ -96,3 +102,6 @@
     </tr>
   </table>
 </div>
+
+
+

@@ -47,3 +47,4 @@ if {![empty_string_p $header_logo_only]} {
 }
 
 ad_returnredirect $referer
+

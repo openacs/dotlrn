@@ -37,12 +37,12 @@ set departments [db_list_of_lists select_departments_for_select_widget {
     order by dotlrn_departments_full.pretty_name,
              dotlrn_departments_full.department_key
 }]
-set departments [linsert $departments 0 {All ""}]
+set departments [linsert $departments 0 [list [_ dotlrn.All] ""]]
 
 form create department_form
 
 element create department_form department_key \
-    -label Department \
+    -label [_ dotlrn.Department] \
     -datatype text \
     -widget select \
     -options $departments \
@@ -68,3 +68,4 @@ set can_create [dotlrn_class::can_create]
 set can_instantiate [dotlrn_class::can_instantiate]
 
 ad_return_template
+

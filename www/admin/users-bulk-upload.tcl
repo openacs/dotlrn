@@ -22,6 +22,7 @@ ad_page_contract {
     @version $Id$
 }
 
-set context_bar {{users Users} {Bulk Upload}}
+set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Bulk_Upload]]
 
 ad_return_template
+

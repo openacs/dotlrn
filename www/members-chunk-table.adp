@@ -18,7 +18,7 @@
 
 %>
 
-<h3>Members of <%= [dotlrn_community::get_community_name $community_id] %></h3>
+<h3>#dotlrn.Members_of# <%= [dotlrn_community::get_community_name $community_id] %></h3>
 
 @table@
 
@@ -28,7 +28,7 @@
   <br>
   <li>
     <form method="get" action="member-add">
-      Add A Member: <input type="text" name="search_text"><input type="submit" value="search">
+      #dotlrn.Add_A_Member# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
       <input type="hidden" name="referer" value="@referer@">
     </form>
   </li>
@@ -38,7 +38,7 @@
   <br>
   <li>
     <a href="@dotlrn_admin_url@/users-add-to-community?users=@user_list@&referer=@referer@">
-      Add members to another group
+      #dotlrn.lt_Add_members_to_anothe#
     </a>
   </li>
 </if>
@@ -47,7 +47,7 @@
 
 <if @admin_p@ eq 1 and @pending_users:rowcount@ gt 0>
 
-<h3>Membership Requests</h3>
+<h3>#dotlrn.Membership_Requests#</h3>
 
 <ul>
 <multiple name="pending_users">
@@ -74,19 +74,18 @@
 
   <hr>
 
-  <h3>Add New Members</h3>
+  <h3>#dotlrn.Add_New_Members#</h3>
 
   <blockquote>
     <p>
-      The following members of 
+      #dotlrn.lt_The_following_members# 
       <%= [dotlrn_community::get_parent_name -community_id $community_id] %> 
-      are not yet members of 
+      #dotlrn.lt_are_not_yet_members_o# 
       <%= [dotlrn_community::get_community_name $community_id] %>.
     </p>
 
     <p>
-      First check the box of the users you want to add, next select their
-      role, and finally submit the form.
+      #dotlrn.lt_First_check_the_box_o#
     </p>
   </blockquote>
 
@@ -94,9 +93,9 @@
   <table width="75%" border="0">
 
     <tr>
-      <td width="15%" align="center"><strong>Don't Add</strong></td>
-      <td width="15%" align="center"><strong>Member</strong></td>
-      <td width="15%" align="center"><strong>Administrator</strong></td>
+      <td width="15%" align="center"><strong>#dotlrn.Dont_Add#</strong></td>
+      <td width="15%" align="center"><strong>#dotlrn.Member#</strong></td>
+      <td width="15%" align="center"><strong>#dotlrn.Administrator#</strong></td>
       <td>&nbsp;</td>
     </tr>
 
@@ -122,7 +121,7 @@
     <tr><td colspan="4">&nbsp;</td></tr>
 
     <tr>
-      <td><input type="submit" value="Add Selected Members"></td>
+      <td><input type="submit" value="#dotlrn.add_selected_members#"></td>
       <td colspan="3">&nbsp;</td>
     </tr>
 
@@ -130,3 +129,6 @@
 </formtemplate>
 
 </if>
+
+
+

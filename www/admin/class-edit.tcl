@@ -29,36 +29,36 @@ ad_page_contract {
 }
 
 if {![db_0or1row select_class_info {}]} {
-    ad_return_complaint 1 "<li>Invalid class_key $class_key</li>"
+    ad_return_complaint 1 "<li>[_ dotlrn.Invalid] class_key $class_key</li>"
     ad_script_abort
 }
 
-set title "Edit [parameter::get -parameter classes_pretty_name] $pretty_name"
-set context_bar [list [list classes [parameter::get -parameter classes_pretty_plural]] Edit]
+set title "[_ dotlrn.Edit] [parameter::get -localize -parameter classes_pretty_name] $pretty_name"
+set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] [_ dotlrn.Edit]]
 
 form create edit_class
 
 element create edit_class class_key \
-    -label "Class Key (a short name, no spaces)" \
+    -label "[_ dotlrn.lt_Class_Key_a_short_nam]" \
     -datatype text \
     -widget hidden \
     -value $class_key
 
 element create edit_class pretty_name \
-    -label Name \
+    -label [_ dotlrn.Name] \
     -datatype text \
     -widget text \
     -html {size 60}
 
 element create edit_class description \
-    -label Description \
+    -label [_ dotlrn.Description] \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create edit_class referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -79,3 +79,4 @@ if {[form is_valid edit_class]} {
 }
 
 ad_return_template
+

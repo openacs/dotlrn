@@ -57,3 +57,4 @@ set portal_id [dotlrn::get_portal_id -user_id $user_id]
 set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p t $portal_id]
 
 ad_return_template
+

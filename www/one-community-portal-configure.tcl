@@ -37,3 +37,4 @@ set rendered_page [portal::configure \
 ]
 
 ad_return_template
+

@@ -24,8 +24,8 @@
 
 <table width="50%" cellpadding="3" cellspacing="3">
   <tr>
-    <th align="left">Template</th>
-    <th align="left">Actions</th>
+    <th align="left">#dotlrn.Template#</th>
+    <th align="left">#dotlrn.Actions#</th>
   </tr>
 <multiple name=templates>
   <tr>
@@ -34,9 +34,12 @@
     </td>
     <td>
       [<small>
-        <a href="@url@/portal-config?portal_id=@templates.portal_id@&referer=@referer@">Edit</a>
+        <a href="@url@/portal-config?portal_id=@templates.portal_id@&referer=@referer@">#dotlrn.Edit#</a>
       </small>]
     </td>
   </tr>
 </multiple>
 </table>
+
+
+

@@ -18,4 +18,7 @@
 
 %>
 
- <a href="<if @url@ nil>reject<if @referer@ not nil>?referer=@referer@</if></if><else>@url@<if @referer@ not nil>?referer=@referer@</if></else>"><if @label@ nil>Reject</if><else>@label@</else></a>
+ <a href="<if @url@ nil>#dotlrn.reject#<if @referer@ not nil>?referer=@referer@</if></if><else>@url@<if @referer@ not nil>?referer=@referer@</if></else>"><if @label@ nil>#dotlrn.Reject#</if><else>@label@</else></a>
+
+
+

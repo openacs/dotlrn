@@ -27,6 +27,7 @@ ad_page_contract {
 # Just search
 db_multirow users select_users {}
 
-set context_bar {{users Users} {New}}
+set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 ad_return_template
+

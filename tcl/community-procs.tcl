@@ -618,12 +618,12 @@ namespace eval dotlrn_community {
             set member_segment_id [rel_segments_new \
                 $community_id \
                 dotlrn_member_rel \
-                "Members of $community_name" \
+                "[_ dotlrn.Members_of] $community_name" \
             ]
             set admin_segment_id [rel_segments_new \
                 $community_id \
                 dotlrn_admin_rel \
-                "Admins of $community_name" \
+                "[_ dotlrn.Admins_of] $community_name" \
             ]
             rel_segments_grant_permission -community_id $community_id
         }
@@ -1060,7 +1060,8 @@ namespace eval dotlrn_community {
         if {$complain_if_invalid_p && !$valid_p} {
             ns_log notice "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_return_complaint 1 \
-                "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
+                [_ [ad_conn locale] dotlrn.community_name_already_in_use "" [list community_key $community_key]]
+
             ad_script_abort
         } else {
             return $valid_p
@@ -1184,7 +1185,7 @@ namespace eval dotlrn_community {
                       append chunk "<nobr>\[<small> "
 
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
-                          append chunk "Pending Approval"
+                          append chunk "[_ dotlrn.Pending_Approval]"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
                           append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">>Request Membership</a>\n"
 
@@ -2041,3 +2042,4 @@ namespace eval dotlrn_community {
     }
 
 }
+

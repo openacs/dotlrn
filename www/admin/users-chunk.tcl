@@ -31,3 +31,4 @@ if {![exists_and_not_null referer]} {
 }
 
 ad_return_template
+

@@ -66,3 +66,4 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 }
 
 ad_return_template
+

@@ -61,3 +61,4 @@ set rendered_page [dotlrn::render_page \
 ]
 
 ad_return_template 
+

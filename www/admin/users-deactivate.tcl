@@ -29,7 +29,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar {{users Users} {users-search {User Search}} {Deactivate Users}}
+set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Deactivate_Users]]
 
 form create confirm_deactivate
 
@@ -52,3 +52,4 @@ if {[form is_valid confirm_deactivate]} {
 }
 
 ad_return_template
+

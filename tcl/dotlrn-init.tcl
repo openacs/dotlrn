@@ -103,3 +103,5 @@ if {[dotlrn::is_instantiated]} {
 acs_privacy::privacy_control_set 1
 
 ns_log notice "dotlrn-init: done"
+
+

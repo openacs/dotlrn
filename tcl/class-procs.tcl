@@ -69,16 +69,16 @@ namespace eval dotlrn_class {
         db_transaction {
             dotlrn::new_type_portal \
                 -type [community_type] \
-                -pretty_name [parameter::get \
+                -pretty_name "test [parameter::get \
                                   -package_id [dotlrn::get_package_id] \
-                                  -parameter class_instance_portal_pretty_name]
+                                  -parameter class_instance_portal_pretty_name]"
             
             dotlrn_community::init \
                 -community_type [community_type] \
                 -community_type_url_part [get_url_part] \
-                -pretty_name [parameter::get \
+                -pretty_name "test [parameter::get \
                                   -package_id [dotlrn::get_package_id] \
-                                  -parameter classes_pretty_plural]
+                                  -parameter classes_pretty_plural]"
         }
     }
 
@@ -127,8 +127,8 @@ namespace eval dotlrn_class {
                 -department_key $department_key]} {
             ad_return_complaint \
                     1 \
-                    "The name <strong>$pretty_name</strong> is already in use.
-                     <p>Please select a different name."
+                    "[_ dotlrn.The_name] <strong>$pretty_name</strong> [_ dotlrn.is_already_in_use].
+                     <p>[_ dotlrn.lt_Please_select_a_diffe]."
         }        
 
         db_transaction {
@@ -147,13 +147,15 @@ namespace eval dotlrn_class {
         {-class_key:required}
     } {
         Deletes an empty class (the TYPE), if there are no
-        instanciated classes of this type.
+        instantiated classes of this type.
     } {
         # check that it's empty
         if {![count_class_instances -class_key $class_key] == 0} {
-            ad_return_complaint 1 "Error: A [parameter::get -parameter classes_pretty_name] 
-            must have <em>no</em>[parameter::get -parameter class_instances_pretty_plural] to be deleted"
-            ad_script_abort
+            set msg_subst_list [list subject [parameter::get -localize -parameter classes_pretty_name] \
+                                     class_instances [parameter::get -localize -parameter class_instances_pretty_plural]]
+            ad_return_complaint 1 [_ [ad_conn locale] dotlrn.class_may_not_be_deleted "" $msg_subst_list]
+
+           ad_script_abort
         } 
 
         db_transaction {
@@ -290,3 +292,5 @@ namespace eval dotlrn_class {
     }
 
 }
+
+

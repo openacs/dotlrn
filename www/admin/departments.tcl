@@ -27,14 +27,15 @@ ad_page_contract {
     departments:multirow
 }
 
-set title [parameter::get -parameter departments_pretty_plural]
-set context_bar [parameter::get -parameter departments_pretty_plural]
+set title [parameter::get -localize -parameter departments_pretty_plural]
+set context_bar [parameter::get -localize -parameter departments_pretty_plural]
 set referer departments
 set can_create [dotlrn_class::can_create]
-set departments_pretty_name [parameter::get -parameter departments_pretty_name]
-set departments_pretty_plural [parameter::get -parameter departments_pretty_plural]
-set classes_pretty_name [parameter::get -parameter classes_pretty_name]
+set departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]
+set departments_pretty_plural [parameter::get -localize -parameter departments_pretty_plural]
+set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
 
 db_multirow departments select_departments {}
 
 ad_return_template
+

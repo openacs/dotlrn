@@ -19,13 +19,16 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Add Users to Group</property>
+<property name="title">#dotlrn.Add_Users_to_Group#</property>
 <property name="context_bar">@context_bar@</property>
 
 
-<strong><font color=red>Note:</font></strong> 
-This action will take approximately <strong><%= [expr [llength $users] * 3] %></strong> seconds.
+<strong><font color=red>#dotlrn.Note#</font></strong> 
+#dotlrn.lt_This_action_will_take# <strong><%= [expr [llength $users] * 3] %></strong> #dotlrn.seconds#
 
 <p></p>
 
 <formtemplate id="select_community"></formtemplate>
+
+
+

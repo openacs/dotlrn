@@ -19,23 +19,23 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Users</property>
+<property name="title">#dotlrn.Users#</property>
 <property name="context_bar">@context_bar@</property>
 
 <% set referer "[dotlrn::get_admin_url]/users" %>
 
 [<small>
-  <a href="../user-add?add_membership_p=f&dotlrn_interactive_p=1&referer=@referer@"><small>Create A New User</small></a> 
+  <a href="../user-add?add_membership_p=f&dotlrn_interactive_p=1&referer=@referer@"><small>#dotlrn.Create_A_New_User#</small></a> 
   |
-  <a href="users-search"><small>Search Users</small></a>
+  <a href="users-search"><small>#dotlrn.Search_Users#</small></a>
   |
-  <a href="users-bulk-upload"><small>Bulk Upload</small></a>
+  <a href="users-bulk-upload"><small>#dotlrn.Bulk_Upload#</small></a>
 </small>]
 
 <p></p>
 
 <form method="get" action="user-new">
-  Add a new dotLRN user: <input type="text" name="search_text"><input type="submit" value="search">
+  #dotlrn.lt_Add_a_new_dotLRN_user# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
 </form>
 
 <p></p>
@@ -53,3 +53,8 @@
     <include src="users-chunk-small" type=@type@ referer="@referer@?type=@type@">
   </else>
 </else>
+
+
+
+
+

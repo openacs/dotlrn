@@ -45,3 +45,4 @@ dotlrn::require_user_admin_community -community_id $community_id
 db_dml update_join_policy {}
 
 ad_returnredirect $referer
+

@@ -18,4 +18,7 @@
 
 %>
 
-<a href="<if @url@ nil>register</if><else>@url@</else><if @community_id@ not nil>?community_id=@community_id@</if><if @referer@ not nil>&referer=@referer@</if>"><if @label@ nil>Join</if><else>@label@</else></a>
+<a href="<if @url@ nil>#dotlrn.register#</if><else>@url@</else><if @community_id@ not nil>?community_id=@community_id@</if><if @referer@ not nil>&referer=@referer@</if>"><if @label@ nil>#dotlrn.Join#</if><else>@label@</else></a>
+
+
+

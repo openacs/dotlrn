@@ -28,14 +28,14 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "Delete Empty [parameter::get -parameter departments_pretty_name]"
-set context_bar [list [list departments [parameter::get -parameter departments_pretty_plural]] Delete]
+set title "[_ dotlrn.Delete_Empty] [parameter::get -localize -parameter departments_pretty_name]"
+set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] Delete]
 
 form create delete_department
 
 # this is lame, but the button hack is not ready yet
-set yes_label "Yes, delete $pretty_name"
-set no_label "No, don't delete it"
+set yes_label "[_ dotlrn.Yes_delete] $pretty_name"
+set no_label "[_ dotlrn.No_dont_delete_it]"
 
 element create delete_department no_button \
     -label $no_label \
@@ -59,7 +59,7 @@ element create delete_department pretty_name \
     -value $pretty_name
 
 element create delete_department referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -81,3 +81,4 @@ if {[form is_valid delete_department]} {
 } 
 
 ad_return_template
+

@@ -39,7 +39,7 @@ set departments [linsert $departments 0 {All ""}]
 form create department_form
 
 element create department_form department_key \
-    -label "Department" \
+    -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget select \
     -options $departments \
@@ -47,7 +47,7 @@ element create department_form department_key \
     -value $department_key
 
 element create department_form term_id \
-    -label "Term ID" \
+    -label "[_ dotlrn.Term_ID]" \
     -datatype integer \
     -widget hidden \
     -value $term_id
@@ -68,7 +68,7 @@ set terms [linsert $terms 0 {All -1}]
 form create term_form
 
 element create term_form term_id \
-    -label "Term" \
+    -label "[_ dotlrn.Term]" \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -76,7 +76,7 @@ element create term_form term_id \
     -value $term_id
 
 element create term_form department_key \
-    -label "Department" \
+    -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget hidden \
     -value $department_key
@@ -104,16 +104,17 @@ if {![empty_string_p $department_key]} {
 db_multirow classes $query {}
 
 if {$term_id == -1} {
-    set title "All Terms"
-    set context_bar {{terms Terms} {All Terms}}
+    set title "[_ dotlrn.All_Terms]"
+    set context_bar [list [list terms [_ dotlrn.Terms]] "[_ dotlrn.All_Terms]"]
 } else {
     if {[db_0or1row select_term_info {}]} {
         set title "$term_name $term_year ($start_date - $end_date)"
-        set context_bar [list {terms Terms} "$term_name $term_year"]
+        set context_bar [list [list terms [_ dotlrn.Terms]] "$term_name $term_year"]
     } else {
-        set title "Unknown Term"
-        set context_bar {{terms Terms} {Unknown Term}}
+        set title "[_ dotlrn.Unknown_Term]"
+        set context_bar [list [list terms [_ dotlrn.Terms]] "[_ dotlrn.Unknown_Term]"]
     }
 }
 
 ad_return_template
+

@@ -29,25 +29,25 @@ ad_page_contract {
 form create add_term
 
 element create add_term term_name \
-    -label "Term (e.g. Spring, Fall)" \
+    -label "[_ dotlrn.Term_eg_Spring_Fall]" \
     -datatype text \
     -widget text \
     -html {size 30}
 
 element create add_term start_date \
-    -label "Start Date" \
+    -label "[_ dotlrn.Start_Date]" \
     -datatype date \
     -widget date \
     -format {MONTH DD YYYY}
 
 element create add_term end_date \
-    -label "End Date" \
+    -label "[_ dotlrn.End_Date]" \
     -datatype date \
     -widget date \
     -format {MONTH DD YYYY}
 
 element create add_term referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -71,6 +71,7 @@ if {[form is_valid add_term]} {
     ad_script_abort
 }
 
-set context_bar {{terms Terms} New}
+set context_bar [list [list terms [_ dotlrn.Terms]] [_ dotlrn.New]]
 
 ad_return_template
+

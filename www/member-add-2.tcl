@@ -51,3 +51,4 @@ foreach role $rel_types {
 }
 
 ad_return_template
+

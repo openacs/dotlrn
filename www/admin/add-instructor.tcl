@@ -25,6 +25,7 @@ ad_page_contract {
     {referer "./"}
 }
 
-set context_bar {{Add a Professor}}
+set context_bar [list [_ dotlrn.Add_a_Professor]]
 
 ad_return_template
+

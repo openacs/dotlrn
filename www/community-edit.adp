@@ -40,12 +40,12 @@
   <tr><td>
       <table bgcolor=#99CCFF cellspacing=0 cellpadding=2 border=0>
       <tr>
-        <td><b>Header Font</b>&nbsp;&nbsp;</td>
+        <td><b>#dotlrn.Header_Font#</b>&nbsp;&nbsp;</td>
         <td nowrap><input type="text" name="header_font" size="50" value="@header_font@" /></td>
       </tr>
       
       <tr>
-        <td><b>Header Font Size</b>&nbsp;&nbsp;</td>
+        <td><b>#dotlrn.Header_Font_Size#</b>&nbsp;&nbsp;</td>
         <td nowrap>
         <select name="header_font_size">
           @size_option_list@
@@ -54,24 +54,24 @@
       </tr>
       
       <tr>
-        <td><b>Header Font Color</b>&nbsp;&nbsp;</td>
+        <td><b>#dotlrn.Header_Font_Color#</b>&nbsp;&nbsp;</td>
         <td nowrap>
         <input type="text" name="header_font_color" value="@header_font_color@" size="50" /></td>
       </tr>
 
       <tr>
-        <td><b>Header Icon</b>&nbsp;&nbsp;</td>
+        <td><b>#dotlrn.Header_Icon#</b>&nbsp;&nbsp;</td>
         <td><input type="file" name="header_img"/></td>
       </tr>
 
       <tr>
-        <td><b>Header Icon Alt text</b>&nbsp;&nbsp;</td>
+        <td><b>#dotlrn.Header_Icon_Alt_text#</b>&nbsp;&nbsp;</td>
         <td><input type="text" name="header_alt_text" value="@header_alt_text@" size="50" /></td>
         
       </tr>
 
       <tr><td align=center colspan=2>
-          <input type="submit" name="preview_button" value="Preview" /></td>
+          <input type="submit" name="preview_button" value="#dotlrn.Preview#" /></td>
       </tr>
     
     </table>
@@ -85,6 +85,9 @@
 </form>
 </p>
 
-<strong>[<a href=community-edit-revert.tcl?header_logo_only=1>Revert ONLY the Header Icon properties to defaults</a>]</strong>
+<strong>[<a href=community-edit-revert.tcl?header_logo_only=1>#dotlrn.lt_Revert_ONLY_the_Heade#</a>]</strong>
 <br>
-<strong>[<a href=community-edit-revert.tcl>Revert all properties to defaults</a>]</strong>
+<strong>[<a href=community-edit-revert.tcl>#dotlrn.lt_Revert_all_properties#</a>]</strong>
+
+
+

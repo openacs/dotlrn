@@ -19,14 +19,16 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Edit a User</property>
+<property name="title">#dotlrn.Edit_a_User#</property>
 <property name="context_bar">@context_bar@</property>
 
-You're editing <strong>@first_names@ @last_name@</strong>.
+#dotlrn.Youre_editing# <strong>@first_names@ @last_name@</strong>.
 
 <p></p>
 
-You're asking to change the level of access of this user.
-This has strong repercussions. Are you user about this?
+#dotlrn.lt_Youre_asking_to_chang#
 
 <formtemplate id="verif_edit_user"></formtemplate>
+
+
+

@@ -25,9 +25,9 @@
 <if @archived_comms:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="15%">Name</th>
-    <th align="left" width="50%">Description</th>
-    <th align="left">Actions</th>
+    <th align="left" width="15%">#dotlrn.Name#</th>
+    <th align="left" width="50%">#dotlrn.Description#</th>
+    <th align="left">#dotlrn.Actions#</th>
   </tr>
 <multiple name="archived_comms">
   <tr>
@@ -39,5 +39,7 @@
 </table>
 </if>
 <else>
-  No archived @groups_pretty_plural@
+  #dotlrn.No_archived# @groups_pretty_plural@
 </else>
+
+

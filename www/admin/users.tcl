@@ -28,7 +28,7 @@ ad_page_contract {
     n_users:onevalue
 }
 
-set context_bar {Users}
+set context_bar [_ dotlrn.Users]
 
 set dotlrn_roles [db_list_of_lists select_dotlrn_roles {
     select dotlrn_user_types.type,
@@ -41,10 +41,10 @@ set dotlrn_roles [db_list_of_lists select_dotlrn_roles {
 }]
 
 set n_pending_users [db_string select_non_dotlrn_users_count {}]
-lappend dotlrn_roles [list pending "Pending ($n_pending_users)" {}]
+lappend dotlrn_roles [list pending "[_ dotlrn.Pending] ($n_pending_users)" {}]
 
 set n_deactivated_users [db_string select_deactivated_users_count {}]
-lappend dotlrn_roles [list deactivated "Deactivated ($n_deactivated_users)" {}]
+lappend dotlrn_roles [list deactivated "[_ dotlrn.Deactivated] ($n_deactivated_users)" {}]
 
 set control_bar [ad_dimensional [list [list type {User Type:} admin $dotlrn_roles]]]
 
@@ -57,3 +57,4 @@ if {[string equal $type "deactivated"] == 1} {
 }
 
 ad_return_template
+

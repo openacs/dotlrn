@@ -23,3 +23,6 @@
 <property name="context_bar">@context_bar@</property>
 
 @pretty_name@ - <pre>@description@</pre>
+
+
+

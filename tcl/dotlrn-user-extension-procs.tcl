@@ -84,3 +84,4 @@ namespace eval dotlrn_user_extension {
     }
 
 }
+

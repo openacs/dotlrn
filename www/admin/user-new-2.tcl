@@ -26,7 +26,7 @@ ad_page_contract {
 }
 
 
-set context_bar {{users Users} {New}}
+set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 db_1row select_user_info {
     select email,
@@ -39,13 +39,13 @@ db_1row select_user_info {
 form create add_user
 
 element create add_user user_id \
-    -label "User ID" \
+    -label "[_ dotlrn.User_ID_1]" \
     -datatype integer \
     -widget hidden \
     -value $user_id
 
 element create add_user id \
-    -label ID \
+    -label [_ dotlrn.ID_1] \
     -datatype text \
     -widget text \
     -html {size 30} \
@@ -53,25 +53,25 @@ element create add_user id \
     -optional
 
 element create add_user type \
-    -label "User Type" \
+    -label "[_ dotlrn.User_Type]" \
     -datatype text \
     -widget select \
     -options [dotlrn::get_user_types_as_options]
 
 element create add_user can_browse_p \
-    -label "Access Level" \
+    -label "[_ dotlrn.Access_Level]" \
     -datatype text \
     -widget select \
-    -options {{"Full Access" 1} {"Limited Access" 0}}
+    -options [list [list "[_ dotlrn.Full_Access]" 1] [list "[_ dotlrn.Limited_Access]" 0]]
 
 element create add_user read_private_data_p \
-    -label "Guest?" \
+    -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget select \
-    -options {{No t} {Yes f}}
+    -options [list [list [_ dotlrn.No] t] [list [_ dotlrn.Yes] f]]
 
 element create add_user referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -89,6 +89,7 @@ if {[form is_valid add_user]} {
     ad_script_abort
 }
 
-set context_bar {{users Users} New}
+set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 ad_return_template
+

@@ -41,7 +41,7 @@ ad_page_contract {
     administration_name:onevalue
 }
 
-set context_bar {{"one-community-admin" Admin} {Add User}}
+set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
 
 set admin_user_id [ad_verify_and_get_user_id]
 set administration_name [db_string select_admin_name {
@@ -55,3 +55,4 @@ set export_vars [export_vars -form {email referer}]
 set system_url [ad_parameter -package_id [ad_acs_kernel_id] SystemURL ""]
 
 ad_return_template
+

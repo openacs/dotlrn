@@ -36,6 +36,7 @@ db_1row select_club {}
 
 set description [ad_quotehtml $description]
 
-set context_bar [list [list clubs [parameter::get -parameter clubs_pretty_plural]] $pretty_name]
+set context_bar [list [list clubs [parameter::get -localize -parameter clubs_pretty_plural]] $pretty_name]
 
 ad_return_template
+

@@ -38,3 +38,4 @@ set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
 set context_bar [list [list $referer Admin] "$spam_name Community"]
 set community_id [dotlrn_community::get_community_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
+

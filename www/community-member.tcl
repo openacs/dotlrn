@@ -60,7 +60,7 @@ set user_info_sql {
 }
 
 if {![db_0or1row user_information $user_info_sql]} {
-    ad_return_error "No user found" "There is no community member with the user_id of $user_id"
+    ad_return_error "[_ dotlrn.No_user_found]" [_ [ad_conn locale]  dotlrn.no_community_member_with_id "" [list user_id $user_id]]
     ad_script_abort
 }
 
@@ -115,9 +115,10 @@ db_multirow user_contributions user_contributions {}
 
 set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
 
-set context_bar [ad_context_bar_ws_or_index "Community member"]
+set context_bar [ad_context_bar_ws_or_index "[_ dotlrn.Community_member]"]
 set system_name [ad_system_name]
 set pretty_creation_date [util_AnsiDatetoPrettyDate $creation_date]
 set login_export_vars "return_url=[ns_urlencode [acs_community_member_url -user_id $user_id]]"
 
 ad_return_template
+

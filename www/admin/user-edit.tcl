@@ -26,7 +26,7 @@ ad_page_contract {
     user_id
 }
 
-set context_bar {{users Users} {Edit}}
+set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Edit]]
 set dotlrn_package_id [dotlrn::get_package_id]
 
 db_1row select_user_info {}
@@ -35,13 +35,13 @@ set can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 form create edit_user
 
 element create edit_user user_id \
-    -label "User ID" \
+    -label "[_ dotlrn.User_ID_1]" \
     -datatype integer \
     -widget hidden \
     -value $user_id
 
 element create edit_user id \
-    -label ID \
+    -label [_ dotlrn.ID_1] \
     -datatype text \
     -widget text \
     -html {size 30} \
@@ -49,28 +49,28 @@ element create edit_user id \
     -optional
 
 element create edit_user type \
-    -label "User Type" \
+    -label "[_ dotlrn.User_Type]" \
     -datatype text \
     -widget select \
     -options [dotlrn::get_user_types_as_options] \
     -value $type
 
 element create edit_user can_browse_p \
-    -label "Access Level" \
+    -label "[_ dotlrn.Access_Level]" \
     -datatype text \
     -widget select \
-    -options {{Full 1} {Limited 0}} \
+    -options [list [list [_ dotlrn.Full] 1] [list [_ dotlrn.Limited] 0]] \
     -value $can_browse_p
 
 element create edit_user read_private_data_p \
-    -label "Guest?" \
+    -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget select \
-    -options {{No t} {Yes f}} \
+    -options [list [list [_ dotlrn.No] t] [list [_ dotlrn.Yes] f]] \
     -value $read_private_data_p
 
 element create edit_user return_url \
-    -label "Return URL" \
+    -label "[_ dotlrn.Return_URL]" \
     -datatype text \
     -widget hidden \
     -value $return_url
@@ -103,3 +103,4 @@ if {[form is_valid edit_user]} {
 }
 
 ad_return_template
+

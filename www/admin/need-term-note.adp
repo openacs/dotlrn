@@ -19,7 +19,9 @@
 %>
 
 <i>
-  <b>Note:</b> You must create <a href="terms">terms</a> to be able to create
-  <%= [parameter::get -parameter class_instances_pretty_plural] %>, since these must be
-  associated with Terms.
+  <b>#dotlrn.Note#</b> #dotlrn.You_must_create# <a href="terms">#dotlrn.terms#</a> #dotlrn.to_be_able_to_create#
+  <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>#dotlrn.lt__since_these_must_be_#
 </i>
+
+
+

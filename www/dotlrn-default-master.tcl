@@ -97,7 +97,7 @@ if {![info exists link_control_panel]} {
 }
 
 if {![info exists control_panel_text]} {
-    set control_panel_text "Control Panel"
+    set control_panel_text "[_ dotlrn.Control_Panel]"
 }
 
 if {$have_comm_id_p} {
@@ -166,9 +166,9 @@ if {$have_comm_id_p} {
     
     if {$have_portal_id_p && $show_navbar_p} {
         if {$link_control_panel} {
-            set extra_td_html " &nbsp; <a href=${link}control-panel>Control Panel</a>"
+            set extra_td_html " &nbsp; <a href=${link}control-panel>[_ dotlrn.Control_Panel]</a>"
         } else {
-            set extra_td_html " &nbsp; Control Panel"
+            set extra_td_html " &nbsp; [_ dotlrn.Control_Panel]"
         }
 
         set navbar [portal::navbar \
@@ -199,7 +199,7 @@ if { [llength [namespace eval :: info procs ds_link]] == 1 } {
 # Set up some basic stuff
 set user_id [ad_get_user_id]
 set full_name "[dotlrn::get_user_name $user_id]"
-set title "SloanSpace"
+set title "[_ dotlrn.SloanSpace]"
 
 
 # the ColorHack and FontHack and LogoHack!
@@ -210,7 +210,7 @@ set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
 set header_img_url "$dotlrn_graphics_url/logowhite.gif" 
-set header_img_alt_text "Header Logo"
+set header_img_alt_text "[_ dotlrn.Header_Logo]"
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id $package_id]]} {
     set parent_comm_p 0
@@ -363,3 +363,4 @@ img.element-header-button {
 
 </STYLE>
 "
+

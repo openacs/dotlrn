@@ -45,7 +45,7 @@ set terms [linsert $terms 0 {All -1}]
 form create term_form
 
 element create term_form term_id \
-    -label Term \
+    -label [_ dotlrn.Term] \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -53,7 +53,7 @@ element create term_form term_id \
     -value $term_id
 
 element create term_form class_key \
-    -label "Class Key" \
+    -label "[_ dotlrn.Class_Key]" \
     -datatype text \
     -widget hidden \
     -value $class_key
@@ -71,7 +71,8 @@ db_multirow class_instances $query {}
 
 set can_instantiate [dotlrn_class::can_instantiate]
 
-set context_bar [list [list classes [parameter::get -parameter classes_pretty_plural]] $pretty_name]
+set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"
 
 ad_return_template
+

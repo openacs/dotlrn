@@ -27,33 +27,33 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "New [parameter::get -parameter departments_pretty_name]"
-set context_bar [list [list departments [parameter::get -parameter departments_pretty_plural]] New]
+set title "[_ dotlrn.New] [parameter::get -localize -parameter departments_pretty_name]"
+set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] [_ dotlrn.New]]
 
 form create add_department
 
 element create add_department pretty_name \
-    -label "Name" \
+    -label "[_ dotlrn.Name]" \
     -datatype text \
     -widget text \
     -html {size 60 maxlength 100}
 
 element create add_department description \
-    -label "Description" \
+    -label "[_ dotlrn.Description]" \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create add_department external_url \
-    -label "External URL" \
+    -label "[_ dotlrn.External_URL]" \
     -datatype text \
     -widget text \
     -html {size 60} \
     -optional
 
 element create add_department referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -72,3 +72,4 @@ if {[form is_valid add_department]} {
 }
 
 ad_return_template
+

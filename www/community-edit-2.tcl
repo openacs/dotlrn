@@ -35,7 +35,7 @@ set user_id [ad_conn user_id]
 set creation_ip [ad_conn peeraddr]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
-set page_title Preview
+set page_title [_ dotlrn.Preview]
 set header_text [dotlrn_community::get_community_header_name $community_id]
 
 #
@@ -61,7 +61,9 @@ if { ![empty_string_p [ad_parameter MaximumFileSize]]
      && $tmp_size > 0
      && $tmp_size > [ad_parameter MaximumFileSize] } {
 
-    ad_return_complaint 1 "<li>Your icon is too large. The publisher of [ad_system_name] has chosen to limit attachments to [util_commify_number [ad_parameter MaximumFileSize]] bytes.\n"
+    set msg_subst_list [list system_name [ad_system_name] \
+                             max_attachments_bytes [util_commify_number [ad_parameter MaximumFileSize]]]
+    ad_return_complaint 1 "<li>[_ [ad_conn locale]  dotlrn.your_icon_is_too_large "" $msg_subst_list]"
     ad_script_abort
 }
 
@@ -73,7 +75,7 @@ if { $tmp_size > 0 } {
         # the last param "object name" is unused
         set revision_id [cr_import_content \
             -title $title \
-            -description "group's icon" \
+            -description "[_ dotlrn.groups_icon]" \
             -image_only \
             $parent_id \
             $tmp_filename \
@@ -87,11 +89,18 @@ if { $tmp_size > 0 } {
     } on_error {
         # most likely a duplicate name, double click, etc.
         ad_return_complaint 1 "
-            There was an error trying to add your content.
-            Most likely causes you've
-            <ul><li>Tried to upload a non-image file.
-            <li>Double-clicking the \"Add\" button on the previous page.
-            </ul><p>Here is the actual error message:<blockquote><pre>$errmsg</pre></blockquote>"
+            [_ dotlrn.lt_There_was_an_error_tr]
+            <ul>
+              <li>[_ dotlrn.lt_You_tried_to_upload_a]
+              <li>[_ dotlrn.lt_You_double-clicked_th]
+            </ul>
+           <p>
+            [_ dotlrn.lt_Here_is_the_actual_er]
+              <blockquote>
+                <pre>
+                  $errmsg
+                </pre>
+              </blockquote>"
         
         ad_script_abort
     }
@@ -126,7 +135,7 @@ set header_font_size_text $header_font_size
 set style_fragment "font-family: $header_font_fragment Verdana, Arial, Helvetica, sans-serif; font-size: $header_font_size;"
 
 if {[empty_string_p $header_font_color]} {
-    set header_font_color_text "Black (None chosen)"
+    set header_font_color_text "[_ dotlrn.Black_None_chosen]"
     set header_font_color "black"
 } else {
     set header_font_color_text $header_font_color
@@ -135,16 +144,16 @@ if {[empty_string_p $header_font_color]} {
 append style_fragment " " "color: $header_font_color;"
 
 form create header_form
-set yes_label "Save and use this header"
+set yes_label "[_ dotlrn.lt_Save_and_use_this_hea]"
 
 element create header_form no_button \
-    -label "Go back and try again" \
+    -label "[_ dotlrn.lt_Go_back_and_try_again]" \
     -datatype text \
     -widget submit \
     -value "1"
 
 element create header_form yes_button \
-    -label "Save and use this header"  \
+    -label "[_ dotlrn.lt_Save_and_use_this_hea]"  \
     -datatype text \
     -widget submit
 
@@ -208,3 +217,4 @@ if {[form is_valid header_form]} {
 }
 
 ad_return_template
+

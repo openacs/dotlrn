@@ -19,6 +19,9 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Help</property>
+<property name="title">#dotlrn.Help#</property>
 
-This page will eventually include help
+#dotlrn.lt_This_page_will_eventu#
+
+
+

@@ -29,42 +29,42 @@ ad_page_contract {
 set user_id [ad_get_user_id]
 set parent_community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $parent_community_id
-set title "New [parameter::get -parameter subcommunities_pretty_name]"
+set title "[_ dotlrn.New] [parameter::get -localize -parameter subcommunities_pretty_name]"
 set portal_id [dotlrn_community::get_portal_id -community_id $parent_community_id]
 
 # set the join policy widget to default to
 # the same as it's parent
 if {[dotlrn_community::open_p -community_id $parent_community_id]} {
-    set join_policy_list {{Open open} {Closed closed} {{Needs Approval} {needs approval}}}
+    set join_policy_list [list [list [_ dotlrn.Open] open] [list [_ dotlrn.Closed] closed] [list [_ dotlrn.Needs_Approval] "needs approval"]]
 } elseif {[dotlrn_community::needs_approval_p -community_id $parent_community_id]} {
-    set join_policy_list {{{Needs Approval} {needs approval}} {Open open} {Closed closed}}
+    set join_policy_list [list [list [_ dotlrn.Needs_Approval] "needs approval"] [list [_ dotlrn.Open] open] [list [_ dotlrn.Closed] closed]]
 } else {
-    set join_policy_list {{Closed closed} {{Needs Approval} {needs approval}} {Open open}}
+    set join_policy_list [list [list [_ dotlrn.Closed] closed] [list [_ dotlrn.Needs_Approval] "needs approval"] [list [_ dotlrn.Open] open]]
 }
 
 form create add_subcomm
 
 element create add_subcomm pretty_name \
-    -label Name \
+    -label [_ dotlrn.Name] \
     -datatype text \
     -widget text \
     -html {size 40}
 
 element create add_subcomm description \
-    -label Description \
+    -label [_ dotlrn.Description] \
     -datatype text \
     -widget text \
     -html {size 40} \
     -optional
 
 element create add_subcomm join_policy \
-    -label "Join Policy" \
+    -label "[_ dotlrn.Join_Policy]" \
     -datatype text \
     -widget select \
     -options $join_policy_list
 
 element create add_subcomm referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -126,3 +126,4 @@ if {[form is_valid add_subcomm]} {
 }
 
 ad_return_template
+

@@ -29,7 +29,7 @@ ad_page_contract {
     clubs:multirow
 }
 
-set title [parameter::get -parameter clubs_pretty_plural]
+set title [parameter::get -localize -parameter clubs_pretty_plural]
 set context_bar [list $title]
 
 db_multirow clubs select_clubs {} {
@@ -37,3 +37,4 @@ db_multirow clubs select_clubs {} {
 }
 
 ad_return_template
+

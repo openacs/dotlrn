@@ -314,12 +314,13 @@ namespace eval dotlrn {
     }
 
     ad_proc -public parameter {
+        -localize:boolean
         {-name:required}
         {-default ""}
     } {
         wrap 
     } {
-        return [parameter::get -package_id [get_package_id] -parameter $name -default $default]
+        return [parameter::get -localize=$localize_p -package_id [get_package_id] -parameter $name -default $default]
     }
 
     ad_proc -public set_type_portal_id {
@@ -393,7 +394,7 @@ namespace eval dotlrn {
         # a connection put it here. This needs to be a vaild
         # grantee for the perms
         set user_id -1        
-        
+
         set portal_id [portal::create \
             -name "$pretty_name Portal" \
             -csv_list $csv_list \
@@ -417,3 +418,4 @@ namespace eval dotlrn {
     }
 
 }
+

@@ -29,7 +29,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a>
+            <a href="club-new">#dotlrn.New# <%= [parameter::get -localize -parameter clubs_pretty_name] %></a>
           ]</small>
         </nobr>
       </td>
@@ -41,10 +41,10 @@
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
 
     <tr>
-      <th align="left" width="30%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
-      <th align="left">Description</th>
-      <th align="center" width="5%">Members</th>
-      <th align="center" width="10%">Actions</th>
+      <th align="left" width="30%"><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Name#</th>
+      <th align="left">#dotlrn.Description#</th>
+      <th align="center" width="5%">#dotlrn.Members#</th>
+      <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 
 <if @clubs:rowcount@ gt 0>
@@ -63,7 +63,7 @@
       <td align="center">
         <nobr>
           <small>
-            [ <a href="@clubs.url@one-community-admin">Administer</a> ]
+            [ <a href="@clubs.url@one-community-admin">#dotlrn.Administer#</a> ]
           </small>
         </nobr>
       </td>
@@ -75,7 +75,7 @@
 <else>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
-      <i>No <%= [parameter::get -parameter clubs_pretty_plural] %></i>
+      <i>#dotlrn.No# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></i>
     </td>
   </tr>
 </else>
@@ -89,7 +89,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a>
+            <a href="club-new">#dotlrn.New# <%= [parameter::get -localize -parameter clubs_pretty_name] %></a>
           ]</small>
         </nobr>
       </td>
@@ -98,3 +98,7 @@
 </if>
 
 </center>
+
+
+
+

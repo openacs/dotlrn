@@ -29,15 +29,17 @@
 <property name="context_bar">@context_bar@</property>
 
 <ul>
-  <li><a href="users">Users</a></li>
-  <li><a href="terms">Terms</a></li>
-  <li><a href="departments"><%= [parameter::get -parameter departments_pretty_plural] %></a></li>
-  <li><a href="classes"><%= [parameter::get -parameter classes_pretty_plural] %></a></li>
-  <li><a href="term?term_id=-1"><%= [parameter::get -parameter class_instances_pretty_plural] %></a></li>
-  <li><a href="clubs"><%= [parameter::get -parameter clubs_pretty_plural] %></a></li> 
-  <li><a href="portal-templates">Portal Templates</a></li>
-  <li><a href="archived-communities">Archived 
-        <%= [parameter::get -parameter class_instances_pretty_plural] %> and 
-        <%= [parameter::get -parameter clubs_pretty_plural] %></a></li>
-  <li><a href="edit-preapproved-emails">Edit Pre-approved Email Servers</a></li>
+  <li><a href="users">#dotlrn.users#</a></li>
+  <li><a href="terms">#dotlrn.terms#</a></li>
+  <li><a href="departments"><%= [parameter::get -localize -parameter departments_pretty_plural] %></a></li>
+  <li><a href="classes"><%= [parameter::get -localize -parameter classes_pretty_plural] %></a></li>
+  <li><a href="term?term_id=-1"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></a></li>
+  <li><a href="clubs"><%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></li> 
+  <li><a href="portal-templates">#dotlrn.portal_templates#</a></li>
+  <li><a href="archived-communities">#dotlrn.archived#
+        <%= [parameter::get -localize -parameter class_instances_pretty_plural] %> #dotlrn.and#
+        <%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></li>
+  <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>
 </ul>
+
+

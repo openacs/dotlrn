@@ -33,3 +33,4 @@ portal::configure_dispatch -portal_id $portal_id -form $form
 #ad_script_abort
 
 ns_returnredirect "one-community-portal-configure?portal_id=$portal_id&referer=$return_url#$anchor"
+

@@ -79,3 +79,4 @@ namespace eval dotlrn_main_portlet {
     }
 
 }
+

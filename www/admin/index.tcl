@@ -21,7 +21,8 @@ ad_page_contract {
     @creation-date 2001-11-04
 }
 
-set admin_pretty_name [parameter::get -parameter dotlrn_admin_pretty_name]
+set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
 set context_bar {}
 
 ad_return_template
+

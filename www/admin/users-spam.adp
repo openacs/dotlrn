@@ -19,9 +19,12 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Spam Users</property>
+<property name="title">#dotlrn.Spam_Users#</property>
 <property name="context_bar">@context_bar@</property>
 
 <formtemplate id="spam_message"></formtemplate>
 
 <include src="../spam-variables">
+
+
+

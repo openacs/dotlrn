@@ -19,13 +19,17 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">dotLRN Admin</property>
+<property name="title">#dotlrn.dotLRN_Admin#</property>
 <property name="context_bar">@context_bar@</property>
 
-<h3>Add a Professor</h3>
+<h3>#dotlrn.Add_a_Professor#</h3>
 
 <form method="get" action="add-instructor-2">
   <input type="hidden" name="referer" value="@referer@"></input>
   <input type="hidden" name="community_id" value="@community_id@"></input>
-  Add a Professor: <input type="text" name="search_text"><input type="submit" value="search"></input>
+  #dotlrn.Add_a_Professor_2# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#"></input>
 </form>
+
+
+
+

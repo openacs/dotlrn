@@ -34,13 +34,13 @@ if {[empty_string_p $community_id]} {
 set user_id [ad_get_user_id]
 dotlrn::require_user_admin_community -community_id $community_id
 set pretty_name [dotlrn_community::get_community_name $community_id]
-set title "Archive group $pretty_name"
+set title [_ [ad_conn locale] dotlrn.arhive_group_name "" [list group_name $pretty_name]]
 
 form create archive_form
 
 # this is lame, but I don't have a better way yet
-set yes_label "Yes, I'm sure."
-set no_label "No, I don't want to archive this group."
+set yes_label "[_ dotlrn.Yes_Im_sure]"
+set no_label "[_ dotlrn.lt_No_I_dont_want_to_arc]"
 
 element create archive_form no_button \
     -label $no_label \
@@ -60,7 +60,7 @@ element create archive_form community_id \
     -value $community_id
 
 element create archive_form referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -80,3 +80,4 @@ if {[form is_valid archive_form]} {
     ad_returnredirect "$referer"
     ad_script_abort
 } 
+

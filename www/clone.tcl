@@ -35,7 +35,7 @@ dotlrn::require_user_admin_community \
 
 set class_instance_p 0
 set community_name [dotlrn_community::get_community_name $community_id]
-set title "Copy $community_name"
+set title "[_ dotlrn.Copy] $community_name"
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 set top_community_type [dotlrn_community::get_toplevel_community_type_from_community_id $community_id]
 
@@ -58,29 +58,29 @@ while {![dotlrn_community::check_community_key_valid_p -community_key $key]} {
 
 if {$class_instance_p} {
     element create clone_form term \
-        -label Term \
+        -label [_ dotlrn.Term] \
         -datatype integer \
         -widget select \
         -options [dotlrn_term::get_future_terms_as_options] 
 }
 
 element create clone_form pretty_name \
-    -label "Name" \
+    -label "[_ dotlrn.Name]" \
     -datatype text \
     -widget text \
     -html {size 40} \
     -value $key
 
 element create clone_form description \
-    -label Description \
+    -label [_ dotlrn.Description] \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional \
-    -value "A copy of $community_name"
+    -value "[_ dotlrn.A_copy_of] $community_name"
 
 element create clone_form referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -109,3 +109,4 @@ if {[form is_valid clone_form]} {
 }
 
 ad_return_template
+

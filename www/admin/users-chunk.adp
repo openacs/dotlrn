@@ -21,10 +21,10 @@
 <center>
 <table bgcolor="#cccccc" cellpadding="5" cellspacing="3" width="95%">
   <tr>
-    <th align="left" width="50%">User</th>
-    <th align="left">Access</th>
-    <th align="left">Guest?</th>
-    <th align="left">Site-wide Admin?</th>
+    <th align="left" width="50%">#dotlrn.User#</th>
+    <th align="left">#dotlrn.Access#</th>
+    <th align="left">#dotlrn.Guest#</th>
+    <th align="left">#dotlrn.Site-wide_Admin#</th>
   </tr>
 
 <if @users:rowcount@ gt 0>
@@ -50,17 +50,17 @@
   </else>
     </td>
     <td align="center">@users.access_level@</td>
-    <td align="center"><if @users.read_private_data_p@ eq t>no</if><else>yes</else></td>
+    <td align="center"><if @users.read_private_data_p@ eq t>#dotlrn.no#</if><else>#dotlrn.yes#</else></td>
     <td align="center">
   <if @user_id@ ne @users.user_id@>
     <if @users.site_wide_admin_p@ eq t>
-      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@">yes</a>
+      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@">#dotlrn.yes#</a>
     </if>
     <else>
-      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@">no</a>
+      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@">#dotlrn.no#</a>
     </else>
   </if>
-      <else>yes</else>
+      <else>#dotlrn.yes#</else>
     </td>
   </tr>
 
@@ -68,9 +68,12 @@
 </if>
 <else>
   <tr bgcolor="#eeeeee">
-    <td align="left" colspan="4"><i>No Users</i></td>
+    <td align="left" colspan="4"><i>#dotlrn.No_Users#</i></td>
   </tr>
 </else>
 
 </table>
 </center>
+
+
+

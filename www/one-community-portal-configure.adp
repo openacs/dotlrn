@@ -19,8 +19,11 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Customize Layout</property>
+<property name="title">#dotlrn.Customize_Layout#</property>
 
 <p></p>
 
 @rendered_page@
+
+
+

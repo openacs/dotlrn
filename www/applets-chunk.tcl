@@ -52,3 +52,4 @@ foreach applet_key $list_of_applets {
 }
 
 ad_return_template
+

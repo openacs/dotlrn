@@ -33,3 +33,4 @@ set community_id [dotlrn_community::get_community_id]
 dotlrn_community::add_user -rel_type $rel_type $community_id $user_id
 
 ad_returnredirect $referer
+

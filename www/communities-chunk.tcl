@@ -39,14 +39,11 @@ if {![empty_string_p $community_type]} {
     set n_communities [db_string select_all_communities_count {}]
 }
 
-set filter_bar [ad_dimensional {
-    {filter "Memberships:" select_all_non_memberships
+set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" select_all_non_memberships \
         {
             {select_all_memberships current {}}
             {select_all_non_memberships join {}}
-        }
-    }
-}]
+        }]]]
 
 if {![empty_string_p $community_type]} {
     append filter "_by_type"
@@ -59,3 +56,4 @@ if {![exists_and_not_null referer]} {
 db_multirow communities $filter {}
 
 ad_return_template
+

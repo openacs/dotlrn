@@ -22,11 +22,11 @@
   <table width="85%" cellpadding="5" cellspacing="5">
     <tr>
       <td>&nbsp;</td>
-      <td>Name</td>
-      <td>Action</td>
-      <td>Size</td>
-      <td>Type</td>
-      <td>Last Modified</td>
+      <td>#dotlrn.Name#</td>
+      <td>#dotlrn.Action#</td>
+      <td>#dotlrn.Size#</td>
+      <td>#dotlrn.Type#</td>
+      <td>#dotlrn.Last_Modified#</td>
     </tr>
 <multiple name="contents">
     <tr>
@@ -38,7 +38,7 @@
       </td>
       <td>&nbsp;</td>
       <td>
-        @contents.content_size@ item<if @contents.content_size@ ne 1>s</if>
+        @contents.content_size@ <if @contents.content_size@ ne 1>#dotlrn.items#</if><else>#dotlrn.item#</else>
       </td>
       <td>@contents.type@</td>
       <td>@contents.last_modified@</td>
@@ -48,12 +48,12 @@
       <td><img src="graphics/file.gif"></td>
       <td>
       <a href="url-goto?url_id=@contents.object_id@">@contents.name@</a>
-<if @contents.new_p@>(&nbsp;new&nbsp;)</if>
+<if @contents.new_p@>(&nbsp;#dotlrn.new#&nbsp;)</if>
       </td>
       <td>
         [<small>
-          <if @contents.write_p@ or @contents.admin_p@><a href="simple-edit?object_id=@contents.object_id@">Edit</a></if>
-          <if @contents.delete_p@ or @contents.admin_p@>&nbsp;|&nbsp;<a href="simple-delete?folder_id=@folder_id@&object_id=@contents.object_id@">Delete</a></if>
+          <if @contents.write_p@ or @contents.admin_p@><a href="simple-edit?object_id=@contents.object_id@">#dotlrn.Edit#</a></if>
+          <if @contents.delete_p@ or @contents.admin_p@>&nbsp;|&nbsp;<a href="simple-delete?folder_id=@folder_id@&object_id=@contents.object_id@">#dotlrn.Delete#</a></if>
         </small>]
       </td>
       <td>&nbsp;</td>
@@ -64,15 +64,15 @@
       <td><img src="graphics/file.gif"></td>
       <td>
       <a href="file?file_id=@contents.object_id@">@contents.name@</a>
-<if @contents.new_p@>(&nbsp;new&nbsp;)</if>
+<if @contents.new_p@>(&nbsp;#dotlrn.new#&nbsp;)</if>
       </td>
       <td>
         [<small>
-          <a href="download/index?version_id=@contents.live_revision@">Download</a>
-          <if @contents.delete_p@ or @contents.admin_p@>&nbsp;|&nbsp;<a href="file-delete?file_id=@contents.object_id@">Delete</a></if>
+          <a href="download/index?version_id=@contents.live_revision@">#dotlrn.Download#</a>
+          <if @contents.delete_p@ or @contents.admin_p@>&nbsp;|&nbsp;<a href="file-delete?file_id=@contents.object_id@">#dotlrn.Delete#</a></if>
         </small>]
       </td>
-      <td>@contents.content_size@ byte<if @contents.content_size@ ne 1>s</if></td>
+      <td>@contents.content_size@ <if @contents.content_size@ ne 1>#dotlrn.bytes#</if><else>#dotlrn.byte#</else></td>
       <td>@contents.type@</td>
       <td>@contents.last_modified@</td>
 </else>
@@ -84,3 +84,6 @@
 <else>
   <p><blockquote><i>Folder @folder_name@ is empty</i></blockquote></p>
 </else>
+
+
+

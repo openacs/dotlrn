@@ -37,20 +37,19 @@
 -->
 
 <master src="dotlrn-admin-master">
-<property name="title">Edit Pre-approved Email Servers</property>
-<property name="context_bar">{Edit Pre-approved Email Servers}</property>
+<property name="title">#dotlrn.lt_Edit_Pre-approved_Ema#</property>
+<property name="context_bar">{#dotlrn.lt_Edit_Pre-approved_Ema#}</property>
 
 <p>
-  Email suffixes listed here are used to automatically make dotLRN users of
-  people that register with email addresses that match one of the values in
-  this list.
+  #dotlrn.lt_Email_suffixes_listed#
 </p>
 
 <p>
-  The format of this value is a comma-separated list of domains (usually
-  preceded by the *@ string which match
-  &lt;anything&gt;@&lt;email-domain&gt;). For example, you might use:
+  #dotlrn.the_format_of_email_domains#
   <code>*@openforce.net,*@dotlrn.openforce.net</code>
 </p>
 
 <formtemplate id="edit_emails"></formtemplate>
+
+
+

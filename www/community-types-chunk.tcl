@@ -30,3 +30,4 @@ set community_type [dotlrn_community::get_community_type]
 db_multirow community_types select_community_types {}
 
 ad_return_template
+

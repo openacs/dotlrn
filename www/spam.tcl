@@ -28,7 +28,7 @@ ad_page_contract {
 }
 
 set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
-set context_bar [list [list $referer Admin] "$spam_name Community"]
+set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
 if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]
@@ -44,46 +44,46 @@ db_1row select_sender_info {}
 form create spam_message
 
 element create spam_message community_id \
-    -label "Community ID" \
+    -label "[_ dotlrn.Community_ID]" \
     -datatype integer \
     -widget hidden \
     -value $community_id
 
 element create spam_message from \
-    -label From \
+    -label [_ dotlrn.From] \
     -datatype text \
     -widget text \
     -html {size 60} \
     -value $sender_email
 
 element create spam_message rel_type \
-    -label To \
+    -label [_ dotlrn.To] \
     -datatype text \
     -widget select \
-    -options {{Members dotlrn_member_rel} {Administrators dotlrn_admin_rel}} \
+    -options [list [list [_ dotlrn.Members] dotlrn_member_rel] [list [_ dotlrn.Administrators] dotlrn_admin_rel]] \
     -value $rel_type
 
 element create spam_message subject \
-    -label Subject \
+    -label [_ dotlrn.Subject] \
     -datatype text \
     -widget text \
     -html {size 60}
 
 element create spam_message message \
-    -label Message \
+    -label [_ dotlrn.Message] \
     -datatype text \
     -widget textarea \
     -html {rows 10 cols 80 wrap soft}
 
 element create spam_message send_date \
-    -label {Send Date} \
+    -label [_ dotlrn.Send_Date] \
     -datatype date \
     -widget date \
     -format {MONTH DD YYYY HH12:MI AM} \
     -value [template::util::date::now]
 
 element create spam_message referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -154,3 +154,4 @@ if {[form is_valid spam_message]} {
 }
 
 ad_return_template
+

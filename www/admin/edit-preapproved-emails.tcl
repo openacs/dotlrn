@@ -25,14 +25,14 @@ ad_page_contract {
 form create edit_emails
 
 element create edit_emails emails \
-    -label "Pre-approved Email Servers" \
+    -label "[_ dotlrn.lt_Pre-approved_Email_Se]" \
     -datatype text \
     -widget text \
     -html {size 50} \
     -value [parameter::get -parameter auto_dotlrn_user_email_patterns]
 
 element create edit_emails referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -48,3 +48,4 @@ if {[form is_valid edit_emails]} {
 }
 
 ad_return_template
+

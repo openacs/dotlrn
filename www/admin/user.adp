@@ -22,96 +22,96 @@
 <property name="title">@first_names@ @last_name@</property>
 <property name="context_bar">@context_bar@</property>
 
-<h3>General Information</h3>
+<h3>#dotlrn.General_Information#</h3>
 
 <ul>
 
   <li>
-    Name:
+    #dotlrn.Name#
     @first_names@ @last_name@
-    [<small> <a href="/user/basic-info-update?@export_edit_vars@">Edit</a> </small>]
+    [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </li>
 
   <li>
-    Email:
+    #dotlrn.Email#
     <a href="mailto:@email@">@email@</a>
-    [<small> <a href="/user/basic-info-update?@export_edit_vars@">Edit</a> </small>]
+    [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </li>
 
   <li>
-    Screen name:
+    #dotlrn.Screen_name#
     @screen_name@
-    [<small> <a href="/user/basic-info-update?@export_edit_vars@">Edit</a> </small>]
+    [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </li>
 
   <li>
-    User ID:
+    #dotlrn.User_ID#
     @user_id@
   </li>
 
   <li>
-    Registration date:
+    #dotlrn.Registration_date#
     @registration_date@
   </li>
 
 <if @last_visit@ not nil>
   <li>
-    Last Visit:
+    #dotlrn.Last_Visit#
     @last_visit@
   </li>
 </if>
 
 <if @portrait_p@ eq 1>
   <li>
-    Portrait: <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
+    #dotlrn.Portrait# <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
   </li>
 </if>
 
   <li>
-    Member state:
+    #dotlrn.Member_state#
     @member_state@
     @change_state_links@
   </li>
 
 </ul>
 
-<h3>dotLRN Information</h3>
+<h3>#dotlrn.dotLRN_Information#</h3>
 
 <if @dotlrn_user_p@>
 
 <ul>
 
   <li>
-    User type:
+    #dotlrn.User_type#
     @pretty_type@
   </li>
 
   <li>
-    Access level:
-    <if @can_browse_p@>Full</if><else>Limited</else>
+    #dotlrn.Access_level#
+    <if @can_browse_p@>#dotlrn.Full#</if><else>#dotlrn.Limited#</else>
   </li>
 
   <li>
-    Guest?:
-    <if @read_private_data_p@>No</if><else>Yes</else>
+    #dotlrn.Guest#
+    <if @read_private_data_p@>#dotlrn.No#</if><else>#dotlrn.Yes#</else>
   </li>
 
   <li>
-    ID:
-    <if @id@ nil>&lt;none set up&gt;</if><else>@id@</else>
+    #dotlrn.ID#
+    <if @id@ nil>#dotlrn.ltnone_set_upgt#</if><else>@id@</else>
   </li>
 
   <br>
 
   <li>
-    <a href="user-edit?@export_edit_vars@">Edit</a> dotLRN properties for this user.
+    <a href="user-edit?@export_edit_vars@">#dotlrn.Edit#</a> #dotlrn.lt_dotLRN_properties_for#
   </li>
 
 </ul>
 
 <if @member_classes:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [parameter::get -parameter class_instances_pretty_name] %> Memberships</h4>
+    <h4><%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Memberships#</h4>
 
     <ul>
 <multiple name="member_classes">
@@ -127,7 +127,7 @@
 
 <if @member_clubs:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [parameter::get -parameter clubs_pretty_name] %> Memberships</h4>
+    <h4><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Memberships#</h4>
 
     <ul>
 <multiple name="member_clubs">
@@ -142,7 +142,7 @@
 
 <if @member_subgroups:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [parameter::get -parameter subcommunities_pretty_name] %> Memberships</h4>
+    <h4><%= [parameter::get -localize -parameter subcommunities_pretty_name] %> #dotlrn.Memberships#</h4>
 
     <ul>
 <multiple name="member_subgroups">
@@ -157,26 +157,27 @@
 
   <ul>
     <li>
-      <a href="users-add-to-community?users=@user_id@&referer=@return_url@">Add</a>
-      this user to another group.
+      <a href="users-add-to-community?users=@user_id@&referer=@return_url@">#dotlrn.Add#</a>
+      #dotlrn.lt_this_user_to_another_#
     </li>
   </ul>
 
 </if>
 <else>
 <p>
-  <a href="user-new-2?user_id=@user_id@&referer=@return_url@">Add</a> this user to dotLRN.
+  <a href="user-new-2?user_id=@user_id@&referer=@return_url@">#dotlrn.Add#</a> #dotlrn.this_user_to_dotLRN#
 </p>
 </else>
 
-<h3>Administrative Actions</h3>
+<h3>#dotlrn.lt_Administrative_Action#</h3>
 
 <ul>
-  <li><a href="/user/password-update?@export_edit_vars@">Update this user's password</a></li>
+  <li><a href="/user/password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
 <if @portrait_p@>
   <br>
-  <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
+  <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
 </if>
   <br>
-  <li><a href="/acs-admin/users/become?user_id=@user_id@">Become this user!</a></li>
+  <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
 </ul>
+

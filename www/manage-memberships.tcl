@@ -72,7 +72,7 @@ set terms [linsert $terms 0 {All -1}]
 form create member_form
 
 element create member_form member_department_key \
-    -label "Department" \
+    -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget select \
     -options $departments \
@@ -80,7 +80,7 @@ element create member_form member_department_key \
     -value $member_department_key
 
 element create member_form member_term_id \
-    -label "Term" \
+    -label "[_ dotlrn.Term]" \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -88,13 +88,13 @@ element create member_form member_term_id \
     -value $member_term_id
 
 element create member_form non_member_department_key \
-    -label "Department" \
+    -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget hidden \
     -value $non_member_department_key
 
 element create member_form non_member_term_id \
-    -label "Term" \
+    -label "[_ dotlrn.Term]" \
     -datatype text \
     -widget hidden \
     -value $non_member_term_id
@@ -128,7 +128,7 @@ db_multirow member_clubs select_member_clubs {} {
 form create non_member_form
 
 element create non_member_form non_member_department_key \
-    -label "Department" \
+    -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget select \
     -options $departments \
@@ -136,7 +136,7 @@ element create non_member_form non_member_department_key \
     -value $non_member_department_key
 
 element create non_member_form non_member_term_id \
-    -label "Term" \
+    -label "[_ dotlrn.Term]" \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -144,13 +144,13 @@ element create non_member_form non_member_term_id \
     -value $non_member_term_id
 
 element create non_member_form member_department_key \
-    -label "Department" \
+    -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget hidden \
     -value $member_department_key
 
 element create non_member_form member_term_id \
-    -label "Term" \
+    -label "[_ dotlrn.Term]" \
     -datatype text \
     -widget hidden \
     -value $member_term_id
@@ -178,3 +178,4 @@ db_multirow non_member_clubs select_non_member_clubs {}
 set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
 
 ad_return_template
+

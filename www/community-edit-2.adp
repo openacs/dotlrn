@@ -22,14 +22,14 @@
 <property name="title">@page_title@</property>
 
 <ul>
-  <li>Header Font: @header_font_text@
-  <li>Header Font Size: @header_font_size_text@
-  <li>Header Font Color: @header_font_color_text@
-  <li>Header Icon Alt Text: @header_alt_text@
+  <li>#dotlrn.Header_Font#: @header_font_text@
+  <li>#dotlrn.Header_Font_Size#: @header_font_size_text@
+  <li>#dotlrn.Header_Font_Color#: @header_font_color_text@
+  <li>#dotlrn.Header_Icon_Alt_Text#: @header_alt_text@
 </ul>
 
 
-This is what the header will look like:
+#dotlrn.lt_this_is_what_the_header#:
 
 <hr>
 <div style="@style_fragment@">
@@ -43,28 +43,28 @@ This is what the header will look like:
 
 <br>
 <p>
-Having trouble getting the look you want? Here's some tips:
+#dotlrn.lt_having_trouble#:
 
 <ul>
-  <li>If you misspell the font name or pick a font that a user doesn't
-  have on her computer, the normal system font will be used.   
+  <li>#dotlrn.lt_if_you_misspell#
 
-  <li>You can specify colors by name 
-  (<strong><span style="color: aqua; background: white">aqua</span>,
-  <span style="color: black; background: white">black</span>, 
-  <span style="color: blue; background: white">blue</span>,
-  <span style="color: fuchsia; background: white">fuchsia</span>,
-  <span style="color: gray; background: white">gray</span>,
-  <span style="color: green; background: white">green</span>,
-  <span style="color: lime; background: white">lime</span>,
-  <span style="color: maroon; background: white">maroon</span>,
-  <span style="color: navy; background: white">navy</span>,
-  <span style="color: olive; background: white">olive</span>,
-  <span style="color: purple; background: white">purple</span>,
-  <span style="color: red; background: white">red</span>,
-  <span style="color: silver; background: white">silver</span>,
-  <span style="color: teal; background: white">teal</span>) 
+  <li>#dotlrn.You_can_specify_colors_by_name#
+  (<strong><span style="color: aqua; background: white">#dotlrn.aqua#</span>,
+  <span style="color: black; background: white">#dotlrn.black#</span>, 
+  <span style="color: blue; background: white">#dotlrn.blue#</span>,
+  <span style="color: fuchsia; background: white">#dotlrn.fuchsia#</span>,
+  <span style="color: gray; background: white">#dotlrn.gray#</span>,
+  <span style="color: green; background: white">#dotlrn.green#</span>,
+  <span style="color: lime; background: white">#dotlrn.lime#</span>,
+  <span style="color: maroon; background: white">#dotlrn.maroon#</span>,
+  <span style="color: navy; background: white">#dotlrn.navy#</span>,
+  <span style="color: olive; background: white">#dotlrn.olive#</span>,
+  <span style="color: purple; background: white">#dotlrn.purple#</span>,
+  <span style="color: red; background: white">#dotlrn.red#</span>,
+  <span style="color: silver; background: white">#dotlrn.silver#</span>,
+  <span style="color: teal; background: white">#dotlrn.teal#</span>) 
   </strong>
   <br>
-  or by RGB number (<strong>#rrggbb</strong>).
+  #dotlrn.or_by_RGB_number# (<strong>##dotlrn.rrggbb#</strong>).
 </ul>
+

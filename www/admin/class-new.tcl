@@ -29,33 +29,33 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "New [parameter::get -parameter classes_pretty_name]"
-set context_bar [list [list classes [parameter::get -parameter classes_pretty_plural]] New]
+set title "[_ dotlrn.New] [parameter::get -localize -parameter classes_pretty_name]"
+set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] New]
 
 form create add_class
 
 element create add_class department_key \
-    -label [parameter::get -parameter departments_pretty_name] \
+    -label [parameter::get -localize -parameter departments_pretty_name] \
     -datatype text \
     -widget select \
     -options [dotlrn_department::select_as_list] \
     -value $department_key
 
 element create add_class pretty_name \
-    -label Name \
+    -label [_ dotlrn.Name] \
     -datatype text \
     -widget text \
     -html {size 60 maxlength 100}
 
 element create add_class description \
-    -label Description \
+    -label [_ dotlrn.Description] \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create add_class referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -74,3 +74,4 @@ if {[form is_valid add_class]} {
 }
 
 ad_return_template
+

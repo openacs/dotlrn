@@ -38,19 +38,19 @@ set user_id [ad_conn user_id]
 form create user_search
 
 element create user_search search_text \
-    -label Search \
+    -label [_ dotlrn.Search] \
     -datatype text \
     -widget text \
     -value $search_text
 
 element create user_search type \
-    -label Type \
+    -label [_ dotlrn.Type] \
     -datatype text \
     -widget hidden \
     -value $type
 
 element create user_search referer \
-    -label Referer \
+    -label [_ dotlrn.Referer] \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -88,3 +88,4 @@ if {[form is_valid user_search]} {
 }
 
 ad_return_template
+

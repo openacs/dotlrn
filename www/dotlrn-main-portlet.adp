@@ -21,7 +21,7 @@
 <% set dotlrn_url [dotlrn::get_url] %>
 
 <if @user_can_browse_p@>
-  <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]</small>
+  <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
   <br></br>
 </if>
 
@@ -36,10 +36,10 @@
 %>
 
   <if @communities.simple_community_type@ eq "dotlrn_class_instance">
-    <li><%= [parameter::get -parameter class_instances_pretty_plural] %>:
+    <li><%= [parameter::get -localize -parameter class_instances_pretty_plural] %>:
   </if>
   <else>
-    <li><%= [parameter::get -parameter clubs_pretty_plural] %>:
+    <li><%= [parameter::get -localize -parameter clubs_pretty_plural] %>:
   </else>
 
 <group column="simple_community_type">
@@ -61,7 +61,7 @@
           <a href="@communities.url@">@communities.pretty_name@</a>
           <if @communities.admin_p@ eq t> 
             [<small>
-              <a href="@communities.url@one-community-admin">Administer</a>
+              <a href="@communities.url@one-community-admin">#dotlrn.Administer#</a>
             </small>]
           </if>
         </nobr>
@@ -80,3 +80,6 @@
 </multiple>
 
 </if>
+
+
+

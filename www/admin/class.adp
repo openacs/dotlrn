@@ -25,19 +25,19 @@
 <ul>
 
   <li>
-    Description:
+    #dotlrn.description#:
 <if @description@ not nil>
     @description@
 </if>
 <else>
-    &lt;none set up&gt;
+    &lt;#dotlrn.no_description#&gt;
 </else>
   </li>
 
   <br>
 
   <li>
-    <a href="class-edit?class_key=@class_key@&referer=@referer@">Edit</a> <%= [parameter::get -parameter classes_pretty_name] %> properties.
+    <a href="class-edit?class_key=@class_key@&referer=@referer@">#dotlrn.edit_subject#</a> <%= [parameter::get -localize -parameter classes_pretty_name] %> #dotlrn.properties#
   </li>
 
 </ul>
@@ -52,7 +52,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="class-instance-new?class_key=@class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
+            <a href="class-instance-new?class_key=@class_key@">#dotlrn.new_class# <%= [parameter::get -localize -parameter class_instances_pretty_name] %></a>
           ]</small>
         </nobr>
       </td>
@@ -69,7 +69,7 @@
     <tr bgcolor="#eeeeee">
       <th align="left" width="50%">
   <formtemplate id="term_form">
-        Term:&nbsp;<formwidget id="term_id">
+        #dotlrn.term#:&nbsp;<formwidget id="term_id">
   </formtemplate>
       </th>
     </tr>
@@ -79,12 +79,12 @@
 
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
     <tr>
-      <th align="left" width="15%">Term</th>
+      <th align="left" width="15%">#dotlrn.term#</th>
       <th align="left">
-        <%= [parameter::get -parameter class_instances_pretty_name] %> Name
+        <%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Name#
       </th>
-      <th align="center" width="5%">Members</th>
-      <th align="center" width="10%">Actions</th>
+      <th align="center" width="5%">#dotlrn.members#</th>
+      <th align="center" width="10%">#dotlrn.actions#</th>
     </tr>
 
 <if @class_instances:rowcount@ gt 0>
@@ -103,7 +103,7 @@
       <td align="center">
         <nobr>
         <small>
-          [ <a href="@class_instances.url@one-community-admin">Administer</a> ]
+          [ <a href="@class_instances.url@one-community-admin">#dotlrn.Administer#</a> ]
         </small>
         </nobr>
       </td>
@@ -115,7 +115,7 @@
 <else>
     <tr bgcolor="#eeeeee">
       <td align="left" colspan="4">
-        <i>No <%= [parameter::get -parameter class_instances_pretty_plural] %></i>
+        <i>#dotlrn.No# <%= [parameter::get -localize -parameter class_instances_pretty_plural] %></i>
       </td>
     </tr>
 </else>
@@ -123,3 +123,7 @@
   </table>
 
 </center>
+
+
+
+

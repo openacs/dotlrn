@@ -26,8 +26,9 @@ ad_page_contract {
     terms:multirow
 }
 
-set context_bar "Terms"
+set context_bar "[_ dotlrn.Terms]"
 
 db_multirow terms select_terms {}
 
 ad_return_template
+

@@ -25,9 +25,9 @@
 <table cellspacing="3" cellpadding="3">
 
   <tr>
-    <th align="left">Search Text:</th>
+    <th align="left">#dotlrn.Search_Text#</th>
     <td><formwidget id="search_text"></td>
-    <td><input type="submit" value="Search"></td>
+    <td><input type="submit" value="#dotlrn.Search#"></td>
   </tr>
 
 </table>
@@ -35,3 +35,6 @@
 </formtemplate>
 
 <include src="users-chunk" type=@type@ &users="users" referer=@referer@>
+
+
+

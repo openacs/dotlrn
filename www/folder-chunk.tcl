@@ -27,7 +27,7 @@ ad_page_contract {
 }
 
 if {![exists_and_not_null folder_id]} {
-    ad_return_complaint 1 "bad folder id $folder_id"
+    ad_return_complaint 1 "[_ dotlrn.bad_folder_id] $folder_id"
     ad_script_abort
 }
 
@@ -49,3 +49,4 @@ set rows [fs::get_folder_contents \
 template::util::list_of_ns_sets_to_multirow -rows $rows -var_name "contents"
 
 ad_return_template
+

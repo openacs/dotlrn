@@ -37,3 +37,4 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 portal::configure_dispatch -portal_id $portal_id -form $form
 
 ad_returnredirect "configure#$anchor"
+

@@ -24,21 +24,24 @@
 
 
 <p>
-  Are you sure you want to send the following @spam_name@ Message?
+  #dotlrn.are_you_sure_you_want_to_send# @spam_name@ #dotlrn.Message#?
 </p>
 
 <table bgcolor="#eeeeee" width="95%" cellpadding="3" cellspacing="3">
   <tr>
-    <td width="10%">Subject</td>
+    <td width="10%">#dotlrn.Subject#</td>
     <td><pre>@subject@</pre></td>
   </tr>
   <tr>
-    <td>Message</td>
+    <td>#dotlrn.Message#</td>
     <td><pre>@message@</pre></td>
   </tr>
 </table>
 
 <form action="spam" method="post">
   @confirm_data@
-  <input type="submit" value="Confirm"></input>
+  <input type="submit" value="#dotlrn.Confirm#"></input>
 </form>
+
+
+

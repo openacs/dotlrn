@@ -35,7 +35,7 @@ set admin_email [db_string select_admin_email {
     where party_id = :admin_user_id
 }]
 
-doc_body_append "Bulk Uploading....<p>"
+doc_body_append "[_ dotlrn.Bulk_Uploading]<p>"
 
 set list_of_user_ids [list]
 
@@ -51,7 +51,7 @@ db_transaction {
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
         if {![empty_string_p $user_id]} {
-            doc_body_append "User $row(email) already exists... storing user_id"
+            doc_body_append [_ [ad_conn locale] dotlrn.user_email_already_exists "" [list user_email $row(email)]]
             lappend list_of_user_ids $user_id            
         } else {
             set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
@@ -90,20 +90,20 @@ db_transaction {
             # Set the privacy
             acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
             
-            doc_body_append "User $row(email) created...."
-            set message "
-            You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
-            
-            Login: $row(email)
-            Password: $password
-            "
-            
+            doc_body_append [_ [ad_conn locale] dotlrn.user_email_created "" [list user_email $row(email)]]
+            set msg_subst_list [list system_name [ad_system_name] \
+                                     system_url [ad_parameter SystemUrl] \
+                                     user_email $row(email) \
+                                     user_password $password]
+            set message [_  [ad_conn locale] dotlrn.user_add_confirm_email_body "" $msg_subst_list] 
+            set subject [_  [ad_conn locale] dotlrn.user_add_confirm_email_subject "" $msg_subst_list] 
+
             # Send note to new user
-            if [catch {ns_sendmail "$row(email)" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
-                doc_body_append "emailing this user failed!"
+            if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {
+                doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
                 set fail_p 1
             } else {
-                doc_body_append "email sent"
+                doc_body_append "[_ dotlrn.email_sent]"
             }
         }
 
@@ -113,11 +113,12 @@ db_transaction {
 }
 
 if {$fail_p} {
-    doc_body_append "<p>Some of the emails failed. Those users had random passwords generated for them, however. The best way to proceed is to have these users log in and ask them to click on 'I have forgotten my password'.<p>"
+    doc_body_append "<p>[_ dotlrn.lt_Some_of_the_emails_fa]<p>"
 }
 
 doc_body_append "<FORM method=post action=users-add-to-community>
 <INPUT TYPE=hidden name=users value=\"$list_of_user_ids\">
 <INPUT TYPE=hidden name=referer values=users>
-You may now choose to <INPUT TYPE=submit value=\"Add These Users To A Group\"></FORM><p>"
-doc_body_append "or, return to <a href=\"users\">User Management</a>."
+[_ dotlrn.lt_You_may_now_choose_to] <INPUT TYPE=submit value=\"[_ dotlrn.lt_Add_These_Users_To_A_]\"></FORM><p>"
+doc_body_append "[_ dotlrn.or_return_to] <a href=\"users\">[_ dotlrn.User_Management]</a>."
+

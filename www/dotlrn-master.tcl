@@ -85,7 +85,7 @@ if {!$no_navbar_p} {
     set navbar [dotlrn::portal_navbar \
         -user_id $user_id \
         -link_control_panel $link_control_panel \
-        -control_panel_text "Control Panel"
+        -control_panel_text [_ "dotlrn.control_panel"]
     ]
 } else {
     set navbar "<br>"
@@ -100,7 +100,7 @@ set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
 set header_img_url "$dotlrn_graphics_url/dotlrn.gif" 
-set header_img_alt_text "Header Logo"
+set header_img_alt_text [_ "dotlrn.header_logo"]
 
 
 # gets the package_id for the passed in dotlrn instace,
@@ -286,3 +286,4 @@ if {$ds_enabled_p} {
 }
 
 ad_return_template
+

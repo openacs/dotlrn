@@ -137,11 +137,11 @@ The attempted message was:
 <p>
 <table width=\"50%\">
 <tr>
-    <th align=\"left\">Subject</th>
+    <th align=\"left\">[_ dotlrn.emacs_subject]</th>
     <td align=\"left\">$subject</td>
 </tr>
 <tr>
-    <th align=\"left\">Message</th>
+    <th align=\"left\">[_ dotlrn.email_message]</th>
     <td align=\"left\">$message</td>
 </tr>
 </table>
@@ -164,3 +164,4 @@ $errors
     }
 
 }
+

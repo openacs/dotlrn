@@ -37,6 +37,7 @@ set community_type [dotlrn_community::get_community_type]
 # Load some community type info
 db_1row select_community_type_info {}
 
-set context_bar {View}
+set context_bar [_ dotlrn.View]
 
 ad_return_template
+

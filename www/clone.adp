@@ -21,5 +21,7 @@
 <master src="dotlrn-master">
 <property name="title">@title@</property>
 
-<i><strong>Note:</strong> This may take some time. Please be patient.</t>
+<i><strong>#dotlrn.Note#:</strong> #dotlrn.lt_this_may_take_some_time#</i>
 <formtemplate id="clone_form"></formtemplate>
+
+

@@ -19,18 +19,21 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Add A Member</property>
+<property name="title">#dotlrn.Add_A_Member#</property>
 
-You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
+#dotlrn.Youre_adding# <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
 
 <form method="get" action="member-add-3">
   <input type="hidden" name="user_id" value="@user_id@">
   <input type="hidden" name="referer" value="@referer@">
-  Role:
+  #dotlrn.Role#
   <select name="rel_type">
 <multiple name="roles">
     <option value="@roles.rel_type@">@roles.pretty_name@</option>
 </multiple>
   </select>
-  <input type="submit" value="add">
+  <input type="submit" value="#dotlrn.add#">
 </form>
+
+
+

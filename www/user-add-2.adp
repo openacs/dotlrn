@@ -19,37 +19,40 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Add A User</property>
+<property name="title">#dotlrn.Add_A_User#</property>
 <property name="context_bar">@context_bar@</property>
 
-@first_names@ @last_name@ has been added to @system_name@.
-Edit the message below and hit "Send Email" to
-notify this user.
+@first_names@ @last_name@ #dotlrn.has_been_added_to# @system_name@.
+#dotlrn.edit_message_and_hit_send#
 
 <p></p>
 
 <form method="post" action="user-add-3">
   @export_vars@
-  Message:
+  #dotlrn.Message#
 
   <p></p>
 
   <textarea name="message" rows="10" cols="70" wrap="hard">
 @first_names@ @last_name@,
 
-You have been added as a user to @system_name@
-at @system_url@
+#dotlrn.you_have_been_added# @system_name@
+#dotlrn.at# @system_url@
 
-Login information:
-Email: @email@
-Password: @password@
-(you may change your password after you log in)
+#dotlrn.login_information#
+#dotlrn.email# @email@
+#dotlrn.password# @password@
+(#dotlrn.you_may_change_password#)
 
-Thank you,
+#dotlrn.thank_you#,
 @administration_name@
   </textarea>
 
   <p></p>
 
-  <input type="submit" value="Send Email">
+  <input type="submit" value="#dotlrn.send_email#">
 </form>
+
+
+
+

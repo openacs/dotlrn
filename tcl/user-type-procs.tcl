@@ -71,3 +71,4 @@ namespace eval dotlrn::user::type {
     }
 
 }
+

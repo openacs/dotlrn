@@ -23,9 +23,13 @@
 
 
 
-Are you sure you want to archive group <strong>@pretty_name@</strong>?
+#dotlrn.lt_Are_you_sure_you_want# <strong>@pretty_name@</strong>?
 <p>
-The group's data will not be modified, but the group will only be accessible to system administrators.
+#dotlrn.lt_The_groups_data_will_#
 <br>
 
 <formtemplate id="archive_form"></formtemplate>
+
+
+
+

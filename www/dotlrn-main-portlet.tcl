@@ -37,3 +37,4 @@ db_multirow communities select_communities {} {
 }
 
 ad_return_template
+

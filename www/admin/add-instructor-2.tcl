@@ -28,8 +28,9 @@ ad_page_contract {
     users:multirow
 }
 
-set context_bar {{Add a Professor}}
+set context_bar [list [_ dotlrn.Add_a_Professor]]
 
 db_multirow users select_users {}
 
 ad_return_template
+

@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">Users Search</property>
+<property name="title">#dotlrn.Users_Search#</property>
 <property name="context_bar">@context_bar@</property>
 
 <p></p>
@@ -29,32 +29,32 @@
     <formtemplate id="user_search">
 
       <tr>
-        <th align="left">Name / Email</th>
+        <th align="left">#dotlrn.Name__Email#</th>
         <td><formwidget id="name"></td>
       </tr>
 
       <tr>
-        <th align="left">ID</th>
+        <th align="left">#dotlrn.ID#</th>
         <td><formwidget id="id"></td>
       </tr>
 
       <tr>
-        <th align="left">User Type</th>
+        <th align="left">#dotlrn.User_Type#</th>
         <td><formwidget id="type"></td>
       </tr>
 
       <tr>
-        <th align="left">Access Level</th>
+        <th align="left">#dotlrn.Access_Level#</th>
         <td><formwidget id="can_browse_p"></td>
       </tr>
 
       <tr>
-        <th align="left">Guest?</th>
+        <th align="left">#dotlrn.Guest#</th>
         <td><formwidget id="private_data_p"></td>
       </tr>
 
       <tr>
-        <th align="left">Role</th>
+        <th align="left">#dotlrn.Role#</th>
         <td>
           <formgroup id="role">
             @formgroup.widget@&nbsp;@formgroup.label@&nbsp;&nbsp;
@@ -63,22 +63,22 @@
       </tr>
 
       <tr>
-        <th align="left">Last visit over</th>
-        <th align="left"><formwidget id="last_visit_greater">&nbsp; days ago</th>
+        <th align="left">#dotlrn.Last_visit_over#</th>
+        <th align="left"><formwidget id="last_visit_greater">&nbsp; #dotlrn.days_ago#</th>
       </tr>
 
       <tr>
-        <th align="left">Last visit under</th>
-        <th align="left"><formwidget id="last_visit_less">&nbsp; days ago</th>
+        <th align="left">#dotlrn.Last_visit_under#</th>
+        <th align="left"><formwidget id="last_visit_less">&nbsp; #dotlrn.days_ago#</th>
       </tr>
 
       <tr>
-        <th align="left">Join the above criteria with</th>
+        <th align="left">#dotlrn.lt_Join_the_above_criter#</th>
         <td><formwidget id="join_criteria"></td>
       </tr>
 
       <tr align="center">
-        <td colspan="2"><input type="submit" value="Search"></td>
+        <td colspan="2"><input type="submit" value="#dotlrn.Search#"></td>
       </tr>
 
     </formtemplate>
@@ -91,7 +91,10 @@
   </if>
   <else>
     <p>
-      Your search returned no results, please broaden your search criteria.
+      #dotlrn.lt_Your_search_returned_#
     </p>
   </else>
 </else>
+
+
+

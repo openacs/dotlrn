@@ -27,7 +27,8 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title [parameter::get -parameter classes_pretty_plural]
+set title [parameter::get -localize -parameter classes_pretty_plural]
 set context_bar $title
 
 ad_return_template
+

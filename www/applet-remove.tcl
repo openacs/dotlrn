@@ -35,3 +35,4 @@ dotlrn_community::remove_applet $community_id $applet_key
 
 # Get back to where you once belonged
 ns_returnredirect community-applets?community_id=$community_id
+

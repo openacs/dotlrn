@@ -26,7 +26,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
+            <a href="class-new?department_key=@department_key@&referer=@referer@">#dotlrn.New# <%= [parameter::get -localize -parameter classes_pretty_name] %></a>
           ]</small>
         </nobr>
       </td>
@@ -40,7 +40,7 @@
     <tr bgcolor="#eeeeee">
       <th align="left" width="50%">
 <formtemplate id="department_form">
-        <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+        <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
       </th>
     </tr>
@@ -51,10 +51,10 @@
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
 
     <tr>
-      <th align="left" width="30%"><%= [parameter::get -parameter departments_pretty_name] %></th>
-      <th align="left"><%= [parameter::get -parameter classes_pretty_name] %> Name</th>
-      <th align="center" width="5%"><%= [parameter::get -parameter class_instances_pretty_plural] %></th>
-      <th align="center" width="10%">Actions</th>
+      <th align="left" width="30%"><%= [parameter::get -localize -parameter departments_pretty_name] %></th>
+      <th align="left"><%= [parameter::get -localize -parameter classes_pretty_name] %> #dotlrn.Name#</th>
+      <th align="center" width="5%"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></th>
+      <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 
 <if @classes:rowcount@ gt 0>
@@ -73,7 +73,7 @@
 <if @can_instantiate@>
         <nobr>
           <small>[
-            <a href="class-instance-new?class_key=@classes.class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
+            <a href="class-instance-new?class_key=@classes.class_key@">#dotlrn.New# <%= [parameter::get -localize -parameter class_instances_pretty_name] %></a>
           ]</small>
         </nobr>
 </if>
@@ -85,7 +85,7 @@
 <else>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
-      <i>No <%= [parameter::get -parameter classes_pretty_plural] %></i>
+      <i>#dotlrn.No# <%= [parameter::get -localize -parameter classes_pretty_plural] %></i>
     </td>
   </tr>
 </else>
@@ -99,7 +99,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
+            <a href="class-new?department_key=@department_key@&referer=@referer@">#dotlrn.New# <%= [parameter::get -localize -parameter classes_pretty_name] %></a>
           ]</small>
         </nobr>
       </td>
@@ -108,3 +108,7 @@
 </if>
 
 </center>
+
+
+
+

@@ -19,37 +19,37 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Manage Memberships</property>
-<property name="context_bar">Manage Memberships</property>
+<property name="title">#dotlrn.Manage_Memberships#</property>
+<property name="context_bar">#dotlrn.Manage_Memberships#</property>
 
-<h3>Add/Drop Memberships</h3>
+<h3>#dotlrn.AddDrop_Memberships#</h3>
 
 <p>
   <small>
-    <a href="#current_clubs">Current <%= [parameter::get -parameter clubs_pretty_plural] %></a>
+    <a href="#current_clubs">#dotlrn.Current# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></a>
     |
-    <a href="#join_classes">Join a <%= [parameter::get -parameter class_instances_pretty_name] %></a>
+    <a href="#join_classes">#dotlrn.Join_a# <%= [parameter::get -localize -parameter class_instances_pretty_name] %></a>
     |
-    <a href="#join_clubs">Join a <%= [parameter::get -parameter clubs_pretty_name] %></a>
+    <a href="#join_clubs">#dotlrn.Join_a# <%= [parameter::get -localize -parameter clubs_pretty_name] %></a>
   </small>
 </p>
 
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>
   <hr>
 
-  <h4><a name="current">Your Current Memberships</a></h4>
+  <h4><a name="current">#dotlrn.lt_Your_Current_Membersh#</a></h4>
 
 <if @n_member_classes@ gt 0>
 
-    <h4><a name="current_classes"><%= [parameter::get -parameter class_instances_pretty_plural] %></a></h4>
+    <h4><a name="current_classes"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></a></h4>
 
     <table bgcolor="#eeeeee" width="100%">
 <formtemplate id="member_form">
         <th align="left" width="50%">
-          <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="member_department_key">
+          <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="member_department_key">
         </th>
         <th align="left" width="50%">
-          Term:&nbsp;<formwidget id="member_term_id">
+          #dotlrn.Term#&nbsp;<formwidget id="member_term_id">
         </th>
 </formtemplate>
     </table>
@@ -57,10 +57,10 @@
 <if @member_classes:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left" width="55%"><%= [parameter::get -parameter class_instances_pretty_name] %> Name</th>
-        <th align="left" width="15%">Term</th>
-        <th align="left" width="15%">Role</th>
-        <th align="left" width="15%">Actions</th>
+        <th align="left" width="55%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" width="15%">#dotlrn.Term#</th>
+        <th align="left" width="15%">#dotlrn.Role#</th>
+        <th align="left" width="15%">#dotlrn.Actions#</th>
       </tr>
 
 <multiple name="member_classes">
@@ -75,7 +75,7 @@
         <td>@member_classes.term_name@ @member_classes.term_year@</td>
         <td>@member_classes.role@</td>
 <if @member_classes.member_state@ eq "needs approval">
-        <td>[<small> Pending Approval </small>]</td>
+        <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
         <td>[<small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small>]</td>
@@ -85,19 +85,19 @@
     </table>
 </if>
 <else>
-  <small>No classes</small>
+  <small>#dotlrn.No_classes#</small>
 </else>
 
 </if>
 
-  <h4><a name="current_clubs"><%= [parameter::get -parameter clubs_pretty_plural] %></a></h4>
+  <h4><a name="current_clubs"><%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></h4>
 
 <if @member_clubs:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left" colspan="2" width="70%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
-        <th align="left" width="15%">Role</th>
-        <th align="left" width="15%">Actions</th>
+        <th align="left" colspan="2" width="70%"><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" width="15%">#dotlrn.Role#</th>
+        <th align="left" width="15%">#dotlrn.Actions#</th>
       </tr>
 
 <multiple name="member_clubs">
@@ -111,7 +111,7 @@
         <td colspan="2"><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
         <td>@member_clubs.role@</td>
 <if @member_clubs.member_state@ eq "needs approval">
-        <td>[<small> Pending Approval </small>]</td>
+        <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
         <td>[<small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small>]</td>
@@ -121,7 +121,7 @@
     </table>
 </if>
 <else>
-  <p><small>No <%= [parameter::get -parameter clubs_pretty_plural] %></small></p>
+  <p><small>#dotlrn.No# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></small></p>
 </else>
 
 </if>
@@ -129,19 +129,19 @@
 <if @n_non_member_classes@ gt 0 or @non_member_clubs:rowcount@ gt 0>
   <hr>
 
-  <h4><a name="join">Join A Group</a></h4>
+  <h4><a name="join">#dotlrn.Join_A_Group#</a></h4>
 
 <if @n_non_member_classes@ gt 0>
 
-    <h4><a name="join_classes"><%= [parameter::get -parameter class_instances_pretty_plural] %></a></h4>
+    <h4><a name="join_classes"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></a></h4>
 
     <table bgcolor="#eeeeee" width="100%">
 <formtemplate id="non_member_form">
         <th align="left" width="50%">
-          <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="non_member_department_key">
+          <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="non_member_department_key">
         </th>
         <th align="left" width="50%">
-          Term:&nbsp;<formwidget id="non_member_term_id">
+          #dotlrn.Term#&nbsp;<formwidget id="non_member_term_id">
         </th>
 </formtemplate>
     </table>
@@ -149,10 +149,10 @@
 <if @non_member_classes:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left" width="55%"><%= [parameter::get -parameter class_instances_pretty_name] %> Name</th>
-        <th align="left" width="15%">Term</th>
+        <th align="left" width="55%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" width="15%">#dotlrn.Term#</th>
         <th align="left" width="15%">&nbsp;</th>
-        <th align="left" width="15%">Actions</th>
+        <th align="left" width="15%">#dotlrn.Actions#</th>
       </tr>
 
 <multiple name="non_member_classes">
@@ -177,20 +177,20 @@
     </table>
 </if>
 <else>
-  <small>No classes</small>
+  <small>#dotlrn.No_classes#</small>
 </else>
 
 </if>
 
-  <h4><a name="join_clubs"><%= [parameter::get -parameter clubs_pretty_plural] %></a></h4>
+  <h4><a name="join_clubs"><%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></h4>
 <if @non_member_clubs:rowcount@ gt 0>
 
     <table width="100%">
       <tr>
-        <th align="left" width="55%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
+        <th align="left" width="55%"><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Name#</th>
         <th align="left" width="15%">&nbsp;</th>
         <th align="left" width="15%">&nbsp;</th>
-        <th align="left">Actions</th>
+        <th align="left">#dotlrn.Actions#</th>
       </tr>
 
 <multiple name="non_member_clubs">
@@ -216,7 +216,10 @@
 
 </if>
 <else>
-  <p><small>No <%= [parameter::get -parameter clubs_pretty_plural] %></small></p>
+  <p><small>#dotlrn.No# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></small></p>
 </else>
 
 </if>
+
+
+

@@ -55,3 +55,4 @@ switch -exact $join_policy {
 }
 
 ad_returnredirect $referer
+

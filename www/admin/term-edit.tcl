@@ -28,47 +28,47 @@ ad_page_contract {
 }
 
 if {![db_0or1row select_term_info {}]} {
-    ad_return_complaint 1 "<li>Invalid term_id $term_id</li>"
+    ad_return_complaint 1 "<li>[_ dotlrn.Invalid] term_id $term_id</li>"
     ad_script_abort
 }
 
 set referer "term?[ns_conn query]"
-set context_bar [list [list terms Terms] [list $referer "$term_name $term_year"] Edit]
+set context_bar [list [list terms [_ dotlrn.Terms]] [list $referer "$term_name $term_year"] [_ dotlrn.Edit]]
 
 form create edit_term
 
 element create edit_term term_id \
-    -label "Term ID" \
+    -label "[_ dotlrn.Term_ID]" \
     -datatype integer \
     -widget hidden \
     -value $term_id
 
 element create edit_term term_name \
-    -label "Term (e.g. Spring, Fall)" \
+    -label "[_ dotlrn.Term_eg_Spring_Fall]" \
     -datatype text \
     -widget text \
     -html {size 30}
 
 element create edit_term term_year \
-    -label "Year (e.g. 2003, 2003/2004)" \
+    -label "[_ dotlrn.lt_Year_eg_2003_20032004]" \
     -datatype text \
     -widget text \
     -html {size 9 maxlength 9}
 
 element create edit_term start_date \
-    -label "Start Date" \
+    -label "[_ dotlrn.Start_Date]" \
     -datatype date \
     -widget date \
     -format {MONTH DD YYYY}
 
 element create edit_term end_date \
-    -label "End Date" \
+    -label "[_ dotlrn.End_Date]" \
     -datatype date \
     -widget date \
     -format {MONTH DD YYYY}
 
 element create edit_term referer \
-    -label "Referer" \
+    -label "[_ dotlrn.Referer]" \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -96,3 +96,4 @@ if {[form is_valid edit_term]} {
 }
 
 ad_return_template
+
