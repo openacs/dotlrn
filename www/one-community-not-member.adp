@@ -18,6 +18,8 @@
 
 %>
 
+<-- this should be removed b/c we have the non-member portal now -->
+
 <master src="dotlrn-master">
 <property name="context_bar">@context_bar@</property>
 <property name="pretext">@pretext@</property>
