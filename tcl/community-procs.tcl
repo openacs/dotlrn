@@ -481,7 +481,7 @@ namespace eval dotlrn_community {
     } {
         Get the page ID for a particular community and user
     } {
-        return [db_string select_portal_id {}]
+        return [db_string select_portal_id {} -default ""]
     }
 
     ad_proc -public get_community_non_members_portal_id {
