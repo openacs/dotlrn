@@ -10,9 +10,11 @@ ad_page_contract {
     title:onevalue
 }
 
+set user_id [ad_get_user_id]
 set parent_community_id [dotlrn_community::get_community_id]
-
 set title "New [ad_parameter subcommunity_pretty_name]"
+set admin_portal_id \
+        [dotlrn_community::get_portal_template_id $parent_community_id]
 
 form create add_subcomm
 
@@ -20,26 +22,19 @@ element create add_subcomm pretty_name \
     -label "Name" \
     -datatype text \
     -widget text \
-    -html {size 60}
+    -html {size 40}
 
 element create add_subcomm description \
-    -label "Description (Text or HTML)" \
+    -label "Description <br> (Text or HTML)" \
     -datatype text \
     -widget text \
-    -html {size 60}
+    -html {size 40}
 
 element create add_subcomm join_policy \
     -label "Join Policy" \
     -datatype text \
     -widget select \
     -options {{Closed closed} {"Needs Approval" "needs approval"} {Open open}}
-
-element create add_subcomm add_users_now \
-    -label "Add members now? FIXME" \
-    -datatype text \
-    -widget radio \
-    -options {{Yes 1} {No 0}} \
-    -value 0
 
 element create add_subcomm referer \
     -label "Referer" \
@@ -48,30 +43,26 @@ element create add_subcomm referer \
     -value $referer
 
 if {[form is_valid add_subcomm]} {
-    form get_values add_subcomm  \
-            pretty_name description join_policy add_users_now referer
+    form get_values add_subcomm \
+            pretty_name description join_policy referer 
 
     # we set some extra vars based on the community_type of the parent
     set parent_type  \
             [dotlrn_community::get_community_type_from_community_id \
             $parent_community_id]
+
     set extra_vars [ns_set create]
-
-#    ad_return_complaint 1 "pt $parent_type"
-
-    if {$parent_type == "dotlrn_community"} {
-        # we want to make a subcomm of a subcomm
-        # nothing for now
-    } elseif {$parent_type != [dotlrn_club::community_type]} {
+    ns_set put $extra_vars join_policy $join_policy
+    
+    if {$parent_type != [dotlrn_club::community_type]} {
         # we want to make a subgroup of a class instance
-        # get the term_id, since the subgroup should not outlive the class
+        # get the term_id, since the subgroup should not
+        # outlive the class
         set term_id [dotlrn_class::get_term_id \
                 -class_instance_id $parent_community_id]
         
         ns_set put $extra_vars term_id $term_id
     } 
-
-    ns_set put $extra_vars join_policy $join_policy
 
     db_transaction {
         set subcomm_id [dotlrn_community::new \
@@ -81,16 +72,19 @@ if {[form is_valid add_subcomm]} {
                 -pretty_name $pretty_name \
                 -extra_vars $extra_vars]
         
-
-        # let admins of the parent comm, be admins
+        # let admins of the parent comm, be admins of the subcomm
         set parent_admin_segment_id [dotlrn_community::get_rel_segment_id \
                 -community_id $parent_community_id \
                 -rel_type "dotlrn_admin_rel"]
-
-        # granting admin privs to the admins of the parent comm over the subcomm
         ad_permission_grant $parent_admin_segment_id $subcomm_id admin
 
-        # for a subcomm of a "class" set the start and end dates
+        # add self as admin
+        dotlrn_community::add_user \
+                -rel_type "dotlrn_admin_rel" \
+                $subcomm_id \
+                $user_id
+
+        # for a subcomm of a "class instance" set the start and end dates
         if {![string equal $parent_type [dotlrn_club::community_type]] &&
                  ![string equal $parent_type "dotlrn_community"]} {
 
@@ -103,11 +97,8 @@ if {[form is_valid add_subcomm]} {
         }
     }
 
-    if {$add_users_now} {
-        ad_returnredirect "users-add-to-community?foobar"
-    } else {
-        ad_returnredirect $referer
-    }
+    # redirect to the member page of the new sub comm (for adding)
+    ad_returnredirect "[dotlrn_community::get_community_key -community_id $subcomm_id]/members?referer=$referer"
 
     ad_script_abort
 }
