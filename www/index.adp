@@ -8,7 +8,7 @@
 <else>
 <ul>
 <multiple name=classes>
-<li><a href=@classes.url@>@classes.class_key@</a>
+<li><a href=<%= [dotlrn_community::get_url -package_id @classes.package_id@] %>>@classes.class_key@</a>
 </multiple>
 </ul>
 </else>

@@ -55,7 +55,7 @@ namespace eval dotlrn_class {
 	    # dotlrn_community::new_type $class_group_type_key dotlrn_class $pretty_name
 
 	    # Set the site node
-	    dotlrn_community::set_type_site_node $class_group_type_key $node_id
+	    dotlrn_community::set_type_package_id $class_group_type_key $package_id
 
 	    # insert the class into the DB
 	    # ALREADY DONE by PL/SQL API
@@ -67,6 +67,7 @@ namespace eval dotlrn_class {
 
 
     ad_proc -public new_instance {
+	{-description ""}
 	class_type
 	class_name
 	term
@@ -78,10 +79,10 @@ namespace eval dotlrn_class {
 	set short_name "$class_type-$term-$year"
 
 	# Create the community
-	set community_id [dotlrn_community::new dotlrn_class $short_name $pretty_name]
+	# set community_id [dotlrn_community::new dotlrn_class $short_name $pretty_name]
 
 	# Insert the class instance
-	db_dml insert_class_instance {}
+	set community_id [db_exec_plsql create_class_instance {}]
 
 	# Set up the node
 	set parent_node_id [db_string select_parent_node_id {}]

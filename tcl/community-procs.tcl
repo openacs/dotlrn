@@ -64,6 +64,18 @@ namespace eval dotlrn_community {
 	db_dml update_package_id {}
     }
 
+    ad_proc -public get_url {
+	{-current_node_id ""}
+	{-package_id ""}
+    } {
+	This gets the relative URL for a package_id under a particular node_id
+    } {
+	if {[empty_string_p $current_node_id]} {
+	    set current_node_id [site_node_id [ad_conn url]]
+	}
+
+	return [db_string select_node_url {}]
+    }
     
     ad_proc set_attribute {
 	community_id
@@ -146,7 +158,11 @@ namespace eval dotlrn_community {
     } {
 	Return a datasource of the communities that a user belongs to in a particular type
     } {
-	return [db_multirow select_communities {}]
+	set list_of_communities [list]
+
+	db_foreach select_communities {} {
+	    lappend list_of_communities [list $community_id $community_key $pretty_name $description [get_url -package_id $package_id]]
+	}
     }
 
     ad_proc -public get_community_type {
