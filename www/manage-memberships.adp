@@ -24,19 +24,26 @@
 
 <h3>Add/Drop Memberships</h3>
 
+<p>
+  <small>
+    <a href="#current_clubs">Current <%= [dotlrn::parameter clubs_pretty_plural] %></a>
+    |
+    <a href="#join">Join Group</a>
+</p>
+
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>
   <hr>
 
-  <h4>Your Current Memberships</h4>
+  <h4><a name="current">Your Current Memberships</a></h4>
 
 <if @n_member_classes@ gt 0>
 
-    <h4><%= [ad_parameter classes_pretty_plural] %></h4>
+    <h4><a name="current_classes"><%= [dotlrn::parameter class_instances_pretty_plural] %></a></h4>
 
     <table bgcolor="#ececec" width="100%">
 <formtemplate id="member_form">
         <th align="left" width="50%">
-          <%= [ad_parameter departments_pretty_name] %>:&nbsp;<formwidget id="member_department_key">
+          <%= [dotlrn::parameter departments_pretty_name] %>:&nbsp;<formwidget id="member_department_key">
         </th>
         <th align="left" width="50%">
           Term:&nbsp;<formwidget id="member_term_id">
@@ -47,7 +54,7 @@
 <if @member_classes:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left" width="55%"><%= [ad_parameter classes_pretty_name] %></th>
+        <th align="left" width="55%"><%= [dotlrn::parameter class_instances_pretty_name] %> Name</th>
         <th align="left" width="15%">Term</th>
         <th align="left" width="15%">Role</th>
         <th align="left" width="15%">Actions</th>
@@ -80,12 +87,12 @@
 
 </if>
 
-  <h4><%= [ad_parameter clubs_pretty_plural] %></h4>
+  <h4><a name="current_clubs"><%= [dotlrn::parameter clubs_pretty_plural] %></a></h4>
 
 <if @member_clubs:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left" colspan="2" width="70%"><%= [ad_parameter clubs_pretty_name] %></th>
+        <th align="left" colspan="2" width="70%"><%= [dotlrn::parameter clubs_pretty_name] %> Name</th>
         <th align="left" width="15%">Role</th>
         <th align="left" width="15%">Actions</th>
       </tr>
@@ -111,7 +118,7 @@
     </table>
 </if>
 <else>
-  <p><small>No <%= [ad_parameter clubs_pretty_plural] %></small></p>
+  <p><small>No <%= [dotlrn::parameter clubs_pretty_plural] %></small></p>
 </else>
 
 </if>
@@ -119,16 +126,16 @@
 <if @n_non_member_classes@ gt 0 or @non_member_clubs:rowcount@ gt 0>
   <hr>
 
-  <h4>Join A Group</h4>
+  <h4><a name="join">Join A Group</a></h4>
 
 <if @n_non_member_classes@ gt 0>
 
-    <h4><%= [ad_parameter classes_pretty_plural] %></h4>
+    <h4><a name="join_classes"><%= [dotlrn::parameter class_instances_pretty_plural] %></a></h4>
 
     <table bgcolor="#ececec" width="100%">
 <formtemplate id="non_member_form">
         <th align="left" width="50%">
-          <%= [ad_parameter departments_pretty_name] %>:&nbsp;<formwidget id="non_member_department_key">
+          <%= [dotlrn::parameter departments_pretty_name] %>:&nbsp;<formwidget id="non_member_department_key">
         </th>
         <th align="left" width="50%">
           Term:&nbsp;<formwidget id="non_member_term_id">
@@ -139,7 +146,7 @@
 <if @non_member_classes:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left" width="55%"><%= [ad_parameter classes_pretty_name] %></th>
+        <th align="left" width="55%"><%= [dotlrn::parameter class_instances_pretty_name] %> Name</th>
         <th align="left" width="15%">Term</th>
         <th align="left" width="15%">&nbsp;</th>
         <th align="left" width="15%">Actions</th>
@@ -172,12 +179,12 @@
 
 </if>
 
-  <h4><%= [ad_parameter clubs_pretty_plural] %></h4>
+  <h4><a name="join_clubs"><%= [dotlrn::parameter clubs_pretty_plural] %></a></h4>
 <if @non_member_clubs:rowcount@ gt 0>
 
     <table width="100%">
       <tr>
-        <th align="left" colspan="3" width="85%"><%= [ad_parameter clubs_pretty_name] %></th>
+        <th align="left" colspan="3" width="85%"><%= [dotlrn::parameter clubs_pretty_name] %> Name</th>
         <th align="left">Actions</th>
       </tr>
 
@@ -202,7 +209,7 @@
 
 </if>
 <else>
-  <p><small>No <%= [ad_parameter clubs_pretty_plural] %></small></p>
+  <p><small>No <%= [dotlrn::parameter clubs_pretty_plural] %></small></p>
 </else>
 
 </if>
