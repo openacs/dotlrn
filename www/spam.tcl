@@ -27,7 +27,7 @@ ad_page_contract {
     portal_id:onevalue
 }
 
-set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
+set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam]]
 set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
 if {[empty_string_p $community_id]} {

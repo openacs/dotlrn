@@ -21,7 +21,7 @@
 <property name="context_bar">@context_bar@</property>
 
 <p>
-  #dotlrn.are_you_sure_you_want_to_send# @spam_name@ #dotlrn.Message#?
+ #dotlrn.lt_Are_you_sure_you_want_1#?
 </p>
 
 <if @message_type@ eq "html">
@@ -50,6 +50,6 @@
 </else>
 
 <form action="spam" method="post">
-  @confirm_data@
+ @confirm_data;noquote@
   <input type="submit" value="#dotlrn.Confirm#"></input>
 </form>
