@@ -7,16 +7,23 @@ ad_page_contract {
 } {
 }
 
+ns_log notice "XXX0"
+
 # Check if this is a community type level thing
 if {[ad_parameter community_type_level_p] == 1} {
+    ns_log notice "XXX0.5"
     ad_returnredirect "one-community-type"
-    return
+    ns_log notice "XXX0.55"
+    ad_script_abort
+    ns_log notice "XXX0.60"
 }
+
+ns_log notice "XXX1"
 
 # Check if this is a community level thing
 if {[ad_parameter community_level_p] == 1} {
     ad_returnredirect "one-community"
-    return
+    ad_script_abort
 }
 
 # Make sure user is logged in
@@ -33,6 +40,5 @@ if {[empty_string_p $portal_id]} {
 } else {
     set rendered_page [dotlrn::render_page $portal_id]
 }
-
 
 ad_return_template

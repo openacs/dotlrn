@@ -61,10 +61,18 @@ namespace eval dotlrn {
     } {
         returns 1 if dotlrn is instantiaed under the url specified, 0
         otherwise
-
-        url is expected to match that in the nsv array "site_nodes"
     } {
         set result 0
+
+# XXX this is much cleaner but it doesn't work because [site_node $url] will
+#     eat through the url to try to find a match up the hierarchy. we want
+#     an exact match
+#
+#        if {[catch {array set site_node [site_node $url]}] == 0} {
+#            if {[string equal [package_key] $site_node(package_key)]} {
+#                set result 1
+#            }
+#        }
 
         if {[catch {nsv_array get site_nodes $url} site_node_list] == 0} {
             for {set x 0} {$x < [llength $site_node_list]} {incr x 2} {
@@ -75,7 +83,7 @@ namespace eval dotlrn {
                         break
                     } else {
                         # XXX need to figure out how to error out of here, this
-                        # really bad
+                        #     really bad
                     }
                 }
             }
@@ -152,7 +160,8 @@ namespace eval dotlrn {
                         node_id => :node_id,
                         parent_id => :parent_node_id,
                         name => :url,
-                        directory_p => :directory_p
+                        directory_p => :directory_p,
+                        pattern_p => 't'
                     );
                 end;
             }]

@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Displays a community type
     
@@ -7,10 +6,12 @@ ad_page_contract {
 } {
 }
 
+ns_log notice "XXX0.6"
+
 # Check that this is a community type
 if {[ad_parameter community_type_level_p] != 1} {
-    ns_returnredirect "./"
-    return
+    ad_returnredirect "./"
+    ad_script_abort
 } 
 
 set user_id [ad_conn user_id]

@@ -1,3 +1,4 @@
+<% ns_log notice "XXX ADP" %>
 <master src="master">
 <property name="context_bar">@context_bar@</property>
 <property name="title">dotLRN: @pretty_name@</property>

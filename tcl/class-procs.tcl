@@ -27,28 +27,15 @@ namespace eval dotlrn_class {
     ad_proc -public is_initialized {} {
         is dotlrn_class initialized with the right community_type?
     } {
-        set community_type [community_type]
-        return [db_string is_dotlrn_class_initialized {
-            select count(*)
-            from dotlrn_community_types
-            where community_type = :community_type
-            and package_id is not null
-        }]
+        dotlrn_community::is_initialized -community_type [community_type]
     }
 
     ad_proc -public init {} {
-        create base community_type for dotlrn_class
+        create base community_type for dotlrn_clubs
     } {
-        db_transaction {
-            set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]/"
-            if {![dotlrn::is_instantiated_here -url $dotlrn_classes_url]} {
-                set package_id [dotlrn::mount_package \
-                    -package_key [dotlrn::package_key] \
-                    -url [dotlrn_class::get_url_part] \
-                    -directory_p "t"]
-                dotlrn_community::set_type_package_id [community_type] $package_id
-            }
-        }
+        dotlrn_community::init \
+            -community_type [community_type] \
+            -community_type_url_part [get_url_part]
     }
 
     ad_proc -public new {
