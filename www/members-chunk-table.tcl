@@ -31,6 +31,9 @@ ad_page_contract {
 
 # use my_user_id here so we don't confuse with user_id from the query
 set my_user_id [ad_conn user_id]
+
+dotlrn::require_user_read_private_data -user_id $my_user_id
+
 set community_id [dotlrn_community::get_community_id]
 set referer [ns_conn url]
 
@@ -74,7 +77,7 @@ lappend table_def {
     {<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]}
 }
 
-if {$read_private_data_p || [string equal $my_user_id $user_id]} {
+if {$read_private_data_p || [string equal $my_user_id \$user_id]} {
     lappend table_def {
         email
         Email
