@@ -143,6 +143,7 @@ namespace eval dotlrn_community {
         }
 
         # Add core vars
+        ns_set put $extra_vars parent_community_id $parent_community_id
         ns_set put $extra_vars community_type $community_type
         ns_set put $extra_vars community_key $community_key
         ns_set put $extra_vars pretty_name $pretty_name
@@ -154,11 +155,6 @@ namespace eval dotlrn_community {
             # Insert the community
             set community_id [package_instantiate_object \
                     -extra_vars $extra_vars $object_type]
-
-            # Update parent community ID if necessary
-            if {![empty_string_p $parent_community_id]} {
-                db_dml update_parent_community_id {}
-            }
 
             set user_id [ad_conn user_id]
 

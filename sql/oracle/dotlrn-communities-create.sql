@@ -231,6 +231,7 @@ create or replace package dotlrn_community
 is
     function new (
         community_id in dotlrn_communities.community_id%TYPE default null,
+        parent_community_id in dotlrn_communities.parent_community_id%TYPE default null,
         community_type in dotlrn_communities.community_type%TYPE,
         community_key in dotlrn_communities.community_key%TYPE,
         pretty_name in dotlrn_communities.pretty_name%TYPE,
@@ -280,6 +281,7 @@ create or replace package body dotlrn_community
 as
     function new (
         community_id in dotlrn_communities.community_id%TYPE default null,
+        parent_community_id in dotlrn_communities.parent_community_id%TYPE default null,
         community_type in dotlrn_communities.community_type%TYPE,
         community_key in dotlrn_communities.community_key%TYPE,
         pretty_name in dotlrn_communities.pretty_name%TYPE,
@@ -307,11 +309,26 @@ as
             join_policy => join_policy
         );
 
-        insert
-        into dotlrn_communities
-        (community_id, community_type, community_key, pretty_name, description, package_id, portal_id, portal_template_id)
+        insert into dotlrn_communities
+          (community_id, 
+           parent_community_id,
+           community_type, 
+           community_key, 
+           pretty_name,  
+           description, 
+           package_id, 
+           portal_id, 
+           portal_template_id)
         values
-        (c_id, community_type, community_key, pretty_name, description, package_id, portal_id, portal_template_id);
+          (c_id, 
+           parent_community_id, 
+           community_type, 
+           community_key, 
+           pretty_name, 
+           description,    
+           package_id, 
+           portal_id, 
+           portal_template_id);
 
         return c_id;
     end;
