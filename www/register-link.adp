@@ -1,7 +1,7 @@
 <%
 
     #
-    #  Copyright (C) 2001, 2002 MIT
+    #  Copyright (C) 2001, 2002 OpenForce, Inc.
     #
     #  This file is part of dotLRN.
     #
@@ -17,5 +17,6 @@
     #
 
 %>
-
-<a href="<if @url@ nil>register</if><else>@url@</else><if @community_id@ not nil>?community_id=@community_id@</if><if @referer@ not nil>&referer=@referer@</if>"><if @label@ nil>Join</if><else>@label@</else></a>
+<center>
+ <a href="<if @url@ nil>register?community_id=@community_id@&</if><else>@url@?</else><if @referer@ not nil>referer=@referer@</if>"><if @label@ nil><img src=graphics/join.gif alt="Join" border=0></if><else><if @label@ eq "Request Membership"><img src=graphics/request.gif alt="@label@" border=0></if><else>@label@</else></else></a>
+</center>
