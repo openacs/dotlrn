@@ -35,7 +35,7 @@
 
 
 </head>
-<body>
+<body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 
 <!-- Header Begin -->
 <table width="100%" cellpadding=0 cellspacing=0> 

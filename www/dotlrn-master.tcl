@@ -545,6 +545,17 @@ TD.center {
 
 "
 
+# Focus
+multirow create attribute key value
+
+if { ![template::util::is_nil focus] } {
+    # Handle elements wohse name contains a dot
+    regexp {^([^.]*)\.(.*)$} $focus match form_name element_name
+    
+    template::multirow append \
+            attribute onload "javascript:document.forms\['${form_name}'\].elements\['${element_name}'\].focus()"
+}
+
 # Developer-support support
 set ds_enabled_p [parameter::get_from_package_key \
     -package_key acs-developer-support \
