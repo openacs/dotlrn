@@ -76,14 +76,16 @@ if {[dotlrn::is_instantiated]} {
         # init of each applet NOTE: this applet_add proc _must_ be able to be
         # called repeatedly since this script is eval'd at every server startup
         foreach applet [db_list select_not_installed_applets {}] {
-            dotlrn_applet::applet_call $applet AddApplet [list]
+            if {[catch {dotlrn_applet::applet_call $applet AddApplet [list]} errMsg]} { 
+                ns_log warning "dotlrn-init: AddApplet $applet failed\n$errMsg"
+            }
         }
 
         ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn::init"
 
         if {![dotlrn::is_initialized]} { dotlrn::init }
 
-        ns_log notice "dotlrn-init: about to call dotlrn_class:init"
+        ns_log notice "dotlrn-init: about to call dotlrn_class::init"
 
         if {![dotlrn_class::is_initialized]} { dotlrn_class::init }
 

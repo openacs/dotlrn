@@ -1,5 +1,5 @@
 #
-#  Copyright (C) 2001, 2002 MIT
+#  Copyright (C) 2001, 2002 OpenForce, Inc.
 #
 #  This file is part of dotLRN.
 #
@@ -51,7 +51,13 @@ namespace eval dotlrn {
                 set name "$name-1"
             }
         }
-        
+
+	#bad things happen if the group name is the same as a dotlrn file name.
+	set conflicting_names [list members configure spam index not-allowed clone help]
+	if { [lsearch -exact $conflicting_names $name] != -1 } {
+	    lappend name "-1"
+	}
+
         return $name
     }
 
@@ -119,7 +125,7 @@ namespace eval dotlrn {
             set portal_id [portal::create \
                 -template_id $template_id \
                 -name "Your dotLRN Workspace" \
-                $user_id \
+                $user_id
             ]
 
             ns_set put $extra_vars portal_id $portal_id
@@ -143,12 +149,17 @@ namespace eval dotlrn {
             # are selecting from changes inside the loop causing all kinds of
             # dead lock issues.
             set current_memberships [db_list_of_ns_sets select_current_memberships {
-                select community_id,
+                select dotlrn_member_rels_full.community_id,
                        rel_type,
                        member_state
-                from dotlrn_member_rels_full
+                from dotlrn_member_rels_full, dotlrn_communities
                 where user_id = :user_id
+		and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id
+		and dotlrn_communities.parent_community_id is null
             }]
+           
+            # Note that remove_user will remove users from the subgroups as well as the
+	    # parent community. Therefore, current_memberships only contains parent communities.
 
             foreach row $current_memberships {
                 dotlrn_community::remove_user [ns_set get $row community_id] $user_id
@@ -257,10 +268,15 @@ namespace eval dotlrn {
     } {
         Check if a user can read sensitive data in dotLRN
     } {
-        return [acs_privacy::user_can_read_private_data_p \
-            -user_id $user_id \
-            -object_id [dotlrn::get_package_id] \
-        ]
+	if { [parameter::get -parameter protect_private_data_p -default 1] } {
+	    return [ad_permission_p \
+		    -user_id $user_id \
+		    [dotlrn::get_package_id] \
+		    read_private_data
+	    ]
+	} else {
+	    return 1
+	}
     }
 
     ad_proc -public require_user_read_private_data {
@@ -359,6 +375,26 @@ namespace eval dotlrn {
         require that user be able to admin a community
     } {
         if {![user_can_admin_community_p -user_id $user_id -community_id $community_id]} {
+            do_abort
+        }
+    }
+
+    ad_proc -public user_can_spam_community_p {
+        {-user_id ""}
+        {-community_id:required}
+    } {
+        check if a user can admin a community
+    } {
+        return [permission::permission_p -party_id $user_id -object_id $community_id -privilege dotlrn_spam_community]
+    }
+
+    ad_proc -public require_user_spam_community {
+        {-user_id ""}
+        {-community_id:required}
+    } {
+        require that user be able to spam a community
+    } {
+        if {![user_can_spam_community_p -user_id $user_id -community_id $community_id]} {
             do_abort
         }
     }

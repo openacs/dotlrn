@@ -217,7 +217,7 @@ namespace eval dotlrn_community {
                 where object_id = :community_id
             }
 
-            set template_id [dotlrn::get_portal_id_from_type -type $community_type]
+            set template_id [dotlrn::get_portal_id_from_type -type $object_type]
 
             # Create comm's portal page
             set portal_id [portal::create \
@@ -311,8 +311,21 @@ namespace eval dotlrn_community {
         # this community should be able to read this instance (and
         # it's children)
         permission::set_not_inherit -object_id $community_id
-
-        return $community_id
+	
+	#this block sets permissions for subcommunities
+	while {1} {
+	    if {![empty_string_p $parent_community_id]} {
+		#admin of the parent need admin on the subcommunity.
+		set parent_admin_party [db_string "parent_admin_party" "select segment_id from rel_segments where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'"]
+		permission::grant -party_id $parent_admin_party -object_id $community_id -privilege "admin"
+		
+		#if this community has a parent we need to work up the chain.
+		set parent_community_id [get_parent_id -community_id $parent_community_id]
+		
+	    } else {
+		return $community_id
+	    }
+	}
     }
 
     ad_proc set_active_dates {
@@ -376,12 +389,10 @@ namespace eval dotlrn_community {
     ad_proc -private get_default_roles_not_cached {
         {-community_type:required}
     } {
-        set toplevel_community_type [get_toplevel_community_type -community_type $community_type]
-
-        if {[string match $toplevel_community_type dotlrn_class_instance]} {
-            set community_type dotlrn_class_instance
-        } else {
+        if {[string match $community_type dotlrn_club]} {
             set community_type dotlrn_community
+        } elseif {![string match $community_type dotlrn_community]} {
+            set community_type dotlrn_class_instance
         }
 
         return [db_list_of_lists select_role_data {}]
@@ -571,6 +582,9 @@ namespace eval dotlrn_community {
         set member_segment_id [get_members_rel_id -community_id $community_id]
         set admin_segment_id [get_admin_rel_id -community_id $community_id]
 
+	set parent_id [dotlrn_community::get_parent_id -community_id $community_id]
+        set parent_admin_segment_id [get_admin_rel_id -community_id $parent_id]
+
         permission::grant \
             -party_id $member_segment_id \
             -object_id $community_id \
@@ -744,6 +758,7 @@ namespace eval dotlrn_community {
         }
 
         util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
+	util_memoize_flush_regexp  $user_id
     }
 
     ad_proc -public add_user_to_community {
@@ -770,6 +785,12 @@ namespace eval dotlrn_community {
             # ns_set put $extra_vars portal_id $portal_id
             ns_set put $extra_vars user_id $user_id
             ns_set put $extra_vars community_id $community_id
+
+	    ns_log notice "rel_type is sending the following to relation_add                -member_state needs approval \
+                -extra_vars $extra_vars \
+                $rel_type \
+                $community_id \
+                $user_id "
 
             # Set up the relationship
             if {[catch {set rel_id [relation_add \
@@ -860,7 +881,9 @@ namespace eval dotlrn_community {
             # flush the list_users cache
             util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         }
+	util_memoize_flush_regexp $user_id
     }
+
 
     ad_proc -public get_all_communities_by_user {
         user_id
@@ -1118,6 +1141,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-pretext "<li>"}
         {-join_target register}
+	{-drop_target deregister}
         {-only_member_p 0}
     } {
         Returns a html fragment of the subcommunity hierarchy of this
@@ -1140,9 +1164,7 @@ namespace eval dotlrn_community {
         if {[empty_string_p $user_id]} {
             set user_id [ad_get_user_id]
         }
-
         foreach sc_id [get_subcomm_list -community_id $community_id] {
-
             if {[has_subcommunity_p -community_id $sc_id] \
                     && [member_p $sc_id $user_id]} {
                 # Shows the subcomms of this subcomm ONLY IF I'm a
@@ -1150,12 +1172,15 @@ namespace eval dotlrn_community {
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
-                    append chunk "\[<small> <a href=${url}one-community-admin>admin</a> </small>\]"
-                }
+		append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\"><img border=0 valign=\"bottom\" src=\"graphics/drop.gif\" alt=\"Drop\"></a>\n"
+		 
+# Removing admin to improve performance
+#                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
+#                    append chunk " <a href=\"${url}one-community-admin\"><img border=0 valign=\"bottom\" src=\"graphics/admin.gif\" alt=\"Administer\"></a>\n"
+#                }
 
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
-            } elseif {[member_p $sc_id $user_id] || [dotlrn::user_can_admin_community_p -community_id $sc_id] || [not_closed_p -community_id $sc_id]} {
+            } elseif {[member_p $sc_id $user_id] || [not_closed_p -community_id $sc_id]} {
 
                 # Shows the subcomm if:
                 # 1. I'm a member of this subcomm OR
@@ -1180,24 +1205,27 @@ namespace eval dotlrn_community {
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
                 if {![member_p $sc_id $user_id] && [not_closed_p -community_id $sc_id]} {
-
-                      append chunk "<nobr>\[<small> "
+                      append chunk "<nobr>"
 
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
                           append chunk "Pending Approval"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">>Request Membership</a>\n"
-
+                          append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\"><img border=0 valign=\"bottom\" src=\"graphics/request.gif\" alt=\"Request Membership\"></a>\n"
                       } else {
-                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">Join</a>\n"
+                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\"><img border=0 valign=\"bottom\" src=\"graphics/join.gif\" alt=\"Join\"></a>\n"
                       }
 
-                      append chunk " </small>\]</nobr>\n"
-                }
+                      append chunk "\n"
+                }  elseif {[member_p $sc_id $user_id]} {
 
-                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
-                    append chunk "<nobr>\[<small> <a href=\"${url}one-community-admin\">Administer</a> </small>\]</nobr>\n"
-                }
+		    # User is a member.
+		    append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\"><img border=0 valign=\"bottom\" src=\"graphics/drop.gif\" alt=\"Drop\"></a>\n"
+		    
+		}
+		#Removing admin to improve performance.
+#                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
+#                    append chunk " <a href=\"${url}one-community-admin\"><img border=0 valign=\"bottom\" src=\"graphics/admin.gif\" alt=\"Administer\"></a>\n"
+#                }
             }
         }
 
@@ -1294,7 +1322,8 @@ namespace eval dotlrn_community {
     } {
         if {[subcommunity_p -community_id $community_id]} {
             set parent_name [get_parent_name -community_id $community_id]
-            return [concat "<a href=\"..\">$parent_name</a> : [get_community_name $community_id]"]
+	    set parent_url [get_community_url [get_parent_id -community_id $community_id]]
+	    return [concat "<a href=$parent_url>$parent_name</a> : [get_community_name $community_id]"]
         } else {
             return [get_community_name $community_id]
         }

@@ -106,6 +106,9 @@ namespace eval dotlrn {
         {-user_id:required}
         {-link_control_panel:required}
         {-control_panel_text:required}
+	{-link_all 0}
+        {-pre_html ""}
+        {-post_html ""}
     } {
         A helper procedure that generates the PORTAL navbar (the thing
         with the portal pages on it) for dotlrn. It is called from the
@@ -115,8 +118,8 @@ namespace eval dotlrn {
         set dotlrn_url [dotlrn::get_url]
         set community_id [dotlrn_community::get_community_id]
         set control_panel_name control-panel
-        set link_all 0
-    
+	set control_panel_url "$dotlrn_url/$control_panel_name"
+           
         if {[empty_string_p $community_id]} {
             # We are not under a dotlrn community. However we could be
             # under /dotlrn (i.e. in the user's portal) or anywhere
@@ -143,8 +146,9 @@ namespace eval dotlrn {
             set text [dotlrn_community::get_community_header_name $community_id] 
             set control_panel_name one-community-admin
             set link [dotlrn_community::get_community_url $community_id]
-        
-            # figure out what privs this user has on the community
+	    set control_panel_url "$link/$control_panel_name"
+
+            # figure out what this privs this user has on the community
             set admin_p [dotlrn::user_can_admin_community_p \
                 -user_id $user_id \
                 -community_id $community_id
@@ -177,13 +181,15 @@ namespace eval dotlrn {
         #
         # Common code for the the behavior of the control panel link
         #
+	set extra_td_selected_p 0
         if {$show_control_panel} {
             if {$link_control_panel} {
                 set extra_td_html \
-                    " &nbsp; <a href=$link$control_panel_name>$control_panel_text</a>"
+                    "<a href=$control_panel_url>$control_panel_text</a>"
             } else {
-                set extra_td_html " &nbsp; <strong>$control_panel_text</strong>"
+                set extra_td_html "$control_panel_text"
                 set link_all 1
+		set extra_td_selected_p 1
             } 
         } else {
             set extra_td_html {}
@@ -195,10 +201,11 @@ namespace eval dotlrn {
                 -portal_id $portal_id \
                 -link $link \
                 -link_all $link_all \
-                -pre_html "" \
-                -post_html "" \
+                -pre_html $pre_html \
+                -post_html $post_html \
                 -extra_td_html $extra_td_html \
-                -table_html_args "class=\"navbar\""]
+		-extra_td_selected_p $extra_td_selected_p \
+                -table_html_args "class=\"navbar\" border=0 cellspacing=0 cellpadding=3"]
         }
     }
 
