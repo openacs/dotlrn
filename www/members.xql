@@ -19,4 +19,27 @@
 	    $orderby
         </querytext>
     </fullquery>
+
+  <fullquery name="select_pending_users">
+        <querytext>
+	select dotlrn_users.*,
+	       dotlrn_member_rels_full.rel_type,
+	       dotlrn_member_rels_full.role
+	from dotlrn_users,
+	       dotlrn_member_rels_full
+	where dotlrn_users.user_id = dotlrn_member_rels_full.user_id
+	      and dotlrn_member_rels_full.community_id = :community_id
+	      and dotlrn_member_rels_full.member_state = 'needs approval'
+        </querytext>
+    </fullquery>
+
+  <fullquery name="select_members">
+        <querytext>
+	select user_id as member_id 
+	from dotlrn_member_rels_approved 
+	where community_id = :community_id and 
+	rel_type = :reltype and 
+	user_id <> :my_user_id
+        </querytext>
+    </fullquery>
 </queryset>

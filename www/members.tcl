@@ -108,8 +108,10 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	    label "[_ dotlrn.Actions]"
 	    html "align left"
 	    display_template {
+		<if @members.user_id@ ne "">
 		<a href="deregister?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.Drop_Membership#</a> | 
 		<a href="member-add-2?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.User_Admin_Page#</a>
+		</if>
 	    }
 	}
     } -orderby {
@@ -120,10 +122,6 @@ template::list::create -name members -multirow members -key user_id -actions $ac
     } -selected_format csv -formats {
 	csv { output csv }
     }
-
-
-if { [exists_and_not_null orderby] } {
-}
 
 set orderby [template::list::orderby_clause -name "members" -orderby]
 
@@ -137,16 +135,20 @@ if { [exists_and_not_null csv] } {
     template::list::write_output -name members
 }
 
-db_multirow pending_users select_pending_users {
-    select dotlrn_users.*,
-           dotlrn_member_rels_full.rel_type,
-           dotlrn_member_rels_full.role
-    from dotlrn_users,
-         dotlrn_member_rels_full
-    where dotlrn_users.user_id = dotlrn_member_rels_full.user_id
-    and dotlrn_member_rels_full.community_id = :community_id
-    and dotlrn_member_rels_full.member_state = 'needs approval'
-} {
+# Bulk action User Admin Page
+# Depending on the community_type, we have allowable rel_types
+set rel_types [dotlrn_community::get_roles -community_id $community_id]
+set selection "<select name=\"rel_type\">"
+foreach role $rel_types {
+    append selection "<option value=\"[lindex $role 0]\">[lang::util::localize [lindex $role 2]]</option>"
+}
+append selection "</select>"
+set size [multirow size members]
+if { $size > 0 } {
+    multirow append members "" "" "" "" "" $selection
+}
+
+db_multirow pending_users select_pending_users {} {
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
@@ -180,7 +182,7 @@ if {$subcomm_p} {
 
 if {[exists_and_not_null reset] && [exists_and_not_null reltype]} {
 set result ""
-    db_multirow reset_members select_members {select user_id as member_id from dotlrn_member_rels_approved where community_id = :community_id and rel_type = :reltype and user_id <> :my_user_id} {
+    db_multirow reset_members select_members {} {
 	rp_form_put user_id $member_id
     }
     rp_form_put referer "one-community"
