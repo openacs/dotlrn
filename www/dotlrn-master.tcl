@@ -113,7 +113,7 @@ if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
     # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance 
     # (i.e. in a news instance of a class)
     # and we want all links in the navbar to be active so the user can return easily to the class homepage
-    # or to the MySpace page
+    # or to the My Space page
     set link_all 1
 }
 

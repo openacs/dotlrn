@@ -53,7 +53,7 @@
     and communities). Limited Access users (non-affiliated) cannot join 
     or drop groups.</p>
   <p><b>To join/drop classes and communities:</b><br>
-<li> Go to your personal Home page, MySpace.<br>
+<li> Go to your personal Home page, My Space.<br>
   <li> Click on &quot;Join/Drop a Class or Community Group&quot; in the Groups 
   portlet.<br>
   <li>  On the top of the page, you will see the list of your current class 
@@ -70,7 +70,7 @@
 <p><b>To join/drop subgroups:</b><br>
   <li>  Since subgroups are subsets of groups, their memberships are handled 
   within the groups.<br>
-  <li>  Go to your personal Home page, MySpace.<br>
+  <li>  Go to your personal Home page, My Space.<br>
   <li>  Go to the class or community through the link in the Groups portlet.<br>
   <li> Locate the Subgroups portlet on the class or community portal pages.<br>
   <li> Click the &quot;Join/Drop a Subgroup&quot; link.<br>
@@ -78,7 +78,7 @@
   subgroup.<br>
   <li> Your membership status will change when the page reloads.<br>
   
-<li> Then, return to the Subgroup Home page or MySpace to continue.
+<li> Then, return to the Subgroup Home page or My Space to continue.
   <p><b><font size="4"><a name="RequestGroup">Requesting a New Class or Community</a></font></b><br>
   The Site Wide Administrator handles class and community requests. </p>
 <p>To request a new class or to copy and reuse a class from a previous semester:<br>

@@ -538,7 +538,7 @@
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="User" description="the pretty name for the user portal"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="Classes" description="the nice name for the class instance portal template"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="MySpace,Simple 2-Column;My Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="My Space,Simple 2-Column;My Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
         </parameters>
 
