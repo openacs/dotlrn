@@ -885,6 +885,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-pretext "<li>"}
         {-join_target "register"}
+        {-only_member_p 0}
     } {
         Returns a html fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
@@ -919,7 +920,7 @@ namespace eval dotlrn_community {
                 }
 
                 append chunk \
-                        "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id]</ul>\n"
+                        "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif { [member_p $sc_id $user_id] \
                     || [dotlrn::user_can_admin_community_p $sc_id] \
                     || [not_closed_p -community_id $sc_id]} {
@@ -927,6 +928,12 @@ namespace eval dotlrn_community {
                 # 1. I'm a member of this subcomm OR
                 # 2. I'm have admin rights over the subcomm OR
                 # 3. The subcomm has an "open" OR "request" join policy
+                # but if the only_member_p flag is true, the user must be 
+                # a member of the subcomm to see it.
+
+                if {$only_member_p && ![member_p $sc_id $user_id]} {
+                    continue
+                }
 
                 set url [get_community_url $sc_id]
 
