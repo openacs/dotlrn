@@ -38,8 +38,10 @@
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
             <file type="tcl_procs" path="tcl/applets-procs.tcl"/>
             <file type="tcl_procs" path="tcl/class-applets-procs.tcl"/>
+            <file type="query_file" db_type="oracle" path="tcl/class-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/class-procs.tcl"/>
             <file type="query_file" path="tcl/class-procs.xql"/>
+            <file type="query_file" db_type="oracle" path="tcl/community-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/community-procs.tcl"/>
             <file type="query_file" path="tcl/community-procs.xql"/>
             <file type="tcl_util" path="tcl/dotlrn-filter.tcl"/>
@@ -57,6 +59,7 @@
             <file type="tcl_util" path="www/index.tcl"/>
             <file type="query_file" path="www/index.xql"/>
             <file path="www/master.adp"/>
+            <file type="tcl_util" path="www/test.tcl"/>
         </files>
         <parameters>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
