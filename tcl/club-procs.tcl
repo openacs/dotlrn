@@ -73,8 +73,8 @@ namespace eval dotlrn_club {
         returns the available roles
     } {
         return {
-            {admin_rel Administrator}
-            {member_rel Member}
+            {admin_rel "Administrator"}
+            {member_rel "Member"}
         }
     }
 

@@ -14,16 +14,17 @@ ad_page_contract {
 
 set context_bar {Users}
 
-set control_bar [ad_dimensional {
-    {type {User Type:} admin
-        {
-            {admin Administrators {}}
-            {professor Professors {}}
-            {student Students {}}
-            {pending Pending {}}
-        }
-    }
+set dotlrn_roles [db_list_of_lists select_dotlrn_roles {
+    select type,
+           pretty_name,
+           ''
+    from dotlrn_user_types
+    order by pretty_name
 }]
+
+lappend dotlrn_roles {pending Pending {}}
+
+set control_bar [ad_dimensional [list [list type {User Type:} admin $dotlrn_roles]]]
 
 if {[string equal $type "pending"] == 1} {
     set n_users [db_string select_non_dotlrn_users_count {}]
