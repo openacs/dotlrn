@@ -10,7 +10,9 @@ ad_page_contract {
 set community_id [dotlrn_community::get_community_id]
 set user_id [ad_get_user_id]
 set context_bar {{"one-community-admin" Admin} {Manage Members}}
-set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
+# BEN HACK
+# set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
+set portal_id [dotlrn_community::get_portal_template_id $community_id]
 set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]
 
 if {[empty_string_p $portal_id] && $admin_p} {
