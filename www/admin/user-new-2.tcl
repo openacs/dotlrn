@@ -39,5 +39,6 @@ if {[form is_valid add_user]} {
 
 db_1row select_user_info "select first_names,last_name from registered_users where user_id= :user_id"
 
+set context_bar {{users Users} New}
 ad_return_template
 

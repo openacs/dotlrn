@@ -67,14 +67,14 @@ end;
 /
 show errors
 
-create view dotlrn_users as select acs_rels.rel_id, registered_users.user_id, first_names, last_name, email, type
+create view dotlrn_users as select acs_rels.rel_id, registered_users.user_id, first_names, last_name, email, dotlrn_user_types.type_id, type
 from dotlrn_user_rels, acs_rels, registered_users, dotlrn_user_types where 
 acs_rels.object_id_two = registered_users.user_id and
 acs_rels.object_id_one = dotlrn_get_group_id() and
 acs_rels.rel_id = dotlrn_user_rels.rel_id and
 dotlrn_user_rels.type_id= dotlrn_user_types.type_id;
 
-create view dotlrn_full_users as select acs_rels.rel_id, registered_users.user_id, first_names, last_name, email, type, portal_id, theme_id
+create view dotlrn_full_users as select acs_rels.rel_id, registered_users.user_id, first_names, last_name, email, dotlrn_user_types.type_id, type, portal_id, theme_id
 from dotlrn_user_rels, dotlrn_full_user_rels, acs_rels, registered_users, dotlrn_user_types where 
 acs_rels.object_id_two = registered_users.user_id and
 acs_rels.object_id_one = dotlrn_get_group_id() and
