@@ -1,3 +1,19 @@
+#
+#  Copyright (C) 2001, 2002 OpenForce, Inc.
+#
+#  This file is part of dotLRN.
+#
+#  dotLRN is free software; you can redistribute it and/or modify it under the
+#  terms of the GNU General Public License as published by the Free Software
+#  Foundation; either version 2 of the License, or (at your option) any later
+#  version.
+#
+#  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+#  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+#  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+#  details.
+#
+
 
 #
 # Procs for DOTLRN basic system
@@ -28,14 +44,14 @@ namespace eval dotlrn {
     } {
 	Returns the group type key used for class groups
     } {
-	return [ad_parameter class_group_type_key]
+	return [parameter "class_group_type_key"]
     }
 
     ad_proc -public group_type_key {
     } {
 	Returns the group_type key that is being used for class management
     } {
-	return [ad_parameter group_type_key]
+	return [parameter "group_type_key"]
     }
 
     ad_proc -public package_key {} {
@@ -296,4 +312,19 @@ namespace eval dotlrn {
 
         return "${rel_type}${type}_profile_rel"
     }
+
+    ad_proc -public parameter {
+        -set
+        {-default ""}
+        name
+    } {
+        wrap ad_parameter
+    } {
+        if {[info exists set]} {
+            return [ad_parameter -set -package_id [get_package_id] -default $default $name]
+        } else {
+            return [ad_parameter -package_id [get_package_id] -default $default $name]
+        }
+    }
+
 }
