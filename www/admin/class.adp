@@ -42,8 +42,6 @@
 
 </ul>
 
-<br>
-
 <center>
 
 <if @can_instantiate@>
@@ -77,50 +75,20 @@
 
   <br>
 
-  <table bgcolor="#cccccc" cellpadding="5" width="95%">
-    <tr>
-      <th align="left" width="15%">#dotlrn.term#</th>
-      <th align="left">
-        #dotlrn.class_name_header#
-      </th>
-      <th align="center" width="5%">#dotlrn.members#</th>
-      <th align="center" width="10%">#dotlrn.actions#</th>
-    </tr>
-
 <if @class_instances:rowcount@ gt 0>
 
-<multiple name="class_instances">
-
-<if @class_instances.rownum@ odd>
-    <tr bgcolor="#eeeeee">
-</if>
-<else>
-    <tr bgcolor="#d9e4f9">
-</else>
-      <td align="left"><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
-      <td align="left"><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
-      <td align="center">@class_instances.n_members@</td>
-      <td align="center">
-        <nobr>
-        <small>
-           <a href="@class_instances.url@one-community-admin">#dotlrn.administer_link#</a> 
-        </small>
-        </nobr>
-      </td>
-    </tr>
-
-</multiple>
+  <listtemplate name="class_instances"></listtemplate>
 
 </if>
 <else>
+<table>
     <tr bgcolor="#eeeeee">
       <td align="left" colspan="4">
         <i>#dotlrn.no_class_instances#</i>
       </td>
     </tr>
+</table>
 </else>
-
-  </table>
 
 </center>
 

@@ -150,7 +150,7 @@ lappend elements pretty_name \
 	 orderby_asc {pretty_name asc} \
 	 orderby_desc {pretty_name desc}]
 lappend elements n_members \
-    [list label "[_ dotlrn.actions]"]
+    [list label "[_ dotlrn.members]"]
 lappend elements action \
     [list label "[_ dotlrn.Actions]" \
 	 display_template {
