@@ -35,9 +35,19 @@
   <input type="hidden" name="referer" value="@referer@">
   #dotlrn.Role#
   <select name="rel_type">
-<multiple name="roles">
-    <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
-</multiple>
+ 
+  <if @allowed_to_add_student@ false and @dotlrn_admin@ false>
+  <multiple name="roles">
+     <if @roles.rel_type@ ne "dotlrn_student_rel">
+       <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
+     </if>
+  </multiple>
+  </if>
+  <else> 
+  <multiple name="roles">
+       <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
+  </multiple>
+  </else>
   </select>
   <input type="submit" value="#acs-kernel.common_add#">
 </form>

@@ -30,10 +30,6 @@ if {[empty_string_p [dotlrn_community::get_community_id]]} {
     ad_returnredirect "[dotlrn::get_url]"
 }
 
-#prevent this page from being called when it is not allowed
-# i.e.   AllowManageMembership 0
-dotlrn_portlet::is_allowed -parameter managemembership
-
 set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Members]]
 set community_id [dotlrn_community::get_community_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
