@@ -18,6 +18,20 @@
 
 %>
 
-<formtemplate id="user_search"></formtemplate>
+<formtemplate id="user_search">
+  <formwidget id="type">
+  <formwidget id="referer">
+
+<table cellspacing="3" cellpadding="3">
+
+  <tr>
+    <th align="left">Search Text:</th>
+    <td><formwidget id="search_text"></td>
+    <td><input type="submit" value="Search"></td>
+  </tr>
+
+</table>
+
+</formtemplate>
 
 <include src="users-chunk" type=@type@ &users="users" referer=@referer@>
