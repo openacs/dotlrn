@@ -55,7 +55,7 @@
         </else>
         
         <td align="left">
-          <a href="department?department_key=@departments.department_key@">@departments.description@ (@departments.pretty_name@)</a>
+          <a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a>
         </td>
         
         <td align="center" style="white-space: nowrap; font-size: x-small;">
