@@ -190,7 +190,8 @@ namespace eval dotlrn {
         with the portal pages on it) for dotlrn. It is called from the
         dotlrn-master template
     } {
-                
+
+	set navbar "<div id=main-navigation><ul>"
         set dotlrn_url [dotlrn::get_url]
         set community_id [dotlrn_community::get_community_id]
         set control_panel_name control-panel
@@ -224,6 +225,9 @@ namespace eval dotlrn {
             set link [dotlrn_community::get_community_url $community_id]
 	    set control_panel_url "$link/$control_panel_name"
 
+	    # add the my space tab, which isn't part of the class portal but is super useful for the end user
+	    append navbar "<li><a href=\"$dotlrn_url\">My Space</a></li>"
+
             # figure out what this privs this user has on the community
             set admin_p [dotlrn::user_can_admin_community_p \
                 -user_id $user_id \
@@ -254,36 +258,44 @@ namespace eval dotlrn {
             }
         }
 
+	#AG: This code belongs in the portal package, near portal::navbar.  For display reasons we need to do this
+	#as a ul instead of a table, which portal::navbar returns.  Obviously we shouldn't be letting display-level
+	#stuff decide where we put our code, but first we'll need to mod the portal package accordingly.
+
+	set page_num [ns_queryget page_num]
+	#Strip out extra anchors and other crud.
+	#page_num will be empty_string for special pages like
+	#My Space and Control Panel
+	regsub -all {[^0-9]} $page_num {} page_num
+
+	db_foreach list_page_nums_select {} {
+	    if { ("$dotlrn_url/" == [ad_conn url] || "$dotlrn_url/index" == [ad_conn url]) && $sort_key == 0 && $page_num == ""} {
+		# active tab is  first tab and page_num may be ""
+		append navbar "<li class=\"current\"><a href=\"#\">$pretty_name</a></li>"
+	     } elseif {$page_num == $sort_key} {
+		 # We are looking at the active tab
+		 append navbar "<li class=\"current\"><a href=\"#\">$pretty_name</a></li>"
+	     } else {
+		 append navbar "<li><a href=\"$link?page_num=$sort_key\">$pretty_name</a> </li>"
+	     }
+	 }
+
         #
         # Common code for the the behavior of the control panel link (class administration
         # or my account)
         #
-	set extra_td_selected_p 0
-        if {$show_control_panel} {
-            if {$link_control_panel} {
-                set extra_td_html \
-                    "<a href=$control_panel_url>$control_panel_text</a>"
-            } else {
-                set extra_td_html "$control_panel_text"
-                set link_all 1
-		set extra_td_selected_p 1
-            } 
-        } else {
-            set extra_td_html {}
-        } 
-    
-        # Actually generate the navbar, if we got a valid portal_id
-        if {![empty_string_p $portal_id]} {
-            set navbar [portal::navbar \
-                -portal_id $portal_id \
-                -link $link \
-                -link_all $link_all \
-                -pre_html $pre_html \
-                -post_html $post_html \
-                -extra_td_html $extra_td_html \
-		-extra_td_selected_p $extra_td_selected_p \
-                -table_html_args "class=\"navbar\" border=0 cellspacing=0 cellpadding=3"]
-        }
+
+	 if {$show_control_panel} {
+	     if {$link_control_panel} {
+		 append navbar "<li><a href=\"$control_panel_url\">$control_panel_text</a></li>"
+
+	     } else {
+		 append navbar "<li class=\"current\"><a href=\"#\">$control_panel_text</a></li>"
+	     } 
+	 }
+
+	append navbar "</ul></div>"
+
     }
 
 }

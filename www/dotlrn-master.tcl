@@ -313,223 +313,6 @@ if { [info exists text] } {
     set text [lang::util::localize $text]
 }
 
-# This style sheet should be moved over to an external file for performance
-append header_stuff "
-<STYLE TYPE=\"text/css\">
-
-H3 {
-   FONT-FAMILY: Arial, Helvetica, sans-serif;
-   FONT-SIZE: small;
-   COLOR: $scope_main_color; 
-   FONT-WEIGHT: bold;
-   MARGIN-BOTTOM: 0px;
-}
-
-
-TD.dark-line {
-    font-size: 1px;
-    background-color: $scope_main_color;
-}
-
-TD.light-line {
-    font-size: 1px;
-    background-color: $scope_light_border;
-}
-
-.header-text {
-    FONT-SIZE: $header_font_size; 
-    BACKGROUND: white; 
-    WIDTH: 100px; 
-    COLOR: $header_font_color; 
-    FONT-FAMILY: $header_font;
-    WHITE-SPACE: nowrap;
-    font-weight: bold;
-}
-
-.element-header-text {
-    FONT-SIZE: small; 
-    font-weight:bold; 
-    BACKGROUND: white;
-    FONT-FAMILY: Arial, Helvetica, sans-serif;
-    font-WEIGHT: bold; 
-    COLOR: $scope_main_color; 
-    text-transform: uppercase;
-}
-
-TD.element-header-buttons {
-    BACKGROUND: white; 
-    COLOR: $scope_main_color; 
-    WHITE-SPACE: nowrap;
-}
-IMG.element-header-button {
-    BACKGROUND: $scope_main_color; 
-    COLOR: $scope_main_color;
-}
-
-TR.table-header {
-    BACKGROUND: $scope_header_color;
-    FONT-SIZE: small;
-    FONT-FAMILY: Arial, Helvetica, sans-serif; 
-}
-
-STRONG.table-header {
-    BACKGROUND: $scope_header_color; 
-    COLOR: $scope_highlight_text; 
-    FONT-FAMILY: Arial, Helvetica, sans-serif; 
-    FONT-SIZE: small;
-}
-
-TD.selected {
-    BACKGROUND: $scope_main_color; 
-    COLOR: $scope_highlight_text; 
-    FONT-FAMILY: Arial, Helvetica, sans-serif; 
-    font-weight: bold;
-    BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
-}
-
-TABLE.z_light {
-    BACKGROUND: $scope_z_light;
-}
-
-TABLE.z_dark {
-    BACKGROUND: $scope_z_dark;
-}
-
-TR.even {
-    BACKGROUND: $scope_z_light;
-}
-
-TR.odd {
-    BACKGROUND: $scope_z_dark;
-}
-
-HR.main_color {
-    COLOR: $scope_main_color;
-}
-
-TR.table-title {
-    BACKGROUND: $scope_z_dark;
-}
-
-TD.cal-week {
-    BACKGROUND: $scope_z_light;
-    VALIGN: top;
-}
-
-TD.cal-week-event {
-    BACKGROUND: $scope_z_dark;
-}
-
-TD.cal-month-day {
-    BACKGROUND: $scope_z_dark;
-   BORDER: 1px c0c0c0 solid; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px ;
-}
-
-TD.cal-month-today {
-    BACKGROUND: $scope_z_light;
-    BORDER-RIGHT: grey 1px solid; BORDER-TOP: grey 1px solid; BORDER-LEFT: grey 1px solid; BORDER-BOTTOM: grey 1px solid;
-}
-
-.navbar A {
-    COLOR: $scope_main_color; 
-    TEXT-DECORATION: none; 
-    text-weight: bold;
-}
-
-.navbar A:visited {
-    COLOR: $scope_main_color; 
-    TEXT-DECORATION: none; 
-    text-weight: bold;
-}
-
-TD.navbar {
-    COLOR: $scope_main_color; 
-    TEXT-DECORATION: none; 
-    font-weight: bold;
-    padding-top: 7px; padding-bottom:7px;
-    FONT-FAMILY: Arial, Helvetica, sans-serif; 
-    text-align: center; 
-    FONT-SIZE: x-small;
-}
-
-TD.navbar-selected {
-    background-color: $scope_main_color; 
-    COLOR: $scope_highlight_text; 
-    FONT-FAMILY: Arial, Helvetica, sans-serif; 
-    FONT-SIZE: x-small; 
-    text-align: center; 
-    font-weight: bold;
-    TEXT-DECORATION: none; 
-    padding-top: 7px; padding-bottom:7px;
-}
-
-TABLE.table-display {
-    BORDER-RIGHT: $scope_main_color 1px solid; BORDER-TOP: $scope_main_color 1px solid; BORDER-LEFT: $scope_main_color 1px solid; BORDER-BOTTOM: $scope_main_color 1px solid;
-}
-
-TABLE.portal-page-config {
-    BACKGROUND: $scope_z_dark;
-    WIDTH: 700px;
-    CELLPADDING: 5;
-}
-
-
-TD.bottom-border {
-    BORDER-Bottom: $scope_main_color 1px solid;
-}
-
-TR.bottom-border {
-    BORDER-Bottom: $scope_main_color 1px solid;
-}
-
-TD.center {
-    ALIGN: center;
-}
-
-#admin-portlet {
-    background-color: white;
-    padding: 4px;
-    padding-top: 1px;
-    padding-bottom: 1px;
-    font-size: 100%;
-    color: $scope_main_color;
-    text-align: left;
-    border-style: solid;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-}
-
-#admin-portlet h1 {
-    font-size:  $header_font_size;
-    color: $scope_header_color;
-    FONT-FAMILY: $header_font;
-    border-style: outset;
-    border-bottom-width: 2px;
-    border-top-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 2px;
-}
-
-#admin-portlet ul {
-    font-size: 85%;
-    border: none;
-    color: black;
-}
-
-#admin-portlet ul li {
-    margin-left: 0;
-    padding-left: 2px;
-    border: none;
-    list-style-type: disk;
-    list-style-position: outside;
-}
-
-</STYLE>
-
-"
-
 # Focus
 multirow create attribute key value
 
@@ -588,3 +371,207 @@ set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translat
 
 # Curriculum bar
 set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
+
+#################################
+# CLASS/COMMUNITY-SPECIFIC COLORS
+#################################
+
+set recolor_css_template {
+/* $scope_name substitutions: C8D8BE -> ${color1} */
+
+#page-body {
+  border-top: 1px solid #${color1};
+  border-bottom: 1px solid #${color1};
+  }
+
+#system-name {
+  color: #${color1};
+  }
+
+#main-container {
+  background: #${color1};
+  }
+
+#footer li {
+  color: #${color1};
+  }
+
+#locale li {
+  color: #${color1};
+  }
+
+/* $scope_name substitutions: 95BC7E -> ${color2} */
+
+/* This messes up the tabs in IE6 -- see dotlrn-master.css for more info.
+
+a:hover {
+  border-bottom: 1px solid #${color2};
+  color: #${color2};
+  }
+
+*/
+
+#main-container {
+  border-top: 5px solid #${color2};
+  border-bottom: 1px solid #${color2};
+}
+
+.portlet h2 {
+  background-color: #${color2};
+}
+
+.portlet ul li {
+  color: #${color2};
+}
+
+.actions a:hover {
+  border-bottom: 1px solid #${color2};
+  color: #${color2};
+}
+
+#admin-portlet {
+    background-color: white;
+    border: 1px solid #${color2};
+    padding: .5em;
+  }
+
+/* $scope_name substitutions: 035156 -> ${color3} */
+
+a:link, a:visited {
+  border-bottom: 1px solid #${color3};
+  color: #${color3};
+  }
+
+a:visited {
+  border-bottom: 1px solid #${color3};
+  /* Mangler visited color */
+  color: #${color3};
+  }
+
+a:active {
+  border-bottom: 1px solid #${color3};
+  color: #${color3};
+  }
+
+h1 {
+  color: #${color3};
+  }
+
+#breadcrumbs li {
+  color: #${color3};
+  }
+
+#breadcrumbs a {
+  color: #${color3};
+  }
+
+#login-status {
+  color: #${color3};
+  }
+
+#login-status a {
+  color: #${color3};
+  }
+
+#main-navigation a:hover {
+  color: #${color3};
+  }
+
+#main-navigation li.current a {
+  color: #${color3};
+  }
+
+#locale .current {
+  color: #${color3};
+  }
+
+.portlet h2 {
+  color: #${color3};
+  border-top: 1px solid #${color3};
+  border-bottom: 1px solid #${color3};
+  } 
+
+.portlet ul ul li {
+  color: #${color3};
+  }
+
+/* $scope_name substitutions: E8F0E3 -> ${color4} */
+
+#page-body {
+  background-color: #${color4};
+  }
+
+.calendar-week-summary .odd {
+  background-color: #${color4};
+  }
+
+/* $scope_name substitutions: E35203 -> ${color5} */
+
+#message-bar {
+  background-color: #${color5};
+  }
+
+/* $scope_name substitutions: tabs */
+
+#main-navigation li {
+  background: url("/resources/dotlrn/tab-passive-right-${tabscope}.gif") no-repeat right top;
+  }
+
+#main-navigation a {
+  background: url("/resources/dotlrn/tab-passive-left-${tabscope}.gif") no-repeat left top;
+  }
+
+#main-navigation li.current {
+  background-image: url("/resources/dotlrn/tab-active-right-${tabscope}.gif");
+  }
+
+#main-navigation li.current a {
+  background-image: url("/resources/dotlrn/tab-active-left-${tabscope}.gif");
+  }
+
+#admin-portlet h1 {
+    font-size: 1.5em;
+  }
+
+}
+
+switch $scope_name {
+    course {
+	set color1 CDDED5
+	set color2 6C9A83
+	set color3 003366
+	set color4 E0F2ED
+	set color5 E35203
+	set tabscope course
+	set recolor_css [subst $recolor_css_template]
+    }
+    comm {
+	set color1 FFDDB0
+	set color2 CC6633
+        set color3 003366
+        set color4 EBE1C8
+	set color5 003366
+	set tabscope comm
+	set recolor_css [subst $recolor_css_template]
+    }
+    default {
+	set recolor_css ""
+    }
+}
+    
+set header_customized_css "
+
+<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">
+<STYLE TYPE=\"text/css\">
+
+$recolor_css
+
+.page-body {
+    FONT-SIZE: $header_font_size;
+    COLOR: $header_font_color;
+    FONT-FAMILY: $header_font;
+}
+
+</STYLE>
+
+"

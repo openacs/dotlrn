@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="/resources/dotlrn/dotlrn-master.css" media="all">
     <link rel="stylesheet" type="text/css" href="/resources/calendar/calendar.css" media="all">
     @header_stuff;noquote@
+    @header_customized_css;noquote@
   </property>
   <if @context@ not nil><property name="context">@context;noquote@</property></if>
     <else><if @context_bar@ not nil><property name="context_bar">@context_bar;noquote@</property></if></else>
@@ -10,18 +11,23 @@
   <if @doc_type@ not nil><property name="doc_type">@doc_type;noquote@</property></if>
   <if @title@ not nil><property name="title">@title;noquote@</property></if>
 
-<if @navbar@ not nil>@navbar;noquote@</if>
-
 <div id="page-body">
+
   <if @title@ not nil>
     <h1 class="page-title">@title;noquote@</h1>
   </if>
 
-  <slave>
+  <if @navbar@ not nil>@navbar;noquote@</if>
   <div style="clear: both;"></div>
-</div>
 
-<if @navbar@ not nil>@navbar;noquote@</if>
+  <div id="main-container">
+
+  <slave>
+
+  <div style="clear: both;"></div>
+  </div><!-- main-container -->
+
+</div><!-- page-body -->
 
 <div class="footer">
   <a href="http://www.dotlrn.org">.LRN Home</a> |
