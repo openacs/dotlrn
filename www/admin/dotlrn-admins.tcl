@@ -52,10 +52,12 @@ template::list::create \
 
 db_multirow \
     -extend {
+       user
        remove_url
        user_url
        no_auto_remove 
     } dotlrn_admins dotlrn_admins_select {} {
+        append user $last_name ", " $first_names " (" $email " )"
 	set remove_url [export_vars -base "admin-remove" {user_id}]
         set user_url [export_vars -base "user" {user_id}] 
        if { $user_id == $admin_id } {
