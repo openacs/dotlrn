@@ -17,8 +17,9 @@
                    decode(dotlrn_community.admin_p(dotlrn_communities.community_id, dotlrn_member_rels_approved.user_id),'f',0,1) as admin_p
             from dotlrn_communities,
                  dotlrn_member_rels_approved
-            where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
-            and dotlrn_member_rels_approved.user_id = :user_id
+            where dotlrn_member_rels_approved.user_id = :user_id
+            and dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
+            and dotlrn_communities.community_type != 'dotlrn_community'
             order by dotlrn_communities.pretty_name
         </querytext>
     </fullquery>
