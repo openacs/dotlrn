@@ -39,7 +39,7 @@
 
   <p style="text-indent: 2em">
   
-    #dotlrn.lt_The_first_line_of_the# <em>#dotlrn.must#</em> #dotlrn.be_the_header_line#
+    #dotlrn.first_line_of_file_must_be#
     
     <div style="text-indent: 3em; font-family: monospace">
       first_names,last_name,email,id,type,access_level,guest
@@ -58,7 +58,7 @@
     <li><tt>last_name</tt> - <em>#dotlrn.required#</em>
     <li><tt>email</tt> - <em>#dotlrn.required#</em>
     <li><tt>id</tt> - <em>#dotlrn.optional_defaults_to# email</em> #dotlrn.lt_a_secondary#
-    <li><tt>#dotlrn.type#</tt> - <em>#dotlrn.required#</em> #dotlrn.must_be_one_of# 
+    <li><tt>type</tt> - <em>#dotlrn.required#</em> #dotlrn.must_have_values# 
       <ul>
         <li>professor
         <li>student
@@ -66,9 +66,9 @@
         <li>external
       </ul>
     <li><tt>access_level</tt> - <em>#dotlrn.optional_defaults_to# full</em> - 
-        <em>#dotlrn.must#</em> #dotlrn.be_either# <tt>full</tt> #dotlrn.or# <tt>limited</tt>
+        <em>#dotlrn.must_have_values#</em> <tt>full</tt>, <tt>limited</tt>
     <li><tt>guest</tt> - <em>#dotlrn.optional_defaults_to# guest</em> -
-        <em>#dotlrn.must#</em> #dotlrn.be_either# <tt>t</tt> #dotlrn.or# <tt>f</tt>
+        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt>
   </ul>
   
 </p>
