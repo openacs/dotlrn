@@ -109,7 +109,7 @@
   <table width="75%" border="0">
 
     <tr>
-      <td width="5%"><strong>#dotlrn.Add#</strong></td>
+      <td width="5%"><strong>#acs-kernel.common_add#</strong></td>
       <td width="95%">
         <table width="100%" border="0">
           <tr>

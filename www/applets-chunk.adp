@@ -37,7 +37,7 @@
   <li>
     @all_applets.applet_pretty_name@
     [<small>
-      <a href=applet-add?applet_key=@all_applets.applet_key@>#dotlrn.Add#</a>
+      <a href=applet-add?applet_key=@all_applets.applet_key@>#dotlrn.add#</a>
     </small>]
   </li>
 </multiple>

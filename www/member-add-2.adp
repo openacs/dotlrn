@@ -39,5 +39,5 @@
     <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
 </multiple>
   </select>
-  <input type="submit" value="#dotlrn.add#">
+  <input type="submit" value="#acs-kernel.common_add#">
 </form>

@@ -115,7 +115,6 @@
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
-  <msg key="days_ago">days ago</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
   <msg key="Deactivate_Users">Deactivate Users</msg>
   <msg key="Deactivated">Deactivated</msg>
@@ -471,6 +470,7 @@ Thank you
   <msg key="reject">reject</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
+  <msg key="required">Required field</msg>
   <msg key="Results">Results</msg>
   <msg key="Return_URL">Return URL</msg>
   <msg key="revoke">revoke</msg>
