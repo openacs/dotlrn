@@ -144,7 +144,7 @@ namespace eval dotlrn {
             set control_panel_name one-community-admin
             set link [dotlrn_community::get_community_url $community_id]
         
-            # figure out what this privs this user has on the community
+            # figure out what privs this user has on the community
             set admin_p [dotlrn::user_can_admin_community_p \
                 -user_id $user_id \
                 -community_id $community_id
