@@ -69,7 +69,7 @@ begin
     into dotlrn_user_types
     (type, pretty_name, rel_type, group_id, segment_id)
     values
-    (''external'', ''Externals'', ''dotlrn_external_profile_rel'', gid, sid);
+    (''external'', ''External'', ''dotlrn_external_profile_rel'', gid, sid);
 
     select group_id
     into dotlrn_users_group_id
