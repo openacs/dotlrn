@@ -888,13 +888,7 @@ namespace eval dotlrn_community {
         Returns a tcl list of the subcommunities of this community or
         if none, the empty list
     } {
-        set subcomm_list [list]
-
-        db_foreach select_subcomms {} {
-            lappend subcomm_list $subcomm_id
-        }
-
-        return $subcomm_list
+        return [db_list select_subcomms {}]
     }
 
     ad_proc -public get_subcomm_chunk {

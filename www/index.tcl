@@ -24,8 +24,6 @@ ad_page_contract {
     {filter ""}
     {page_num 0}
 } -properties {
-    admin_p:onevalue
-    admin_url:onevalue
 }
 
 # Check if this is a community type level thing
@@ -43,8 +41,7 @@ if {[ad_parameter community_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-set admin_p [dotlrn::admin_p]
-set admin_url [dotlrn::get_url]/admin
+# set admin_p [dotlrn::admin_p]
 
 # Permission dotLRN
 if {![dotlrn::user_can_browse_p]} {
@@ -76,6 +73,6 @@ if {[empty_string_p $portal_id]} {
     ad_script_abort
 }
 
-set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p "t" $portal_id ]
+set rendered_page [dotlrn::render_page -user_id $user_id -page_num $page_num -hide_links_p "t" $portal_id ]
 
 ad_return_template
