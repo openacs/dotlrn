@@ -72,3 +72,5 @@
 
 </form>
 </p>
+
+[<a href=community-edit-revert.tcl><strong>Revert all properties to defaults</strong></a>

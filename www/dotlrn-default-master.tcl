@@ -158,7 +158,6 @@ if {$have_comm_id_p} {
 } else {
     # we could be anywhere (maybe under /dotlrn, maybe not)
     set link "[dotlrn::get_url]/"
-    set link_all 0
     set community_id ""
     set text ""
     

@@ -40,16 +40,6 @@ set admin_p [dotlrn::user_can_admin_community_p \
         $community_id
 ]
 
-# are we in a subcomm? if so, we need to set up the text and navbar 
-set pretext ""
-set parent_id [dotlrn_community::get_parent_id \
-        -community_id $community_id]
-
-if {![empty_string_p $parent_id]} {
-    set parent_name [dotlrn_community::get_community_name $parent_id]
-    set pretext "<a href=..>$parent_name</a> : "
-} 
-
 # Check that this user is a member
 if {![dotlrn_community::member_p $community_id $user_id] && !$admin_p} {
     set context_bar [list "Not a member"]

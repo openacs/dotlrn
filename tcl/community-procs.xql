@@ -553,4 +553,19 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::set_attribute.delete_attribute_value">
+        <querytext>
+            delete from acs_attribute_values
+            where attribute_id = :attribute_id
+            and object_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_attribute.delete_attributes">
+        <querytext>
+            delete from acs_attribute_values
+            where object_id = :community_id
+        </querytext>
+    </fullquery>
+
 </queryset>

@@ -1945,6 +1945,48 @@ namespace eval dotlrn_community {
         util_memoize_flush "dotlrn_community::get_attributes_not_cached -community_id $community_id"
     }
 
+    ad_proc -public unset_attribute {
+        {-community_id ""}
+        {-attribute_name:required}
+    } {
+        ussets an attribute of this community
+    } {
+        # this is serious, we are trying to unset an attribute that doesn't
+        # exist
+        set attribute_id [get_attribute_id -attribute_name $attribute_name]
+        if {[empty_string_p $attribute_id]} {
+            error "dotlrn_community::set_attribute: invalid attribute $attribute_name"
+        }
+
+        # we don't accept empty values (essentially, we are making the
+        # acs_attribute_values.attr_value not null, which it is not in the db).
+        if {[empty_string_p $attribute_value]} {
+            return
+        }
+
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        # remove the row
+        db_dml delete_attribute_value {}
+
+        util_memoize_flush \
+            "dotlrn_community::get_attributes_not_cached -community_id $community_id"
+    }
+
+    ad_proc -public unset_attributes {
+        {-community_id ""}
+        {-attribute_name:required}
+    } {
+        ussets all the attributes of this community
+    } {
+        db_dml delete_attributes {}
+
+        util_memoize_flush \
+            "dotlrn_community::get_attributes_not_cached -community_id $community_id"
+    }
+
     ad_proc -public get_attribute_id {
         {-attribute_name:required}
     } {
