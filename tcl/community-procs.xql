@@ -50,10 +50,10 @@
 
     <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check">
         <querytext>
-            select 1
-            from dotlrn_communities
+            select count(*)
+            from dotlrn_communities_all
             where :parent_community_id in (select dc.parent_community_id
-                                           from dotlrn_communities dc
+                                           from dotlrn_communities_all dc
                                            where dc.community_key = :community_key)
         </querytext>
     </fullquery>
@@ -392,13 +392,13 @@
 
     <fullquery name="dotlrn_community::archive.update_archive_p">
       <querytext>
-        update dotlrn_communities set archive_p = 't' where community_id = :community_id
+        update dotlrn_communities set archived_p = 't' where community_id = :community_id
       </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::unarchive.update_archive_p">
       <querytext>
-        update dotlrn_communities set archive_p = 'f' where community_id = :community_id
+        update dotlrn_communities set archived_p = 'f' where community_id = :community_id
       </querytext>
     </fullquery>
 

@@ -228,8 +228,9 @@ namespace eval dotlrn_community {
                 -community_key $community_key \
                 -parent_community_id $parent_community_id]} {
             ad_return_complaint \
-                    1 "The name <strong>$pretty_name</strong> is already in use. \n
-                       Please select a different name."
+                    1 "The name <strong>$pretty_name</strong> is already in use either by 
+                       an active or archived group. \n Please select a different name."
+            ad_script_abort
         }
 
         # Add core vars
@@ -1012,7 +1013,7 @@ namespace eval dotlrn_community {
         community by checking that it's not the same as an existing (possible)
         sibling's name.
     } {
-        if {[db_0or1row collision_check {}]} {
+        if {[db_string collision_check {}] > 0} {
             # got a collision
             return 0
         } else {
@@ -1418,19 +1419,14 @@ namespace eval dotlrn_community {
 
     } {
         db_transaction {
-            # do RemovePortlet callback, we send comm_id, and user_id
+            # do RemoveUserFromCommunity callback, which 
+            # calls the RemovePortlet proc with the right params
             foreach user [list_users $community_id] { 
                 set user_id [ns_set get $user user_id]
-                set portal_id [dotlrn::get_workspace_portal_id $user_id]
-                set list_args [list $portal_id [list \
-                                                    "user_id" $user_id \
-                                                    "community_id" $community_id]
-               ]
-
                 applets_dispatch \
                     -community_id $community_id \
-                    -op RemovePortlet \
-                    -list_args $list_args
+                    -op RemoveUserFromCommunity \
+                    -list_args [list $community_id $user_id]
             }
 
             # revoke privs
