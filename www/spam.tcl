@@ -90,7 +90,7 @@ element create spam_message referer \
     -widget hidden \
     -value $referer
 
-if {[form is_valid spam_message]} {
+if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
         community_id from rel_type subject message send_date referer
 
@@ -145,6 +145,14 @@ if {[form is_valid spam_message]} {
 
     ad_returnredirect $referer
     ad_script_abort
+}
+
+if {[form is_valid spam_message]} {
+
+    set confirm_data [form export]
+    append confirm_data {<input type="hidden" name="form:confirm" value="confirm">}
+    template::set_file "[file dir $__adp_stub]/spam-2"
+
 }
 
 ad_return_template
