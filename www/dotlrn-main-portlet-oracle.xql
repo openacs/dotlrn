@@ -12,6 +12,7 @@
                                              'dotlrn_club', 'dotlrn_club',
                                              'dotlrn_class_instance') as simple_community_type
             from (select level,
+                         rownum as my_rownum,
                          dotlrn_communities.community_id,
                          dotlrn_communities.parent_community_id,
                          dotlrn_communities.community_type,
@@ -21,9 +22,10 @@
                   start with dotlrn_communities.parent_community_id is null
                   order by decode(dotlrn_communities.community_type, 'dotlrn_community', 2, 'dotlrn_club', 1, 0),
                            dotlrn_communities.pretty_name) dc,
-                 dotlrn_member_rels_approved dmra
-            where dc.community_id = dmra.community_id
-            and dmra.user_id = :user_id
+                 dotlrn_member_rels_approved
+            where dc.community_id = dotlrn_member_rels_approved.community_id
+            and dotlrn_member_rels_approved.user_id = :user_id
+            order by dc.my_rownum
         </querytext>
     </fullquery>
 
