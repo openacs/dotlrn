@@ -244,8 +244,7 @@ namespace eval dotlrn_community {
         db_transaction {
 
             # Insert the community
-            set community_id [package_instantiate_object \
-                    -extra_vars $extra_vars $object_type]
+            set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
 
             # based on the community_type:
             # 1. get the page_names and layouts
@@ -261,8 +260,7 @@ namespace eval dotlrn_community {
                 set default_applets [list]
              } else {
                 set csv_list [dotlrn::parameter class_instance_pages_csv]
-                set default_applets\
-                        [dotlrn::parameter default_class_instance_applets]
+                set default_applets [dotlrn::parameter default_class_instance_applets]
             }
 
             set non_member_page_name [dotlrn::parameter non_member_page_name]
