@@ -43,10 +43,10 @@ membership in the group requires approval, the link will read "Request."
 <b>Q: What if a class or community is not listed on the Join/Add a Class or Community 
 Group page?</b> <br>
 A: There would be two reasons for this. One, the group has a closed enrollment 
-so you cannot join it. Two, the group does not have a site in SloanSpace. To find 
+so you cannot join it. Two, the group does not have a site in <%=[ad_system_name]%>. To find 
 out which of these is true or to be added to a closed group, contact the Faculty 
 member, TA or program office about getting added or getting the class or community 
-in SloanSpace. 
+in <%=[ad_system_name]%>. 
 <p>
 <b>Q: How do I drop a class or community?</b> <br>
 A: There are two ways to drop any group: 1) From the MySpace page, Groups portlet, 
@@ -60,7 +60,7 @@ to have them add you back in as a member.
 <p>
 <b>Q: How do I keep from receiving emails from forums?</b> <br>
 A: You have control over whether and how you receive emails from forums and surveys. 
-Login to SloanSpace, go to the Control Panel page (or click on the Help icon). 
+Login to <%=[ad_system_name]%>, go to the Control Panel page (or click on the Help icon). 
 Then, click on "Edit My Notifications" and cancel or modify alerts 
 individually. 
 <p>
