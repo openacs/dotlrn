@@ -308,8 +308,8 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="Class" description="used to display everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="Classes" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Club" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Clubs" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1" name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1" name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_wsp_page_names"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
