@@ -932,7 +932,7 @@ namespace eval dotlrn_community {
         we're at, or the package_id passed in
     } {
         if {[empty_string_p $package_id]} {
-            set package_id [site_node_closest_ancestor_package dotlrn]
+            set package_id [site_node_closest_ancestor_package -default [ad_conn package_id] dotlrn]
         }
 
         return [util_memoize "dotlrn_community::get_community_id_not_cached -package_id $package_id"]
