@@ -71,3 +71,53 @@ begin
 end;
 /
 show errors
+
+
+--
+-- Object Types and Attributes
+--
+
+declare
+    foo        integer;
+begin
+    acs_rel_type.create_type (
+        rel_type => 'dotlrn_member_rel',
+        supertype => 'membership_rel',
+        pretty_name => 'dotLRN Community Membership',
+        pretty_plural => 'dotLRN Community Memberships',
+        package_name => 'dotlrn_member_rel',
+        table_name => 'dotlrn_member_rels',        
+        id_column => 'rel_id',
+        object_type_one => 'dotlrn_community', role_one => null, 
+        min_n_rels_one => 0, max_n_rels_one => null,
+        object_type_two => 'user', role_two => 'member',
+        min_n_rels_two => 0, max_n_rels_two => null
+    );
+
+    acs_rel_type.create_type (
+        rel_type => 'dotlrn_admin_rel',
+        supertype => 'dotlrn_member_rel',
+        pretty_name => 'dotLRN Admin Community Membership',
+        pretty_plural => 'dotLRN Admin Community Memberships',
+        package_name => 'dotlrn_admin_rel',
+        table_name => 'dotlrn_admin_rels',        
+        id_column => 'rel_id',
+        object_type_one => 'dotlrn_community', role_one => null, 
+        min_n_rels_one => 0, max_n_rels_one => null,
+        object_type_two => 'user', role_two => 'admin',
+        min_n_rels_two => 0, max_n_rels_two => null
+    );
+
+    --
+    -- and now for the attributes
+    --
+    foo:= acs_attribute.create_attribute (
+        object_type => 'dotlrn_member_rel',
+        attribute_name => 'portal_id',
+        datatype => 'integer',
+        pretty_name => 'Page ID',
+        pretty_plural => 'Page IDs'
+    );
+end;
+/
+show errors

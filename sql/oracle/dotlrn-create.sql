@@ -27,12 +27,13 @@
 
 @dotlrn-users-create.sql
 @dotlrn-communities-create.sql
-@dotlrn-clubs-create.sql
-@dotlrn-classes-create.sql
-@dotlrn-applet-sc-create.sql
-@dotlrn-init.sql
 @dotlrn-community-memberships-create.sql
 @dotlrn-communities-package-create.sql
+@dotlrn-init.sql
+@dotlrn-clubs-create.sql
+@dotlrn-classes-create.sql
+@dotlrn-classes-memberships-create.sql
+@dotlrn-applet-sc-create.sql
 @dotlrn-community-memberships-packages-create.sql
 @dotlrn-main-portlet-create.sql
 @dotlrn-security-create.sql
