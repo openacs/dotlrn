@@ -110,10 +110,11 @@ namespace eval dotlrn {
         db_transaction {
             set_can_browse -user_id $user_id -can_browse\=$can_browse_p
 
-	    set portal_id [portal::create \          
-	         -template_id $template_id \     
-                 -name "[_ dotlrn.lt_Your_dotLRN_Workspace]" \   
-                 $user_id] 
+	    set portal_id [portal::create \
+		    -template_id $template_id \
+		    -name "[_ dotlrn.lt_Your_dotLRN_Workspace]" \
+		    $user_id] 
+
 
 	    ns_set put $extra_vars portal_id $portal_id
 
