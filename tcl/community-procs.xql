@@ -415,6 +415,23 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::clone.delete_default_acs_attribute_values">
+        <querytext>
+            delete
+            from acs_attribute_values
+            where object_id = :clone_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::clone.copy_customizations_if_any">
+        <querytext>
+            insert into acs_attribute_values
+            (object_id,attribute_id,attr_value)
+            select :clone_id, attribute_id, attr_value
+            from acs_attribute_values where object_id = :community_id
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::archive.update_archive_p">
       <querytext>
         update dotlrn_communities_all set archived_p = 't' where community_id = :community_id

@@ -1736,6 +1736,11 @@ namespace eval dotlrn_community {
                         -start_date [dotlrn_term::get_start_date -term_id $term_id] \
                         -end_date [dotlrn_term::get_end_date -term_id $term_id]
                 }
+
+                # Copy community attribute values from original.
+                # See "YON MAJOR HACK" above. -AG
+                db_dml delete_default_acs_attribute_values {}
+                db_dml copy_customizations_if_any {}
             }
 
             # recursively clone the subcommunities
