@@ -686,6 +686,14 @@ namespace eval dotlrn_community {
         }
     }
 
+    ad_proc -public has_subcommunity_p {
+        {-community_id:required}
+    } {
+        Returns 1 if the community has a subcommunity
+    } {
+        return [db_0or1row select_subcomm_check {}]
+    }
+
     ad_proc -public get_subcomm_list {
         {-community_id:required}
     } {
@@ -703,18 +711,28 @@ namespace eval dotlrn_community {
 
     ad_proc -public get_subcomm_chunk {
         {-community_id:required}
+        {-pretext "<li>"}
     } {
-        Returns a html fragment of the subcommunities of this community or 
-        if none, the empty list
+        Returns a html fragment of the subcommunity hierarchy of this
+        community or if none, the empty list
     } {
-        set subcomm_chunk "<ul>"
-        
+        set subcomm_chunk ""
 
         foreach subcomm_id [get_subcomm_list -community_id $community_id] {
-            append subcomm_chunk "<li><a href=[get_community_url $subcomm_id]>[get_community_name $subcomm_id]</a></li>"
+            if {[has_subcommunity_p -community_id $subcomm_id]} {
+                append subcomm_chunk \
+                        "$pretext <a href=[get_community_url $subcomm_id]>" \
+                        "[get_community_name $subcomm_id]</a>\n" \
+                        "<ul>\n" \
+                        [get_subcomm_chunk -community_id $subcomm_id] \
+                        "</ul>\n"
+            } else {
+                append subcomm_chunk \
+                        "$pretext <a href=[get_community_url $subcomm_id]>" \
+                        "[get_community_name $subcomm_id]</a>\n" 
+            }
         } 
-
-        return [append subcomm_chunk "</ul>"]
+        return $subcomm_chunk
     }
 
     ad_proc -public get_community_type_url {
