@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -497,6 +497,7 @@ Thank you
   <msg key="Reject">Reject</msg>
   <msg key="reject">reject</msg>
   <msg key="Reject_all">Reject all</msg>
+  <msg key="Remove_all">Remove all</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
   <msg key="required">Required field</msg>
