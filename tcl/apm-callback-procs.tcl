@@ -24,11 +24,13 @@ ad_proc -private dotlrn::apm::after_install {
     db_transaction {
         set group_id [group::new -group_name "dotlrn-admin" ] 
     }
-       # Admin privs
-       #  permission::grant \
-       #      -party_id $group_id \
-       #     -object_id [dotlrn::get_package_id]  \
-       #      -privilege "admin"
+
+    #gran new-portal admin permission
+    permission::grant \
+	    -party_id $group_id \
+	    -object_id [apm_package_id_from_key new-portal] \
+	    -privilege "admin"
+
 }
 
 
@@ -108,6 +110,14 @@ ad_proc -public dotlrn::apm::after_upgrade {
                              -privilege "admin"
 
                         ns_log notice "dotlrn upgrade: dotlrn-portlet permission granted..."
+
+                        #gran new-portal admin permission
+			permission::grant \
+			    -party_id $dotlrn_admins_group \
+			    -object_id [apm_package_id_from_key new-portal] \
+			    -privilege "admin"
+
+			ns_log notice "dotlrn upgrade: new-portal permission granted..."
 
 		    }
 
