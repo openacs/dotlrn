@@ -31,7 +31,6 @@ create table dotlrn_community_types (
                                 primary key,
     supertype                   constraint dotlrn_ct_supertype_fk
                                 references dotlrn_community_types (community_type),
-    constraint dotlrn_ct_type_supertype_un unique (community_type, supertype),
     pretty_name                 varchar2(100)
                                 constraint dotlrn_ct_pretty_name_nn
                                 not null,
