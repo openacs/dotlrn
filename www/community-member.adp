@@ -46,7 +46,7 @@ A member of the @system_name@ community since @pretty_creation_date@
   </if>
   <if @inline_portrait_state@ eq "link">
   
-      <li><a href="/user/portrait?@portrait_export_vars@">Portrait</a></li>
+      <li><a href="/shared/portrait?@portrait_export_vars@">Portrait</a></li>
   
   </if>
 </if>
