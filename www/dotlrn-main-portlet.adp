@@ -69,13 +69,13 @@
         <nobr>
           <a href="@communities.url@">@communities.pretty_name@</a>
 	<if @show_buttons_p@ eq 1>
-		&nbsp [<small> 
-                        <a href="@communities.url@deregister?referer=@referer@">#dotlrn.Drop_Membership#</a>
-                      </small>]
+		&nbsp <small> 
+                        <a href="@communities.url@deregister?referer=@referer@">#dotlrn.drop_membership_link#</a>
+                      </small>
 		<if @communities.admin_p@ eq 1>
-                  &nbsp; [<small>
-                           <a href="@communities.url@one-community-admin">#dotlrn.Administer#</a>
-                         </small>]
+                  &nbsp; <small>
+                           <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a>
+                         </small>
 		</if>
 	</if>
         </nobr>

@@ -28,7 +28,7 @@
     <td>
       <small>
 <if @communities.admin_p@ eq 1>
-  <a href="@communities.url@one-community-admin"><img border=0 valign="bottom" src="graphics/admin.gif" alt="#dotlrn.Administer#"></a> </td>
+   <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a> </td>
 </if>
 <td>        <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@"></td>
       </small>

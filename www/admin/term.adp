@@ -106,9 +106,9 @@
       <td align="center">@classes.n_members@</td>
       <td align="center">
         <nobr>
-          <small>[
-            <a href="@classes.url@one-community-admin">#dotlrn.Administer#</a>
-          ]</small>
+          <small>
+            <a href="@classes.url@one-community-admin">#dotlrn.administer_link#</a>
+          </small>
         </nobr>
       </td>
     </tr>

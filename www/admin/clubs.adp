@@ -63,7 +63,7 @@
       <td align="center">
         <nobr>
           <small>
-            [ <a href="@clubs.url@one-community-admin">#dotlrn.Administer#</a> ]
+             <a href="@clubs.url@one-community-admin">#dotlrn.administer_link#</a> 
           </small>
         </nobr>
       </td>

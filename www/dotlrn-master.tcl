@@ -540,6 +540,9 @@ TD.center {
     ALIGN: center;
 }
 
+.new_flag {
+    color: #CD0000;
+}
 
 </STYLE>
 

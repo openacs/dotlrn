@@ -1218,10 +1218,6 @@ namespace eval dotlrn_community {
 		    append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>\n"
 		    
 		}
-		#Removing admin to improve performance.
-#                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
-#                    append chunk " <a href=\"${url}one-community-admin\"><img border=0 valign=\"bottom\" src=\"graphics/admin.gif\" alt=\"Administer\"></a>\n"
-#                }
             }
         }
 
