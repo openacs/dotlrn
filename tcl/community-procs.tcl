@@ -118,7 +118,16 @@ namespace eval dotlrn_community {
         return [db_string select_node_id {}]
     }
 
+    ad_proc -public get_community_node_id {
+        community_id
+    } {
+        get the node ID of a community
+    } {
+        return [db_string select_node_id {}]
+    }
+
     ad_proc -public new {
+        {-parent_community_id ""}
         {-description ""}
         {-community_type:required}
         {-object_type "dotlrn_community"}
@@ -145,6 +154,11 @@ namespace eval dotlrn_community {
             # Insert the community
             set community_id [package_instantiate_object \
                     -extra_vars $extra_vars $object_type]
+
+            # Update parent community ID if necessary
+            if {![empty_string_p $parent_community_id]} {
+                db_dml update_parent_community_id {}
+            }
 
             set user_id [ad_conn user_id]
 
@@ -182,7 +196,11 @@ namespace eval dotlrn_community {
             dotlrn_community::create_rel_segments -community_id $community_id
 
             # Set up the node
-            set parent_node_id [get_type_node_id $community_type]
+            if {[empty_string_p $parent_community_id]} {
+                set parent_node_id [get_type_node_id $community_type]
+            } else {
+                set parent_node_id [get_community_node_id $parent_community_id]
+            }
 
             # Create the node
             set new_node_id [site_node_create $parent_node_id $community_key]

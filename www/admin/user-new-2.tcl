@@ -56,7 +56,9 @@ if {[form is_valid add_user]} {
     }
 
     ad_returnredirect $referer
-    ad_script_abort
+    # I don't think a script abort is the right thing (ben)
+    # ad_script_abort
+    return
 }
 
 db_1row select_user_info {

@@ -31,6 +31,8 @@ create table dotlrn_communities (
                                 references groups (group_id)
                                 constraint dotlrn_communities_pk
                                 primary key,
+    parent_community_id         constraint dotlrn_c_parent_comm_id_fk
+                                references dotlrn_communities(community_id),
     community_type              not null
                                 constraint dotlrn_c_community_type_fk
                                 references dotlrn_community_types (community_type),
