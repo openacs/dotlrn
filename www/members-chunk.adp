@@ -10,7 +10,7 @@
 </multiple>
   <p></p>
   <li>
-    <form method="get" action="community-user-add">
+    <form method="get" action="member-add">
       add a user: <input type="text" name="search_text"><input type="submit" value="search">
     </form>
   </li>

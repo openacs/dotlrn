@@ -1,0 +1,20 @@
+# dotlrn/www/my-communities.tcl
+
+ad_page_contract {
+    @author yon (yon@milliped.com)
+    @creation-date Dec 07, 2001
+    @version $Id$
+} -query {
+} -properties {
+    communities:multirow
+}
+
+set user_id [ad_maybe_redirect_for_registration]
+
+if {![info exists referer]} {
+    set referer "my-communities"
+}
+
+db_multirow communities select_my_communities {}
+
+ad_return_template

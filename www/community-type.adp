@@ -17,7 +17,7 @@
 <p></p>
 
 <blockquote>
-  <include src="communities">
+  <include src="communities-chunk">
 </blockquote>
 
 <p></p>

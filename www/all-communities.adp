@@ -5,5 +5,5 @@
 <p></p>
 
 <blockquote>
-  <include src="communities" title=" " referer="all-communities">
+  <include src="communities-chunk" title=" " referer="all-communities">
 </blockquote>

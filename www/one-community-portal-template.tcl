@@ -4,11 +4,12 @@ ad_page_contract {
 
     @author Arjun Sanyal (arjun@openforce.net)
     @version $Id$
-} {
-    portal_id:naturalnum,notnull
-    return_url:notnull
+} -query {
+    {referer "one-community-admin"}
 }
 
-set rendered_page [portal::template_configure $portal_id $return_url]
+set portal_id [dotlrn_community::get_portal_template_id]
+
+set rendered_page [portal::template_configure $portal_id $referer]
 
 ad_return_template

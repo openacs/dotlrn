@@ -259,6 +259,11 @@ is
         party_id in parties.party_id%TYPE
     ) return char;
 
+    function admin_p (
+        community_id in dotlrn_communities.community_id%TYPE,
+        party_id in parties.party_id%TYPE
+    ) return char;
+
     function url (
         community_id in dotlrn_communities.community_id%TYPE
     ) return varchar2;
@@ -347,6 +352,24 @@ as
     begin
         -- TODO: a-la aD, implement this for real (bma)
         return 't';
+    end;
+
+    function admin_p (
+        community_id in dotlrn_communities.community_id%TYPE,
+        party_id in parties.party_id%TYPE
+    ) return char
+    is
+        v_rv char(1);
+    begin
+        select decode(
+                   acs_permission.permission_p(community_id, party_id, 'dotlrn_admin_community'),
+                   'f',
+                   acs_permission.permission_p(community_id, party_id, 'admin'),
+                   't'
+               ) into v_rv
+        from dual;
+
+        return v_rv;
     end;
 
     function url (

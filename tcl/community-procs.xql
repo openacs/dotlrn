@@ -53,6 +53,18 @@ update dotlrn_communities set portal_template_id = :portal_template_id, portal_i
     </querytext>
   </fullquery>
 
+  <fullquery name="dotlrn_community::get_role_pretty_name_from_rel_id.select_role_pretty_name">
+    <querytext>
+      select pretty_name
+      from acs_rel_roles
+      where role = (select acs_rel_types.role_two
+                    from acs_rel_types,
+                         acs_rels
+                    where acs_rel_types.rel_type = acs_rels.rel_type
+                    and acs_rels.rel_id = :rel_id)
+    </querytext>
+  </fullquery>
+
 <fullquery name="dotlrn_community::get_rel_segment_id.select_rel_segment_id">
 <querytext>
 select segment_id from rel_segments where group_id= :community_id and rel_type= :rel_type

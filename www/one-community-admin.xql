@@ -5,8 +5,7 @@
     <querytext>
       select community_type,
              pretty_name,
-             description,
-             portal_template_id
+             description
       from dotlrn_communities
       where community_id = :community_id
     </querytext>

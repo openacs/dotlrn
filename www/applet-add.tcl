@@ -7,7 +7,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     applet_key
-    {referer "one-community-admin"}
+    {referer "applets"}
 }
 
 set community_id [dotlrn_community::get_community_id]

@@ -288,14 +288,14 @@ namespace eval dotlrn_community {
     } {
         Returns a pretty version of the rel_type
     } {
-        set pretty_name [db_string select_pretty_name "select pretty_name from acs_object_types where object_type=:rel_type"]
+        set pretty_name [db_string select_pretty_name "select pretty_name from acs_object_types where object_type = :rel_type"]
         return $pretty_name
     }
 
     ad_proc -public get_role_pretty_name {
         {-role:required}
     } {
-        Returns teh pretty version of the role
+        Returns the pretty version of the role
     } {
         return [db_string select_role_pretty_name {} -default ""]
     }
@@ -303,7 +303,15 @@ namespace eval dotlrn_community {
     ad_proc -public get_role_pretty_name_from_rel_type {
         {-rel_type:required}
     } {
-        Returns teh pretty version of the role
+        Returns the pretty version of the role
+    } {
+        return [db_string select_role_pretty_name {} -default ""]
+    }
+
+    ad_proc -public get_role_pretty_name_from_rel_id {
+        {-rel_id:required}
+    } {
+        Returns the pretty version of the role
     } {
         return [db_string select_role_pretty_name {} -default ""]
     }
@@ -624,10 +632,14 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_portal_template_id {
-        community_id
+        {community_id ""}
     } {
         get the id of the portal template for a community
     } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
         return [db_string select_portal_template_id {} -default ""]
     }
 

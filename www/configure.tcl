@@ -4,8 +4,10 @@ ad_page_contract {
     
     @author Ben Adida (ben@openforce.net)
     @author Arjun Sanyal (arjun@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-10-24
-} {
+    @version $Id$
+} -query {
 }
 
 # Check if this is a community type level thing
@@ -16,7 +18,6 @@ if {[ad_parameter community_type_level_p] == 1} {
 
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
-
 
 if {[ad_parameter community_level_p] == 1} {
     # This is a community
@@ -43,9 +44,8 @@ if {[ad_parameter community_level_p] == 1} {
     
     # If there is no portal_id, this user is either a guest or something else
     if {[empty_string_p $portal_id]} {
-
 	# do something
-	ad_returnredirect "/."
+	ad_returnredirect "./"
     } else {
 	set rendered_page [portal::configure $portal_id "index"]
 	set name [portal::get_name $portal_id]
@@ -53,6 +53,3 @@ if {[ad_parameter community_level_p] == 1} {
 }
     
 ad_return_template
-
-
-

@@ -3,7 +3,7 @@
 
 You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
 
-<form method="get" action="community-user-add-3">
+<form method="get" action="member-add-3">
   <input type="hidden" name="user_id" value="@user_id@">
   Role: 
   <select name="rel_type">
