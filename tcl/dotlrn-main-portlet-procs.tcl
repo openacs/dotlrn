@@ -78,8 +78,7 @@ namespace eval dotlrn_main_portlet {
 
         if {[dotlrn::user_can_browse_p $user_id]} {
             append return_html "<tr><td><p></p></td></tr>\n"
-            append return_html "<tr><td><a href=\"classes\"><small>\[Subscribe to a new class\]</small></a>&nbsp;"
-            append return_html "<a href=\"clubs\"><small>\[Subscribe to a new club\]</small></a></td></tr>\n"
+            append return_html "<tr><td><small><a href=\"all-communities\">\[Subscribe to a new community\]</a></small></td></tr>\n"
         }
 
         append return_html "</table>"

@@ -6,8 +6,8 @@ ad_page_contract {
     @creation-date 2001-10-06
     @version $Id$
 } -query {
-    {referer "./"}
     {community_id ""}
+    {referer "./"}
 }
 
 ad_maybe_redirect_for_registration

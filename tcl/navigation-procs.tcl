@@ -65,6 +65,7 @@ namespace eval dotlrn {
             lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [ad_parameter classes_pretty_plural]]
         } elseif {[string equal ${community_type} "dotlrn_club"] != 0} {
             lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [ad_parameter clubs_pretty_plural]]
+        } elseif {[string equal ${community_type} "dotlrn_community"] != 0} {
         } else {
             lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [dotlrn_community::get_community_type_name $community_type]]
         }

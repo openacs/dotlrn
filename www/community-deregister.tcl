@@ -6,9 +6,9 @@ ad_page_contract {
     @creation-date 2001-10-06
     @version $Id$
 } -query {
-    {referer "./"}
     {user_id ""}
     {community_id ""}
+    {referer "./"}
 }
 
 ad_maybe_redirect_for_registration
@@ -25,4 +25,4 @@ if {[empty_string_p $user_id]} {
 
 dotlrn_community::remove_user $community_id $user_id
 
-ns_returnredirect $referer
+ad_returnredirect $referer
