@@ -76,4 +76,6 @@ if {[form is_valid add_user]} {
     ad_script_abort
 }
 
+set portal_id ""
+
 ad_return_template
