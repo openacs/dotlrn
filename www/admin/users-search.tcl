@@ -44,7 +44,7 @@ element create user_search_results selected_users \
     -datatype text \
     -widget checkbox
 
-element create user_search_results action \
+element create user_search_results search_action \
     -label "[_ dotlrn.Action]" \
     -datatype text \
     -widget radio \
@@ -58,11 +58,11 @@ element create user_search_results action \
     -value $action
 
 if {[form is_valid user_search_results]} {
-    form get_values user_search_results action
+    form get_values user_search_results search_action
 
     set selected_users [element get_values user_search_results selected_users]
 
-    switch -exact $action {
+    switch -exact $search_action {
         "spam" {
             ad_returnredirect "users-spam?[export_vars {{users $selected_users}}]"
         }
