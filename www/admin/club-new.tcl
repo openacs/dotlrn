@@ -29,7 +29,7 @@ element create add_club pretty_name \
     -html {size 60}
 
 element create add_club description \
-    -label "Charter" \
+    -label "Description" \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft}
