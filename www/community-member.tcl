@@ -45,6 +45,8 @@ ad_page_contract {
     user_contributions:multirow
 }
 
+auth::require_login
+
 set verified_user_id [ad_verify_and_get_user_id]
 
 set user_info_sql {
