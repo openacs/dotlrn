@@ -35,8 +35,8 @@ set community_id [dotlrn_community::get_community_id]
 set referer [ns_conn url]
 
 set site_wide_admin_p [ad_permission_p \
-	-user_id $my_user_id \
-	[acs_magic_object "security_context_root"] "admin"
+    -user_id $my_user_id \
+    [acs_magic_object "security_context_root"] "admin"
 ]
 
 if {!$site_wide_admin_p} {
@@ -60,38 +60,38 @@ set community_members [dotlrn_community::list_users $community_id]
 
 set table_def [list]
 lappend table_def [list \
-	first_names \
-	"First Names" \
-	{upper(first_names) $order} \
-	{<td>[acs_community_member_link -user_id $user_id -label $first_names</td>]}
+    first_names \
+    "First Names" \
+    {upper(first_names) $order} \
+    {<td>[acs_community_member_link -user_id $user_id -label $first_names</td>]}
 ]
 lappend table_def [list \
-	last_name \
-	"Last Name" \
-	{upper(last_name) $order} \
-	{<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]}
+    last_name \
+    "Last Name" \
+    {upper(last_name) $order} \
+    {<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]}
 ]
 
 if {$read_private_data_p || [string equal $my_user_id $user_id]} {
     lappend table_def [list \
-	    email \
-	    "Email" \
-	    {upper(email) $order, upper(role)} \
-	    {<td><a href="mailto:$email">$email</a></td>}
-]
+        email \
+        "Email" \
+        {upper(email) $order, upper(role)} \
+        {<td><a href="mailto:$email">$email</a></td>}
+    ]
 } else {
     lappend table_def [list \
-	    email \
-	    "Email" \
-	    {upper(email) $order, upper(role)} \
-	    {<td>&nbsp;</td>}
-]
+        email \
+        "Email" \
+        {upper(email) $order, upper(role)} \
+        {<td>&nbsp;</td>}
+    ]
 }
 
 lappend table_def [list \
-	role \
-	"Role" \
-	{decode(role, 'Professor', 1, 
+    role \
+    "Role" \
+    {decode(role, 'Professor', 1, 
                       'Administrator', 2, 
                       'Teaching Assistant', 3, 
                       'Course Assistant', 4, 
@@ -103,53 +103,57 @@ lappend table_def [list \
 
 if {$site_wide_admin_p} {
     lappend table_def [list \
-	    manage \
-	    "Action" \
-	    {} \
-	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>&nbsp;| <a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a>\]</td>}]
+        manage \
+        "Action" \
+        {} \
+        {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>&nbsp;| <a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a>\]</td>} \
+    ]
 } elseif {$admin_p} {
     lappend table_def [list \
-	    manage \
-	    "Action" \
-	    {} \
-	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]}
-]
+        manage \
+        "Action" \
+        {} \
+        {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]} \
+    ]
 } else {
     lappend table_def [list \
-	    manage \
-	    "Action" \
-	    {} \
-	    {[eval {if {$my_user_id == $user_id} {
-	                return "<td>\[<a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a>\]</td>"
-                    } else {
-	                return "<td>&nbsp;</td>"
-                    }
-                   }
-	     ]
-            }
-]
+        manage \
+        "Action" \
+        {} \
+        {
+            [eval {
+                if {$my_user_id == $user_id} {
+                    return "<td>\[<a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a>\]</td>"
+                } else {
+                    return "<td>&nbsp;</td>"
+                }
+            }]
+        }
+    ]
 }
 
 set sql "
-select dotlrn_member_rels_approved.rel_id,
-       dotlrn_member_rels_approved.rel_type,
-       dotlrn_member_rels_approved.role,
-       dotlrn_member_rels_approved.user_id,
-       registered_users.first_names,
-       registered_users.last_name,
-       registered_users.email
-from registered_users,
-     dotlrn_member_rels_approved
-where dotlrn_member_rels_approved.community_id = :community_id
-and dotlrn_member_rels_approved.user_id = registered_users.user_id
-[ad_order_by_from_sort_spec $orderby $table_def]"
+    select dotlrn_member_rels_approved.rel_id,
+           dotlrn_member_rels_approved.rel_type,
+           dotlrn_member_rels_approved.role,
+           dotlrn_member_rels_approved.user_id,
+           registered_users.first_names,
+           registered_users.last_name,
+           registered_users.email
+    from registered_users,
+         dotlrn_member_rels_approved
+    where dotlrn_member_rels_approved.community_id = :community_id
+    and dotlrn_member_rels_approved.user_id = registered_users.user_id
+    [ad_order_by_from_sort_spec $orderby $table_def]
+"
 
 set table [ad_table \
-	-Textra_vars {referer my_user_id} \
-	-Torderby $orderby \
-	make_table \
-	$sql \
-	$table_def
+    -Tmissing_text {<blockquote><i>No members</i></blockquote>} \
+    -Textra_vars {referer my_user_id} \
+    -Torderby $orderby \
+    select_current_members \
+    $sql \
+    $table_def
 ]
 
 set user_list [list]
