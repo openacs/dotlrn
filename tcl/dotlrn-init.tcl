@@ -18,10 +18,16 @@ ad_library {
 }
 
 # We go through all Applets and make sure they are added.
-# NOTE FROM BEN TO ARJUN: Add code here
-#
-#
 
+# The applet_add proc in the dotlrn_applet contract is for one-time
+# init of each applet NOTE: this applet_add proc _must_ be able to be
+# called repeatedly since this script is eval'd at every server startup
+# - aks
+
+foreach applet [dotlrn_community::list_applets] {
+    # Callback on all applets
+    dotlrn_community::applet_call $applet "AppletAdd" [list]
+}
 
 # We check to see if dotLRN has been installed, and if so, if permissions
 # have been granted
