@@ -32,7 +32,7 @@
     </tr>
     <tr>
       <td>#dotlrn.Message#</td>
-      <td>@preview_message@</td>
+      <td>@preview_message;noquote@ </td>
     </tr>
   </table>
 </if>
@@ -44,7 +44,7 @@
     </tr>
     <tr>
       <td>#dotlrn.Message#</td>
-      <td>        <%= [ad_text_to_html --  "$preview_message"] %></td>
+      <td><%=[ad_text_to_html -no_quote "$preview_message"]%></td>
     </tr>
   </table>
 </else>
@@ -53,3 +53,4 @@
  @confirm_data;noquote@
   <input type="submit" value="#dotlrn.Confirm#"></input>
 </form>
+
