@@ -30,6 +30,8 @@ ad_page_contract {
 
 set context_bar [list [_ dotlrn.Add_a_Professor]]
 
+# LARS 2003-10-21: We should probably limit this in some way, so you can't get 30000 hits.
+
 db_multirow users select_users {}
 
 ad_return_template

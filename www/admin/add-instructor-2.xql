@@ -8,9 +8,9 @@
                    first_names,
                    last_name,
                    email
-            from registered_users
-            where lower(last_name) like lower('%' || :search_text || '%')
-            or lower(email) like lower('%' || :search_text || '%')
+            from   registered_users
+            where  lower(last_name) like lower('%' || :search_text || '%')
+                   or lower(email) like lower('%' || :search_text || '%')
         </querytext>
     </fullquery>
 
