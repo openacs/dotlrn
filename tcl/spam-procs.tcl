@@ -72,38 +72,13 @@ namespace eval spam {
 
         # loop through all the recepients and send them the spam
         set errors ""
-        db_foreach select_recepient_info "
-            select parties.email,
-                   decode(acs_objects.object_type,
-                          'user',
-                          (select first_names
-                           from persons
-                           where person_id = parties.party_id),
-                          'group',
-                          (select group_name
-                           from groups
-                           where group_id = parties.party_id),
-                          'rel_segment',
-                          (select segment_name
-                           from rel_segments
-                           where segment_id = parties.party_id),
-                          '') as first_names,
-                   decode(acs_objects.object_type,
-                          'user',
-                          (select last_name
-                           from persons
-                           where person_id = parties.party_id),
-                          '') as last_name
-            from parties,
-                 acs_objects
-            where party_id in ([join $recepients ,])
-            and parties.party_id = acs_objects.object_id
-        " {
+        db_foreach select_recepient_info {} {
             # replace some values in the subject and the message
             set values [list]
-            lappend values [list {<email>} $email]
-            lappend values [list {<first_names>} $first_names]
-            lappend values [list {<last_name>} $last_name]
+            lappend values [list \{email\} $email]
+            lappend values [list \{first_names\} $first_names]
+            lappend values [list \{last_name\} $last_name]
+            lappend values [list \{from\} $from]
 
             set subject [interpolate -values $values -text $subject]
             set message [interpolate -values $values -text $message]

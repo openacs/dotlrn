@@ -37,7 +37,7 @@ set admin_email [db_string select_admin_email {
 
 doc_body_append "Bulk Uploading....<p>"
 
-set list_of_user_ids [list]
+set list_of_user [list]
 set list_of_addresses_and_passwords [list]
 
 # Do the stuff
@@ -48,9 +48,10 @@ db_transaction {
 
         # First make sure the required data is there
 
-        if { ![info exists $row(email)] || ![info exists $row(first_names)] || ![info exists $row(last_name)] } {
+        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
             doc_body_append "<br>Datafile must include at least the email, first_names and last_name fields<br>"
             db_abort_transaction
+            return
         }
 
         # We need to insert the ACS user
@@ -60,11 +61,12 @@ db_transaction {
         set user_id [cc_lookup_email_user $row(email)]
         if {![empty_string_p $user_id]} {
             doc_body_append "User $row(email) already exists... storing user_id"
-            lappend list_of_user_ids $user_id            
+            lappend list_of_users $user_id
         } else {
             set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
             
-            lappend list_of_user_ids $user_id
+            lappend list_of_users $user_id
+            lappend list_of_addresses_and_passwords $row(email) $password
             
             if {![info exists row(type)]} {
                 set row(type) student
@@ -82,7 +84,7 @@ db_transaction {
                 set row(id) $row(email)
             }
             
-            doc_body_append "Creating ser $row(email)...."
+            doc_body_append "Creating user $row(email)...."
 
             # Now we make them a dotLRN user
             switch -exact $row(access_level) {
@@ -121,28 +123,29 @@ set fail_p 0
 doc_body_append "<p>Sending email notifications to users...<p>"
 
 foreach {email password} $list_of_addresses_and_passwords {
-    set message "
-You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
+    if { ![string equal $password ""] } {
+        set message "
+You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL].
             
 Login: $row(email)
 Password: $password
 "
-    # Send note to new user
-    if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
-        doc_body_append "emailing \"$email\" failed!<br>"
-        set fail_p 1
-    } else {
-        doc_body_append "email sent to \"$email\"<br>"
+        # Send note to new user
+        if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]" "$message"} errmsg] {
+            doc_body_append "emailing \"$email\" failed!<br>"
+            set fail_p 1
+        } else {
+            doc_body_append "email sent to \"$email\"<br>"
+        }
     }
-
 }
 
 if {$fail_p} {
     doc_body_append "<p>Some of the emails failed. Those users had random passwords generated for them, however. The best way to proceed is to have these users log in and ask them to click on 'I have forgotten my password'.<p>"
 }
 
-doc_body_append "<FORM method=post action=users-add-to-community>
-<INPUT TYPE=hidden name=users value=\"$list_of_user_ids\">
-<INPUT TYPE=hidden name=referer values=users>
-You may now choose to <INPUT TYPE=submit value=\"Add These Users To A Group\"></FORM><p>"
+doc_body_append "<FORM method=\"post\" action=\"users-add-to-community\">
+<INPUT TYPE=hidden name=\"users\" value=\"$list_of_users\">
+<INPUT TYPE=hidden name=\"referer\" values=\"users\">
+You may now choose to <INPUT TYPE=\"submit\" value=\"Add These Users To A Group\"></FORM><p>"
 doc_body_append "or, return to <a href=\"users\">User Management</a>."

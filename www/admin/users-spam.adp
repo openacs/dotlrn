@@ -24,4 +24,38 @@
 
 <formtemplate id="spam_message"></formtemplate>
 
-<include src="../spam-variables">
+<blockquote>
+
+  <table>
+
+    <tr>
+      <th colspan=3>The following variables can be used to insert user/community specific data:</th>
+    </tr>
+
+    <tr>
+      <td>{from}</td>
+      <td> = </td>
+      <td>Sender's Email Address</td>
+    </tr>
+
+    <tr>
+      <td>{email}</td>
+      <td> = </td>
+      <td>Recipient's Email</td>
+    </tr>
+
+    <tr>
+      <td>{first_names}</td>
+      <td> = </td>
+      <td>Recipient's First Name</td>
+    </tr>
+
+    <tr>
+      <td>{last_name}</td>
+      <td> = </td>
+      <td>Recipient's Last Name</td>
+    </tr>
+
+  </table>
+
+</blockquote>
