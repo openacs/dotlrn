@@ -109,6 +109,12 @@ select package_id from dotlrn_communities where community_id= :community_id
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_applet_package_id.select_package_id">
+<querytext>
+select package_id from dotlrn_community_applets where community_id= :community_id and applet_key= :applet_key
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::add_applet.insert_applet">
 <querytext>
 insert into dotlrn_community_applets

@@ -232,6 +232,15 @@ namespace eval dotlrn_community {
     } {
 	return [db_string select_package_id {} -default ""]
     }
+
+    ad_proc -public get_applet_package_id {
+	community_id
+	applet_key
+    } {
+	get the package ID for a particular community
+    } {
+	return [db_string select_package_id {} -default ""]
+    }
     
     ad_proc -public add_applet {
 	community_id
