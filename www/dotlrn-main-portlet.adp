@@ -5,7 +5,7 @@
       <li>
         <a href="@classes.url@">@classes.pretty_name@</a>
         <if @classes.admin_p@ eq t> 
-          - <a class=note href="@classes.url@one-community-admin">[admin]</a>
+          - <a class="note" href="@classes.url@one-community-admin">[&nbsp;admin&nbsp;]</a>
         </if>
       </li>
         <ul>
@@ -22,7 +22,7 @@
       <li>
         <a href="@clubs.url@">@clubs.pretty_name@</a>
         <if @clubs.admin_p@ eq t> 
-          - <a class=note href="@clubs.url@one-community-admin">[admin]</a>
+          - <a class="note" href="@clubs.url@one-community-admin">[&nbsp;admin&nbsp;]</a>
         </if>
       </li>
         <ul>
@@ -37,4 +37,3 @@
  <a href="/dotlrn/all-communities">Join/Drop a Class or Community Group</a>
 ]
 </div>
-
