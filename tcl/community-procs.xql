@@ -40,7 +40,7 @@ update dotlrn_communities set package_id= :package_id where community_id= :commu
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_parent_id.select_parent_id">
+<fullquery name="dotlrn_community::get_parent_id_memoized.select_parent_id">
 <querytext>
 select dotlrn_communities.parent_community_id
 from dotlrn_communities
@@ -244,13 +244,13 @@ where community_type= :community_type
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_type.select_community_type">
+<fullquery name="dotlrn_community::get_community_type_memoized.select_community_type">
 <querytext>
 select community_type from dotlrn_community_types where package_id= :package_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_type_from_community_id.select_community_type">
+<fullquery name="dotlrn_community::get_community_type_from_community_id_memoized.select_community_type">
 <querytext>
 select community_type from dotlrn_communities where community_id=:community_id
 </querytext>
@@ -270,7 +270,7 @@ select community_id as subcomm_id from dotlrn_communities where parent_community
 
     <fullquery name="dotlrn_community::get_subcomm_chunk_new.select_subcomm_info">
         <querytext>
-            select community_id as sc_id, 
+            select dotlrn_communities.community_id as sc_id, 
                    decode(acs_permission.permission_p(community_id, :user_id, 'admin'), 'f', 0, 1) as admin_p, 
                    decode(dotlrn_community.member_p(community_id, :user_id), 'f', 0, 1) as member_p,
                    decode(dotlrn_community.has_subcomm_p(community_id), 'f', 0, 1) as has_subcomm_p,
@@ -345,7 +345,7 @@ select 1 from dotlrn_active_comms_not_closed where community_id= :community_id a
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_portal_template_id.select_portal_template_id">
+<fullquery name="dotlrn_community::get_portal_template_id_memoized.select_portal_template_id">
 <querytext>
 select portal_template_id from dotlrn_communities where community_id= :community_id
 </querytext>

@@ -111,7 +111,6 @@ namespace eval site_nodes {
         return [db_string select_parent_name_by_id {} -default ""]
     }
 
-
     # site_nodes_list procs
 
     ad_proc -public get_site_nodes_list {
@@ -132,8 +131,7 @@ namespace eval site_nodes {
         {-site_nodes_list:required}
         {-index:required}
     } {
-        # ns_log notice "llength [llength $site_nodes_list] [lindex $site_nodes_list [expr $index + 1 ]] "
-        return [lindex $site_nodes_list [expr $index + 1 ]]
+        return [lindex $site_nodes_list [expr $index + 1]]
     }
 
 
@@ -295,9 +293,8 @@ namespace eval site_nodes {
     } {
         if {[package_mount_count -package_key $package_key] == 1} {
             return 1
-        } else {
-            return 0
         }
+        return 0
     }
 
     ad_proc -public site_node_create {
@@ -310,13 +307,13 @@ namespace eval site_nodes {
     } {
         set node_id [db_exec_plsql create_node {
             begin
-            :1 := site_node.new(
-            node_id => :node_id,
-            parent_id => :parent_node_id,
-            name => :name,
-            directory_p => :directory_p,
-            pattern_p => 't'
-            );
+                :1 := site_node.new(
+                    node_id => :node_id,
+                    parent_id => :parent_node_id,
+                    name => :name,
+                    directory_p => :directory_p,
+                    pattern_p => 't'
+                );
             end;
         }]
 

@@ -3,7 +3,7 @@
 <queryset>
   <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
 
-    <fullquery name="dotlrn_community::get_community_id.select_community">
+    <fullquery name="dotlrn_community::get_community_id_memoized.select_community">
         <querytext>
             select dotlrn_communities.community_id
             from dotlrn_communities,

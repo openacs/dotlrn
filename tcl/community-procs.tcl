@@ -769,6 +769,14 @@ namespace eval dotlrn_community {
     } {
         returns the community type from community_id
     } {
+        return [util_memoize "dotlrn_community::get_community_type_from_community_id_memoized -community_id $community_id"]
+    }
+
+    ad_proc -private get_community_type_from_community_id_memoized {
+        {-community_id:required}
+    } {
+        returns the community type from community_id
+    } {
         return [db_string select_community_type {}]
     }
 
@@ -777,7 +785,14 @@ namespace eval dotlrn_community {
         Returns the community type key depending on the node we're at
     } {
         set package_id [ad_conn package_id]
+        return [util_memoize "dotlrn_community::get_community_type_memoized -package_id $package_id"]
+    }
 
+    ad_proc -private get_community_type_memoized {
+        {-package_id:required}
+    } {
+        Returns the community type key depending on the node we're at
+    } {
         return [db_string select_community_type {} -default ""]
     }
 
@@ -805,6 +820,15 @@ namespace eval dotlrn_community {
             set package_id [ad_conn package_id]
         }
 
+        return [util_memoize "dotlrn_community::get_community_id_memoized -package_id $package_id"]
+    }
+
+    ad_proc -private get_community_id_memoized {
+        {-package_id:required}
+    } {
+        Returns the community id depending on the package_id
+        we're at, or the package_id passed in
+    } {
         return [db_string select_community {} -default ""]
     }
 
@@ -839,6 +863,15 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_parent_id {
+        {-community_id:required}
+    } {
+        Returns the parent community's id or null
+    } {
+        return [util_memoize \
+                "dotlrn_community::get_parent_id_memoized -community_id $community_id"]
+    }
+
+    ad_proc -private get_parent_id_memoized {
         {-community_id:required}
     } {
         Returns the parent community's id or null
@@ -1205,6 +1238,14 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
+        return [util_memoize "dotlrn_community::get_portal_template_id_memoized -community_id $community_id"]
+    }
+
+    ad_proc -private get_portal_template_id_memoized {
+        {-community_id:required}
+    } {
+        get the id of the portal template for a community
+    } {
         return [db_string select_portal_template_id {} -default ""]
     }
 
