@@ -341,4 +341,18 @@ namespace eval site_nodes {
         return $node_id
     }
 
+    ad_proc -public get_child_package_id {
+        {-parent_package_id ""}
+        {-package_key:required}
+    } {
+        get the package_id of package_key that is mounted directly under
+        parent_package_id. returns 0 if not found.
+    } {
+        if {[empty_string_p $parent_package_id]} {
+            set parent_package_id [ad_conn package_id]
+        }
+
+        return [db_string select_child_package_id {} -default 0]
+    }
+
 }

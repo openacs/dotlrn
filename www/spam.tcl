@@ -29,7 +29,8 @@ ad_page_contract {
     portal_id:onevalue
 }
 
-set context_bar {{$referer Admin} {Spam Community}}
+set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
+set context_bar [list [list $referer Admin] "$spam_name Community"]
 
 if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]
@@ -40,15 +41,7 @@ dotlrn::require_user_admin_community $community_id
 set sender_id [ad_conn user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
-db_1row select_sender_info {
-    select parties.email as sender_email,
-           persons.first_names as sender_first_names,
-           persons.last_name as sender_last_name
-    from parties,
-         persons
-    where parties.party_id = :sender_id
-    and persons.person_id = :sender_id
-}
+db_1row select_sender_info {}
 
 form create spam_message
 
@@ -84,6 +77,13 @@ element create spam_message message \
     -widget textarea \
     -html {rows 10 cols 80 wrap soft}
 
+element create spam_message send_date \
+    -label {Send Date} \
+    -datatype date \
+    -widget date \
+    -format {MONTH DD YYYY HH12:MI AM} \
+    -value [template::util::date::now]
+
 element create spam_message referer \
     -label Referer \
     -datatype text \
@@ -92,30 +92,56 @@ element create spam_message referer \
 
 if {[form is_valid spam_message]} {
     form get_values spam_message \
-        community_id from rel_type subject message referer
-
-    # YON: should redirect and close the connection here so that the user
-    #      doesn't have to wait for the emails to get sent out.
+        community_id from rel_type subject message send_date referer
 
     set segment_id [db_string select_rel_segment_id {}]
     set community_name [dotlrn_community::get_community_name $community_id]
-    set community_url [dotlrn_community::get_community_url $community_id]
+    set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
 
-    # replace some values in the subject and the message
-    set message_values [list]
-    lappend message_values [list {<sender_email>} $from]
-    lappend message_values [list {<community_name>} $community_name]
-    lappend message_values [list {<community_url>} $community_url]
+    set query "
+        select '$from' as from_addr,
+               '$sender_first_names' as sender_first_names,
+               '$sender_last_name' as sender_last_name,
+               parties.email,
+               decode(acs_objects.object_type,
+                      'user',
+                      (select first_names
+                       from persons
+                       where person_id = parties.party_id),
+                      'group',
+                      (select group_name
+                       from groups
+                       where group_id = parties.party_id),
+                      'rel_segment',
+                      (select segment_name
+                       from rel_segments
+                       where segment_id = parties.party_id),
+                      '') as first_names,
+               decode(acs_objects.object_type,
+                      'user',
+                      (select last_name
+                       from persons
+                       where person_id = parties.party_id),
+                      '') as last_name,
+               '$community_name' as community_name,
+               '$community_url' as community_url
+            from party_approved_member_map,
+                 parties,
+                 acs_objects
+            where party_approved_member_map.party_id = $segment_id
+            and party_approved_member_map.member_id <> $segment_id
+            and party_approved_member_map.member_id = parties.party_id
+            and parties.party_id = acs_objects.object_id
+    "
 
-    set recepients [db_list select_recepients {}]
-
-    spam::send \
-        -recepients $recepients \
-        -from $from \
-        -real_from $sender_email \
+    bulk_mail::new \
+        -package_id [site_nodes::get_child_package_id -package_key [bulk_mail::package_key]] \
+        -send_date [template::util::date::get_property linear_date $send_date] \
+        -date_format "YYYY MM DD HH24 MI SS" \
+        -from_addr $from \
         -subject $subject \
         -message $message \
-        -message_values $message_values
+        -query $query
 
     ad_returnredirect $referer
     ad_script_abort

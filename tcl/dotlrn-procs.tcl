@@ -112,8 +112,8 @@ namespace eval dotlrn {
         set package_list [nsv_array get site_nodes "*$package_key*"]
         set dotlrn_ancestor_p 0
 
-        for {set x 1} {$x < [llength $package_list]} {incr x 2} {
-            array set package_info [lindex $package_list $x]
+        for {set i 1} {$i < [llength $package_list]} {incr i 2} {
+            array set package_info [lindex $package_list $i]
 
             if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) "dotlrn"] != 0} {
                 set dotlrn_ancestor_p 1
