@@ -93,28 +93,36 @@
   <table width="75%" border="0">
 
     <tr>
-      <td width="5%"><strong>Add?</strong></td>
-      <td width="95%">
-        <table width="100%" border="0">
-          <tr>
-            <td width="15%" align="center"><strong>Member</strong></td>
-            <td width="15%" align="center"><strong>Administrator</strong></td>
-            <td>&nbsp;</td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-
-<formgroup id="selected_users">
-    <tr>
-      <td>@formgroup.widget@</td>
-      <td>@formgroup.label@</td>
-    </tr>
-</formgroup>
-
-    <tr>
+      <td width="15%" align="center"><strong>Don't Add</strong></td>
+      <td width="15%" align="center"><strong>Member</strong></td>
+      <td width="15%" align="center"><strong>Administrator</strong></td>
       <td>&nbsp;</td>
+    </tr>
+
+<%
+    foreach user $parent_user_list {
+        set this_user_id [ns_set get $user user_id]
+        set this_first_names [ns_set get $user first_names]
+        set this_last_name [ns_set get $user last_name]
+        set this_email [ns_set get $user email]
+%>
+
+    <tr>
+<formgroup id="selected_user.@this_user_id@" cols="3">
+      <td width="15%" align="center">@formgroup.widget@</td>
+</formgroup>
+      <td>@this_last_name@, @this_first_names@ (@this_email@)</td>
+    </tr>
+
+<%
+    }
+%>
+
+    <tr><td colspan="4">&nbsp;</td></tr>
+
+    <tr>
       <td><input type="submit" value="Add Selected Members"></td>
+      <td colspan="3">&nbsp;</td>
     </tr>
 
   </table>

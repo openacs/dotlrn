@@ -93,7 +93,7 @@ if {$read_private_data_p || [string equal $my_user_id $user_id]} {
 lappend table_def {
     role
     Role
-    {decode(role,'instructor',1,'admin',2,'teaching_assistant',3,'course_assistant',4,'course_admin',5,'student',6,'member',7) asc, last_name $order} \
+    {decode(role,'instructor',1,'admin',2,'teaching_assistant',3,'course_assistant',4,'course_admin',5,'student',6,'member',7) asc, last_name $order}
     {<td><nobr>[dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]</nobr></td>}
 }
 
@@ -177,32 +177,29 @@ if {$subcomm_p} {
 
     form create parent_users_form
 
-    element create parent_users_form selected_users \
-        -label "&nbsp;" \
-        -datatype text \
-        -widget checkbox \
-        -optional
-
     set parent_user_list [dotlrn_community::list_possible_subcomm_users -subcomm_id $community_id]
     set n_parent_users [llength $parent_user_list]
 
-    if {[form is_valid parent_users_form]} {
-        set selected_users [element get_values parent_users_form selected_users]
+    foreach user $parent_user_list {
+        element create parent_users_form "selected_user.[ns_set get $user user_id]" \
+            -datatype text \
+            -widget radio \
+            -options {{{} none} {{} dotlrn_member_rel} {{} dotlrn_admin_rel}} \
+            -value none
+    }
 
-        foreach selected_user $selected_users {
-            dotlrn_community::add_user -rel_type $parent_user_role($selected_user) $community_id $selected_user
+    if {[form is_valid parent_users_form]} {
+
+        foreach user $parent_user_list {
+            set rel [element get_value parent_users_form "selected_user.[ns_set get $user user_id]"]
+
+            if {![string match $rel none]} {
+                dotlrn_community::add_user -rel_type $rel $community_id [ns_set get $user user_id]
+            }
         }
 
         ad_returnredirect [ns_conn url]
     }
-
-    set selected_users_options [list]
-
-    foreach user $parent_user_list {
-        lappend selected_users_options [list "<table width=\"100%\" border=\"0\"><tr><td width=\"15%\" align=\"center\"><input type=\"radio\" name=\"parent_user_role.[ns_set get $user user_id]\" value=\"dotlrn_member_rel\" checked></td><td width=\"15%\" align=\"center\"><input type=\"radio\" name=\"parent_user_role.[ns_set get $user user_id]\" value=\"dotlrn_admin_rel\"></td><td>[ns_set get $user last_name], [ns_set get $user first_names] ([ns_set get $user email])</td></tr></table>" [ns_set get $user user_id]]
-    }
-
-    element set_properties parent_users_form selected_users -options $selected_users_options
 
 }
 
