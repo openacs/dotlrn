@@ -5,7 +5,7 @@ ad_page_contract {
     @creation-date Dec 07, 2001
     @version $Id$
 } -query {
-    {filter "select_current_memberships"}
+    {filter "select_all_non_memberships"}
 } -properties {
     n_communities:onevalue
     communities:multirow
@@ -24,7 +24,7 @@ if {![empty_string_p $community_type]} {
 }
 
 set filter_bar [ad_dimensional {
-    {filter "Membership:" select_current_memberships
+    {filter "Membership:" select_all_non_memberships
         {
             {select_current_memberships current {}}
             {select_all_memberships all {}}
