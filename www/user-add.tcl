@@ -35,10 +35,7 @@ ad_page_contract {
 
 set user_id [ad_maybe_redirect_for_registration]
 
-if {![dotlrn::admin_p -user_id $user_id]} {
-    ad_returnredirect "not-allowed"
-    ad_script_abort
-}
+dotlrn::require_user_admin_community [dotlrn_community::get_community_id]
 
 set context_bar {{"one-community-admin" Admin} {Add User}}
 
