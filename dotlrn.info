@@ -434,7 +434,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_bboard,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm" description="dotLRN applets to add by default to each new community"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm" description="dotLRN applets to add by default to each new community"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="Subgroup" description="what subcomms are called"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="Subgroups" description="the plural"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="Class Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column" description="cvs list of the page_name/layout to create"/>
@@ -442,14 +442,14 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="Subgroup Home,Simple 2-Column;Subgroup Info,Simple 1-Column;Calendar,Simple 1-Column;Files,Simple 1-Column" description="default page names and layouts for subcomms"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="Not-A-Member" description="The name of the not a member page"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="Contol Panel" description="The name of the admin page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_bboard,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_bboard,dotlrn_calendar,dotlrn_fs,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_fs,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="Site Wide Administration" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="User" description="the pretty name for the user portal"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="Classes" description="the nice name for the class instance portal template"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_bboard,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
         </parameters>
 
     </version>
