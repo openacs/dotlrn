@@ -37,7 +37,7 @@ if { [dotlrn::admin_p] } {
 
 set auto_add_p [parameter::get -parameter AutoAddUsersP -package_id [dotlrn::get_package_id] -default 0]
 
-if { $auto_add_p } {
+if { [ad_conn user_id] != 0 && $auto_add_p } {
     # If auto-adding, check if we're auto-adding for this authority
     set auth_add_auths [split [parameter::get \
                                    -parameter AutoAddAuthorities \
