@@ -163,7 +163,7 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'coure_assistant_pretty_name',
+        attribute_name => 'course_assistant_pretty_name',
         datatype => 'string',
         pretty_name => 'Course Assistant Pretty Name',
         pretty_plural => 'Course Assistant Pretty Name',
@@ -174,7 +174,7 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'coure_assistant_pretty_plural',
+        attribute_name => 'course_assistant_pretty_plural',
         datatype => 'string',
         pretty_name => 'Course Assistant Pretty Plural',
         pretty_plural => 'Course Assistant Pretty Plural',
