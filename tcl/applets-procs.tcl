@@ -89,10 +89,6 @@ namespace eval dotlrn_applet {
             set url $package_key
         }
 
-        if {[empty_string_p $pretty_name]} {
-            set pretty_name $package_key
-        }
-
         set parent_node_id [site_node::get_node_id -url [get_url]]
 
         set package_id [dotlrn::mount_package \

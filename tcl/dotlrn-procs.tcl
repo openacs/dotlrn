@@ -139,11 +139,11 @@ namespace eval dotlrn {
 
             ns_log notice "dotlrn::mount_package: [array get parent_node]"
 
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name $url \
-                -parent_id $parent_node_id \
+            set package_id [site_node::instantiate_and_mount \
+                -node_name $url \
+                -parent_node_id $parent_node_id \
                 -package_key $package_key \
-                -instance_name $pretty_name \
+                -package_name $pretty_name \
                 -context_id $parent_package_id \
             ]
         }
@@ -262,13 +262,12 @@ namespace eval dotlrn {
 	# We only take the first node right now
 	# FIXME: in case of multi-mounting, which is doubtful, but possible
 	# we have a problem here.
-	set parent_node_id [db_string select_node_id {}]
+	set parent_node_id [site_node::get_node_id -url [lindex [site_node::get_url_from_object_id -object_id $package_id] 0]]
 
-        set new_package_id [site_node_apm_integration::new_site_node_and_package \
-            -name $mount_point \
-            -parent_id $parent_node_id \
+        set new_package_id [site_node::instantiate_and_mount \
+            -node_name $mount_point \
+            -parent_node_id $parent_node_id \
             -package_key $package_key \
-            -instance_name $package_key \
             -context_id $package_id \
         ]
 
@@ -390,7 +389,7 @@ namespace eval dotlrn {
         # a connection put it here. This needs to be a vaild
         # grantee for the perms
         set user_id -1        
-
+        
         set portal_id [portal::create \
             -name "$pretty_name Portal" \
             -csv_list $csv_list \
@@ -416,4 +415,3 @@ namespace eval dotlrn {
     }
 
 }
-

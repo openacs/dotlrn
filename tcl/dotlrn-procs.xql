@@ -36,14 +36,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn::instantiate_and_mount.select_node_id">
-        <querytext>
-            select node_id
-            from site_nodes
-            where object_id = :package_id
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn::get_group_id_from_user_type.select_group_id_from_user_type">
         <querytext>
             select dotlrn_user_types.group_id
