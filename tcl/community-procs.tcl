@@ -1121,7 +1121,7 @@ namespace eval dotlrn_community {
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
                     append chunk \
-                            "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                            "\[<small> <a href=${url}one-community-admin>admin</a> </small>\]"
                 }
 
                 append chunk \
@@ -1148,7 +1148,7 @@ namespace eval dotlrn_community {
                   && [not_closed_p -community_id $sc_id]} {
 
                       append chunk \
-                          "<small>\["
+                          "\[<small>"
 
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
                           append chunk \
@@ -1161,15 +1161,16 @@ namespace eval dotlrn_community {
                               "<a href=${url}${join_target}>join</a>"
                       }
 
-                      append chunk "\]</small>\n"
+                      append chunk "</small>\]\n"
                 }
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
                     append chunk \
-                            " <small>\[<a href=${url}one-community-admin>admin</a>\]</small>\n"
+                            " \[<small> <a href=${url}one-community-admin>Administer</a> </small>\]\n"
                 }
             }
         }
+
         return $chunk
     }
 
