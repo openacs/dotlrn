@@ -79,12 +79,6 @@ create table dotlrn_communities_all (
                                 references portals (portal_id),
     package_id                  constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),
-    font                        varchar2(100)
-                                default '',
-    font_size                   integer
-                                default 0,
-    header_img                  varchar2(100)
-                                default '',
     tree_sortkey                raw(240),
     max_child_sortkey           raw(3)
 );
