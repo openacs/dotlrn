@@ -83,7 +83,7 @@
      #dotlrn.NA#
      </if>
      <else>
-     <if @users.read_private_data_p@ eq t>#dotlrn.No#</if><else>#dotlrn.Yes#</else>
+     <if @users.guest_p@ eq t>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
      </else>
     </td>
     <td align="center">

@@ -10,7 +10,7 @@
                    dotlrn_users.last_name,
                    dotlrn_users.email,
                    dotlrn_users.type,
-                   acs_permission.permission_p(:dotlrn_package_id, :user_id, 'read_private_data') as read_private_data_p
+                   dotlrn_guest_p(:user_id) as guest_p
             from dotlrn_users
             where dotlrn_users.user_id = :user_id
         </querytext>

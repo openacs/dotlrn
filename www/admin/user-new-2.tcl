@@ -63,11 +63,11 @@ element create add_user can_browse_p \
     -widget select \
     -options [list [list "[_ dotlrn.Full_Access]" 1] [list "[_ dotlrn.Limited_Access]" 0]]
 
-element create add_user read_private_data_p \
+element create add_user guest_p \
     -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget select \
-    -options [list [list [_ dotlrn.No] t] [list [_ dotlrn.Yes] f]]
+    -options [list [list [_ dotlrn.No] f] [list [_ dotlrn.Yes] t]]
 
 element create add_user referer \
     -label [_ dotlrn.Referer] \
@@ -79,7 +79,7 @@ element create add_user referer \
 if {[form is_valid add_user]} {
 
     form get_values add_user \
-        user_id id type can_browse_p read_private_data_p referer
+        user_id id type can_browse_p guest_p referer
 
     set subject "Your [ad_system_name] membership has been approved"
     set message "Your [ad_system_name] membership has been approved. Please return to [ad_url] to log into [ad_system_name]."
@@ -94,10 +94,9 @@ if {[form is_valid add_user]} {
             -can_browse\=$can_browse_p \
             -user_id $user_id
 
-        acs_privacy::set_user_read_private_data \
+        dotlrn_privacy::set_user_guest_p \
             -user_id $user_id \
-            -object_id [dotlrn::get_package_id] \
-            -value $read_private_data_p
+            -value $guest_p
     }
     
     

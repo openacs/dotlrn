@@ -1,4 +1,4 @@
-#
+
 #  Copyright (C) 2001, 2002 MIT
 #
 #  This file is part of dotLRN.
@@ -62,12 +62,12 @@ element create edit_user can_browse_p \
     -options [list [list [_ dotlrn.Full] 1] [list [_ dotlrn.Limited] 0]] \
     -value $can_browse_p
 
-element create edit_user read_private_data_p \
+element create edit_user guest_p \
     -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget select \
-    -options [list [list [_ dotlrn.No] t] [list [_ dotlrn.Yes] f]] \
-    -value $read_private_data_p
+    -options [list [list [_ dotlrn.No] f] [list [_ dotlrn.Yes] t]] \
+    -value $guest_p
 
 element create edit_user return_url \
     -label "[_ dotlrn.Return_URL]" \
@@ -77,7 +77,7 @@ element create edit_user return_url \
 
 if {[form is_valid edit_user]} {
     form get_values edit_user \
-        user_id id type can_browse_p read_private_data_p return_url
+        user_id id type can_browse_p guest_p return_url
 
     db_transaction {
         # remove the user
@@ -91,10 +91,9 @@ if {[form is_valid edit_user]} {
             -user_id $user_id
 
         # Update permissions
-        acs_privacy::set_user_read_private_data \
+        dotlrn_privacy::set_user_guest_p \
             -user_id $user_id \
-            -object_id [dotlrn::get_package_id] \
-            -value $read_private_data_p
+            -value $guest_p
     }
 
     # redirect

@@ -311,7 +311,10 @@ namespace eval dotlrn_community {
         # this community should be able to read this instance (and
         # it's children)
         permission::set_not_inherit -object_id $community_id
-	
+
+        # Grant read_private_data permission to "non guest" users.
+        dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $community_id
+        
         #this block sets permissions for subcommunities
         while {1} {
             if {![empty_string_p $parent_community_id]} {
@@ -1742,6 +1745,9 @@ namespace eval dotlrn_community {
                 db_dml delete_default_acs_attribute_values {}
                 db_dml copy_customizations_if_any {}
             }
+
+            # Grant read_private_data permission to "non guest" users.
+            dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $clone_id
 
             # recursively clone the subcommunities
             set subcomm_list [get_subcomm_info_list -community_id $community_id]

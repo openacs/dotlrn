@@ -50,7 +50,7 @@
 
       <tr>
         <th align="left">#dotlrn.Guest#</th>
-        <td><formwidget id="private_data_p"></td>
+        <td><formwidget id="guest_p"></td>
       </tr>
 
       <tr>

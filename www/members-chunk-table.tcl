@@ -35,10 +35,10 @@ set dotlrn_url [dotlrn::get_url]
 # use my_user_id here so we don't confuse with user_id from the query
 set my_user_id [ad_conn user_id]
 
-dotlrn::require_user_read_private_data -user_id $my_user_id
-
 set community_id [dotlrn_community::get_community_id]
 set referer [ns_conn url]
+
+dotlrn::require_user_read_private_data -user_id $my_user_id -object_id $community_id
 
 set site_wide_admin_p [permission::permission_p \
     -object_id [acs_magic_object security_context_root] \
@@ -47,10 +47,8 @@ set site_wide_admin_p [permission::permission_p \
 
 if {!$site_wide_admin_p} {
     set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id -community_id $community_id]
-    set read_private_data_p [dotlrn::user_can_read_private_data_p -user_id $my_user_id]
 } else {
     set admin_p 1
-    set read_private_data_p 1
 }
 
 if {![exists_and_not_null referer]} {

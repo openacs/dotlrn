@@ -93,7 +93,7 @@
 
   <li>
     #dotlrn.Guest#
-    <if @read_private_data_p@>#dotlrn.No#</if><else>#dotlrn.Yes#</else>
+    <if @guest_p@ eq t>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
   </li>
 
   <li>

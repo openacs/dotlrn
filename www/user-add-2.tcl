@@ -54,7 +54,7 @@ set dotlrn_user_p [dotlrn::user_p -user_id $user_id]
 if {!$dotlrn_user_p} {
     db_transaction {
         # can this user read private data?
-        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+        dotlrn_privacy::set_user_is_non_guest -user_id $user_id -value $read_private_data_p
 
         if {!${dotlrn_interactive_p}} {
             # make the user a dotLRN user

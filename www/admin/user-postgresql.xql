@@ -5,10 +5,10 @@
 
     <fullquery name="select_dotlrn_user_info">
         <querytext>
-            select dotlrn_users.*,
+            select dotlrn_users.*, guest_p,
                    acs_permission__permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p,
-                   acs_permission__permission_p(:dotlrn_package_id, :user_id, 'read_private_data') as read_private_data_p
-            from dotlrn_users
+            from dotlrn_users left outer join dotlrn_guest_status
+              on guest_status.user_id = dotlrn_users.user_id
             where dotlrn_users.user_id = :user_id
         </querytext>
     </fullquery>
