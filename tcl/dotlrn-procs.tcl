@@ -55,20 +55,22 @@ namespace eval dotlrn {
     } {
         returns 1 if dotlrn is instantiaed under the url specified, 0
         otherwise
+
+        url is expected to match that in the nsv array "site_nodes"
     } {
         set result 0
-        set site_node_list [nsv_array get site_nodes {${url}/?}]
 
-        for {set x 0} {$x < [llength $site_node_list]} {incr x 2} {
-            if {[string match {${url}/?} [lindex $site_node_list $x]]} {
-                set site_node [lindex $site_node_list [expr $x + 1]]
-
-                if {[string equals [dotlrn::package_key] $site_node(package_key)]} {
-                    set result 1
-                    break
-                } else {
-                    # XXX need to figure out how to error out of here, this
-                    # really bad
+        if {[catch {nsv_array get site_nodes $url} site_node_list] == 0} {
+            for {set x 0} {$x < [llength $site_node_list]} {incr x 2} {
+                if {[string match $url [lindex $site_node_list $x]]} {
+                    array set site_node [lindex $site_node_list [expr $x + 1]]
+                    if {[string equal [dotlrn::package_key] $site_node(package_key)]} {
+                        set result 1
+                        break
+                    } else {
+                        # XXX need to figure out how to error out of here, this
+                        # really bad
+                    }
                 }
             }
         }
