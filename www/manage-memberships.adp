@@ -162,7 +162,7 @@
     <else>
       <tr class="even">
     </else>
-        <td><a @non_member_classes.pretty_name@</td>
+        <td>@non_member_classes.pretty_name@</td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
 <if @non_member_classes.join_policy@ eq "open">
