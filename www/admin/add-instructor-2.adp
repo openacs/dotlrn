@@ -22,11 +22,13 @@
 <property name="title">#dotlrn.dotLRN_Admin#</property>
 <property name="context_bar">@context_bar@</property>
 
-#dotlrn.lt_The_results_of_your_s#
+<p>#dotlrn.lt_The_results_of_your_s#</p>
 <ul>
-<multiple name="users">
-  <li><a href="add-instructor-3?user_id=@users.user_id@&community_id=@community_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</li>
-</multiple>
+  <multiple name="users">
+    <li>
+      <a href="add-instructor-3?user_id=@users.user_id@&community_id=@community_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)
+    </li>
+  </multiple>
 </ul>
 
 
