@@ -28,8 +28,18 @@ if {![exists_and_not_null show_buttons_p]} {
     set show_buttons_p 0
 }
 
+if {![exists_and_not_null show_archived_p]} {
+    set show_archived_p 0
+}
+
 set user_id [ad_conn user_id]
 set user_can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
+
+if { $show_archived_p } {
+    set archived_clause ""
+} else {
+    set archived_clause "and archived_p='f'"
+}
 
 set comm_type ""
 db_multirow communities select_communities {} {
