@@ -217,8 +217,6 @@ as
  ) return dotlrn_communities.community_id%TYPE
  is
    c_id integer;
-   p_id integer;
-   v_portal_name portals.name%TYPE;
  begin
    c_id := acs_group.new (
 	group_id => community_id,
@@ -229,35 +227,10 @@ as
 	group_name => community_key
    );
 
-   v_portal_name := pretty_name || ' portal template' ;
-
-   p_id := portal.new (
-	name => v_portal_name,
-	portal_template_p => 't'
-   );
-
-   acs_permission.grant_permission ( 
-   object_id => p_id,
-   grantee_id => creation_user,
-   privilege => 'portal_read_portal' 
-   );
-   
-   acs_permission.grant_permission ( 
-   object_id => p_id,
-   grantee_id => creation_user,
-   privilege => 'portal_edit_portal'
-   );
-   
-   acs_permission.grant_permission ( 
-   object_id => p_id,
-   grantee_id => creation_user,
-   privilege => 'portal_admin_portal'
-   );
-
    insert into dotlrn_communities
    (community_id, community_type, community_key, pretty_name, description, package_id, page_id, portal_template_id)
    values
-   (c_id, community_type, community_key, pretty_name, description, package_id, page_id, p_id);
+   (c_id, community_type, community_key, pretty_name, description, package_id, page_id, portal_template_id);
 
 
 
