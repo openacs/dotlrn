@@ -15,5 +15,5 @@
 <p></p>
 
 <blockquote>
-  <include src="my-communities" title="My Groups">
+  <include src="my-communities" title="Groups" referer="preferences">
 </blockquote>

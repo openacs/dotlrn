@@ -110,6 +110,7 @@ if {[form is_valid spam_message]} {
     regsub -all {<community_url>} $message $community_url message
 
     # loop through all the recepeints and send them the spam
+    set errors ""
     db_foreach select_recepient_info {
         select parties.email,
                decode(acs_objects.object_type,
@@ -149,7 +150,6 @@ if {[form is_valid spam_message]} {
         regsub -all {<last_name>} $message $last_name message
 
         # send the email
-        set errors ""
         if {[catch {ns_sendmail $email $sender_email $subject $message} errmsg]} {
             append errors "
 <p>
@@ -167,11 +167,15 @@ if {[form is_valid spam_message]} {
     if {![empty_string_p $errors]} {
         set error_subject "There were errors spamming community \"$community_name\""
         set error_message "
-There were errors spamming community \"$community_name\". The attempted
-message was:
+<p>
+There were errors spamming community \"$community_name\".
+</p>
 
-<p></p>
+<p>
+The attempted message was:
+</p>
 
+<p>
 <table width=\"50%\">
   <tr>
     <th align=\"left\">Subject</th>
@@ -182,10 +186,15 @@ message was:
     <td align=\"left\">$message</td>
   </tr>
 </table>
+</p>
 
-<p></p>
+<p>
+The errors were:
+</p>
 
-The errors were: $errors
+<p>
+$errors
+</p>
         "
 
         if {[catch {ns_sendmail $sender_email $sender_email $error_subject $error_message} errmsg]} {
