@@ -58,6 +58,15 @@ namespace eval site_nodes {
         }]
     }
 
+    ad_proc -public get_node_id_from_child {
+        {-parent_node_id:required}
+        {-name:required}
+    } {
+        return [db_string get_child_node_id {
+            select node_id from site_nodes where parent_id = :parent_node_id
+            and name = :name} -default ""]
+    }
+
     ad_proc -public get_node_id_from_url {
         {-url:required}
         {-parent_node_id ""}
