@@ -28,9 +28,9 @@
   <small>
     <a href="#current_clubs">Current <%= [parameter::get -parameter clubs_pretty_plural] %></a>
     |
-    <a href="#join_class">Join a <%= [parameter::get -parameter class_instances_pretty_name] %></a>
+    <a href="#join_classes">Join a <%= [parameter::get -parameter class_instances_pretty_name] %></a>
     |
-    <a href="#join_club">Join a <%= [parameter::get -parameter clubs_pretty_name] %></a>
+    <a href="#join_clubs">Join a <%= [parameter::get -parameter clubs_pretty_name] %></a>
   </small>
 </p>
 
