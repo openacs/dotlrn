@@ -5,6 +5,7 @@ ad_page_contract {
     @creation-date Dec 10, 2001
     @version $Id$
 } -query {
+    {filter "select_current_class_instances"}
 } -properties {
     class_key:onevalue
     pretty_name:onevalue
@@ -12,7 +13,7 @@ ad_page_contract {
     can_instantiate:onevalue
 }
 
-db_multirow instances select_class_instances {}
+db_multirow instances $filter {}
 
 set can_instantiate [db_string can_instantiate_class {}]
 

@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Clubs</property>
+<property name="title">Clubs</property>
 <property name="context_bar">@context_bar@</property>
 
 [ <a href="club-new">new club</a> ]

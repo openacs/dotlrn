@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Terms</property>
+<property name="title">Terms</property>
 <property name="context_bar">@context_bar@</property>
 
 [ <a href="term-new">new term</a> ]

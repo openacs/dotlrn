@@ -1,8 +1,8 @@
 <master src="master">
-<property name="title">dotLRN Admin</property>
+<property name="title">Users</property>
 <property name="context_bar">@context_bar@</property>
 
-<h3>dotLRN users</h3>
+<h3>Users</h3>
 <table border=0 cellpadding=2 cellspacing=0 width=650>
 <tr bgcolor=black>
 <td>
@@ -40,5 +40,3 @@ set i [expr 1 - $i]
 <form method=get action=user-new>
 Add a new dotLRN user: <input type=text name=search_text> <input type=submit value=search>
 </form>
-
-

@@ -7,6 +7,7 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
+    users:multirow
 }
 
 set community_id [dotlrn_community::get_community_id]

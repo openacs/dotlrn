@@ -18,27 +18,27 @@ begin
     foo := dotlrn_community_type.new (
         community_type => 'dotlrn_community',
         parent_type => NULL,
-        pretty_name => 'dotLRN Community',
-        pretty_plural => 'dotLRN Communities',
-        description => 'dotLRN Communities - the base community type'
+        pretty_name => 'Community',
+        pretty_plural => 'Communities',
+        description => 'Communities - the base community type'
     );
 
     -- create the dotlrn_class community type
     foo := dotlrn_community_type.new (
         community_type => 'dotlrn_class_instance',
         parent_type => 'dotlrn_community',
-        pretty_name => 'dotLRN Class',
-        pretty_plural => 'dotLRN Classes',
-        description => 'dotLRN Classes - e.g. 6.001'
+        pretty_name => 'Class',
+        pretty_plural => 'Classes',
+        description => 'Classes - e.g. 6.001'
     );
 
     -- create the dotlrn_club community type
     foo := dotlrn_community_type.new (
         community_type => 'dotlrn_club',
         parent_type => 'dotlrn_community',
-        pretty_name => 'dotLRN Club',
-        pretty_plural => 'dotLRN Clubs',
-        description => 'dotLRN Clubs - e.g. Alumni'
+        pretty_name => 'Club',
+        pretty_plural => 'Clubs',
+        description => 'Clubs - e.g. Alumni'
     );
 
     -- create roles

@@ -7,10 +7,22 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
+    filter_bar:onevalue
     classes:multirow
 }
 
 set context_bar "Classes"
+
+set filter select_current_class_instances
+set filter_bar [ad_dimensional {
+    {filter "Term:" select_current_class_instances
+        {
+            {select_current_class_instances current {}}
+            {select_current_and_future_class_instances "+future" {}}
+            {select_all_class_instances "+past" {}}
+        }
+    }
+}]
 
 db_multirow classes select_classes {}
 

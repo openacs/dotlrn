@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Classes</property>
+<property name="title">Classes</property>
 <property name="context_bar">@context_bar@</property>
 
 [ <a href="class-new">new class</a> ]
@@ -7,6 +7,10 @@
 <p>
 <include src="need-term-note">
 </p>
+
+@filter_bar@
+
+<p></p>
 
 <if @classes:rowcount@ gt 0>
 <multiple name="classes">

@@ -58,7 +58,9 @@ create table dotlrn_class_instances (
                                 constraint dotlrn_class_instances_pk
                                 primary key,
     class_key                   constraint dotlrn_ci_class_key_fk
-                                references dotlrn_classes (class_key),
+                                references dotlrn_classes (class_key)
+                                constraint dotlrn_ci_class_key_nn
+                                not null,
     term_id                     constraint dotlrn_ci_term_id_fk
                                 references dotlrn_terms (term_id)
                                 constraint dotlrn_ci_term_id_nn
@@ -88,6 +90,19 @@ as
          dotlrn_terms
     where  dotlrn_communities.community_id = dotlrn_class_instances.class_instance_id
     and dotlrn_class_instances.term_id = dotlrn_terms.term_id;
+
+create or replace view dotlrn_class_instances_current
+as
+    select *
+    from dotlrn_class_instances_full
+    where active_end_date >= sysdate
+    and active_start_date <= sysdate;
+
+create or replace view dotlrn_class_instances_not_old
+as
+    select *
+    from dotlrn_class_instances_full
+    where active_end_date >= sysdate;
 
 create or replace package dotlrn_class
 is
