@@ -167,6 +167,7 @@ is
     ) return dotlrn_community_types.community_type%TYPE
     is
         v_parent_object_type acs_object_types.object_type%TYPE;
+        v_unique_name acs_objects.object_id%TYPE;
     begin
         if parent_type is null then
             v_parent_object_type:= 'group';
@@ -174,14 +175,18 @@ is
             v_parent_object_type:= parent_type;
         end if;
 
+        select acs_object_id_seq.nextval
+        into v_unique_name
+        from dual;
+
         acs_object_type.create_type (
             supertype => v_parent_object_type,
             object_type => community_type,
             pretty_name => community_type,
             pretty_plural => community_type,
-            table_name => community_type,
-            id_column => 'XXX',
-            package_name => community_type,
+            table_name => 'dotlrn_communities',
+            id_column => 'community_id',
+            package_name => v_unique_name,
             name_method => 'acs_group.name'
         );
 
