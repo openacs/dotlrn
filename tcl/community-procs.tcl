@@ -433,6 +433,27 @@ namespace eval dotlrn_community {
         return $pretty_name
     }
 
+    ad_proc -public get_role_pretty_plural {
+        {-community_id ""}
+        {-rel_type:required}
+    } {
+        get the pretty plural for the role associated with this rel_type
+    } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        set roles [eval concat [get_roles -community_id $community_id]]
+        set i [lsearch -exact $roles $rel_type]
+        set pretty_plural ""
+
+        if {$i > -1} {
+            set pretty_plural [lindex $roles [expr $i + 3]]
+        }
+
+        return $pretty_plural
+    }
+
     ad_proc -public get_all_roles {} {
         return the list of roles used in dotLRN
     } {
