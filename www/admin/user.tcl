@@ -45,7 +45,7 @@ set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdmi
 set export_edit_vars "user_id=$user_id&return_url=$return_url"
 
 if {![db_0or1row select_user_info {}]} {
-    ad_return_complaint 1 "<li>[_ [ad_conn locale] dotlrn.couldnt_find_user_id "" [list user_id $user_id]]</li>"
+    ad_return_complaint 1 "<li>[_ dotlrn.couldnt_find_user_id [list user_id $user_id]]</li>"
     ad_script_abort
 }
 if {[empty_string_p $screen_name]} {

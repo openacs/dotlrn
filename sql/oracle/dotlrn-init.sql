@@ -33,9 +33,9 @@ begin
     foo := dotlrn_community_type.new(
         community_type => 'dotlrn_community',
         parent_type => null,
-        pretty_name => 'Community',
-        pretty_plural => 'Communities',
-        description => 'Communities - the base community type'
+        pretty_name => '#dotlrn.dotlrn_community_pretty_name#',
+        pretty_plural => '#dotlrn.dotlrn_community_pretty_plural#',
+        description => '#dotlrn.dotlrn_community_description#'
     );
 
     -- these are the possible attributes of a community
@@ -43,8 +43,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'header_font',
         datatype => 'string',
-        pretty_name => 'Header Font',
-        pretty_plural => 'Header Fonts',
+        pretty_name => '#dotlrn.Header_Font#',
+        pretty_plural => '#dotlrn.Header_Fonts#',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -54,8 +54,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'header_font_size',
         datatype => 'string',
-        pretty_name => 'Header Font Size',
-        pretty_plural => 'Header Font Sizes',
+        pretty_name => '#dotlrn.Header_Font_Size#',
+        pretty_plural => '#dotlrn.Header_Font_Sizes#',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -65,8 +65,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'header_font_color',
         datatype => 'string',
-        pretty_name => 'Header Font Color',
-        pretty_plural => 'Header Font Colors',
+        pretty_name => '#dotlrn.Header_Font_Color#',
+        pretty_plural => '#dotlrn.Header_Font_Colors#',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -76,8 +76,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'header_logo_item_id',
         datatype => 'integer',
-        pretty_name => 'Header Logo Item ID',
-        pretty_plural => 'Header Logo Item ID',
+        pretty_name => '#dotlrn.Header_Logo_Item_ID#',
+        pretty_plural => '#dotlrn.Header_Logo_Item_ID#',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -87,8 +87,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'header_logo_alt_text',
         datatype => 'integer',
-        pretty_name => 'Header Logo Alt Text',
-        pretty_plural => 'Header Logo Alt Text',
+        pretty_name => '#dotlrn.Header_Logo_Alt_Text#',
+        pretty_plural => '#dotlrn.Header_Logo_Alt_Text#',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -98,18 +98,18 @@ begin
     foo := dotlrn_community_type.new(
         community_type => 'dotlrn_class_instance',
         parent_type => 'dotlrn_community',
-        pretty_name => 'Class',
-        pretty_plural => 'Classes',
-        description => 'e.g. 6.001'
+        pretty_name => '#dotlrn.dotlrn_class_instance_pretty_name#',
+        pretty_plural => '#dotlrn.dotlrn_class_instance_pretty_plural#',
+        description => '#dotlrn.dotlrn_class_instance_description#'
     );
 
     -- create the dotlrn_club community type
     foo := dotlrn_community_type.new(
         community_type => 'dotlrn_club',
         parent_type => 'dotlrn_community',
-        pretty_name => 'Club',
-        pretty_plural => 'Clubs',
-        description => 'e.g. Alumni'
+        pretty_name => '#dotlrn.dotlrn_club_pretty_name#',
+        pretty_plural => '#dotlrn.dotlrn_club_pretty_plural#',
+        description => '#dotlrn.dotlrn_club_description#'
     );
 
     update acs_object_types set table_name = 'dotlrn_community', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
@@ -141,8 +141,8 @@ begin
     -- create roles
     acs_rel_type.create_role(
         role => 'student',
-        pretty_name => 'Student',
-        pretty_plural => 'Students'
+        pretty_name => '#dotlrn.student_role_pretty_name#',
+        pretty_plural => '#dotlrn.student_role_pretty_plural#'
     );
 
     bar := acs_attribute.create_attribute(
@@ -169,8 +169,8 @@ begin
 
     acs_rel_type.create_role(
         role => 'course_assistant',
-        pretty_name => 'Course Assistant',
-        pretty_plural => 'Course Assistants'
+        pretty_name => '#dotlrn.course_assistant_role_pretty_name#',
+        pretty_plural => '#dotlrn.course_assistant_role_pretty_plural#'
     );
 
     bar := acs_attribute.create_attribute(
@@ -197,8 +197,8 @@ begin
 
     acs_rel_type.create_role(
         role => 'teaching_assistant',
-        pretty_name => 'Teaching Assistant',
-        pretty_plural => 'Teaching Assistants'
+        pretty_name => '#dotlrn.teaching_assistant_role_pretty_name#',
+        pretty_plural => '#dotlrn.teaching_assistant_role_pretty_plural#'
     );
 
     bar := acs_attribute.create_attribute(
@@ -225,8 +225,8 @@ begin
 
     acs_rel_type.create_role(
         role => 'instructor',
-        pretty_name => 'Professor',
-        pretty_plural => 'Professors'
+        pretty_name => '#dotlrn.instructor_role_pretty_name#',
+        pretty_plural => '#dotlrn.instructor_role_pretty_plural#'
     );
 
     bar := acs_attribute.create_attribute(
@@ -253,8 +253,8 @@ begin
 
     acs_rel_type.create_role(
         role => 'course_admin',
-        pretty_name => 'Course Administrator',
-        pretty_plural => 'Course Administrators'
+        pretty_name => '#dotlrn.course_admin_role_pretty_name#',
+        pretty_plural => '#dotlrn.course_admin_role_pretty_plural#'
     );
 
     bar := acs_attribute.create_attribute(
@@ -281,8 +281,8 @@ begin
 
     acs_rel_type.create_role(
         role => 'admin',
-        pretty_name => 'Administrator',
-        pretty_plural => 'Administrators'
+        pretty_name => '#dotlrn.admin_role_pretty_name#',
+        pretty_plural => '#dotlrn.admin_role_pretty_plural#'
     );
 
     bar := acs_attribute.create_attribute(
@@ -301,7 +301,7 @@ begin
         attribute_name => 'admin_pretty_plural',
         datatype => 'string',
         pretty_name => 'Administrator Pretty Plural',
-        pretty_plural => 'RAdministrator Pretty Plural',
+        pretty_plural => 'Administrator Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -311,8 +311,8 @@ begin
     acs_rel_type.create_type(
         rel_type => 'dotlrn_member_rel',
         supertype => 'membership_rel',
-        pretty_name => 'dotLRN Community Membership',
-        pretty_plural => 'dotLRN Community Memberships',
+        pretty_name => '#dotlrn.dotlrn_member_rel_pretty_name#',
+        pretty_plural => '#dotlrn.dotlrn_member_rel_pretty_plural#',
         package_name => 'dotlrn_member_rel',
         table_name => 'dotlrn_member_rels',        
         id_column => 'rel_id',
@@ -325,8 +325,8 @@ begin
     acs_rel_type.create_type(
         rel_type => 'dotlrn_admin_rel',
         supertype => 'dotlrn_member_rel',
-        pretty_name => 'dotLRN Admin Community Membership',
-        pretty_plural => 'dotLRN Admin Community Memberships',
+        pretty_name => '#dotlrn.dotlrn_admin_rel_pretty_name#',
+        pretty_plural => '#dotlrn.dotlrn_admin_rel_pretty_plural#',
         package_name => 'dotlrn_admin_rel',
         table_name => 'dotlrn_admin_rels',        
         id_column => 'rel_id',

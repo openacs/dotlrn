@@ -47,4 +47,3 @@ set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id
 set context_bar [_ dotlrn.Admin]
 
 ad_return_template
-

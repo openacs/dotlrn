@@ -60,7 +60,7 @@ set user_info_sql {
 }
 
 if {![db_0or1row user_information $user_info_sql]} {
-    ad_return_error "[_ dotlrn.No_user_found]" [_ [ad_conn locale]  dotlrn.no_community_member_with_id "" [list user_id $user_id]]
+    ad_return_error "[_ dotlrn.No_user_found]" [_ dotlrn.no_community_member_with_id [list user_id $user_id]]
     ad_script_abort
 }
 

@@ -32,7 +32,7 @@
     <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
       &nbsp;
       [<small>
-        <include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">
+        <include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="#dotlrn.Drop_Membership#">
       </small>]
     </if>
   </li>

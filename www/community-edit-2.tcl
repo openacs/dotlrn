@@ -63,7 +63,7 @@ if { ![empty_string_p [ad_parameter MaximumFileSize]]
 
     set msg_subst_list [list system_name [ad_system_name] \
                              max_attachments_bytes [util_commify_number [ad_parameter MaximumFileSize]]]
-    ad_return_complaint 1 "<li>[_ [ad_conn locale]  dotlrn.your_icon_is_too_large "" $msg_subst_list]"
+    ad_return_complaint 1 "<li>[_ dotlrn.your_icon_is_too_large $msg_subst_list]"
     ad_script_abort
 }
 

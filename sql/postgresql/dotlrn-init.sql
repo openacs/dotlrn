@@ -34,9 +34,9 @@ begin
     perform dotlrn_community_type__new(
         ''dotlrn_community'',
         null,
-        ''Community'',
-        ''Communities'',
-        ''Communities - the base community type''
+        ''#dotlrn.dotlrn_community_pretty_name#'',
+        ''#dotlrn.dotlrn_community_pretty_plural#'',
+        ''#dotlrn.dotlrn_community_description#''
     );
 
     -- these are the possible attributes of a community
@@ -44,8 +44,8 @@ begin
 	   ''dotlrn_community'',
 	   ''header_font'',
 	   ''string'',
-	   ''Header Font'',
-	   ''Header Fonts'',
+	   ''#dotlrn.Header_Font#'',
+	   ''#dotlrn.Header_Fonts#'',
 	   null, null, null,
 	   0,
 	   1,
@@ -58,8 +58,8 @@ begin
 	   ''dotlrn_community'',
 	   ''header_font_size'',
 	   ''string'',
-	   ''Header Fon Sizet'',
-	   ''Header Fonts Sizes'',
+	   ''#dotlrn.Header_Font_Size#'',
+	   ''#dotlrn.Header_Font_Sizes#'',
 	   null, null, null,
 	   0,
 	   1,
@@ -72,8 +72,8 @@ begin
 	   ''dotlrn_community'',
 	   ''header_font_color'',
 	   ''string'',
-	   ''Header Font Color'',
-	   ''Header Fonts Colors'',
+	   ''#dotlrn.Header_Font_Color#'',
+	   ''#dotlrn.Header_Font_Colors#'',
 	   null, null, null,
 	   0,
 	   1,
@@ -86,8 +86,8 @@ begin
 	   ''dotlrn_community'',
 	   ''header_logo_item_id'',
 	   ''integer'',
-	   ''Header Logo Item ID'',
-	   ''Header Logo Item ID'',
+	   ''#dotlrn.Header_Logo_Item_ID#'',
+	   ''#dotlrn.Header_Logo_Item_ID#'',
 	   null, null, null,
 	   0,
 	   1,
@@ -100,8 +100,8 @@ begin
 	   ''dotlrn_community'',
 	   ''header_logo_alt_text'',
 	   ''integer'',
-	   ''Header Logo Alt Text'',
-	   ''Header Logo Alt Text'',
+	   ''#dotlrn.Header_Logo_Alt_Text#'',
+	   ''#dotlrn.Header_Logo_Alt_Text#'',
 	   null, null, null,
 	   0,
 	   1,
@@ -115,18 +115,18 @@ begin
     perform dotlrn_community_type__new(
         ''dotlrn_class_instance'',
         ''dotlrn_community'',
-        ''Class'',
-        ''Classes'',
-        ''e.g. 6.001''
+        ''#dotlrn.dotlrn_class_instance_pretty_name#'',
+        ''#dotlrn.dotlrn_class_instance_pretty_plural#'',
+        ''#dotlrn.dotlrn_class_instance_description#''
     );
 
     -- create the dotlrn_club community type
     perform dotlrn_community_type__new(
         ''dotlrn_club'',
         ''dotlrn_community'',
-        ''Club'',
-        ''Clubs'',
-        ''e.g. Alumni''
+        ''#dotlrn.dotlrn_club_pretty_name#'',
+        ''#dotlrn.dotlrn_club_pretty_plural#'',
+        ''#dotlrn.dotlrn_club_description#''
     );
 
     update acs_object_types set table_name = ''dotlrn_community'', package_name = ''dotlrn_community'' where object_type = ''dotlrn_community'';
@@ -162,12 +162,12 @@ begin
     );
 
     -- create roles
-    perform acs_rel_type__create_role(''student'', ''Student'', ''Students'');
-    perform acs_rel_type__create_role(''course_assistant'', ''Course Assistant'', ''Course Assistants'');
-    perform acs_rel_type__create_role(''teaching_assistant'', ''Teaching Assistant'', ''Teaching Assistants'');
-    perform acs_rel_type__create_role(''instructor'', ''Professor'', ''Professors'');
-    perform acs_rel_type__create_role(''course_admin'', ''Course Administrator'', ''Course Administrators'');
-    perform acs_rel_type__create_role(''admin'', ''Administrator'', ''Administrators'');
+    perform acs_rel_type__create_role(''student'', ''#dotlrn.student_role_pretty_name#'', ''#dotlrn.student_role_pretty_plural#'');
+    perform acs_rel_type__create_role(''course_assistant'', ''#dotlrn.course_assistant_role_pretty_name#'', ''#dotlrn.course_assistant_role_pretty_plural#'');
+    perform acs_rel_type__create_role(''teaching_assistant'', ''#dotlrn.teaching_assistant_role_pretty_name#'', ''#dotlrn.teaching_assistant_role_pretty_plural#'');
+    perform acs_rel_type__create_role(''instructor'', ''#dotlrn.instructor_role_pretty_name#'', ''#dotlrn.instructor_role_pretty_plural#'');
+    perform acs_rel_type__create_role(''course_admin'', ''#dotlrn.course_admin_role_pretty_name#'', ''#dotlrn.course_admin_role_pretty_plural#'');
+    perform acs_rel_type__create_role(''admin'', ''#dotlrn.admin_role_pretty_name#'', ''#dotlrn.admin_role_pretty_plural#'');
 
     perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
@@ -341,8 +341,8 @@ begin
 
     perform acs_rel_type__create_type (
 	   ''dotlrn_member_rel'',
-	   ''dotLRN Community Membership'',
-	   ''dotLRN Community Memberships'',
+	   ''#dotlrn.dotlrn_member_rel_pretty_name#'',
+	   ''#dotlrn.dotlrn_member_rel_pretty_plural#'',
 	   ''membership_rel'',
 	   ''dotlrn_member_rels'',
 	   ''rel_id'',
@@ -359,8 +359,8 @@ begin
 
     perform acs_rel_type__create_type (
 	   ''dotlrn_admin_rel'',
-	   ''dotLRN Admin Community Membership'',
-	   ''dotLRN Admin Community Memberships'',
+	   ''#dotlrn.dotlrn_admin_rel_pretty_name#'',
+	   ''#dotlrn.dotlrn_admin_rel_pretty_plural#'',
 	   ''dotlrn_member_rel'',
 	   ''dotlrn_admin_rels'',
 	   ''rel_id'',

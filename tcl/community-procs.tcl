@@ -441,7 +441,8 @@ namespace eval dotlrn_community {
             set pretty_name [lindex $roles [expr $i + 2]]
         }
 
-        return $pretty_name
+        ns_log Notice "PM: pretty_name $pretty_name [lang::util::localize $pretty_name]"
+        return [lang::util::localize $pretty_name]
     }
 
     ad_proc -public get_role_pretty_plural {
@@ -462,7 +463,7 @@ namespace eval dotlrn_community {
             set pretty_plural [lindex $roles [expr $i + 3]]
         }
 
-        return $pretty_plural
+        return [lang::util::localize $pretty_plural]
     }
 
     ad_proc -public get_all_roles {} {
@@ -1060,7 +1061,7 @@ namespace eval dotlrn_community {
         if {$complain_if_invalid_p && !$valid_p} {
             ns_log notice "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_return_complaint 1 \
-                [_ [ad_conn locale] dotlrn.community_name_already_in_use "" [list community_key $community_key]]
+                [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
 
             ad_script_abort
         } else {

@@ -66,7 +66,7 @@ begin
     into dotlrn_user_types
     (type, pretty_name, rel_type, group_id, segment_id)
     values
-    ('student', 'Student', 'dotlrn_student_profile_rel', group_id, segment_id);
+    ('student', '#dotlrn.student_role_pretty_name#', 'dotlrn_student_profile_rel', group_id, segment_id);
 
     select group_id
     into dotlrn_users_group_id

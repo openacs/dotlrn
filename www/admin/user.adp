@@ -83,7 +83,7 @@
 
   <li>
     #dotlrn.User_type#
-    @pretty_type@
+    <%= [lang::util::localize @pretty_type@] %>
   </li>
 
   <li>

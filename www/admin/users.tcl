@@ -40,13 +40,20 @@ set dotlrn_roles [db_list_of_lists select_dotlrn_roles {
     order by dotlrn_user_types.pretty_name
 }]
 
+# The roles are stored as message keys in the database so we need to localize them
+# on the fly here
+set dotlrn_roles_localized [list]
+foreach role_pair $dotlrn_roles {
+    lappend dotlrn_roles_localized [list [lindex $role_pair 0] [lang::util::localize [lindex $role_pair 1]]]
+}
+
 set n_pending_users [db_string select_non_dotlrn_users_count {}]
 lappend dotlrn_roles [list pending "[_ dotlrn.Pending] ($n_pending_users)" {}]
 
 set n_deactivated_users [db_string select_deactivated_users_count {}]
 lappend dotlrn_roles [list deactivated "[_ dotlrn.Deactivated] ($n_deactivated_users)" {}]
 
-set control_bar [ad_dimensional [list [list type {User Type:} admin $dotlrn_roles]]]
+set control_bar [ad_dimensional [list [list type "[_ dotlrn.User_Type]:" admin $dotlrn_roles_localized]]]
 
 if {[string equal $type "deactivated"] == 1} {
     set n_users $n_deactivated_users

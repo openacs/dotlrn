@@ -23,7 +23,4 @@
 <property name="title">@pretty_name@ #dotlrn.Admin#</property>
 <property name="link_control_panel">0</property>
 
-
 @rendered_page@
-
-

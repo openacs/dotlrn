@@ -34,7 +34,7 @@ set admin_email [db_string select_admin_email {
 }]
 
 set msg_subst_values [list system_name [ad_system_name] system_url [ad_parameter SystemUrl]]
-set email_subject [_ [ad_conn locale] dotlrn.user_add_confirm_email_subject "" $msg_subst_values]
+set email_subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_values]
 if [catch {ns_sendmail "$email" "$admin_email" "$email_subject" "$message"} errmsg] {
     ad_return_error "[_ dotlrn.Mail_Failed]" "[_ dotlrn.lt_The_system_was_unable]
 <blockquote><pre>

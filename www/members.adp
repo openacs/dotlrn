@@ -22,6 +22,3 @@
 <property name="title">#dotlrn.Manage_Membership#</property>
 
 <include src="members-chunk-table" referer="members">
-
-
-

@@ -51,7 +51,7 @@ db_transaction {
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
         if {![empty_string_p $user_id]} {
-            doc_body_append [_ [ad_conn locale] dotlrn.user_email_already_exists "" [list user_email $row(email)]]
+            doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id            
         } else {
             set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
@@ -90,13 +90,13 @@ db_transaction {
             # Set the privacy
             acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
             
-            doc_body_append [_ [ad_conn locale] dotlrn.user_email_created "" [list user_email $row(email)]]
+            doc_body_append [_ dotlrn.user_email_created [list user_email $row(email)]]
             set msg_subst_list [list system_name [ad_system_name] \
                                      system_url [ad_parameter SystemUrl] \
                                      user_email $row(email) \
                                      user_password $password]
-            set message [_  [ad_conn locale] dotlrn.user_add_confirm_email_body "" $msg_subst_list] 
-            set subject [_  [ad_conn locale] dotlrn.user_add_confirm_email_subject "" $msg_subst_list] 
+            set message [_ dotlrn.user_add_confirm_email_body $msg_subst_list] 
+            set subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_list] 
 
             # Send note to new user
             if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {

@@ -71,7 +71,14 @@ namespace eval dotlrn {
     ad_proc -public get_user_types_as_options {} {
         return the list of possible user types
     } {
-        return [db_list_of_lists select_user_types_as_options {}]
+        set unlocalized_list [db_list_of_lists select_user_types_as_options {}]
+
+        set localized_list [list]
+        foreach type_pair $unlocalized_list {
+            lappend localized_list [list [lang::util::localize [lindex $type_pair 0]] [lindex $type_pair 1]]
+        }
+
+        return $localized_list
     }
 
     ad_proc -public user_p {

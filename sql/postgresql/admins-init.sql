@@ -69,7 +69,7 @@ begin
     into dotlrn_user_types
     (type, pretty_name, rel_type, group_id, segment_id)
     values
-    (''admin'', ''Staff'', ''dotlrn_admin_profile_rel'', gid, sid);
+    (''admin'', ''#dotlrn.user_type_staff_pretty_name#'', ''dotlrn_admin_profile_rel'', gid, sid);
 
     select group_id
     into dotlrn_users_group_id
