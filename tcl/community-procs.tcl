@@ -749,6 +749,7 @@ namespace eval dotlrn_community {
         {-user_id ""}
         {-community_id:required}
         {-pretext "<li>"}
+        {-join_target "register"}
     } {
         Returns a html fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
@@ -764,7 +765,6 @@ namespace eval dotlrn_community {
             if {[has_subcommunity_p -community_id $sc_id] \
                     && [member_p $sc_id $user_id]} {
                 # only go down a level if user is a member of the sc
-
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n" 
                 
@@ -786,7 +786,7 @@ namespace eval dotlrn_community {
                 if {[not_closed_p -community_id $sc_id] \
                     && ![member_p $sc_id $user_id]} {
                     append chunk \
-                            "<small>\[<a href=${url}join>join</a>\]</small>"
+                            "<small>\[<a href=${url}${join_target}>join</a>\]</small>"
                 }
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
