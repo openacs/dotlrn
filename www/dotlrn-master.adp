@@ -78,6 +78,14 @@
   <p>
 
   <!-- Header End -->
+  
+  <if @display_title@ not nil>
+    <h1>@display_title@</h1>
+  </if>
+
+  <if @context_bar@ not nil>
+    <p>@context_bar;noquote@</p>
+  </if>
 
   <slave>
 
