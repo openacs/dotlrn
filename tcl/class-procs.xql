@@ -57,7 +57,7 @@
         <querytext>
             select 1
             from dotlrn_classes
-            where dotlrn_classes.class_key = :class_key
+            where dotlrn_classes.class_key = :community_type_key
         </querytext>
     </fullquery>
 
