@@ -126,6 +126,28 @@ begin
         description => 'dummy type for User Workspace portal templates'
     );
 
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'member_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Member Pretty Name',
+        pretty_plural => 'Member Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'member_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Member Pretty Plural',
+        pretty_plural => 'Member Pretty Plural',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
     -- create roles
     acs_rel_type.create_role(
         role => 'student',
