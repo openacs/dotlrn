@@ -150,7 +150,7 @@ namespace eval dotlrn_class {
     } {
         set term [dotlrn_term::get_term_name -term_id $term_id]
         set year [dotlrn_term::get_term_year -term_id $term_id]
-        set community_key "${class_key}-${term}-${year}"
+        set community_key [dotlrn::generate_key -name "${class_key}-${term}-${year}"]
 
         set extra_vars [ns_set create]
         ns_set put $extra_vars term_id $term_id
