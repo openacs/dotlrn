@@ -48,7 +48,7 @@
         <td><b>#dotlrn.Header_Font_Size#</b>&nbsp;&nbsp;</td>
         <td nowrap>
         <select name="header_font_size">
-          @size_option_list@
+          @size_option_list;noquote@
         </select>
         </td>
       </tr>
