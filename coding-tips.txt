@@ -3,7 +3,8 @@ Templating
 ----------
 
 - You CANNOT nest the <multiple> tag in a single template. Use the <include>
-  tag instead. Pass in the necessary vars. 
+  tag instead. Pass in the necessary vars. Somebody made a patch to 
+  nest multiples, but it's not in the tree yet (as of 2/16/02).
 
 - in <include> tags, you can pass a datasource (i.e. a <multiple>) using the
   "&=" notation. E.g. from /new-portal/www/place-element.adp
@@ -13,3 +14,20 @@ Templating
              portal_id=@portal_id@
              page_id=@element_multi.page_id@>
   
+PL/SQL
+------
+
+- You can't have a package with the same name as a table! If you do this
+  you get "ORA-00955: name is already used by an existing object" errors
+
+- Always use fully qualified argument names in procs and funcs:
+
+  e.g. in a func named "new" with args "instance_id" and "content"
+
+        insert into static_portal_content
+        (instance_id, content)
+        values
+        (new.instance_id, new.content);
+
+
+   
