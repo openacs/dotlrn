@@ -145,10 +145,20 @@
             <file type="content_page" path="www/admin/user-new.adp"/>
             <file type="content_page" path="www/admin/user-new.tcl"/>
             <file type="query_file" path="www/admin/user-new.xql"/>
+            <file type="query_file" db_type="oracle" path="www/admin/users-chunk-large-oracle.xql"/>
+            <file type="content_page" path="www/admin/users-chunk-large.adp"/>
+            <file type="content_page" path="www/admin/users-chunk-large.tcl"/>
+            <file type="query_file" db_type="oracle" path="www/admin/users-chunk-medium-oracle.xql"/>
+            <file type="content_page" path="www/admin/users-chunk-medium.adp"/>
+            <file type="content_page" path="www/admin/users-chunk-medium.tcl"/>
+            <file type="query_file" db_type="oracle" path="www/admin/users-chunk-small-oracle.xql"/>
+            <file type="content_page" path="www/admin/users-chunk-small.adp"/>
+            <file type="content_page" path="www/admin/users-chunk-small.tcl"/>
+            <file type="content_page" path="www/admin/users-chunk.adp"/>
+            <file type="content_page" path="www/admin/users-chunk.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/users-oracle.xql"/>
             <file type="content_page" path="www/admin/users.adp"/>
             <file type="content_page" path="www/admin/users.tcl"/>
-            <file type="query_file" path="www/admin/users.xql"/>
             <file type="content_page" path="www/all-communities.adp"/>
             <file type="content_page" path="www/all-communities.tcl"/>
             <file type="content_page" path="www/applet-add.tcl"/>
@@ -200,7 +210,6 @@
             <file type="content_page" path="www/logout.gif"/>
             <file type="content_page" path="www/logowhite.gif"/>
             <file path="www/master.adp"/>
-            <file type="content_page" path="www/master.tcl"/>
             <file type="content_page" path="www/member-add-2.adp"/>
             <file type="content_page" path="www/member-add-2.tcl"/>
             <file type="content_page" path="www/member-add-3.tcl"/>
