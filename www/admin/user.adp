@@ -65,25 +65,28 @@
   <li>
     User type:
     @pretty_type@
-    [<small><a href="user-edit?@export_edit_vars@">edit</a></small>]
   </li>
 
   <li>
     Access level:
     @access_level@
-    [<small><a href="user-edit?@export_edit_vars@">edit</a></small>]
   </li>
 
   <li>
     Guest?:
     <if @read_private_data_p@ eq "t">No</if><else>Yes</else>
-    [<small><a href="user-edit?@export_edit_vars@">edit</a></small>]
   </li>
 
   <li>
     ID:
     <if @id@ nil>&lt;none set up&gt;</if><else>@id@</else>
-    [<small><a href="user-edit?@export_edit_vars@">edit</a></small>]
+  </li>
+
+  <br>
+
+  <li>
+    <a href="user-edit?@export_edit_vars@">Edit</a> dotLRN properties for this
+    user.
   </li>
 
 </ul>

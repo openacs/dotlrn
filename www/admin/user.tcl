@@ -26,7 +26,6 @@ ad_page_contract {
 }
 
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
-set context_bar {{users Users} {One User}}
 set export_edit_vars [export_url_vars user_id return_url]
 
 if {![db_0or1row select_user_info {}]} {
@@ -57,5 +56,7 @@ set change_state_links "\[<small>[join [ad_registration_finite_state_machine_adm
 db_multirow member_classes select_member_classes {}
 db_multirow member_clubs select_member_clubs {}
 db_multirow member_subgroups select_member_subgroups {}
+
+set context_bar [list [list users Users] "$first_names $last_name"]
 
 ad_return_template

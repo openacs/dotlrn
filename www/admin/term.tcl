@@ -92,7 +92,7 @@ if {![db_0or1row select_term_info {}]} {
     set context_bar {{terms Terms} {All Terms}}
 } else {
     set title "$term_name $term_year ($start_date - $end_date)"
-    set context_bar {{terms Terms} One}
+    set context_bar [list [list terms Terms] "$term_name $term_year"]
 }
 
 ad_return_template

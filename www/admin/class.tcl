@@ -61,7 +61,7 @@ db_multirow class_instances $query {}
 
 set can_instantiate [dotlrn_class::can_instantiate -class_key $class_key]
 
-set context_bar [list [list classes [ad_parameter "classes_pretty_plural"]] One]
+set context_bar [list [list classes [ad_parameter "classes_pretty_plural"]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"
 
 ad_return_template
