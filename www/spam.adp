@@ -44,19 +44,19 @@
     <tr>
       <td>&#60email&#62</td>
       <td> = </td>
-      <td>User's Email</td>
+      <td>Recepient's Email</td>
     </tr>
 
     <tr>
       <td>&#60first_names&#62</td>
       <td> = </td>
-      <td>User's First Name</td>
+      <td>Recepient's First Name</td>
     </tr>
 
     <tr>
       <td>&#60last_name&#62</td>
       <td> = </td>
-      <td>User's Last Name</td>
+      <td>Recepient's Last Name</td>
     </tr>
   </table>
 </blockquote>
