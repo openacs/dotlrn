@@ -83,17 +83,29 @@
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
 
-  <h3>
-    Members of 
-    <%= [dotlrn_community::get_parent_name -community_id $community_id] %> 
-    That Are Not Members of <%= [dotlrn_community::get_community_name $community_id] %>
-  </h3>
+  <hr>
+
+  <h3>Add New Members</h3>
+
+  <blockquote>
+    <p>
+      The following members of 
+      <%= [dotlrn_community::get_parent_name -community_id $community_id] %> 
+      are not yet members of 
+      <%= [dotlrn_community::get_community_name $community_id] %>.
+    </p>
+
+    <p>
+      First check the box of the users you want to add, next select their
+      role, and finally submit the form.
+    </p>
+  </blockquote>
 
 <formtemplate id="parent_users_form">
   <table width="75%" border="0">
 
     <tr>
-      <td width="5%">&nbsp;</td>
+      <td width="5%"><strong>Add?</strong></td>
       <td width="95%">
         <table width="100%" border="0">
           <tr>
