@@ -194,7 +194,6 @@
             <file type="tcl_util" path="tcl/dotlrn-filter.tcl"/>
             <file type="tcl_init" path="tcl/dotlrn-init.tcl"/>
             <file type="tcl_procs" path="tcl/dotlrn-main-portlet-procs.tcl"/>
-            <file type="tcl_procs" path="tcl/dotlrn-navigation-procs.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/dotlrn-procs-oracle.xql"/>
             <file type="query_file" db_type="postgresql" path="tcl/dotlrn-procs-postgresql.xql"/>
             <file type="tcl_procs" path="tcl/dotlrn-procs.tcl"/>
@@ -217,9 +216,10 @@
             <file type="query_file" path="www/admin/add-instructor-3.xql"/>
             <file type="content_page" path="www/admin/add-instructor.adp"/>
             <file type="content_page" path="www/admin/add-instructor.tcl"/>
+            <file type="query_file" db_type="oracle" path="www/admin/archived-communities-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/archived-communities-postgresql.xql"/>
             <file type="content_page" path="www/admin/archived-communities.adp"/>
             <file type="content_page" path="www/admin/archived-communities.tcl"/>
-            <file type="query_file" path="www/admin/archived-communities.xql"/>
             <file type="content_page" path="www/admin/class-edit.adp"/>
             <file type="content_page" path="www/admin/class-edit.tcl"/>
             <file type="query_file" path="www/admin/class-edit.xql"/>
@@ -230,6 +230,8 @@
             <file type="query_file" path="www/admin/class-instance-new.xql"/>
             <file type="content_page" path="www/admin/class-new.adp"/>
             <file type="content_page" path="www/admin/class-new.tcl"/>
+            <file type="query_file" db_type="oracle" path="www/admin/class-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/class-postgresql.xql"/>
             <file type="content_page" path="www/admin/class.adp"/>
             <file type="content_page" path="www/admin/class.tcl"/>
             <file type="query_file" path="www/admin/class.xql"/>
@@ -241,6 +243,7 @@
             <file type="content_page" path="www/admin/club-new.adp"/>
             <file type="content_page" path="www/admin/club-new.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/club-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/club-postgresql.xql"/>
             <file type="content_page" path="www/admin/club.adp"/>
             <file type="content_page" path="www/admin/club.tcl"/>
             <file type="content_page" path="www/admin/clubs.adp"/>
@@ -279,6 +282,7 @@
             <file type="content_page" path="www/admin/terms.tcl"/>
             <file type="query_file" path="www/admin/terms.xql"/>
             <file type="query_file" db_type="oracle" path="www/admin/user-edit-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/user-edit-postgresql.xql"/>
             <file type="content_page" path="www/admin/user-edit-verify.adp"/>
             <file type="content_page" path="www/admin/user-edit.adp"/>
             <file type="content_page" path="www/admin/user-edit.tcl"/>
@@ -289,6 +293,7 @@
             <file type="content_page" path="www/admin/user-new.tcl"/>
             <file type="query_file" path="www/admin/user-new.xql"/>
             <file type="query_file" db_type="oracle" path="www/admin/user-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/user-postgresql.xql"/>
             <file type="content_page" path="www/admin/user.adp"/>
             <file type="content_page" path="www/admin/user.tcl"/>
             <file type="query_file" path="www/admin/user.xql"/>
@@ -298,12 +303,15 @@
             <file type="content_page" path="www/admin/users-bulk-upload.adp"/>
             <file type="content_page" path="www/admin/users-bulk-upload.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/users-chunk-large-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/users-chunk-large-postgresql.xql"/>
             <file type="content_page" path="www/admin/users-chunk-large.adp"/>
             <file type="content_page" path="www/admin/users-chunk-large.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/users-chunk-medium-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/users-chunk-medium-postgresql.xql"/>
             <file type="content_page" path="www/admin/users-chunk-medium.adp"/>
             <file type="content_page" path="www/admin/users-chunk-medium.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/users-chunk-small-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/users-chunk-small-postgresql.xql"/>
             <file type="content_page" path="www/admin/users-chunk-small.adp"/>
             <file type="content_page" path="www/admin/users-chunk-small.tcl"/>
             <file type="content_page" path="www/admin/users-chunk.adp"/>
@@ -332,6 +340,7 @@
             <file type="content_page" path="www/clone.adp"/>
             <file type="content_page" path="www/clone.tcl"/>
             <file type="query_file" db_type="oracle" path="www/communities-chunk-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/communities-chunk-postgresql.xql"/>
             <file type="content_page" path="www/communities-chunk.adp"/>
             <file type="content_page" path="www/communities-chunk.tcl"/>
             <file type="content_page" path="www/community-edit-2.adp"/>
@@ -340,12 +349,15 @@
             <file type="content_page" path="www/community-edit.adp"/>
             <file type="content_page" path="www/community-edit.tcl"/>
             <file type="content_page" path="www/community-image.vuh"/>
+            <file type="query_file" db_type="oracle" path="www/community-member-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/community-member-postgresql.xql"/>
             <file type="content_page" path="www/community-member.adp"/>
             <file type="content_page" path="www/community-member.tcl"/>
             <file type="content_page" path="www/community-type.adp"/>
             <file type="content_page" path="www/community-type.tcl"/>
             <file type="query_file" path="www/community-type.xql"/>
             <file type="query_file" db_type="oracle" path="www/community-types-chunk-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/community-types-chunk-postgresql.xql"/>
             <file type="content_page" path="www/community-types-chunk.adp"/>
             <file type="content_page" path="www/community-types-chunk.tcl"/>
             <file type="content_page" path="www/configure-2.tcl"/>
@@ -361,12 +373,14 @@
             <file type="content_page" path="www/dotlrn-default-master.adp"/>
             <file type="content_page" path="www/dotlrn-default-master.tcl"/>
             <file type="query_file" db_type="oracle" path="www/dotlrn-main-portlet-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/dotlrn-main-portlet-postgresql.xql"/>
             <file type="content_page" path="www/dotlrn-main-portlet.adp"/>
             <file type="content_page" path="www/dotlrn-main-portlet.tcl"/>
             <file type="content_page" path="www/dotlrn-master.adp"/>
             <file type="content_page" path="www/dotlrn-master.tcl"/>
             <file type="content_page" path="www/folder-chunk.adp"/>
             <file type="content_page" path="www/folder-chunk.tcl"/>
+            <file type="content_page" path="www/graphics/dotlrn.gif"/>
             <file type="content_page" path="www/graphics/help-blue.gif"/>
             <file type="content_page" path="www/graphics/help-green.gif"/>
             <file type="content_page" path="www/graphics/help-purple.gif"/>
@@ -389,14 +403,18 @@
             <file type="content_page" path="www/join-policy-toggle.tcl"/>
             <file type="query_file" path="www/join-policy-toggle.xql"/>
             <file type="query_file" db_type="oracle" path="www/manage-memberships-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/manage-memberships-postgresql.xql"/>
             <file type="content_page" path="www/manage-memberships.adp"/>
             <file type="content_page" path="www/manage-memberships.tcl"/>
             <file type="content_page" path="www/member-add-2.adp"/>
             <file type="content_page" path="www/member-add-2.tcl"/>
             <file type="content_page" path="www/member-add-3.tcl"/>
             <file type="query_file" db_type="oracle" path="www/member-add-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/member-add-postgresql.xql"/>
             <file type="content_page" path="www/member-add.adp"/>
             <file type="content_page" path="www/member-add.tcl"/>
+            <file type="query_file" db_type="oracle" path="www/members-chunk-table-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/members-chunk-table-postgresql.xql"/>
             <file type="content_page" path="www/members-chunk-table.adp"/>
             <file type="content_page" path="www/members-chunk-table.tcl"/>
             <file type="content_page" path="www/members-chunk.adp"/>
@@ -404,6 +422,7 @@
             <file type="content_page" path="www/members.adp"/>
             <file type="content_page" path="www/members.tcl"/>
             <file type="query_file" db_type="oracle" path="www/my-communities-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/my-communities-postgresql.xql"/>
             <file type="content_page" path="www/my-communities.adp"/>
             <file type="content_page" path="www/my-communities.tcl"/>
             <file type="content_page" path="www/not-allowed.adp"/>
@@ -439,39 +458,39 @@
             <file type="content_page" path="www/user-add.tcl"/>
         </files>
         <parameters>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="Classes" description="the nice name for the class instance portal template"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="User" description="the pretty name for the user portal"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="Site Wide Administration" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="Contol Panel" description="The name of the admin page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="Not-A-Member" description="The name of the not a member page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="Subgroup Home,Simple 2-Column;Subgroup Info,Simple 1-Column;Calendar,Simple 1-Column;Files,Simple 1-Column" description="default page names and layouts for subcomms"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="Community Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column;People,Simple 1-Column" description="same"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="Class Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column" description="cvs list of the page_name/layout to create"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="Subgroups" description="the plural"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="Subgroup" description="what subcomms are called"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus" description="dotLRN applets to add by default to each new community"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="Classes" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="Class" description="used to display everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="Subjects" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="Subject" description="used to display everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="Subject" description="used to display everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="Subjects" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="Class" description="used to display everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="Classes" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus" description="dotLRN applets to add by default to each new community"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="Subgroup" description="what subcomms are called"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="Subgroups" description="the plural"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="Class Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column" description="cvs list of the page_name/layout to create"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="Community Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column;People,Simple 1-Column" description="same"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="Subgroup Home,Simple 2-Column;Subgroup Info,Simple 1-Column;Calendar,Simple 1-Column;Files,Simple 1-Column" description="default page names and layouts for subcomms"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="Not-A-Member" description="The name of the not a member page"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="Contol Panel" description="The name of the admin page"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="Site Wide Administration" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="User" description="the pretty name for the user portal"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="Classes" description="the nice name for the class instance portal template"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
         </parameters>
 
     </version>
