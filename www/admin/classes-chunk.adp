@@ -18,7 +18,7 @@
 
 %>
 
-<if @can_create@ gt 0>
+<if @can_create@>
 [<small><a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a></small>]
 </if>
 
@@ -28,7 +28,7 @@
   <tr>
     <th align="left" width="50%">
 <formtemplate id="department_form">
-      <%= [ad_parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+      <%= [dotlrn::parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
     </th>
   </tr>
@@ -39,8 +39,8 @@
 <if @classes:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="30%"><%= [ad_parameter departments_pretty_name] %></th>
-    <th align="left"><%= [ad_parameter classes_pretty_name] %> Name</th>
+    <th align="left" width="30%"><%= [dotlrn::parameter departments_pretty_name] %></th>
+    <th align="left"><%= [dotlrn::parameter classes_pretty_name] %> Name</th>
   </tr>
 <multiple name="classes">
   <tr>
@@ -51,6 +51,7 @@
 </table>
 </if>
 
-<if @can_create@ gt 0 and @classes:rowcount@ gt 10>
-[<small><a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a></small>]
+<if @can_create@ and @classes:rowcount@ gt 10>
+[<small><a
+href="class-new?department_key=@department_key@&referer=@referer@">New <%= [dotlrn::parameter classes_pretty_name] %></a></small>]
 </if>

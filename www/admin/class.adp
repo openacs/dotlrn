@@ -37,7 +37,7 @@
   <br>
 
   <li>
-    <a href="class-edit?class_key=@class_key@&referer=@referer@">Edit</a> <%= [ad_parameter "classes_pretty_name"] %> properties.
+    <a href="class-edit?class_key=@class_key@&referer=@referer@">Edit</a> <%= [dotlrn::parameter classes_pretty_name] %> properties.
   </li>
 
 </ul>
@@ -45,8 +45,8 @@
 <br>
 
 <p>
-<if @can_instantiate@ ne 0>
-  [<small><a href="class-instance-new?class_key=@class_key@">New <%= [ad_parameter "class_instances_pretty_name"] %></a></small>]
+<if @can_instantiate@>
+  [<small><a href="class-instance-new?class_key=@class_key@">New <%= [dotlrn::parameter class_instances_pretty_name] %></a></small>]
 </if>
 <else>
 <include src="need-term-note">
@@ -70,7 +70,7 @@
   <tr>
     <th align="left" width="15%">Term</th>
     <th align="left" width="50%">
-      <%= [ad_parameter "class_instances_pretty_name"] %> Name
+      <%= [dotlrn::parameter class_instances_pretty_name] %> Name
     </th>
     <th align="left">Actions</th>
   </tr>

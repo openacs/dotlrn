@@ -38,18 +38,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_class::can_instantiate.can_instantiate">
-        <querytext>
-            select count(*)
-            from dotlrn_terms
-            where dotlrn_terms.end_date > sysdate
-            and not exists (select 1
-                            from dotlrn_class_instances
-                            where dotlrn_class_instances.class_key = :class_key
-                            and dotlrn_class_instances.term_id = dotlrn_terms.term_id)
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_class::check_class_key_valid_p.collision_check">
         <querytext>
             select 1

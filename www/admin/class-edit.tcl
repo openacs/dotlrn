@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     class_key:notnull
-    {referer "classes"}
+    {referer classes}
 } -properties {
     title:onevalue
     context_bar:onevalue
@@ -39,26 +39,26 @@ set context_bar [list [list classes [ad_parameter classes_pretty_plural]] Edit]
 form create edit_class
 
 element create edit_class class_key \
-    -label "[ad_parameter classes_pretty_name] Key (a short name, no spaces)" \
+    -label "Class Key (a short name, no spaces)" \
     -datatype text \
     -widget hidden \
     -value $class_key
 
 element create edit_class pretty_name \
-    -label "Name" \
+    -label Name \
     -datatype text \
     -widget text \
     -html {size 60}
 
 element create edit_class description \
-    -label "Description" \
+    -label Description \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create edit_class referer \
-    -label "Referer" \
+    -label Referer \
     -datatype text \
     -widget hidden \
     -value $referer

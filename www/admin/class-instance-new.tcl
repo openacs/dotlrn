@@ -33,13 +33,13 @@ if {![db_0or1row select_class_info {}]} {
 form create add_class_instance
 
 element create add_class_instance term \
-    -label "Term" \
+    -label Term \
     -datatype integer \
     -widget select \
     -options [db_list_of_lists select_terms_for_select_widget {}]
 
 element create add_class_instance pretty_name \
-    -label "Name" \
+    -label Name \
     -datatype text \
     -widget text \
     -html {size 60} \
@@ -47,7 +47,7 @@ element create add_class_instance pretty_name \
     -optional
 
 element create add_class_instance description \
-    -label "Description" \
+    -label Description \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
@@ -61,7 +61,7 @@ element create add_class_instance join_policy \
     -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
 
 element create add_class_instance class_key \
-    -label "[ad_parameter classes_pretty_name] Key" \
+    -label "[dotlrn::parameter classes_pretty_name] Key" \
     -datatype text \
     -widget hidden \
     -value $class_key
@@ -74,7 +74,7 @@ element create add_class_instance add_instructor \
     -value 1
 
 element create add_class_instance referer \
-    -label "Referer" \
+    -label Referer \
     -datatype text \
     -widget hidden \
     -value $referer
@@ -104,11 +104,11 @@ if {[form is_valid add_class_instance]} {
     ad_script_abort
 }
 
-set class_instances_pretty_name [ad_parameter "class_instances_pretty_name"]
+set class_instances_pretty_name [dotlrn::parameter class_instances_pretty_name]
 
 set context_bar [list \
     {classes Classes} \
-    [list "class?class_key=$class_key" "$class_name"] \
+    [list "class?class_key=$class_key" $class_name] \
     [list New $class_instances_pretty_name] \
 ]
 

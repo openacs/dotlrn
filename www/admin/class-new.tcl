@@ -23,46 +23,39 @@ ad_page_contract {
     @version $Id$
 } -query {
     {department_key ""}
-    {referer "classes"}
+    {referer classes}
 } -properties {
     title:onevalue
     context_bar:onevalue
 }
 
-set title "New [ad_parameter classes_pretty_name]"
-set context_bar [list [list classes [ad_parameter classes_pretty_plural]] New]
+set title "New [dotlrn::parameter classes_pretty_name]"
+set context_bar [list [list classes [dotlrn::parameter classes_pretty_plural]] New]
 
 form create add_class
 
-if {[empty_string_p $department_key]} {
-    element create add_class department_key \
-        -label "[ad_parameter departments_pretty_name]" \
-        -datatype text \
-        -widget select \
-        -options [dotlrn_department::select_as_list]
-} else {
-    element create add_class department_key \
-        -label "[ad_parameter departments_pretty_name]" \
-        -datatype text \
-        -widget hidden \
-        -value $department_key
-}
+element create add_class department_key \
+    -label [dotlrn::parameter departments_pretty_name] \
+    -datatype text \
+    -widget select \
+    -options [dotlrn_department::select_as_list] \
+    -value $department_key
 
 element create add_class pretty_name \
-    -label "Name" \
+    -label Name \
     -datatype text \
     -widget text \
     -html {size 60}
 
 element create add_class description \
-    -label "Description" \
+    -label Description \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
 element create add_class referer \
-    -label "Referer" \
+    -label Referer \
     -datatype text \
     -widget hidden \
     -value $referer

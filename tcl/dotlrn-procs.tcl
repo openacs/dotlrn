@@ -43,7 +43,7 @@ namespace eval dotlrn {
     } {
 	Returns the group type key used for class groups
     } {
-	return [parameter "class_group_type_key"]
+	return [parameter class_group_type_key]
     }
 
     ad_proc -public group_type_key {

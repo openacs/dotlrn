@@ -42,7 +42,7 @@ set departments [linsert $departments 0 {All ""}]
 form create department_form
 
 element create department_form department_key \
-    -label "Department" \
+    -label Department \
     -datatype text \
     -widget select \
     -options $departments \
@@ -57,9 +57,9 @@ if {![exists_and_not_null referer]} {
     set referer "classes?[export_vars department_key]"
 }
 
-set query "select_classes"
+set query select_classes
 if {![empty_string_p $department_key]} {
-    set query "select_classes_by_department"
+    set query select_classes_by_department
 }
 
 db_multirow classes $query {}

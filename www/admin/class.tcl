@@ -33,7 +33,7 @@ ad_page_contract {
 
 # Get information about that class
 if {![db_0or1row select_class_info {}]} {
-    ad_returnredirect "classes"
+    ad_returnredirect classes
     ad_script_abort
 }
 
@@ -51,7 +51,7 @@ set terms [linsert $terms 0 {All -1}]
 form create term_form
 
 element create term_form term_id \
-    -label "Term" \
+    -label Term \
     -datatype integer \
     -widget select \
     -options $terms \
@@ -68,16 +68,16 @@ if {[form is_valid term_form]} {
     form get_values term_form term_id class_key
 }
 
-set query "select_class_instances"
+set query select_class_instances
 if {$term_id == -1} {
-    set query "select_all_class_instances"
+    set query select_all_class_instances
 }
 
 db_multirow class_instances $query {}
 
 set can_instantiate [dotlrn_class::can_instantiate -class_key $class_key]
 
-set context_bar [list [list classes [ad_parameter "classes_pretty_plural"]] $pretty_name]
+set context_bar [list [list classes [dotlrn::parameter classes_pretty_plural]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"
 
 ad_return_template
