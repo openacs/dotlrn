@@ -70,9 +70,9 @@ is
 
         acs_object_type.create_type (
             supertype => v_parent_object_type,
-            object_type => community_type,
-            pretty_name => community_type,
-            pretty_plural => community_type,
+            object_type => dotlrn_community_type.new.community_type,
+            pretty_name => dotlrn_community_type.new.community_type,
+            pretty_plural => dotlrn_community_type.new.community_type,
             table_name => v_unique_name,
             id_column => v_unique_name,
             package_name => v_unique_name,
@@ -83,13 +83,21 @@ is
         into group_types
         (group_type, default_join_policy)
         values
-        (community_type, 'closed');
+        (dotlrn_community_type.new.community_type, 'closed');
 
         insert
         into dotlrn_community_types
-        (community_type, pretty_name, description, package_id, supertype)
+        (community_type,
+         pretty_name,
+         description,
+         package_id,
+         supertype)
         values
-        (community_type, pretty_name, description, package_id, parent_type);
+        (dotlrn_community_type.new.community_type,
+         dotlrn_community_type.new.pretty_name,
+         dotlrn_community_type.new.description,
+         dotlrn_community_type.new.package_id,
+         dotlrn_community_type.new.parent_type);
 
         return community_type;
     end;
@@ -101,21 +109,23 @@ is
     begin
         delete
         from dotlrn_community_types
-        where community_type = community_type;
+        where community_type = dotlrn_community_type.delete.community_type;
 
-        acs_object_type.drop_type(community_type);
+        acs_object_type.drop_type(dotlrn_community_type.delete.community_type);
     end;
 
     function name (
         community_type in dotlrn_community_types.community_type%TYPE
     ) return varchar
     is
-        name dotlrn_community_types.pretty_name%TYPE;
+        v_name dotlrn_community_types.pretty_name%TYPE;
     begin
-        select pretty_name into name
-        from dotlrn_community_types;
+        select dotlrn_community_types.pretty_name
+        into v_name
+        from dotlrn_community_types
+        where dotlrn_community_types.community_type = dotlrn_community_type.name.community_type;
 
-        return name;
+        return v_name;
     end;
 end;
 /
@@ -198,14 +208,14 @@ as
         c_id integer;
     begin
         c_id := acs_group.new (
-            context_id => context_id,
-            group_id => community_id,
-            object_type => community_type,
-            creation_date => creation_date,
-            creation_user => creation_user,
-            creation_ip => creation_ip,
-            group_name => community_key,
-            join_policy => join_policy
+            context_id => dotlrn_community.new.context_id,
+            group_id => dotlrn_community.new.community_id,
+            object_type => dotlrn_community.new.community_type,
+            creation_date => dotlrn_community.new.creation_date,
+            creation_user => dotlrn_community.new.creation_user,
+            creation_ip => dotlrn_community.new.creation_ip,
+            group_name => dotlrn_community.new.community_key,
+            join_policy => dotlrn_community.new.join_policy
         );
 
         insert into dotlrn_communities
@@ -220,14 +230,14 @@ as
            portal_template_id)
         values
           (c_id, 
-           parent_community_id, 
-           community_type, 
-           community_key, 
-           pretty_name, 
-           description,    
-           package_id, 
-           portal_id, 
-           portal_template_id);
+           dotlrn_community.new.parent_community_id, 
+           dotlrn_community.new.community_type, 
+           dotlrn_community.new.community_key, 
+           dotlrn_community.new.pretty_name, 
+           dotlrn_community.new.description,    
+           dotlrn_community.new.package_id, 
+           dotlrn_community.new.portal_id, 
+           dotlrn_community.new.portal_template_id);
 
         return c_id;
     end;
@@ -240,9 +250,9 @@ as
     is
     begin
         update dotlrn_communities
-        set active_start_date = start_date,
-            active_end_date = end_date
-        where community_id = set_active_dates.community_id;
+        set active_start_date = dotlrn_community.set_active_dates.start_date,
+            active_end_date = dotlrn_community.set_active_dates.end_date
+        where dotlrn_communities.community_id = dotlrn_community.set_active_dates.community_id;
     end;
 
     procedure delete (
@@ -252,9 +262,9 @@ as
     begin
         delete
         from dotlrn_communities
-        where community_id = community_id;
+        where dotlrn_communities.community_id = dotlrn_community.delete.community_id;
 
-        acs_group.delete(community_id);
+        acs_group.delete(dotlrn_community.delete.community_id);
     end;
 
     function name (
@@ -262,7 +272,7 @@ as
     ) return varchar
     is
     begin
-        return acs_group.name(community_id);
+        return acs_group.name(dotlrn_community.name.community_id);
     end;
 
     function member_p (
@@ -277,8 +287,8 @@ as
         from dual
         where exists (select 1
                       from dotlrn_member_rels_approved
-                      where dotlrn_member_rels_approved.user_id = party_id
-                      and dotlrn_member_rels_approved.community_id = community_id);
+                      where dotlrn_member_rels_approved.user_id = dotlrn_community.member_p.party_id
+                      and dotlrn_member_rels_approved.community_id = dotlrn_community.member_p.community_id);
 
         return v_member_p;
     end;
@@ -291,9 +301,9 @@ as
         v_rv char(1);
     begin
         select decode(
-                   acs_permission.permission_p(community_id, party_id, 'dotlrn_admin_community'),
+                   acs_permission.permission_p(dotlrn_community.admin_p.community_id, dotlrn_community.admin_p.party_id, 'dotlrn_admin_community'),
                    'f',
-                   acs_permission.permission_p(community_id, party_id, 'admin'),
+                   acs_permission.permission_p(dotlrn_community.admin_p.community_id, dotlrn_community.admin_p.party_id, 'admin'),
                    't'
                ) into v_rv
         from dual;
@@ -331,7 +341,7 @@ as
         from dual
         where exists (select 1
                       from dotlrn_communities
-                      where parent_community_id = has_subcomm_p.community_id);
+                      where dotlrn_communities.parent_community_id = dotlrn_community.has_subcomm_p.community_id);
         return v_rv;
     end;
 
@@ -348,4 +358,3 @@ as
     from dotlrn_communities,
          groups
     where dotlrn_communities.community_id = groups.group_id;
-
