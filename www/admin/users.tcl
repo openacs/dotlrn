@@ -1,5 +1,3 @@
-
-
 ad_page_contract {
     Displays main dotLRN admin page
     
@@ -14,4 +12,5 @@ set dotlrn_package_id [dotlrn::get_package_id]
 db_multirow users select_dotlrn_users {}
 
 set context_bar {Users}
+
 ad_return_template

@@ -29,8 +29,11 @@ element create add_class_instance class_key \
 element create add_class_instance referer \
     -label "Referer" -value $referer -datatype text -widget hidden
 
+element create add_class_instance add_instructor \
+    -label "Add Instructor" -datatype text -widget radio -options {{Yes 1} {No 0}} -value 1
+
 if {[form is_valid add_class_instance]} {
-    template::form get_values add_class_instance class_key term name description join_policy referer
+    template::form get_values add_class_instance class_key term name description join_policy referer add_instructor
 
     set class_instance_id [dotlrn_class::new_instance \
         -class_type $class_key \
@@ -42,6 +45,11 @@ if {[form is_valid add_class_instance]} {
 
     if {[empty_string_p $referer]} {
         set referer "one-class?class_key=$class_key"
+    }
+
+    if {${add_instructor}} {
+        ad_returnredirect "add-instructor?community_id=$class_instance_id&referer=$referer"
+        ad_script_abort
     }
 
     ad_returnredirect $referer

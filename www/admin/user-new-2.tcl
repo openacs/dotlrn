@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Choose a role
     
@@ -41,4 +40,3 @@ db_1row select_user_info "select first_names,last_name from registered_users whe
 
 set context_bar {{users Users} New}
 ad_return_template
-

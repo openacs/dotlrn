@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Search for a new user for dotLRN
     
@@ -12,4 +11,5 @@ ad_page_contract {
 db_multirow users select_users {}
 
 set context_bar {{users Users} {New}}
+
 ad_return_template
