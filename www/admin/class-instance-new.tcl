@@ -107,7 +107,7 @@ if {[form is_valid add_class_instance]} {
 set class_instances_pretty_name [parameter::get -parameter class_instances_pretty_name]
 
 set context_bar [list \
-    {classes Classes} \
+    [list classes [parameter::get -parameter classes_pretty_plural]] \
     [list "class?class_key=$class_key" $class_name] \
     [list New $class_instances_pretty_name] \
 ]
