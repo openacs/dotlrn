@@ -26,7 +26,7 @@ select define_function_args ('dotlrn_external_profile_rel__new','rel_id,id,rel_t
 select define_function_args ('dotlrn_external_profile_rel__delete','rel_id');
 
 
-create function dotlrn_external_profile_rel__new(integer,integer,integer,integer,integer,varchar,integer,integer,varchar)
+create function dotlrn_external_profile_rel__new(integer,integer,integer,integer,varchar,varchar,integer,integer,varchar)
 returns integer as '
 DECLARE
         p_rel_id               alias for $1;

@@ -26,17 +26,18 @@ select define_function_args ('dotlrn_student_profile_rel__new','rel_id,user_id,p
 select define_function_args ('dotlrn_student_profile_rel__delete','rel_id');
 
 
-create function dotlrn_student_profile_rel__new(integer,integer,integer,integer,varchar,integer,integer,varchar,integer,integer)
+create function dotlrn_student_profile_rel__new(integer,integer,integer,integer,varchar,varchar,integer,integer,varchar)
 returns integer as '
 DECLARE
         p_rel_id                alias for $1;
         p_user_id               alias for $2;
 	p_portal_id		alias for $3;
 	p_theme_id		alias for $4;
-        p_rel_type              alias for $5;
-        p_group_id              alias for $6;
-        p_creation_user         alias for $7;
-        p_creation_ip           alias for $8;
+        p_id                    alias for $5;
+        p_rel_type              alias for $6;
+        p_group_id              alias for $7;
+        p_creation_user         alias for $8;
+        p_creation_ip           alias for $9;
         v_rel_id                dotlrn_user_profile_rels.rel_id%TYPE;
         v_group_id              groups.group_id%TYPE;
 BEGIN
@@ -51,12 +52,23 @@ BEGIN
              v_group_id := p_group_id;
         end if;
 
+--         v_rel_id := dotlrn_user_profile_rel__new(
+--             p_rel_id,
+--             p_id,
+--             p_rel_type,
+--             v_group_id,
+--             p_user_id,
+--             p_creation_user,
+--             p_creation_ip
+--         );
         v_rel_id := dotlrn_user_profile_rel__new(
-            p_rel_id,
+            v_rel_id,
+            p_user_id,
+	    p_portal_id,
+            p_theme_id,
             p_id,
             p_rel_type,
             v_group_id,
-            p_user_id,
             p_creation_user,
             p_creation_ip
         );

@@ -1716,19 +1716,19 @@ namespace eval dotlrn_community {
             }
 
             db_dml update_portal_id {
-                update dotlrn_communities
+                update dotlrn_communities_all
                 set portal_id = NULL
                 where community_id = :community_id
             }
 
             db_dml update_admin_portal_id {
-                update dotlrn_communities
+                update dotlrn_communities_all
                 set admin_portal_id = NULL
                 where community_id = :community_id
             }
 
             db_dml update_non_member_portal_id {
-                update dotlrn_communities
+                update dotlrn_communities_all
                 set non_member_portal_id = NULL
                 where community_id = :community_id
             }

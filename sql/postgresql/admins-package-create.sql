@@ -26,7 +26,7 @@ select define_function_args ('dotlrn_admin_profile_rel__new','rel_id,user_id,por
 select define_function_args ('dotlrn_admin_profile_rel__delete','rel_id');
 
 
-create function dotlrn_admin_profile_rel__new(integer,integer,integer,integer,integer,varchar,integer,integer,varchar)
+create function dotlrn_admin_profile_rel__new(integer,integer,integer,integer,varchar,varchar,integer,integer,varchar)
 returns integer as '
 DECLARE
         p_rel_id                alias for $1;
@@ -59,6 +59,7 @@ BEGIN
             p_theme_id,
             p_id,
             p_rel_type,
+            v_group_id,
             p_creation_user,
             p_creation_ip
         );

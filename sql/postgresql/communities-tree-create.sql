@@ -34,7 +34,7 @@ begin
     end if;
 
     -- increment the sort_key
-    v_max_child_sortkey := tree__increment_key(v_max_child_sortkey);
+    v_max_child_sortkey := tree_increment_key(v_max_child_sortkey);
 
     update dotlrn_community_types
     set max_child_sortkey = v_max_child_sortkey

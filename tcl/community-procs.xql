@@ -28,7 +28,7 @@
 
     <fullquery name="dotlrn_community::set_package_id.update_package_id">
         <querytext>
-            update dotlrn_communities set package_id= :package_id where community_id= :community_id
+            update dotlrn_communities_all set package_id= :package_id where community_id= :community_id
         </querytext>
     </fullquery>
 
@@ -79,7 +79,7 @@
 
     <fullquery name="dotlrn_community::new.update_portal_ids">
         <querytext>
-            update dotlrn_communities
+            update dotlrn_communities_all
             set portal_id = :portal_id,
                 non_member_portal_id = :non_member_portal_id,
                 admin_portal_id = :admin_portal_id
@@ -325,7 +325,7 @@
 
     <fullquery name="dotlrn_community::set_community_name.update_community_name">
         <querytext>
-            update dotlrn_communities
+            update dotlrn_communities_all
             set pretty_name = :pretty_name
             where community_id = :community_id
         </querytext>
@@ -349,7 +349,7 @@
  
     <fullquery name="dotlrn_community::set_community_description.update_community_description">
         <querytext>
-            update dotlrn_communities
+            update dotlrn_communities_all
             set description = :description
             where community_id = :community_id
         </querytext>
@@ -398,7 +398,7 @@
 
     <fullquery name="dotlrn_community::clone.update_portal_ids">
         <querytext>
-            update dotlrn_communities
+            update dotlrn_communities_all
             set portal_id = :portal_id,
                 non_member_portal_id = :non_member_portal_id,
                 admin_portal_id = :admin_portal_id
@@ -408,13 +408,13 @@
 
     <fullquery name="dotlrn_community::archive.update_archive_p">
       <querytext>
-        update dotlrn_communities set archived_p = 't' where community_id = :community_id
+        update dotlrn_communities_all set archived_p = 't' where community_id = :community_id
       </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::unarchive.update_archive_p">
       <querytext>
-        update dotlrn_communities set archived_p = 'f' where community_id = :community_id
+        update dotlrn_communities_all set archived_p = 'f' where community_id = :community_id
       </querytext>
     </fullquery>
 

@@ -26,14 +26,14 @@ select define_function_args ('dotlrn_professor_profile_rel__new','rel_id,user_id
 select define_function_args ('dotlrn_professor_profile_rel__delete','rel_id');
 
 
-create function dotlrn_professor_profile_rel__new(integer,integer,integer,integer,integer,integer,integer,varchar)
+create function dotlrn_professor_profile_rel__new(integer,integer,integer,integer,varchar,varchar,integer,integer,varchar)
 returns integer as '
 DECLARE
         p_rel_id                alias for $1;
         p_user_id               alias for $2;
-	p_portal_id		alias_for $3;
-	p_theme_id		alias_for $4;
-	p_id			alias_for $5;
+	p_portal_id		alias for $3;
+	p_theme_id		alias for $4;
+	p_id			alias for $5;
         p_rel_type              alias for $6;
         p_group_id              alias for $7;
         p_creation_user         alias for $8;

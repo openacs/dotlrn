@@ -13,7 +13,7 @@
 
     <fullquery name="dotlrn_community::new_type.create_community_type">
         <querytext>
-                :1 := dotlrn_community_type__new(
+                select dotlrn_community_type__new(
                     :community_type_key,
                     :parent_type,
                     :pretty_name,
@@ -25,7 +25,7 @@
 
     <fullquery name="dotlrn_community::new.create_community">
         <querytext>
-                :1 := dotlrn_community__new(
+                select dotlrn_community__new(
                     :community_type,
                     :name
                     :pretty_name,
@@ -37,7 +37,7 @@
 
     <fullquery name="dotlrn_community::set_active_dates.set_active_dates">
         <querytext>
-                dotlrn_community__set_active_dates(
+                select dotlrn_community__set_active_dates(
                     :community_id,
                     to_date(:start_date, :date_format),
                     to_date(:end_date, :date_format)
@@ -66,7 +66,7 @@
         <querytext>
             select dotlrn_community_types.community_type
             from dotlrn_community_types
-            where dotlrn_community_types.tree_sortkey = (select tree__ancestor_key(dotlrn_communities.tree_sortkey, 1)
+            where dotlrn_community_types.tree_sortkey = (select tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)
                                                          from dotlrn_communities
                                                          where dotlrn_communities.community_id = :community_id)
         </querytext>
@@ -76,7 +76,7 @@
         <querytext>
             select dotlrn_community_types.community_type
             from dotlrn_community_types
-            where dotlrn_community_types.tree_sortkey = (select tree__ancestor_key(dct.tree_sortkey, 1)
+            where dotlrn_community_types.tree_sortkey = (select tree_ancestor_key(dct.tree_sortkey, 1)
                                                          from dotlrn_community_types dct
                                                          where dct.community_type = :community_type)
         </querytext>

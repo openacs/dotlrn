@@ -338,9 +338,9 @@ BEGIN
 
 	return v_node_id;
 
-        exception
-            when no_data_found then
-                return '';
+--        exception
+--            when no_data_found then
+--                return '';
 END;
 ' language 'plpgsql';
 

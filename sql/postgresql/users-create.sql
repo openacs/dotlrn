@@ -53,6 +53,8 @@ create table dotlrn_user_types (
 create view dotlrn_users
 as
     select acs_rels.rel_id,
+           dotlrn_user_profile_rels.portal_id,
+           dotlrn_user_profile_rels.theme_id,
            dotlrn_user_profile_rels.id,
            users.user_id,
            persons.first_names,
