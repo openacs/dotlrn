@@ -90,16 +90,9 @@ element create spam_message subject \
 
 element create spam_message message \
     -label [_ dotlrn.Message] \
-    -datatype text \
-    -widget textarea \
+    -datatype richtext \
+    -widget richtext \
     -html {rows 10 cols 80 wrap soft}
-
-element create spam_message message_type \
-    -label "[_ dotlrn.Message_Type]" \
-    -datatype text \
-    -widget select \
-    -options [list [list [_ dotlrn.Plain_Text] "text"] [list [_ dotlrn.HTML] "html"]] \
-    -value "text"
 
 element create spam_message send_date \
     -label [_ dotlrn.Send_Date] \
@@ -134,7 +127,10 @@ element create spam_message spam_all \
 
 if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
-        community_id from rel_types_str subject message message_type send_date referer recipients_str spam_all
+        community_id from rel_types_str subject message send_date referer recipients_str spam_all
+
+    set content [string trimright [template::util::richtext::get_property contents $message]]
+    set format [string trimright [template::util::richtext::get_property format $message]]
 
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
@@ -171,14 +167,20 @@ if {[ns_queryexists "form:confirm"]} {
     
     ns_log notice "query: $query"
 
+    if {$format == "text/html"} {
+	set bulk_format "html"
+    } else {
+	set bulk_format "text"
+    }
+
     bulk_mail::new \
         -package_id [site_node_apm_integration::get_child_package_id -package_key [bulk_mail::package_key]] \
         -send_date [template::util::date::get_property linear_date $send_date] \
         -date_format "YYYY MM DD HH24 MI SS" \
         -from_addr $from \
         -subject "\[$community_name\] $subject" \
-        -message $message \
-        -message_type $message_type \
+        -message $content \
+        -message_type $bulk_format \
         -query $query
 
     ad_returnredirect $referer
