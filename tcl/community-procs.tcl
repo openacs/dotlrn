@@ -506,7 +506,7 @@ namespace eval dotlrn_community {
             # Callbacks
             applets_dispatch \
                     -community_id $community_id \
-                    -op RemoveUser \
+                    -op RemoveUserFromCommunity \
                     -list_args [list $community_id $user_id]
 
             # Get a few important things, like rel_id and portal portal_id
@@ -820,7 +820,7 @@ namespace eval dotlrn_community {
                 set user_id [lindex $user 2]
 
                 # do the callbacks
-                applet_call $applet_key RemoveUser [list $community_id $user_id]
+                applet_call $applet_key RemoveUserFromCommunity [list $community_id $user_id]
             }
 
             # Callback
