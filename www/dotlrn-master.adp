@@ -31,10 +31,10 @@
 <head>
 
 <title>@title@</title>
-@header_stuff;noquote@
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/lists.css" media="all">
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/forms.css" media="all">
-
+<link rel="stylesheet" type="text/css" href="/resources/dotlrn/dotlrn-master.css" media="all">
+@header_stuff;noquote@
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 

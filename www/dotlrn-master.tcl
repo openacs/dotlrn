@@ -323,19 +323,6 @@ if { [info exists text] } {
 # This style sheet should be moved over to an external file for performance
 append header_stuff "
 <STYLE TYPE=\"text/css\">
-BODY {
-    FONT-WEIGHT: normal; 
-    FONT-SIZE: small; 
-    BACKGROUND: white; 
-    COLOR: black; 
-    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
-}
-
-H2 {
-   FONT-FAMILY: Arial, Helvetica, sans-serif;
-   FONT-SIZE: medium;
-   FONT-WEIGHT: bold;
-}
 
 H3 {
    FONT-FAMILY: Arial, Helvetica, sans-serif;
@@ -345,10 +332,6 @@ H3 {
    MARGIN-BOTTOM: 0px;
 }
 
-
-H2.portal-page-name {
-    FONT-WEIGHT: bold; FONT-SIZE: medium; COLOR: black; FONT-FAMILY: Arial, Helvetica, sans-serif; margin-top: 5px; margin-left: 5px;
-}
 
 TD.dark-line {
     font-size: 1px;
@@ -360,34 +343,6 @@ TD.light-line {
     background-color: $scope_light_border;
 }
 
-A {
-    COLOR: #003399;
-	
-}
-A:visited {
-    COLOR: #666666;
-}
-
-UL {
-    MARGIN-TOP: 0px;
-}
-UL UL LI {
-    LIST-STYLE-IMAGE: url(/resources/dotlrn/dash.gif);
-}
-SMALL {
-    FONT-SIZE: xsmall;
-}
-IMG.header-img {
-    BACKGROUND: white; 
-    COLOR: white;
-}
-.header-logo {
-    BACKGROUND: white; 
-    WIDTH: 100px; 
-    COLOR: white;
-    PADDING-RIGHT: 35px;
-    PADDING-BOTTOM: 10px;
-}
 .header-text {
     FONT-SIZE: $header_font_size; 
     BACKGROUND: white; 
@@ -408,16 +363,6 @@ IMG.header-img {
     text-transform: uppercase;
 }
 
-TD.element-text {
-    FONT-SIZE: small; 
-    BACKGROUND: white; 
-    FONT-FAMILY: Arial, Helvetica, sans-serif;
-}
-TH.element-text {
-    BACKGROUND: white; 
-    FONT-SIZE: small; 
-    FONT-FAMILY: Arial, Helvetica, sans-serif; 
-}
 TD.element-header-buttons {
     BACKGROUND: white; 
     COLOR: $scope_main_color; 
@@ -447,10 +392,6 @@ TD.selected {
     FONT-FAMILY: Arial, Helvetica, sans-serif; 
     font-weight: bold;
     BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
-}
-
-TABLE.element-content {
-	padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px
 }
 
 TABLE.z_light {
@@ -496,17 +437,6 @@ TD.cal-month-today {
     BORDER-RIGHT: grey 1px solid; BORDER-TOP: grey 1px solid; BORDER-LEFT: grey 1px solid; BORDER-BOTTOM: grey 1px solid;
 }
 
-.element {
-    BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
-}
-
-.no-border {
-    BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
-}
-
-.footer {
-    FONT-SIZE: x-small;
-}
 .navbar A {
     COLOR: $scope_main_color; 
     TEXT-DECORATION: none; 
@@ -542,12 +472,6 @@ TD.navbar-selected {
 
 TABLE.table-display {
     BORDER-RIGHT: $scope_main_color 1px solid; BORDER-TOP: $scope_main_color 1px solid; BORDER-LEFT: $scope_main_color 1px solid; BORDER-BOTTOM: $scope_main_color 1px solid;
-}
-
-TABLE.portlet-config {
-    BACKGROUND: white;
-    CELLPADDING:5px;
-    CELLSPACING: 5px;
 }
 
 TABLE.portal-page-config {
