@@ -116,8 +116,14 @@ if {$member_term_id != -1} {
 }
 
 set n_member_classes [db_string select_n_member_classes {}]
-db_multirow member_classes $member_query {}
-db_multirow member_clubs select_member_clubs {}
+
+db_multirow member_classes $member_query {} {
+    set role [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]
+}
+
+db_multirow member_clubs select_member_clubs {} {
+    set role [dotlrn_community::get_role_pretty_name -community_id $club_id -rel_type $rel_type]
+}
 
 form create non_member_form
 

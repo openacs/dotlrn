@@ -17,6 +17,7 @@
         <querytext>
             select dotlrn_class_instances_full.*,
                    dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.rel_type,
                    dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
@@ -32,6 +33,7 @@
         <querytext>
             select dotlrn_class_instances_full.*,
                    dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.rel_type,
                    dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
@@ -48,6 +50,7 @@
         <querytext>
             select dotlrn_class_instances_full.*,
                    dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.rel_type,
                    dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
@@ -64,6 +67,7 @@
         <querytext>
             select dotlrn_class_instances_full.*,
                    dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.rel_type,
                    dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
@@ -81,6 +85,7 @@
         <querytext>
             select dotlrn_clubs_full.*,
                    dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.rel_type,
                    dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_clubs_full.club_id, :user_id, 'admin') as admin_p
             from dotlrn_clubs_full,

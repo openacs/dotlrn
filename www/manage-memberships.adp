@@ -187,7 +187,9 @@
 
     <table width="100%">
       <tr>
-        <th align="left" colspan="3" width="85%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
+        <th align="left" width="55%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
+        <th align="left" width="15%">&nbsp;</th>
+        <th align="left" width="15%">&nbsp;</th>
         <th align="left">Actions</th>
       </tr>
 
@@ -199,7 +201,9 @@
     <else>
       <tr bgcolor="#ffffff">
     </else>
-        <td colspan="3"><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
+        <td><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
 <if @non_member_clubs.join_policy@ eq "open">
         <td>[<small><include src="register-link" url="@non_member_clubs.url@register" referer=@referer@></small>]</td>
 </if>
