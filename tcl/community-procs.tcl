@@ -867,6 +867,16 @@ namespace eval dotlrn_community {
         }
     }
 
+    ad_proc -public applet_active_p {
+        {-community_id:required}
+        {-applet_key:required}
+    } {
+        Is this applet active in this community? Does it do voulunteer work? 
+        Helps its neighbors? <joke> returns 1 or 0
+    } {
+        return [db_0or1row select_active_applet_p {}]
+    }
+
     ad_proc -public applets_dispatch {
         {-community_id ""}
         {-op:required}
@@ -896,5 +906,6 @@ namespace eval dotlrn_community {
     } {
         acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
+
 }
 

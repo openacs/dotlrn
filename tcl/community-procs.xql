@@ -323,7 +323,18 @@ community_id= :community_id and applet_key= :applet_key
     </querytext>
   </fullquery>
 
-
+  <fullquery name="dotlrn_community::applet_active_p.select_active_applet_p">
+    <querytext>
+      select 1 
+      from dotlrn_community_applets dca,
+           dotlrn_applets da
+      where community_id = :community_id
+      and da.applet_key = :applet_key
+      and active_p = 't'
+      and dca.applet_id = da.applet_id
+      and status = 'active'
+    </querytext>
+  </fullquery>
 
   <fullquery name="dotlrn_community::is_supertype.is_supertype">
     <querytext>
