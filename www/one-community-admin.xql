@@ -7,8 +7,9 @@
             select community_type,
                    pretty_name,
                    description,
-                   portal_template_id,
-                   admin_portal_id
+                   portal_id,
+                   admin_portal_id,
+                   non_member_portal_id
             from dotlrn_communities
             where community_id = :community_id
         </querytext>

@@ -17,8 +17,6 @@
 
 --
 -- The DotLRN memberships packages
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
 --
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --
@@ -36,7 +34,6 @@ is
     function new (
         rel_id in dotlrn_member_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -58,7 +55,6 @@ is
     function new (
         rel_id in dotlrn_member_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -80,9 +76,9 @@ is
 
         insert
         into dotlrn_member_rels
-        (rel_id, portal_id)
+        (rel_id)
         values
-        (v_rel_id, portal_id);
+        (v_rel_id);
 
         return v_rel_id;
     end;
@@ -112,7 +108,6 @@ is
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_admin_rels.rel_id%TYPE;
@@ -134,7 +129,6 @@ is
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_admin_rels.rel_id%TYPE
@@ -147,7 +141,6 @@ is
             community_id => community_id,
             user_id => user_id,
             member_state => dotlrn_admin_rel.new.member_state,
-            portal_id => portal_id,
             creation_user => creation_user,
             creation_ip => creation_ip
         );
@@ -183,7 +176,6 @@ is
     function new (
         rel_id in dotlrn_student_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -205,7 +197,6 @@ is
     function new (
         rel_id in dotlrn_student_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -218,7 +209,6 @@ is
         v_rel_id:= dotlrn_member_rel.new(
             rel_id => rel_id,
             rel_type => rel_type,
-            portal_id => portal_id,
             community_id => class_instance_id,
             user_id => user_id,
             member_state => dotlrn_student_rel.new.member_state,
@@ -260,7 +250,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ta_rels.rel_id%TYPE;
@@ -282,7 +271,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ta_rels.rel_id%TYPE
@@ -295,7 +283,6 @@ is
             community_id => class_instance_id,
             user_id => user_id,
             member_state => dotlrn_ta_rel.new.member_state,
-            portal_id => portal_id,
             creation_user => creation_user,
             creation_ip => creation_ip
         );
@@ -334,7 +321,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ca_rels.rel_id%TYPE;
@@ -356,7 +342,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ca_rels.rel_id%TYPE
@@ -369,7 +354,6 @@ is
             community_id => class_instance_id,
             user_id => user_id,
             member_state => dotlrn_ca_rel.new.member_state,
-            portal_id => portal_id,
             creation_user => creation_user,
             creation_ip => creation_ip
         );
@@ -408,7 +392,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_cadmin_rels.rel_id%TYPE;
@@ -430,7 +413,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_cadmin_rels.rel_id%TYPE
@@ -443,7 +425,6 @@ is
             community_id => class_instance_id,
             user_id => user_id,
             member_state => dotlrn_cadmin_rel.new.member_state,
-            portal_id => portal_id,
             creation_user => creation_user,
             creation_ip => creation_ip
         );
@@ -482,7 +463,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_instructor_rels.rel_id%TYPE;
@@ -504,7 +484,6 @@ is
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_instructor_rels.rel_id%TYPE
@@ -517,7 +496,6 @@ is
             community_id => class_instance_id,
             user_id => user_id,
             member_state => dotlrn_instructor_rel.new.member_state,
-            portal_id => portal_id,
             creation_user => creation_user,
             creation_ip => creation_ip
         );

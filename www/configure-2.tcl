@@ -43,5 +43,3 @@ if {![empty_string_p $portal_id]} {
 }
 
 ad_returnredirect "configure"
-
-

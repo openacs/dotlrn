@@ -15,14 +15,29 @@
 --
 
 --
--- Drop the dotLRN Admins package
+-- Drop the User Profile package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
 -- @version $Id$
 --
 
-@@ dotlrn-admins-package-drop.sql
-@@ dotlrn-admins-sanitize.sql
-@@ dotlrn-admin-profile-provider-drop.sql
+-- drop external users
+@@ externals-drop.sql
 
-drop table dotlrn_admin_profile_rels;
+-- drop students
+@@ students-drop.sql
+
+-- drop professors
+@@ professors-drop.sql
+
+-- drop admins
+@@ admins-drop.sql
+
+@@ users-package-drop.sql
+@@ users-sanitize.sql
+@@ user-profile-provider-drop.sql
+
+drop view dotlrn_users;
+
+drop table dotlrn_user_types;
+drop table dotlrn_user_profile_rels;

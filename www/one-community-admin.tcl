@@ -27,7 +27,9 @@ ad_page_contract {
     community_type:onevalue
     pretty_name:onevalue
     description:onevalue
-    portal_template_id:onevalue
+    portal_id:onevalue
+    admin_portal_id:onevalue
+    non_member_portal_id:onevalue
     users:multirow
 }
 
@@ -41,8 +43,6 @@ db_1row select_community_info {}
 
 # render the admin page
 set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id]
-
-set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
 
 set context_bar {Admin}
 

@@ -15,14 +15,19 @@
 --
 
 --
--- Drop the dotLRN Externals package
+-- Create the dotLRN Professors package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
 -- @version $Id$
 --
 
-@@ dotlrn-externals-package-drop.sql
-@@ dotlrn-externals-sanitize.sql
-@@ dotlrn-external-profile-provider-drop.sql
+create table dotlrn_professor_profile_rels (
+    rel_id                      constraint dotlrn_professor_p_rels_rel_fk
+                                references dotlrn_user_profile_rels (rel_id)
+                                constraint dotlrn_professor_p_rels_pk
+                                primary key
+);
 
-drop table dotlrn_external_profile_rels;
+@@ professor-profile-provider-create.sql
+@@ professors-init.sql
+@@ professors-package-create.sql

@@ -24,7 +24,7 @@ ad_page_contract {
     {referer "one-community-admin"}
 }
 
-set portal_id [dotlrn_community::get_portal_template_id]
+set portal_id [dotlrn_community::get_portal_id]
 
 set rendered_page [portal::template_configure $portal_id $referer]
 

@@ -105,7 +105,7 @@ namespace eval dotlrn {
 
         db_transaction {
             set portal_id [portal::create \
-                -template_id [dotlrn_community::get_type_template_id -community_type "user_workspace"] \
+                -template_id [dotlrn_community::get_type_portal_id -community_type "user_workspace"] \
                 -name "Your dotLRN Workspace" \
                 $user_id
             ]

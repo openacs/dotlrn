@@ -77,18 +77,18 @@ as
     and parties.party_id = users.user_id
     and users.user_id = persons.person_id;
 
-@@ dotlrn-user-profile-provider-create.sql
-@@ dotlrn-users-init.sql
-@@ dotlrn-users-package-create.sql
+@@ user-profile-provider-create.sql
+@@ users-init.sql
+@@ users-package-create.sql
 
 -- create administrators
-@@ dotlrn-admins-create.sql
+@@ admins-create.sql
 
 -- create professors
-@@ dotlrn-professors-create.sql
+@@ professors-create.sql
 
 -- create students
-@@ dotlrn-students-create.sql
+@@ students-create.sql
 
 -- create external users
-@@ dotlrn-externals-create.sql
+@@ externals-create.sql

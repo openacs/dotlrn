@@ -35,7 +35,6 @@ as
            dotlrn_member_rels_full.user_id,
            dotlrn_member_rels_full.rel_type,
            dotlrn_member_rels_full.role,
-           dotlrn_member_rels_full.portal_id,
            dotlrn_member_rels_full.member_state
     from dotlrn_member_rels_full,
          dotlrn_student_rels
@@ -55,7 +54,6 @@ as
            dotlrn_admin_rels_full.user_id,
            dotlrn_admin_rels_full.rel_type,
            dotlrn_admin_rels_full.role,
-           dotlrn_admin_rels_full.portal_id,
            dotlrn_admin_rels_full.member_state
     from dotlrn_admin_rels_full,
          dotlrn_ta_rels
@@ -75,7 +73,6 @@ as
            dotlrn_admin_rels_full.user_id,
            dotlrn_admin_rels_full.rel_type,
            dotlrn_admin_rels_full.role,
-           dotlrn_admin_rels_full.portal_id,
            dotlrn_admin_rels_full.member_state
     from dotlrn_admin_rels_full,
          dotlrn_ca_rels
@@ -95,7 +92,6 @@ as
            dotlrn_admin_rels_full.user_id,
            dotlrn_admin_rels_full.rel_type,
            dotlrn_admin_rels_full.role,
-           dotlrn_admin_rels_full.portal_id,
            dotlrn_admin_rels_full.member_state
     from dotlrn_admin_rels_full,
          dotlrn_cadmin_rels
@@ -115,7 +111,6 @@ as
            dotlrn_admin_rels_full.user_id,
            dotlrn_admin_rels_full.rel_type,
            dotlrn_admin_rels_full.role,
-           dotlrn_admin_rels_full.portal_id,
            dotlrn_admin_rels_full.member_state
     from dotlrn_admin_rels_full,
          dotlrn_instructor_rels

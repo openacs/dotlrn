@@ -8,8 +8,8 @@
                    name
             from portals p,
                  dotlrn_communities dc
-            where dc.portal_template_id = p.portal_id
-            and dc.portal_id is null
+            where dc.portal_id = p.portal_id
+            and dc.non_member_portal_id is null
             and dc.admin_portal_id is null
             and dc.community_type != 'user_workspace'
         </querytext>

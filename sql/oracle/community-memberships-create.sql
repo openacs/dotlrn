@@ -17,8 +17,6 @@
 
 --
 -- The DotLRN communities membership constructs
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
 --
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --
@@ -32,9 +30,7 @@ create table dotlrn_member_rels (
     rel_id                      constraint dotlrn_member_rels_rel_id_fk
                                 references membership_rels (rel_id)
                                 constraint dotlrn_member_rels_rel_id_pk
-                                primary key,
-    portal_id                   constraint dotlrn_member_rels_portal_fk
-                                references portals (portal_id)
+                                primary key
 );                                          
 
 create or replace view dotlrn_member_rels_full
@@ -48,7 +44,6 @@ as
             where acs_rel_roles.role = (select acs_rel_types.role_two
                                         from acs_rel_types
                                         where acs_rel_types.rel_type = acs_rels.rel_type)) as role,
-           dotlrn_member_rels.portal_id,
            membership_rels.member_state
     from dotlrn_member_rels,
          acs_rels,
@@ -76,10 +71,7 @@ as
            dotlrn_member_rels_full.user_id,
            dotlrn_member_rels_full.rel_type,
            dotlrn_member_rels_full.role,
-           dotlrn_member_rels_full.portal_id,
            dotlrn_member_rels_full.member_state
     from dotlrn_member_rels_full,
          dotlrn_admin_rels
     where dotlrn_member_rels_full.rel_id = dotlrn_admin_rels.rel_id;
-
-

@@ -14,7 +14,6 @@
 #  details.
 #
 
-
 ad_page_contract {
     Displays an element configuration page
 
@@ -35,7 +34,6 @@ if {[ad_parameter community_type_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-
 if {[ad_parameter community_level_p] == 1} {
     # This is a community
     # What community type are we at?
@@ -48,16 +46,14 @@ if {[ad_parameter community_level_p] == 1} {
 	ad_return_template one-community-not-member
 	return
     } else {
-
 	# they are a member, do the request
-	set rendered_page \
-		[portal::configure_element $element_id $op "one-community"]
+	set rendered_page [portal::configure_element $element_id $op "one-community"]
     }
 } else {
     # this not a community, it is the "workspace" deal
 
     # Get the page
-    set portal_id [db_string select_portal_id {} -default ""]
+    set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
     # If there is no portal_id, this user is either a guest or something else
     if {[empty_string_p $portal_id]} {
@@ -69,6 +65,3 @@ if {[ad_parameter community_level_p] == 1} {
 }
 
 ad_return_template
-
-
-

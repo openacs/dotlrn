@@ -15,14 +15,19 @@
 --
 
 --
--- Drop the dotLRN Professors package
+-- Create the dotLRN Students package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
 -- @version $Id$
 --
 
-@@ dotlrn-professors-package-drop.sql
-@@ dotlrn-professors-sanitize.sql
-@@ dotlrn-professor-profile-provider-drop.sql
+create table dotlrn_student_profile_rels (
+    rel_id                      constraint dotlrn_student_p_rels_rel_fk
+                                references dotlrn_user_profile_rels (rel_id)
+                                constraint dotlrn_student_p_rels_pk
+                                primary key
+);
 
-drop table dotlrn_professor_profile_rels;
+@@ student-profile-provider-create.sql
+@@ students-init.sql
+@@ students-package-create.sql

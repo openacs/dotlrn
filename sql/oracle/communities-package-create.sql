@@ -141,7 +141,7 @@ is
         pretty_name in dotlrn_communities.pretty_name%TYPE,
         description in dotlrn_communities.description%TYPE,
         portal_id in dotlrn_communities.portal_id%TYPE default null,
-        portal_template_id in dotlrn_communities.portal_template_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities.non_member_portal_id%TYPE default null,
         package_id in dotlrn_communities.package_id%TYPE default null,
         join_policy in groups.join_policy%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
@@ -196,7 +196,7 @@ as
         pretty_name in dotlrn_communities.pretty_name%TYPE,
         description in dotlrn_communities.description%TYPE,
         portal_id in dotlrn_communities.portal_id%TYPE default null,
-        portal_template_id in dotlrn_communities.portal_template_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities.non_member_portal_id%TYPE default null,
         package_id in dotlrn_communities.package_id%TYPE default null,
         join_policy in groups.join_policy%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
@@ -227,7 +227,7 @@ as
            description, 
            package_id, 
            portal_id, 
-           portal_template_id)
+           non_member_portal_id)
         values
           (c_id, 
            dotlrn_community.new.parent_community_id, 
@@ -237,7 +237,7 @@ as
            dotlrn_community.new.description,    
            dotlrn_community.new.package_id, 
            dotlrn_community.new.portal_id, 
-           dotlrn_community.new.portal_template_id);
+           dotlrn_community.new.non_member_portal_id);
 
         return c_id;
     end;

@@ -20,9 +20,11 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::set_type_template_id.update_template_id">
+    <fullquery name="dotlrn_community::set_type_portal_id.set_type_portal_id">
         <querytext>
-            update dotlrn_community_types set portal_template_id= :template_id where community_type= :community_type
+            update dotlrn_community_types
+            set portal_id = :portal_id
+            where community_type = :community_type
         </querytext>
     </fullquery>
 
@@ -79,9 +81,9 @@
     <fullquery name="dotlrn_community::new.update_portal_ids">
         <querytext>
             update dotlrn_communities
-            set portal_template_id = :portal_template_id,
-                portal_id = :portal_id,
-                admin_portal_id= :admin_portal_id
+            set portal_id = :portal_id,
+                non_member_portal_id = :non_member_portal_id,
+                admin_portal_id = :admin_portal_id
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -206,36 +208,10 @@
 
     <fullquery name="dotlrn_community::remove_user.select_rel_info">
         <querytext>
-            select rel_id,
-                   portal_id
-            from dotlrn_member_rels_full
-            where community_id = :community_id
-            and user_id= :user_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::get_portal_id.select_portal_id">
-        <querytext>
-            select portal_id
+            select rel_id
             from dotlrn_member_rels_full
             where community_id = :community_id
             and user_id = :user_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::get_community_non_members_portal_id.select_community_portal_id">
-        <querytext>
-            select portal_id
-            from dotlrn_communities
-            where community_id = :community_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::get_community_admin_portal_id.select_community_admin_portal_id">
-        <querytext>
-            select admin_portal_id
-            from dotlrn_communities
-            where community_id = :community_id
         </querytext>
     </fullquery>
 
@@ -414,9 +390,25 @@
       </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_portal_template_id_not_cached.select_portal_template_id">
+    <fullquery name="dotlrn_community::get_portal_id_not_cached.select_portal_id">
         <querytext>
-            select portal_template_id
+            select portal_id
+            from dotlrn_communities
+            where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::get_non_member_portal_id_not_cached.select_non_member_portal_id">
+        <querytext>
+            select non_member_portal_id
+            from dotlrn_communities
+            where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::get_admin_portal_id_not_cached.select_admin_portal_id">
+        <querytext>
+            select admin_portal_id
             from dotlrn_communities
             where community_id = :community_id
         </querytext>

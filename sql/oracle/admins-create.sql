@@ -15,19 +15,19 @@
 --
 
 --
--- Create the dotLRN Students package
+-- Create the dotLRN Admins package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
 -- @version $Id$
 --
 
-create table dotlrn_student_profile_rels (
-    rel_id                      constraint dotlrn_student_p_rels_rel_fk
+create table dotlrn_admin_profile_rels (
+    rel_id                      constraint dotlrn_admin_p_rels_rel_id_fk
                                 references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_student_p_rels_pk
+                                constraint dotlrn_admin_profile_rels_pk
                                 primary key
 );
 
-@@ dotlrn-student-profile-provider-create.sql
-@@ dotlrn-students-init.sql
-@@ dotlrn-students-package-create.sql
+@@ admin-profile-provider-create.sql
+@@ admins-init.sql
+@@ admins-package-create.sql

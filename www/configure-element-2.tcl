@@ -26,7 +26,6 @@ ad_page_contract {
     value
 }
 
-
 # Check if this is a community type level thing
 if {[ad_parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
@@ -36,10 +35,6 @@ if {[ad_parameter community_type_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-# XXX security
 portal::set_element_param $element_id $key $value
 
-
 ad_returnredirect "."
-
-

@@ -100,19 +100,15 @@ if {![info exists control_panel_text]} {
     set control_panel_text "Control Panel"
 }
 
-
 if {$have_comm_id_p} {
     # get this comm's info
-    set portal_id [dotlrn_community::get_portal_template_id $community_id]
+    set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
     set text [dotlrn_community::get_community_header_name $community_id] 
     set link [dotlrn_community::get_community_url $community_id]
 
-#    ns_log notice "aks9: $link"
-
-#    ad_return_complaint 1 "$portal_id | $text | $link"
     if {[empty_string_p $portal_id] && !$admin_p } {
         # not a member yet
-        set portal_id [dotlrn_community::get_community_non_members_portal_id $community_id]
+        set portal_id [dotlrn_community::get_non_member_portal_id -community_id $community_id]
     }
 
     if { $have_portal_id_p && $show_navbar_p } {

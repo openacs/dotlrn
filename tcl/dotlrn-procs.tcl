@@ -89,19 +89,19 @@ namespace eval dotlrn {
     } {
         dotlrn_community::set_type_package_id [community_type] [get_package_id]
 
-        # we need to create a portal template for the user workspace and 
+        # we need to create a portal for the user workspace and 
         # it's a sin
         dotlrn_community::init \
-                -community_type "user_workspace" \
-                -community_type_url_part "user-workspace-dummy-url" \
-                -pretty_name "User Workspace"
+            -community_type "user_workspace" \
+            -community_type_url_part "user-workspace-dummy-url" \
+            -pretty_name "User Workspace"
 
 
         # do the same for subgroups (dotlrn_community type)
         dotlrn_community::init \
-                -community_type "dotlrn_community" \
-                -community_type_url_part "subgroups-dummy-url" \
-                -pretty_name "Subgroups"
+            -community_type "dotlrn_community" \
+            -community_type_url_part "subgroups-dummy-url" \
+            -pretty_name "Subgroups"
     }
 
     ad_proc -public is_package_mounted {

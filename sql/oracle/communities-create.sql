@@ -16,8 +16,6 @@
 
 --
 -- The DotLRN communities construct
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
 --
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --
@@ -41,7 +39,7 @@ create table dotlrn_community_types (
                                 references apm_packages (package_id),
     supertype                   constraint dotlrn_ct_supertype_fk
                                 references dotlrn_community_types (community_type),
-    portal_template_id          constraint dotlrn_ct_portal_templ_id_fk
+    portal_id                   constraint dotlrn_ct_portal_id_fk
                                 references portals (portal_id)
 );
 
@@ -66,9 +64,9 @@ create table dotlrn_communities (
     active_end_date             date,
     portal_id                   constraint dotlrn_c_portal_id_fk
                                 references portals (portal_id),
-    admin_portal_id             constraint dotlrn_c_admin_portal_id_fk
+    non_member_portal_id        constraint dotlrn_c_non_member_portal_fk
                                 references portals (portal_id),
-    portal_template_id          constraint dotlrn_c_portal_template_id_fk
+    admin_portal_id             constraint dotlrn_c_admin_portal_id_fk
                                 references portals (portal_id),
     package_id                  constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),

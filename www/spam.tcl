@@ -38,7 +38,7 @@ if {[empty_string_p $community_id]} {
 dotlrn::require_user_admin_community $community_id
 
 set sender_id [ad_conn user_id]
-set portal_id [dotlrn_community::get_portal_id $community_id $sender_id]
+set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
 db_1row select_sender_info {
     select parties.email as sender_email,
