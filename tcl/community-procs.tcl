@@ -419,9 +419,9 @@ namespace eval dotlrn_community {
             set admin_segment_id [rel_segments_new $community_id dotlrn_admin_rel "Admins of $community_name"]
 
             # Grant permissions
-            ad_permission_grant $member_segment_id $community_id read
-            ad_permission_grant $member_segment_id $community_id write
-            ad_permission_grant $admin_segment_id $community_id admin
+            permission::grant -party_id $member_segment_id -object_id $community_id -privilege "read"
+            permission::grant -party_id $member_segment_id -object_id $community_id -privilege "write"
+            permission::grant -party_id $admin_segment_id -object_id $community_id -privilege "admin"
         }
     }
 
@@ -432,12 +432,12 @@ namespace eval dotlrn_community {
     } {
         # Take care of the admins
         set admin_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
-        ad_permission_revoke $admin_segment_id $community_id admin
+        permission::revoke -party_id $admin_segment_id -object_id $community_id -privilege "admin"
         rel_segments_delete $admin_segment_id
 
         # Take care of the members
         set member_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
-        ad_permission_revoke $member_segment_id $community_id edit
+        permission::revoke -party_id $member_segment_id -object_id $community_id -privilege "edit"
         rel_segments_delete $member_segment_id
     }
 
@@ -725,6 +725,12 @@ namespace eval dotlrn_community {
     } {
         returns the community type from community_id
     } {
+        set type [get_community_type_from_community_id $community_id]
+
+        if {[string equal $type "dotlrn_community"] == 1} {
+            return $type
+        }
+
         return [db_string select_community_type {}]
     }
 
