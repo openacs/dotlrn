@@ -11,7 +11,7 @@
 <p></p>
 
 <blockquote>
-  <include src="community-types" title="@community_type_title@">
+  <include src="community-types-chunk" title="@community_type_title@">
 </blockquote>
 
 <p></p>

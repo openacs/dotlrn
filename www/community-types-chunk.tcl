@@ -1,4 +1,4 @@
-# dotlrn/www/community-types.tcl
+# dotlrn/www/community-types-chunk.tcl
 
 ad_page_contract {
     @author yon (yon@milliped.com)
