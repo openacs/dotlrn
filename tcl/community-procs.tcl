@@ -643,7 +643,17 @@ namespace eval dotlrn_community {
         {-rel_type dotlrn_member_rel}
         community_id
     } {
-        Returns the list of users with a membership_id, a user_id, first name, last name, email, and role
+        Returns the list of users with a membership_id, a user_id, first name,
+        last name, email, and role
+    } {
+        return [util_memoize "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"]
+    }
+
+    ad_proc -private list_users_not_cached {
+        {-rel_type:required}
+        {-community_id:required}
+    } {
+        Memoizing helper
     } {
         return [db_list_of_ns_sets select_users {}]
     }
@@ -716,6 +726,8 @@ namespace eval dotlrn_community {
                 -user_id $user_id \
                 -member_state $member_state
         }
+
+        util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
     }
 
     ad_proc -public add_user_to_community {
@@ -831,6 +843,9 @@ namespace eval dotlrn_community {
 
             # Remove it
             relation_remove $rel_id
+
+            # flush the list_users cache
+            util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         }
     }
 

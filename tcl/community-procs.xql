@@ -125,7 +125,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::list_users.select_users">
+    <fullquery name="dotlrn_community::list_users_not_cached.select_users">
         <querytext>
             select dotlrn_member_rels_approved.rel_id,
                    dotlrn_member_rels_approved.rel_type,
