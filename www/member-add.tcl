@@ -32,11 +32,9 @@ set community_id [dotlrn_community::get_community_id]
 # Just search
 db_multirow users select_users {}
 
-if {[parameter::get -package_id [site_node_closest_ancestor_package "acs-subsite"] -parameter ShowContextBarP -default 1]} {
-    set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
-} else {
-    set context_bar ""
-}
+
+set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
+
 
 ad_return_template
 
