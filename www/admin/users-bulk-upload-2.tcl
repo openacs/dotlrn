@@ -50,7 +50,7 @@ db_transaction {
     oacs_util::csv_foreach -file $file_location -array_name row {
 
         # First make sure the required data is there
-        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name) || ![info exists row(username)]] } {
+        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] || ![info exists row(username)] } {
             doc_body_append "<br>Datafile must include at least the email, first_names, last_name, username fields<br>"
             db_abort_transaction
             return
