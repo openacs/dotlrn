@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.0a3" locale="TH_TH" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.0.3" locale="TH_TH" charset="utf-8">
 
   <msg key="AddDrop_Memberships">สมัคร/ยกเลิก สมาชิก</msg>
   <msg key="Ask_a_question">ถามคำถาม</msg>
   <msg key="Change_Locale">เปลี่ยนภาษา</msg>
+  <msg key="clubs_pretty_name">ชุมชน</msg>
   <msg key="clubs_pretty_plural">ชุมชน</msg>
   <msg key="control_panel">แผงควบคุม</msg>
   <msg key="Customize_Layout">แก้ไขรูปแบบ</msg>

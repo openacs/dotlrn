@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0a3" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.0.3" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
   <msg key="Access">Acceso</msg>
@@ -396,6 +396,7 @@
   <msg key="or_return_to">o, volver a</msg>
   <msg key="Pending">Pendiente</msg>
   <msg key="Pending_Approval">Esperando aprobación</msg>
+  <msg key="Person_name">Nombre</msg>
   <msg key="Personal_home_page">Página personal:</msg>
   <msg key="Personal_Options">Opciones personales</msg>
   <msg key="portal_templates">Plantillas de portales</msg>
@@ -405,6 +406,7 @@
   <msg key="Pretty_Name">Nombre</msg>
   <msg key="Pretty_Plural">Plural</msg>
   <msg key="Preview">Vista previa</msg>
+  <msg key="prv_policy_must_be_one_of">La regla de privacidad debe ser &quot;Si&quot; o &quot;No&quot;.</msg>
   <msg key="Public_Web_Log">Bitácora Web pública</msg>
   <msg key="purple">púrpura</msg>
   <msg key="Recipients_Email">Dirección de correo del remitente</msg>

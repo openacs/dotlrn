@@ -98,6 +98,13 @@ switch $order {
     }
 }
 
+set bio_attribute_id [db_string bio_attribute_id {
+    select attribute_id
+    from acs_attributes
+    where object_type = 'person'
+    and attribute_name = 'bio'
+}]
+
 # vars to carry over (from previous script)
 # Do a special clause for role!
 
@@ -113,7 +120,9 @@ switch $order {
 
 set order_by "$order $order_direction"
 
-db_multirow current_members select_current_members {}
+db_multirow -extend { community_member_url } current_members select_current_members {} {
+    set community_member_url [acs_community_member_url -user_id $user_id]
+}
 
 db_multirow pending_users select_pending_users {
     select dotlrn_users.*,

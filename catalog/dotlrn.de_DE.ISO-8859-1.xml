@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0a3" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.0.3" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -140,7 +140,7 @@
   <msg key="dotlrn_community_pretty_name">Gruppe</msg>
   <msg key="dotlrn_community_pretty_plural">Gruppen</msg>
   <msg key="dotLRN_Information">dotLRN-Informationen</msg>
-  <msg key="dotlrn_main_portlet_pretty_name">Gruppen</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Kurse und Module</msg>
   <msg key="dotlrn_member_rel_pretty_name">Der Benutzer ist Teilnehmer folgender Gruppe:</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Der Benutzer ist Teilnehmer folgender Gruppen:</msg>
   <msg key="Drop">Abmelden</msg>

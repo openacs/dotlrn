@@ -31,7 +31,7 @@ set subject "[_ dotlrn.lt_Your_password_on_syst]"
 set change_password_url "[ad_url]/user/password-update?[export_vars {user_id {password_old $password_1}}]"
 set body "[_ dotlrn.lt_Please_follow_the_fol]"
 
-set email [db_string select_user_email {}]
+set email [acs_user::get_element -user_id $user_id -element email]
 
 # Send email
 if [catch {ns_sendmail $email $system_owner $subject $body} errmsg] {

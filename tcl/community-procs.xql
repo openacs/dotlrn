@@ -138,14 +138,23 @@
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
                    dotlrn_member_rels_approved.user_id,
-                   registered_users.first_names,
-                   registered_users.last_name,
-                   registered_users.email
-            from registered_users,
+                   acs_users_all.first_names,
+                   acs_users_all.last_name,
+                   acs_users_all.email
+                  (select count(*) 
+                   from   acs_rels 
+                   where  rel_type = 'user_portrait_rel' 
+                   and    object_id_one = dotlrn_member_rels_approved.user_id) as portrait_p,
+                  (select count(*) 
+                   from   acs_attribute_values 
+                   where  object_id = dotlrn_member_rels_approved.user_id
+                   and    attribute_id = :bio_attribute_id 
+                   and    attr_value != '') as bio_p
+            from acs_users_all,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.community_id = :community_id
-            and dotlrn_member_rels_approved.user_id = registered_users.user_id
-            order by dotlrn_member_rels_approved.rel_type, registered_users.last_name
+            and dotlrn_member_rels_approved.user_id = acs_users_all.user_id
+            order by dotlrn_member_rels_approved.rel_type, acs_users_all.last_name
         </querytext>
     </fullquery>
 
@@ -155,16 +164,16 @@
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
                    dotlrn_member_rels_approved.user_id,
-                   registered_users.first_names,
-                   registered_users.last_name,
-                   registered_users.email
-            from registered_users,
+                   acs_users_all.first_names,
+                   acs_users_all.last_name,
+                   acs_users_all.email
+            from acs_users_all,
                  dotlrn_member_rels_approved, 
                  dotlrn_communities
             where dotlrn_communities.community_id = :subcomm_id
             and dotlrn_communities.parent_community_id = dotlrn_member_rels_approved.community_id
-            and registered_users.user_id = dotlrn_member_rels_approved.user_id
-            and registered_users.user_id not in (select dm.user_id
+            and acs_users_all.user_id = dotlrn_member_rels_approved.user_id
+            and acs_users_all.user_id not in (select dm.user_id
                                                  from dotlrn_member_rels_full dm
                                                  where dm.community_id = :subcomm_id)
             order by last_name
@@ -177,13 +186,13 @@
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
                    dotlrn_member_rels_approved.user_id,
-                   registered_users.first_names,
-                   registered_users.last_name,
-                   registered_users.email
-            from registered_users,
+                   acs_users_all.first_names,
+                   acs_users_all.last_name,
+                   acs_users_all.email
+            from acs_users_all,
                 dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.community_id = :community_id
-            and dotlrn_member_rels_approved.user_id = registered_users.user_id
+            and dotlrn_member_rels_approved.user_id = acs_users_all.user_id
             and dotlrn_member_rels_approved.rel_type = :rel_type
         </querytext>
     </fullquery>
