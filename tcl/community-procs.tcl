@@ -217,8 +217,6 @@ namespace eval dotlrn_community {
                 where object_id = :community_id
             }
 
-	    ReturnHeaders
-
             set template_id [dotlrn::get_portal_id_from_type -type $object_type]
 	    set portal_id [dotlrn::get_portal_id_from_type -type $object_type]
 
