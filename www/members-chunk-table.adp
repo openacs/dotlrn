@@ -34,6 +34,7 @@
 <table  width="85%" class="table-display" cellpadding="5" cellspacing="0">
     <tr class="table-header">
       <td>&nbsp;</td>
+      <td>&nbsp;</td>
       <td><a href=@referer@?order=first_names&order_direction=@first_names_order_direction@>
 	#dotlrn.First_Name#</a> @first_names_order_html;noquote@
       </td>	
@@ -58,6 +59,11 @@
 	<input type=checkbox name=user_id value=@current_members.user_id@>
    </if>
  </td>
+  <td>
+    <if @current_members.portrait_p@ true or @current_members.bio_p@ true>
+      <a href="@current_members.community_member_url@"><img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="@acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" border="0"></a>
+    </if>
+  </td>
   <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.first_names@] %></td>
   <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.last_name@]%></td>
   <td>
