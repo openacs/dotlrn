@@ -28,7 +28,8 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "[_ dotlrn.Delete_Empty] [parameter::get -localize -parameter departments_pretty_name]"
+set departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]
+set title "[_ dotlrn.Delete_Empty]"
 set context_bar [list [list departments [parameter::get -localize -parameter departments_pretty_plural]] Delete]
 
 form create delete_department

@@ -64,12 +64,12 @@
 
       <tr>
         <th align="left">#dotlrn.Last_visit_over#</th>
-        <th align="left"><formwidget id="last_visit_greater">&nbsp; #dotlrn.days_ago#</th>
+        <th align="left"><formwidget id="last_visit_greater"></th>
       </tr>
 
       <tr>
         <th align="left">#dotlrn.Last_visit_under#</th>
-        <th align="left"><formwidget id="last_visit_less">&nbsp; #dotlrn.days_ago#</th>
+        <th align="left"><formwidget id="last_visit_less"></th>
       </tr>
 
       <tr>
