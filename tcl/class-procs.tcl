@@ -195,14 +195,11 @@ namespace eval dotlrn_class {
         if {[empty_string_p $pretty_name]} {
             set pretty_name  "[dotlrn_community::get_community_type_name $class_key]; $term $year"
         }
-        set community_key [dotlrn::generate_key -name $pretty_name]
-
         db_transaction {
             set community_id [dotlrn_community::new \
                 -description $description \
                 -community_type $class_key \
                 -object_type [community_type] \
-                -community_key $community_key \
                 -pretty_name $pretty_name \
                 -extra_vars $extra_vars \
             ]
