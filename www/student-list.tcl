@@ -6,6 +6,8 @@ ad_page_contract {
 } -query {
 }
 
+set portal_id ""
+
 # Check that this is a community type
 if {[ad_parameter community_level_p] != 1} {
     ns_returnredirect "./"

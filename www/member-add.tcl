@@ -9,7 +9,7 @@ ad_page_contract {
     search_text
     {referer "one-community-admin"}
 }
-
+set portal_id ""
 set community_id [dotlrn_community::get_community_id]
 
 # Just search

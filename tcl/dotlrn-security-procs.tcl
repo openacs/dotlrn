@@ -50,13 +50,20 @@ namespace eval dotlrn {
 	    if {$rel_type == "dotlrn_full_user_rel"} {
 		# Create a portal page for this user
 		set portal_id [portal::create -name "Your dotLRN Workspace" $user_id]
-		
-		# Add the basic dotLRN class listing portlet
-		dotlrn_main_portlet::add_self_to_page $portal_id {}
-		
-		# Update the user and set the portal page correctly
-		ns_set put $extra_vars portal_id $portal_id
+
+                # XXX AKS - portals having problems with the following
+                # two lines - if the next line is taken out of the
+                # transaction, it full acc user add works, but lim acc
+                # user add dosent. weird!!!!
+                # Add the basic dotLRN class listing portlet
+                # XXXX
                 
+                dotlrn_main_portlet::add_self_to_page $portal_id {}
+
+                # end XXXX
+
+                # Update the user and set the portal page correctly
+		ns_set put $extra_vars portal_id $portal_id
 	    }
 
 	    # Add the relation (no need to feed in anything for object_id_one, or two for that matter).

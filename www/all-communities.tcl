@@ -9,6 +9,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+set portal_id ""
 set context_bar {{All Communities}}
 
 ad_return_template

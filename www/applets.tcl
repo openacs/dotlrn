@@ -6,7 +6,7 @@ ad_page_contract {
     @version $Id$
 } -query {
 }
-
+set portal_id ""
 set context_bar {{"one-community-admin" Admin} {Manage Applets}}
 
 ad_return_template

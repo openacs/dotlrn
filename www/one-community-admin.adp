@@ -1,6 +1,7 @@
 <master src="master">
 <property name="title">Admin: @pretty_name@</property>
 <property name="context_bar">@context_bar@</property>
+<property name="portal_id">@portal_id@</property>
 
 <ul>
 

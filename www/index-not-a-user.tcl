@@ -8,9 +8,11 @@ ad_page_contract {
 } -properties {
     admin_p:onevalue
     admin_url:onevalue
+    portal_id:onevalue
 }
 
 set admin_p [dotlrn::admin_p]
 set admin_url [dotlrn::get_url]/admin
+set portal_id ""
 
 ad_return_template

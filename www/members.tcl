@@ -7,6 +7,8 @@ ad_page_contract {
 } -query {
 }
 
+set portal_id ""
+
 set context_bar {{"one-community-admin" Admin} {Manage Members}}
 
 ad_return_template

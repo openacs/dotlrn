@@ -17,6 +17,7 @@ ad_page_contract {
     communities_title:onevalue
     title:onevalue
 }
+set portal_id ""
 
 # Check that this is a community type
 if {[ad_parameter community_type_level_p] != 1} {

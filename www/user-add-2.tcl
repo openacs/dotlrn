@@ -23,6 +23,7 @@ ad_page_contract {
     administration_name:onevalue
 }
 
+set portal_id ""
 set context_bar {{"one-community-admin" Admin} {Add User}}
 
 set admin_user_id [ad_verify_and_get_user_id]

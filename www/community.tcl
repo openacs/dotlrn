@@ -6,6 +6,7 @@ ad_page_contract {
 } -query {
 }
 
+set portal_id ""
 ns_log Notice "BEN TEST!"
 
 

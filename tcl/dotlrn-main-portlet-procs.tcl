@@ -22,7 +22,7 @@ namespace eval dotlrn_main_portlet {
 
     ad_proc -public get_pretty_name {
     } {
-        return "My Groups"
+        return [ad_parameter dotlrn_main_portlet_pretty_name]
     }
 
     ad_proc -public link {
@@ -59,30 +59,11 @@ namespace eval dotlrn_main_portlet {
         @author ben@openforce.net
         @creation-date Nov 2001
     } {
-        array set config $cf        
-
-        set user_id [ad_get_user_id]
-
-        # This is not templated. OH NO. I am a horrible, horrible,
-        # little man. (ben)
-
-        set return_html "<table border=0 cellpadding=2 cellspacing=2 width=100%>"
-        set communities [dotlrn_community::get_all_communities_by_user $user_id]
-
-        foreach community $communities {
-            set url [dotlrn_community::get_url_from_package_id -package_id [lindex $community 4]]
-            set name [lindex $community 3]
-
-            append return_html "<tr><td><a href=\"${url}\"><b>${name}</b></a></td></tr>\n"
-        }
-
-        if {[dotlrn::user_can_browse_p $user_id]} {
-            append return_html "<tr><td><p></p></td></tr>\n"
-            append return_html "<tr><td><small><a href=\"all-communities\">\[Subscribe to a new community\]</a></small></td></tr>\n"
-        }
-
-        append return_html "</table>"
-        return $return_html
+        # no return call required with the helper proc
+        portal::show_proc_helper \
+                -template_src "dotlrn-main-portlet" \
+                -package_key "dotlrn" \
+                -config_list $cf
     }   
 
     ad_proc -public edit { 

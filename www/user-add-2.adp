@@ -1,6 +1,7 @@
 <master src="master">
 <property name="title">Add A User</property>
 <property name="context_bar">@context_bar@</property>
+<property name="portal_id">@portal_id@</property>
 
 @first_names@ @last_name@ has been added to @system_name@.
 Edit the message below and hit "Send Email" to 

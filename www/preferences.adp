@@ -1,5 +1,6 @@
 <master src="master">
 <property name="title">@title@</property>
+<property name="portal_id">@portal_id@</property>
 
 <ul>
   <li><a href="/pvt/home">Edit My Profile</a></li>

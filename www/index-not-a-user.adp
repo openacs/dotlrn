@@ -1,5 +1,6 @@
 <master src="master">
 <property name="title">dotLRN - Not a User</property>
+<property name="portal_id">@portal_id@</property>
 
 <if @admin_p@>Visit <a href=@admin_url@>dotLRN Administration</a>.<p>
 

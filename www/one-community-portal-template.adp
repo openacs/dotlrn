@@ -1,5 +1,7 @@
 <master src="master">
 <property name="title">Configure this instance's template</property>
-<p>
+<property name="portal_id">@portal_id@</property>
+
+<p></p>
 
 @rendered_page@

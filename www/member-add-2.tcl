@@ -11,7 +11,7 @@ ad_page_contract {
 } -properties {
     roles:multirow
 }
-
+set portal_id ""
 set community_id [dotlrn_community::get_community_id]
 
 dotlrn::require_user_admin_community $community_id

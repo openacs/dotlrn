@@ -1,6 +1,7 @@
 <master src="master">
 <property name="title">Add A Member To A Community</property>
 <property name="context_bar">@context_bar@</property>
+<property name="portal_id">@portal_id@</property>
 
 The results of your search are:
 <ul>
