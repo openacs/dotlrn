@@ -39,3 +39,26 @@ create table dotlrn_communities (
        node_id			constraint dlrn_comm_node_id_fk
 				references site_nodes(node_id)
 );
+
+
+create table dotlrn_community_memberships (
+       rel_id				  integer not null
+					  constraint dlrn_comm_mem_fk references acs_rels(rel_id)
+					  constraint dlrn_comm_mem_pk primary key,
+       community_id			  integer not null
+					  constraint dlrn_comm_mem_comm_id_fk references dotlrn_communities(community_id),
+       user_id				  integer not null
+					  constraint dlrn_comm_mem_user_id_fk references users(user_id),
+       page_id				  integer not null
+					  -- constraint pointing to NPP
+);					  
+
+
+create table dotlrn_community_applets (
+       community_id		      integer not null
+				      constraint dlrn_comm_appl_comm_id_fk references dotlrn_communities(community_id),
+       applet_key		      varchar(100) not null,
+       constraint dlrn_comm_appl_pk primary key (community_id, applet_key),
+       active_p			      char(1) default 't' not null
+				      constraint dlrn_comm_appl_act_p_ch check (active_p in ('t','f'))
+);
