@@ -32,7 +32,8 @@ element create add_club description \
     -label "Description" \
     -datatype text \
     -widget textarea \
-    -html {rows 5 cols 60 wrap soft}
+    -html {rows 5 cols 60 wrap soft} \
+    -optional
 
 element create add_club join_policy \
     -label "Join Policy" \
