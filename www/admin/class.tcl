@@ -39,15 +39,7 @@ if {![db_0or1row select_class_info {}]} {
 
 set description [ad_quotehtml $description]
 
-set terms [db_list_of_lists select_terms_for_select_widget {
-    select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,
-           dotlrn_terms.term_id
-    from dotlrn_terms
-    where dotlrn_terms.end_date > (sysdate - 360)
-    and dotlrn_terms.start_date < (sysdate + 360)
-    order by dotlrn_terms.start_date,
-             dotlrn_terms.end_date
-}]
+set terms [db_list_of_lists select_terms_for_select_widget {}]
 set terms [linsert $terms 0 {All -1}]
 
 form create term_form
