@@ -283,8 +283,12 @@ if {![empty_string_p $community_id]} {
     set text $full_name    
 }
 
+if { ![info exists header_stuff] } {
+    set header_stuff ""
+}
+
 # This style sheet should be moved over to an external file for performance
-set header_stuff "
+append header_stuff "
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">
 
 
