@@ -39,6 +39,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-main-portlet-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-main-portlet-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-security-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-user-extension-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-package-create.sql"/>
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
@@ -64,6 +65,7 @@
             <file type="query_file" db_type="oracle" path="tcl/dotlrn-security-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/dotlrn-security-procs.tcl"/>
             <file type="query_file" path="tcl/dotlrn-security-procs.xql"/>
+            <file type="tcl_procs" path="tcl/dotlrn-user-extension-procs.tcl"/>
             <file type="tcl_procs" path="tcl/navigation-procs.tcl"/>
             <file type="tcl_procs" path="tcl/site-nodes-procs.tcl"/>
             <file type="query_file" path="tcl/site-nodes-procs.xql"/>
@@ -239,9 +241,6 @@
             <file type="content_page" path="www/user-add.tcl"/>
         </files>
         <parameters>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
@@ -256,6 +255,10 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_admin_first_page_name"  default="Class Admin" description="just that"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="The regexp patterns for email addresses that will automatically transform a user into a dotLRN user"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
         </parameters>
 
     </version>
