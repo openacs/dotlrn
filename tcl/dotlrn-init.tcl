@@ -39,6 +39,22 @@ ns_log notice "dotlrn-init: starting..."
 # if installed
 if {[dotlrn::is_instantiated]} {
 
+    set portal_package_key [portal::package_key]
+    set portal_mount_point [portal::automount_point]
+    
+    # we now mount new-portal at the automount point if it's not already mounted, of course 
+    if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
+        
+        ns_log notice "dotlrn-init: $portal_package_key being automounted at /$portal_mount_point"
+        
+        dotlrn::mount_package \
+                -parent_node_id [site_node_id "/"] \
+                -package_key $portal_package_key \
+                -url $portal_mount_point \
+                -directory_p "t"
+    }
+
+
     # aks debug
     db_transaction {
     
@@ -85,22 +101,6 @@ if {[dotlrn::is_instantiated]} {
         permission::grant -party_id $grantee_id -object_id $package_id -privilege "read"
 
     }
-}
-
-
-set portal_package_key [portal::package_key]
-set portal_mount_point [portal::automount_point]
-
-# we now mount new-portal at the automount point if it's not already mounted, of course 
-if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
-
-    ns_log notice "dotlrn-init: $portal_package_key being automounted at /$portal_mount_point"
-
-    dotlrn::mount_package \
-            -parent_node_id [site_node_id "/"] \
-            -package_key $portal_package_key \
-            -url $portal_mount_point \
-            -directory_p "t"
 }
 
 
