@@ -175,13 +175,6 @@ if {[form is_valid user_search]} {
         }
     }
 
-    if {[string equal $access_level "full"] == 0} {
-        if {[lsearch -exact $tables "dotlrn_full_users"] == -1} {
-            lappend tables "dotlrn_full_users"
-        }
-        lappend wheres "dotlrn_users.rel_id = dotlrn_full_users.rel_id"
-    }
-
     switch -exact $private_data_p {
         "yes" {
             lappend wheres "\'t\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
