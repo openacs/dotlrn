@@ -176,7 +176,7 @@ namespace eval dotlrn_community {
     } {
 	db_transaction {
 	    # Set up a portal page for that user and that community
-	    set page_id [portal::create $user_id]
+	    set page_id [portal::create -template_id [get_portal_template_id $community_id] $user_id]
 	    
 	    # Create the form with the page_id
 	    set extra_vars [ns_set create]
