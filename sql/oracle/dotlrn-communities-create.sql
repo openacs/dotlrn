@@ -45,9 +45,9 @@ create table dotlrn_communities (
 );
 
 -- active communities
-create view dotlrn_active_comms as select dotlrn_communities.*, join_policy from dotlrn_communities, groups where sysdate between active_start_date and active_end_date and dotlrn_communities.community_id = groups.group_id;
+create view dotlrn_active_comms as select dotlrn_communities.*, join_policy from dotlrn_communities, groups where (active_start_date is NULL or active_start_date < sysdate) and (active_end_date is NULL or active_end_date > sysdate) and dotlrn_communities.community_id = groups.group_id;
 
-create view dotlrn_active_not_closed_comms as select dotlrn_communities.*, join_policy from dotlrn_communities, groups where sysdate between active_start_date and active_end_date and dotlrn_communities.community_id = groups.group_id and join_policy <> 'closed';
+create view dotlrn_active_not_closed_comms as select dotlrn_communities.*, join_policy from dotlrn_communities, groups where (active_start_date is NULL or active_start_date < sysdate) and (active_end_date is NULL or active_end_date > sysdate) and dotlrn_communities.community_id = groups.group_id and join_policy <> 'closed';
 
 create table dotlrn_community_applets (
        community_id		      integer not null
