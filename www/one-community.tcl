@@ -58,7 +58,10 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     return
 } else {
     # Pull out the NPP page ID and render it!
-    set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
+    # Ben's MAJOR HACK to emulate SS v1.0
+    # Arjun is in major pain
+    # set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
+    set portal_id [dotlrn_community::get_portal_template_id $community_id]
 
     set rendered_page [dotlrn::render_page -hide_links_p "t" -page_num $page_num $portal_id]
 
