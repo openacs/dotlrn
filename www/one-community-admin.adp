@@ -1,5 +1,5 @@
 <master src="./master">
-<property name="title">Admin</property>
+<property name="title">Admin: @pretty_name@</property>
 <property name="context_bar">@context_bar@</property>
 
 <p>

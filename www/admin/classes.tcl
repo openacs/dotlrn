@@ -6,6 +6,7 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
+    {filter "select_current_class_instances"}
 } -properties {
     filter_bar:onevalue
     classes:multirow
@@ -13,7 +14,6 @@ ad_page_contract {
 
 set context_bar "Classes"
 
-set filter select_current_class_instances
 set filter_bar [ad_dimensional {
     {filter "Term:" select_current_class_instances
         {

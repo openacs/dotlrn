@@ -2,7 +2,7 @@
 <property name="title">Classes</property>
 <property name="context_bar">@context_bar@</property>
 
-[ <a href="class-new">new class</a> ]
+[ <a href="class-new?referer=classes?filter=@filter@">new class</a> ]
 
 <p>
 <include src="need-term-note">
@@ -20,5 +20,5 @@
 </if>
 
 <if @classes:rowcount@ gt 10>
-[ <a href="class-new">new class</a> ]
+[ <a href="class-new?referer=classes?filter=@filter@">new class</a> ]
 </if>

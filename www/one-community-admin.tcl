@@ -7,6 +7,11 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
+    community_id:onevalue
+    community_type:onevalue
+    pretty_name:onevalue
+    description:onevalue
+    portal_template_id:onevalue
     users:multirow
 }
 

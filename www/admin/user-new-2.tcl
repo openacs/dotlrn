@@ -33,7 +33,7 @@ if {[form is_valid add_user]} {
 
     # redirect
     ad_returnredirect "users"
-    return
+    ad_script_abort
 }
 
 db_1row select_user_info "select first_names,last_name from registered_users where user_id= :user_id"

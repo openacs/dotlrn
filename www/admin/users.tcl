@@ -3,8 +3,14 @@ ad_page_contract {
     
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-11-04
-} {
+} -query {
+} -properties {
+    context_bar:onevalue
+    user_id:onevalue
+    users:multirow
 }
+
+set user_id [ad_conn user_id]
 
 set dotlrn_package_id [dotlrn::get_package_id]
 

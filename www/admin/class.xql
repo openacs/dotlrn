@@ -32,9 +32,11 @@
     <querytext>
       select count(*)
       from dotlrn_terms
-      where dotlrn_terms.term_id not in (select dotlrn_class_instances.term_id
-                                         from dotlrn_class_instances
-                                         where dotlrn_class_instances.class_key = :class_key)
+      where dotlrn_terms.end_date > sysdate
+      and not exists (select 1
+                      from dotlrn_class_instances
+                      where dotlrn_class_instances.class_key = :class_key
+                      and dotlrn_class_instances.term_id = dotlrn_terms.term_id)
     </querytext>
   </fullquery>
 </queryset>

@@ -1,12 +1,12 @@
-
 ad_page_contract {
     Edit a User
-    
+
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-12-10
     @version $Id$
-} {
+} -query {
+    {referer "users"}
     user_id
 }
 
@@ -24,7 +24,6 @@ element create edit_user rel_type \
 element create edit_user read_private_data_p \
         -label "Can Access Private Information?" -datatype text -widget select -options {{yes t} {no f}}
 
-
 # Create a form of hidden vars
 form create verif_edit_user
 
@@ -39,7 +38,7 @@ set dotlrn_package_id [dotlrn::get_package_id]
 # We verified everything, now we make the change
 if {[form is_valid verif_edit_user]} {
     template::form get_values verif_edit_user user_id type_id rel_type read_private_data_p
-    
+
     set rel_id [db_string select_rel_id {
         select rel_id
         from dotlrn_users
@@ -56,9 +55,9 @@ if {[form is_valid verif_edit_user]} {
         # Update permissions
         acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
     }
-    
-    ad_returnredirect "users"
-    return
+
+    ad_returnredirect $referer
+    ad_script_abort
 }
 
 
@@ -105,10 +104,10 @@ if {[form is_valid edit_user]} {
         ad_return_template "user-edit-verify"
         return
     }
-    
+
     # redirect
-    ad_returnredirect "users"
-    return
+    ad_returnredirect $referer
+    ad_script_abort
 }
 
 db_1row select_user_info {}
