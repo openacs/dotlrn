@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">@spam_name@ Community</property>
+<property name="title">@spam_name@</property>
 <property name="context_bar">@context_bar@</property>
 
 

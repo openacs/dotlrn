@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Add A Member To A Community</property>
+<property name="title">Add A Member</property>
 <property name="context_bar">@context_bar@</property>
 
 The results of your search are:

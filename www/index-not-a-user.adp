@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">dotLRN - Not a User</property>
+<property name="title">Not  a User</property>
 
 <if @admin_p@ ne 0><p>Visit <a href=@admin_url@>@admin_pretty_name@</a>.</p></if>
 

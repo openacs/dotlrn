@@ -29,7 +29,7 @@ ad_page_contract {
 set user_id [ad_get_user_id]
 set parent_community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $parent_community_id
-set title "New [parameter::get -parameter subcommunity_pretty_name]"
+set title "New [parameter::get -parameter subcommunities_pretty_name]"
 set portal_id [dotlrn_community::get_portal_id -community_id $parent_community_id]
 
 # set the join policy widget to default to

@@ -19,8 +19,5 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">dotLRN</property>
-
-<p></p>
 
 @rendered_page@

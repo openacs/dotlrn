@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Add A Member To A Community</property>
+<property name="title">Add A Member</property>
 
 You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
 

@@ -19,7 +19,7 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">Configure portal</property>
+<property name="title">Customize Layout</property>
 
 <p></p>
 
