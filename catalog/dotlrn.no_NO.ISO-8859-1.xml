@@ -32,7 +32,7 @@
   <msg key="admin_role_pretty_name">Administrator</msg>
   <msg key="admin_role_pretty_plural">Administratorer</msg>
   <msg key="Administer">Administrer</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratorer</msg>
   <msg key="Admins_of">Admins for</msg>
@@ -216,7 +216,7 @@
   <msg key="items">deler</msg>
   <msg key="Join">Bli medlem i</msg>
   <msg key="Join_A_Group">Abonner på en gruppe</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Abonner&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Abonner&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Regler for medlemsskap</msg>
   <msg key="Key">Nøkkel</msg>
   <msg key="Large">Stor</msg>
@@ -444,7 +444,7 @@
   <msg key="Reject">Forkast</msg>
   <msg key="reject">forkast</msg>
   <msg key="Request_Membership">Be om medlemskap</msg>
-  <msg key="request_membership_link">&lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Be om medlemsskap&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Be om medlemsskap&quot;&gt;</msg>
   <msg key="required">forventet</msg>
   <msg key="Results">Resultat</msg>
   <msg key="Return_URL">Retur URL</msg>

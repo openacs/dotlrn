@@ -32,7 +32,7 @@
   <msg key="admin_role_pretty_name">管理者</msg>
   <msg key="admin_role_pretty_plural">管理者</msg>
   <msg key="Administer">管理</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;管理&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;管理&quot;&gt;</msg>
   <msg key="Administrator">管理者</msg>
   <msg key="Administrators">管理者</msg>
   <msg key="Admins_of">以下の管理者</msg>
@@ -209,7 +209,7 @@
   <msg key="items">アイテム</msg>
   <msg key="Join">参加</msg>
   <msg key="Join_A_Group">グループに参加</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;参加&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;参加&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">参加方針</msg>
   <msg key="Key">キー</msg>
   <msg key="Large">大</msg>

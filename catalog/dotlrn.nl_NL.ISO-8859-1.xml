@@ -32,7 +32,7 @@
   <msg key="admin_role_pretty_name">Beheerder</msg>
   <msg key="admin_role_pretty_plural">Beheerders</msg>
   <msg key="Administer">Beheren</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Beheer&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Beheer&quot;&gt;</msg>
   <msg key="Administrator">Beheerder</msg>
   <msg key="Administrators">Beheerders</msg>
   <msg key="Admins_of">Beheerders van</msg>
@@ -216,7 +216,7 @@
   <msg key="items">items</msg>
   <msg key="Join">Lid worden</msg>
   <msg key="Join_A_Group">Groep Lidmaatschap</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Aanmelden&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Aanmelden&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Toelatingsbeleid</msg>
   <msg key="Key">Code</msg>
   <msg key="Large">Groot</msg>
@@ -445,7 +445,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Reject">Weigeren</msg>
   <msg key="reject">weigeren</msg>
   <msg key="Request_Membership">Verzoek Lidmaatschap</msg>
-  <msg key="request_membership_link">&lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Verzoek Lidmaatschap&quot;&gt; </msg>
+  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Verzoek Lidmaatschap&quot;&gt; </msg>
   <msg key="required">vereist</msg>
   <msg key="Results">Resultaten</msg>
   <msg key="Return_URL">Terugkeer URL </msg>

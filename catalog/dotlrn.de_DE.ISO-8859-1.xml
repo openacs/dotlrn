@@ -32,7 +32,7 @@
   <msg key="admin_role_pretty_name">Administrator</msg>
   <msg key="admin_role_pretty_plural">Administratoren</msg>
   <msg key="Administer">Administrieren</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrieren&quot;&gt;  
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrieren&quot;&gt;  
 
       </msg>
   <msg key="Administrator">Administrator</msg>
@@ -222,7 +222,7 @@ Bezeichnung verwenden.</msg>
   <msg key="items">Elemente</msg>
   <msg key="Join">Beitreten </msg>
   <msg key="Join_A_Group">Einer Gruppe beitreten</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Beitritt&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Beitritt&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Regelung des Beitritts</msg>
   <msg key="Key">Schlüssel</msg>
   <msg key="Large">groß</msg>
@@ -459,7 +459,7 @@ auf der vorigen Seite doppelt angeklickt.</msg>
   <msg key="Reject">Zurückweisen</msg>
   <msg key="reject">zurückweisen</msg>
   <msg key="Request_Membership">Zugang beantragen</msg>
-  <msg key="request_membership_link">&lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Teilnahme beantragen&quot;&gt; </msg>
+  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Teilnahme beantragen&quot;&gt; </msg>
   <msg key="required">erforderlich</msg>
   <msg key="Results">Ergebnisse</msg>
   <msg key="Return_URL">Rücksprungs-Webadresse</msg>

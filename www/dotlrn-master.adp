@@ -47,7 +47,7 @@
         <img class="header-img" border="0" src="@header_img_url@" alt="@header_img_alt_text@"></a>
       </td>
 
-      <td>@text@</td>
+      <td>@text;noquote@</td>
 
       <td align="right" class="header-text">
         @user_name@
