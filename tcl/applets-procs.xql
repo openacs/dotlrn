@@ -24,7 +24,7 @@
         <querytext>
             insert
             into dotlrn_applets
-            (applet_id, applet_key, package_key, status)
+            (applet_id, applet_key, package_key, active_p)
             values
             (acs_object_id_seq.nextval, :applet_key, :package_key, :active_p)
         </querytext>
@@ -34,6 +34,14 @@
         <querytext>
             select applet_key
             from dotlrn_applets
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_applet::get_package_key_not_cached.select_package_key_from_applet_key">
+        <querytext>
+            select package_key
+            from dotlrn_applets
+            where applet_key = :applet_key
         </querytext>
     </fullquery>
 

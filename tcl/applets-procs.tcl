@@ -130,9 +130,9 @@ namespace eval dotlrn_applet {
     } {
         is the applet specified mounted
     } {
-        if {[apm_package_id_from_key $package_key]} {
-        }
-        if {[nsv_exists site_nodes "[get_url]/$url/"]} {
+        ns_log notice "YON: dotlrn_applet::is_applet_mounted applet_key $applet_key"
+        ns_log notice "YON: dotlrn_applet::is_applet_mounted package_key [get_package_key -applet_key $applet_key]"
+        if {[apm_package_id_from_key [get_package_key -applet_key $applet_key]] != 0} {
             return 1
         } else {
             return 0
@@ -142,10 +142,31 @@ namespace eval dotlrn_applet {
     ad_proc -public list_mounted_applets {} {
         list all applets that are mounted
     } {
+        set applets [list]
 
         foreach applet [list_applets] {
+            if {[is_applet_mounted -applet_key $applet]} {
+                lappend applets $applet
+            }
         }
 
+        return $applets
+    }
+
+    ad_proc -public get_package_key {
+        {-applet_key:required}
+    } {
+        get the package key associated with the given applet
+    } {
+        return [util_memoize "dotlrn_applet::get_package_key_not_cached -applet_key $applet_key"]
+    }
+
+    ad_proc -private get_package_key_not_cached {
+        {-applet_key:required}
+    } {
+        get the package key associated with the given applet
+    } {
+        return [db_string select_package_key_from_applet_key {} -default ""]
     }
 
 }
