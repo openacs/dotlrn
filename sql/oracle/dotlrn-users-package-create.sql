@@ -39,6 +39,7 @@ is
  is
  begin
    insert into dotlrn_users (user_id, role) values (user_id, role);
+   return user_id;
  end;
  
  procedure delete (

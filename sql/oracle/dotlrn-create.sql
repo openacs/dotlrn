@@ -10,6 +10,8 @@
 -- started August 18th, 2001
 --
 
+@dotlrn-users-create.sql
+@dotlrn-users-package-create.sql
 @dotlrn-communities-create.sql
 @dotlrn-clubs-create.sql
 @dotlrn-classes-create.sql

@@ -125,7 +125,7 @@ namespace eval dotlrn_community {
 	    # Set up the relationship
 	    set rel_id [relation_add -member_state approved $rel_type $community_id $user_id]
 	    
-	    # Set up a portal page for that user
+	    # Set up a portal page for that user and that community
 	    set page_id [portal::create $user_id]
 	    
 	    # Insert the membership
@@ -167,6 +167,14 @@ namespace eval dotlrn_community {
 	Get the page ID for a particular community and user
     } {
 	return [db_string select_page_id {}]
+    }
+
+    ad_proc -public get_workspace_page_id {
+	user_id
+    } {
+	Get the workspace page ID for a particular user
+    } {
+	return [db_string select_user_page_id {}]
     }
 
     ad_proc -public get_all_communities_by_user {
@@ -255,6 +263,14 @@ namespace eval dotlrn_community {
 
 	    # Insert in the DB
 	    db_dml insert_applet {}	    
+
+	    # Go through current users and make sure they are added!
+	    foreach user [list_users $community_id] {
+		set user_id [lindex $user 1]
+
+		# do the callbacks
+		applet_call $applet_key AddUser [list $community_id $user_id]
+	    }
 	}
     }
 
@@ -268,6 +284,14 @@ namespace eval dotlrn_community {
 	set package_id [get_package_id $community_id]
 
 	db_transaction {
+	    # Take care of all existing users
+	    foreach user [list_users $community_id] {
+		set user_id [lindex $user 1]
+
+		# do the callbacks
+		applet_call $applet_key RemoveUser [list $community_id $user_id]
+	    }
+	    
 	    # Callback
 	    applet_call $applet_key RemoveApplet [list $community_id $package_id]
 	    

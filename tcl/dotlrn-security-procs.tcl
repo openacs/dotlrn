@@ -20,11 +20,23 @@ ad_library {
 namespace eval dotlrn {
     
     ad_proc -public user_add {
-	user_id
+	{-role "user"}
+	user_id	
     } {
 	Add a user as a dotLRN user
     } {
-	db_dml add_user {}
+	db_transaction {
+	    db_exec_plsql add_user {}
+
+	    # Create a portal page for this user
+	    set page_id [portal::create $user_id]
+
+	    # Add the basic dotLRN class listing portlet
+	    # NOT IMPLEMENTED YET!
+
+	    # Update the user and set the portal page correctly
+	    db_dml update_user_page_id {}
+	}
     }
 
     ad_proc -public user_remove {

@@ -73,6 +73,12 @@ select page_id from dotlrn_community_memberships where community_id= :community_
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_workspace_page_id.select_user_page_id">
+<querytext>
+select page_id from dotlrn_users where user_id= :user_id
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::get_communities_by_user.select_communities">
 <querytext>
 select dotlrn_communities.community_id as community_id, community_type, pretty_name, description, package_id

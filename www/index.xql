@@ -2,9 +2,9 @@
 
 <queryset>
 
-<fullquery name="select_classes">
+<fullquery name="select_page_id">
 <querytext>
-select class_key, node_id, site_node.url(node_id) from dotlrn_classes, dotlrn_community_types where dotlrn_community_types.community_type=dotlrn_classes.class_key order by class_key
+select page_id from dotlrn_users where user_id= :user_id
 </querytext>
 </fullquery>
 
