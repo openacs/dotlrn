@@ -16,7 +16,7 @@
     <fullquery name="select_portrait_info">      
         <querytext>
             select cr_items.live_revision as revision_id,
-                   nvl(cr_revisions.title, 'view this portrait') portrait_title
+                   nvl(cr_revisions.title, 'view this portrait') as portrait_title
             from acs_rels,
                  cr_items,
                  cr_revisions
