@@ -48,7 +48,7 @@ namespace eval dotlrn {
 	db_transaction {
 	    if {$rel_type == "dotlrn_full_user_rel"} {
 		# Create a portal page for this user
-		set portal_id [portal::create $user_id]
+		set portal_id [portal::create -name "Your dotLRN Workspace" $user_id]
 		
 		# Add the basic dotLRN class listing portlet
 		dotlrn_main_portlet::add_self_to_page $portal_id {}
