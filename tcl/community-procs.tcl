@@ -1746,21 +1746,6 @@ namespace eval dotlrn_community {
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
-            foreach applet_key [list_applets -community_id $community_id] {
-                # do the clone call on each applet in this community
-                ns_log notice "dotlrn_community::clone cloning applet = $applet_key"
-                set package_id [applet_call \
-                    $applet_key \
-                    "Clone" \
-                    [list $community_id $clone_id]
-                ]
-
-                register_applet \
-                    -community_id $clone_id \
-                    -package_id $package_id \
-                    -applet_key $applet_key
-            }
-
             # more extra stuff for subcomms
             if {$subcomm_p} {
                 set parent_admin_segment_id [dotlrn_community::get_rel_segment_id \
@@ -1804,6 +1789,22 @@ namespace eval dotlrn_community {
                     -description [get_community_description -community_id $subcomm_id]  \
                     -parent_community_id $clone_id
             }
+
+            foreach applet_key [list_applets -community_id $community_id] {
+                # do the clone call on each applet in this community
+                ns_log notice "dotlrn_community::clone cloning applet = $applet_key"
+                set package_id [applet_call \
+                    $applet_key \
+                    "Clone" \
+                    [list $community_id $clone_id]
+                ]
+
+                register_applet \
+                    -community_id $clone_id \
+                    -package_id $package_id \
+                    -applet_key $applet_key
+            }
+
         }
         
         return $clone_id
