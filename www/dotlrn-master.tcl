@@ -139,7 +139,7 @@ if {!$no_navbar_p} {
         if {!$admin_p} {
             # the user can't admin this community, perhaps they are a
             # humble member instead?
-            set member_p [dotlrn_community::member_p $community_id $user_i]
+            set member_p [dotlrn_community::member_p $community_id $user_id]
         } else {
             # admins always get the control_panel_link
             set show_control_panel 1
