@@ -67,7 +67,7 @@
   </if>
   <if @inline_portrait_state@ eq "link">
   
-      <ul><li><a href="/user/portrait?@portrait_export_vars@">#dotlrn.Portrait_1#</a></li></ul>
+      <ul><li><a href="/shared/portrait?@portrait_export_vars@">#dotlrn.Portrait_1#</a></li></ul>
   
   </if>
 </if>
