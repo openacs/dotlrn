@@ -108,7 +108,7 @@ set navbar "<br>"
 if {!$no_navbar_p} {
     
     set community_id [dotlrn_community::get_community_id]
-    set control_panel_name preferences
+    set control_panel_name control-panel
 
     if {[empty_string_p $community_id]} {
         #

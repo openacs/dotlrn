@@ -166,7 +166,7 @@ if {$have_comm_id_p} {
     
     if {$have_portal_id_p && $show_navbar_p} {
         if {$link_control_panel} {
-            set extra_td_html " &nbsp; <a href=${link}preferences>Control Panel</a>"
+            set extra_td_html " &nbsp; <a href=${link}control-panel>Control Panel</a>"
         } else {
             set extra_td_html " &nbsp; Control Panel"
         }

@@ -14,8 +14,6 @@
 #  details.
 #
 
-# dotlrn/www/spam.tcl
-
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Jan 19, 2002
@@ -23,7 +21,7 @@ ad_page_contract {
 } -query {
     {community_id ""}
     {rel_type "dotlrn_member_rel"}
-    {referer "preferences"}
+    {referer "control-panel"}
 } -properties {
     context_bar:onevalue
     portal_id:onevalue

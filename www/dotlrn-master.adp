@@ -44,7 +44,7 @@
 
     <td width="40%" class="header-buttons" align="right">
       <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_graphics_url@/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
-      <a href="@dotlrn_url@/preferences"><img class="header-img" border="0" src="@dotlrn_graphics_url@/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
+      <a href="@dotlrn_url@/control-panel"><img class="header-img" border="0" src="@dotlrn_graphics_url@/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
       <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_graphics_url@/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
     </td>
 
