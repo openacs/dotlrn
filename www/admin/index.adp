@@ -14,4 +14,5 @@
   <li><a href="departments"><%= [ad_parameter departments_pretty_plural] %></a></li>
   <li><a href="classes"><%= [ad_parameter classes_pretty_plural] %></a></li>
   <li><a href="clubs"><%= [ad_parameter clubs_pretty_plural] %></a></li>
+  <li><a href="edit-preapproved-emails">Edit Pre-approved Email Servers</a></li>
 </ul>
