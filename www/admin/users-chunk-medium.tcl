@@ -19,7 +19,7 @@ ad_page_contract {
     @creation-date 2002-01-30
     @version $Id$
 } -query {
-    {section ""}
+    {section A}
 } -properties {
     user_id:onevalue
     control_bar:onevalue
@@ -38,17 +38,10 @@ if {![exists_and_not_null referer]} {
     set referer "[dotlrn::get_admin_url]/users"
 }
 
-set default_section A
 set dimension_list {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z}
-
 foreach dimension $dimension_list {
-    if {[empty_string_p $section]} {
-        set section $default_section
-    }
-
     lappend dimensions [list $dimension $dimension {}]
 }
-
 lappend dimensions [list Other Other {}]
 
 set control_bar [portal::dimensional [list [list section {} $section $dimensions]]]

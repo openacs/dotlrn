@@ -42,11 +42,11 @@
 
 <p>@control_bar@</p>
 
-<if @n_users@ gt 300>
+<if @n_users@ gt 500>
   <include src="users-chunk-large" type=@type@ referer="@referer@?type=@type@">
 </if>
 <else>
-  <if @n_users@ gt 30>
+  <if @n_users@ gt 50>
     <include src="users-chunk-medium" type=@type@ referer="@referer@?type=@type@">
   </if>
   <else>
