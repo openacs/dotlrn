@@ -22,13 +22,19 @@ select count(*) from acs_object_types where object_type=:club_group_type_key
 
 <fullquery name="dotlrn::get_user_theme.select_user_theme">
 <querytext>
-select theme_id from dotlrn_users where user_id = :user_id
+select theme_id from dotlrn_full_users where user_id = :user_id
 </querytext>
 </fullquery>
 
 <fullquery name="dotlrn::set_user_theme.update_user_theme">
 <querytext>
-update dotlrn_users set theme_id= :theme_id where user_id= :user_id
+update dotlrn_full_user_rels set theme_id= :theme_id where rel_id= (select rel_id from dotlrn_full_users where user_id= :user_id)
+</querytext>
+</fullquery>
+
+<fullquery name="dotlrn::get_workspace_portal_id.select_user_portal_id">
+<querytext>
+select portal_id from dotlrn_full_users where user_id= :user_id
 </querytext>
 </fullquery>
 

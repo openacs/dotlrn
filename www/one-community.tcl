@@ -25,11 +25,11 @@ db_1row select_community_info {}
 if {![dotlrn_community::member_p $community_id $user_id]} {
     set context_bar [list "Not a member"]
 
-    set page_id [dotlrn_community::get_community_non_members_page_id $community_id]
+    set portal_id [dotlrn_community::get_community_non_members_portal_id $community_id]
 
     # Possible that there is no portal page for non-members
-    if {! [empty_string_p $page_id]} {
-	set rendered_page [dotlrn::render_page $page_id]
+    if {! [empty_string_p $portal_id]} {
+	set rendered_page [dotlrn::render_page $portal_id]
     } else {
 	set rendered_page ""
     }
@@ -38,9 +38,9 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     return
 } else {
     # Pull out the NPP page ID and render it!
-    set page_id [dotlrn_community::get_page_id $community_id $user_id]
+    set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
 
-    set rendered_page [dotlrn::render_page $page_id]
+    set rendered_page [dotlrn::render_page $portal_id]
 
     set context_bar {View}
 

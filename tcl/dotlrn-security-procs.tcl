@@ -26,26 +26,42 @@ namespace eval dotlrn {
 	return -code error
     }
 
+    ad_proc -public get_user_types {} {
+	return the list of possible user types, first type then type_id
+    } {
+	return [db_list_of_lists select_user_types {}]
+    }
+
     ad_proc -public user_add {
-	{-role "user"}
-	user_id	
+	{-rel_type "dotlrn_user_rel"}
+	{-user_id:required}
+	{-type_id 1}
     } {
 	Add a user as a dotLRN user
     } {
+	# set up extra vars
+	set extra_vars [ns_set create]
+	
+	ns_set put $extra_vars user_id $user_id
+	ns_set put $extra_vars type_id $type_id
+
 	db_transaction {
-	    db_exec_plsql add_user {}
+	    if {$rel_type == "dotlrn_full_user_rel"} {
+		# Create a portal page for this user
+		set portal_id [portal::create $user_id]
+		
+		# Add the basic dotLRN class listing portlet
+		dotlrn_main_portlet::add_self_to_page $portal_id {}
+		
+		# Update the user and set the portal page correctly
+		ns_set put $extra_vars portal_id $portal_id
+	    }
 
-	    # Create a portal page for this user
-	    set page_id [portal::create $user_id]
-
-	    # Add the basic dotLRN class listing portlet
-	    dotlrn_main_portlet::add_self_to_page $page_id {}
-
-	    # Update the user and set the portal page correctly
-	    db_dml update_user_page_id {}
-
-	    # FIXME: what do we do about permissions?
+	    # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
+	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type "" $user_id]
 	}
+
+	return $rel_id
     }
 
     ad_proc -public user_remove {
@@ -53,44 +69,20 @@ namespace eval dotlrn {
     } {
 	Remove a user from the set of dotLRN users
     } {
-	db_dml remove_user {}
+	# Get the rel_id and remove it
+	set rel_id [db_string select_rel_id {} -default ""]
+
+	if {![empty_string_p $rel_id]} {
+	    relation_remove $rel_id
+	}
     }
 
-    ad_proc -private user_get_role {
+    ad_proc -private user_get_type {
 	user_id
     } {
 	returns the dotLRN user role or empty string if not a dotLRN user
     } {
-	return [db_string select_user_role {} -default ""]
-    }
-
-    ad_proc -public guest_add {
-	community_id
-	user_id
-    } {
-	Add a guest to a particular community
-    } {
-	db_transaction {
-	    # Check if this user is a user already
-	    if {[empty_string_p [user_get_role $user_id]]} {
-		# Add the user as a guest
-		user_add -role guest $user_id
-	    }
-
-	    # Subscribe the guest to that community
-	    dotlrn_community::add_user $community_id $user_id
-
-	    # FIXME: what do we do about permissions?
-	}
-    }
-
-    ad_proc -public guest_remove {
-	community_id
-	user_id
-    } {
-	Remove a guest from a particular community
-    } {
-	dotlrn_community::remove_user $community_id $user_id
+	return [db_string select_user_type {} -default ""]
     }
 
     ad_proc -public user_can_browse_p {
@@ -102,11 +94,8 @@ namespace eval dotlrn {
 	    set user_id [ad_conn user_id]
 	}
 
-	if {[user_get_role $user_id] == "guest"} {
-	    return 0
-	} else {
-	    return 1
-	}
+	# FIXME: must check that a user can browse
+	return 1
     }
 
     ad_proc -public require_user_browse {
@@ -128,11 +117,8 @@ namespace eval dotlrn {
 	    set user_id [ad_conn user_id]
 	}
 
-	if {[user_get_role $user_id] == "guest"} {
-	    return 0
-	} else {
-	    return 1
-	}
+	# FIXME
+	return 1
     }
 
     ad_proc -public require_user_read_sensitive_data {

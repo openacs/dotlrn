@@ -11,7 +11,7 @@ ad_page_contract {
 
 
 set form [ns_getform]
-set page_id [ns_set get $form portal_id]
+set portal_id [ns_set get $form portal_id]
 
 # Check if this is a community type level thing
 if {[ad_parameter community_type_level_p] == 1} {
@@ -23,9 +23,9 @@ if {[ad_parameter community_type_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-# If there is no page_id, this user is either a guest or something else
-if {![empty_string_p $page_id]} {
-    portal::configure_dispatch $page_id $form
+# If there is no portal_id, this user is either a guest or something else
+if {![empty_string_p $portal_id]} {
+    portal::configure_dispatch $portal_id $form
 }
 
 ad_returnredirect "configure"

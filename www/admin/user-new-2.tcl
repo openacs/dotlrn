@@ -8,6 +8,28 @@ ad_page_contract {
     user_id
 }
 
+form create add_user
+
+element create add_user user_id \
+	-label "User ID" -datatype integer -widget hidden -value $user_id
+
+element create add_user type_id \
+	-label "User Type" -datatype text -widget select -options [dotlrn::get_user_types]
+
+element create add_user rel_type \
+	-label "Access" -datatype text -widget select -options {{{Limited Access} dotlrn_user_rel} {{Full Access} dotlrn_full_user_rel}}
+
+if {[form is_valid add_user]} {
+    template::form get_values add_user user_id type_id rel_type
+
+    # add the user
+    dotlrn::user_add -rel_type $rel_type -user_id $user_id -type_id $type_id
+
+    # redirect
+    ad_returnredirect "users"
+    return
+}
+
 db_1row select_user_info "select first_names,last_name from registered_users where user_id= :user_id"
 
 ad_return_template

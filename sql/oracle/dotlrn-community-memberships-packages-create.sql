@@ -19,9 +19,9 @@ is
   function new (
     rel_id		in dotlrn_member_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE default NULL,
     community_id	in dotlrn_communities.community_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
+    user_id		in users.user_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_member_rels.rel_id%TYPE;
@@ -40,9 +40,9 @@ is
   function new (
     rel_id		in dotlrn_member_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE default NULL,
     community_id	in dotlrn_communities.community_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
+    user_id		in users.user_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_member_rels.rel_id%TYPE
@@ -57,8 +57,8 @@ is
 			creation_ip => creation_ip);
 
     insert into dotlrn_member_rels
-    (rel_id, page_id) values
-    (v_rel_id, page_id);
+    (rel_id, portal_id) values
+    (v_rel_id, portal_id);
 
     return v_rel_id;
   end;
@@ -88,8 +88,8 @@ is
     rel_id		in dotlrn_admin_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
     community_id	in dotlrn_communities.community_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
-    page_id		in dotlrn_member_rels.page_id%TYPE default null,
+    user_id		in users.user_id%TYPE,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_admin_rels.rel_id%TYPE;
@@ -109,8 +109,8 @@ is
     rel_id		in dotlrn_admin_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
     community_id	in dotlrn_communities.community_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
-    page_id		in dotlrn_member_rels.page_id%TYPE default null,
+    user_id		in users.user_id%TYPE,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_admin_rels.rel_id%TYPE
@@ -121,7 +121,7 @@ is
 			rel_type => rel_type,
 			community_id => community_id,
 			user_id => user_id,
-			page_id => page_id,
+			portal_id => portal_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 
@@ -156,9 +156,9 @@ is
   function new (
     rel_id		in dotlrn_student_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE default NULL,
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
+    user_id		in users.user_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_student_rels.rel_id%TYPE;
@@ -177,9 +177,9 @@ is
   function new (
     rel_id		in dotlrn_student_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE default NULL,
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
+    user_id		in users.user_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_student_rels.rel_id%TYPE
@@ -188,7 +188,7 @@ is
   begin
     v_rel_id:= dotlrn_member_rel.new(rel_id => rel_id,
 			rel_type => rel_type,
-			page_id => page_id,
+			portal_id => portal_id,
 			community_id => class_instance_id,
 			user_id => user_id,
 			creation_user => creation_user,
@@ -226,8 +226,8 @@ is
     rel_id		in dotlrn_ta_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
-    page_id		in dotlrn_member_rels.page_id%TYPE,
+    user_id		in users.user_id%TYPE,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_ta_rels.rel_id%TYPE;
@@ -247,8 +247,8 @@ is
     rel_id		in dotlrn_ta_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
-    page_id		in dotlrn_member_rels.page_id%TYPE,
+    user_id		in users.user_id%TYPE,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_ta_rels.rel_id%TYPE
@@ -259,7 +259,7 @@ is
 			rel_type => rel_type,
 			community_id => class_instance_id,
 			user_id => user_id,
-			page_id => page_id,
+			portal_id => portal_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 
@@ -295,8 +295,8 @@ is
     rel_id		in dotlrn_instructor_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
-    page_id		in dotlrn_member_rels.page_id%TYPE,
+    user_id		in users.user_id%TYPE,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_instructor_rels.rel_id%TYPE;
@@ -316,8 +316,8 @@ is
     rel_id		in dotlrn_instructor_rels.rel_id%TYPE default NULL,
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
-    user_id		in dotlrn_users.user_id%TYPE,
-    page_id		in dotlrn_member_rels.page_id%TYPE,
+    user_id		in users.user_id%TYPE,
+    portal_id		in dotlrn_member_rels.portal_id%TYPE,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_instructor_rels.rel_id%TYPE
@@ -328,7 +328,7 @@ is
 			rel_type => rel_type,
 			community_id => class_instance_id,
 			user_id => user_id,
-			page_id => page_id,
+			portal_id => portal_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 

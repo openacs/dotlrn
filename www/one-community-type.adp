@@ -6,13 +6,6 @@
 @description@
 </blockquote>
 
-<h3>Communities You're a Member Of</h3>
-<ul>
-<multiple name=communities>
-<li><a href=@communities.url@>@communities.pretty_name@</a>
-</multiple>
-</ul>
-
 <p>
 
 <if @active_communities:rowcount@ eq 0>

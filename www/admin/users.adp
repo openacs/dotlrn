@@ -5,7 +5,7 @@
 <h3>dotLRN users</h3>
 <ul>
 <multiple name="users">
-<li> @users.last_name@, @users.first_names@ (<a href=mailto:@users.email@>@users.email@</a>) - <i>@users.role@</i>
+<li> @users.last_name@, @users.first_names@ (<a href=mailto:@users.email@>@users.email@</a>) - <i>@users.type@</i>
 </multiple>
 </ul>
 

@@ -23,15 +23,15 @@ if {[ad_parameter community_level_p] == 1} {
 set user_id [ad_maybe_redirect_for_registration]
 
 # Get the page
-set page_id [db_string select_page_id {} -default ""]
+set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
-# If there is no page_id, this user is either a guest or something else
-if {[empty_string_p $page_id]} {
+# If there is no portal_id, this user is either a guest or something else
+if {[empty_string_p $portal_id]} {
     # do something
     ad_return_template index-not-a-user
     return
 } else {
-    set rendered_page [dotlrn::render_page $page_id]
+    set rendered_page [dotlrn::render_page $portal_id]
 }
 
 

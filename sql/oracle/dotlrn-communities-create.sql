@@ -36,12 +36,18 @@ create table dotlrn_communities (
 				constraint dlrn_comm_key_un unique,
        pretty_name		varchar(100) not null,
        description		varchar(4000),
-       page_id			references portals(portal_id),
+       active_start_date	date,
+       active_end_date		date,
+       portal_id			references portals(portal_id),
        portal_template_id	references portals(portal_id),
        package_id		constraint dlrn_comm_pack_id_fk
 				references apm_packages(package_id)
 );
 
+-- active communities
+create view dotlrn_active_comms as select dotlrn_communities.*, join_policy from dotlrn_communities, groups where sysdate between active_start_date and active_end_date and dotlrn_communities.community_id = groups.group_id;
+
+create view dotlrn_active_not_closed_comms as select dotlrn_communities.*, join_policy from dotlrn_communities, groups where sysdate between active_start_date and active_end_date and dotlrn_communities.community_id = groups.group_id and join_policy <> 'closed';
 
 create table dotlrn_community_applets (
        community_id		      integer not null
@@ -168,7 +174,7 @@ is
    community_key	in dotlrn_communities.community_key%TYPE,
    pretty_name		in dotlrn_communities.pretty_name%TYPE,
    description		in dotlrn_communities.description%TYPE,
-   page_id		in dotlrn_communities.page_id%TYPE default null,
+   portal_id		in dotlrn_communities.portal_id%TYPE default null,
    portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
@@ -178,6 +184,12 @@ is
    creation_ip          in acs_objects.creation_ip%TYPE default null,
    context_id		in acs_objects.context_id%TYPE default null
  ) return dotlrn_communities.community_id%TYPE;
+
+ procedure set_active_dates (
+   community_id		    in dotlrn_communities.community_id%TYPE,
+   start_date		    in dotlrn_communities.active_start_date%TYPE,
+   end_date		    in dotlrn_communities.active_end_date%TYPE
+ );
 
  procedure delete (
    community_id		in dotlrn_communities.community_id%TYPE
@@ -205,7 +217,7 @@ as
    community_key	in dotlrn_communities.community_key%TYPE,
    pretty_name		in dotlrn_communities.pretty_name%TYPE,
    description		in dotlrn_communities.description%TYPE,
-   page_id		in dotlrn_communities.page_id%TYPE default null,
+   portal_id		in dotlrn_communities.portal_id%TYPE default null,
    portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
@@ -228,13 +240,27 @@ as
    );
 
    insert into dotlrn_communities
-   (community_id, community_type, community_key, pretty_name, description, package_id, page_id, portal_template_id)
+   (community_id, community_type, community_key, pretty_name, description, package_id, portal_id, portal_template_id)
    values
-   (c_id, community_type, community_key, pretty_name, description, package_id, page_id, portal_template_id);
+   (c_id, community_type, community_key, pretty_name, description, package_id, portal_id, portal_template_id);
 
 
 
    return c_id;
+ end;
+
+ procedure set_active_dates (
+   community_id		    in dotlrn_communities.community_id%TYPE,
+   start_date		    in dotlrn_communities.active_start_date%TYPE,
+   end_date		    in dotlrn_communities.active_end_date%TYPE
+ )
+ is
+ begin
+   update dotlrn_communities set 
+   active_start_date= start_date,
+   active_end_date= end_date
+   where
+   community_id = set_active_dates.community_id;
  end;
 
  procedure delete (

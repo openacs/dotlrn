@@ -68,6 +68,14 @@ namespace eval dotlrn {
     } {
 	db_dml update_user_theme {}
     }
+    
+    ad_proc -public get_workspace_portal_id {
+	user_id
+    } {
+	Get the workspace page ID for a particular user
+    } {
+	return [db_string select_user_portal_id {} -default ""]
+    }
 
     ad_proc -public instantiate_and_mount {
 	{-mount_point ""}
@@ -89,9 +97,9 @@ namespace eval dotlrn {
 	set parent_node_id [db_string select_node_id {}]
 
 	# Mount
-	# FIXME: here we want to figure out how to set the context_id correctly!
-	# THIS IS A SERIOUS ISSUE
-	set new_package_id [site_node_mount_application -return package_id $parent_node_id $mount_point $package_key $package_key]
+	# The context is the community_id
+	set new_node_id [site_node_create $parent_node_id $package_key]
+	set new_package_id [site_node_create_package_instance $new_node_id $package_key $community_id $package_key]
 
 	# Return the newly created package_id
 	return $new_package_id
@@ -99,7 +107,7 @@ namespace eval dotlrn {
 	
     ad_proc -public render_page {
 	{-user_id  ""}
-	page_id
+	portal_id
     } {
 	render a page in a user's favorite style
     } {
@@ -107,9 +115,9 @@ namespace eval dotlrn {
 	    set user_id [ad_conn user_id]
 	}
 
-	set theme_id [db_string select_user_theme_id "select theme_id from dotlrn_users where user_id= :user_id"]
+	set theme_id [get_user_theme $user_id]
 
-	return [portal::render $page_id $theme_id]
+	return [portal::render $portal_id $theme_id]
     }
 
 }

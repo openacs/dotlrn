@@ -2,21 +2,27 @@
 
 <queryset>
 
-<fullquery name="dotlrn::user_get_role.select_user_role">
+<fullquery name="dotlrn::get_user_types.select_user_types">
 <querytext>
-select role from dotlrn_users where user_id = :user_id
+select type, type_id from dotlrn_user_types order by type
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn::user_add.update_user_page_id">
+<fullquery name="dotlrn::user_remove.select_rel_id">
 <querytext>
-update dotlrn_users set page_id= :page_id where user_id= :user_id
+select rel_id from dotlrn_users where user_id= :user_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn::user_remove.remove_user">
+<fullquery name="dotlrn::user_get_type.select_user_type">
 <querytext>
-dotlrn_user.remove(:user_id)
+select type from dotlrn_users, dotlrn_user_types where dotlrn_user_rels.type_id= dotlrn_user_types.type_id and user_id= :user_id
+</querytext>>
+</fullquery>
+
+<fullquery name="dotlrn::user_add.update_user_portal_id">
+<querytext>
+update dotlrn_full_user_rels set portal_id= :portal_id where rel_id = (select rel_id from dotlrn_full_users where user_id= :user_id)
 </querytext>
 </fullquery>
 

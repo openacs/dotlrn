@@ -30,25 +30,25 @@ if {[ad_parameter community_level_p] == 1} {
 	ad_return_template one-community-not-member
 	return
     } else {
-	set page_id [dotlrn_community::get_page_id $community_id $user_id]
-	set rendered_page [portal::configure $page_id "one-community"]
+	set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
+	set rendered_page [portal::configure $portal_id "one-community"]
 	set context_bar {Configure}
-	set name [portal::get_name $page_id]
+	set name [portal::get_name $portal_id]
     }
 } else {
     # this not a community, it is the "workspace" deal
 
     # Get the page
-    set page_id [db_string select_page_id {} -default ""]
+    set portal_id [db_string select_portal_id {} -default ""]
     
-    # If there is no page_id, this user is either a guest or something else
-    if {[empty_string_p $page_id]} {
+    # If there is no portal_id, this user is either a guest or something else
+    if {[empty_string_p $portal_id]} {
 
 	# do something
 	ad_returnredirect "/."
     } else {
-	set rendered_page [portal::configure $page_id "index"]
-	set name [portal::get_name $page_id]
+	set rendered_page [portal::configure $portal_id "index"]
+	set name [portal::get_name $portal_id]
     }
 }
     

@@ -112,8 +112,8 @@ namespace eval dotlrn_community {
 
 	    # Create the non-member page
 	    set non_member_portal_name "$pretty_name Non-Member Portal"
-	    set page_id [portal::create -name $non_member_portal_name -template_id $portal_template_id  $user_id]
-	    ns_set put $extra_vars page_id $page_id
+	    set portal_id [portal::create -name $non_member_portal_name -template_id $portal_template_id  $user_id]
+	    ns_set put $extra_vars portal_id $portal_id
 
 	    # Insert the community
 	    set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
@@ -310,11 +310,11 @@ namespace eval dotlrn_community {
     } {
 	db_transaction {
 	    # Set up a portal page for that user and that community
-	    set page_id [portal::create -template_id [get_portal_template_id $community_id] $user_id]
+	    set portal_id [portal::create -template_id [get_portal_template_id $community_id] $user_id]
 	    
-	    # Create the form with the page_id
+	    # Create the form with the portal_id
 	    set extra_vars [ns_set create]
-	    ns_set put $extra_vars page_id $page_id
+	    ns_set put $extra_vars portal_id $portal_id
 	    ns_set put $extra_vars user_id $user_id
 	    ns_set put $extra_vars community_id $community_id
 	    ns_set put $extra_vars class_instance_id $community_id
@@ -337,40 +337,32 @@ namespace eval dotlrn_community {
 	    # Callbacks
 	    applets_dispatch $community_id RemoveUser [list $community_id $user_id]
 	    
-	    # Get a few important things, like rel_id and portal page_id
+	    # Get a few important things, like rel_id and portal portal_id
 	    db_1row select_rel_info {}
 
 	    # Remove it
 	    relation_remove $rel_id
 
 	    # Remove the page
-	    portal::delete $page_id
+	    portal::delete $portal_id
 	}
     }
     
-    ad_proc -public get_page_id {
+    ad_proc -public get_portal_id {
 	community_id
 	user_id
     } {
 	Get the page ID for a particular community and user
     } {
-	return [db_string select_page_id {}]
+	return [db_string select_portal_id {}]
     }
 
-    ad_proc -public get_workspace_page_id {
-	user_id
-    } {
-	Get the workspace page ID for a particular user
-    } {
-	return [db_string select_user_page_id {}]
-    }
-
-    ad_proc -public get_community_non_members_page_id {
+    ad_proc -public get_community_non_members_portal_id {
 	community_id
     } {
 	Get the community page ID for non-members
     } {
-	return [db_string select_community_page_id {}]
+	return [db_string select_community_portal_id {}]
     }
 
     ad_proc -public get_all_communities_by_user {
@@ -404,7 +396,6 @@ namespace eval dotlrn_community {
 	community_type
     } {
 	Returns a list of active communities for a given type.
-	FIXME: right now all communities are active.
     } {
 	set list_of_communities [list]
 

@@ -2,9 +2,9 @@
 
 <queryset>
 
-<fullquery name="select_page_id">
+<fullquery name="select_portal_id">
 <querytext>
-select page_id from dotlrn_users where user_id= :user_id
+select portal_id from dotlrn_full_users where user_id= :user_id
 </querytext>
 </fullquery>
 

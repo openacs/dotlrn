@@ -49,25 +49,19 @@ select count(*) from dotlrn_member_rels_full where community_id= :community_id a
 
 <fullquery name="dotlrn_community::remove_user.select_rel_info">
 <querytext>
-select rel_id, page_id from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
+select rel_id, portal_id from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_page_id.select_page_id">
+<fullquery name="dotlrn_community::get_portal_id.select_portal_id">
 <querytext>
-select page_id from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
+select portal_id from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_workspace_page_id.select_user_page_id">
+<fullquery name="dotlrn_community::get_community_non_members_portal_id.select_community_portal_id">
 <querytext>
-select page_id from dotlrn_users where user_id= :user_id
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_community::get_community_non_members_page_id.select_community_page_id">
-<querytext>
-select page_id from dotlrn_communities where community_id= :community_id
+select portal_id from dotlrn_communities where community_id= :community_id
 </querytext>
 </fullquery>
 
@@ -90,7 +84,7 @@ and dotlrn_communities.community_id = dotlrn_member_rels_full.community_id
 <fullquery name="dotlrn_community::get_active_communities.select_active_communities">
 <querytext>
 select community_id, community_type, pretty_name, description, package_id
-from dotlrn_communities
+from dotlrn_active_not_closed_comms
 where community_type= :community_type
 </querytext>
 </fullquery>

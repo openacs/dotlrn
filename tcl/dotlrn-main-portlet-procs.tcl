@@ -30,20 +30,20 @@ namespace eval dotlrn_main_portlet {
     }
     
     ad_proc -public add_self_to_page { 
-	page_id 
+	portal_id 
 	instance_id 
     } {
 	Adds a dotLRN PE to the given page with the instance key being
 	opaque data in the portal configuration.
 	
 	@return element_id The new element's id
-	@param page_id The page to add self to
+	@param portal_id The page to add self to
 	@param instance_id The bboard instace to show
 	@author arjun@openforce.net
 	@creation-date Nov 2001
     } {
 	# Tell portal to add this element to the page
-	set element_id [portal::add_element $page_id [my_name]]
+	set element_id [portal::add_element $portal_id [my_name]]
 	
 	return $element_id
     }
@@ -100,7 +100,7 @@ namespace eval dotlrn_main_portlet {
     } {
 	Removes a bboard PE from the given page 
 	
-	@param page_id The page to remove self from
+	@param portal_id The page to remove self from
 	@param instance_id
 	@author ben@openforce.net
 	@creation-date Nov 2001

@@ -13,13 +13,13 @@
 
 create table dotlrn_member_rels (
        rel_id				  integer not null
-					  constraint dlrn_mem_fk references acs_rels(rel_id)
+					  constraint dlrn_mem_fk references membership_rels(rel_id)
 					  constraint dlrn_mem_pk primary key,
-       page_id				  integer
-					  constraint dlrn_mem_page_id_fk references portals(portal_id)
+       portal_id				  integer
+					  constraint dlrn_mem_portal_id_fk references portals(portal_id)
 );					  
 
-create view dotlrn_member_rels_full as select acs_rels.rel_id as rel_id, object_id_one as community_id, object_id_two as user_id, rel_type, page_id from dotlrn_member_rels, acs_rels where dotlrn_member_rels.rel_id = acs_rels.rel_id;
+create view dotlrn_member_rels_full as select acs_rels.rel_id as rel_id, object_id_one as community_id, object_id_two as user_id, rel_type, portal_id from dotlrn_member_rels, acs_rels where dotlrn_member_rels.rel_id = acs_rels.rel_id;
 
 create table dotlrn_admin_rels (
        rel_id			      integer not null
@@ -27,7 +27,7 @@ create table dotlrn_admin_rels (
 				      constraint dlrn_adm_pk primary key
 );
 
-create view dotlrn_admin_rels_full as select acs_rels.rel_id as rel_id, object_id_one as community_id, object_id_two as user_id, rel_type, page_id from dotlrn_member_rels, dotlrn_admin_rels, acs_rels where dotlrn_member_rels.rel_id = acs_rels.rel_id and dotlrn_admin_rels.rel_id= acs_rels.rel_id;
+create view dotlrn_admin_rels_full as select acs_rels.rel_id as rel_id, object_id_one as community_id, object_id_two as user_id, rel_type, portal_id from dotlrn_member_rels, dotlrn_admin_rels, acs_rels where dotlrn_member_rels.rel_id = acs_rels.rel_id and dotlrn_admin_rels.rel_id= acs_rels.rel_id;
 
 
 --
@@ -71,70 +71,70 @@ begin
 	acs_rel_type.create_type (
 	   rel_type => 'dotlrn_member_rel',
 	   supertype => 'membership_rel',
-	   pretty_name => 'dotLRN Membership',
-	   pretty_plural => 'dotLRN Memberships',
+	   pretty_name => 'dotLRN Community Membership',
+	   pretty_plural => 'dotLRN Community Memberships',
 	   package_name => 'dotlrn_member_rel',
 	   table_name => 'dotlrn_member_rels',	
 	   id_column => 'rel_id',
 	   object_type_one => 'dotlrn_community', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   object_type_two => 'user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
 	);
 
 	acs_rel_type.create_type (
 	   rel_type => 'dotlrn_admin_rel',
 	   supertype => 'dotlrn_member_rel',
-	   pretty_name => 'dotLRN Admin Membership',
-	   pretty_plural => 'dotLRN Admin Memberships',
+	   pretty_name => 'dotLRN Admin Community Membership',
+	   pretty_plural => 'dotLRN Admin Community Memberships',
 	   package_name => 'dotlrn_admin_rel',
 	   table_name => 'dotlrn_admin_rels',	
 	   id_column => 'rel_id',
 	   object_type_one => 'dotlrn_community', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   object_type_two => 'user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
 	);
 
 	acs_rel_type.create_type (
 	   rel_type => 'dotlrn_student_rel',
 	   supertype => 'dotlrn_member_rel',
-	   pretty_name => 'dotLRN Student Membership',
-	   pretty_plural => 'dotLRN Student Memberships',
+	   pretty_name => 'dotLRN Student Community Membership',
+	   pretty_plural => 'dotLRN Student Community Memberships',
 	   package_name => 'dotlrn_student_rel',
 	   table_name => 'dotlrn_student_rels',	
 	   id_column => 'rel_id',
 	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   object_type_two => 'user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
 	);
 
 	acs_rel_type.create_type (
 	   rel_type => 'dotlrn_ta_rel',
 	   supertype => 'dotlrn_admin_rel',
-	   pretty_name => 'dotLRN TA Membership',
-	   pretty_plural => 'dotLRN TA Memberships',
+	   pretty_name => 'dotLRN TA Community Membership',
+	   pretty_plural => 'dotLRN TA Community Memberships',
 	   package_name => 'dotlrn_ta_rel',
 	   table_name => 'dotlrn_ta_rels',	
 	   id_column => 'rel_id',
 	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   object_type_two => 'user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
 	);
 
 	acs_rel_type.create_type (
 	   rel_type => 'dotlrn_instructor_rel',
 	   supertype => 'dotlrn_admin_rel',
-	   pretty_name => 'dotLRN Instructor Membership',
-	   pretty_plural => 'dotLRN Instructor Memberships',
+	   pretty_name => 'dotLRN Instructor Community Membership',
+	   pretty_plural => 'dotLRN Instructor Community Memberships',
 	   package_name => 'dotlrn_instructor_rel',
 	   table_name => 'dotlrn_instructor_rels',	
 	   id_column => 'rel_id',
 	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   object_type_two => 'user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
 	);
 
@@ -143,7 +143,7 @@ begin
 	--
 	foo:= acs_attribute.create_attribute (
 	      object_type => 'dotlrn_member_rel',
-	      attribute_name => 'page_id',
+	      attribute_name => 'portal_id',
 	      datatype => 'integer',
 	      pretty_name => 'Page ID',
 	      pretty_plural => 'Page IDs'

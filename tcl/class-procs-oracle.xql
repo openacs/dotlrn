@@ -20,26 +20,4 @@ end;
 </fullquery>
 
 
-<fullquery name="dotlrn_class::new_instance.create_class_instance">
-<querytext>
-declare
-begin
-	
-:1 := dotlrn_class_instance.new (
-	class_key => :class_type,
-	year => :year,
-	term => :term,
-	community_key => :short_name,
-	pretty_name => :class_name,
-	description => :description,
-	page_id => :page_id,
-	portal_template_id => :portal_template_id,
-	creation_user => :user_id
-);
-
-end;
-</querytext>
-</fullquery>
-
-
 </queryset>
