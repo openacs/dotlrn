@@ -123,8 +123,8 @@ namespace eval dotlrn_community {
     }
     
     ad_proc -public add_user {
+	{-rel_type "dotlrn_member_rel"}
 	community_id
-	rel_type
 	user_id
     } {
 	Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
@@ -135,6 +135,7 @@ namespace eval dotlrn_community {
 	    
 	    # Create the form with the page_id
 	    set vars(page_id) $page_id
+
 	    template::form::create add_member_form
 	    template::form::set_values add_member_form vars
 

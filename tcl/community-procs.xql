@@ -35,40 +35,25 @@ update dotlrn_communities set package_id= :package_id where community_id= :commu
 
 <fullquery name="dotlrn_community::list_users.select_users">
 <querytext>
-select rel_id, users.user_id, first_names, last_name, email from registered_users users, dotlrn_member_rels_full where community_id= :community_id and users.user_id = dotlrn_member_rels_full.user_id
+select rel_id, rel_type, users.user_id, first_names, last_name, email from registered_users users, dotlrn_member_rels_full where community_id= :community_id and users.user_id = dotlrn_member_rels_full.user_id order by rel_type
 </querytext>
 </fullquery>
 
 <fullquery name="dotlrn_community::member_p.select_count_membership">
 <querytext>
-select count(*) from dotlrn_community_memberships where community_id= :community_id and user_id= :user_id
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_community::add_user.insert_membership">
-<querytext>
-insert into dotlrn_community_memberships 
-(rel_id, community_id, user_id, page_id)
-values
-(:rel_id, :community_id, :user_id, :page_id)
+select count(*) from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
 
 <fullquery name="dotlrn_community::remove_user.select_rel_info">
 <querytext>
-select rel_id, page_id from dotlrn_community_memberships where community_id= :community_id and user_id= :user_id
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_community::remove_user.delete_membership">
-<querytext>
-delete from dotlrn_community_memberships where rel_id=:rel_id
+select rel_id, page_id from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
 
 <fullquery name="dotlrn_community::get_page_id.select_page_id">
 <querytext>
-select page_id from dotlrn_community_memberships where community_id= :community_id and user_id= :user_id
+select page_id from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
 
@@ -87,10 +72,10 @@ select dotlrn_communities.community_id, community_type, community_key, pretty_na
 <fullquery name="dotlrn_community::get_communities_by_user.select_communities">
 <querytext>
 select dotlrn_communities.community_id as community_id, community_type, pretty_name, description, package_id
-from dotlrn_communities, dotlrn_community_memberships
+from dotlrn_communities, dotlrn_member_rels_full
 where community_type= :community_type
 and user_id= :user_id
-and dotlrn_communities.community_id = dotlrn_community_memberships.community_id
+and dotlrn_communities.community_id = dotlrn_member_rels_full.community_id
 </querytext>
 </fullquery>
 

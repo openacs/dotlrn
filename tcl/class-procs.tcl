@@ -83,8 +83,9 @@ namespace eval dotlrn_class {
 	    set community_id [db_exec_plsql create_class_instance {}]
 	    
 	    # Set up the node
-	    # set parent_node_id [db_string select_parent_node_id {}]
-	    set parent_node_id [ad_conn -get node_id]
+	    # set parent_node_id [ad_conn -get node_id]
+	    # THIS IS WRONG: the parent_node_id is the node of the class_type
+	    set parent_node_id [db_string select_parent_node_id {}]
 	    
 	    # Instantiate the right package at that site node, probably portals
 	    set package_id [site_node_mount_application -return "package_id" $parent_node_id $short_name [one_class_package_key] $short_name]

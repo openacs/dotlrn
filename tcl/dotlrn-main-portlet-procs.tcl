@@ -60,23 +60,18 @@ namespace eval dotlrn_main_portlet {
 	
 	# This is not templated. OH NO. I am a horrible, horrible, little man. (ben)
 
-	set return_html "<ul>\n"
-	ns_log Notice "DOTLRN - UL"
+	set return_html "
+	<ul>
+	<li><a href=classes>subscribe to a new class</a>"
 
 	set communities [dotlrn_community::get_all_communities_by_user $user_id]
-	# set communities ""
-
-	ns_log Notice "DOTLRN COMMUNITIES - $communities"
 
 	foreach community $communities {
-	    ns_log Notice "DOTLRN - LI"
 	    set url [lindex $community 1]/[lindex $community 2]
 	    set pretty_name [lindex $community 3]
 	    
 	    append return_html "<li> <a href=$url>$pretty_name</a>\n"
 	}
-
-	ns_log Notice "DOTLRN - /UL"
 
 	append return_html "</ul>"
 
