@@ -79,8 +79,11 @@ namespace eval dotlrn_class {
 	set short_name "$class_type-$term-$year"
 
 	db_transaction {
+	    # the user_id is needed to set the perms on the portals - aks
+	    set user_id [ad_conn user_id]
+	    
 	    # Create the portal page
-	    set page_id [portal::create [ad_conn user_id]]
+	    set page_id [portal::create $user_id]
 
 	    # Insert the class instance
 	    set community_id [db_exec_plsql create_class_instance {}]
