@@ -53,7 +53,7 @@ if {![empty_string_p $community_type]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer "all-communities"
+    set referer "./"
 }
 
 db_multirow communities $filter {}
