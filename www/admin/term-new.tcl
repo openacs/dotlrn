@@ -28,8 +28,8 @@ ad_page_contract {
 
 ad_form -name add_term -export referer -form {
 
-    {term_name:text          {label "Term (e.g. Spring, Fall)"}
-    {html {size 30 maxlength 20}}}
+    {term_name:text          {label "Term (e.g. Spring, Fall)"} {maxlength 20}
+    {html {size 30}}}
 
     {start_date:date
                              {label "Start Date"}
@@ -49,6 +49,8 @@ ad_form -name add_term -export referer -form {
         -start_date $start_date \
         -end_date $end_date
     ]
+
+#    error [string bytelength $term_name]
 
     dotlrn_term::new \
         -term_name $term_name \
