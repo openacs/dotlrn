@@ -26,7 +26,13 @@
 <property name="link_control_panel">0</property>
 
 <ul>
-  <li><a href="/pvt/home">Edit My Profile</a></li>
+  <li>
+    <a href="/user/basic-info-update?return_url=@referer@">Edit My Personal Information</a>
+    (<small>
+      What others see about me:
+      <%= [acs_community_member_link -user_id $user_id -label "[ad_url][acs_community_member_url -user_id $user_id]"] %>
+     </small>)
+  </li>
   <li><a href="/user/password-update?return_url=@referer@">Change My Password</a></li>
   <li><a href="applets/bboard/alerts">Edit My Bulletin Board Email Alerts</a></li>
   <li><a href="configure">Customize This Portal</a></li>
