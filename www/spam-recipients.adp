@@ -34,7 +34,7 @@ Send to the following roles: <p>
 <input type=checkbox name=spam_all> #dotlrn.Send_to_all#
 <p>
 
-In addition, send to the following people:<p>
+In addition, send to the following people (if you have not selected "Send to Everyone" above):<p>
 
 <table  width="85%" class="table-display" cellpadding="5" cellspacing="0">
     <tr class="table-header">
