@@ -23,6 +23,12 @@ element create select_community users \
     -widget hidden \
     -value $users
 
+element create select_community referer \
+        -label "Referer" \
+        -datatype text \
+        -widget hidden \
+        -value $referer
+
 set communities [db_list_of_lists select_all_communities {
     select pretty_name, community_id
     from dotlrn_communities

@@ -16,6 +16,11 @@ professor, admin), <tt>access_level</tt> (full, limited),
 <tt>guest</tt> (t for guest, f for non-guest).
 
 <p>
+
+<b>Note: you will have the option of adding these users to a group
+once they have been uploaded.</b>
+<p>
+
 <FORM enctype=multipart/form-data method=post action=users-bulk-upload-2>
 <INPUT TYPE=file name=users_csv_file><br>
 <INPUT TYPE=submit value=upload>

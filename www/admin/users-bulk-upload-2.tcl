@@ -31,48 +31,56 @@ db_transaction {
     oacs_util::csv_foreach -file $file_location -array_name row {
         # We need to insert the ACS user
         set password [ad_generate_random_string]
-        set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
 
-        lappend list_of_user_ids $user_id
-
-        if {![info exists row(type)]} {
-            set row(type) student
-        }
-
-        if {![info exists row(access_level)]} {
-            set row(access_level) full
-        }
-
-        if {![info exists row(guest)]} {
-            set row(guest) f
-        }
-
-        # Now we make them a dotLRN user
-        dotlrn::user_add -id $row(id) -type $row(type) -access_level $row(access_level) -user_id $user_id
-
-        if {$row(guest) == "f"} {
-            set inverse_row_guest "t"
+        # Check if this user already exists
+        set user_id [cc_lookup_email_user $row(email)]
+        if {![empty_string_p $user_id]} {
+            doc_body_append "User $row(email) already exists... storing user_id"
+            lappend list_of_user_ids $user_id            
         } else {
-            set inverse_row_guest "f"
-        }
-
-        # Set the privacy
-        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
-
-        doc_body_append "User $row(email) created...."
-        set message "
-        You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
-        
-        Login: $row(email)
-        Password: $password
-        "
-        
-        # Send note to new user
-        if [catch {ns_sendmail "$row(email)" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
-            doc_body_append "emailing this user failed!"
-            set fail_p 1
-        } else {
-            doc_body_append "email sent"
+            set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
+            
+            lappend list_of_user_ids $user_id
+            
+            if {![info exists row(type)]} {
+                set row(type) student
+            }
+            
+            if {![info exists row(access_level)]} {
+                set row(access_level) full
+            }
+            
+            if {![info exists row(guest)]} {
+                set row(guest) f
+            }
+            
+            # Now we make them a dotLRN user
+            dotlrn::user_add -id $row(id) -type $row(type) -access_level $row(access_level) -user_id $user_id
+            
+            if {$row(guest) == "f"} {
+                set inverse_row_guest "t"
+            } else {
+                set inverse_row_guest "f"
+            }
+            
+            # Set the privacy
+            acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
+            
+            doc_body_append "User $row(email) created...."
+            set message "
+            You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
+            
+            Login: $row(email)
+            Password: $password
+            "
+            
+            # Send note to new user
+            if [catch {ns_sendmail "$row(email)" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
+                doc_body_append "emailing this user failed!"
+                set fail_p 1
+            } else {
+                doc_body_append "email sent"
+            }
         }
 
         doc_body_append "<br>"
@@ -86,5 +94,6 @@ if {$fail_p} {
 
 doc_body_append "<FORM method=post action=users-add-to-community>
 <INPUT TYPE=hidden name=users value=\"$list_of_user_ids\">
+<INPUT TYPE=hidden name=referer values=users>
 You may now choose to <INPUT TYPE=submit value=\"Add These Users To A Group\"></FORM><p>"
 doc_body_append "or, return to <a href=\"users\">User Management</a>."
