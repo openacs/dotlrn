@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<message_catalog package_key="dotlrn" package_version="1.0" locale="pt_PT" charset="ISO-8859-1">
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="dotlrn" package_version="2.0d1" locale="pt_PT" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Uma cópia de</msg>
   <msg key="Access">Acesso</msg>
@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">Adicionar Novos Membros</msg>
   <msg key="Add_Professor">Adicionar Professor</msg>
   <msg key="add_selected_members">Adicionar Membros Seleccionados</msg>
+  <msg key="add_to_another_group">Adicionar este utilizador a outro grupo</msg>
+  <msg key="add_to_dotlrn">Adicionar este utilizador ao .LRN</msg>
   <msg key="Add_to_group_">Adicionar ao grupo ...</msg>
   <msg key="Add_User">Adicionar Utilizador</msg>
   <msg key="Add_users_to">Adicionar utilizadores a</msg>
@@ -106,7 +108,6 @@
   <msg key="Create_a_Web_Log">Criar um registo Web</msg>
   <msg key="CSV_File_Format">Formatar Ficheiro CVS</msg>
   <msg key="Customize_Layout">Personalizar Apresentação</msg>
-  <msg key="days_ago">dias atrás</msg>
   <msg key="Deactivate_">Desactivar ...</msg>
   <msg key="Deactivate_Users">Desactivar Utilizadores</msg>
   <msg key="Deactivated">Desactivado</msg>
@@ -167,6 +168,7 @@
   <msg key="Extra_Large">Enorme</msg>
   <msg key="Fields">Campos</msg>
   <msg key="First_Line">Primeira Linha</msg>
+  <msg key="first_line_of_file_must_be">A primeira linha do ficheiro deve ter o cabeçalho seguinte:</msg>
   <msg key="First_Name">Primeiro Nome</msg>
   <msg key="From">De</msg>
   <msg key="fuchsia">fúcsia</msg>
@@ -174,6 +176,7 @@
   <msg key="Full_Access">Acesso Total</msg>
   <msg key="General_Information">Informação Geral</msg>
   <msg key="General_Site_Help">Ajuda Geral do Site</msg>
+  <msg key="Grant_site_wide_admin">Conceder privilégios de administração geral do site.</msg>
   <msg key="gray">cinzento</msg>
   <msg key="green">verde</msg>
   <msg key="groups_icon">ícone do grupo</msg>
@@ -338,6 +341,7 @@
   <msg key="Memberships">Associações</msg>
   <msg key="Memberships_1">Associações:</msg>
   <msg key="Message">Mensagem</msg>
+  <msg key="must_have_values">O campo deve ter um dos seguintes valores:</msg>
   <msg key="My_Communities">Minhas Comunidades</msg>
   <msg key="NA">Não Disponível</msg>
   <msg key="Name">Nome</msg>
@@ -404,15 +408,18 @@
   <msg key="Recipients_Last_Name">Último Nome do Receptor</msg>
   <msg key="red">vermelho</msg>
   <msg key="Referer">Referido</msg>
+  <msg key="registered_user_welcome_email_body">%first_names% %last_name%, foi adicionado como utilizador a %system_name% em %system_url% Informação do Login: Email %email% Senha: %password% (pode mudar a sua password depois de efectuar o login) Obrigado %administration_name%</msg>
   <msg key="Registration_date">Data do registo:</msg>
   <msg key="registration_request_sent">Obrigado. O seu pedido de registo foi enviado ao Administrador do Sistema</msg>
   <msg key="Reject">Rejeitar</msg>
   <msg key="reject">rejeitar</msg>
   <msg key="Request_Membership">Pedir Associação</msg>
   <msg key="request_membership_link">&lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Pedir Associação&quot;&gt; </msg>
+  <msg key="required">Campo obrigatório</msg>
   <msg key="Results">Resultados</msg>
   <msg key="Return_URL">Retornar URL</msg>
   <msg key="revoke">revogar</msg>
+  <msg key="Revoke_site_wide_admin">Revogar privilégios de administração geral do site.</msg>
   <msg key="Role">Função</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Nome de ecrã:</msg>
