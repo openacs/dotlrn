@@ -33,7 +33,6 @@
 <title>@title@</title>
 @header_stuff@
 
-
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 
@@ -42,17 +41,17 @@
   <!-- User is logged in with user id @user_id@ -->
   <table width="100%" cellpadding=0 cellspacing=2> 
    <tr>
-      <td width="10%" class="header-logo">
+      <td class="header-logo">
         <a href="@dotlrn_url@/?">
         <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
       </td>
 
-      <td><div class=header-text><nobr>@text@<nobr></div></td>
+      <td>@text@</td>
 
       <td align="right" class="header-text">
         @user_name@
       </td>
-
+    </tr>
     <tr>
       <td colspan=3 class="header-buttons" align="right" valign="bottom">
         <a href="@dotlrn_url@/?"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@scope_name@.gif" alt="MySloanSpace"></a>

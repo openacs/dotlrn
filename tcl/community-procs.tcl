@@ -1329,6 +1329,31 @@ namespace eval dotlrn_community {
         }
     }
 
+    ad_proc -public navigation_context {
+        community_id
+    } {
+        Get the navigation context (list of url and name pairs) 
+        of the given community. Used for generating context bar.
+
+        @author Peter Marklund
+    } {
+        set context [list]
+
+        if {[subcommunity_p -community_id $community_id]} {
+            set parent_name [get_parent_name -community_id $community_id]
+	    set parent_url [get_community_url [get_parent_id -community_id $community_id]]
+
+            lappend context [list $parent_url $parent_name]
+        }
+
+        set community_name [get_community_name $community_id]
+	set community_url [get_community_url $community_id]
+
+        lappend context [list $community_url $community_name]
+
+        return $context
+    }
+
     ad_proc -public get_community_description {
         {-community_id:required}
     } {

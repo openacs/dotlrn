@@ -44,6 +44,76 @@ namespace eval dotlrn {
         return [raw_navbar $args]
     }
 
+    ad_proc -public user_context_bar {
+        {-community_id:required}
+    } {
+        <p>
+          Produce a helpful context bar for .LRN users. The context
+          bar is intended to aid navigation inside applications mounted
+          under dotlrn packages (classes, communities, and the .LRN home).
+          The proc will fetch the context var from the callers scope with upvar.
+        </p>
+
+        <p>
+          Disclaimer: so far the proc has only been tested to work under
+          classes and communities.
+        </p>
+
+        @param community_id The id of the community/class we are at.
+
+        @author Peter Marklund
+    } {
+        set community_context [dotlrn_community::navigation_context $community_id]
+        
+        upvar context context
+    
+        if { [exists_and_not_null context] } {
+            # The application context doesn't contain the application node itself so we need to prepend that
+            array set node_array [site_node::get -node_id [ad_conn node_id]]
+            set application_name $node_array(instance_name)
+            set application_url $node_array(url)
+    
+            if { [string match admin/* [ad_conn extra_url]] } {
+                set application_admin_context [list [list "${application_url}admin/" "Administration"]]
+            } else {
+                set application_admin_context [list]
+            }
+    
+            set application_context [list [list $application_url $application_name]]
+    
+            if { [llength $application_admin_context] > 0 } {
+                set application_context [concat $application_context $application_admin_context] 
+            }
+    
+            if { ![empty_string_p $context] } {
+                set application_context [concat $application_context $context]
+            } else {
+                # Make last entry be just the label
+                set application_context [lreplace $application_context end end [lindex [lindex $application_context end] 1]]
+            }
+        } else {
+            set application_context [list]
+        }
+    
+        if { [llength $application_context] > 0 } {
+            set context_bar_context [concat $community_context $application_context]
+        } else {
+            # We need the last entry in the community context be just the label, so remove
+            # the URL
+            set community_context_last [lindex $community_context end]
+            set community_context_last_label [lindex $community_context_last 1]
+    
+            if { [llength $community_context] == 1} {
+                set context_bar_context [list $community_context_last_label]
+            } else {
+                set community_context_before_last [lrange $community_context 0 end-1]
+                set context_bar_context [concat $community_context_before_last [list $community_context_last_label]]
+            }
+        }
+       
+        return [dotlrn::raw_navbar $context_bar_context]
+    }
+
     ad_proc -public navbar {
         { -community_id "" }
         { -community_type "" }
@@ -99,7 +169,7 @@ namespace eval dotlrn {
             }
         }
 
-        return "[join $list_of_links " &gt; "]<br>"
+        return "[join $list_of_links " : "]<br>"
     }
 
     ad_proc -public portal_navbar {

@@ -287,11 +287,14 @@ if {![empty_string_p $community_id]} {
         set header_img_alt_text $header_logo_alt_text
     } 
 
-    # The header text is the name of the community
-    set text [dotlrn_community::get_community_header_name $community_id] 
+    set text [dotlrn::user_context_bar -community_id $community_id]
+
+    if { [string equal [ad_conn package_key] [dotlrn::package_key]] } {
+        set text "<span class=\"header-text\">$text</span>"
+    }
 
 } elseif {[parameter::get -parameter community_type_level_p] == 1} {
-    # in a community type
+    # in a community type (subject)
     set text \
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
 } else {
