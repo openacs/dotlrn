@@ -196,6 +196,6 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   </if>
 
  <if @oacs_site_wide_admin_p@ true>
-  <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
+  <li><a href="become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
  </if> 
 </ul>
