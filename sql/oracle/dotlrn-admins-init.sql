@@ -43,7 +43,7 @@ begin
     into dotlrn_user_types
     (type, pretty_name, group_id)
     values
-    ('admin', 'Faculty', group_id);
+    ('admin', 'Staff', group_id);
 
     foo := rel_segment.new(
         segment_name => 'dotLRN Profiled Admins',
