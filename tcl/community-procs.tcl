@@ -665,6 +665,13 @@ namespace eval dotlrn_community {
     } {
         Returns list of admin users
     } {
+        set bio_attribute_id [db_string bio_attribute_id {
+            select attribute_id
+            from acs_attributes
+            where object_type = 'person'
+            and attribute_name = 'bio'
+        }]
+
         return [list_users -rel_type dotlrn_admin_rel $community_id]
     }
 
