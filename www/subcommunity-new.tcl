@@ -54,14 +54,15 @@ if {[form is_valid add_subcomm]} {
     set extra_vars [ns_set create]
     ns_set put $extra_vars join_policy $join_policy
     
-    if {$parent_type != [dotlrn_club::community_type]} {
-        # we want to make a subgroup of a class instance
-        # get the term_id, since the subgroup should not
-        # outlive the class
-        set term_id [dotlrn_class::get_term_id \
-                -class_instance_id $parent_community_id]
+    if {![string equal $parent_type [dotlrn_club::community_type]] &&
+        ![string equal $parent_type "dotlrn_community"]} {
+            # we want to make a subgroup of a class instance
+            # get the term_id, since the subgroup should not
+            # outlive the class
+            set term_id [dotlrn_class::get_term_id \
+                    -class_instance_id $parent_community_id]
         
-        ns_set put $extra_vars term_id $term_id
+            ns_set put $extra_vars term_id $term_id
     } 
 
     db_transaction {
