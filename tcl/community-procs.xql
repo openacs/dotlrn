@@ -315,6 +315,12 @@ select pretty_name from dotlrn_community_types where community_type= :community_
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::set_community_name.update_community_name">
+<querytext>
+update dotlrn_communities set pretty_name = :pretty_name where community_id= :community_id
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::get_community_name_not_cached.select_community_name">
 <querytext>
 select pretty_name from dotlrn_communities where community_id= :community_id
@@ -366,10 +372,10 @@ values
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::remove_applet.delete_applet">
+<fullquery name="dotlrn_community::remove_applet.delete_applet_from_community">
 <querytext>
-delete from dotlrn_community_applets where
-community_id= :community_id and applet_key= :applet_key
+delete from dotlrn_community_applets 
+where community_id= :community_id and applet_id = :applet_id
 </querytext>
 </fullquery>
 

@@ -660,18 +660,19 @@ namespace eval dotlrn_community {
         }
 
         db_transaction {
+            # aks - dont do this yet
             # Set up a portal page for that user and that community
-            set portal_id [portal::create \
-                -name "Your [get_community_name $community_id] page" \
-                -template_id [get_portal_template_id $community_id] \
-                $user_id \
-            ]
+            # set portal_id [portal::create \
+            #     -name "Your [get_community_name $community_id] page" \
+            #     -template_id [get_portal_template_id $community_id] \
+            #     $user_id \
+            # ]
 
             # Create the form with the portal_id
             if {[empty_string_p $extra_vars]} {
                 set extra_vars [ns_set create]
             }
-            ns_set put $extra_vars portal_id $portal_id
+            # ns_set put $extra_vars portal_id $portal_id
             ns_set put $extra_vars user_id $user_id
             ns_set put $extra_vars community_id $community_id
 
@@ -1181,12 +1182,21 @@ namespace eval dotlrn_community {
         return [db_string select_community_type_name {} -default ""]
     }
 
+    ad_proc -public set_community_name {
+        {-community_id:required}
+        {-pretty_name:required}
+    } {
+        update the name for a community
+    } {
+        db_dml update_community_name {}
+    }
+
     ad_proc -public get_community_name {
         community_id
     } {
         get the name for a community
     } {
-        return [util_memoize "dotlrn_community::get_community_name_not_cached $community_id"]
+        return [util_memoize "dotlrn_community::get_community_name_not_cached $community_id" 10]
     }
 
     ad_proc -private get_community_name_not_cached {
@@ -1298,7 +1308,7 @@ namespace eval dotlrn_community {
     }
 
 
-    ad_proc -public remove_applet {
+    ad_proc -public remove_applet_from_community {
         community_id
         applet_key
     } {
@@ -1317,15 +1327,18 @@ namespace eval dotlrn_community {
             }
 
             # Callback
-            applet_call $applet_key RemoveApplet [list $community_id $package_id]
+            ns_log notice "aks3 $applet_key"
+            applet_call $applet_key RemoveAppletFromCommunity [list $community_id $package_id]
+            ns_log notice "aks4 $applet_key"
 
             # Delete from the DB
-            db_dml delete_applet {}
+            set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
+            db_dml delete_applet_from_community {}
         }
     }
 
     ad_proc -public delete {
-        {-community_id ""}
+        {-community_id:required}
     } {
         Delete a community
     } {
@@ -1337,15 +1350,17 @@ namespace eval dotlrn_community {
             
             # Remove all applets
             foreach applet [list_applets -community_id $community_id] {
-                remove_applet $community_id $applet
+                remove_applet_from_community $community_id $applet
             }
             
             # Clean up
             db_1row select_things_to_clean "select portal_id, admin_portal_id, portal_template_id, package_id from dotlrn_communities where community_id= :community_id"
 
-            # Remove the row
-            db_exec_plsql remove_community "begin acs_object.delete(:community_id) end;"
+            # delete the rel segments
+            delete_rel_segments -community_id $community_id
 
+            # Remove the row
+            db_exec_plsql remove_community "begin dotlrn_community.delete(:community_id); end;"
             if {![empty_string_p $portal_id]} {
                 portal::delete $portal_id
             }
