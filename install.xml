@@ -21,6 +21,7 @@
     <install package="dotlrn-syllabus"/>
     <install package="dotlrn-weblogger"/>
     <install package="dotlrn-curriculum"/>
+    <install package="dotlrn-news-aggregator"/>
 
     <mount package="dotlrn" mount-point="dotlrn" instance-name="dotLRN"/>
     <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master"/>
