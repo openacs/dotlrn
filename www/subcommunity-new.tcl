@@ -44,7 +44,8 @@ element create add_subcomm description \
     -label "Description <br> (Text or HTML)" \
     -datatype text \
     -widget text \
-    -html {size 40}
+    -html {size 40} \
+    -optional
 
 element create add_subcomm join_policy \
     -label "Join Policy" \
