@@ -603,15 +603,18 @@ namespace eval dotlrn_community {
     } {
         Reject membership to a community
     } {
-        db_1row select_rel_info {}
+        # This is the *right* thing to do, but for now we'll just remove them
+        # (ben)
+        # db_1row select_rel_info {}
 
-        db_transaction {
-            membership_rel::reject -rel_id $rel_id
-
-            if {![empty_string_p $portal_id]} {
-                portal::delete $portal_id
-            }
-        }
+        # db_transaction {
+        #    membership_rel::reject -rel_id $rel_id
+        #    if {![empty_string_p $portal_id]} {
+        #        portal::delete $portal_id
+        #    }
+        # }
+        
+        remove_user $community_id $user_id
     }
 
     ad_proc -public remove_user {
