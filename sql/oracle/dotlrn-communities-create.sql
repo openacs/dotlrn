@@ -239,10 +239,8 @@ as
    portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    join_policy          in groups.join_policy%TYPE default null,
-   creation_date        in acs_objects.creation_date%TYPE
-                           default sysdate,
-   creation_user        in acs_objects.creation_user%TYPE
-                           default null,
+   creation_date        in acs_objects.creation_date%TYPE default sysdate,
+   creation_user        in acs_objects.creation_user%TYPE default null,
    creation_ip          in acs_objects.creation_ip%TYPE default null,
    context_id		in acs_objects.context_id%TYPE default null
  ) return dotlrn_communities.community_id%TYPE
@@ -250,6 +248,7 @@ as
    c_id integer;
  begin
    c_id := acs_group.new (
+        context_id => context_id,
 	group_id => community_id,
 	object_type => community_type,
 	creation_date => creation_date,
