@@ -89,31 +89,43 @@
 </ul>
 
 <if @member_classes:rowcount@ gt 0>
-  <h4><%= [ad_parameter "class_instances_pretty_name"] %> Memberships</h4>
+  <blockquote>
+    <h4><%= [ad_parameter "class_instances_pretty_name"] %> Memberships</h4>
 
-  <ul>
+    <ul>
 <multiple name="member_classes">
-    <li>
-      <a href="@member_classes.url@">@member_classes.pretty_name@</a>
-      @member_classes.term_name@ @member_classes.term_year@
-      (@member_classes.role@)
-    </li>
+      <li>
+        <a href="@member_classes.url@">@member_classes.pretty_name@</a>
+        @member_classes.term_name@ @member_classes.term_year@
+        (@member_classes.role@)
+      </li>
 </multiple>
+    </ul>
+  </blockquote>
 </if>
 
 <if @member_clubs:rowcount@ gt 0>
-  <h4><%= [ad_parameter "clubs_pretty_name"] %> Memberships</h4>
+  <blockquote>
+    <h4><%= [ad_parameter "clubs_pretty_name"] %> Memberships</h4>
 
+    <ul>
+<multiple name="member_clubs">
+      <li>
+        <a href="@member_clubs.url@">@member_clubs.pretty_name@</a>
+        (@member_clubs.role@)
+      </li>
+</multiple>
+    </ul>
+  </blockquote>
+</if>
 
   <ul>
-<multiple name="member_clubs">
     <li>
-      <a href="@member_clubs.url@">@member_clubs.pretty_name@</a>
-      (@member_clubs.role@)
+      Click <a
+      href="users-add-to-community?users=@user_id@&referer=@return_url@">here</a>
+      to add this user to another group.
     </li>
-</multiple>
   </ul>
-</if>
 
 </if>
 <else>
