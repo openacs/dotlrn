@@ -134,13 +134,14 @@ namespace eval dotlrn_community {
 	    set page_id [portal::create $user_id]
 	    
 	    # Create the form with the page_id
-	    set vars(page_id) $page_id
-
-	    template::form::create add_member_form
-	    template::form::set_values add_member_form vars
+	    set extra_vars [ns_set create]
+	    ns_set put $extra_vars page_id $page_id
+	    ns_set put $extra_vars user_id $user_id
+	    ns_set put $extra_vars community_id $community_id
+	    ns_set put $extra_vars class_instance_id $community_id
 
 	    # Set up the relationship
-	    set rel_id [relation_add -form_id add_member_form -member_state approved $rel_type $community_id $user_id]
+	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type $community_id $user_id]
 	    
 	    # do the callbacks
 	    applets_dispatch $community_id AddUser [list $community_id $user_id]

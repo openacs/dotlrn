@@ -22,7 +22,6 @@ is
     page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
     community_id	in dotlrn_communities.community_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_member_rels.rel_id%TYPE;
@@ -44,7 +43,6 @@ is
     page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
     community_id	in dotlrn_communities.community_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_member_rels.rel_id%TYPE
@@ -91,7 +89,6 @@ is
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
     community_id	in dotlrn_communities.community_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_admin_rels.rel_id%TYPE;
@@ -112,7 +109,6 @@ is
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
     community_id	in dotlrn_communities.community_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_admin_rels.rel_id%TYPE
@@ -123,7 +119,6 @@ is
 			rel_type => rel_type,
 			community_id => community_id,
 			user_id => user_id,
-			context_id => context_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 
@@ -161,7 +156,6 @@ is
     page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_student_rels.rel_id%TYPE;
@@ -183,7 +177,6 @@ is
     page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_student_rels.rel_id%TYPE
@@ -195,7 +188,6 @@ is
 			page_id => page_id,
 			community_id => class_instance_id,
 			user_id => user_id,
-			context_id => context_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 
@@ -232,7 +224,6 @@ is
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_ta_rels.rel_id%TYPE;
@@ -253,7 +244,6 @@ is
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_ta_rels.rel_id%TYPE
@@ -264,7 +254,6 @@ is
 			rel_type => rel_type,
 			community_id => class_instance_id,
 			user_id => user_id,
-			context_id => context_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 
@@ -301,7 +290,6 @@ is
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_instructor_rels.rel_id%TYPE;
@@ -322,7 +310,6 @@ is
     rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
     class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
     user_id		in dotlrn_users.user_id%TYPE,
-    context_id		in acs_objects.context_id%TYPE default null,
     creation_user	in acs_objects.creation_user%TYPE default null,
     creation_ip		in acs_objects.creation_ip%TYPE default null
   ) return dotlrn_instructor_rels.rel_id%TYPE
@@ -333,7 +320,6 @@ is
 			rel_type => rel_type,
 			community_id => class_instance_id,
 			user_id => user_id,
-			context_id => context_id,
 			creation_user => creation_user,
 			creation_ip => creation_ip);
 
@@ -360,82 +346,3 @@ show errors;
 
 
 
---
--- Now we actually create the rel_types
---
-
-declare
-begin
-	acs_rel_type.create_type (
-	   rel_type => 'dotlrn_member_rel',
-	   supertype => 'membership_rel',
-	   pretty_name => 'dotLRN Membership',
-	   pretty_plural => 'dotLRN Memberships',
-	   package_name => 'dotlrn_member_rel',
-	   table_name => 'dotlrn_member_rels',	
-	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_community', role_one => NULL, 
-	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
-	   min_n_rels_two => 0, max_n_rels_two => NULL
-	);
-
-	acs_rel_type.create_type (
-	   rel_type => 'dotlrn_admin_rel',
-	   supertype => 'dotlrn_member_rel',
-	   pretty_name => 'dotLRN Admin Membership',
-	   pretty_plural => 'dotLRN Admin Memberships',
-	   package_name => 'dotlrn_admin_rel',
-	   table_name => 'dotlrn_admin_rels',	
-	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_community', role_one => NULL, 
-	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
-	   min_n_rels_two => 0, max_n_rels_two => NULL
-	);
-
-	acs_rel_type.create_type (
-	   rel_type => 'dotlrn_student_rel',
-	   supertype => 'dotlrn_member_rel',
-	   pretty_name => 'dotLRN Student Membership',
-	   pretty_plural => 'dotLRN Student Memberships',
-	   package_name => 'dotlrn_student_rel',
-	   table_name => 'dotlrn_student_rels',	
-	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
-	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
-	   min_n_rels_two => 0, max_n_rels_two => NULL
-	);
-
-	acs_rel_type.create_type (
-	   rel_type => 'dotlrn_ta_rel',
-	   supertype => 'dotlrn_admin_rel',
-	   pretty_name => 'dotLRN TA Membership',
-	   pretty_plural => 'dotLRN TA Memberships',
-	   package_name => 'dotlrn_ta_rel',
-	   table_name => 'dotlrn_ta_rels',	
-	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
-	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
-	   min_n_rels_two => 0, max_n_rels_two => NULL
-	);
-
-	acs_rel_type.create_type (
-	   rel_type => 'dotlrn_instructor_rel',
-	   supertype => 'dotlrn_admin_rel',
-	   pretty_name => 'dotLRN Instructor Membership',
-	   pretty_plural => 'dotLRN Instructor Memberships',
-	   package_name => 'dotlrn_instructor_rel',
-	   table_name => 'dotlrn_instructor_rels',	
-	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
-	   min_n_rels_one => 0, max_n_rels_one => NULL,
-	   object_type_two => 'dotlrn_user', role_two => NULL,
-	   min_n_rels_two => 0, max_n_rels_two => NULL
-	);
-
-end;
-/
-show errors

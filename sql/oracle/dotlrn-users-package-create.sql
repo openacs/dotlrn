@@ -39,6 +39,7 @@ is
  is
  begin
    insert into dotlrn_users (user_id, role) values (user_id, role);
+   update acs_objects set object_type='dotlrn_user' where object_id=user_id;
    return user_id;
  end;
  
@@ -50,24 +51,6 @@ is
    delete from dotlrn_users where user_id= user_id;
  end;
 
-end;
-/
-show errors
-
-
-
-declare
-begin
-   acs_object_type.create_type (
-	    supertype => 'user',
-	    object_type => 'dotlrn_user',
-	    pretty_name => 'dotLRN User',
-	    pretty_plural => 'dotLRN Users',
-	    table_name => 'dotlrn_users',
-	    id_column => 'user_id',
-	    package_name => 'dotlrn_user',
-	    name_method => 'acs_object.name'
-   );
 end;
 /
 show errors
