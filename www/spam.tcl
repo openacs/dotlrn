@@ -139,7 +139,7 @@ if {[form is_valid spam_message]} {
         -send_date [template::util::date::get_property linear_date $send_date] \
         -date_format "YYYY MM DD HH24 MI SS" \
         -from_addr $from \
-        -subject $subject \
+        -subject "\[$community_name\] :: $subject" \
         -message $message \
         -query $query
 
