@@ -2,7 +2,7 @@
 <if @can_instantiate@ gt 0>
 [
   <font size="-1">
-    <a href="class-instance-new?class_key=@class_key@&referer=classes?filter=@filter@">New Instance</a>
+    <a href="class-instance-new?class_key=@class_key@&referer=@referer@?filter=@filter@">New Instance</a>
   </font>
 ]
 </if>
@@ -17,7 +17,7 @@
 <if @instances:rowcount@ gt 0>
 <blockquote>
 <multiple name="instances">
-  <include src="class-instance" class_instance_id="@instances.class_instance_id@"><br>
+  <include src="class-instance" class_instance_id="@instances.class_instance_id@" referer="@referer@"><br>
 </multiple>
 </blockquote>
 </if>

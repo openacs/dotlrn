@@ -6,6 +6,7 @@ ad_page_contract {
     @creation-date 2001-08-20
     @version $Id$
 } -query {
+    {department_key ""}
     {referer "classes"}
 } -properties {
     title:onevalue
@@ -17,11 +18,19 @@ set context_bar [list [list classes [ad_parameter classes_pretty_plural]] New]
 
 form create add_class
 
-element create add_class department_key \
-    -label "[ad_parameter departments_pretty_name]" \
-    -datatype text \
-    -widget select \
-    -options [dotlrn_department::select_as_list]
+if {[empty_string_p $department_key]} {
+    element create add_class department_key \
+        -label "[ad_parameter departments_pretty_name]" \
+        -datatype text \
+        -widget select \
+        -options [dotlrn_department::select_as_list]
+} else {
+    element create add_class department_key \
+        -label "[ad_parameter departments_pretty_name]" \
+        -datatype text \
+        -widget hidden \
+        -value $department_key
+}
 
 element create add_class class_key \
     -label "[ad_parameter classes_pretty_name] Key (a short name, no spaces)" \

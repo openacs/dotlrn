@@ -10,12 +10,4 @@
       where department_key = :department_key
     </querytext>
   </fullquery>
-
-  <fullquery name="select_classes">
-    <querytext>
-      select *
-      from dotlrn_classes_full
-      where department_key = :department_key
-    </querytext>
-  </fullquery>
 </queryset>

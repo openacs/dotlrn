@@ -20,8 +20,6 @@ if {![db_0or1row select_departments_info {}]} {
     ad_script_abort
 }
 
-db_multirow classes select_classes {}
-
 set context_bar [list [list departments [ad_parameter departments_pretty_plural]] One]
 
 ad_return_template

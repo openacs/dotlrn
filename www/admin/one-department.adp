@@ -12,11 +12,4 @@
 
 <p></p>
 
-<if @classes:rowcount@ gt 0>
-<b><% [ad_parameter classes_pretty_plural] %></b>
-<ul>
-<multiple name="classes">
-  <li><a href="one-class?class_key=@class_key@">@classes.pretty_name@</a></li>
-</multiple>
-</ul>
-</if>
+<include src="classes-chunk" department_key="@department_key@">
