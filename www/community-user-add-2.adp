@@ -1,4 +1,4 @@
-<master src="../master">
+<master src="./master">
 <property name="title">dotLRN Admin: Add a User to a Community</property>
 
 You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
