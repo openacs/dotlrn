@@ -8,6 +8,8 @@ ad_page_contract {
     @version $Id$
 } -query {
     {type "any"}
+    {access_level "any"}
+    {private_data_p 1}
     {join_criteria "and"}
     {n_users 0}
     {action "none"}
@@ -18,6 +20,8 @@ ad_page_contract {
 }
 
 set context_bar {{users Users} {User Search}}
+
+set package_id [ad_conn package_id]
 
 form create user_search_results
 
@@ -62,7 +66,7 @@ element create user_search id \
     -label "ID" \
     -datatype text \
     -widget text \
-    -html {size 30} \
+    -html {size 10} \
     -optional
 
 element create user_search type \
@@ -72,6 +76,20 @@ element create user_search type \
     -options "{Any any} [dotlrn::get_user_types_as_options]" \
     -value $type
 
+element create user_search access_level \
+    -label "Access Level" \
+    -datatype text \
+    -widget radio \
+    -options {{Any any} {Limited limited} {Full full}} \
+    -value $access_level
+
+element create user_search private_data_p \
+    -label "Can Read Private Data?" \
+    -datatype text \
+    -widget radio \
+    -options {{Yes 1} {No 0}} \
+    -value $private_data_p
+
 element create user_search role \
     -label "Role" \
     -datatype text \
@@ -79,18 +97,32 @@ element create user_search role \
     -options [dotlrn_community::get_all_roles_as_options] \
     -optional
 
+element create user_search last_visit_greater \
+    -label "Last Visit Over (in days)" \
+    -datatype text \
+    -widget text \
+    -html {size 10} \
+    -optional
+
+element create user_search last_visit_less \
+    -label "Last Visit Within (in days)" \
+    -datatype text \
+    -widget text \
+    -html {size 10} \
+    -optional
+
 element create user_search last_name \
     -label "Last name starts with" \
     -datatype text \
     -widget text \
-    -html {size 60} \
+    -html {size 30} \
     -optional
 
 element create user_search email \
     -label "Email starts with" \
     -datatype text \
     -widget text \
-    -html {size 60} \
+    -html {size 30} \
     -optional
 
 element create user_search join_criteria \
@@ -104,7 +136,7 @@ set is_request [form is_request user_search]
 
 if {[form is_valid user_search]} {
     form get_values user_search \
-        id type last_name email join_criteria
+        id type access_level private_data_p last_visit_greater last_visit_less last_name email join_criteria
 
     if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
         ad_return_error \
@@ -137,6 +169,42 @@ if {[form is_valid user_search]} {
         }
     }
 
+    switch -exact $access_level {
+        "full" {
+            lappend wheres "exists (select 1 from dotlrn_full_users where dotlrn_full_users.rel_id = dotlrn_users.rel_id)"
+        }
+        "limited" {
+            lappend wheres "not exists (select 1 from dotlrn_full_users where dotlrn_full_users.rel_id = dotlrn_users.rel_id)"
+        }
+    }
+
+    if {[string equal $access_level "full"] == 0} {
+        if {[lsearch -exact $tables "dotlrn_full_users"] == -1} {
+            lappend tables "dotlrn_full_users"
+        }
+        lappend wheres "dotlrn_users.rel_id = dotlrn_full_users.rel_id"
+    }
+
+    if {$private_data_p} {
+        lappend wheres "\'t\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+    } else {
+        lappend wheres "\'f\' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+    }
+
+    if {![empty_string_p $last_visit_greater]} {
+        if {[lsearch -exact $tables "users"] == -1} {
+            lappend tables "users"
+        }
+        lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit <= (sysdate - :last_visit_greater))"
+    }
+
+    if {![empty_string_p $last_visit_less]} {
+        if {[lsearch -exact $tables "users"] == -1} {
+            lappend tables "users"
+        }
+        lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit >= (sysdate - :last_visit_less))"
+    }
+
     if {![empty_string_p $last_name]} {
         lappend wheres "lower(dotlrn_users.last_name) like lower(:last_name || '%')"
     }
@@ -149,7 +217,9 @@ if {[form is_valid user_search]} {
     set role_list_length [llength $role_list]
 
     if {$role_list_length} {
-        lappend tables "acs_rels"
+        if {[lsearch -exact $tables "acs_rels"] == -1} {
+            lappend tables "acs_rels"
+        }
         set in_clause "(dotlrn_users.user_id = acs_rels.object_id_two and acs_rels.rel_type in ("
 
         set in_elements [list]
