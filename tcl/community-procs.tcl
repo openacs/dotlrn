@@ -544,12 +544,26 @@ namespace eval dotlrn_community {
         # Take care of the admins
         set admin_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
         permission::revoke -party_id $admin_segment_id -object_id $community_id -privilege "admin"
+
+        # a useful bit of code to find privs that you may not have properly revoked
+        # set foo [db_list_of_lists select_outstanding_privs {
+        #     select o.object_id, object_type, privilege
+        #     from acs_objects o, acs_permissions p
+        #     where o.object_id = p.object_id 
+        #     and p.grantee_id = :admin_segment_id
+        # }]
+        # ad_return_complaint 1 "$foo"
+        # end 
+
         rel_segments_delete $admin_segment_id
 
         # Take care of the members
         set member_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
-        permission::revoke -party_id $member_segment_id -object_id $community_id -privilege "edit"
+        permission::revoke -party_id $member_segment_id -object_id $community_id -privilege "read"
+        permission::revoke -party_id $member_segment_id -object_id $community_id -privilege "write"
+
         rel_segments_delete $member_segment_id
+
     }
 
     ad_proc -public list_admin_users {
@@ -1354,19 +1368,27 @@ namespace eval dotlrn_community {
                 where community_id = :community_id
             }
 
-            # call the communitie's delete pl/sql, which removes
-            # the group
+            db_dml update_portal_id {
+                update dotlrn_communities 
+                set portal_id = NULL
+                where community_id = :community_id
+            }
 
-            ad_return_complaint 1 "aks4" 
+            db_dml update_admin_portal_id {
+                update dotlrn_communities 
+                set admin_portal_id = NULL
+                where community_id = :community_id
+            }
 
-            db_exec_plsql \
-                    remove_community \
-                    "begin dotlrn_community.delete(:community_id); end;"
-
-            ad_return_complaint 1 "aks3" 
+            db_dml update_non_member_portal_id {
+                update dotlrn_communities 
+                set non_member_portal_id = NULL
+                where community_id = :community_id
+            }
 
             # delete the rel segments
             delete_rel_segments -community_id $community_id
+
 
             if {![empty_string_p $admin_portal_id]} {
                 portal::delete $admin_portal_id
@@ -1379,6 +1401,23 @@ namespace eval dotlrn_community {
             if {![empty_string_p $portal_id]} {
                 portal::delete $portal_id
             }
+
+            # a useful bit of code to find packages
+            # set foo [db_list_of_lists select_outstanding_packages {
+            #     select o.object_id, o.object_type, package_key, 
+            #     from acs_objects o, apm_packages
+            #     where o.context_id = :community_id
+            #     and o.object_id = package_id
+            # }]
+            # ad_return_complaint 1 "$foo"
+            
+
+            # call the communitie's delete pl/sql, which removes the group
+            db_exec_plsql \
+                    remove_community \
+                    "begin dotlrn_community.delete(:community_id); end;"
+
+            ad_return_complaint 1 "aks6" 
 
             # Remove the package
             db_exec_plsql delete_package "begin acs_object.delete(:package_id) end;"

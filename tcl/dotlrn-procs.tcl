@@ -177,6 +177,37 @@ namespace eval dotlrn {
         }
     }
 
+    ad_proc -public get_community_applet_node_id {
+        {-community_id:required}
+        {-package_key:required}
+    } {
+        returns the node_id of the applet in the given community. 
+        this should probably be done by querying the dotlrn_community_applets table
+        directly, but we can do it through site_map:: too
+    } {
+        set parent_node_id [site_nodes::get_node_id_from_package_id \
+                -package_id [dotlrn_community::get_package_id $community_id]
+        ]
+
+        return [site_nodes::get_node_id_from_child_name \
+                -parent_node_id $parent_node_id \
+                -name $package_key]
+
+    }
+
+    ad_proc -public get_community_applet_package_id {
+        {-community_id:required}
+        {-package_key:required}
+    } {
+        like above but returns the pacakge_id
+    } {
+        set node_id [get_community_applet_node_id \
+                -community_id $community_id \
+                -package_key $package_key
+        ]
+        return [site_nodes::get_package_id_from_node_id -node_id $node_id]
+    }
+        
     ad_proc -public unmount_community_applet_package {
         {-community_id:required}
         {-package_key:required}
@@ -185,14 +216,11 @@ namespace eval dotlrn {
         should be in dotlrn_community::
     } {
         db_transaction {
-            set parent_node_id [site_nodes::get_node_id_from_package_id \
-                    -package_id [dotlrn_community::get_package_id $community_id]
+            set child_node_id [get_community_applet_node_id \
+                    -community_id $community_id \
+                    -package_key $package_key
             ]
-
-            set child_node_id [site_nodes::get_node_id_from_child_name \
-                    -parent_node_id $parent_node_id \
-                    -name $package_key]
-
+            
             # site node del package instance
             site_node_delete_package_instance -node_id $child_node_id
         }
