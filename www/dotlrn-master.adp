@@ -30,7 +30,7 @@
 <html>
 <head>
 
-<title>@title@<if @text@ not nil> - @text@</if></title>
+<title>@title@</title>
 @header_stuff;noquote@
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/lists.css" media="all">
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/forms.css" media="all">
