@@ -160,7 +160,7 @@ END;
 
 -- dotlrn_community
 
-select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,portal_id,non_member_portal_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
+select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,portal_id,non_member_portal_id,archived_p,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
 
 select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
 
@@ -184,7 +184,7 @@ DECLARE
         p_community_key                 alias for $4;
         p_pretty_name                   alias for $5;
         p_description                   alias for $6;
-	archived_p			alias for $7
+	p_archived_p			alias for $7;
         p_portal_id                     alias for $8;
         p_non_member_portal_id          alias for $9;
         p_package_id                    alias for $10;
@@ -196,17 +196,19 @@ DECLARE
         c_id                            integer;
 BEGIN
         c_id := acs_group__new (
-	    p_context_id,
             p_community_id,
             p_community_type,
             p_creation_date,
             p_creation_user,
             p_creation_ip,
+            null,
+            null,
             p_community_key,
-            p_join_policy
+            p_join_policy,
+	    p_context_id
         );
 
-        insert into dotlrn_communities
+        insert into dotlrn_communities_all
           (community_id, 
            parent_community_id,
            community_type, 
@@ -214,8 +216,9 @@ BEGIN
            pretty_name,  
            description, 
            package_id, 
-           portal_id, 
-           portal_template_id)
+           portal_id,
+           archived_p,
+           non_member_portal_id)
         values
           (c_id, 
            p_parent_community_id, 
@@ -226,7 +229,6 @@ BEGIN
            p_package_id, 
            p_portal_id,
 	   p_archived_p,
-	   p_portal_id,
            p_non_member_portal_id);
 
         return c_id;        

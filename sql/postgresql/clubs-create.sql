@@ -74,13 +74,15 @@ DECLARE
 BEGIN
         v_club_id := dotlrn_community__new(
             p_club_id,
+            null,
             ''dotlrn_club'',
             p_community_key,
             p_pretty_name,
             p_description,
-            p_package_id,
+            ''f'',
             p_portal_id,
             p_non_member_portal_id,
+            p_package_id,
             p_join_policy,
             p_creation_date,
             p_creation_user,
