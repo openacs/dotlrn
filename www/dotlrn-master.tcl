@@ -185,7 +185,11 @@ if { $make_navbar_p } {
 
 # Set up some basic stuff
 set user_id [ad_get_user_id]
-set user_name [acs_user::get_element -user_id $user_id -element name]
+if { [ad_conn untrusted_user_id] == 0 } {
+    set user_name {}
+} else {
+    set user_name [acs_user::get_element -user_id [ad_conn untrusted_user_id] -element name]
+}
 
 if {![exists_and_not_null title]} {
     set title [ad_system_name]
