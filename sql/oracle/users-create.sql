@@ -37,7 +37,7 @@ create table dotlrn_user_profile_rels (
                                 check (access_level in ('full', 'limited'))
                                 constraint dotlrn_user_p_rels_access_nn
                                 not null,
-    id                          varchar(100)
+    id                          varchar(200)
 );
 
 create table dotlrn_user_types (

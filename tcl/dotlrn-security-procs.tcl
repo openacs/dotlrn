@@ -111,14 +111,18 @@ namespace eval dotlrn {
             return
         }
 
+        # default ID to email address
+        if {[empty_string_p $id]} {
+            set id [cc_email_from_party $user_id]
+        }
+
         # set up extra vars
         set extra_vars [ns_set create]
         ns_set put $extra_vars user_id $user_id
         ns_set put $extra_vars access_level $access_level
         ns_set put $extra_vars id $id
 
-        set template_id \
-                [dotlrn_community::get_type_portal_id -community_type "user_workspace"]
+        set template_id [dotlrn_community::get_type_portal_id -community_type "user_workspace"]
         db_transaction {
             set portal_id [portal::create \
                 -template_id $template_id \
