@@ -16,7 +16,7 @@ namespace eval dotlrn_main_portlet {
     
     ad_proc -private my_name {
     } {
-	return "dotlrn-main-portlet"
+	return "dotlrn_main_portlet"
     }
     
     ad_proc -public get_pretty_name {
