@@ -218,6 +218,7 @@ as
  is
    c_id integer;
    p_id integer;
+   v_portal_name portals.name%TYPE;
  begin
    c_id := acs_group.new (
 	group_id => community_id,
@@ -228,7 +229,10 @@ as
 	group_name => community_key
    );
 
+   select pretty_name || ' portal template' into v_portal_name from dual;
+
    p_id := portal.new (
+	name => v_portal_name,
 	portal_template_p => 't'
    );
 
