@@ -23,9 +23,7 @@
                  dotlrn_member_rels_full
             where dotlrn_member_rels_full.user_id = :user_id
             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -41,9 +39,7 @@
             where dotlrn_member_rels_full.user_id = :user_id
             and dotlrn_class_instances_full.department_key = :member_department_key
             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -59,9 +55,7 @@
             where dotlrn_member_rels_full.user_id = :user_id
             and dotlrn_class_instances_full.term_id = :member_term_id
             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -78,9 +72,7 @@
             and dotlrn_class_instances_full.department_key = :member_department_key
             and dotlrn_class_instances_full.term_id = :member_term_id
             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -122,9 +114,7 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -140,9 +130,7 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -158,9 +146,7 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -177,9 +163,7 @@
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.department_name,
-                     dotlrn_class_instances_full.department_key,
-                     dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
