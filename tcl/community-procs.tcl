@@ -1,11 +1,12 @@
-
 #
 # Procs for DOTLRN Community Management
 # Copyright 2001 OpenForce, inc.
 # Distributed under the GNU GPL v2
 #
-# September 28th, 2001
-# ben@openforce.net
+# Started: September 28th, 2001
+# ben@openforce.net, arjun@openforce.net
+#
+# $Id$
 #
 
 ad_library {
@@ -13,7 +14,9 @@ ad_library {
     Procs to manage DOTLRN Communities
     
     @author ben@openforce.net
+    @author arjun@openforce.net
     @creation-date 2001-09-28
+    @cvs-id $Id$
     
 }
 
@@ -102,22 +105,31 @@ namespace eval dotlrn_community {
 	ns_set put $extra_vars description $description
 
 	db_transaction {
-	    # the user_id is needed to set the perms on the portals - aks
+	    # Insert the community
+	    set community_id [package_instantiate_object \
+		    -extra_vars $extra_vars $object_type]
+
 	    set user_id [ad_conn user_id]
-	    
+	    	    
 	    # Create portal template page
-	    set portal_template_name "$pretty_name Portal Template"
-	    set portal_template_id [portal::create -portal_template_p "t" -name $portal_template_name $user_id ]
-	    ns_set put $extra_vars portal_template_id $portal_template_id
+	    set portal_template_id \
+		    [portal::create \
+		    -portal_template_p "t" \
+		    -name "$pretty_name Portal Template" \
+		    -context_id $community_id \
+		    $user_id ]
 
 	    # Create the non-member page
-	    set non_member_portal_name "$pretty_name Non-Member Portal"
-	    set portal_id [portal::create -name $non_member_portal_name -template_id $portal_template_id  $user_id]
-	    ns_set put $extra_vars portal_id $portal_id
+	    set portal_id \
+		    [portal::create -name \
+		    -template_id $portal_template_id \
+		    -name "$pretty_name Non-Member Portal" \
+		    -context_id $community_id \
+		    $user_id]
 
-	    # Insert the community
-	    set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
-	    
+	    # update the portal_template_id and non_member_portal_id
+	    db_dml update_portal_ids {}
+
 	    # Set up the rel segments
 	    dotlrn_community::create_rel_segments -community_id $community_id
 
