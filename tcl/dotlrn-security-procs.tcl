@@ -24,14 +24,15 @@ namespace eval dotlrn {
     ad_proc -public generate_key {
         {-name:required}
     } {
-        Generate a key from a name. Uses a concatination of the
-        name and nexval of the acs_oid sequence. To generate a 
-        globally unique key that can be used in urls.
-
-        FIXME : this is abuse of the sequence, add sequence for this in dotlrn 
+        Generate a key from a name. Compresses all adjacent non-alphanum
+        chars to a dash. Yes, this is not unique, grows rapidly, will
+        need collision detection and resolution, yada yada. 
     } {
-        regsub -all {\W+} $name "" name
-        return "$name-[db_nextval acs_object_id_seq]"
+        
+        regsub -all {\W+} $name "-" name
+        regsub -all -- {-+} $name "-" name
+        
+        return "[string trim $name {-}]"
     }
 
     ad_proc -private do_abort {} {

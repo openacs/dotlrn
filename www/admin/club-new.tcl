@@ -16,12 +16,6 @@ set context_bar [list [list clubs [ad_parameter clubs_pretty_plural]] New]
 
 form create add_club
 
-element create add_club club_key \
-    -label "[ad_parameter clubs_pretty_name] Key (a short name, no spaces)" \
-    -datatype text \
-    -widget text \
-    -html {size 60}
-
 element create add_club pretty_name \
     -label "Name" \
     -datatype text \
@@ -49,11 +43,10 @@ element create add_club referer \
 
 if {[form is_valid add_club]} {
     form get_values add_club \
-        club_key pretty_name description join_policy referer
+         pretty_name description join_policy referer
 
     set key [dotlrn_club::new \
         -description $description \
-        -key $club_key \
         -pretty_name $pretty_name \
         -join_policy $join_policy]
 

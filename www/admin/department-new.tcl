@@ -16,12 +16,6 @@ set context_bar [list [list departments [ad_parameter departments_pretty_plural]
 
 form create add_department
 
-element create add_department department_key \
-    -label "[ad_parameter departments_pretty_name] Key (a short name, no spaces)" \
-    -datatype text \
-    -widget text \
-    -html {size 60}
-
 element create add_department pretty_name \
     -label "Name" \
     -datatype text \
@@ -50,10 +44,9 @@ element create add_department referer \
 
 if {[form is_valid add_department]} {
     form get_values add_department \
-        department_key pretty_name description external_url referer
+         pretty_name description external_url referer
 
     set department_key [dotlrn_department::new \
-        -department_key $department_key \
         -pretty_name $pretty_name \
         -description $description \
         -external_url $external_url]

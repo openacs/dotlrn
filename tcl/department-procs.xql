@@ -10,6 +10,12 @@
     </querytext>
   </fullquery>
 
+  <fullquery name="dotlrn_department::check_department_key_valid_p.check">
+    <querytext>
+      select 1 from dotlrn_departments where department_key = :department_key
+    </querytext>
+  </fullquery>
+
   <fullquery name="dotlrn_department::select_as_list.select_departments">
     <querytext>
       select pretty_name,

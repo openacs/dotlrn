@@ -49,7 +49,6 @@ namespace eval dotlrn_club {
     }
 
     ad_proc -public new {
-        {-key:required}
         {-pretty_name:required}
         {-description ""}
         {-join_policy "open"}
@@ -63,7 +62,6 @@ namespace eval dotlrn_club {
         return [dotlrn_community::new \
             -community_type [community_type] \
             -object_type [community_type] \
-            -community_key $key \
             -pretty_name $pretty_name \
             -description $description \
             -parent_community_id $parent_community_id \

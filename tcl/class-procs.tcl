@@ -64,8 +64,29 @@ namespace eval dotlrn_class {
             -pretty_name [ad_parameter -package_id [dotlrn::get_package_id] classes_pretty_plural]
     }
 
-    ad_proc -public new {
+    ad_proc -public check_class_key_valid_p {
         {-class_key:required}
+        {-department_key:required}
+    } {
+        Checks if the class_key passed in is valid for the given dept name
+        i. e. there are no sibling classes with the same key
+
+        FIXME: Currently class keys must be globally unique
+        (across all dept) since they are used to create acs_object
+        types. We probably want to get rid of this constraint by
+        adding some sequence numbers to the key. The query will change
+        too.
+        
+    } {
+        if {[db_0or1row collision_check {}]} {
+            # got a collision
+            return 0
+        } else {
+            return 1 
+        }
+    }
+
+    ad_proc -public new {
         {-department_key:required}
         {-pretty_name:required}
         {-description ""}
@@ -76,6 +97,19 @@ namespace eval dotlrn_class {
 
         This class can then be instantiated for a particular semester.
     } {
+
+        set class_key [dotlrn::generate_key -name $pretty_name]
+        
+        # check if the name is already in use, if so, complain loudly
+        if {![check_class_key_valid_p \
+                -class_key $class_key \
+                -department_key $department_key]} {
+            ad_return_complaint \
+                    1 \
+                    "The name <strong>$pretty_name</strong> is already in use. \n
+                       Please select a different name."
+        }        
+
         db_transaction {
             set class_key [dotlrn_community::new_type \
                 -community_type_key $class_key \

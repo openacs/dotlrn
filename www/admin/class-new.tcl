@@ -32,12 +32,6 @@ if {[empty_string_p $department_key]} {
         -value $department_key
 }
 
-element create add_class class_key \
-    -label "[ad_parameter classes_pretty_name] Key (a short name, no spaces)" \
-    -datatype text \
-    -widget text \
-    -html {size 60}
-
 element create add_class pretty_name \
     -label "Name" \
     -datatype text \
@@ -59,10 +53,9 @@ element create add_class referer \
 
 if {[form is_valid add_class]} {
     form get_values add_class \
-        department_key class_key pretty_name description referer
+        department_key pretty_name description referer
 
     set class_key [dotlrn_class::new \
-        -class_key $class_key \
         -department_key $department_key \
         -pretty_name $pretty_name \
         -description $description]

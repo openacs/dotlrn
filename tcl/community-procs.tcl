@@ -138,6 +138,15 @@ namespace eval dotlrn_community {
         # generate the key from the passed in name
         set community_key [dotlrn::generate_key -name $pretty_name]
 
+        # check if the name is already in use, if so, complain loudly
+        if {![check_community_key_valid_p \
+                -community_key $community_key \
+                -parent_community_id $parent_community_id]} {
+            ad_return_complaint \
+                    1 "The name <strong>$pretty_name</strong> is already in use. \n
+                       Please select a different name."
+        }
+
         # Add core vars
         ns_set put $extra_vars parent_community_id $parent_community_id
         ns_set put $extra_vars community_type $community_type
@@ -769,6 +778,22 @@ namespace eval dotlrn_community {
         Returns the parent community's id or null
     } {
         return [db_string select_parent_id {} -default ""]
+    }
+
+    ad_proc -public check_community_key_valid_p {
+        {-community_key:required}
+        {-parent_community_id ""}
+    } {
+        Checks if the community_key passed in is valid for creating a new
+        community by checking that it's not the same as an existing (possible)
+        sibling's name.
+    } {
+        if {[db_0or1row collision_check {}]} {
+            # got a collision
+            return 0
+        } else {
+            return 1 
+        }
     }
 
     ad_proc -public subcommunity_p {
