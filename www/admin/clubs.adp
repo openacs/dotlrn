@@ -33,7 +33,7 @@
 </if>
 <else>
  </center>
- <p align="right"><a href="club-new">#dotlrn.new_community#</a> </p>
+ <p align="right"><a href="club-new" class="button">#dotlrn.new_community#</a> </p>
  <center>
  <table>
   <tr bgcolor="#eeeeee">

@@ -37,7 +37,7 @@
 </if>
 <else>
 </center>
-<p align="right"><a href="class-new?department_key=@department_key@&referer=@referer@">#dotlrn.new_class_1#</a> </p>
+<p align="right"><a href="class-new?department_key=@department_key@&referer=@referer@" class="button">#dotlrn.new_class_1#</a> </p>
 <center>
 <table>
   <tr bgcolor="#eeeeee">

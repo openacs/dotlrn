@@ -30,7 +30,7 @@
 </if>
 <else>
 </center>
-<p align="right"><a href="term-new">#dotlrn.New_Term#</a> </p>
+<p align="right"><a href="term-new" class="button">#dotlrn.New_Term#</a> </p>
 <center>
 <table>
   <tr bgcolor="#eeeeee">

@@ -29,7 +29,7 @@
     </if>
     <else>
     </center>
-    <p align="right"><a href="department-new?referer=@referer@">#dotlrn.new_department#</a> </p>
+    <p align="right"><a href="department-new?referer=@referer@" class="button">#dotlrn.new_department#</a> </p>
     <center>
      <table>
       <tr bgcolor="#eeeeee">
