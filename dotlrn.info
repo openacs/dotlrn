@@ -7,7 +7,7 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
 
-    <version name="1.0" url="http://software.openforce.net/openacs/packages/dotlrn">
+    <version name="1.0d1" url="http://software.openforce.net/openacs/packages/dotlrn">
     <database-support>
         <database>oracle</database>
         <database>postgresql</database>
@@ -19,7 +19,7 @@
         <description format="text/html">Course Management</description>
 
         <provides url="dotlrn" version="1.0"/>
-        <requires url="acs-kernel" version="5.0d8"/>
+        <requires url="acs-kernel" version="5.0d13"/>
         <requires url="new-portal" version="0.1a"/>
         <requires url="user-profile" version="0.1d"/>
         <requires url="attachments" version="0.5"/>
