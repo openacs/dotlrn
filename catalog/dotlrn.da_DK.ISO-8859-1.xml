@@ -66,7 +66,7 @@
   <msg key="class_name">%classes_pretty_name%-navn</msg>
   <msg key="class_name_header">%class_instances_pretty_name%-navn</msg>
   <msg key="class_page_calendar_title">Kalender</msg>
-  <msg key="class_page_file_storage_title">Filer</msg>
+  <msg key="class_page_file_storage_title">Dokumenter</msg>
   <msg key="class_page_home_title">Hjem for Klassen</msg>
   <msg key="Classes">Klasser</msg>
   <msg key="classes_pretty_name">Fag</msg>
