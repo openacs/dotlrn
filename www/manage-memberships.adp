@@ -66,10 +66,10 @@
 <multiple name="member_classes">
 
     <if @member_classes.rownum@ odd>
-      <tr class="z_light">
+      <tr class="odd">
     </if>
     <else>
-      <tr class="z_dark">
+      <tr class="even">
     </else>
         <td><a href="@member_classes.url@">@member_classes.pretty_name@</td>
         <td>@member_classes.term_name@ @member_classes.term_year@</td>
@@ -101,10 +101,10 @@
 <multiple name="member_clubs">
 
     <if @member_clubs.rownum@ odd>
-      <tr class="z_light">
+      <tr class="odd">
     </if>
     <else>
-      <tr class="z_dark">
+      <tr class="even">
     </else>
         <td colspan="2"><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
         <td>@member_clubs.role@</td>
@@ -156,10 +156,10 @@
 <multiple name="non_member_classes">
 
     <if @non_member_classes.rownum@ odd>
-      <tr class="z_light">
+      <tr class="odd">
     </if>
     <else>
-      <tr class="z_dark">
+      <tr class="even">
     </else>
         <td><a href="@non_member_classes.url@">@non_member_classes.pretty_name@</td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
@@ -193,10 +193,10 @@
 <multiple name="non_member_clubs">
 
     <if @non_member_clubs.rownum@ odd>
-      <tr class="z_light">
+      <tr class="odd">
     </if>
     <else>
-      <tr class="z_dark">
+      <tr class="even">
     </else>
         <td><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
         <td>&nbsp;</td>

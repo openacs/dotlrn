@@ -48,10 +48,10 @@
     </tr>
 <multiple name="current_members">
 <if @current_members.rownum@ odd>
-    <tr class="z_dark">
+    <tr class="odd">
 </if>
 <else>
-    <tr class="z_light">
+    <tr class="even">
 </else>
   <td>
    <if @admin_p@ eq 1>

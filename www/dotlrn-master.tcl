@@ -428,11 +428,11 @@ TABLE.z_dark {
     BACKGROUND: $scope_z_dark;
 }
 
-TR.z_light {
+TR.even {
     BACKGROUND: $scope_z_light;
 }
 
-TR.z_dark {
+TR.odd {
     BACKGROUND: $scope_z_dark;
 }
 
