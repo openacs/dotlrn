@@ -26,7 +26,6 @@ set list_of_students [dotlrn_community::list_users $community_id]
 template::multirow create students user_id first_names last_name email
 
 foreach student $list_of_students {
-    ns_log Notice "one student - $student"
     template::multirow append students [lindex $student 1] [lindex $student 2] [lindex $student 3] [lindex $student 4]
 }
 
