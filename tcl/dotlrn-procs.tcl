@@ -355,6 +355,9 @@ namespace eval dotlrn {
 
         if {[empty_string_p $id]} {
             set type dotlrn_class_instance
+	    # aks: this next line is necessary 
+	    # for dotlrn_class_instances, don't remove it!
+	    set id [db_string select {} -default ""]
         } 
 
         return $id
