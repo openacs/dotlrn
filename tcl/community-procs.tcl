@@ -1327,7 +1327,15 @@ namespace eval dotlrn_community {
         update the name for a community
     } {
         set old_value [get_community_name $community_id]
+
         db_dml update_community_name {}
+
+	# rename the package - this is used in the user interface. ie - context bar and
+	# in the portlets
+
+	set package_id [dotlrn_community::get_package_id $community_id]
+	apm_package_rename -package_id $package_id -instance_name $pretty_name
+
         util_memoize_flush "dotlrn_community::get_community_name_not_cached $community_id"
 
         # generate "rename" event
