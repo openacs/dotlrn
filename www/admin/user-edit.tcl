@@ -27,7 +27,7 @@ element create edit_user id \
     -label "ID" \
     -datatype text \
     -widget text \
-    -html {size 60} \
+    -html {size 30} \
     -value $id \
     -optional
 
