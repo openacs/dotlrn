@@ -786,12 +786,6 @@ namespace eval dotlrn_community {
             ns_set put $extra_vars user_id $user_id
             ns_set put $extra_vars community_id $community_id
 
-	    ns_log notice "rel_type is sending the following to relation_add                -member_state needs approval \
-                -extra_vars $extra_vars \
-                $rel_type \
-                $community_id \
-                $user_id "
-
             # Set up the relationship
             if {[catch {set rel_id [relation_add \
                 -member_state "needs approval" \
