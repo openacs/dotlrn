@@ -21,6 +21,8 @@ ad_page_contract {
     @creation-date Dec 13, 2001
     @version $Id$
 } -query {
+    page:optional
+    {orderby "start_date_pretty,desc"}
 } -properties {
     context_bar:onevalue
     terms:multirow
@@ -30,6 +32,39 @@ ad_page_contract {
 dotlrn::require_admin 
 
 set context_bar "[_ dotlrn.Terms]"
+
+set actions [list "[_ dotlrn.New_Term]" "term-new"]
+
+template::list::create \
+    -name terms \
+    -multirow terms \
+    -actions $actions \
+    -key term_id \
+    -page_size 50 \
+    -page_query_name terms_pagination \
+    -elements {
+        term_name {
+            label "[_ dotlrn.Term]"
+	    orderby_asc {term_name asc}
+	    orderby_desc {term_name desc}
+            link_url_eval {[export_vars -base "term" { term_id }]}
+        }
+        start_date_pretty {
+            label "[_ dotlrn.Start_Date]"
+	    orderby_asc {start_date_ansi asc}
+	    orderby_desc {start_date_ansi desc}
+        }
+        end_date_pretty {
+            label "[_ dotlrn.End_Date]"
+	    orderby_asc {end_date_ansi asc}
+	    orderby_desc {end_date_ansi desc}
+        }
+        n_classes {
+            label "[_ dotlrn.Classes]"
+	    orderby_asc {n_classes asc}
+	    orderby_desc {n_classes desc}
+        }
+    }
 
 db_multirow -extend { start_date_pretty end_date_pretty } terms select_terms {} {
     set start_date_pretty [lc_time_fmt $start_date_ansi "%q"]
