@@ -327,7 +327,7 @@ namespace eval dotlrn_community {
         return [util_memoize "dotlrn_community::get_url_from_package_id_memoized -package_id $package_id"]
     }
 
-    ad_proc -public get_url_from_package_id_memoized {
+    ad_proc -private get_url_from_package_id_memoized {
         {-package_id ""}
     } {
         Memoizing helper
@@ -816,21 +816,21 @@ namespace eval dotlrn_community {
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
     } {
+        if {[empty_string_p $package_id]} {
+            set package_id [ad_conn package_id]
+        }
+
         return [util_memoize "dotlrn_community::get_parent_community_id_memoized -package_id $package_id"]
     }
 
-    ad_proc -public get_parent_community_id_memoized {
-        {-package_id ""}
+    ad_proc -private get_parent_community_id_memoized {
+        {-package_id:required}
     } {
         Returns the community_id of our parent node or the parent
         of the passed in package_id. This is used for certain scripts
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
     } {
-        if {[empty_string_p $package_id]} {
-            set package_id [ad_conn package_id]
-        }
-
         set parent_pkg_id [site_nodes::get_parent_object_id \
                 -instance_id $package_id
         ]
@@ -896,7 +896,7 @@ namespace eval dotlrn_community {
         return [util_memoize "dotlrn_community::has_subcommunity_p_memoized -community_id $community_id" 60]        
     }
 
-    ad_proc -public has_subcommunity_p_memoized {
+    ad_proc -private has_subcommunity_p_memoized {
         {-community_id:required}
     } {
         Returns 1 if the community has a subcommunity
@@ -1135,7 +1135,7 @@ namespace eval dotlrn_community {
         return [util_memoize "dotlrn_community::get_community_name_memoized $community_id"]
     }
 
-    ad_proc -public get_community_name_memoized {
+    ad_proc -private get_community_name_memoized {
         community_id
     } {
         memo helper
