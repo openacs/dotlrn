@@ -72,7 +72,7 @@
     <else>
       <tr class="even">
     </else>
-        <td><a href="@member_classes.url@">@member_classes.pretty_name@</td>
+        <td><a href="@member_classes.url@">@member_classes.pretty_name@</a></td>
         <td>@member_classes.term_name@ @member_classes.term_year@</td>
         <td>@member_classes.role@</td>
 <if @member_classes.member_state@ eq "needs approval">
@@ -162,7 +162,7 @@
     <else>
       <tr class="even">
     </else>
-        <td><a href="@non_member_classes.url@">@non_member_classes.pretty_name@</td>
+        <td><a href="@non_member_classes.url@">@non_member_classes.pretty_name@</a></td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
 <if @non_member_classes.join_policy@ eq "open">
@@ -199,7 +199,7 @@
     <else>
       <tr class="even">
     </else>
-        <td><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
+        <td><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</a></td>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
 <if @non_member_clubs.join_policy@ eq "open">
