@@ -29,7 +29,7 @@
   #dotlrn.Role#
   <select name="rel_type">
 <multiple name="roles">
-    <option value="@roles.rel_type@">@roles.pretty_name@</option>
+    <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
 </multiple>
   </select>
   <input type="submit" value="#dotlrn.add#">
