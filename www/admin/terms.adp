@@ -12,12 +12,14 @@
     <th align="left" width="15%">Term</th>
     <th align="left" width="15%">Start Date</th>
     <th align="left" width="15%">End Date</th>
+    <th align="left" width="15%">Number of Classes</th>
   </tr>
 <multiple name="terms">
   <tr>
     <td><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
     <td>@terms.start_date@</td>
     <td>@terms.end_date@</td>
+    <td>@terms.n_classes@</td>
   </tr>
 </multiple>
 </table>
