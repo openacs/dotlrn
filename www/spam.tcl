@@ -164,9 +164,15 @@ if {[ns_queryexists "form:confirm"]} {
 	set recipients_str ''
     }
 
+    if {![string equal $rel_types_str ''] && [string equal $recipients_str ''] } {
+    set query_restriction "and acs_rels.rel_type in ('$rel_types_str')"
+    } elseif {[string equal $rel_types_str ''] && ![string equal $recipients_str ''] } {
+    set query_restriction "and acs_rels.object_id_two in ($recipients_str)"
+    } elseif {![string equal $rel_types_str ''] && ![string equal $recipients_str ''] } {
+    set query_restriction "and (acs_rels.rel_type in ('$rel_types_str') or acs_rels.object_id_two in ($recipients_str))"
+    } 
 
     set query [db_map sender_info]
-
 
     if {$format == "html"} {
 	set message "$message"

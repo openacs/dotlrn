@@ -36,8 +36,7 @@
                  acs_objects
             where (acs_rels.object_id_one = $community_id
             and acs_rels.object_id_two = parties.party_id
-            and (acs_rels.rel_type in ('$rel_types_str')
-	         or acs_rels.object_id_two in ($recipients_str))
+            $query_restriction
 	    and parties.party_id = acs_objects.object_id
             and parties.party_id in (select acs_rels.object_id_two  
                                      from acs_rels, membership_rels

@@ -43,12 +43,12 @@
                END as last_name,
                '$safe_community_name' as community_name,
                '$community_url' as community_url
-            from party_approved_member_map,
+            from acs_rels,
                  parties,
                  acs_objects
-            where party_approved_member_map.party_id = $segment_id
-            and party_approved_member_map.member_id <> $segment_id
-            and party_approved_member_map.member_id = parties.party_id
+            where (acs_rels.object_id_one = $community_id
+            and acs_rels.object_id_two = parties.party_id
+            $query_restriction
             and parties.party_id = acs_objects.object_id
             and parties.party_id in (select acs_rels.object_id_two  
                                      from acs_rels, membership_rels
@@ -57,8 +57,7 @@
                                      and acs_rels.rel_id = 
                                         membership_rels.rel_id
                                      and membership_rels.member_state 
-                                        = 'approved')
-            $extra_where_clause
+                                        = 'approved'))
         </querytext>
     </fullquery>
 
