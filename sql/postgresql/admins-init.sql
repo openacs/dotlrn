@@ -27,6 +27,7 @@ returns integer as '
 declare
     foo                         integer;
     gid				integer;
+    sid                         integer;
     dotlrn_users_group_id       integer;
 begin
 
@@ -58,17 +59,17 @@ begin
         ''dotLRN Admins''
     );
 
-    insert
-    into dotlrn_user_types
-    (type, pretty_name, group_id)
-    values
-    (''admin'', ''Staff'', gid);
-
-    foo := rel_segment__new(
+    sid := rel_segment__new(
         ''dotLRN Admins'',
         gid,
         ''dotlrn_admin_profile_rel''
     );
+
+    insert
+    into dotlrn_user_types
+    (type, pretty_name, rel_type, group_id, segment_id)
+    values
+    (''admin'', ''Staff'', ''dotlrn_admin_profile_rel'', gid, sid);
 
     select group_id
     into dotlrn_users_group_id

@@ -40,9 +40,17 @@ create table dotlrn_user_types (
                                 constraint dotlrn_user_types_pk
                                 primary key,
     pretty_name                 varchar(200),
+    rel_type                    constraint dotlrn_user_types_rel_type_fk
+                                references acs_rel_types (rel_type)
+                                constraint dotlrn_user_types_rel_type_nn
+                                not null,
     group_id                    constraint dotlrn_user_types_group_id_fk
                                 references profiled_groups (group_id)
                                 constraint dotlrn_user_types_group_id_nn
+                                not null,
+    segment_id                  constraint dotlrn_user_types_segment_fk
+                                references rel_segments (segment_id)
+                                constraint dotlrn_user_types_segment_nn
                                 not null
 );
 
@@ -58,7 +66,9 @@ as
            parties.email,
            dotlrn_user_types.type,
            dotlrn_user_types.pretty_name as pretty_type,
-           dotlrn_user_types.group_id
+           dotlrn_user_types.rel_type,
+           dotlrn_user_types.group_id,
+           dotlrn_user_types.segment_id
     from dotlrn_user_profile_rels,
          dotlrn_user_types,
          acs_rels,

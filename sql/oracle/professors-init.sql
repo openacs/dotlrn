@@ -24,6 +24,7 @@
 declare
     foo                         integer;
     group_id                    integer;
+    segment_id                  integer;
     dotlrn_users_group_id       integer;
 begin
 
@@ -55,17 +56,17 @@ begin
         group_name => 'dotLRN Professors'
     );
 
-    insert
-    into dotlrn_user_types
-    (type, pretty_name, group_id)
-    values
-    ('professor', 'Professor', group_id);
-
-    foo := rel_segment.new(
+    segment_id := rel_segment.new(
         segment_name => 'dotLRN Professors',
         group_id => group_id,
         rel_type => 'dotlrn_professor_profile_rel'
     );
+
+    insert
+    into dotlrn_user_types
+    (type, pretty_name, rel_type, group_id, segment_id)
+    values
+    ('professor', 'Professor', 'dotlrn_professor_profile_rel', group_id, segment_id);
 
     select group_id
     into dotlrn_users_group_id
