@@ -276,4 +276,27 @@ namespace eval site_nodes {
         }
     }
 
+    ad_proc -public site_node_create {
+        {-node_id ""}
+        {-parent_node_id:required}
+        {-name:required}
+        {-directory_p "t"}
+    } {
+        create a site node the real way (the site-node stuff needs a user_id)
+    } {
+        set node_id [db_exec_plsql create_node {
+            begin
+            :1 := site_node.new(
+            node_id => :node_id,
+            parent_id => :parent_node_id,
+            name => :name,
+            directory_p => :directory_p,
+            pattern_p => 't'
+            );
+            end;
+        }]
+
+        return $node_id
+    }
+
 }

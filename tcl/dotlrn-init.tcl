@@ -47,6 +47,9 @@ if {[dotlrn::is_instantiated]} {
     set grantee_id [dotlrn::get_users_rel_segment_id]
     ad_permission_grant $grantee_id $package_id read
 
+    # initialize the applets subsystem (ooh, I'm using big words - ben)
+    dotlrn_applet::init
+
     # We go through all Applets and make sure they are added.
 
     # The applet_add proc in the dotlrn_applet contract is for one-time

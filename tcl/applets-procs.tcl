@@ -16,6 +16,22 @@ ad_library {
 
 namespace eval dotlrn_applet {
 
+    ad_proc -public get_url {} {
+        # MAJOR FIXME NOW
+        return "/dotlrn/applets"
+    }
+
+    ad_proc -public get_applet_url {
+        {-applet_key:required}
+    } {
+        return [site_nodes::get_info -return url -package_key $applet_key]
+    }
+
+    ad_proc -public init {} {
+        # Create the applets node
+        dotlrn::site_node_create -parent_node_id [dotlrn::get_node_id] -name "applets"
+    }
+
     ad_proc -public register {
 	applet_key
     } {
@@ -95,4 +111,33 @@ namespace eval dotlrn_applet {
         return [db_string select {} -default ""]
     }
 
+    ad_proc -public mount {
+        {-package_key:required}
+        {-url ""}
+        {-pretty_name ""}
+    } {
+        if {[empty_string_p $url]} {
+            set url $package_key
+        }
+
+        if {[empty_string_p $pretty_name]} {
+            set pretty $package_key
+        }
+
+        # Find the parent node
+        set applets_url [get_url]
+        set parent_node_id [site_node_id $applets_url]
+
+        # Mount it baby
+        set package_id [dotlrn::mount_package \
+                -parent_node_id $parent_node_id \
+                -package_key $package_key \
+                -url $url \
+                -directory_p t \
+                -pretty_name $pretty_name]
+
+        return $package_id
+    }
+        
+        
 }

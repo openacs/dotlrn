@@ -154,17 +154,11 @@ namespace eval dotlrn {
             ]
             set parent_package_id $parent_node(object_id)
 
-            set node_id [db_exec_plsql mount_package {
-                begin
-                    :1 := site_node.new(
-                        node_id => :node_id,
-                        parent_id => :parent_node_id,
-                        name => :url,
-                        directory_p => :directory_p,
-                        pattern_p => 't'
-                    );
-                end;
-            }]
+            set node_id [site_nodes::site_node_create \
+                    -parent_node_id $parent_node_id \
+                    -node_id $node_id \
+                    -name $url \
+                    -directory_p $directory_p]
 
                 if {[empty_string_p $pretty_name]} {
                     set pretty_name $package_key
