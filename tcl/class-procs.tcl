@@ -69,16 +69,16 @@ namespace eval dotlrn_class {
         db_transaction {
             dotlrn::new_type_portal \
                 -type [community_type] \
-                -pretty_name "test [parameter::get \
+                -pretty_name [parameter::get \
                                   -package_id [dotlrn::get_package_id] \
-                                  -parameter class_instance_portal_pretty_name]"
+                                  -parameter class_instance_portal_pretty_name]
             
             dotlrn_community::init \
                 -community_type [community_type] \
                 -community_type_url_part [get_url_part] \
-                -pretty_name "test [parameter::get \
+                -pretty_name [parameter::get \
                                   -package_id [dotlrn::get_package_id] \
-                                  -parameter classes_pretty_plural]"
+                                  -parameter classes_pretty_plural]
         }
     }
 
