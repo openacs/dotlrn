@@ -31,22 +31,14 @@ ad_page_contract {
     portal_id:onevalue
 }
 
-form get_values spam_message subject message
+form get_values spam_message subject message format
 
-set content [string trimright [template::util::richtext::get_property contents $message]]
-set format [string trimright [template::util::richtext::get_property format $message]]
-
-# the following is just to make sure the previewing works ok.
-# in case the user types a html message and chooses the messsage 
-# to be a plain text type or vice-versa.
-if {$format == "text/html"} {
-	if [ad_looks_like_html_p $content] {
-	     set preview_message "<pre>$content</pre>"
-           } else {
-	     set preview_message "$content"
-        }
+if {$format == "html"} {
+    set preview_message "$message"
+} elseif {$format == "pre"} {
+    set preview_message [ad_text_to_html $message]
 } else {
-	set preview_message [ad_quotehtml $content]
+    set preview_message [ad_quotehtml $message]
 }
 
 set context_bar [list [list $referer Admin] "[_ dotlrn.Spam_Community]"]

@@ -90,9 +90,17 @@ element create spam_message subject \
 
 element create spam_message message \
     -label [_ dotlrn.Message] \
-    -datatype richtext \
-    -widget richtext \
+    -datatype text \
+    -widget textarea \
     -html {rows 10 cols 80 wrap soft}
+
+
+element create spam_message format \
+    -label "Format" \
+    -datatype text \
+    -widget select \
+    -options {{"Preformatted Text" "pre"} {"Plain Text" "plain"} {HTML "html"}}
+
 
 element create spam_message send_date \
     -label [_ dotlrn.Send_Date] \
@@ -127,17 +135,13 @@ element create spam_message spam_all \
 
 if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
-        community_id from rel_types_str subject message send_date referer recipients_str spam_all
-
-    set content [string trimright [template::util::richtext::get_property contents $message]]
-    set format [string trimright [template::util::richtext::get_property format $message]]
-
+        community_id from rel_types_str subject message send_date referer recipients_str spam_all format
+   
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
 
     set recipients_str [join [split $recipients_str] ,]
     set rel_types_str [join [split $rel_types_str] ',']
-
 
 
 # POSTGRES - change to plural
@@ -163,14 +167,16 @@ if {[ns_queryexists "form:confirm"]} {
 
     set query [db_map sender_info]
 
-    # TO DO CHANGE THE ORACLE QUERY
-    
-    ns_log notice "query: $query"
 
-    if {$format == "text/html"} {
-	set bulk_format "html"
+    if {$format == "html"} {
+	set message "$message"
+	set message_type "html"
+    } elseif {$format == "pre"} {
+	set message [ad_text_to_html $message]
+	set message_type "html"
     } else {
-	set bulk_format "text"
+	set message [ad_quotehtml $message]
+	set message_type "text"
     }
 
     bulk_mail::new \
@@ -179,8 +185,8 @@ if {[ns_queryexists "form:confirm"]} {
         -date_format "YYYY MM DD HH24 MI SS" \
         -from_addr $from \
         -subject "\[$community_name\] $subject" \
-        -message $content \
-        -message_type $bulk_format \
+        -message $message \
+        -message_type $message_type \
         -query $query
 
     ad_returnredirect $referer
