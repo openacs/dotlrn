@@ -325,6 +325,14 @@ namespace eval dotlrn_community {
     } {
         This gets the relative URL for a package_id.
     } {
+        return [util_memoize "dotlrn_community::get_url_from_package_id_memoized -package_id $package_id"]
+    }
+
+    ad_proc -public get_url_from_package_id_memoized {
+        {-package_id ""}
+    } {
+        Memoizing helper
+    } {
         return [db_string select_node_url {} -default ""]
     }
 

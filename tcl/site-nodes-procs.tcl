@@ -100,7 +100,15 @@ namespace eval site_nodes {
     } {
         get the name of the parent of this instance
     } {
-        return [db_string select_parent_name_by_id {}]
+        return [util_memoize "site_nodes::get_parent_name_memoized -instance_id $instance_id"]
+    }
+
+    ad_proc -public get_parent_name_memoized {
+        {-instance_id ""}
+    } {
+        memoizing helper
+    } {
+        return [db_string select_parent_name_by_id {} -default ""]
     }
 
 

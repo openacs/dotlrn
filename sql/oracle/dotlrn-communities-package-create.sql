@@ -164,6 +164,10 @@ is
         party_id in parties.party_id%TYPE
     ) return char;
 
+    function has_subcomm_p (
+        community_id in dotlrn_communities.community_id%TYPE
+    ) return char;
+
     function url (
         community_id in dotlrn_communities.community_id%TYPE
     ) return varchar2;
@@ -314,6 +318,24 @@ as
             when no_data_found then
                 return '';
     end;
+
+    function has_subcomm_p (
+        community_id in dotlrn_communities.community_id%TYPE
+    ) return char
+    is
+        v_rv char(1);
+    begin
+
+        select decode(count(*), 0, 'f', 't') into v_rv
+        from dual where exists (
+              select 'x'
+              from dotlrn_communities
+              where parent_community_id = community_id
+        );
+
+        return v_rv;
+    end;
+
 end;
 /
 show errors

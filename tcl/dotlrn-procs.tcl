@@ -273,6 +273,7 @@ namespace eval dotlrn {
     }
 	
     ad_proc -public render_page {
+	{-workspace_p ""}
 	{-hide_links_p  "f"}
 	{-user_id  ""}
         {-render_style "individual"}
@@ -285,7 +286,7 @@ namespace eval dotlrn {
 	    set user_id [ad_conn user_id]
 	}
 
-	set theme_id [get_user_theme $user_id]
+        set theme_id [get_user_theme $user_id]
 
 	return [portal::render -page_num $page_num -hide_links_p $hide_links_p -render_style $render_style $portal_id $theme_id ]
     }

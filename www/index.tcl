@@ -41,9 +41,12 @@ if {[ad_parameter community_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-# set admin_p [dotlrn::admin_p]
-
 # Permission dotLRN
+if {![dotlrn::user_p -user_id $user_id]} {
+    ad_returnredirect "index-not-a-user"
+    ad_script_abort
+}    
+
 if {![dotlrn::user_can_browse_p]} {
     # Figure out if the user is a member of a community
     set communities [dotlrn_community::get_all_communities_by_user $user_id]
@@ -56,7 +59,10 @@ if {![dotlrn::user_can_browse_p]} {
 
     # If just one community
     if {[llength $communities] == 1} {
-        ad_returnredirect [dotlrn_community::get_url_from_package_id -package_id [lindex [lindex $communities 0] 4]]
+        ad_returnredirect \
+                [dotlrn_community::get_url_from_package_id  \
+                    -package_id [lindex [lindex $communities 0] 4]
+        ]
         ad_script_abort
     }
 
@@ -65,14 +71,15 @@ if {![dotlrn::user_can_browse_p]} {
     return
 }
 
-# Get the page
 set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
-if {[empty_string_p $portal_id]} {
-    ad_returnredirect "index-not-a-user"
-    ad_script_abort
-}
-
-set rendered_page [dotlrn::render_page -user_id $user_id -page_num $page_num -hide_links_p "t" $portal_id ]
+# O glorious portal page!
+set rendered_page \
+        [dotlrn::render_page \
+            -user_id $user_id \
+            -page_num $page_num \
+            -hide_links_p "t" \
+            $portal_id
+        ]
 
 ad_return_template

@@ -73,7 +73,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_url_from_package_id.select_node_url">
+    <fullquery name="dotlrn_community::get_url_from_package_id_memoized.select_node_url">
         <querytext>
             select site_node.url(node_id)
             from site_nodes
