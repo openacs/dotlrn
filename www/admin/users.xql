@@ -4,7 +4,7 @@
 
 <fullquery name="select_dotlrn_users">
 <querytext>
-select first_names, last_name from dotlrn_users, registered_users where dotlrn_users.user_id= registered_users.user_id
+select first_names, last_name, email, role from dotlrn_users_full order by last_name
 </querytext>
 </fullquery>
 

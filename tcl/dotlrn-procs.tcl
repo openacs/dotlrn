@@ -32,4 +32,20 @@ namespace eval dotlrn {
 	return [ad_parameter group_type_key]
     }
 
+    ad_proc -public get_user_theme {
+	user_id
+    } {
+	Return the user default theme
+    } {
+	return [db_string select_user_theme {}]
+    }
+
+    ad_proc -public set_user_theme {
+	user_id
+	theme_id
+    } {
+	Set the user theme
+    } {
+	db_dml update_user_theme {}
+    }
 }

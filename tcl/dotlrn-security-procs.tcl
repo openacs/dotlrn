@@ -47,13 +47,30 @@ namespace eval dotlrn {
 	db_dml remove_user {}
     }
 
+    ad_proc -private user_get_role {
+	user_id
+    } {
+	returns the dotLRN user role or empty string if not a dotLRN user
+    } {
+	return [db_string select_user_role {} -default ""]
+    }
+
     ad_proc -public guest_add {
 	community_id
 	user_id
     } {
 	Add a guest to a particular community
     } {
-	db_dml add_guest {}
+	db_transaction {
+	    # Check if this user is a user already
+	    if {[empty_string_p [user_get_role $user_id]]} {
+		# Add the user as a guest
+		user_add -role guest $user_id
+	    }
+
+	    # Subscribe the guest to that community
+	    dotlrn_community::add_user $community_id $user_id
+	}
     }
 
     ad_proc -public guest_remove {
@@ -62,7 +79,7 @@ namespace eval dotlrn {
     } {
 	Remove a guest from a particular community
     } {
-	db_dml remove_guest {}
+	dotlrn_community::remove_user $community_id $user_id
     }
 
     ad_proc -public user_can_browse_p {
