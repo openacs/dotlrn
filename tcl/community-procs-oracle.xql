@@ -49,6 +49,14 @@ select site_node.url(node_id) from site_nodes where object_id= :package_id
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_community_type_from_community_id.select_community_type">
+  <querytext>
+    select community_type
+    from dotlrn_communities
+    where community_id = :community_id
+  </querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::get_toplevel_community_type_from_community_id.select_community_type">
 <querytext>
 select object_type from acs_object_types where supertype='dotlrn_community' start with object_type = (select community_type from dotlrn_communities where community_id=:community_id) connect by object_type= prior supertype 

@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Displays the personal home page
     
@@ -7,18 +6,11 @@ ad_page_contract {
 } {
 }
 
-ns_log notice "XXX0"
-
 # Check if this is a community type level thing
 if {[ad_parameter community_type_level_p] == 1} {
-    ns_log notice "XXX0.5"
     ad_returnredirect "one-community-type"
-    ns_log notice "XXX0.55"
     ad_script_abort
-    ns_log notice "XXX0.60"
 }
-
-ns_log notice "XXX1"
 
 # Check if this is a community level thing
 if {[ad_parameter community_level_p] == 1} {

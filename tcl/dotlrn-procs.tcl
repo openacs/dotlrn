@@ -58,27 +58,22 @@ namespace eval dotlrn {
 
     ad_proc -public is_instantiated_here {
         {-url:required}
+        {-package_key ""}
     } {
         returns 1 if dotlrn is instantiaed under the url specified, 0
         otherwise
     } {
         set result 0
 
-# XXX this is much cleaner but it doesn't work because [site_node $url] will
-#     eat through the url to try to find a match up the hierarchy. we want
-#     an exact match
-#
-#        if {[catch {array set site_node [site_node $url]}] == 0} {
-#            if {[string equal [package_key] $site_node(package_key)]} {
-#                set result 1
-#            }
-#        }
+        if {[empty_string_p $package_key]} {
+            set package_key [dotlrn::package_key]
+        }
 
         if {[catch {nsv_array get site_nodes $url} site_node_list] == 0} {
             for {set x 0} {$x < [llength $site_node_list]} {incr x 2} {
                 if {[string match $url [lindex $site_node_list $x]]} {
                     array set site_node [lindex $site_node_list [expr $x + 1]]
-                    if {[string equal [dotlrn::package_key] $site_node(package_key)]} {
+                    if {[string equal $package_key $site_node(package_key)]} {
                         set result 1
                         break
                     } else {

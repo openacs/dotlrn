@@ -73,9 +73,17 @@ select portal_id from dotlrn_communities where community_id= :community_id
 </fullquery>
 
 <fullquery name="dotlrn_community::get_all_communities_by_user.select_communities_by_user">
-<querytext>
-select dotlrn_communities.community_id, community_type, community_key, pretty_name from dotlrn_communities, dotlrn_member_rels_full where dotlrn_communities.community_id = dotlrn_member_rels_full.community_id and dotlrn_member_rels_full.user_id = :user_id
-</querytext>
+  <querytext>
+    select dotlrn_communities.community_id,
+           dotlrn_communities.community_type,
+           dotlrn_communities.community_key,
+           dotlrn_communities.pretty_name,
+           dotlrn_communities.package_id
+    from dotlrn_communities,
+         dotlrn_member_rels_full
+    where dotlrn_communities.community_id = dotlrn_member_rels_full.community_id
+    and dotlrn_member_rels_full.user_id = :user_id
+  </querytext>
 </fullquery>
 
 <fullquery name="dotlrn_community::get_communities_by_user.select_communities">
@@ -190,5 +198,13 @@ acs_sc_contracts.contract_name='dotlrn_applet'
 select applet_key from dotlrn_community_applets where community_id= :community_id
 </querytext>
 </fullquery>
+
+  <fullquery name="dotlrn_community::is_supertype.is_supertype">
+    <querytext>
+      select count(*)
+      from dotlrn_community_types
+      where supertype = :community_type
+    </querytext>
+  </fullquery>
 
 </queryset>

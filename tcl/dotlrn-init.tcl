@@ -25,6 +25,11 @@ if {[dotlrn::is_instantiated]} {
     if {![dotlrn_class::is_initialized]} { dotlrn_class::init }
     if {![dotlrn_club::is_initialized]} { dotlrn_club::init }
 
+    set portal_package_key "new-portal"
+    if {![dotlrn::is_instantiated_here -url [portal::mount_point] -package_key $portal_package_key]} {
+        dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
+    }
+
     # Grantee
     set grantee_id [dotlrn::get_full_users_rel_segment_id]
 

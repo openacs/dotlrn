@@ -354,6 +354,23 @@ namespace eval dotlrn_community {
         community_id
         user_id
     } {
+        add a user to a particular community
+    } {
+        if {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_class_instance"]} {
+            dotlrn_class::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+        } elseif {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_club"]} {
+            dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+        } else {
+            add_user_to_community -rel_type $rel_type -community_id $community_id -user_id $user_id
+        }
+    }
+
+    ad_proc -public add_user_to_community {
+        {-rel_type "dotlrn_member_rel"}
+        {-community_id:required}
+        {-user_id:required}
+        {-extra_vars ""}
+    } {
         Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
     } {
         db_transaction {
@@ -364,11 +381,12 @@ namespace eval dotlrn_community {
                     $user_id]
 
             # Create the form with the portal_id
-            set extra_vars [ns_set create]
+            if {[empty_string_p $extra_vars]} {
+                set extra_vars [ns_set create]
+            }
             ns_set put $extra_vars portal_id $portal_id
             ns_set put $extra_vars user_id $user_id
             ns_set put $extra_vars community_id $community_id
-            ns_set put $extra_vars class_instance_id $community_id
 
             # Set up the relationship
             set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type $community_id $user_id]

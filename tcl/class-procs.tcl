@@ -24,6 +24,32 @@ namespace eval dotlrn_class {
         return "dotlrn_class_instance"
     }
 
+    ad_proc -public package_key {
+    } {
+        Returns the package key for this package
+    } {
+        return "dotlrn"
+    }
+
+    ad_proc -public one_class_package_key {
+    } {
+        Returns the package key for this package
+    } {
+        return "dotlrn"
+    }
+
+    ad_proc -public get_url_part {} {
+        returns the url part for this community type
+    } {
+        return "classes"
+    }
+
+    ad_proc -public get_url {} {
+        returns the url part for this community type
+    } {
+        return "/[get_url_part]"
+    }
+
     ad_proc -public is_initialized {} {
         is dotlrn_class initialized with the right community_type?
     } {
@@ -105,29 +131,18 @@ namespace eval dotlrn_class {
         }
     }
 
-    ad_proc -public package_key {
+    ad_proc -public add_user {
+        {-rel_type "dotlrn_student_rel"}
+        {-community_id:required}
+        {-user_id:required}
     } {
-        Returns the package key for this package
+        Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
     } {
-        return "dotlrn"
-    }
+        db_transaction {
+            set extra_vars [ns_set create]
+            ns_set put $extra_vars class_instance_id $community_id
 
-    ad_proc -public one_class_package_key {
-    } {
-        Returns the package key for this package
-    } {
-        return "dotlrn"
-    }
-
-    ad_proc -public get_url_part {} {
-        returns the url part for this community type
-    } {
-        return "classes"
-    }
-
-    ad_proc -public get_url {} {
-        returns the url part for this community type
-    } {
-        return "/[get_url_part]"
+            dotlrn_community::add_user_to_community -rel_type $rel_type -extra_vars $extra_vars -community_id $community_id -user_id $user_id
+        }
     }
 }
