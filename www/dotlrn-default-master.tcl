@@ -46,8 +46,8 @@
 
 set user_id [ad_get_user_id] 
 set community_id [dotlrn_community::get_community_id]
+set package_id [dotlrn_community::get_package_id $community_id]
 set dotlrn_url [dotlrn::get_url]
-
 
 if {[dotlrn::user_p -user_id $user_id]} {
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
@@ -134,7 +134,7 @@ if {$have_comm_id_p} {
         set navbar "<br>"
         set portal_id ""
     }
-} elseif {[parameter::get -parameter community_type_level_p] == 1} {
+} elseif {[parameter::get -package_id $package_id -parameter community_type_level_p] == 1} {
     set extra_td_html ""
     set link_all 1
     set link [dotlrn::get_url]
@@ -211,15 +211,14 @@ set header_logo_item_id ""
 set header_img_url "$dotlrn_url/graphics/logowhite.gif" 
 set header_img_alt_text "Header Logo"
 
-
-if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
+if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id $package_id]]} {
     set parent_comm_p 0
 } else {
     set parent_comm_p 1
 }
 
 # in a community or just under one in a mounted package like /calendar 
-if {[parameter::get -parameter community_level_p] == 1 || $parent_comm_p } {
+if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 || $parent_comm_p } {
     set community_id [dotlrn_community::get_community_id]
     
     # color hack
@@ -278,7 +277,7 @@ if {[parameter::get -parameter community_level_p] == 1 || $parent_comm_p } {
     # The header text is the name of the community
     set text [dotlrn_community::get_community_header_name $community_id] 
 
-} elseif {[parameter::get -parameter community_type_level_p] == 1} {
+} elseif {[parameter::get -package_id $package_id -parameter community_type_level_p] == 1} {
     # in a community type
     set text \
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]

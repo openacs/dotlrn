@@ -1180,7 +1180,7 @@ namespace eval dotlrn_community {
     } {
         get the package id for a particular community type
     } {
-        return [db_string select_package_id {} -default ""]
+        return [db_string select_package_id {} -default [dotlrn::get_package_id]]
     }
 
     ad_proc -public get_package_id {
@@ -1188,7 +1188,7 @@ namespace eval dotlrn_community {
     } {
         get the package ID for a particular community
     } {
-        return [db_string select_package_id {}]
+        return [db_string select_package_id {} -default [dotlrn::get_package_id]]
     }
 
     ad_proc -public get_applet_package_id {
