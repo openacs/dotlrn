@@ -19,4 +19,4 @@
 </ul>
 
 <h3>Portal Template</h3>
-<a href=one-instance-portal-template?portal_id=@portal_template_id@&return_url=one-community?community_id=@community_id@>manage the portal template</a>
+<a href=one-community-portal-template?portal_id=@portal_template_id@&return_url=one-community?community_id=@community_id@>manage the portal template</a>
