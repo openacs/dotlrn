@@ -27,7 +27,7 @@
 <ul>
 
   <li>
-    #dotlrn.Name#
+    #dotlrn.Person_name#
     @first_names@ @last_name@
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </li>
