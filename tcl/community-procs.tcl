@@ -277,7 +277,6 @@ namespace eval dotlrn_community {
         return $community_id
     }
 
-
     ad_proc set_active_dates {
         {-community_id:required}
         {-start_date:required}
