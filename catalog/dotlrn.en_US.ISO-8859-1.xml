@@ -342,7 +342,7 @@ once they have been uploaded.</msg>
   <msg key="lt_What_others_see_about">(What others see about me:</msg>
   <msg key="lt_Year_eg_2003_20032004">Year (e.g. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_not_allowed_t">You are not allowed to perform that action.</msg>
-  <msg key="lt_You_double-clicked_th">You double-clicked the \&quot;Add\&quot; button on the previous page.</msg>
+  <msg key="lt_You_double-clicked_th">You double-clicked the &quot;Add&quot; button on the previous page.</msg>
   <msg key="lt_You_may_now_choose_to">You may now choose to</msg>
   <msg key="lt_You_tried_to_upload_a">You tried to upload a non-image file.</msg>
   <msg key="lt_Your_Current_Membersh">Your Current Memberships</msg>
