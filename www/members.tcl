@@ -183,7 +183,7 @@ set result ""
     db_multirow reset_members select_members {select user_id as member_id from dotlrn_member_rels_approved where community_id = :community_id and rel_type = :reltype and user_id <> :my_user_id} {
 	rp_form_put user_id $member_id
     }
-    rp_form_put referer "members"
+    rp_form_put referer "one-community"
     rp_form_put community_id $community_id
     rp_internal_redirect "deregister"
 }
