@@ -25,7 +25,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -54,7 +54,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -83,7 +83,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -113,7 +113,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -152,7 +152,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -182,7 +182,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -212,7 +212,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
@@ -243,7 +243,7 @@
                                                         'admin') = 'f'
                       THEN 0
                       ELSE 1
-                   END as admin_p
+                   END as admin_p,
                    (select dotlrn_community_types.community_type
                     from dotlrn_community_types
                     where dotlrn_community_types.tree_sortkey = tree_ancestor_key(dotlrn_communities.tree_sortkey, 1)) as root_community_type
