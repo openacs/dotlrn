@@ -55,6 +55,8 @@
   <msg key="black">Schwarz</msg>
   <msg key="Black_None_chosen">Schwarz (Keine ausgewählt)</msg>
   <msg key="blue">Blau</msg>
+  <msg key="Bulk_Approve">Mehrere Benutzer freischalten</msg>
+  <msg key="Bulk_Approving">Es werden mehrere Benutzer freigeschaltet...</msg>
   <msg key="Bulk_Upload">Mehrere Benutzer hochladen</msg>
   <msg key="Bulk_Uploading">Es werden mehrere Benutzer hochgeladen...</msg>
   <msg key="cannot_be_removed">Kann nicht entfernt werden</msg>
@@ -511,6 +513,7 @@ Beispiel:</msg>
   <msg key="Users_Bulk_Upload">Benutzer: Mehrere hochladen</msg>
   <msg key="Users_Search">Benutzersuche</msg>
   <msg key="View">Anzeigen</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Warnung!&lt;/strong&gt; Dies kann bis zu %hours% Stunden, %minutes% Minuten dauern!!</msg>
   <msg key="Year">Jahr:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">Ja</msg>

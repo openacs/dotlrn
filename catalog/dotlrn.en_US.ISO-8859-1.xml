@@ -63,6 +63,8 @@
   <msg key="black">black</msg>
   <msg key="Black_None_chosen">Black (None chosen)</msg>
   <msg key="blue">blue</msg>
+  <msg key="Bulk_Approve">Bulk Approve</msg>
+  <msg key="Bulk_Approving">Bulk approving in progress.</msg>
   <msg key="Bulk_Upload">Bulk Upload</msg>
   <msg key="Bulk_Uploading">Bulk uploading in progress.</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
@@ -581,6 +583,7 @@ Thank you
   <msg key="Users_Bulk_Upload">Users: Bulk Upload</msg>
   <msg key="Users_Search">Users Search</msg>
   <msg key="View">View</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Warning!&lt;/strong&gt; This could take up to %hours% hours, %minutes% minutes!!</msg>
   <msg key="Year">Year:</msg>
   <msg key="Yes">Yes</msg>
   <msg key="yes">yes</msg>
