@@ -224,4 +224,22 @@ namespace eval site_nodes {
         return [db_string select_child_package_id {} -default 0]
     }
 
+    ad_proc -public child_package_exists_p {
+        {-parent_package_id ""}
+        {-package_key:required}
+    } {
+        Returns 1 if there exists a child package with the given package_key, 
+        or 0 if not.
+    } {
+        set child_package_id [site_nodes::get_child_package_id \
+            -parent_package_id $parent_package_id \
+            -package_key $package_key
+        ]
+
+        if {$child_package_id == 0} {
+            return 0
+        } else {
+            return 1 
+        }
+    }
 }
