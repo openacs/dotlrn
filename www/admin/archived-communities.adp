@@ -18,14 +18,26 @@
 
 %>
 
-<master src="dotlrn-master">
+<master src="dotlrn-admin-master">
 <property name="title">@title@</property>
-<property name="show_control_panel">1</property>
-<property name="link_control_panel">1</property>
+<property name="context_bar">@context_bar@</property>
 
-Are you sure you want to archive group <strong>@pretty_name@</strong>?
-<p>
-The group's data will not be modified, but the group will only be accessible to system administrators.
-<br>
-
-<formtemplate id="archive_form"></formtemplate>
+<if @archived_comms:rowcount@ gt 0>
+<table width="100%">
+  <tr>
+    <th align="left" width="15%">Name</th>
+    <th align="left" width="50%">Description</th>
+    <th align="left">Actions</th>
+  </tr>
+<multiple name="archived_comms">
+  <tr>
+    <td><a href="@archived_comms.url@">@archived_comms.pretty_name@</a></td>
+    <td><pre>@archived_comms.description@</pre></td>
+    <td></td>
+  </tr>
+</multiple>
+</table>
+</if>
+<else>
+  No archived @groups_pretty_plural@
+</else>
