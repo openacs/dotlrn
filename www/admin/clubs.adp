@@ -7,14 +7,20 @@
 <p></p>
 
 <if @clubs:rowcount@ gt 0>
+<table border="0" cellspacing="0" cellpadding="3" width="100%">
+  <tr>
+    <th align="left" width="15%"><%= [ad_parameter clubs_pretty_name] %> Name</th>
+    <th align="left" width="50%">Description</th>
+    <th align="left">Actions</th>
+  </tr>
 <multiple name="clubs">
-  <include src="club" club_id="@clubs.club_id@"
-                      pretty_name="@clubs.pretty_name@"
-                      description="@clubs.description@"
-                      community_key="@clubs.community_key@"
-                      url="@clubs.url@">
-  <p></p>
+  <tr>
+    <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
+    <td>@clubs.description@</td>
+    <td>[&nbsp<font size="-1"><a href="@clubs.url@one-community-admin">admin</a></font>&nbsp;]</td>
+  </tr>
 </multiple>
+</table>
 </if>
 
 <if @clubs:rowcount@ gt 10>

@@ -7,14 +7,20 @@
 <p></p>
 
 <if @terms:rowcount@ gt 0>
+<table border="0" cellspacing="0" cellpadding="3" width="100%">
+  <tr>
+    <th align="left" width="15%">Term</th>
+    <th align="left" width="15%">Start Date</th>
+    <th align="left" width="15%">End Date</th>
+  </tr>
 <multiple name="terms">
-  <include src="term" term_id="@terms.term_id@"
-                      term_name="@terms.term_name@"
-                      term_year="@terms.term_year@"
-                      start_date="@terms.start_date@"
-                      end_date="@terms.end_date@">
-  <p></p>
+  <tr>
+    <td><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
+    <td>@terms.start_date@</td>
+    <td>@terms.end_date@</td>
+  </tr>
 </multiple>
+</table>
 </if>
 
 <if @terms:rowcount@ gt 10>
