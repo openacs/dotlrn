@@ -38,38 +38,46 @@ if {![exists_and_not_null referer]} {
     set referer "[dotlrn::get_admin_url]/users"
 }
 
-set default_section Z
-foreach dimension {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} {
-    if {[string equal $type deactivated] == 1} {
-        set section_count [db_string select_deactivated_users_count {}]
-    } elseif {[string equal $type pending] == 1} {
-        set section_count [db_string select_non_dotlrn_users_count {}]
-    } else {
-        set section_count [db_string select_dotlrn_users_count {}]
+set default_section A
+set dimension_list {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z}
+
+foreach dimension $dimension_list {
+    if {[empty_string_p $section]} {
+        set section $default_section
     }
 
-    if {[empty_string_p $section] && $section_count} {
-        set section $dimension
-    }
-
-    lappend dimensions [list $dimension $dimension {} $section_count]
+    lappend dimensions [list $dimension $dimension {}]
 }
+
+lappend dimensions [list Other Other {}]
 
 set control_bar [portal::dimensional [list [list section {} $section $dimensions]]]
 
 set i 1
 if {[string equal $type deactivated] == 1} {
-    db_multirow users select_deactivated_users {} {
+    set query select_deactivated_users
+    if {[string match Other $section]} {
+        append query "_other"
+    }
+    db_multirow users $query {} {
         set users:${i}(access_level) Limited
         incr i
     }
 } elseif {[string equal $type pending] == 1} {
-    db_multirow users select_non_dotlrn_users {} {
+    set query select_non_dotlrn_users
+    if {[string match Other $section]} {
+        append query "_other"
+    }
+    db_multirow users $query {} {
         set users:${i}(access_level) Limited
         incr i
     }
 } else {
-    db_multirow users select_dotlrn_users {} {
+    set query select_dotlrn_users
+    if {[string match Other $section]} {
+        append query "_other"
+    }
+    db_multirow users $query {} {
         if {[dotlrn::user_can_browse_p -user_id $user_id]} {
             set users:${i}(access_level) Full
         } else {
