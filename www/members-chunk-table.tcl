@@ -131,27 +131,12 @@ if {$site_wide_admin_p} {
     }
 }
 
-set sql "
-    select dotlrn_member_rels_approved.rel_id,
-           dotlrn_member_rels_approved.rel_type,
-           dotlrn_member_rels_approved.role,
-           dotlrn_member_rels_approved.user_id,
-           registered_users.first_names,
-           registered_users.last_name,
-           registered_users.email
-    from registered_users,
-         dotlrn_member_rels_approved
-    where dotlrn_member_rels_approved.community_id = :community_id
-    and dotlrn_member_rels_approved.user_id = registered_users.user_id
-    [ad_order_by_from_sort_spec $orderby $table_def]
-"
-
 set table [ad_table \
     -Tmissing_text {<blockquote><i>No members</i></blockquote>} \
     -Textra_vars {referer my_user_id community_id rel_type} \
     -Torderby $orderby \
     select_current_members \
-    $sql \
+    "" \
     $table_def
 ]
 
