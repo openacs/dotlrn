@@ -1,5 +1,3 @@
-
-
 ad_page_contract {
     Displays main dotLRN admin page
     

@@ -3,7 +3,7 @@ ad_page_contract {
     
     @author yon (yon@openforce.net)
     @creation-date 2001-12-03
-    @cvs-id $Id$
+    @version $Id$
 } {
 } -properties {
     clubs:multirow

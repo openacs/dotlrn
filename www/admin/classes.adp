@@ -2,12 +2,17 @@
 <property name="title">dotLRN Classes</property>
 <property name="context_bar">@context_bar@</property>
 
-<ul>
+[ <a href="class-new">new class</a> ]
+
+<p></p>
+
+<if @classes:rowcount@ gt 0>
 <multiple name="classes">
-<li> <a href=one-class?class_key=@classes.class_key@>@classes.pretty_name@</a>
+<include src="class" class_key="@classes.class_key@" pretty_name="@classes.pretty_name@">
+<p></p>
 </multiple>
-<p>
+</if>
 
-<li> <A href=class-new>New Class</a>
-
-</ul>
+<if @classes:rowcount@ gt 10>
+[ <a href="class-new">new class</a> ]
+</if>

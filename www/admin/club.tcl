@@ -1,21 +1,18 @@
 ad_page_contract {
-    displays single dotLRN club page
+    displays dotLRN clubs admin page
     
     @author yon (yon@openforce.net)
     @creation-date 2001-12-03
-    @cvs-id $Id$
-} -query {
-    club_id:naturalnum,notnull
-} -errors {
-    club_id:naturalnum,notnull {must provide a valid club_id}
+    @version $Id$
+} {
 } -properties {
-    context_bar:onevalue
+    club_id:onevalue
     pretty_name:onevalue
-    description:onevalue
+    descrition:onevalue
 }
 
-set context_bar {{clubs Clubs} One}
-
-db_1row select_club {}
+if {![exists_and_not_null pretty_name]} {
+    db_1row select_club {}
+}
 
 ad_return_template

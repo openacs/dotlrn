@@ -2,10 +2,17 @@
 <property name="title">dotLRN Clubs</property>
 <property name="context_bar">@context_bar@</property>
 
-<ul>
-  <multiple name="clubs">
-    <li><a href=club?club_id=@clubs.club_id@>@clubs.pretty_name@</a></li>
-  </multiple>
-  <p>
-  <li><a href=club-new>Create Club</a></li>
-</ul>
+[ <a href=club-new>new club</a> ]
+
+<p></p>
+
+<if @clubs:rowcount@ gt 0>
+<multiple name="clubs">
+  <include src="club" club_id="@clubs.club_id@" pretty_name="@clubs.pretty_name@" description="@clubs.description@" community_key="@clubs.community_key@">
+  <p></p>
+</multiple>
+</if>
+
+<if @clubs:rowcount@ gt 10>
+[ <a href=club-new>new club</a> ]
+</if>

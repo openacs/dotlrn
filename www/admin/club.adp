@@ -1,3 +1,1 @@
-<master src="./master">
-<property name="title">@pretty_name@</property>
-<property name="context_bar">@context_bar@</property>
+<a href=one-club?club_id=@club_id@>@pretty_name@</a> - @description@
