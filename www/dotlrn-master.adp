@@ -33,6 +33,7 @@
 <title>@title@<if @text@ not nil> - @text@</if></title>
 @header_stuff;noquote@
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/lists.css" media="all">
+<link rel="stylesheet" type="text/css" href="/resources/acs-templating/forms.css" media="all">
 
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
