@@ -43,10 +43,12 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
 } else {
     # do i have access to my personal portal?
-    dotlrn::require_user_browse -user_id [ad_conn user_id]
+    set user_id [ad_conn user_id]
+
+    dotlrn::require_user_browse -user_id $user_id
 
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
-
+    set name [portal::get_name $portal_id]
     set rendered_page [portal::configure $portal_id "index"]
 }
 
