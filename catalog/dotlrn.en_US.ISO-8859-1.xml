@@ -51,6 +51,8 @@
   <msg key="archived_groups">Archived %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Are you sure?</msg>
   <msg key="are_you_sure_you_want_to_send">Are you sure you want to send the following</msg>
+  <description key="are_you_sure_you_want_to_send">Context?? the following what? Or is that the end of the phrase?</description>
+
   <msg key="arhive_group_name">Archive group %group_name%</msg>
   <msg key="Ask_a_question">Ask a question:</msg>
   <msg key="Be_sure">Be sure</msg>
@@ -449,7 +451,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Pretty_Name">Pretty Name</msg>
   <msg key="Pretty_Plural">Pretty Plural</msg>
   <msg key="Preview">Preview</msg>
-  <msg key="prv_policy_must_be_one_of">The privacy policy must be either "yes" or "no".</msg>
+  <msg key="prv_policy_must_be_one_of">The privacy policy must be either &quot;yes&quot; or &quot;no&quot;.</msg>
   <msg key="Public_Web_Log">Public Web Log</msg>
   <msg key="purple">purple</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>

@@ -273,6 +273,7 @@
   <msg key="Unknown_Term">Семестр не орпеделен</msg>
   <msg key="User">Пользователь</msg>
   <msg key="User_ID">Код Пользователя:</msg>
+  <msg key="User_ID_1">Код Пользователя:</msg>
   <msg key="User_Management">Управление Пользователями</msg>
   <msg key="user_portal_page_calendar_title">Календарь</msg>
   <msg key="user_portal_page_file_storage_title">Мои документы</msg>

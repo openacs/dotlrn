@@ -396,6 +396,7 @@
   <msg key="or_return_to">否则，返回到</msg>
   <msg key="Pending">待定</msg>
   <msg key="Pending_Approval">待定批准</msg>
+  <msg key="Person_name">姓名</msg>
   <msg key="Personal_home_page">个人主页：</msg>
   <msg key="Personal_Options">个人选项</msg>
   <msg key="portal_templates">入口模板</msg>
@@ -405,6 +406,7 @@
   <msg key="Pretty_Name">适当的名称</msg>
   <msg key="Pretty_Plural">适当的复数</msg>
   <msg key="Preview">预览</msg>
+  <msg key="prv_policy_must_be_one_of">保密策略必须是&quot;yes&quot;或&quot;no&quot;。</msg>
   <msg key="Public_Web_Log">公共Web日志</msg>
   <msg key="purple">紫色</msg>
   <msg key="Recipients_Email">收件人Email</msg>

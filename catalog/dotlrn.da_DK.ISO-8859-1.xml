@@ -414,6 +414,7 @@ Besked:
   <msg key="Pretty_Name">Pænt navn</msg>
   <msg key="Pretty_Plural">Pænt flertalsnavn</msg>
   <msg key="Preview">Vis</msg>
+  <msg key="prv_policy_must_be_one_of">Politikken om persondatabeskyttelse skal være enten &quot;ja&quot; eller &quot;nej&quot;.</msg>
   <msg key="Public_Web_Log">Offentlig Weblog</msg>
   <msg key="purple">lilla</msg>
   <msg key="Recipients_Email">Modtagerens e-mail-adresse</msg>

@@ -396,6 +396,7 @@
   <msg key="or_return_to">또는 반환</msg>
   <msg key="Pending">보류중</msg>
   <msg key="Pending_Approval">승인 계류중</msg>
+  <msg key="Person_name">이름</msg>
   <msg key="Personal_home_page">개인 홈페이지:</msg>
   <msg key="Personal_Options">개인 옵션</msg>
   <msg key="portal_templates">포탈 템플릿</msg>
@@ -405,6 +406,7 @@
   <msg key="Pretty_Name">프리티 이름</msg>
   <msg key="Pretty_Plural">프리티 복수</msg>
   <msg key="Preview">미리보기</msg>
+  <msg key="prv_policy_must_be_one_of">프라이버시 정책은 &quot;yes&quot; 또는 &quot;no&quot; 중의 하나이어야 합니다. </msg>
   <msg key="Public_Web_Log">공개 웹 로그</msg>
   <msg key="purple">자주색</msg>
   <msg key="Recipients_Email">수신자 전자우편</msg>

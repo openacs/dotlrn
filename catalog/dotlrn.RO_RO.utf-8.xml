@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <message_catalog package_key="dotlrn" package_version="2.0a3" locale="RO_RO" charset="utf-8">
 
+  <msg key="A_copy_of">O copie a</msg>
+  <msg key="Access">Acces</msg>
+  <msg key="Access_Level">Nivel de Acces</msg>
+  <msg key="Access_level">Nivel de acces:</msg>
+  <msg key="Action">Acţiune</msg>
+  <msg key="Actions">Acţiuni</msg>
+  <msg key="actions">Acţiuni</msg>
+  <msg key="Active_Applets">Applet-uri active</msg>
+  <msg key="add">adaugă</msg>
+  <msg key="Add_A_Member">Adaugă un Membru</msg>
+  <msg key="Add_a_Professor">Adaugă un Profesor</msg>
+  <msg key="Add_a_Professor_2">Adaugă un Profesor:</msg>
+  <msg key="Add_A_User">Adaugă Un Utilizator</msg>
+  <msg key="Add_a_User">Adaugă un Utilizator</msg>
+  <msg key="Add_New_Members">Adaugă Noi Membri</msg>
+  <msg key="Add_Professor">Adaugă Profesor</msg>
+  <msg key="add_selected_members">Adaugă Anumiţi Membri</msg>
+  <msg key="add_to_another_group">Adaugă acest utilizator la un alt grup</msg>
+  <msg key="add_to_dotlrn">Adaugă acest utilizator la .LRN</msg>
+  <msg key="Add_to_group_">Adaugă la grup...</msg>
+  <msg key="Add_User">Adaugă Utilizator</msg>
+  <msg key="Add_users_to">Adaugă utilizatori la</msg>
+  <msg key="Add_Users_to_Group">Adaugă Utilizatori la Grup</msg>
+  <msg key="AddDrop_Memberships">Adaugă/Şterge Membri</msg>
+  <msg key="Admin">Admin</msg>
+  <msg key="admin">admin</msg>
+  <msg key="admin_page_name">Control Panel</msg>
+  <msg key="admin_pages_navbar_name">Admin</msg>
+  <msg key="Administer">Administrează</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrează&quot;&gt; </msg>
+  <msg key="Administrator">Administrator</msg>
+  <msg key="Administrators">Administratori</msg>
+  <msg key="Admins_of">Administratori ai</msg>
+  <msg key="All">Toţi</msg>
+  <msg key="All_Terms">Toţi Termenii</msg>
+  <msg key="And">Şi</msg>
+  <msg key="Any">Oricare</msg>
+  <msg key="Applets_to_Add">Apleturi de adăugat</msg>
+  <msg key="Approve">Aprobă</msg>
+  <msg key="approve">aprobă</msg>
   <msg key="Ask_a_question">Pune o întrebare</msg>
   <msg key="Change_Locale">Schimbă Localizarea</msg>
   <msg key="control_panel">Control Panel</msg>

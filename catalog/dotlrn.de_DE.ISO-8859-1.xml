@@ -16,7 +16,7 @@
   <msg key="Add_A_User">Neuen Benutzer hinzufügen</msg>
   <msg key="Add_a_User">Neuen Benutzer hinzufügen</msg>
   <msg key="Add_New_Members">Neue Teilnehmer hinzufügen</msg>
-  <msg key="Add_Professor">Neuen Professor hinzufügen</msg>
+  <msg key="Add_Professor">Professor hinzufügen</msg>
   <msg key="add_selected_members">Ausgewählte Benutzer hinzufügen</msg>
   <msg key="add_to_another_group">Diesen Benutzer zu einer anderen Gruppe hinzufügen</msg>
   <msg key="add_to_dotlrn">Diesen Benutzer zu dotLRN hinzufügen</msg>
@@ -25,8 +25,8 @@
   <msg key="Add_users_to">Benutzer hinzufügen zu</msg>
   <msg key="Add_Users_to_Group">Benutzer zu Gruppe hinzufügen</msg>
   <msg key="AddDrop_Memberships">Kurse oder Communities hinzufügen/entfernen</msg>
-  <msg key="Admin">Administrator</msg>
-  <msg key="admin">Administrator</msg>
+  <msg key="Admin">Verwalten</msg>
+  <msg key="admin">Verwalten</msg>
   <msg key="admin_page_name">Verwalten</msg>
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
@@ -87,8 +87,8 @@
   <msg key="community_header_name">Bezeichnung der %clubs_pretty_name%</msg>
   <msg key="Community_ID">Community-ID</msg>
   <msg key="Community_member">Teilnehmer der Community</msg>
-  <msg key="community_memberships">Der Benutzer ist Teilnehmer folgender %clubs_pretty_name%s:</msg>
-  <msg key="community_name_already_in_use">Die Bezeichnung &lt;strong&gt;%community_key%&lt;/strong&gt; wird bereits verwendet, entweder von einer aktiven oder von einer archivierten Gruppe. \n Bitte gehen Sie zurück und wählen Sie einen anderen Namen.</msg>
+  <msg key="community_memberships">Der Benutzer ist Teilnehmer folgender Communities:</msg>
+  <msg key="community_name_already_in_use">Die Bezeichnung &lt;strong&gt;%community_key%&lt;/strong&gt; wird bereits verwendet, entweder von einer aktiven oder von einer archivierten Gruppe. Bitte gehen Sie zurück und wählen Sie einen anderen Namen.</msg>
   <msg key="Community_Type">Art der Community</msg>
   <msg key="Community_Types">Arten von Communities</msg>
   <msg key="Communitys_Name">Bezeichnung der Community</msg>
@@ -100,7 +100,7 @@
   <msg key="Confirmation">Bestätigen</msg>
   <msg key="control_panel">Eigene Einstellungen</msg>
   <msg key="Copy">Kopieren</msg>
-  <msg key="couldnt_find_user_id">Der Benutzer #%user_id% konnte nicht gefunden werden. Eventuell wurde er gelöscht.</msg>
+  <msg key="couldnt_find_user_id">Der Benutzer mit der Benutzeridentifikation %user_id% konnte nicht gefunden werden. Eventuell wurde er gelöscht.</msg>
   <msg key="course_admin_role_pretty_name">Kursadministrator</msg>
   <msg key="course_admin_role_pretty_plural">Kursadministrator</msg>
   <msg key="course_assistant_role_pretty_name">Tutor</msg>
@@ -149,7 +149,7 @@
   <msg key="Drop_selected_members">Ausgewählte Teilnehmer abmelden</msg>
   <msg key="Edit">Bearbeiten</msg>
   <msg key="Edit_a_User">Einen Benutzer bearbeiten</msg>
-  <msg key="edit_approved_email_servers">Genehmigte E-Mail-Server bearbeiten</msg>
+  <msg key="edit_approved_email_servers">Vorgenehmigte E-Mail-Server bearbeiten</msg>
   <msg key="edit_message_and_hit_send">Bearbeiten Sie folgende Nachricht und klicken Sie auf auf 'E-Mail senden', um diesen Benutzer zu benachrichtigen.</msg>
   <msg key="edit_parameters">Parameter bearbeiten</msg>
   <msg key="Edit_Properties">Eigenschaften bearbeiten</msg>
@@ -188,12 +188,12 @@
   <msg key="Guest_1">Gastbenutzer?</msg>
   <msg key="has_been_added_to">wurde hinzugefügt zu</msg>
   <msg key="Header_Alternate_Text">Alternativer Text für Kopfzeile</msg>
-  <msg key="Header_Font">Schriftart für Kopfzeile</msg>
-  <msg key="Header_Font_Color">Schriftfarbe für Kopfzeile</msg>
-  <msg key="Header_Font_Colors">Schriftfarben für Kopfzeile</msg>
-  <msg key="Header_Font_Size">Schriftgröße für Kopfzeile</msg>
-  <msg key="Header_Font_Sizes">Schriftgrößen für Kopfzeile</msg>
-  <msg key="Header_Fonts">Schriftarten für Kopfzeile</msg>
+  <msg key="Header_Font">Schriftart der Kopfzeile</msg>
+  <msg key="Header_Font_Color">Schriftfarbe der Kopfzeile</msg>
+  <msg key="Header_Font_Colors">Schriftfarben der Kopfzeile</msg>
+  <msg key="Header_Font_Size">Schriftgröße der Kopfzeile</msg>
+  <msg key="Header_Font_Sizes">Schriftgrößen der Kopfzeile</msg>
+  <msg key="Header_Fonts">Schriftarten der Kopfzeile</msg>
   <msg key="Header_Icon_Alt_Text">Alternativer Text für Kopfzeilenlogo</msg>
   <msg key="header_logo">Kopfzeilenlogo</msg>
   <msg key="Header_Logo_Alt_Text">Alternativer Text für Kopfzeilenlogo</msg>
@@ -240,7 +240,7 @@
   <msg key="lt_Do_you_really_want_to_1">Wollen Sie wirklich %num_users% Benutzer entfernen?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN-Eigenschaften für diesen Benutzer</msg>
   <msg key="lt_Edit_department_prope">Eigenschaften von Fachgebiet bearbeiten</msg>
-  <msg key="lt_Edit_Pre-approved_Ema">Genehmigte E-Mail-Server bearbeiten</msg>
+  <msg key="lt_Edit_Pre-approved_Ema">Vorgenehmigte E-Mail-Server bearbeiten</msg>
   <msg key="lt_Email_suffixes_listed">Personen, deren E-Mail-Adresse im Registrierungsantrag eine der hier festgelegten Endungen aufweist, werden automatisch als dotLRN-Benutzer freigeschaltet.</msg>
   <msg key="lt_emailing_this_user_fa">Die E-Mail konnte nicht an den Benutzer gesendet werden.</msg>
   <msg key="lt_Error_adding_user_to_">Fehler beim Hinzufügen des Benutzers zur Gruppe</msg>
@@ -254,7 +254,7 @@
   <msg key="lt_Here_is_the_actual_er">Die eigentliche Fehlermeldung lautet wie folgt:</msg>
   <msg key="lt_Here_you_can_create_s">Hier können Sie mehrere Benutzer auf einmal anlegen, indem Sie eine korrekt formatierte CSV-Datei (durch Kommas getrennter Text) benutzen. Dazu können Sie in einem Tabellenkalkulationsprogramm ein Arbeitsblatt erstellen, es als CSV-Datei speichern und anschließend importieren.</msg>
   <msg key="lt_If_this_person_is_a_M">Reguläre Studenten sollten zentral bei dotLRN registriert werden, so dass sie ein Benutzerkonto mit vollem Zugriff erhalten.</msg>
-  <msg key="lt_if_you_misspell">Falls Sie den Namen der Schriftart falsch eingeben oder eine Schriftart wählen, die nicht auf dem Computer des Benutzers installiert ist, wird die Standardschrift des Systems verwendet.</msg>
+  <msg key="lt_if_you_misspell">Falls Sie den Namen der Schrift falsch eingeben oder eine Schriftart wählen, die nicht auf dem Computer des Benutzers installiert ist, wird die Standardschrift des Systems verwendet.</msg>
   <msg key="lt_If_you_wish_to_give_g">Wenn Sie Gastbenutzern unbeschränkten Zugriff auf Diskussionsforen und Evaluationen erteilen wollen, können Sie beim Systemadministrator eine Änderung des Status Ihrer Gruppe beantragen. Diese Option gilt aufgrund der Datenschutz-Richtlinien allerdings nur für Communities und nicht für Kurse.</msg>
   <msg key="lt_Information_about_oth">Informationen über andere Teilnehmer der Gruppe werden für diesen Benutzer nicht angezeigt.</msg>
   <msg key="lt_Join_a_class_instance">Kurs hinzufügen</msg>
@@ -278,8 +278,8 @@
   <msg key="lt_Please_confirm_that_y">Wollen Sie wirklich den Benutzer %first_names% %last_name% (%email%) und alle zugehörigen Daten vollständig aus der Datenbank löschen? Wenn Sie 'Ja' wählen und der Vorgang erfolgreich ist, werden Sie wieder zur vorherigen Seite zurückgeleitet. Falls ein Fehler auftritt und der Löschvorgang nicht vollständig ausgeführt werden konnte, erscheint eine Fehlermeldung.</msg>
   <msg key="lt_Please_follow_the_fol">Unter folgendem Link können Sie Ihr Passwort zurückzusetzen: %change_password_url%</msg>
   <msg key="lt_Please_select_a_diffe">Bitte wählen Sie eine andere Bezeichnung.</msg>
-  <msg key="lt_policy_must_be_one_of">Die Anmelderegelung muss einen der folgenden Werte aufweisen: Selbstregistrierung, Geschlossen, Auf Antrag.</msg>
-  <msg key="lt_Pre-approved_Email_Se">Genehmigte E-Mail-Server</msg>
+  <msg key="lt_policy_must_be_one_of">Die Zugangsregelung muss einen der folgenden Werte aufweisen: Selbstregistrierung, Auf Antrag, Geschlossen</msg>
+  <msg key="lt_Pre-approved_Email_Se">Vorgenehmigte E-Mail-Server</msg>
   <msg key="lt_Recipients_First_Name">Vorname des Empfängers</msg>
   <msg key="lt_Return_to_where_you_w">Zurück</msg>
   <msg key="lt_Revert_all_properties">Alle Eigenschaften auf die Standardwerte zurücksetzen</msg>
@@ -291,12 +291,12 @@
   <msg key="lt_spam_policy_must_be_o">Für die Gruppen-E-Mail-Optionen muss einer der folgenden Werte gewählt werden: Alle, Teilnehmer.</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; ist bei &quot;%community_name%&quot; als %existing_role% angemeldet. Hier können Sie die Rolle neu auswählen:</msg>
   <msg key="lt_The_following_email_w">Folgende E-Mail wurde soeben von %system_name% gesendet:</msg>
-  <msg key="lt_The_following_email_w_1">Folgende E-Mail wurde soeben von %system_name% gesendet:\n Von: %system_owner% \n An: %email% \n Betreff: %subject% \n Nachricht: %body% </msg>
+  <msg key="lt_The_following_email_w_1">Folgende E-Mail wurde soeben von %system_name% gesendet. Von: %system_owner% An: %email% Betreff: %subject% Nachricht: %body% </msg>
   <msg key="lt_The_following_members">Die folgenden Teilnehmer von</msg>
   <msg key="lt_The_following_variabl">Folgende Variablen können zum Einfügen benutzer- oder gruppenspezifischer Daten benutzt werden:</msg>
   <msg key="lt_The_groups_data_will_">Die Daten der Gruppe werden nicht verändert, aber die Gruppe ist dann nur noch für Administratoren zugänglich.</msg>
   <msg key="lt_The_results_of_your_s">Suchergebnisse:</msg>
-  <msg key="lt_The_system_was_unable">Es konnten keine E-Mails vom System gesendet werden. Bitte benachrichtigen Sie den Benutzer auf anderem Wege. Die Ursache ist wahrscheinlich ein Konfigurationsfehler beim E-Mail-System. Die Fehlermeldung lautet:</msg>
+  <msg key="lt_The_system_was_unable">Es konnten keine E-Mails vom System gesendet werden. Bitte benachrichtigen Sie den Benutzer auf anderem Wege. Die Ursache ist wahrscheinlich ein Konfigurationsfehler im E-Mail-System. Die Fehlermeldung lautet:</msg>
   <msg key="lt_There_was_a_bug_in_th">Bei dieser Seite ist ein Fehler aufgetreten.</msg>
   <msg key="lt_There_was_a_bug_in_th_1">Bei dieser Seite ist ein Fehler aufgetreten. Bitte melden Sie das Problem weiter.</msg>
   <msg key="lt_There_was_an_error_se">Beim Senden der E-Mail an %email% ist ein Fehler aufgetreten.</msg>
@@ -308,9 +308,9 @@
   <msg key="lt_this_is_what_the_header">Der Titel der Kopfzeile wird wie folgt angezeigt</msg>
   <msg key="lt_this_may_take_some_time">Dieser Vorgang kann einige Minuten dauern.</msg>
   <msg key="lt_This_user_is_a_site-w">Dieser Benutzer ist ein Systemadministrator.</msg>
-  <msg key="lt_This_user_is_currentl">Dieser Benutzer befindet sich derzeit im Status &lt;i&gt;%member_state%&lt;/i&gt;. Um dem Benutzer Zugang zu dotLRN zu erteilen, müssen Sie ihn &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;Freischalten und zu dotLRN hinzufügen&lt;/a&gt;.</msg>
+  <msg key="lt_This_user_is_currentl">Dieser Benutzer befindet sich derzeit im Status &lt;i&gt;%member_state%&lt;/i&gt;. Um dem Benutzer Zugang zu dotLRN zu erteilen, müssen Sie ihn &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;freischalten und zu dotLRN hinzufügen&lt;/a&gt;.</msg>
   <msg key="lt_this_user_is_deleted_">Das Benutzerkonto dieses Benutzers wurde gelöscht.</msg>
-  <msg key="lt_to_use_vaild_email_ad">Geben Sie gültige E-Mail-Adressen an, da die Passwörter der neuen Benutzer an diese gesendet werden.</msg>
+  <msg key="lt_to_use_vaild_email_ad">Geben Sie gültige E-Mail-Adressen an, da an diese die Passwörter der neuen Benutzer gesendet werden.</msg>
   <msg key="lt_Update_this_users_pas">Passwort dieses Benutzers aktualisieren</msg>
   <msg key="lt_Use_this_only_for_an_">Verwenden Sie diese Funktion also nur für Personen, die &lt;b&gt;keine&lt;/b&gt; regulären Studenten sind, aber dennoch Zugang zu dem Kurs haben sollen. </msg>
   <msg key="lt_Web_Log_for_user_name">Web-Tagebuch für %user_name%
@@ -349,7 +349,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Message">Nachricht</msg>
   <msg key="must_have_values">Das Feld muss einen der folgenden Werte aufweisen:</msg>
   <msg key="My_Communities">Eigene Kurse und Communities</msg>
-  <msg key="NA">Keine Angabe</msg>
+  <msg key="NA">Nicht vorhanden</msg>
   <msg key="Name">Bezeichnung</msg>
   <msg key="Name__Email">Name/E-Mail-Adresse</msg>
   <msg key="navy">Marineblau</msg>
@@ -376,7 +376,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="no_communities">Keine %clubs_pretty_plural% vorhanden</msg>
   <msg key="no_community_member_with_id">Es gibt keinen Gruppenteilnehmer mit der Benutzeridentifikation %user_id%.</msg>
   <msg key="no_departments">Keine %departments_pretty_plural% vorhanden</msg>
-  <msg key="no_description">Keine eingegeben</msg>
+  <msg key="no_description">Nicht vorhanden</msg>
   <msg key="No_dont_delete_it">Nein, nicht löschen</msg>
   <msg key="No_groups_to_add_to">Es sind keine Gruppen vorhanden, zu denen Benutzer hinzugefügt werden können.</msg>
   <msg key="No_Terms">Keine Semester vorhanden</msg>
@@ -400,6 +400,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="or_return_to">oder gehen Sie zurück zu</msg>
   <msg key="Pending">Zugang beantragt</msg>
   <msg key="Pending_Approval">Zugang beantragt</msg>
+  <msg key="Person_name">Name</msg>
   <msg key="Personal_home_page">Persönliche Homepage:</msg>
   <msg key="Personal_Options">Persönliche Einstellungen</msg>
   <msg key="portal_templates">Portalvorlagen</msg>
@@ -409,6 +410,9 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Pretty_Name">Benutzerdefinierte Bezeichnung</msg>
   <msg key="Pretty_Plural">Benutzerdefinierte Bezeichnung (Plural)</msg>
   <msg key="Preview">Vorschau</msg>
+  <msg key="prv_policy_must_be_one_of">Für die Datenschutz-Regelung muss einer der folgenden Werte gewählt werden: &quot;Ja&quot; oder &quot;Nein&quot;.
+
+</msg>
   <msg key="Public_Web_Log">Öffentliches Web-Tagebuch</msg>
   <msg key="purple">Dunkelviolett</msg>
   <msg key="Recipients_Email">E-Mail-Adresse des Empfängers</msg>
@@ -455,7 +459,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="subcomm_page_info_title">Untergruppen-Information</msg>
   <msg key="subcommunities_pretty_name">Untergruppe</msg>
   <msg key="subcommunities_pretty_plural">Untergruppen</msg>
-  <msg key="subcommunity_memberships">Der Benutzer ist Teilnehmer folgender %subcommunities_pretty_name%s</msg>
+  <msg key="subcommunity_memberships">Der Benutzer ist Teilnehmer folgender %subcommunities_pretty_name%</msg>
   <msg key="Subject">Betreff</msg>
   <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter
 </msg>
@@ -472,7 +476,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="the_format_of_email_domains">Die genehmigten E-Mail-Server müssen als kommaseparierte Liste von Domains eingetragen werden, denen in der Regel die Zeichenfolge *@ vorangestellt ist,  so dass die Werte für irgendwas@emaildomain.de stehen.&lt;/p&gt;
 Beispiel:</msg>
   <msg key="The_name">Die Bezeichnung</msg>
-  <msg key="there_are_no_users_matching">Es wurden keine Benutzer passend zu Ihrer Suchanfrage &quot;%search_text%&quot; gefunden.</msg>
+  <msg key="there_are_no_users_matching">Es wurden keine mit Ihrer Suchanfrage &quot;%search_text%&quot; übereinstimmenden Benutzer gefunden.</msg>
   <msg key="this_user_is_deleted">Dieser Benutzer ist gelöscht.</msg>
   <msg key="To">Teilnehmertypen, an die eine E-Mail gesendet werden soll:</msg>
   <msg key="Type">Typ</msg>
@@ -483,7 +487,7 @@ Beispiel:</msg>
   <msg key="user_add_confirm_email_body">Sie wurden als Benutzer von %system_name% (%system_url%) registriert. Benutzeridentifikation: %user_email% Passwort: %user_password%</msg>
   <msg key="user_add_confirm_email_subject">Sie wurden als Benutzer von %system_name% (%system_url%) registriert.</msg>
   <msg key="User_Admin_Page">Benutzer verwalten</msg>
-  <msg key="user_email_already_exists">Benutzer %user_email% besteht bereits. Die interne Benutzeridentifikation (user_ID) wird gespeichert.</msg>
+  <msg key="user_email_already_exists">Benutzer %user_email% besteht bereits. Die Benutzeridentifikation (user_id) wird gespeichert.</msg>
   <msg key="user_email_created">Benutzeridentifikation %user_email% erstellt...</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% ist seit %pretty_creation_date% als Benutzer von %system_name% registriert.</msg>
   <msg key="User_ID">Interne Benutzer-ID:</msg>
@@ -512,5 +516,5 @@ Beispiel:</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Hinweis:&lt;/b&gt; Sie müssen &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; erstellen, um %class_instances_pretty_plural% anlegen zu können, denn diese müssen %terms_pretty_plural%n zugeordnet sein.</msg>
   <msg key="your_icon_is_too_large">Ihr Logo ist zu groß. Die zulässige Maximalgröße für Anhänge beträgt innerhalb von %system_name% %max_attachments_bytes% Bytes.\n </msg>
   <msg key="Youre_editing">Sie bearbeiten gerade</msg>
-  <msg key="Youve_chosen_to_add">Sie haben sich entschieden, hinzuzufügen</msg>
+  <msg key="Youve_chosen_to_add">Sie fügen folgende Benutzer hinzu:</msg>
 </message_catalog>
