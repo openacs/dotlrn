@@ -6,6 +6,7 @@
     <a href="@communities.url@">@communities.pretty_name@</a>
     - @communities.role@
 <if @communities.admin_p@ eq 1>
+    - [ <a href="@communities.url@one-community-admin">admin</a> ]
     - [ <a href="@communities.url@spam?community_id=@communities.community_id@&referer=@referer@">Email Members</a> ]
 </if>
     - [<include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">]
