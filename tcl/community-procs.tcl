@@ -148,14 +148,20 @@ namespace eval dotlrn_community {
                     -extra_vars $extra_vars $object_type]
 
             set user_id [ad_conn user_id]
-
-            # based on the community_type, get the page_names and layouts
+            
+            # based on the community_type:
+            # 1. get the page_names and layouts
+            # 2. the the list of default applets for this type
             if {[string equal $community_type "dotlrn_community"]} {
                 set csv_list [ad_parameter subcomm_pages_csv]
+                set default_applets [ad_parameter default_subcomm_applets]
             } elseif {[string equal $community_type "dotlrn_club"]} {
                 set csv_list [ad_parameter club_pages_csv]
-            } else {
+                set default_applets [ad_parameter default_club_applets]
+             } else {
                 set csv_list [ad_parameter class_instance_pages_csv]
+                set default_applets \
+                        [ad_parameter default_class_instance_applets]
             }
 
             set non_member_page_name [ad_parameter non_member_page_name]
@@ -205,7 +211,13 @@ namespace eval dotlrn_community {
             set new_node_id [site_node_create $parent_node_id $community_key]
 
             # Instantiate the package
-            set package_id [site_node_create_package_instance $new_node_id $pretty_name $community_id [one_community_package_key]]
+            set package_id \
+                    [site_node_create_package_instance \
+                      $new_node_id \
+                      $pretty_name \
+                      $community_id \
+                      [one_community_package_key] \
+                    ]
 
             # Set the right parameters
             ad_parameter -package_id $package_id -set 0 dotlrn_level_p
@@ -215,11 +227,16 @@ namespace eval dotlrn_community {
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
 
-            # Add the applets specified as default applets for a community as
-            # specified by the DefaultCommunityApplets ad_parameter
-            foreach applet_key [string trim [split [ad_parameter DefaultCommunityApplets] {,}]] {
+            # Add the default applets specified above. They are
+            # different per community type!
+            set default_applets_list \
+                    [string trim [split $default_applets {,}]]
+
+            foreach applet_key $default_applets_list {
                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
-                    dotlrn_community::add_applet_to_community $community_id $applet_key
+                    dotlrn_community::add_applet_to_community \
+                            $community_id \
+                            $applet_key
                 }
             }
         }
