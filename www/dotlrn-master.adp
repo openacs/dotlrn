@@ -91,7 +91,7 @@
       <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a> | 
       <a href="@change_locale_url@">#dotlrn.Change_Locale#</a>
     </div>
-    <div class="footer">@ds_link@</div>
+    <div class="footer">@ds_link;noquote@</div>
   </p>
 
 </body>
