@@ -32,10 +32,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     return
 } else {
 
-    # just call this, it will sort it out
-    # portal::configure_dispatch $portal_id [ad_conn query]
-    
-    portal::configure_dispatch_ns_set $portal_id $form
+    portal::configure_dispatch $portal_id $form
 
     ns_returnredirect "one-community-configure"
 }
