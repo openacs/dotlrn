@@ -19,38 +19,65 @@ set admin_email [db_string select_admin_email {
     where party_id = :admin_user_id
 }]
 
+doc_body_append "Bulk Uploading....<p>"
+
 # Do the stuff
 # We can't do this too generically, so we'll just do the CSV stuff right here
-# (Ben: yeah, we wish for more generic stuff here).
 db_transaction {
+    set fail_p 0
+
     oacs_util::csv_foreach -file $file_location -array_name row {
         # We need to insert the ACS user
         set password [ad_generate_random_string]
         set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
 
+        if {![info exists row(type)]} {
+            set row(type) student
+        }
+
+        if {![info exists row(access_level)]} {
+            set row(access_level) full
+        }
+
+        if {![info exists row(guest)]} {
+            set row(guest) f
+        }
+
         # Now we make them a dotLRN user
         dotlrn::user_add -id $row(id) -type $row(type) -access_level $row(access_level) -user_id $user_id
 
+        if {$row(guest) == "f"} {
+            set inverse_row_guest "t"
+        } else {
+            set inverse_row_guest "f"
+        }
+
         # Set the privacy
-        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $row(read_private_data_p)
+        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
 
+        doc_body_append "User $row(email) created...."
         set message "
-You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
-
-Login: $row(email)
-Password: $password
-"
-
+        You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
+        
+        Login: $row(email)
+        Password: $password
+        "
+        
         # Send note to new user
         if [catch {ns_sendmail "$row(email)" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
-#              ad_return_error "Mail Failed" "The system was unable to send email. Please notify the user personally. This problem is probably caused by a misconfiguration of your email system. Here is the error:
-#              <blockquote><pre>
-#              [ad_quotehtml $errmsg]
-#              </pre></blockquote>"
-#              ad_script_abort
+            doc_body_append "emailing this user failed!"
+            set fail_p 1
+        } else {
+            doc_body_append "email sent"
         }
+
+        doc_body_append "<br>"
         
     }
 }
 
-ad_returnredirect "users"
+if {$fail_p} {
+    doc_body_append "<p>Some of the emails failed. Those users had random passwords generated for them, however. The best way to proceed is to have these users log in and ask them to click on 'I have forgotten my password'.<p>"
+}
+
+doc_body_append "return to <a href=\"users\">User Management</a>."
