@@ -53,3 +53,22 @@ is
 end;
 /
 show errors
+
+
+
+declare
+begin
+   acs_object_type.create_type (
+	    supertype => 'user',
+	    object_type => 'dotlrn_user',
+	    pretty_name => 'dotLRN User',
+	    pretty_plural => 'dotLRN Users',
+	    table_name => 'dotlrn_users',
+	    id_column => 'user_id',
+	    package_name => 'dotlrn_user',
+	    name_method => 'acs_object.name'
+   );
+end;
+/
+show errors
+

@@ -41,19 +41,6 @@ create table dotlrn_communities (
 );
 
 
-create table dotlrn_community_memberships (
-       rel_id				  integer not null
-					  constraint dlrn_comm_mem_fk references acs_rels(rel_id)
-					  constraint dlrn_comm_mem_pk primary key,
-       community_id			  integer not null
-					  constraint dlrn_comm_mem_comm_id_fk references dotlrn_communities(community_id),
-       user_id				  integer not null
-					  constraint dlrn_comm_mem_user_id_fk references users(user_id),
-       page_id				  integer not null
-					  constraint dlrn_comm_mem_page_id_fk references portals(portal_id)
-);					  
-
-
 create table dotlrn_community_applets (
        community_id		      integer not null
 				      constraint dlrn_comm_appl_comm_id_fk references dotlrn_communities(community_id),
@@ -274,3 +261,4 @@ end;
 /
 show errors
  
+

@@ -99,6 +99,7 @@ namespace eval dotlrn_community {
 
     ad_proc -public list_users {
 	community_id
+	{-rel_type "dotlrn_member_rel"}
     } {
 	Returns the list of users with a membership_id, a user_id, first name, last name, email, and role
     } {
@@ -122,14 +123,16 @@ namespace eval dotlrn_community {
 	Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
     } {
 	db_transaction {
-	    # Set up the relationship
-	    set rel_id [relation_add -member_state approved $rel_type $community_id $user_id]
-	    
 	    # Set up a portal page for that user and that community
 	    set page_id [portal::create $user_id]
 	    
-	    # Insert the membership
-	    db_dml insert_membership {}
+	    # Create the form with the page_id
+	    set vars(page_id) $page_id
+	    template::form::create add_member_form
+	    template::form::set_values add_member_form vars
+
+	    # Set up the relationship
+	    set rel_id [relation_add -form_id add_member_form -member_state approved $rel_type $community_id $user_id]
 	    
 	    # do the callbacks
 	    applets_dispatch $community_id AddUser [list $community_id $user_id]
@@ -148,15 +151,12 @@ namespace eval dotlrn_community {
 	    
 	    # Get a few important things, like rel_id and portal page_id
 	    db_1row select_rel_info {}
-	    
-	    # Remove the membership
-	    db_dml delete_membership {}
-	    
-	    # Remove the page
-	    portal::delete $page_id
-	    
+
 	    # Remove it
 	    relation_remove $rel_id
+
+	    # Remove the page
+	    portal::delete $page_id
 	}
     }
     

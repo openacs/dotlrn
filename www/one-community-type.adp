@@ -21,7 +21,7 @@
 <h3>Active Communities of this Type</h3>
 <ul>
 <multiple name=active_communities>
-<li><a href=@active_communities.url@>@active_communities.pretty_name@</a> - <a href=@active_communities.url@/one-community-admin>admin</a>
+<li><a href=@active_communities.url@>@active_communities.pretty_name@</a> - <a href=@active_communities.url@one-community-admin>admin</a>
 </multiple>
 </ul>
 </else>

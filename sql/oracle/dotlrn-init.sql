@@ -43,7 +43,7 @@ begin
 	  pretty_plural => 'dotLRN Clubs',
 	  description => 'dotLRN Clubs - e.g. Alumni'
         );
-	
+
 	-- year attribute
 	year_attr_id:= acs_attribute.create_attribute (
 	  object_type => 'dotlrn_class',
@@ -167,3 +167,21 @@ end;
 /
 show errors
 
+
+-- One more object type
+
+declare
+begin
+   acs_object_type.create_type (
+	    supertype => 'dotlrn_community',
+	    object_type => 'dotlrn_class_instance',
+	    pretty_name => 'dotLRN Class Instace',
+	    pretty_plural => 'dotLRN Class Instances',
+	    table_name => 'dotlrn_class_instances',
+	    id_column => 'class_instance_id',
+	    package_name => 'dotlrn_class_instance',
+	    name_method => 'acs_object.name'
+   );
+end;
+/
+show errors

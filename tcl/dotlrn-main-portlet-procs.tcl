@@ -56,8 +56,25 @@ namespace eval dotlrn_main_portlet {
 	
 	array set config $cf	
 	
-	# Figure out what to show here (Ben)
-	return ""
+	set user_id [ad_get_user_id]
+	
+	# This is not templated. OH NO. I am a horrible, horrible, little man. (ben)
+
+	set return_html "<ul>\n"
+
+	ns_log Notice "DOTLRN-SHOW: UL"
+
+	db_foreach select_communities_for_one_user {} {
+	    ns_log Notice "DOTLRN-SHOW: LI"
+	    append return_html "<li> <a href=$url>$community_name</a>\n"
+	}
+
+	ns_log Notice "DOTLRN-SHOW: /UL"	
+
+	append return_html "</ul>"
+
+	# return it all
+	return $return_html
 	
     }   
     

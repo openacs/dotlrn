@@ -16,7 +16,7 @@ if {[ad_parameter community_level_p] != 1} {
 
 set user_id [ad_conn user_id]
 
-# What community type are we at?
+# What community are we at?
 set community_id [dotlrn_community::get_community_id]
 
 # Load some community type info
@@ -42,7 +42,6 @@ foreach applet_key $list_of_applets {
 	template::multirow append all_applets $applet_key [dotlrn_community::applet_call $applet_key GetPrettyName]
     }
 }
-
 
 set context_bar {Admin}
 

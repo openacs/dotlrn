@@ -9,6 +9,18 @@ ad_page_contract {
     classes:multirow
 }
 
+# Check if this is a community type level thing
+if {[ad_parameter community_type_level_p] == 1} {
+    ad_returnredirect "one-community-type"
+    return
+}
+
+# Check if this is a community level thing
+if {[ad_parameter community_level_p] == 1} {
+    ad_returnredirect "one-community"
+    return
+}
+
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 

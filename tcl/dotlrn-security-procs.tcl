@@ -32,7 +32,7 @@ namespace eval dotlrn {
 	    set page_id [portal::create $user_id]
 
 	    # Add the basic dotLRN class listing portlet
-	    # NOT IMPLEMENTED YET!
+	    dotlrn_main_portlet::add_self_to_page $page_id {}
 
 	    # Update the user and set the portal page correctly
 	    db_dml update_user_page_id {}
