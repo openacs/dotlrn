@@ -259,9 +259,6 @@ namespace eval dotlrn_community {
                 -context_id $community_id \
             ]
 
-	ns_write "<P> You are here <p>" 
-
-
 
             # Set the right parameters
             ad_parameter -package_id $package_id -set 0 dotlrn_level_p
@@ -300,7 +297,6 @@ namespace eval dotlrn_community {
 
             set default_applets_list [string trim [split $default_applets {,}]]
 
-	ns_write "default applets list $default_applets_list <br>"
 
             foreach applet_key $default_applets_list {
                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
@@ -1512,7 +1508,7 @@ namespace eval dotlrn_community {
     } {
         Adds an applet to the community
     } {
-	ns_write "add applet to community $applet_key <br>"
+
         db_transaction {
             set package_id [applet_call \
                 $applet_key \
@@ -1953,7 +1949,7 @@ namespace eval dotlrn_community {
     } {
         call a particular applet op
     } {
-	ns_write "applet call is $applet_key <br>"
+
         acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
 
