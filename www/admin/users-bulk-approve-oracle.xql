@@ -14,7 +14,7 @@
 	  and r.object_id_two not in (                  
 				      select r2.object_id_two
 				      from acs_rels r2, dotlrn_user_types dut
-				      where r2.object_id_one = dut.group_id)) as foo
+				      where r2.object_id_one = dut.group_id))
         </querytext>
     </fullquery>
 
