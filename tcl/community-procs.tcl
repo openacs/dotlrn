@@ -39,7 +39,7 @@ namespace eval dotlrn_community {
 	Create a new community type.
     } {
 	# Figure out parent_node_id
-	set parent_node_id [dotlrn::get_node_id]
+        set parent_node_id [get_type_node_id $parent_type]
 
 	db_transaction {
 	    # Create the class directly using PL/SQL API
@@ -81,7 +81,7 @@ namespace eval dotlrn_community {
     } {
 	return [db_string select_node_id {}]
     }
-    
+
     ad_proc -public new {
 	{-description ""}
 	{-community_type:required}
