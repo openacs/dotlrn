@@ -308,26 +308,23 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_allowed_rel_types {
-        {-community_type ""}
-        {-community_id ""}
+        {-community_id:required}
     } {
-        if {[empty_string_p $community_type]} {
-            set community_type [get_toplevel_community_type_from_community_id $community_id]
-        }
+        set community_type [get_community_type_from_community_id $community_id]
 
-        if {$community_type == "dotlrn_class_instance"} {
-            return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_admin_rel}
-        }
-
-        if {$community_type == "dotlrn_club"} {
-            return {dotlrn_member_rel dotlrn_admin_rel}
-        }
-
+        # Subcomm
         if {$community_type == "dotlrn_community"} {
             return {dotlrn_member_rel dotlrn_admin_rel}
         }
 
-        return {}
+        # club
+        if {$community_type == "dotlrn_club"} {
+            return {dotlrn_member_rel dotlrn_admin_rel}
+        }
+
+        # else, it's a class instance
+        return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_admin_rel}
+
     }
 
     ad_proc -public get_all_roles {} {
