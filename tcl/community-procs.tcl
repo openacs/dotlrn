@@ -938,7 +938,7 @@ namespace eval dotlrn_community {
                     # don't show the join link if the comm is closed, 
                     # and the first space is good below
                     append chunk \
-                            "<small>\[<a href=${url}${join_target}>"
+                            "<small>\[<a href=${url}${join_target}?referer=[ad_conn url]>"
                     if {[needs_approval_p -community_id $sc_id]} {
                         if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
                             append chunk "waiting&nbsp;for&nbsp;approval" 
