@@ -288,7 +288,7 @@ img.header-img {
 }
 
 .header-text {
-    font-family: $header_font;
+    font-family: $header_font Verdana, Arial, Helvetica, sans-serif;;
     font-size: $header_font_size;
     color: $header_font_color;
     background: white;

@@ -1977,7 +1977,6 @@ namespace eval dotlrn_community {
 
     ad_proc -public unset_attributes {
         {-community_id ""}
-        {-attribute_name:required}
     } {
         ussets all the attributes of this community
     } {

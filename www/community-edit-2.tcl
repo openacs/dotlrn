@@ -102,6 +102,8 @@ if {[empty_string_p $header_font]} {
     set header_font_text "sans-serif (None chosen)"
 } else {
     set header_font_text $header_font
+    # CSS requies quoting of font names with spaces
+    set header_font "'$header_font'"
     set header_font_fragment "$header_font, "
 }
 set style_fragment "font-family: $header_font_fragment Verdana, Arial, Helvetica, sans-serif;"

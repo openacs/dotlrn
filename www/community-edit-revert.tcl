@@ -32,3 +32,5 @@ dotlrn::require_user_admin_community -user_id $user_id $community_id
 # blow way all the attributes
 dotlrn_community::unset_attributes \
     -community_id $community_id
+
+ad_returnredirect $referer
