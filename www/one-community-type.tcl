@@ -37,11 +37,18 @@ foreach comm $list_of_communities {
 set list_of_active_communities [dotlrn_community::get_active_communities $community_type]
 
 # data source
-template::multirow create active_communities community_id community_type pretty_name description url
+template::multirow create active_communities community_id community_type pretty_name description url admin_p
 
 # Loop and create the data source (I am very unhappy with db_multirow. VERY - bma)
 foreach comm $list_of_active_communities {
-    template::multirow append active_communities [lindex $comm 0] [lindex $comm 1] [lindex $comm 2] [lindex $comm 3] [lindex $comm 4]
+    # See if user can admin this
+    if {[dotlrn::user_can_admin_community_p [lindex $comm 0]]} {
+	set admin_p 1
+    } else {
+	set admin_p 0
+    }
+
+    template::multirow append active_communities [lindex $comm 0] [lindex $comm 1] [lindex $comm 2] [lindex $comm 3] [lindex $comm 4] $admin_p
 }
 
 set context_bar {View}

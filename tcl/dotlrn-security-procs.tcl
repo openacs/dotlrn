@@ -19,6 +19,12 @@ ad_library {
 
 namespace eval dotlrn {
     
+    ad_proc -private do_abort {} {
+	do an abort if security violation
+    } {
+	return -code error
+    }
+
     ad_proc -public user_add {
 	{-role "user"}
 	user_id	
@@ -183,6 +189,8 @@ namespace eval dotlrn {
     } {
 	check if a user can admin a community
     } {
+	# FIXME
+	return 1
     }
 
     ad_proc -public require_user_admin_community {
@@ -191,6 +199,9 @@ namespace eval dotlrn {
     } {
 	require that user be able to admin a community
     } {
+	if {![user_can_admin_community_p -user_id $user_id $community_id]} {
+	    do_abort
+	}
     }
 
 }
