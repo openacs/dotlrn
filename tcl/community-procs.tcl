@@ -338,7 +338,7 @@ namespace eval dotlrn_community {
         }
 
         # else, it's a class instance
-        return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_cadmin_rel dotlrn_admin_rel}
+        return {dotlrn_student_rel dotlrn_ta_rel dotlrn_instructor_rel dotlrn_ca_rel dotlrn_cadmin_rel}
 
     }
 
@@ -456,6 +456,16 @@ namespace eval dotlrn_community {
         Returns the list of users with a membership_id, a user_id, first name, last name, email, and role
     } {
         return [db_list_of_lists select_users {}]
+    }
+
+    ad_proc -public list_possible_subcomm_users {
+        {-subcomm_id:required}
+    } {
+        Returns the list of users from the subcomm's parent group that
+        are not already in the subcomm with a membership_id, a user_id,
+        first name, last name, email, and role
+    } {
+        return [db_list_of_lists select_possible_users {}]
     }
 
     ad_proc -public list_users_in_role {
@@ -751,6 +761,20 @@ namespace eval dotlrn_community {
         return [db_string select_community_type {} -default ""]
     }
 
+    ad_proc -public get_community_id_from_url {
+	{-url ""}
+    } {
+	returns the community from a URL
+    } {
+	if {[empty_string_p $url]} {
+	    set url [ad_conn url]
+	}
+
+	set package_id [site_node_closest_ancestor_package -url $url dotlrn]
+
+	return [get_community_id -package_id $package_id]
+    }
+
     ad_proc -public get_community_id {
         {-package_id ""}
     } {
@@ -789,6 +813,20 @@ namespace eval dotlrn_community {
         Returns the parent community's id or null
     } {
         return [db_string select_parent_id {} -default ""]
+    }
+
+    ad_proc -public get_parent_name {
+        {-community_id:required}
+    } {
+        Returns the parent community's name or null string
+    } {
+        set parent_id [get_parent_id -community_id $community_id]
+
+        if {[empty_string_p $parent_id]} {
+            return ""
+        } else {
+            return [get_community_name $parent_id]
+        }
     }
 
     ad_proc -public check_community_key_valid_p {
@@ -960,8 +998,7 @@ namespace eval dotlrn_community {
         get the name for a community for the header
     } {
         if {[subcommunity_p -community_id $community_id]} {
-            set parent_id [get_parent_id -community_id $community_id]
-            set parent_name [get_community_name $parent_id]
+            set parent_name [get_parent_name -community_id $community_id]
             return [concat "<a href=\"..\">$parent_name</a> : [get_community_name $community_id]"]
         } else {
             return [get_community_name $community_id]
