@@ -186,7 +186,7 @@ namespace eval dotlrn {
     } {
         Check is a user can browse dotLRN
     } {
-        return [ad_permission_p -user_id $user_id [dotlrn::get_package_id] dotlrn_browse]
+        return [permission::permission_p -party_id $user_id -object_id [dotlrn::get_package_id] -privilege "dotlrn_browse"]
     }
 
     ad_proc -public require_user_browse {
@@ -258,7 +258,7 @@ namespace eval dotlrn {
     } {
         Check if a user can read a community
     } {
-        return [ad_permission_p -user_id $user_id $community_id dotlrn_view_community]
+        return [permission::permission_p -party_id $user_id -object_id $community_id -privilege "dotlrn_view_community"]
     }
 
     ad_proc -public require_user_read_community {
@@ -302,7 +302,7 @@ namespace eval dotlrn {
     } {
         check if a user can admin a community
     } {
-        return [ad_permission_p -user_id $user_id $community_id dotlrn_admin_community]
+        return [permission::permission_p -party_id $user_id -object_id $community_id -privilege "dotlrn_admin_community"]
     }
 
     ad_proc -public require_user_admin_community {

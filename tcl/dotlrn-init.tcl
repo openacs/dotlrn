@@ -41,11 +41,11 @@ if {[dotlrn::is_instantiated]} {
     set package_id [dotlrn::get_package_id]
 
     # Grant the permission
-    ad_permission_grant $grantee_id $package_id dotlrn_browse
+    permission::grant -party_id $grantee_id -object_id $package_id -privilege "dotlrn_browse"
 
     # check read permission on dotLRN for all users
     set grantee_id [dotlrn::get_users_rel_segment_id]
-    ad_permission_grant $grantee_id $package_id read
+    permission::grant -party_id $grantee_id -object_id $package_id -privilege "read"
 
     # initialize the applets subsystem (ooh, I'm using big words - ben)
     dotlrn_applet::init
