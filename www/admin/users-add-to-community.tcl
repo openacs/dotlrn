@@ -46,8 +46,11 @@ element create select_community referer \
         -value $referer
 
 set communities [db_list_of_lists select_all_communities {
-    select pretty_name, community_id
+    select dotlrn_communities.pretty_name,
+           dotlrn_communities.community_id
     from dotlrn_communities
+    order by dotlrn_communities.pretty_name,
+             dotlrn_communities.community_id
 }]
 
 if {[llength $communities]} {
