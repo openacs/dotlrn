@@ -82,7 +82,7 @@ namespace eval dotlrn_community {
     } {
         # Figure out parent_node_id
         set parent_node_id [get_type_node_id $parent_type]
-        array set parent_node [get -node_id $parent_node_id]
+        array set parent_node [site_node::get -node_id $parent_node_id]
 
         db_transaction {
             # Create the class directly using PL/SQL API
