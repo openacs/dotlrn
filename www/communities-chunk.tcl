@@ -1,11 +1,11 @@
-# dotlrn/www/communities.tcl
+# dotlrn/www/communities-chunk.tcl
 
 ad_page_contract {
     @author yon (yon@milliped.com)
     @creation-date Dec 07, 2001
     @version $Id$
 } -query {
-    {filter "select_active_communities"}
+    {filter "select_current_memberships"}
 } -properties {
     n_communities:onevalue
     communities:multirow
@@ -13,10 +13,6 @@ ad_page_contract {
 
 if {![info exists community_type]} {
     set community_type ""
-}
-
-if {![info exists referer]} {
-    set referer "./"
 }
 
 set user_id [ad_conn user_id]
@@ -28,16 +24,22 @@ if {![empty_string_p $community_type]} {
 }
 
 set filter_bar [ad_dimensional {
-    {filter "Status:" select_active_communities
+    {filter "Membership:" select_current_memberships
         {
-            {select_active_communities active {}}
-            {select_communities "+inactive" {}}
+            {select_current_memberships current {}}
+            {select_all_memberships all {}}
+            {select_current_non_memberships {join current} {}}
+            {select_all_non_memberships {join any} {}}
         }
     }
 }]
 
 if {![empty_string_p $community_type]} {
     append filter "_by_type"
+}
+
+if {![exists_and_not_null referer]} {
+    set referer "all-communities"
 }
 
 db_multirow communities $filter {}

@@ -5,6 +5,7 @@ ad_page_contract {
     @creation-date 2001-08-20
     @version $Id$
 } -query {
+    {filter ""}
 } -properties {
     admin_p:onevalue
     admin_url:onevalue
