@@ -27,7 +27,7 @@
   <li>
     Description:
 <if @description@ not nil>
-    <pre>@description@</pre>
+    @description@
 </if>
 <else>
     &lt;none set up&gt;

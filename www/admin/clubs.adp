@@ -58,7 +58,7 @@
     <tr bgcolor="#d9e4f9">
 </else>
       <td align="left"><a href="@clubs.url@">@clubs.pretty_name@</a></td>
-      <td align="left"><pre>@clubs.description@</pre></td>
+      <td align="left">@clubs.description@</td>
       <td align="center">@clubs.n_members@</td>
       <td align="center">
         <nobr>
