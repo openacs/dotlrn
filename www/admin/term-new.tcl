@@ -31,16 +31,19 @@ dotlrn::require_admin
 
 ad_form -name add_term -export referer -form {
 
-    {term_name:text          {label "Term (e.g. Spring, Fall)"} {maxlength 20}
+    {term_name:text          {label "[_ dotlrn.Term_eg_Spring_Fall]"} {maxlength 20}
     {html {size 30}}}
 
     {start_date:date
-                             {label "Start Date"}
-                             {format {MONTH DD YYYY}}}
+	{label "[_ dotlrn.Start_Date]"}
+	{format {[lc_get formbuilder_date_format]}}
+    }
 
     {end_date:date
-                             {label "End Date"}
-                             {format {MONTH DD YYYY}}}
+	{label "[_ dotlrn.End_Date]"}
+	{format {[lc_get formbuilder_date_format]}}
+    }
+
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }

@@ -45,18 +45,22 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 
     term_id:key
 
-    {term_name:text               {label "Term (e.g. Spring, Fall)"}
+    {term_name:text               {label "[_ dotlrn.Term_eg_Spring_Fall]"}
                                   {html {size 30}}}
 
-    {term_year:text               {label "Year (e.g. 2003, 2003/2004)"}
+    {term_year:text               {label "[_ dotlrn.lt_Year_eg_2003_20032004]"}
                                   {html {size 9 maxlength 9}}}
 
-    {start_date:date              {label "Start Date"}
-                                  {format {MONTH DD YYYY}}}
+    {start_date:date
+	{label "[_ dotlrn.Start_Date]"}
+	{format {[lc_get formbuilder_date_format]}}
+    }
 
-    {end_date:date                {label "End Date"}
-                                  {format {MONTH DD YYYY}}}
-
+    {end_date:date
+	{label "[_ dotlrn.End_Date]"}
+	{format {[lc_get formbuilder_date_format]}}
+    }
+    
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }

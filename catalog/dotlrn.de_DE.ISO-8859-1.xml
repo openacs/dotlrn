@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b1" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -318,6 +318,7 @@
   <msg key="lt_Web_Log_for_user_name">Web-Tagebuch für %user_name%
 </msg>
   <msg key="lt_Well_we_tried_to_nuke">Beim Löschen des Benutzers ist ein Fehler aufgetreten. Die Ursache ist wahrscheinlich, dass innerhalb des Datenbankschemas eine Referenz auf den Benutzer (user_id=%user_id%) besteht. Wenden Sie sich an den Programmierer.</msg>
+  <msg key="lt_Year_eg_2003_20032004">Jahr (z.B. 2004, 2004/2005)</msg>
   <msg key="lt_You_are_about_to_dele">Sind sind im Begriff, %num_users% Benutzer zu löschen.</msg>
   <msg key="lt_You_are_adding_strong">Sie fügen &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; zu &quot;%community_name%&quot; hinzu: </msg>
   <msg key="lt_You_are_not_allowed_t">Sie sind nicht berechtigt, diese Aktion auszuführen.</msg>
@@ -472,6 +473,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Templates">Vorlagen</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Semester</msg>
+  <msg key="Term_eg_Spring_Fall">Semester (z.B. SS, WS)</msg>
   <msg key="Term_ID">Semester-ID</msg>
   <msg key="term_properties">Eigenschaften des Semesters</msg>
   <msg key="Terms">Semester</msg>
