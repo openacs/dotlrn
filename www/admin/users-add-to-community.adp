@@ -22,4 +22,10 @@
 <property name="title">Add Users to Group</property>
 <property name="context_bar">@context_bar@</property>
 
+
+<strong><font color=red>Note:</font></strong> 
+This action will take approximately <strong><%= [expr [llength $users] * 3] %></strong> seconds.
+
+<p></p>
+
 <formtemplate id="select_community"></formtemplate>
