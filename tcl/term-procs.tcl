@@ -69,6 +69,6 @@ namespace eval dotlrn_term {
         db_1row get_end_date {}
 
         return [template::util::date::create $year $month $day "" "" "" $date_format]
-                    
+
     }
 }

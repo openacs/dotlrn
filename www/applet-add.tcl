@@ -1,6 +1,6 @@
 ad_page_contract {
     Add an applet to a community
-    
+
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-10-08

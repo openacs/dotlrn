@@ -8,12 +8,12 @@
 #
 
 ad_library {
-    
+
     Procs for basic dotLRN filters
-    
+
     @author ben@openforce.net
     @creation-date 2001-08-20
-    
+
 }
 
 ad_proc -private dotlrn_filter {conn arg why} {

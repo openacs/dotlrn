@@ -194,10 +194,10 @@ select package_id from dotlrn_communities where community_id= :community_id
 <fullquery name="dotlrn_community::get_applet_package_id.select_package_id">
 <querytext>
 select package_id
-from dotlrn_community_applets dca, dotlrn_applets da 
-where community_id= :community_id 
-and applet_key= :applet_key 
-and dca.applet_id = da.applet_id 
+from dotlrn_community_applets dca, dotlrn_applets da
+where community_id= :community_id
+and applet_key= :applet_key
+and dca.applet_id = da.applet_id
 </querytext>
 </fullquery>
 
@@ -256,16 +256,16 @@ community_id= :community_id and applet_key= :applet_key
 select impl_name from acs_sc_impls, acs_sc_bindings, acs_sc_contracts
 where
 acs_sc_impls.impl_id = acs_sc_bindings.impl_id and
-acs_sc_contracts.contract_id= acs_sc_bindings.contract_id and 
+acs_sc_contracts.contract_id= acs_sc_bindings.contract_id and
 acs_sc_contracts.contract_name='dotlrn_applet'
 </querytext>
 </fullquery>
 
 <fullquery name="dotlrn_community::list_applets.select_community_applets">
 <querytext>
-select applet_key 
+select applet_key
 from dotlrn_community_applets dca, dotlrn_applets da
-where community_id= :community_id 
+where community_id= :community_id
 and dca.applet_id = da.applet_id
 </querytext>
 </fullquery>
@@ -278,9 +278,9 @@ select applet_key from dotlrn_applets where status = 'active'
 
 <fullquery name="dotlrn_community::list_active_applets.select_community_active_applets">
 <querytext>
-select applet_key 
-from dotlrn_community_applets dca, dotlrn_applets da 
-where community_id= :community_id 
+select applet_key
+from dotlrn_community_applets dca, dotlrn_applets da
+where community_id= :community_id
 and active_p = 't'
 and dca.applet_id = da.applet_id
 and status = 'active'

@@ -1,6 +1,6 @@
 ad_page_contract {
     Choose a role
-    
+
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-11-04
 } -query {

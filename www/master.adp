@@ -9,12 +9,12 @@
      </td>
   </tr>
   <tr>
-    <td width="12%" valign="middle" bgcolor="ffffff"> 
+    <td width="12%" valign="middle" bgcolor="ffffff">
       <a href="/dotlrn/">
       <img src="/dotlrn/logowhite.gif" width="100" height="65" border="0" alt="dotlrn"></a>
     </td>
     <td width="57%" valign="middle" bgcolor="#FFFFFF">
-      <font face="arial,helvetica" size="+1" color="#000000">@text@</font> 
+      <font face="arial,helvetica" size="+1" color="#000000">@text@</font>
     </td>
     <td valign="middle" width="31%" bgcolor="#FFFFFF">
       <div align="right">

@@ -1,6 +1,6 @@
 ad_page_contract {
     Displays a configuration page
-    
+
     @author Ben Adida (ben@openforce.net)
     @author Arjun Sanyal (arjun@openforce.net)
     @author yon (yon@openforce.net)
@@ -40,7 +40,7 @@ if {[ad_parameter community_level_p] == 1} {
 
     # Get the page
     set portal_id [db_string select_portal_id {} -default ""]
-    
+
     # If there is no portal_id, this user is either a guest or something else
     if {[empty_string_p $portal_id]} {
 	# do something
@@ -50,5 +50,5 @@ if {[ad_parameter community_level_p] == 1} {
 	set name [portal::get_name $portal_id]
     }
 }
-    
+
 ad_return_template

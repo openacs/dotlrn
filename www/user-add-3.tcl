@@ -9,7 +9,7 @@ ad_page_contract {
     message
     {referer "/acs-admin/users"}
 }
-    
+
 set admin_user_id [ad_verify_and_get_user_id]
 set admin_email [db_string select_admin_email {
     select email

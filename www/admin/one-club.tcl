@@ -2,7 +2,7 @@
 
 ad_page_contract {
     displays single dotLRN club page
-    
+
     @author yon (yon@openforce.net)
     @creation-date 2001-12-03
     @version $Id$

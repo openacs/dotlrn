@@ -2,7 +2,7 @@
 
 ad_page_contract {
     Preferences for dotLRN
-    
+
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-11-10

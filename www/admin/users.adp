@@ -26,7 +26,7 @@
 
 <multiple name="users">
 
-<% 
+<%
   if {$i == 0} {set bgcolor white} else {set bgcolor #cccccc}
   set i [expr 1 - $i]
 %>

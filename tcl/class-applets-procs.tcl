@@ -8,12 +8,12 @@
 #
 
 ad_library {
-    
+
     Procs to manage DOTLRN Classes
-    
+
     @author ben@openforce.net
     @creation-date 2001-08-18
-    
+
 }
 
 namespace eval dotlrn_class_applets {

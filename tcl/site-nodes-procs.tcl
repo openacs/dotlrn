@@ -49,15 +49,15 @@ namespace eval site_nodes {
     }
 
     ad_proc -public get_site_nodes_list_key {
-        {-site_nodes_list:required}        
-        {-index:required}        
+        {-site_nodes_list:required}
+        {-index:required}
     } {
         return [lindex $site_nodes_list $index]
     }
 
     ad_proc -public get_site_nodes_list_value {
-        {-site_nodes_list:required}        
-        {-index:required}        
+        {-site_nodes_list:required}
+        {-index:required}
     } {
         # ns_log notice "llength [llength $site_nodes_list] [lindex $site_nodes_list [expr $index + 1 ]] "
         return [lindex $site_nodes_list [expr $index + 1 ]]
@@ -65,24 +65,24 @@ namespace eval site_nodes {
 
 
     ad_proc -public get_site_nodes_list_value_param {
-        {-site_nodes_list:required}        
-        {-index:required}        
+        {-site_nodes_list:required}
+        {-index:required}
         {-param:required}
     } {
-        The 'site_nodes' nsv_array is chock full of information 
-        about every package mounted on every node in the system, let's 
-        access that information. 
+        The 'site_nodes' nsv_array is chock full of information
+        about every package mounted on every node in the system, let's
+        access that information.
 
         Here's a sample:
         key = /portal/
 
-        value = directory_p t 
+        value = directory_p t
         object_type apm_package
-        package_key new-portal 
-        package_id 3482 
-        pattern_p t 
-        node_id 3481 
-        url /portal/ 
+        package_key new-portal
+        package_id 3482
+        pattern_p t
+        node_id 3481
+        url /portal/
         object_id 3482
 
         @author arjun@openforce.net
@@ -93,30 +93,30 @@ namespace eval site_nodes {
         array set snlv [get_site_nodes_list_value \
                 -site_nodes_list $site_nodes_list \
                 -index $index]
-        
+
 	switch $param {
-	    "directory_p" { 
+	    "directory_p" {
                 return $snlv(directory_p)
 	    }
-	    "object_type" {  
+	    "object_type" {
                 return $snlv(object_type)
 	    }
-	    "package_key" {  
+	    "package_key" {
                 return $snlv(package_key)
 	    }
-	    "package_id" {  
+	    "package_id" {
                 return $snlv(package_id)
 	    }
-	    "pattern_p" {  
+	    "pattern_p" {
                 return $snlv(pattern_p)
 	    }
-	    "node_id" {  
+	    "node_id" {
                 return $snlv(node_id)
 	    }
-	    "url" {  
+	    "url" {
                 return $snlv(url)
 	    }
-	    "object_id" {  
+	    "object_id" {
                 return $snlv(object_id)
 	    }
             default {
@@ -126,7 +126,7 @@ namespace eval site_nodes {
 		ad_return_complaint 1 \
 			"site_nodes::get_site_nodes_list_value_param failed! \n
                 bad param ($param) was specified"
-            }  
+            }
         }
     }
 
@@ -135,9 +135,9 @@ namespace eval site_nodes {
         {-param ""}
         {-package_key:required}
     } {
-        returns either 1. number of times this package_key is mounted 
+        returns either 1. number of times this package_key is mounted
         2. the url a singleton is mounted at (or the first match it finds
-        for a multi-mounted package) or 3. a singleon's param (see list above). 
+        for a multi-mounted package) or 3. a singleon's param (see list above).
         Same deal appiles to non-singletons
 
         ret = count, url, param
@@ -169,7 +169,7 @@ namespace eval site_nodes {
 
         #        ad_return_complaint 1 "aks 17 $site_nodes_list"
 
-        # iterate through the array, counting the number of times the 
+        # iterate through the array, counting the number of times the
         # passed in package key is in the site_nodes array
         set count 0
 
@@ -185,7 +185,7 @@ namespace eval site_nodes {
                     -site_nodes_list $site_nodes_list \
                     -index $x \
                     -param "package_key"]
-            
+
             if { $poss_key_match == $package_key} {
 
                 if {$get_param_p} {
@@ -194,12 +194,12 @@ namespace eval site_nodes {
                             -index $x \
                             -param $param]
                 }
-                
+
                 incr count
             }
         }
 
-        if {$get_count_p} { 
+        if {$get_count_p} {
             return $count
         } else {
             ns_log error "site_nodes::get_info get_count_p assertion failed!\n
@@ -210,7 +210,7 @@ namespace eval site_nodes {
     ad_proc -public mount_count {
         {-package_key:required}
     } {
-        returns the number of times this package_key is mounted 
+        returns the number of times this package_key is mounted
     } {
         return [get_info -return count -package_key $package_key]
     }

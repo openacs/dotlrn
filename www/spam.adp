@@ -8,7 +8,7 @@
 <blockquote>
   <table>
     <tr>
-      <th colspan=3>The following variables can be used to insert user/community specific data:</th> 
+      <th colspan=3>The following variables can be used to insert user/community specific data:</th>
     </tr>
 
     <tr>

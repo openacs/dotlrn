@@ -15,7 +15,7 @@ ad_library {
 }
 
 namespace eval dotlrn_applet {
-    
+
     ad_proc -public register {
 	applet_key
     } {

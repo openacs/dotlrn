@@ -1,6 +1,6 @@
 ad_page_contract {
     Change the join policy of a dotLRN community.
-    
+
     @author yon (yon@openforce.net)
     @creation-date 2002-01-18
     @version $Id$

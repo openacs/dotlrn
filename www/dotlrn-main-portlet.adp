@@ -8,11 +8,13 @@
 
 <table border="0" cellpadding="2" cellspacing="2" width="100%">
 <multiple name="communities">
+<group column="community_type">
   <tr>
     <td>
       <font face="arial,helvetica" size="-1" color="black">
         <a href="@communities.url@">@communities.pretty_name@</a></td>
       </font>
-  </tr>  
+  </tr>
+</group>
 </multiple>
 </table>

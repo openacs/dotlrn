@@ -1,7 +1,7 @@
 
 ad_page_contract {
     Displays an element configuration page
-    
+
     @author Ben Adida (ben@openforce.net)
     @author Arjun Sanyal (arjun@openforce.net)
     @creation-date 2001-10-24
@@ -41,10 +41,10 @@ if {[ad_parameter community_level_p] == 1} {
     }
 } else {
     # this not a community, it is the "workspace" deal
-    
+
     # Get the page
     set portal_id [db_string select_portal_id {} -default ""]
-    
+
     # If there is no portal_id, this user is either a guest or something else
     if {[empty_string_p $portal_id]} {
 	# do something
@@ -53,8 +53,8 @@ if {[ad_parameter community_level_p] == 1} {
 	set rendered_page [portal::configure_element $element_id $op "index"]
     }
 }
-    
-ad_return_template 
+
+ad_return_template
 
 
 

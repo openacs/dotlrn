@@ -8,12 +8,12 @@
 #
 
 ad_library {
-    
+
     Procs for dotLRN navigation
-    
+
     @author ben@openforce.net
     @creation-date 2001-11-10
-    
+
 }
 
 namespace eval dotlrn {

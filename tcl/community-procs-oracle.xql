@@ -79,7 +79,7 @@
       start with object_type = (select community_type
                                 from dotlrn_communities
                                 where community_id = :community_id)
-      connect by object_type = prior supertype 
+      connect by object_type = prior supertype
     </querytext>
   </fullquery>
 
@@ -89,7 +89,7 @@
       from acs_object_types
       where supertype = 'dotlrn_community'
       start with object_type = :community_type
-      connect by object_type = prior supertype 
+      connect by object_type = prior supertype
     </querytext>
   </fullquery>
 </queryset>

@@ -19,13 +19,13 @@ A member of the @system_name@ community since @pretty_creation_date@
 <if @member_state@ eq "deleted">
 
   <blockquote><font color=red>this user is deleted</font></blockquote>
-  
+
 </if>
 <else><if @member_state@ eq "banned">
 
   <blockquote><font color=red>this user is deleted and
   banned from the community.</font></blockquote>
-  
+
 </if></else>
 
 <if @show_email_p@ eq 1>

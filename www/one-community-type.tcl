@@ -23,7 +23,7 @@ set portal_id ""
 if {[ad_parameter community_type_level_p] != 1} {
     ad_returnredirect "./"
     ad_script_abort
-} 
+}
 
 set user_id [ad_conn user_id]
 

@@ -8,7 +8,7 @@
 <multiple name="communities">
     <tr>
       <td><a href="@communities.url@">@communities.pretty_name@</a></td>
-      <td> 
+      <td>
 <if @communities.member_p@ eq 0>
         (<include src="register-link" url="register?community_id=@communities.community_id@&referer=@referer@">)
 </if>

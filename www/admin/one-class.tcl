@@ -1,6 +1,6 @@
 ad_page_contract {
     Displays single dotLRN class page
-    
+
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-11-07

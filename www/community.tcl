@@ -1,6 +1,6 @@
 ad_page_contract {
     Displays a community
-    
+
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-04
 } -query {

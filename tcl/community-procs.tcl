@@ -447,7 +447,7 @@ namespace eval dotlrn_community {
         applets_dispatch -community_id $community_id \
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
-        
+
 
     }
 
@@ -657,7 +657,7 @@ namespace eval dotlrn_community {
         be able to be run multiple times!
     } {
 
-        if {![empty_string_p [get_applet_id_from_key -applet_key $applet_key]]} { 
+        if {![empty_string_p [get_applet_id_from_key -applet_key $applet_key]]} {
             # there's already a dotlrn applet registered with this key, abort
             return
         }
@@ -704,7 +704,7 @@ namespace eval dotlrn_community {
             set active_p "t"
 
             # Insert in the DB
-            db_dml insert {}            
+            db_dml insert {}
 
             # Go through current users and make sure they are added!
             foreach user [list_users $community_id] {
@@ -783,8 +783,8 @@ namespace eval dotlrn_community {
         Dispatch an operation to every applet, either in one communtiy or
         on all the active dotlrn applets
     } {
-        
-        ns_log notice "aks 20 debug applets_dispatch called with comm_id = $community_id, op $op, 
+
+        ns_log notice "aks 20 debug applets_dispatch called with comm_id = $community_id, op $op,
         list args $list_args length is [llength $list_args]"
 
         set list_of_applets [list_active_applets -community_id $community_id]

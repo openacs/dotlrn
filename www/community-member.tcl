@@ -1,6 +1,6 @@
 ad_page_contract {
     shows User A what User B has contributed to the community
-    
+
     @author yon (yon@openforce.net)
     @creation-date 2002-01-22
     @version $Id$

@@ -9,9 +9,9 @@
 #
 
 ad_library {
-    
+
     Procs to manage DOTLRN Security
-    
+
     @author ben@openforce.net
     @creation-date 2001-10-30
     @version $Id$
@@ -19,7 +19,7 @@ ad_library {
 }
 
 namespace eval dotlrn {
-    
+
     ad_proc -private do_abort {} {
 	do an abort if security violation
     } {
@@ -75,7 +75,7 @@ namespace eval dotlrn {
                 for {set i 1} {$i < [expr [llength $page_name_list]]} {incr i} {
                     portal::page_create -portal_id $portal_id \
                             -pretty_name [lindex $page_name_list $i] \
-                            -layout_name [lindex $layout_name_list $i] 
+                            -layout_name [lindex $layout_name_list $i]
                 }
                 
                 # manually switch back to the first page 
@@ -83,7 +83,7 @@ namespace eval dotlrn {
                 
                 portal::set_current_page -portal_id $portal_id \
                         -page_id $page_id
-                
+
                 # aks test adding applets on new pages
                 # make a test page to the wsp
                 dotlrn_main_portlet::add_self_to_page -page_id $page_id \
@@ -103,7 +103,7 @@ namespace eval dotlrn {
 	    # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
 	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type "" $user_id]
 	}
-        
+
 	return $rel_id
     }
 
@@ -154,7 +154,7 @@ namespace eval dotlrn {
     } {
 	acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] $val
     }
-    
+
     ad_proc -public user_can_read_private_data_p {
 	{user_id ""}
     } {
@@ -168,7 +168,7 @@ namespace eval dotlrn {
 
 	return [acs_privacy::user_can_read_private_data_p -user_id $user_id -object_id [dotlrn::get_package_id]]
     }
-    
+
     ad_proc -public require_user_read_private_data {
 	{user_id ""}
     } {
@@ -189,7 +189,7 @@ namespace eval dotlrn {
 	# NOT SURE HOW TO FIX THIS WITHOUT object_ids on community types
 	return 1
     }
-    
+
     ad_proc -public require_user_read_community_type {
 	{-user_id ""}
 	community_type
@@ -200,12 +200,12 @@ namespace eval dotlrn {
 	    do_abort
 	}
     }
-    
+
     ad_proc -public user_can_read_community_p {
 	{-user_id ""}
 	community_id
     } {
-	Check if a user can read a community 
+	Check if a user can read a community
     } {
 	return [ad_permission_p -user_id $user_id $community_id dotlrn_view_community]
     }
@@ -214,7 +214,7 @@ namespace eval dotlrn {
 	{-user_id ""}
 	community_id
     } {
-	require that a user be able to read a community 
+	require that a user be able to read a community
     } {
 	if {![user_can_read_community_p -user_id $user_id $community_id]} {
 	    do_abort
@@ -244,7 +244,7 @@ namespace eval dotlrn {
 	    do_abort
 	}
     }
-    
+
     ad_proc -public user_can_admin_community_p {
 	{-user_id ""}
 	community_id
@@ -253,7 +253,7 @@ namespace eval dotlrn {
     } {
 	return [ad_permission_p -user_id $user_id $community_id dotlrn_admin_community]
     }
-    
+
     ad_proc -public require_user_admin_community {
 	{-user_id ""}
 	community_id

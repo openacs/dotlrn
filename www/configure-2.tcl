@@ -1,6 +1,6 @@
 ad_page_contract {
     A simple target for the portal configuration
-    
+
     @author Arjun Sanyal (arjun@openforce.net)
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-24

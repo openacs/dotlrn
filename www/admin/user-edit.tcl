@@ -27,7 +27,7 @@ element create edit_user read_private_data_p \
 # Create a form of hidden vars
 form create verif_edit_user
 
-element create verif_edit_user user_id -label "User ID" -datatype integer -widget hidden 
+element create verif_edit_user user_id -label "User ID" -datatype integer -widget hidden
 element create verif_edit_user type_id -label "Type ID" -datatype integer -widget hidden
 element create verif_edit_user rel_type -label "Relationship Type" -datatype text -widget hidden
 element create verif_edit_user read_private_data_p -label "Can Read Private Data?" -datatype text -widget hidden

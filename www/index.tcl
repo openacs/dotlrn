@@ -1,6 +1,6 @@
 ad_page_contract {
     Displays the personal home page
-    
+
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-08-20
     @version $Id$
@@ -54,5 +54,5 @@ if {[empty_string_p $portal_id]} {
 }
 
 set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
- 
+
 ad_return_template

@@ -5,10 +5,10 @@ ad_library {
     Procedures to supports dotlrn main portlet
 
     Copyright Openforce, Inc.
-    Licensed under GNU GPL v2 
+    Licensed under GNU GPL v2
 
     @creation-date November 4 2001
-    @author ben@openforce.net 
+    @author ben@openforce.net
     @version $Id$
 
 }
@@ -30,10 +30,10 @@ namespace eval dotlrn_main_portlet {
         return ""
     }
 
-    ad_proc -public add_self_to_page { 
+    ad_proc -public add_self_to_page {
         {-page_id ""}
-        portal_id 
-        instance_id 
+        portal_id
+        instance_id
     } {
         Adds a dotLRN PE to the given page with the instance key being
         opaque data in the portal configuration.
@@ -53,8 +53,8 @@ namespace eval dotlrn_main_portlet {
         return $element_id
     }
 
-    ad_proc -public show { 
-        cf 
+    ad_proc -public show {
+        cf
     } {
         Display the PE
 
@@ -68,19 +68,19 @@ namespace eval dotlrn_main_portlet {
                 -template_src "dotlrn-main-portlet" \
                 -package_key "dotlrn" \
                 -config_list $cf
-    }   
+    }
 
-    ad_proc -public edit { 
-        cf 
+    ad_proc -public edit {
+        cf
     } {
         return ""
     }
 
-    ad_proc -public remove_self_from_page { 
-        portal_id 
-        instance_id 
+    ad_proc -public remove_self_from_page {
+        portal_id
+        instance_id
     } {
-        Removes a bboard PE from the given page 
+        Removes a bboard PE from the given page
 
         @param portal_id The page to remove self from
         @param instance_id

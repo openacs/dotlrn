@@ -1,6 +1,6 @@
 ad_page_contract {
     Displays dotLRN departments admin page
-    
+
     @author yon (yon@openforce.net)
     @creation-date 2002-01-20
     @version $Id$
