@@ -49,7 +49,11 @@ namespace eval dotlrn {
 	db_transaction {
 	    if {$rel_type == "dotlrn_full_user_rel"} {
 		# Create a portal page for this user
-		set portal_id [portal::create -name "Your dotLRN Workspace" -default_page_name [ad_parameter user_wsp_first_page_name] $user_id]
+		set portal_id [portal::create \
+                        -name "Your dotLRN Workspace" \
+                        -default_page_name [ad_parameter user_wsp_first_page_name] \
+                        $user_id]
+
                 # create the default pages from the ad_param
                 foreach name [split [ad_parameter user_wsp_page_names] ","] {
 
@@ -60,8 +64,17 @@ namespace eval dotlrn {
                 portal::set_current_page -portal_id $portal_id \
                         -page_id [portal::get_page_id -portal_id $portal_id \
                         -sort_key 0]
+                
+                # aks test adding applets on new pages
+                
+                # make a test page to the wsp
+                # add -layout_id later
+                # set page_id [portal::page_create -portal_id $portal_id \
+                #        -pretty_name "test new add applet" \
+                #        -portal_id $portal_id]
+                # dotlrn_main_portlet::add_self_to_page -page_id $page_id $portal_id {}
 
-                dotlrn_main_portlet::add_self_to_page $portal_id {}
+                # end test
 
                 # Update the user and set the portal page correctly
 		ns_set put $extra_vars portal_id $portal_id

@@ -31,6 +31,7 @@ namespace eval dotlrn_main_portlet {
     }
 
     ad_proc -public add_self_to_page { 
+        {-page_id ""}
         portal_id 
         instance_id 
     } {
@@ -44,7 +45,7 @@ namespace eval dotlrn_main_portlet {
         @creation-date Nov 2001
     } {
         # Tell portal to add this element to the page
-        set element_id [portal::add_element $portal_id [my_name]]
+        set element_id [portal::add_element -page_id $page_id $portal_id [my_name]]
 
         return $element_id
     }
