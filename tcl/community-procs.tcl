@@ -305,6 +305,13 @@ namespace eval dotlrn_community {
             }
         }
 
+        # This new community should _not_ inherit it's permissions
+        # from the root dotlrn instance. Why? All dotlrn users
+        # can read the root dotlrn instance, but only members of
+        # this community should be able to read this instance (and
+        # it's children)
+        permission::set_not_inherit -object_id $community_id
+
         return $community_id
     }
 
