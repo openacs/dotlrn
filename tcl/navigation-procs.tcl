@@ -16,10 +16,11 @@
 
 ad_library {
 
-    Procs for dotLRN navigation
+    Procs for dotLRN navigation, including helper procs for dotlrn-master
 
     @author ben@openforce.net
-    @creation-date 2001-11-10
+    @author arjun@openforce.net
+    @version $Id$
 
 }
 
@@ -99,6 +100,105 @@ namespace eval dotlrn {
         }
 
         return "[join $list_of_links " &gt; "]<br>"
+    }
+
+    ad_proc -public portal_navbar {
+        {-user_id:required}
+        {-link_control_panel:required}
+        {-control_panel_text:required}
+    } {
+        A helper procedure that generates the PORTAL navbar (the thing
+        with the portal pages on it) for dotlrn. It is called from the
+        dotlrn-master template
+    } {
+                
+        set dotlrn_url [dotlrn::get_url]
+        set community_id [dotlrn_community::get_community_id]
+        set control_panel_name control-panel
+        set link_all 0
+    
+        if {[empty_string_p $community_id]} {
+            #
+            # We are not under a dotlrn community. However we could be under /dotlrn
+            # (i.e. in the user's portal) or anywhere else on the site
+            #
+            set link "[dotlrn::get_url]/"
+            
+            if {[dotlrn::user_p -user_id $user_id]} {
+                # this user is a dotlrn user, show their personal portal
+                # navbar, including the control panel link
+                set portal_id [dotlrn::get_portal_id -user_id $user_id]
+                set show_control_panel 1
+            } else {
+                # not a dotlrn user, so no user portal to show
+                set portal_id {}
+            }
+
+        } else {
+            #
+            # We are under a dotlrn community. Get the community's portal_id, etc.
+            #
+            
+            # some defaults
+            set text [dotlrn_community::get_community_header_name $community_id] 
+            set control_panel_name one-community-admin
+            set link [dotlrn_community::get_community_url $community_id]
+        
+            # figure out what this privs this user has on the community
+            set admin_p [dotlrn::user_can_admin_community_p \
+                -user_id $user_id \
+                -community_id $community_id
+            ]
+        
+            if {!$admin_p} {
+                # the user can't admin this community, perhaps they are a
+                # humble member instead?
+                set member_p [dotlrn_community::member_p $community_id $user_id]
+                set show_control_panel 0
+            } else {
+                # admins always get the control_panel_link
+                set show_control_panel 1
+            }
+        
+            if {$admin_p || $member_p} {
+    
+                set portal_id [dotlrn_community::get_portal_id \
+                    -community_id $community_id
+                ]
+            } else {
+                # show this person the comm's non-member-portal
+                set portal_id [dotlrn_community::get_non_member_portal_id \
+                    -community_id $community_id
+                ]
+            }
+        }
+
+        #
+        # Common code for the the behavior of the control panel link
+        #
+        if {$show_control_panel} {
+            if {$link_control_panel} {
+                set extra_td_html \
+                    " &nbsp; <a href=$control_panel_name>$control_panel_text</a>"
+            } else {
+                set extra_td_html " &nbsp; $control_panel_text"
+                set link_all 1
+            } 
+        } else {
+            set extra_td_html {}
+        } 
+    
+        # Actually generate the navbar, if we got a valid portal_id
+        if {![empty_string_p $portal_id]} {
+            set navbar [portal::navbar \
+                -portal_id $portal_id \
+                -link $link \
+                -link_all $link_all \
+                -pre_html "" \
+                -post_html "" \
+                -extra_td_html $extra_td_html \
+                -table_html_args "class=\"navbar\""]
+        }
     }
 
 }
