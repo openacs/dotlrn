@@ -26,8 +26,6 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar {{Edit Pre-approved Email Servers}}
-
 form create edit_emails
 
 element create edit_emails emails \

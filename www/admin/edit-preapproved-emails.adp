@@ -16,9 +16,9 @@
 
 -->
 
-<master>
+<master src="master">
 <property name="title">Edit Pre-approved Email Servers</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context_bar">{Edit Pre-approved Email Servers}</property>
 
 <p>
   Email suffixes listed here are used to automatically make dotLRN users of
