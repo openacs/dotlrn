@@ -56,9 +56,9 @@
   <msg key="Bulk_Upload">Envoyer</msg>
   <msg key="Bulk_Uploading">Envoyant...</msg>
   <msg key="cannot_be_removed">ne peut pas être effacé</msg>
-  <msg key="Change_Locale">Changer la langue</msg>
+  <msg key="Change_Locale">Changer de langue</msg>
   <msg key="class_instance_portal_pretty_name">Cours</msg>
-  <msg key="class_instances_pretty_name">Cours</msg>
+  <msg key="class_instances_pretty_name">un cours</msg>
   <msg key="class_instances_pretty_plural">Cours</msg>
   <msg key="Class_Key">ID du cours</msg>
   <msg key="class_may_not_be_deleted">Erreur: une %subject% ne peut pas avoir de cours associés pour être effacée</msg>
@@ -211,7 +211,7 @@
   <msg key="lime">lima</msg>
   <msg key="Limited">Limité</msg>
   <msg key="Limited_Access">Accès limité</msg>
-  <msg key="logout">Déconnecter</msg>
+  <msg key="logout">Me déconnecter</msg>
   <msg key="lt_a_secondary">- un second identificateur pour cet utilisateur.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Ajouter un nouvel utilisateur dotLRN:</msg>
   <msg key="lt_Add_a_new_user_to_Slo">Ajouter un nouvel utilisateur à SloanSpace</msg>
@@ -227,7 +227,7 @@
   <msg key="lt_Be_sure_that_the_pers">Soyez sûr que la personne n'a pas déjà un compte sur SloanSpace sous une autre adresse email. Les double comptes posent des problèmes.  Pour ajouter une personne qui a déjà un compte, utilisez &lt;a href=members&gt;Gérer les membres&lt;/a &gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Clé du cours (un nom court sans espace)</msg>
   <msg key="lt_Communitys_Web_Addres">URL du web de la communauté</msg>
-  <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% existants</msg>
+  <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% existantes</msg>
   <msg key="lt_Do_you_really_want_to">Voulez-vous réellement effacer les membres suivants?</msg>
   <msg key="lt_Do_you_really_want_to_1">Voulez-vous réellement effacer ces %num_users% utilisateurs?</msg>
   <msg key="lt_dotLRN_properties_for">propriétés dotLRN de cet utilisateur.</msg>
@@ -249,10 +249,11 @@
   <msg key="lt_if_you_misspell">Si la police de caractère n'est pas correct ou n'existe pas dans l'ordinateur de l'utilisateur, la police de caractère par défaut du système sera utilisée.</msg>
   <msg key="lt_If_you_wish_to_give_g">Si vous souhaitez donner aux invités le plein accès aux forum et aux sondages, vous pouvez demander à l'administrateur du site de changer le statut de votre communauté. Etant donné la politique de privacité du MIT, cette option n'est pas disponible pour les cours.</msg>
   <msg key="lt_Information_about_oth">L'information concernant les autres membres de cette communauté ne sera pas disponible pour cet utilisateur.</msg>
-  <msg key="lt_Join_a_class_instance">Se joindre à %class_instances_pretty_name%</msg>
+  <msg key="lt_Join_a_class_instance">S'inscrire à %class_instances_pretty_name%</msg>
+  <msg key="lt_Join_a_clubs_pretty_n">S'inscrire à une communauté</msg>
   <msg key="lt_Join_the_above_criter">Combiner le critère précédant avec</msg>
   <msg key="lt_Join_the_above_criter_1">Combiner le critère précédent par</msg>
-  <msg key="lt_JoinDrop_a_Class_or_C">Se joindre à un cours ou une communauté</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Se joindre à un cours ou à une communauté</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Se joindre à un cours ou une communauté</msg>
   <msg key="lt_Key_a_short_name_no_s">Clé (un nom court, sans espace)</msg>
   <msg key="lt_Last_Visit_Over_in_da">Dernière visite avant il y a (jours)</msg>

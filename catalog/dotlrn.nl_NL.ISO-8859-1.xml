@@ -10,19 +10,19 @@
   <msg key="actions">Acties</msg>
   <msg key="Active_Applets">Actieve Applets</msg>
   <msg key="add">toevoegen</msg>
-  <msg key="Add_A_Member">Toevoegen Lid</msg>
-  <msg key="Add_a_Professor">Toevoegen Professor</msg>
-  <msg key="Add_a_Professor_2">Toevoegen Professor</msg>
-  <msg key="Add_A_User">Toevoegen Gebruiker</msg>
-  <msg key="Add_a_User">Toevoegen Gebruiker</msg>
-  <msg key="Add_New_Members">Toevoegen Nieuwe Leden</msg>
+  <msg key="Add_A_Member">Een lid toevoegen</msg>
+  <msg key="Add_a_Professor">Een professor toevoegen</msg>
+  <msg key="Add_a_Professor_2">Een professor toevoegen:</msg>
+  <msg key="Add_A_User">Een gebruiker toevoegen</msg>
+  <msg key="Add_a_User">Een gebruiker toevoegen</msg>
+  <msg key="Add_New_Members">Nieuwe leden toevoegen</msg>
   <msg key="Add_Professor">Toevoegen Professor</msg>
-  <msg key="add_selected_members">Toevoegen geselecteerde leden</msg>
+  <msg key="add_selected_members">Geselecteerde leden toevoegen</msg>
   <msg key="Add_to_group_">Toevoegen aan groep ...</msg>
-  <msg key="Add_User">Toevoegen Gebruiker</msg>
-  <msg key="Add_users_to">Toevoegen gebruikers aan</msg>
-  <msg key="Add_Users_to_Group">Toevoegen gebruikers aan groep</msg>
-  <msg key="AddDrop_Memberships">Beheer Lidmaatschap</msg>
+  <msg key="Add_User">Gebruiker toevoegen</msg>
+  <msg key="Add_users_to">Gebruikers toevoegen aan</msg>
+  <msg key="Add_Users_to_Group">Gebruikers aan groep toevoegen</msg>
+  <msg key="AddDrop_Memberships">Inschrijvingen beheren</msg>
   <msg key="Admin">Beheer</msg>
   <msg key="admin">Beheer</msg>
   <msg key="admin_page_name">Bedieningspaneel</msg>
@@ -33,7 +33,7 @@
   <msg key="Administrators">Beheerders</msg>
   <msg key="Admins_of">Beheerders van</msg>
   <msg key="All">Alle</msg>
-  <msg key="All_Terms">Alle Tri/Semesters</msg>
+  <msg key="All_Terms">Alle termijnen</msg>
   <msg key="And">En</msg>
   <msg key="Any">Ieder</msg>
   <msg key="Applets_to_Add">Toe te voegen Applets </msg>
@@ -56,18 +56,18 @@
   <msg key="Bulk_Upload">Massaal Importeren</msg>
   <msg key="Bulk_Uploading">Importeert massaal....</msg>
   <msg key="cannot_be_removed">kan niet worden verwijderd</msg>
-  <msg key="Change_Locale">Wijzig Taal</msg>
+  <msg key="Change_Locale">Taal Instellen</msg>
   <msg key="class_instance_portal_pretty_name">Klassen</msg>
-  <msg key="class_instances_pretty_name">Klas</msg>
-  <msg key="class_instances_pretty_plural">Klassen</msg>
+  <msg key="class_instances_pretty_name">Vak</msg>
+  <msg key="class_instances_pretty_plural">Vakken</msg>
   <msg key="Class_Key">Klas Code</msg>
   <msg key="class_may_not_be_deleted">Fout: Een %subject% mag &lt;em&gt;geen&lt;/em&gt; %class_instances% hebben bij het verwijderen</msg>
   <msg key="class_memberships">%class_instances_pretty_name% Lidmaatschappen</msg>
   <msg key="class_name">%classes_pretty_name% Naam</msg>
-  <msg key="class_name_header">%class_instances_pretty_name% Naam</msg>
+  <msg key="class_name_header">%class_instances_pretty_name%</msg>
   <msg key="class_page_calendar_title">Kalender</msg>
   <msg key="class_page_file_storage_title">Bestanden</msg>
-  <msg key="class_page_home_title">Klas</msg>
+  <msg key="class_page_home_title">Vak</msg>
   <msg key="Classes">Klassen</msg>
   <msg key="classes_pretty_name">Onderwerp</msg>
   <msg key="classes_pretty_plural">Onderwerpen</msg>
@@ -76,13 +76,13 @@
   <msg key="club_page_file_storage_title">Bestanden</msg>
   <msg key="club_page_home_title">Gemeenschap</msg>
   <msg key="club_page_people_title">Mensen</msg>
-  <msg key="clubs_name_header">%clubs_pretty_name% Naam</msg>
+  <msg key="clubs_name_header">%clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Gemeenschap</msg>
-  <msg key="clubs_pretty_plural">Gemeenschappen</msg>
+  <msg key="clubs_pretty_plural">Inschrijvingen</msg>
   <msg key="Communities">Gemeenschappen</msg>
   <msg key="Community">Gemeenschap</msg>
   <msg key="community_header_name">%clubs_pretty_name% Naam</msg>
-  <msg key="Community_ID">Gemeenschap ID</msg>
+  <msg key="Community_ID">Gemeenschaps-ID</msg>
   <msg key="Community_member">Gemeenschapslid</msg>
   <msg key="community_memberships">%clubs_pretty_name% Lidmaatschappen</msg>
   <msg key="community_name_already_in_use">De naam &lt;strong&gt;%community_key%&lt;/strong&gt; is al in gebruik door een actieve of gearchiveerde groep \n Ga terug en selecteer een andere naam.</msg>
@@ -115,7 +115,7 @@
   <msg key="department_must_be_empty_to_be_deleted">Fout: %departments_pretty_name% moeten leeg zijn om te kunnen worden verwijderd</msg>
   <msg key="department_name">%departments_pretty_name% Naam</msg>
   <msg key="department_name_already_in_use">De naam &lt;strong&gt;%department_pretty_name%&lt;/strong&gt; is al in gebruik. \n Kies alstublieft een andere naam.</msg>
-  <msg key="departments_pretty_name">Afdeling</msg>
+  <msg key="departments_pretty_name">Sectie</msg>
   <msg key="departments_pretty_plural">Afdelingen</msg>
   <msg key="deregister">Uitschrijven</msg>
   <msg key="Description">Beschrijving</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN Gemeenschapsleden</msg>
   <msg key="Drop">Verwijder</msg>
   <msg key="Drop_Membership">Opzeggen Lidmaatschap</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Verwijder Lidmaatschap&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Verwijder Inschrijving&quot; border=0&gt;</msg>
   <msg key="Edit">Bewerken</msg>
   <msg key="Edit_a_User">Bewerk Gebruiker</msg>
   <msg key="edit_approved_email_servers">Bewerken direct-geaccepteerde e-mail servers </msg>
@@ -165,7 +165,8 @@
   <msg key="External_URL_1">Externe URL: </msg>
   <msg key="Extra_Large">Extra Groot</msg>
   <msg key="Fields">Velden</msg>
-  <msg key="First_Line">Eerste Regel</msg>
+  <msg key="First_Line">Eerste regel</msg>
+  <msg key="first_line_of_file_must_be">De eerste regel van het bestand moet de volgende kopregel hebben:</msg>
   <msg key="First_Name">Voornaam</msg>
   <msg key="From">Van</msg>
   <msg key="fuchsia">fuchsia</msg>
@@ -198,8 +199,8 @@
   <msg key="Invalid">Ongeldig</msg>
   <msg key="is_already_in_use">is al in gebruik</msg>
   <msg key="Join">Lid worden</msg>
-  <msg key="Join_A_Group">Groep Lidmaatschap</msg>
-  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Aanmelden&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="Join_A_Group">Schrijf nog in voor</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Inschrijven&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Toelatingsbeleid</msg>
   <msg key="Key">Code</msg>
   <msg key="Large">Groot</msg>
@@ -211,7 +212,7 @@
   <msg key="lime">lime-groen</msg>
   <msg key="Limited">Beperkt</msg>
   <msg key="Limited_Access">Beperkte toegang</msg>
-  <msg key="logout">Loguit</msg>
+  <msg key="logout">Uitloggen</msg>
   <msg key="lt_a_secondary">- een tweede kenmerk van de gebruiker</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Toevoegen nieuwe dotLRN gebruiker:</msg>
   <msg key="lt_Add_a_new_user_to_Slo">Toevoegen nieuwe gebruiker</msg>
@@ -250,11 +251,11 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="lt_if_you_misspell">Indien u het lettertype foutief schrijft of als de gebruiker het lettertype niet op de computer heeft, wordt het standaard lettertype van het systeem gebruikt</msg>
   <msg key="lt_If_you_wish_to_give_g">Als gasten ook onbeperkte toegang dienen te krijgen, kan de systeembeheerder de eigennschappen van deze gemeenschap aanpassen. Alleen bij klassen is dit reglementair niet toegestaan. </msg>
   <msg key="lt_Information_about_oth">Informatie over andere leden van deze gemeenschap zullen niet beschikbaar zijn voor deze gebruiker</msg>
-  <msg key="lt_Join_a_class_instance">Aansluiten bij %class_instances_pretty_name% </msg>
+  <msg key="lt_Join_a_class_instance">Inschrijven bij %class_instances_pretty_name% </msg>
   <msg key="lt_Join_a_clubs_pretty_n">Aansluiten bij %clubs_pretty_name% </msg>
   <msg key="lt_Join_the_above_criter">Verenig bovenstaande criteria met</msg>
   <msg key="lt_Join_the_above_criter_1">Verenig bovenstaande criteria met</msg>
-  <msg key="lt_JoinDrop_a_Class_or_C">Beheer Lidmaatschap Klas of Gemeenschap</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">In/Uitschrijven voor een vak of groep</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Aanmelden/Afmelden bij klas of gemeenschap</msg>
   <msg key="lt_Key_a_short_name_no_s">Code (korte naam, geen spaties)</msg>
   <msg key="lt_Last_Visit_Over_in_da">Laatste bezoek meer dan (dagen)</msg>
@@ -315,7 +316,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="lt_You_may_now_choose_to">Nu is er de keuze om</msg>
   <msg key="lt_You_need_to_confirm_t">Bevestig het eerder ingetypte wachtwoord door deze nogmaals in te typen.</msg>
   <msg key="lt_You_tried_to_upload_a">Het bestand dat werd aangeboden is geen afbeelding.</msg>
-  <msg key="lt_Your_Current_Membersh">Huidige Lidmaatschappen</msg>
+  <msg key="lt_Your_Current_Membersh">Ingeschreven voor</msg>
   <msg key="lt_Your_dotLRN_Workspace">dotLRN Werkplek</msg>
   <msg key="lt_Your_password_on_syst">Het wachtwoord bij %system_name% </msg>
   <msg key="lt_Your_passwords_dont_m">De wachtwoorden komen niet overeen! Waarschijnlijk is er een fout gemaakt bij het intypen van een van de wachtwoorden.</msg>
@@ -409,7 +410,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Reject">Weigeren</msg>
   <msg key="reject">weigeren</msg>
   <msg key="Request_Membership">Verzoek Lidmaatschap</msg>
-  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Verzoek Lidmaatschap&quot;&gt; </msg>
+  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Verzoek Lidmaatschap&quot;&gt; </msg>
   <msg key="required">vereist</msg>
   <msg key="Results">Resultaten</msg>
   <msg key="Return_URL">Terugkeer URL </msg>
@@ -474,9 +475,10 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="User_ID">Gebruiker ID:</msg>
   <msg key="User_ID_1">Gebruiker ID</msg>
   <msg key="User_Management">Gebruikersbeheer</msg>
-  <msg key="user_portal_page_calendar_title">Kalender</msg>
-  <msg key="user_portal_page_file_storage_title">Bestanden</msg>
-  <msg key="user_portal_page_home_title">Thuis</msg>
+  <msg key="user_portal_page_calendar_title">Mijn kalender</msg>
+  <msg key="user_portal_page_file_storage_title">Mijn bestanden</msg>
+  <msg key="user_portal_page_home_title">Mijn werkplek
+</msg>
   <msg key="user_portal_pretty_name">Gebruiker</msg>
   <msg key="User_Search">Zoek Gebruiker</msg>
   <msg key="User_Type">Gebruikerstype</msg>

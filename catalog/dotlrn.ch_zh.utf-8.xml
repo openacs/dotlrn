@@ -2,11 +2,34 @@
 <message_catalog package_key="dotlrn" package_version="2.0a3" locale="ch_zh" charset="utf-8">
 
   <msg key="Access">访问</msg>
-  <msg key="Access_Level">访问特权</msg>
-  <msg key="Access_level">访问特权</msg>
-  <msg key="control_panel">控制菜单</msg>
-  <msg key="help">动 帮忙</msg>
+  <msg key="Access_Level">访问级别</msg>
+  <msg key="Access_level">访问级别：</msg>
+  <msg key="Actions">操作</msg>
+  <msg key="Add_users_to">将用户增加到</msg>
+  <msg key="Ask_a_question">联系：</msg>
+  <msg key="Bulk_Upload">成批上传</msg>
+  <msg key="Bulk_Uploading">正在成批上传</msg>
+  <msg key="club_page_people_title">人员列表</msg>
+  <msg key="Community_ID">Community ID</msg>
+  <msg key="Community_member">团体会员</msg>
+  <msg key="community_name_already_in_use">&lt;strong&gt;%community_key%已存在。请返回，选择另外一个名字。</msg>
+  <msg key="Configure_Element">设置对象</msg>
+  <msg key="control_panel">控制面板</msg>
+  <msg key="Customize_Layout">定制版面</msg>
+  <msg key="Delete_Empty">删除空%departments_pretty_name%。</msg>
+  <msg key="dotlrn_admin_rel_pretty_name">管理员.LRN团体会员关系</msg>
+  <msg key="dotlrn_club_description">例如 Alumni</msg>
+  <msg key="edit_subject_properties">编辑%classes_pretty_name%的属性。</msg>
+  <msg key="Full">全部</msg>
+  <msg key="Full_Access">全部访问</msg>
+  <msg key="General_Site_Help">一般帮助</msg>
+  <msg key="has_been_added_to">已加入到</msg>
+  <msg key="help">帮助</msg>
   <msg key="logout">退出</msg>
-  <msg key="user_portal_page_calendar_title">名 历</msg>
-  <msg key="user_portal_page_home_title">桌面 桌上型电脑</msg>
+  <msg key="lt_approve_and_add_to_do">批准加入到dotLRN</msg>
+  <msg key="lt_Current_clubs_pretty_">当前%clubs_pretty_plural%</msg>
+  <msg key="lt_Help_and_Personal_Con">帮助和设置</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">加入/删除组</msg>
+  <msg key="user_portal_page_calendar_title">我的日历</msg>
+  <msg key="user_portal_page_home_title">我的世界</msg>
 </message_catalog>

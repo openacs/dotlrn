@@ -74,7 +74,7 @@
   <msg key="Closed">Chiuso</msg>
   <msg key="club_page_calendar_title">Calendario</msg>
   <msg key="club_page_file_storage_title">Archivio File</msg>
-  <msg key="club_page_home_title">Home Page Comunit&amp;agrave;</msg>
+  <msg key="club_page_home_title">Home Page Comunità</msg>
   <msg key="club_page_people_title">Persone</msg>
   <msg key="clubs_name_header">Nomi delle %clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Comunit&amp;agrave;</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Gruppi di Comunit&amp;agrave; dotLRN</msg>
   <msg key="Drop">Lascia</msg>
   <msg key="Drop_Membership">Ritira l'associazione</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Cancella l'associazione&quot; border=0&gt; </msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Cancella l'associazione&quot; border=0&gt; </msg>
   <msg key="Edit">Modifica</msg>
   <msg key="Edit_a_User">Modifica un utente</msg>
   <msg key="edit_approved_email_servers">Modifica i Server di Posta pre-approvati</msg>
@@ -199,7 +199,7 @@
   <msg key="is_already_in_use">&amp;egrave; gi&amp;agrave; in uso</msg>
   <msg key="Join">Partecipa</msg>
   <msg key="Join_A_Group">Partecipa a un Gruppo</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Partecipa&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Partecipa&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Politica di Partecipazione</msg>
   <msg key="Key">Chiave</msg>
   <msg key="Large">Large</msg>

@@ -166,6 +166,7 @@
   <msg key="Extra_Large">특대의 </msg>
   <msg key="Fields">필드</msg>
   <msg key="First_Line">첫째 줄</msg>
+  <msg key="first_line_of_file_must_be">파일의 첫번째 줄은 반드시 다음과 같은 헤더가 와야 합니다.</msg>
   <msg key="First_Name">이름</msg>
   <msg key="From">로부터</msg>
   <msg key="fuchsia">퓨셔</msg>

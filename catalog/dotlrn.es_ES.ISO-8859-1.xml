@@ -413,6 +413,7 @@
   <msg key="Results">Resultados</msg>
   <msg key="Return_URL">URL donde volver</msg>
   <msg key="revoke">revocar</msg>
+  <msg key="Revoke_site_wide_admin">Revocar privilegios de administración a lo largo del sitio.</msg>
   <msg key="Role">Rol</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Nick:</msg>
