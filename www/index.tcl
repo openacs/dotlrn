@@ -19,6 +19,9 @@ if {[ad_parameter community_level_p] == 1} {
     return
 }
 
+# Select communities this user is part of
+set user_id [ad_get_user_id]
+
 # Select the classes that exist
 db_multirow classes select_classes {}
 

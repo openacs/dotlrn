@@ -35,7 +35,7 @@ update dotlrn_communities set package_id= :package_id where community_id= :commu
 
 <fullquery name="dotlrn_community::list_users.select_users">
 <querytext>
-select rel_id, users.user_id, first_names, last_name, email from users, dotlrn_community_memberships 
+select rel_id, users.user_id, first_names, last_name, email from registered_users users, dotlrn_community_memberships 
 where community_id= :community_id and users.user_id = dotlrn_community_memberships.user_id
 </querytext>
 </fullquery>
@@ -55,9 +55,9 @@ values
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::remove_user.select_rel_id">
+<fullquery name="dotlrn_community::remove_user.select_rel_info">
 <querytext>
-select rel_id from dotlrn_community_memberships where community_id= :community_id and user_id= :user_id
+select rel_id, page_id from dotlrn_community_memberships where community_id= :community_id and user_id= :user_id
 </querytext>
 </fullquery>
 

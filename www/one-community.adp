@@ -1,7 +1,8 @@
 <master src="master">
-<property name="title">dotLRN Community</property>
+<property name="context_bar">@context_bar@</property>
+<property name="title">dotLRN Community: @pretty_name@</property>
 
-<h2>dotLRN Community: @pretty_name@</h2>
-
+You are registered! You may <a href=community-deregister>deregister</a> if you'd like.
+<p>
 
 @rendered_page@

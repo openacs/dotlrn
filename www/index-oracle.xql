@@ -5,7 +5,7 @@
 
 <fullquery name="select_classes">
 <querytext>
-select class_key, package_id from dotlrn_classes, dotlrn_community_types where dotlrn_community_types.community_type=dotlrn_classes.class_key order by class_key
+select class_key, pretty_name, package_id from dotlrn_classes, dotlrn_community_types where dotlrn_community_types.community_type=dotlrn_classes.class_key order by class_key
 </querytext>
 </fullquery>
 

@@ -145,11 +145,14 @@ namespace eval dotlrn_community {
 	    # Callbacks
 	    applets_dispatch $community_id RemoveUser [list $community_id $user_id]
 	    
-	    # Get the relationship ID
-	    set rel_id [db_string select_rel_id {}]
+	    # Get a few important things, like rel_id and portal page_id
+	    db_1row select_rel_info {}
 	    
 	    # Remove the membership
 	    db_dml delete_membership {}
+	    
+	    # Remove the page
+	    portal::delete_portal $page_id
 	    
 	    # Remove it
 	    relation_remove $rel_id
@@ -163,6 +166,15 @@ namespace eval dotlrn_community {
 	Get the page ID for a particular community and user
     } {
 	return [db_string select_page_id {}]
+    }
+
+    ad_proc -public get_all_communities_by_user {
+	user_id
+    } {
+	returns all communities for a user
+    } {
+	set list_of_communities [list]
+	### HACK HERE !!! (ben)
     }
 
     ad_proc -public get_communities_by_user {

@@ -23,6 +23,8 @@ db_1row select_community_info {}
 
 # Check that this user is a member
 if {![dotlrn_community::member_p $community_id $user_id]} {
+    set context_bar [list "Not a member"]
+
     ad_return_template one-community-not-member
     return
 } else {
@@ -30,6 +32,8 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     set page_id [dotlrn_community::get_page_id $community_id $user_id]
 
     set rendered_page [portal::render_portal $page_id]
+
+    set context_bar {View}
 
     ad_return_template
 }

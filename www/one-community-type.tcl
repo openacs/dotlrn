@@ -44,4 +44,6 @@ foreach comm $list_of_active_communities {
     template::multirow append active_communities [lindex $comm 0] [lindex $comm 1] [lindex $comm 2] [lindex $comm 3] [lindex $comm 4]
 }
 
+set context_bar {One Community Type}
+
 ad_return_template
