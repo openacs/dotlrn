@@ -113,8 +113,8 @@ namespace eval dotlrn {
         returns 1 if package is mounted under dotlrn, 0 otherwise
         FIXME: refactor
     } {
-        set package_list [nsv_array get site_nodes "*$package_key*"]
         set dotlrn_ancestor_p 0
+        set package_list [nsv_array get site_nodes "[get_url]/${package_key}*"]
 
         for {set i 1} {$i < [llength $package_list]} {incr i 2} {
             array set package_info [lindex $package_list $i]

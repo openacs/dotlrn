@@ -53,7 +53,7 @@ if {[dotlrn::is_instantiated]} {
     set attachments_package_key [attachments::get_package_key]
     set attachments_mount_point [attachments::get_url]
 
-    if {![dotlrn::is_package_mounted -package_key $attachments_package_key]} {
+    if {![dotlrn::is_package_mounted -package_key $attachments_mount_point]} {
         ns_log notice "dotlrn-init: $attachments_package_key being automounted at [dotlrn::get_url]/$attachments_mount_point"
         dotlrn::mount_package \
             -parent_node_id [dotlrn::get_node_id] \
