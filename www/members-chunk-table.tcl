@@ -19,7 +19,7 @@
 ad_page_contract {
     @author arjun (arjun@openforce.net)
     @author yon (yon@openforce.net)
-    @creation-date Jan 08, 2002
+    @creation-date 2002-01-08
     @version $Id$
 }  -query {
     {parent_user_role:multiple,array,optional}
@@ -34,9 +34,9 @@ set my_user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 set referer [ns_conn url]
 
-set site_wide_admin_p [ad_permission_p \
-    -user_id $my_user_id \
-    [acs_magic_object "security_context_root"] "admin"
+set site_wide_admin_p [permission::permission_p \
+    -object_id [acs_magic_object security_context_root] \
+    -privilege admin \
 ]
 
 if {!$site_wide_admin_p} {
@@ -48,7 +48,7 @@ if {!$site_wide_admin_p} {
 }
 
 if {![exists_and_not_null referer]} {
-    if {[string equal $admin_p "t"] == 1} {
+    if {[string equal $admin_p t] == 1} {
         set referer "one-community-admin"
     } else {
         set referer "one-community"
@@ -59,71 +59,73 @@ if {![exists_and_not_null referer]} {
 set community_members [dotlrn_community::list_users $community_id]
 
 set table_def [list]
-lappend table_def [list \
-    first_names \
-    "First Names" \
-    {upper(first_names) $order} \
-    {<td>[acs_community_member_link -user_id $user_id -label $first_names</td>]}
-]
-lappend table_def [list \
-    last_name \
-    "Last Name" \
-    {upper(last_name) $order} \
-    {<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]}
-]
 
-if {$read_private_data_p || [string equal $my_user_id $user_id]} {
-    lappend table_def [list \
-        email \
-        "Email" \
-        {upper(email) $order, upper(role)} \
-        {<td><a href="mailto:$email">$email</a></td>}
-    ]
-} else {
-    lappend table_def [list \
-        email \
-        "Email" \
-        {upper(email) $order, upper(role)} \
-        {<td>&nbsp;</td>}
-    ]
+lappend table_def {
+    first_names
+    "First Names"
+    {upper(first_names) $order}
+    {<td>[acs_community_member_link -user_id $user_id -label $first_names</td>]}
 }
 
-lappend table_def [list \
-    role \
-    "Role" \
-    {decode(role, 'instructor', 1, 'admin', 2, 'teaching_assistant', 3, 'course_assistant', 4, 'course_admin', 5, 'student', 6, 'member', 7) asc, last_name $order} \
-    "<td><nobr>\[dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type \$rel_type\]</nobr></td>"
-]
+lappend table_def {
+    last_name
+    "Last Name"
+    {upper(last_name) $order}
+    {<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]}
+}
+
+if {$read_private_data_p || [string equal $my_user_id $user_id]} {
+    lappend table_def {
+        email
+        Email
+        {upper(email) $order, upper(role)}
+        {<td><a href="mailto:$email">$email</a></td>}
+    }
+} else {
+    lappend table_def {
+        email
+        Email
+        {upper(email) $order, upper(role)}
+        {<td>&nbsp;</td>}
+    }
+}
+
+lappend table_def {
+    role
+    Role
+    {decode(role,'instructor',1,'admin',2,'teaching_assistant',3,'course_assistant',4,'course_admin',5,'student',6,'member',7) asc, last_name $order} \
+    {<td><nobr>[dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]</nobr></td>}
+}
 
 if {$site_wide_admin_p} {
-    lappend table_def [list \
-        manage \
-        "Actions" \
-        {} \
-        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>&nbsp;| <a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a> </small>\]</td>} \
-    ]
+    lappend table_def {
+        manage
+        Actions
+        {}
+        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> | <a href="[dotlrn::get_url]/admin/user?user_id=$user_id">Manage</a> </small>\]</td>}
+    }
 } elseif {$admin_p} {
-    lappend table_def [list \
-        manage \
-        "Actions" \
-        {} \
-        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> <small>\]} \
-    ]
+    lappend table_def {
+        manage
+        Actions
+        {}
+        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> <small>\]}
+    }
 } else {
-    lappend table_def [list \
-        manage \
-        "Actions" \
-        {} \
+    lappend table_def {
+        manage
+        Actions
+        {}
         {
             [eval {
-                if {$my_user_id == $user_id} {
+                if {$my_user_id == \$user_id} {
                     return "<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a> </small>\]</td>"
                 } else {
                     return "<td>&nbsp;</td>"
                 }
             }]
         }
-    ]
+    }
 }
 
 set sql "
@@ -143,7 +145,7 @@ set sql "
 
 set table [ad_table \
     -Tmissing_text {<blockquote><i>No members</i></blockquote>} \
-    -Textra_vars {referer my_user_id} \
+    -Textra_vars {referer my_user_id community_id rel_type} \
     -Torderby $orderby \
     select_current_members \
     $sql \

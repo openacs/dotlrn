@@ -41,7 +41,7 @@
 
 </multiple>
 
-<if @admin_p@ eq 1>
+<if @admin_p@ eq 1 and @subcomm_p@ eq 0>
   <br>
   <li>
     <form method="get" action="member-add">

@@ -22,7 +22,9 @@
 
 @table@
 
-<if @admin_p@ eq 1>
+<ul>
+
+<if @admin_p@ eq 1 and @subcomm_p@ eq 0>
   <br>
   <li>
     <form method="get" action="member-add">
@@ -31,7 +33,6 @@
     </form>
   </li>
 </if>
-
 <if @site_wide_admin_p@ eq 1>
   <br>
   <li>
