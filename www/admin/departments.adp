@@ -73,7 +73,7 @@
 <else>
     <tr bgcolor="#eeeeee">
       <td align="left" colspan="2">
-        <i>No <%= [parameter::get -parameter clubs_pretty_plural] %></i>
+        <i>No <%= [parameter::get -parameter departments_pretty_plural] %></i>
       </td>
     </tr>
 </else>
