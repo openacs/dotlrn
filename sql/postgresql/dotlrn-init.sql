@@ -367,7 +367,7 @@ begin
 	   ''dotLRN Admin Community Memberships'',
 	   ''dotlrn_member_rel'',
 	   ''dotlrn_admin_rels'',
-	   ''red_id'',
+	   ''rel_id'',
 	   ''dotlrn_admin_rel'',
 	   ''dotlrn_community'',
 	   null,
