@@ -35,6 +35,10 @@ set dotlrn_url [dotlrn::get_url]
 # use my_user_id here so we don't confuse with user_id from the query
 set my_user_id [ad_conn user_id]
 
+set show_drop_button_p [parameter::get_from_package_key \
+			      -package_key dotlrn-portlet \
+			      -parameter AllowMembersDropGroups]
+
 set community_id [dotlrn_community::get_community_id]
 set referer [ns_conn url]
 

@@ -77,9 +77,11 @@
      &nbsp; <a href="deregister?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.Drop_Membership#</a> | <a href="member-add-2?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.User_Admin_Page#</a>
   </if>
   <else> 
-      <if @my_user_id@ eq @current_members.user_id@>
+     <if @show_drop_button_p@ eq 1> 
+       <if @my_user_id@ eq @current_members.user_id@>
 	  <a href="deregister?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.Drop_Membership#</a>
       </if>
+    </if> 
       <else>
 	   &nbsp;
       </else>
