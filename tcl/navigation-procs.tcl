@@ -81,7 +81,11 @@ namespace eval dotlrn {
                 set application_admin_context [list]
             }
     
-            set application_context [list [list $application_url $application_name]]
+            if { ![string equal $node_array(package_key) "dotlrn"] } {
+                set application_context [list [list $application_url $application_name]]
+            } else {
+                set application_context [list]
+            }
     
             if { [llength $application_admin_context] > 0 } {
                 set application_context [concat $application_context $application_admin_context] 
