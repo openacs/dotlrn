@@ -127,8 +127,10 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 
 set orderby [template::list::orderby_clause -name "members" -orderby]
 
+set member_page [acs_community_member_page]
+
 db_multirow -extend { member_url referer } members select_current_members {} {
-    set member_url "[dotlrn::get_url]/community-member?user_id=$user_id"
+    set member_url "$member_page?user_id=$user_id"
     set referer $referer
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
