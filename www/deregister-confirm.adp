@@ -40,7 +40,7 @@
 
 <form method="post" action="deregister">
 <input type=hidden name=referer value="@referer@">
-@hidden_user_ids@
+@hidden_user_ids;noquote@
 <ul>
 <if @num_users@ lt 99>
  <multiple name="users_pending_drop">
@@ -49,20 +49,7 @@
 </if>
 </ul>
 
-<table>
-  <tr>	
-
-    <td halign=right>
-	<input type=submit value="#dotlrn.Yes#">
-	</form>
-    </td>
-    <td>
-	<form method=post action=@referer@>
-	<input type=submit value="#dotlrn.No#">
-	</form>
-    </td>
-  </tr>
-</table>
+<input type="submit" value="#dotlrn.Yes#"></form><form method="post" action="@referer@" style="margin-top: 0px;"><input type=submit value="#dotlrn.No#"></form>
 
 <p>
 #dotlrn.lt_Note_The_script_will_#
