@@ -76,12 +76,13 @@
 <if @classes:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="25%"><%= [parameter::get -parameter departments_pretty_name] %></th>
-    <th align="left" width="25%"><%= [parameter::get -parameter classes_pretty_name] %></th>
+    <th align="left" width="20%"><%= [parameter::get -parameter departments_pretty_name] %></th>
+    <th align="left" width="20%"><%= [parameter::get -parameter classes_pretty_name] %></th>
 <if @term_id@ eq -1>
     <th align="left" width="10%">Term</th>
 </if>
     <th align="left" width="25%"><%= [parameter::get -parameter class_instances_pretty_name] %></th>
+    <th align="left" width="10%">Members</th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="classes">
@@ -92,6 +93,7 @@
     <td>@classes.term_name@ @classes.term_year@</td>
 </if>
     <td><a href="@classes.url@">@classes.pretty_name@</a></td>
+    <td>@classes.n_members@</td>
     <td>[<small> <a href="@classes.url@one-community-admin">Administer</a> </small>]</td>
   </tr>
 </multiple>

@@ -15,7 +15,10 @@
 
     <fullquery name="select_classes">
         <querytext>
-            select dotlrn_class_instances_full.*
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.term_id = :term_id
             order by dotlrn_class_instances_full.department_name,
@@ -29,7 +32,10 @@
 
     <fullquery name="select_classes_by_department">
         <querytext>
-            select dotlrn_class_instances_full.*
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.term_id = :term_id
             and dotlrn_class_instances_full.department_key = :department_key
@@ -44,7 +50,10 @@
 
     <fullquery name="select_all_classes">
         <querytext>
-            select dotlrn_class_instances_full.*
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
             order by dotlrn_class_instances_full.department_name,
                      dotlrn_class_instances_full.department_key,
@@ -57,7 +66,10 @@
 
     <fullquery name="select_all_classes_by_department">
         <querytext>
-            select dotlrn_class_instances_full.*
+            select dotlrn_class_instances_full.*,
+                   (select count(*)
+                    from dotlrn_member_rels_approved
+                    where dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id) as n_members
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.department_key = :department_key
             order by dotlrn_class_instances_full.department_name,

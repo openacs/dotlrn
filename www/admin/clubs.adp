@@ -31,12 +31,14 @@
   <tr>
     <th align="left" width="15%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
     <th align="left" width="50%">Description</th>
+    <th align="left" width="15%">Members</th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="clubs">
   <tr>
     <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
     <td>@clubs.description@</td>
+    <td>@clubs.n_members@</td>
     <td>[<small> <a href="@clubs.url@one-community-admin">Administer</a> </small>]</td>
   </tr>
 </multiple>

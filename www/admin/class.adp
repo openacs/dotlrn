@@ -74,12 +74,14 @@
     <th align="left" width="50%">
       <%= [parameter::get -parameter class_instances_pretty_name] %> Name
     </th>
+    <th align="left" width="15%">Members</th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="class_instances">
   <tr>
     <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
     <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
+    <td>@class_instances.n_members@</td>
     <td>[<small> <a href="@class_instances.url@one-community-admin">Administer</a> </small>]</td>
   </tr>
 </multiple>
