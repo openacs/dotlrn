@@ -59,11 +59,19 @@ ad_page_contract {
 	    ad_complain "[_ dotlrn.Must_specify_recipients]"
 	}
     }
-
+    if_bad_combination {
+	if { ![empty_string_p $rel_types] && ![empty_string_p $recipients] } {
+	    ad_complain "If you select a role, you can't select people at the same time."
+	}
+	if { $spam_all && ( ![empty_string_p $rel_types] || ![empty_string_p $recipients] ) } {
+	    ad_complain "You can't select roles or recipients if you have selected the \"send to everyone\" option"
+	}
+    }
 } -properties {
     context_bar:onevalue
     portal_id:onevalue
 }
+
 
 set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam_]]
 set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
@@ -151,40 +159,40 @@ element create spam_message spam_all \
     -widget hidden \
     -value $spam_all
 
-if {[ns_queryexists "form:confirm"]} {
+if { [ns_queryexists "form:confirm"] } {
     form get_values spam_message \
         community_id from rel_types_str subject message send_date referer recipients_str spam_all format
    
+    set who_will_receive_this_clause ""
+
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
 
-    set recipients_str [join [split $recipients_str] ,]
-    set rel_types_str "'[join [split $rel_types_str] ',']'"
+    if { ![empty_string_p $recipients_str] } {
+	set recipients_str [join [split $recipients_str] ,]
+ 	append who_will_receive_this_clause [db_map recipients_clause]
+    } 
 
 
-# POSTGRES - change to plural
-# TODO - what if no rel_types
-
-    set safe_community_name [db_quote $community_name]
-
-    set extra_where_clause ""
+    if { ![empty_string_p $rel_types_str] } {
+	set rel_types_str "'[join [split $rel_types_str] ',']'"
+ 	append who_will_receive_this_clause [db_map rel_types_clause]
+    }
 
     if { $spam_all } {
 	# if there is a spam_all, choose all the rel_types!
-	# Note - right now, all bulk_mail queiries have the same
+	# Note - right now, all bulk_mail queries have the same
 	# format and use the same base query. 
 	# Another possibility is 
-
 	set rel_types_str "select distinct rel_type from acs_rel_types"
-    } 
+    }     
 
-    if {[empty_string_p $recipients_str]} {
-	set recipients_str ''
-    }
+    # POSTGRES - change to plural
+    # TODO - what if no rel_types
 
+    set safe_community_name [db_quote $community_name]
 
     set query [db_map sender_info]
-
 
     if {$format == "html"} {
 	set message "$message"
