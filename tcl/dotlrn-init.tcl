@@ -29,7 +29,12 @@ ns_log notice "dotlrn-init: starting..."
 # if installed
 if {[dotlrn::is_instantiated]} {
 
-    permission::set_not_inherit -object_id [dotlrn::get_package_id]
+    set package_id [dotlrn::get_package_id]
+
+    # make sure we aren't inheriting permissions from dotlrn's parent object
+    if {[permission::inherit_p -object_id $package_id]} {
+        permission::set_not_inherit -object_id $package_id
+    }
 
     set portal_package_key [portal::package_key]
     set portal_mount_point [portal::automount_point]
@@ -78,10 +83,7 @@ if {[dotlrn::is_instantiated]} {
 
         ns_log notice "dotlrn-init: done with dotlrn_club::init"
 
-        # Grantee
-        set package_id [dotlrn::get_package_id]
         set grantee_id [dotlrn::get_users_rel_segment_id]
-
         permission::grant -party_id $grantee_id -object_id $package_id -privilege read
 
     }
