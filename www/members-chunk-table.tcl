@@ -32,7 +32,7 @@ ad_page_contract {
 # use my_user_id here so we don't confuse with user_id from the query
 set my_user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
-set referer "members"
+set referer [ns_conn url]
 
 set site_wide_admin_p [ad_permission_p \
 	-user_id $my_user_id \
