@@ -1171,6 +1171,14 @@ namespace eval dotlrn_community {
 
                 set url [get_community_url $sc_id]
 
+                # We will use the parent_url in our register link because before the user has
+                # registered they can't read the subgroup, and they can't read the subgroup because
+                # they haven't joined it yet.   The semantics enforced by using the parent group's
+                # url seem right to me: the request processor will kick out any attempt to register
+                # if the user can't read the parent group, while register itself will protect against
+                # illicit registrations if the group is closed.
+                set parent_url [get_community_url $community_id]
+
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
                 if {![member_p $sc_id $user_id] && [not_closed_p -community_id $sc_id]} {
@@ -1180,9 +1188,10 @@ namespace eval dotlrn_community {
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
                           append chunk "Pending Approval"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk "<a href=\"${url}${join_target}?referer=[ad_conn url]\">Request Membership</a>"
+                          append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">>Request Membership</a>\n"
+
                       } else {
-                          append chunk "<a href=\"${url}${join_target}\">Join</a>"
+                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\"><img border=0 valign=\"bottom\" src=\"graphics/join.gif\" alt=\"Join\"></a>\n"
                       }
 
                       append chunk " </small>\]</nobr>\n"
