@@ -33,6 +33,7 @@
 @@ dotlrn-sanitize.sql
 @@ communities-package-drop.sql
 @@ community-memberships-drop.sql
+@@ applets-drop.sql
 @@ communities-drop.sql
 @@ portal-types-drop.sql
 @@ users-drop.sql

@@ -46,39 +46,6 @@ namespace eval dotlrn_applet {
         site_node::new -name applets -parent_id [dotlrn::get_node_id]
     }
 
-    ad_proc -public register {
-        applet_key
-    } {
-        Register an applet.
-    } {
-        nsv_lappend dotlrn applets $applet_key
-    }
-
-    ad_proc -public deregister {
-        applet_key
-    } {
-        Deregister an applet. Not currently threadsafe!
-    } {
-        # If the array hasn't even been created! The Horror!
-        if {![nsv_exists dotlrn applets]} {
-            return
-        }
-
-        # Get the list, remove the element, reset the list
-        set current_list [nsv_get dotlrn applets]
-        set index [lsearch -exact $current_list $applet_key]
-        set new_list [lreplace $current_list $index $index]
-
-        nsv_set dotlrn applets $new_list
-    }
-
-    ad_proc -public list_applets {
-    } {
-        List all registered applets.
-    } {
-        return [nsv_get dotlrn applets]
-    }
-
     ad_proc -public applet_exists_p {
         {-applet_key:required}
     } {
@@ -89,28 +56,19 @@ namespace eval dotlrn_applet {
 
     ad_proc -public add_applet_to_dotlrn {
         {-applet_key:required}
-        {-activate_p t}
+        {-package_key:required}
+        {-active_p t}
     } {
         dotlrn-init.tcl calls AddApplet on all applets using acs_sc directly.
         The add_applet proc in the applet (e.g. dotlrn-calendar) calls this
         proc to tell dotlrn to register and/or activate itself. This _must_
         be able to be run multiple times!
     } {
-
         if {![empty_string_p [get_applet_id_from_key -applet_key $applet_key]]} {
             return
         }
 
-        if {[string equal $activate_p t] == 1} {
-            set status active
-        } else {
-            set status inactive
-        }
-
-        db_transaction {
-            set applet_id [db_nextval acs_object_id_seq]
-            db_dml insert {}
-        }
+        db_dml insert {}
     }
 
     ad_proc -public get_applet_id_from_key {
@@ -135,7 +93,6 @@ namespace eval dotlrn_applet {
             set pretty_name $package_key
         }
 
-        # Find the parent node
         set parent_node_id [site_node::get_node_id -url [get_url]]
 
         set package_id [dotlrn::mount_package \
@@ -149,16 +106,46 @@ namespace eval dotlrn_applet {
         return $package_id
     }
 
+    ad_proc -public get_applet_url {
+        {applet_key:required}
+    } {
+        get the applet's url
+    } {
+    }
+
+    ad_proc -public list_applets {} {
+        list the applet_keys for all dotlrn applets
+    } {
+        return [util_memoize {dotlrn_applet::list_applets_not_cached}]
+    }
+
+    ad_proc -private list_applets_not_cached {} {
+        list the applet_keys for all dotlrn applets
+    } {
+        return [db_list select_dotlrn_applets {}]
+    }
+
     ad_proc -public is_applet_mounted {
-        {-url:required}
+        {-applet_key:required}
     } {
-        is the applet specified mounted at the specified url?
+        is the applet specified mounted
     } {
+        if {[apm_package_id_from_key $package_key]} {
+        }
         if {[nsv_exists site_nodes "[get_url]/$url/"]} {
             return 1
         } else {
             return 0
         }
+    }
+
+    ad_proc -public list_mounted_applets {} {
+        list all applets that are mounted
+    } {
+
+        foreach applet [list_applets] {
+        }
+
     }
 
 }

@@ -26,8 +26,6 @@
 
 @@ communities-tree-drop.sql;
 
-drop table dotlrn_community_applets;
-drop table dotlrn_applets;
 drop view dotlrn_active_comms_not_closed;
 drop view dotlrn_active_communities;
 drop view dotlrn_communities_not_closed;

@@ -117,42 +117,4 @@ as
     where dotlrn_communities.community_id = groups.group_id
     and groups.join_policy <> 'closed';
 
-create table dotlrn_applets (
-    applet_id                   integer
-                                constraint dotlrn_applets_applet_pk
-                                primary key,
-    applet_key                  varchar(100)
-                                constraint dotlrn_applets_applet_key_nn
-                                not null
-                                constraint dotlrn_applets_applet_key_un
-                                unique,
-    status                      char(10)
-                                default 'active'
-                                constraint dotlrn_applets_status_ck
-                                check (status in ('active', 'inactive'))
-                                constraint dotlrn_applets_status_nn
-                                not null
-);
-
-create table dotlrn_community_applets (
-    community_id                constraint dotlrn_ca_community_id_fk
-                                references dotlrn_communities_all (community_id)
-                                constraint dotlrn_ca_community_id_nn
-                                not null,
-    applet_id                   constraint dotlrn_ca_applet_key_fk
-                                references dotlrn_applets (applet_id)
-                                constraint dotlrn_ca_applet_key_nn
-                                not null,
-    -- this is the package_id of the package this applet represents
-    package_id                  integer,
-    active_p                    char(1)
-                                default 't'
-                                constraint dotlrn_ca_active_p_ck
-                                check (active_p in ('t','f'))
-                                constraint dotlrn_ca_active_p_nn
-                                not null,
-    constraint dotlrn_community_applets_pk
-    primary key (community_id, applet_id)
-);
-
 @@ communities-tree-create.sql

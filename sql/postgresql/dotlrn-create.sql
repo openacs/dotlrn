@@ -28,6 +28,7 @@
 \i users-create.sql
 \i portal-types-create.sql
 \i communities-create.sql
+\i applets-create.sql
 \i community-memberships-create.sql
 \i communities-package-create.sql
 \i dotlrn-init.sql

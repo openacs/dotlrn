@@ -390,10 +390,12 @@
     </fullquery>
 
     <fullquery name="dotlrn_community::remove_applet_from_community.delete_applet_from_community">
-      <querytext>
-        delete from dotlrn_community_applets 
-          where community_id= :community_id and applet_id = :applet_id
-      </querytext>
+        <querytext>
+            delete
+            from dotlrn_community_applets 
+            where community_id = :community_id
+            and applet_id = :applet_id
+        </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::clone.update_portal_ids">
@@ -453,7 +455,8 @@
 
     <fullquery name="dotlrn_community::remove_applet.delete_applet_from_community">
         <querytext>
-            delete from dotlrn_community_applets 
+            delete
+            from dotlrn_community_applets 
             where community_id = :community_id
             and applet_id = :applet_id
         </querytext>
@@ -473,11 +476,11 @@
 
     <fullquery name="dotlrn_community::list_applets.select_community_applets">
         <querytext>
-            select applet_key
-            from dotlrn_community_applets dca,
-                 dotlrn_applets da
-            where community_id = :community_id
-            and dca.applet_id = da.applet_id
+            select dotlrn_applets.applet_key
+            from dotlrn_community_applets
+                 dotlrn_applets
+            where dotlrn_community_applets.community_id = :community_id
+            and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
         </querytext>
     </fullquery>
 
@@ -485,32 +488,32 @@
         <querytext>
             select applet_key
             from dotlrn_applets
-            where status = 'active'
+            where active_p = 't'
         </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::list_active_applets.select_community_active_applets">
         <querytext>
-            select applet_key
-            from dotlrn_community_applets dca,
-                 dotlrn_applets da
-            where community_id = :community_id
-            and active_p = 't'
-            and dca.applet_id = da.applet_id
-            and status = 'active'
+            select dotlrn_applets.applet_key
+            from dotlrn_community_applets,
+                 dotlrn_applets
+            where dotlrn_community_applets.community_id = :community_id
+            and dotlrn_community_applets.active_p = 't'
+            and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
+            and dotlrn_applets.active_p = 't'
         </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::applet_active_p.select_active_applet_p">
         <querytext>
             select 1 
-            from dotlrn_community_applets dca,
-                 dotlrn_applets da
-            where community_id = :community_id
-            and da.applet_key = :applet_key
-            and active_p = 't'
-            and dca.applet_id = da.applet_id
-            and status = 'active'
+            from dotlrn_community_applets,
+                 dotlrn_applets
+            where dotlrn_community_applets.community_id = :community_id
+            and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
+            and dotlrn_applets.applet_key = :applet_key
+            and dotlrn_community_applets.active_p = 't'
+            and dotlrn_applets.active_p = 't'
         </querytext>
     </fullquery>
 

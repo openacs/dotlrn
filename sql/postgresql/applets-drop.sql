@@ -15,25 +15,14 @@
 --
 
 --
--- drop the dotLRN model
+-- drop the dotLRN applets model
 --
--- @author dan chak (chak@openforce.net)
--- @creation-date 2001-08-18
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net
+-- @author arjun (arjun@openforce.net)
+-- @creation-date September 20th, 2001 (redone)
 -- @version $Id$
 --
 
-\i user-extension-drop.sql
-\i security-drop.sql
-\i main-portlet-drop.sql
-\i community-memberships-packages-drop.sql
-\i applet-sc-drop.sql
-\i class-membership-drop.sql
-\i classes-drop.sql
-\i clubs-drop.sql
-\i dotlrn-sanitize.sql
-\i communities-package-drop.sql
-\i community-memberships-drop.sql
-\i applets-drop.sql
-\i communities-drop.sql
-\i portal-types-drop.sql
-\i users-drop.sql
+drop table dotlrn_community_applets;
+drop table dotlrn_applets;

@@ -1163,7 +1163,7 @@ namespace eval dotlrn_community {
     } {
         Get the URL for a community type
     } {
-        return [site_node::get_url_from_object_id -object_id [get_community_type_package_id $community_type]]
+        return [lindex [site_node::get_url_from_object_id -object_id [get_community_type_package_id $community_type]] 0]
     }
 
     ad_proc -public get_community_url {
@@ -1171,7 +1171,7 @@ namespace eval dotlrn_community {
     } {
         Get the URL for a community
     } {
-        return [site_node::get_url_from_object_id -object_id [get_package_id $community_id]]
+        return [lindex [site_node::get_url_from_object_id -object_id [get_package_id $community_id]] 0]
     }
 
     ad_proc -public get_community_type_package_id {
@@ -1191,8 +1191,8 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_applet_package_id {
-        community_id
-        applet_key
+        {-community_id:required}
+        {-applet_key:required}
     } {
         get the package ID for a particular community
     } {
