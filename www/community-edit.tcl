@@ -14,8 +14,6 @@
 #  details.
 #
 
-# dotlrn/www/community-edit.tcl
-
 ad_page_contract {
 
     Edit the properties for a community
@@ -31,13 +29,8 @@ ad_page_contract {
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id $community_id
-
-db_1row select_community_info {
-    select pretty_name,
-           description
-    from dotlrn_communities
-    where community_id = :community_id
-}
+set description [dotlrn_community::get_community_description -community_id $community_id]
+set pretty_name [dotlrn_community::get_community_name $community_id]
 
 form create edit_community_info
 
@@ -58,13 +51,14 @@ element create edit_community_info description \
 
 if {[form is_valid edit_community_info]} {
     form get_values edit_community_info pretty_name description
+    
+    dotlrn_community::set_community_name \
+        -community_id $community_id \
+        -pretty_name $pretty_name
 
-    db_dml update_community_info {
-        update dotlrn_communities_all
-        set pretty_name = :pretty_name,
-            description = :description
-        where community_id = :community_id
-    }
+    dotlrn_community::set_community_description \
+        -community_id $community_id \
+        -description $description
 
     ad_returnredirect $referer
     ad_script_abort
@@ -130,29 +124,11 @@ set header_font_color [dotlrn_community::get_attribute \
     -attribute_name header_font_color
 ]
 
-#  set header_img [dotlrn_community::get_attribute \
-#      -community_id $community_id \
-#      -attribute_name header_img
-#  ]
-#  
-#  element create edit_community_header header_img \
-#      -label "Header Icon" \
-#      -widget file \
-#      -optional
-#      
-#  set header_alt_text [dotlrn_community::get_attribute \
-#      -community_id $community_id \
-#      -attribute_name header_alt_text
-#  ]
-#  
-#  element create edit_community_header header_alt_text \
-#      -label "Header Icon 'Alt' text" \
-#      -datatype text \
-#      -widget text \
-#      -html {size 50} \
-#      -value $header_alt_text \
-#      -optional
-
+set header_alt_text [dotlrn_community::get_attribute \
+    -community_id $community_id \
+    -attribute_name header_logo_alt_text
+]
+  
 set title {Edit Properties}
 set context_bar {{one-community-admin Administer} {Edit Properties}}
 

@@ -58,6 +58,17 @@
         <input type="text" name="header_font_color" value="@header_font_color@" size="50" /></td>
       </tr>
 
+      <tr>
+        <td><b>Header Icon</b>&nbsp;&nbsp;</td>
+        <td><input type="file" name="header_img"/></td>
+      </tr>
+
+      <tr>
+        <td><b>Header Icon Alt text</b>&nbsp;&nbsp;</td>
+        <td><input type="text" name="header_alt_text" value="@header_alt_text@" size="50" /></td>
+        
+      </tr>
+
       <tr><td align=center colspan=2>
           <input type="submit" name="preview_button" value="Preview" /></td>
       </tr>

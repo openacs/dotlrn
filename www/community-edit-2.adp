@@ -25,6 +25,7 @@
   <li>Header Font: @header_font_text@
   <li>Header Font Size: @header_font_size_text@
   <li>Header Font Color: @header_font_color_text@
+  <li>Header Icon Alt Text: @header_alt_text@
 </ul>
 
 
@@ -32,7 +33,7 @@ This is what the header will look like:
 
 <hr>
 <div style="@style_fragment@">
-@header_text@
+<img src=community-image?revision_id=@revision_id@ alt="@header_alt_text@" border=0>&nbsp;&nbsp;@header_text@
 </div>
 <hr>
 
