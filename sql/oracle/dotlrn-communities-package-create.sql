@@ -164,13 +164,14 @@ is
         party_id in parties.party_id%TYPE
     ) return char;
 
+    function url (
+        community_id in dotlrn_communities.community_id%TYPE
+    ) return varchar2;
+
     function has_subcomm_p (
         community_id in dotlrn_communities.community_id%TYPE
     ) return char;
 
-    function url (
-        community_id in dotlrn_communities.community_id%TYPE
-    ) return varchar2;
 end dotlrn_community;
 /
 show errors
@@ -325,14 +326,12 @@ as
     is
         v_rv char(1);
     begin
-
-        select decode(count(*), 0, 'f', 't') into v_rv
-        from dual where exists (
-              select 'x'
-              from dotlrn_communities
-              where parent_community_id = community_id
-        );
-
+        select decode(count(*), 0, 'f', 't')
+        into v_rv
+        from dual
+        where exists (select 1
+                      from dotlrn_communities
+                      where parent_community_id = has_subcomm_p.community_id);
         return v_rv;
     end;
 

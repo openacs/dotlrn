@@ -256,7 +256,7 @@ select community_type from dotlrn_communities where community_id=:community_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::has_subcommunity_p.select_subcomm_check">
+<fullquery name="dotlrn_community::has_subcommunity_p_memoized.select_subcomm_check">
 <querytext>
 select 1 from dual where exists (select 1 from dotlrn_communities where parent_community_id = :community_id)
 </querytext>
@@ -265,6 +265,19 @@ select 1 from dual where exists (select 1 from dotlrn_communities where parent_c
 <fullquery name="dotlrn_community::get_subcomm_list.select_subcomms">
 <querytext>
 select community_id as subcomm_id from dotlrn_communities where parent_community_id = :community_id
+</querytext>
+</fullquery>
+
+<fullquery name="dotlrn_community::get_subcomm_chunk_new.select_subcomm_info">
+<querytext>
+      select community_id as sc_id, 
+             acs_permission.permission_p(community_id, :user_id, 'admin') as admin_p, 
+             dotlrn_community.member_p(community_id, :user_id) as member_p,
+             dotlrn_community.has_subcomm_p(community_id) as has_subcomm_p,
+             dotlrn_community.name(community_id) as name,
+             dotlrn_community.url(community_id) as url
+      from dotlrn_communities
+      where parent_community_id = :community_id
 </querytext>
 </fullquery>
 
@@ -296,7 +309,7 @@ select pretty_name from dotlrn_community_types where community_type= :community_
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_name.select_community_name">
+<fullquery name="dotlrn_community::get_community_name_memoized.select_community_name">
 <querytext>
 select pretty_name from dotlrn_communities where community_id= :community_id
 </querytext>
