@@ -187,4 +187,21 @@ namespace eval dotlrn_class {
     } {
         return [dotlrn_term::get_term_year -term_id [get_term_id -class_instance_id $class_instance_id]]
     }
+
+    ad_proc -public can_create {
+    } {
+        can a class be created? essentially, does at least one department
+        exist?
+    } {
+        return [db_string can_create {}]
+    }
+
+    ad_proc -public can_instantiate {
+        {-class_key:required}
+    } {
+        can this class be instantiated?
+    } {
+        return [db_string can_instantiate {}]
+    }
+
 }

@@ -7,12 +7,18 @@
 <p></p>
 
 <if @departments:rowcount@ gt 0>
-<ul>
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
+  <tr>
+    <th align="left" width="30%"><%= [ad_parameter departments_pretty_name] %> Key</th>
+    <th align="left"><%= [ad_parameter departments_pretty_name] %> Name</th>
+  </tr>
 <multiple name="departments">
-  <li><include src="department" department_key="@departments.department_key@" pretty_name="@departments.pretty_name@"></li>
-  <p></p>
+  <tr>
+    <td><a href="one-department?department_key=@departments.department_key@">@departments.department_key@</a></td>
+    <td><a href="one-department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
+  </tr>
 </multiple>
-</ul>
+</table>
 </if>
 
 <if @departments:rowcount@ gt 10>

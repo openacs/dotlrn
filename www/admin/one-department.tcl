@@ -6,12 +6,17 @@ ad_page_contract {
     @creation-date 2001-11-07
     @version $Id$
 } -query {
-    department_key:notnull
+    {department_key ""}
 } -properties {
     pretty_name:onevalue
     external_url:onevalue
     description:onevalue
     classes:multirow
+}
+
+if {[empty_string_p $department_key]} {
+    ad_returnredirect "/dotlrn/admin/classes"
+    ad_script_abort
 }
 
 # Get information about that class

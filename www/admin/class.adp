@@ -1,4 +1,5 @@
 <a href="one-class?class_key=@class_key@">@pretty_name@</a>
+<!--
 <if @can_instantiate@ gt 0>
 [
   <font size="-1">
@@ -21,3 +22,4 @@
 </multiple>
 </blockquote>
 </if>
+-->

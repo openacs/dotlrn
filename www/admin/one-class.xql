@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <queryset>
+
   <fullquery name="select_class_info">
     <querytext>
       select pretty_name,
@@ -11,7 +12,7 @@
     </querytext>
   </fullquery>
 
-  <fullquery name="select_class_instances">
+  <fullquery name="select_all_class_instances">
     <querytext>
       select *
       from dotlrn_class_instances_full dotlrn_class_instances
@@ -19,13 +20,13 @@
     </querytext>
   </fullquery>
 
-  <fullquery name="can_instantiate_class">
+  <fullquery name="select_class_instances">
     <querytext>
-      select count(*)
-      from dotlrn_terms
-      where dotlrn_terms.term_id not in (select dotlrn_class_instances.term_id
-                                         from dotlrn_class_instances
-                                         where dotlrn_class_instances.class_key = :class_key)
+      select *
+      from dotlrn_class_instances_full dotlrn_class_instances
+      where dotlrn_class_instances.class_key = :class_key
+      and dotlrn_class_instances.term_id = :term_id
     </querytext>
   </fullquery>
+
 </queryset>

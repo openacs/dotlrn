@@ -5,7 +5,7 @@ ad_page_contract {
     @creation-date Dec 10, 2001
     @version $Id$
 } -query {
-    {filter "select_current_class_instances"}
+    {term_id -1}
 } -properties {
     class_key:onevalue
     pretty_name:onevalue
@@ -13,8 +13,13 @@ ad_page_contract {
     can_instantiate:onevalue
 }
 
-db_multirow instances $filter {}
+set query "select_class_instances"
+if {$term_id == -1} {
+    set query "select_all_class_instances"
+}
 
-set can_instantiate [db_string can_instantiate_class {}]
+db_multirow instances $query {}
+
+set can_instantiate [dotlrn_class::can_instantiate -class_key $class_key]
 
 ad_return_template

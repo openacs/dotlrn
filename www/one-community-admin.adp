@@ -7,5 +7,4 @@
 <property name="link_control_panel">0</property>
 <property name="show_control_panel">1</property>
 
-
 @rendered_page@

@@ -6,5 +6,4 @@
 <property name="show_control_panel">1</property>
 <property name="portal_id">@portal_id@</property>
 
-
 <include src="members-chunk" referer="members">

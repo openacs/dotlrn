@@ -99,6 +99,7 @@ create or replace view dotlrn_class_instances_full
 as
     select dotlrn_class_instances.class_instance_id,
            dotlrn_class_instances.class_key,
+           dotlrn_class_instances.term_id,
            dotlrn_terms.term_name,
            dotlrn_terms.term_year,
            dotlrn_terms.start_date,
