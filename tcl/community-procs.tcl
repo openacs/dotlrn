@@ -109,7 +109,7 @@ namespace eval dotlrn_community {
 	{ -community_id "" }
     } {
 	if {[empty_string_p $community_type]} {
-	    set community_type [get_community_type_from_community_id $community_id]
+	    set community_type [get_toplevel_community_type_from_community_id $community_id]
 	}
 	
 	if {$community_type == "dotlrn_class"} {

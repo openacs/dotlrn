@@ -75,4 +75,19 @@ namespace eval dotlrn {
 	return $new_package_id
     }
 	
+    ad_proc -public render_page {
+	{-user_id  ""}
+	page_id
+    } {
+	render a page in a user's favorite style
+    } {
+	if {[empty_string_p $user_id]} {
+	    set user_id [ad_conn user_id]
+	}
+
+	set theme_id [db_string select_user_theme_id "select theme_id from dotlrn_users where user_id= :user_id"]
+
+	return [portal::render $page_id $theme_id]
+    }
+
 }

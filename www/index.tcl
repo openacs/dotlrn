@@ -29,7 +29,7 @@ set page_id [db_string select_page_id {} -default ""]
 if {[empty_string_p $page_id]} {
     # do something
 } else {
-    set rendered_page [portal::render $page_id]
+    set rendered_page [dotlrn::render_page $page_id]
 }
 
 

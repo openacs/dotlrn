@@ -13,7 +13,8 @@ set user_id [ad_maybe_redirect_for_registration]
 form create preferences
 
 element create preferences theme_id \
-	-label "Portal Theme" -datatype text -widget select
+	-label "Portal Theme" -datatype text -widget select \
+	-options [concat {{{(don't override)} {}}} [db_list_of_lists select_themes "select name,theme_id from portal_element_themes"]]
 
 if {[form is_valid preferences]} {
     template::form get_values preferences theme_id

@@ -61,8 +61,11 @@ namespace eval dotlrn_main_portlet {
 	# This is not templated. OH NO. I am a horrible, horrible, little man. (ben)
 
 	set return_html "
-	<ul>
-	<li><a href=classes>subscribe to a new class</a>"
+	<ul>"
+
+	if {[dotlrn::user_can_browse_p $user_id]} {
+	    append return_html "<li><a href=classes>subscribe to a new class</a><p>"
+	}
 
 	set communities [dotlrn_community::get_all_communities_by_user $user_id]
 

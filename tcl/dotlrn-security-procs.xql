@@ -10,7 +10,7 @@ select role from dotlrn_users where user_id = :user_id
 
 <fullquery name="dotlrn::user_add.update_user_page_id">
 <querytext>
-update dotlrn_users set page_id= :page_id
+update dotlrn_users set page_id= :page_id where user_id= :user_id
 </querytext>
 </fullquery>
 

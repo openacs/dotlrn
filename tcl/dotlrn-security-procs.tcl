@@ -87,6 +87,15 @@ namespace eval dotlrn {
     } {
 	Check is a user can browse dotLRN
     } {
+	if {[empty_string_p $user_id]} {
+	    set user_id [ad_conn user_id]
+	}
+
+	if {[user_get_role $user_id] == "guest"} {
+	    return 0
+	} else {
+	    return 1
+	}
     }
 
     ad_proc -public require_user_browse {
@@ -94,6 +103,7 @@ namespace eval dotlrn {
     } {
 	Require that a user be able to browse dotLRN
     } {
+
     }
 
     ad_proc -public user_can_read_sensitive_data_p {
@@ -101,6 +111,15 @@ namespace eval dotlrn {
     } {
 	Check if a user can read sensitive data in dotLRN
     } {
+	if {[empty_string_p $user_id]} {
+	    set user_id [ad_conn user_id]
+	}
+
+	if {[user_get_role $user_id] == "guest"} {
+	    return 0
+	} else {
+	    return 1
+	}
     }
 
     ad_proc -public require_user_read_sensitive_data {
