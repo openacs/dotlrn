@@ -308,8 +308,8 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="Class" description="used to display everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="Classes" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1" name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1" name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_wsp_page_names"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
@@ -317,8 +317,9 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="community_admin_first_page_name"  default="Group Admin" description="just that"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"
-            name="DefaultCommunityApplets" default="dotlrn_dotlrn,dotlrn_bboard,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_survey" description="dotLRN applets to add by default to each new community"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityApplets"  default="dotlrn_dotlrn,dotlrn_bboard,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_survey" description="dotLRN applets to add by default to each new community"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="Subgroup" description="what subcomms are called"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="Subgroups" description="the plural"/>
         </parameters>
 
     </version>
