@@ -14,24 +14,23 @@
 --  details.
 --
 
-
 --
 -- The DotLRN basic system
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
 --
--- for Oracle 8/8i. (We're guessing 9i works, too).
+-- @author Ben Adida (ben@openforce.net)
+-- @creation-date 2001-09-25
+-- @version $Id$
 --
--- ben@openforce.net
--- September 25th, 2001
--- we remember September 11th, 2001
+-- @note We remember September 11th, 2001
 --
 
 declare
     foo dotlrn_community_types.community_type%TYPE;
+    bar integer;
 begin
-    -- Create the base community type
-    foo := dotlrn_community_type.new (
+
+    -- create the base community type
+    foo := dotlrn_community_type.new(
         community_type => 'dotlrn_community',
         parent_type => null,
         pretty_name => 'Community',
@@ -39,8 +38,58 @@ begin
         description => 'Communities - the base community type'
     );
 
+    update acs_object_types
+    set table_name = 'dotlrn_community',
+        package_name = 'dotlrn_community'
+    where object_type = 'dotlrn_community';
+
+    -- these are the possible attributes of a community
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'header_font',
+        datatype => 'string',
+        pretty_name => 'Header Font',
+        pretty_plural => 'Header Fonts',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'header_font_size',
+        datatype => 'string',
+        pretty_name => 'Header Font Size',
+        pretty_plural => 'Header Font Sizes',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'header_font_color',
+        datatype => 'string',
+        pretty_name => 'Header Font Color',
+        pretty_plural => 'Header Font Colors',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'header_logo_item_id',
+        datatype => 'integer',
+        pretty_name => 'Header Logo Item ID',
+        pretty_plural => 'Header Logo Item ID',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
     -- create the dotlrn_class community type
-    foo := dotlrn_community_type.new (
+    foo := dotlrn_community_type.new(
         community_type => 'dotlrn_class_instance',
         parent_type => 'dotlrn_community',
         pretty_name => 'Class',
@@ -48,8 +97,13 @@ begin
         description => 'e.g. 6.001'
     );
 
+    update acs_object_types
+    set table_name = 'dotlrn_class_instance',
+        package_name = 'dotlrn_class_instance'
+    where object_type = 'dotlrn_class_instance';
+
     -- create the dotlrn_club community type
-    foo := dotlrn_community_type.new (
+    foo := dotlrn_community_type.new(
         community_type => 'dotlrn_club',
         parent_type => 'dotlrn_community',
         pretty_name => 'Club',
@@ -57,9 +111,14 @@ begin
         description => 'e.g. Alumni'
     );
 
+    update acs_object_types
+    set table_name = 'dotlrn_club',
+        package_name = 'dotlrn_club'
+    where object_type = 'dotlrn_club';
+
     -- create the user_workspace community_type
     -- aks - it's a hack for portal templates
-    foo := dotlrn_community_type.new (
+    foo := dotlrn_community_type.new(
         community_type => 'user_workspace',
         parent_type => 'dotlrn_community',
         pretty_name => 'User Workspace',
@@ -67,31 +126,111 @@ begin
         description => 'dummy type for User Workspace portal templates'
     );
 
-
-    update acs_object_types set table_name = 'dotlrn_community', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
-    update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
-    update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
-
     -- create roles
-    acs_rel_type.create_role ('student', 'Student', 'Students');
-    acs_rel_type.create_role ('course_assistant', 'Course Assistant', 'Course Assistants');
-    acs_rel_type.create_role ('teaching_assistant', 'Teaching Assistant', 'Teaching Assistants');
-    acs_rel_type.create_role ('instructor', 'Professor', 'Professors');
-    acs_rel_type.create_role ('course_admin', 'Course Administrator', 'Course Administrators');
-    acs_rel_type.create_role ('admin', 'Administrator', 'Administrators');
-end;
-/
-show errors
+    acs_rel_type.create_role(
+        role => 'student',
+        pretty_name => 'Student',
+        pretty_plural => 'Students'
+    );
 
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'student_role_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Student Role Pretty Name',
+        pretty_plural => 'Student Role Pretty Names',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
 
---
--- Object Types and Attributes
---
+    acs_rel_type.create_role(
+        role => 'course_assistant',
+        pretty_name => 'Course Assistant',
+        pretty_plural => 'Course Assistants'
+    );
 
-declare
-    foo        integer;
-begin
-    acs_rel_type.create_type (
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'coure_assistant_role_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Course Assistant Role Pretty Name',
+        pretty_plural => 'Course Assistant Role Pretty Names',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    acs_rel_type.create_role(
+        role => 'teaching_assistant',
+        pretty_name => 'Teaching Assistant',
+        pretty_plural => 'Teaching Assistants'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'teaching_assistant_role_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Teaching Assistant Role Pretty Name',
+        pretty_plural => 'Teaching Assistant Role Pretty Names',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    acs_rel_type.create_role(
+        role => 'instructor',
+        pretty_name => 'Professor',
+        pretty_plural => 'Professors'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'instructor_role_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Professor Role Pretty Name',
+        pretty_plural => 'Professor Role Pretty Names',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    acs_rel_type.create_role(
+        role => 'course_admin',
+        pretty_name => 'Course Administrator',
+        pretty_plural => 'Course Administrators'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'course_admin_role_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Course Adminsitrator Role Pretty Name',
+        pretty_plural => 'Course Adminsitrator Role Pretty Names',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    acs_rel_type.create_role(
+        role => 'admin',
+        pretty_name => 'Administrator',
+        pretty_plural => 'Administrators'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'admin_role_pretty_name',
+        datatype => 'string',
+        pretty_name => 'Administrator Role Pretty Name',
+        pretty_plural => 'RAdministrator ole Pretty Names',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    -- create basic rel_types
+    acs_rel_type.create_type(
         rel_type => 'dotlrn_member_rel',
         supertype => 'membership_rel',
         pretty_name => 'dotLRN Community Membership',
@@ -105,7 +244,7 @@ begin
         min_n_rels_two => 0, max_n_rels_two => null
     );
 
-    acs_rel_type.create_type (
+    acs_rel_type.create_type(
         rel_type => 'dotlrn_admin_rel',
         supertype => 'dotlrn_member_rel',
         pretty_name => 'dotLRN Admin Community Membership',
@@ -119,10 +258,8 @@ begin
         min_n_rels_two => 0, max_n_rels_two => null
     );
 
-    --
-    -- and now for the attributes
-    --
-    foo:= acs_attribute.create_attribute (
+    -- all rels to communities must have a portal_id
+    bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_member_rel',
         attribute_name => 'portal_id',
         datatype => 'integer',

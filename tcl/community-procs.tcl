@@ -16,7 +16,7 @@
 
 ad_library {
 
-    Procs to manage DOTLRN Communities
+    Procs to manage dotLRN Communities
 
     @author Ben Adida (ben@openforce.net)
     @author Arjun Sanyal (arjun@openforce.net)
@@ -1746,6 +1746,132 @@ namespace eval dotlrn_community {
         Call a particular applet op
     } {
         acs_sc_call dotlrn_applet $op $list_args $applet_key
+    }
+
+    ad_proc -public get_available_attributes {} {
+        get a list of the attributes that we can get/set for dotLRN communities
+    } {
+        return [util_memoize {dotlrn_community::get_available_attributes_not_cached}]
+    }
+
+    ad_proc -private get_available_attributes_not_cached {} {
+        return [db_list_of_ns_sets select_available_attributes {}]
+    }
+
+    ad_proc -public get_attributes {
+        {-community_id ""}
+    } {
+        get the attributes of a given community
+    } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        return [util_memoize "dotlrn_community::get_attributes_not_cached -community_id $community_id"]
+    }
+
+    ad_proc -private get_attributes_not_cached {
+        {-community_id:required}
+    } {
+        return [db_list_of_ns_sets select_attributes {}]
+    }
+
+    ad_proc -public get_attribute {
+        {-community_id ""}
+        {-attribute_name:required}
+    } {
+        get the value for an attribute of this community
+    } {
+        set attr_value ""
+        foreach pair [get_attributes -community_id $community_id] {
+            if {[string match $attribute_name [ns_set get $pair attribute_name]]} {
+                set attr_value [ns_set get $pair attr_value]
+                break
+            }
+        }
+
+        return $attr_value
+    }
+
+    ad_proc -public set_attributes {
+        {-community_id ""}
+        {-pairs:required}
+    } {
+        set attributes for a certain community
+    } {
+        foreach pair $pairs {
+            set_attribute -community_id $community_id -attribute_name [lindex $pair 0] -attribute_value [lindex $pair 1]
+        }
+    }
+
+    ad_proc -public set_attribute {
+        {-community_id ""}
+        {-attribute_name:required}
+        {-attribute_value:required}
+    } {
+        set an attribute of this community
+    } {
+        # this is serious, we are trying to set an attribute that doesn't
+        # exist
+        set attribute_id [get_attribute_id -attribute_name $attribute_name]
+        if {[empty_string_p $attribute_id]} {
+            error "dotlrn_community::set_attribute: invalid attribute $attribute_name"
+        }
+
+        # we don't accept empty values (essentially, we are making the
+        # acs_attribute_values.attr_value not null, which it is not in the db).
+        if {[empty_string_p $attribute_value]} {
+            return
+        }
+
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        # we assume that if the value of this attribute is null then we must
+        # insert a new row for this attribute, if it's not null then we simply
+        # update it's value. this is not enforced in the database since the
+        # acs_attribute_values.attr_value column does not have a "not null"
+        # constraint but we will enforce it via our api. if someone circumvents
+        # our api then they can die and rot in hell.
+        if {[empty_string_p [get_attribute -community_id $community_id -attribute_name $attribute_name]} {
+            db_dml insert_attribute {}
+        } else {
+            db_dml update_attribute_value {}
+        }
+
+        util_memoize_flush "dotlrn_community::get_attributes_not_cached -community_id $community_id"
+    }
+
+    ad_proc -public get_attribute_id {
+        {-attribute_name:required}
+    } {
+        get the attribute id of an attribute
+    } {
+        set attribute_id ""
+
+        foreach pair [get_available_attributes] {
+            if {[string match $attribute_name [ns_set get $pair attribute_name]]} {
+                set attribute_id [ns_set get $pair attribute_id]
+                break
+            }
+        }
+
+        return $attribute_id
+    }
+
+    ad_proc -public attribute_valid_p {
+        {-attribute_name:required}
+    } {
+        is this a valid attribute for dotlrn communities?
+    } {
+        set valid_p 0
+
+        if {![empty_string_p [get_attribute_id -attribute_name $attribute_name]]} {
+            set valid_p 1
+        }
+
+        return $valid_p
     }
 
 }

@@ -523,4 +523,42 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::get_available_attributes_not_cached.select_available_attributes">
+        <querytext>
+            select attribute_id,
+                   attribute_name
+            from acs_attributes
+            where object_type = 'dotlrn_community'
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::get_attributes_not_cached.select_attributes">
+        <querytext>
+            select acs_attributes.attribute_name,
+                   acs_attribute_values.attr_value
+            from acs_attributes,
+                 acs_attribute_values
+            where acs_attribute_values.object_id = :community_id
+            and acs_attribute_values.attribute_id = acs_attributes.attribute_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_attribute.insert_attribute">
+        <querytext>
+            insert
+            into acs_attribute_values
+            (object_id, attribute_id, attr_value)
+            values
+            (:community_id, :attribute_id, :attribute_value)
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_attribute.update_attribute_value">
+        <querytext>
+            update acs_attribute_values
+            set attr_value = :attribute_value
+            where object_id = :community_id
+        </querytext>
+    </fullquery>
+
 </queryset>
