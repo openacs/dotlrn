@@ -26,15 +26,12 @@
     <td><a href="@communities.url@">@communities.pretty_name@</a></td>
     <td>@communities.role_pretty_name@</td>
     <td>
-      [<small>
+      <small>
 <if @communities.admin_p@ eq 1>
-        <a href="@communities.url@one-community-admin">Administer</a>
-        |
-        <a href="@communities.url@spam?community_id=@communities.community_id@&referer=@referer@">Email Members</a>
-        |
+              <a href="@communities.url@one-community-admin"><img border=0 valign="bottom" src="graphics/admin.gif" alt="Administer"></a> </td>
 </if>
-        <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">
-      </small>]
+<td>        <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@"></td>
+      </small>
     </td>
   </tr>
 </multiple>

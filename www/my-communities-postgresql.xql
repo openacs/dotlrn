@@ -16,7 +16,7 @@
                    '' as role_pretty_name,
                    CASE 
                       WHEN
-                         dotlrn_community__admin_p(dotlrn_communities.community_id, 
+                         dotlrn_community_admin_p(dotlrn_communities.community_id, 
                                                    dotlrn_member_rels_approved.user_id) = 'f'
                       THEN 0
                       ELSE 1
