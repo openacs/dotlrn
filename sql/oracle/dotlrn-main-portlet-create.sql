@@ -20,7 +20,6 @@ begin
   ds_id := portal_datasource.new(
     name             => 'dotlrn-main-portlet',
     description      => 'Displays the list of communities a user belongs to',
-    content	     => 'dotlrn_main_portlet::show',
     configurable_p   => 't'
   );
 
