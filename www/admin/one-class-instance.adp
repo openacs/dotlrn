@@ -18,4 +18,4 @@
 </ul>
 
 <h3>Portal Template</h3>
-<a href=one-instance-portal-template?portal_id=@portal_id@>manage the portal template</a>
+<a href=one-instance-portal-template?portal_id=@portal_template_id@>manage the portal template</a>
