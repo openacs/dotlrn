@@ -5,6 +5,7 @@
 # Distributed under the GNU GPL v2
 #
 # September 28th, 2001
+# ben@openforce.net
 #
 
 ad_library {
