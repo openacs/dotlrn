@@ -102,59 +102,76 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/users-package-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/users-package-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/users-sanitize.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admin-profile-provider-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admin-profile-provider-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admins-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admins-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admins-init.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admins-package-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admins-package-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-admins-sanitize.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-applet-sc-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-classes-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-clubs-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-communities-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-communities-package-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-community-memberships-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-community-memberships-packages-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admin-profile-provider-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admin-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-init.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-package-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-package-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-sanitize.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/applet-sc-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/applet-sc-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/class-membership-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/class-memberships-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/classes-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/classes-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/clubs-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/clubs-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/communities-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/communities-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/communities-package-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/communities-package-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/communities-tree-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/communities-tree-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-packages-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-packages-drop.sql"/>
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-external-profile-provider-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-external-profile-provider-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-externals-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-externals-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-externals-init.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-externals-package-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-externals-package-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-externals-sanitize.sql"/>
+            <file type="data_model_drop" db_type="postgresql" path="sql/postgresql/dotlrn-drop.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-init.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-main-portlet-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-main-portlet-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professor-profile-provider-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professor-profile-provider-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professors-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professors-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professors-init.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professors-package-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professors-package-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-professors-sanitize.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-security-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-student-profile-provider-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-student-profile-provider-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-students-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-students-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-students-init.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-students-package-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-students-package-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-students-sanitize.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-user-extension-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-user-profile-provider-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-user-profile-provider-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-users-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-users-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-users-init.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-users-package-create.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-users-package-drop.sql"/>
-            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-users-sanitize.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-sanitize.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/external-profile-provider-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/external-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/externals-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/externals-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/externals-init.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/externals-package-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/externals-package-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/externals-sanitize.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/main-portlet-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/main-portlet-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/portal-types-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/portal-types-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professor-profile-provider-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professor-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professors-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professors-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professors-init.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professors-package-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professors-package-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/professors-sanitize.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/security-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/security-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/student-profile-provider-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/student-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/students-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/students-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/students-init.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/students-package-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/students-package-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/students-sanitize.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/user-extension-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/user-extension-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/user-profile-provider-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/user-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/users-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/users-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/users-init.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/users-package-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/users-package-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/users-sanitize.sql"/>
             <file type="tcl_procs" path="tcl/applets-procs.tcl"/>
             <file type="query_file" path="tcl/applets-procs.xql"/>
             <file type="tcl_procs" path="tcl/class-applets-procs.tcl"/>
@@ -308,8 +325,12 @@
             <file type="query_file" db_type="oracle" path="www/communities-chunk-oracle.xql"/>
             <file type="content_page" path="www/communities-chunk.adp"/>
             <file type="content_page" path="www/communities-chunk.tcl"/>
+            <file type="content_page" path="www/community-edit-2.adp"/>
+            <file type="content_page" path="www/community-edit-2.tcl"/>
+            <file type="content_page" path="www/community-edit-revert.tcl"/>
             <file type="content_page" path="www/community-edit.adp"/>
             <file type="content_page" path="www/community-edit.tcl"/>
+            <file type="content_page" path="www/community-image.vuh"/>
             <file type="content_page" path="www/community-member.adp"/>
             <file type="content_page" path="www/community-member.tcl"/>
             <file type="content_page" path="www/community-type.adp"/>
@@ -419,39 +440,39 @@
             <file type="content_page" path="www/user-add.tcl"/>
         </files>
         <parameters>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="Subject" description="used to display everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="Subjects" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="Class" description="used to display everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="Classes" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus" description="dotLRN applets to add by default to each new community"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="Subgroup" description="what subcomms are called"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="Subgroups" description="the plural"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="Class Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column" description="cvs list of the page_name/layout to create"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="Community Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column;People,Simple 1-Column" description="same"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="Subgroup Home,Simple 2-Column;Subgroup Info,Simple 1-Column;Calendar,Simple 1-Column;Files,Simple 1-Column" description="default page names and layouts for subcomms"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="Not-A-Member" description="The name of the not a member page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="Contol Panel" description="The name of the admin page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_fs,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="Site Wide Administration" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="User" description="the pretty name for the user portal"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="Classes" description="the nice name for the class instance portal template"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="Classes" description="the nice name for the class instance portal template"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="User" description="the pretty name for the user portal"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="0" description="show or hide all portrait related stuff?"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="Site Wide Administration" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_fs,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="Contol Panel" description="The name of the admin page"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="Not-A-Member" description="The name of the not a member page"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="Subgroup Home,Simple 2-Column;Subgroup Info,Simple 1-Column;Calendar,Simple 1-Column;Files,Simple 1-Column" description="default page names and layouts for subcomms"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="Community Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column;People,Simple 1-Column" description="same"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="Class Home,Simple 2-Column;Calendar,Simple 1-Column;File Storage,Simple 1-Column" description="cvs list of the page_name/layout to create"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="Subgroups" description="the plural"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="Subgroup" description="what subcomms are called"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus" description="dotLRN applets to add by default to each new community"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Communities" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Community" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="Classes" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="Class" description="used to display everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="Subjects" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="Subject" description="used to display everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
         </parameters>
 
     </version>
