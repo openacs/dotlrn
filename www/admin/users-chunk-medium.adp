@@ -1,3 +1,3 @@
 <p>@control_bar@</p>
 
-<include src="users-chunk" &users="users">
+<include src="users-chunk" type=@type@ &users="users">

@@ -19,7 +19,14 @@
 %>
 
         <tr bgcolor="@bgcolor@">
-          <td><a href="user-edit?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)</td>
+          <td>
+            <if @type@ eq "pending">
+              <a href="user-new-2?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+            </if>
+            <else>
+              <a href="user-edit?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+            </else>
+          </td>
           <td align="center"><if @users.limited_access_p@ eq t>limited</if><else>full</else></td>
           <td align="center"><if @users.read_private_data_p@ eq t>yes</if><else>no</else></td>
           <td align="center">

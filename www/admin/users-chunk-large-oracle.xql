@@ -28,12 +28,12 @@
 
     <fullquery name="select_non_dotlrn_users">
       <querytext>
-        select persons.person_id,
+        select persons.person_id as user_id,
                persons.first_names,
                persons.last_name,
                parties.email,
-               't',
-               'f',
+               't' as limited_access_p,
+               'f' as read_private_data_p,
                acs_permission.permission_p(:root_object_id, persons.person_id, 'admin') as site_wide_admin_p
         from persons,
              parties
