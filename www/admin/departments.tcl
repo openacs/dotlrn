@@ -29,6 +29,8 @@ ad_page_contract {
 
 set title [dotlrn::parameter departments_pretty_plural]
 set context_bar [dotlrn::parameter departments_pretty_plural]
+set referer departments
+set can_create [dotlrn_class::can_create]
 
 db_multirow departments select_departments {}
 
