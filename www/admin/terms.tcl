@@ -28,7 +28,10 @@ ad_page_contract {
 
 set context_bar "[_ dotlrn.Terms]"
 
-db_multirow terms select_terms {}
+db_multirow -extend { start_date_pretty end_date_pretty } terms select_terms {} {
+    set start_date_pretty [lc_time_fmt $start_date_ansi "%q"]
+    set end_date_pretty [lc_time_fmt $end_date_ansi "%q"]
+}
 
 ad_return_template
 

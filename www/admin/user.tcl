@@ -51,9 +51,9 @@ if {![db_0or1row select_user_info {}]} {
 if {[empty_string_p $screen_name]} {
     set screen_name "&lt;[_ dotlrn.none_set_up]&gt;"
 }
-set registration_date [util_AnsiDatetoPrettyDate $registration_date] 
+set registration_date [lc_time_fmt $registration_date "%q"]
 if {![empty_string_p $last_visit]} {
-    set last_visit [util_AnsiDatetoPrettyDate $last_visit]
+    set last_visit [lc_time_fmt $last_visit "%q"]
 }
 
 set dotlrn_package_id [dotlrn::get_package_id]

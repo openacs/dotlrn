@@ -117,7 +117,7 @@ set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
 
 set context_bar [ad_context_bar_ws_or_index "[_ dotlrn.Community_member]"]
 set system_name [ad_system_name]
-set pretty_creation_date [util_AnsiDatetoPrettyDate $creation_date]
+set pretty_creation_date [lc_time_fmt $creation_date "%q"]
 set login_export_vars "return_url=[ns_urlencode [acs_community_member_url -user_id $user_id]]"
 
 ad_return_template
