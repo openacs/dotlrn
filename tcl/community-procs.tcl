@@ -376,10 +376,12 @@ namespace eval dotlrn_community {
     ad_proc -private get_default_roles_not_cached {
         {-community_type:required}
     } {
-        if {[string match $community_type dotlrn_club]} {
-            set community_type dotlrn_community
-        } elseif {![string match $community_type dotlrn_community]} {
+        set toplevel_community_type [get_toplevel_community_type -community_type $community_type]
+
+        if {[string match $toplevel_community_type dotlrn_class_instance]} {
             set community_type dotlrn_class_instance
+        } else {
+            set community_type dotlrn_community
         }
 
         return [db_list_of_lists select_role_data {}]
