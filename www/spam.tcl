@@ -135,7 +135,7 @@ if {[ns_queryexists "form:confirm"]} {
     "
 
     bulk_mail::new \
-        -package_id [site_nodes::get_child_package_id -package_key [bulk_mail::package_key]] \
+        -package_id [site_node_apm_integration::get_child_package_id -package_key [bulk_mail::package_key]] \
         -send_date [template::util::date::get_property linear_date $send_date] \
         -date_format "YYYY MM DD HH24 MI SS" \
         -from_addr $from \
