@@ -63,7 +63,7 @@ create table dotlrn_terms (
                                 constraint dotlrn_t_start_date_nn
                                 not null,
     end_date                    date
-                                default (now() + '180 days'::timespan)
+                                default (now() + '180 days'::interval)
                                 constraint dotlrn_t_end_date_nn
                                 not null
 );
@@ -161,7 +161,7 @@ select define_function_args ('dotlrn_department__new','department_key,pretty_nam
 select define_function_args ('dotlrn_department__delete', 'department_key');
 
 
-create function dotlrn_department__new(varchar,varchar,varchar,varchar,integer,timestamp,integer,varchar,integer)
+create function dotlrn_department__new(varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
 returns varchar as '
 DECLARE
         p_department_key                    alias for $1;
@@ -217,7 +217,7 @@ select define_function_args('dotlrn_class__new','class_key,department_key,pretty
 select define_function_args('dotlrn_class__delete','class_key');
 
 
-create function dotlrn_class__new(varchar,varchar,varchar,varchar,varchar,integer,timestamp,integer,varchar,integer)
+create function dotlrn_class__new(varchar,varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
 returns varchar as '
 DECLARE
         p_class_key                     alias for $1;
@@ -275,7 +275,7 @@ select define_function_args('dotlrn_class_instance__new','class_instance_id,clas
 select define_function_args('dotlrn_class_instance__delete','class_instance_id');
 
 
-create function dotlrn_class_instance__new(integer,varchar,integer,varchar,varchar,varchar,integer,integer,integer,varchar,timestamp,integer,varchar,integer)
+create function dotlrn_class_instance__new(integer,varchar,integer,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
 returns integer as '
 DECLARE
         p_class_instance_id                        alias for $1;

@@ -38,13 +38,21 @@ set admin_email [db_string select_admin_email {
 doc_body_append "Bulk Uploading....<p>"
 
 set list_of_user_ids [list]
+set list_of_addresses_and_passwords [list]
 
 # Do the stuff
 # We can't do this too generically, so we'll just do the CSV stuff right here
 db_transaction {
-    set fail_p 0
 
     oacs_util::csv_foreach -file $file_location -array_name row {
+
+        # First make sure the required data is there
+
+        if { ![info exists $row(email)] || ![info exists $row(first_names)] || ![info exists $row(last_name)] } {
+            doc_body_append "<br>Datafile must include at least the email, first_names and last_name fields<br>"
+            db_abort_transaction
+        }
+
         # We need to insert the ACS user
         set password [ad_generate_random_string]
 
@@ -69,7 +77,13 @@ db_transaction {
             if {![info exists row(guest)]} {
                 set row(guest) f
             }
+
+            if {![info exists row(id)]} {
+                set row(id) $row(email)
+            }
             
+            doc_body_append "Creating ser $row(email)...."
+
             # Now we make them a dotLRN user
             switch -exact $row(access_level) {
                 limited {
@@ -90,26 +104,37 @@ db_transaction {
             # Set the privacy
             acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
             
-            doc_body_append "User $row(email) created...."
-            set message "
-            You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
-            
-            Login: $row(email)
-            Password: $password
-            "
-            
-            # Send note to new user
-            if [catch {ns_sendmail "$row(email)" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
-                doc_body_append "emailing this user failed!"
-                set fail_p 1
-            } else {
-                doc_body_append "email sent"
-            }
+            doc_body_append "creation succeeded...."
+            lappend list_of_addresses_and_passwords $row(email) $password
         }
 
         doc_body_append "<br>"
         
     }
+} on_error {
+    doc_body_append "<p>The database choked while trying to create the last user in the list above!<br>  The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.<p>"
+    ad_script_abort
+}
+
+set fail_p 0
+
+doc_body_append "<p>Sending email notifications to users...<p>"
+
+foreach {email password} $list_of_addresses_and_passwords {
+    set message "
+You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl].
+            
+Login: $row(email)
+Password: $password
+"
+    # Send note to new user
+    if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter SystemUrl]" "$message"} errmsg] {
+        doc_body_append "emailing \"$email\" failed!<br>"
+        set fail_p 1
+    } else {
+        doc_body_append "email sent to \"$email\"<br>"
+    }
+
 }
 
 if {$fail_p} {

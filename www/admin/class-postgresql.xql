@@ -8,8 +8,8 @@
     select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,
            dotlrn_terms.term_id
     from dotlrn_terms
-    where dotlrn_terms.end_date > (now() - 360)
-    and dotlrn_terms.start_date < (now() + 360)
+    where dotlrn_terms.end_date > (cast(current_timestamp as date) - 360)
+      and dotlrn_terms.start_date < (cast(current_timestamp as date) + 360)
     order by dotlrn_terms.start_date,
              dotlrn_terms.end_date
         </querytext>

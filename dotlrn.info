@@ -402,8 +402,6 @@
             <file type="content_page" path="www/dotlrn-main-portlet.tcl"/>
             <file type="content_page" path="www/dotlrn-master.adp"/>
             <file type="content_page" path="www/dotlrn-master.tcl"/>
-            <file type="content_page" path="www/folder-chunk.adp"/>
-            <file type="content_page" path="www/folder-chunk.tcl"/>
             <file type="content_page" path="www/graphics/admin.gif"/>
             <file type="content_page" path="www/graphics/dash.gif"/>
             <file type="content_page" path="www/graphics/dotlrn.gif"/>
