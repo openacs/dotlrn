@@ -18,8 +18,6 @@ declare
   ds_id portal_datasources.datasource_id%TYPE;
 begin
   ds_id := portal_datasource.new(
-    data_type        => 'tcl_proc',
-    mime_type        => 'text/html',
     name             => 'dotlrn-main-portlet',
     description      => 'Displays the list of communities a user belongs to',
     content	     => 'dotlrn_main_portlet::show',
