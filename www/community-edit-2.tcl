@@ -28,20 +28,21 @@ ad_page_contract {
     {header_alt_text ""}
 }
 
-
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
+
 dotlrn::require_user_admin_community -user_id $user_id $community_id
+
 set page_title Preview
 
-#   
+#
 #   # check the img if given
 #   set n_bytes [file size ${header_img.tmpfile}]
 #   set max_bytes [ad_parameter "MaximumFileSize"]
 #   if { $n_bytes > $max_bytes } {
 #       ad_complain "Your file is larger than the maximum file size allowed on this system ([util_commify_number $max_bytes] bytes)"
 #   }
-#   
+#
 #   # get the public folder for this comm
 #   set fs_package_id [dotlrn_community::get_applet_package_id $community_id [dotlrn_fs::applet_key]]
 #   set comm_root_folder_id [fs::get_root_folder -package_id $fs_package_id]
@@ -54,7 +55,7 @@ set page_title Preview
 #   if ![regexp {[^//\\]+$} $header_img filename] {
 #       set filename $header_img
 #   }
-#   
+#
 #   # ungraciously shove this file into the public folder
 #   # copied from file-storage/www/file-add-2.tcl
 #   db_transaction {
@@ -67,9 +68,9 @@ set page_title Preview
 #                       creation_ip => :creation_ip,
 #                       indb_p => 't'
 #                       );
-#       
+#
 #       end;"]
-#       
+#
 #       set version_id [db_exec_plsql new_version "
 #       begin
 #               :1 := file_storage.new_version (
@@ -81,35 +82,35 @@ set page_title Preview
 #                       creation_ip => :creation_ip
 #                       );
 #       end;"]
-#       
+#
 #       db_dml lob_content "
 #       update cr_revisions
 #       set    content = empty_lob()
 #       where  revision_id = :version_id
 #       returning content into :1" -blob_files [list ${header_img.tmpfile}]
-#       
+#
 #       db_dml lob_size "
 #       update cr_revisions
-#       set content_length = dbms_lob.getlength(content) 
+#       set content_length = dbms_lob.getlength(content)
 #       where revision_id = :version_id"
-#   }    
+#   }
 #   # end copied stuff
-#   
+#
 
-set header_text [dotlrn_community::get_community_header_name $community_id] 
+set header_text [dotlrn_community::get_community_header_name $community_id]
 
 if {[empty_string_p $header_font]} {
     set header_font_text "sans-serif (None chosen)"
+    set header_font_fragment ""
 } else {
     set header_font_text $header_font
     # CSS requies quoting of font names with spaces
     set header_font "'$header_font'"
     set header_font_fragment "$header_font, "
 }
-set style_fragment "font-family: $header_font_fragment Verdana, Arial, Helvetica, sans-serif;"
 
 set header_font_size_text $header_font_size
-append style_fragment "font-size: $header_font_size;"
+set style_fragment "font-family: $header_font_fragment Verdana, Arial, Helvetica, sans-serif; font-size: $header_font_size;"
 
 if {[empty_string_p $header_font_color]} {
     set header_font_color_text "Black (None chosen)"
@@ -117,6 +118,7 @@ if {[empty_string_p $header_font_color]} {
 } else {
     set header_font_color_text $header_font_color
 }
+
 append style_fragment " " "color: $header_font_color;"
 
 form create header_form
@@ -142,7 +144,7 @@ element create header_form header_font \
 element create header_form header_font_size \
     -datatype text \
     -widget hidden \
-    -value $header_font_size 
+    -value $header_font_size
 
 element create header_form header_font_color \
     -datatype text \
@@ -161,16 +163,18 @@ if {[form is_valid header_form]} {
         dotlrn_community::set_attributes \
             -community_id $community_id \
             -pairs [list \
-                        [list header_font $header_font] \
-                        [list header_font_size $header_font_size] \
-                        [list header_font_color $header_font_color] \
-                    ]
-        
+                [list header_font $header_font] \
+                [list header_font_size $header_font_size] \
+                [list header_font_color $header_font_color] \
+            ]
+
         ad_returnredirect "one-community-admin"
     } else {
         ad_returnredirect "community-edit"
     }
-    
+
     ad_script_abort
+
 }
+
 ad_return_template
