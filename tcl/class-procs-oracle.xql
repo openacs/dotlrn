@@ -32,7 +32,8 @@ begin
 	community_key => :short_name,
 	pretty_name => :class_name,
 	description => :description,
-	page_id => :page_id
+	page_id => :page_id,
+	creation_user => :user_id
 );
 
 end;
