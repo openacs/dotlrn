@@ -18,17 +18,23 @@ ad_library {
 # We check to see if dotLRN has been installed, and if so, if permissions
 # have been granted
 
+ns_log notice "aks: dotlrn-init: starting"
+
 # if installed
 if {[dotlrn::is_instantiated]} {
+    ns_log notice "aks: dotlrn-init: got here 1"
 
     if {![dotlrn::is_initialized]} { dotlrn::init }
+
+    ns_log notice "aks: dotlrn-init: got here 2"
+
     if {![dotlrn_class::is_initialized]} { dotlrn_class::init }
+
+    ns_log notice "aks: dotlrn-init: got here 3"
+
     if {![dotlrn_club::is_initialized]} { dotlrn_club::init }
 
-    set portal_package_key "new-portal"
-    if {![dotlrn::is_instantiated_here -url [portal::automount_point] -package_key $portal_package_key]} {
-        dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
-    }
+    ns_log notice "aks: dotlrn-init: got here 4"
 
     # Grantee
     set grantee_id [dotlrn::get_full_users_rel_segment_id]
@@ -51,6 +57,16 @@ if {[dotlrn::is_instantiated]} {
         # Callback on all applets
         dotlrn_community::applet_call $applet "AddApplet" [list]
     }
+
+    set portal_package_key "new-portal"
+    if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
+        ns_log notice "aks: dotlrn-init: new-portal being automounted"
+
+        dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
+    } else {
+        ns_log notice "aks: dotlrn-init: new-portal NOT being automounted"
+    }
+
 }
 
 # Make sure that privacy is turned on

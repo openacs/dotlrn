@@ -17,7 +17,7 @@ if {![dotlrn_community::admin_access_p $community_id]} {
 }
 
 # Add the applet
-dotlrn_community::add_applet $community_id $applet_key
+dotlrn_community::add_applet_to_community $community_id $applet_key
 
 # Get back to where you once belonged
 ns_returnredirect community-applets?community_id=$community_id

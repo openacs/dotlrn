@@ -414,10 +414,14 @@ namespace eval dotlrn_community {
 
             # Set up the relationship
             set rel_id [relation_add -extra_vars $extra_vars $rel_type $community_id $user_id]
-
-            # do the callbacks
-            applets_dispatch $community_id AddUserToCommunity [list $community_id $user_id]
         }
+
+        # do the callbacks, can't be in the transaction since the portal_id must exist
+        applets_dispatch -community_id $community_id \
+                -op AddUserToCommunity \
+                -list_args [list $community_id $user_id]
+        
+
     }
 
     ad_proc -public remove_user {
@@ -428,7 +432,10 @@ namespace eval dotlrn_community {
     } {
         db_transaction {
             # Callbacks
-            applets_dispatch $community_id RemoveUser [list $community_id $user_id]
+            applets_dispatch \
+                    -community_id $community_id \
+                    -op RemoveUser \
+                    -list_args [list $community_id $user_id]
 
             # Get a few important things, like rel_id and portal portal_id
             db_1row select_rel_info {}
@@ -592,18 +599,64 @@ namespace eval dotlrn_community {
         return [db_string select_portal_template_id {} -default ""]
     }
 
-    ad_proc -public add_applet {
+    ad_proc -public add_applet_to_dotlrn {
+        {-applet_key:required}
+        {-activate_p "t"}
+    } {
+        dotlrn-init.tcl calls AddApplet on all applets using acs_sc directly.
+        The add_applet proc in the applet (e.g. dotlrn-calendar) calls this
+        proc to tell dotlrn to register and/or activate itself. This _must_
+        be able to be run multiple times!
+    } {
+
+        if {![empty_string_p [get_applet_id_from_key -applet_key $applet_key]]} { 
+            # there's already a dotlrn applet registered with this key, abort
+            return
+        }
+
+        if {$activate_p == "t"} {
+            set status "active"
+        } else {
+            set status "inactive"
+        }
+
+        ns_log notice "aks debug add_applet_to_dotlrn called with $applet_key"
+
+        db_transaction {
+            set applet_id [db_nextval acs_object_id_seq]
+            db_dml insert {}
+        }
+    }
+
+    ad_proc -public get_applet_id_from_key {
+        {-applet_key:required}
+    } {
+        get the id of the dotlrn applet from the applet key or the null
+        string if the key dosent exist
+    } {
+        return [db_string select {} -default ""]
+    }
+
+
+    ad_proc -public add_applet_to_community {
         community_id
         applet_key
     } {
         Adds an applet to the community
     } {
+
+        ns_log notice "aks debug add_applet_to_comm called with $applet_key"
+
         db_transaction {
             # Callback
             set package_id [applet_call $applet_key AddAppletToCommunity [list $community_id]]
 
+            set applet_id [get_applet_id_from_key -applet_key $applet_key]
+            # auto activate for now
+            set active_p "t"
+
             # Insert in the DB
-            db_dml insert_applet {}            
+            db_dml insert {}            
 
             # Go through current users and make sure they are added!
             foreach user [list_users $community_id] {
@@ -614,6 +667,7 @@ namespace eval dotlrn_community {
             }
         }
     }
+
 
     ad_proc -public remove_applet {
         community_id
@@ -642,9 +696,9 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public list_applets {
-        {community_id ""}
+        {-community_id ""}
     } {
-        Lists the applets associated with a community
+        Lists the applets associated with a community or all the dotlrn applets
     } {
         if {[empty_string_p $community_id]} {
             # List all applets
@@ -655,14 +709,39 @@ namespace eval dotlrn_community {
         }
     }
 
+    ad_proc -public list_active_applets {
+        {-community_id ""}
+    } {
+        Lists the applets associated with a community or only the active dotlrn
+        applets
+    } {
+
+        ns_log notice "aks debug list_active_applets called with comm_id = $community_id"
+
+        if {[empty_string_p $community_id]} {
+            # List all applets
+            return [db_list select_all_active_applets {}]
+        } else {
+            # List from the DB
+            return [db_list select_community_active_applets {}]
+        }
+    }
+
     ad_proc -public applets_dispatch {
-        community_id
-        op
-        list_args
+        {-community_id ""}
+        {-op:required}
+        {-list_args {}}
     } {
-        Dispatch an operation to every applet
+        Dispatch an operation to every applet, either in one communtiy or
+        on all the active dotlrn applets
     } {
-        foreach applet [list_applets $community_id] {
+        
+        ns_log notice "aks 20 debug applets_dispatch called with comm_id = $community_id, op $op, 
+        list args $list_args length is [llength $list_args]"
+
+        set list_of_applets [list_active_applets -community_id $community_id]
+
+        foreach applet $list_of_applets {
             # Callback on applet
             applet_call $applet $op $list_args
         }
@@ -678,3 +757,4 @@ namespace eval dotlrn_community {
         acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
 }
+

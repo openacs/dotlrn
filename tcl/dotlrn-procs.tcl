@@ -62,6 +62,9 @@ namespace eval dotlrn {
     } {
         returns 1 if dotlrn is instantiaed under the url specified, 0
         otherwise
+        
+        XXX - aks -  I think there a bug in here somewhere - use the 
+        procs in  site_nodes:: instead. Thanks.
     } {
         set result 0
 
