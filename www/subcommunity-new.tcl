@@ -34,6 +34,13 @@ element create add_subcomm join_policy \
     -widget select \
     -options {{Closed closed} {"Needs Approval" "needs approval"} {Open open}}
 
+element create add_subcomm add_users_now \
+    -label "Add members now? FIXME" \
+    -datatype text \
+    -widget radio \
+    -options {{Yes 1} {No 0}} \
+    -value 0
+
 element create add_subcomm referer \
     -label "Referer" \
     -datatype text \
@@ -41,7 +48,8 @@ element create add_subcomm referer \
     -value $referer
 
 if {[form is_valid add_subcomm]} {
-    form get_values add_subcomm pretty_name join_policy referer description
+    form get_values add_subcomm  \
+            pretty_name description join_policy add_users_now referer
 
     # we set some extra vars based on the community_type of the parent
     set parent_type  \
@@ -95,7 +103,12 @@ if {[form is_valid add_subcomm]} {
         }
     }
 
-    ad_returnredirect $referer
+    if {$add_users_now} {
+        ad_returnredirect "users-add-to-community?foobar"
+    } else {
+        ad_returnredirect $referer
+    }
+
     ad_script_abort
 }
 
