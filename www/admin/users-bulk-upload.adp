@@ -99,7 +99,7 @@
   <INPUT TYPE=file name=users_csv_file>
   <br>
   <br>
-  <INPUT TYPE=submit value=#dotlrn.upload#>
+  <INPUT TYPE=submit value="#dotlrn.upload#">
   </FORM>
 </div>
 
