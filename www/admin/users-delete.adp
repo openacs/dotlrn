@@ -23,7 +23,7 @@
 <property name="context_bar">@context_bar@</property>
 
 <p>
-  #dotlrn.lt_Are_you_sure_you_want#
+  #dotlrn.lt_Are_you_sure_you_want_nuke_users#
 </p>
 
 <formtemplate id="confirm_delete"></formtemplate>

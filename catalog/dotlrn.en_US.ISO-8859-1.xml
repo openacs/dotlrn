@@ -295,6 +295,7 @@ a CSV file to import here.</msg>
   <msg key="lt_Key_a_short_name_no_s">Key (a short name, no spaces)</msg>
   <msg key="lt_Last_Visit_Over_in_da">Last Visit Over (in days)</msg>
   <msg key="lt_Last_Visit_Within_in_">Last Visit Within (in days)</msg>
+  <msg key="lt_Last_Visit_None_">User has not visited yet</msg>
   <msg key="lt_Make_this_user_a_site">Make this user a site wide admin.</msg>
   <msg key="lt_Manage_this_users_por">Manage this user's portrait</msg>
   <msg key="lt_No_I_dont_want_to_arc">No, I don't want to archive this group.</msg>
@@ -311,6 +312,7 @@ once they have been uploaded.</msg>
 make an attempt.  If we succeed, you'll be redirected to where you
 were.  If there is an error and we are unable to complete the removal,
 we'll return an error message.</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>
   <msg key="lt_Please_follow_the_fol">Please follow the following link to reset your password:
 
 %change_password_url%
@@ -364,7 +366,7 @@ will send the new user's password to the given email address.</msg>
   <msg key="lt_Well_we_tried_to_nuke">Well, we tried to nuke the user, but there was an error.  The most
 likely case is that a reference to this user (user_id=%user_id%)
 exists somewhere in the database schema.  It's time to call your
-programmers!</msg>
+programmers! The actual error returned was:</msg>
   <msg key="lt_You_are_about_to_dele">You are about to delete %num_users% users.</msg>
   <msg key="lt_You_are_adding_strong">You are adding &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; to %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">You are not allowed to perform that action.</msg>

@@ -66,6 +66,11 @@
     @last_visit@
   </li>
 </if>
+<else>
+  <li>
+    #dotlrn.lt_Last_Visit_None_#: @remove_user_url;noquote@
+  </li>
+</else>
 
 <if @portrait_p@ eq 1>
   <li>

@@ -191,11 +191,26 @@ namespace eval dotlrn {
     } {
         Remove the user from ACS as well
     } {
-        if {[user_p -user_id $user_id]} {
-            user_remove -user_id $user_id
+        # DEDS: for now let us not remove users with historical data.
+        # we assume this by looking at last_visit which is lame but
+        # the safest for now.  the consortium might want to decide on
+        # whether we also want nuking of users with data present
+        set last_visit [acs_user::get_element -user_id $user_id -element last_visit]
+        if {[empty_string_p $last_visit]} {
+            if {[user_p -user_id $user_id]} {
+                user_remove -user_id $user_id
+            }
+            
+            # cycle through the applets and invoke their RemoveUser procs
+            foreach applet_key [dotlrn_applet::list_applets] {
+                dotlrn_community::applet_call \
+                    $applet_key \
+                    RemoveUser \
+                    [list $user_id]
+            }
+            
+            acs_user::delete -user_id $user_id -permanent
         }
-
-        acs_user::delete -user_id $user_id
     }
 
     ad_proc -public remove_users_completely {
