@@ -24,7 +24,7 @@
         <requires url="acs-subsite" version="4.2"/>
         <requires url="acs-tcl" version="4.1"/>
         <requires url="acs-templating" version="4.1.2"/>
-        <requires url="attachmens" version="0.1d"/>
+        <requires url="attachments" version="0.2"/>
         <requires url="bulk-mail" version="0.1d"/>
         <requires url="new-portal" version="0.1a"/>
         <requires url="profile-provider" version="0.1d"/>
