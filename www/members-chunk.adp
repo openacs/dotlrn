@@ -21,20 +21,22 @@
 <h3>Members of <%= [dotlrn_community::get_community_name $community_id] %></h3>
 
 <ul>
-
 <multiple name="users">
-  <li>
+<group column="role">  <li>
     <%= [acs_community_member_link -user_id $users(user_id) -label "$users(first_names) $users(last_name)"] %>
-<if @read_private_data_p@ eq 1 or @user_id@ eq @users.user_id@>
-    (<a href="mailto:@users.email@">@users.email@</a>)
-</if>
+    <if @read_private_data_p@ eq 1 or @user_id@ eq @users.user_id@>
+      (<a href="mailto:@users.email@">@users.email@</a>)
+    </if>
     &nbsp;
     <i>@users.role@</i>
-<if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
-    &nbsp;
-    <small>[<include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">]</small>
-</if>
+    <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
+      &nbsp;
+      <small>[<include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">]</small>
+    </if>
   </li>
+</group>
+<br>
+
 </multiple>
 
 <if @admin_p@ eq 1>

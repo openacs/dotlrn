@@ -121,7 +121,7 @@ select segment_id from rel_segments where group_id= :community_id and rel_type= 
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.community_id = :community_id
             and dotlrn_member_rels_approved.user_id = registered_users.user_id
-            order by dotlrn_member_rels_approved.rel_type
+            order by dotlrn_member_rels_approved.rel_type, registered_users.last_name
         </querytext>
     </fullquery>
 
