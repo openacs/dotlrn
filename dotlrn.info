@@ -42,6 +42,8 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/admins-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/applet-sc-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/applet-sc-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/applets-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/applets-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/class-memberships-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/class-memberships-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/classes-create.sql"/>
@@ -92,6 +94,8 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/students-package-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/students-package-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/students-sanitize.sql"/>
+            <file type="data_model_upgrade" db_type="oracle" path="sql/oracle/upgrade/upgrade-jun-07-2002.sql"/>
+            <file type="data_model_upgrade" db_type="oracle" path="sql/oracle/upgrade/upgrade-jun-12-2002.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/user-extension-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/user-extension-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/user-profile-provider-create.sql"/>
@@ -112,6 +116,8 @@
             <file type="data_model" db_type="postgresql" path="sql/postgresql/admins-sanitize.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/applet-sc-create.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/applet-sc-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/applets-create.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/applets-drop.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/class-membership-drop.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/class-memberships-create.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/classes-create.sql"/>
@@ -181,6 +187,7 @@
             <file type="query_file" path="tcl/class-procs.xql"/>
             <file type="tcl_procs" path="tcl/club-procs.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/community-procs-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="tcl/community-procs-postgresql.xql"/>
             <file type="tcl_procs" path="tcl/community-procs.tcl"/>
             <file type="query_file" path="tcl/community-procs.xql"/>
             <file type="tcl_procs" path="tcl/department-procs.tcl"/>
@@ -201,6 +208,7 @@
             <file type="query_file" path="tcl/site-nodes-procs.xql"/>
             <file type="tcl_procs" path="tcl/spam-procs.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/term-procs-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="tcl/term-procs-postgresql.xql"/>
             <file type="tcl_procs" path="tcl/term-procs.tcl"/>
             <file type="query_file" path="tcl/term-procs.xql"/>
             <file type="content_page" path="www/admin/add-instructor-2.adp"/>
@@ -306,12 +314,14 @@
             <file type="content_page" path="www/admin/users-delete.adp"/>
             <file type="content_page" path="www/admin/users-delete.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/users-oracle.xql"/>
+            <file type="query_file" db_type="postgresql" path="www/admin/users-postgresql.xql"/>
             <file type="content_page" path="www/admin/users-search.adp"/>
             <file type="content_page" path="www/admin/users-search.tcl"/>
             <file type="content_page" path="www/admin/users-spam.adp"/>
             <file type="content_page" path="www/admin/users-spam.tcl"/>
             <file type="content_page" path="www/admin/users.adp"/>
             <file type="content_page" path="www/admin/users.tcl"/>
+            <file type="query_file" path="www/admin/users.xql"/>
             <file type="content_page" path="www/applet-add.tcl"/>
             <file type="content_page" path="www/applet-remove.tcl"/>
             <file type="content_page" path="www/applets-chunk.adp"/>

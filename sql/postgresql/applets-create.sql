@@ -35,7 +35,7 @@ create table dotlrn_applets (
                                     unique,
     package_key                     varchar(100)
                                     constraint dotlrn_applets_package_key_fk
-                                    references apm_packages (package_key),
+                                    references apm_package_types (package_key),
     active_p                        char(1)
                                     default 't'
                                     constraint dotlrn_applets_active_p_ck
