@@ -6,6 +6,7 @@
 @description@
 </blockquote>
 
+<h3>Communities You're a Member Of</h3>
 <ul>
 <multiple name=communities>
 <li><a href=@communities.url@>@communities.pretty_name@</a>
@@ -21,7 +22,7 @@
 <h3>Active Communities of this Type</h3>
 <ul>
 <multiple name=active_communities>
-<li><a href=@active_communities.url@>@active_communities.pretty_name@</a> - <a href=@active_communities.url@one-community-admin>admin</a>
+<li><a href=@active_communities.url@>@active_communities.pretty_name@</a> 
 </multiple>
 </ul>
 </else>

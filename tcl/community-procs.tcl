@@ -89,7 +89,7 @@ namespace eval dotlrn_community {
     ad_proc set_attribute {
 	community_id
 	attribute_name
-	attribuate_value
+	attribute_value
     } {
 	Set an attribute for a community
     } {
@@ -307,6 +307,30 @@ namespace eval dotlrn_community {
 	return [db_string select_community {} -default ""]
     }
 
+    ad_proc -public get_community_type_url {
+	community_type
+    } {
+	Get the URL for a community type
+    } {
+	return [get_url -package_id [get_community_type_package_id $community_type]]
+    }
+
+    ad_proc -public get_community_url {
+	community_id
+    } {
+	Get the URL for a community
+    } {
+	return [get_url -package_id [get_package_id $community_id]]
+    }
+
+    ad_proc -public get_community_type_package_id {
+	community_type
+    } {
+	get the package id for a particular community type
+    } {
+	return [db_string select_package_id {} -default ""]
+    }
+
     ad_proc -public get_package_id {
 	community_id
     } {
@@ -322,6 +346,22 @@ namespace eval dotlrn_community {
 	get the package ID for a particular community
     } {
 	return [db_string select_package_id {} -default ""]
+    }
+
+    ad_proc -public get_community_type_name {
+	community_type
+    } {
+	get the name for a community type
+    } {
+	return [db_string select_community_type_name {} -default ""]
+    }
+
+    ad_proc -public get_community_name {
+	community_id
+    } {
+	get the name for a community
+    } {
+	return [db_string select_community_name {} -default ""]
     }
     
     ad_proc -public add_applet {
