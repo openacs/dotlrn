@@ -309,8 +309,6 @@ if {![empty_string_p $community_id]} {
     set text $full_name    
 }
 
-ns_log Notice "Huh? header_img_url: $header_img_url scope_name: $scope_name file: [ns_url2file $header_img_url-$scope_name.jpg]"
-
 if { ![info exists header_stuff] } {
     set header_stuff ""
 }
