@@ -189,17 +189,20 @@ if {[form is_valid user_search]} {
     switch -exact $can_browse_p {
         any {}
         1 {
-            lappend wheres "'t' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
+            lappend wheres "exists (select 1 from acs_permissions where object_id = :package_id and grantee_id = dotlrn_users.user_id and privilege = 'dotlrn_browse')"
         }
         0 {
-            lappend wheres "'f' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
+            lappend wheres "not exists (select 1 from acs_permissions where object_id = :package_id and grantee_id = dotlrn_users.user_id and privilege = 'dotlrn_browse')"
         }
     }
 
     switch -exact $private_data_p {
         any {}
-        default {
-            lappend wheres ":private_data_p = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'read_private_data')"
+        t {
+            lappend wheres "exists (select 1 from acs_permissions where object_id = :package_id and grantee_id = dotlrn_users.user_id and privilege = 'read_private_data')"
+        }
+        f {
+            lappend wheres "not exists (select 1 from acs_permissions where object_id = :package_id and grantee_id = dotlrn_users.user_id and privilege = 'read_private_data')"
         }
     }
 
