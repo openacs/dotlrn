@@ -6,7 +6,7 @@ ad_page_contract {
     @creation-date 2001-12-10
     @version $Id$
 } -query {
-    {referer "users"}
+    {referer "/dotlrn/admin/users"}
     user_id
 }
 
@@ -46,10 +46,10 @@ element create edit_user access_level \
     -value $access_level
 
 element create edit_user read_private_data_p \
-    -label "Can Access Private Information?" \
+    -label "Guest?" \
     -datatype text \
     -widget select \
-    -options {{"Yes" "t"} {"No" "f"}} \
+    -options {{"Yes" "f"} {"No" "t"}} \
     -value $read_private_data_p
 
 element create edit_user referer \

@@ -6,7 +6,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     user_id
-    {referer "users"}
+    {referer "/dotlrn/admin/users"}
 }
 
 form create add_user
@@ -37,10 +37,10 @@ element create add_user access_level \
     -options {{"Full Access" "full"} {"Limited Access" "limited"}}
 
 element create add_user read_private_data_p \
-    -label "Can Access Private Information?" \
+    -label "Guest?" \
     -datatype text \
     -widget select \
-    -options {{"Yes" "t"} {"No" "f"}}
+    -options {{"Yes" "f"} {"No" "t"}}
 
 element create add_user referer \
     -label "Referer" \

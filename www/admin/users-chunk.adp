@@ -5,7 +5,7 @@
         <tr bgcolor="#aaaaaa">
           <th align="left" width="50%">User</th>
           <th align="left">Access</th>
-          <th align="left">Read Private Data?</th>
+          <th align="left">Guest?</th>
           <th align="left">Site-wide Admin?</th>
         </tr>
 
@@ -33,7 +33,7 @@
             </else>
           </td>
           <td align="center">@users.access_level@</td>
-          <td align="center"><if @users.read_private_data_p@ eq t>yes</if><else>no</else></td>
+          <td align="center"><if @users.read_private_data_p@ eq t>no</if><else>yes</else></td>
           <td align="center">
             <if @user_id@ ne @users.user_id@>
               <if @users.site_wide_admin_p@ eq t>

@@ -84,7 +84,7 @@ element create add_user access_level \
     -value $access_level
 
 element create add_user read_private_data_p \
-    -label "Can Read Private Data" \
+    -label "Can Read Private Data?" \
     -datatype text \
     -widget hidden \
     -value $read_private_data_p
