@@ -75,3 +75,6 @@ as
 
 -- create students
 @@ dotlrn-students-create.sql
+
+-- create external users
+@@ dotlrn-externals-create.sql

@@ -5,6 +5,9 @@
 -- @version $Id$
 --
 
+-- drop external users
+@@ dotlrn-externals-drop.sql
+
 -- drop students
 @@ dotlrn-students-drop.sql
 
