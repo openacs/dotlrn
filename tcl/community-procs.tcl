@@ -446,6 +446,16 @@ namespace eval dotlrn_community {
         return [db_list_of_lists select_users {}]
     }
 
+    ad_proc -public list_users_in_role {
+        {-rel_type:required}
+        community_id
+    } {
+        Returns the list of users with a membership_id, a user_id,
+        first name, last name, email, in a given role. 
+    } {
+        return [db_list_of_lists select_users_in_role {}]
+    }
+    
     ad_proc -public member_p {
         community_id
         user_id
@@ -731,7 +741,7 @@ namespace eval dotlrn_community {
                         "[get_community_name $subcomm_id]</a>\n" 
 
                 if {[dotlrn::user_can_admin_community_p $subcomm_id]} {
-                    append subcomm_chunk " - \[\&nbsp\;<a class=note href=${url}one-community-admin>admin</a>\&nbsp\;\]"
+                    append subcomm_chunk "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
                 }
                 
                 append subcomm_chunk \
@@ -739,9 +749,16 @@ namespace eval dotlrn_community {
                     [get_subcomm_chunk -community_id $subcomm_id] \
                     "</ul>\n"
             } else {
+                set url [get_community_url $subcomm_id]
+
                 append subcomm_chunk \
-                    "$pretext <a href=[get_community_url $subcomm_id]>" \
+                    "$pretext <a href=$url>" \
                     "[get_community_name $subcomm_id]</a>\n" 
+
+                if {[dotlrn::user_can_admin_community_p $subcomm_id]} {
+                    append subcomm_chunk "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                }
+
             }
         } 
 
