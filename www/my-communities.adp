@@ -33,7 +33,7 @@
   </li>
 </multiple>
 <if @user_can_browse_p@ eq 1>
-  <p></p>
+  <br>
   <li><a href="manage-memberships">Join A Group</a></li>
 </if>
 </ul>
