@@ -87,7 +87,7 @@
   <msg key="Community_ID">Community ID</msg>
   <msg key="Community_member">Community member</msg>
   <msg key="community_memberships">%clubs_pretty_name% Memberships</msg>
-  <msg key="community_name_already_in_use">The name &lt;strong&gt;%community_key%&lt;/strong&gt; is already in use either by an active or archived group. \n Please go back and select a different name.</msg>
+  <msg key="community_name_already_in_use">The name &lt;strong&gt;%community_key%&lt;/strong&gt; is already in use either by an active or archived group. Please go back and select a different name.</msg>
   <msg key="Community_Type">Community Type</msg>
   <msg key="Community_Types">Community Types</msg>
   <msg key="Communitys_Name">Community's Name</msg>
