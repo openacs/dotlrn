@@ -19,8 +19,7 @@ declare
 begin
   ds_id := portal_datasource.new(
     name             => 'dotlrn_main_portlet',
-    description      => 'Displays the list of communities a user belongs to',
-    configurable_p   => 't'
+    description      => 'Displays the list of communities a user belongs to'
   );
 
 end;
