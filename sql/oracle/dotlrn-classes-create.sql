@@ -115,19 +115,19 @@ show errors
 create or replace package dotlrn_class_instance
 is
   function new (
-    class_instance_id		in dotlrn_class_instances.class_instance_id%TYPE,
+    class_instance_id		in dotlrn_class_instances.class_instance_id%TYPE default null,
     class_key			in dotlrn_class_instances.class_key%TYPE,
     year			in dotlrn_class_instances.year%TYPE,
     term			in dotlrn_class_instances.term%TYPE,
     community_key		in dotlrn_communities.community_key%TYPE,
-    pretty_name		in dotlrn_communities.pretty_name%TYPE,
-    description		in dotlrn_communities.description%TYPE,
+    pretty_name			in dotlrn_communities.pretty_name%TYPE,
+    description			in dotlrn_communities.description%TYPE,
     package_id			in dotlrn_communities.package_id%TYPE default null,
     creation_date		in acs_objects.creation_date%TYPE
-			   default sysdate,
+				default sysdate,
     creation_user		in acs_objects.creation_user%TYPE
-			   default null,
-    creation_ip		in acs_objects.creation_ip%TYPE default null,
+				default null,
+    creation_ip			in acs_objects.creation_ip%TYPE default null,
     context_id			in acs_objects.context_id%TYPE default null
   ) return dotlrn_class_instances.class_instance_id%TYPE;
 
@@ -147,31 +147,31 @@ is
     year			in dotlrn_class_instances.year%TYPE,
     term			in dotlrn_class_instances.term%TYPE,
     community_key		in dotlrn_communities.community_key%TYPE,
-    pretty_name		in dotlrn_communities.pretty_name%TYPE,
-    description		in dotlrn_communities.description%TYPE,
+    pretty_name			in dotlrn_communities.pretty_name%TYPE,
+    description			in dotlrn_communities.description%TYPE,
     package_id			in dotlrn_communities.package_id%TYPE default null,
     creation_date		in acs_objects.creation_date%TYPE
-			   default sysdate,
+				default sysdate,
     creation_user		in acs_objects.creation_user%TYPE
-			   default null,
-    creation_ip		in acs_objects.creation_ip%TYPE default null,
+				default null,
+    creation_ip			in acs_objects.creation_ip%TYPE default null,
     context_id			in acs_objects.context_id%TYPE default null
   ) return dotlrn_class_instances.class_instance_id%TYPE
   is
     v_class_instance_id dotlrn_class_instances.class_instance_id%TYPE;
   begin
-    v_class_instance_id := dotlrn_community.new (
-	community_id => class_instance_id,
-	community_type => class_key,
-	community_key => community_key,
-	pretty_name => pretty_name,
-	description => description,
-	package_id => package_id,
-	creation_date => creation_date,
-	creation_user => creation_user,
-	creation_ip => creation_ip,
-	context_id => context_id
-    );
+     v_class_instance_id := dotlrn_community.new (
+ 	community_id => class_instance_id,
+ 	community_type => class_key,
+ 	community_key => community_key,
+ 	pretty_name => pretty_name,
+ 	description => description,
+ 	package_id => package_id,
+ 	creation_date => creation_date,
+ 	creation_user => creation_user,
+ 	creation_ip => creation_ip,
+ 	context_id => context_id
+     );
 
     insert into dotlrn_class_instances
     (class_instance_id, class_key, year, term)

@@ -22,6 +22,27 @@ begin
 		  contract_desc => 'dotLRN Applet implement a specific interface'
 	);
 
+	-- Get a pretty name
+	foo := acs_sc_msg_type.new (
+	          msg_type_name => 'dotlrn_applet.GetPrettyName.InputType',
+		  msg_type_spec => ''
+	);
+
+	foo := acs_sc_msg_type.new (
+	          msg_type_name => 'dotlrn_applet.GetPrettyName.OutputType',
+		  msg_type_spec => 'pretty_name:string'
+	);
+
+	foo := acs_sc_operation.new (
+	          'dotlrn_applet',
+		  'GetPrettyName',
+		  'Get the pretyt name',
+		  't', -- not cacheable
+		  0,   -- n_args
+		  'dotlrn_applet.GetPrettyName.InputType',
+		  'dotlrn_applet.GetPrettyName.OutputType'
+	);
+
 	-- Add the applet to a community
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.AddApplet.InputType',

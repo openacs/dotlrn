@@ -40,7 +40,7 @@ namespace eval dotlrn_community {
 	db_dml update_package_id {}
     }
 
-    ad_proc new {
+    ad_proc -public new {
 	{-description ""}
 	community_type
 	name
@@ -64,6 +64,15 @@ namespace eval dotlrn_community {
 	db_dml update_package_id {}
     }
 
+    ad_proc admin_access_p {
+	community_id
+    } {
+	Checks admin access to a community
+    } {
+	# HACK FOR NOW!! (ben) FIXIT
+	return 1
+    }
+
     ad_proc -public get_url {
 	{-current_node_id ""}
 	{-package_id ""}
@@ -74,7 +83,7 @@ namespace eval dotlrn_community {
 	    set current_node_id [site_node_id [ad_conn url]]
 	}
 
-	return [db_string select_node_url {}]
+	return [db_string select_node_url {} -default ""]
     }
     
     ad_proc set_attribute {
@@ -111,17 +120,19 @@ namespace eval dotlrn_community {
     } {
 	Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
     } {
-	# Set up the relationship
-	set rel_id [relation_add $rel_type $community_id $user_id]
-
-	# Set up a portal page for that user
-	set page_id [portal::create_portal $user_id]
-
-	# Insert the membership
-	db_dml insert_membership {}
-
-	# do the callbacks
-	applets_dispatch AddUser [list $community_id $user_id]
+	db_transaction {
+	    # Set up the relationship
+	    set rel_id [relation_add -member_state approved $rel_type $community_id $user_id]
+	    
+	    # Set up a portal page for that user
+	    set page_id [portal::create_portal $user_id]
+	    
+	    # Insert the membership
+	    db_dml insert_membership {}
+	    
+	    # do the callbacks
+	    applets_dispatch $community_id AddUser [list $community_id $user_id]
+	}
     }
 
     ad_proc -public remove_user {
@@ -130,17 +141,19 @@ namespace eval dotlrn_community {
     } {
 	Removes a user from a class
     } {
-	# Callbacks
-	applets_dispatch RemoveUser [list $community_id $user_id]
-
-	# Get the relationship ID
-	set rel_id [db_string select_rel_id {}]
-
-	# Remove the membership
-	db_dml delete_membership {}
-
-	# Remove it
-	relation_remove $rel_id
+	db_transaction {
+	    # Callbacks
+	    applets_dispatch $community_id RemoveUser [list $community_id $user_id]
+	    
+	    # Get the relationship ID
+	    set rel_id [db_string select_rel_id {}]
+	    
+	    # Remove the membership
+	    db_dml delete_membership {}
+	    
+	    # Remove it
+	    relation_remove $rel_id
+	}
     }
     
     ad_proc -public get_page_id {
@@ -161,8 +174,25 @@ namespace eval dotlrn_community {
 	set list_of_communities [list]
 
 	db_foreach select_communities {} {
-	    lappend list_of_communities [list $community_id $community_key $pretty_name $description [get_url -package_id $package_id]]
+	    lappend list_of_communities [list $community_id $community_type $pretty_name $description [get_url -package_id $package_id]]
 	}
+
+	return $list_of_communities
+    }
+
+    ad_proc -public get_active_communities {
+	community_type
+    } {
+	Returns a list of active communities for a given type.
+	FIXME: right now all communities are active.
+    } {
+	set list_of_communities [list]
+
+	db_foreach select_active_communities {} {
+	    lappend list_of_communities [list $community_id $community_type $pretty_name $description [get_url -package_id $package_id]]
+	}
+
+	return $list_of_communities
     }
 
     ad_proc -public get_community_type {
@@ -197,8 +227,13 @@ namespace eval dotlrn_community {
     } {
 	Adds an applet to the community
     } {
-	# Insert in the DB
-	db_dml insert_applet {}
+	db_transaction {
+	    # Insert in the DB
+	    db_dml insert_applet {}
+	    
+	    # Callback
+	    applet_call $applet_key AddApplet [list $community_id]
+	}
     }
 
     ad_proc -public remove_applet {
@@ -207,29 +242,53 @@ namespace eval dotlrn_community {
     } {
 	Removes an applet from a community
     } {
-	# Delete from the DB
-	db_dml delete_applet {}
+	# Get the package_id
+	set package_id [get_package_id $community_id]
+
+	db_transaction {
+	    # Callback
+	    applet_call $applet_key RemoveApplet [list $community_id $package_id]
+	    
+	    # Delete from the DB
+	    db_dml delete_applet {}
+	}
     }
 
     ad_proc -public list_applets {
-	community_id
+	{community_id ""}
     } {
 	Lists the applets associated with a community
     } {
-	# List from the DB
-	return [db_list select_community_applets {}]
+	if {[empty_string_p $community_id]} {
+	    # List all applets
+	    return [db_list select_all_applets {}]
+	} else {
+	    # List from the DB
+	    return [db_list select_community_applets {}]
+	}
     }
 
     ad_proc -public applets_dispatch {
+	community_id
 	op
 	list_args
     } {
 	Dispatch an operation to every applet
     } {
-	foreach applet [list_applets] {
+	foreach applet [list_applets $community_id] {
 	    # Callback on applet
-	    acs_sc_call dotLRN_Applet $op $list_args $applet
+	    applet_call $applet $op $list_args
 	}
+    }
+
+    ad_proc -public applet_call {
+	applet_key
+	op
+	{list_args {}}
+    } {
+	Call a particular applet op
+    } {
+	acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
 
 }

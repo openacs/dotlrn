@@ -1,7 +1,8 @@
 
 
 # A testing script
+dotlrn_community::remove_user 2377 2195
 
-# Create a class
-doc_body_append "nothing"
+ns_returnredirect ./
+
 

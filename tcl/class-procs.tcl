@@ -78,31 +78,28 @@ namespace eval dotlrn_class {
     } {
 	set short_name "$class_type-$term-$year"
 
-	# Create the community
-	# set community_id [dotlrn_community::new dotlrn_class $short_name $pretty_name]
+	db_transaction {
+	    # Insert the class instance
+	    set community_id [db_exec_plsql create_class_instance {}]
+	    
+	    # Set up the node
+	    # set parent_node_id [db_string select_parent_node_id {}]
+	    set parent_node_id [ad_conn -get node_id]
+	    
+	    # Instantiate the right package at that site node, probably portals
+	    set package_id [site_node_mount_application -return "package_id" $parent_node_id $short_name [one_class_package_key] $short_name]
 
-	# Insert the class instance
-	set community_id [db_exec_plsql create_class_instance {}]
-
-	# Set up the node
-	set parent_node_id [db_string select_parent_node_id {}]
-
-	# Instantiate the right package at that site node, probably portals
-	set result [site_node_mount_application -return "package_id,node_id" $parent_node_id $short_name [one_class_package_key] $short_name]
-	set package_id [lindex $result 0]
-	set node_id [lindex $result 1]
-
-	# Set the right parameters
-	ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-	ad_parameter -package_id $package_id -set 0 class_level_p
-	ad_parameter -package_id $package_id -set 1 class_instance_level_p
-
-	# Set up the node
-	dotlrn_community::set_site_node $community_id $node_id
-
-	# Assign proper permissions to the site node
-	# NOT CERTAIN what to do here yet
-
+	    # Set the right parameters
+	    ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+	    ad_parameter -package_id $package_id -set 0 community_type_level_p
+	    ad_parameter -package_id $package_id -set 1 community_level_p
+	    
+	    # Set up the node
+	    dotlrn_community::set_package_id $community_id $package_id
+	    
+	    # Assign proper permissions to the site node
+	    # NOT CERTAIN what to do here yet
+	}
     }
 
     ad_proc -public available_roles {
