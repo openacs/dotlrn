@@ -32,7 +32,6 @@ set community_id [dotlrn_community::get_community_id]
 # Just search
 db_multirow users select_users {}
 
-
 set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
 
 
