@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="context_bar">@context_bar;noquote@</property>
+<property name="context">@context;noquote@</property>
 <property name="title">@pretty_name@ #dotlrn.Admin#</property>
 <property name="link_control_panel">0</property>
 

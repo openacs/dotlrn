@@ -44,6 +44,6 @@ db_1row select_community_info {}
 # render the admin page
 set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id]
 
-set context_bar [_ dotlrn.Admin]
+set context [list [_ dotlrn.Admin]]
 
 ad_return_template
