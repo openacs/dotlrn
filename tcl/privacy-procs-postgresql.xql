@@ -16,7 +16,7 @@
                             and r.object_id_one = acs__magic_object_id('registered_users')
                             and r.object_id_two = :user_id)
               loop 
-                membership_rel.del(cur.rel_id);
+                membership_rel__del(cur.rel_id);
               end loop;
               v_rel_id := membership_rel__new(
                 null,
@@ -42,7 +42,7 @@
                             and r.object_id_one = acs__magic_object_id('registered_users')
                             and r.object_id_two = :user_id)
               loop 
-                membership_rel.del(cur.rel_id);
+                membership_rel__del(cur.rel_id);
               end loop;
               v_rel_id := membership_rel__new(
                 null,
