@@ -40,10 +40,9 @@ if {![dotlrn::user_can_browse_p]} {
 
     # For now, we assume only ONE community (FIXME: ben)
     set the_community [lindex $communities 0]
-    ad_returnredirect [dotlrn_community::get_url_from_package_id -package_id [lindex $the_community 4]]
 
+    ad_returnredirect [dotlrn_community::get_url_from_package_id -package_id [lindex $the_community 4]]
     ad_script_abort
-    return
 }
 
 # Get the page
@@ -51,7 +50,7 @@ set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
 if {[empty_string_p $portal_id]} {
     ad_returnredirect index-not-a-user
-    return
+    ad_script_abort
 }
 
 set rendered_page [dotlrn::render_page $portal_id]

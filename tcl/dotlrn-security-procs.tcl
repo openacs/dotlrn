@@ -14,6 +14,7 @@ ad_library {
     
     @author ben@openforce.net
     @creation-date 2001-10-30
+    @version $Id$
     
 }
 

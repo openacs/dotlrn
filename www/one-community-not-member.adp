@@ -5,6 +5,10 @@
 [
   <font size="-1">
     <include src="register">
+<if @admin_p@ eq 1>
+    |
+    <a href="one-community-admin">admin</a>
+</if>
   </font>
 ]
 

@@ -23,13 +23,15 @@ set community_id [dotlrn_community::get_community_id]
 # Get basic information
 db_1row select_community_info {}
 
+set admin_p [dotlrn::user_can_admin_community_p $community_id]
+
 # Check that this user is a member
 if {![dotlrn_community::member_p $community_id $user_id]} {
     set context_bar [list "Not a member"]
 
     if {[dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]} {
         set member_pending_p "t"
-        set context_bar [list "Pending approbal"]
+        set context_bar [list "Pending approval"]
     }
 
     set portal_id [dotlrn_community::get_community_non_members_portal_id $community_id]
@@ -50,8 +52,6 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     set rendered_page [dotlrn::render_page $portal_id]
 
     set context_bar {View}
-
-    set admin_p [dotlrn::user_can_admin_community_p $community_id]
 
     ad_return_template
 }

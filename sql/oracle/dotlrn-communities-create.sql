@@ -53,9 +53,18 @@ create table dotlrn_communities (
                                 references apm_packages (package_id)
 );
 
+create or replace view dotlrn_communities_not_closed
+as
+    select dotlrn_communities.*,
+           groups.join_policy
+    from dotlrn_communities,
+         groups
+    where dotlrn_communities.community_id = groups.group_id
+    and groups.join_policy <> 'closed';
+
 create or replace view dotlrn_active_communities
 as
-    select dotlrn_communities.*
+    select *
     from dotlrn_communities
     where (active_start_date is null or active_start_date < sysdate)
     and (active_end_date is null or active_end_date > sysdate);

@@ -1,4 +1,5 @@
-# /packages/dotlrn/tcl/dotlrn-main-portlet-procs.tcl
+# dotlrn/tcl/dotlrn-main-portlet-procs.tcl
+
 ad_library {
 
     Procedures to supports dotlrn main portlet
@@ -76,9 +77,9 @@ namespace eval dotlrn_main_portlet {
         }
 
         if {[dotlrn::user_can_browse_p $user_id]} {
-            append return_html "<tr><td></td></tr>\n"
-            append return_html "<tr><td><a href=\"classes\"><small>\[Subscribe to a new class\]</small></a></td></tr>\n"
-            append return_html "<tr><td><a href=\"clubs\"><small>\[Subscribe to a new club\]</small></a></td></tr>\n"
+            append return_html "<tr><td><p></p></td></tr>\n"
+            append return_html "<tr><td><a href=\"classes\"><small>\[Subscribe to a new class\]</small></a>&nbsp;"
+            append return_html "<a href=\"clubs\"><small>\[Subscribe to a new club\]</small></a></td></tr>\n"
         }
 
         append return_html "</table>"
