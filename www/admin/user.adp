@@ -183,9 +183,9 @@ This user is currently in state <i>@member_state@</i>.  To allow this user acces
   <br>
   <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
 </if>
+<if @dotlrn_user_p@ eq 1>
   <br>
   <li>    
-<if @dotlrn_user_p@ eq 1>
 <if @site_wide_admin_p@ eq t>
 This user is a site-wide admin. (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">revoke</a>)
     </if>
