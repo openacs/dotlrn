@@ -119,7 +119,7 @@ if {[form is_valid add_user]} {
 
     db_transaction {
 
-        if {![cc_email_from_party $target_user_id]} {
+        if {[cc_email_from_party $target_user_id] != 0} {
             # create the ACS user
             set password [ad_generate_random_string]
             set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" "t" "approved" $target_user_id]
