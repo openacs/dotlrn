@@ -582,4 +582,9 @@ Thank you
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">You're editing</msg>
   <msg key="Youve_chosen_to_add">You've chosen to add</msg>
+  <msg key="new_community_type">New Community Type</msg>
+  <msg key="edit_community_type">Edit Community Type</msg>
+  <msg key="no_community_types">No %Community_Types%</msg>
+  <msg key="Parent_Type">Parent Type</msg>
+  <msg key="community_type_exists">This community type already exists</msg>
 </message_catalog>
