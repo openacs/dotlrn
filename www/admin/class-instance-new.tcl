@@ -88,10 +88,12 @@ if {[form is_valid add_class_instance]} {
     ad_script_abort
 }
 
+set class_instances_pretty_name [ad_parameter "class_instances_pretty_name"]
+
 set context_bar [list \
     {classes Classes} \
     [list "class?class_key=$class_key" "$class_name"] \
-    {New Instance} \
+    [list New $class_instances_pretty_name] \
 ]
 
 ad_return_template
