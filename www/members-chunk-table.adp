@@ -183,7 +183,7 @@
 
     <tr>
 <formgroup id="selected_user.@this_user_id@" cols="3">
-      <td width="15%" align="center">@formgroup.widget@</td>
+      <td width="15%" align="center">@formgroup.widget;noquote@</td>
 </formgroup>
       <td>@this_last_name@, @this_first_names@ (@this_email@)</td>
     </tr>
