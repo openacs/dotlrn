@@ -21,6 +21,8 @@ set admin_email [db_string select_admin_email {
 
 doc_body_append "Bulk Uploading....<p>"
 
+set list_of_user_ids [list]
+
 # Do the stuff
 # We can't do this too generically, so we'll just do the CSV stuff right here
 db_transaction {
@@ -30,6 +32,8 @@ db_transaction {
         # We need to insert the ACS user
         set password [ad_generate_random_string]
         set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
+
+        lappend list_of_user_ids $user_id
 
         if {![info exists row(type)]} {
             set row(type) student
@@ -80,4 +84,7 @@ if {$fail_p} {
     doc_body_append "<p>Some of the emails failed. Those users had random passwords generated for them, however. The best way to proceed is to have these users log in and ask them to click on 'I have forgotten my password'.<p>"
 }
 
-doc_body_append "return to <a href=\"users\">User Management</a>."
+doc_body_append "<FORM method=post action=users-add-to-community>
+<INPUT TYPE=hidden name=users value=\"$list_of_user_ids\">
+You may now choose to <INPUT TYPE=submit value=\"Add These Users To A Group\"></FORM><p>"
+doc_body_append "or, return to <a href=\"users\">User Management</a>."
