@@ -28,6 +28,8 @@ create table dotlrn_users (
 );
 
 
+create view dotlrn_users_full as select registered_users.user_id, first_names, last_name, email, role, page_id from dotlrn_users, registered_users where dotlrn_users.user_id= registered_users.user_id;
+
 
 declare
 begin

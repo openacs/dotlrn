@@ -15,12 +15,12 @@ if {![db_0or1row select_class_instance_info {}]} {
 }
 
 # Get all users for this community, including role
-set users [dotlrn_community::list_users $class_instance_id]
+set list_of_users [dotlrn_community::list_users $class_instance_id]
 
 template::multirow create users rel_id rel_type user_id first_names last_name email
 
-foreach user $users {
-    template::multirow append users [lindex $user 0] [lindex $user 1] [lindex $user 2] [lindex $user 3] [lindex $user 4] [lindex $user 5]
+foreach user $list_of_users {
+    template::multirow append users [lindex $user 0] [dotlrn_community::get_pretty_rel_type [lindex $user 1]] [lindex $user 2] [lindex $user 3] [lindex $user 4] [lindex $user 5]
 }
 
 ad_return_template

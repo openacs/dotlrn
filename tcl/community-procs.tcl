@@ -96,6 +96,15 @@ namespace eval dotlrn_community {
 	# Not sure what to do here yet
     }
 
+    ad_proc -public get_pretty_rel_type {
+	rel_type
+    } {
+	Returns a pretty version of the rel_type
+    } {
+	set pretty_name [db_string select_pretty_name "select pretty_name from acs_object_types where object_type=:rel_type"]
+	return $pretty_name
+    }
+
     ad_proc -public list_admin_users {
 	community_id
     } {
