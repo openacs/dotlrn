@@ -321,5 +321,18 @@ if {$ds_enabled_p} {
     set ds_link {}
 }
 
+set change_locale_url "/acs-lang/?package_id=[ad_conn package_id]"
+
+multirow create body_attributes key value
+
+if { [exists_and_not_null focus] } {
+    # Handle elements wohse name contains a dot
+    regexp {^([^.]*)\.(.*)$} $focus match form_name element_name
+    
+    multirow append \
+            body_attributes onload "javascript:document.forms\['${form_name}'\].elements\['${element_name}'\].focus()"
+}
+
 ad_return_template
+
 

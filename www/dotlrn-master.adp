@@ -24,7 +24,7 @@
 <title>@title@</title>
 @header_stuff@
 </head>
-<body>
+<body<multiple name="body_attributes"> @body_attributes.key@="@body_attributes.value@"</multiple>>
 
 <!-- Header Begin -->
 <table width="100%">
@@ -90,7 +90,7 @@
         | 
         <a href="http://openacs.org">OpenACS</a>
         |
-        <a href="/acs-lang/?return_p=t">#dotlrn.Change_Locale#</a>
+        <a href="@change_locale_url@">#dotlrn.Change_Locale#</a>
       </td>
       <td align=right>
         @ds_link@
