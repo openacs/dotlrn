@@ -20,3 +20,5 @@
 @dotlrn-community-memberships-packages-create.sql
 @dotlrn-main-portlet-create.sql
 @dotlrn-security-create.sql
+@dotlrn-user-extension-create.sql
+
