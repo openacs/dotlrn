@@ -93,11 +93,11 @@ namespace eval dotlrn_community {
         db_transaction {
             set community_type_key [db_exec_plsql create_community_type {}]
 
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name [ad_decode $url_part "" $community_type_key $url_part] \
-                -parent_id $parent_node_id \
+            set package_id [site_node::instantiate_and_mount \
+                -node_name [ad_decode $url_part "" $community_type_key $url_part] \
+                -parent_node_id $parent_node_id \
                 -package_key [one_community_type_package_key] \
-                -instance_name $pretty_name \
+                -package_name $pretty_name \
                 -context_id $parent_node(object_id) \
             ]
 
@@ -1809,11 +1809,11 @@ namespace eval dotlrn_community {
                 set parent_node_id [get_type_node_id $community_type]
             }
 
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name $key \
-                -parent_id $parent_node_id \
+            set package_id [site_node::instantiate_and_mount \
+                -node_name $key \
+                -parent_node_id $parent_node_id \
                 -package_key [one_community_package_key] \
-                -instance_name $pretty_name \
+                -package_name $pretty_name \
                 -context_id $clone_id \
             ]
 
