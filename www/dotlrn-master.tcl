@@ -13,6 +13,35 @@
 #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 #  details.
 #
+#
+# /www/dotlrn-master.tcl
+#
+# This is the "default-master" template for dotlrn sites. 
+#
+# Instructions:
+#
+# 1. Put this file and it's .adp file into the server's /www directory.
+# That's the one with the "default-master" tcl and adp files. You don't
+# have to edit or remove the "default-master" files, since they will be
+# ignored by the next step.
+# 
+# 2. Change the "Main Site"'s "DefaultMaster" parameter 
+# from "/www/default-master" to "/www/dotlrn-default-master"
+# at http://yoursite.com/admin/site-map
+#
+# This tells OpenACS to to use these files instead of the "default-master"
+#
+# 3. Edit these files to chage the look of the site including the banner
+# at the top of the page, the title of the pages, the fonts of the portlets, etc.
+#
+# WARNING: All current portlet themes (table, deco, nada, etc) depend on some
+# of the CSS defined below. Be carefull when you edit the CSS below, 
+# and check how themes use it.
+#
+#
+# Author: Arjun Sanyal (arjun@openforce.net), yon@openforce.net
+#
+# $Id$
 
 ad_page_contract {
 
@@ -184,9 +213,12 @@ if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 |
     set text "[dotlrn::get_user_name $user_id]"
 }
 
+if { ![info exists header_stuff] } {
+    set header_stuff ""
+}
 
-# WARNING: read note at the top of the file before altering the CSS below
-set header_stuff "
+# This style sheet should be moved over to an external file for performance
+append header_stuff "
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">
 
 <STYLE TYPE=\"text/css\">
