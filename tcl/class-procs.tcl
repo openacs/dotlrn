@@ -36,27 +36,27 @@ namespace eval dotlrn_class {
     ad_proc -public community_type {} {
         returns the base community type for classes
     } {
-        return "dotlrn_class_instance"
+        return dotlrn_class_instance
     }
 
     ad_proc -public package_key {
     } {
         Returns the package key for this package
     } {
-        return "dotlrn"
+        return dotlrn
     }
 
     ad_proc -public one_class_package_key {
     } {
         Returns the package key for this package
     } {
-        return "dotlrn"
+        return dotlrn
     }
 
     ad_proc -public get_url_part {} {
         returns the url part for this community type
     } {
-        return "classes"
+        return classes
     }
 
     ad_proc -public get_url {} {
@@ -153,7 +153,7 @@ namespace eval dotlrn_class {
         {-term_id:required}
         {-pretty_name ""}
         {-description ""}
-        {-join_policy "closed"}
+        {-join_policy closed}
     } {
         Creates a new instance of a class for a particular term and year,
         and returns the class instance key.
@@ -169,17 +169,17 @@ namespace eval dotlrn_class {
         if {[empty_string_p $pretty_name]} {
             set pretty_name  "[dotlrn_community::get_community_type_name $class_key]; $term $year"
         }
-        set community_key [dotlrn::generate_key -name "${pretty_name}"]
+        set community_key [dotlrn::generate_key -name $pretty_name]
 
         db_transaction {
-            # Create the community
             set community_id [dotlrn_community::new \
-                    -description $description \
-                    -community_type $class_key \
-                    -object_type [community_type] \
-                    -community_key $community_key \
-                    -pretty_name $pretty_name \
-                    -extra_vars $extra_vars]
+                -description $description \
+                -community_type $class_key \
+                -object_type [community_type] \
+                -community_key $community_key \
+                -pretty_name $pretty_name \
+                -extra_vars $extra_vars \
+            ]
 
             dotlrn_community::set_active_dates \
                 -community_id $community_id \
@@ -197,7 +197,7 @@ namespace eval dotlrn_class {
         {-member_state "approved"}
     } {
         Assigns a user to a particular role for that class. 
-        Roles in DOTLRN can be student, prof, ta, admin
+        Roles in dotLRN can be student, prof, ta, admin
     } {
         if {[empty_string_p $rel_type]} {
             set rel_type "dotlrn_student_rel"
