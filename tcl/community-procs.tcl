@@ -122,7 +122,7 @@ namespace eval dotlrn_community {
                 -community_type $community_type_key \
             ]
 
-            # Create type
+            # Delete the type
             db_exec_plsql delete_community_type {}
 
             # blow away the package_id and ALL associated site nodes
