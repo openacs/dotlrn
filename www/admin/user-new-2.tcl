@@ -46,7 +46,7 @@ element create add_user id \
     -datatype text \
     -widget text \
     -html {size 30} \
-    -value email \
+    -value $email \
     -optional
 
 element create add_user type \
