@@ -26,13 +26,12 @@ ad_page_contract {
 
 } -query {
     term_id:integer,notnull
-    term_pretty_name:notnull
 } -properties {
     context_bar:onevalue
 }
 
 set referer "term?[export_vars {term_id}]"
-set context_bar [list [list terms [_ dotlrn.Terms]] [list $referer "$term_name $term_year"] [_ dotlrn.Edit]]
+set context_bar [list [list terms [_ dotlrn.Terms]] [list $referer "one term"] [_ dotlrn.Edit]]
 
 ad_form -name edit_term -export term_pretty_name -select_query_name select_term_info -form {
 
