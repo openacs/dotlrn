@@ -16,23 +16,188 @@
 
 ad_page_contract {
 
-    @author yon (yon@openforce.net)
-    @author arjun (arjun@openforce.net)
-    @creation-date Jan 19, 2002
+    @author nimam (mazloumi@uni-mannheim.de)
+    @creation-date Oct 05, 2004
     @version $Id$
 
-} -query {
+} {
+    {orderby:optional}
+    {csv:optional}
+    {reset:optional}
+    {reltype:optional}
 }
 
-# prevent this page from being called when not in a community
-# (i.e. the main dotlrn instance
-if {[empty_string_p [dotlrn_community::get_community_id]]} {
-    ad_returnredirect "[dotlrn::get_url]"
-}
-
-set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Members]]
+set my_user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
-set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
-set admin_p [dotlrn::user_can_admin_community_p -user_id [ad_get_user_id] -community_id $community_id]
 set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_get_user_id] -community_id $community_id]
-set return_url "[ns_conn url]?[ns_conn query]"
+set referer [ns_conn url]
+set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
+
+if {!$site_wide_admin_p} {
+    set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id -community_id $community_id]
+} else {
+    set admin_p 1
+}
+
+if {![exists_and_not_null referer]} {
+    if {[string equal $admin_p t] == 1} {
+        set referer "one-community-admin"
+    } else {
+        set referer "one-community"
+    }
+}
+
+set bio_attribute_id [db_string bio_attribute_id {
+    select attribute_id                           
+    from acs_attributes                           
+    where object_type = 'person'                  
+    and attribute_name = 'bio'                    
+}]    
+
+# Actions for Removing Members according to their role
+set rel_types [dotlrn_community::get_roles -community_id $community_id]
+
+if {$admin_p} {
+    set bulk_actions [list "[_ dotlrn.User_Admin_Page]" "member-add-3" "[_ dotlrn.User_Admin_Page]" \
+			  "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]" ]
+    set bulk_actions_export_vars [list "user_id" "rel_type" "referer" "reset"]
+    set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
+    foreach role $rel_types {
+		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+    }
+
+} else {
+    set bulk_actions ""
+    set actions ""
+    set bulk_actions_export_vars ""
+}
+
+# Build the list-builder list
+template::list::create \
+    -name members \
+    -multirow members \
+    -key user_id \
+    -actions $actions \
+    -bulk_actions $bulk_actions \
+    -bulk_action_export_vars $bulk_actions_export_vars \
+    -bulk_action_method get \
+    -elements {
+        portrait {
+            label ""
+            html "align right"
+            display_template {
+		<if @members.portrait_p@ true or @members.bio_p@ true>
+      <a href="@members.member_url@"><img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt\
+_User_has_portrait_title#" border="0"></a>
+    </if>
+            }
+        } last_name {
+            label "[_ acs-subsite.Last_name]"
+            html "align left"
+	    display_template {
+		<a href="@members.member_url@">@members.last_name;noquote@</a>
+	    }
+        } first_names {
+            label "[_ acs-subsite.First_names]"
+            html "align left"
+	    display_template {
+		<a href="@members.member_url@">@members.first_names@</a>
+	    }
+        } email {
+	    label "[_ dotlrn.Email_1]"
+	    html "align left"
+	    display_template {
+		<a href="mailto:@members.email@">@members.email@</a>
+	    }
+	} role {
+	    label "[_ dotlrn.Role]"
+	    html "align left"
+	} action {
+	    label "[_ dotlrn.Actions]"
+	    html "align left"
+	    display_template {
+		<a href="deregister?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.Drop_Membership#</a> | 
+		<a href="member-add-2?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.User_Admin_Page#</a>
+	    }
+	}
+    } -orderby {
+	last_name {orderby last_name}
+	first_names {orderby first_names}
+	email {orderby email}
+	role {orderby role}
+    } -selected_format csv -formats {
+	csv { output csv }
+    }
+
+
+if { [exists_and_not_null orderby] } {
+}
+
+set orderby [template::list::orderby_clause -name "members" -orderby]
+
+db_multirow -extend { member_url referer } members select_current_members {} {
+    set member_url [acs_community_member_url -user_id $user_id]
+    set referer $referer
+    set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
+}
+
+if { [exists_and_not_null csv] } {
+    template::list::write_output -name members
+}
+
+db_multirow pending_users select_pending_users {
+    select dotlrn_users.*,
+           dotlrn_member_rels_full.rel_type,
+           dotlrn_member_rels_full.role
+    from dotlrn_users,
+         dotlrn_member_rels_full
+    where dotlrn_users.user_id = dotlrn_member_rels_full.user_id
+    and dotlrn_member_rels_full.community_id = :community_id
+    and dotlrn_member_rels_full.member_state = 'needs approval'
+} {
+    set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
+}
+
+set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
+
+if {$subcomm_p} {
+
+    form create parent_users_form
+
+    set parent_user_list [dotlrn_community::list_possible_subcomm_users -subcomm_id $community_id]
+    set n_parent_users [llength $parent_user_list]
+
+    foreach user $parent_user_list {
+        element create parent_users_form "selected_user.[ns_set get $user user_id]" \
+            -datatype text \
+            -widget radio \
+            -options {{{} none} {{} dotlrn_member_rel} {{} dotlrn_admin_rel}} \
+            -value none
+    }
+
+    if {[form is_valid parent_users_form]} {
+
+        foreach user $parent_user_list {
+            set rel [element get_value parent_users_form "selected_user.[ns_set get $user user_id]"]
+
+            if {![string match $rel none]} {
+                dotlrn_community::add_user -rel_type $rel $community_id [ns_set get $user user_id]
+            }
+        }
+
+        ad_returnredirect [ns_conn url]
+    }
+
+}
+
+if {[exists_and_not_null reset] && [exists_and_not_null reltype]} {
+set result ""
+    db_multirow reset_members select_members {select user_id as member_id from dotlrn_member_rels_approved where community_id = :community_id and rel_type = :reltype and user_id <> :my_user_id} {
+	rp_form_put user_id $member_id
+    }
+    rp_form_put referer "members"
+    rp_form_put community_id $community_id
+    rp_internal_redirect "deregister"
+}
+
+ad_return_template

@@ -19,14 +19,95 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Manage_Membership#</property>
-<property name="link_all">1</property>
-<property name="context">@context;noquote@</property>
+<if @admin_p@ eq 1 and @subcomm_p@ eq 0>
+<form method="get" action="member-add">
+   #dotlrn.Add_A_Member# <input type="text" name="search_text"><input
+   type="submit" value="#dotlrn.search#">
+   <input type="hidden" name="referer" value="@referer@">
+</form>
+</if>
 
-<include src="members-chunk-table" referer="members">
+<listtemplate name="members"></listtemplate>
 
-<if @spam_p@ true>
-  <ul>
-    <li>        <a href="spam-recipients?community_id=@community_id@&referer=@return_url@">#dotlrn.Email_Members#</a>
-  </ul>
+<if @admin_p@ eq 1 and @pending_users:rowcount@ gt 0>
+
+<h3>#dotlrn.Membership_Requests#</h3>
+
+<ul>
+<multiple name="pending_users">
+  <li>
+    <%= [acs_community_member_link -user_id $pending_users(user_id) -label "$pending_users(first_names) $pending_users(last_name)"] %>
+    (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
+    &nbsp;
+    <i>@pending_users.role@</i>
+    &nbsp;
+    [<small>
+      <include src="approve-link"
+      url="approve?user_id=@pending_users.user_id@&referer=@referer@">
+      |
+      <include src="reject-link"
+      url="reject?user_id=@pending_users.user_id@&referer=@referer@">
+    </small>]
+  </li>
+</multiple>
+</ul>
+
+</if>
+
+<if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
+
+  <hr>
+
+  <h3>#dotlrn.Add_New_Members#</h3>
+
+  <blockquote>
+    <p>
+      #dotlrn.lt_The_following_members#
+    </p>
+
+    <p>
+      #dotlrn.lt_First_check_the_box_o#
+    </p>
+  </blockquote>
+
+<formtemplate id="parent_users_form">
+  <table width="75%" border="0">
+
+    <tr>
+      <td width="15%" align="center"><strong>#dotlrn.Dont_Add#</strong></td>
+      <td width="15%" align="center"><strong>#dotlrn.Member#</strong></td>
+      <td width="15%"
+      align="center"><strong>#dotlrn.Administrator#</strong></td>
+      <td>&nbsp;</td>
+    </tr>
+
+<%
+    foreach user $parent_user_list {
+        set this_user_id [ns_set get $user user_id]
+        set this_first_names [ns_set get $user first_names]
+        set this_last_name [ns_set get $user last_name]
+        set this_email [ns_set get $user email]
+%>
+
+    <tr>
+<formgroup id="selected_user.@this_user_id@" cols="3">
+      <td width="15%" align="center">@formgroup.widget;noquote@</td>
+</formgroup>
+      <td>@this_last_name@, @this_first_names@ (@this_email@)</td>
+    </tr>
+
+<%
+    }
+%>
+
+    <tr><td colspan="4">&nbsp;</td></tr>
+
+    <tr>
+      <td><input type="submit" value="#dotlrn.add_selected_members#"></td>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+
+  </table>
+</formtemplate>
+
 </if>
