@@ -320,6 +320,18 @@ select 1 from dotlrn_active_comms_not_closed where community_id= :community_id
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::open_p.check_community_open_p">
+<querytext>
+select 1 from dotlrn_active_comms_not_closed where community_id= :community_id and join_policy = 'open'
+</querytext>
+</fullquery>
+
+<fullquery name="dotlrn_community::needs_approval_p.check_community_needs_approval">
+<querytext>
+select 1 from dotlrn_active_comms_not_closed where community_id= :community_id and join_policy = 'needs approval'
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::get_portal_template_id.select_portal_template_id">
 <querytext>
 select portal_template_id from dotlrn_communities where community_id= :community_id
