@@ -34,14 +34,20 @@ ad_form -name add_term -export referer -form {
     {term_name:text          {label "[_ dotlrn.Term_eg_Spring_Fall]"} {maxlength 20}
     {html {size 30}}}
 
-    {start_date:date
+    {start_date:text(text)
 	{label "[_ dotlrn.Start_Date]"}
-	{format {[lc_get formbuilder_date_format]}}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel1}}
+	{after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel1', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
     }
 
-    {end_date:date
+    {end_date:text(text)
 	{label "[_ dotlrn.End_Date]"}
-	{format {[lc_get formbuilder_date_format]}}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel2}}
+	{after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel2', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
     }
 
 } -validate {
@@ -50,6 +56,21 @@ ad_form -name add_term -export referer -form {
         "The term must start before it ends"
     }
 } -on_submit {
+    
+    # Setting the rigth format to send to the procedures
+    # dotlrn_term::start_end_dates_to_term_year  and
+    # dotlrn_term::new
+    
+    set start_date [split $start_date "-"]
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date "MONTH DD YYYY"
+    set end_date [split $end_date "-"]
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date "MONTH DD YYYY"
 
     set term_year [dotlrn_term::start_end_dates_to_term_year \
         -start_date $start_date \

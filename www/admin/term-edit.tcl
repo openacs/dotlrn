@@ -51,14 +51,20 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
     {term_year:text               {label "[_ dotlrn.lt_Year_eg_2003_20032004]"}
                                   {html {size 9 maxlength 9}}}
 
-    {start_date:date
+    {start_date:text(text)
 	{label "[_ dotlrn.Start_Date]"}
-	{format {[lc_get formbuilder_date_format]}}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel1}}
+        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel1', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
     }
 
-    {end_date:date
+    {end_date:text(text)
 	{label "[_ dotlrn.End_Date]"}
-	{format {[lc_get formbuilder_date_format]}}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel2}}
+        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel2', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
     }
     
 } -validate {
@@ -67,6 +73,21 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
         "The term must start before it ends"
     }
 } -edit_data {
+
+    # Setting the rigth format to send to the procedures
+    # dotlrn_term::start_end_dates_to_term_year  and
+    # dotlrn_term::new
+
+    set start_date [split $start_date "-"]
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date "MONTH DD YYYY"
+    set end_date [split $end_date "-"]
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date "MONTH DD YYYY"
 
     dotlrn_term::edit \
         -term_id $term_id \
