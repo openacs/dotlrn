@@ -14,6 +14,11 @@ if {[ad_parameter community_type_level_p] == 1} {
     return
 }
 
+if {[ad_parameter community_level_p] == 1} {
+    ns_returnredirect one-community
+    return
+}
+
 # Select the classes that exist
 db_multirow classes select_classes {}
 

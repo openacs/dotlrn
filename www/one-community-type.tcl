@@ -28,8 +28,20 @@ set list_of_communities [dotlrn_community::get_communities_by_user $community_ty
 # communities should be a data source
 template::multirow create communities community_id community_type pretty_name description url
 
+# Loop and create the data source (I am very unhappy with db_multirow. VERY - bma)
 foreach comm $list_of_communities {
     template::multirow append communities [lindex $comm 0] [lindex $comm 1] [lindex $comm 2] [lindex $comm 3] [lindex $comm 4]
+}
+
+# Load all active communities for this community type
+set list_of_active_communities [dotlrn_community::get_active_communities $community_type]
+
+# data source
+template::multirow create active_communities community_id community_type pretty_name description url
+
+# Loop and create the data source (I am very unhappy with db_multirow. VERY - bma)
+foreach comm $list_of_active_communities {
+    template::multirow append active_communities [lindex $comm 0] [lindex $comm 1] [lindex $comm 2] [lindex $comm 3] [lindex $comm 4]
 }
 
 ad_return_template

@@ -17,3 +17,6 @@ set community_type [dotlrn_community::get_community_type]
 
 # assume it's a class for now
 set community_id [dotlrn_class::new_instance -description "" $community_type $pretty_name $term $year]
+
+# redirect
+ns_returnredirect [dotlrn_community::get_url -package_id [dotlrn_community::get_package_id $community_id]]
