@@ -136,7 +136,7 @@ namespace eval dotlrn_applet {
         }
 
         if {[empty_string_p $pretty_name]} {
-            set pretty $package_key
+            set pretty_name $package_key
         }
 
         # Find the parent node
