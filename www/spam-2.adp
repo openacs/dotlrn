@@ -21,7 +21,7 @@
 <property name="context_bar">@context_bar@</property>
 
 <p>
- #dotlrn.lt_Are_you_sure_you_want_1#?
+ #dotlrn.are_you_sure_you_want_to_send#
 </p>
 
 <if @message_type@ eq "html">
