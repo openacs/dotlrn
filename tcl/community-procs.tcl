@@ -1,20 +1,11 @@
-#
-# Procs for DOTLRN Community Management
-# Copyright 2001 OpenForce, inc.
-# Distributed under the GNU GPL v2
-#
-# Started: September 28th, 2001
-# ben@openforce.net, arjun@openforce.net
-#
-# $Id$
-#
 
 ad_library {
 
     Procs to manage DOTLRN Communities
 
-    @author ben@openforce.net
-    @author arjun@openforce.net
+    @author Ben Adida (ben@openforce.net)
+    @author Arjun Sanyal (arjun@openforce.net)
+    @author yon (yon@openforce.net)
     @creation-date 2001-09-28
     @version $Id$
 
@@ -774,44 +765,6 @@ namespace eval dotlrn_community {
         return [db_string select_portal_template_id {} -default ""]
     }
 
-    ad_proc -public add_applet_to_dotlrn {
-        {-applet_key:required}
-        {-activate_p "t"}
-    } {
-        dotlrn-init.tcl calls AddApplet on all applets using acs_sc directly.
-        The add_applet proc in the applet (e.g. dotlrn-calendar) calls this
-        proc to tell dotlrn to register and/or activate itself. This _must_
-        be able to be run multiple times!
-    } {
-
-        if {![empty_string_p [get_applet_id_from_key -applet_key $applet_key]]} {
-            # there's already a dotlrn applet registered with this key, abort
-            return
-        }
-
-        if {$activate_p == "t"} {
-            set status "active"
-        } else {
-            set status "inactive"
-        }
-
-        ns_log notice "aks debug add_applet_to_dotlrn called with $applet_key"
-
-        db_transaction {
-            set applet_id [db_nextval acs_object_id_seq]
-            db_dml insert {}
-        }
-    }
-
-    ad_proc -public get_applet_id_from_key {
-        {-applet_key:required}
-    } {
-        get the id of the dotlrn applet from the applet key or the null
-        string if the key dosent exist
-    } {
-        return [db_string select {} -default ""]
-    }
-
     ad_proc -public add_applet_to_community {
         community_id
         applet_key
@@ -825,7 +778,7 @@ namespace eval dotlrn_community {
             # Callback
             set package_id [applet_call $applet_key AddAppletToCommunity [list $community_id]]
 
-            set applet_id [get_applet_id_from_key -applet_key $applet_key]
+            set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
             # auto activate for now
             set active_p "t"
 
