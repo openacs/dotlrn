@@ -22,7 +22,7 @@ ad_page_contract {
     @creation-date 2001-12-10
     @version $Id$
 } -query {
-    {referer "/dotlrn/admin/users"}
+    {return_url "/dotlrn/admin/users"}
     user_id
 }
 
@@ -68,15 +68,15 @@ element create edit_user read_private_data_p \
     -options {{"No" "t"} {"Yes" "f"}} \
     -value $read_private_data_p
 
-element create edit_user referer \
-    -label "Referer" \
+element create edit_user return_url \
+    -label "Return URL" \
     -datatype text \
     -widget hidden \
-    -value $referer
+    -value $return_url
 
 if {[form is_valid edit_user]} {
     form get_values edit_user \
-        user_id id type access_level read_private_data_p referer
+        user_id id type access_level read_private_data_p return_url
 
     db_transaction {
         # remove the user
@@ -97,7 +97,7 @@ if {[form is_valid edit_user]} {
     }
 
     # redirect
-    ad_returnredirect $referer
+    ad_returnredirect $return_url
     ad_script_abort
 }
 

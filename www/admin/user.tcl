@@ -42,7 +42,7 @@ ad_page_contract {
 }
 
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
-set export_edit_vars [export_url_vars user_id return_url]
+set export_edit_vars [export_vars {user_id return_url}]
 
 if {![db_0or1row select_user_info {}]} {
     ad_return_complaint 1 "<li>We couldn't find user #$user_id; perhaps this person was deleted?</li>"
