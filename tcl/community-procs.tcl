@@ -455,7 +455,7 @@ namespace eval dotlrn_community {
     } {
         Returns the list of users with a membership_id, a user_id, first name, last name, email, and role
     } {
-        return [db_list_of_lists select_users {}]
+        return [db_list_of_ns_sets select_users {}]
     }
 
     ad_proc -public list_possible_subcomm_users {
@@ -465,7 +465,7 @@ namespace eval dotlrn_community {
         are not already in the subcomm with a membership_id, a user_id,
         first name, last name, email, and role
     } {
-        return [db_list_of_lists select_possible_users {}]
+        return [db_list_of_ns_sets select_possible_users {}]
     }
 
     ad_proc -public list_users_in_role {
@@ -1047,9 +1047,6 @@ namespace eval dotlrn_community {
     } {
         Adds an applet to the community
     } {
-
-        ns_log notice "aks debug add_applet_to_comm called with $applet_key"
-
         db_transaction {
             # Callback
             set package_id [applet_call $applet_key AddAppletToCommunity [list $community_id]]
@@ -1063,7 +1060,7 @@ namespace eval dotlrn_community {
 
             # Go through current users and make sure they are added!
             foreach user [list_users $community_id] {
-                set user_id [lindex $user 2]
+                set user_id [ns_set get $user user_id]
 
                 # do the callbacks
                 applet_call $applet_key AddUserToCommunity [list $community_id $user_id]
@@ -1084,7 +1081,7 @@ namespace eval dotlrn_community {
         db_transaction {
             # Take care of all existing users
             foreach user [list_users $community_id] {
-                set user_id [lindex $user 2]
+                set user_id [ns_set get $user user_id]
 
                 # do the callbacks
                 applet_call $applet_key RemoveUserFromCommunity [list $community_id $user_id]
@@ -1106,7 +1103,7 @@ namespace eval dotlrn_community {
         db_transaction {
             # Remove all users
             foreach user [list_users $community_id] {
-                remove_user $community_id [lindex $user 2]
+                remove_user $community_id [ns_set get $user user_id]
             }
             
             # Remove all applets

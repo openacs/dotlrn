@@ -32,20 +32,15 @@ if {![exists_and_not_null referer]} {
 }
 
 # Get all users for this community, including role
-set list_of_users [dotlrn_community::list_users $community_id]
+set community_members [dotlrn_community::list_users $community_id]
 
-template::multirow create users rel_id rel_type user_id first_names last_name email
+template::util::list_of_ns_sets_to_multirow \
+    -rows $community_members \
+    -var_name "users"
 
 set user_list [list]
-foreach user $list_of_users {
-    lappend user_list [lindex $user 2]
-    template::multirow append users \
-        [lindex $user 0] \
-        [dotlrn_community::get_role_pretty_name_from_rel_type -rel_type [lindex $user 1]] \
-        [lindex $user 2] \
-        [lindex $user 3] \
-        [lindex $user 4] \
-        [lindex $user 5]
+foreach user $community_members {
+    lappend user_list [ns_set get $community_members user_id]
 }
 
 db_multirow pending_users select_pending_users {
@@ -60,32 +55,17 @@ db_multirow pending_users select_pending_users {
     and dotlrn_member_rels_full.member_state = 'needs approval'
 }
 
-
-#  If we are in a subcomm. get the list of the users of the parent
+# If we are in a subcomm. get the list of the users of the parent
 # comm that are not in the subcomm yet, and output them with radios
 # for roles, etc.
-
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 
 if {$subcomm_p} {
-    # Get all users for this community, including role
-    set list_of_parent_users [dotlrn_community::list_possible_subcomm_users \
-            -subcomm_id $community_id]
-    
-    template::multirow create parent_users rel_id rel_type user_id first_names last_name email
-    
-    set parent_user_list [list]
-    foreach parent_user $list_of_parent_users {
-        lappend parent_user_list [lindex $parent_user 2]
-        template::multirow append parent_users \
-                [lindex $parent_user 0] \
-                [dotlrn_community::get_role_pretty_name_from_rel_type -rel_type [lindex $parent_user 1]] \
-                [lindex $parent_user 2] \
-                [lindex $parent_user 3] \
-                [lindex $parent_user 4] \
-                [lindex $parent_user 5]
-    }
+    template::util::list_of_ns_sets_to_multirow \
+        -rows [dotlrn_community::list_possible_subcomm_users -subcomm_id $community_id] \
+        -var_name "parent_users"
+
+    form create parent_users_form
 }
 
-ad_return_template    
-    
+ad_return_template

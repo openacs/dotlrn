@@ -421,7 +421,6 @@ end;
 /
 show errors
 
-
 create or replace view dotlrn_communities_full
 as
     select dotlrn_communities.*,

@@ -45,7 +45,9 @@ as
            registered_users.first_names,
            registered_users.last_name,
            registered_users.email,
-           dotlrn_user_types.type
+           dotlrn_user_types.type,
+           dotlrn_user_types.pretty_name as pretty_type,
+           dotlrn_user_types.group_id
     from dotlrn_user_profile_rels,
          acs_rels,
          registered_users,

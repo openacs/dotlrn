@@ -14,11 +14,12 @@
     <fullquery name="select_non_dotlrn_users_count">
         <querytext>
             select count(*)
-            from cc_users
-            where not exists (select 1
-                              from dotlrn_users
-                              where dotlrn_users.user_id = cc_users.user_id)
-            and member_state = 'approved'
+            from acs_rels
+            where acs_rels.object_id_one = acs.magic_object_id('registered_users')
+            and not exists (select 1
+                            from acs_rels a, dotlrn_user_types
+                            where a.object_id_one = dotlrn_user_types.group_id
+                            and a.object_id_two = acs_rels.object_id_two)
         </querytext>
     </fullquery>
 
@@ -26,7 +27,7 @@
         <querytext>
             select count(*)
             from cc_users
-            where member_state = 'banned'
+            where cc_users.member_state = 'banned'
         </querytext>
     </fullquery>
 

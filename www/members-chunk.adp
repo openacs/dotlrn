@@ -9,7 +9,7 @@
     (<a href="mailto:@users.email@">@users.email@</a>)
 </if>
     &nbsp;
-    <i>@users.rel_type@</i>
+    <i>@users.role@</i>
 <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
     &nbsp;
     <small>[<include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">]</small>
@@ -52,41 +52,25 @@
     &nbsp;
     <i>@pending_users.role@</i>
     &nbsp;
-      <small>[<include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@"></small>
-      &nbsp;|&nbsp;
-      <small><include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@"]></small>
+    [<small><include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@"></small>
+    &nbsp;|&nbsp;
+    <small><include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@"></small>]
   </li>
 </multiple>
 </ul>
 
 </if>
 
-<if @admin_p@ eq 1 and @subcomm_p@ eq 1>
+<if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @parent_users:rowcount@ gt 0>
 
-  <h3>Members of 
+  <h3>
+    Members of 
     <%= [dotlrn_community::get_parent_name -community_id $community_id] %> 
     That Are Not Members of <%= [dotlrn_community::get_community_name $community_id] %>
   </h3>
 
   NOT DONE YET!
 
-  <if @parent_users:rowcount@ gt 0>
-
-  <ul>
-
-    <multiple name="parent_users">
-      <li>
-        <%= [acs_community_member_link -user_id $parent_users(user_id) -label "$parent_users(first_names) $parent_users(last_name)"] %>
-        (<a href="mailto:@parent_users.email@">@parent_users.email@</a>)
-        &nbsp;
-
-      </li>
-    </multiple>
-
-  </ul>
-
-  </if>
+  <formtemplate id="parent_users_form"></formtemplate>
 
 </if>
-
-<br>

@@ -108,56 +108,61 @@ select segment_id from rel_segments where group_id= :community_id and rel_type= 
 </querytext>
 </fullquery>
 
-  <fullquery name="dotlrn_community::list_users.select_users">
-    <querytext>
-      select rel_id,
-             rel_type,
-             users.user_id,
-             first_names,
-             last_name,
-             email
-      from registered_users users,
-           dotlrn_member_rels_approved
-      where community_id = :community_id
-      and users.user_id = dotlrn_member_rels_approved.user_id
-      order by rel_type
-    </querytext>
-  </fullquery>
+    <fullquery name="dotlrn_community::list_users.select_users">
+        <querytext>
+            select dotlrn_member_rels_approved.rel_id,
+                   dotlrn_member_rels_approved.rel_type,
+                   dotlrn_member_rels_approved.role,
+                   dotlrn_member_rels_approved.user_id,
+                   registered_users.first_names,
+                   registered_users.last_name,
+                   registered_users.email
+            from registered_users,
+                 dotlrn_member_rels_approved
+            where dotlrn_member_rels_approved.community_id = :community_id
+            and dotlrn_member_rels_approved.user_id = registered_users.user_id
+            order by dotlrn_member_rels_approved.rel_type
+        </querytext>
+    </fullquery>
 
-  <fullquery name="dotlrn_community::list_possible_subcomm_users.select_possible_users">
-    <querytext>
-      select parent.rel_id,
-             parent.rel_type,
-             users.user_id,
-             first_names,
-             last_name,
-             email
-      from registered_users users,
-           dotlrn_member_rels_approved parent, 
-           dotlrn_communities dc
-      where dc.community_id = :subcomm_id
-      and dc.parent_community_id = parent.community_id
-      and users.user_id = parent.user_id
-      and users.user_id not in (select user_id from dotlrn_member_rels_approved where community_id = :subcomm_id)
-      order by parent.rel_type
-    </querytext>
-  </fullquery>
+    <fullquery name="dotlrn_community::list_possible_subcomm_users.select_possible_users">
+        <querytext>
+            select dotlrn_member_rels_approved.rel_id,
+                   dotlrn_member_rels_approved.rel_type,
+                   dotlrn_member_rels_approved.role,
+                   dotlrn_member_rels_approved.user_id,
+                   registered_users.first_names,
+                   registered_users.last_name,
+                   registered_users.email
+            from registered_users,
+                 dotlrn_member_rels_approved, 
+                 dotlrn_communities
+            where dotlrn_communities.community_id = :subcomm_id
+            and dotlrn_communities.parent_community_id = dotlrn_member_rels_approved.community_id
+            and registered_users.user_id = dotlrn_member_rels_approved.user_id
+            and registered_users.user_id not in (select dm.user_id
+                                                 from dotlrn_member_rels_approved dm
+                                                 where dm.community_id = :subcomm_id)
+            order by dotlrn_member_rels_approved.rel_type
+        </querytext>
+    </fullquery>
 
-  <fullquery name="dotlrn_community::list_users_in_role.select_users_in_role">
-    <querytext>
-      select rel_id,
-             rel_type,
-             users.user_id,
-             first_names,
-             last_name,
-             email
-      from registered_users users,
-           dotlrn_member_rels_approved
-      where community_id = :community_id
-      and users.user_id = dotlrn_member_rels_approved.user_id
-      and rel_type = :rel_type
-    </querytext>
-  </fullquery>
+    <fullquery name="dotlrn_community::list_users_in_role.select_users_in_role">
+        <querytext>
+            select dotlrn_member_rels_approved.rel_id,
+                   dotlrn_member_rels_approved.rel_type,
+                   dotlrn_member_rels_approved.role,
+                   dotlrn_member_rels_approved.user_id,
+                   registered_users.first_names,
+                   registered_users.last_name,
+                   registered_users.email
+            from registered_users,
+                dotlrn_member_rels_approved
+            where dotlrn_member_rels_approved.community_id = :community_id
+            and dotlrn_member_rels_approved.user_id = registered_users.user_id
+            and dotlrn_member_rels_approved.rel_type = :rel_type
+        </querytext>
+    </fullquery>
 
     <fullquery name="dotlrn_community::member_p.select_count_membership">
         <querytext>
