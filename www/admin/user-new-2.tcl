@@ -25,6 +25,14 @@ ad_page_contract {
     {referer "/dotlrn/admin/users"}
 }
 
+db_1row select_user_info {
+    select email,
+           first_names,
+           last_name
+    from registered_users
+    where user_id = :user_id
+}
+
 form create add_user
 
 element create add_user user_id \
@@ -38,6 +46,7 @@ element create add_user id \
     -datatype text \
     -widget text \
     -html {size 30} \
+    -value email \
     -optional
 
 element create add_user type \
@@ -77,13 +86,6 @@ if {[form is_valid add_user]} {
     # I don't think a script abort is the right thing (ben)
     # ad_script_abort
     return
-}
-
-db_1row select_user_info {
-    select first_names,
-           last_name
-    from registered_users
-    where user_id = :user_id
 }
 
 set context_bar {{users Users} New}

@@ -361,11 +361,7 @@ namespace eval dotlrn {
     } {
         check if a user can admin a community
     } {
-        return [permission::permission_p \
-            -party_id $user_id \
-            -object_id $community_id \
-            -privilege "dotlrn_admin_community" \
-        ]
+        return [permission::permission_p -party_id $user_id -object_id $community_id -privilege dotlrn_admin_community]
     }
 
     ad_proc -public require_user_admin_community {
@@ -375,6 +371,24 @@ namespace eval dotlrn {
         require that user be able to admin a community
     } {
         if {![user_can_admin_community_p -user_id $user_id $community_id]} {
+            do_abort
+        }
+    }
+
+    ad_proc -public admin_p {
+        {-user_id ""}
+    } {
+        check if a user is admin for dotLRN
+    } {
+        return [permission::permission_p -party_id $user_id -object_id [dotlrn::get_package_id] -privilege admin]
+    }
+
+    ad_proc -public require_admin {
+        {-user_id ""}
+    } {
+        require that a user have admin privileges on all of dotlrn
+    } {
+        if {![admin_p -user_id $user_id]} {
             do_abort
         }
     }

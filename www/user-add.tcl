@@ -34,10 +34,15 @@ ad_page_contract {
 }
 
 set user_id [ad_maybe_redirect_for_registration]
+set community_id [dotlrn_community::get_community_id]
 
-dotlrn::require_user_admin_community [dotlrn_community::get_community_id]
-
-set context_bar {{"one-community-admin" Admin} {Add User}}
+if {![empty_string_p $community_id]} {
+    dotlrn::require_user_admin_community [dotlrn_community::get_community_id]
+    set context_bar {{"one-community-admin" Admin} {Add User}}
+} else {
+    dotlrn::require_admin
+    set context_bar {{users Users} {Add User}}
+}
 
 set target_user_id [db_nextval acs_object_id_seq]
 
@@ -97,7 +102,7 @@ element create add_user access_level \
     -value $access_level
 
 element create add_user read_private_data_p \
-    -label "Can Read Private Data?" \
+    -label "Guest?" \
     -datatype text \
     -widget hidden \
     -value $read_private_data_p
@@ -117,10 +122,7 @@ if {[form is_valid add_user]} {
         if {![cc_email_from_party $target_user_id]} {
             # create the ACS user
             set password [ad_generate_random_string]
-            set target_user_id [ad_user_new \
-                $email $first_names $last_name $password \
-                "" "" "" "t" "approved" $target_user_id \
-            ]
+            set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" "t" "approved" $target_user_id]
         }
 
         # make the user a dotLRN user
@@ -136,6 +138,7 @@ if {[form is_valid add_user]} {
     } else {
         ad_returnredirect $redirect
     }
+
     ad_script_abort
 }
 
