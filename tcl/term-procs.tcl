@@ -111,4 +111,29 @@ namespace eval dotlrn_term {
 
     }
 
+    ad_proc -public start_end_dates_to_term_year {
+        {-start_date:required}
+        {-end_date:required}
+    } {
+        generate a "term year" string from the start and end dates
+        a "term year" is either a 4-digit year like "2002" or 
+        two different 4-digit year seperated by a / like "2002/2004"
+    } {
+        set start_year [template::util::date::get_property year $start_date]
+        set end_year [template::util::date::get_property year $end_date]
+
+        if {![string equal $start_year $end_year]} {
+            return "$start_year/$end_year"
+        }
+        
+        return $start_year
+    }
+
+    ad_proc -public get_future_terms_as_options {
+    } {
+        get future term info in a list of lists for a html select option widget
+    } {
+        return [db_list_of_lists get_future_terms_select {}]
+    }
+
 }

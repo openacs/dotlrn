@@ -46,4 +46,14 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_term::get_future_terms_as_options.get_future_terms_select">
+        <querytext>
+          select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year as term,
+                 dotlrn_terms.term_id
+          from dotlrn_terms
+          where dotlrn_terms.end_date > current_timestamp
+          order by dotlrn_terms.start_date
+        </querytext>
+    </fullquery>
+
 </queryset>
