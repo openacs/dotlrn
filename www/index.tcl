@@ -28,6 +28,8 @@ set page_id [db_string select_page_id {} -default ""]
 # If there is no page_id, this user is either a guest or something else
 if {[empty_string_p $page_id]} {
     # do something
+    ad_return_template index-not-a-user
+    return
 } else {
     set rendered_page [dotlrn::render_page $page_id]
 }
