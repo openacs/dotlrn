@@ -30,6 +30,11 @@ ad_page_contract {
 
 set user_id [ad_conn user_id]
 
+if {![dotlrn::user_can_browse_p]} {
+    ad_returnredirect "not-allowed"
+    ad_script_abort
+}
+
 set departments [db_list_of_lists select_departments_for_select_widget {
     select dotlrn_departments_full.pretty_name,
            dotlrn_departments_full.department_key

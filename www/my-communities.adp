@@ -12,6 +12,8 @@
     - [<include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">]
   </li>
 </multiple>
+<if @user_can_browse_p@ eq 1>
   <p></p>
   <li><a href="manage-memberships">Join A Group</a></li>
+</if>
 </ul>
