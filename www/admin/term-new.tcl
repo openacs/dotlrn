@@ -41,7 +41,7 @@ ad_form -name add_term -export referer -form {
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }
-        "The term must begin before it ends"
+        "The term must start before it ends"
     }
 } -on_submit {
 

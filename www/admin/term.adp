@@ -48,7 +48,7 @@
   <br>
 
   <li>
-    <a href="term-edit?term_id=@term_id@&referer=@referer@">Edit</a> term properties.
+    <a href="term-edit?term_id=@term_id@&term_pretty_name=@term_name@ @term_year@">Edit</a> term properties.
   </li>
 
 </ul>

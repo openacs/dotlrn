@@ -15,74 +15,47 @@
 #
 
 ad_page_contract {
+
     edit a term
 
     @author yon (yon@openforce.net)
+    @author Don Baccus (dhogaza@pacifier.com)
+
     @creation-date 2002-03-14
     @version $Id$
+
 } -query {
     term_id:integer,notnull
-    {referer "terms"}
+    term_pretty_name:notnull
 } -properties {
     context_bar:onevalue
 }
 
-if {![db_0or1row select_term_info {}]} {
-    ad_return_complaint 1 "<li>Invalid term_id $term_id</li>"
-    ad_script_abort
-}
+set referer "term?[export_vars {term_id}]"
+set context_bar [list [list terms Terms] [list $referer "$term_pretty_name"] Edit]
 
-set referer "term?[ns_conn query]"
-set context_bar [list [list terms Terms] [list $referer "$term_name $term_year"] Edit]
+ad_form -name edit_term -export term_pretty_name -select_query_name select_term_info -form {
 
-form create edit_term
+    term_id:key
 
-element create edit_term term_id \
-    -label "Term ID" \
-    -datatype integer \
-    -widget hidden \
-    -value $term_id
+    {term_name:text               {label "Term (e.g. Spring, Fall)"}
+                                  {html {size 30}}}
 
-element create edit_term term_name \
-    -label "Term (e.g. Spring, Fall)" \
-    -datatype text \
-    -widget text \
-    -html {size 30}
+    {term_year:text               {label "Year (e.g. 2003, 2003/2004)"}
+                                  {html {size 9 maxlength 9}}}
 
-element create edit_term term_year \
-    -label "Year (e.g. 2003, 2003/2004)" \
-    -datatype text \
-    -widget text \
-    -html {size 9 maxlength 9}
+    {start_date:date              {label "Start Date"}
+                                  {format {MONTH DD YYYY}}}
 
-element create edit_term start_date \
-    -label "Start Date" \
-    -datatype date \
-    -widget date \
-    -format {MONTH DD YYYY}
+    {end_date:date                {label "End Date"}
+                                  {format {MONTH DD YYYY}}}
 
-element create edit_term end_date \
-    -label "End Date" \
-    -datatype date \
-    -widget date \
-    -format {MONTH DD YYYY}
-
-element create edit_term referer \
-    -label "Referer" \
-    -datatype text \
-    -widget hidden \
-    -value $referer
-
-if {[form is_request edit_term]} {
-    element set_properties edit_term term_name -value $term_name
-    element set_properties edit_term term_year -value $term_year
-    element set_properties edit_term start_date -value $start_date
-    element set_properties edit_term end_date -value $end_date
-}
-
-if {[form is_valid edit_term]} {
-    form get_values edit_term \
-        term_id term_name term_year start_date end_date referer
+} -validate {
+    {start_date
+        { [template::util::date::compare $start_date $end_date] <= 0 }
+        "The term must start before it ends"
+    }
+} -edit_data {
 
     dotlrn_term::edit \
         -term_id $term_id \
