@@ -58,8 +58,7 @@ set bio_attribute_id [db_string bio_attribute_id {
 set rel_types [dotlrn_community::get_roles -community_id $community_id]
 
 if {$admin_p} {
-    set bulk_actions [list "[_ dotlrn.User_Admin_Page]" "member-add-3" "[_ dotlrn.User_Admin_Page]" \
-			  "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]" ]
+    set bulk_actions [list "[_ dotlrn.User_Admin_Page]" "member-add-3" "[_ dotlrn.User_Admin_Page]" "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]"]
     set bulk_actions_export_vars [list "user_id" "rel_type" "referer" "reset"]
     set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
     foreach role $rel_types {
@@ -73,23 +72,16 @@ if {$admin_p} {
 }
 
 # Build the list-builder list
-template::list::create \
-    -name members \
-    -multirow members \
-    -key user_id \
-    -actions $actions \
-    -bulk_actions $bulk_actions \
-    -bulk_action_export_vars $bulk_actions_export_vars \
-    -bulk_action_method get \
-    -elements {
+template::list::create -name members -multirow members -key user_id -actions $actions -bulk_actions $bulk_actions -bulk_action_export_vars $bulk_actions_export_vars -elements {
         portrait {
             label ""
             html "align right"
             display_template {
 		<if @members.portrait_p@ true or @members.bio_p@ true>
-      <a href="@members.member_url@"><img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt\
-_User_has_portrait_title#" border="0"></a>
-    </if>
+		<a href="@members.member_url@">
+		<img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" border="0">
+		</a>
+		</if>
             }
         } last_name {
             label "[_ acs-subsite.Last_name]"
@@ -168,11 +160,7 @@ if {$subcomm_p} {
     set n_parent_users [llength $parent_user_list]
 
     foreach user $parent_user_list {
-        element create parent_users_form "selected_user.[ns_set get $user user_id]" \
-            -datatype text \
-            -widget radio \
-            -options {{{} none} {{} dotlrn_member_rel} {{} dotlrn_admin_rel}} \
-            -value none
+        element create parent_users_form "selected_user.[ns_set get $user user_id]" -datatype text -widget radio -options {{{} none} {{} dotlrn_member_rel} {{} dotlrn_admin_rel}} -value none
     }
 
     if {[form is_valid parent_users_form]} {
