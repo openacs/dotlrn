@@ -66,7 +66,6 @@ db_transaction {
             set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
             
             lappend list_of_users $user_id
-            lappend list_of_addresses_and_passwords $row(email) $password
             
             if {![info exists row(type)]} {
                 set row(type) student
