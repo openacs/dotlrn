@@ -19,16 +19,10 @@
         <description format="text/html">Course Management</description>
 
         <provides url="dotlrn" version="1.0"/>
-        <requires url="acs-content-repository" version="4.1"/>
-        <requires url="acs-kernel" version="4.1"/>
-        <requires url="acs-subsite" version="4.2"/>
-        <requires url="acs-tcl" version="4.1"/>
-        <requires url="acs-templating" version="4.1.2"/>
-        <requires url="attachments" version="0.2"/>
-        <requires url="bulk-mail" version="0.1d"/>
+        <requires url="acs-kernel" version="5.0d8"/>
         <requires url="new-portal" version="0.1a"/>
-        <requires url="profile-provider" version="0.1d"/>
         <requires url="user-profile" version="0.1d"/>
+        <requires url="attachments" version="0.5"/>
 
         <parameters>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>

@@ -5,7 +5,21 @@
 <application name="dotlrn" pretty-name=".LRN" home="http://openacs.org/projects/dotlrn">
 
   <actions>
-    <install package="*"/>
+    <!-- Installing all applets gives us what we need as applets depend on both dotlrn, the portlets
+         and the respective applications (i.e. forums file-storage etc.) -->
+    <install package="dotlrn-bm"/>
+    <install package="dotlrn-calendar"/>
+    <install package="dotlrn-dotlrn"/>
+    <install package="dotlrn-faq"/>
+    <install package="dotlrn-forums"/>
+    <install package="dotlrn-fs"/>
+    <install package="dotlrn-homework"/>
+    <install package="dotlrn-news"/>
+    <install package="dotlrn-portlet"/>
+    <install package="dotlrn-static"/>
+    <install package="dotlrn-survey"/>
+    <install package="dotlrn-syllabus"/>
+
     <mount package="dotlrn" mount-point="dotlrn" instance-name="dotLRN"/>
     <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master"/>
     <set-parameter package="acs-kernel" name="IndexRedirectUrl" value="/dotlrn/index"/>
