@@ -47,7 +47,7 @@ ad_page_contract {
 
 auth::require_login
 
-set verified_user_id [ad_verify_and_get_user_id]
+set verified_user_id [ad_conn user_id]
 
 set user_info_sql {
     select first_names,

@@ -31,7 +31,7 @@ set referer [ns_conn url]
 set dotlrn_admins_group [db_string group_id_from_name "
             select group_id from groups where group_name='dotlrn-admin'" -default ""]
 
-set admin_id [ad_verify_and_get_user_id]
+set admin_id [ad_conn user_id]
 
 set elements [list user \
 		  [list label "User" \

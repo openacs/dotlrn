@@ -13,7 +13,7 @@
 #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 #  details.
 #
-ad_maybe_redirect_for_registration
+auth::require_login
 ad_page_contract {
     Remove dotLRN Administrators 
 

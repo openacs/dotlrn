@@ -31,7 +31,7 @@ ad_page_contract {
 dotlrn_portlet::is_allowed -parameter guestuser
 dotlrn_portlet::is_allowed -parameter limiteduser
 
-set admin_user_id [ad_verify_and_get_user_id]
+set admin_user_id [ad_conn user_id]
 set admin_email [db_string select_admin_email {
     select email
     from parties
