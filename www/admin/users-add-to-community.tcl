@@ -14,8 +14,6 @@
 #  details.
 #
 
-# dotlrn/www/admin/add-users-to-community.tcl
-
 ad_page_contract {
     Add a set of users to a community
 
@@ -56,7 +54,7 @@ set communities [db_list_of_lists select_all_communities {
 
 if {[llength $communities]} {
     element create select_community community_id \
-        -label "Add to" \
+        -label "Add users to" \
         -datatype text \
         -widget select \
         -options "{{} {}} $communities"
