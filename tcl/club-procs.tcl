@@ -95,16 +95,17 @@ namespace eval dotlrn_club {
     }
 
     ad_proc -public add_user {
-        {-rel_type "" }
+        {-rel_type ""}
         {-community_id:required}
         {-user_id:required}
-        {-member_state "approved"}
+        {-member_state approved}
     } {
         Assigns a user to a particular role for that club.
     } {
         if [empty_string_p $rel_type] {
             set rel_type "dotlrn_member_rel"
         }
+
         dotlrn_community::add_user_to_community \
             -rel_type $rel_type \
             -community_id $community_id \
