@@ -29,6 +29,8 @@ ns_log notice "dotlrn-init: starting..."
 # if installed
 if {[dotlrn::is_instantiated]} {
 
+    permission::set_not_inherit -object_id [dotlrn::get_package_id]
+
     set portal_package_key [portal::package_key]
     set portal_mount_point [portal::automount_point]
 
