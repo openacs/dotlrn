@@ -61,6 +61,9 @@ if {![exists_and_not_null referer]} {
     }
 }
 
+# Used in I18N message lookups in adp
+set parent_community_name [dotlrn_community::get_parent_name -community_id $community_id]
+set community_name [dotlrn_community::get_community_name $community_id]
 
 if {[string compare $order_direction "asc"]==0} {
     set order_html "<img src=\"/resources/dotlrn/down.gif\" height=15 width=15>"

@@ -49,6 +49,10 @@ if {![exists_and_not_null referer]} {
     }
 }
 
+# Used in I18N message lookups in adp
+set parent_community_name [dotlrn_community::get_parent_name -community_id $community_id]
+set community_name [dotlrn_community::get_community_name $community_id]
+
 # Get all users for this community, including role
 set community_members [dotlrn_community::list_users $community_id]
 

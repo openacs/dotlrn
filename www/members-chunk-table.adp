@@ -156,9 +156,6 @@
   <blockquote>
     <p>
       #dotlrn.lt_The_following_members# 
-      <%= [dotlrn_community::get_parent_name -community_id $community_id] %> 
-      #dotlrn.lt_are_not_yet_members_o# 
-      <%= [dotlrn_community::get_community_name $community_id] %>.
     </p>
 
     <p>
