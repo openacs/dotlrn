@@ -10,7 +10,6 @@ end;
 </querytext>
 </fullquery>
 
-
 <fullquery name="dotlrn_community::set_type_package_id.update_package_id">
 <querytext>
 update dotlrn_community_types set package_id= :package_id where community_type= :community_type
@@ -22,6 +21,14 @@ update dotlrn_community_types set package_id= :package_id where community_type= 
 update dotlrn_communities set package_id= :package_id where community_id= :community_id
 </querytext>
 </fullquery>
+
+    <fullquery name="dotlrn_community::get_parent_id.select_parent_id">
+        <querytext>
+            select dotlrn_communities.parent_community_id
+            from dotlrn_communities
+            where dotlrn_communities.community_id = :community_id
+        </querytext>
+    </fullquery>
 
 <fullquery name="dotlrn_community::get_type_node_id.select_node_id">
 <querytext>
@@ -179,30 +186,11 @@ select community_type from dotlrn_communities where community_id=:community_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_id.select_community">
-<querytext>
-select community_id from dotlrn_communities where package_id= :package_id
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_community::get_parent_id.select_parent_id">
-<querytext>
-select parent_community_id from dotlrn_communities where community_id = :community_id
-</querytext>
-</fullquery>
-
 <fullquery name="dotlrn_community::get_subcomm_list.select_subcomms">
 <querytext>
 select community_id as subcomm_id from dotlrn_communities where parent_community_id = :community_id
 </querytext>
 </fullquery>
-
-<fullquery name="dotlrn_community::get_subcomm_chunk.select_subcomms">
-<querytext>
-select community_id as subcomm_id from dotlrn_communities where parent_community_id = :community_id
-</querytext>
-</fullquery>
-
 
 <fullquery name="dotlrn_community::get_community_type_package_id.select_package_id">
 <querytext>
@@ -248,22 +236,6 @@ select description from dotlrn_communities where community_id= :community_id
 <fullquery name="dotlrn_community::get_portal_template_id.select_portal_template_id">
 <querytext>
 select portal_template_id from dotlrn_communities where community_id= :community_id
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_community::get_applet_id_from_key.select">
-<querytext>
-select applet_id from dotlrn_applets where applet_key = :applet_key
-</querytext>
-</fullquery>
-
-
-<fullquery name="dotlrn_community::add_applet_to_dotlrn.insert">
-<querytext>
-insert into dotlrn_applets
-(applet_id, applet_key, status)
-values
-(:applet_id, :applet_key, :status)
 </querytext>
 </fullquery>
 
