@@ -254,10 +254,10 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="Club" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="Clubs" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="Groups" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_wsp_page_names"  default="Calendar, My Files" description="a csv list of the other pages to create on the user wsp by default"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_wsp_first_page_name"  default="MySpace" description="The name of the first (default) page for a user's workspace page (e.g. MySloanSpace)"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_first_page_name"  default="Class Info" description="the first page's pretty name"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_admin_first_page_name"  default="Class Admin" description="just that"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_wsp_page_names"  default="MySpace,Simple 2-Column;Calendar,Simple 1-Column;My Files,Simple 1-Column" description="a csv list of the other pages to create on the user wsp by default"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="community_first_page_name"  default="Group Home" description="the first page's pretty name"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="community_admin_first_page_name"  default="Group Admin" description="just that"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
         </parameters>

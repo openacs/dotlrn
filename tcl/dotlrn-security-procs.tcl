@@ -49,14 +49,18 @@ namespace eval dotlrn {
 	db_transaction {
 
             # get the first page name and theme
-            set page_name_and_layout_list [split [ad_parameter user_wsp_page_names "Untitled Page,Simple 2-Column" ] ";"]
+            set page_name_and_layout_list [split [ad_parameter -package_id [dotlrn::get_package_id] user_wsp_page_names "Untitled Page,Simple 2-Column;" ] ";"]
             set page_name_list [list]
-            set layout_list [list]
+            set layout_name_list [list]
             
+            ns_log Notice "bma: [llength $page_name_and_layout_list] LENGTH"
+
             # seperate name and theme
             foreach item $page_name_and_layout_list {
                 lappend page_name_list [lindex [split $item ","] 0]
                 lappend layout_name_list [lindex [split $item ","] 1]
+
+                ns_log Notice "bma: $page_name_list *** $layout_name_list"
             }
 
 	    if {$rel_type == "dotlrn_full_user_rel"} {
@@ -66,43 +70,39 @@ namespace eval dotlrn {
                         -default_page_name [lindex $page_name_list 0] \
                         -layout_name [lindex $layout_name_list 0] \
                         $user_id]
-
+                
                 # create rest of the default pages from the ad_param
                 for {set i 1} {$i < [expr [llength $page_name_list]]} {incr i} {
                     portal::page_create -portal_id $portal_id \
                             -pretty_name [lindex $page_name_list $i] \
                             -layout_name [lindex $layout_name_list $i] 
                 }
-
+                
                 # manually switch back to the first page 
                 set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
-
+                
                 portal::set_current_page -portal_id $portal_id \
                         -page_id $page_id
                 
                 # aks test adding applets on new pages
                 # make a test page to the wsp
-                # add -layout_id later
-                # set page_id [portal::page_create -portal_id $portal_id \
-                #        -pretty_name "test new add applet" \
-                #        -portal_id $portal_id]
-                 dotlrn_main_portlet::add_self_to_page -page_id $page_id \
-                         $portal_id {}
+                dotlrn_main_portlet::add_self_to_page -page_id $page_id \
+                        $portal_id {}
                 # end test
-
+                
                 # Update the user and set the portal page correctly
-		ns_set put $extra_vars portal_id $portal_id
+                ns_set put $extra_vars portal_id $portal_id
+                
+                # must be here since wsp must exist in the dotlrn_full_users table,
+                #do the callbacks on the active dotlrn-wide applets
+                dotlrn_community::applets_dispatch \
+                        -op AddUser \
+                        -list_args [list $user_id]
 	    }
 
 	    # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
 	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type "" $user_id]
 	}
-
-        # must be here since wsp must exist in the dotlrn_full_users table,
-        #do the callbacks on the active dotlrn-wide applets
-        dotlrn_community::applets_dispatch \
-                -op AddUser \
-                -list_args [list $user_id]
         
 	return $rel_id
     }
