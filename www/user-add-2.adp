@@ -34,18 +34,7 @@
   <p></p>
 
   <textarea name="message" rows="10" cols="70" wrap="hard">
-@first_names@ @last_name@,
-
-#dotlrn.you_have_been_added# @system_name@
-#dotlrn.at# @system_url@
-
-#dotlrn.login_information#
-#dotlrn.email# @email@
-#dotlrn.password# @password@
-(#dotlrn.you_may_change_password#)
-
-#dotlrn.thank_you#,
-@administration_name@
+  #dotlrn.registered_user_welcome_email_body#
   </textarea>
 
   <p></p>
