@@ -30,7 +30,7 @@ create table dotlrn_class_instances (
        term			    varchar(20)
 );
 
-create view dotlrn_class_instances_full as select class_instance_id, class_key, year, term, community_key, pretty_name, description, package_id from dotlrn_class_instances, dotlrn_communities where dotlrn_class_instances.class_instance_id = dotlrn_communities.community_id;
+create view dotlrn_class_instances_full as select class_instance_id, class_key, year, term, community_key, pretty_name, description, portal_template_id package_id from dotlrn_class_instances, dotlrn_communities where dotlrn_class_instances.class_instance_id = dotlrn_communities.community_id;
 
 
 
