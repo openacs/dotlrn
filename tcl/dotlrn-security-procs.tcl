@@ -61,19 +61,19 @@ namespace eval dotlrn {
                 }
 
                 # manually switch back to the first page 
+                set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
+
                 portal::set_current_page -portal_id $portal_id \
-                        -page_id [portal::get_page_id -portal_id $portal_id \
-                        -sort_key 0]
+                        -page_id $page_id
                 
                 # aks test adding applets on new pages
-                
                 # make a test page to the wsp
                 # add -layout_id later
                 # set page_id [portal::page_create -portal_id $portal_id \
                 #        -pretty_name "test new add applet" \
                 #        -portal_id $portal_id]
-                # dotlrn_main_portlet::add_self_to_page -page_id $page_id $portal_id {}
-
+                 dotlrn_main_portlet::add_self_to_page -page_id $page_id \
+                         $portal_id {}
                 # end test
 
                 # Update the user and set the portal page correctly

@@ -45,7 +45,10 @@ namespace eval dotlrn_main_portlet {
         @creation-date Nov 2001
     } {
         # Tell portal to add this element to the page
-        set element_id [portal::add_element -page_id $page_id $portal_id [my_name]]
+        set element_id [portal::add_element \
+                -page_id $page_id \
+                -force_region 2 \
+                $portal_id [my_name]]
 
         return $element_id
     }
