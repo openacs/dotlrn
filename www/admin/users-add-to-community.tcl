@@ -49,6 +49,7 @@ set communities [db_list_of_lists select_all_communities {
     select dotlrn_communities.pretty_name,
            dotlrn_communities.community_id
     from dotlrn_communities
+    where dotlrn_communities.portal_id is not NULL
     order by dotlrn_communities.pretty_name,
              dotlrn_communities.community_id
 }]
