@@ -6,8 +6,8 @@
       select term_id,
              term_name,
              term_year,
-             start_date,
-             end_date
+             to_char(start_date, 'Mon DD YYYY') as start_date,
+             to_char(end_date, 'Mon DD YYYY') as end_date
       from dotlrn_terms
       order by start_date
     </querytext>

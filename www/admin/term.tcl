@@ -44,8 +44,6 @@ set terms [db_list_of_lists select_terms_for_select_widget {
     select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,
            dotlrn_terms.term_id
     from dotlrn_terms
-    where dotlrn_terms.end_date > (sysdate - 360)
-    and dotlrn_terms.start_date < (sysdate + 360)
     order by dotlrn_terms.start_date,
              dotlrn_terms.end_date
 }]
@@ -70,7 +68,9 @@ element create term_form department_key \
 if {[form is_valid term_form]} {
     form get_values term_form term_id department_key
 
-    ad_returnredirect "term?[export_vars {term_id department_key}]"
+    if {$term_id != -1} {
+        ad_returnredirect "term?[export_vars {term_id department_key}]"
+    }
 }
 
 if {![exists_and_not_null referer]} {
@@ -78,13 +78,21 @@ if {![exists_and_not_null referer]} {
 }
 
 set query "select_classes"
+if {$term_id == -1} {
+    set query "select_all_classes"
+}
 if {![empty_string_p $department_key]} {
-    set query "select_classes_by_department"
+    append query "_by_department"
 }
 
 db_multirow classes $query {}
 
-set title "One Term"
-set context_bar {{terms Terms} One}
+if {![db_0or1row select_term_info {}]} {
+    set title "All Terms"
+    set context_bar {{terms Terms} {All Terms}}
+} else {
+    set title "$term_name $term_year ($start_date - $end_date)"
+    set context_bar {{terms Terms} One}
+}
 
 ad_return_template
