@@ -816,6 +816,17 @@ namespace eval dotlrn_community {
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
     } {
+        return [util_memoize "dotlrn_community::get_parent_community_id_memoized -package_id $package_id"]
+    }
+
+    ad_proc -public get_parent_community_id_memoized {
+        {-package_id ""}
+    } {
+        Returns the community_id of our parent node or the parent
+        of the passed in package_id. This is used for certain scripts
+        under a dotlrn community, such as workflow panels, that cannot
+        be passed their community_id.
+    } {
         if {[empty_string_p $package_id]} {
             set package_id [ad_conn package_id]
         }

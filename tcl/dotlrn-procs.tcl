@@ -224,6 +224,14 @@ namespace eval dotlrn {
     } {
 	Return the user default theme
     } {
+	return [util_memoize "dotlrn::get_user_theme_memoized $user_id"]
+    }
+
+    ad_proc -private get_user_theme_memoized {
+	user_id
+    } {
+	helper
+    } {
 	return [db_string select_user_theme {} -default ""]
     }
 
@@ -241,7 +249,35 @@ namespace eval dotlrn {
     } {
 	Get the workspace page ID for a particular user
     } {
+        return [util_memoize "dotlrn::get_workspace_portal_id_memoized $user_id"]
+    }
+
+    ad_proc -private get_workspace_portal_id_memoized {
+	user_id
+    } {
+	Get the workspace page ID for a particular user
+    } {
 	return [db_string select_user_portal_id {} -default ""]
+    }
+
+    ad_proc -public get_user_name {
+	user_id
+    } {
+	Get the names the the user
+    } {
+        return [util_memoize "dotlrn::get_user_name_memoized $user_id"]
+    }
+
+    ad_proc -private get_user_name_memoized {
+	user_id
+    } {
+        helper
+    } {
+	return [db_string select_user_name {
+            select first_names || ' ' || last_name
+            from cc_users
+            where user_id = :user_id
+        } -default ""]
     }
 
     ad_proc -public instantiate_and_mount {

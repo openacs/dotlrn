@@ -37,7 +37,7 @@
       </li>
         <if @classes.subcomm_p@ eq t>
           <ul>
-            <%=  [dotlrn_community::get_subcomm_chunk_new -user_id $user_id -community_id $classes(community_id) -only_member_p 1] %>
+            <%= [dotlrn_community::get_subcomm_chunk_new -user_id $user_id -community_id $classes(community_id) -only_member_p 1] %>
           </ul>
         </if>
     </multiple>
@@ -56,7 +56,7 @@
       </li>
         <if @clubs.subcomm_p@ eq t>
           <ul>
-            <%=  [dotlrn_community::get_subcomm_chunk_new -user_id $user_id -community_id $clubs(community_id) -only_member_p 1] %>
+            <%= [dotlrn_community::get_subcomm_chunk_new -user_id $user_id -community_id $clubs(community_id) -only_member_p 1] %>
           </ul>
         </if>
     </multiple>
