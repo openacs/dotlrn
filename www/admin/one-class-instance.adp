@@ -9,5 +9,5 @@
 
 <p>
 
-<form method=get action=community-user-add><li> Add a user: <input type=hidden name=community_id value=@class_instance_id@><input type=hidden name=community_type value=dotlrn_class><input type=text name=search_text> <input type=submit value=search></form>
+<form method=get action=community-user-add><li> Add a user: <input type=hidden name=community_id value=@class_instance_id@><input type=text name=search_text> <input type=submit value=search></form>
 </ul>

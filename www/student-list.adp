@@ -3,6 +3,6 @@
 
 <ul>
 <multiple name=students>
-<li> @last_name@, @first_names@ (<a href=mailto:@email@>@email@</a>)
+<li> @students.last_name@, @students.first_names@ (<a href=mailto:@students.email@>@students.email@</a>), <i>@students.role@</i>
 </multiple>
 </ul>

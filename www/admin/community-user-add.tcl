@@ -7,7 +7,6 @@ ad_page_contract {
 } {
     search_text
     community_id
-    community_type
 }
 
 # Just search

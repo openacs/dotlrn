@@ -96,6 +96,34 @@ namespace eval dotlrn_community {
 	# Not sure what to do here yet
     }
 
+    ad_proc -public get_allowed_rel_types {
+	{ -community_type "" }
+	{ -community_id "" }
+    } {
+	if {[empty_string_p $community_type]} {
+	    set community_type [get_community_type_from_community_id $community_id]
+	}
+	
+	if {$community_type == "dotlrn_class"} {
+	    return {
+		{dotlrn_student_rel Student}
+		{dotlrn_ta_rel TA}
+		{dotlrn_instructor_rel Instructor}
+		{dotlrn_admin_rel Admin}
+	    }
+	}
+
+	if {$community_type == "dotlrn_club"} {
+	    return {
+		{dotlrn_member_rel Member}
+		{dotlrn_admin_rel Admin}
+	    }
+	}
+
+	return {}
+    }
+
+
     ad_proc -public get_pretty_rel_type {
 	rel_type
     } {
@@ -243,6 +271,14 @@ namespace eval dotlrn_community {
 	Returns a list of all communities, and whether or not they are active.
     } {
 	return [db_list_of_lists select_all_communities {}]
+    }
+
+    ad_proc -public get_community_type_from_community_id {
+	community_id
+    } {
+	returns the community type from community_id
+    } {
+	return [db_string select_community_type {}]
     }
 
     ad_proc -public get_community_type {
