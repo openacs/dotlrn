@@ -76,7 +76,7 @@ namespace eval site_nodes {
     } {
         get the object_id (not node_id!) of the parent of this instance
     } {
-        return [db_string select_parent_oid_by_instance_id {}]
+        return [db_string select_parent_oid_by_instance_id {} -default ""]
     }
 
     ad_proc -public get_parent_name {
