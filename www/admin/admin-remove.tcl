@@ -13,23 +13,22 @@
 #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 #  details.
 #
-
+ad_maybe_redirect_for_registration
 ad_page_contract {
-    Manage the Applets for this community
+    Remove dotLRN Administrators 
 
-    @author yon (yon@openforce.net)
-    @creation-date 2002-01-19
-    @version $Id$
-} -query {
+    @author Hector Amado (hr_amado@galileo.edu)
+    @creation-date 2004-07-02
+    @cvs-id $Id$
+} {
+    user_id
 }
 
-#prevent this page from being called when it is not allowed
-# i.e.   AllowManageApplets 0
-dotlrn_portlet::is_allowed -parameter manageapplets
+set group_id [db_string group_id_from_name "
+            select group_id from groups where group_name='dotlrn-admin'" -default ""]
+        if {![empty_string_p $group_id] } {
+           group::remove_member -group_id $group_id -user_id $user_id
+        }
 
-set community_id [dotlrn_community::get_community_id]
-set user_id [ad_get_user_id]
-set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
-
-set context [list [list "one-community-admin" [_ dotlrn.control_panel]] [_ dotlrn.Manage_Applets]]
+template::forward dotlrn-admins
 

@@ -44,7 +44,9 @@
     <else>
     <th align="left">#dotlrn.Access#</th>
     <th align="left">#dotlrn.Guest#</th>
+    <if @oacs_site_wide_admin_p@ true>
     <th align="left">#dotlrn.Site-wide_Admin#</th>
+    </if>
     </else>
   </tr>
 
@@ -72,8 +74,11 @@
     </td>
 <if @type@ eq "pending">
     <td align="left">
+
+    <if @oacs_site_wide_admin_p@ true>
     <% # We had to escape to Tcl to get the desired behavior. AG %>
-    <small><a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=<%= [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$users(user_id)&referer=$referer] %>">#dotlrn.lt_approve_and_add_to_do#</a> | <a href="user-nuke?user_id=@users.user_id@&referer=@referer@">#acs-kernel.common_delete#</small>
+    <small><a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=<%= [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$users(user_id)&referer=$referer] %>">#dotlrn.lt_approve_and_add_to_do#</a> | </if>
+    <a href="user-nuke?user_id=@users.user_id@&referer=@referer@">#acs-kernel.common_delete#</small>
     </td>
 </if>
 <else>
@@ -86,7 +91,9 @@
      <if @users.guest_p@ eq t>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
      </else>
     </td>
-    <td align="center">
+
+<if @oacs_site_wide_admin_p@ true>
+ <td align="center">
   <if @user_id@ ne @users.user_id@>
     <if @users.site_wide_admin_p@ true>
       <b>#dotlrn.Yes#</b> | <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
@@ -97,6 +104,7 @@
   </if>
       <else>#dotlrn.Yes#</else>
     </td>
+</if>
 </else>
   </tr>
 

@@ -26,6 +26,15 @@ ad_page_contract {
     {referer "users"}
 }
 
+if { ![acs_user::site_wide_admin_p] } {
+             ns_log notice "user has tried to site-wide-admin-toggle  without permission"
+        ad_return_forbidden \
+               "Permission Denied" \
+               "<blockquote>
+                You don't have permission to see this page.
+               </blockquote>"
+}
+
 if {[string equal $value "grant"] == 1} {
     ad_permission_grant $user_id [acs_magic_object "security_context_root"] "admin"
 } elseif {[string equal $value "revoke"] == 1} {

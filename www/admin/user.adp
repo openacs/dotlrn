@@ -29,19 +29,25 @@
   <li>
     #dotlrn.Person_name#
     @first_names@ @last_name@
+  <if @oacs_site_wide_admin_p@ true> 
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
+  </if>
   </li>
 
   <li>
     #dotlrn.Email#
     <a href="mailto:@email@">@email@</a>
+  <if @oacs_site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
+  </if> 
   </li>
 
   <li>
     #dotlrn.Screen_name#
     @screen_name@
+  <if @oacs_site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
+  </if>
   </li>
 
   <li>
@@ -70,7 +76,9 @@
   <li>
     #dotlrn.Member_state#
     @member_state@
+  <if @oacs_site_wide_admin_p@ true> 
     @change_state_links;noquote@
+  </if>
   </li>
 
 </ul>
@@ -181,16 +189,8 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   <if @portrait_p@>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
-  <li>    
-  <if @dotlrn_user_p@>
-    <if @site_wide_admin_p@>
-      #dotlrn.lt_This_user_is_a_site-w# 
-      (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">#dotlrn.revoke#</a>)
-    </if>
-    <else>
-      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">
-      #dotlrn.lt_Make_this_user_a_site#</a>
-    </else>
-  </if>
+
+ <if @oacs_site_wide_admin_p@ true>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
+ </if> 
 </ul>

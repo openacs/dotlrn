@@ -79,7 +79,10 @@
         <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
-        <td><small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small></td>
+        <td>
+          <if @show_drop_button_p@ eq 1>
+            <small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small></td>
+          </if>
 </else>
       </tr>
 </multiple>
@@ -113,7 +116,10 @@
         <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
-        <td><small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
+        <td>
+          <if @show_drop_button_p@ eq 1>
+            <small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
+          </if>
 </else>
       </tr>
 </multiple>

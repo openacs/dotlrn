@@ -21,6 +21,10 @@
         <requires url="user-profile" version="0.1d"/>
 
         <callbacks>
+            <callback type="after-install"  proc="dotlrn::apm::after_install"/>
+            <callback type="after-instantiate"  proc="dotlrn::apm::after_instantiate"/>
+            <callback type="after-upgrade"  proc="dotlrn::apm::after_upgrade"/>
+            <callback type="before-uninstall"  proc="dotlrn::apm::before_uninstall"/>
         </callbacks>
         <parameters>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoAddAuthorities"  default="*" description="A comma-separated list of short-names of authorities for which users should be automatically added to .LRN, or '*' for all. In order for users to be auto-added, AutoAddUsersP needs to be set to 1, and this needs to be set to * or include the relevant authority short_names. Example: 'local,ldap'." section_name="Auto-Adding Users to .LRN"/>

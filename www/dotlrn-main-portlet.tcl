@@ -35,6 +35,10 @@ if {![exists_and_not_null show_archived_p]} {
 set user_id [ad_conn user_id]
 set user_can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
+set show_drop_button_p [parameter::get_from_package_key \
+                               -package_key dotlrn-portlet \
+			       -parameter AllowMembersDropGroups]
+
 if { $show_archived_p } {
     set archived_clause ""
 } else {

@@ -27,6 +27,10 @@ ad_page_contract {
     {referer "one-community-admin"}
 }
 
+#prevent this page from being called when it is not allowed
+# i.e.   AllowManageMembership 0
+dotlrn_portlet::is_allowed -parameter managemembership
+
 set community_id [dotlrn_community::get_community_id]
 # See if the user is already in the group
 set member_p [dotlrn_community::member_p $community_id $user_id]

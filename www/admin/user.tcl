@@ -41,6 +41,8 @@ ad_page_contract {
     member_clubs:multirow
 }
 
+set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
+
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
 set export_edit_vars "user_id=$user_id&return_url=$return_url"
 
