@@ -385,7 +385,7 @@ programmers! The actual error returned was:</msg>
   <msg key="lt_Your_search_returned_">Your search returned no results, please broaden your search criteria.</msg>
   <msg key="lt_Youre_asking_to_chang">You're asking to change the level of access of this user.
 This has strong repercussions. Are you user about this?</msg>
-  <msg key="ltnone_set_upgt">&amp;lt;none set up&amp;gt;</msg>
+  <msg key="ltnone_set_upgt">&lt;none set up&gt;</msg>
   <msg key="Mail_Failed">Mail Failed</msg>
   <msg key="Manage">Manage</msg>
   <msg key="Manage_Applets">Manage Applets</msg>
