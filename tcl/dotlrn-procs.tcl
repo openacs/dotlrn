@@ -225,10 +225,14 @@ namespace eval dotlrn {
 	return [db_string select_user_portal_id {} -default ""]
     }
 
-    ad_proc -public get_user_name {
+    ad_proc -public -deprecated get_user_name {
 	user_id
     } {
-	Get the names the the user
+	Get the names the the user.
+        
+        Deprectead. Use acs_user::get_element -element name instead.
+
+        @see acs_user::get_element.
     } {
         return [acs_user::get_element -user_id $user_id -element name]
     }
