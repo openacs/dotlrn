@@ -25,8 +25,8 @@ ad_page_contract {
     url:onevalue
     bio:onevalue
     verified_user_id:onevalue
-    user_contributions:multirow
     folder_id:onevalue
+    user_contributions:multirow
 }
 
 set verified_user_id [ad_verify_and_get_user_id]

@@ -46,9 +46,11 @@ A member of the @system_name@ community since @pretty_creation_date@
   </if>
 </else>
 
+<if @folder_id@ not nil>
 <h3>Shared Files</h3>
 
-<include src="folder-chunk" folder_id=@folder_id@>
+  <include src="folder-chunk" folder_id=@folder_id@>
+</if>
 
 <multiple name="user_contributions">
   <h3>@user_contributions.pretty_plural@</h3>
