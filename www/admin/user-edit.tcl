@@ -49,7 +49,7 @@ element create edit_user read_private_data_p \
     -label "Guest?" \
     -datatype text \
     -widget select \
-    -options {{"Yes" "f"} {"No" "t"}} \
+    -options {{"No" "t"} {"Yes" "f"}} \
     -value $read_private_data_p
 
 element create edit_user referer \

@@ -40,7 +40,7 @@ element create add_user read_private_data_p \
     -label "Guest?" \
     -datatype text \
     -widget select \
-    -options {{"Yes" "f"} {"No" "t"}}
+    -options {{"No" "t"} {"Yes" "f"}}
 
 element create add_user referer \
     -label "Referer" \
