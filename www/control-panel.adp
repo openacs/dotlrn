@@ -35,7 +35,8 @@
      </small>
   </li>
   <li><a href="/user/password-update?return_url=@referer@">#dotlrn.Change_My_Password#</a></li>
-  <li><a href="applets/bboard/alerts">#dotlrn.lt_Edit_My_Bulletin_Boar#</a></li>
+  <li><a href="/acs-lang/">#dotlrn.lt_Change_my_language_se#</a></li>
+  <li><a href="/notifications/manage">#dotlrn.lt_Edit_My_Bulletin_Boar#</a></li>
   <li><a href="configure">#dotlrn.Customize_Layout#</a></li>
 <if @admin_p@>
   <li><a href="@admin_url@">@admin_pretty_name@</a></li>
@@ -43,8 +44,5 @@
 </ul>
 
 <blockquote>
-  <include src="my-communities" title="Groups" referer="control_panel">
+  <include src="my-communities" title="#dotlrn.Groups#" referer="control_panel">
 </blockquote>
-
-
-
