@@ -6,6 +6,7 @@ ad_page_contract {
     @creation-date 2001-10-04
     @version $Id$
 } -query {
+    {page_num 0}
 }
 
 # Check that this is a community type
@@ -37,7 +38,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
 
     # Possible that there is no portal page for non-members
     if {! [empty_string_p $portal_id]} {
-	set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
+	set rendered_page [dotlrn::render_page -hide_links_p -page_num $page_num "t" $portal_id]
     } else {
 	set rendered_page ""
     }
@@ -48,9 +49,11 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     # Pull out the NPP page ID and render it!
     set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
 
-    set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
+#    ad_return_complaint 1 "$portal_id"
+    set rendered_page [dotlrn::render_page -hide_links_p "t" -page_num $page_num $portal_id]
 
     set context_bar {View}
+    set url_stub "one-community"
 
-    ad_return_template
+    ad_return_template 
 }
