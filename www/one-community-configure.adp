@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">Configure your page</property>
+<property name="title">Configure @name@</property>
 <p>
 
 @rendered_page@
