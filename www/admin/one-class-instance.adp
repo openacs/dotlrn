@@ -16,3 +16,6 @@
 
 <form method=get action=community-user-add><li> Add a user: <input type=hidden name=community_id value=@class_instance_id@><input type=text name=search_text> <input type=submit value=search></form>
 </ul>
+
+<h3>Portal Template</h3>
+<a href=one-instance-portal-template?portal_id=@portal_id@>manage the portal template</a>
