@@ -8,15 +8,16 @@
     <singleton-p>f</singleton-p>
     <auto-mount>dotlrn</auto-mount>
     
-    <version name="2.0.3" url="http://openacs.org/repository/download/apm/dotlrn-2.0.3.apm">
+    <version name="2.1.0b4" url="http://openacs.org/repository/download/apm/dotlrn-2.1.0b4.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
         <release-date>2004-03-10</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.0.3"/>
+        <provides url="dotlrn" version="2.1.0b4"/>
         <requires url="acs-kernel" version="5.0.0b4"/>
+        <requires url="acs-lang" version="5.1.2d1"/>
         <requires url="attachments" version="0.5"/>
         <requires url="new-portal" version="0.1a"/>
         <requires url="user-profile" version="0.1d"/>
@@ -28,20 +29,20 @@
             <callback type="before-uninstall"  proc="dotlrn::apm::before_uninstall"/>
         </callbacks>
         <parameters>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="#dotlrn.admin_page_name#" description="The name of the admin page"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoAddAuthorities"  default="*" description="A comma-separated list of short-names of authorities for which users should be automatically added to .LRN, or '*' for all. In order for users to be auto-added, AutoAddUsersP needs to be set to 1, and this needs to be set to * or include the relevant authority short_names. Example: 'local,ldap'." section_name="Auto-Adding Users to .LRN"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoAddUsersP"  default="0" description="Automatically add OpenACS users to .LRN. 1 = yes, 0 = no. In order for users to be auto-added, this needs to be set to 1, and AutoAddAuthorities needs to be set to * or include the relevant authority short_names." section_name="Auto-Adding Users to .LRN"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserAccessLevel"  default="1" description="The access level of auto-added users. 1 = Full access user, 0 = Limited access user" section_name="Auto-Adding Users to .LRN"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserReadPrivateDataP"  default="1" description="Auto-added user's guest status. 1 = Not a guest , 0 = Guest." section_name="Auto-Adding Users to .LRN"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoUserType"  default="student" description="The user type for auto-approved users." section_name="Auto-Adding Users to .LRN"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="#dotlrn.admin_page_name#" description="The name of the admin page"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="#dotlrn.classes_pretty_name#" description="used to display everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="#dotlrn.classes_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="#dotlrn.class_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.class_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.class_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="cvs list of the page_name/layout to create"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="#dotlrn.class_instance_portal_pretty_name#" description="the nice name for the class instance portal template"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="#dotlrn.class_instances_pretty_name#" description="used to display everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="#dotlrn.class_instances_pretty_plural#" description="used everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="#dotlrn.classes_pretty_name#" description="used to display everywhere in the ui"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="#dotlrn.classes_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="#dotlrn.club_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.club_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_file_storage_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_people_title#,#new-portal.simple_1column_layout_name#" description="same"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="#dotlrn.clubs_pretty_name#" description="used everywhere in the ui"/>
@@ -58,6 +59,8 @@
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="#dotlrn.dotlrn_main_portlet_pretty_name#" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_toolbar_enabled_p"  default="1" description="Enable or disable the dotlrn toolbar" section_name="Toolbar"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_toolbar_show_info_p"  default="0" description="Show relevant information to developpers." section_name="Toolbar"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="#dotlrn.non_member_page_name#" description="The name of the not a member page"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="1" description="Should we show and solicit user portraits? 1=Yes, 0=No"/>

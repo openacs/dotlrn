@@ -32,6 +32,9 @@ ad_page_contract {
     description:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 db_1row select_club {}
 
 set description [ad_quotehtml $description]

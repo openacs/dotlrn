@@ -26,18 +26,30 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 ad_form -name add_term -export referer -form {
 
-    {term_name:text          {label "Term (e.g. Spring, Fall)"} {maxlength 20}
+    {term_name:text          {label "[_ dotlrn.Term_eg_Spring_Fall]"} {maxlength 20}
     {html {size 30}}}
 
-    {start_date:date
-                             {label "Start Date"}
-                             {format {MONTH DD YYYY}}}
+    {start_date:text(text)
+	{label "[_ dotlrn.Start_Date]"}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel1}}
+	{after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel1', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
+    }
 
-    {end_date:date
-                             {label "End Date"}
-                             {format {MONTH DD YYYY}}}
+    {end_date:text(text)
+	{label "[_ dotlrn.End_Date]"}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel2}}
+	{after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel2', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
+    }
+
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }
@@ -48,6 +60,21 @@ ad_form -name add_term -export referer -form {
         "The term must end in the future"
     }
 } -on_submit {
+    
+    # Setting the rigth format to send to the procedures
+    # dotlrn_term::start_end_dates_to_term_year  and
+    # dotlrn_term::new
+    
+    set start_date [split $start_date "-"]
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date "MONTH DD YYYY"
+    set end_date [split $end_date "-"]
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date "MONTH DD YYYY"
 
     set term_year [dotlrn_term::start_end_dates_to_term_year \
         -start_date $start_date \

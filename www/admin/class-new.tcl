@@ -29,6 +29,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 # Used in en_US title
 set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
 set title "[_ dotlrn.new_class_1]"

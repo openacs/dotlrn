@@ -26,6 +26,9 @@ ad_page_contract {
     {referer ""}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set is_dotlrn_user [db_string is_dotlrn_user {}]
 
 # if the user isn't already a dotLRN user make him so

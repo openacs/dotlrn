@@ -812,6 +812,9 @@ namespace eval dotlrn_community {
                 [get_toplevel_community_type_from_community_id $community_id]
 
         if {[string equal $toplevel_community_type dotlrn_class_instance]} {
+	    if {$rel_type == "dotlrn_member_rel"} {
+                set rel_type "dotlrn_student_rel"
+            }
             dotlrn_class::add_user \
                 -rel_type $rel_type \
                 -community_id $community_id \
@@ -1418,7 +1421,15 @@ namespace eval dotlrn_community {
         update the name for a community
     } {
         set old_value [get_community_name $community_id]
+
         db_dml update_community_name {}
+
+	# rename the package - this is used in the user interface. ie - context bar and
+	# in the portlets
+
+	set package_id [dotlrn_community::get_package_id $community_id]
+	apm_package_rename -package_id $package_id -instance_name $pretty_name
+
         util_memoize_flush "dotlrn_community::get_community_name_not_cached $community_id"
 
         # generate "rename" event
@@ -1826,21 +1837,6 @@ namespace eval dotlrn_community {
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
-            foreach applet_key [list_applets -community_id $community_id] {
-                # do the clone call on each applet in this community
-                ns_log notice "dotlrn_community::clone cloning applet = $applet_key"
-                set package_id [applet_call \
-                    $applet_key \
-                    "Clone" \
-                    [list $community_id $clone_id]
-                ]
-
-                register_applet \
-                    -community_id $clone_id \
-                    -package_id $package_id \
-                    -applet_key $applet_key
-            }
-
             # more extra stuff for subcomms
             if {$subcomm_p} {
                 set parent_admin_segment_id [dotlrn_community::get_rel_segment_id \
@@ -1884,6 +1880,22 @@ namespace eval dotlrn_community {
                     -description [get_community_description -community_id $subcomm_id]  \
                     -parent_community_id $clone_id
             }
+
+            foreach applet_key [list_applets -community_id $community_id] {
+                # do the clone call on each applet in this community
+                ns_log notice "dotlrn_community::clone cloning applet = $applet_key"
+                set package_id [applet_call \
+                    $applet_key \
+                    "Clone" \
+                    [list $community_id $clone_id]
+                ]
+
+                register_applet \
+                    -community_id $clone_id \
+                    -package_id $package_id \
+                    -applet_key $applet_key
+            }
+
         }
         
         return $clone_id
@@ -1926,11 +1938,22 @@ namespace eval dotlrn_community {
     ad_proc -public unarchive {
         {-community_id:required}
     } {
-        Unarchives a community. ** not done yet **
+        Unarchives a community.
+        08/10-2003 CK looks like its done now
     } {
-        error
-        ad_script_abort
+        # 19/06-2003 CK Activated the code for unarchive
         db_dml update_archive_p {}
+
+        rel_segments_grant_permission -community_id $community_id
+
+        # 08/10-2003 CK Must also execute AddUserToCommunity
+        foreach user [list_users $community_id] {
+            set user_id [ns_set get $user user_id]
+            applets_dispatch \
+                -community_id $community_id \
+                -op AddUserToCommunity \
+                -list_args [list $community_id $user_id]
+        }
     }
 
     ad_proc -public nuke {

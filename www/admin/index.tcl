@@ -21,6 +21,9 @@ ad_page_contract {
     @creation-date 2001-11-04
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
 set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
@@ -33,5 +36,15 @@ set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural
 set parameters_url [export_vars -base /shared/parameters { { package_id {[dotlrn::get_package_id]} } { return_url [ad_return_url] } }] 
 
 set parameters_d_url [export_vars -base /shared/parameters { { package_id {[apm_package_id_from_key dotlrn-portlet]} } { return_url [ad_return_url] } }]
+
+if { ![parameter::get -localize -package_id [dotlrn::get_package_id] -parameter dotlrn_toolbar_enabled_p -default 1] } {
+    set dotlrn_toolbar_action "Show .LRN toolbar"
+    set action "show"
+} else {
+    set dotlrn_toolbar_action "Hide .LRN toolbar"
+    set action "hide"
+}
+
+set return_url [ad_conn url]
 
 ad_return_template

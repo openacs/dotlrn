@@ -27,27 +27,53 @@ ad_page_contract {
     {referer "control-panel"}
     {spam_all 0}
 } -validate {
-    recipients_specified {
-      if { ![info exists recipients_str] && ![info exists recipients] } {
-        ad_complain "[_ dotlrn.Must_specify_recipients]"
-      }
-    }
+
     recipients_split {
-      if { [info exists recipients_str] && ![info exists recipients] } {
-        set recipients [split $recipients_str]
-      }
+	if { [info exists recipients_str] && ![info exists recipients] } {
+	    set recipients [split $recipients_str]	
+	}
     }
+
     rel_types_split {
-      if { [info exists rel_types_str] && ![info exists rel_types] } {
-        set rel_types [split $rel_types_str]
-      }
-  }
+	if { [info exists rel_types_str] && ![info exists rel_types] } {
+	    set rel_types [split $rel_types_str]
+	}
+    }
+    
+    recipients_specified {
+
+	set recipients_p 0	
+	if {[info exists rel_types] && ![empty_string_p $rel_types]} {
+	    set recipients_p 1
+	} elseif  {[info exists recipients] && ![empty_string_p $recipients]} {
+	    set recipients_p 1
+	} elseif {[info exists spam_all] && $spam_all != 0} {
+	    set recipients_p 1
+	} elseif { [info exists rel_types_str] && ![empty_string_p $rel_types_str] } {
+	    set recipients_p 1
+	} elseif { [info exists recipients_str] && ![empty_string_p $recipients_str] } {
+	    set recipients_p 1
+	}
+	
+	if { $recipients_p == 0} {
+	    ad_complain "[_ dotlrn.Must_specify_recipients]"
+	}
+    }
+    if_bad_combination {
+	if { ![empty_string_p $rel_types] && ![empty_string_p $recipients] } {
+	    ad_complain "If you select a role, you can't select people at the same time."
+	}
+	if { $spam_all && ( ![empty_string_p $rel_types] || ![empty_string_p $recipients] ) } {
+	    ad_complain "You can't select roles or recipients if you have selected the \"send to everyone\" option"
+	}
+    }
 } -properties {
     context_bar:onevalue
     portal_id:onevalue
 }
 
-set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam]]
+
+set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam_]]
 set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
 if {[empty_string_p $community_id]} {
@@ -90,9 +116,17 @@ element create spam_message subject \
 
 element create spam_message message \
     -label [_ dotlrn.Message] \
-    -datatype richtext \
-    -widget richtext \
+    -datatype text \
+    -widget textarea \
     -html {rows 10 cols 80 wrap soft}
+
+
+element create spam_message format \
+    -label "Format" \
+    -datatype text \
+    -widget select \
+    -options {{"Preformatted Text" "pre"} {"Plain Text" "plain"} {HTML "html"}}
+
 
 element create spam_message send_date \
     -label [_ dotlrn.Send_Date] \
@@ -125,52 +159,50 @@ element create spam_message spam_all \
     -widget hidden \
     -value $spam_all
 
-if {[ns_queryexists "form:confirm"]} {
+if { [ns_queryexists "form:confirm"] } {
     form get_values spam_message \
-        community_id from rel_types_str subject message send_date referer recipients_str spam_all
-
-    set content [string trimright [template::util::richtext::get_property contents $message]]
-    set format [string trimright [template::util::richtext::get_property format $message]]
+        community_id from rel_types_str subject message send_date referer recipients_str spam_all format
+   
+    set who_will_receive_this_clause ""
 
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
 
-    set recipients_str [join [split $recipients_str] ,]
-    set rel_types_str [join [split $rel_types_str] ',']
+    if { ![empty_string_p $recipients_str] } {
+	set recipients_str [join [split $recipients_str] ,]
+ 	append who_will_receive_this_clause [db_map recipients_clause]
+    } 
 
 
-
-# POSTGRES - change to plural
-# TODO - what if no rel_types
-
-    set safe_community_name [db_quote $community_name]
-
-    set extra_where_clause ""
+    if { ![empty_string_p $rel_types_str] } {
+	set rel_types_str "'[join [split $rel_types_str] ',']'"
+ 	append who_will_receive_this_clause [db_map rel_types_clause]
+    }
 
     if { $spam_all } {
 	# if there is a spam_all, choose all the rel_types!
+	# Note - right now, all bulk_mail queries have the same
+	# format and use the same base query. 
+	# Another possibility is 
+	set rel_types_str "select distinct rel_type from acs_rel_types"
+    }     
 
-	set rel_types_str [join [db_list select_rel_segments "
-            select rel_segments.rel_type
-            from rel_segments
-            where rel_segments.group_id = :community_id"] ',']
-    } 
+    # POSTGRES - change to plural
+    # TODO - what if no rel_types
 
-    if {[empty_string_p $recipients_str]} {
-	set recipients_str ''
-    }
-
+    set safe_community_name [db_quote $community_name]
 
     set query [db_map sender_info]
 
-    # TO DO CHANGE THE ORACLE QUERY
-    
-    ns_log notice "query: $query"
-
-    if {$format == "text/html"} {
-	set bulk_format "html"
+    if {$format == "html"} {
+	set message "$message"
+	set message_type "html"
+    } elseif {$format == "pre"} {
+	set message [ad_text_to_html $message]
+	set message_type "html"
     } else {
-	set bulk_format "text"
+	set message [ad_quotehtml $message]
+	set message_type "text"
     }
 
     bulk_mail::new \
@@ -179,8 +211,8 @@ if {[ns_queryexists "form:confirm"]} {
         -date_format "YYYY MM DD HH24 MI SS" \
         -from_addr $from \
         -subject "\[$community_name\] $subject" \
-        -message $content \
-        -message_type $bulk_format \
+        -message $message \
+        -message_type $message_type \
         -query $query
 
     ad_returnredirect $referer

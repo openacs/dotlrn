@@ -6,8 +6,8 @@
     <fullquery name="sender_info">
         <querytext>
         select '$from' as from_addr,
-               '$sender_first_names' as sender_first_names,
-               '$sender_last_name' as sender_last_name,
+               '[db_quote $sender_first_names]' as sender_first_names,
+               '[db_quote $sender_last_name]' as sender_last_name,
                parties.email,
                decode(acs_objects.object_type,
                       'user',
@@ -36,7 +36,7 @@
                  acs_objects
             where (acs_rels.object_id_one = $community_id
             and acs_rels.object_id_two = parties.party_id
-            and (acs_rels.rel_type in ('$rel_types_str')
+            and (acs_rels.rel_type in ($rel_types_str)
 	         or acs_rels.object_id_two in ($recipients_str))
 	    and parties.party_id = acs_objects.object_id
             and parties.party_id in (select acs_rels.object_id_two  

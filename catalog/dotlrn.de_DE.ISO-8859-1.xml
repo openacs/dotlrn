@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -55,10 +55,13 @@
   <msg key="black">Schwarz</msg>
   <msg key="Black_None_chosen">Schwarz (Keine ausgewählt)</msg>
   <msg key="blue">Blau</msg>
+  <msg key="Bulk_Approve">Mehrere Benutzer freischalten</msg>
+  <msg key="Bulk_Approving">Es werden mehrere Benutzer freigeschaltet...</msg>
   <msg key="Bulk_Upload">Mehrere Benutzer hochladen</msg>
   <msg key="Bulk_Uploading">Es werden mehrere Benutzer hochgeladen...</msg>
   <msg key="cannot_be_removed">Kann nicht entfernt werden</msg>
   <msg key="Change_Locale">Sprachversion ändern</msg>
+  <msg key="Choose_members_to_receive">Wählen Sie die Teilnehmer von %community_name% aus, die diese Nachricht erhalten sollen:</msg>
   <msg key="class_instance_portal_pretty_name">Kurse</msg>
   <msg key="class_instances_pretty_name">Kurs</msg>
   <msg key="class_instances_pretty_plural">Kurse</msg>
@@ -92,6 +95,7 @@
   <msg key="Community_Type">Art der Community</msg>
   <msg key="Community_Types">Arten von Communities</msg>
   <msg key="Communitys_Name">Bezeichnung der Community</msg>
+  <msg key="Compose_bulk_message">Gruppen-E-Mail erstellen</msg>
   <msg key="Configure_Element">Element einrichten </msg>
   <msg key="Configure_name">%name% einrichten</msg>
   <msg key="Confirm">Bestätigen</msg>
@@ -107,6 +111,7 @@
   <msg key="course_assistant_role_pretty_plural">Tutoren</msg>
   <msg key="Create_A_New_User">Neuen Benutzer erstellen</msg>
   <msg key="Create_a_Web_Log">Ein Web-Tagebuch anlegen</msg>
+  <msg key="Created">Erstellt</msg>
   <msg key="CSV_File_Format">Dateiformat CSV</msg>
   <msg key="Customize_Layout">Layout anpassen</msg>
   <msg key="Deactivate_">Deaktivieren...</msg>
@@ -199,6 +204,7 @@
   <msg key="Header_Logo_Alt_Text">Alternativer Text für Kopfzeilenlogo</msg>
   <msg key="Header_Logo_Item_ID">Kopfzeilenlogo-ID</msg>
   <msg key="help">Hilfe</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">Interne ID</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Professor</msg>
@@ -316,6 +322,7 @@
   <msg key="lt_Web_Log_for_user_name">Web-Tagebuch für %user_name%
 </msg>
   <msg key="lt_Well_we_tried_to_nuke">Beim Löschen des Benutzers ist ein Fehler aufgetreten. Die Ursache ist wahrscheinlich, dass innerhalb des Datenbankschemas eine Referenz auf den Benutzer (user_id=%user_id%) besteht. Wenden Sie sich an den Programmierer.</msg>
+  <msg key="lt_Year_eg_2003_20032004">Jahr (z.B. 2004, 2004/2005)</msg>
   <msg key="lt_You_are_about_to_dele">Sind sind im Begriff, %num_users% Benutzer zu löschen.</msg>
   <msg key="lt_You_are_adding_strong">Sie fügen &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; zu &quot;%community_name%&quot; hinzu: </msg>
   <msg key="lt_You_are_not_allowed_t">Sie sind nicht berechtigt, diese Aktion auszuführen.</msg>
@@ -347,7 +354,10 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Memberships">Der Benutzer ist Teilnehmer folgender Gruppen: </msg>
   <msg key="Memberships_1">Der Benutzer ist Teilnehmer folgender Gruppen:</msg>
   <msg key="Message">Nachricht</msg>
+  <msg key="Message_Type">Nachrichtentyp</msg>
+  <msg key="Minutes">Minuten</msg>
   <msg key="must_have_values">Das Feld muss einen der folgenden Werte aufweisen:</msg>
+  <msg key="Must_specify_recipients">Bitte geben Sie mindestens einen Empfänger für die Nachricht an</msg>
   <msg key="My_Communities">Eigene Kurse und Communities</msg>
   <msg key="NA">Nicht vorhanden</msg>
   <msg key="Name">Bezeichnung</msg>
@@ -389,6 +399,8 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="not_a_user">Kein registrierter Benutzer</msg>
   <msg key="Not_Allowed">Nicht erlaubt</msg>
   <msg key="Note">Hinweis: </msg>
+  <msg key="Note_if_you_make">Hinweis: wenn Sie hier etwas ändern, geht alles verloren, was sich die Benutzer an ihrem Portal personalisiert haben.</msg>
+  <msg key="Note_the_term_column">Hinweis: die Spalte &quot;Semester&quot; betrifft Kurse und Kurs-Untergruppen. Für Kurs-Untergruppen enthält &quot;Semester&quot; die Semesterangabe des übergeordneten Kurses. Für Unter-Untergruppen und weiter untergeordnete Untergruppen wird kein Semester angezeigt.</msg>
   <msg key="Nuke">Löschen</msg>
   <msg key="Nuke_">Löschen...</msg>
   <msg key="Nuke_Users">Benutzer löschen</msg>
@@ -398,11 +410,13 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Or">Oder</msg>
   <msg key="or_by_RGB_number">oder RGB-Zahlenwerten festlegen.</msg>
   <msg key="or_return_to">oder gehen Sie zurück zu</msg>
+  <msg key="Parent">Übergeordnete</msg>
   <msg key="Pending">Zugang beantragt</msg>
   <msg key="Pending_Approval">Zugang beantragt</msg>
   <msg key="Person_name">Name</msg>
   <msg key="Personal_home_page">Persönliche Homepage:</msg>
   <msg key="Personal_Options">Persönliche Einstellungen</msg>
+  <msg key="Plain_Text">Einfacher Text</msg>
   <msg key="portal_templates">Portalvorlagen</msg>
   <msg key="Portrait">Bild:</msg>
   <msg key="Portrait_1">Bild</msg>
@@ -441,6 +455,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="seconds">Sekunden.</msg>
   <msg key="Send_Date">Versenden am</msg>
   <msg key="send_email">E-Mail senden</msg>
+  <msg key="Send_to_all">An die ganze Gruppe senden</msg>
   <msg key="Shared_Files">Freigegebene Dateien</msg>
   <msg key="silver">Silber</msg>
   <msg key="Site-wide_Admin">Systemadministrator?</msg>
@@ -469,6 +484,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Templates">Vorlagen</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Semester</msg>
+  <msg key="Term_eg_Spring_Fall">Semester (z.B. SS, WS)</msg>
   <msg key="Term_ID">Semester-ID</msg>
   <msg key="term_properties">Eigenschaften des Semesters</msg>
   <msg key="Terms">Semester</msg>
@@ -479,7 +495,10 @@ Beispiel:</msg>
   <msg key="there_are_no_users_matching">Es wurden keine mit Ihrer Suchanfrage &quot;%search_text%&quot; übereinstimmenden Benutzer gefunden.</msg>
   <msg key="this_user_is_deleted">Dieser Benutzer ist gelöscht.</msg>
   <msg key="To">Teilnehmertypen, an die eine E-Mail gesendet werden soll:</msg>
+  <msg key="Total_count">Anzahl:</msg>
   <msg key="Type">Typ</msg>
+  <msg key="Unarchive">Wiederherstellen</msg>
+  <msg key="unarchive">wiederherstellen</msg>
   <msg key="Unknown_Term">Unbekanntes Semester</msg>
   <msg key="Update_Password">Passwort aktualisieren</msg>
   <msg key="upload">Hochladen</msg>
@@ -507,6 +526,7 @@ Beispiel:</msg>
   <msg key="Users_Bulk_Upload">Benutzer: Mehrere hochladen</msg>
   <msg key="Users_Search">Benutzersuche</msg>
   <msg key="View">Anzeigen</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Warnung!&lt;/strong&gt; Dies kann bis zu %hours% Stunden, %minutes% Minuten dauern!!</msg>
   <msg key="Year">Jahr:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">Ja</msg>

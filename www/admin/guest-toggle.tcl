@@ -26,6 +26,9 @@ ad_page_contract {
     {referer "users"}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 # Update permissions
 dotlrn_privacy::set_user_guest_p \
         -user_id $user_id \

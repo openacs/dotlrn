@@ -28,10 +28,15 @@ ad_page_contract {
     roles:multirow
 }
 
-#prevent this page from being called when it is not allowed
-# i.e.   AllowManageMembership 0
-dotlrn_portlet::is_allowed -parameter managemembership
+#prevent to add new student, only admins can do this.
+# parameter  AllowManageMembership 
 
+set allowed_to_add_student [parameter::get_from_package_key \
+                                       -package_key dotlrn-portlet \
+				       -parameter AllowManageMembership]
+
+set dotlrn_admin [dotlrn::admin_p]
+ 
 set community_id [dotlrn_community::get_community_id]
 
 dotlrn::require_user_admin_community -community_id $community_id

@@ -24,72 +24,24 @@
 
 <center>
 
-  <table cellpadding="5" width="95%">
-    <tr>
-      <td align="left">
-        <nobr>
-          <small>[
-            <a href="term-new">#dotlrn.New_Term#</a>
-          ]</small>
-        </nobr>
-      </td>
-    </tr>
-  </table>
-
-  <br>
-
-  <table bgcolor="#cccccc" cellpadding="5" width="95%">
-    <tr>
-      <th align="left">#dotlrn.Term#</th>
-      <th align="center" width="15%">#dotlrn.Start_Date#</th>
-      <th align="center" width="15%">#dotlrn.End_Date#</th>
-      <th align="center" width="15%">#dotlrn.Classes#</th>
-    </tr>
 
 <if @terms:rowcount@ gt 0>
-
-<multiple name="terms">
-
-<if @terms.rownum@ odd>
-    <tr bgcolor="#eeeeee">
+  <listtemplate name="terms"></listtemplate>
 </if>
 <else>
-    <tr bgcolor="#d9e4f9">
-</else>
-      <td align="left"><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
-      <td align="center">@terms.start_date_pretty@</td>
-      <td align="center">@terms.end_date_pretty@</td>
-      <td align="center">@terms.n_classes@</td>
-    </tr>
-
-</multiple>
-
-</if>
-<else>
+</center>
+<p align="right"><a href="term-new" class="button">#dotlrn.New_Term#</a> </p>
+<center>
+<table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
       <i>#dotlrn.No_Terms#</i>
     </td>
   </tr>
+</table>
 </else>
-  </table>
 
-<if @terms:rowcount@ gt 10>
-  <br>
-
-  <table cellpadding="5" width="95%">
-    <tr>
-      <td align="left">
-        <nobr>
-          <small>[
-            <a href="term-new">#dotlrn.New_Term#</a>
-          ]</small>
-        </nobr>
-      </td>
-    </tr>
-  </table>
-</if>
-
+<br>
 </center>
 
 

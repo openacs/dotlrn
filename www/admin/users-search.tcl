@@ -33,6 +33,9 @@ ad_page_contract {
     n_users:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.User_Search]]
 
 set package_id [ad_conn package_id]

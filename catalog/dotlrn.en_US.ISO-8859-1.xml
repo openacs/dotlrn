@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -33,6 +33,7 @@
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
+  <msg key="Administration_Cockpit">Administration Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administrators</msg>
   <msg key="Admins_of">Admins of</msg>
@@ -45,7 +46,9 @@
   <msg key="Applets_to_Add">Applets To Add</msg>
   <msg key="Approve">Approve</msg>
   <msg key="approve">approve</msg>
+  <msg key="Approve_all">Approve all</msg>
   <msg key="aqua">aqua</msg>
+  <msg key="Archive">Archive</msg>
   <msg key="archived">Archived</msg>
   <msg key="archived_classes_and_communities">Archived %class_instances_pretty_plural% and %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Archived %groups_pretty_plural%</msg>
@@ -61,6 +64,8 @@
   <msg key="black">black</msg>
   <msg key="Black_None_chosen">Black (None chosen)</msg>
   <msg key="blue">blue</msg>
+  <msg key="Bulk_Approve">Bulk Approve</msg>
+  <msg key="Bulk_Approving">Bulk approving in progress.</msg>
   <msg key="Bulk_Upload">Bulk Upload</msg>
   <msg key="Bulk_Uploading">Bulk uploading in progress.</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
@@ -88,6 +93,7 @@
   <msg key="clubs_name_header">%clubs_pretty_name% Name</msg>
   <msg key="clubs_pretty_name">Community</msg>
   <msg key="clubs_pretty_plural">Communities</msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">Communities</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">%clubs_pretty_name% Name</msg>
@@ -252,6 +258,7 @@ notify this user.</msg>
   <msg key="lt_An_error_occured_whil_1">An error occured while trying to remove a user to a community.  This error has been logged.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Are you sure you want to archive group &lt;strong&gt;%pretty_name%&lt;/strong&gt; and all its subgroups (if any)?</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>
   <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have an account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
@@ -290,6 +297,7 @@ a CSV file to import here.</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">Join/Drop a Class or Community Group</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Join/Drop Classes or Communities</msg>
   <msg key="lt_Key_a_short_name_no_s">Key (a short name, no spaces)</msg>
+  <msg key="lt_Last_Visit_None_">User has not visited yet</msg>
   <msg key="lt_Last_Visit_Over_in_da">Last Visit Over (in days)</msg>
   <msg key="lt_Last_Visit_Within_in_">Last Visit Within (in days)</msg>
   <msg key="lt_Make_this_user_a_site">Make this user a site wide admin.</msg>
@@ -361,7 +369,8 @@ will send the new user's password to the given email address.</msg>
   <msg key="lt_Well_we_tried_to_nuke">Well, we tried to nuke the user, but there was an error.  The most
 likely case is that a reference to this user (user_id=%user_id%)
 exists somewhere in the database schema.  It's time to call your
-programmers!</msg>
+programmers! The actual error returned was:</msg>
+  <msg key="lt_Year_eg_2003_20032004">Year (e.g. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_about_to_dele">You are about to delete %num_users% users.</msg>
   <msg key="lt_You_are_adding_strong">You are adding &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; to %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">You are not allowed to perform that action.</msg>
@@ -394,8 +403,9 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Memberships_1">Memberships:</msg>
   <msg key="Message">Message</msg>
   <msg key="Message_Type">Message Type</msg>
+  <msg key="Minutes">Minutes</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
-  <msg key="Must_specify_recipients">You must specify at least one recipient for your message</msg>
+  <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">My Communities</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
@@ -486,6 +496,7 @@ Thank you
   <msg key="registration_request_sent">Thank you. Your registration request has been sent to the System Administrator</msg>
   <msg key="Reject">Reject</msg>
   <msg key="reject">reject</msg>
+  <msg key="Reject_all">Reject all</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
   <msg key="required">Required field</msg>
@@ -531,6 +542,7 @@ Thank you
   <msg key="Templates">Templates</msg>
   <msg key="Term">Term</msg>
   <msg key="term">Term</msg>
+  <msg key="Term_eg_Spring_Fall">Term (e.g. Spring, Fall)</msg>
   <msg key="Term_ID">Term ID</msg>
   <msg key="term_properties">term properties.</msg>
   <msg key="Terms">Terms</msg>
@@ -542,7 +554,10 @@ Thank you
   <msg key="there_are_no_users_matching">There are no users matching %search_text%.</msg>
   <msg key="this_user_is_deleted">this user is deleted</msg>
   <msg key="To">Member types to email:</msg>
+  <msg key="Total_count">Total count:</msg>
   <msg key="Type">Type</msg>
+  <msg key="Unarchive">Unarchive</msg>
+  <msg key="unarchive">unarchive</msg>
   <msg key="Unknown_Term">Unknown Term</msg>
   <msg key="Update_Password">Update Password</msg>
   <msg key="upload">upload</msg>
@@ -572,6 +587,7 @@ Thank you
   <msg key="Users_Bulk_Upload">Users: Bulk Upload</msg>
   <msg key="Users_Search">Users Search</msg>
   <msg key="View">View</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Warning!&lt;/strong&gt; This could take up to %hours% hours, %minutes% minutes!!</msg>
   <msg key="Year">Year:</msg>
   <msg key="Yes">Yes</msg>
   <msg key="yes">yes</msg>

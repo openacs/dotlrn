@@ -22,6 +22,9 @@ ad_page_contract {
     @cvs-id $Id$
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set context_bar "[_ dotlrn.Administrators]"
 set referer [ns_conn url]
 

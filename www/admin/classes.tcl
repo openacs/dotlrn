@@ -22,10 +22,17 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
+    {department_key ""}
+    {orderby "department_name,asc"}
+    {keyword ""}
+    {page ""}
 } -properties {
     title:onevalue
     context_bar:onevalue
 }
+
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
 
 set title [parameter::get -localize -parameter classes_pretty_plural]
 set context_bar $title

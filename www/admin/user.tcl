@@ -41,6 +41,9 @@ ad_page_contract {
     member_clubs:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
@@ -90,11 +93,15 @@ set site_wide_admin_p [permission::permission_p \
         -privilege admin \
         ]
 
+set dotlrn_admin_p [dotlrn::admin_p]
+
 set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 
 set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
 
 set approve_user_url "/acs-admin/users/member-state-change?user_id=$user_id&member_state=approved&return_url=$dual_approve_return_url"
+
+set remove_user_url "\[<small><a href=\"[export_vars -base user-nuke {user_id}]\">Nuke</a></small>\]"
 
 # Used in some en_US messages in the adp file
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]

@@ -23,21 +23,66 @@ ad_page_contract {
     @creation-date 2001-12-03
     @version $Id$
 } -query {
+    {orderby "pretty_name,asc"}
+    page:optional
 } -properties {
     title:onevalue
     context_bar:onevalue
     clubs:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set title [parameter::get -localize -parameter clubs_pretty_plural]
 set context_bar [list $title]
-
-db_multirow clubs select_clubs {} {
-    set description [ad_quotehtml $description]
-}
 
 # Some of the en_US messages in the adp use these variables
 set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
 set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
+
+set actions [list "[_ dotlrn.new_community]" "club-new"]
+
+template::list::create \
+    -name clubs \
+    -multirow clubs \
+    -actions $actions \
+    -key community_id \
+    -page_flush_p t \
+    -page_size 50 \
+    -page_query_name clubs_pagination \
+    -elements {
+        pretty_name {
+            label "[_ dotlrn.community_header_name]"
+	    orderby_asc {pretty_name asc}
+	    orderby_desc {pretty_name desc}
+            link_url_col url
+        }
+        description {
+            label "[_ dotlrn.Description]"
+        }
+        n_members {
+            label "[_ dotlrn.Members]"
+	    orderby_asc {n_members asc}
+	    orderby_desc {n_members desc}
+        }
+        actions {
+            label "[_ dotlrn.Actions]"
+	    display_template {
+		<center>
+		<nobr>
+		<small>
+		<a href="@clubs.url@one-community-admin">#dotlrn.administer_link#</a> 
+		</small>
+		</nobr>
+		</center>
+	    }
+	}
+	
+    }
+
+db_multirow clubs select_clubs {} {
+    set description [ad_quotehtml $description]
+}
 
 ad_return_template

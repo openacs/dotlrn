@@ -79,7 +79,10 @@
         <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
-        <td align="center"><small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small></td>
+        <td>
+          <if @show_drop_button_p@ eq 1>
+            <small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small></td>
+          </if>
 </else>
       </tr>
 </multiple>
@@ -113,7 +116,10 @@
         <td>[<small> #dotlrn.Pending_Approval# </small>]</td>
 </if>
 <else>
-        <td align="center"><small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
+        <td>
+          <if @show_drop_button_p@ eq 1>
+            <small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
+          </if>
 </else>
       </tr>
 </multiple>
@@ -166,10 +172,10 @@
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
 <if @non_member_classes.join_policy@ eq "open">
-        <td align="center"><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small></td>
+        <td><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small></td>
 </if>
 <else>
-        <td align="center"><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small></td>
+        <td><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small></td>
 </else>
       </tr>
 </multiple>
@@ -203,10 +209,10 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
 <if @non_member_clubs.join_policy@ eq "open">
-        <td align="center"><small><include src="register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small></td>
+        <td><small><include src="register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small></td>
 </if>
 <else>
-        <td align="center"><small><include src="register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small></td>
+        <td><small><include src="register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small></td>
 </else>
       </tr>
 </multiple>
@@ -218,12 +224,5 @@
 </else>
 
 </if>
-
-
-
-
-
-
-
 
 

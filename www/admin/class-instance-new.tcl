@@ -25,6 +25,9 @@ ad_page_contract {
     {referer ""}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 if {![db_0or1row select_class_info {}]} {
     set class_name ""
     set class_description ""

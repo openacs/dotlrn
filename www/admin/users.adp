@@ -30,6 +30,8 @@
   <a href="users-search"><small>#dotlrn.Search_Users#</small></a>
   |
   <a href="users-bulk-upload"><small>#dotlrn.Bulk_Upload#</small></a>
+  |
+  <a href="users-bulk-approve"><small>#dotlrn.Bulk_Approve#</small></a>
 </small>]
 
 <p></p>

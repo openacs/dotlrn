@@ -9,9 +9,10 @@ ad_page_contract {
     {password_old ""}
 } 
 
-db_1row user_information {}
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
 
-set context_bar [list [list users Users] [list "user.tcl?user_id=$user_id" "$first_names $last_name"] "[_ dotlrn.Update_Password]"]
+set context_bar [list [list users Users] [list "user.tcl?user_id=$user_id" "usuario"] "[_ dotlrn.Update_Password]"]
 
 set site_link [ad_site_home_link]
 

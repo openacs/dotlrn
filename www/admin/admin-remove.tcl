@@ -24,6 +24,9 @@ ad_page_contract {
     user_id
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set group_id [db_string group_id_from_name "
             select group_id from groups where group_name='dotlrn-admin'" -default ""]
         if {![empty_string_p $group_id] } {

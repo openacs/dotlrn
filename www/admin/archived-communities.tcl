@@ -26,11 +26,18 @@ ad_page_contract {
     archived_comms:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set groups_pretty_plural "[parameter::get -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
 
 set title "[_ dotlrn.archived_groups]"
 set context_bar [list $title]
 
-db_multirow archived_comms select_archived_comms {}
+db_multirow -extend { unarchive_url } archived_comms select_archived_comms {} {
+    set description [ad_quotehtml $description]
+    set unarchive_url "unarchive?community_id=$community_id"
+}
+
 
 ad_return_template

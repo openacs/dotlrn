@@ -27,6 +27,9 @@ ad_page_contract {
     {referer "dotlrn-admins"}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set search_text [string trim $search_text]
 set community_id [dotlrn_community::get_community_id]
 

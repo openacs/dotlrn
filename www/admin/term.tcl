@@ -23,9 +23,15 @@ ad_page_contract {
 } -query {
     term_id:integer,notnull
     {department_key ""}
+    {orderby "department_name,asc"}
+    page:optional
+    {keyword ""}
 } -properties {
     classes:multirow
 }
+
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
 
 set departments [db_list_of_lists select_departments_for_select_widget {
     select dotlrn_departments_full.pretty_name,
@@ -94,15 +100,22 @@ if {![exists_and_not_null referer]} {
 }
 
 set query "select_classes"
+set paginator_query "select_classes_paginator"
 if {$term_id == -1} {
     set query "select_all_classes"
+    set paginator_query "select_all_classes_paginator"
 }
+
 if {![empty_string_p $department_key]} {
     append query "_by_department"
+    append paginator_query "_by_department"
 }
 
-db_multirow classes $query {}
-
+if { ![empty_string_p $keyword] } {
+    set keyword_clause [db_map select_all_instances_keyword]
+} else {
+    set keyword_clause [db_map select_all_instances_without_keyword]
+}
 if {$term_id == -1} {
     set title "[_ dotlrn.All_Terms]"
     set context_bar [list [list terms [_ dotlrn.Terms]] "[_ dotlrn.All_Terms]"]
@@ -118,5 +131,56 @@ if {$term_id == -1} {
 
 # Used by the en_US version of the no_class_instances message in the adp
 set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
+
+set elements [list department_name \
+		  [list label "[parameter::get -localize -parameter departments_pretty_name]" \
+		       orderby_asc {department_name asc, class_name asc, pretty_name asc} \
+		       orderby_desc {department_name desc, class_name desc, pretty_name desc} \
+		       link_url_eval {[export_vars -base "department" { department_key }]}] \
+		  class_name \
+		  [list label "[parameter::get -localize -parameter classes_pretty_name]" \
+		       orderby_asc {class_name asc, pretty_name asc} \
+		       orderby_desc {class_name desc, pretty_name desc} \
+		       link_url_eval {[export_vars -base "class" { class_key }]}] \
+		 ]
+
+if { $term_id == -1 } {
+    lappend elements term_name \
+	[list label "[_ dotlrn.term]" \
+	     orderby_asc {term_name asc, pretty_name asc} \
+	     orderby_desc {term_name desc, pretty_name desc}]
+}
+
+lappend elements pretty_name \
+    [list label "[parameter::get -localize -parameter class_instances_pretty_name]" \
+	 link_url_col url \
+	 orderby_asc {pretty_name asc} \
+	 orderby_desc {pretty_name desc}]
+lappend elements n_members \
+    [list label "[_ dotlrn.members]"]
+lappend elements action \
+    [list label "[_ dotlrn.Actions]" \
+	 display_template {
+	     <center>
+	     <nobr>
+	     <small>
+	     <a href="@classes.url@one-community-admin">[_ dotlrn.administer_link]</a>
+	     </small>
+	     </nobr>
+	     </center>
+	 }]
+
+
+template::list::create \
+    -name classes \
+    -multirow classes \
+    -filters { department_key {} term_id {} keyword {} } \
+    -key class_key \
+    -page_size 50 \
+    -page_flush_p t \
+    -page_query_name $paginator_query \
+    -elements $elements
+
+db_multirow classes $query {}
 
 ad_return_template

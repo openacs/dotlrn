@@ -30,6 +30,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 if {![db_0or1row select_term_info {}]} {
     ad_return_complaint 1 "<li>[_ dotlrn.Invalid] term_key $term_id</li>"
     ad_script_abort
@@ -42,18 +45,28 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 
     term_id:key
 
-    {term_name:text               {label "Term (e.g. Spring, Fall)"}
+    {term_name:text               {label "[_ dotlrn.Term_eg_Spring_Fall]"}
                                   {html {size 30}}}
 
-    {term_year:text               {label "Year (e.g. 2003, 2003/2004)"}
+    {term_year:text               {label "[_ dotlrn.lt_Year_eg_2003_20032004]"}
                                   {html {size 9 maxlength 9}}}
 
-    {start_date:date              {label "Start Date"}
-                                  {format {MONTH DD YYYY}}}
+    {start_date:text(text)
+	{label "[_ dotlrn.Start_Date]"}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel1}}
+        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel1', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
+    }
 
-    {end_date:date                {label "End Date"}
-                                  {format {MONTH DD YYYY}}}
-
+    {end_date:text(text)
+	{label "[_ dotlrn.End_Date]"}
+	#{format {[lc_get formbuilder_date_format]}}
+	{html {id sel2}}
+        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel2', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        }}
+    }
+    
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }
@@ -64,6 +77,21 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
         "The term must end in the future"
     }
 } -edit_data {
+
+    # Setting the rigth format to send to the procedures
+    # dotlrn_term::start_end_dates_to_term_year  and
+    # dotlrn_term::new
+
+    set start_date [split $start_date "-"]
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date ""
+    lappend start_date "MONTH DD YYYY"
+    set end_date [split $end_date "-"]
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date ""
+    lappend end_date "MONTH DD YYYY"
 
     dotlrn_term::edit \
         -term_id $term_id \

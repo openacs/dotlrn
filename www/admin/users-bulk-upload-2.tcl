@@ -22,6 +22,9 @@ ad_page_contract {
     @version $Id$
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 # get location of the file
 set file_location [ns_queryget users_csv_file.tmpfile]
 
@@ -47,14 +50,21 @@ db_transaction {
     oacs_util::csv_foreach -file $file_location -array_name row {
 
         # First make sure the required data is there
-        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
-            doc_body_append "<br>Datafile must include at least the email, first_names and last_name fields<br>"
+        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name) || ![info exists row(username)]] } {
+            doc_body_append "<br>Datafile must include at least the email, first_names, last_name, username fields<br>"
             db_abort_transaction
             return
         }
 
         # We need to insert the ACS user
-        set password [ad_generate_random_string]
+        if {![info exists row(password)]} {
+
+            # We need to insert the ACS user
+            set password [ad_generate_random_string]
+        } else {
+            set password $row(password)
+        }
+        
 
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
@@ -67,7 +77,7 @@ db_transaction {
 
 	    auth::create_user \
 		-user_id $user_id \
-		-username "" \
+		-username "$row(username)" \
 		-email $row(email) \
 		-first_names $row(first_names) \
 		-last_name $row(last_name) \
@@ -90,6 +100,12 @@ db_transaction {
 
             if {![info exists row(id)]} {
                 set row(id) $row(email)
+            }
+            
+            if {![info exists row(notify)]} {
+                set row(notify) f
+            } else {
+                set row(notify) t
             }
             
             doc_body_append "Creating user $row(email)...."
@@ -117,14 +133,18 @@ db_transaction {
             set subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_list] 
 
             # Send note to new user
-            if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {
-                doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
+            if { $row(notify) == "t" } {
+            # Send note to new user
+                if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {
+                    doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
                 set fail_p 1
+                } else {
+                    doc_body_append "[_ dotlrn.email_sent]"
+                    lappend list_of_addresses_and_passwords $row(email) $password
+                }
             } else {
-                doc_body_append "[_ dotlrn.email_sent]"
+                doc_body_append "[_ dotlrn.No_notification_requested]"
             }
-
-            lappend list_of_addresses_and_passwords $row(email) $password
         }
 
         doc_body_append "<br>"

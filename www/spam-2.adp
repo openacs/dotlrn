@@ -24,7 +24,7 @@
  #dotlrn.lt_Are_you_sure_you_want_to_send#?
 </p>
 
-<if @format@ eq "text/html">
+<if @format@ eq "html">
   <table class="z_dark" bgcolor="#eeeeee" width="95%" cellpadding="3" cellspacing="3">
     <tr>
       <td width="10%">#dotlrn.Subject#</td>

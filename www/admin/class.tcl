@@ -24,12 +24,17 @@ ad_page_contract {
 } -query {
     class_key:notnull
     {term_id -1}
+    {orderby "term_name,asc"}
+    {keyword ""}
 } -properties {
     pretty_name:onevalue
     description:onevalue
     class_instances:multirow
     can_instantiate:onevalue
 }
+
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
 
 # Get information about that class
 if {![db_0or1row select_class_info {}]} {
@@ -63,11 +68,17 @@ if {[form is_valid term_form]} {
 }
 
 set query select_class_instances
+set page_query select_class_instances_paginator
 if {$term_id == -1} {
     set query select_all_class_instances
+    set page_query select_all_class_instances_paginator
 }
 
-db_multirow class_instances $query {}
+if { ![empty_string_p $keyword] } {
+    set keyword_clause [db_map class_instances_keyword]
+} else {
+    set keyword_clause ""
+}
 
 set can_instantiate [dotlrn_class::can_instantiate]
 
@@ -78,5 +89,46 @@ set referer "[ns_conn url]?[ns_conn query]"
 set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
 set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
+
+template::list::create \
+    -name class_instances \
+    -multirow class_instances \
+    -filters { term_id {} class_key {} keyword {} } \
+    -key class_key \
+    -page_size 50 \
+    -page_flush_p t \
+    -page_query_name $page_query \
+    -elements {
+        term_name {
+	    display_template { @class_instances.term_name@&nbsp;@class_instances.term_year@ }
+            label "[_ dotlrn.term]"
+	    orderby_asc {term_name asc}
+	    orderby_desc {term_name desc}
+            link_url_eval {[export_vars -base "term" { term_id }]}
+        }
+	pretty_name {
+	    label "[_ dotlrn.class_name_header]"
+	    orderby_asc {pretty_name asc}
+	    orderby_desc {pretty_name desc}
+            link_url_col url
+        }
+        n_members {
+	    label "[_ dotlrn.members]"
+	    orderby_asc {n_members asc}
+	    orderby_desc {n_members desc}
+        }
+        actions {
+            label "[_ dotlrn.actions]"
+	    display_template {
+		<nobr>
+		<small>
+		<a href="@class_instances.url@one-community-admin">[_ dotlrn.administer_link]</a> 
+		</small>
+		</nobr>
+	    }
+        }
+    }
+
+db_multirow class_instances $query {}
 
 ad_return_template

@@ -28,6 +28,9 @@ ad_page_contract {
     users:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set context_bar [list [_ dotlrn.Add_a_Professor]]
 
 # LARS 2003-10-21: We should probably limit this in some way, so you can't get 30000 hits.

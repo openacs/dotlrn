@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <queryset>
-    <rdbms><type>postgres</type><version>7.2</version></rdbms>
+    <rdbms><type>postgresql</type><version>7.2</version></rdbms>
 
     <!-- AEG: This query has gotten pretty nasty.  Basically we need
          to provide the site-wide admin more information about
@@ -16,7 +16,8 @@
     -->
     <fullquery name="select_archived_comms">
         <querytext>
-            select child.pretty_name, 
+            select child.community_id,
+                   child.pretty_name, 
                    child.description,
                    dotlrn_community__url(child.community_id) as url,
                    parent.community_id as parent_community_id,
@@ -32,22 +33,23 @@
                    to_char(o.last_modified, 'Mon YYYY') as last_modified
             from dotlrn_communities_all child left outer join
                  dotlrn_communities_all parent using (community_id),
-                 dotlrn_communities_all child left outer join
+                 dotlrn_communities_all child1 left outer join
                  (select i.class_instance_id,
                          t.term_name,
                          t.term_year
                   from dotlrn_class_instances i,
                        dotlrn_terms t
-                  where t.term_id = i.term_id) class using (class_instance_id),
-                 dotlrn_communities_all child left outer join
+                  where t.term_id = i.term_id) class on child1.community_id = class.class_instance_id,
+                 dotlrn_communities_all child2 left outer join
                  (select i.class_instance_id,
                          t.term_name,
                          t.term_year
                   from dotlrn_class_instances i,
                        dotlrn_terms t
-                  where t.term_id = i.term_id) parent_class using (class_instance_id),
+                  where t.term_id = i.term_id) parent_class on child2.community_id = parent_class.class_instance_id,
                   acs_objects o
-            where child.archived_p = 't'
+            where child.archived_p = 't' 
+              and child1.archived_p = 't' and child2.archived_p = 't' and child1.community_id = child.community_id and child2.community_id = child.community_id              
               and o.object_id = child.community_id
             order by child.pretty_name
         </querytext>

@@ -18,11 +18,11 @@
 
 %>
 
-<master src="dotlrn-admin-master">
-<property name="title">@title@</property>
-<property name="context_bar">@context_bar@</property>
-
-<include src="classes-chunk">
+  <master src="dotlrn-admin-master">
+    <property name="title">@title@</property>
+    <property name="context_bar">@context_bar@</property>
+   
+    <include src="classes-chunk" page=@page@ keyword=@keyword@ department_key=@department_key@>
 
 
 

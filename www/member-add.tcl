@@ -26,10 +26,6 @@ ad_page_contract {
     {referer "one-community-admin"}
 }
 
-#prevent this page from being called when it is not allowed
-# i.e.   AllowManageMembership 0
-dotlrn_portlet::is_allowed -parameter managemembership
-
 set search_text [string trim $search_text]
 set community_id [dotlrn_community::get_community_id]
 
@@ -37,6 +33,7 @@ set community_id [dotlrn_community::get_community_id]
 db_multirow users select_users {}
 
 set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
+
 
 ad_return_template
 

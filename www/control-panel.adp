@@ -50,7 +50,7 @@
   <p><li><a href="configure">#dotlrn.Customize_Layout#</a></li>
 
 <if @admin_p@>
-  <p><li><a href="@admin_url@">@admin_pretty_name@</a></li>
+  <p><li><a href="@admin_url@">@admin_pretty_name@</a> (<a href="@cockpit_url@">#dotlrn.Cockpit#</a>)</li>
 </if>
 </ul>
 </td></tr></table>
@@ -70,7 +70,7 @@
 <tr>
   <td class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" width="1"></td>
   <td class="element-text" width="100%">
-  <include src="dotlrn-main-portlet" show_buttons_p="1" title="Groups" referer="@dotlrn_url@/control-panel">
+  <include src="dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@dotlrn_url@/control-panel">
  </td>
 	  <td align="right" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" width="1"></td>
 

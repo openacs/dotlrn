@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0.3" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
   <msg key="Access">Acceso</msg>
@@ -59,6 +59,7 @@
   <msg key="Bulk_Uploading">Subiendo...</msg>
   <msg key="cannot_be_removed">no puede ser borrado</msg>
   <msg key="Change_Locale">Cambiar idioma</msg>
+  <msg key="Choose_members_to_receive">Escoja a los miembros de %community_name% que recibirán este mensaje:</msg>
   <msg key="class_instance_portal_pretty_name">Cursos</msg>
   <msg key="class_instances_pretty_name">Curso</msg>
   <msg key="class_instances_pretty_plural">Cursos</msg>
@@ -66,7 +67,7 @@
   <msg key="class_may_not_be_deleted">Error: una %subject% &lt;em&gt;no&lt;/em&gt; debe tener %class_instances% para poder ser borrada</msg>
   <msg key="class_memberships">Miembro de %class_instances_pretty_name%</msg>
   <msg key="class_name">Título de %classes_pretty_name%</msg>
-  <msg key="class_name_header">Título del %class_instances_pretty_name%</msg>
+  <msg key="class_name_header">Nombre del %class_instances_pretty_name%</msg>
   <msg key="class_page_calendar_title">Calendario</msg>
   <msg key="class_page_file_storage_title">Documentos</msg>
   <msg key="class_page_home_title">Curso</msg>
@@ -77,8 +78,8 @@
   <msg key="club_page_calendar_title">Calendario</msg>
   <msg key="club_page_file_storage_title">Documentos</msg>
   <msg key="club_page_home_title">Comunidad</msg>
-  <msg key="club_page_people_title">Gente</msg>
-  <msg key="clubs_name_header">Título de la %clubs_pretty_name%</msg>
+  <msg key="club_page_people_title">Miembros</msg>
+  <msg key="clubs_name_header">Nombre de la %clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Comunidad</msg>
   <msg key="clubs_pretty_plural">Comunidades</msg>
   <msg key="Communities">Comunidades</msg>
@@ -91,6 +92,7 @@
   <msg key="Community_Type">Tipo de comunidad</msg>
   <msg key="Community_Types">Tipos de comunidad</msg>
   <msg key="Communitys_Name">Título de la comunidad</msg>
+  <msg key="Compose_bulk_message">Componer el mensaje en bruto</msg>
   <msg key="Configure_Element">Configurar elemento</msg>
   <msg key="Configure_name">Configurar %name%</msg>
   <msg key="Confirm">Confirmar</msg>
@@ -106,6 +108,7 @@
   <msg key="course_assistant_role_pretty_plural">Tutores</msg>
   <msg key="Create_A_New_User">Crear un nuevo usuario</msg>
   <msg key="Create_a_Web_Log">Crear un weblog</msg>
+  <msg key="Created">Creado</msg>
   <msg key="CSV_File_Format">Formato CSV</msg>
   <msg key="Customize_Layout">Personalizar este portal</msg>
   <msg key="Deactivate_">Desactivar...</msg>
@@ -143,7 +146,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Miembro de comunidades</msg>
   <msg key="Drop">Borrar</msg>
   <msg key="Drop_Membership">Dar de baja</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Baja&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Darse de Baja&quot; border=0&gt;</msg>
   <msg key="Drop_selected_members">Eliminar los usuarios seleccionados</msg>
   <msg key="Edit">Editar</msg>
   <msg key="Edit_a_User">Editar usuario</msg>
@@ -197,6 +200,7 @@
   <msg key="Header_Logo_Alt_Text">Texto alternativo para el ícono del encabezado</msg>
   <msg key="Header_Logo_Item_ID">Identificador para el logo del encabezado</msg>
   <msg key="help">Ayuda</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">Identificador:</msg>
   <msg key="ID_1">Identificador</msg>
   <msg key="instructor_role_pretty_name">Profesor</msg>
@@ -205,7 +209,7 @@
   <msg key="is_already_in_use">está siendo utilizado</msg>
   <msg key="Join">Alta</msg>
   <msg key="Join_A_Group">Alta en un grupo</msg>
-  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Alta&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Darse de alta&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Política de suscripción</msg>
   <msg key="Key">Clave</msg>
   <msg key="Large">Grande</msg>
@@ -343,7 +347,9 @@
   <msg key="Memberships">Miembros</msg>
   <msg key="Memberships_1">Miembros:</msg>
   <msg key="Message">Mensaje</msg>
+  <msg key="Message_Type">Tipo del mensaje</msg>
   <msg key="must_have_values">Los campos deben contener alguno de los siguientes valores:</msg>
+  <msg key="Must_specify_recipients">Debe especificar por lo menos un contenedor para su mensaje</msg>
   <msg key="My_Communities">Mis comunidades</msg>
   <msg key="NA">n/a</msg>
   <msg key="Name">Nombre</msg>
@@ -362,7 +368,7 @@
   <msg key="New_Password">Contraseña nueva:</msg>
   <msg key="New_Term">Período nuevo</msg>
   <msg key="New_User">Usuario nuevo</msg>
-  <msg key="No">Sin</msg>
+  <msg key="No">No</msg>
   <msg key="no">no</msg>
   <msg key="no_arhived_groups">Sin %groups_pretty_plural% archivados</msg>
   <msg key="no_class_instances">Sin %class_instances_pretty_plural%</msg>
@@ -385,6 +391,8 @@
   <msg key="not_a_user">No es usuario</msg>
   <msg key="Not_Allowed">No autorizado</msg>
   <msg key="Note">Nota:</msg>
+  <msg key="Note_if_you_make">Nota: si usted realiza cualquier cambio usando este formulario, el usuario perderá su configuración de portales.</msg>
+  <msg key="Note_the_term_column">Nota: la columna del &quot;Periodo&quot; se aplica a las clases y a sus subgrupos. Para los subgrupos de clases, la columna del &quot;Periodo&quot; indica el periodo de su clase padre. No se muestra ningún periodo para los sub-subgrupos ni descendientes más profundos.</msg>
   <msg key="Nuke">Borrar</msg>
   <msg key="Nuke_">Borrar ...</msg>
   <msg key="Nuke_Users">Borrar usuarios</msg>
@@ -394,11 +402,13 @@
   <msg key="Or">o</msg>
   <msg key="or_by_RGB_number">o por números RGB</msg>
   <msg key="or_return_to">o, volver a</msg>
+  <msg key="Parent">Padre</msg>
   <msg key="Pending">Pendiente</msg>
   <msg key="Pending_Approval">Esperando aprobación</msg>
   <msg key="Person_name">Nombre</msg>
   <msg key="Personal_home_page">Página personal:</msg>
   <msg key="Personal_Options">Opciones personales</msg>
+  <msg key="Plain_Text">Texto plano</msg>
   <msg key="portal_templates">Plantillas de portales</msg>
   <msg key="Portrait">Foto:</msg>
   <msg key="Portrait_1">Portaretrato</msg>
@@ -419,7 +429,7 @@
   <msg key="Reject">Rechazar</msg>
   <msg key="reject">rechazar</msg>
   <msg key="Request_Membership">Solicitar alta</msg>
-  <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Solicitar alta&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=&quot;graphics/request.gif&quot; alt=&quot;Solicitar alta&quot; border=&quot;0&quot; title=&quot;Solicitar alta&quot;&gt;</msg>
   <msg key="required">requerido</msg>
   <msg key="Results">Resultados</msg>
   <msg key="Return_URL">URL donde volver</msg>
@@ -435,6 +445,7 @@
   <msg key="seconds">segundos.</msg>
   <msg key="Send_Date">Fecha de envío</msg>
   <msg key="send_email">Enviar correo</msg>
+  <msg key="Send_to_all">Enviar a todos los miembros del grupo</msg>
   <msg key="Shared_Files">Archivos Compartidos</msg>
   <msg key="silver">plateado</msg>
   <msg key="Site-wide_Admin">¿Administrador del sitio?</msg>
@@ -482,7 +493,7 @@
   <msg key="User_Admin_Page">Página de administración de usuarios</msg>
   <msg key="user_email_already_exists">El usuario %user_email% ya existe... guardando user_id</msg>
   <msg key="user_email_created">Usuario %user_email% creado...</msg>
-  <msg key="user_has_been_a_member_since"> %first_names% %last_name% es miembro de %system_name% desde %pretty_creation_date%</msg>
+  <msg key="user_has_been_a_member_since"> %first_names% %last_name% es miembro de %system_name% desde el día %pretty_creation_date%</msg>
   <msg key="User_ID">Identificador de usuario:</msg>
   <msg key="User_ID_1">Identificador de usuario</msg>
   <msg key="User_Management">Administración de usuarios</msg>

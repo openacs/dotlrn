@@ -25,6 +25,14 @@
   <if @context@ not nil><property name="context">@context;noquote@</property></if>
     <else><if @context_bar@ not nil><property name="context">@context_bar;noquote@</property></if></else>
   <if @doc_type@ not nil><property name="doc_type">@doc_type;noquote@</property></if>
+  <property name="header_stuff">
+<style type="text/css">
+/* Re-enable the breadcrumb bar -- useful for site-wide admins */
+#breadcrumbs {
+  display: inline;
+}
+</style>
+  </property>
 
 <slave>
 
