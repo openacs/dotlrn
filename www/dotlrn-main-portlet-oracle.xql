@@ -3,31 +3,27 @@
 <queryset>
     <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
 
-    <fullquery name="select_classes">
+    <fullquery name="select_communities">
         <querytext>
-            select dotlrn_member_rels_approved.community_id, 
-                   dotlrn_class_instances_full.pretty_name,
-                   dotlrn_class_instances_full.url,
-                   acs_permission.permission_p(dotlrn_member_rels_approved.community_id, :user_id, 'admin') as admin_p,
-                   dotlrn_community.has_subcomm_p(dotlrn_member_rels_approved.community_id) as subcomm_p
-            from dotlrn_class_instances_full,
-                 dotlrn_member_rels_approved
-            where dotlrn_member_rels_approved.user_id = :user_id
-            and dotlrn_member_rels_approved.community_id = dotlrn_class_instances_full.class_instance_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="select_clubs">
-        <querytext>
-            select dotlrn_member_rels_approved.community_id, 
-                   dotlrn_clubs_full.pretty_name,
-                   dotlrn_clubs_full.url,
-                   acs_permission.permission_p(dotlrn_member_rels_approved.community_id, :user_id, 'admin') as admin_p, 
-                   dotlrn_community.has_subcomm_p(dotlrn_member_rels_approved.community_id) as subcomm_p
-            from dotlrn_clubs_full,
-                 dotlrn_member_rels_approved
-            where dotlrn_member_rels_approved.user_id = :user_id
-            and dotlrn_member_rels_approved.community_id = dotlrn_clubs_full.club_id
+            select dc.*,
+                   dotlrn_community.url(dc.community_id) as url,
+                   acs_permission.permission_p(dc.community_id, :user_id, 'admin') as admin_p,
+                   decode(dc.community_type, 'dotlrn_community', 'dotlrn_community',
+                                             'dotlrn_club', 'dotlrn_club',
+                                             'dotlrn_class_instance') as simple_community_type
+            from (select level,
+                         dotlrn_communities.community_id,
+                         dotlrn_communities.parent_community_id,
+                         dotlrn_communities.community_type,
+                         dotlrn_communities.pretty_name
+                  from dotlrn_communities
+                  connect by prior dotlrn_communities.community_id = dotlrn_communities.parent_community_id
+                  start with dotlrn_communities.parent_community_id is null
+                  order by decode(dotlrn_communities.community_type, 'dotlrn_community', 2, 'dotlrn_club', 1, 0),
+                           dotlrn_communities.pretty_name) dc,
+                 dotlrn_member_rels_approved dmra
+            where dc.community_id = dmra.community_id
+            and dmra.user_id = :user_id
         </querytext>
     </fullquery>
 

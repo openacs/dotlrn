@@ -24,8 +24,6 @@ ad_page_contract {
 }
 
 set user_id [ad_conn user_id]
-
-db_multirow classes select_classes {}
-db_multirow clubs select_clubs {}
+db_multirow communities select_communities {}
 
 ad_return_template

@@ -18,52 +18,70 @@
 
 %>
 
+<small>[&nbsp;<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]</small>
 
-<small>[<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>]</small>
+<if @communities:rowcount@ gt 0>
 
-<if @classes:rowcount@ gt 0 or @clubs:rowcount@ gt 0>
-<ul>
-</if>
-
-<if @classes:rowcount@ gt 0>
- <li><%= [ad_parameter class_instances_pretty_plural] %>:
   <ul>
-    <multiple name="classes">
+
+<%
+    set old_simple_community_type ""
+    set new_simple_community_type ""
+    set old_level 0
+    set new_level 0
+%>
+
+<multiple name="communities">
+
+<%
+    if {![string equal $communities(simple_community_type) "dotlrn_community"] == 1} {
+        set new_simple_community_type $communities(simple_community_type)
+    }
+    set new_level $communities(level)
+%>
+
+    <if @new_level@ lt @old_level@>
+      </ul>
+    </if>
+
+    <if @new_simple_community_type@ ne @old_simple_community_type@>
+      <if @old_simple_community_type@ ne "">
+        </ul>
+        <br>
+<% set old_level [expr $new_level - 1] %>
+      </if>
+      <if @new_simple_community_type@ eq "dotlrn_class_instance">
+        <li><%= [ad_parameter "class_instances_pretty_plural"] %>:
+      </if>
+      <else>
+        <li><%= [ad_parameter "clubs_pretty_plural"] %>:
+      </else>
+    </if>
+
+    <if @new_level@ gt @old_level@>
+      <ul>
+    </if>
+
       <li>
-        <a href="@classes.url@">@classes.pretty_name@</a>
-        <if @classes.admin_p@ eq t> 
-          <small>[<a href="@classes.url@one-community-admin">admin</a>]</small>
+        <a href="@communities.url@">@communities.pretty_name@</a>
+        <if @communities.admin_p@ eq t> 
+          <small>[<a href="@communities.url@one-community-admin">admin</a>]</small>
         </if>
       </li>
-        <if @classes.subcomm_p@ eq t>
-          <ul>
-            <%= [dotlrn_community::get_subcomm_chunk_new -user_id $user_id -community_id $classes(community_id) -only_member_p 1] %>
-          </ul>
-        </if>
-    </multiple>
+
+<%
+    set old_simple_community_type $new_simple_community_type
+    set old_level $new_level
+%>
+
+</multiple>
+
+<%
+    for {set i $new_level} {$i > 0} {incr i -1} {
+        template::adp_puts "</ul>\n"
+    }
+%>
+
   </ul>
-</if>
 
-<if @clubs:rowcount@ gt 0>
- <li><%= [ad_parameter clubs_pretty_plural] %>:
-  <ul>
-    <multiple name="clubs">
-      <li>
-        <a href="@clubs.url@">@clubs.pretty_name@</a>
-        <if @clubs.admin_p@ eq t> 
-            <small>[<a href="@clubs.url@one-community-admin">admin</a>]</small>
-        </if>
-      </li>
-        <if @clubs.subcomm_p@ eq t>
-          <ul>
-            <%= [dotlrn_community::get_subcomm_chunk_new -user_id $user_id -community_id $clubs(community_id) -only_member_p 1] %>
-          </ul>
-        </if>
-    </multiple>
-  </ul>
 </if>
-
-<if @classes:rowcount@ gt 0 or @clubs:rowcount@ gt 0>
-</ul>
-</if>
-
