@@ -15,43 +15,35 @@
 declare
 	year_attr_id acs_attributes.attribute_id%TYPE;
 	term_attr_id acs_attributes.attribute_id%TYPE;
+	foo dotlrn_community_types.community_type%TYPE;
 begin
-	-- create the major group types
-	acs_object_type.create_type (
-	  supertype => 'group',
-	  object_type => 'dotlrn_community',
+	-- Create the base community type
+	foo := dotlrn_community_type.new (
+	  community_type => 'dotlrn_community',
+	  parent_type => NULL,
 	  pretty_name => 'dotLRN Community',
 	  pretty_plural => 'dotLRN Communities',
-	  table_name => 'dotlrn_communities',
-	  id_column => 'community_id',
-	  package_name => 'dotlrn_community',
-	  type_extension_table => 'dotlrn_community_types',
-	  name_method => 'acs_group.name'
-	);
+	  description => 'dotLRN Communities - the base community type'
+        );
 
-	acs_object_type.create_type (
-	  supertype => 'dotlrn_community',
-	  object_type => 'dotlrn_club',
-	  pretty_name => 'dotLRN Club',
-	  pretty_plural => 'dotLRN Clubs',
-	  table_name => 'dotlrn_clubs',
-	  id_column => 'club_id',
-	  package_name => 'dotlrn_club',
-	  name_method => 'acs_group.name'
-	);
-
-	acs_object_type.create_type (
-	  supertype => 'dotlrn_community',
-	  object_type => 'dotlrn_class',
+	-- create the dotlrn_class community type
+	foo := dotlrn_community_type.new (
+	  community_type => 'dotlrn_class',
+	  parent_type => 'dotlrn_community',
 	  pretty_name => 'dotLRN Class',
 	  pretty_plural => 'dotLRN Classes',
-	  table_name => 'dotlrn_class_instances',
-	  id_column => 'class_instance_id',
-	  package_name => 'dotlrn_class',
-	  name_method => 'acs_group.name'
-	);
+	  description => 'dotLRN Classes - e.g. 6.001'
+        );
 
-
+	-- create the dotlrn_club community type
+	foo := dotlrn_community_type.new (
+	  community_type => 'dotlrn_club',
+	  parent_type => 'dotlrn_community',
+	  pretty_name => 'dotLRN Club',
+	  pretty_plural => 'dotLRN Clubs',
+	  description => 'dotLRN Clubs - e.g. Alumni'
+        );
+	
 	-- year attribute
 	year_attr_id:= acs_attribute.create_attribute (
 	  object_type => 'dotlrn_class',

@@ -18,93 +18,93 @@ declare
 	foo integer;
 begin
 	sc_dotlrn_contract := acs_sc_contract.new (
-		  contract_name => 'dotLRN_Applet',
+		  contract_name => 'dotlrn_applet',
 		  contract_desc => 'dotLRN Applet implement a specific interface'
 	);
 
 	-- Add the applet to a community
 	foo := acs_sc_msg_type.new(
-		  msg_type_name => 'dotLRN_Applet.AddApplet.InputType',
+		  msg_type_name => 'dotlrn_applet.AddApplet.InputType',
 		  msg_type_spec => 'community_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(
-	          msg_type_name => 'dotLRN_Applet.AddApplet.OutputType',
+	          msg_type_name => 'dotlrn_applet.AddApplet.OutputType',
 		  msg_type_spec => 'success_p:boolean,error_message:string'
 	);
 	
 	foo := acs_sc_operation.new (
-	          'dotLRN_Applet',
+	          'dotlrn_applet',
 		  'AddApplet',
 		  'Add the Applet to a community',
 		  'f', -- not cacheable
 		  1,   -- n_args
-		  'dotLRN_Applet.AddApplet.InputType',
-		  'dotLRN_Applet.AddApplet.OutputType'
+		  'dotlrn_applet.AddApplet.InputType',
+		  'dotlrn_applet.AddApplet.OutputType'
 	);
 
 	-- add a user to the community
 	foo := acs_sc_msg_type.new(
-		  msg_type_name => 'dotLRN_Applet.AddUser.InputType',
+		  msg_type_name => 'dotlrn_applet.AddUser.InputType',
 		  msg_type_spec => 'community_id:integer,user_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(
-	          msg_type_name => 'dotLRN_Applet.AddUser.OutputType',
+	          msg_type_name => 'dotlrn_applet.AddUser.OutputType',
 		  msg_type_spec => 'success_p:boolean,error_message:string'
 	);
 	
 	foo := acs_sc_operation.new (
-	          'dotLRN_Applet',
+	          'dotlrn_applet',
 		  'AddUser',
 		  'Add a user to a community, and set up appropriate things for that applet',
 		  'f', -- not cacheable
 		  2,   -- n_args
-		  'dotLRN_Applet.AddUser.InputType',
-		  'dotLRN_Applet.AddUser.OutputType'
+		  'dotlrn_applet.AddUser.InputType',
+		  'dotlrn_applet.AddUser.OutputType'
 	);
 
 
 	-- remove a user from the community
 	foo := acs_sc_msg_type.new(
-		  msg_type_name => 'dotLRN_Applet.RemoveUser.InputType',
+		  msg_type_name => 'dotlrn_applet.RemoveUser.InputType',
 		  msg_type_spec => 'community_id:integer,user_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(
-	          msg_type_name => 'dotLRN_Applet.RemoveUser.OutputType',
+	          msg_type_name => 'dotlrn_applet.RemoveUser.OutputType',
 		  msg_type_spec => 'success_p:boolean,error_message:string'
 	);
 	
 	foo := acs_sc_operation.new (
-	          'dotLRN_Applet',
+	          'dotlrn_applet',
 		  'RemoveUser',
 		  'Remove a user from a community, and set up appropriate things for that applet',
 		  'f', -- not cacheable
 		  2,   -- n_args
-		  'dotLRN_Applet.RemoveUser.InputType',
-		  'dotLRN_Applet.RemoveUser.OutputType'
+		  'dotlrn_applet.RemoveUser.InputType',
+		  'dotlrn_applet.RemoveUser.OutputType'
 	);
 
 	-- remove the applet from a community
 	foo := acs_sc_msg_type.new(
-		  msg_type_name => 'dotLRN_Applet.RemoveApplet.InputType',
-		  msg_type_spec => 'community_id:integer'
+		  msg_type_name => 'dotlrn_applet.RemoveApplet.InputType',
+		  msg_type_spec => 'community_id:integer,package_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(
-	          msg_type_name => 'dotLRN_Applet.RemoveApplet.OutputType',
+	          msg_type_name => 'dotlrn_applet.RemoveApplet.OutputType',
 		  msg_type_spec => 'success_p:boolean,error_message:string'
 	);
 	
 	foo := acs_sc_operation.new (
-	          'dotLRN_Applet',
+	          'dotlrn_applet',
 		  'RemoveApplet',
-		  'Remove a user from a community, and set up appropriate things for that applet',
+		  'Remove the applet',
 		  'f', -- not cacheable
-		  1,   -- n_args
-		  'dotLRN_Applet.RemoveApplet.InputType',
-		  'dotLRN_Applet.RemoveApplet.OutputType'
+		  2,   -- n_args
+		  'dotlrn_applet.RemoveApplet.InputType',
+		  'dotlrn_applet.RemoveApplet.OutputType'
 	);
 
 

@@ -18,56 +18,50 @@ ad_library {
 
 namespace eval dotlrn_community {
 
-    ad_proc new_type {
+    ad_proc -public new_type {
+	{-description ""}
 	community_type
 	supertype
 	pretty_name
-	{-description ""}
     } {
 	Create a new community type.
     } {
-	# Create the group type
-	set group_type_key [group_type::new -group_type $community_type -supertype $parent_type $pretty_name $pretty_name]
-
 	# Insert the community type
-	db_dml insert_community_type {}
+	db_exec_plsql create_community_type {}
     }
 
-    ad_proc set_type_site_node {
+    ad_proc set_type_package_id {
 	community_type
-	node_id
+	package_id
     } {
-	Update the node ID for the community type
+	Update the package ID for the community type
     } {
 	# Exec the statement, easy
-	db_dml update_site_node {}
+	db_dml update_package_id {}
     }
 
     ad_proc new {
+	{-description ""}
 	community_type
 	name
 	pretty_name
-	{-description ""}
     } {
 	create a new community
     } {
-	# Create the group
-	set community_id [group::new -group_name $name $community_type]
-
-	# insert the community row
-	db_dml insert_community {}
+	# Create the community
+	set community_id [db_exec_plsql create_community {}]
 
 	return $community_id
     }
 
-    ad_proc set_site_node {
+    ad_proc set_package_id {
 	community_id
-	node_id
+	package_id
     } {
 	Update the node ID for the community
     } {
 	# Exec the statement, easy
-	db_dml update_site_node {}
+	db_dml update_package_id {}
     }
 
     
@@ -89,6 +83,15 @@ namespace eval dotlrn_community {
 	return [db_list_of_lists select_users {}]
     }
 
+    ad_proc -public member_p {
+	community_id
+	user_id
+    } {
+	check membership
+    } {
+	return [db_string select_count_membership {}]
+    }
+
     ad_proc -public add_user {
 	community_id
 	rel_type
@@ -100,8 +103,7 @@ namespace eval dotlrn_community {
 	set rel_id [relation_add $rel_type $community_id $user_id]
 
 	# Set up a portal page for that user
-	# NPP call
-	set page_id []
+	set page_id [portal::create_portal $user_id]
 
 	# Insert the membership
 	db_dml insert_membership {}
@@ -138,6 +140,41 @@ namespace eval dotlrn_community {
 	return [db_string select_page_id {}]
     }
 
+    ad_proc -public get_communities_by_user {
+	community_type
+	user_id
+    } {
+	Return a datasource of the communities that a user belongs to in a particular type
+    } {
+	return [db_multirow select_communities {}]
+    }
+
+    ad_proc -public get_community_type {
+    } {
+	Returns the community type key depending on the node we're at
+    } {
+	set package_id [ad_conn package_id]
+
+	return [db_string select_community_type {} -default ""]
+    }
+
+    ad_proc -public get_community_id {
+    } {
+	Returns the community id depending on the node we're at
+    } {
+	set package_id [ad_conn package_id]
+
+	return [db_string select_community {} -default ""]
+    }
+
+    ad_proc -public get_package_id {
+	community_id
+    } {
+	get the package ID for a particular community
+    } {
+	return [db_string select_package_id {} -default ""]
+    }
+    
     ad_proc -public add_applet {
 	community_id
 	applet_key

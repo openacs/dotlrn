@@ -9,7 +9,12 @@ ad_page_contract {
     classes:multirow
 }
 
+if {[ad_parameter community_type_level_p] == 1} {
+    ns_returnredirect one-community-type
+    return
+}
+
 # Select the classes that exist
-db_multirow communities select_communities {}
+db_multirow classes select_classes {}
 
 ad_return_template

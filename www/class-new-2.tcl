@@ -7,9 +7,10 @@ ad_page_contract {
 } {
     class_key:trim
     class_pretty_name:trim
+    description
 }
 
-set class_key [dotlrn_class::new $class_key $class_pretty_name]
+set class_key [dotlrn_class::new -description $description $class_key $class_pretty_name]
 
 ns_returnredirect ./
 

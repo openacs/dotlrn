@@ -19,6 +19,7 @@ ad_library {
 namespace eval dotlrn_class {
 
     ad_proc -public new {
+	{-description ""}
 	name
 	pretty_name
     } {
@@ -28,15 +29,17 @@ namespace eval dotlrn_class {
 
 	This class can then be instantiated for a particular semester.
     } {
-	set top_group_type [dotlrn::class_group_type_key]
-
 	set parent_node_id [ad_conn -get node_id]
 
 	set group_type_name "dotlrn_class_$name"
 
 	db_transaction {
+	    # Create the class directly using PL/SQL API
+	    set class_group_type_key [db_exec_plsql create_class {}]
+
 	    # Create a new group type for that class
-	    set class_group_type_key [group_type::new -group_type $group_type_name -supertype $top_group_type $pretty_name $pretty_name]
+	    # OLD STUFF (not relevant with PL/SQL API)
+	    # set class_group_type_key [group_type::new -group_type $group_type_name -supertype $top_group_type $pretty_name $pretty_name]
 	    
 	    # Instantiate the DOTLRN Class Manager package at that node
 	    set result [site_node_mount_application -return "package_id,node_id" $parent_node_id $name [package_key] $name]
@@ -48,12 +51,15 @@ namespace eval dotlrn_class {
 	    ad_parameter -package_id $package_id -set 1 community_type_level_p
 	    ad_parameter -package_id $package_id -set 0 community_level_p
 
-	    # Insert the community
-	    dotlrn_community::new_type $class_group_type_key dotlrn_class $pretty_name
+	    # Old stuff
+	    # dotlrn_community::new_type $class_group_type_key dotlrn_class $pretty_name
+
+	    # Set the site node
 	    dotlrn_community::set_type_site_node $class_group_type_key $node_id
 
 	    # insert the class into the DB
-	    db_dml insert_class {}
+	    # ALREADY DONE by PL/SQL API
+	    # db_dml insert_class {}
 	}
 
 	return $class_group_type_key

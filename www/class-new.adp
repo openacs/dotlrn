@@ -11,6 +11,10 @@
 <td>Class Pretty Name:</td>
 <td><INPUT TYPE=text name=class_pretty_name size=50></td>
 </tr>
+<tr>
+<td valign=top>Description:</td>
+<td><textarea name=description cols=50 rows=5 wrap=soft></textarea></td>
+</tr>
 </table>
 <INPUT type=submit value="Create Class">
 </form>
