@@ -10,6 +10,9 @@ ad_page_contract {
     {referer "[dotlrn::get_admin_url]/users"}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 db_1row select_user_info {
     select email,
            first_names,

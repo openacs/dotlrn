@@ -22,6 +22,9 @@ ad_page_contract {
     @version $Id$
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
 
 # Does Developer support exists

@@ -31,6 +31,9 @@ ad_page_contract {
     can_instantiate:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 # Get information about that class
 if {![db_0or1row select_class_info {}]} {
     ad_returnredirect classes

@@ -28,6 +28,8 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
 
 set community_name [db_string select_community_info {}]
 set users [dotlrn_community::list_users $source_community_id]

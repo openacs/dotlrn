@@ -29,6 +29,9 @@ ad_page_contract {
 
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 
 # Get user information
 db_1row select_user_info {

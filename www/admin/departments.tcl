@@ -27,6 +27,9 @@ ad_page_contract {
     departments:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set title [parameter::get -localize -parameter departments_pretty_plural]
 set context_bar [parameter::get -localize -parameter departments_pretty_plural]
 set referer departments

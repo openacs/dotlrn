@@ -21,6 +21,9 @@ ad_page_contract {
     @creation-date 2001-11-04
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
 set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]

@@ -27,6 +27,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set title [parameter::get -localize -parameter classes_pretty_plural]
 set context_bar $title
 

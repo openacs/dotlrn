@@ -25,6 +25,9 @@ ad_page_contract {
     {referer "./"}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set context_bar [list [_ dotlrn.Add_a_Professor]]
 
 ad_return_template

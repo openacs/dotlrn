@@ -9,6 +9,9 @@ ad_page_contract {
     {password_old ""}
 } 
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 db_1row user_information {}
 
 set context_bar [list [list users Users] [list "user.tcl?user_id=$user_id" "$first_names $last_name"] "[_ dotlrn.Update_Password]"]

@@ -28,6 +28,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 if {![db_0or1row select_class_info {}]} {
     ad_return_complaint 1 "<li>[_ dotlrn.Invalid] class_key $class_key</li>"
     ad_script_abort

@@ -26,6 +26,9 @@ ad_page_contract {
     terms:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set context_bar "[_ dotlrn.Terms]"
 
 db_multirow -extend { start_date_pretty end_date_pretty } terms select_terms {} {

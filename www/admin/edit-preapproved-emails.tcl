@@ -22,6 +22,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 form create edit_emails
 
 element create edit_emails emails \

@@ -29,6 +29,9 @@ ad_page_contract {
     clubs:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set title [parameter::get -localize -parameter clubs_pretty_plural]
 set context_bar [list $title]
 

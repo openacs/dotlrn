@@ -30,6 +30,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 if {![db_0or1row select_term_info {}]} {
     ad_return_complaint 1 "<li>[_ dotlrn.Invalid] term_key $term_id</li>"
     ad_script_abort

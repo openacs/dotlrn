@@ -14,6 +14,9 @@
 #  details.
 #
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 ad_page_contract {
     delete an empty department
 

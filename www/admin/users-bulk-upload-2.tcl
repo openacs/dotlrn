@@ -22,6 +22,9 @@ ad_page_contract {
     @version $Id$
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 # get location of the file
 set file_location [ns_queryget users_csv_file.tmpfile]
 

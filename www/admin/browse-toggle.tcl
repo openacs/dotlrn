@@ -26,6 +26,8 @@ ad_page_contract {
     {referer "users"}
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
 
 #update can_browse_p
 dotlrn::set_can_browse -user_id $user_id -can_browse\=$can_browse_p

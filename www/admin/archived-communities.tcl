@@ -26,6 +26,9 @@ ad_page_contract {
     archived_comms:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set groups_pretty_plural "[parameter::get -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
 
 set title "[_ dotlrn.archived_groups]"

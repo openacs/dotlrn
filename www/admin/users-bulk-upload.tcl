@@ -22,6 +22,9 @@ ad_page_contract {
     @version $Id$
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Bulk_Upload]]
 
 ad_return_template

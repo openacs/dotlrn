@@ -27,6 +27,9 @@ ad_page_contract {
     classes:multirow
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 set departments [db_list_of_lists select_departments_for_select_widget {
     select dotlrn_departments_full.pretty_name,
            dotlrn_departments_full.department_key

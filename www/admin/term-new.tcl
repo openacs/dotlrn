@@ -26,6 +26,9 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+#Pages in this directory are only runnable by dotlrn-wide admins.
+dotlrn::require_admin 
+
 ad_form -name add_term -export referer -form {
 
     {term_name:text          {label "Term (e.g. Spring, Fall)"} {maxlength 20}
