@@ -41,7 +41,7 @@ set site_wide_admin_p [ad_permission_p \
 
 if {!$site_wide_admin_p} {
     set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id $community_id]
-    set read_private_data_p [dotlrn::user_can_read_private_data_p $user_id]
+    set read_private_data_p [dotlrn::user_can_read_private_data_p $my_user_id]
 } else {
     set admin_p 1
     set read_private_data_p 1
@@ -101,13 +101,20 @@ lappend table_def [list \
         {<td><nobr>$role</nobr></td>}
 ]
 
-if {$admin_p} {
+if {$site_wide_admin_p} {
     lappend table_def [list \
 	    manage \
 	    "" \
 	    {} \
 	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]
              \[<a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a>\]</td>}]
+} elseif {$admin_p} {
+    lappend table_def [list \
+	    manage \
+	    "" \
+	    {} \
+	    {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]}
+]
 } else {
     lappend table_def [list \
 	    manage \
