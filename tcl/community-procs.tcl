@@ -139,6 +139,7 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars pretty_name $pretty_name
         ns_set put $extra_vars pretty_plural $pretty_name
         ns_set put $extra_vars description $description
+        ns_set put $extra_vars context_id [dotlrn::get_package_id]
 
         db_transaction {
             # Insert the community

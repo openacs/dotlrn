@@ -205,7 +205,7 @@ namespace eval dotlrn {
     } {
 	Return the user default theme
     } {
-	return [db_string select_user_theme {}]
+	return [db_string select_user_theme {} -default ""]
     }
 
     ad_proc -public set_user_theme {
