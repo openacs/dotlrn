@@ -31,6 +31,8 @@ ad_page_contract {
 }
 
 form get_values spam_message subject message
+set subject [ad_quotehtml $subject]
+set message [ad_quotehtml $message]
 
 set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
 set context_bar [list [list $referer Admin] "$spam_name Community"]
