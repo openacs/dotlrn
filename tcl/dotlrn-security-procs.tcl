@@ -134,7 +134,7 @@ namespace eval dotlrn {
                 $user_id \
             ]
 
-            dotlrn_community::applets_dispatch -op AddUser -list_args [list $user_id]
+            dotlrn_applet::dispatch -op AddUser -list_args [list $user_id]
 
             # if the user is a member of communities (from some previous
             # dotlrn relation) then we must remove them from the community and

@@ -75,9 +75,8 @@ if {[dotlrn::is_instantiated]} {
         # The applet_add proc in the dotlrn_applet contract is for one-time
         # init of each applet NOTE: this applet_add proc _must_ be able to be
         # called repeatedly since this script is eval'd at every server startup
-        foreach applet [dotlrn_community::list_applets] {
-            ns_log notice "dotlrn-init: calling ${applet}::AddApplet"
-            dotlrn_community::applet_call $applet AddApplet [list]
+        foreach applet [db_list select_not_installed_applets {}] {
+            dotlrn_applet::applet_call $applet AddApplet [list]
         }
 
         ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn::init"

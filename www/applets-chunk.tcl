@@ -41,7 +41,7 @@ foreach applet_key $list_of_active_applets {
 }
 
 # List all applets
-set list_of_applets [dotlrn_community::list_applets]
+set list_of_applets [dotlrn_applet::list_applets]
 
 template::multirow create all_applets applet_key applet_pretty_name
 

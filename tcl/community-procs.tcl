@@ -771,7 +771,8 @@ namespace eval dotlrn_community {
         db_transaction {
             membership_rel::approve -rel_id $rel_id
 
-            applets_dispatch -community_id $community_id \
+            applets_dispatch \
+                -community_id $community_id \
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
         }
@@ -1213,8 +1214,16 @@ namespace eval dotlrn_community {
     } {
         update the name for a community
     } {
+        set old_value [get_community_name $community_id]
         db_dml update_community_name {}
         util_memoize_flush "dotlrn_community::get_community_name_not_cached $community_id"
+
+        # generate "rename" event
+        raise_change_event \
+            -community_id $community_id \
+            -event rename \
+            -old_value $old_value \
+            -new_value $pretty_name
     }
 
     ad_proc -public get_community_name {
@@ -1760,32 +1769,19 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public list_applets {
-        {-community_id ""}
+        {-community_id:required}
     } {
-        Lists the applets associated with a community or all the dotlrn applets
+        lists the applets associated with a community
     } {
-        if {[empty_string_p $community_id]} {
-            # List all applets
-            return [db_list select_all_applets {}]
-        } else {
-            # List from the DB
-            return [db_list select_community_applets {}]
-        }
+        return [db_list select_community_applets {}]
     }
 
     ad_proc -public list_active_applets {
-        {-community_id ""}
+        {-community_id:required}
     } {
-        Lists the applets associated with a community or only the active dotlrn
-        applets
+        lists the applets associated with a community
     } {
-        if {[empty_string_p $community_id]} {
-            # List all applets
-            return [db_list select_all_active_applets {}]
-        } else {
-            # List from the DB
-            return [db_list select_community_active_applets {}]
-        }
+        return [db_list select_community_active_applets {}]
     }
 
     ad_proc -public applet_active_p {
@@ -1799,44 +1795,14 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public applets_dispatch {
-        {-community_id ""}
+        {-community_id:required}
         {-op:required}
         {-list_args {}}
-        {-reorder_hack_p ""}
     } {
         Dispatch an operation to every applet, either in one communtiy or
         on all the active dotlrn applets
     } {
-        set list_of_applets [list_active_applets -community_id $community_id]
-
-        if {![empty_string_p $reorder_hack_p]} {
-            ns_log notice "applets_dispatch: reorder hack!"
-
-            set reorder_applets_string [parameter::get  \
-                -parameter user_wsp_applet_ordering \
-                -default "dotlrn_news,dotlrn_bboard,dotlrn_faq"
-            ]
-
-
-            set reorder_applets_list [string trim [split $reorder_applets_string {,}]]
-
-            # check if the applet is both in the reorder list and the applet list
-            # if so, put it into the right place in the result list
-            # if not, skip it
-            set result_list [list]
-            foreach applet $reorder_applets_list {
-                set index [lsearch -exact $list_of_applets $applet]
-
-                if {$index != -1} {
-                    set list_of_applets [lreplace $list_of_applets $index $index]
-                    lappend result_list $applet
-                }
-            }
-
-            set list_of_applets [concat $result_list $list_of_applets]
-        }
-
-        foreach applet $list_of_applets {
+        foreach applet [list_active_applets -community_id $community_id] {
             applet_call $applet $op $list_args
         }
     }
@@ -1846,7 +1812,7 @@ namespace eval dotlrn_community {
         op
         {list_args {}}
     } {
-        Call a particular applet op
+        call a particular applet op
     } {
         acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
@@ -2013,6 +1979,20 @@ namespace eval dotlrn_community {
         }
 
         return $valid_p
+    }
+
+    ad_proc -private raise_change_event {
+        {-community_id:required}
+        {-event:required}
+        {-old_value:required}
+        {-new_value:required}
+    } {
+        raise a change event so that anyone interested can take action
+    } {
+        applets_dispatch \
+            -community_id $community_id \
+            -op ChangeEventHandler \
+            -list_args [list $community_id $event $old_value $new_value]
     }
 
 }

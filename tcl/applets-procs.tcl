@@ -130,8 +130,6 @@ namespace eval dotlrn_applet {
     } {
         is the applet specified mounted
     } {
-        ns_log notice "YON: dotlrn_applet::is_applet_mounted applet_key $applet_key"
-        ns_log notice "YON: dotlrn_applet::is_applet_mounted package_key [get_package_key -applet_key $applet_key]"
         if {[apm_package_id_from_key [get_package_key -applet_key $applet_key]] != 0} {
             return 1
         } else {
@@ -167,6 +165,25 @@ namespace eval dotlrn_applet {
         get the package key associated with the given applet
     } {
         return [db_string select_package_key_from_applet_key {} -default ""]
+    }
+
+    ad_proc -public dispatch {
+        {-op:required}
+        {-list_args {}}
+    } {
+        foreach applet [list_applets] {
+            applet_call $applet $op $list_args
+        }
+    }
+
+    ad_proc -public applet_call {
+        applet_key
+        op
+        {list_args {}}
+    } {
+        call a particular applet op
+    } {
+        acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
 
 }

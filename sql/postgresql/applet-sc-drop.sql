@@ -183,6 +183,19 @@ begin
         ''dotlrn_applet.Clone.OutputType''
     );
 
+    perform acs_sc_operation__delete(
+        ''dotlrn_applet'',
+        ''ChangeEventHandler''
+    );
+
+    perform acs_sc_msg_type__delete(
+        ''dotlrn_applet.ChangeEventHandler.InputType''
+    );
+
+    perform acs_sc_msg_type__delete(
+        ''dotlrn_applet.ChangeEventHandler.OutputType''
+    );
+
     perform acs_sc_contract__delete(
         ''dotlrn_applet''
     );
@@ -193,5 +206,3 @@ end;' language 'plpgsql';
 
 select inline_0();
 drop function inline_0();
-
-

@@ -180,6 +180,19 @@ begin
         msg_type_name => 'dotlrn_applet.Clone.OutputType'
     );
 
+    acs_sc_operation.delete(
+        contract_name => 'dotlrn_applet',
+        operation_name => 'ChangeEventHandler'
+    );
+
+    acs_sc_msg_type.delete(
+        msg_type_name => 'dotlrn_applet.ChangeEventHandler.InputType'
+    );
+
+    acs_sc_msg_type.delete(
+        msg_type_name => 'dotlrn_applet.ChangeEventHandler.OutputType'
+    );
+
     acs_sc_contract.delete(
         contract_name => 'dotlrn_applet'
     );
