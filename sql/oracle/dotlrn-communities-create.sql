@@ -33,7 +33,7 @@ create table dotlrn_communities (
                                 constraint dotlrn_communities_pk
                                 primary key,
     parent_community_id         constraint dotlrn_c_parent_comm_id_fk
-                                references dotlrn_communities(community_id),
+                                references dotlrn_communities (community_id),
     community_type              not null
                                 constraint dotlrn_c_community_type_fk
                                 references dotlrn_community_types (community_type),
@@ -55,9 +55,9 @@ create table dotlrn_communities (
     package_id                  constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),
     -- We can't have two communities with the same parent with the same key (url)
-    -- even if the parent_community_id is NULL, which it will be for non-subcommunities
+    -- even if the parent_community_id is null, which it will be for non-subcommunities
     constraint dotlrn_c_community_key_un
-    unique(community_key,parent_community_id)
+    unique (community_key, parent_community_id)
 );
 
 create or replace view dotlrn_communities_not_closed
