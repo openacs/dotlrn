@@ -93,10 +93,13 @@ if {[form is_valid add_subcomm]} {
         # for a subcomm of a "class" set the start and end dates
         if {![string equal $parent_type [dotlrn_club::community_type]] &&
                  ![string equal $parent_type "dotlrn_community"]} {
-            dotlrn_community::set_active_dates \
-                    -community_id $subbcomm_id \
-                    -start_date [dotlrn_term::get_start_date -term_id $term_id] \
-                    -end_date [dotlrn_term::get_end_date -term_id $term_id]
+
+                     dotlrn_community::set_active_dates \
+                             -community_id $subcomm_id \
+                             -start_date \
+                             [dotlrn_term::get_start_date -term_id $term_id] \
+                             -end_date \
+                             [dotlrn_term::get_end_date -term_id $term_id]
         }
     }
 
