@@ -6,6 +6,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {filter ""}
+    {page_num 0}
 } -properties {
     admin_p:onevalue
     admin_url:onevalue
@@ -54,6 +55,6 @@ if {[empty_string_p $portal_id]} {
     ad_script_abort
 }
 
-set rendered_page [dotlrn::render_page -hide_links_p "t" $portal_id]
+set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p "t" $portal_id ]
 
 ad_return_template
