@@ -644,9 +644,14 @@ namespace eval dotlrn_community {
         community_id
     } {
         Returns the list of users with a membership_id, a user_id, first name,
-        last name, email, and role
+        last name, email, and role. 
+
+        AKS: uncaching this until we figure out how to cache ns_sets correctly
     } {
-        return [util_memoize "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"]
+        return [dotlrn_community::list_users_not_cached \
+            -rel_type $rel_type \
+            -community_id $community_id
+        ]
     }
 
     ad_proc -private list_users_not_cached {
