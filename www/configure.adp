@@ -20,6 +20,7 @@
 
 <master src="dotlrn-master">
 <property name="title">Customize Layout</property>
+<property name="link_control_panel">0</property>
 
 <p></p>
 
