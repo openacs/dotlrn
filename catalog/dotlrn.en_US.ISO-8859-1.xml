@@ -414,6 +414,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Name__Email">Name / Email</msg>
   <msg key="navy">navy</msg>
   <msg key="Needs_Approval">Needs Approval</msg>
+  <msg key="Never_visited">Never visited</msg>
   <msg key="New">New</msg>
   <msg key="new">new</msg>
   <msg key="new_class">New</msg>
@@ -454,6 +455,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Nuke">Nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke Users</msg>
+  <msg key="Number_of_db_objects">Number of database objects created by this user</msg>
   <msg key="olive">olive</msg>
   <msg key="Open">Open</msg>
   <msg key="optional_defaults_to">Optional field that defaults to the following value:</msg>
