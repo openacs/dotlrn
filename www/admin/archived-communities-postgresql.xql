@@ -16,7 +16,8 @@
     -->
     <fullquery name="select_archived_comms">
         <querytext>
-            select child.pretty_name, 
+            select child.community_id,
+            	   child.pretty_name, 
                    child.description,
                    dotlrn_community__url(child.community_id) as url,
                    parent.community_id as parent_community_id,

@@ -1835,11 +1835,22 @@ namespace eval dotlrn_community {
     ad_proc -public unarchive {
         {-community_id:required}
     } {
-        Unarchives a community. ** not done yet **
+        Unarchives a community.
+        08/10-2003 CK looks like its done now
     } {
-        error
-        ad_script_abort
+        # 19/06-2003 CK Activated the code for unarchive
         db_dml update_archive_p {}
+
+        rel_segments_grant_permission -community_id $community_id
+
+        # 08/10-2003 CK Must also execute AddUserToCommunity
+        foreach user [list_users $community_id] {
+            set user_id [ns_set get $user user_id]
+            applets_dispatch \
+                -community_id $community_id \
+                -op AddUserToCommunity \
+                -list_args [list $community_id $user_id]
+        }
     }
 
     ad_proc -public nuke {

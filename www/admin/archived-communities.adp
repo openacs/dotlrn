@@ -28,8 +28,10 @@
   <tr>
     <th align="left" width="25%">#dotlrn.Parent#</th>
     <th align="left" width="50%">#dotlrn.Name#</th>
+    <th align="left">#dotlrn.Description#</th>
     <th align="left">#dotlrn.Term#</th>
     <th align="left">#dotlrn.Created#</th>
+    <th align="left">#dotlrn.Unarchive#</th>
   </tr>
 <multiple name="archived_comms">
 <if @archived_comms.rownum@ odd>
@@ -42,12 +44,14 @@
     </td>
     <td>
       <a href="@archived_comms.url@">@archived_comms.pretty_name@</a></td>
+    <td>@archived_comms.description@</td>
     <td>
         @archived_comms.term_name@ @archived_comms.term_year@
         <% # look for a parent term if no child term is found %>
         <if @archived_comms.term_name@ eq "">@archived_comms.parent_term_name@ @archived_comms.parent_term_year@</if>
     </td>
     <td><em>@archived_comms.creation_date@</em></td>
+    <td><em><a href="@archived_comms.unarchive_url@">#dotlrn.unarchive#</a></em></td>
   </tr>
 </multiple>
 </table>
