@@ -25,45 +25,34 @@
 <if @communities:rowcount@ gt 0>
 
   <ul>
-
-<%
-    set old_simple_community_type ""
-    set new_simple_community_type ""
-    set old_level 0
-    set new_level 0
-%>
-
 <multiple name="communities">
 
 <%
-    if {![string equal $communities(simple_community_type) dotlrn_community]} {
-        set new_simple_community_type $communities(simple_community_type)
-    }
-
-    set new_level $communities(tree_level)
+    set old_level 0
+    set new_level 0
+    set depth 0
 %>
 
-    <if @new_level@ lt @old_level@>
-      </ul>
-    </if>
+  <if @communities.simple_community_type@ eq "dotlrn_class_instance">
+    <li><%= [parameter::get -parameter class_instances_pretty_plural] %>:
+  </if>
+  <else>
+    <li><%= [parameter::get -parameter clubs_pretty_plural] %>:
+  </else>
 
-    <if @new_simple_community_type@ ne @old_simple_community_type@>
-      <if @old_simple_community_type@ ne "">
-        </ul>
-        <br>
-<% set old_level [expr $new_level - 1] %>
-      </if>
-      <if @new_simple_community_type@ eq "dotlrn_class_instance">
-        <li><%= [parameter::get -parameter class_instances_pretty_plural] %>:
-      </if>
-      <else>
-        <li><%= [parameter::get -parameter clubs_pretty_plural] %>:
-      </else>
-    </if>
+<group column="simple_community_type">
 
-    <if @new_level@ gt @old_level@>
-      <ul>
-    </if>
+<% set new_level $communities(tree_level) %>
+
+  <if @new_level@ lt @old_level@>
+<% incr depth -1 %>
+    </ul>
+  </if>
+
+  <if @new_level@ gt @old_level@>
+<% incr depth 1 %>
+    <ul>
+  </if>
 
       <li>
         <nobr>
@@ -76,19 +65,17 @@
         </nobr>
       </li>
 
-<%
-    set old_simple_community_type $new_simple_community_type
-    set old_level $new_level
-%>
+<% set old_level $new_level %>
 
-</multiple>
+</group>
 
 <%
-    for {set i $new_level} {$i > 0} {incr i -1} {
+    for {set i $depth} {$i > 0} {incr i -1} {
         template::adp_puts "</ul>\n"
     }
 %>
 
+</multiple>
   </ul>
 
 </if>

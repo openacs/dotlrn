@@ -1143,24 +1143,23 @@ namespace eval dotlrn_community {
 
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-                if {![member_p $sc_id $user_id]
-                  && [not_closed_p -community_id $sc_id]} {
+                if {![member_p $sc_id $user_id] && [not_closed_p -community_id $sc_id]} {
 
-                      append chunk "\[<small>"
+                      append chunk "<nobr>\[<small> "
 
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
-                          append chunk "waiting&nbsp;for&nbsp;approval"
+                          append chunk "Pending Approval"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk "<a href=${url}${join_target}?referer=[ad_conn url]>request&nbsp;membership</a>"
+                          append chunk "<a href=\"${url}${join_target}?referer=[ad_conn url]\">Request Membership</a>"
                       } else {
-                          append chunk "<a href=${url}${join_target}>join</a>"
+                          append chunk "<a href=\"${url}${join_target}\">Join</a>"
                       }
 
-                      append chunk "</small>\]\n"
+                      append chunk " </small>\]</nobr>\n"
                 }
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
-                    append chunk " \[<small> <a href=${url}one-community-admin>Administer</a> </small>\]\n"
+                    append chunk "<nobr>\[<small> <a href=\"${url}one-community-admin\">Administer</a> </small>\]</nobr>\n"
                 }
             }
         }
