@@ -18,6 +18,8 @@ ad_page_contract {
     title:onevalue
 }
 
+set portal_id ""
+
 # Check that this is a community type
 if {[ad_parameter community_type_level_p] != 1} {
     ad_returnredirect "./"
