@@ -71,21 +71,22 @@
 
   <tr><td colspan=3 class="dark-line" height="1"><img src="/resources/dotlrn/spacer.gif"></td></tr>
 
-  <!-- navbars on every page -->
-  <tr><td colspan=3 valign=top>@navbar;noquote@</td></tr>
-  </table>
-  <p>
-  <p>
-
-  <!-- Header End -->
-  
-  <if @display_title@ not nil>
-    <h1>@display_title@</h1>
+  <if @in_dotlrn_p@ true>  
+      <!-- navbars on every page -->
+    <tr><td colspan=3 valign=top>@navbar;noquote@</td></tr>
+    </table>
+    <p>
+    <p>
   </if>
+  <else>
+    </table>
+    <h1>@title@</h1>
+    <if @context_bar@ not nil>
+      <p>@context_bar;noquote@</p>
+    </if>
+  </else>
 
-  <if @context_bar@ not nil>
-    <p>@context_bar;noquote@</p>
-  </if>
+    <!-- Header End -->
 
   <slave>
 

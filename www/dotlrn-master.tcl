@@ -598,7 +598,8 @@ set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_
 
 # Hack for title and context bar outside of dotlrn
 
-if { ![string match [ad_conn url] "/dotlrn/*"] && [info exists context] } {
+set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
+
+if { [info exists context] } {
     set context_bar [eval ad_context_bar $context]
-    set display_title $title
 }
