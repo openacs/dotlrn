@@ -30,7 +30,6 @@ ad_page_contract {
 
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
-
 dotlrn::require_user_admin_community -user_id $user_id $community_id
 
 db_1row select_community_info {
@@ -80,14 +79,14 @@ foreach {rel_type role pretty_name pretty_plural} [eval concat $roles] {
         -label "$role Pretty Name" \
         -datatype text \
         -widget text \
-        -html {size 60} \
+        -html {size 40} \
         -value $pretty_name
 
     element create edit_community_role_names "${role}_pretty_plural" \
         -label "$role Pretty Plural" \
         -datatype text \
         -widget text \
-        -html {size 60} \
+        -html {size 40} \
         -value $pretty_plural
 }
 
@@ -103,11 +102,56 @@ if {[form is_valid edit_community_role_names]} {
         ]
     }
 
-    dotlrn_community::set_roles_pretty_data -community_id $community_id -roles_data $new_roles
+    dotlrn_community::set_roles_pretty_data \
+        -community_id $community_id \
+        -roles_data $new_roles
 
     ad_returnredirect $referer
     ad_script_abort
 }
+
+# set up some defaults and get attrs
+set header_font [dotlrn_community::get_attribute \
+    -community_id $community_id \
+    -attribute_name header_font
+]
+
+set header_font_size [dotlrn_community::get_attribute \
+    -community_id $community_id \
+    -attribute_name header_font_size
+]
+
+set size_list [list medium small large x-large]
+set pretty_size_list [list Normal Small Large {Extra Large}]
+set size_option_list [ad_generic_optionlist $pretty_size_list $size_list $header_font_size]
+
+set header_font_color [dotlrn_community::get_attribute \
+    -community_id $community_id \
+    -attribute_name header_font_color
+]
+
+#  set header_img [dotlrn_community::get_attribute \
+#      -community_id $community_id \
+#      -attribute_name header_img
+#  ]
+#  
+#  element create edit_community_header header_img \
+#      -label "Header Icon" \
+#      -widget file \
+#      -optional
+#      
+#  set header_alt_text [dotlrn_community::get_attribute \
+#      -community_id $community_id \
+#      -attribute_name header_alt_text
+#  ]
+#  
+#  element create edit_community_header header_alt_text \
+#      -label "Header Icon 'Alt' text" \
+#      -datatype text \
+#      -widget text \
+#      -html {size 50} \
+#      -value $header_alt_text \
+#      -optional
 
 set title {Edit Properties}
 set context_bar {{one-community-admin Administer} {Edit Properties}}

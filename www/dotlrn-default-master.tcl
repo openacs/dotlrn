@@ -200,9 +200,12 @@ set full_name "[dotlrn::get_user_name $user_id]"
 set title "SloanSpace"
 
 
-# the ColorHack!
+# the ColorHack and fonthack!
 set color_hack "#cc0000"
 set color_hack_name "red"
+set header_font ""
+set header_font_size "medium"
+set header_font_color "black"
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
     set parent_comm_p 0
@@ -229,6 +232,23 @@ if {[parameter::get -parameter community_level_p] == 1 || $parent_comm_p } {
             set color_hack_name "blue"
         }
     }
+
+    # font hack
+    set header_font [dotlrn_community::get_attribute \
+        -community_id $community_id \
+        -attribute_name header_font
+    ]
+    append header_font ", "
+
+    set header_font_size [dotlrn_community::get_attribute \
+        -community_id $community_id \
+        -attribute_name header_font_size
+    ]
+
+    set header_font_color [dotlrn_community::get_attribute \
+        -community_id $community_id \
+        -attribute_name header_font_color
+    ]
 
     # The header text is the name of the community
     set text [dotlrn_community::get_community_header_name $community_id] 
@@ -264,6 +284,14 @@ img.header-img {
 
 .header-logo {
     color: white;
+    background: white;
+    width: 100px;
+}
+
+.header-text {
+    font-family: $header_font;
+    font-size: $header_font_size;
+    color: $header_font_color;
     background: white;
     width: 100px;
 }

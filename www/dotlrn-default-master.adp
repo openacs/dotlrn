@@ -55,7 +55,7 @@
       <img class="header-img" border=0 src="@dotlrn_url@/graphics/logowhite.gif" width="100" height="65" alt="SloanSpaceLogo"></a>
     </td>
 
-    <td width="50%"><big>@text@</big></td>
+    <td width="50%"><div class=header-text>@text@</div></td>
 
     <td width="40%" class="header-buttons" align="right">
       <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
