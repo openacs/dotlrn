@@ -4,7 +4,10 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-08-20
     @version $Id$
-} {
+} -query {
+} -properties {
+    admin_p:onevalue
+    admin_url:onevalue
 }
 
 # Check if this is a community type level thing
@@ -27,14 +30,12 @@ set admin_url [dotlrn::get_url]/admin
 
 # Permission dotLRN
 if {![dotlrn::user_can_browse_p]} {
-    ns_log Notice "DOTLRN- CANNOT BROWSE!"
-
     # Figure out if the user is a member of a community
     set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
     if {[llength $communities] == 0} {
-        ad_return_template index-not-a-user
-        return
+        ad_returnredirect index-not-a-user
+        ad_script_abort
     }
 
     # For now, we assume only ONE community (FIXME: ben)
