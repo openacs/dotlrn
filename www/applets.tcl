@@ -8,6 +8,7 @@ ad_page_contract {
 }
 
 set context_bar {{"one-community-admin" Admin} {Manage Applets}}
+
 set portal_id ""
 
 ad_return_template

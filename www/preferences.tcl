@@ -14,7 +14,7 @@ ad_page_contract {
     admin_url:onevalue
 }
 
-set portal_id ""
+set portal_id [dotlrn::get_workspace_portal_id [ad_get_user_id]]
 
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]

@@ -16,6 +16,7 @@ ad_page_contract {
 }
 
 set community_id [dotlrn_community::get_community_id]
+set user_id [ad_get_user_id]
 
 # Permissions
 dotlrn::require_user_admin_community $community_id
@@ -24,6 +25,8 @@ db_1row select_community_info {}
 
 # render the admin page
 set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id]
+
+set portal_id [dotlrn_community::get_portal_id $community_id $user_id]
 
 set context_bar {Admin}
 
