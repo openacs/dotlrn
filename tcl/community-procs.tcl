@@ -82,6 +82,10 @@ namespace eval dotlrn_community {
     } {
         Create a new community type.
     } {
+	if { [empty_string_p $parent_type] } {
+	    set parent_type "dotlrn_community"
+	}
+
         # Figure out parent_node_id
         set parent_node_id [get_type_node_id $parent_type]
         array set parent_node [site_node::get -node_id $parent_node_id]
@@ -106,6 +110,25 @@ namespace eval dotlrn_community {
             dotlrn_community::set_type_package_id \
                 -community_type $community_type_key \
                 -package_id $package_id
+
+	    # FIXME - if there's a proc to get the admin user_id w/o 
+	    # a connection put it here. This needs to be a vaild
+	    # grantee for the perms
+	    # Taken from dotlrn-procs.tcl
+	    set user_id -1        
+
+	    # Use the parent's portal as template
+	    set template_id [dotlrn::get_portal_id_from_type -type $parent_type]
+
+            set portal_id [portal::create \
+			       -template_id $template_id \
+			       -name "$pretty_name Portal" \
+			       $user_id \
+			      ]
+
+	    dotlrn::set_type_portal_id \
+		-type $community_type_key \
+		-portal_id $portal_id
         }
 
         return $community_type_key
@@ -154,6 +177,23 @@ namespace eval dotlrn_community {
         get the node ID of a community type
     } {
         return [db_string select_node_id {}]
+    }
+
+    ad_proc -public type_exists {
+	community_type
+    } {
+	Checks if the community type exists
+	
+	@author Roel Canicula (roelmc@aristoi.biz)
+	@creation-date 2004-06-26
+	
+	@param community_type
+
+	@return 1 if exists, 0 if not 
+	
+	@error 
+    } {
+	return [db_string type_exists { *SQL* } -default 0]
     }
 
     ad_proc -public get_community_node_id {
@@ -217,7 +257,13 @@ namespace eval dotlrn_community {
                 where object_id = :community_id
             }
 
-            set template_id [dotlrn::get_portal_id_from_type -type $object_type]
+	    # HACK
+	    # With the advent of new community types, community_type
+	    # is no longer equivalent to object_id
+	    # community_type contains the newly created type while
+	    # object_type is limited to the original types
+
+            set template_id [dotlrn::get_portal_id_from_type -type $community_type]
 
             # Create comm's portal page
             set portal_id [portal::create \
@@ -274,10 +320,10 @@ namespace eval dotlrn_community {
 
             # Add the default applets based on the community type
             # 2. the the list of default applets for this type
-            if {[string equal $community_type dotlrn_community]} {
+            if {[string equal $community_type dotlrn_class_instance]} {
                 set default_applets [parameter::get \
                     -package_id $package_id \
-                    -parameter default_subcomm_applets \
+                    -parameter default_class_instance_applets \
                 ]
             } elseif {[string equal $community_type dotlrn_club]} {
                 set default_applets [parameter::get \
@@ -292,7 +338,7 @@ namespace eval dotlrn_community {
             } else {
                 set default_applets [parameter::get \
                     -package_id $package_id \
-                    -parameter default_class_instance_applets \
+                    -parameter default_subcomm_applets \
                 ]
             }
 
@@ -303,6 +349,10 @@ namespace eval dotlrn_community {
                     dotlrn_community::add_applet_to_community $community_id $applet_key
                 }
             }
+
+	    # Set community type
+	    set_community_type -community_id $community_id \
+		-community_type $community_type
         }
 
         # This new community should _not_ inherit it's permissions
@@ -991,6 +1041,47 @@ namespace eval dotlrn_community {
     } {
         set package_id [ad_conn package_id]
         return [util_memoize "dotlrn_community::get_community_type_not_cached -package_id $package_id"]
+    }
+
+    ad_proc -public set_community_type {
+	{-community_id:required}
+	{-community_type:required}
+    } {
+	Set community type
+	
+	@author Roel Canicula (roelmc@aristoi.biz)
+	@creation-date 2004-06-26
+	
+	@param community_id
+
+	@param community_type
+
+	@return 
+	
+	@error 
+    } {
+        set old_value [get_community_type_from_community_id $community_id]
+
+	db_transaction {
+	    db_1row get_portal_template { *SQL* }
+
+	    db_dml update_community_type { *SQL* }
+
+	    db_dml set_portal_template { *SQL* }
+	}
+
+	# flush all procs related to community type
+        util_memoize_flush "dotlrn_community::get_community_type_from_community_id_not_cached -community_id $community_id"
+	util_memoize_flush "dotlrn_community::get_non_member_portal_id_not_cached -community_id $community_id"
+	util_memoize_flush "dotlrn_community::get_portal_id_not_cached -community_id $community_id"
+	util_memoize_flush "dotlrn_community::get_admin_portal_id_not_cached -community_id $community_id"
+
+        # generate "rename" event
+        raise_change_event \
+            -community_id $community_id \
+            -event "change type" \
+            -old_value $old_value \
+            -new_value $community_type
     }
 
     ad_proc -private get_community_type_not_cached {
