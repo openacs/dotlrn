@@ -6,6 +6,7 @@
     <pretty-plural>dotLRN</pretty-plural>
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
+    <auto-mount>dotlrn</auto-mount>
     
     <version name="2.0.3" url="http://openacs.org/repository/download/apm/dotlrn-2.0.3.apm">
         <owner url="http://openacs.org">OpenACS</owner>
