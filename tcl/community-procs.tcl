@@ -164,6 +164,13 @@ namespace eval dotlrn_community {
                     -context_id $community_id \
                     $user_id]
 
+            # Create the admin page
+            set admin_portal_id \
+                    [portal::create \
+                    -name "$pretty_name Administration Portal" \
+                    -context_id $community_id \
+                    $user_id]
+
             # update the portal_template_id and non_member_portal_id
             db_dml update_portal_ids {}
 
@@ -471,6 +478,14 @@ namespace eval dotlrn_community {
         Get the community page ID for non-members
     } {
         return [db_string select_community_portal_id {}]
+    }
+
+    ad_proc -public get_community_admin_portal_id {
+        community_id
+    } {
+        Get the community Admin page ID
+    } {
+        return [db_string select_community_admin_portal_id {}]
     }
 
     ad_proc -public get_all_communities_by_user {

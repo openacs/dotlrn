@@ -31,7 +31,7 @@ select node_id from site_nodes where object_id= (select package_id from dotlrn_c
 
 <fullquery name="dotlrn_community::new.update_portal_ids">
 <querytext>
-update dotlrn_communities set portal_template_id = :portal_template_id, portal_id = :portal_id where community_id = :community_id
+update dotlrn_communities set portal_template_id = :portal_template_id, portal_id = :portal_id, admin_portal_id= :admin_portal_id where community_id = :community_id
 </querytext>
 </fullquery>
 
@@ -108,6 +108,12 @@ select portal_id from dotlrn_member_rels_full where community_id= :community_id 
 <fullquery name="dotlrn_community::get_community_non_members_portal_id.select_community_portal_id">
 <querytext>
 select portal_id from dotlrn_communities where community_id= :community_id
+</querytext>
+</fullquery>
+
+<fullquery name="dotlrn_community::get_community_admin_portal_id.select_community_admin_portal_id">
+<querytext>
+select admin_portal_id from dotlrn_communities where community_id= :community_id
 </querytext>
 </fullquery>
 

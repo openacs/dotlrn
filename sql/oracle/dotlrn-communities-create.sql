@@ -47,6 +47,8 @@ create table dotlrn_communities (
     active_end_date             date,
     portal_id                   constraint dotlrn_c_portal_id_fk
                                 references portals (portal_id),
+    admin_portal_id             constraint dotlrn_c_admin_portal_id_fk
+                                references portals (portal_id),
     portal_template_id          constraint dotlrn_c_portal_template_id_fk
                                 references portals (portal_id),
     package_id                  constraint dotlrn_c_package_id_fk
