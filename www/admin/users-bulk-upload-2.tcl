@@ -104,9 +104,7 @@ db_transaction {
             
             if {![info exists row(notify)]} {
                 set row(notify) f
-            } else {
-                set row(notify) t
-            }
+            } 
             
             doc_body_append "Creating user $row(email)...."
 
