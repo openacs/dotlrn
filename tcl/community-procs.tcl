@@ -655,7 +655,9 @@ namespace eval dotlrn_community {
     } {
         Get the page ID for a particular community and user
     } {
-        return [db_string select_portal_id {} -default ""]
+        # BEN HACK
+        # return [db_string select_portal_id {} -default ""]
+        return [get_portal_template_id $community_id]
     }
 
     ad_proc -public get_community_non_members_portal_id {
@@ -1050,6 +1052,45 @@ namespace eval dotlrn_community {
 
             # Delete from the DB
             db_dml delete_applet {}
+        }
+    }
+
+    ad_proc -public delete {
+        {-community_id ""}
+    } {
+        Delete a community
+    } {
+        db_transaction {
+            # Remove all users
+            foreach user [list_users $community_id] {
+                remove_user $community_id [lindex $user 2]
+            }
+            
+            # Remove all applets
+            foreach applet [list_applets -community_id $community_id] {
+                remove_applet $community_id $applet
+            }
+            
+            # Clean up
+            db_1row select_things_to_clean "select portal_id, admin_portal_id, portal_template_id, package_id from dotlrn_communities where community_id= :community_id"
+
+            # Remove the row
+            db_exec_plsql remove_community "begin acs_object.delete(:community_id) end;"
+
+            if {![empty_string_p $portal_id]} {
+                portal::delete $portal_id
+            }
+            
+            if {![empty_string_p $admin_portal_id]} {
+                portal::delete $admin_portal_id
+            }
+
+            if {![empty_string_p $portal_template_id]} {
+                portal::delete $portal_template_id
+            }
+
+            # Remove the package
+            db_exec_plsql delete_package "begin acs_object.delete(:package_id) end;"
         }
     }
 
