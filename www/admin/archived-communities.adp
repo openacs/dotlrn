@@ -38,16 +38,14 @@
   <tr class="even">
 </else>
     <td>
-      <if @archived_comms.parent_community_id@ not eq ""><a href="@archived_comm
-s.parent_url@">@archived_comms.parent_pretty_name@</a></if>
+      <if @archived_comms.parent_community_id@ not eq ""><a href="@archived_comms.parent_url@">@archived_comms.parent_pretty_name@</a></if>
     </td>
     <td>
       <a href="@archived_comms.url@">@archived_comms.pretty_name@</a></td>
     <td>
         @archived_comms.term_name@ @archived_comms.term_year@
         <% # look for a parent term if no child term is found %>
-        <if @archived_comms.term_name@ eq "">@archived_comms.parent_term_name@ @
-archived_comms.parent_term_year@</if>
+        <if @archived_comms.term_name@ eq "">@archived_comms.parent_term_name@ @archived_comms.parent_term_year@</if>
     </td>
     <td><em>@archived_comms.creation_date@</em></td>
   </tr>
