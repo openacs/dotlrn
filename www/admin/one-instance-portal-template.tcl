@@ -6,8 +6,9 @@ ad_page_contract {
     @cvs-id $Id$
 } {
     portal_id:naturalnum,notnull
+    return_url:notnull
 }
 
-set rendered_page [portal::template_configure $portal_id]
+set rendered_page [portal::template_configure $portal_id $return_url]
 
 ad_return_template
