@@ -1,7 +1,0 @@
-<master src="sloan-master">
-<property name="community_id">@community_id@</property>
-<property name="text">@text@</property>
-<property name="navbar">@navbar@</property>
-<property name="have_portal_id_p">@have_portal_id_p@</property>
-<property name="portal_id">@portal_id@</property>
-<slave>
