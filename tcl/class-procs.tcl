@@ -83,6 +83,7 @@ namespace eval dotlrn_class {
     }
 
     ad_proc -public check_class_key_valid_p {
+ 	{-community_type_key ""}
         {-class_key:required}
         {-department_key:required}
     } {
@@ -96,8 +97,10 @@ namespace eval dotlrn_class {
         too.
         
     } {
+	if [empty_string_p $community_type_key] {
+	    set community_type_key "$department_key.$class_key"
+	}
 
-	set community_type_key "$department_key.$class_key"
 
         if {[db_0or1row collision_check {}]} {
             # got a collision
@@ -124,17 +127,21 @@ namespace eval dotlrn_class {
     } {
 
 	if [empty_string_p $class_key] {
-	    set class_key [dotlrn::generate_key -name $pretty_name]
-	}
+            set new_class_key $department_key.[dotlrn::generate_key -name $pretty_name]
+        } else {
+            set new_class_key $class_key
+        }
         
         # check if the name is already in use, if so, complain loudly
         if {![check_class_key_valid_p \
-                -class_key $class_key \
-                -department_key $department_key]} {
-            ad_return_complaint \
-                    1 \
-                    "[_ dotlrn.The_name] <strong>$pretty_name</strong> [_ dotlrn.is_already_in_use].
-                     <p>[_ dotlrn.lt_Please_select_a_diffe]."
+                  -community_type_key $new_class_key \
+                  -class_key $class_key \
+                  -department_key $department_key]} {
+	    return
+#             ad_return_complaint \
+#                     1 \
+#                     "Duplicate key error. The key $new_class_key already exists.
+#                      <p>[_ dotlrn.lt_Please_select_a_diffe]."
         }        
 
         db_transaction {
@@ -184,6 +191,7 @@ namespace eval dotlrn_class {
 
     ad_proc -public new_instance {
         {-class_key:required}
+	{-class_instance_key ""}
         {-term_id:required}
         {-pretty_name ""}
         {-description ""}
@@ -205,6 +213,7 @@ namespace eval dotlrn_class {
         }
         db_transaction {
             set community_id [dotlrn_community::new \
+                -community_key $class_instance_key \
                 -description $description \
                 -community_type $class_key \
                 -object_type [community_type] \
