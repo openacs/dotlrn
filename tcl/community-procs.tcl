@@ -656,8 +656,8 @@ namespace eval dotlrn_community {
         Get the page ID for a particular community and user
     } {
         # BEN HACK
-        # return [db_string select_portal_id {} -default ""]
-        return [get_portal_template_id $community_id]
+        return [db_string select_portal_id {} -default ""]
+        # return [get_portal_template_id $community_id]
     }
 
     ad_proc -public get_community_non_members_portal_id {
