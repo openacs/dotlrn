@@ -64,11 +64,11 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public one_community_package_key {} {
-        return "dotlrn"
+        return dotlrn
     }
 
     ad_proc -public one_community_type_package_key {} {
-        return "dotlrn"
+        return dotlrn
     }
 
     ad_proc -public new_type {
@@ -93,16 +93,16 @@ namespace eval dotlrn_community {
 
             # Create the node
             set new_node_id [site_node_create \
-                    $parent_node_id \
-                    [ad_decode $url_part "" $community_type_key $url_part]
+                $parent_node_id \
+                [ad_decode $url_part "" $community_type_key $url_part] \
             ]
 
             # Instantiate the package
             set package_id [site_node_create_package_instance \
-                    $new_node_id \
-                    $pretty_name \
-                    $parent_node(object_id) \
-                    [one_community_type_package_key]
+                $new_node_id \
+                $pretty_name \
+                $parent_node(object_id) \
+                [one_community_type_package_key] \
             ]
 
             # Set some parameters
@@ -112,8 +112,9 @@ namespace eval dotlrn_community {
 
             # Set the site node
             dotlrn_community::set_type_package_id $community_type_key $package_id
+        }
 
-            return $community_type_key
+        return $community_type_key
     }
 
     ad_proc -public set_type_package_id {
@@ -145,7 +146,7 @@ namespace eval dotlrn_community {
         {-parent_community_id ""}
         {-description ""}
         {-community_type:required}
-        {-object_type "dotlrn_community"}
+        {-object_type dotlrn_community}
         {-community_key ""}
         {-pretty_name:required}
         {-extra_vars ""}
@@ -179,49 +180,48 @@ namespace eval dotlrn_community {
 
         db_transaction {
             set user_id [ad_conn user_id]
-            set community_id \
-                [package_instantiate_object -extra_vars $extra_vars $object_type]
-            
+            set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
+
 
             set template_id [dotlrn::get_portal_id_from_type -type $community_type]
 
             # Create comm's portal page
             set portal_id [portal::create \
-                               -template_id $template_id \
-                               -name "$pretty_name Portal" \
-                               -context_id $community_id \
-                               $user_id
+                -template_id $template_id \
+                -name "$pretty_name Portal" \
+                -context_id $community_id \
+                $user_id \
             ]
-            
+
             # Create the comm's non-member page
             set non_member_portal_id [portal::create \
                 -name "$pretty_name Non-Member Portal" \
                 -default_page_name [dotlrn::parameter -name non_member_page_name] \
                 -context_id $community_id \
-                $user_id
+                $user_id \
             ]
-            
+
             # Create the comm's admin page
             set admin_portal_id [portal::create \
                 -name "$pretty_name Administration Portal" \
                 -default_page_name [dotlrn::parameter -name admin_page_name] \
                 -context_id $community_id \
-                $user_id
+                $user_id \
             ]
-            
+
             # Set up the rel segments
             dotlrn_community::create_rel_segments -community_id $community_id
-            
+
             # Set up the node
             if {[empty_string_p $parent_community_id]} {
                 set parent_node_id [get_type_node_id $community_type]
             } else {
                 set parent_node_id [get_community_node_id $parent_community_id]
             }
-            
+
             # Create the node
             set new_node_id [site_node_create $parent_node_id $community_key]
-            
+
             # Instantiate the package
             set package_id [site_node_create_package_instance \
                 $new_node_id \
@@ -229,39 +229,39 @@ namespace eval dotlrn_community {
                 $community_id \
                 [one_community_package_key] \
             ]
-            
+
             # Set the right parameters
             ad_parameter -package_id $package_id -set 0 dotlrn_level_p
             ad_parameter -package_id $package_id -set 0 community_type_level_p
             ad_parameter -package_id $package_id -set 1 community_level_p
-            
+
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
-            
+
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
             # Add the default applets based on the community type
             # 2. the the list of default applets for this type
-            if {[string equal $community_type "dotlrn_community"]} {
+            if {[string equal $community_type dotlrn_community]} {
                 set default_applets [parameter::get \
-                                         -package_id $package_id \
-                                         -parameter default_subcomm_applets
+                    -package_id $package_id \
+                    -parameter default_subcomm_applets \
                 ]
-            } elseif {[string equal $community_type "dotlrn_club"]} {
+            } elseif {[string equal $community_type dotlrn_club]} {
                 set default_applets [parameter::get \
-                                         -package_id $package_id \
-                                         -parameter default_club_applets
+                    -package_id $package_id \
+                    -parameter default_club_applets \
                 ]
-            } elseif {[string equal $community_type "user"]} {
+            } elseif {[string equal $community_type user]} {
                 set default_applets [parameter::get \
-                                         -package_id $package_id \
-                                         -parameter default_user_portal_applets
+                    -package_id $package_id \
+                    -parameter default_user_portal_applets \
                 ]
             } else {
                 set default_applets [parameter::get \
-                                         -package_id $package_id \
-                                         -parameter default_class_instance_applets
+                    -package_id $package_id \
+                    -parameter default_class_instance_applets \
                 ]
             }
 
@@ -530,15 +530,15 @@ namespace eval dotlrn_community {
         permission::grant \
             -party_id $member_segment_id \
             -object_id $community_id \
-            -privilege "read"
+            -privilege read
         permission::grant \
             -party_id $member_segment_id \
             -object_id $community_id \
-            -privilege "write"
+            -privilege write
         permission::grant \
             -party_id $admin_segment_id \
             -object_id $community_id \
-            -privilege "admin"
+            -privilege admin
     }
 
     ad_proc -private rel_segments_revoke_permission {
@@ -552,17 +552,17 @@ namespace eval dotlrn_community {
         permission::revoke \
             -party_id $member_segment_id \
             -object_id $community_id \
-            -privilege "read"
+            -privilege read
         permission::revoke \
             -party_id $member_segment_id \
             -object_id $community_id \
-            -privilege "write"
+            -privilege write
         permission::revoke \
             -party_id $admin_segment_id \
             -object_id $community_id \
-            -privilege "admin"
+            -privilege admin
     }
-    
+
     ad_proc -public create_rel_segments {
         {-community_id:required}
     } {
@@ -572,14 +572,14 @@ namespace eval dotlrn_community {
 
         db_transaction {
             set member_segment_id [rel_segments_new \
-                                       $community_id \
-                                       dotlrn_member_rel \
-                                       "Members of $community_name"
+                $community_id \
+                dotlrn_member_rel \
+                "Members of $community_name" \
             ]
             set admin_segment_id [rel_segments_new \
-                                      $community_id \
-                                      dotlrn_admin_rel \
-                                      "Admins of $community_name"
+                $community_id \
+                dotlrn_admin_rel \
+                "Admins of $community_name" \
             ]
             rel_segments_grant_permission -community_id $community_id
         }
@@ -590,23 +590,12 @@ namespace eval dotlrn_community {
     } {
         remove the rel segments for a community
     } {
-        # a useful bit of code to find privs that you may not have properly revoked
-        # set foo [db_list_of_lists select_outstanding_privs {
-        #     select o.object_id, object_type, privilege
-        #     from acs_objects o, acs_permissions p
-        #     where o.object_id = p.object_id 
-        #     and p.grantee_id = :admin_segment_id
-        # }]
-        # ad_return_complaint 1 "$foo"
-        # end 
-
         set member_segment_id [get_members_rel_id -community_id $community_id]
         set admin_segment_id [get_admin_rel_id -community_id $community_id]
 
-        rel_segments_revoke_permission -community_id $community_id         
+        rel_segments_revoke_permission -community_id $community_id
         rel_segments_delete $admin_segment_id
         rel_segments_delete $member_segment_id
-
     }
 
     ad_proc -public list_admin_users {
@@ -614,11 +603,11 @@ namespace eval dotlrn_community {
     } {
         Returns list of admin users
     } {
-        return [list_users -rel_type "dotlrn_admin_rel" $community_id]
+        return [list_users -rel_type dotlrn_admin_rel $community_id]
     }
 
     ad_proc -public list_users {
-        {-rel_type "dotlrn_member_rel"}
+        {-rel_type dotlrn_member_rel}
         community_id
     } {
         Returns the list of users with a membership_id, a user_id, first name, last name, email, and role
@@ -666,7 +655,7 @@ namespace eval dotlrn_community {
 
     ad_proc -public add_user {
         {-rel_type ""}
-        {-member_state "approved"}
+        {-member_state approved}
         community_id
         user_id
     } {
@@ -675,13 +664,13 @@ namespace eval dotlrn_community {
         set toplevel_community_type \
                 [get_toplevel_community_type_from_community_id $community_id]
 
-        if {[string equal $toplevel_community_type "dotlrn_class_instance"]} {
+        if {[string equal $toplevel_community_type dotlrn_class_instance]} {
             dotlrn_class::add_user \
                 -rel_type $rel_type \
                 -community_id $community_id \
                 -user_id $user_id \
                 -member_state $member_state
-        } elseif {[string equal $toplevel_community_type "dotlrn_club"]} {
+        } elseif {[string equal $toplevel_community_type dotlrn_club]} {
             dotlrn_club::add_user \
                 -rel_type $rel_type \
                 -community_id $community_id \
@@ -697,13 +686,13 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public add_user_to_community {
-        {-rel_type "dotlrn_member_rel"}
+        {-rel_type dotlrn_member_rel}
         {-community_id:required}
         {-user_id:required}
-        {-member_state "approved"}
+        {-member_state approved}
         {-extra_vars ""}
     } {
-        Assigns a user to a particular role for that class. 
+        Assigns a user to a particular role for that class.
         Roles in DOTLRN can be student, prof, ta, admin
     } {
         if {[member_p $community_id $user_id]} {
@@ -738,7 +727,7 @@ namespace eval dotlrn_community {
                 }
             }
 
-            if {[string equal $member_state "approved"] == 1} {
+            if {[string equal $member_state approved] == 1} {
                 membership_approve -user_id $user_id -community_id $community_id
             }
         }
@@ -853,7 +842,7 @@ namespace eval dotlrn_community {
     } {
         set type [get_community_type_from_community_id $community_id]
 
-        if {[string equal $type "dotlrn_community"] == 1} {
+        if {[string equal $type dotlrn_community] == 1} {
             return $type
         }
 
@@ -893,17 +882,17 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_community_id_from_url {
-	{-url ""}
+        {-url ""}
     } {
-	returns the community from a URL
+        returns the community from a URL
     } {
-	if {[empty_string_p $url]} {
-	    set url [ad_conn url]
-	}
+        if {[empty_string_p $url]} {
+            set url [ad_conn url]
+        }
 
-	set package_id [site_node_closest_ancestor_package -url $url dotlrn]
+        set package_id [site_node_closest_ancestor_package -url $url dotlrn]
 
-	return [get_community_id -package_id $package_id]
+        return [get_community_id -package_id $package_id]
     }
 
     ad_proc -public get_community_id {
@@ -996,26 +985,14 @@ namespace eval dotlrn_community {
         sibling's name.
     } {
         if {![empty_string_p $parent_community_id]} {
-            set valid_p [ad_decode [db_string collision_check_with_parent {}] \
-                             0 \
-                             1 \
-                             0
-           ]
+            set valid_p [ad_decode [db_string collision_check_with_parent {}] 0 1 0]
         } else {
-            set valid_p [ad_decode [db_string collision_check_simple {}] \
-                             0 \
-                             1 \
-                             0
-            ]
+            set valid_p [ad_decode [db_string collision_check_simple {}] 0 1 0]
         }
-            
-#        ad_return_complaint 1 "valid $valid_p / key $community_key"
 
         if {$complain_if_invalid_p && !$valid_p} {
-            ad_return_complaint \
-                1 \
-                "The name <strong>$community_key</strong> is already in use either by 
-                  an active or archived group. \n Please go back and select a different name."
+            ad_return_complaint 1 \
+                "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_script_abort
         } else {
             return $valid_p
@@ -1063,7 +1040,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
     } {
         Returns a tcl list of ns_sets with info about each subcomm. The keys
-	are: community_id, community_key, pretty_name, and url
+        are: community_id, community_key, pretty_name, and url
     } {
         return [db_list_of_ns_sets select_subcomms_info {}]
     }
@@ -1072,7 +1049,7 @@ namespace eval dotlrn_community {
         {-user_id ""}
         {-community_id:required}
         {-pretext "<li>"}
-        {-join_target "register"}
+        {-join_target register}
         {-only_member_p 0}
     } {
         Returns a html fragment of the subcommunity hierarchy of this
@@ -1084,10 +1061,10 @@ namespace eval dotlrn_community {
         admins see the whole tree.
 
         FIXME: we want to be rid of this proc. it's only used in the dotlrn-portlet.
-	A better solution is to do a db_multirow like yon's in dotlrn-main-portlet.
+        A better solution is to do a db_multirow like yon's in dotlrn-main-portlet.
 
-        things to get: has_subcom, member_p, url, name, admin_p, not_closed_p, \
-		member_pending, needs_approval
+        things to get: has_subcom, member_p, url, name, admin_p, not_closed_p,
+                       member_pending, needs_approval
         things to send: user_id, sc_id,
     } {
         set chunk ""
@@ -1103,26 +1080,21 @@ namespace eval dotlrn_community {
                 # Shows the subcomms of this subcomm ONLY IF I'm a
                 # member of the current comm
                 set url [get_community_url $sc_id]
-                append chunk \
-                        "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
+                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
-                    append chunk \
-                            "\[<small> <a href=${url}one-community-admin>admin</a> </small>\]"
+                    append chunk "\[<small> <a href=${url}one-community-admin>admin</a> </small>\]"
                 }
 
-                append chunk \
-                        "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
-            } elseif { [member_p $sc_id $user_id] \
-                    || [dotlrn::user_can_admin_community_p $sc_id] \
-                    || [not_closed_p -community_id $sc_id]} {
+                append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
+            } elseif {[member_p $sc_id $user_id] || [dotlrn::user_can_admin_community_p $sc_id] || [not_closed_p -community_id $sc_id]} {
+
                 # Shows the subcomm if:
                 # 1. I'm a member of this subcomm OR
                 # 2. I'm have admin rights over the subcomm OR
                 # 3. The subcomm has an "open" OR "request" join policy
                 # but if the only_member_p flag is true, the user must be
                 # a member of the subcomm to see it.
-
                 if {$only_member_p && ![member_p $sc_id $user_id]} {
                     continue
                 }
@@ -1134,26 +1106,21 @@ namespace eval dotlrn_community {
                 if {![member_p $sc_id $user_id]
                   && [not_closed_p -community_id $sc_id]} {
 
-                      append chunk \
-                          "\[<small>"
+                      append chunk "\[<small>"
 
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
-                          append chunk \
-                              "waiting&nbsp;for&nbsp;approval"
+                          append chunk "waiting&nbsp;for&nbsp;approval"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk \
-                              "<a href=${url}${join_target}?referer=[ad_conn url]>request&nbsp;membership</a>"
+                          append chunk "<a href=${url}${join_target}?referer=[ad_conn url]>request&nbsp;membership</a>"
                       } else {
-                          append chunk \
-                              "<a href=${url}${join_target}>join</a>"
+                          append chunk "<a href=${url}${join_target}>join</a>"
                       }
 
                       append chunk "</small>\]\n"
                 }
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
-                    append chunk \
-                            " \[<small> <a href=${url}one-community-admin>Administer</a> </small>\]\n"
+                    append chunk " \[<small> <a href=${url}one-community-admin>Administer</a> </small>\]\n"
                 }
             }
         }
@@ -1360,7 +1327,7 @@ namespace eval dotlrn_community {
 
             set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
             # auto activate for now
-            set active_p "t"
+            set active_p t
 
             # Insert in the DB
             db_dml insert {}
@@ -1408,8 +1375,8 @@ namespace eval dotlrn_community {
         {-key:required}
         {-description ""}
     } {
-        Clones a community. Cloning is a deep copy of the 
-        comm's metadata with a newly generated key. Callbacks are 
+        Clones a community. Cloning is a deep copy of the
+        comm's metadata with a newly generated key. Callbacks are
         made to the comm's applets "clone" procs. Subgoups of comm's
         are also recursively cloned as well.
 
@@ -1419,7 +1386,7 @@ namespace eval dotlrn_community {
         db_transaction {
             # check that the passed in key is ok
             check_community_key_valid_p -complain_if_invalid -community_key $key
-            
+
             # create the clone, by manually copying the metadata
             # this code is copied from ::new
             set community_type \
@@ -1438,8 +1405,7 @@ namespace eval dotlrn_community {
             # Create the clone object - "dotlrn community A"
             # Note: the "object_type" to pass into package_instantiate_object
             # is just the community_type
-            set clone_id \
-                [package_instantiate_object -extra_vars $extra_vars $community_type]
+            set clone_id [package_instantiate_object -extra_vars $extra_vars $community_type]
 
             set user_id [ad_conn user_id]
 
@@ -1447,50 +1413,50 @@ namespace eval dotlrn_community {
             # this will get the pages, layouts, and theme, elements,
             # and element  parameters
             set portal_id [portal::create \
-                    -template_id [get_portal_id -community_id $community_id] \
-                    -name "$pretty_name Portal" \
-                    -context_id $clone_id \
-                    $user_id
+                -template_id [get_portal_id -community_id $community_id] \
+                -name "$pretty_name Portal" \
+                -context_id $clone_id \
+                $user_id \
             ]
 
             # clone the non-member page
             set non_member_portal_id [portal::create \
-                    -template_id [get_non_member_portal_id -community_id $community_id] \
-                    -name "$pretty_name Non-Member Portal" \
-                    -context_id $clone_id \
-                    $user_id
+                -template_id [get_non_member_portal_id -community_id $community_id] \
+                -name "$pretty_name Non-Member Portal" \
+                -context_id $clone_id \
+                $user_id \
             ]
 
             # clone the admin page
             set admin_portal_id [portal::create \
-                    -template_id [get_admin_portal_id -community_id $community_id] \
-                    -name "$pretty_name Administration Portal" \
-                    -context_id $clone_id \
-                    $user_id
+                -template_id [get_admin_portal_id -community_id $community_id] \
+                -name "$pretty_name Administration Portal" \
+                -context_id $clone_id \
+                $user_id \
             ]
-            
+
             # Set up the rel segments
             dotlrn_community::create_rel_segments -community_id $clone_id
-            
+
             # Set up the node
             set parent_node_id [get_type_node_id $community_type]
-            
+
             # Create the node
             set new_node_id [site_node_create $parent_node_id $key]
-            
+
             # Instantiate the package
             set package_id [site_node_create_package_instance \
                 $new_node_id \
                 $pretty_name \
                 $clone_id \
-                [one_community_package_key]
+                [one_community_package_key] \
             ]
-            
+
             # Set the right parameters
             parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
             parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
             parameter::set_value -package_id $package_id -parameter community_level_p -value 1
-            
+
             # Set up the node
             dotlrn_community::set_package_id $clone_id $package_id
 
@@ -1512,12 +1478,12 @@ namespace eval dotlrn_community {
     ad_proc -public archive {
         {-community_id:required}
     } {
-        Archives a community. This means that: 
-        
-        1. the community is marked as archived  
-        
-        2. the RemovePortlet callback is called for all users of the 
-        community (both members and GAs) and all the applets. This 
+        Archives a community. This means that:
+
+        1. the community is marked as archived
+
+        2. the RemovePortlet callback is called for all users of the
+        community (both members and GAs) and all the applets. This
         removes the comm's data from their workspaces
 
         3. all users of the community have their "read" privs revoked on the
@@ -1525,9 +1491,9 @@ namespace eval dotlrn_community {
 
     } {
         db_transaction {
-            # do RemoveUserFromCommunity callback, which 
+            # do RemoveUserFromCommunity callback, which
             # calls the RemovePortlet proc with the right params
-            foreach user [list_users $community_id] { 
+            foreach user [list_users $community_id] {
                 set user_id [ns_set get $user user_id]
                 applets_dispatch \
                     -community_id $community_id \
@@ -1554,9 +1520,9 @@ namespace eval dotlrn_community {
     ad_proc -public nuke {
         {-community_id:required}
     } {
-        NUKES the community. 
-        ** not done ** 
-        ** do not use! ** 
+        NUKES the community.
+        ** not done **
+        ** do not use! **
     } {
         db_transaction {
             # Remove all users
@@ -1580,19 +1546,19 @@ namespace eval dotlrn_community {
             }
 
             db_dml update_portal_id {
-                update dotlrn_communities 
+                update dotlrn_communities
                 set portal_id = NULL
                 where community_id = :community_id
             }
 
             db_dml update_admin_portal_id {
-                update dotlrn_communities 
+                update dotlrn_communities
                 set admin_portal_id = NULL
                 where community_id = :community_id
             }
 
             db_dml update_non_member_portal_id {
-                update dotlrn_communities 
+                update dotlrn_communities
                 set non_member_portal_id = NULL
                 where community_id = :community_id
             }
@@ -1615,8 +1581,8 @@ namespace eval dotlrn_community {
 
             # call the communitie's delete pl/sql, which removes the group
             db_exec_plsql \
-                    remove_community \
-                    "begin dotlrn_community.delete(:community_id); end;"
+                remove_community \
+                "begin dotlrn_community.delete(:community_id); end;"
 
             # Remove the package
             db_exec_plsql delete_package "begin acs_object.delete(:package_id) end;"
@@ -1677,8 +1643,8 @@ namespace eval dotlrn_community {
             ns_log notice "applets_dispatch: reorder hack!"
 
             set reorder_applets_string [parameter::get  \
-                                            -parameter user_wsp_applet_ordering \
-                                            -default "dotlrn_news,dotlrn_bboard,dotlrn_faq"
+                -parameter user_wsp_applet_ordering \
+                -default "dotlrn_news,dotlrn_bboard,dotlrn_faq"
             ]
 
 
