@@ -118,7 +118,7 @@ if {$member_term_id != -1} {
 set n_member_classes [db_string select_n_member_classes {}]
 
 db_multirow member_classes $member_query {} {
-    set role [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]
+    set role [template::util::nvl [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type] [_ dotlrn.student_role_pretty_name]]
 }
 
 db_multirow member_clubs select_member_clubs {} {
