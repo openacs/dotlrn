@@ -220,7 +220,7 @@ notify this user.</msg>
   <msg key="lt_a_secondary">- 
         a secondary identifier for the  user.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Add a new dotLRN user:</msg>
-  <msg key="lt_Add_a_new_user_to_Slo">Add a new user to SloanSpace</msg>
+  <msg key="lt_Add_a_new_user_to_Slo">Add a new user</msg>
   <msg key="lt_Add_community_name_Me">Add %community_name% Members to Another Community</msg>
   <msg key="lt_Add_Members_to_Anothe">Add Members to Another Community</msg>
   <msg key="lt_Add_members_to_anothe">Add members to another group</msg>
@@ -230,7 +230,7 @@ notify this user.</msg>
   <msg key="lt_An_error_occured_whil_1">An error occured while trying to remove a user to a community.  This error has been logged.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Are you sure you want to delete the empty department</msg>
-  <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have a SloanSpace account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
+  <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have an account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
