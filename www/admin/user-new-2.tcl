@@ -87,8 +87,17 @@ if {[form is_valid add_user]} {
     set email_from [ad_parameter -package_id [ad_acs_kernel_id] SystemOwner]
 
     db_transaction {
-        dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $user_id
-        acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+
+        dotlrn::user_add \
+            -id $id \
+            -type $type \
+            -can_browse\=$can_browse_p \
+            -user_id $user_id
+
+        acs_privacy::set_user_read_private_data \
+            -user_id $user_id \
+            -object_id [dotlrn::get_package_id] \
+            -value $read_private_data_p
     }
     
     
