@@ -484,10 +484,6 @@ a.file-type-icon:active {
   border-bottom: 0;
 }
 
-#breadcrumbs {
-  display: none;
-}
-
 .system-name {
   display: none;
 }
