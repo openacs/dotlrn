@@ -10,7 +10,6 @@
 --
 
 @dotlrn-users-create.sql
-@dotlrn-users-package-create.sql
 @dotlrn-communities-create.sql
 @dotlrn-clubs-create.sql
 @dotlrn-classes-create.sql
@@ -21,4 +20,3 @@
 @dotlrn-main-portlet-create.sql
 @dotlrn-security-create.sql
 @dotlrn-user-extension-create.sql
-

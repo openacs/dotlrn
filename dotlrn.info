@@ -29,6 +29,14 @@
         <files>
             <file path="coding-tips.txt"/>
             <file type="package_spec" path="dotlrn.info"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admin-profile-provider-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admin-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admins-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admins-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admins-init.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admins-package-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admins-package-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-admins-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-applet-sc-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-classes-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-clubs-create.sql"/>
@@ -39,10 +47,32 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-init.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-main-portlet-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-main-portlet-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professor-profile-provider-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professor-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professors-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professors-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professors-init.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professors-package-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professors-package-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-professors-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-security-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-student-profile-provider-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-student-profile-provider-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-students-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-students-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-students-init.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-students-package-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-students-package-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-students-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-user-extension-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-user-profile-provider-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-user-profile-provider-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-init.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-package-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-package-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-sanitize.sql"/>
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
             <file type="tcl_procs" path="tcl/applets-procs.tcl"/>
             <file type="query_file" path="tcl/applets-procs.xql"/>
@@ -64,6 +94,7 @@
             <file type="query_file" db_type="postgresql" path="tcl/dotlrn-procs-postgresql.xql"/>
             <file type="tcl_procs" path="tcl/dotlrn-procs.tcl"/>
             <file type="query_file" path="tcl/dotlrn-procs.xql"/>
+            <file type="tcl_procs" path="tcl/dotlrn-professor-profile-provider-procs.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/dotlrn-security-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/dotlrn-security-procs.tcl"/>
             <file type="query_file" path="tcl/dotlrn-security-procs.xql"/>

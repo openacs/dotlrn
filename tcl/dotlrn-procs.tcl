@@ -274,11 +274,26 @@ namespace eval dotlrn {
 	return [portal::render -page_num $page_num -hide_links_p $hide_links_p -render_style $render_style $portal_id $theme_id ]
     }
 
-    ad_proc -public get_user_type_id_from_type {
+    ad_proc -public get_group_id_from_user_type {
         -type
     } {
-        return the type_id of a dotlrn_user type
+        return the group_id of the group that holds users of this type
     } {
-        return [db_string select_user_type_id_from_type {} -default ""]
+        return [db_string select_group_id_from_user_type {} -default ""]
+    }
+
+    ad_proc -public get_rel_type_from_user_type {
+        -type
+        {-access_level "full"}
+    } {
+        return the appropriate rel_type base on user type and access level
+    } {
+        if {[string equal $access_level "full"] == 1} {
+            set rel_type "dotlrn_full_"
+        } else {
+            set rel_type "dotlrn_"
+        }
+
+        return "${rel_type}${type}_profile_rel"
     }
 }

@@ -46,11 +46,6 @@ begin
     acs_rel_type.create_role ('teaching_assistant', 'Teaching Assistant', 'Teaching Assistants');
     acs_rel_type.create_role ('instructor', 'Instructor', 'Instructors');
     acs_rel_type.create_role ('admin', 'Administrator', 'Administrators');
-
-    -- add the user types
-    insert into dotlrn_user_types (type_id, type) values (1, 'student');        
-    insert into dotlrn_user_types (type_id, type) values (2, 'professor');        
-    insert into dotlrn_user_types (type_id, type) values (3, 'admin');        
 end;
 /
 show errors

@@ -14,7 +14,7 @@ set is_dotlrn_user [db_string is_dotlrn_user {}]
 
 # if the user isn't already a dotLRN user make him so
 if {!${is_dotlrn_user}} {
-    dotlrn::user_add -rel_type dotlrn_full_user_rel -user_id $user_id -type_id [dotlrn::get_user_type_id_from_type -type "professor"]
+    dotlrn::user_add -type "professor" -access_level "full" -user_id $user_id
     acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn_community::get_package_id $community_id] -value "t"
 }
 

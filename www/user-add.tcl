@@ -7,11 +7,12 @@ ad_page_contract {
     @creation-date Jan 19, 2002
     @cvs-id $Id$
 } -query {
-    {referer "members"}
+    {id ""}
     {type "student"}
-    {rel_type "dotlrn_full_user_rel"}
+    {access_level "full"}
     {read_private_data_p "t"}
     {add_membership_p "t"}
+    {referer "members"}
 } -properties {
     context_bar:onevalue
 }
@@ -34,6 +35,12 @@ element create add_user target_user_id \
     -datatype integer \
     -widget hidden \
     -value $target_user_id
+
+element create add_user id \
+    -label "ID" \
+    -datatype text \
+    -widget text \
+    -value $id
 
 element create add_user email \
     -label "Email" \
@@ -63,17 +70,17 @@ element create add_user referer \
     -widget hidden \
     -value $referer
 
-element create add_user rel_type \
-    -label "Rel Type" \
-    -datatype text \
-    -widget hidden \
-    -value $rel_type
-
 element create add_user type \
     -label "Type" \
     -datatype text \
     -widget hidden \
     -value $type
+
+element create add_user access_level \
+    -label "Access Level" \
+    -datatype text \
+    -widget hidden \
+    -value $access_level
 
 element create add_user read_private_data_p \
     -label "Can Read Private Data" \
@@ -88,7 +95,8 @@ element create add_user add_membership_p \
     -value $add_membership_p
 
 if {[form is_valid add_user]} {
-    template::form get_values add_user target_user_id email first_names last_name referer rel_type type read_private_data_p
+    form get_values add_user \
+        target_user_id id email first_names last_name referer type access_level read_private_data_p
 
     db_transaction {
         # create the ACS user
@@ -96,7 +104,7 @@ if {[form is_valid add_user]} {
         set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" "t" "approved" $target_user_id]
 
         # make the user a dotLRN user
-        dotlrn::user_add -rel_type $rel_type -user_id $target_user_id -type_id [dotlrn::get_user_type_id_from_type -type $type]
+        dotlrn::user_add -id $id -type $type -access_level $access_level -user_id $target_user_id
 
         # can this user read private data?
         acs_privacy::set_user_read_private_data -user_id $target_user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p

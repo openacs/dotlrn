@@ -10,6 +10,7 @@ ad_page_contract {
     password
     first_names
     last_name
+    {id ""}
     {referer "/acs-admin/users"}
 } -properties {
     context_bar:onevalue
@@ -19,6 +20,7 @@ ad_page_contract {
     first_names:onevalue
     last_name:onevalue
     email:onevalue
+    id:onevalue
     password:onevalue
     administration_name:onevalue
 }
