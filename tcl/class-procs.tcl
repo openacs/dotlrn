@@ -77,7 +77,7 @@ namespace eval dotlrn_class {
         dotlrn_community::init \
             -community_type [community_type] \
             -community_type_url_part [get_url_part] \
-            -pretty_name [dotlrn::parameter classes_pretty_plural]
+            -pretty_name [dotlrn::parameter -package_id [dotlrn::get_package_id] classes_pretty_plural]
     }
 
     ad_proc -public check_class_key_valid_p {
