@@ -7,6 +7,7 @@ ad_library {
 }
 
 namespace eval dotlrn_term {
+
     ad_proc -public new {
         {-term_name:required}
         {-term_year:required}
@@ -20,6 +21,22 @@ namespace eval dotlrn_term {
         set date_format "YYYY MM DD"
 
         db_dml insert_term {}
+    }
+
+    ad_proc -public edit {
+        {-term_id:required}
+        {-term_name:required}
+        {-term_year:required}
+        {-start_date:required}
+        {-end_date:required}
+    } {
+        edit a term
+    } {
+        set start_date "[template::util::date::get_property year $start_date] [template::util::date::get_property month $start_date] [template::util::date::get_property day $start_date]"
+        set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
+        set date_format "YYYY MM DD"
+
+        db_dml update_term {}
     }
 
     ad_proc -public get_term_name {
@@ -71,4 +88,5 @@ namespace eval dotlrn_term {
         return [template::util::date::create $year $month $day "" "" "" $date_format]
 
     }
+
 }

@@ -2,6 +2,41 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
+<if @term_id@ ne -1>
+<ul>
+
+  <li>
+    Name:
+    @term_name@
+  </li>
+
+  <li>
+    Year:
+    @term_year@
+  </li>
+
+  <li>
+    Start date:
+    @start_date@
+  </li>
+
+  <li>
+    End date:
+    @end_date@
+  </li>
+
+  <br>
+
+  <li>
+    Click <a href="term-edit?term_id=@term_id@&referer=@referer@">here</a> to
+    edit term properties.
+  </li>
+
+</ul>
+
+<br>
+</if>
+
 <table bgcolor="#ececec" width="100%">
   <tr>
     <th align="left" width="50%">

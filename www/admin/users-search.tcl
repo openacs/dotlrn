@@ -232,7 +232,7 @@ if {[form is_valid user_search]} {
         append sql [join $wheres " $join_criteria "]
     }
 
-    set referer "users-search"
+    set referer [ns_conn url]
     set selected_users_options [list]
     set selected_users_values [list]
     db_foreach select_users $sql {

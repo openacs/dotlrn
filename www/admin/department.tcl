@@ -26,5 +26,6 @@ if {![db_0or1row select_departments_info {}]} {
 }
 
 set context_bar [list [list departments [ad_parameter departments_pretty_plural]] One]
+set referer "[ns_conn url]?[ns_conn query]"
 
 ad_return_template

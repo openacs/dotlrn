@@ -148,6 +148,6 @@ set n_non_member_classes [db_string select_n_non_member_classes {}]
 db_multirow non_member_classes $non_member_query {}
 db_multirow non_member_clubs select_non_member_clubs {}
 
-set referer [ns_urlencode "/dotlrn/manage-memberships?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
+set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
 
 ad_return_template

@@ -2,13 +2,31 @@
 <property name="title">@pretty_name@</property>
 <property name="context_bar">@context_bar@</property>
 
-<p>
-  @description@
-</p>
+<ul>
+
+  <li>
+    Description:
+<if @description@ not nil>
+    @description@
+</if>
+<else>
+    &lt;none set up&gt;
+</else>
+  </li>
+
+  <br>
+
+  <li>
+    Click <a href="class-edit?class_key=@class_key@&referer=@referer@">here</a> to edit <%= [ad_parameter "classes_pretty_name"] %> properties.
+  </li>
+
+</ul>
+
+<br>
 
 <p>
-<if @can_instantiate@ gt 0>
-  [ <a href="class-instance-new?class_key=@class_key@">New <%= [ad_parameter class_instances_pretty_name] %></a> ]
+<if @can_instantiate@ ne 0>
+  [<small><a href="class-instance-new?class_key=@class_key@">New <%= [ad_parameter "class_instances_pretty_name"] %></a></small>]
 </if>
 <else>
 <include src="need-term-note">
@@ -31,7 +49,9 @@
 <table width="100%">
   <tr>
     <th align="left" width="15%">Term</th>
-    <th align="left" width="50%"><%= [ad_parameter class_instances_pretty_name] %> Name</th>
+    <th align="left" width="50%">
+      <%= [ad_parameter "class_instances_pretty_name"] %> Name
+    </th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="class_instances">
