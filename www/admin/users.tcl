@@ -5,7 +5,7 @@ ad_page_contract {
     @creation-date 2002-01-30
     @version $Id$
 } -query {
-    {type admin}
+    {type "admin"}
 } -properties {
     context_bar:onevalue
     control_bar:onevalue

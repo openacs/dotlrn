@@ -3,12 +3,18 @@ ad_page_contract {
     @creation-date 2002-01-30
     @version $Id$
 } -query {
-    {type "admin"}
     {search_text ""}
-    {referer "users"}
 } -properties {
     user_id:onevalue
     users:multirow
+}
+
+if {![exists_and_not_null type]} {
+    set type "admin"
+}
+
+if {![exists_and_not_null referer]} {
+    set referer "users"
 }
 
 set user_id [ad_conn user_id]
