@@ -122,7 +122,7 @@ namespace eval dotlrn_community {
         {-description ""}
         {-community_type:required}
         {-object_type "dotlrn_community"}
-        {-community_key:required}
+        {-community_key ""}
         {-pretty_name:required}
         {-extra_vars ""}
     } {
@@ -132,6 +132,9 @@ namespace eval dotlrn_community {
         if {[empty_string_p $extra_vars]} {
             set extra_vars [ns_set create]
         }
+
+        # generate the key from the passed in name
+        set community_key [dotlrn::generate_key -name $pretty_name]
 
         # Add core vars
         ns_set put $extra_vars parent_community_id $parent_community_id
@@ -143,6 +146,7 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars context_id [dotlrn::get_package_id]
 
         db_transaction {
+
             # Insert the community
             set community_id [package_instantiate_object \
                     -extra_vars $extra_vars $object_type]
@@ -542,21 +546,29 @@ namespace eval dotlrn_community {
         community_id
         user_id
     } {
-        Removes a user from a class
+        Removes a user from a community (and all subcomms she's a member of)
     } {
         db_transaction {
-            # Callbacks
+            # recursively drop membership from subgroups of this comm
+            foreach subcomm_id [get_subcomm_list -community_id $community_id] {
+                if { [member_p $subcomm_id $user_id] } {                    
+                    remove_user $subcomm_id $user_id
+                } 
+            }
+            
+            # Do Callbacks
             applets_dispatch \
                     -community_id $community_id \
                     -op RemoveUserFromCommunity \
                     -list_args [list $community_id $user_id]
-
-            # Get a few important things, like rel_id and portal portal_id
+            
+            # Get a few important things, 
+            # like rel_id and portal portal_id
             db_1row select_rel_info {}
-
+                    
             # Remove it
             relation_remove $rel_id
-
+                    
             # Remove the page
             portal::delete $portal_id
         }
@@ -732,48 +744,60 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_subcomm_chunk {
+        {-user_id ""}
         {-community_id:required}
         {-pretext "<li>"}
     } {
         Returns a html fragment of the subcommunity hierarchy of this
-        community or if none, the empty list
+        community or if none, the empty list.
     } {
-        set user_id [ad_get_user_id]
-        set subcomm_chunk ""
+        set chunk ""
 
-        foreach subcomm_id [get_subcomm_list -community_id $community_id] {
-            if {[has_subcommunity_p -community_id $subcomm_id]} {
-                set url [get_community_url $subcomm_id]
+        if {[empty_string_p $user_id]} {
+            set user_id [ad_get_user_id]
+        }
+        
+        foreach sc_id [get_subcomm_list -community_id $community_id] {
+
+            if {[has_subcommunity_p -community_id $sc_id] \
+                    && [member_p $sc_id $user_id]} {
+                # only go down a level if user is a member of the sc
+
+                set url [get_community_url $sc_id]
+                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n" 
                 
-                append subcomm_chunk \
-                        "$pretext <a href=$url>" \
-                        "[get_community_name $subcomm_id]</a>\n" 
-
-                if {[dotlrn::user_can_admin_community_p $subcomm_id]} {
-                    append subcomm_chunk "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                if {[dotlrn::user_can_admin_community_p $sc_id]} {
+                    append chunk \
+                            "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
                 }
                 
-                append subcomm_chunk \
-                    "<ul>\n" \
-                    [get_subcomm_chunk -community_id $subcomm_id] \
-                    "</ul>\n"
-            } else {
-                set url [get_community_url $subcomm_id]
+                append chunk \
+                        "<ul>\n[get_chunk -community_id $sc_id -user_id $user_id]</ul>\n"
+            } elseif { [not_closed_p -community_id $sc_id] \
+                    || [member_p $sc_id $user_id]} {
+                # if the sc is not closed or i'm a member print it
+                
+                set url [get_community_url $sc_id]
+                
+                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-                append subcomm_chunk \
-                    "$pretext <a href=$url>" \
-                    "[get_community_name $subcomm_id]</a>\n" 
-
-                if {[dotlrn::user_can_admin_community_p $subcomm_id]} {
-                    append subcomm_chunk "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                if {[not_closed_p -community_id $sc_id] \
+                    && ![member_p $sc_id $user_id]} {
+                    append chunk \
+                            "<small>\[<a href=${url}join>join</a>\]</small>"
                 }
+
+                if {[dotlrn::user_can_admin_community_p $sc_id]} {
+                    append chunk \
+                            "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                }
+
 
             }
         } 
-
-        return $subcomm_chunk
+        return $chunk
     }
-
+    
     ad_proc -public get_community_type_url {
         community_type
     } {
@@ -853,6 +877,13 @@ namespace eval dotlrn_community {
         return [db_string select_community_description {} -default ""]
     }
 
+    ad_proc -public not_closed_p {
+        {-community_id:required}
+    } {
+        returns 1 if the community's join policy is not closed
+    } {
+        return [db_0or1row check_community_not_closed {}]
+    }
 
     ad_proc -public get_portal_template_id {
         {community_id ""}
