@@ -57,7 +57,7 @@
 
   </tr>
 
-<tr><td colspan=3 class="dark-line" height="1"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
 
 <!-- navbars on every page -->
 <tr><td colspan=3 valign=top>@navbar@</td></tr>
@@ -78,7 +78,7 @@
 
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr><td><small>@navbar@</small></td></tr>
-<tr><td colspan=3 class="dark-line" height="1"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
       </table>
 <p>
 <div class="footer"><a href="http://www.dotlrn.org">dotLRN Home</a> | <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a></div>
