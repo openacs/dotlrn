@@ -2,6 +2,24 @@
 
 <queryset>
 
+    <fullquery name="dotlrn_community::membership_approve.select_rel_info">
+        <querytext>
+            select *
+            from dotlrn_member_rels_full
+            where user_id = :user_id
+            and community_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::membership_reject.select_rel_info">
+        <querytext>
+            select *
+            from dotlrn_member_rels_full
+            where user_id = :user_id
+            and community_id = :community_id
+        </querytext>
+    </fullquery>
+
 <fullquery name="dotlrn_community::new_type.create_community_type">
 <querytext>
 declare
@@ -93,9 +111,9 @@ select segment_id from rel_segments where group_id= :community_id and rel_type= 
              last_name,
              email
       from registered_users users,
-           dotlrn_member_rels_full
+           dotlrn_member_rels_approved
       where community_id = :community_id
-      and users.user_id = dotlrn_member_rels_full.user_id
+      and users.user_id = dotlrn_member_rels_approved.user_id
       order by rel_type
     </querytext>
   </fullquery>
@@ -110,31 +128,35 @@ select segment_id from rel_segments where group_id= :community_id and rel_type= 
              last_name,
              email
       from registered_users users,
-           dotlrn_member_rels_full
+           dotlrn_member_rels_approved
       where community_id = :community_id
-      and users.user_id = dotlrn_member_rels_full.user_id
+      and users.user_id = dotlrn_member_rels_approved.user_id
       and rel_type = :rel_type
     </querytext>
   </fullquery>
 
+    <fullquery name="dotlrn_community::member_p.select_count_membership">
+        <querytext>
+            select count(*)
+            from dual
+            where exists (select 1
+                          from dotlrn_member_rels_full
+                          where community_id = :community_id
+                          and user_id = :user_id)
+        </querytext>
+    </fullquery>
 
-<fullquery name="dotlrn_community::member_p.select_count_membership">
-<querytext>
-select count(*) from dotlrn_member_rels_full where community_id= :community_id and user_id= :user_id
-</querytext>
-</fullquery>
-
-  <fullquery name="dotlrn_community::member_pending_p.is_pending_membership">
-    <querytext>
-      select count(*)
-      from group_member_map,
-           membership_rels
-      where group_member_map.group_id = :community_id
-      and group_member_map.member_id = :user_id
-      and group_member_map.rel_id = membership_rels.rel_id
-      and membership_rels.member_state = 'needs approval'
-    </querytext>
-  </fullquery>
+    <fullquery name="dotlrn_community::member_pending_p.is_pending_membership">
+        <querytext>
+            select count(*)
+            from dual
+            where exists (select 1
+                          from dotlrn_member_rels_full
+                          where community_id = :community_id
+                          and user_id = :user_id
+                          and member_state = 'needs approval')
+        </querytext>
+    </fullquery>
 
 <fullquery name="dotlrn_community::remove_user.select_rel_info">
 <querytext>
@@ -168,9 +190,9 @@ select admin_portal_id from dotlrn_communities where community_id= :community_id
            dotlrn_communities.pretty_name,
            dotlrn_communities.package_id
     from dotlrn_communities,
-         dotlrn_member_rels_full
-    where dotlrn_communities.community_id = dotlrn_member_rels_full.community_id
-    and dotlrn_member_rels_full.user_id = :user_id
+         dotlrn_member_rels_approved
+    where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
+    and dotlrn_member_rels_approved.user_id = :user_id
   </querytext>
 </fullquery>
 

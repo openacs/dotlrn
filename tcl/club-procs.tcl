@@ -83,11 +83,15 @@ namespace eval dotlrn_club {
         {-rel_type "dotlrn_member_rel"}
         {-community_id:required}
         {-user_id:required}
+        {-member_state "approved"}
     } {
         Assigns a user to a particular role for that club.
     } {
-        db_transaction {
-            dotlrn_community::add_user_to_community -rel_type $rel_type -community_id $community_id -user_id $user_id
-        }
+        dotlrn_community::add_user_to_community \
+            -rel_type $rel_type \
+            -community_id $community_id \
+            -user_id $user_id \
+            -member_state $member_state
     }
+
 }

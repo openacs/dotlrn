@@ -147,15 +147,19 @@ namespace eval dotlrn_class {
         {-rel_type "dotlrn_student_rel"}
         {-community_id:required}
         {-user_id:required}
+        {-member_state "approved"}
     } {
         Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
     } {
-        db_transaction {
-            set extra_vars [ns_set create]
-            ns_set put $extra_vars class_instance_id $community_id
+        set extra_vars [ns_set create]
+        ns_set put $extra_vars class_instance_id $community_id
 
-            dotlrn_community::add_user_to_community -rel_type $rel_type -extra_vars $extra_vars -community_id $community_id -user_id $user_id
-        }
+        dotlrn_community::add_user_to_community \
+            -rel_type $rel_type \
+            -extra_vars $extra_vars \
+            -community_id $community_id \
+            -user_id $user_id \
+            -member_state $member_state
     }
 
     ad_proc -public pretty_name {

@@ -24,13 +24,27 @@ create table dotlrn_member_rels (
 create or replace view dotlrn_member_rels_full
 as
     select acs_rels.rel_id as rel_id,
-           object_id_one as community_id,
-           object_id_two as user_id,
-           rel_type,
-           portal_id
+           acs_rels.object_id_one as community_id,
+           acs_rels.object_id_two as user_id,
+           acs_rels.rel_type,
+           (select acs_rel_roles.pretty_name
+            from acs_rel_roles
+            where acs_rel_roles.role = (select acs_rel_types.role_two
+                                        from acs_rel_types
+                                        where acs_rel_types.rel_type = acs_rels.rel_type)) as role,
+           dotlrn_member_rels.portal_id,
+           membership_rels.member_state
     from dotlrn_member_rels,
-         acs_rels
-    where dotlrn_member_rels.rel_id = acs_rels.rel_id;
+         acs_rels,
+         membership_rels
+    where dotlrn_member_rels.rel_id = acs_rels.rel_id
+    and acs_rels.rel_id = membership_rels.rel_id;
+
+create or replace view dotlrn_member_rels_approved
+as
+    select *
+    from dotlrn_member_rels_full
+    where member_state = 'approved';
 
 create table dotlrn_admin_rels (
     rel_id                      constraint dotlrn_admin_rels_rel_id_fk
@@ -41,16 +55,16 @@ create table dotlrn_admin_rels (
 
 create or replace view dotlrn_admin_rels_full
 as
-    select acs_rels.rel_id as rel_id,
-           acs_rels.object_id_one as community_id,
-           acs_rels.object_id_two as user_id,
-           acs_rels.rel_type,
-           dotlrn_member_rels.portal_id
-    from dotlrn_member_rels,
-         dotlrn_admin_rels,
-         acs_rels
-    where dotlrn_member_rels.rel_id = acs_rels.rel_id
-    and dotlrn_admin_rels.rel_id = acs_rels.rel_id;
+    select dotlrn_member_rels_full.rel_id,
+           dotlrn_member_rels_full.community_id,
+           dotlrn_member_rels_full.user_id,
+           dotlrn_member_rels_full.rel_type,
+           dotlrn_member_rels_full.role,
+           dotlrn_member_rels_full.portal_id,
+           dotlrn_member_rels_full.member_state
+    from dotlrn_member_rels_full,
+         dotlrn_admin_rels
+    where dotlrn_member_rels_full.rel_id = dotlrn_admin_rels.rel_id;
 
 --
 -- For Classes
@@ -65,13 +79,16 @@ create table dotlrn_student_rels (
 
 create or replace view dotlrn_student_rels_full
 as
-    select acs_rels.rel_id as rel_id,
-           acs_rels.object_id_one as community_id,
-           acs_rels.object_id_two as user_id,
-           acs_rels.rel_type
-    from dotlrn_student_rels,
-         acs_rels
-    where dotlrn_student_rels.rel_id = acs_rels.rel_id;
+    select dotlrn_member_rels_full.rel_id,
+           dotlrn_member_rels_full.community_id,
+           dotlrn_member_rels_full.user_id,
+           dotlrn_member_rels_full.rel_type,
+           dotlrn_member_rels_full.role,
+           dotlrn_member_rels_full.portal_id,
+           dotlrn_member_rels_full.member_state
+    from dotlrn_member_rels_full,
+         dotlrn_student_rels
+    where dotlrn_member_rels_full.rel_id = dotlrn_student_rels.rel_id;
 
 create table dotlrn_ta_rels (
     rel_id                      constraint dotlrn_ta_rels_rel_id_fk
@@ -82,13 +99,16 @@ create table dotlrn_ta_rels (
 
 create or replace view dotlrn_ta_rels_full
 as
-    select acs_rels.rel_id as rel_id,
-           acs_rels.object_id_one as community_id,
-           acs_rels.object_id_two as user_id,
-           acs_rels.rel_type
-    from dotlrn_ta_rels,
-         acs_rels
-    where dotlrn_ta_rels.rel_id = acs_rels.rel_id;
+    select dotlrn_admin_rels_full.rel_id,
+           dotlrn_admin_rels_full.community_id,
+           dotlrn_admin_rels_full.user_id,
+           dotlrn_admin_rels_full.rel_type,
+           dotlrn_admin_rels_full.role,
+           dotlrn_admin_rels_full.portal_id,
+           dotlrn_admin_rels_full.member_state
+    from dotlrn_admin_rels_full,
+         dotlrn_ta_rels
+    where dotlrn_admin_rels_full.rel_id = dotlrn_ta_rels.rel_id;
 
 create table dotlrn_ca_rels (
     rel_id                      constraint dotlrn_ca_rels_rel_id_fk
@@ -99,13 +119,16 @@ create table dotlrn_ca_rels (
 
 create or replace view dotlrn_ca_rels_full
 as
-    select acs_rels.rel_id,
-           acs_rels.object_id_one as community_id,
-           acs_rels.object_id_two as user_id,
-           acs_rels.rel_type
-    from dotlrn_ca_rels,
-         acs_rels
-    where dotlrn_ca_rels.rel_id = acs_rels.rel_id;
+    select dotlrn_admin_rels_full.rel_id,
+           dotlrn_admin_rels_full.community_id,
+           dotlrn_admin_rels_full.user_id,
+           dotlrn_admin_rels_full.rel_type,
+           dotlrn_admin_rels_full.role,
+           dotlrn_admin_rels_full.portal_id,
+           dotlrn_admin_rels_full.member_state
+    from dotlrn_admin_rels_full,
+         dotlrn_ca_rels
+    where dotlrn_admin_rels_full.rel_id = dotlrn_ca_rels.rel_id;
 
 create table dotlrn_cadmin_rels (
     rel_id                      constraint dotlrn_cadmin_rels_rel_id_fk
@@ -116,13 +139,16 @@ create table dotlrn_cadmin_rels (
 
 create or replace view dotlrn_cadmin_rels_full
 as
-    select acs_rels.rel_id,
-           acs_rels.object_id_one as community_id,
-           acs_rels.object_id_two as user_id,
-           acs_rels.rel_type
-    from dotlrn_cadmin_rels,
-         acs_rels
-    where dotlrn_cadmin_rels.rel_id = acs_rels.rel_id;
+    select dotlrn_admin_rels_full.rel_id,
+           dotlrn_admin_rels_full.community_id,
+           dotlrn_admin_rels_full.user_id,
+           dotlrn_admin_rels_full.rel_type,
+           dotlrn_admin_rels_full.role,
+           dotlrn_admin_rels_full.portal_id,
+           dotlrn_admin_rels_full.member_state
+    from dotlrn_admin_rels_full,
+         dotlrn_cadmin_rels
+    where dotlrn_admin_rels_full.rel_id = dotlrn_cadmin_rels.rel_id;
 
 create table dotlrn_instructor_rels (
     rel_id                      constraint dotlrn_instructor_rels_rel_fk
@@ -131,15 +157,18 @@ create table dotlrn_instructor_rels (
                                 primary key
 );
 
-create view dotlrn_instructor_rels_full
+create or replace view dotlrn_instructor_rels_full
 as
-    select acs_rels.rel_id as rel_id,
-           acs_rels.object_id_two as community_id,
-           acs_rels.object_id_two as user_id,
-           acs_rels.rel_type
-    from dotlrn_instructor_rels,
-         acs_rels
-    where dotlrn_instructor_rels.rel_id = acs_rels.rel_id;
+    select dotlrn_admin_rels_full.rel_id,
+           dotlrn_admin_rels_full.community_id,
+           dotlrn_admin_rels_full.user_id,
+           dotlrn_admin_rels_full.rel_type,
+           dotlrn_admin_rels_full.role,
+           dotlrn_admin_rels_full.portal_id,
+           dotlrn_admin_rels_full.member_state
+    from dotlrn_admin_rels_full,
+         dotlrn_instructor_rels
+    where dotlrn_admin_rels_full.rel_id = dotlrn_instructor_rels.rel_id;
 
 --
 -- Object Types and Attributes

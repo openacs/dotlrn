@@ -154,7 +154,7 @@ namespace eval dotlrn_community {
                     -extra_vars $extra_vars $object_type]
 
             set user_id [ad_conn user_id]
-            
+
             # based on the community_type:
             # 1. get the page_names and layouts
             # 2. the the list of default applets for this type
@@ -454,11 +454,11 @@ namespace eval dotlrn_community {
         community_id
     } {
         Returns the list of users with a membership_id, a user_id,
-        first name, last name, email, in a given role. 
+        first name, last name, email, in a given role.
     } {
         return [db_list_of_lists select_users_in_role {}]
     }
-    
+
     ad_proc -public member_p {
         community_id
         user_id
@@ -479,6 +479,7 @@ namespace eval dotlrn_community {
 
     ad_proc -public add_user {
         {-rel_type ""}
+        {-member_state "approved"}
         community_id
         user_id
     } {
@@ -486,21 +487,42 @@ namespace eval dotlrn_community {
     } {
         if {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_class_instance"]} {
             if {![empty_string_p $rel_type]} {
-                dotlrn_class::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+                dotlrn_class::add_user \
+                    -rel_type $rel_type \
+                    -community_id $community_id \
+                    -user_id $user_id \
+                    -member_state $member_state
             } else {
-                dotlrn_class::add_user -community_id $community_id -user_id $user_id
+                dotlrn_class::add_user \
+                    -community_id $community_id \
+                    -user_id $user_id \
+                    -member_state $member_state
             }
         } elseif {[string equal [get_toplevel_community_type_from_community_id $community_id] "dotlrn_club"]} {
             if {![empty_string_p $rel_type]} {
-                dotlrn_club::add_user -rel_type $rel_type -community_id $community_id -user_id $user_id
+                dotlrn_club::add_user \
+                    -rel_type $rel_type \
+                    -community_id $community_id \
+                    -user_id $user_id \
+                    -member_state $member_state
             } else {
-                dotlrn_club::add_user -community_id $community_id -user_id $user_id
+                dotlrn_club::add_user \
+                    -community_id $community_id \
+                    -user_id $user_id \
+                    -member_state $member_state
             }
         } else {
             if {![empty_string_p $rel_type]} {
-                add_user_to_community -rel_type $rel_type -community_id $community_id -user_id $user_id
+                add_user_to_community \
+                    -rel_type $rel_type \
+                    -community_id $community_id \
+                    -user_id $user_id \
+                    -member_state $member_state
             } else {
-                add_user_to_community -community_id $community_id -user_id $user_id
+                add_user_to_community \
+                    -community_id $community_id \
+                    -user_id $user_id \
+                    -member_state $member_state
             }
         }
     }
@@ -509,6 +531,7 @@ namespace eval dotlrn_community {
         {-rel_type "dotlrn_member_rel"}
         {-community_id:required}
         {-user_id:required}
+        {-member_state "approved"}
         {-extra_vars ""}
     } {
         Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
@@ -520,9 +543,10 @@ namespace eval dotlrn_community {
         db_transaction {
             # Set up a portal page for that user and that community
             set portal_id [portal::create \
-                    -name "Your [get_community_name $community_id] page" \
-                    -template_id [get_portal_template_id $community_id] \
-                    $user_id]
+                -name "Your [get_community_name $community_id] page" \
+                -template_id [get_portal_template_id $community_id] \
+                $user_id \
+            ]
 
             # Create the form with the portal_id
             if {[empty_string_p $extra_vars]} {
@@ -533,15 +557,52 @@ namespace eval dotlrn_community {
             ns_set put $extra_vars community_id $community_id
 
             # Set up the relationship
-            set rel_id [relation_add -extra_vars $extra_vars $rel_type $community_id $user_id]
-        }
+            set rel_id [relation_add \
+                -member_state "needs approval" \
+                -extra_vars $extra_vars \
+                $rel_type \
+                $community_id \
+                $user_id \
+            ]
 
-        # do the callbacks, can't be in the transaction since the portal_id must exist
-        applets_dispatch -community_id $community_id \
+            if {[string equal $member_state "approved"] == 1} {
+                membership_approve -user_id $user_id -community_id $community_id
+            }
+        }
+    }
+
+    ad_proc -public membership_approve {
+        {-user_id:required}
+        {-community_id:required}
+    } {
+        Approve membership to a community
+    } {
+        db_1row select_rel_info {}
+
+        db_transaction {
+            membership_rel::approve -rel_id $rel_id
+
+            applets_dispatch -community_id $community_id \
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
+        }
+    }
 
+    ad_proc -public membership_reject {
+        {-user_id:required}
+        {-community_id:required}
+    } {
+        Reject membership to a community
+    } {
+        db_1row select_rel_info {}
 
+        db_transaction {
+            membership_rel::reject -rel_id $rel_id
+
+            if {![empty_string_p $portal_id]} {
+                portal::delete $portal_id
+            }
+        }
     }
 
     ad_proc -public remove_user {
@@ -553,24 +614,24 @@ namespace eval dotlrn_community {
         db_transaction {
             # recursively drop membership from subgroups of this comm
             foreach subcomm_id [get_subcomm_list -community_id $community_id] {
-                if { [member_p $subcomm_id $user_id] } {                    
+                if { [member_p $subcomm_id $user_id] } {
                     remove_user $subcomm_id $user_id
-                } 
+                }
             }
-            
+
             # Do Callbacks
             applets_dispatch \
-                    -community_id $community_id \
-                    -op RemoveUserFromCommunity \
-                    -list_args [list $community_id $user_id]
-            
-            # Get a few important things, 
+                -community_id $community_id \
+                -op RemoveUserFromCommunity \
+                -list_args [list $community_id $user_id]
+
+            # Get a few important things,
             # like rel_id and portal portal_id
             db_1row select_rel_info {}
-                    
+
             # Remove it
             relation_remove $rel_id
-                    
+
             # Remove the page
             portal::delete $portal_id
         }
@@ -673,7 +734,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_community_id {
         {-package_id ""}
     } {
-        Returns the community id depending on the package_id 
+        Returns the community id depending on the package_id
         we're at, or the package_id passed in
     } {
         if {[empty_string_p $package_id]} {
@@ -686,7 +747,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_parent_community_id {
         {-package_id ""}
     } {
-        Returns the community_id of our parent node or the parent 
+        Returns the community_id of our parent node or the parent
         of the passed in package_id. This is used for certain scripts
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
@@ -718,7 +779,7 @@ namespace eval dotlrn_community {
         if {[empty_string_p [get_parent_id -community_id $community_id]]} {
             return 0
         } else {
-            return 1 
+            return 1
         }
     }
 
@@ -733,14 +794,14 @@ namespace eval dotlrn_community {
     ad_proc -public get_subcomm_list {
         {-community_id:required}
     } {
-        Returns a tcl list of the subcommunities of this community or 
+        Returns a tcl list of the subcommunities of this community or
         if none, the empty list
     } {
         set subcomm_list [list]
 
         db_foreach select_subcomms {} {
             lappend subcomm_list $subcomm_id
-        } 
+        }
 
         return $subcomm_list
     }
@@ -759,28 +820,28 @@ namespace eval dotlrn_community {
         if {[empty_string_p $user_id]} {
             set user_id [ad_get_user_id]
         }
-        
+
         foreach sc_id [get_subcomm_list -community_id $community_id] {
 
             if {[has_subcommunity_p -community_id $sc_id] \
                     && [member_p $sc_id $user_id]} {
                 # only go down a level if user is a member of the sc
                 set url [get_community_url $sc_id]
-                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n" 
-                
+                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
+
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
                     append chunk \
                             "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
                 }
-                
+
                 append chunk \
                         "<ul>\n[get_chunk -community_id $sc_id -user_id $user_id]</ul>\n"
             } elseif { [not_closed_p -community_id $sc_id] \
                     || [member_p $sc_id $user_id]} {
                 # if the sc is not closed or i'm a member print it
-                
+
                 set url [get_community_url $sc_id]
-                
+
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
                 if {[not_closed_p -community_id $sc_id] \
@@ -796,10 +857,10 @@ namespace eval dotlrn_community {
 
 
             }
-        } 
+        }
         return $chunk
     }
-    
+
     ad_proc -public get_community_type_url {
         community_type
     } {
@@ -1000,7 +1061,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-applet_key:required}
     } {
-        Is this applet active in this community? Does it do voulunteer work? 
+        Is this applet active in this community? Does it do voulunteer work?
         Helps its neighbors? <joke> returns 1 or 0
     } {
         return [db_0or1row select_active_applet_p {}]

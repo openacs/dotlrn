@@ -64,7 +64,12 @@
         <td><a href="@member_classes.url@">@member_classes.pretty_name@</td>
         <td>@member_classes.term_name@ @member_classes.term_year@</td>
         <td>@member_classes.role@</td>
+<if @member_classes.member_state@ eq "needs approval">
+        <td>[<small> Pending Approval </small>]</td>
+</if>
+<else>
         <td>[<small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small>]</td>
+</else>
       </tr>
 </multiple>
     </table>
@@ -97,7 +102,12 @@
       <tr bgcolor=@bgcolor@>
         <td colspan="2"><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
         <td>@member_clubs.role@</td>
+<if @member_clubs.member_state@ eq "needs approval">
+        <td>[<small> Pending Approval </small>]</td>
+</if>
+<else>
         <td>[<small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small>]</td>
+</else>
       </tr>
 </multiple>
     </table>
@@ -150,7 +160,12 @@
         <td><a href="@non_member_classes.url@">@non_member_classes.pretty_name@</td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
+<if @non_member_classes.join_policy@ eq "open">
         <td>[<small><include src="register-link" url="@non_member_classes.url@register" referer=@referer@></small>]</td>
+</if>
+<else>
+        <td>[<small><include src="register-link" url="@non_member_classes.url@register" label="Request Membership" referer=@referer@></small>]</td>
+</else>
       </tr>
 </multiple>
     </table>
@@ -181,7 +196,12 @@
 
       <tr bgcolor=@bgcolor@>
         <td colspan="3"><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
+<if @non_member_clubs.join_policy@ eq "open">
         <td>[<small><include src="register-link" url="@non_member_clubs.url@register" referer=@referer@></small>]</td>
+</if>
+<else>
+        <td>[<small><include src="register-link" url="@non_member_clubs.url@register" label="Request Membership" referer=@referer@></small>]</td>
+</else>
       </tr>
 </multiple>
     </table>

@@ -16,11 +16,8 @@
     <fullquery name="select_member_classes">
         <querytext>
             select dotlrn_class_instances_full.*,
-                   (select acs_rel_roles.pretty_name
-                    from acs_rel_roles
-                    where acs_rel_roles.role = (select acs_rel_types.role_two
-                                                from acs_rel_types
-                                                where acs_rel_types.rel_type = dotlrn_member_rels_full.rel_type)) as role,
+                   dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
                  dotlrn_member_rels_full
@@ -36,11 +33,8 @@
     <fullquery name="select_member_classes_by_department">
         <querytext>
             select dotlrn_class_instances_full.*,
-                   (select acs_rel_roles.pretty_name
-                    from acs_rel_roles
-                    where acs_rel_roles.role = (select acs_rel_types.role_two
-                                                from acs_rel_types
-                                                where acs_rel_types.rel_type = dotlrn_member_rels_full.rel_type)) as role,
+                   dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
                  dotlrn_member_rels_full
@@ -57,11 +51,8 @@
     <fullquery name="select_member_classes_by_term">
         <querytext>
             select dotlrn_class_instances_full.*,
-                   (select acs_rel_roles.pretty_name
-                    from acs_rel_roles
-                    where acs_rel_roles.role = (select acs_rel_types.role_two
-                                                from acs_rel_types
-                                                where acs_rel_types.rel_type = dotlrn_member_rels_full.rel_type)) as role,
+                   dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
                  dotlrn_member_rels_full
@@ -78,11 +69,8 @@
     <fullquery name="select_member_classes_by_department_by_term">
         <querytext>
             select dotlrn_class_instances_full.*,
-                   (select acs_rel_roles.pretty_name
-                    from acs_rel_roles
-                    where acs_rel_roles.role = (select acs_rel_types.role_two
-                                                from acs_rel_types
-                                                where acs_rel_types.rel_type = dotlrn_member_rels_full.rel_type)) as role,
+                   dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
                  dotlrn_member_rels_full
@@ -100,11 +88,8 @@
     <fullquery name="select_member_clubs">
         <querytext>
             select dotlrn_clubs_full.*,
-                   (select acs_rel_roles.pretty_name
-                    from acs_rel_roles
-                    where acs_rel_roles.role = (select acs_rel_types.role_two
-                                                from acs_rel_types
-                                                where acs_rel_types.rel_type = dotlrn_member_rels_full.rel_type)) as role,
+                   dotlrn_member_rels_full.role,
+                   dotlrn_member_rels_full.member_state,
                    acs_permission.permission_p(dotlrn_clubs_full.club_id, :user_id, 'admin') as admin_p
             from dotlrn_clubs_full,
                  dotlrn_member_rels_full

@@ -60,6 +60,15 @@ create table dotlrn_communities (
     unique (community_key, parent_community_id)
 );
 
+create or replace view dotlrn_communities_full
+as
+    select dotlrn_communities.*,
+           groups.group_name,
+           groups.join_policy
+    from dotlrn_communities,
+         groups
+    where dotlrn_communities.community_id = groups.group_id;
+
 create or replace view dotlrn_communities_not_closed
 as
     select dotlrn_communities.*,
