@@ -82,26 +82,6 @@ if {[form is_valid spam_message]} {
     #      doesn't have to wait for the emails to get sent out.
 
     set segment_id [db_string select_rel_segment_id {}]
-
-    # set the sql that selects the correct party_ids to spam
-#    set sql "
-#        select member_id as party_id
-#        from party_approved_member_map
-#        where party_id = $segment_id
-#        and member_id <> $segment_id
-#    "
-
-#    spam_new_message \
-#        -send_date [ns_fmttime [ns_time] "%Y-%m-%d %r"] \
-#        -subject $subject \
-#        -html $message \
-#        -sql $sql \
-#        -approved_p 't'
-
-    # YON: since spam is broken and also not flexible enough yet, then we will
-    #      send all the emails ourselves.
-
-    # let's get some data we might need
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url [dotlrn_community::get_community_url $community_id]
 
@@ -119,36 +99,7 @@ if {[form is_valid spam_message]} {
 
     # loop through all the recepeints and send them the spam
     set errors ""
-    db_foreach select_recepient_info {
-        select parties.email,
-               decode(acs_objects.object_type,
-                      'user',
-                      (select first_names
-                       from persons
-                       where person_id = parties.party_id),
-                      'group',
-                      (select group_name
-                       from groups
-                       where group_id = parties.party_id),
-                      'rel_segment',
-                      (select segment_name
-                       from rel_segments
-                       where segment_id = parties.party_id),
-                      '') as first_names,
-               decode(acs_objects.object_type,
-                      'user',
-                      (select last_name
-                       from persons
-                       where person_id = parties.party_id),
-                      '') as last_name
-        from party_approved_member_map,
-             parties,
-             acs_objects
-        where party_approved_member_map.party_id = :segment_id
-        and party_approved_member_map.member_id <> :segment_id
-        and party_approved_member_map.member_id = parties.party_id
-        and parties.party_id = acs_objects.object_id
-    } {
+    db_foreach select_recepient_info {} {
         # replace some values in the subject and the message
         regsub -all {<email>} $subject $email subject
         regsub -all {<email>} $message $email message
