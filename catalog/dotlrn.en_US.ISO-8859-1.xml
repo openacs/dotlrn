@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -497,6 +497,7 @@ Thank you
   <msg key="Reject">Reject</msg>
   <msg key="reject">reject</msg>
   <msg key="Reject_all">Reject all</msg>
+  <msg key="Remove_all">Remove all</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
   <msg key="required">Required field</msg>
@@ -603,4 +604,9 @@ Thank you
   <msg key="no_community_types">No %Community_Types%</msg>
   <msg key="Parent_Type">Parent Type</msg>
   <msg key="community_type_exists">This community type already exists</msg>
+  <msg key="added_community_subject">You have been added to the "%community_name%" community at %package%</msg>
+  <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the "Groups" portlet.</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
+  <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
+  <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
 </message_catalog>

@@ -118,8 +118,7 @@ if { $tmp_size > 0 } {
         # the community anyway, let everyone have access to see it.  That way
         # it won't cause any trouble later on when we try to implement
         # try-before-you-buy for non-members.
-        permission::grant -party_id [acs_magic_object registered_users] -obje
-ct_id $revision_id -privilege read
+        permission::grant -party_id [acs_magic_object registered_users] -object_id $revision_id -privilege read
 
         ns_log notice "aks1: new revision_id $revision_id"
 

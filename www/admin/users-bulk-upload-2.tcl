@@ -22,14 +22,14 @@ ad_page_contract {
     @version $Id$
 }
 
-#Pages in this directory are only runnable by dotlrn-wide admins.
+# Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
 # get location of the file
 set file_location [ns_queryget users_csv_file.tmpfile]
 
 # Prepare stuff
-set headers {first_names last_name email}
+set headers {first_names last_name email username}
 
 set admin_user_id [ad_verify_and_get_user_id]
 set admin_email [db_string select_admin_email {
@@ -43,6 +43,8 @@ doc_body_append "[_ dotlrn.Bulk_Uploading]<p>"
 set list_of_user_ids [list]
 set list_of_addresses_and_passwords [list]
 
+set fail_p 0
+
 # Do the stuff
 # We can't do this too generically, so we'll just do the CSV stuff right here
 db_transaction {
@@ -51,10 +53,12 @@ db_transaction {
 
         # First make sure the required data is there
         if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] || ![info exists row(username)] } {
-            doc_body_append "<br>Datafile must include at least the email, first_names, last_name, username fields<br>"
+            doc_body_append [_ dotlrn.datafile_must]
             db_abort_transaction
             return
         }
+
+        ns_log Debug "%%% $row(email)"
 
         # We need to insert the ACS user
         if {![info exists row(password)]} {
@@ -64,8 +68,7 @@ db_transaction {
         } else {
             set password $row(password)
         }
-        
-
+ 
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
         if {![empty_string_p $user_id]} {
@@ -73,8 +76,11 @@ db_transaction {
             lappend list_of_user_ids $user_id
         } else {
 
+	
 	    set user_id [db_nextval acs_object_id_seq]
 
+            ns_log Debug "%%% $user_id"
+	
 	    auth::create_user \
 		-user_id $user_id \
 		-username "$row(username)" \
@@ -82,7 +88,6 @@ db_transaction {
 		-first_names $row(first_names) \
 		-last_name $row(last_name) \
 		-password $password
-
             
             lappend list_of_user_ids $user_id
             
@@ -98,33 +103,34 @@ db_transaction {
                 set row(guest) f
             }
 
-            if {![info exists row(id)]} {
-                set row(id) $row(email)
+            if {![info exists row(username)]} {
+                set row(username) $row(email)
             }
             
             if {![info exists row(notify)]} {
                 set row(notify) f
-            } 
+            }
             
             doc_body_append "Creating user $row(email)...."
+
 
             # Now we make them a dotLRN user
             switch -exact $row(access_level) {
                 limited {
-                    dotlrn::user_add -user_id $user_id -id $row(id) -type $row(type)
+                    dotlrn::user_add -user_id $user_id -id $row(username) -type $row(type)
                 }
                 full -
                 default {
-                    dotlrn::user_add -user_id $user_id -id $row(id) -type $row(type) -can_browse
+                    dotlrn::user_add -user_id $user_id -id $row(username) -type $row(type) -can_browse
                 }
             }
             
             # Set the privacy
             dotlrn_privacy::set_user_guest_p -user_id $user_id -value $row(guest)
-            
+
             doc_body_append [_ dotlrn.user_email_created [list user_email $row(email)]]
             set msg_subst_list [list system_name [ad_system_name] \
-                                     system_url [ad_parameter SystemUrl] \
+                                     system_url [ad_parameter -package_id [ad_acs_kernel_id] SystemURL] \
                                      user_email $row(email) \
                                      user_password $password]
             set message [_ dotlrn.user_add_confirm_email_body $msg_subst_list] 
@@ -132,12 +138,11 @@ db_transaction {
 
             # Send note to new user
             if { $row(notify) == "t" } {
-            # Send note to new user
+                # Send note to new user
                 if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {
                     doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
                 set fail_p 1
                 } else {
-                    doc_body_append "[_ dotlrn.email_sent]"
                     lappend list_of_addresses_and_passwords $row(email) $password
                 }
             } else {
@@ -149,30 +154,9 @@ db_transaction {
         
     }
 } on_error {
-    doc_body_append "<p>The database choked while trying to create the last user in the list above!<br>  The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.<p>"
+    ns_log Error "The database choked while trying to create the last user in the list above! The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent."
+    doc_body_append [_ dotlrn.database_choked]
     ad_script_abort
-}
-
-set fail_p 0
-
-doc_body_append "<p>Sending email notifications to users...<p>"
-
-foreach {email password} $list_of_addresses_and_passwords {
-    if { ![string equal $password ""] } {
-        set message "
-You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL].
-            
-Login: $email
-Password: $password
-"
-        # Send note to new user
-        if [catch {ns_sendmail "$email" "$admin_email" "You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]" "$message"} errmsg] {
-            doc_body_append "emailing \"$email\" failed!<br>"
-            set fail_p 1
-        } else {
-            doc_body_append "email sent to \"$email\"<br>"
-        }
-    }
 }
 
 if {$fail_p} {

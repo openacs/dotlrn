@@ -90,10 +90,9 @@ if {[form is_valid select_community]} {
             }
         }
 
-        set subject "You have been added to the \"$community_name\" community at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]"
-        set message "To visit the community's home page, point your browser at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL],
-log in, and click on the \"$community_name\" link in the \"Groups\" portlet.
-"
+        set package [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]
+        set subject [_ dotlrn.added_community_subject]
+        set message [_ dotlrn.added_community_message]
 
         spam::send \
           -recepients $users \
