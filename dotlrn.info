@@ -362,9 +362,9 @@
             <file type="content_page" path="www/one-community-admin.tcl"/>
             <file type="query_file" path="www/one-community-admin.xql"/>
             <file type="content_page" path="www/one-community-not-member.adp"/>
-            <file type="content_page" path="www/one-community-portal-template-2.tcl"/>
-            <file type="content_page" path="www/one-community-portal-template.adp"/>
-            <file type="content_page" path="www/one-community-portal-template.tcl"/>
+            <file type="content_page" path="www/one-community-portal-configure-2.tcl"/>
+            <file type="content_page" path="www/one-community-portal-configure.adp"/>
+            <file type="content_page" path="www/one-community-portal-configure.tcl"/>
             <file type="content_page" path="www/one-community-type.adp"/>
             <file type="content_page" path="www/one-community-type.tcl"/>
             <file type="query_file" path="www/one-community-type.xql"/>
@@ -381,6 +381,8 @@
             <file type="content_page" path="www/spam.adp"/>
             <file type="content_page" path="www/spam.tcl"/>
             <file type="query_file" path="www/spam.xql"/>
+            <file type="content_page" path="www/subcommunity-archive.adp"/>
+            <file type="content_page" path="www/subcommunity-archive.tcl"/>
             <file type="content_page" path="www/subcommunity-edit.adp"/>
             <file type="content_page" path="www/subcommunity-edit.tcl"/>
             <file type="content_page" path="www/subcommunity-new.adp"/>
