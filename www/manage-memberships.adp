@@ -53,16 +53,14 @@
         <th align="left" width="15%">Actions</th>
       </tr>
 
-<% set i 0 %>
-
 <multiple name="member_classes">
 
-<%
-    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
-    set i [expr 1 - $i]
-%>
-
-      <tr bgcolor=@bgcolor@>
+    <if @member_classes.rownum@ odd>
+      <tr bgcolor="#ececec">
+    </if>
+    <else>
+      <tr bgcolor="#ffffff">
+    </else>
         <td><a href="@member_classes.url@">@member_classes.pretty_name@</td>
         <td>@member_classes.term_name@ @member_classes.term_year@</td>
         <td>@member_classes.role@</td>
@@ -92,16 +90,14 @@
         <th align="left" width="15%">Actions</th>
       </tr>
 
-<% set i 0 %>
-
 <multiple name="member_clubs">
 
-<%
-    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
-    set i [expr 1 - $i]
-%>
-
-      <tr bgcolor=@bgcolor@>
+    <if @member_clubs.rownum@ odd>
+      <tr bgcolor="#ececec">
+    </if>
+    <else>
+      <tr bgcolor="#ffffff">
+    </else>
         <td colspan="2"><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
         <td>@member_clubs.role@</td>
 <if @member_clubs.member_state@ eq "needs approval">
@@ -149,16 +145,14 @@
         <th align="left" width="15%">Actions</th>
       </tr>
 
-<% set i 0 %>
-
 <multiple name="non_member_classes">
 
-<%
-    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
-    set i [expr 1 - $i]
-%>
-
-      <tr bgcolor=@bgcolor@>
+    <if @non_member_classes.rownum@ odd>
+      <tr bgcolor="#ececec">
+    </if>
+    <else>
+      <tr bgcolor="#ffffff">
+    </else>
         <td><a href="@non_member_classes.url@">@non_member_classes.pretty_name@</td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
@@ -187,16 +181,14 @@
         <th align="left">Actions</th>
       </tr>
 
-<% set i 0 %>
-
 <multiple name="non_member_clubs">
 
-<%
-    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
-    set i [expr 1 - $i]
-%>
-
-      <tr bgcolor=@bgcolor@>
+    <if @non_member_clubs.rownum@ odd>
+      <tr bgcolor="#ececec">
+    </if>
+    <else>
+      <tr bgcolor="#ffffff">
+    </else>
         <td colspan="3"><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
 <if @non_member_clubs.join_policy@ eq "open">
         <td>[<small><include src="register-link" url="@non_member_clubs.url@register" referer=@referer@></small>]</td>
