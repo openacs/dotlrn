@@ -21,7 +21,7 @@ namespace eval dotlrn_main_portlet {
 
     ad_proc -public get_pretty_name {
     } {
-        return "dotLRN"
+        return "My Groups"
     }
 
     ad_proc -public link {
@@ -62,28 +62,26 @@ namespace eval dotlrn_main_portlet {
 
         set user_id [ad_get_user_id]
 
-        # This is not templated. OH NO. I am a horrible, horrible, little man. (ben)
+        # This is not templated. OH NO. I am a horrible, horrible,
+        # little man. (ben)
 
-        set return_html "<ul>\n"
-
+        set return_html "<table border=0 cellpadding=2 cellspacing=2 width=100%>"
         set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
         foreach community $communities {
             set url [dotlrn_community::get_url_from_package_id -package_id [lindex $community 4]]
             set name [lindex $community 3]
 
-            append return_html "<li><a href=\"${url}\">${name}</a>\n"
+            append return_html "<tr><td><a href=\"${url}\"><b>${name}</b></a></td></tr>\n"
         }
 
         if {[dotlrn::user_can_browse_p $user_id]} {
-            append return_html "<p></p>\n"
-            append return_html "<li><a href=\"classes\">Subscribe to a new class</a></li>\n"
-            append return_html "<li><a href=\"clubs\">Subscribe to a new club</a></li>\n"
+            append return_html "<tr><td></td></tr>\n"
+            append return_html "<tr><td><a href=\"classes\"><small>\[Subscribe to a new class\]</small></a></td></tr>\n"
+            append return_html "<tr><td><a href=\"clubs\"><small>\[Subscribe to a new club\]</small></a></td></tr>\n"
         }
 
-        append return_html "</ul>"
-
-        # return it all
+        append return_html "</table>"
         return $return_html
     }   
 
