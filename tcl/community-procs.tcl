@@ -149,12 +149,24 @@ namespace eval dotlrn_community {
 
             set user_id [ad_conn user_id]
 
+            # based on the community_type, get the page_names and layouts
+            if {[string equal $community_type "dotlrn_community"]} {
+                set csv_list [ad_parameter subcomm_pages_csv]
+            } elseif {[string equal $community_type "dotlrn_club"]} {
+                set csv_list [ad_parameter club_pages_csv]
+            } else {
+                set csv_list [ad_parameter class_instance_pages_csv]
+            }
+
+            set non_member_page_name [ad_parameter non_member_page_name]
+            set admin_page_name [ad_parameter admin_page_name]
+
             # Create portal template page
             set portal_template_id \
                     [portal::create \
                     -portal_template_p "t" \
                     -name "$pretty_name Portal Template" \
-                    -default_page_name [ad_parameter community_first_page_name] \
+                    -csv_list $csv_list \
                     -context_id $community_id \
                     $user_id ]
 
@@ -163,7 +175,7 @@ namespace eval dotlrn_community {
                     [portal::create \
                     -template_id $portal_template_id \
                     -name "$pretty_name Non-Member Portal" \
-                    -default_page_name [ad_parameter community_first_page_name] \
+                    -default_page_name $non_member_page_name \
                     -context_id $community_id \
                     $user_id]
 
@@ -171,7 +183,7 @@ namespace eval dotlrn_community {
             set admin_portal_id \
                     [portal::create \
                     -name "$pretty_name Administration Portal" \
-                    -default_page_name [ad_parameter community_admin_first_page_name] \
+                    -default_page_name $admin_page_name \
                     -context_id $community_id \
                     -layout_name "Simple 1-Column" \
                     $user_id]
@@ -679,8 +691,9 @@ namespace eval dotlrn_community {
         if none, the empty list
     } {
         set subcomm_chunk "<ul>"
+        
 
-        db_foreach select_subcomms {} {
+        foreach subcomm_id [get_subcomm_list -community_id $community_id] {
             append subcomm_chunk "<li><a href=[get_community_url $subcomm_id]>[get_community_name $subcomm_id]</a></li>"
         } 
 

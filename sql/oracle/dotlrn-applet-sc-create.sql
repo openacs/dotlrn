@@ -197,7 +197,7 @@ begin
 	-- remove the applet from a community
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.RemoveAppletFromCommunity.InputType',
-		  msg_type_spec => 'community_id:integer,package_id:integer'
+		  msg_type_spec => 'community_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(

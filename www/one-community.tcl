@@ -15,16 +15,14 @@ if {[ad_parameter community_level_p] != 1} {
     ad_script_abort
 }
 
-set user_id [ad_conn user_id]
-
-# What community type are we at?
-set community_id [dotlrn_community::get_community_id]
-
 # Get basic information
+set user_id [ad_conn user_id]
+set community_id [dotlrn_community::get_community_id]
 set pretty_name [dotlrn_community::get_community_name $community_id]
-
-set admin_p [dotlrn::user_can_admin_community_p $community_id]
-
+set admin_p [dotlrn::user_can_admin_community_p \
+        -user_id $user_id \
+        $community_id
+]
 
 # are we in a subcomm? if so, we need to set up the text and navbar 
 set pretext ""
@@ -50,6 +48,8 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     # Possible that there is no portal page for non-members
     if {! [empty_string_p $portal_id]} {
 	set rendered_page [dotlrn::render_page -hide_links_p "t" -page_num $page_num $portal_id]
+        
+
     } else {
 	set rendered_page ""
     }
@@ -66,7 +66,6 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     set rendered_page [dotlrn::render_page -hide_links_p "t" -page_num $page_num $portal_id]
 
     set context_bar {View}
-    set control_panel_text "Group Admin"
     set url_stub "one-community"
 
     ad_return_template 

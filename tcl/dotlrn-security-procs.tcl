@@ -73,41 +73,20 @@ namespace eval dotlrn {
         ns_set put $extra_vars id $id
 
         db_transaction {
-
-            # get the first page name and theme
-            set page_name_and_layout_list [split [ad_parameter -package_id [dotlrn::get_package_id] user_wsp_page_names "Untitled Page,Simple 2-Column;" ] ";"]
-            set page_name_list [list]
-            set layout_name_list [list]
-
-            # seperate name and theme
-            foreach item $page_name_and_layout_list {
-                lappend page_name_list [lindex [split $item ","] 0]
-                lappend layout_name_list [lindex [split $item ","] 1]
-            }
-
             if {[string equal $access_level "full"] == 1} {
                 # Create a portal page for this user
                 set portal_id [portal::create \
                         -name "Your dotLRN Workspace" \
-                        -default_page_name [lindex $page_name_list 0] \
-                        -layout_name [lindex $layout_name_list 0] \
-                        $user_id]
+                        -csv_list [ad_parameter user_wsp_page_names] \
+                        $user_id
+                ]
 
-                # create rest of the default pages from the ad_param
-                for {set i 1} {$i < [expr [llength $page_name_list]]} {incr i} {
-                    portal::page_create -portal_id $portal_id \
-                            -pretty_name [lindex $page_name_list $i] \
-                            -layout_name [lindex $layout_name_list $i]
-                }
-
-                # manually switch back to the first page
                 set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
 
-                # aks test adding applets on new pages
-                # make a test page to the wsp
-                dotlrn_main_portlet::add_self_to_page -page_id $page_id $portal_id {}
-                # end test
-
+                dotlrn_main_portlet::add_self_to_page \
+                        -page_id $page_id \
+                        $portal_id ""
+                
                 # Update the user and set the portal page correctly
                 ns_set put $extra_vars portal_id $portal_id
             }
