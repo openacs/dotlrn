@@ -136,8 +136,7 @@ namespace eval dotlrn_applet {
         }
 
         # Find the parent node
-        set applets_url [get_url]
-        set parent_node_id [site_node_id $applets_url]
+        set parent_node_id [site_node::get_node_id -url [get_url]]
 
         set package_id [dotlrn::mount_package \
             -parent_node_id $parent_node_id \
@@ -152,6 +151,8 @@ namespace eval dotlrn_applet {
 
     ad_proc -public is_applet_mounted {
         {-url:required}
+    } {
+        is the applet specified mounted at the specified url?
     } {
         if {[nsv_exists site_nodes "[get_url]/$url/"]} {
             return 1
