@@ -30,7 +30,7 @@
         <querytext>
             declare
             begin
-                :1 := dotlrn_community_type.del(
+                dotlrn_community_type.del(
                     community_type => :community_type_key
                 );
             end;

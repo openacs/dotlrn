@@ -21,6 +21,7 @@
 <master>
 <property name="title">#dotlrn.Manage_Membership#</property>
 <property name="link_all">1</property>
+<property name="context">@context;noquote@</property>
 
 <include src="members-chunk-table" referer="members">
 

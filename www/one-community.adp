@@ -19,6 +19,7 @@
 %>
 
 <master>
+  <property name="title">@title;noquote@</property>
 
 <p></p>
 

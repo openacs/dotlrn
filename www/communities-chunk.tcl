@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date Dec 07, 2001
     @version $Id$
 } -query {
-    {filter "select_all_non_memberships"}
+    {filter "select_all_memberships"}
 } -properties {
     n_communities:onevalue
     communities:multirow
@@ -39,7 +39,7 @@ if {![empty_string_p $community_type]} {
     set n_communities [db_string select_all_communities_count {}]
 }
 
-set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" select_all_non_memberships \
+set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" select_all_memberships \
         {
             {select_all_memberships current {}}
             {select_all_non_memberships join {}}

@@ -22,8 +22,7 @@
 <property name="title">#dotlrn.help#</property>
 
 <p><a href="#Edit%20PersonalInfo">Editing Personal Information</a> | <a href="#JoinDrop">Joining/Dropping 
-  Groups</a> | <a href="#RequestGroup">Requesting a New Group</a> | <a href="#Bulk
-  Email">Sending Bulk Email</a> 
+  Groups</a> | <a href="#RequestGroup">Requesting a New Group</a> | <a href="#BulkEmail">Sending Bulk Email</a> 
   | <a href="#Alerts">Modifying Your Forum Email Alerts</a>| <a href="#Help">Additional Help</a></p> 
 <p><b><font size="4"><a name="EditPersonalInfo">Editing Personal Information</a></font></b><br>
   You can change your personal information at any time. This enables you to protect 
@@ -83,15 +82,15 @@
   <p><b><font size="4"><a name="RequestGroup">Requesting a New Class or Community</a></font></b><br>
   The Site Wide Administrator handles class and community requests. </p>
 <p>To request a new class or to copy and reuse a class from a previous semester:<br>
-  Send email to sloanspace_help@sloan.mit.edu. For a new class, include the class 
+  Send email <%=[ad_host_administrator]%>. For a new class, include the class 
   number, class title, professor(s), teaching assistants and course assistants. 
   You will be notified by email when the shell is created. To copy and reuse a 
-  class, you need only email sloanspace_help@sloan.mit.edu with the number, name 
+  class, you need only email  <%=[ad_host_administrator]%> with the number, name 
   and previous semester of the course. Include professor, teaching assistant and 
   course assistant information if any of that has changed. The &quot;recycled&quot; 
   class will contain all old content, but the student list will be cleared.</p>
 <p><b>To request a new community:</b><br>
-    Send email to sloanspace-help@sloan.mit.edu. Include the name of the community, 
+    Send email to  <%=[ad_host_administrator]%>. Include the name of the community, 
     a brief description of its purpose, the faculty or staff sponsor, the name(s) 
     of any persons who will need to be administrators of this community. You will 
     be notified by email when the community shell has been created. </p>
