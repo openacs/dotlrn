@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 }
 
-if { [dotlrn::user_p -user_id $user_id] } {
+if { [dotlrn::user_p -user_id [ad_conn user_id]] } {
     # Already a user
     ad_returnredirect .
     ad_script_abort
@@ -33,8 +33,32 @@ if { [dotlrn::admin_p] } {
     set self_approve_url [export_vars -base "[apm_package_url_from_key "acs-admin"]users/member-state-change" { { user_id {[ad_conn user_id]} } { member_state approved} return_url }]
     ad_returnredirect $self_approve_url
     ad_script_abort
-} elseif { [parameter::get -parameter AutoAddUsersP -package_id [dotlrn::get_package_id] -default 0] } {
+}
 
+set auto_add_p [parameter::get -parameter AutoAddUsersP -package_id [dotlrn::get_package_id] -default 0]
+
+if { $auto_add_p } {
+    # If auto-adding, check if we're auto-adding for this authority
+    set auth_add_auths [split [parameter::get \
+                                   -parameter AutoAddAuthorities \
+                                   -package_id [dotlrn::get_package_id] \
+                                   -default {}] ","]
+
+    # A star is enough
+    if { [lsearch -exact $auth_add_auths "*"] == -1 } {
+        # No star
+        set authority_id [acs_user::get_element -user_id [ad_conn user_id] -element authority_id]
+        set authority_short_name [auth::authority::get_element -authority_id $authority_id -element short_name]
+
+        # If not a star, then this user's authority needs to be named
+        if { [lsearch -exact $auth_add_auths $authority_short_name] == -1 } {
+            # Nope, authority not listed, either
+            set auto_add_p 0
+        }
+    }
+}
+
+if { $auto_add_p } {
     set user_id [auth::require_login]
 
     set type [parameter::get \

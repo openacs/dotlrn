@@ -23,10 +23,11 @@
         <callbacks>
         </callbacks>
         <parameters>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoAddUsersP"  default="0" description="Automatically add OpenACS users to .LRN. 1 = yes, 0 = no."/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserAccessLevel"  default="1" description="The access level of auto-added users. 1 = Full access user, 0 = Limited access user"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserReadPrivateDataP"  default="1" description="Auto-added user's guest status. 1 = Not a guest , 0 = Guest."/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoUserType"  default="student" description="The user type for auto-approved users."/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoAddUsersP"  default="0" description="Automatically add OpenACS users to .LRN. 1 = yes, 0 = no. In order for users to be auto-added, this needs to be set to 1, and AutoAddAuthorities needs to be set to * or include the relevant authority short_names." section_name="Auto-Adding Users to .LRN"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoAddAuthorities"  default="*" description="A comma-separated list of short-names of authorities for which users should be automatically added to .LRN, or '*' for all. In order for users to be auto-added, AutoAddUsersP needs to be set to 1, and this needs to be set to * or include the relevant authority short_names. Example: 'local,ldap'." section_name="Auto-Adding Users to .LRN"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserAccessLevel"  default="1" description="The access level of auto-added users. 1 = Full access user, 0 = Limited access user" section_name="Auto-Adding Users to .LRN"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoUserReadPrivateDataP"  default="1" description="Auto-added user's guest status. 1 = Not a guest , 0 = Guest." section_name="Auto-Adding Users to .LRN"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoUserType"  default="student" description="The user type for auto-approved users." section_name="Auto-Adding Users to .LRN"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="#dotlrn.admin_page_name#" description="The name of the admin page"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="auto_dotlrn_user_email_patterns"  description="Automatic dotLRN user email patterns"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
