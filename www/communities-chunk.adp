@@ -29,12 +29,12 @@
 <group column="root_community_type">
     <tr>
       <td width="65%"><a href="@communities.url@">@communities.pretty_name@</a></td>
-      <td>
+      <td align="center">
 <if @communities.member_p@ eq 0>
-        (<include src="register-link" url="register?community_id=@communities.community_id@&referer=@referer@">)
+  <include src="register-link" url="register?community_id=@communities.community_id@&referer=@referer@">
 </if>
 <else>
-        (<include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">)
+  <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">
 </else>
       </td>
       <td>

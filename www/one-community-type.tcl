@@ -23,7 +23,7 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
-    context_bar:onevalue
+    context:onevalue
     pretty_name:onevalue
     description:onevalue
     supertype:onevalue
@@ -42,7 +42,7 @@ if {[parameter::get -localize -parameter community_type_level_p] != 1} {
 
 set user_id [ad_conn user_id]
 
-set context_bar [_ dotlrn.View]
+set context {}
 
 # What community type are we at?
 set community_type [dotlrn_community::get_community_type]
