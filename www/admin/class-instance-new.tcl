@@ -9,6 +9,11 @@ ad_page_contract {
     {referer ""}
 }
 
+if {![db_0or1row select_class_info {}]} {
+    set class_name ""
+    set class_description ""
+}
+
 form create add_class_instance
 
 element create add_class_instance term \
@@ -22,6 +27,7 @@ element create add_class_instance pretty_name \
     -datatype text \
     -widget text \
     -html {size 60} \
+    -value $class_name \
     -optional
 
 element create add_class_instance description \
@@ -29,6 +35,7 @@ element create add_class_instance description \
     -datatype text \
     -widget textarea \
     -html {rows 5 cols 60 wrap soft} \
+    -value $class_description \
     -optional
 
 element create add_class_instance join_policy \
@@ -81,11 +88,10 @@ if {[form is_valid add_class_instance]} {
     ad_script_abort
 }
 
-set class_name [dotlrn_community::get_community_type_name $class_key]
-
 set context_bar [list \
-        {classes Classes} \
-        [list "class?class_key=$class_key" "$class_name"] \
-        {New Instance}]
+    {classes Classes} \
+    [list "class?class_key=$class_key" "$class_name"] \
+    {New Instance} \
+]
 
 ad_return_template

@@ -13,7 +13,7 @@ ad_library {
     Procs to manage DOTLRN Security
 
     @author Ben Adida (ben@openforce.net)
-    @author yon (yon@milliped.com)
+    @author yon (yon@openforce.net)
     @creation-date 2001-10-30
     @version $Id$
 

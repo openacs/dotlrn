@@ -7,7 +7,7 @@
 <p></p>
 
 <if @departments:rowcount@ gt 0>
-<table>
+<table width="100%">
   <tr>
     <th align="left" width="30%"><%= [ad_parameter departments_pretty_name] %> Key</th>
     <th align="left"><%= [ad_parameter departments_pretty_name] %> Name</th>

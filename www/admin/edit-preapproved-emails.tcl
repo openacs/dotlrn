@@ -17,7 +17,7 @@
 # dotlrn/www/admin/edit-preapproved-emails.tcl
 
 ad_page_contract {
-    @author yon (yon@milliped.com)
+    @author yon (yon@openforce.net)
     @creation-date 2002-03-05
     @version $Id$
 } -query {

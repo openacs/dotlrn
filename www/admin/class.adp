@@ -15,7 +15,7 @@
 </else>
 </p>
 
-<table bgcolor="#ececec">
+<table bgcolor="#ececec" width="100%">
   <tr>
     <th align="left" width="50%">
 <formtemplate id="term_form">
@@ -28,7 +28,7 @@
 <p></p>
 
 <if @class_instances:rowcount@ gt 0>
-<table>
+<table width="100%">
   <tr>
     <th align="left" width="15%">Term</th>
     <th align="left" width="50%"><%= [ad_parameter classes_pretty_name] %> Instance Name</th>

@@ -1,7 +1,7 @@
 # dotlrn/www/admin/site-wide-admin-toggle.tcl
 
 ad_page_contract {
-    @author yon (yon@milliped.com)
+    @author yon (yon@openforce.net)
     @creation-date Jan 12, 2002
     @version $Id$
 } -query {

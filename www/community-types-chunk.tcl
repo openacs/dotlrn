@@ -1,7 +1,7 @@
 # dotlrn/www/community-types-chunk.tcl
 
 ad_page_contract {
-    @author yon (yon@milliped.com)
+    @author yon (yon@openforce.net)
     @creation-date Dec 07, 2001
     @version $Id$
 } -query {

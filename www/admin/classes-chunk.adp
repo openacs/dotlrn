@@ -4,7 +4,7 @@
 
 <p></p>
 
-<table bgcolor="#ececec">
+<table bgcolor="#ececec" width="100%">
   <tr>
     <th align="left" width="50%">
 <formtemplate id="department_form">
@@ -17,7 +17,7 @@
 <p></p>
 
 <if @classes:rowcount@ gt 0>
-<table>
+<table width="100%">
   <tr>
     <th align="left" width="30%"><%= [ad_parameter departments_pretty_name] %></th>
     <th align="left" width="10%"><%= [ad_parameter classes_pretty_name] %> Key</th>
