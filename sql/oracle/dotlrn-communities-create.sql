@@ -6,7 +6,8 @@
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --
 -- @author Ben Adida (ben@openforce.net)
--- @author yon (yon@openforce.net)
+-- @author yon (yon@openforce.net
+-- @author arjun (arjun@openforce.net)
 -- @creation-date September 20th, 2001 (redone)
 -- @version $Id$
 --
@@ -38,9 +39,7 @@ create table dotlrn_communities (
                                 references dotlrn_community_types (community_type),
     community_key               varchar2(100)
                                 constraint dotlrn_c_community_key_nn
-                                not null
-                                constraint dotlrn_c_community_key_un
-                                unique,
+                                not null,
     pretty_name                 varchar2(100)
                                 constraint dotlrn_c_pretty_name_nn
                                 not null,
@@ -54,7 +53,11 @@ create table dotlrn_communities (
     portal_template_id          constraint dotlrn_c_portal_template_id_fk
                                 references portals (portal_id),
     package_id                  constraint dotlrn_c_package_id_fk
-                                references apm_packages (package_id)
+                                references apm_packages (package_id),
+    -- We can't have two communities with the same parent with the same key (url)
+    -- even if the parent_community_id is NULL, which it will be for non-subcommunities
+    constraint dotlrn_c_community_key_un
+    unique(community_key,parent_community_id)
 );
 
 create or replace view dotlrn_communities_not_closed

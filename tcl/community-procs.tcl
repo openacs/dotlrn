@@ -307,6 +307,10 @@ namespace eval dotlrn_community {
             return {dotlrn_member_rel dotlrn_admin_rel}
         }
 
+        if {$community_type == "dotlrn_community"} {
+            return {dotlrn_member_rel dotlrn_admin_rel}
+        }
+
         return {}
     }
 
@@ -623,6 +627,41 @@ namespace eval dotlrn_community {
         return [db_string select_community {} -default ""]
     }
 
+    ad_proc -public get_parent_id {
+        {-community_id:required}
+    } {
+        Returns the parent community's id or null
+    } {
+        return [db_string select_parent_id {} -default ""]
+    }
+
+    ad_proc -public subcommunity_p {
+        {-community_id:required}
+    } {
+        Returns 1 if the community is a subcommunity, else 0
+    } {
+        if {[empty_string_p [get_parent_id -community_id $community_id]]} {
+            return 0
+        } else {
+            return 1 
+        }
+    }
+
+    ad_proc -public get_subcomm_list {
+        {-community_id:required}
+    } {
+        Returns a tcl list of the subcommunities of this community or 
+        if none, the empty list
+    } {
+        set subcomm_list [list]
+
+        db_foreach select_subcomms {} {
+            lappend subcomm_list $subcomm_id
+        } 
+
+        return $subcomm_list
+    }
+
     ad_proc -public get_community_type_url {
         community_type
     } {
@@ -679,6 +718,15 @@ namespace eval dotlrn_community {
     } {
         return [db_string select_community_name {} -default ""]
     }
+
+    ad_proc -public get_community_description {
+        community_id
+    } {
+        get the description for a community
+    } {
+        return [db_string select_community_description {} -default ""]
+    }
+
 
     ad_proc -public get_portal_template_id {
         {community_id ""}

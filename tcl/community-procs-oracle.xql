@@ -78,7 +78,10 @@
       where supertype = 'dotlrn_community'
       start with object_type = (select community_type
                                 from dotlrn_communities
-                                where community_id = :community_id)
+                                where parent_id is NULL 
+                                and community_type != 'dotlrn_community'
+                                start with community_id = :community_id
+                                connect by community_id = prior parent_community_id)
       connect by object_type = prior supertype
     </querytext>
   </fullquery>

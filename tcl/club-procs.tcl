@@ -52,6 +52,7 @@ namespace eval dotlrn_club {
         {-pretty_name:required}
         {-description:required}
         {-join_policy "open"}
+        {-parent_community_id ""}
     } {
         creates a new club and returns the club key
     } {
@@ -64,6 +65,7 @@ namespace eval dotlrn_club {
             -community_key $key \
             -pretty_name $pretty_name \
             -description $description \
+            -parent_community_id $parent_community_id \
             -extra_vars $extra_vars]
     }
 
