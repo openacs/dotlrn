@@ -118,9 +118,9 @@ select package_id from dotlrn_community_applets where community_id= :community_i
 <fullquery name="dotlrn_community::add_applet.insert_applet">
 <querytext>
 insert into dotlrn_community_applets
-(community_id, applet_key)
+(community_id, applet_key, package_id)
 values
-(:community_id, :applet_key)
+(:community_id, :applet_key, :package_id)
 </querytext>
 </fullquery>
 
