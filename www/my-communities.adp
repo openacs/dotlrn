@@ -13,5 +13,5 @@
   </li>
 </multiple>
   <p></p>
-  <li><a href="all-communities">Join A Group</a></li>
+  <li><a href="manage-memberships">Join A Group</a></li>
 </ul>

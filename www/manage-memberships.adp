@@ -25,7 +25,7 @@
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>
   <br><hr>
 
-  <h4>Your current memberships</h4>
+  <h4>Your Current Memberships</h4>
 
 <if @n_member_classes@ gt 0>
     <br>
@@ -99,7 +99,7 @@
 <if @n_non_member_classes@ gt 0 or @non_member_clubs:rowcount@ gt 0>
   <br><hr>
 
-  <h4>Join a group</h4>
+  <h4>Join A Group</h4>
 
 <if @n_non_member_classes@ gt 0>
     <br>
