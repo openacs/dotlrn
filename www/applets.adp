@@ -20,7 +20,7 @@
 
 <master>
 <property name="title">#dotlrn.Manage_Applets#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context;noquote@</property>
 <property name="link_control_panel">0</property>
 
 <include src="applets-chunk">
