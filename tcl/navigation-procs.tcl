@@ -168,7 +168,7 @@ namespace eval dotlrn {
 
         foreach arg $args {
             incr count
-            if {[llength $arg] == 2 && $count < $total_n_args} {
+            if {$count < $total_n_args && [llength $arg] == 2 } {
                 lappend list_of_links "<a href=\"[lindex $arg 0]\">[lindex $arg 1]</a>"
             } else {
                 lappend list_of_links "$arg"
