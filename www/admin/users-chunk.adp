@@ -18,8 +18,8 @@
 
 %>
 
-<table width="95%">
-  <tr bgcolor="black">
+<table width="95%" cellpadding="0">
+  <tr bgcolor="#000000">
     <td>
       <table width="100%">
         <tr bgcolor="#aaaaaa">
@@ -29,16 +29,14 @@
           <th align="left">Site-wide Admin?</th>
         </tr>
 
-<% set i 0 %>
-
 <multiple name="users">
 
-<%
-  if {!$i} {set bgcolor #ffffff} else {set bgcolor #cccccc}
-  set i [expr 1 - $i]
-%>
-
-        <tr bgcolor="@bgcolor@">
+<if @users.rownum@ odd>
+        <tr bgcolor="#ececec">
+</if>
+<else>
+        <tr bgcolor="#ffffff">
+</else>
           <td>
             <if @type@ eq "deactivated">
                 <a href="user?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
