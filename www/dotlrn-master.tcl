@@ -65,7 +65,6 @@ set header_img_url "/resources/dotlrn/logo"
 set header_img_file "[acs_root_dir]/packages/dotlrn/www/resources/logo"
 set header_img_alt_text "Header Logo"
 
-set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
 if {[dotlrn::user_p -user_id $user_id]} {
@@ -301,31 +300,16 @@ if {![empty_string_p $community_id]} {
 }
 
 if { $make_navbar_p } {
-    if {$link_control_panel} {
-	set link_control_panel 1
-    } else {
-	set link_control_panel 0
-    }
-    set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"    
     set navbar [dotlrn::portal_navbar \
-        -user_id $user_id \
-        -link_control_panel $link_control_panel \
-        -control_panel_text $control_panel_text \
-	-pre_html "$extra_spaces" \
-	-post_html $extra_spaces \
-        -link_all $link_all
-    ]
-} else {
-    set navbar "<br>"
+                    -user_id $user_id \
+                    -link_control_panel [template::util::is_true $link_control_panel] \
+                    -control_panel_text $control_panel_text \
+                    -link_all $link_all]
 }
 
 
 if { ![info exists header_stuff] } {
     set header_stuff ""
-}
-
-if { [info exists text] } {
-    set text [lang::util::localize $text]
 }
 
 # This style sheet should be moved over to an external file for performance
@@ -505,61 +489,3 @@ TD.center {
 
 "
 
-# Focus
-multirow create attribute key value
-
-if { ![template::util::is_nil focus] } {
-    # Handle elements wohse name contains a dot
-    if { [regexp {^([^.]*)\.(.*)$} $focus match form_name element_name] } {
-
-        # Add safety code to test that the element exists '
-        set header_stuff "$header_stuff
-          <script language=\"JavaScript\">
-            function acs_focus( form_name, element_name ){
-                if (document.forms == null) return;
-                if (document.forms\[form_name\] == null) return;
-                if (document.forms\[form_name\].elements\[element_name\] == null) return;
-                if (document.forms\[form_name\].elements\[element_name\].type == 'hidden') return;
-
-                document.forms\[form_name\].elements\[element_name\].focus();
-            }
-          </script>
-        "
-        
-        template::multirow append \
-                attribute onload "javascript:acs_focus('${form_name}', '${element_name}')"
-    }
-}
-
-# Developer-support support
-set ds_enabled_p [parameter::get_from_package_key \
-    -package_key acs-developer-support \
-    -parameter EnabledOnStartupP \
-    -default 0
-]
-
-if {$ds_enabled_p} {
-    set ds_link [ds_link]
-} else {
-    set ds_link {}
-}
-
-set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_id]" } }]"
-
-# Hack for title and context bar outside of dotlrn
-
-set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
-
-if { [info exists context] } {
-    set context_bar [eval ad_context_bar $context]
-}
-
-set acs_lang_url [apm_package_url_from_key "acs-lang"]
-set lang_admin_p [permission::permission_p \
-                      -object_id [site_node::get_element -url $acs_lang_url -element object_id] \
-                      -privilege admin \
-                      -party_id [ad_conn untrusted_user_id]]
-set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translator-mode-toggle" { { return_url [ad_return_url] } }]
-
-# Curriculum bar
-set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
