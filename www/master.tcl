@@ -7,7 +7,13 @@ if {![empty_string_p $portal_id]} {
 #    if {[portal::page_count -portal_id $portal_id] > 1} {
         set navbar "<table border=0 cellpadding=5><tr>"
     
-        append navbar [portal::list_pages -portal_id $portal_id -link "switch-page" -pre_html "<td><font face=arial,helvetica size=-1 color=black><b> <center>" -separator " </center></td> <td><font face=arial,helvetica size=-1 color=black><b> <center>" -post_html "</a></center></td>"]
+        append navbar [portal::list_pages -portal_id $portal_id -link "switch-page" -pre_html "<td><font face=arial,helvetica size=-1 color=black><b> <center>" -separator " </center></td> <td><font face=arial,helvetica size=-1 color=black><b> <center>" -post_html "</a></center></td> 
+    <td><font face=arial,helvetica size=-1 color=black><b> <center>
+    <a href=./calendar>Calendar</a></center></td>
+    <td><font face=arial,helvetica size=-1 color=black><b> <center>
+    <a href=./file-storage>My Files</a></center></td>
+    <td><font face=arial,helvetica size=-1 color=black><b> <center>
+    <a href=./control-panel>Control Panel</a></center></td>"]
         
         append navbar "</tr></table>"
 #    } else {
