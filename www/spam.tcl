@@ -28,36 +28,36 @@ ad_page_contract {
     {spam_all 0}
 } -validate {
 
-   recipients_split {
-       if { [info exists recipients_str] && ![info exists recipients] } {
-            set recipients [split $recipients_str]
-       }
-   }
-
-    rel_types_split {
-        if { [info exists rel_types_str] && ![info exists rel_types] } {
-            set rel_types [split $rel_types_str]
-        }
+    recipients_split {
+	if { [info exists recipients_str] && ![info exists recipients] } {
+	    set recipients [split $recipients_str]	
+	}
     }
 
+    rel_types_split {
+	if { [info exists rel_types_str] && ![info exists rel_types] } {
+	    set rel_types [split $rel_types_str]
+	}
+    }
+    
     recipients_specified {
- 
-	set recipients_p 0
-        if {[info exists rel_types] && ![empty_string_p $rel_types]} {
-            set recipients_p 1
-        } elseif  {[info exists recipients] && ![empty_string_p $recipients]} {
-            set recipients_p 1
-        } elseif {[info exists spam_all] && $spam_all != 0} {
-            set recipients_p 1
-        } elseif { [info exists rel_types_str] && ![empty_string_p rel_types_str] } {
-            set recipients_p 1
-        } elseif { [info exists recipients_str] && ![empty_string_p recipients_str] } {
-            set recipients_p 1
-        }
 
-        if { $recipients_p == 0} {
-            ad_complain "[_ dotlrn.Must_specify_recipients]"
-        }
+	set recipients_p 0	
+	if {[info exists rel_types] && ![empty_string_p $rel_types]} {
+	    set recipients_p 1
+	} elseif  {[info exists recipients] && ![empty_string_p $recipients]} {
+	    set recipients_p 1
+	} elseif {[info exists spam_all] && $spam_all != 0} {
+	    set recipients_p 1
+	} elseif { [info exists rel_types_str] && ![empty_string_p $rel_types_str] } {
+	    set recipients_p 1
+	} elseif { [info exists recipients_str] && ![empty_string_p $recipients_str] } {
+	    set recipients_p 1
+	}
+	
+	if { $recipients_p == 0} {
+	    ad_complain "[_ dotlrn.Must_specify_recipients]"
+	}
     }
 
 } -properties {
@@ -65,7 +65,7 @@ ad_page_contract {
     portal_id:onevalue
 }
 
-set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam]]
+set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam_]]
 set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
 if {[empty_string_p $community_id]} {
@@ -159,7 +159,7 @@ if {[ns_queryexists "form:confirm"]} {
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
 
     set recipients_str [join [split $recipients_str] ,]
-    set rel_types_str [join [split $rel_types_str] ',']
+    set rel_types_str "'[join [split $rel_types_str] ',']'"
 
 
 # POSTGRES - change to plural
@@ -171,26 +171,20 @@ if {[ns_queryexists "form:confirm"]} {
 
     if { $spam_all } {
 	# if there is a spam_all, choose all the rel_types!
+	# Note - right now, all bulk_mail queiries have the same
+	# format and use the same base query. 
+	# Another possibility is 
 
-	set rel_types_str [join [db_list select_rel_segments "
-            select rel_segments.rel_type
-            from rel_segments
-            where rel_segments.group_id = :community_id"] ',']
+	set rel_types_str "select distinct rel_type from acs_rel_types"
     } 
 
     if {[empty_string_p $recipients_str]} {
 	set recipients_str ''
     }
 
-    if {![string equal $rel_types_str ''] && [string equal $recipients_str ''] } {
-    set query_restriction "and acs_rels.rel_type in ('$rel_types_str')"
-    } elseif {[string equal $rel_types_str ''] && ![string equal $recipients_str ''] } {
-    set query_restriction "and acs_rels.object_id_two in ($recipients_str)"
-    } elseif {![string equal $rel_types_str ''] && ![string equal $recipients_str ''] } {
-    set query_restriction "and (acs_rels.rel_type in ('$rel_types_str') or acs_rels.object_id_two in ($recipients_str))"
-    } 
 
     set query [db_map sender_info]
+
 
     if {$format == "html"} {
 	set message "$message"

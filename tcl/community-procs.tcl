@@ -762,6 +762,9 @@ namespace eval dotlrn_community {
                 [get_toplevel_community_type_from_community_id $community_id]
 
         if {[string equal $toplevel_community_type dotlrn_class_instance]} {
+	    if {$rel_type == "dotlrn_member_rel"} {
+                set rel_type "dotlrn_student_rel"
+            }
             dotlrn_class::add_user \
                 -rel_type $rel_type \
                 -community_id $community_id \

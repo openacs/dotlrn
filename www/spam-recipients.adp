@@ -28,10 +28,13 @@
 <form method="post" action="spam">
 <p>
 
-Send to the following roles: <p>
 
-@rel_types_html;noquote@
+
 <input type=checkbox name=spam_all> #dotlrn.Send_to_all#
+<p>
+Send to the following roles: <p>
+@rel_types_html;noquote@
+
 <p>
 
 In addition, send to the following people (if you have not selected "Send to Everyone" above):<p>
