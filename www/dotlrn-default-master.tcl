@@ -48,6 +48,7 @@ set user_id [ad_get_user_id]
 set community_id [dotlrn_community::get_community_id]
 set package_id [dotlrn_community::get_package_id $community_id]
 set dotlrn_url [dotlrn::get_url]
+set dotlrn_graphics_url "/graphics"
 
 if {[dotlrn::user_p -user_id $user_id]} {
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
@@ -208,7 +209,7 @@ set header_font ""
 set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
-set header_img_url "$dotlrn_url/graphics/logowhite.gif" 
+set header_img_url "$dotlrn_graphics_url/logowhite.gif" 
 set header_img_alt_text "Header Logo"
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id $package_id]]} {
