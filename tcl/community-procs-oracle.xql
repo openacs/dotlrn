@@ -5,19 +5,9 @@
 
     <fullquery name="dotlrn_community::get_community_id_not_cached.select_community">
         <querytext>
-            select dotlrn_communities.community_id
-            from dotlrn_communities,
-                 (select site_nodes.object_id
-                 from site_nodes
-                 where exists (select 1
-                               from dotlrn_communities dc
-                               where dc.package_id = site_nodes.object_id)
-                 and rownum = 1
-                 start with site_nodes.node_id = (select sn.node_id
-                                                  from site_nodes sn
-                                                  where sn.object_id = :package_id)
-                 connect by prior site_nodes.parent_id = site_nodes.node_id) packages
-            where dotlrn_communities.package_id = packages.object_id
+            select community_id
+            from dotlrn_communities
+            where package_id = :package_id
         </querytext>
     </fullquery>
 
