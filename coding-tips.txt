@@ -1,0 +1,15 @@
+
+Templating
+----------
+
+- You CANNOT nest the <multiple> tag in a single template. Use the <include>
+  tag instead. Pass in the necessary vars. 
+
+- in <include> tags, you can pass a datasource (i.e. a <multiple>) using the
+  "&=" notation. E.g. from /new-portal/www/place-element.adp
+
+    <include src=place-element-other-page &="element_multi" 
+             target_stub=@target_stub@
+             portal_id=@portal_id@
+             page_id=@element_multi.page_id@>
+  
