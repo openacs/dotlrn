@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="dotlrn" package_version="2.0d1" locale="hi_IN" charset="utf-8">
+
+  <msg key="Change_Locale">भाशा परिवर्तन</msg>
+  <msg key="class_instances_pretty_plural">कक्शा </msg>
+  <msg key="control_panel">नियन्त्रण पेनल</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">समूह</msg>
+  <msg key="help">सहाइता </msg>
+  <msg key="logout">लोगआउट</msg>
+  <msg key="user_portal_page_home_title">मेरा स्थान</msg>
+</message_catalog>

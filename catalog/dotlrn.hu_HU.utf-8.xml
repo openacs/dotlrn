@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="dotlrn" package_version="2.0d1" locale="hu_HU" charset="utf-8">
+
+  <msg key="Access">Hozzáférés</msg>
+  <msg key="Access_Level">Hozzáférés szintje</msg>
+  <msg key="Access_level">Hozzáférés szintje:</msg>
+  <msg key="Actions">Lehetőségek</msg>
+  <msg key="add">hozzáad</msg>
+  <msg key="Add_A_Member">Tag hozzáadása</msg>
+  <msg key="Add_a_Professor">Professzor hozzáadása</msg>
+  <msg key="Add_a_Professor_2">Professzor hozzáadása:</msg>
+  <msg key="Add_A_User">Felhasználó hozzáadása</msg>
+  <msg key="Add_a_User">Felhasználó hozzáadása</msg>
+  <msg key="Add_New_Members">Új tagok hozzáadása</msg>
+  <msg key="Add_Professor">Professzor hozzáadása</msg>
+  <msg key="add_selected_members">Kijelölt tagok hozzáadása</msg>
+  <msg key="add_to_another_group">A felhasználó hozzáadása egy másik csoporthoz</msg>
+  <msg key="add_to_dotlrn">A felhasználó hozzáadása a .LRN-höz</msg>
+  <msg key="Add_to_group_">Hozzáadás csoporthoz...</msg>
+  <msg key="Add_User">Felhasználó hozzáadása</msg>
+  <msg key="Add_users_to">Felhasználó hozzáadása e(zek)hez:</msg>
+  <msg key="Add_Users_to_Group">Felhasználók hozzáadása a csoporthoz</msg>
+  <msg key="AddDrop_Memberships">Csatlakozás/leiratkozás</msg>
+  <msg key="Admin">Adminisztrátor</msg>
+  <msg key="admin">adminisztrátor</msg>
+  <msg key="admin_page_name">Beállítások</msg>
+  <msg key="Administer">Adminisztrál</msg>
+  <msg key="Ask_a_question">Feltehetsz egy kérdést:</msg>
+  <msg key="Change_Locale">Helyszín és nyelv</msg>
+  <msg key="class_instances_pretty_name">Osztály</msg>
+  <msg key="class_instances_pretty_plural">Osztályok</msg>
+  <msg key="class_name_header">%class_instances_pretty_name% neve</msg>
+  <msg key="class_page_calendar_title">Naptár</msg>
+  <msg key="class_page_file_storage_title">Dokumentumok</msg>
+  <msg key="class_page_home_title">Osztály kezdőlapja</msg>
+  <msg key="clubs_name_header">%clubs_pretty_name% neve</msg>
+  <msg key="clubs_pretty_name">Klub</msg>
+  <msg key="clubs_pretty_plural">közösségek</msg>
+  <msg key="control_panel">Beállítások</msg>
+  <msg key="course_assistant_role_pretty_plural">Kurzus-aszisztensek</msg>
+  <msg key="Customize_Layout">Elrendezés testreszabása</msg>
+  <msg key="Department">Tanszék</msg>
+  <msg key="departments_pretty_name">Szak</msg>
+  <msg key="dotlrn_admin_pretty_name">Az egész website adminisztrációja</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Csoportok</msg>
+  <msg key="Drop_Membership">Kiiratkozás</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Leiratkozás&quot; border=0&gt;</msg>
+  <msg key="Email_1">Email-cím</msg>
+  <msg key="First_Name">Keresztnév</msg>
+  <msg key="General_Site_Help">Általános segítség</msg>
+  <msg key="help">Segítség</msg>
+  <msg key="instructor_role_pretty_name">Professzor</msg>
+  <msg key="instructor_role_pretty_plural">Professzorok</msg>
+  <msg key="Join_A_Group">Csatlakozz egy csoporthoz</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Csatlakozás&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="Last_Name">Vezetéknév</msg>
+  <msg key="logout">Kijelentkezés</msg>
+  <msg key="lt_Current_clubs_pretty_">Jelenlegi %clubs_pretty_plural%</msg>
+  <msg key="lt_Help_and_Personal_Con">Segítség és személyes beállítások</msg>
+  <msg key="lt_Join_a_class_instance">Csatlakozás egy %class_instances_pretty_name%hoz</msg>
+  <msg key="lt_Join_a_clubs_pretty_n">Csatlakozás egy %clubs_pretty_name%hoz</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Csatlakozás vagy leiratkozás egy osztályhoz vagy csoporthoz.</msg>
+  <msg key="lt_JoinDrop_Classes_or_C">Csatlakozás vagy leiratkozás  osztályokhoz és csoportokhoz</msg>
+  <msg key="lt_Your_Current_Membersh">Jelenlegi tagság</msg>
+  <msg key="Manage_Memberships">Tagságok intézése</msg>
+  <msg key="Members_of">A következő tagjai:</msg>
+  <msg key="no_clubs">Nincsenek %clubs_pretty_plural%</msg>
+  <msg key="Personal_Options">Személyes beállítások</msg>
+  <msg key="Request_Membership">Tagság igénylése</msg>
+  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Tagság igénylése&quot;&gt;</msg>
+  <msg key="Role">Funkció</msg>
+  <msg key="student_role_pretty_name">Diák</msg>
+  <msg key="subcommunities_pretty_plural">Alcsoportok</msg>
+  <msg key="teaching_assistant_role_pretty_plural">Tanársegédek</msg>
+  <msg key="Term">Szemeszter</msg>
+  <msg key="user_portal_page_calendar_title">A naptáram</msg>
+  <msg key="user_portal_page_file_storage_title">A dokumentumaim</msg>
+  <msg key="user_portal_page_home_title">A dolgaim</msg>
+</message_catalog>
