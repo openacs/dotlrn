@@ -23,6 +23,11 @@ namespace eval dotlrn_main_portlet {
     } {
 	return "dotLRN"
     }
+
+    ad_proc -public link {
+    } {
+	return ""
+    }
     
     ad_proc -public add_self_to_page { 
 	page_id 
@@ -83,6 +88,12 @@ namespace eval dotlrn_main_portlet {
 	
     }   
     
+    ad_proc -public edit { 
+	cf 
+    } {
+	return ""
+    }
+
     ad_proc -public remove_self_from_page { 
 	portal_id 
 	instance_id 
