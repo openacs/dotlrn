@@ -28,8 +28,9 @@
 
 <p>
   The format of this value is a comma-separated list of domains (usually
-  preceded by an @ sign). For example, you might use:
-  <code>\@openforce\.net,\@dotlrn\.openforce\.net</code>
+  preceded by the *@ string which match
+  &lt;anything&gt;@&lt;email-domain&gt;). For example, you might use:
+  <code>*@openforce.net,*@dotlrn.openforce.net</code>
 </p>
 
 <formtemplate id="edit_emails"></formtemplate>
