@@ -293,6 +293,7 @@ img.header-img {
     color: $header_font_color;
     background: white;
     width: 100px;
+    white-space: nowrap;
 }
 
 table.element {
