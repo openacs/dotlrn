@@ -37,7 +37,7 @@ set admin_email [db_string select_admin_email {
 
 doc_body_append "[_ dotlrn.Bulk_Uploading]<p>"
 
-set list_of_user [list]
+set list_of_user_ids [list]
 set list_of_addresses_and_passwords [list]
 
 # Do the stuff
@@ -61,11 +61,11 @@ db_transaction {
         set user_id [cc_lookup_email_user $row(email)]
         if {![empty_string_p $user_id]} {
             doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
-            lappend list_of_users $user_id
+            lappend list_of_user_ids $user_id
         } else {
             set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
             
-            lappend list_of_users $user_id
+            lappend list_of_user_ids $user_id
             
             if {![info exists row(type)]} {
                 set row(type) student
