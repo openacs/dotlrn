@@ -60,6 +60,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-packages-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-packages-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/custom-permissions.sql"/>
             <file type="data_model_create" db_type="oracle" path="sql/oracle/dotlrn-create.sql"/>
             <file type="data_model_drop" db_type="oracle" path="sql/oracle/dotlrn-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-init.sql"/>
@@ -135,6 +136,7 @@
             <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-drop.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-packages-create.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/community-memberships-packages-drop.sql"/>
+            <file type="data_model" db_type="postgresql" path="sql/postgresql/custom-permissions.sql"/>
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
             <file type="data_model_drop" db_type="postgresql" path="sql/postgresql/dotlrn-drop.sql"/>
             <file type="data_model" db_type="postgresql" path="sql/postgresql/dotlrn-init.sql"/>
@@ -255,6 +257,11 @@
             <file type="content_page" path="www/admin/clubs.adp"/>
             <file type="content_page" path="www/admin/clubs.tcl"/>
             <file type="query_file" path="www/admin/clubs.xql"/>
+            <file type="content_page" path="www/admin/community-members-add-to-community.adp"/>
+            <file type="content_page" path="www/admin/community-members-add-to-community.tcl"/>
+            <file type="query_file" path="www/admin/community-members-add-to-community.xql"/>
+            <file type="content_page" path="www/admin/department-delete.adp"/>
+            <file type="content_page" path="www/admin/department-delete.tcl"/>
             <file type="content_page" path="www/admin/department-edit.adp"/>
             <file type="content_page" path="www/admin/department-edit.tcl"/>
             <file type="query_file" path="www/admin/department-edit.xql"/>
@@ -272,6 +279,11 @@
             <file type="content_page" path="www/admin/index.adp"/>
             <file type="content_page" path="www/admin/index.tcl"/>
             <file type="content_page" path="www/admin/need-term-note.adp"/>
+            <file type="content_page" path="www/admin/password-update-2.tcl"/>
+            <file type="query_file" path="www/admin/password-update-2.xql"/>
+            <file type="content_page" path="www/admin/password-update.adp"/>
+            <file type="content_page" path="www/admin/password-update.tcl"/>
+            <file type="query_file" path="www/admin/password-update.xql"/>
             <file type="content_page" path="www/admin/portal-templates.adp"/>
             <file type="content_page" path="www/admin/portal-templates.tcl"/>
             <file type="query_file" path="www/admin/portal-templates.xql"/>
@@ -298,6 +310,9 @@
             <file type="content_page" path="www/admin/user-new.adp"/>
             <file type="content_page" path="www/admin/user-new.tcl"/>
             <file type="query_file" path="www/admin/user-new.xql"/>
+            <file type="content_page" path="www/admin/user-nuke-error.adp"/>
+            <file type="content_page" path="www/admin/user-nuke.adp"/>
+            <file type="content_page" path="www/admin/user-nuke.tcl"/>
             <file type="query_file" db_type="oracle" path="www/admin/user-oracle.xql"/>
             <file type="query_file" db_type="postgresql" path="www/admin/user-postgresql.xql"/>
             <file type="content_page" path="www/admin/user.adp"/>
@@ -374,6 +389,9 @@
             <file type="content_page" path="www/configure.tcl"/>
             <file type="content_page" path="www/control-panel.adp"/>
             <file type="content_page" path="www/control-panel.tcl"/>
+            <file type="content_page" path="www/deregister-confirm.adp"/>
+            <file type="content_page" path="www/deregister-confirm.tcl"/>
+            <file type="query_file" path="www/deregister-confirm.xql"/>
             <file type="content_page" path="www/deregister-link.adp"/>
             <file type="content_page" path="www/deregister.tcl"/>
             <file type="content_page" path="www/dotlrn-default-master.adp"/>
@@ -386,20 +404,37 @@
             <file type="content_page" path="www/dotlrn-master.tcl"/>
             <file type="content_page" path="www/folder-chunk.adp"/>
             <file type="content_page" path="www/folder-chunk.tcl"/>
+            <file type="content_page" path="www/graphics/admin.gif"/>
+            <file type="content_page" path="www/graphics/dash.gif"/>
             <file type="content_page" path="www/graphics/dotlrn.gif"/>
+            <file type="content_page" path="www/graphics/drop.gif"/>
             <file type="content_page" path="www/graphics/help-blue.gif"/>
+            <file type="content_page" path="www/graphics/help-comm.gif"/>
+            <file type="content_page" path="www/graphics/help-course.gif"/>
             <file type="content_page" path="www/graphics/help-green.gif"/>
             <file type="content_page" path="www/graphics/help-purple.gif"/>
             <file type="content_page" path="www/graphics/help-red.gif"/>
+            <file type="content_page" path="www/graphics/help-user.gif"/>
+            <file type="content_page" path="www/graphics/join.gif"/>
+            <file type="content_page" path="www/graphics/logo-comm.gif"/>
+            <file type="content_page" path="www/graphics/logo-course.gif"/>
+            <file type="content_page" path="www/graphics/logo-user.gif"/>
             <file type="content_page" path="www/graphics/logout-blue.gif"/>
+            <file type="content_page" path="www/graphics/logout-comm.gif"/>
+            <file type="content_page" path="www/graphics/logout-course.gif"/>
             <file type="content_page" path="www/graphics/logout-green.gif"/>
             <file type="content_page" path="www/graphics/logout-purple.gif"/>
             <file type="content_page" path="www/graphics/logout-red.gif"/>
+            <file type="content_page" path="www/graphics/logout-user.gif"/>
             <file type="content_page" path="www/graphics/logowhite.gif"/>
             <file type="content_page" path="www/graphics/myspace-blue.gif"/>
+            <file type="content_page" path="www/graphics/myspace-comm.gif"/>
+            <file type="content_page" path="www/graphics/myspace-course.gif"/>
             <file type="content_page" path="www/graphics/myspace-green.gif"/>
             <file type="content_page" path="www/graphics/myspace-purple.gif"/>
             <file type="content_page" path="www/graphics/myspace-red.gif"/>
+            <file type="content_page" path="www/graphics/myspace-user.gif"/>
+            <file type="content_page" path="www/graphics/request.gif"/>
             <file type="content_page" path="www/graphics/spacer.gif"/>
             <file type="content_page" path="www/help.adp"/>
             <file type="content_page" path="www/index-not-a-user.adp"/>
@@ -414,6 +449,7 @@
             <file type="content_page" path="www/manage-memberships.tcl"/>
             <file type="content_page" path="www/member-add-2.adp"/>
             <file type="content_page" path="www/member-add-2.tcl"/>
+            <file type="query_file" path="www/member-add-2.xql"/>
             <file type="content_page" path="www/member-add-3.tcl"/>
             <file type="query_file" db_type="oracle" path="www/member-add-oracle.xql"/>
             <file type="query_file" db_type="postgresql" path="www/member-add-postgresql.xql"/>
@@ -445,10 +481,12 @@
             <file type="content_page" path="www/one-community.tcl"/>
             <file type="content_page" path="www/register-link.adp"/>
             <file type="content_page" path="www/register.tcl"/>
+            <file type="query_file" path="www/register.xql"/>
             <file type="content_page" path="www/reject-link.adp"/>
             <file type="content_page" path="www/reject.tcl"/>
             <file type="content_page" path="www/spam-2.adp"/>
             <file type="content_page" path="www/spam-2.tcl"/>
+            <file type="content_page" path="www/spam-policy-toggle.tcl"/>
             <file type="content_page" path="www/spam-variables.adp"/>
             <file type="content_page" path="www/spam.adp"/>
             <file type="content_page" path="www/spam.tcl"/>
@@ -457,11 +495,18 @@
             <file type="content_page" path="www/subcommunity-archive.tcl"/>
             <file type="content_page" path="www/subcommunity-new.adp"/>
             <file type="content_page" path="www/subcommunity-new.tcl"/>
+            <file type="content_page" path="www/subscribe-members.tcl"/>
+            <file type="query_file" path="www/subscribe-members.xql"/>
+            <file type="content_page" path="www/unsubscribe-members.tcl"/>
+            <file type="query_file" path="www/unsubscribe-members.xql"/>
             <file type="content_page" path="www/user-add-2.adp"/>
             <file type="content_page" path="www/user-add-2.tcl"/>
             <file type="content_page" path="www/user-add-3.tcl"/>
             <file type="content_page" path="www/user-add.adp"/>
             <file type="content_page" path="www/user-add.tcl"/>
+            <file type="content_page" path="www/weblog-control-panel.adp"/>
+            <file type="content_page" path="www/weblog-control-panel.tcl"/>
+            <file type="content_page" path="www/weblog-new.tcl"/>
         </files>
         <parameters>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
