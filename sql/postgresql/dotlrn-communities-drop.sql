@@ -26,7 +26,7 @@
 -- @version $Id$
 --
 
-\i communities-tree-drop.sql;
+\i dotlrn-communities-tree-drop.sql;
 
 drop table dotlrn_community_applets;
 drop table dotlrn_applets;

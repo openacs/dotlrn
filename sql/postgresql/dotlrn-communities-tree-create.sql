@@ -23,7 +23,7 @@ begin
 
     if new.supertype is null then
         -- if this is the root community_type we leave it''s sortkey as null
-        return;
+        return new;
     else
         -- else get the max_child_sortkey of the parent community_type
         select tree_sortkey, max_child_sortkey

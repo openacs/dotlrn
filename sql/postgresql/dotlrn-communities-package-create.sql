@@ -132,6 +132,10 @@ BEGIN
         from dotlrn_community_types
         where community_type = p_community_type;
 
+        delete
+        from group_types
+        where group_type = p_community_type;
+
         PERFORM acs_object_type__drop_type(p_community_type, ''f'');
         return 0;
 END;

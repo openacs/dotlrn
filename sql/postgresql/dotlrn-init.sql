@@ -53,6 +53,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -66,6 +67,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -79,6 +81,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -92,6 +95,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -105,6 +109,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -120,7 +125,7 @@ begin
     );
 
     -- create the dotlrn_club community type
-    dotlrn_community_type__new(
+    perform dotlrn_community_type__new(
         ''dotlrn_club'',
         ''dotlrn_community'',
         ''Club'',
@@ -132,7 +137,7 @@ begin
     update acs_object_types set table_name = ''dotlrn_class_instance'', package_name = ''dotlrn_class_instance'' where object_type = ''dotlrn_class_instance'';
     update acs_object_types set table_name = ''dotlrn_club'', package_name = ''dotlrn_club'' where object_type = ''dotlrn_club'';
 
-    perform acs_attribute__create_atribute(
+    perform acs_attribute__create_attribute(
 	   ''dotlrn_community'',
 	   ''member_pretty_name'',
 	   ''string'',
@@ -141,11 +146,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute(
+    perform acs_attribute__create_attribute(
 	   ''dotlrn_community'',
 	   ''member_pretty_plural'',
 	   ''string'',
@@ -154,6 +160,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -166,7 +173,7 @@ begin
     perform acs_rel_type__create_role(''course_admin'', ''Course Administrator'', ''Course Administrators'');
     perform acs_rel_type__create_role(''admin'', ''Administrator'', ''Administrators'');
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''student_pretty_name'',
 	   ''string'',
@@ -175,11 +182,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''student_pretty_plural'',
 	   ''string'',
@@ -188,11 +196,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''course_assistant_pretty_name'',
 	   ''string'',
@@ -201,11 +210,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''course_assistant_pretty_plural'',
 	   ''string'',
@@ -214,11 +224,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''teaching_assistant_pretty_name'',
 	   ''string'',
@@ -227,11 +238,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''teaching_assistant_pretty_plural'',
 	   ''string'',
@@ -240,11 +252,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''instructor_pretty_name'',
 	   ''string'',
@@ -253,11 +266,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''instructor_pretty_plural'',
 	   ''string'',
@@ -266,11 +280,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''course_admin_pretty_name'',
 	   ''string'',
@@ -279,11 +294,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''course_admin_pretty_plural'',
 	   ''string'',
@@ -292,11 +308,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',		  
 	   ''admin_pretty_name'',
 	   ''string'',
@@ -305,11 +322,12 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
 
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
 	   ''admin_pretty_plural'',
 	   ''string'',
@@ -318,6 +336,7 @@ begin
 	   null, null, null,
 	   0,
 	   1,
+	   null,
 	   ''generic'',
 	   ''f''
     );
@@ -361,12 +380,12 @@ begin
     );
 
     -- all rels to communities must have a portal_id
-    perform acs_attribute__create_atribute (
+    perform acs_attribute__create_attribute (
 	  ''dotlrn_member_rel'',
 	  ''portal_id'',
 	  ''integer'',
 	  ''Page ID'',
-	  ''Page IDs''
+	  ''Page IDs'',
 	  null, null, null,
 	  1,
 	  1,

@@ -17,7 +17,7 @@
 -- drop the dotLRN communities tree model
 -- @author dan chak (chak@openforce.net)
 
-drop trigger dotlrn_communities_in_tr;
-drop trigger dotlrn_community_types_in_tr;
+drop trigger dotlrn_communities_in_tr on dotlrn_communities_all;
+drop trigger dotlrn_community_types_in_tr on dotlrn_community_types;
 drop function dotlrn_communities_in_tr();
 drop function dotlrn_community_types_in_tr();
