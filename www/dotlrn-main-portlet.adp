@@ -34,36 +34,46 @@
     set new_level 0
     set depth 0
 %>
-
+<h3>
   <if @communities.simple_community_type@ eq "dotlrn_class_instance">
-    <li><%= [parameter::get -parameter class_instances_pretty_plural] %>:
+    <%= [parameter::get -parameter class_instances_pretty_plural] %>:
   </if>
   <else>
-    <li><%= [parameter::get -parameter clubs_pretty_plural] %>:
+    <%= [parameter::get -parameter clubs_pretty_plural] %>:
   </else>
-
+</h3>
 <group column="simple_community_type">
 
 <% set new_level $communities(tree_level) %>
 
   <if @new_level@ lt @old_level@>
-<% incr depth -1 %>
+    <% incr depth -1 %>
     </ul>
-  </if>
+	<if @new_level@ eq 1 and @depth@ gt 1>
+	<% while {$depth > 1} {	
+		append close_tags "</ul>" 
+		incr depth -1 
+	} 
+	%>
+	@close_tags@
+        </if>
+     </if>
 
   <if @new_level@ gt @old_level@>
 <% incr depth 1 %>
     <ul>
+	<nobr>
   </if>
 
       <li>
         <nobr>
           <a href="@communities.url@">@communities.pretty_name@</a>
-          <if @communities.admin_p@ eq t> 
-            [<small>
-              <a href="@communities.url@one-community-admin">Administer</a>
-            </small>]
-          </if>
+	<if @show_buttons_p@ eq 1>
+		&nbsp<a href="@communities.url@deregister?referer=@referer@"><img src=graphics/drop.gif alt="Drop Membership" border=0></a>
+		<if @communities.admin_p@ eq 1>
+        	      <a href="@communities.url@one-community-admin"><img border=0 valign="bottom" src="@dotlrn_url@/graphics/admin.gif" alt="Administer"></a>
+		</if>
+	</if>
         </nobr>
       </li>
 
@@ -80,3 +90,11 @@
 </multiple>
 
 </if>
+
+
+
+
+
+
+
+
