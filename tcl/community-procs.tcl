@@ -215,7 +215,7 @@ namespace eval dotlrn_community {
         {-start_date:required}
         {-end_date:required}
     } {
-        set the community active ebgin and end dates
+        set the community active begin and end dates
     } {
         set start_date "[template::util::date::get_property year $start_date] [template::util::date::get_property month $start_date] [template::util::date::get_property day $start_date]"
         set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
