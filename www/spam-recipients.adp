@@ -60,13 +60,11 @@ In addition, send to the following people (if you have not selected "Send to Eve
   <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.last_name@]%></td>
   <td>
     <if @read_private_data_p@ eq 1>
-        <a href="mailto:@current_members.email@">
-	@current_members.email@</a>	
+	<%=[email_image::get_user_email -user_id @current_members.user_id@] %>
     </if>
     <else>
 	<if @my_user_id@ eq @current_members.user_id@>
-    	    <a href="mailto:@current_members.email@">
-	@current_members.email@</a>
+	<%=[email_image::get_user_email -user_id @current_members.user_id@] %>
 	</if>
         <else>
            &nbsp;
