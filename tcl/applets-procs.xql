@@ -45,4 +45,12 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_applet::mount.instance_default_name">
+        <querytext>
+            select pretty_name 
+            from   apm_package_types 
+            where  package_key = :package_key 
+        </querytext>
+    </fullquery>
+
 </queryset>

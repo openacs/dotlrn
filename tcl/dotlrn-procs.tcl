@@ -264,11 +264,14 @@ namespace eval dotlrn {
 	# we have a problem here.
 	set parent_node_id [db_string select_node_id {}]
 
+        # Use the package pretty name as the default name. Makes the context bar look much nicer.
+        set pretty_name [db_string package_pretty_name {}]
+
         set new_package_id [site_node_apm_integration::new_site_node_and_package \
             -name $mount_point \
             -parent_id $parent_node_id \
             -package_key $package_key \
-            -instance_name $package_key \
+            -instance_name $pretty_name \
             -context_id $package_id \
         ]
 

@@ -73,4 +73,12 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn::instantiate_and_mount.package_pretty_name">
+        <querytext>
+            select pretty_name 
+            from   apm_package_types 
+            where  package_key = :package_key 
+        </querytext>
+    </fullquery>
+
 </queryset>

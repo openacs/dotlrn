@@ -90,7 +90,8 @@ namespace eval dotlrn_applet {
         }
 
         if {[empty_string_p $pretty_name]} {
-            set pretty_name $package_key
+            # Use the package pretty name as the default name. Makes the context bar look much nicer.
+            set pretty_name [db_string instance_default_name {}]
         }
 
         set parent_node_id [site_node::get_node_id -url [get_url]]
