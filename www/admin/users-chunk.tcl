@@ -11,7 +11,7 @@ ad_page_contract {
 set user_id [ad_conn user_id]
 
 if {![exists_and_not_null referer]} {
-    set referer users
+    set referer "/dotlrn/admin/users"
 }
 
 ad_return_template

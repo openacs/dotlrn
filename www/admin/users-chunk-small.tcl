@@ -17,11 +17,13 @@ if {![exists_and_not_null type]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer users
+    set referer "/dotlrn/admin/users"
 }
 
 # Currently, just present a list of dotLRN users
-if {[string equal $type "pending"] == 1} {
+if {[string equal $type "deactivated"] == 1} {
+    db_multirow users select_deactivated_users {}
+} elseif {[string equal $type "pending"] == 1} {
     db_multirow users select_non_dotlrn_users {}
 } else {
     db_multirow users select_dotlrn_users {}

@@ -1,7 +1,7 @@
 # dotlrn/www/admin/users-delete.tcl
 
 ad_page_contract {
-    Delete a set of users.
+    Nuke a set of users.
 
     @author yon (yon@openforce.net)
     @creation-date 2002-02-14
@@ -13,7 +13,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar {{users Users} {users-search {User Search}} {Delete Users}}
+set context_bar {{users Users} {users-search {User Search}} {Nuke Users}}
 
 form create confirm_delete
 

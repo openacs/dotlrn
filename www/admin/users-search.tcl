@@ -37,8 +37,9 @@ element create user_search_results action \
     -options {
         {None none}
         {{Spam ...} spam}
-        {{Delete ...} delete}
         {{Add to community ...} add_to_community}
+        {{Deactivate ...} deactivate}
+        {{Nuke ...} delete}
     } \
     -value $action
 
@@ -51,11 +52,14 @@ if {[form is_valid user_search_results]} {
         "spam" {
             ad_returnredirect "users-spam?[export_vars {{users $selected_users}}]"
         }
-        "delete" {
-            ad_returnredirect "users-delete?[export_vars {{users $selected_users}}]"
-        }
         "add_to_community" {
             ad_returnredirect "users-add-to-community?[export_vars {{users $selected_users}}]"
+        }
+        "deactivate" {
+            ad_returnredirect "users-deactivate?[export_vars {{users $selected_users}}]"
+        }
+        "delete" {
+            ad_returnredirect "users-delete?[export_vars {{users $selected_users}}]"
         }
     }
 }

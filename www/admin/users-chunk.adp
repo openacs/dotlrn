@@ -20,11 +20,16 @@
 
         <tr bgcolor="@bgcolor@">
           <td>
-            <if @type@ eq "pending">
-              <a href="user-new-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+            <if @type@ eq "deactivated">
+                <a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
             </if>
             <else>
-              <a href="user-edit?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+              <if @type@ eq "pending">
+                <a href="user-new-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+              </if>
+              <else>
+                <a href="user-edit?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+              </else>
             </else>
           </td>
           <td align="center">@users.access_level@</td>

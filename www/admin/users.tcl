@@ -23,10 +23,13 @@ set dotlrn_roles [db_list_of_lists select_dotlrn_roles {
 }]
 
 lappend dotlrn_roles {pending Pending {}}
+lappend dotlrn_roles {deactivated Deactivated {}}
 
 set control_bar [ad_dimensional [list [list type {User Type:} admin $dotlrn_roles]]]
 
-if {[string equal $type "pending"] == 1} {
+if {[string equal $type "deactivated"] == 1} {
+    set n_users [db_string select_deactivated_users_count {}]
+} elseif {[string equal $type "pending"] == 1} {
     set n_users [db_string select_non_dotlrn_users_count {}]
 } else {
     set n_users [db_string select_dotlrn_users_count {}]

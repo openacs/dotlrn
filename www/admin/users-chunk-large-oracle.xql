@@ -49,4 +49,27 @@
       </querytext>
     </fullquery>
 
+    <fullquery name="select_deactivated_users">
+      <querytext>
+        select cc_users.user_id,
+               cc_users.first_names,
+               cc_users.last_name,
+               cc_users.email,
+               'limited' as access_level,
+               'f' as read_private_data_p,
+               acs_permission.permission_p(:root_object_id, cc_users.user_id, 'admin') as site_wide_admin_p
+        from cc_users
+        where not exists (select 1
+                          from dotlrn_users
+                          where dotlrn_users.user_id = cc_users.user_id)
+        and cc_users.member_state = 'banned'
+        and (
+            lower(cc_users.last_name) like lower('%' || :search_text || '%')
+         or lower(cc_users.first_names) like lower('%' || :search_text || '%')
+         or lower(cc_users.email) like lower('%' || :search_text || '%')
+        )
+        order by cc_users.last_name
+      </querytext>
+    </fullquery>
+
 </queryset>

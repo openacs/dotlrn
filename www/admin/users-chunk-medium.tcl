@@ -19,12 +19,14 @@ if {![exists_and_not_null type]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer users
+    set referer "/dotlrn/admin/users"
 }
 
 set default_section Z
 foreach dimension {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} {
-    if {[string equal $type "pending"] == 1} {
+    if {[string equal $type "deactivated"] == 1} {
+        set section_count [db_string select_deactivated_users_count {}]
+    } elseif {[string equal $type "pending"] == 1} {
         set section_count [db_string select_non_dotlrn_users_count {}]
     } else {
         set section_count [db_string select_dotlrn_users_count {}]
@@ -39,7 +41,9 @@ foreach dimension {A B C D E F G H I J K L M N O P Q R S T U V W X Y Z} {
 
 set control_bar [portal::dimensional [list [list section {} $section $dimensions]]]
 
-if {[string equal $type "pending"] == 1} {
+if {[string equal $type "deactivated"] == 1} {
+    db_multirow users select_deactivated_users {}
+} elseif {[string equal $type "pending"] == 1} {
     db_multirow users select_non_dotlrn_users {}
 } else {
     db_multirow users select_dotlrn_users {}
