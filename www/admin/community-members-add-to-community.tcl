@@ -80,21 +80,29 @@ if {[form is_valid select_community]} {
             foreach user $users {
 		set user_id [ns_set get $user user_id]
 		if {![dotlrn_community::member_p $community_id $user_id]} {
-		    if {[catch {
-			# There is still a danger that a double
-			# click will cause a failure.
-			dotlrn_community::add_user $community_id $user_id
-		    } errmsg]} {
-			if {[dotlrn_community::member_p $community_id $user_id]} {
-			    # assume this was a double click
-			    ad_returnredirect $referer
-			    ad_script_abort
-			} else {
-			    ns_log Error "community-members-add-to_community.tcl failed: $errmsg"
-			    ReturnHeaders
-			    ad_return_error "[_ dotlrn.lt_Error_adding_user_to_]"  "[_ dotlrn.lt_An_error_occured_whil]"
-			}
-		    }
+                    # now we know user isn't an approved member of the new community
+                    if {![dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]} {
+
+                        # they aren't awaiting approval either, so we can go ahead and create them
+                        if {[catch {
+                            # There is still a danger that a double
+                            # click will cause a failure.
+                            dotlrn_community::add_user $community_id $user_id
+                        } errmsg]} {
+                            if {[dotlrn_community::member_p $community_id $user_id]} {
+                                # assume this was a double click
+                                ad_returnredirect $referer
+                                ad_script_abort
+                            } else {
+                                ns_log Error "community-members-add-to_community.tcl failed: $errmsg"
+                                ReturnHeaders
+                                ad_return_error "[_ dotlrn.lt_Error_adding_user_to_]"  "[_ dotlrn.lt_An_error_occured_whil]"
+                            }
+                        }
+                    } else {
+                        # they are already there and awaiting approval, so just approve them.
+                        dotlrn_community::membership_approve -user_id $user_id -community_id $community_id
+                    }
 		}
             }
         }
