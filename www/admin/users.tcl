@@ -33,9 +33,8 @@ set context_bar {Users}
 set dotlrn_roles [db_list_of_lists select_dotlrn_roles {
     select dotlrn_user_types.type,
            dotlrn_user_types.pretty_name || ' (' || (select count(*)
-                                                     from party_member_map
-                                                     where party_member_map.party_id = dotlrn_user_types.group_id
-                                                     and party_member_map.member_id <> dotlrn_user_types.group_id) || ')',
+                                                     from dotlrn_users
+                                                     where dotlrn_users.type = dotlrn_user_types.type) || ')',
            ''
     from dotlrn_user_types
     order by dotlrn_user_types.pretty_name
