@@ -86,7 +86,9 @@ $community_url/members
 
         "
 
-            set package_id [site_node_apm_integration::get_child_package_id -package_id [dotlrn_community::get_package_id $community_id] -package_key [bulk_mail::package_key]]
+            set package_id [site_node_apm_integration::get_child_package_id \
+                                -package_id [dotlrn_community::get_package_id $community_id] \
+                                -package_key [bulk_mail::package_key]]
 
             bulk_mail::new \
                     -package_id $package_id \
