@@ -20,7 +20,7 @@
 
 <master src="dotlrn-admin-master">
 <property name="title">#dotlrn.Users_Search#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context_bar">@context_bar;noquote@</property>
 
 <p></p>
 
@@ -57,7 +57,7 @@
         <th align="left">#dotlrn.Role#</th>
         <td>
           <formgroup id="role">
-            @formgroup.widget@&nbsp;@formgroup.label@&nbsp;&nbsp;
+            @formgroup.widget;noquote@&nbsp;@formgroup.label@&nbsp;&nbsp;
           </formgroup>
         </td>
       </tr>
