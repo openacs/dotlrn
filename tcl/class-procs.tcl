@@ -8,12 +8,12 @@
 #
 
 ad_library {
-    
+
     Procs to manage DOTLRN Classes
-    
+
     @author ben@openforce.net
     @creation-date 2001-08-18
-    
+
 }
 
 namespace eval dotlrn_class {
@@ -92,9 +92,9 @@ namespace eval dotlrn_class {
     ad_proc -public new_instance {
         {-description ""}
         {-class_type:required}
-        {-class_name:required}
         {-term:required}
         {-year:required}
+        {-join_policy "needs approval"}
     } {
         Creates a new instance of a class for a particular term and year,
         and returns the class instance key.
@@ -108,14 +108,17 @@ namespace eval dotlrn_class {
         ns_set put $extra_vars year $year
         ns_set put $extra_vars term $term
         ns_set put $extra_vars class_key $class_type
-        
+        ns_set put $extra_vars join_policy $join_policy
+
+        set pretty_name "[dotlrn_community::get_community_type_name $class_type]; $term $year"
+
         # Create the community
         return [dotlrn_community::new \
                 -description $description \
                 -community_type $class_type \
                 -object_type [community_type] \
                 -community_key $community_key \
-                -pretty_name $class_name \
+                -pretty_name $pretty_name \
                 -extra_vars $extra_vars]
     }
 
@@ -144,5 +147,13 @@ namespace eval dotlrn_class {
 
             dotlrn_community::add_user_to_community -rel_type $rel_type -extra_vars $extra_vars -community_id $community_id -user_id $user_id
         }
+    }
+
+    ad_proc -public pretty_name {
+        {-class_key:required}
+    } {
+        gets the pretty name for a particular class
+    } {
+        return [db_string select_class_pretty_name {} -default ""]
     }
 }

@@ -3,7 +3,7 @@ ad_page_contract {
     Form target for the Configuration page for an instance's portal template
 
     @author Arjun Sanyal (arjun@openforce.net)
-    @cvs-id $Id$
+    @version $Id$
 } { }
 
 set form [ns_getform]

@@ -8,7 +8,7 @@ ad_library {
 
     @creation-date November 4 2001
     @author ben@openforce.net 
-    @cvs-id $Id$
+    @version $Id$
 
 }
 

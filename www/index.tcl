@@ -3,6 +3,7 @@ ad_page_contract {
     
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-08-20
+    @version $Id$
 } {
 }
 

@@ -51,15 +51,20 @@ namespace eval dotlrn_club {
         {-key:required}
         {-pretty_name:required}
         {-description:required}
+        {-join_policy "open"}
     } {
         creates a new club and returns the club key
     } {
+        set extra_vars [ns_set create]
+        ns_set put $extra_vars join_policy $join_policy
+
         return [dotlrn_community::new \
             -community_type [community_type] \
             -object_type [community_type] \
             -community_key $key \
             -pretty_name $pretty_name \
-            -description $description]
+            -description $description \
+            -extra_vars $extra_vars]
     }
 
     ad_proc -public available_roles {} {

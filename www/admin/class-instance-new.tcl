@@ -23,13 +23,16 @@ element create add_class_instance description \
 element create add_class_instance class_key \
     -label "Class Key" -value $class_key -datatype text -widget hidden
 
+element create add_class_instance join_policy \
+    -label "Join Policy" -datatype text -widget select -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+
 element create add_class_instance referer \
     -label "Referer" -value $referer -datatype text -widget hidden
 
 if {[form is_valid add_class_instance]} {
-    template::form get_values add_class_instance class_key year term description referer
+    template::form get_values add_class_instance class_key year term description join_policy referer
 
-    set class_instance_id [dotlrn_class::new_instance -description $description -class_type $class_key -term $term -year $year]
+    set class_instance_id [dotlrn_class::new_instance -description $description -class_type $class_key -term $term -year $year -join_policy $join_policy]
 
     if {[empty_string_p $referer]} {
         set referer "one-class?class_key=$class_key"

@@ -21,6 +21,3 @@
 </multiple>
   </table>
 </if>
-<else>
-  <blockquote>Currently, there are no active communities.</blockquote>
-</else>

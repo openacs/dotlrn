@@ -8,6 +8,3 @@
 </multiple>
   </table>
 </if>
-<else>
-  <blockquote>Currently, there are no active community types.</blockquote>
-</else>

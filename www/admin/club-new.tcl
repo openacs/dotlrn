@@ -21,13 +21,16 @@ element create add_club name \
 element create add_club description \
     -label "Charter" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft}
 
+element create add_club join_policy \
+    -label "Join Policy" -datatype text -widget select -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+
 element create add_club referer \
     -label "Referer" -value $referer -datatype text -widget hidden
 
 if {[form is_valid add_club]} {
-    form get_values add_club club_key name description referer
+    form get_values add_club club_key name description join_policy referer
 
-    set key [dotlrn_club::new -description $description -key $club_key -pretty_name $name]
+    set key [dotlrn_club::new -description $description -key $club_key -pretty_name $name -join_policy $join_policy]
 
     if {[empty_string_p $referer]} {
         set referer "clubs"

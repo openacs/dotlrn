@@ -45,7 +45,7 @@ create table dotlrn_communities (
 );
 
 -- active communities
-create view dotlrn_active_comms
+create or replace view dotlrn_active_comms
 as
     select dotlrn_communities.*,
            join_policy
@@ -55,7 +55,7 @@ as
     and (active_end_date is null or active_end_date > sysdate)
     and dotlrn_communities.community_id = groups.group_id;
 
-create view dotlrn_active_not_closed_comms
+create or replace view dotlrn_active_not_closed_comms
 as
     select dotlrn_communities.*,
            join_policy
@@ -194,6 +194,7 @@ is
    portal_id		in dotlrn_communities.portal_id%TYPE default null,
    portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
+   join_policy          in groups.join_policy%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
                            default sysdate,
    creation_user        in acs_objects.creation_user%TYPE
@@ -237,6 +238,7 @@ as
    portal_id		in dotlrn_communities.portal_id%TYPE default null,
    portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
+   join_policy          in groups.join_policy%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
                            default sysdate,
    creation_user        in acs_objects.creation_user%TYPE
@@ -253,15 +255,14 @@ as
 	creation_date => creation_date,
 	creation_user => creation_user,
 	creation_ip => creation_ip,
-	group_name => community_key
+	group_name => community_key,
+        join_policy => join_policy
    );
 
    insert into dotlrn_communities
    (community_id, community_type, community_key, pretty_name, description, package_id, portal_id, portal_template_id)
    values
    (c_id, community_type, community_key, pretty_name, description, package_id, portal_id, portal_template_id);
-
-
 
    return c_id;
  end;
@@ -311,5 +312,3 @@ as
 end;
 /
 show errors
- 
-

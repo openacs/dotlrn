@@ -3,7 +3,7 @@
 ad_page_contract {
     @author yon (yon@milliped.com)
     @creation-date Dec 07, 2001
-    @cvs-id $Id$
+    @version $Id$
 } -query {
 } -properties {
     community_types:multirow

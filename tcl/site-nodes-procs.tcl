@@ -3,7 +3,7 @@ ad_library {
 
     @author yon@openforce.net
     @creation-date 2001-12-07
-    @cvs-id $Id$
+    @version $Id$
 }
 
 namespace eval site_nodes {

@@ -3,7 +3,7 @@ ad_page_contract {
     Configuration page for an instance's portal template
 
     @author Arjun Sanyal (arjun@openforce.net)
-    @cvs-id $Id$
+    @version $Id$
 } {
     portal_id:naturalnum,notnull
     return_url:notnull
