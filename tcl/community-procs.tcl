@@ -317,7 +317,7 @@ namespace eval dotlrn_community {
         This gets the relative URL for a package_id under a particular node_id
     } {
         if {[empty_string_p $current_node_id]} {
-            set current_node_id [site_node::get_node_id [ad_conn url]]
+            set current_node_id [site_node::get_node_id -url [ad_conn url]]
         }
 
         return [db_string select_node_url {} -default ""]

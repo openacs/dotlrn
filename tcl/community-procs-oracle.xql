@@ -69,7 +69,7 @@
             select site_node.url(node_id)
             from site_nodes
             where parent_id = :current_node_id
-            and object_id= :package_id
+            and object_id = :package_id
         </querytext>
     </fullquery>
 
