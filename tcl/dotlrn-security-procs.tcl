@@ -21,6 +21,19 @@ ad_library {
 
 namespace eval dotlrn {
 
+    ad_proc -public generate_key {
+        {-name:required}
+    } {
+        Generate a key from a name. Uses a concatination of the
+        name and nexval of the acs_oid sequence. To generate a 
+        globally unique key that can be used in urls.
+
+        FIXME : this is abuse of the sequence, add sequence for this in dotlrn 
+    } {
+        regsub -all {\W+} $name "" name
+        return "$name-[db_nextval acs_object_id_seq]"
+    }
+
     ad_proc -private do_abort {} {
         do an abort if security violation
     } {

@@ -16,12 +16,6 @@ set title "New [ad_parameter subcommunity_pretty_name]"
 
 form create add_subcomm
 
-element create add_subcomm subcomm_key \
-    -label "[ad_parameter subcommunity_pretty_name] Key (a short name, no spaces)" \
-    -datatype text \
-    -widget text \
-    -html {size 60}
-
 element create add_subcomm pretty_name \
     -label "Name" \
     -datatype text \
@@ -47,8 +41,7 @@ element create add_subcomm referer \
     -value $referer
 
 if {[form is_valid add_subcomm]} {
-    form get_values add_subcomm \
-        subcomm_key pretty_name join_policy referer description
+    form get_values add_subcomm pretty_name join_policy referer description
 
     # we set some extra vars based on the community_type of the parent
     set parent_type  \
@@ -77,7 +70,6 @@ if {[form is_valid add_subcomm]} {
                 -parent_community_id $parent_community_id \
                 -description $description \
                 -community_type "dotlrn_community" \
-                -community_key $subcomm_key \
                 -pretty_name $pretty_name \
                 -extra_vars $extra_vars]
         
