@@ -100,6 +100,7 @@
                         from dotlrn_member_rels_full
                         where dotlrn_member_rels_full.user_id = :user_id
                         and dotlrn_member_rels_full.community_id = dotlrn_communities.community_id)
+      and dotlrn_communities.parent_community_id is null
       order by root_community_type, dotlrn_communities.community_type, dotlrn_communities.pretty_name
     </querytext>
   </fullquery>
