@@ -35,7 +35,7 @@ namespace eval dotlrn_applet {
     }
 
     ad_proc -public is_initalized {} {
-        if {[site_node::get_node_id -url [get_url]] != [dotlrn::get_node_id] } {
+        if {[nsv_exists site_nodes "[get_url]/"]} {
             return 1
         } else {
             return 0
@@ -43,7 +43,6 @@ namespace eval dotlrn_applet {
     }
 
     ad_proc -public init {} {
-        # Create the applets node
         site_node::new -name applets -parent_id [dotlrn::get_node_id]
     }
 
@@ -52,9 +51,6 @@ namespace eval dotlrn_applet {
     } {
         Register an applet.
     } {
-        # Check if it's registered
-
-        # Add it
         nsv_lappend dotlrn applets $applet_key
     }
 
@@ -143,13 +139,13 @@ namespace eval dotlrn_applet {
         set applets_url [get_url]
         set parent_node_id [site_node_id $applets_url]
 
-        # Mount it baby
         set package_id [dotlrn::mount_package \
-                -parent_node_id $parent_node_id \
-                -package_key $package_key \
-                -url $url \
-                -directory_p t \
-                -pretty_name $pretty_name]
+            -parent_node_id $parent_node_id \
+            -package_key $package_key \
+            -url $url \
+            -directory_p t \
+            -pretty_name $pretty_name \
+        ]
 
         return $package_id
     }
@@ -157,10 +153,10 @@ namespace eval dotlrn_applet {
     ad_proc -public is_applet_mounted {
         {-url:required}
     } {
-        if {[site_node::get_node_id -url "[get_url]/$url"] == [site_node::get_node_id -url [get_url]]} {
-            return 0
-        } else {
+        if {[nsv_exists site_nodes "[get_url]/$url/"]} {
             return 1
+        } else {
+            return 0
         }
     }
 

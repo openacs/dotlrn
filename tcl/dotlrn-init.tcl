@@ -65,7 +65,7 @@ if {[dotlrn::is_instantiated]} {
         # init of each applet NOTE: this applet_add proc _must_ be able to be
         # called repeatedly since this script is eval'd at every server startup
         foreach applet [dotlrn_community::list_applets] {
-            # Callback on all applets
+            ns_log notice "dotlrn-init: calling ${applet}::AddApplet"
             dotlrn_community::applet_call $applet AddApplet [list]
         }
 
