@@ -39,7 +39,7 @@ namespace eval dotlrn {
                 -replacement {} \
                 -existing_urls { members configure spam index not-allowed clone help } \
                 -no_resolve=[expr !$increment_p] \
-                $name]
+                -- $name]
     }
 
     ad_proc -private do_abort {} {
