@@ -1,7 +1,9 @@
 
 <small>[<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>]</small>
 
+<if @classes:rowcount@ gt 0 or @clubs:rowcount@ gt 0>
 <ul>
+</if>
 
 <if @classes:rowcount@ gt 0>
  <li><%= [ad_parameter class_instances_pretty_plural] %>:
@@ -37,4 +39,7 @@
   </ul>
 </if>
 
+<if @classes:rowcount@ gt 0 or @clubs:rowcount@ gt 0>
 </ul>
+</if>
+
