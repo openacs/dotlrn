@@ -22,7 +22,7 @@ ad_page_contract {
 } {
     portal_id:integer
     return_url
-    anchor
+    {anchor {}}
 }
 
 ns_log warning "starting one-community-portal-configure"
