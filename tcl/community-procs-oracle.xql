@@ -26,6 +26,17 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::delete_type.delete_community_type">
+        <querytext>
+            declare
+            begin
+                :1 := dotlrn_community_type.delete(
+                    community_type => :community_type_key
+                );
+            end;
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::new.create_community">
         <querytext>
             declare

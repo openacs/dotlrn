@@ -55,7 +55,9 @@ namespace eval dotlrn_community {
                     -pretty_name $pretty_name \
                     -directory_p "t"]
 
-            dotlrn_community::set_type_package_id $community_type $package_id
+            dotlrn_community::set_type_package_id \
+                -community_type $community_type \
+                -package_id $package_id
 
             parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
             parameter::set_value -package_id $package_id -parameter community_type_level_p -value 1
@@ -85,7 +87,6 @@ namespace eval dotlrn_community {
         array set parent_node [site_node::get -node_id $parent_node_id]
 
         db_transaction {
-            # Create the class directly using PL/SQL API
             set community_type_key [db_exec_plsql create_community_type {}]
 
             set package_id [site_node_apm_integration::new_site_node_and_package \
@@ -102,19 +103,49 @@ namespace eval dotlrn_community {
             parameter::set_value -package_id $package_id -parameter community_level_p -value 0
 
             # Set the site node
-            dotlrn_community::set_type_package_id $community_type_key $package_id
+            dotlrn_community::set_type_package_id \
+                -community_type $community_type_key \
+                -package_id $package_id
         }
 
         return $community_type_key
     }
 
-    ad_proc -public set_type_package_id {
-        community_type
-        package_id
+    ad_proc -public delete_type {
+        {-community_type_key:required}
     } {
-        Update the package ID for the community type
+        delete a community type
+    } {
+        db_transaction {
+            # Get the package_id for the type
+            set package_id [dotlrn_community::get_type_package_id \
+                -community_type $community_type_key \
+            ]
+
+            # Create type
+            db_exec_plsql delete_community_type {}
+
+            # blow away the package_id and ALL associated site nodes
+            site_node_apm_integration::delete_site_nodes_and_package \
+                    -package_id $package_id
+        }
+    }
+
+    ad_proc -public set_type_package_id {
+        {-community_type:required}
+        {-package_id:required}
+    } {
+        map the type's name to it's package_id
     } {
         db_dml update_package_id {}
+    }
+
+    ad_proc -public get_type_package_id {
+        {-community_type:required}
+    } {
+        get the type's package_id 
+    } {
+        db_string select_package_id {}
     }
 
     ad_proc -public get_type_node_id {

@@ -23,6 +23,14 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::delete_type.delete_community_type">
+        <querytext>
+                select dotlrn_community_type__delete(
+                    :community_type_key
+                );
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::new.create_community">
         <querytext>
                 select dotlrn_community__new(
