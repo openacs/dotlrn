@@ -330,7 +330,7 @@
   <msg key="lt_Your_passwords_dont_m">Kata-kata laluan anda tidak sama! Mungkin, anda telah tersilap menaip semasa mengisi salah satu daripadanya.</msg>
   <msg key="lt_Your_search_returned_">Carian anda tidak mengembalikan sebarang keputusan, sila perluaskan kriteria carian anda.</msg>
   <msg key="lt_Youre_asking_to_chang">Anda meminta untuk mengubah tahap akses untuk pengguna ini. Ini mempunyai implikasi-implikasi yang serius. Adakah anda pasti tentang ini?</msg>
-  <msg key="ltnone_set_upgt">&amp;lt;tiada disetkan up&amp;gt; </msg>
+  <msg key="ltnone_set_upgt">&lt;tiada disetkan up&gt; </msg>
   <msg key="Mail_Failed">Hantaran Emel Gagal</msg>
   <msg key="Manage">Urus</msg>
   <msg key="Manage_Applets">Urus Applets</msg>
@@ -478,7 +478,7 @@
   <msg key="term_properties">sifat-sifat terma.</msg>
   <msg key="Terms">Terma-terma</msg>
   <msg key="terms">Terma-terma</msg>
-  <msg key="the_format_of_email_domains">Format untuk nilai ini adalah sekumpulan domain yang dipisahkan dengan aksara koma (,). Ia biasanya bermula dengan *@ iaitu menyamai &amp;lt;nama&amp;gt;@&amp;lt;nama-domain&amp;gt;. Sila lihat contoh di bawah:</msg>
+  <msg key="the_format_of_email_domains">Format untuk nilai ini adalah sekumpulan domain yang dipisahkan dengan aksara koma (,). Ia biasanya bermula dengan *@ iaitu menyamai &lt;nama&gt;@&lt;nama-domain&gt;. Sila lihat contoh di bawah:</msg>
   <msg key="The_name">Nama</msg>
   <msg key="there_are_no_users_matching">Tiada ahli menyamai %search_text%</msg>
   <msg key="this_user_is_deleted">ahli ini telah dihapuskan</msg>

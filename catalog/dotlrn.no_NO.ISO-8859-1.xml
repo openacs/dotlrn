@@ -326,7 +326,7 @@
   <msg key="lt_Your_passwords_dont_m">Passordene dine stemmer ikke overens. Sannsynligvis har du skrevet feil på ett av dem.</msg>
   <msg key="lt_Your_search_returned_">Søket gav ingen treff. Vennligst bruk mer generelle søkekriterier.</msg>
   <msg key="lt_Youre_asking_to_chang">Du ber om å endre aksessnivå for denne brukeren. Dette har omfattende følger. Er du sikker på dette?</msg>
-  <msg key="ltnone_set_upgt">&amp;lt;ingen satt opp&amp;gt; </msg>
+  <msg key="ltnone_set_upgt">&lt;ingen satt opp&gt; </msg>
   <msg key="Mail_Failed">E-post kom ikke fram</msg>
   <msg key="Manage">Administrer</msg>
   <msg key="Manage_Applets">Administrer applets</msg>
@@ -466,7 +466,7 @@
   <msg key="term_properties">semesteregenskaper</msg>
   <msg key="Terms">Semestre</msg>
   <msg key="terms">Semestre</msg>
-  <msg key="the_format_of_email_domains">Formatet av denne verdien er en komma-separert liste av områder (vanligvis innledet med *@ strengen som matcher &amp;lt;hvasomhelst&amp;gt;@&amp;lt;e-postområde&amp;gt;). For eksempel kunne du bruke:</msg>
+  <msg key="the_format_of_email_domains">Formatet av denne verdien er en komma-separert liste av områder (vanligvis innledet med *@ strengen som matcher &lt;hvasomhelst&gt;@&lt;e-postområde&gt;). For eksempel kunne du bruke:</msg>
   <msg key="The_name">navnet</msg>
   <msg key="there_are_no_users_matching">Ingen brukere passer til %search_text%.</msg>
   <msg key="this_user_is_deleted">denne brukeren er slettet</msg>

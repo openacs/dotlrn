@@ -330,7 +330,7 @@
   <msg key="lt_Your_passwords_dont_m">Las contraseñas no coinciden. Puede que haya cometido un error de tecleo.</msg>
   <msg key="lt_Your_search_returned_">No hay resultado alguno, por favor, revise los criterios de búsqueda.</msg>
   <msg key="lt_Youre_asking_to_chang">Ha solicitado cambiar el nivel de acceso de este usuario. Esto tendrá consecuencias importantes. ¿Está seguro de ello?</msg>
-  <msg key="ltnone_set_upgt">$lt;ninguno&amp;gt;</msg>
+  <msg key="ltnone_set_upgt">$lt;ninguno&gt;</msg>
   <msg key="Mail_Failed">Envío de correo fallido</msg>
   <msg key="Manage">Administrar</msg>
   <msg key="Manage_Applets">Administrar Applets</msg>

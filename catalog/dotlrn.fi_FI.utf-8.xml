@@ -324,7 +324,7 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="lt_Your_passwords_dont_m">Antamasi salasanat eivät täsmää! Oletettavasti teit kirjoitusvirheen syöttäessäsi jompaakumpaa salasanaa.</msg>
   <msg key="lt_Your_search_returned_">Hakusi ei tuottanut tuloksia, laajenna hakukriteerejäsi.</msg>
   <msg key="lt_Youre_asking_to_chang">Pyydät vaihtamaan käyttäjän käyttöoikeustasoa. Oletko varma, että haluat tehdä niin?</msg>
-  <msg key="ltnone_set_upgt">&amp;lt;tyhjä&amp;gt;</msg>
+  <msg key="ltnone_set_upgt">&lt;tyhjä&gt;</msg>
   <msg key="Mail_Failed">Sähköpostin lähetys epäonnistui</msg>
   <msg key="Manage">Hallinnoi</msg>
   <msg key="Manage_Applets">Ylläpidä appletteja</msg>
@@ -459,7 +459,7 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="term_properties">lukukauden ominaisuuksia.</msg>
   <msg key="Terms">Lukukaudet</msg>
   <msg key="terms">Lukukaudet</msg>
-  <msg key="the_format_of_email_domains">Syötä lomakkeeseen pilkuilla erotettu lista domain-tunnuksia (jota edeltää yleensä merkkijono *@, eli &amp;lt;mitävain&amp;gt;@&amp;lt;email-domain&amp;gt;), esimerkiksi:</msg>
+  <msg key="the_format_of_email_domains">Syötä lomakkeeseen pilkuilla erotettu lista domain-tunnuksia (jota edeltää yleensä merkkijono *@, eli &lt;mitävain&gt;@&lt;email-domain&gt;), esimerkiksi:</msg>
   <msg key="The_name">Nimi</msg>
   <msg key="there_are_no_users_matching">Yksikään käyttäjä ei vastaa hakuehtoa: %search_text%.</msg>
   <msg key="this_user_is_deleted">käyttäjä on poistettu</msg>

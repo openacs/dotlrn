@@ -339,7 +339,7 @@ Besked:
   <msg key="lt_Your_passwords_dont_m">Adgangskoderne er ikke ens! Sandsynligvis lavede du en fejl da du indtastede én af dem.</msg>
   <msg key="lt_Your_search_returned_">Din søgning returnerede ingen resultater. Udvid venligst dine søgekriterier.</msg>
   <msg key="lt_Youre_asking_to_chang">Du beder om at ændre denne brugers adgangsniveau. Dette har særdeles omfattende følger. Er du helt sikker på at du vil gøre det?</msg>
-  <msg key="ltnone_set_upgt">&amp;lt;ingen sat op&amp;gt; </msg>
+  <msg key="ltnone_set_upgt">&lt;ingen sat op&gt; </msg>
   <msg key="Mail_Failed">Fejl ved afsendelse</msg>
   <msg key="Manage">Administrér</msg>
   <msg key="Manage_Applets">Administrer Programmer</msg>
@@ -496,7 +496,7 @@ Tak
   <msg key="term_properties">egenskaber for termin.</msg>
   <msg key="Terms">Terminer</msg>
   <msg key="terms">Terminer</msg>
-  <msg key="the_format_of_email_domains">Denne værdi skal formateres som en komma-separeret liste over domæner (sædvanligvis med &quot;*@&quot;-strengen, som matcher &amp;lt;alt&amp;gt;@&amp;lt;mail-domæne&amp;gt;, foran). Du kunne eksempelvis bruge:</msg>
+  <msg key="the_format_of_email_domains">Denne værdi skal formateres som en komma-separeret liste over domæner (sædvanligvis med &quot;*@&quot;-strengen, som matcher &lt;alt&gt;@&lt;mail-domæne&gt;, foran). Du kunne eksempelvis bruge:</msg>
   <msg key="The_name">Navnet</msg>
   <msg key="there_are_no_users_matching">Der er ingen brugere der matcher søgeteksten %search_text%. </msg>
   <msg key="this_user_is_deleted">denne bruger er slettet</msg>

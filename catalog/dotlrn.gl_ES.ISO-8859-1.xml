@@ -320,7 +320,7 @@
   <msg key="lt_Your_passwords_dont_m">As túas señas non coinciden! Posibelmente cometiches un engano cando dixitabas unha delas. </msg>
   <msg key="lt_Your_search_returned_">A tua pesquisa non produciu ningún resultado, por favor expande o critério de pesquisa.</msg>
   <msg key="lt_Youre_asking_to_chang">Estás a pedir para mudar o nível de acceso deste usuario. Isto ten fortes repercusións. Tes a certeza disto? </msg>
-  <msg key="ltnone_set_upgt">&amp;lt;ningún configurado&amp;gt;</msg>
+  <msg key="ltnone_set_upgt">&lt;ningún configurado&gt;</msg>
   <msg key="Mail_Failed">O correo fallou</msg>
   <msg key="Manage">Xerenciar</msg>
   <msg key="Manage_Applets">Xerenciar applets</msg>
@@ -454,7 +454,7 @@
   <msg key="term_properties">propriedades do periodo.</msg>
   <msg key="Terms">Periodos</msg>
   <msg key="terms">Periodos</msg>
-  <msg key="the_format_of_email_domains">O formato deste valor é unha lista de dominio separados por vírgula (normalmente precedidos pola cadea *@ que coincide con &amp;lt;calquera cousa&amp;gt;@&amp;lt;domínio-de-correo&amp;gt;). Por exemplo, podes utilizar:</msg>
+  <msg key="the_format_of_email_domains">O formato deste valor é unha lista de dominio separados por vírgula (normalmente precedidos pola cadea *@ que coincide con &lt;calquera cousa&gt;@&lt;domínio-de-correo&gt;). Por exemplo, podes utilizar:</msg>
   <msg key="The_name">O nome</msg>
   <msg key="there_are_no_users_matching">Non hai usuarios coincidindo con %search_text%.</msg>
   <msg key="this_user_is_deleted">este usuarioe encóntrase eliminado</msg>

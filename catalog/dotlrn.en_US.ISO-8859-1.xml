@@ -550,7 +550,7 @@ Thank you
   <msg key="terms">Terms</msg>
   <msg key="the_format_of_email_domains">The format of this value is a comma-separated list of domains (usually
   preceded by the *@ string which match
-  &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). For example, you might use:</msg>
+  &lt;anything&gt;@&lt;email-domain&gt;). For example, you might use:</msg>
   <msg key="The_name">The name</msg>
   <msg key="there_are_no_users_matching">There are no users matching %search_text%.</msg>
   <msg key="this_user_is_deleted">this user is deleted</msg>

@@ -337,7 +337,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="lt_Your_passwords_dont_m">Sie haben zwei unterschiedliche Passwörter eingegeben.</msg>
   <msg key="lt_Your_search_returned_">Ihre Suche ergab keine Treffer. Bitte lockern Sie die Suchkriterien.</msg>
   <msg key="lt_Youre_asking_to_chang">Wollen Sie wirklich die Zugriffsebene dieses Benutzers ändern? Diese Aktion hat umfangreiche Auswirkungen.</msg>
-  <msg key="ltnone_set_upgt">&amp;lt; Nicht festgelegt &amp;gt; </msg>
+  <msg key="ltnone_set_upgt">&lt; Nicht festgelegt &gt; </msg>
   <msg key="Mail_Failed">Die E-Mail(s) konnte(n) nicht gesendet werden.</msg>
   <msg key="Manage">Verwalten</msg>
   <msg key="Manage_Applets">Anwendungen verwalten</msg>
