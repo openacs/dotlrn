@@ -1,7 +1,7 @@
 --
 -- Privacy control update
--- for systems deployed on the dotlrn-2-0 branch prior
--- to February 20, 2004.
+-- for systems upgrading to 2.0 from
+-- code olderthan February 20, 2004.
 --
 -- by aegrumet@alum.mit.edu on 2004-02-23
 --
