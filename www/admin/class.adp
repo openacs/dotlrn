@@ -44,46 +44,82 @@
 
 <br>
 
-<p>
+<center>
+
 <if @can_instantiate@>
-  [<small>
-    <a href="class-instance-new?class_key=@class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
-  </small>]
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="class-instance-new?class_key=@class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
+
+  <br>
 </if>
 <else>
 <include src="need-term-note">
 </else>
-</p>
 
-<table bgcolor="#eeeeee" width="100%">
-  <tr>
-    <th align="left" width="50%">
-<formtemplate id="term_form">
-      Term:&nbsp;<formwidget id="term_id">
-</formtemplate>
-    </th>
-  </tr>
-</table>
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+    <tr bgcolor="#eeeeee">
+      <th align="left" width="50%">
+  <formtemplate id="term_form">
+        Term:&nbsp;<formwidget id="term_id">
+  </formtemplate>
+      </th>
+    </tr>
+  </table>
 
-<p></p>
+  <br>
+
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+    <tr>
+      <th align="left" width="15%">Term</th>
+      <th align="left">
+        <%= [parameter::get -parameter class_instances_pretty_name] %> Name
+      </th>
+      <th align="center" width="5%">Members</th>
+      <th align="center" width="10%">Actions</th>
+    </tr>
 
 <if @class_instances:rowcount@ gt 0>
-<table width="100%">
-  <tr>
-    <th align="left" width="15%">Term</th>
-    <th align="left" width="50%">
-      <%= [parameter::get -parameter class_instances_pretty_name] %> Name
-    </th>
-    <th align="left" width="15%">Members</th>
-    <th align="left">Actions</th>
-  </tr>
+
 <multiple name="class_instances">
-  <tr>
-    <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
-    <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
-    <td>@class_instances.n_members@</td>
-    <td>[<small> <a href="@class_instances.url@one-community-admin">Administer</a> </small>]</td>
-  </tr>
-</multiple>
-</table>
+
+<if @class_instances.rownum@ odd>
+    <tr bgcolor="#eeeeee">
 </if>
+<else>
+    <tr bgcolor="#d9e4f9">
+</else>
+      <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
+      <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
+      <td align="center">@class_instances.n_members@</td>
+      <td align="center">
+        <nobr>
+        <small>
+          [ <a href="@class_instances.url@one-community-admin">Administer</a> ]
+        </small>
+        </nobr>
+      </td>
+    </tr>
+
+</multiple>
+
+</if>
+<else>
+    <tr bgcolor="#eeeeee">
+      <td colspan="4">
+        <i>No <%= [parameter::get -parameter class_instances_pretty_plural] %></i>
+      </td>
+    </tr>
+</else>
+
+  </table>
+
+</center>
