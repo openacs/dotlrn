@@ -11,6 +11,7 @@ ad_page_contract {
     {type "student"}
     {rel_type "dotlrn_full_user_rel"}
     {read_private_data_p "t"}
+    {add_membership_p "t"}
 } -properties {
     context_bar:onevalue
 }
@@ -80,6 +81,12 @@ element create add_user read_private_data_p \
     -widget hidden \
     -value $read_private_data_p
 
+element create add_user add_membership_p \
+    -label "Add Membership To Community" \
+    -datatype text \
+    -widget hidden \
+    -value $add_membership_p
+
 if {[form is_valid add_user]} {
     template::form get_values add_user target_user_id email first_names last_name referer rel_type type read_private_data_p
 
@@ -96,7 +103,11 @@ if {[form is_valid add_user]} {
     }
 
     set redirect "user-add-2?[export_vars {{user_id $target_user_id} email password first_names last_name referer}]"
-    ad_returnredirect "member-add-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
+    if {[string equal $add_membership_p "t"] == 1} {
+        ad_returnredirect "member-add-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
+    } else {
+        ad_returnredirect $redirect
+    }
     ad_script_abort
 }
 
