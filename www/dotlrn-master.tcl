@@ -105,10 +105,6 @@ if {![info exists link_control_panel]} {
     set link_control_panel 1
 }
 
-if {![info exists control_panel_text]} {
-    set control_panel_text "Control Panel"
-}
-
 if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
     # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance 
     # (i.e. in a news instance of a class)

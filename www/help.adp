@@ -32,17 +32,17 @@
   receive group emails and forum alerts from SloanSpace. </p>
 <p><b>To Change Password:</b><br>
  
-<li> Login and go to your Control Panel page<br>
+<li> Login and go to your My Account page<br>
  
 <li>If you do not have a personal portal, click on the Help icon in the group 
-  banner to get to your Control Panel.<br>
+  banner to get to your My Account.<br>
   <li> Click on &quot;Change My Password&quot;<br>
   <li> Enter your new password twice and click &quot;Update.&quot;
 <p>To change personal information:<br>
   
-<li> Login and go to your Control Panel page<br>
+<li> Login and go to your My Account page<br>
 <li>If you do not have a personal portal, click on the Help icon in the group 
-  banner to get to your Control Panel.<br>
+  banner to get to your My Account.<br>
   <li>  Click on &quot;Edit My Personal Information&quot;<br>
   <li>  Edit your full name, your email address (which also changes your login 
   name to the system) and/or your personal URL.<br>
@@ -95,12 +95,12 @@
     of any persons who will need to be administrators of this community. You will 
     be notified by email when the community shell has been created. </p>
   <p><b><font size="4"><a name="BulkEmail">Bulk Mail</a></font></b><br>
-  Class and community administrators can send group emails through the group Control 
-  Panel page. If enabled, class and community members can send group emails through 
-  the &quot;Email Members&quot; links on the user Control Panel page.</p>
+  Class and community administrators can send group emails through the group administration
+ page. If enabled, class and community members can send group emails through 
+  the &quot;Email Members&quot; links on the user's My Account page.</p>
 <p><b>To send a group email:</b><br>
   
-<li> For admins, go to group Control Panel and click &quot;New Bulk Mail.&quot; 
+<li> For admins, go to the administration page and click &quot;New Bulk Mail.&quot; 
   <br>
   
 <li> For students in classes, go to the Staff List portlet and click on Member 
@@ -112,12 +112,12 @@
   <li>  Review the message and click &quot;Confirm.&quot;<br>
   
 <li> The email is sent to all members with the role chosen. Group admins can view 
-  the bulk mail history from the group Control Panel page.
+  the bulk mail history from the group administration page.
   
   <p><b><font size="4"><a name="Alerts">Modifying Your Forum Email Alerts</a></font></b><br>
     You can subscribe and unsubscribe to email alerts for any forum open to you 
-    through the "Edit My Forum Email Alerts" link on the user Control Panel page. 
-    Limited Access users can access their Control Panel through the Help icon 
+    through the "Edit My Forum Email Alerts" link on the My Account page. 
+    Limited Access users can access their My Account page through the Help icon 
     in the group banner.</p>
   
   <p><b><font size="4"><a name=Help">Additional Help</a></font></b><br>

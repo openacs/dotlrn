@@ -179,7 +179,8 @@ namespace eval dotlrn {
         }
 
         #
-        # Common code for the the behavior of the control panel link
+        # Common code for the the behavior of the control panel link (class administration
+        # or my account)
         #
 	set extra_td_selected_p 0
         if {$show_control_panel} {
