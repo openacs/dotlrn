@@ -17,9 +17,14 @@
     #
 
 %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<property name="header_stuff">@header_stuff@</property>
-<property name="title">@title@</property>
+<html>
+<head>
+<title>@title@</title>
+@header_stuff@
+</head>
+<body>
 
 <!-- Header Begin -->
 <table width="100%">
@@ -62,27 +67,19 @@
   
 </table>
 
-<!-- navbars on every page -->
-
 <small>@navbar@</small>
 
 <P>
-<!-- Header End -->
-
-
 
 <slave>
 
 
 <!-- Footer Begin -->
 
-<!-- navbars on every page -->
 <P>
 
 <small>@navbar@</small>
 
-
 <hr>
 
 <div class="footer"><a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> | <a href="http://web.mit.edu">MIT</a></div>
-

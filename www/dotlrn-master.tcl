@@ -22,171 +22,73 @@ ad_page_contract {
     dynamically generates a CSS file for the dotlrn banner color, font, header 
     image, and the portal themes.
 
-    Q: How do I get the dotlrn banner and navigation everywhere on my site, 
-    not just under /dotlrn?
+    Q: How do I use this file?
 
-    A: By default the dotlrn banner and navigation is NOT shown everywhere on 
-    your site. If you would like the dotlrn banner and navigation everywhere,
-    Change the "Main Site"'s "DefaultMaster" parameter 
+    A: This template is meant to replace your OpenACS default-master template.    
+    
+    To do this change the "Main Site"'s "DefaultMaster" parameter 
     from "/www/default-master" to "/packages/dotlrn/www/dotlrn-master"
     at http://yoursite.com/admin/site-map
 
+    Q: Do I have to replace my site's default-master template with this 
+    one for dotlrn to work?
+
+    A: Yes
+
     Q: How do I customize the banner, images, CSS, etc?
 
-    A: You can change the default banner and generated CSS by editing this file
+    A: You can change the default banner and generated CSS by editing this template
     and the associated ADP.
 
-    WARNING: All current portlet themes (table, deco, nada, etc) depend on some
-    of the CSS generated below. Be careful when you edit the CSS below otherwise
-    these themes will most likely break.
-
-    Q: I added some custom pages to /dotlrn. How do I control the navbar from
-    these pages? 
-
-    A: ADP pages can pass properties "up" to this script to alter it's behavior.
-
-    The properties an ADP can set are:
-    title - the html title
-    no_navbar_p - if 1, hide navbar
-    link_all - if exists, make all page names in the navbar links
-    show_control_panel - if 1 show the "Control Panel" link in the navbar
-    link_control_panel - if 1 link the "Control Panel" link in the navbar
-
-
-    TODO:
-    1. link_control_panel - are ADPs using this right?
+    WARNING: Some portal themes depend on the CSS generated below. Be careful when
+    you edit the CSS below and check that the portal theme has not broken.
 
     @author arjun (arjun@openforce.net)
     @version $Id$
 
-} {
-    {title "SloanSpace"}
-    {no_navbar_p 0}
 }
-
-#     {link_all 0}
-#     {show_control_panel 0}
-#     {link_control_panel 1}
-
-if {![info exists link_control_panel]} {
-    set link_control_panel 1
-}
-
-if {![info exists show_control_panel]} {
-    set show_control_panel 0
-}
-
-if {![info exists link_all]} {
-    set link_all 0
-}
-
-#ad_return_complaint 1 "foo $link_control_panel / $title"
-#ad_script_abort
 
 #
 # Set up some basic vars
 # 
 set user_id [ad_get_user_id] 
-set portal_id ""
-set full_name "[dotlrn::get_user_name $user_id]"
-set control_panel_text "Control Panel"
-
-# properties for the adp
 set dotlrn_url [dotlrn::get_url]
 set dotlrn_graphics_url "/graphics"
-set text $full_name
-set navbar "<br>"
 
+#
+# Get passed in properties
+#
+
+# title - if passed in appends it to the default title
+set default_title "dotLRN"
+
+if {![info exists title]} {
+    set title $default_title
+} else {
+    set title "$default_title : $title"
+}
+
+# no_navbar_p - a property to turn off the navbar, not currently used
+if {![info exists no_navbar_p]} {
+    set no_navbar_p 0
+}
+
+# link_control_panel - a special property used by "control-panel" pages
+if {![info exists link_control_panel]} {
+    set link_control_panel 1
+}
 
 #                    
 # navbar generation
 #
-# All this code does is get the correct values for portal_id and sets some 
-# navbar variables based on the user and location# 
-# 
-
 if {!$no_navbar_p} {
-    
-    set community_id [dotlrn_community::get_community_id]
-    set control_panel_name control-panel
-
-    if {[empty_string_p $community_id]} {
-        #
-        # We are not under a dotlrn community. However we could be under /dotlrn
-        # (i.e. in the user's portal) or anywhere else on the site
-        #
-        if {[dotlrn::user_p -user_id $user_id]} {
-            # this user is a dotlrn user, show their personal portal
-            # navbar, including the control panel link
-            set portal_id [dotlrn::get_portal_id -user_id $user_id]
-            set show_control_panel 1
-        }
-    } else {
-        #
-        # We are under a dotlrn community. Get the community's portal_id, etc.
-        #
-        
-        # some defaults
-        set text [dotlrn_community::get_community_header_name $community_id] 
-        set control_panel_name one-community-admin
-    
-        # figure out what this privs this user has on the community
-        set admin_p [dotlrn::user_can_admin_community_p \
-            -user_id $user_id \
-            -community_id $community_id
-        ]
-    
-        if {!$admin_p} {
-            # the user can't admin this community, perhaps they are a
-            # humble member instead?
-            set member_p [dotlrn_community::member_p $community_id $user_id]
-        } else {
-            # admins always get the control_panel_link
-            set show_control_panel 1
-        }
-    
-        if {$admin_p || $member_p} {
-            set portal_id [dotlrn_community::get_portal_id \
-                -community_id $community_id
-            ]
-        } else {
-            # show this person the comm's non-member-portal
-            set portal_id [dotlrn_community::get_non_member_portal_id \
-                -community_id $community_id
-            ]
-        }
-    }
-
-    # Common code for the the behavior of the "control panel" link
-    #
-    if {![string equal [ad_conn url] "[dotlrn::get_url]/" ]} {
-        # if we are not under /dotlrn, link all of the pages in the navbar
-        set link_all 1 
-    } 
-
-    if {$show_control_panel} {
-        if {$link_control_panel} {
-            set extra_td_html \
-                " &nbsp; <a href=$control_panel_name>$control_panel_text</a>"
-        } else {
-            set extra_td_html " &nbsp; $control_panel_text"
-        } 
-    } else {
-        set extra_td_html {}
-    } 
-
-    # Actually generate the navbar, if we got a valid portal_id
-    
-    if {![empty_string_p $portal_id]} {
-        set navbar [portal::navbar \
-            -portal_id $portal_id \
-            -link_all $link_all \
-            -link "$dotlrn_url/" \
-            -pre_html "" \
-            -post_html "" \
-            -extra_td_html $extra_td_html \
-            -table_html_args "class=\"navbar\""]
-    }
+    set navbar [dotlrn::portal_navbar \
+        -user_id $user_id \
+        -link_control_panel $link_control_panel \
+        -control_panel_text "Control Panel"
+    ]
+} else {
+    set navbar "<br>"
 }
 
 
@@ -204,6 +106,7 @@ set header_img_alt_text "Header Logo"
 # gets the package_id for the passed in dotlrn instace,
 # if the community_id is invalid, returns the pacakge_id of the 
 # main dotlrn instance ???
+set community_id [dotlrn_community::get_community_id]
 set package_id [dotlrn_community::get_package_id $community_id]
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id $package_id]]} {
@@ -278,15 +181,11 @@ if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 |
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
 } else {
     # under /dotlrn
-    set text $full_name    
+    set text "[dotlrn::get_user_name $user_id]"
 }
 
-#
-# WARNING: All current portlet themes (table, deco, nada, etc) depend on some
-# of the CSS defined below. Be carefull when you edit the CSS below, 
-# and check how themes use it.
-#
 
+# WARNING: read note at the top of the file before altering the CSS below
 set header_stuff "
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">
 
@@ -335,6 +234,11 @@ td.element-header-buttons {
     background: $color_hack;
     color: $color_hack;
     white-space: nowrap;
+}
+
+td.element-header-plain {
+    color: black;
+    background: \#ddddff;
 }
 
 img.element-header-button {
