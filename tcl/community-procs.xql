@@ -477,7 +477,7 @@
     <fullquery name="dotlrn_community::list_applets.select_community_applets">
         <querytext>
             select dotlrn_applets.applet_key
-            from dotlrn_community_applets
+            from dotlrn_community_applets,
                  dotlrn_applets
             where dotlrn_community_applets.community_id = :community_id
             and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
