@@ -31,11 +31,27 @@ namespace eval site_nodes {
     }
 
     ad_proc -public get_parent_id {
-        {-node_id:required}
+        {-node_id ""}
+        {-instance_id ""}
     } {
-        get the parent_id of this node_id
+        get the parent_id (a node_id) of this node_id
     } {
-        return [db_string select_parent_site_node {}]
+        if {![empty_string_p $node_id]} {
+            return [db_string select_parent_by_node_id {}]
+        } elseif {![empty_string_p $instance_id]} {
+            return [db_string select_parent_by_instance_id {}]
+        } else {
+            ns_log error "site_nodes::get_parent_id Bad params!"
+            ad_return_complaint 1  "site_nodes::get_parent_id Bad params! Tell your admin."
+        }
+    }
+
+    ad_proc -public get_parent_name {
+        {-instance_id ""}
+    } {
+        get the name of the parent of this instance
+    } {
+        return [db_string select_parent_name_by_id {}]
     }
 
 
