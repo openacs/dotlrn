@@ -68,7 +68,7 @@ is
   )
   is 
   begin
-    delete from dotlrn_member_rels where rel_id= delete.rel_id;
+    delete from dotlrn_member_rels where rel_id= dotlrn_member_rel.delete.rel_id;
 
     membership_rel.delete(rel_id);
   end;
@@ -137,7 +137,7 @@ is
   )
   is 
   begin
-    delete from dotlrn_admin_rels where rel_id= delete.rel_id;
+    delete from dotlrn_admin_rels where rel_id= dotlrn_admin_rel.delete.rel_id;
 
     dotlrn_member_rel.delete(rel_id);
   end;
@@ -164,7 +164,7 @@ is
   ) return dotlrn_student_rels.rel_id%TYPE;
 
   procedure delete (
-    p_rel_id		in dotlrn_student_rels.rel_id%TYPE
+    rel_id		in dotlrn_student_rels.rel_id%TYPE
   );
 
 end;
@@ -206,7 +206,7 @@ is
   )
   is 
   begin
-    delete from dotlrn_student_rels where rel_id= delete.rel_id;
+    delete from dotlrn_student_rels where rel_id= dotlrn_student_rel.delete.rel_id;
 
     dotlrn_member_rel.delete(rel_id);
   end;
@@ -275,7 +275,7 @@ is
   )
   is 
   begin
-    delete from dotlrn_ta_rels where rel_id= delete.rel_id;
+    delete from dotlrn_ta_rels where rel_id= dotlrn_ta_rel.delete.rel_id;
 
     dotlrn_admin_rel.delete(rel_id);
   end;
@@ -344,7 +344,7 @@ is
   )
   is 
   begin
-    delete from dotlrn_instructor_rels where rel_id= delete.rel_id;
+    delete from dotlrn_instructor_rels where rel_id= dotlrn_instructor_rel.delete.rel_id;
 
     dotlrn_admin_rel.delete(rel_id);
   end;
