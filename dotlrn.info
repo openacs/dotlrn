@@ -46,7 +46,6 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/class-memberships-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/classes-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/classes-drop.sql"/>
-            <file type="data_model" db_type="oracle" path="sql/oracle/classes-memberships-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/clubs-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/clubs-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/communities-create.sql"/>
@@ -54,6 +53,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/communities-package-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/communities-package-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/communities-tree-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/communities-tree-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-packages-create.sql"/>

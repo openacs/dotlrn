@@ -157,3 +157,5 @@ create table dotlrn_community_applets (
     constraint dotlrn_community_applets_pk
     primary key (community_id, applet_id)
 );
+
+@@ communities-tree-create.sql

@@ -91,26 +91,21 @@
 
     <fullquery name="dotlrn_community::get_toplevel_community_type_from_community_id.select_community_type">
         <querytext>
-            select object_type
-            from acs_object_types
-            where supertype = 'dotlrn_community'
-            start with object_type = (select community_type
-                                      from dotlrn_communities
-                                      where parent_community_id is null 
-                                      and community_type != 'dotlrn_community'
-                                      start with community_id = :community_id
-                                      connect by community_id = prior parent_community_id)
-            connect by object_type = prior supertype
+            select dotlrn_community_types.community_type
+            from dotlrn_community_types
+            where dotlrn_community_types.tree_sortkey = (select tree.ancestor_key(dotlrn_communities.tree_sortkey, 1)
+                                                         from dotlrn_communities
+                                                         where dotlrn_communities.community_id = :community_id)
         </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::get_toplevel_community_type.select_community_type">
         <querytext>
-            select object_type
-            from acs_object_types
-            where supertype = 'dotlrn_community'
-            start with object_type = :community_type
-            connect by object_type = prior supertype
+            select dotlrn_community_types.community_type
+            from dotlrn_community_types
+            where dotlrn_community_types.tree_sortkey = (select tree.ancestor_key(dct.tree_sortkey, 1)
+                                                         from dotlrn_community_types dct
+                                                         where dct.community_type = :community_type)
         </querytext>
     </fullquery>
 

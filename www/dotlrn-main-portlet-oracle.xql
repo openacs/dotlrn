@@ -5,27 +5,19 @@
 
     <fullquery name="select_communities">
         <querytext>
-            select dc.*,
-                   dotlrn_community.url(dc.community_id) as url,
-                   acs_permission.permission_p(dc.community_id, :user_id, 'admin') as admin_p,
-                   decode(dc.community_type, 'dotlrn_community', 'dotlrn_community',
-                                             'dotlrn_club', 'dotlrn_club',
-                                             'dotlrn_class_instance') as simple_community_type
-            from (select level,
-                         rownum as my_rownum,
-                         dotlrn_communities.community_id,
-                         dotlrn_communities.parent_community_id,
-                         dotlrn_communities.community_type,
-                         dotlrn_communities.pretty_name
-                  from dotlrn_communities
-                  connect by prior dotlrn_communities.community_id = dotlrn_communities.parent_community_id
-                  start with dotlrn_communities.parent_community_id is null
-                  order by decode(dotlrn_communities.community_type, 'dotlrn_community', 2, 'dotlrn_club', 1, 0),
-                           dotlrn_communities.pretty_name) dc,
+            select dotlrn_communities.*,
+                   dotlrn_community.url(dotlrn_communities.community_id) as url,
+                   decode(dotlrn_communities.community_type, 'dotlrn_community', 'dotlrn_community',
+                                                             'dotlrn_club', 'dotlrn_club',
+                                                             'dotlrn_class_instance') as simple_community_type,
+                   tree.tree_level(dotlrn_communities.tree_sortkey) as tree_level,
+                   acs_permission.permission_p(dotlrn_communities.community_id, :user_id, 'admin') as admin_p
+            from dotlrn_communities,
                  dotlrn_member_rels_approved
-            where dc.community_id = dotlrn_member_rels_approved.community_id
+            where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
             and dotlrn_member_rels_approved.user_id = :user_id
-            order by dc.my_rownum
+            order by decode(dotlrn_communities.community_type, 'dotlrn_community', 2, 'dotlrn_club', 1, 0),
+                     tree_level
         </querytext>
     </fullquery>
 

@@ -14,23 +14,5 @@
 --  details.
 --
 
---
--- drop the dotLRN communities model
---
--- @author Ben Adida (ben@openforce.net)
--- @author yon (yon@openforce.net
--- @author arjun (arjun@openforce.net)
--- @creation-date September 20th, 2001 (redone)
--- @version $Id$
---
-
-@@ communities-tree-drop.sql;
-
-drop table dotlrn_community_applets;
-drop table dotlrn_applets;
-drop view dotlrn_active_comms_not_closed;
-drop view dotlrn_active_communities;
-drop view dotlrn_communities_not_closed;
-drop view dotlrn_communities;
-drop table dotlrn_communities_all;
-drop table dotlrn_community_types;
+drop trigger dotlrn_communities_in_tr;
+drop trigger dotlrn_community_types_in_tr;
