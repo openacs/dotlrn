@@ -82,8 +82,13 @@ namespace eval dotlrn_class {
 	    # the user_id is needed to set the perms on the portals - aks
 	    set user_id [ad_conn user_id]
 	    
-	    # Create the portal page
-	    set page_id [portal::create $user_id]
+	    # Create portal template page
+	    append foo $class_name " portal template"
+	    set portal_template_id [portal::create -portal_template_p "t" -name $foo $user_id ]
+
+	    # Create the non-member page
+	    append bar $class_name " non-member portal"
+	    set page_id [portal::create -name $bar  -template_id $portal_template_id  $user_id]
 
 	    # Insert the class instance
 	    set community_id [db_exec_plsql create_class_instance {}]
