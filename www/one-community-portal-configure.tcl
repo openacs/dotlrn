@@ -63,7 +63,7 @@ if {$default_portal_p == 1} {
 
 
 set rendered_page [portal::configure \
-    -allow_theme_change_p 0 \
+    -allow_theme_change_p 1 \
     [dotlrn_community::get_portal_id] \
     $referer
 ]
