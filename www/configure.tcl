@@ -42,10 +42,23 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
     return
 
 } else {
-    # do i have access to my personal portal?
     set user_id [ad_conn user_id]
 
-    dotlrn::require_user_browse -user_id $user_id
+    # am i not a limited access user with 0 or 1 communities?
+    # if so, i have a user portal that i can configure
+    if {![dotlrn::user_can_browse_p -user_id $user_id]} {
+    
+        set communities [dotlrn_community::get_all_communities_by_user $user_id]
+    
+        if {[llength $communities] == 0} {
+            ad_returnredirect "index-not-a-user"
+            ad_script_abort
+        } elseif {[llength $communities] == 1} {
+            ad_returnredirect [ns_set get [lindex $communities 0] url]
+            ad_script_abort
+        }
+    
+    }
 
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
     set name [portal::get_name $portal_id]
