@@ -6,7 +6,7 @@
 -- by aegrumet@alum.mit.edu on 2004-02-23
 --
 
-prompt Creating relationships, relational segments, helper views and package...
+-- prompt Creating relationships, relational segments, helper views and package...
 \i ../privacy-init.sql
 \i ../privacy-package-create.sql
 
@@ -19,6 +19,7 @@ declare
    v_permission_p char(1);
    v_non_guest_relseg_id integer;
    v_guest_relseg_id integer;
+   user record;
 begin
 
    --
@@ -30,7 +31,7 @@ begin
    from site_nodes c, site_nodes p
    where p.node_id = c.parent_id
      and c.name = ''dotlrn''
-     and p.name is null;
+     and p.parent_id is null;
 
    select segment_id into v_non_guest_relseg_id
      from rel_segments
@@ -54,11 +55,11 @@ begin
      from dual;
 
      if v_permission_p = ''t'' then
-        acs_permission__revoke_permission(
+        perform acs_permission__revoke_permission(
           v_dotlrn_package_id,user.user_id,''read_private_data'');
-        dotlrn_privacy__set_user_non_guest(user.user_id);
+        perform dotlrn_privacy__set_user_non_guest(user.user_id);
      else
-        dotlrn_privacy__set_user_guest(user.user_id);
+        perform dotlrn_privacy__set_user_guest(user.user_id);
      end if;
 
     end loop;
@@ -78,13 +79,14 @@ returns integer as '
 declare
   v_count integer;
   v_parameter_id integer;
+  community record;
 begin
 
   for community in select community_id, package_id from dotlrn_communities_all
   loop
 
     -- Grant permission to non-guests on community.
-    dotlrn_privacy__grant_rd_prv_dt_to_rel(
+    perform dotlrn_privacy__grant_rd_prv_dt_to_rel(
       community.community_id,''dotlrn_non_guest_rel'');
 
   end loop;
