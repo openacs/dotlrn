@@ -7,6 +7,31 @@ ad_library {
 }
 
 namespace eval site_nodes {
+
+    ad_proc -public get_node_id_from_package_id {
+        {-package_id:required}
+    } {
+        get node_id of a package instance
+    } {
+        return [db_string get_node_id_from_package_id {
+            select node_id
+            from site_nodes
+            where object_id = :package_id
+        }]
+    }
+
+    ad_proc -public get_url_from_package_id {
+        {-package_id:required}
+    } {
+        get node_id of a package instance
+    } {
+        return [db_string get_node_id_from_package_id {
+            select site_node.url(node_id)
+            from site_nodes
+            where object_id = :package_id
+        }]
+    }
+
     ad_proc -public get_url_from_node_id {
         {-node_id:required}
     } {
@@ -242,6 +267,5 @@ namespace eval site_nodes {
             return 0
         }
     }
-
 
 }
