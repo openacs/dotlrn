@@ -10,6 +10,7 @@ ad_page_contract {
     {referer "preferences"}
 } -properties {
     context_bar:onevalue
+    portal_id:onevalue
 }
 
 set context_bar {{$referer Admin} {Spam Community}}
@@ -19,6 +20,9 @@ if {[empty_string_p $community_id]} {
 }
 
 dotlrn::require_user_admin_community $community_id
+
+set sender_id [ad_conn user_id]
+set portal_id [dotlrn_community::get_portal_id $community_id $sender_id]
 
 form create spam_message
 
@@ -80,7 +84,6 @@ if {[form is_valid spam_message]} {
     #      send all the emails ourselves.
 
     # let's get some data we might need
-    set sender_id [ad_conn user_id]
     db_1row select_sender_info {
         select parties.email as sender_email,
                persons.first_names as sender_first_names,
