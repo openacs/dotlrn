@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">Neue Teilnehmer hinzufügen</msg>
   <msg key="Add_Professor">Neuen Professor hinzufügen</msg>
   <msg key="add_selected_members">Ausgewählte Benutzer hinzufügen</msg>
+  <msg key="add_to_another_group">Diesen Benutzer zu einer anderen Gruppe hinzufügen</msg>
+  <msg key="add_to_dotlrn">Diesen Benutzer zu dotLRN hinzufügen</msg>
   <msg key="Add_to_group_">Zu Gruppe hinzufügen...</msg>
   <msg key="Add_User">Benutzer hinzufügen</msg>
   <msg key="Add_users_to">Benutzer hinzufügen zu</msg>
@@ -170,6 +172,7 @@
   <msg key="Extra_Large">Sehr groß</msg>
   <msg key="Fields">Felder</msg>
   <msg key="First_Line">Erste Zeile</msg>
+  <msg key="first_line_of_file_must_be">Die erste Zeile der Datei muss wie folgt lauten:</msg>
   <msg key="First_Name">Vorname</msg>
   <msg key="From">Von</msg>
   <msg key="fuchsia">Fuchsie</msg>
@@ -401,6 +404,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Personal_Options">Persönliche Einstellungen</msg>
   <msg key="portal_templates">Portalvorlagen</msg>
   <msg key="Portrait">Bild:</msg>
+  <msg key="Portrait_1">Bild</msg>
   <msg key="Post_to">Veröffentlichen auf:</msg>
   <msg key="Pretty_Name">Benutzerdefinierte Bezeichnung</msg>
   <msg key="Pretty_Plural">Benutzerdefinierte Bezeichnung (Plural)</msg>

@@ -263,7 +263,12 @@
   <msg key="lt_Note_The_script_will_">Note: le script continuera son exécution même si vous fermez votre navigateur.</msg>
   <msg key="lt_Note_This_process_is_">Note: ce processus devrait durer %num_seconds% secondes.</msg>
   <msg key="ltnone_set_upgt">&amp;lt;aucun fixé&amp;gt;</msg>
+  <msg key="No_classes">Aucun cours</msg>
+  <msg key="Personal_home_page">Page d'accueil personnelle :</msg>
   <msg key="Personal_Options">Options personnelles</msg>
+  <msg key="Shared_Files">Fichiers partagés</msg>
+  <msg key="Term">Échéance</msg>
+  <msg key="user_has_been_a_member_since"> %first_names% %last_name% est inscrit à %system_name% depuis le %pretty_creation_date%</msg>
   <msg key="user_portal_page_calendar_title">Mon agenda</msg>
   <msg key="user_portal_page_file_storage_title">Mes dossiers</msg>
   <msg key="user_portal_page_home_title">Mon bureau</msg>

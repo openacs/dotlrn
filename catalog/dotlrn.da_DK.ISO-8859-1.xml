@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">Tilføj nye medlemmer</msg>
   <msg key="Add_Professor">Tilføj Underviser</msg>
   <msg key="add_selected_members">Tilføj valgte medlemmer</msg>
+  <msg key="add_to_another_group">Tilføj denne bruger til en anden gruppe</msg>
+  <msg key="add_to_dotlrn">Tilføj denne bruger til .LRN</msg>
   <msg key="Add_to_group_">Tilføj til brugergruppe...</msg>
   <msg key="Add_User">Tilføj Bruger</msg>
   <msg key="Add_users_to">Tilføj brugere til</msg>
@@ -145,10 +147,12 @@ Vælg venligst et andet navn.</msg>
   <msg key="Drop">Slet</msg>
   <msg key="Drop_Membership">Slet Medlemskab</msg>
   <msg key="drop_membership_link">&lt;img src=&quot;/resources/dotlrn/drop.gif&quot; alt=&quot;Slet Medlemsskab&quot; border=&quot;0&quot;&gt;  </msg>
+  <msg key="Drop_selected_members">Fjern valgte medlemmer</msg>
   <msg key="Edit">Redigér</msg>
   <msg key="Edit_a_User">Rediger en bruger</msg>
   <msg key="edit_approved_email_servers">Rediger Forhåndsgodkendte Mailservere</msg>
   <msg key="edit_message_and_hit_send">Rediger beskeden nedenfor og tryk &quot;Send E-mail&quot; for at give brugeren besked.</msg>
+  <msg key="edit_parameters">Rediger parametre</msg>
   <msg key="Edit_Properties">Rediger egenskaber</msg>
   <msg key="edit_subject">Redigér</msg>
   <msg key="edit_subject_properties">Rediger egenskaber for %classes_pretty_name%.</msg>
@@ -169,6 +173,7 @@ Vælg venligst et andet navn.</msg>
   <msg key="Extra_Large">Meget Stor</msg>
   <msg key="Fields">Felter</msg>
   <msg key="First_Line">Første Linje</msg>
+  <msg key="first_line_of_file_must_be">Den første linje i filen skal have følgende headerlinje:</msg>
   <msg key="First_Name">Fornavn</msg>
   <msg key="From">Fra</msg>
   <msg key="fuchsia">fuchsiarød</msg>
@@ -347,6 +352,7 @@ Besked:
   <msg key="Memberships">Medlemskaber</msg>
   <msg key="Memberships_1">Medlemskaber:</msg>
   <msg key="Message">Besked</msg>
+  <msg key="must_have_values">Feltet skal have en af følgende værdier:</msg>
   <msg key="My_Communities">Mine Grupper</msg>
   <msg key="NA">Ingen</msg>
   <msg key="Name">Navn</msg>
@@ -403,6 +409,7 @@ Besked:
   <msg key="Personal_Options">Personlige Muligheder</msg>
   <msg key="portal_templates">Skabeloner til Portal</msg>
   <msg key="Portrait">Portræt:</msg>
+  <msg key="Portrait_1">Portræt</msg>
   <msg key="Post_to">Indsend til:</msg>
   <msg key="Pretty_Name">Pænt navn</msg>
   <msg key="Pretty_Plural">Pænt flertalsnavn</msg>
@@ -435,6 +442,7 @@ Tak
   <msg key="Results">Resultater</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">inddrag</msg>
+  <msg key="Revoke_site_wide_admin">Tilbagekald administrative privilegier for hele sitet.</msg>
   <msg key="Role">Rolle</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Skærmnavn:</msg>

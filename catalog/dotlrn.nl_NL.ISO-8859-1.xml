@@ -16,8 +16,10 @@
   <msg key="Add_A_User">Een gebruiker toevoegen</msg>
   <msg key="Add_a_User">Een gebruiker toevoegen</msg>
   <msg key="Add_New_Members">Nieuwe leden toevoegen</msg>
-  <msg key="Add_Professor">Toevoegen Professor</msg>
+  <msg key="Add_Professor">Professor toevoegen</msg>
   <msg key="add_selected_members">Geselecteerde leden toevoegen</msg>
+  <msg key="add_to_another_group">Voeg deze gebruiker toe aan een andere groep</msg>
+  <msg key="add_to_dotlrn">Voeg deze gebruiker toe aan .LRN</msg>
   <msg key="Add_to_group_">Toevoegen aan groep ...</msg>
   <msg key="Add_User">Gebruiker toevoegen</msg>
   <msg key="Add_users_to">Gebruikers toevoegen aan</msg>
@@ -77,7 +79,7 @@
   <msg key="club_page_home_title">Gemeenschap</msg>
   <msg key="club_page_people_title">Mensen</msg>
   <msg key="clubs_name_header">%clubs_pretty_name%</msg>
-  <msg key="clubs_pretty_name">Gemeenschap</msg>
+  <msg key="clubs_pretty_name">Vereniging</msg>
   <msg key="clubs_pretty_plural">Inschrijvingen</msg>
   <msg key="Communities">Gemeenschappen</msg>
   <msg key="Community">Gemeenschap</msg>
@@ -142,10 +144,12 @@
   <msg key="Drop">Verwijder</msg>
   <msg key="Drop_Membership">Opzeggen Lidmaatschap</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Verwijder Inschrijving&quot; border=0&gt;</msg>
+  <msg key="Drop_selected_members">Aangegeven leden verwijderen</msg>
   <msg key="Edit">Bewerken</msg>
   <msg key="Edit_a_User">Bewerk Gebruiker</msg>
   <msg key="edit_approved_email_servers">Bewerken direct-geaccepteerde e-mail servers </msg>
   <msg key="edit_message_and_hit_send">Bewerk het bericht hieronder en klik op &quot;Verzend e-mail&quot; om deze gebruiker op de hoogte te stellen. </msg>
+  <msg key="edit_parameters">Parameters wijzigen</msg>
   <msg key="Edit_Properties">Bewerk Eigenschappen</msg>
   <msg key="edit_subject">Bewerken</msg>
   <msg key="edit_subject_properties">Wijzig %classes_pretty_name% eigenschappen</msg>
@@ -174,6 +178,7 @@
   <msg key="Full_Access">Ongelimiteerde Toegang</msg>
   <msg key="General_Information">Algemene Informatie</msg>
   <msg key="General_Site_Help">Algemene Hulp voor de site</msg>
+  <msg key="Grant_site_wide_admin">Ken site-brede beheersrechten toe</msg>
   <msg key="gray">grijs</msg>
   <msg key="green">groen</msg>
   <msg key="groups_icon">groepsicoon</msg>
@@ -339,6 +344,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Memberships">Lidmaatschappen</msg>
   <msg key="Memberships_1">Lidmaatschappen:</msg>
   <msg key="Message">Bericht</msg>
+  <msg key="must_have_values">Dit veld moet één van de volgende waarden hebben:</msg>
   <msg key="My_Communities">Lidmaatschappen</msg>
   <msg key="NA">n.v.t.</msg>
   <msg key="Name">Naam</msg>
@@ -395,6 +401,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Personal_Options">Persoonlijke instellingen</msg>
   <msg key="portal_templates">Portaal Sjabloon</msg>
   <msg key="Portrait">Portret:</msg>
+  <msg key="Portrait_1">Portret</msg>
   <msg key="Post_to">Verzend aan:</msg>
   <msg key="Pretty_Name">Aansprekende Naam</msg>
   <msg key="Pretty_Plural">Aansprekend Meervoud</msg>
@@ -405,6 +412,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Recipients_Last_Name">Achternaam Ontvanger</msg>
   <msg key="red">rood</msg>
   <msg key="Referer">Doorverwijzer</msg>
+  <msg key="registered_user_welcome_email_body">%first_names% %last_name%, je bent als gebruiker toegevoegd aan %system_name% op %system_url%. Inloginformatie: E-mail %email% Wachtwoord: %password% (je kunt je wachtwoord veranderen nadat je inlogt). Bedankt %administration_name%</msg>
   <msg key="Registration_date">Inschrijvingsdatum:</msg>
   <msg key="registration_request_sent">Bedankt. Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="Reject">Weigeren</msg>
@@ -415,6 +423,7 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Results">Resultaten</msg>
   <msg key="Return_URL">Terugkeer URL </msg>
   <msg key="revoke">intrekken</msg>
+  <msg key="Revoke_site_wide_admin">Site-brede beheersrechten intrekken</msg>
   <msg key="Role">Rol</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Schuilnaam:</msg>

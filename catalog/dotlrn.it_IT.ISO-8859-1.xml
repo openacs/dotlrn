@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">Aggiungi nuovi utenti</msg>
   <msg key="Add_Professor">Aggiungi Professore</msg>
   <msg key="add_selected_members">Aggiungi l'utente selezionato</msg>
+  <msg key="add_to_another_group">Aggiungi questo utente a un altro gruppo</msg>
+  <msg key="add_to_dotlrn">Aggiungi questo utente a .LRN</msg>
   <msg key="Add_to_group_">Aggiungi al gruppo</msg>
   <msg key="Add_User">Aggiungi utente</msg>
   <msg key="Add_users_to">Aggiungi utente a</msg>
@@ -142,10 +144,12 @@
   <msg key="Drop">Lascia</msg>
   <msg key="Drop_Membership">Ritira l'associazione</msg>
   <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Cancella l'associazione&quot; border=0&gt; </msg>
+  <msg key="Drop_selected_members">Rimuovi i membri selezionati</msg>
   <msg key="Edit">Modifica</msg>
   <msg key="Edit_a_User">Modifica un utente</msg>
   <msg key="edit_approved_email_servers">Modifica i Server di Posta pre-approvati</msg>
   <msg key="edit_message_and_hit_send">Modifica il messaggio sottostante e premi &quot;Invia l'Email&quot; per notificarlo a questo utente.</msg>
+  <msg key="edit_parameters">Modifica i parametri</msg>
   <msg key="Edit_Properties">Modifica le Propriet&amp;agrave;</msg>
   <msg key="edit_subject">Modifica</msg>
   <msg key="edit_subject_properties">Modifica le propriet&amp;agrave; delle %classes_pretty_name%</msg>
@@ -166,6 +170,7 @@
   <msg key="Extra_Large">Extra Large </msg>
   <msg key="Fields">Campi</msg>
   <msg key="First_Line">Prima linea</msg>
+  <msg key="first_line_of_file_must_be">La prima linea del file deve avere la seguente intestazione:</msg>
   <msg key="First_Name">Nome</msg>
   <msg key="From">Da</msg>
   <msg key="fuchsia">fuchsia</msg>
@@ -173,6 +178,7 @@
   <msg key="Full_Access">Accesso Completo</msg>
   <msg key="General_Information">Informazioni generali</msg>
   <msg key="General_Site_Help">Aiuto generale</msg>
+  <msg key="Grant_site_wide_admin">Garantisci privilegi amministrativi su tutto il sito</msg>
   <msg key="gray">grigio</msg>
   <msg key="green">verde</msg>
   <msg key="groups_icon">icona del gruppo</msg>
@@ -337,6 +343,7 @@
   <msg key="Memberships">Associazioni</msg>
   <msg key="Memberships_1">Associazioni:</msg>
   <msg key="Message">Messaggio</msg>
+  <msg key="must_have_values">Il campo deve avere uno dei seguenti valori:</msg>
   <msg key="My_Communities">Le mie comunit&amp;agrave;</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Nome</msg>
@@ -393,6 +400,7 @@
   <msg key="Personal_Options">Opzioni personali</msg>
   <msg key="portal_templates">Modelli di Portale</msg>
   <msg key="Portrait">Ritratto:</msg>
+  <msg key="Portrait_1">Ritratto</msg>
   <msg key="Post_to">Invia a:</msg>
   <msg key="Pretty_Name">Nome &quot;bello&quot;</msg>
   <msg key="Pretty_Plural">Plurale &quot;bello&quot;</msg>
@@ -403,6 +411,7 @@
   <msg key="Recipients_Last_Name">Cognome del destinatario</msg>
   <msg key="red">rosso</msg>
   <msg key="Referer">Assegna</msg>
+  <msg key="registered_user_welcome_email_body"> %first_names% %last_name%, sei entrato a far parte dei membri di %system_name% all'indirizzo %system_url% Informazioni per la login: Email %email% Password: %password% (puoi cambiarla dopo esserti autentificato) Grazie %administration_name%</msg>
   <msg key="Registration_date">Data di registrazione:</msg>
   <msg key="registration_request_sent">Grazie. La tua richiesta di registrazione &amp;egrave; stata inviata all'amministratore del sito.</msg>
   <msg key="Reject">Respingi</msg>
@@ -413,6 +422,7 @@
   <msg key="Results">Risultati</msg>
   <msg key="Return_URL">indirizzo a cui tornare</msg>
   <msg key="revoke">revoca</msg>
+  <msg key="Revoke_site_wide_admin">Revoca i privilegi di amministrazione su tutto il sito</msg>
   <msg key="Role">Ruolo</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Screen name:</msg>

@@ -18,6 +18,7 @@
   <msg key="no_clubs">Nincsenek %clubs_pretty_plural%</msg>
   <msg key="Personal_Options">Személyes beállítások</msg>
   <msg key="Term">Szemeszter</msg>
+  <msg key="user_portal_page_calendar_title">A naptáram</msg>
   <msg key="user_portal_page_file_storage_title">A dokumentumaim</msg>
   <msg key="user_portal_page_home_title">A dolgaim</msg>
 </message_catalog>
