@@ -42,6 +42,11 @@ ad_page_contract {
     administration_name:onevalue
 }
 
+#prevent this page from being called when it is not allowed
+# i.e.   AllowCreateGuestUsersInCommunity 0
+dotlrn_portlet::is_allowed -parameter guestuser
+dotlrn_portlet::is_allowed -parameter limiteduser
+
 # Get user info
 acs_user::get -user_id $user_id -array user
 # easier to work with scalar vars than array

@@ -15,31 +15,25 @@
 #
 
 ad_page_contract {
-    Add an applet to a community
+    Search for a new user for dotLRN
 
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
-    @creation-date 2001-10-08
-    @version $Id$
+    @author Hector Amado (hr_amado@galileo.edu)
+    @creation-date 2004-07-02
+    @cvs-id $Id$
 } -query {
-    applet_key
-    {referer "applets"}
+    search_text
+    {referer "dotlrn-admins"}
 }
 
-#prevent this page from being called when it is not allowed
-# i.e.   AllowManageApplets 0
-dotlrn_portlet::is_allowed -parameter manageapplets
-
+set search_text [string trim $search_text]
 set community_id [dotlrn_community::get_community_id]
 
-# Check access
-if {![dotlrn_community::admin_access_p $community_id]} {
-    ad_returnredirect /
-    ad_script_abort
-}
+# Just search
+db_multirow users select_users {}
 
-# Add the applet
-dotlrn_community::add_applet_to_community $community_id $applet_key
+set context_bar [list [list "dotlrn-admins" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
 
-ad_returnredirect $referer
+ad_return_template
 

@@ -312,6 +312,21 @@ namespace eval dotlrn_community {
         # it's children)
         permission::set_not_inherit -object_id $community_id
 
+
+        # Grant permission to dotlrn-admin group
+
+        set dotlrn_admin_group_id [db_string group_id_from_name "
+             select group_id from groups where group_name='dotlrn-admin'" -default ""]
+        if {![empty_string_p $dotlrn_admin_group_id] } {
+
+             permission::grant \
+                  -party_id $dotlrn_admin_group_id  \
+                  -object_id $community_id \
+                  -privilege "admin"
+
+        }
+
+
         # Grant read_private_data permission to "non guest" users.
         dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $community_id
         

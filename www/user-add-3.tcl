@@ -26,6 +26,11 @@ ad_page_contract {
     {referer "/acs-admin/users"}
 }
 
+#prevent this page from being called when it is not allowed
+# i.e.   AllowCreateGuestUsersInCommunity 0
+dotlrn_portlet::is_allowed -parameter guestuser
+dotlrn_portlet::is_allowed -parameter limiteduser
+
 set admin_user_id [ad_verify_and_get_user_id]
 set admin_email [db_string select_admin_email {
     select email

@@ -29,6 +29,7 @@
 <property name="context_bar">@context_bar@</property>
 
 <ul>
+  <li><a href="dotlrn-admins">#dotlrn.Administrators#</a></li> 
   <li><a href="users">#dotlrn.users#</a></li>
   <li><a href="terms">#dotlrn.terms#</a></li>
   <li><a href="departments"><%= [parameter::get -localize -parameter departments_pretty_plural] %></a></li>
@@ -39,8 +40,11 @@
   <li><a href="archived-communities">#dotlrn.archived_classes_and_communities#</a></li>
   <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>
   <li><a href="@parameters_url@">#dotlrn.edit_parameters#</a></li>
+  <li><a href="@parameters_d_url@">#dotlrn.edit_community_parameters#</a></li>
   <p>
+  <if @oacs_site_wide_admin_p@ true>
     <li><a href="/acs-admin/">OpenACS Site-Wide Administration</a></li>
+  </if>
   </p>
 </ul>
 

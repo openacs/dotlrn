@@ -32,6 +32,12 @@ ad_page_contract {
 } -properties {
     context_bar:onevalue
 }
+
+#prevent this page from being called when it is not allowed
+# i.e.   AllowCreateGuestUsersInCommunity 0
+dotlrn_portlet::is_allowed -parameter guestuser
+dotlrn_portlet::is_allowed -parameter limiteduser
+
 # Set read_private_data_p and can_browse_p to me the most restrictive defaults.
 
 set current_user_id [ad_maybe_redirect_for_registration]

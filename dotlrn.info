@@ -22,6 +22,10 @@
         <requires url="user-profile" version="0.1d"/>
 
         <callbacks>
+            <callback type="after-install"  proc="dotlrn::apm::after_install"/>
+            <callback type="after-instantiate"  proc="dotlrn::apm::after_instantiate"/>
+            <callback type="after-upgrade"  proc="dotlrn::apm::after_upgrade"/>
+            <callback type="before-uninstall"  proc="dotlrn::apm::before_uninstall"/>
         </callbacks>
         <parameters>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoAddAuthorities"  default="*" description="A comma-separated list of short-names of authorities for which users should be automatically added to .LRN, or '*' for all. In order for users to be auto-added, AutoAddUsersP needs to be set to 1, and this needs to be set to * or include the relevant authority short_names. Example: 'local,ldap'." section_name="Auto-Adding Users to .LRN"/>
@@ -44,10 +48,10 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="#dotlrn.clubs_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_level_p"  description="Whether this is a Class Instance Level instantiation of the package"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="community_type_level_p"  description="Whether this is a Class Level instance of the package"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus,dotlrn_homework_applet" description="dotLRN applets to add by default to each new community"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="the applets to add when making a new club"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm" description="see above"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news" description="a csv list of the applets to call when creating the user portal template"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_class_instance_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_research,dotlrn_static,dotlrn_bm,dotlrn_syllabus,dotlrn_homework_applet,dotlrn_survey" description="dotLRN applets to add by default to each new community"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_club_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm,dotlrn_survey" description="the applets to add when making a new club"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_subcomm_applets"  default="dotlrn_dotlrn,dotlrn_fs,dotlrn_forums,dotlrn_calendar,dotlrn_faq,dotlrn_news,dotlrn_static,dotlrn_bm,dotlrn_survey" description="see above"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="default_user_portal_applets"  default="dotlrn_dotlrn,dotlrn_calendar,dotlrn_forums,dotlrn_faq,dotlrn_fs,dotlrn_news,dotlrn_survey" description="a csv list of the applets to call when creating the user portal template"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="#dotlrn.departments_pretty_name#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="#dotlrn.departments_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_admin_pretty_name"  default="#dotlrn.dotlrn_admin_pretty_name#" description="What is dotlrn administration displayed as? Some might want 'Site Wide Administration' and some might with 'dotLRN Administration'"/>

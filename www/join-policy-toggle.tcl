@@ -36,6 +36,10 @@ ad_page_contract {
     }
 }
 
+#prevent this page from being called when is not allowed
+# i.e. AllowChangeEnrollmentPolicy
+dotlrn_portlet::is_allowed -parameter cenrollment
+
 if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]
 }

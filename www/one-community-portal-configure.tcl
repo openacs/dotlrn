@@ -27,6 +27,10 @@ ad_page_contract {
     {referer "one-community-admin"}
 }
 
+#prevent this page from being called when it is not allowed
+# i.e.   AllowCustomizePortalLayout 0
+dotlrn_portlet::is_allowed -parameter cplayout
+
 set community_id [dotlrn_community::get_community_id]
 
 dotlrn::require_user_admin_community \
@@ -37,30 +41,6 @@ set portal_id  [dotlrn_community::get_portal_id]
 
 # we are in a community
 set community_name [dotlrn_community::get_community_name $community_id]
-
-set default_portal_p [db_string default_portal_p {
-    select count(*) from dotlrn_portal_types_map where portal_id = :portal_id
-}]
-
-
-if {$default_portal_p == 1} {
-    # Create comm's portal page
-    set portal_id [portal::create \
-		       -template_id $portal_id \
-		       -name "$community_name Portal" \
-		       -context_id $community_id \
-		       [ad_conn user_id] \
-		      ]
-    
-    db_exec_plsql update_commuity_portal_id {
-	update dotlrn_communities_all 
-	set portal_id = :portal_id
-	where community_id = :community_id
-    }
-    
-    util_memoize_flush "dotlrn_community::get_portal_id_not_cached -community_id $community_id"    
-}
-
 
 set rendered_page [portal::configure \
     -allow_theme_change_p 1 \

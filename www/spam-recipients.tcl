@@ -29,7 +29,27 @@ if {!$site_wide_admin_p} {
     set read_private_data_p 1
 }
 
+
 set community_id [dotlrn_community::get_community_id]
+
+#element create spam_message rel_type \
+#    -label [_ dotlrn.To] \
+#    -datatype text \
+ #   -widget select \
+ #   -options [list [list [_ dotlrn.Members] dotlrn_member_rel] [list [_ dotlrn.Administrators] dotlrn_admin_rel]] \
+ #   -value $rel_type
+
+
+# SET THE PROPERTIES RIGHT
+
+set roles [dotlrn_community::get_roles -community_id $community_id]
+set rel_types_html ""
+
+foreach {rel_type role pretty_name pretty_plural} [eval concat $roles] {
+    append rel_types_html "<input type=checkbox value=$rel_type name=rel_types>  [lang::util::localize $pretty_plural] <br>"
+
+}
+
 db_multirow current_members select_current_members {}
 
 set exported_vars [export_vars -form { referer }]

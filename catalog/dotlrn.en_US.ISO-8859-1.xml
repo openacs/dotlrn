@@ -162,6 +162,7 @@
   <msg key="Edit">Edit</msg>
   <msg key="Edit_a_User">Edit a User</msg>
   <msg key="edit_approved_email_servers">Edit Pre-approved Email Servers</msg>
+  <msg key="edit_community_parameters">Edit community parameters</msg>
   <msg key="edit_message_and_hit_send">Edit the message below and hit &quot;Send Email&quot; to
 notify this user.</msg>
   <msg key="edit_parameters">Edit parameters</msg>
