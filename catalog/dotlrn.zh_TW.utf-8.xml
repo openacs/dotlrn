@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.0a3" locale="zh_TW" charset="utf-8">
-
-  <msg key="Change_Locale">變更身處地</msg>
-  <msg key="help">輔助</msg>
-  <msg key="logout">登出 / 離開</msg>
-  <msg key="user_portal_page_calendar_title">我的行事曆</msg>
-  <msg key="user_portal_page_file_storage_title">我的檔案</msg>
-</message_catalog>
