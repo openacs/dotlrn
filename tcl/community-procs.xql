@@ -434,7 +434,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::add_applet_to_community.insert">
+    <fullquery name="dotlrn_community::register_community_applet.insert">
         <querytext>
             insert into dotlrn_community_applets
             (community_id, applet_id, package_id, active_p)

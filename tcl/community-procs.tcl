@@ -1327,6 +1327,22 @@ namespace eval dotlrn_community {
         return [db_string select_admin_portal_id {}]
     }
 
+    ad_proc -public register_community_applet {
+        {-community_id:required}
+        {-package_id:required}
+        {-applet_key ""}
+    } {
+        Helper proc for add_applet_to_community and clone, since
+        they both need to set up the community <-> applet map
+    } {
+        set applet_id [dotlrn_applet::get_applet_id_from_key \
+            -applet_key $applet_key]
+
+        # auto activate for now
+        set active_p t
+        db_dml insert {}
+    }
+
     ad_proc -public add_applet_to_community {
         community_id
         applet_key
@@ -1334,26 +1350,28 @@ namespace eval dotlrn_community {
         Adds an applet to the community
     } {
         db_transaction {
-            # Callback
-            set package_id [applet_call $applet_key AddAppletToCommunity [list $community_id]]
-
-            set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
-            # auto activate for now
-            set active_p t
-
-            # Insert in the DB
-            db_dml insert {}
+            set package_id [applet_call \
+                $applet_key \
+                AddAppletToCommunity \
+                [list $community_id]]
+            
+            register_community_applet \
+                -community_id $community_id \
+                -package_id $package_id \
+                -applet_key $applet_key
 
             # Go through current users and make sure they are added!
             foreach user [list_users $community_id] {
                 set user_id [ns_set get $user user_id]
 
                 # do the callbacks
-                applet_call $applet_key AddUserToCommunity [list $community_id $user_id]
+                applet_call \
+                    $applet_key \
+                    AddUserToCommunity \
+                    [list $community_id $user_id]
             }
         }
     }
-
 
     ad_proc -public remove_applet_from_community {
         community_id
@@ -1395,9 +1413,9 @@ namespace eval dotlrn_community {
         @param community_id the community to clone
         @return the clone's community_id
     } {
+        set subcomm_p 0
+
         db_transaction {
-            # check that the passed in key is ok
-            check_community_key_valid_p -complain_if_invalid -community_key $key
 
             # create the clone, by manually copying the metadata
             # this code is copied from ::new
@@ -1405,6 +1423,34 @@ namespace eval dotlrn_community {
                 [get_community_type_from_community_id $community_id]
 
             set extra_vars [ns_set create]
+
+            # there is some special stuff for cloning subcomms
+            if {[string equal "dotlrn_community" $community_type]} {
+                set subcomm_p 1
+                set parent_community_id [get_parent_id -community_id $community_id]
+                set parent_type [dotlrn_community::get_community_type_from_community_id $parent_community_id]
+
+                if {![string equal $parent_type [dotlrn_club::community_type]] &&
+                    ![string equal $parent_type dotlrn_community]} {
+                    # we want to make a subgroup of a class instance
+                    # get the term_id, since the subgroup should not
+                    # outlive the class
+                    set term_id [dotlrn_class::get_term_id -class_instance_id $parent_community_id]
+                    ns_set put $extra_vars term_id $term_id
+                }
+                
+                check_community_key_valid_p \
+                    -complain_if_invalid \
+                    -community_key $key \
+                    -parent_community_id $parent_community_id
+
+                ns_set put $extra_vars parent_community_id $parent_community_id
+            } else {
+                check_community_key_valid_p \
+                    -complain_if_invalid \
+                    -community_key $key
+            }
+
             set pretty_name $key
             ns_set put $extra_vars community_type $community_type
             ns_set put $extra_vars community_key $key
@@ -1417,7 +1463,8 @@ namespace eval dotlrn_community {
             # Create the clone object - "dotlrn community A"
             # Note: the "object_type" to pass into package_instantiate_object
             # is just the community_type
-            set clone_id [package_instantiate_object -extra_vars $extra_vars $community_type]
+            set clone_id [package_instantiate_object \
+                -extra_vars $extra_vars $community_type]
 
             set user_id [ad_conn user_id]
 
@@ -1433,7 +1480,8 @@ namespace eval dotlrn_community {
 
             # clone the non-member page
             set non_member_portal_id [portal::create \
-                -template_id [get_non_member_portal_id -community_id $community_id] \
+                -template_id [get_non_member_portal_id \
+                    -community_id $community_id] \
                 -name "$pretty_name Non-Member Portal" \
                 -context_id $clone_id \
                 $user_id \
@@ -1441,7 +1489,8 @@ namespace eval dotlrn_community {
 
             # clone the admin page
             set admin_portal_id [portal::create \
-                -template_id [get_admin_portal_id -community_id $community_id] \
+                -template_id [get_admin_portal_id \
+                    -community_id $community_id] \
                 -name "$pretty_name Administration Portal" \
                 -context_id $clone_id \
                 $user_id \
@@ -1451,7 +1500,11 @@ namespace eval dotlrn_community {
             dotlrn_community::create_rel_segments -community_id $clone_id
 
             # Set up the node
-            set parent_node_id [get_type_node_id $community_type]
+            if {$subcomm_p} {
+                set parent_node_id [get_community_node_id $parent_community_id]
+            } else {
+                set parent_node_id [get_type_node_id $community_type]
+            }
 
             # Create the node
             set new_node_id [site_node_create $parent_node_id $key]
@@ -1465,9 +1518,18 @@ namespace eval dotlrn_community {
             ]
 
             # Set the right parameters
-            parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
-            parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
-            parameter::set_value -package_id $package_id -parameter community_level_p -value 1
+            parameter::set_value \
+                -package_id $package_id \
+                -parameter dotlrn_level_p \
+                -value 0
+            parameter::set_value \
+                -package_id $package_id \
+                -parameter community_type_level_p \
+                -value 0
+            parameter::set_value \
+                -package_id $package_id \
+                -parameter community_level_p \
+                -value 1
 
             # Set up the node
             dotlrn_community::set_package_id $clone_id $package_id
@@ -1475,15 +1537,48 @@ namespace eval dotlrn_community {
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
-            foreach applet [list_applets -community_id $community_id] {
+            foreach applet_key [list_applets -community_id $community_id] {
                 # do the clone call on each applet in this community
-                applet_call $applet "Clone" [list $community_id $clone_id]
+                ns_log notice "dotlrn_community::clone cloning applet = $applet_key"
+                set package_id [applet_call \
+                    $applet_key \
+                    "Clone" \
+                    [list $community_id $clone_id]
+                ]
+
+                register_community_applet \
+                    -community_id $clone_id \
+                    -package_id $package_id \
+                    -applet_key $applet_key
+            }
+
+            # more extra stuff for subcomms
+            if {$subcomm_p} {
+                set parent_admin_segment_id [dotlrn_community::get_rel_segment_id \
+                    -community_id $parent_community_id \
+                    -rel_type dotlrn_admin_rel \
+                ]
+
+                permission::grant \
+                    -party_id $parent_admin_segment_id \
+                    -object_id $clone_id \
+                    -privilege admin
+
+                # for a subcomm of a "class instance" set the start and end dates
+                if {![string equal $parent_type [dotlrn_club::community_type]] &&
+                    ![string equal $parent_type "dotlrn_community"]} {
+
+                    dotlrn_community::set_active_dates \
+                        -community_id $clone_id \
+                        -start_date [dotlrn_term::get_start_date -term_id $term_id] \
+                        -end_date [dotlrn_term::get_end_date -term_id $term_id]
+                }
             }
 
             # TODO:
             # recursively clone the subcommunities
-            ad_return_complaint 1 "aks77 got here"
-            ad_script_abort
+            #            ad_return_complaint 1 "aks77 got here"
+            #           ad_script_abort
         }
     }
 
@@ -1526,6 +1621,8 @@ namespace eval dotlrn_community {
     } {
         Unarchives a community. ** not done yet **
     } {
+        error
+        ad_script_abort
         db_dml update_archive_p {}
     }
 
@@ -1536,6 +1633,9 @@ namespace eval dotlrn_community {
         ** not done **
         ** do not use! **
     } {
+        error
+        ad_script_abort
+
         db_transaction {
             # Remove all users
             foreach user [list_users $community_id] {

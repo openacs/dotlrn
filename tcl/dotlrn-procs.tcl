@@ -148,6 +148,8 @@ namespace eval dotlrn {
             ]
             set parent_package_id $parent_node(object_id)
 
+            ns_log notice "dotlrn::mount_package: [array get parent_node]"
+
             set node_id [site_nodes::site_node_create \
                     -parent_node_id $parent_node_id \
                     -node_id $node_id \
@@ -157,6 +159,8 @@ namespace eval dotlrn {
                 if {[empty_string_p $pretty_name]} {
                     set pretty_name $package_key
                 }
+
+            ns_log notice "dotlrn::mount_package: $node_id / $pretty_name / $parent_package_id / $package_key"
 
             set package_id [site_node_create_package_instance $node_id $pretty_name $parent_package_id $package_key]
         }
@@ -203,7 +207,7 @@ namespace eval dotlrn {
         {-community_id:required}
         {-package_key:required}
     } {
-        like above but returns the pacakge_id
+        like above but returns the package_id
     } {
         set node_id [get_community_applet_node_id \
                 -community_id $community_id \
