@@ -1762,7 +1762,7 @@ namespace eval dotlrn_community {
         get the value for an attribute of this community
     } {
         set attribute_value ""
-        foreach {attr_name attr_value} [get_attributes -community_id $community_id] {
+        foreach {attr_name attr_value} [eval concat [get_attributes -community_id $community_id]] {
             if {[string match $attribute_name $attr_name]} {
                 set attribute_value $attr_value
                 break
@@ -1778,7 +1778,7 @@ namespace eval dotlrn_community {
     } {
         set attributes for a certain community
     } {
-        foreach {attr_name attr_value} $pairs {
+        foreach {attr_name attr_value} [eval concat $pairs] {
             set_attribute -community_id $community_id -attribute_name $attr_name -attribute_value $attr_value
         }
     }
@@ -1829,7 +1829,7 @@ namespace eval dotlrn_community {
     } {
         set attribute_id ""
 
-        foreach {attr_id attr_name} [get_available_attributes] {
+        foreach {attr_id attr_name} [eval concat [get_available_attributes]] {
             if {[string match $attribute_name $attr_name]} {
                 set attribute_id $attr_id]
                 break
