@@ -60,7 +60,8 @@ namespace eval dotlrn_class {
     } {
         dotlrn_community::init \
             -community_type [community_type] \
-            -community_type_url_part [get_url_part]
+            -community_type_url_part [get_url_part] \
+            -pretty_name [ad_parameter -package_id [dotlrn::get_package_id] classes_pretty_plural]
     }
 
     ad_proc -public new {

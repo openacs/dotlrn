@@ -139,6 +139,7 @@ namespace eval dotlrn {
         {-package_key:required}
         {-url:required}
         {-directory_p:required}
+        {-pretty_name ""}
     } {
         mount a package under dotlrn
     } {
@@ -165,7 +166,11 @@ namespace eval dotlrn {
                 end;
             }]
 
-            set package_id [site_node_create_package_instance $node_id $package_key $parent_package_id $package_key]
+                if {[empty_string_p $pretty_name]} {
+                    set pretty_name $package_key
+                }
+
+            set package_id [site_node_create_package_instance $node_id $pretty_name $parent_package_id $package_key]
         }
 
         return $package_id

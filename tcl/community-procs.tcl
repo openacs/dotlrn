@@ -29,6 +29,7 @@ namespace eval dotlrn_community {
     ad_proc -public init {
         {-community_type:required}
         {-community_type_url_part:required}
+        {-pretty_name ""}
     } {
         create base community_type for dotlrn_community type
     } {
@@ -37,6 +38,7 @@ namespace eval dotlrn_community {
                 set package_id [dotlrn::mount_package \
                     -package_key [dotlrn::package_key] \
                     -url $community_type_url_part \
+                    -pretty_name $pretty_name \
                     -directory_p "t"]
 
                 dotlrn_community::set_type_package_id $community_type $package_id
