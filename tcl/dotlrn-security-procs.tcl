@@ -49,18 +49,19 @@ namespace eval dotlrn {
 	db_transaction {
 	    if {$rel_type == "dotlrn_full_user_rel"} {
 		# Create a portal page for this user
-		set portal_id [portal::create -name "Your dotLRN Workspace" $user_id]
+		set portal_id [portal::create -name "Your dotLRN Workspace" -default_page_name [ad_parameter user_wsp_first_page_name] $user_id]
+                # create the default pages from the ad_param
+                foreach name [split [ad_parameter user_wsp_page_names] ","] {
 
-                # XXX AKS - portals having problems with the following
-                # two lines - if the next line is taken out of the
-                # transaction, it full acc user add works, but lim acc
-                # user add dosent. weird!!!!
-                # Add the basic dotLRN class listing portlet
-                # XXXX
-                
+                    portal::page_create -portal_id $portal_id -pretty_name $name
+                }
+
+                # manually switch back to the first page 
+                portal::set_current_page -portal_id $portal_id \
+                        -page_id [portal::get_page_id -portal_id $portal_id \
+                        -sort_key 0]
+
                 dotlrn_main_portlet::add_self_to_page $portal_id {}
-
-                # end XXXX
 
                 # Update the user and set the portal page correctly
 		ns_set put $extra_vars portal_id $portal_id

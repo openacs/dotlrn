@@ -46,5 +46,4 @@
 <P>
 <P>
 <hr>
-<hr>
 <small><a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> | <a href="http://web.mit.edu">MIT</a></small>
