@@ -28,14 +28,15 @@
 <ul>
   <li>
     <a href="/user/basic-info-update?return_url=@referer@">Edit My Personal Information</a>
-    (<small>
-      What others see about me:
-      <%= [acs_community_member_link -user_id $user_id -label "[ad_url][acs_community_member_url -user_id $user_id]"] %>
-     </small>)
+    <br>
+    <small>
+      (What others see about me:
+      <%= [acs_community_member_link -user_id $user_id -label "[ad_url][acs_community_member_url -user_id $user_id]"] %>)
+     </small>
   </li>
   <li><a href="/user/password-update?return_url=@referer@">Change My Password</a></li>
   <li><a href="applets/bboard/alerts">Edit My Bulletin Board Email Alerts</a></li>
-  <li><a href="configure">Customize This Portal</a></li>
+  <li><a href="configure">Customize Layout</a></li>
 <if @admin_p@ eq 1>
   <li><a href="@admin_url@">@admin_pretty_name@</a></li>
 </if>
