@@ -166,13 +166,18 @@
 
     <fullquery name="select_non_member_clubs">
         <querytext>
-            select dotlrn_clubs_full.*
-            from dotlrn_clubs_full
-            where dotlrn_clubs_full.join_policy <> 'closed'
-            and not exists (select 1
-                            from dotlrn_member_rels_full
-                            where dotlrn_member_rels_full.user_id = :user_id
-                            and dotlrn_member_rels_full.community_id = dotlrn_clubs_full.club_id)
+          select dotlrn_clubs_full.*
+            from dotlrn_clubs_full,
+                (
+                select f.club_id
+                from dotlrn_clubs_full f
+                where f.join_policy <> 'closed'
+                MINUS
+                select dotlrn_member_rels_full.community_id club_id
+                from dotlrn_member_rels_full
+                where dotlrn_member_rels_full.user_id = :user_id
+                ) non_member_clubs
+            where dotlrn_clubs_full.club_id = non_member_clubs.club_id   
             order by dotlrn_clubs_full.pretty_name,
                      dotlrn_clubs_full.community_key
         </querytext>
