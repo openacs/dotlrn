@@ -44,7 +44,7 @@ if {[form is_valid user_search]} {
 
     set user_id [ad_conn user_id]
     set dotlrn_package_id [dotlrn::get_package_id]
-    set root_object_id [acs_magic_object security_context_root]
+    set root_object_id [acs_magic_object "security_context_root"]
 
     if {[string equal $type "pending"] == 1} {
         db_multirow users select_non_dotlrn_users {}
