@@ -48,10 +48,10 @@ foreach role_pair $dotlrn_roles {
 }
 
 set n_pending_users [db_string select_non_dotlrn_users_count {}]
-lappend dotlrn_roles [list pending "[_ dotlrn.Pending] ($n_pending_users)" {}]
+lappend dotlrn_roles_localized [list pending "[_ dotlrn.Pending] ($n_pending_users)" {}]
 
 set n_deactivated_users [db_string select_deactivated_users_count {}]
-lappend dotlrn_roles [list deactivated "[_ dotlrn.Deactivated] ($n_deactivated_users)" {}]
+lappend dotlrn_roles_localized [list deactivated "[_ dotlrn.Deactivated] ($n_deactivated_users)" {}]
 
 set control_bar [ad_dimensional [list [list type "[_ dotlrn.User_Type]:" admin $dotlrn_roles_localized]]]
 
