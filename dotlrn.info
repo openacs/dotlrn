@@ -262,6 +262,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="community_admin_first_page_name"  default="Group Admin" description="just that"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityApplets"  default="dotlrn_dotlrn" description="dotLRN applets to add by default to each new community"/>
         </parameters>
 
     </version>
