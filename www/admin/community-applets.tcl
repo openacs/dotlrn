@@ -9,12 +9,6 @@ ad_page_contract {
     community_id
 }
 
-# Check that this is a community type
-if {[ad_parameter community_level_p] != 1} {
-    ns_returnredirect "./"
-    return
-}
-
 set user_id [ad_conn user_id]
 
 # Load some community type info
