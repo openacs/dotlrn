@@ -1020,7 +1020,6 @@ namespace eval dotlrn_community {
         set referer [ad_conn url]
 
         db_foreach select_subcomm_info {} {
-ns_log notice "XXX select dotlrn_community.member_p($sc_id, 2384) from dual;"
             if {$has_subcomm_p && $member_p} {
                 # Shows the subcomms of this subcomm ONLY IF I'm a
                 # member of the current comm
