@@ -19,4 +19,14 @@
                          where class_key = :class_key)
     </querytext>
   </fullquery>
+
+  <fullquery name="dotlrn_class::get_term_id.get_term_id">
+    <querytext>
+      select term_id
+      from dotlrn_class_instances    
+      where class_instance_id = :class_instance_id
+    </querytext>
+  </fullquery>
+
+
 </queryset>
