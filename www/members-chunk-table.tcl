@@ -104,26 +104,26 @@ lappend table_def [list \
 if {$site_wide_admin_p} {
     lappend table_def [list \
         manage \
-        "Action" \
+        "Actions" \
         {} \
-        {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>&nbsp;| <a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a>\]</td>} \
+        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>&nbsp;| <a href=[dotlrn::get_url]/admin/user?user_id=$user_id>Manage</a> </small>\]</td>} \
     ]
 } elseif {$admin_p} {
     lappend table_def [list \
         manage \
-        "Action" \
+        "Actions" \
         {} \
-        {<td>\[<a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a>\]} \
+        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> <small>\]} \
     ]
 } else {
     lappend table_def [list \
         manage \
-        "Action" \
+        "Actions" \
         {} \
         {
             [eval {
                 if {$my_user_id == $user_id} {
-                    return "<td>\[<a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a>\]</td>"
+                    return "<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">Drop&nbsp;Membership</a> </small>\]</td>"
                 } else {
                     return "<td>&nbsp;</td>"
                 }

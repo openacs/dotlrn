@@ -1707,7 +1707,7 @@ namespace eval dotlrn_community {
         if {![empty_string_p $reorder_hack_p]} {
             ns_log notice "aks1: applets_dispatch: reorder hack!"
 
-            set reorder_applets_string [dotlrn::parameter user_wsp_applet_ordering -default "dotlrn_news,dotlrn_bboard,dotlrn_survey,dotlrn_faq"]
+            set reorder_applets_string [dotlrn::parameter -default "dotlrn_news,dotlrn_bboard,dotlrn_survey,dotlrn_faq" user_wsp_applet_ordering]
 
             set reorder_applets_list [string trim [split $reorder_applets_string {,}]]
 
