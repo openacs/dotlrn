@@ -20,7 +20,7 @@
 
 <master>
 <property name="title">@first_names@ @last_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context_bar">@context_bar;noquote@</property>
 
 #dotlrn.user_has_been_a_member_since#
 
