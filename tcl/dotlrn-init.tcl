@@ -21,7 +21,7 @@ ad_library {
 # if installed
 if {[dotlrn::is_instantiated]} {
 
-    set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]"
+    set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]/"
     if {![dotlrn::is_instantiated_here -url $dotlrn_classes_url]} {
         dotlrn::mount_package \
             -package_key [dotlrn::package_key] \
@@ -29,7 +29,7 @@ if {[dotlrn::is_instantiated]} {
             -directory_p "t"
     }
 
-    set dotlrn_clubs_url "[dotlrn::get_url][dotlrn_club::get_url]"
+    set dotlrn_clubs_url "[dotlrn::get_url][dotlrn_club::get_url]/"
     if {![dotlrn::is_instantiated_here -url $dotlrn_clubs_url]} {
         dotlrn::mount_package \
             -package_key [dotlrn::package_key] \
