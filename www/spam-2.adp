@@ -25,8 +25,19 @@
 <property name="link_control_panel">1</property>
 
 <p>
-  Are you sure you want to send this @spam_name@ Message?
+  Are you sure you want to send the following @spam_name@ Message?
 </p>
+
+<table bgcolor="#ececec" width="95%" cellpadding="3" cellspacing="3">
+  <tr>
+    <td width="10%">Subject</td>
+    <td>@subject@</td>
+  </tr>
+  <tr>
+    <td>Message</td>
+    <td>@message@</td>
+  </tr>
+</table>
 
 <form action="spam" method="post">
   @confirm_data@

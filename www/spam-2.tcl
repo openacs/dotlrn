@@ -22,11 +22,15 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
+    subject:onevalue
+    message:onevalue
     spam_name:onevalue
     context_bar:onevalue
     community_id:onevalue
     portal_id:onevalue
 }
+
+form get_values spam_message subject message
 
 set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
 set context_bar [list [list $referer Admin] "$spam_name Community"]
