@@ -45,6 +45,11 @@ if {![dotlrn::user_can_browse_p]} {
 # Get the page
 set portal_id [dotlrn::get_workspace_portal_id $user_id]
 
+if {[empty_string_p $portal_id]} {
+    ad_returnredirect index-not-a-user
+    return
+}
+
 set rendered_page [dotlrn::render_page $portal_id]
 
 ad_return_template

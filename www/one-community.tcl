@@ -7,7 +7,7 @@ ad_page_contract {
 } {
 }
 
-ns_log Notice "BEN TEST!"
+# ns_log Notice "BEN TEST!"
 
 
 # Check that this is a community type
