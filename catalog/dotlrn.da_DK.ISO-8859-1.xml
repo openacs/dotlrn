@@ -9,7 +9,6 @@
   <msg key="Actions">Handlinger</msg>
   <msg key="actions">Handlinger</msg>
   <msg key="Active_Applets">Aktive programmer</msg>
-  <msg key="Add">Tilføj</msg>
   <msg key="add">tilføj</msg>
   <msg key="Add_A_Member">Tilføj et medlem</msg>
   <msg key="Add_a_Professor">Tilføj en professor</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">administrér</msg>
   <msg key="admin_page_name">Kontrolpanel</msg>
   <msg key="admin_pages_navbar_name">Administrér</msg>
-  <msg key="admin_role_pretty_name">Administrator</msg>
-  <msg key="admin_role_pretty_plural">Administratorer</msg>
   <msg key="Administer">Administrér</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Er du sikker på, at du ønsker at sende følgende</msg>
   <msg key="arhive_group_name">Arkivér gruppen %group_name%</msg>
   <msg key="Ask_a_question">Stil et spørgsmål:</msg>
-  <msg key="at">på</msg>
-  <msg key="bad_folder_id">forkert mappe id</msg>
-  <msg key="be_either">bliv enten</msg>
   <msg key="Be_sure">Vær sikker på</msg>
-  <msg key="be_the_header_line">være headerlinjen</msg>
   <msg key="Become_this_user">Bliv denne bruger!</msg>
   <msg key="Biography">Biografi:</msg>
   <msg key="black">sort</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">blå</msg>
   <msg key="Bulk_Upload">Masseupload</msg>
   <msg key="Bulk_Uploading">Masseuploader...</msg>
-  <msg key="byte">byte</msg>
-  <msg key="bytes">bytes</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
   <msg key="Change_Locale">Skift Locale</msg>
-  <msg key="Change_My_Password">Ændr min adgangskode</msg>
   <msg key="class_instance_portal_pretty_name">Klasser</msg>
   <msg key="class_instances_pretty_name">Klasse</msg>
   <msg key="class_instances_pretty_plural">Klasser</msg>
@@ -105,7 +95,6 @@
   <msg key="Confirm_1">Bekræft:</msg>
   <msg key="Confirm_Drop">Bekræft sletning</msg>
   <msg key="Confirmation">Bekræftelse</msg>
-  <msg key="Control_Panel">Kontrolpanel</msg>
   <msg key="control_panel">Kontrolpanel</msg>
   <msg key="Copy">kopi</msg>
   <msg key="couldnt_find_user_id">Vi kunne ikke finde bruger nummer %user_id%; måske er denne person blevet slettet?</msg>
@@ -151,7 +140,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Grupper</msg>
   <msg key="dotlrn_member_rel_pretty_name">Mellemsskab af dotLRN fællesskab</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Mellemsskaber af dotLRN fællesskab</msg>
-  <msg key="Download">Download</msg>
   <msg key="Drop">Slet</msg>
   <msg key="Drop_Membership">Slet medlemsskab</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Slet medlemsskab&quot; border=0&gt;  </msg>
@@ -180,7 +168,6 @@
   <msg key="Fields">Felter</msg>
   <msg key="First_Line">Første linje</msg>
   <msg key="First_Name">Fornavn</msg>
-  <msg key="First_Names">Fornavne</msg>
   <msg key="From">Fra</msg>
   <msg key="fuchsia">fuchsiarød</msg>
   <msg key="Full">Ubegrænset</msg>
@@ -211,15 +198,12 @@
   <msg key="instructor_role_pretty_plural">Professorer</msg>
   <msg key="Invalid">Ikke gyldig</msg>
   <msg key="is_already_in_use">er allerede i brug</msg>
-  <msg key="item">emne</msg>
-  <msg key="items">emner</msg>
   <msg key="Join">Slut til</msg>
   <msg key="Join_A_Group">Slut til en gruppe</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Tilslut&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Tilslutningspolitik</msg>
   <msg key="Key">Nøgle</msg>
   <msg key="Large">Stor</msg>
-  <msg key="Last_Modified">Seneste ændret</msg>
   <msg key="Last_Name">Efternavn</msg>
   <msg key="Last_Visit">Seneste besøg:</msg>
   <msg key="Last_visit_over">Seneste besøg over</msg>
@@ -228,7 +212,6 @@
   <msg key="lime">lime</msg>
   <msg key="Limited">Begrænset</msg>
   <msg key="Limited_Access">Begrænset adgang</msg>
-  <msg key="login_information">Information til log ind:</msg>
   <msg key="logout">Log ud</msg>
   <msg key="lt_a_secondary">- en sekundær identificering af brugeren.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Tilføj en ny dotLRN-bruger:</msg>
@@ -236,26 +219,20 @@
   <msg key="lt_Add_community_name_Me">Tilføj medlemmer af %community_name% til et nyt fællesskab</msg>
   <msg key="lt_Add_Members_to_Anothe">Tilføj medlemmer til et nyt fællesskab</msg>
   <msg key="lt_Add_members_to_anothe">Tilføj medlemmer til en anden gruppe</msg>
-  <msg key="lt_Add_Membership_To_Com">Tilføj medlemsskab til fællesskab</msg>
   <msg key="lt_Add_These_Users_To_A_">Tilføj disse brugere til en gruppe</msg>
   <msg key="lt_Administrative_Action">Administrative handlinger</msg>
   <msg key="lt_An_error_occured_whil">Der opstod en fejl under oprettelse af brugeren til et fællesskab. Fejlen er blevet logget.</msg>
   <msg key="lt_An_error_occured_whil_1">Der opstod en fejl under fjernelsen af brugeren til et fællesskab. Fejlen er blevet logget.</msg>
   <msg key="lt_approve_and_add_to_do">godkend og tilføj til dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">er endnu ikke medlemmer af</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på, at du ønsker at slette den tomme afdeling</msg>
   <msg key="lt_Be_sure_that_the_pers">Vær sikker på, at denne person ikke allerede har en SloanSpace-konto under en anden mail-adresse. Duplikat-konti skaber problemer for alle. For at tilføje en person med en eksisterende konto, skal du bruge &lt;a href=members&gt;Håndtér medlemsskaber&lt;/a&gt;.</msg>
-  <msg key="lt_Change_my_language_se">Ændr min opsætning af sprog</msg>
   <msg key="lt_Class_Key_a_short_nam">Klassenøgle (en kort navn uden mellemrum)</msg>
   <msg key="lt_Communitys_Web_Addres">Fællesskabets webadresse</msg>
   <msg key="lt_Current_clubs_pretty_">Nuværende %clubs_pretty_plural%</msg>
   <msg key="lt_Do_you_really_want_to">Er du sikker på, at du vil fjerne følgende medlemmer?</msg>
   <msg key="lt_Do_you_really_want_to_1">Er du sikker på, at du vil fjerne %num_users% brugere?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN-egenskaber for denne bruger.</msg>
-  <msg key="lt_E-mail_address_must_b">E-mail-adressen skal være gyldig og unik</msg>
   <msg key="lt_Edit_department_prope">Redigér egenskaber for afdelingen.</msg>
-  <msg key="lt_Edit_My_Notifications">Redigér Mine Beskeder</msg>
-  <msg key="lt_Edit_My_Personal_Info">Redigér min personlige informationer</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Redigér forhåndsgodkende mailservere</msg>
   <msg key="lt_Email_suffixes_listed">E-mail-endelserne, der er listet hér bruges til automatisk at folk, der registrerer sig med adresse, der matcher en af værdierne på listen, til dotLRN-brugere.</msg>
   <msg key="lt_emailing_this_user_fa">afsendelse af en e-mail til denne bruger fejlede!</msg>
@@ -264,7 +241,6 @@
   <msg key="lt_Error_removing_user_c">Fejl under fjernelse af brugerfællesskab.</msg>
   <msg key="lt_Error_sending_email_t">Fejl under afsendelse af e-mail til %email% fra password-update-2.tcl.</msg>
   <msg key="lt_First_check_the_box_o">Afkryds først boksens ved de brugere, du ønsker at tilføje. Vælg dernæst deres rolle og indsend til sidst denne formular.</msg>
-  <msg key="lt_Folder_folder_name_is">Folderen %folder_name% er tom</msg>
   <msg key="lt_Go_back_and_try_again">Gå tilbage og prøv igen</msg>
   <msg key="lt_having_trouble">Har du problemer med at få det rette udseende frem? Her er nogle tips</msg>
   <msg key="lt_Help_and_Personal_Con">Hjælp og Personlig Opsætning</msg>
@@ -274,7 +250,6 @@
   <msg key="lt_if_you_misspell">Hvis du staver skrifttypen forkert, eller hvis du vælger en type, som brugeren ikke har på sin computer, bliver den normale systemskrifttype benyttet.</msg>
   <msg key="lt_If_you_wish_to_give_g">Hvis du vil give en gæst fuld adgang til fora og undersøgelser, må du anmode din site-wide administrator om at ændre status på dit fællesskab. Denne mulighed er ikke åben for klasser på grund af MIT privacy policy.</msg>
   <msg key="lt_Information_about_oth">Information omkring andre medlemmer af dette fællesskab vil ikke være tilgængelige for denne bruger.</msg>
-  <msg key="lt_Interactive_setting_o">Interaktiv opsætning af dotLRN-parametre</msg>
   <msg key="lt_Join_a_class_instance">Tilslut en %class_instances_pretty_name% </msg>
   <msg key="lt_Join_a_clubs_pretty_n">Tilslut en %clubs_pretty_name% </msg>
   <msg key="lt_Join_the_above_criter">Saml de ovenstående kriterier med</msg>
@@ -308,7 +283,6 @@
   <msg key="lt_Some_of_the_emails_fa">Nogle af dine e-mails fejlede. Disse brugere havde dog autogenerede adgangskoder, og den bedste måde at fortsætte må, er at bede disse brugere om at logge ind og klikke på &quot;Jeg har glemt min adgangskode&quot;.</msg>
   <msg key="lt_spam_policy_must_be_o">spampolitik skal være én af følgende: alle eller medlemmer</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; er en %existing_role% i %community_name%. Du kan vælge en ny rolle nedenfor: </msg>
-  <msg key="lt_The_first_line_of_the">Filens først linje</msg>
   <msg key="lt_The_following_email_w">Den følgende e-mail var netop sendt fra %system_name%</msg>
   <msg key="lt_The_following_email_w_1">Den følgende e-mail var netop sendt fra %system_name%. Sendt af %system_owner%. Sendt til %email%. Emne: %subject% Besked: %body%.</msg>
   <msg key="lt_The_following_members">De følgende medlemmer af</msg>
@@ -329,13 +303,11 @@
   <msg key="lt_This_user_is_a_site-w">Denne bruger er site-wide administrator.</msg>
   <msg key="lt_This_user_is_currentl">Denne bruger er i øjeblikket i tilstanden &lt;i&gt;%member_state%&lt;/i&gt;. For at give brugeren adgang til dotLRN skal du &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;godkende og tilføje til dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">denne bruger er slette og bandlyst fra fællesskabet.</msg>
-  <msg key="lt_this_user_to_another_">denne bruger til en anden gruppe.</msg>
   <msg key="lt_to_use_vaild_email_ad">at bruge en gyldig mailadresse, eftersom denne proces vil sende den nye brugers adgangskode til den angivne adresse.</msg>
   <msg key="lt_Update_this_users_pas">Opdater brugerens adgangskode</msg>
   <msg key="lt_Use_this_only_for_an_">Brug kun dette for en officielt registreret student i klassen, som &lt;b&gt;ikke&lt;/b&gt; er en MIT- eller Sloan-studenrende.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog for %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Vi prøvede at eliminere brugeren, men der opstod en fejl. Dette skyldes højst sandsynligt en reference til brugeren (user_id=%user_id%) ét eller andet sted i databaseskabelonen. Det er tid til at kontakt programmørerne!</msg>
-  <msg key="lt_What_others_see_about">(Hvad andre ser om mig:</msg>
   <msg key="lt_You_are_about_to_dele">Du er ved at slette %num_users% brugere.</msg>
   <msg key="lt_You_are_adding_strong">Du er ved at tilføje &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; til %community_name%: </msg>
   <msg key="lt_You_are_not_allowed_t">Det er dig ikke tilladt at udføre denne handling.</msg>
@@ -366,8 +338,6 @@
   <msg key="Memberships">Medlemsskaber</msg>
   <msg key="Memberships_1">Medlemsskaber:</msg>
   <msg key="Message">Besked</msg>
-  <msg key="must">skal</msg>
-  <msg key="must_be_one_of">- skal være én af</msg>
   <msg key="My_Communities">Mine Fællesskaber</msg>
   <msg key="NA">Ingen</msg>
   <msg key="Name">Navn</msg>
@@ -410,17 +380,14 @@
   <msg key="Not_Allowed">Ikke tilladt</msg>
   <msg key="Note">Bemærk:</msg>
   <msg key="Nuke">Eliminér</msg>
-  <msg key="nuke">eliminér</msg>
   <msg key="Nuke_">Tilintetgør...</msg>
   <msg key="Nuke_Users">Tilintetgør brugere</msg>
   <msg key="olive">olivengrøn</msg>
   <msg key="Open">Åbn</msg>
   <msg key="optional_defaults_to">valgfri, normalsvaret er</msg>
   <msg key="Or">Eller</msg>
-  <msg key="or">eller</msg>
   <msg key="or_by_RGB_number">eller efter RGB-værdi</msg>
   <msg key="or_return_to">eller vend tilbage til</msg>
-  <msg key="password">Adgangskode:</msg>
   <msg key="Pending">Forestående</msg>
   <msg key="Pending_Approval">Godkendelse forestående </msg>
   <msg key="Personal_home_page">Personlig hjemmeside:</msg>
@@ -443,7 +410,6 @@
   <msg key="reject">afvis</msg>
   <msg key="Request_Membership">Anmod om medlemsskab</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Anmod om medlemsskab&quot;&gt;</msg>
-  <msg key="required">påkrævet</msg>
   <msg key="Results">Resultater</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">inddrag</msg>
@@ -460,8 +426,6 @@
   <msg key="Shared_Files">Delte filer</msg>
   <msg key="silver">sølv</msg>
   <msg key="Site-wide_Admin">Administrator for hele siden?</msg>
-  <msg key="Size">Størrelse</msg>
-  <msg key="SloanSpace">SloanSpace </msg>
   <msg key="Small">Lille</msg>
   <msg key="Sorry">Undskyld!</msg>
   <msg key="Spam_">Spam...</msg>
@@ -486,20 +450,16 @@
   <msg key="Templates">Skabeloner</msg>
   <msg key="Term">Termin</msg>
   <msg key="term">Termin</msg>
-  <msg key="Term_eg_Spring_Fall">Termin (eksempelvis Forår, Efterår)</msg>
   <msg key="Term_ID">Termin ID</msg>
   <msg key="term_properties">egenskaber for termin.</msg>
   <msg key="Terms">Terminer</msg>
   <msg key="terms">Terminer</msg>
-  <msg key="thank_you">Mange tak</msg>
   <msg key="the_format_of_email_domains">Denne værdi skal formateres som en komma-separeret liste over domæner (sædvanligvis med &quot;*@&quot;-strengen, som matcher &amp;lt;alt&amp;gt;@&amp;lt;mail-domæne&amp;gt;, foran). Du kunne eksempelvis bruge:</msg>
   <msg key="The_name">Navnet</msg>
   <msg key="there_are_no_users_matching">Der er ingen brugere, der matcher søgeteksten %search_text%. </msg>
   <msg key="this_user_is_deleted">denne bruger er slettet</msg>
-  <msg key="this_user_to_dotLRN">denne bruger til dotLRN</msg>
   <msg key="To">Til</msg>
   <msg key="Type">Type</msg>
-  <msg key="type">type</msg>
   <msg key="Unknown_Term">Ukendt termin</msg>
   <msg key="Update_Password">Opdatér adgangskode</msg>
   <msg key="upload">upload</msg>
@@ -527,15 +487,12 @@
   <msg key="Users_Bulk_Upload">Brugere: Masseupload</msg>
   <msg key="Users_Search">Brugersøgning</msg>
   <msg key="View">Vis</msg>
-  <msg key="visit">Besøg</msg>
   <msg key="Year">År:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>
   <msg key="Yes_delete">Ja, slet</msg>
   <msg key="Yes_Im_sure">Ja, jeg er sikker</msg>
   <msg key="You_can_specify_colors_by_name">Du kan specificere farver efter navn</msg>
-  <msg key="you_have_been_added">Du er blevet tilføjet som bruger til</msg>
-  <msg key="you_may_change_password">du kan ændre din adgangskode efter du logger ind</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Bemærk:&lt;/b&gt; Du skal oprette &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; for at kunne oprette %class_instances_pretty_plural%, eftersom disse skal forbindes med %terms_pretty_plural%.</msg>
   <msg key="your_icon_is_too_large">Dit ikon er for stort. Udgiveren af %system_name% har valgt at begrænse vedhæftninger til %max_attachments_bytes% bytes.\n </msg>
   <msg key="Youre_editing">Du er ved at redigere</msg>

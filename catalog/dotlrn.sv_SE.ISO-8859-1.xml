@@ -9,7 +9,6 @@
   <msg key="Actions">Åtgärder</msg>
   <msg key="actions">åtgärder</msg>
   <msg key="Active_Applets">Aktiva applets</msg>
-  <msg key="Add">Lägg till</msg>
   <msg key="add">lägg till</msg>
   <msg key="Add_A_Member">Lägg till medlem</msg>
   <msg key="Add_a_Professor">Lägg till lärare</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Kontrollpanelen</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
-  <msg key="admin_role_pretty_name">Administratör</msg>
-  <msg key="admin_role_pretty_plural">Administratörer</msg>
   <msg key="Administer">Administrera</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrera&quot;&gt;</msg>
   <msg key="Administrator">Administratör</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Är du säker att du vill skicka följande</msg>
   <msg key="arhive_group_name">Arkivera grupp %group_name%</msg>
   <msg key="Ask_a_question">Ställ en fråga:</msg>
-  <msg key="at">på</msg>
-  <msg key="bad_folder_id">felaktig mapp-ID</msg>
-  <msg key="be_either">bli antingen</msg>
   <msg key="Be_sure">Var säker</msg>
-  <msg key="be_the_header_line">bli rubriken:</msg>
   <msg key="Become_this_user">bli denna användare!</msg>
   <msg key="Biography">Biografi:</msg>
   <msg key="black">svart</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">blå</msg>
   <msg key="Bulk_Upload">Ladda upp flera</msg>
   <msg key="Bulk_Uploading">Laddar upp flera....</msg>
-  <msg key="byte">byte</msg>
-  <msg key="bytes">bytes</msg>
   <msg key="cannot_be_removed">kan ej tas bort</msg>
   <msg key="Change_Locale">Ändra lokalitet (locale)</msg>
-  <msg key="Change_My_Password">Ändra lösenord</msg>
   <msg key="class_instance_portal_pretty_name">Kurser</msg>
   <msg key="class_instances_pretty_name">Kurs</msg>
   <msg key="class_instances_pretty_plural">Kurser</msg>
@@ -105,7 +95,6 @@
   <msg key="Confirm_1">Bekräfta:</msg>
   <msg key="Confirm_Drop">Bekräfta utträde</msg>
   <msg key="Confirmation">Bekräftelse</msg>
-  <msg key="Control_Panel">Kontrollpanelen</msg>
   <msg key="control_panel">Kontrollpanelen</msg>
   <msg key="Copy">Kopiera</msg>
   <msg key="couldnt_find_user_id">Vi kunde inte finna användaren #%user_id%; kanske togs denna person bort?</msg>
@@ -151,7 +140,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Grupper</msg>
   <msg key="dotlrn_member_rel_pretty_name">Medlemsskap i dotLRN Gruppen</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Medlemsskap i dotLRN Grupper</msg>
-  <msg key="Download">Ladda ned</msg>
   <msg key="Drop">Gå ur</msg>
   <msg key="Drop_Membership">Säg upp medlemskap</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Säg upp medlemskap&quot; border=0&gt;</msg>
@@ -180,7 +168,6 @@
   <msg key="Fields">Fält</msg>
   <msg key="First_Line">Första raden</msg>
   <msg key="First_Name">Förnamn</msg>
-  <msg key="First_Names">Förnamn</msg>
   <msg key="From">Från</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Full</msg>
@@ -212,15 +199,12 @@
   <msg key="instructor_role_pretty_plural">Lärare</msg>
   <msg key="Invalid">Felaktig</msg>
   <msg key="is_already_in_use">är upptaget</msg>
-  <msg key="item">objekt</msg>
-  <msg key="items">objekt</msg>
   <msg key="Join">Gå med</msg>
   <msg key="Join_A_Group">Gå med i en kurs/grupp</msg>
   <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Gå med&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Medlemspolicy</msg>
   <msg key="Key">Kod</msg>
   <msg key="Large">Stor</msg>
-  <msg key="Last_Modified">Senast ändrad</msg>
   <msg key="Last_Name">Efternamn</msg>
   <msg key="Last_Visit">Senaste besök:</msg>
   <msg key="Last_visit_over">Senaste besök över</msg>
@@ -229,7 +213,6 @@
   <msg key="lime">lime</msg>
   <msg key="Limited">Begränsad</msg>
   <msg key="Limited_Access">Begränsad behörighet</msg>
-  <msg key="login_information">Inloggnings information:</msg>
   <msg key="logout">Logga ut</msg>
   <msg key="lt_a_secondary">- en sekundär identifierare för användaren.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Lägg till en ny dotLRN användare:</msg>
@@ -237,26 +220,20 @@
   <msg key="lt_Add_community_name_Me">Lägg till %community_name% medlemmar till en annan intressegrupp</msg>
   <msg key="lt_Add_Members_to_Anothe">Lägg till medlemmar till en annan intressegrupp</msg>
   <msg key="lt_Add_members_to_anothe">Lägg till medlemmar till en annan grupp</msg>
-  <msg key="lt_Add_Membership_To_Com">Lägg till medlemsskap till en intressegrupp</msg>
   <msg key="lt_Add_These_Users_To_A_">Lägg till dessa användare till en grupp</msg>
   <msg key="lt_Administrative_Action">Administrativa åtgärder</msg>
   <msg key="lt_An_error_occured_whil">Ett fel inträffade vid försök att lägga till en användare till en intressegrupp. Detta fel har loggats.</msg>
   <msg key="lt_An_error_occured_whil_1">Ett fel inträffade vid försök att ta bort en användare i en intressegrupp. Detta fel har loggats.</msg>
   <msg key="lt_approve_and_add_to_do">godkänn och lägg till till dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">är ej ännu medlemmar i</msg>
   <msg key="lt_Are_you_sure_you_want">Är du säker på att du vill ta bort den tomma institutionen</msg>
   <msg key="lt_Be_sure_that_the_pers">Var säker på att personen inte redan har ett SloanSpacekonto knutet till en annan e-postadress. Dubbla konton skapar problem för alla. För att lägga till en person med ett existerande konto använd &lt;a href=members&gt;Hantera medlemsskap&lt;/a&gt;.</msg>
-  <msg key="lt_Change_my_language_se">Ändra egen språkinställning</msg>
   <msg key="lt_Class_Key_a_short_nam">Kurskod (ett kort namn, inga mellanslag)</msg>
   <msg key="lt_Communitys_Web_Addres">Intressegruppens webbadress</msg>
   <msg key="lt_Current_clubs_pretty_">Aktuella %clubs_pretty_plural%</msg>
   <msg key="lt_Do_you_really_want_to">Vill du verkligen ta bort följande medlemmar?</msg>
   <msg key="lt_Do_you_really_want_to_1">Vill du verkligen ta bort %num_users% användare?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN egenskaper för denna användare.</msg>
-  <msg key="lt_E-mail_address_must_b">E-postadressen måste vara giltig och unik. &lt;BR&gt;Denna användare  har troligen redan ett SloanSpacekonto. &lt;br&gt;Försök lägga till denna användare genom &lt;a href=members&gt;Hantera medlemsskap&lt;/a&gt;.</msg>
   <msg key="lt_Edit_department_prope">Redigera institutionens egenskaper</msg>
-  <msg key="lt_Edit_My_Notifications">Redigera mina upplysningar</msg>
-  <msg key="lt_Edit_My_Personal_Info">Redigera min personliga information</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Redigera förhandsgodkända e-postdomäner</msg>
   <msg key="lt_Email_suffixes_listed">De som registrerar med e-postadresser vars ändelser (domäner) matchar de listade här blir automatiskt dotLRN-användare.</msg>
   <msg key="lt_emailing_this_user_fa">Det gick ej att skicka e-post till denna användare! </msg>
@@ -265,7 +242,6 @@
   <msg key="lt_Error_removing_user_c">Fel vid borttagning av intressegrupp</msg>
   <msg key="lt_Error_sending_email_t">Fel vid utskick av e-post till %email% från password-update-2.tcl</msg>
   <msg key="lt_First_check_the_box_o">Kryssa först för de användare du önskar lägga till, välj sedan deras roll, och välj slutligen &quot;skicka&quot;.</msg>
-  <msg key="lt_Folder_folder_name_is">Mappen %folder_name% är tom</msg>
   <msg key="lt_Go_back_and_try_again">Gå tillbaks och försök igen</msg>
   <msg key="lt_having_trouble">Har du problem med att få den design du önskar? Här finns några tips.</msg>
   <msg key="lt_Help_and_Personal_Con">Hjälp och Personliga Inställningar</msg>
@@ -275,7 +251,6 @@
   <msg key="lt_if_you_misspell">Om du stavar fel på typsnittsnamnet eller väljer ett typsnitt som en användare inte har på sin dator, så kommer det normala typsnittet för användarens system att användas.</msg>
   <msg key="lt_If_you_wish_to_give_g">Om du önskar att ge gäster fullständig åtkomst till forum och enkätet, kan du begära att den globala administratören ändrar egenskaperna för din intressegrupp. Denna möjlighet är dock ej öppen för kurser på grund av MITs integritetspolicy.</msg>
   <msg key="lt_Information_about_oth">Information om andra medlemmar av denna intressegruppering kommer ej att vara tillgängliga för denna användare.</msg>
-  <msg key="lt_Interactive_setting_o">Interaktiv inställning av dotLRM parametrar</msg>
   <msg key="lt_Join_a_class_instance">Gå med i en Kurs</msg>
   <msg key="lt_Join_a_clubs_pretty_n">Gå med i en klubb</msg>
   <msg key="lt_Join_the_above_criter">Sammanfoga kriterier ovan med</msg>
@@ -309,7 +284,6 @@
   <msg key="lt_Some_of_the_emails_fa">Några av e-postmeddelandena failerade. Dessa användare fick dock slumpmässiga lösenord skapade. Det bästa sättet att lösa detta är att be dessa användare logga in och klicka på 'Jag har glömt mitt lösenord'. </msg>
   <msg key="lt_spam_policy_must_be_o">spampolicy måste vara en av följande: alla eller medlemmar</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; är en %existing_role% i %community_name%. Du kan välja en ny roll nedan:</msg>
-  <msg key="lt_The_first_line_of_the">Första raden på filen</msg>
   <msg key="lt_The_following_email_w">Följande e-postmeddelande skickades just från %system_name%</msg>
   <msg key="lt_The_following_email_w_1">Följande e-postmeddelande skickades just från %system_name% Skickat av: %system_owner% Skickat till: %email% Ärende: %subject% Meddelande: %body%</msg>
   <msg key="lt_The_following_members">Följande medlemmar av</msg>
@@ -330,13 +304,11 @@
   <msg key="lt_This_user_is_a_site-w">Denna användare är global admin.</msg>
   <msg key="lt_This_user_is_currentl">Denna användare är för närvarande i &lt;i&gt;%member_state%&lt;/i&gt; läge. För att ge användaren åtkomst till dotLRN måste du&lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;godkänna och lägga till i dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">denna användare är borttagen och avstängd från intressegruppen.</msg>
-  <msg key="lt_this_user_to_another_">denna användare till en annan grupp.</msg>
   <msg key="lt_to_use_vaild_email_ad">att använda korrekta e-postadresser då processen kommer att skicka nya användarens lösenord till den angivna e-postadressen.</msg>
   <msg key="lt_Update_this_users_pas">Uppdatera denna användares lösenord</msg>
   <msg key="lt_Use_this_only_for_an_">Använd endast detta för en officiellt registrerar student i denna kurs vilken &lt;b&gt;ej&lt;/b&gt; är en MIT eller Sloan student.</msg>
   <msg key="lt_Web_Log_for_user_name">Webblogg för %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Vi försökte 'nuke' användare, men ett fel inträffade. Den troligaste orsaken är att en referens till denna användare (user_id=%user_id%) existerar någonstans i databasens schema. Det är dags att ringa till programmerarna.</msg>
-  <msg key="lt_What_others_see_about">(Vad andra ser om mig:</msg>
   <msg key="lt_You_are_about_to_dele">Du kommer att ta bort %num_users&amp; användare.</msg>
   <msg key="lt_You_are_adding_strong">Du gör &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; medlem av %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">Du har inte rättighet att utföra den åtgärden.</msg>
@@ -367,8 +339,6 @@
   <msg key="Memberships">Medlemsskap</msg>
   <msg key="Memberships_1">Medlemsskap:</msg>
   <msg key="Message">Meddelande</msg>
-  <msg key="must">måste</msg>
-  <msg key="must_be_one_of">- måste vara en av</msg>
   <msg key="My_Communities">Mina Intressegrupper</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Namn</msg>
@@ -411,17 +381,14 @@
   <msg key="Not_Allowed">Ej tillåtet</msg>
   <msg key="Note">Notera:</msg>
   <msg key="Nuke">Nuke</msg>
-  <msg key="nuke">nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">'Nuke' användare</msg>
   <msg key="olive">olivgrön</msg>
   <msg key="Open">Öppna</msg>
   <msg key="optional_defaults_to">fritt val, annars</msg>
   <msg key="Or">Eller </msg>
-  <msg key="or">eller</msg>
   <msg key="or_by_RGB_number">eller genom RGB nummer</msg>
   <msg key="or_return_to">eller, återgå till</msg>
-  <msg key="password">Lösenord:</msg>
   <msg key="Pending">Inväntas</msg>
   <msg key="Pending_Approval">Inväntar godkännande</msg>
   <msg key="Personal_home_page">Personlig hemsida:</msg>
@@ -444,7 +411,6 @@
   <msg key="reject">avslå</msg>
   <msg key="Request_Membership">Ansök om medlemsskap</msg>
   <msg key="request_membership_link"> &lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Ansök om medlemsskap&quot;&gt;</msg>
-  <msg key="required">krävs</msg>
   <msg key="Results">Resultat</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">dra in</msg>
@@ -461,8 +427,6 @@
   <msg key="Shared_Files">Delade filer</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Global Admin?</msg>
-  <msg key="Size">Storlek</msg>
-  <msg key="SloanSpace">SloanSpace</msg>
   <msg key="Small">Liten</msg>
   <msg key="Sorry">Tyvärr!</msg>
   <msg key="Spam_">Spam ...</msg>
@@ -487,20 +451,16 @@
   <msg key="Templates">Mallar</msg>
   <msg key="Term">Termin</msg>
   <msg key="term">termin</msg>
-  <msg key="Term_eg_Spring_Fall">Termin (t.ex. Vårterminen, Höstterminen)</msg>
   <msg key="Term_ID">Terminskod</msg>
   <msg key="term_properties">Egenskaper termin.</msg>
   <msg key="Terms">Terminer</msg>
   <msg key="terms">terminer</msg>
-  <msg key="thank_you">Tack</msg>
   <msg key="the_format_of_email_domains">E-postdomänerna du kan ange ska vara i form av en kommaseparerad lista. Varje domän i listan föregås vanligtvis av &amp;quot;*@&amp;quot;, som innebär &amp;lt;vad-som-helst&amp;gt;@&amp;lt;e-postdomän&amp;gt;. Här är ett exempel:</msg>
   <msg key="The_name">Namnet</msg>
   <msg key="there_are_no_users_matching">Det finns inga användare som matchar %search_text%.</msg>
   <msg key="this_user_is_deleted">denna användare är borttagen</msg>
-  <msg key="this_user_to_dotLRN">denna användare till dotLRN.</msg>
   <msg key="To">Till</msg>
   <msg key="Type">Typ</msg>
-  <msg key="type">typ</msg>
   <msg key="Unknown_Term">Okänd termin</msg>
   <msg key="Update_Password">Uppdatera lösenord</msg>
   <msg key="upload">ladda upp</msg>
@@ -528,15 +488,12 @@
   <msg key="Users_Bulk_Upload">Användare: Ladda upp fler samtidigt</msg>
   <msg key="Users_Search">Användare sök</msg>
   <msg key="View">Vy</msg>
-  <msg key="visit">besök</msg>
   <msg key="Year">År:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>
   <msg key="Yes_delete">Ja, ta bort</msg>
   <msg key="Yes_Im_sure">Ja, jag är säker.</msg>
   <msg key="You_can_specify_colors_by_name">Du kan specificera färger genom namn</msg>
-  <msg key="you_have_been_added">Du har lagts till som användare av</msg>
-  <msg key="you_may_change_password">Du kan ändra ditt lösenord efter det att du loggat in.</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Notera:&lt;/b&gt; Du måste skapa &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; för att kunna skapa %class_instances_pretty_plural%, då dessa måste associeras med %terms_pretty_plural%.</msg>
   <msg key="your_icon_is_too_large">Din ikon är för stor. Systemägaren för %system_name% har valt att begränsa storleken på bilagor till maximalt %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">Du redigerar</msg>

@@ -7,7 +7,6 @@
   <msg key="Action">Ενέργεια</msg>
   <msg key="Actions">Ενέργειες</msg>
   <msg key="actions">Ενέργειες</msg>
-  <msg key="Add">Προσθήκη</msg>
   <msg key="add">προσθήκη</msg>
   <msg key="Add_A_Member">Προσθήκη Μέλους</msg>
   <msg key="Add_a_Professor">Προσθήκη Καθηγητή</msg>
@@ -21,7 +20,6 @@
   <msg key="And">Και</msg>
   <msg key="archived">Παλαιότερα</msg>
   <msg key="Change_Locale">Αλλαγή Γλώσσας</msg>
-  <msg key="Change_My_Password">Αλλαγή συνθηματικού</msg>
   <msg key="class_instances_pretty_name">Μάθημα</msg>
   <msg key="class_instances_pretty_plural">Μαθήματα</msg>
   <msg key="Classes">Μαθήματα</msg>
@@ -42,7 +40,6 @@
   <msg key="header_logo">Header Logo</msg>
   <msg key="help">Βοήθεια</msg>
   <msg key="logout">Έξοδος</msg>
-  <msg key="lt_Edit_My_Personal_Info">Επεξεργασία προσωπικών μου πληροφοριών</msg>
   <msg key="Members">Μέλη</msg>
   <msg key="members">Μέλη</msg>
   <msg key="Name">Όνομα</msg>

@@ -9,7 +9,6 @@
   <msg key="Actions">Actions</msg>
   <msg key="actions">Actions</msg>
   <msg key="Active_Applets">Active Applets</msg>
-  <msg key="Add">Add</msg>
   <msg key="add">add</msg>
   <msg key="Add_A_Member">Add A Member</msg>
   <msg key="Add_a_Professor">Add a Professor</msg>
@@ -19,6 +18,8 @@
   <msg key="Add_New_Members">Add New Members</msg>
   <msg key="Add_Professor">Add Professor</msg>
   <msg key="add_selected_members">Add Selected Members</msg>
+  <msg key="add_to_another_group">Add this user to another group</msg>
+  <msg key="add_to_dotlrn">Add this user to .LRN</msg>
   <msg key="Add_to_group_">Add to group ...</msg>
   <msg key="Add_User">Add User</msg>
   <msg key="Add_users_to">Add users to</msg>
@@ -27,9 +28,9 @@
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Control Panel</msg>
+  <description key="admin_page_name">The name of the administration page in the navbar on the MySpace page.</description>
+
   <msg key="admin_pages_navbar_name">Admin</msg>
-  <msg key="admin_role_pretty_name">Administrator</msg>
-  <msg key="admin_role_pretty_plural">Administrators</msg>
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
@@ -39,6 +40,8 @@
   <msg key="All_Terms">All Terms</msg>
   <msg key="And">And</msg>
   <msg key="Any">Any</msg>
+  <description key="Any">Used in user search form in checkboxes to indicate that you want to search for user of any type, or users of any level of access etc, i.e. don't restrict the search with the given criteria.</description>
+
   <msg key="Applets_to_Add">Applets To Add</msg>
   <msg key="Approve">Approve</msg>
   <msg key="approve">approve</msg>
@@ -50,23 +53,16 @@
   <msg key="are_you_sure_you_want_to_send">Are you sure you want to send the following</msg>
   <msg key="arhive_group_name">Archive group %group_name%</msg>
   <msg key="Ask_a_question">Ask a question:</msg>
-  <msg key="at">at</msg>
-  <msg key="bad_folder_id">bad folder id</msg>
-  <msg key="be_either">be either</msg>
   <msg key="Be_sure">Be sure</msg>
-  <msg key="be_the_header_line">be the header line:</msg>
   <msg key="Become_this_user">Become this user!</msg>
   <msg key="Biography">Biography:</msg>
   <msg key="black">black</msg>
   <msg key="Black_None_chosen">Black (None chosen)</msg>
   <msg key="blue">blue</msg>
   <msg key="Bulk_Upload">Bulk Upload</msg>
-  <msg key="Bulk_Uploading">Bulk Uploading....</msg>
-  <msg key="byte">byte</msg>
-  <msg key="bytes">bytes</msg>
+  <msg key="Bulk_Uploading">Bulk uploading in progress.</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
-  <msg key="Change_My_Password">Change My Password</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -100,12 +96,14 @@
   <msg key="Community_Types">Community Types</msg>
   <msg key="Communitys_Name">Community's Name</msg>
   <msg key="Configure_Element">Configure Element</msg>
+  <description key="Configure_Element">Used in title on page for configuring a portal element, i.e. a portal application mini window.
+</description>
+
   <msg key="Configure_name">Configure %name%</msg>
   <msg key="Confirm">Confirm</msg>
   <msg key="Confirm_1">Confirm:</msg>
   <msg key="Confirm_Drop">Confirm Drop</msg>
   <msg key="Confirmation">Confirmation</msg>
-  <msg key="Control_Panel">Control Panel</msg>
   <msg key="control_panel">Control Panel</msg>
   <msg key="Copy">Copy</msg>
   <msg key="couldnt_find_user_id">We couldn't find user #%user_id%; perhaps this person was deleted?</msg>
@@ -122,7 +120,9 @@
   <msg key="Deactivate_Users">Deactivate Users</msg>
   <msg key="Deactivated">Deactivated</msg>
   <msg key="Delete">Delete</msg>
-  <msg key="Delete_Empty">Delete Empty</msg>
+  <msg key="Delete_Empty">Delete empty %departments_pretty_name%.</msg>
+  <description key="Delete_Empty">Used as title of page for deleting empty department.</description>
+
   <msg key="Department">Department</msg>
   <msg key="department_must_be_empty_to_be_deleted">Error: %departments_pretty_name% must be empty to be deleted</msg>
   <msg key="department_name">%departments_pretty_name% Name</msg>
@@ -136,7 +136,7 @@
   <msg key="Dont_Add">Don't Add</msg>
   <msg key="dotLRN_Admin">dotLRN Admin</msg>
   <msg key="dotlrn_admin_pretty_name">Site Wide Administration</msg>
-  <msg key="dotlrn_admin_rel_pretty_name">dotLRN Admin Community Membership</msg>
+  <msg key="dotlrn_admin_rel_pretty_name">.LRN Community Membership for Administrators</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin Community Memberships</msg>
   <msg key="dotlrn_class_instance_description">e.g. 6.001</msg>
   <msg key="dotlrn_class_instance_pretty_name">Class</msg>
@@ -151,7 +151,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Groups</msg>
   <msg key="dotlrn_member_rel_pretty_name">dotLRN Community Membership</msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN Community Memberships</msg>
-  <msg key="Download">Download</msg>
   <msg key="Drop">Drop</msg>
   <msg key="Drop_Membership">Drop Membership</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Drop Membership&quot; border=0&gt;</msg>
@@ -180,8 +179,8 @@ notify this user.</msg>
   <msg key="Extra_Large">Extra Large</msg>
   <msg key="Fields">Fields</msg>
   <msg key="First_Line">First Line</msg>
+  <msg key="first_line_of_file_must_be">The first line of the file must have the following header line:</msg>
   <msg key="First_Name">First Name</msg>
-  <msg key="First_Names">First Names</msg>
   <msg key="From">From</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Full</msg>
@@ -213,24 +212,24 @@ notify this user.</msg>
   <msg key="instructor_role_pretty_plural">Professors</msg>
   <msg key="Invalid">Invalid</msg>
   <msg key="is_already_in_use">is already in use</msg>
-  <msg key="item">item</msg>
-  <msg key="items">items</msg>
   <msg key="Join">Join</msg>
   <msg key="Join_A_Group">Join A Group</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Join&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Join Policy</msg>
   <msg key="Key">Key</msg>
   <msg key="Large">Large</msg>
-  <msg key="Last_Modified">Last Modified</msg>
   <msg key="Last_Name">Last Name</msg>
   <msg key="Last_Visit">Last Visit:</msg>
-  <msg key="Last_visit_over">Last visit over</msg>
-  <msg key="Last_visit_under">Last visit under</msg>
+  <msg key="Last_visit_over">Number of days since last visit is more than:</msg>
+  <description key="Last_visit_over">On the user search form. What follows the text is a select box for the number of days.</description>
+
+  <msg key="Last_visit_under">Number of days since last visit is less than:</msg>
+  <description key="Last_visit_under">On the user search form. What follows the text is a select box for the number of days.</description>
+
   <msg key="Latest_post">Latest post:</msg>
   <msg key="lime">lime</msg>
   <msg key="Limited">Limited</msg>
   <msg key="Limited_Access">Limited Access</msg>
-  <msg key="login_information">Login information:</msg>
   <msg key="logout">Logout</msg>
   <msg key="lt_a_secondary">- 
         a secondary identifier for the  user.</msg>
@@ -239,26 +238,20 @@ notify this user.</msg>
   <msg key="lt_Add_community_name_Me">Add %community_name% Members to Another Community</msg>
   <msg key="lt_Add_Members_to_Anothe">Add Members to Another Community</msg>
   <msg key="lt_Add_members_to_anothe">Add members to another group</msg>
-  <msg key="lt_Add_Membership_To_Com">Add Membership To Community</msg>
   <msg key="lt_Add_These_Users_To_A_">Add These Users To A Group</msg>
   <msg key="lt_Administrative_Action">Administrative Actions</msg>
   <msg key="lt_An_error_occured_whil">An error occured while trying to add a user to a community.  This error has been logged.</msg>
   <msg key="lt_An_error_occured_whil_1">An error occured while trying to remove a user to a community.  This error has been logged.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">are not yet members of</msg>
   <msg key="lt_Are_you_sure_you_want">Are you sure you want to delete the empty department</msg>
   <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have a SloanSpace account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
-  <msg key="lt_Change_my_language_se">Change my language setting</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
-  <msg key="lt_E-mail_address_must_b">E-mail address must be valid and unique. &lt;br&gt;This user probably already has a SloanSpace account. &lt;br&gt;Try adding this user through &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
   <msg key="lt_Edit_department_prope">Edit department properties.</msg>
-  <msg key="lt_Edit_My_Notifications">Edit My Notifications</msg>
-  <msg key="lt_Edit_My_Personal_Info">Edit My Personal Information</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Edit Pre-approved Email Servers</msg>
   <msg key="lt_Email_suffixes_listed">Email suffixes listed here are used to automatically make dotLRN users of
   people that register with email addresses that match one of the values in
@@ -270,7 +263,6 @@ notify this user.</msg>
   <msg key="lt_Error_sending_email_t">Error sending email to %email% from password-update-2.tcl</msg>
   <msg key="lt_First_check_the_box_o">First check the box of the users you want to add, next select their
       role, and finally submit the form.</msg>
-  <msg key="lt_Folder_folder_name_is">Folder %folder_name% is empty</msg>
   <msg key="lt_Go_back_and_try_again">Go back and try again</msg>
   <msg key="lt_having_trouble">Having trouble getting the look you want? Here's some tips</msg>
   <msg key="lt_Help_and_Personal_Con">Help and Personal Configuration</msg>
@@ -283,7 +275,6 @@ a CSV file to import here.</msg>
   have on her computer, the normal system font will be used.</msg>
   <msg key="lt_If_you_wish_to_give_g">If you wish to give guests full access to forums and surveys you may request that the site-wide admin change the status of your community. This option is not open to classes due to MIT privacy policy.</msg>
   <msg key="lt_Information_about_oth">Information about other members of this community will not be available to this user.</msg>
-  <msg key="lt_Interactive_setting_o">Interactive setting of dotLRN parameters</msg>
   <msg key="lt_Join_a_class_instance">Join a %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">Join a %clubs_pretty_name%</msg>
   <msg key="lt_Join_the_above_criter">Join the above criteria with</msg>
@@ -327,7 +318,6 @@ we'll return an error message.</msg>
   <msg key="lt_Some_of_the_emails_fa">Some of the emails failed. Those users had random passwords generated for them, however. The best way to proceed is to have these users log in and ask them to click on 'I have forgotten my password'.</msg>
   <msg key="lt_spam_policy_must_be_o">spam policy must be one of: all or members</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; is a %existing_role% in %community_name%. You may select a new role below:</msg>
-  <msg key="lt_The_first_line_of_the">The first line of the file</msg>
   <msg key="lt_The_following_email_w">The following email was just sent from %system_name%</msg>
   <msg key="lt_The_following_email_w_1">The following email was just sent from %system_name%
 
@@ -355,7 +345,6 @@ Message: %body%</msg>
   <msg key="lt_This_user_is_currentl">This user is currently in state &lt;i&gt;%member_state%&lt;/i&gt;.  To allow this user access to dotLRN you must &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;approve and add to dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">this user is deleted and
   banned from the community.</msg>
-  <msg key="lt_this_user_to_another_">this user to another group.</msg>
   <msg key="lt_to_use_vaild_email_ad">to use vaild email addresses since the process
 will send the new user's password to the given email address.</msg>
   <msg key="lt_Update_this_users_pas">Update this user's password</msg>
@@ -365,7 +354,6 @@ will send the new user's password to the given email address.</msg>
 likely case is that a reference to this user (user_id=%user_id%)
 exists somewhere in the database schema.  It's time to call your
 programmers!</msg>
-  <msg key="lt_What_others_see_about">(What others see about me:</msg>
   <msg key="lt_You_are_about_to_dele">You are about to delete %num_users% users.</msg>
   <msg key="lt_You_are_adding_strong">You are adding &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; to %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">You are not allowed to perform that action.</msg>
@@ -397,8 +385,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Memberships">Memberships</msg>
   <msg key="Memberships_1">Memberships:</msg>
   <msg key="Message">Message</msg>
-  <msg key="must">must</msg>
-  <msg key="must_be_one_of">- must be one of</msg>
+  <msg key="must_have_values">Field must have one of the following values:</msg>
   <msg key="My_Communities">My Communities</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
@@ -441,17 +428,14 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Not_Allowed">Not Allowed</msg>
   <msg key="Note">Note:</msg>
   <msg key="Nuke">Nuke</msg>
-  <msg key="nuke">nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke Users</msg>
   <msg key="olive">olive</msg>
   <msg key="Open">Open</msg>
-  <msg key="optional_defaults_to">optional, defaults to</msg>
+  <msg key="optional_defaults_to">Optional field that defaults to the following value:</msg>
   <msg key="Or">Or</msg>
-  <msg key="or">or</msg>
   <msg key="or_by_RGB_number">or by RGB number</msg>
   <msg key="or_return_to">or, return to</msg>
-  <msg key="password">Password:</msg>
   <msg key="Pending">Pending</msg>
   <msg key="Pending_Approval">Pending Approval</msg>
   <msg key="Personal_home_page">Personal home page:</msg>
@@ -468,13 +452,25 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
   <msg key="Referer">Referer</msg>
+  <msg key="registered_user_welcome_email_body">%first_names% %last_name%,
+
+You have been added as a user to %system_name%
+at %system_url%
+
+Login information:
+Email %email%
+Password: %password%
+(you may change your password after you log in)
+
+Thank you
+%administration_name%
+</msg>
   <msg key="Registration_date">Registration date:</msg>
   <msg key="registration_request_sent">Thank you. Your registration request has been sent to the System Administrator</msg>
   <msg key="Reject">Reject</msg>
   <msg key="reject">reject</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
-  <msg key="required">required</msg>
   <msg key="Results">Results</msg>
   <msg key="Return_URL">Return URL</msg>
   <msg key="revoke">revoke</msg>
@@ -492,8 +488,6 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Shared_Files">Shared Files</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
-  <msg key="Size">Size</msg>
-  <msg key="SloanSpace">SloanSpace</msg>
   <msg key="Small">Small</msg>
   <msg key="Sorry">Sorry!</msg>
   <msg key="Spam_">Spam ...</msg>
@@ -518,22 +512,18 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Templates">Templates</msg>
   <msg key="Term">Term</msg>
   <msg key="term">Term</msg>
-  <msg key="Term_eg_Spring_Fall">Term (e.g. Spring, Fall)</msg>
   <msg key="Term_ID">Term ID</msg>
   <msg key="term_properties">term properties.</msg>
   <msg key="Terms">Terms</msg>
   <msg key="terms">Terms</msg>
-  <msg key="thank_you">Thank you</msg>
   <msg key="the_format_of_email_domains">The format of this value is a comma-separated list of domains (usually
   preceded by the *@ string which match
   &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). For example, you might use:</msg>
   <msg key="The_name">The name</msg>
   <msg key="there_are_no_users_matching">There are no users matching %search_text%.</msg>
   <msg key="this_user_is_deleted">this user is deleted</msg>
-  <msg key="this_user_to_dotLRN">this user to dotLRN.</msg>
-  <msg key="To">To</msg>
+  <msg key="To">Member types to email:</msg>
   <msg key="Type">Type</msg>
-  <msg key="type">type</msg>
   <msg key="Unknown_Term">Unknown Term</msg>
   <msg key="Update_Password">Update Password</msg>
   <msg key="upload">upload</msg>
@@ -563,15 +553,12 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Users_Bulk_Upload">Users: Bulk Upload</msg>
   <msg key="Users_Search">Users Search</msg>
   <msg key="View">View</msg>
-  <msg key="visit">Visit</msg>
   <msg key="Year">Year:</msg>
   <msg key="Yes">Yes</msg>
   <msg key="yes">yes</msg>
   <msg key="Yes_delete">Yes, delete</msg>
   <msg key="Yes_Im_sure">Yes, I'm sure.</msg>
   <msg key="You_can_specify_colors_by_name">You can specify colors by name</msg>
-  <msg key="you_have_been_added">You have been added as a user to</msg>
-  <msg key="you_may_change_password">you may change your password after you log in</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Note:&lt;/b&gt; You must create &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; to be able to create %class_instances_pretty_plural%, since these must be associated with %terms_pretty_plural%.</msg>
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">You're editing</msg>

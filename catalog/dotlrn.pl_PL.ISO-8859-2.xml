@@ -9,7 +9,6 @@
   <msg key="Actions">Akcje</msg>
   <msg key="actions">akcje</msg>
   <msg key="Active_Applets">Aktywne Aplety</msg>
-  <msg key="Add">Dodaj</msg>
   <msg key="add">dodaj</msg>
   <msg key="Add_A_Member">Dodaj U¿ytkownika</msg>
   <msg key="Add_a_Professor">Dodaj Profesora</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Ustawienia</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
-  <msg key="admin_role_pretty_name">Administrator</msg>
-  <msg key="admin_role_pretty_plural">Administratorzy</msg>
   <msg key="Administer">Administruj</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administruj&quot;&gt; </msg>
   <msg key="Administrator">Administrator</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Ale, czy na pewno chcesz wys³aæ nastêpuj±cy</msg>
   <msg key="arhive_group_name">Archiwizuj grupê %group_name%</msg>
   <msg key="Ask_a_question">Zadaj pytanie:</msg>
-  <msg key="at">w</msg>
-  <msg key="bad_folder_id">nieprawid³owy id folderu</msg>
-  <msg key="be_either">byæ albo</msg>
   <msg key="Be_sure">Na pewno</msg>
-  <msg key="be_the_header_line">nag³ówek:</msg>
   <msg key="Become_this_user">Podszyj siê pod tego u¿ytkownika!</msg>
   <msg key="Biography">Biografia:</msg>
   <msg key="black">czarny</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">niebieski</msg>
   <msg key="Bulk_Upload">Wy¶lij Hurtowo</msg>
   <msg key="Bulk_Uploading">Wysy³anie Hurtem...</msg>
-  <msg key="byte">bajt</msg>
-  <msg key="bytes">bajtów</msg>
   <msg key="cannot_be_removed">nie mo¿e byæ usuniêty</msg>
   <msg key="Change_Locale">Zmieñ Jêzyk</msg>
-  <msg key="Change_My_Password">Zmieñ Has³o</msg>
   <msg key="class_instance_portal_pretty_name">Klasy</msg>
   <msg key="class_instances_pretty_name">Klasa</msg>
   <msg key="class_instances_pretty_plural">Klasy</msg>
@@ -107,7 +97,6 @@
   <msg key="Confirm_Drop">Potwierd¼ Usuniêcie</msg>
   <msg key="Confirmation">Potwierdzenie
 </msg>
-  <msg key="Control_Panel">Ustawienia</msg>
   <msg key="control_panel">Ustawienia</msg>
   <msg key="Copy">Kopiuj</msg>
   <msg key="couldnt_find_user_id">Nie mo¿emy znale¼æ #%user_id%; mo¿e ta osoba zosta³a usuniêta?</msg>
@@ -153,7 +142,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Grupy</msg>
   <msg key="dotlrn_member_rel_pretty_name">Cz³onkostwo Wspólnoty dotLRN </msg>
   <msg key="dotlrn_member_rel_pretty_plural">Cz³onkostwo Wspólnoty dotLRN</msg>
-  <msg key="Download">¦ci±gnij</msg>
   <msg key="Drop">Usuñ</msg>
   <msg key="Drop_Membership">Zrzeknij siê Cz³onkostwa</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Wypisz siê&quot; border=0&gt; </msg>
@@ -184,7 +172,6 @@ Data Koñcowa:</msg>
   <msg key="Fields">Pola</msg>
   <msg key="First_Line">Pierwsza Linia</msg>
   <msg key="First_Name">Imiê</msg>
-  <msg key="First_Names">Imiona</msg>
   <msg key="From">Z</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Pe³ny</msg>
@@ -216,15 +203,12 @@ Data Koñcowa:</msg>
   <msg key="instructor_role_pretty_plural">Profesorzy</msg>
   <msg key="Invalid">B³êdny</msg>
   <msg key="is_already_in_use">jest ju¿ u¿ywany</msg>
-  <msg key="item">obiekt</msg>
-  <msg key="items">obiektów</msg>
   <msg key="Join">Do³±cz</msg>
   <msg key="Join_A_Group">Do³±cz do Grupy</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Zapisz siê&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Zasady Zapisów</msg>
   <msg key="Key">Klucz</msg>
   <msg key="Large">Wielki</msg>
-  <msg key="Last_Modified">Ostatnio Zmieniany</msg>
   <msg key="Last_Name">Nazwisko</msg>
   <msg key="Last_Visit">Ostatnia Wizyta:</msg>
   <msg key="Last_visit_over">Ostatnia wizyta ponad</msg>
@@ -233,7 +217,6 @@ Data Koñcowa:</msg>
   <msg key="lime">¿ó³ty</msg>
   <msg key="Limited">Ograniczony</msg>
   <msg key="Limited_Access">Ograniczony Dostêp</msg>
-  <msg key="login_information">Login info:</msg>
   <msg key="logout">Wyloguj siê</msg>
   <msg key="lt_a_secondary">- dodatkowy identyfikator u¿ytkownika</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Dodaj nowego u¿ytkownika dotLRN:</msg>
@@ -241,26 +224,20 @@ Data Koñcowa:</msg>
   <msg key="lt_Add_community_name_Me">Dodaj Cz³onków %community_name% do innej Spo³eczno¶ci </msg>
   <msg key="lt_Add_Members_to_Anothe">Dodaj Cz³onków do Innej Spo³eczno¶ci</msg>
   <msg key="lt_Add_members_to_anothe">Dodaj cz³onków do innej grupy</msg>
-  <msg key="lt_Add_Membership_To_Com">Dodaj do Wspólnoty</msg>
   <msg key="lt_Add_These_Users_To_A_">Doday Tych U¿ytkowników do Grupy</msg>
   <msg key="lt_Administrative_Action">Czynno¶ci Administracyjne</msg>
   <msg key="lt_An_error_occured_whil">W czasie dodawania u¿ytkownika do spo³eczno¶ci wyst±pi³ b³±d. Awaria zosta³± odnotowana.</msg>
   <msg key="lt_An_error_occured_whil_1">Podczas usuwania u¿ytkownika wyst±pi³ b³±d. Usterka zosta³a odnotowana.</msg>
   <msg key="lt_approve_and_add_to_do">zatwierd¼ i dodaj do dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">nie jest jeszcze cz³onkiem </msg>
   <msg key="lt_Are_you_sure_you_want">Czy na pewno usun±æ pusty wydzia³</msg>
   <msg key="lt_Be_sure_that_the_pers">Upewnij siê, ¿e ta osoba nie posiada ju¿ konta z innym adresem email w SloanSpace. Podwójna adresy sprawiaj± problemy wszystkim. Proszê u¿yæ &lt;a href=members&gt;Zarz±dznia U¿ytkownikami&lt;/a&gt;, aby dodaæ osobê z istniej±cym kontem.</msg>
-  <msg key="lt_Change_my_language_se">Zmieñ Jêzyk</msg>
   <msg key="lt_Class_Key_a_short_nam">Klucz Klasy { krótka nazwa, bez spacji }</msg>
   <msg key="lt_Communitys_Web_Addres">Adres WWW Wspólnoty</msg>
   <msg key="lt_Current_clubs_pretty_">Czynne %clubs_pretty_plural% </msg>
   <msg key="lt_Do_you_really_want_to">Czy na pewno usun±æ tych u¿ytkowników?</msg>
   <msg key="lt_Do_you_really_want_to_1">Czy na pewno usun±æ %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">W³asno¶ci dotLRN dla Tego U¿ytkownika</msg>
-  <msg key="lt_E-mail_address_must_b">Adres E-mail musi byæ prawid³owy i unikalny</msg>
   <msg key="lt_Edit_department_prope">Edytuj ustawienia wydzia³u</msg>
-  <msg key="lt_Edit_My_Notifications">Edytuj Zawiadomienia </msg>
-  <msg key="lt_Edit_My_Personal_Info">Edytuj Moje Personalia</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Edytuj Zatwierdzone Serwery Emailowe</msg>
   <msg key="lt_Email_suffixes_listed">Sufixy adresu emailowego pokazane tutaj u¿ywane s± by automatycznie rejestronwaæ jako u¿ytkowników dotLRN ludzi, którzy maj± adresy pasuj±ce do podanych wzorców.</msg>
   <msg key="lt_emailing_this_user_fa">wys³anie email'a do tego u¿ytkownika nie powiod³o siê</msg>
@@ -269,7 +246,6 @@ Data Koñcowa:</msg>
   <msg key="lt_Error_removing_user_c">B³±d podczas usuwania cz³onka spo³eczno¶ci</msg>
   <msg key="lt_Error_sending_email_t">B³±d podczas wysy³ania maila do %email% z password-update-2.tcl</msg>
   <msg key="lt_First_check_the_box_o">Zaznacz boxy tych u¿ytkowników, których chcesz dodaæ, nastêpnie wybierz role, które maj± pe³niæ i wy¶lij formularz.</msg>
-  <msg key="lt_Folder_folder_name_is">Folder %folder_name% jest pusty</msg>
   <msg key="lt_Go_back_and_try_again">Wróæ i spróbuj ponownie</msg>
   <msg key="lt_having_trouble">Oto gar¶æ wskazówek o tym jak uzyskaæ ¿±dany wygl±d portalu.</msg>
   <msg key="lt_Help_and_Personal_Con">Pomoc i Ustawienia Osobiste</msg>
@@ -279,7 +255,6 @@ Data Koñcowa:</msg>
   <msg key="lt_if_you_misspell">Je¶li u¿yjesz b³êdnej nazwy czcionki lub u¿ytkownik nie bêdzie  mia³ jej na swoim komputerze zobaczy zwyk³± czcionikê systemow±.</msg>
   <msg key="lt_If_you_wish_to_give_g">Je¶li chcesz daæ dostêp do forum i ankiet go¶ciom g³ówny admin musi zmieniæ status Twojej spo³eczno¶ci. Ta opcja nie jest dostêpna ze wzglêdu na politykê bezpieczeñstwa MIT. </msg>
   <msg key="lt_Information_about_oth">Informacja o innych cz³onkach tej spo³eczno¶ci nie bêdzie dostêpna dla tego u¿ytkownika.</msg>
-  <msg key="lt_Interactive_setting_o">Interaktywne ustawianie parametrów dotLRN</msg>
   <msg key="lt_Join_a_class_instance">Zapisz siê do %class_instances_pretty_name% </msg>
   <msg key="lt_Join_a_clubs_pretty_n">Zapisz siê do %clubs_pretty_name% </msg>
   <msg key="lt_Join_the_above_criter">Po³±cz powy¿sze kryteria z</msg>
@@ -313,7 +288,6 @@ Data Koñcowa:</msg>
   <msg key="lt_Some_of_the_emails_fa">Niektóre z emaili nie zosta³y dostarczone. Dla tych u¿ytkowników zosta³y jednak utworzone has³a losowe. Najpro¶ciej bêdzie, je¶li ci u¿ytkownicy zaloguj± siê i klikn±  link 'Zapomniane has³o'.</msg>
   <msg key="lt_spam_policy_must_be_o">polityka musi byæ: wszyscy lub cz³onkowie</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; jest %existing_role% w  %community_name%. Mo¿esz wybraæ dlañ now± rolê:</msg>
-  <msg key="lt_The_first_line_of_the">Pierwsza linia pliku</msg>
   <msg key="lt_The_following_email_w">Nastêpuj±cy mail zosta³ w³a¶nie wys³any z %system_name% </msg>
   <msg key="lt_The_following_email_w_1">Nastêpuj±cy mail zosta³ wys³any z %system_name% Nadawca: %system_owner% Odbiorca: %email% Temat: %subject% Tre¶æ: %body% </msg>
   <msg key="lt_The_following_members">Nastêpuj±cy cz³onkowie</msg>
@@ -334,13 +308,11 @@ Data Koñcowa:</msg>
   <msg key="lt_This_user_is_a_site-w">Ten u¿ytkownik jest G³ównym Adminem.</msg>
   <msg key="lt_This_user_is_currentl">Stan tej osoby to: &lt;i&gt;%member_state%&lt;/i&gt;. Musisz br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;zatwierdziæ  i dodaæ j± do dotLRN&lt;/a&gt;, aby umo¿liwiæ jej dostêp do dotLRN.</msg>
   <msg key="lt_this_user_is_deleted_">ten u¿ytkownik jest usuniêty ze wspólnoty</msg>
-  <msg key="lt_this_user_to_another_">tego u¿ytkownika do innej grupy.</msg>
   <msg key="lt_to_use_vaild_email_ad">u¿yæ prawid³owego adresu email, poniewa¿ na ten adres zostanie wys³ane has³o nowego u¿ytkownika.</msg>
   <msg key="lt_Update_this_users_pas">Zmieñ has³o tego u¿ytkownika</msg>
   <msg key="lt_Use_this_only_for_an_">U¿yj tego tylko dla zarejestrowanego studenta, który &lt;b&gt;nie&lt;/b&gt; jest studentem MIT ani Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Sieciowy Pamiêtnik : %user_name% </msg>
   <msg key="lt_Well_we_tried_to_nuke">Próbowali¶my usun±æ tego u¿ytkownika, ale wyst±pi³ b³±d. Chyba istnieje gdzie¶ w bazie odniesienie do tego u¿ytkownika (user_id=%user_id%). Najwy¿szy Czas! wezwaæ Twoich programistów.</msg>
-  <msg key="lt_What_others_see_about">{Czego inni mog± siê dowiedzieæ o mnie:</msg>
   <msg key="lt_You_are_about_to_dele">Usuniesz zaraz %num_users% u¿ytkowników.</msg>
   <msg key="lt_You_are_adding_strong">Dodajesz w³a¶nie&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; do %community_name%: </msg>
   <msg key="lt_You_are_not_allowed_t">Nie masz praw by dokonaæ tej czynno¶ci.</msg>
@@ -371,8 +343,6 @@ Data Koñcowa:</msg>
   <msg key="Memberships">Cz³onostwo</msg>
   <msg key="Memberships_1">Cz³onkostwo</msg>
   <msg key="Message">Komunikat</msg>
-  <msg key="must">powinien</msg>
-  <msg key="must_be_one_of">- powinien byæ jednym z </msg>
   <msg key="My_Communities">Moje Wspólnoty</msg>
   <msg key="NA">Nie dotyczy</msg>
   <msg key="Name">Nazwa</msg>
@@ -415,17 +385,14 @@ Data Koñcowa:</msg>
   <msg key="Not_Allowed">Zabroniony</msg>
   <msg key="Note">Uwaga:</msg>
   <msg key="Nuke">Usuñ</msg>
-  <msg key="nuke">usuñ</msg>
   <msg key="Nuke_">Usuñ...</msg>
   <msg key="Nuke_Users">Usuñ U¿ytkowników</msg>
   <msg key="olive">oliwkowy</msg>
   <msg key="Open">Otwarty</msg>
   <msg key="optional_defaults_to">opcjonalne, domy¶lnie </msg>
   <msg key="Or">Lub</msg>
-  <msg key="or">lub</msg>
   <msg key="or_by_RGB_number">lub przez liczbê RGB</msg>
   <msg key="or_return_to">albo powrót do</msg>
-  <msg key="password">Has³o:</msg>
   <msg key="Pending">Oczekuj±cy</msg>
   <msg key="Pending_Approval">Oczekuj±cy Zatwierdzenia</msg>
   <msg key="Personal_home_page">Strona domowa:</msg>
@@ -448,7 +415,6 @@ Data Koñcowa:</msg>
   <msg key="reject">odzrzuæ</msg>
   <msg key="Request_Membership">Wyst±p o cz³onkostwo</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Wyst±p o cz³onkostwo&quot;&gt; </msg>
-  <msg key="required">wymagany</msg>
   <msg key="Results">Wyniki</msg>
   <msg key="Return_URL">Powrotny URL</msg>
   <msg key="revoke">odbierz</msg>
@@ -465,8 +431,6 @@ Data Koñcowa:</msg>
   <msg key="Shared_Files">Udostêpnione Pliki</msg>
   <msg key="silver">srebrny</msg>
   <msg key="Site-wide_Admin">Administrator ca³ego systemu?</msg>
-  <msg key="Size">Rozmiar</msg>
-  <msg key="SloanSpace">SloanSpace</msg>
   <msg key="Small">Ma³y</msg>
   <msg key="Sorry">Przepraszam!</msg>
   <msg key="Spam_">Spam...</msg>
@@ -491,21 +455,17 @@ Data Koñcowa:</msg>
   <msg key="Templates">Szablony</msg>
   <msg key="Term">Termin</msg>
   <msg key="term">Termin</msg>
-  <msg key="Term_eg_Spring_Fall">Termin ( tj. wiosenny, jesienny)</msg>
   <msg key="Term_ID">ID Terminu</msg>
   <msg key="term_properties">w³asno¶ci terminu.</msg>
   <msg key="Terms">Terminy</msg>
   <msg key="terms">Terminy</msg>
-  <msg key="thank_you">Dziêkujemy</msg>
   <msg key="the_format_of_email_domains">W tym polu powinny siê znajdowaæ domeny, oddzielone przecinkami (zwykle poprzedzone *@, co oznacza &amp;lt;cokolwiek&amp;gt;@&amp;lt;email-domain&amp;gt;). Na przyk³ad:
 </msg>
   <msg key="The_name">Nazwa</msg>
   <msg key="there_are_no_users_matching">Nie ma u¿ytkowników pasuj±cych do %search_text%.</msg>
   <msg key="this_user_is_deleted">ten u¿ytkownik jest usuniêty</msg>
-  <msg key="this_user_to_dotLRN">tego u¿tkownika do dotLRN</msg>
   <msg key="To">Do</msg>
   <msg key="Type">Typ</msg>
-  <msg key="type">typ</msg>
   <msg key="Unknown_Term">Nieznany Termin</msg>
   <msg key="Update_Password">Zmieñ Has³o</msg>
   <msg key="upload">wgraj</msg>
@@ -533,15 +493,12 @@ Data Koñcowa:</msg>
   <msg key="Users_Bulk_Upload">U¿ytkownicy: Wgrywanie Hurtowo </msg>
   <msg key="Users_Search">Poszukiwanie U¿ytkowników</msg>
   <msg key="View">Zobacz</msg>
-  <msg key="visit">Odwied¼</msg>
   <msg key="Year">Rok:</msg>
   <msg key="Yes">Tak</msg>
   <msg key="yes">tak</msg>
   <msg key="Yes_delete">Tak, usuñ</msg>
   <msg key="Yes_Im_sure">Tak, na pewno.</msg>
   <msg key="You_can_specify_colors_by_name">Kolory mo¿esz okre¶liæ nazwami</msg>
-  <msg key="you_have_been_added">Dodano Ciê jako u¿ytkownika do</msg>
-  <msg key="you_may_change_password">po zalogowaniu siê mo¿esz zmieniæ has³o </msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Uwaga:&lt;/b&gt; Najpierw musisz utworzyæ  &lt;a href=&quot;%terms_url%&quot;&gt;terms_pretty_plural%&lt;/a&gt; a dopiero potem %class_instances_pretty_plural%, poniewa¿ musz± one byæ powi±zane z %terms_pretty_plural% </msg>
   <msg key="your_icon_is_too_large">Twoja ikona jest zbyt du¿a. Wydawca %system_name% okre¶li³ graniczn± wielko¶æ pliku na %max_attachments_bytes% bajtów.\n</msg>
   <msg key="Youre_editing">Edytujesz</msg>

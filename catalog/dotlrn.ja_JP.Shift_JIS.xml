@@ -9,7 +9,6 @@
   <msg key="Actions">操作</msg>
   <msg key="actions">操作</msg>
   <msg key="Active_Applets">アクティブアプレット</msg>
-  <msg key="Add">追加</msg>
   <msg key="add">追加</msg>
   <msg key="Add_A_Member">メンバーの追加</msg>
   <msg key="Add_a_Professor">教授の追加</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">管理者</msg>
   <msg key="admin_page_name">コントロールパネル</msg>
   <msg key="admin_pages_navbar_name">管理者</msg>
-  <msg key="admin_role_pretty_name">管理者</msg>
-  <msg key="admin_role_pretty_plural">管理者</msg>
   <msg key="Administer">管理</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;管理&quot;&gt;</msg>
   <msg key="Administrator">管理者</msg>
@@ -49,8 +46,6 @@
   <msg key="are_you_sure_you_want_to_send">下記を送信してもよろしいですか？</msg>
   <msg key="arhive_group_name">グループ %group_name% を保存</msg>
   <msg key="Ask_a_question">質問する:</msg>
-  <msg key="bad_folder_id">フォルダIDの不正</msg>
-  <msg key="be_either">どちらかにして下さい</msg>
   <msg key="Be_sure">確認して下さい</msg>
   <msg key="Become_this_user">このユーザになる！</msg>
   <msg key="Biography">経歴:</msg>
@@ -60,11 +55,8 @@
   <msg key="blue">青</msg>
   <msg key="Bulk_Upload">バルクアップロード</msg>
   <msg key="Bulk_Uploading">バルクアップロード中....</msg>
-  <msg key="byte">バイト</msg>
-  <msg key="bytes">バイト</msg>
   <msg key="cannot_be_removed">削除できません</msg>
   <msg key="Change_Locale">ロケールの変更</msg>
-  <msg key="Change_My_Password">パスワードの変更</msg>
   <msg key="class_instance_portal_pretty_name">クラス</msg>
   <msg key="class_instances_pretty_name">クラス</msg>
   <msg key="class_instances_pretty_plural">クラス</msg>
@@ -103,7 +95,6 @@
   <msg key="Confirm_1">確認:</msg>
   <msg key="Confirm_Drop">削除確認</msg>
   <msg key="Confirmation">確認</msg>
-  <msg key="Control_Panel">コントロールパネル</msg>
   <msg key="control_panel">コントロールパネル</msg>
   <msg key="Copy">コピー</msg>
   <msg key="couldnt_find_user_id">ユーザ #%user_id% が見つかりません。削除されたのかもしれません。
@@ -150,7 +141,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">グループ</msg>
   <msg key="dotlrn_member_rel_pretty_name">dotLRN コミュニティメンバーシップ</msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN コミュニティメンバーシップ</msg>
-  <msg key="Download">ダウンロード</msg>
   <msg key="Drop">削除</msg>
   <msg key="Drop_Membership">メンバーの削除</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;メンバーの削除&quot; border=0&gt;</msg>
@@ -178,7 +168,6 @@
   <msg key="Fields">項目</msg>
   <msg key="First_Line">最初の行</msg>
   <msg key="First_Name">名</msg>
-  <msg key="First_Names">名</msg>
   <msg key="fuchsia">赤紫</msg>
   <msg key="Full_Access">フルアクセス</msg>
   <msg key="General_Information">全般の情報</msg>
@@ -205,15 +194,12 @@
   <msg key="instructor_role_pretty_name">教授</msg>
   <msg key="instructor_role_pretty_plural">教授</msg>
   <msg key="is_already_in_use">は既に使用されています</msg>
-  <msg key="item">アイテム</msg>
-  <msg key="items">アイテム</msg>
   <msg key="Join">参加</msg>
   <msg key="Join_A_Group">グループに参加</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;参加&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">参加方針</msg>
   <msg key="Key">キー</msg>
   <msg key="Large">大</msg>
-  <msg key="Last_Modified">最終更新</msg>
   <msg key="Last_Name">姓</msg>
   <msg key="Last_Visit">最終訪問:</msg>
   <msg key="Last_visit_over">最終訪問日(以降)</msg>
@@ -222,7 +208,6 @@
   <msg key="lime">ライム</msg>
   <msg key="Limited">限定</msg>
   <msg key="Limited_Access">限定アクセス</msg>
-  <msg key="login_information">ログイン情報:</msg>
   <msg key="logout">ログアウト</msg>
   <msg key="lt_a_secondary">- ユーザの二番目の識別子</msg>
   <msg key="lt_Add_a_new_dotLRN_user">新規dotLRNユーザの追加:</msg>
@@ -230,26 +215,20 @@
   <msg key="lt_Add_community_name_Me">%community_name% メンバーを他のコミュニティに追加</msg>
   <msg key="lt_Add_Members_to_Anothe">他のコミュニティへのメンバー追加</msg>
   <msg key="lt_Add_members_to_anothe">他のグループへのメンバー追加</msg>
-  <msg key="lt_Add_Membership_To_Com">コミュニティへのメンバー追加</msg>
   <msg key="lt_Add_These_Users_To_A_">これらのユーザをグループに追加</msg>
   <msg key="lt_Administrative_Action">管理操作</msg>
   <msg key="lt_An_error_occured_whil">コミュニティへのユーザの追加でエラーが発生しました。このエラーは記録されました。</msg>
   <msg key="lt_An_error_occured_whil_1">コミュニティからのユーザの削除でエラーが発生しました。このエラーは記録されました。</msg>
   <msg key="lt_approve_and_add_to_do">dotLRNへの承認及び追加</msg>
-  <msg key="lt_are_not_yet_members_o">はまだ以下のメンバーではありません</msg>
   <msg key="lt_Are_you_sure_you_want">空の学部を削除してもよろしいですか</msg>
   <msg key="lt_Be_sure_that_the_pers">この方が他のメールアドレスでSloanSpaceアカウントを持っていないことを確認して下さい。アカウントの重複はユーザ全員への問題となります。既存のアカウントとして追加するには、&lt;a href=members&gt;メンバー管理&lt;/a&gt; を使用して下さい。</msg>
-  <msg key="lt_Change_my_language_se">言語設定の変更</msg>
   <msg key="lt_Class_Key_a_short_nam">クラスキー (短い名前, 空白無し)</msg>
   <msg key="lt_Communitys_Web_Addres">コミュニティのWebアドレス</msg>
   <msg key="lt_Current_clubs_pretty_">現在の %clubs_pretty_plural%</msg>
   <msg key="lt_Do_you_really_want_to">本当に以下のメンバーを削除してもよろしいですか?</msg>
   <msg key="lt_Do_you_really_want_to_1">本当に %num_users% のユーザを削除してもよろしいですか?</msg>
   <msg key="lt_dotLRN_properties_for">このユーザのdotLRNプロパティ</msg>
-  <msg key="lt_E-mail_address_must_b">メールアドレスは一意で有効でなければなりません。&lt;br&gt;このユーザは既にSloanSpaceアカウントを持っていると思われます。&lt;br&gt;&lt;a href=members&gt;メンバー管理&lt;/a&gt; を使用してこのユーザを追加して下さい。</msg>
   <msg key="lt_Edit_department_prope">学部プロパティの編集</msg>
-  <msg key="lt_Edit_My_Notifications">通知設定の編集</msg>
-  <msg key="lt_Edit_My_Personal_Info">個人情報の編集</msg>
   <msg key="lt_Edit_Pre-approved_Ema">事前承認するメールサーバの編集</msg>
   <msg key="lt_Email_suffixes_listed">ここに記載されるメール接尾辞は、このリスト中の一つに一致するメールアドレスで登録した場合に自動的にdotLRNユーザを作成するために使用されます。</msg>
   <msg key="lt_emailing_this_user_fa">このユーザへのメール送信に失敗しました!</msg>
@@ -258,7 +237,6 @@
   <msg key="lt_Error_removing_user_c">コミュニティのユーザ削除エラー</msg>
   <msg key="lt_Error_sending_email_t">password-update-2.tcl からの %email% へのメール送信エラー</msg>
   <msg key="lt_First_check_the_box_o">最初のチェックボックスで追加したいユーザを、次に役割を選択し、サブミットして下さい。</msg>
-  <msg key="lt_Folder_folder_name_is">フォルダ %folder_name% は空です</msg>
   <msg key="lt_Go_back_and_try_again">戻って再実行して下さい</msg>
   <msg key="lt_Help_and_Personal_Con">ヘルプと個人設定</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">クラスまたはコミュニティグループへの参加/退会</msg>
@@ -268,12 +246,10 @@
   <msg key="navy">紺</msg>
   <msg key="olive">オリーブ</msg>
   <msg key="Open">開く</msg>
-  <msg key="password">パスワード</msg>
   <msg key="Pending_Approval">承認待ち</msg>
   <msg key="Personal_Options">個人オプション</msg>
   <msg key="purple">紫</msg>
   <msg key="red">赤</msg>
-  <msg key="required">必要な領域</msg>
   <msg key="Search">検索</msg>
   <msg key="search">検索</msg>
   <msg key="silver">銀色</msg>

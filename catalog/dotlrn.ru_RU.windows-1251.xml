@@ -9,7 +9,6 @@
   <msg key="Actions">Действия</msg>
   <msg key="actions">Действия</msg>
   <msg key="Active_Applets">Активные апплеты</msg>
-  <msg key="Add">Добавить</msg>
   <msg key="add">добавить</msg>
   <msg key="Add_A_Member">Добавить Члена</msg>
   <msg key="Add_a_Professor">Добавить Профессора</msg>
@@ -27,8 +26,6 @@
   <msg key="Admin">Админ</msg>
   <msg key="admin">админ</msg>
   <msg key="admin_page_name">Панель Управления</msg>
-  <msg key="admin_role_pretty_name">Администратор</msg>
-  <msg key="admin_role_pretty_plural">Администраторы</msg>
   <msg key="Administer">Администрировать</msg>
   <msg key="Administrator">Администратор</msg>
   <msg key="Administrators">Администраторы</msg>
@@ -45,11 +42,7 @@
   <msg key="are_you_sure_you_want_to_send">Вы уверены, что вы хотите послать это</msg>
   <msg key="arhive_group_name">Заархивированная группа %group_name%</msg>
   <msg key="Ask_a_question">Спросить:</msg>
-  <msg key="at">в</msg>
-  <msg key="bad_folder_id">неверный код папки</msg>
-  <msg key="be_either">быть либо</msg>
   <msg key="Be_sure">Убедитесь</msg>
-  <msg key="be_the_header_line">быть заголовком:</msg>
   <msg key="Become_this_user">Стать этим пользователем!</msg>
   <msg key="Biography">Биография:</msg>
   <msg key="black">черный</msg>
@@ -57,11 +50,8 @@
   <msg key="blue">голубой</msg>
   <msg key="Bulk_Upload">Загрузка Пакетом</msg>
   <msg key="Bulk_Uploading">Пакетная Загрузка...</msg>
-  <msg key="byte">байт</msg>
-  <msg key="bytes">байтов</msg>
   <msg key="cannot_be_removed">не может быть удален</msg>
   <msg key="Change_Locale">Сменить язык</msg>
-  <msg key="Change_My_Password">Сменить пароль</msg>
   <msg key="class_instance_portal_pretty_name">Классы</msg>
   <msg key="class_instances_pretty_name">Класс</msg>
   <msg key="class_instances_pretty_plural">Классы</msg>
@@ -90,7 +80,6 @@
   <msg key="Communitys_Name">Название Сообщества</msg>
   <msg key="Configure_Element">Свойства Элемента</msg>
   <msg key="Confirm">Подтверждаю</msg>
-  <msg key="Control_Panel">Панель Управления</msg>
   <msg key="control_panel">Панель управления</msg>
   <msg key="Copy">Копировать</msg>
   <msg key="couldnt_find_user_id">Мы не смогли найти пользователя с кодом #%user_id%; возможно он был удален?</msg>
@@ -133,7 +122,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Группы</msg>
   <msg key="dotlrn_member_rel_pretty_name">Членство в Сообществе dotLRN</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Членство в Сообществе dotLRN</msg>
-  <msg key="Download">Сгрузить</msg>
   <msg key="Drop_Membership">Удалить Членство</msg>
   <msg key="Edit">Изменить</msg>
   <msg key="Edit_a_User">Редактировать Пользователя</msg>
@@ -156,7 +144,6 @@
   <msg key="Extra_Large">Очень Большой</msg>
   <msg key="Fields">Поля</msg>
   <msg key="First_Line">Первая Строка</msg>
-  <msg key="First_Names">Имя</msg>
   <msg key="From">От</msg>
   <msg key="fuchsia">малиновый</msg>
   <msg key="Full">Полное</msg>
@@ -186,14 +173,11 @@
   <msg key="instructor_role_pretty_plural">Профессора</msg>
   <msg key="Invalid">Неверный</msg>
   <msg key="is_already_in_use">уже занят</msg>
-  <msg key="item">элемент</msg>
-  <msg key="items">элементы</msg>
   <msg key="Join">Присоединиться</msg>
   <msg key="Join_A_Group">Добавить себя к группе</msg>
   <msg key="Join_Policy">Правила</msg>
   <msg key="Key">Ключ</msg>
   <msg key="Large">Большой</msg>
-  <msg key="Last_Modified">Дата Изменения</msg>
   <msg key="Last_Name">Фамилия</msg>
   <msg key="Last_Visit">Последний Раз:</msg>
   <msg key="Last_visit_over">Последний раз более</msg>
@@ -201,20 +185,14 @@
   <msg key="lime">лайм</msg>
   <msg key="Limited">Ограничен</msg>
   <msg key="Limited_Access">Ограниченный Доступ</msg>
-  <msg key="login_information">Информация о входе(ах) в систему:</msg>
   <msg key="logout">Выход</msg>
   <msg key="lt_a_secondary">- второй способ идентификации пользователей.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Добавить нового пользователя до dotLRN</msg>
   <msg key="lt_Add_members_to_anothe">Добавить пользователя до другой группы</msg>
-  <msg key="lt_Add_Membership_To_Com">Добавить Членство в Сообществе</msg>
   <msg key="lt_Add_These_Users_To_A_">Добавить Этих Пользователей до Группы</msg>
   <msg key="lt_Administrative_Action">Действия Администратора</msg>
-  <msg key="lt_are_not_yet_members_o">еще не являются членами</msg>
   <msg key="lt_Are_you_sure_you_want">Вы уверены, что вы хотите удалить пустую кафедру?</msg>
-  <msg key="lt_Change_my_language_se">Сменить язык</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN-свойства пользователя</msg>
-  <msg key="lt_Edit_My_Notifications">Изменить установки Уведомлений</msg>
-  <msg key="lt_Edit_My_Personal_Info">Редактировать информацию обо мне</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Список авторизованных серверов электронной почты.</msg>
   <msg key="lt_Email_suffixes_listed">Суффиксы адресов электронной почты, перечисленные здесь, автоматически добавять людей, регестрирующихся на этом сайте в группу пользователей dotLRN, если их адрес электронной почты совпадет с одним из значений данного списка.</msg>
   <msg key="lt_Help_and_Personal_Con">Помощь по сайту и Личные Установки</msg>
@@ -222,9 +200,7 @@
   <msg key="lt_JoinDrop_Classes_or_C">Добавить/исключить себя к Классу или Группе</msg>
   <msg key="lt_Key_a_short_name_no_s">Ключ (короткое название, без пробелов)</msg>
   <msg key="lt_Pre-approved_Email_Se">Авторизованный сервер электронной почты</msg>
-  <msg key="lt_this_user_to_another_">этого пользователя в другую группу.</msg>
   <msg key="lt_Update_this_users_pas">Изменить пароль пользователя</msg>
-  <msg key="lt_What_others_see_about">Публичная информация</msg>
   <msg key="ltnone_set_upgt">&amp;lt;не определен&amp;gt;</msg>
   <msg key="maroon">малиновый</msg>
   <msg key="Member_state">Статус:</msg>
@@ -251,7 +227,6 @@
   <msg key="Or">Или</msg>
   <msg key="or_by_RGB_number">или с помощью RGB-значения</msg>
   <msg key="or_return_to">или вернуться к</msg>
-  <msg key="password">Пароль:</msg>
   <msg key="Pending">В ожидании</msg>
   <msg key="Pending_Approval">В Ожидании Подтверждения</msg>
   <msg key="Personal_Options">Личные Установки</msg>
@@ -266,7 +241,6 @@
   <msg key="registration_request_sent">Спасибо.  Ваш запрос был выслан до Администратора Системы</msg>
   <msg key="Reject">Отказать</msg>
   <msg key="reject">отказать</msg>
-  <msg key="required">обязательно</msg>
   <msg key="Results">Результаты</msg>
   <msg key="Return_URL">Перейти на адрес (URL)</msg>
   <msg key="Role">Роль</msg>
@@ -294,10 +268,8 @@
   <msg key="term">Семестр</msg>
   <msg key="Terms">Семестры</msg>
   <msg key="terms">Семестры</msg>
-  <msg key="thank_you">Спасибо</msg>
   <msg key="the_format_of_email_domains">Перечислите все желаемые шаблоны адресов через запятую.  Как правило, вы можете исползовать *@ конструкцию, которая равносильна &amp;lt;кто угодно&amp;gt;@&amp;lt;email-domain&amp;gt;.  Например, вы могли бы использовать:</msg>
   <msg key="this_user_is_deleted">этот пользователь удален</msg>
-  <msg key="this_user_to_dotLRN">этого пользователя в dotLRN.</msg>
   <msg key="Unknown_Term">Семестр не орпеделен</msg>
   <msg key="User">Пользователь</msg>
   <msg key="User_ID">Код Пользователя:</msg>
@@ -314,13 +286,11 @@
   <msg key="Users">Пользователи</msg>
   <msg key="users">Пользователи</msg>
   <msg key="View">Показать</msg>
-  <msg key="visit">Посетить</msg>
   <msg key="Year">Год:</msg>
   <msg key="Yes">Да</msg>
   <msg key="yes">да</msg>
   <msg key="Yes_delete">Да, удалить</msg>
   <msg key="Yes_Im_sure">Да, я уверен.</msg>
-  <msg key="you_have_been_added">Вы были добавлены в качестве пользователя</msg>
   <msg key="your_icon_is_too_large">Ваша иконка слишком велика. Администратор %system_name% ограничил размер иконок %max_attachments_bytes% байтами.\n</msg>
   <msg key="Youre_editing">Вы редактируете</msg>
 </message_catalog>

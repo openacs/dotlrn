@@ -9,7 +9,6 @@
   <msg key="Actions">Toimenpiteet</msg>
   <msg key="actions">Toimenpiteet</msg>
   <msg key="Active_Applets">Aktiiviset appletit</msg>
-  <msg key="Add">Lisää</msg>
   <msg key="add">Lisää</msg>
   <msg key="Add_A_Member">Lisää jäsen</msg>
   <msg key="Add_a_Professor">Lisää professori</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">hallinta</msg>
   <msg key="admin_page_name">Ohjauspaneeli</msg>
   <msg key="admin_pages_navbar_name">Asetukset</msg>
-  <msg key="admin_role_pretty_name">Ylläpitäjä</msg>
-  <msg key="admin_role_pretty_plural">Ylläpitäjät</msg>
   <msg key="Administer">Hallinnoi</msg>
   <msg key="administer_link">Asetukset</msg>
   <msg key="Administrator">Ylläpitäjä</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Oletko varma, että haluat lähettää seuraavan</msg>
   <msg key="arhive_group_name">Arkistoi ryhmä %group_name% </msg>
   <msg key="Ask_a_question">Kysy neuvoa:</msg>
-  <msg key="at">&amp;nbsp;</msg>
-  <msg key="bad_folder_id">virheellinen folder id</msg>
-  <msg key="be_either">olla joko</msg>
   <msg key="Be_sure">Varmista, että käytät</msg>
-  <msg key="be_the_header_line">olla otsikkorivi:</msg>
   <msg key="Become_this_user">Muuntaudu täksi käyttäjäksi!</msg>
   <msg key="Biography">Elämäkerta:</msg>
   <msg key="black">musta</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">sininen</msg>
   <msg key="Bulk_Upload">Usean käyttäjän lisääminen kerralla</msg>
   <msg key="Bulk_Uploading">Suoritan bulkkisiirtoa...</msg>
-  <msg key="byte">tavu</msg>
-  <msg key="bytes">tavua</msg>
   <msg key="cannot_be_removed">ei voida siirtää</msg>
   <msg key="Change_Locale">Vaihda kieltä</msg>
-  <msg key="Change_My_Password">Vaihda salasanaa</msg>
   <msg key="class_instance_portal_pretty_name">Kurssit</msg>
   <msg key="class_instances_pretty_name">Kurssi</msg>
   <msg key="class_instances_pretty_plural">Kurssit</msg>
@@ -106,7 +96,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="Confirm_1">Vahvistus:</msg>
   <msg key="Confirm_Drop">Vahvista poistaminen</msg>
   <msg key="Confirmation">Vahvistus</msg>
-  <msg key="Control_Panel">Ohjauspaneeli</msg>
   <msg key="control_panel">Ohjauspaneeli</msg>
   <msg key="Copy">Kopioi</msg>
   <msg key="couldnt_find_user_id">Käyttäjää #%user_id% ei löytynyt; olisiko käyttäjä jo poistettu?</msg>
@@ -153,7 +142,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="dotlrn_main_portlet_pretty_name">Ryhmät</msg>
   <msg key="dotlrn_member_rel_pretty_name">dotLRN-yhteisön jäsenyys</msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN-yhteisöjen jäsenyydet</msg>
-  <msg key="Download">Imuroi</msg>
   <msg key="Drop">Poista</msg>
   <msg key="Drop_Membership">Poista jäsenyys</msg>
   <msg key="drop_membership_link">Peru ilmoittautuminen</msg>
@@ -182,7 +170,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="Fields">Kentät</msg>
   <msg key="First_Line">Ensimmäinen rivi</msg>
   <msg key="First_Name">Etunimi</msg>
-  <msg key="First_Names">Etunimet</msg>
   <msg key="From">Lähettäjä</msg>
   <msg key="fuchsia">purppura</msg>
   <msg key="Full">Täysi</msg>
@@ -213,15 +200,12 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="instructor_role_pretty_plural">Luennoitsijat</msg>
   <msg key="Invalid">Virheellinen</msg>
   <msg key="is_already_in_use">on jo käytössä</msg>
-  <msg key="item">nimike</msg>
-  <msg key="items">nimikkeet</msg>
   <msg key="Join">Ilmoittaudu</msg>
   <msg key="Join_A_Group">Ilmoittaudu kurssille</msg>
   <msg key="join_link">Liity</msg>
   <msg key="Join_Policy">Jäsenyyspolitiikka</msg>
   <msg key="Key">Avainarvo</msg>
   <msg key="Large">Suuri</msg>
-  <msg key="Last_Modified">Muokattu viimeksi</msg>
   <msg key="Last_Name">Sukunimi</msg>
   <msg key="Last_Visit">Edellinen käyttökerta:</msg>
   <msg key="Last_visit_over">Viimeinen käyttökerta yli</msg>
@@ -230,7 +214,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="lime">vaaleanvihreä</msg>
   <msg key="Limited">Rajoitettu</msg>
   <msg key="Limited_Access">Rajoitetut oikeudet</msg>
-  <msg key="login_information">Sisäänkirjautumistiedot:</msg>
   <msg key="logout">Kirjaudu ulos</msg>
   <msg key="lt_a_secondary">- toinen mahdollisuus käyttäjän yksilöiväksi tunnisteeksi.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Lisää uusi dotLRN-käyttäjä:</msg>
@@ -238,26 +221,20 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="lt_Add_community_name_Me">Lisää ryhmän %community_name% jäsenet muihin ryhmiin tai kursseille.</msg>
   <msg key="lt_Add_Members_to_Anothe">Liitä jäsenet muihin ryhmiin</msg>
   <msg key="lt_Add_members_to_anothe">Lisää tämän ryhmän jäsenet muuhun ryhmään tai toiselle kurssille</msg>
-  <msg key="lt_Add_Membership_To_Com">Lisää jäsenyys yhteisöön</msg>
   <msg key="lt_Add_These_Users_To_A_">Lisää nämä käyttäjät ryhmään</msg>
   <msg key="lt_Administrative_Action">Ylläpidolliset toiminnot</msg>
   <msg key="lt_An_error_occured_whil">Lisättäessä käyttäjää järjestelmään tapahtui virhe. Virheilmoitus välitetään ylläpitäjälle.</msg>
   <msg key="lt_An_error_occured_whil_1">Poistettaessa käyttäjää järjestelmästä tapahtui virhe. Virheilmoitus on välitetty ylläpitäjälle.</msg>
   <msg key="lt_approve_and_add_to_do">hyväksy ja lisää dotLRNiin</msg>
-  <msg key="lt_are_not_yet_members_o">eivät ole vielä jäseniä ryhmässä</msg>
   <msg key="lt_Are_you_sure_you_want">Oletko varma, että haluat poistaa tyhjän osaston</msg>
   <msg key="lt_Be_sure_that_the_pers">Varmista, ettei käyttäjällä ole jo dotLRN-tunnusta toisella sähköpostiosoitteella. Kaksinkertaiset tunnukset aiheuttavat ongelmia kaikille. Lisätäksesi dotLRNiin käyttäjän, jolla on jo tunnus, käytä &lt;a href=&quot;members&quot;&gt;jäsenyyksien hallintaa&lt;/a&gt;.</msg>
-  <msg key="lt_Change_my_language_se">Muuta kieliasetuksiani</msg>
   <msg key="lt_Class_Key_a_short_nam">Kurssin avainnimi (lyhyt nimi ilman välilyöntejä)</msg>
   <msg key="lt_Communitys_Web_Addres">Yhteisön www-osoite</msg>
   <msg key="lt_Current_clubs_pretty_">Nykyiset ryhmäsi</msg>
   <msg key="lt_Do_you_really_want_to">Haluatko varmasti poistaa seuraavat käyttäjät?</msg>
   <msg key="lt_Do_you_really_want_to_1">Haluatko varmasti poistaa kyseiset käyttäjät (%num_users% kpl)?</msg>
   <msg key="lt_dotLRN_properties_for">Tämän käyttäjän dotLRN-asetukset</msg>
-  <msg key="lt_E-mail_address_must_b">Sähköpostiosoitteen on oltava validi ja yksilöllinen</msg>
   <msg key="lt_Edit_department_prope">Muokkaa osaston ominaisuuksia.</msg>
-  <msg key="lt_Edit_My_Notifications">Muokkaa muistutuksiani</msg>
-  <msg key="lt_Edit_My_Personal_Info">Muokkaa henkilökohtaisia tietojani</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Muokkaa ennaltahyväksyttyjen sähköpostipalvelinten listaa</msg>
   <msg key="lt_Email_suffixes_listed">Henkilöistä, jotka rekisteröityvät allaoleviin päätteisiin sopivilla sähköpostiosoitteilla, tehdään automaattisesti dotLRN-käyttäjiä, eikä heidän liittymisensä vaadi erillistä ylläpitäjän hyväksyntää.</msg>
   <msg key="lt_emailing_this_user_fa">sähköpostin lähetys käyttäjälle epäonnistui!</msg>
@@ -266,7 +243,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="lt_Error_removing_user_c">Virhe poistettaessa käyttäjäyhteisöä</msg>
   <msg key="lt_Error_sending_email_t">Virhe lähetettäessä sähköpostia osoitteeseen %email% password-update-2.tcl:stä</msg>
   <msg key="lt_First_check_the_box_o">Valitse käyttäjille jotka haluat lisätä ryhmään  sopivat roolit ja lähetä sen jälkeen lomake.</msg>
-  <msg key="lt_Folder_folder_name_is">Kansio %folder_name% on tyhjä</msg>
   <msg key="lt_Go_back_and_try_again">Palaa takaisin ja yritä uudelleen</msg>
   <msg key="lt_having_trouble">Ongelmia haluamasi ulkoasun asettamisessa? Tässä muutamia vinkkejä</msg>
   <msg key="lt_Help_and_Personal_Con">Ohjeet ja henkilökohtaiset asetukset</msg>
@@ -276,7 +252,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="lt_if_you_misspell">Jos kirjoitat kirjasimen nimen väärin tai käyttäjän koneelta ei löydy kyseistä kirjasinta, käytetään järjestelmän oletuskirjasinta.</msg>
   <msg key="lt_If_you_wish_to_give_g">Jos haluat myöntää vieraille täydet oikeudet keskusteluryhmiin ja kyselyihin, voit pyytää koko sivujen ylläpitäjää muuttamaan yhteisösi statusta. Vaihtoehto ei ole mahdollinen kursseille johtuen MIT:n henkilötietopolitiikasta.</msg>
   <msg key="lt_Information_about_oth">Tämän yhteisön muista jäsenistä ei välity tietoja tälle käyttäjälle.</msg>
-  <msg key="lt_Interactive_setting_o">dotLRN-parametrien interaktiivinen asetus</msg>
   <msg key="lt_Join_a_class_instance">Ilmoittaudu kurssille</msg>
   <msg key="lt_Join_a_clubs_pretty_n">Liity ryhmään</msg>
   <msg key="lt_Join_the_above_criter">Valitsemiesi kriteerien yhdistelmä</msg>
@@ -310,7 +285,6 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="lt_Some_of_the_emails_fa">Joidenkin sähköpostien lähettäminen epäonnistui. Myös näille käyttäjille luotiin kuitenkin satunnaiset salasanat. Paras tapa jatkaa tästä on pyytää näitä käyttäjiä kirjautumaan ja napsauttamaan 'olen unohtanut salasanani' -linkkiä.</msg>
   <msg key="lt_spam_policy_must_be_o">lähetyskäytännön täytyy olla jompi kumpi seuraavista: kaikille tai jäsenille</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; on roolissa %existing_role% ryhmässä/kurssilla %community_name%. Voit valita hänelle toisen roolin ao. alasvetovalikon avulla:</msg>
-  <msg key="lt_The_first_line_of_the">Tiedoston ensimmäisen rivin</msg>
   <msg key="lt_The_following_email_w">Seuraava viesti lähetettiin juuri kohteesta %system_name%</msg>
   <msg key="lt_The_following_email_w_1">Seuraava sähköposti lähetettiin juuri kohteesta %system_name%
 Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg>
@@ -332,13 +306,11 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="lt_This_user_is_a_site-w">Tämä käyttäjä on koko sivujen laajuinen ylläpitäjä.</msg>
   <msg key="lt_This_user_is_currentl">Tämä käyttäjätunnus on tällä hetkellä tilassa &lt;i&gt;%member_state%&lt;/i&gt;. Antaaksesi tälle käyttäjälle pääsyn dotLRNiin sinun täytyy &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;hyväksyä ja lisätä hänet dotLRNiin&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">käyttäjä on poistettu ja asetettu pannaan tästä yhteisöstä.</msg>
-  <msg key="lt_this_user_to_another_">tämä käyttäjä toiseen ryhmään.</msg>
   <msg key="lt_to_use_vaild_email_ad">toimivia sähköpostiosoitteita, koska prosessi lähettää käyttäjän salasanan annettuun osoitteeseen.</msg>
   <msg key="lt_Update_this_users_pas">Päivitä käyttäjän salasana</msg>
   <msg key="lt_Use_this_only_for_an_">Käytä tätä vain tälle kurssille rekisteröityneen opiskelijan kohdalla, joka &lt;b&gt;ei&lt;/b&gt; ole oman koulun opiskelija.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog käyttäjälle %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Yritimme hävittää käyttäjän, mutta yritys kaatui virheeseen. Todennäköisin syy tälle on, että kyseiseen käyttäjään (user_id=%user_id%) on edelleen viittauksia tietokannassa. Taitaa olla aika ottaa yhteyttä koodaajiin.</msg>
-  <msg key="lt_What_others_see_about">(Millaisena muut minut näkevät:</msg>
   <msg key="lt_You_are_about_to_dele">Olet poistamassa %num_users% käyttäjää.</msg>
   <msg key="lt_You_are_adding_strong">Olet lisäämässä käyttäjää &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; %community_name% -yhteisöön:</msg>
   <msg key="lt_You_are_not_allowed_t">Sinulla ei ole oikeutta suorittaa tätä toimintoa.</msg>
@@ -369,8 +341,6 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="Memberships">Jäsenyydet</msg>
   <msg key="Memberships_1">Jäsenyydet:</msg>
   <msg key="Message">Viesti</msg>
-  <msg key="must">täytyy</msg>
-  <msg key="must_be_one_of">- täytyy olla yksi seuraavista:</msg>
   <msg key="My_Communities">Omat yhteisöni</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Nimi:</msg>
@@ -413,17 +383,14 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="Not_Allowed">Ei sallittu</msg>
   <msg key="Note">Huom:</msg>
   <msg key="Nuke">Hävitä</msg>
-  <msg key="nuke">hävitä</msg>
   <msg key="Nuke_">Tuhoa ...</msg>
   <msg key="Nuke_Users">Tuhoa käyttäjät</msg>
   <msg key="olive">oliivinvihreä</msg>
   <msg key="Open">Avoin</msg>
   <msg key="optional_defaults_to">vapaaehtoinen, oletuksena</msg>
   <msg key="Or">Tai</msg>
-  <msg key="or">tai</msg>
   <msg key="or_by_RGB_number">tai RGB-arvona</msg>
   <msg key="or_return_to">tai palaa</msg>
-  <msg key="password">Salasana:</msg>
   <msg key="Pending">Odottaa hyväksyntää</msg>
   <msg key="Pending_Approval">Odottamassa hyväksyntää</msg>
   <msg key="Personal_home_page">Kotisivu:</msg>
@@ -446,7 +413,6 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="reject">hylkää</msg>
   <msg key="Request_Membership">Ano ryhmän jäsenyyttä</msg>
   <msg key="request_membership_link">Ano jäsenyyttä</msg>
-  <msg key="required">pakollinen</msg>
   <msg key="Results">Tulokset</msg>
   <msg key="Return_URL">Palauta URL</msg>
   <msg key="revoke">evää oikeus</msg>
@@ -463,8 +429,6 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="Shared_Files">Jaetut tiedostot</msg>
   <msg key="silver">hopea</msg>
   <msg key="Site-wide_Admin">Sivustonlaajuinen ylläpito?</msg>
-  <msg key="Size">Koko</msg>
-  <msg key="SloanSpace">SloanSpace</msg>
   <msg key="Small">Pieni</msg>
   <msg key="Sorry">Pahoittelut!</msg>
   <msg key="Spam_">Spammaa ...</msg>
@@ -489,20 +453,16 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="Templates">Mallit</msg>
   <msg key="Term">Lukukausi</msg>
   <msg key="term">Lukukausi</msg>
-  <msg key="Term_eg_Spring_Fall">Lukukausi (esim. syksy, kevät)</msg>
   <msg key="Term_ID">Lukukauden ID</msg>
   <msg key="term_properties">lukukauden ominaisuuksia.</msg>
   <msg key="Terms">Lukukaudet</msg>
   <msg key="terms">Lukukaudet</msg>
-  <msg key="thank_you">kiitos</msg>
   <msg key="the_format_of_email_domains">Syötä lomakkeeseen pilkuilla erotettu lista domain-tunnuksia (jota edeltää yleensä merkkijono *@, eli &amp;lt;mitävain&amp;gt;@&amp;lt;email-domain&amp;gt;), esimerkiksi:</msg>
   <msg key="The_name">Nimi</msg>
   <msg key="there_are_no_users_matching">Yksikään käyttäjä ei vastaa hakuehtoa: %search_text%.</msg>
   <msg key="this_user_is_deleted">käyttäjä on poistettu</msg>
-  <msg key="this_user_to_dotLRN">tämä käyttäjä dotLRN:iin.</msg>
   <msg key="To">Vastaanottaja</msg>
   <msg key="Type">Tyyppi</msg>
-  <msg key="type">tyyppi</msg>
   <msg key="Unknown_Term">Tuntematon lukukausi</msg>
   <msg key="Update_Password">Salasanan päivitys</msg>
   <msg key="upload">siirrä tiedosto</msg>
@@ -530,15 +490,12 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="Users_Bulk_Upload">Usean käyttäjän lisääminen kerralla</msg>
   <msg key="Users_Search">Käyttäjähaku</msg>
   <msg key="View">Katso</msg>
-  <msg key="visit">Vierailu</msg>
   <msg key="Year">Vuosi:</msg>
   <msg key="Yes">Kyllä</msg>
   <msg key="yes">kyllä</msg>
   <msg key="Yes_delete">Kyllä, poista vaan</msg>
   <msg key="Yes_Im_sure">Kyllä, olen varmaakin varmempi.</msg>
   <msg key="You_can_specify_colors_by_name">Voit määritellä värit nimen</msg>
-  <msg key="you_have_been_added">Sinut on lisätty käyttäjäksi järjestelmään</msg>
-  <msg key="you_may_change_password">voit vaihtaa salasanaasi kirjauduttuasi sisään</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Huom:&lt;/b&gt; Sinun täytyy luoda &lt;a href=&quot;%terms_url%&quot;&gt;lukukausia&lt;/a&gt; ennen kuin voit luoda kursseja opintojaksoista, koska kurssit liittyvät aina tiettyyn lukukauteen.</msg>
   <msg key="your_icon_is_too_large">Ikonisi on liian suuri. %system_name%n ylläpito on päättänyt rajoittaa liitetiedostojen koon %max_attachments_bytes% tavuun.\n</msg>
   <msg key="Youre_editing">Olet muokkaamassa</msg>

@@ -8,7 +8,6 @@
   <msg key="Actions">Tindakan-tindakan</msg>
   <msg key="actions">Tindakan-tindakan</msg>
   <msg key="Active_Applets">Applet-applet yang Aktif</msg>
-  <msg key="Add">Tambah</msg>
   <msg key="add">tambah</msg>
   <msg key="Add_A_Member">Tambah Ahli</msg>
   <msg key="Add_a_Professor">Tambah Pensyarah</msg>
@@ -35,12 +34,10 @@
   <msg key="approve">lulus</msg>
   <msg key="Are_you_sure">Adakah anda pasti?</msg>
   <msg key="Ask_a_question">Tanya soalan:</msg>
-  <msg key="at">di</msg>
   <msg key="Be_sure">Pastikan</msg>
   <msg key="black">hitam</msg>
   <msg key="blue">biru</msg>
   <msg key="Change_Locale">Ubah Lokasi</msg>
-  <msg key="Change_My_Password">Tukar Kata Laluan</msg>
   <msg key="class_page_calendar_title">Takwim</msg>
   <msg key="classes_pretty_name">Subjek</msg>
   <msg key="classes_pretty_plural">Subjek-subjek</msg>
@@ -57,7 +54,6 @@
   <msg key="Confirm_1">Sahkan:</msg>
   <msg key="Confirm_Drop">Sahkan Buang</msg>
   <msg key="Confirmation">Pengesahan</msg>
-  <msg key="Control_Panel">Kawal Paparan</msg>
   <msg key="control_panel">kawal paparan</msg>
   <msg key="Copy">Salinan</msg>
   <msg key="Description">Keterangan</msg>
@@ -100,8 +96,6 @@
   <msg key="instructor_role_pretty_name">Pensyarah</msg>
   <msg key="instructor_role_pretty_plural">Pensyarah-pensyarah</msg>
   <msg key="is_already_in_use">sedang digunakan</msg>
-  <msg key="item">bahan</msg>
-  <msg key="items">bahan-bahan</msg>
   <msg key="Join">Sertai</msg>
   <msg key="Join_A_Group">Sertai Kumpulan</msg>
   <msg key="Join_Policy">Sertai Polisi</msg>
@@ -113,15 +107,12 @@
   <msg key="Last_visit_under">Lawatan terakhir kurang</msg>
   <msg key="Limited">Terhad</msg>
   <msg key="Limited_Access">Akses Terhad</msg>
-  <msg key="login_information">Informasi log masuk:</msg>
   <msg key="logout">Log Keluar</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Tambah pengguna dotLRN baru:</msg>
   <msg key="lt_Add_a_new_user_to_Slo">Tambah pengguna baru untuk SloanSpace</msg>
   <msg key="lt_Add_These_Users_To_A_">Tambah Pengguna-penguna Tersebut Kepada Kumpulan</msg>
   <msg key="lt_approve_and_add_to_do">lulus dan tambah kepada dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">belum menjadi ahli lagi</msg>
   <msg key="lt_Do_you_really_want_to">Adakah anda pasti hendak membuang ahli-ahli berikut?</msg>
-  <msg key="lt_Edit_My_Personal_Info">Ubah Informasi Peribadi Saya</msg>
   <msg key="lt_Error_adding_user_to_">Ralat menambah pengguna ke dalam komuniti</msg>
   <msg key="lt_Error_removing_user_c">Ralat membuang pengguna komuniti</msg>
   <msg key="lt_Help_and_Personal_Con">Bantuan dan Konfigurasi Peribadi</msg>
@@ -132,7 +123,6 @@
   <msg key="lt_Search_dotLRN_users_f">Cari pengguna-pengguna dotLRN untuk pengguna:</msg>
   <msg key="lt_Senders_Email_Address">Alamat Emel Penghantar</msg>
   <msg key="lt_this_may_take_some_time">Ini akan mengambil sedikit masa. Sila bersabar.</msg>
-  <msg key="lt_this_user_to_another_">pengguna ini kepada kumpulan lain.</msg>
   <msg key="lt_Update_this_users_pas">Kemaskini kata laluan pengguna ini</msg>
   <msg key="lt_You_are_about_to_dele">Anda akan membuang %num_users5 pengguna-pengguna.</msg>
   <msg key="lt_You_are_adding_strong">Anda sedang menambah &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; kepada %community_name%: </msg>
@@ -162,8 +152,6 @@
   <msg key="Memberships">Keahlian-keahlian</msg>
   <msg key="Memberships_1">Keahlian-keahlian:</msg>
   <msg key="Message">Mesej</msg>
-  <msg key="must">perlu</msg>
-  <msg key="must_be_one_of">- perlu menjadi satu daripada</msg>
   <msg key="My_Communities">Komuniti Saya</msg>
   <msg key="NA">T/B</msg>
   <msg key="Name">nama</msg>
@@ -204,9 +192,7 @@
   <msg key="Note">Nota:</msg>
   <msg key="Open">Terbuka</msg>
   <msg key="Or">Atau</msg>
-  <msg key="or">atau</msg>
   <msg key="or_return_to">atau, kembali kepada</msg>
-  <msg key="password">Kata laluan:</msg>
   <msg key="Pending_Approval">Menunggu Penglulusan</msg>
   <msg key="Personal_Options">Pilihan-pilihan Peribadi</msg>
   <msg key="Post_to">Hantar kepada:</msg>
@@ -221,15 +207,12 @@
   <msg key="Reject">Ditolak</msg>
   <msg key="teaching_assistant_role_pretty_name">Pembantu Pengajaran</msg>
   <msg key="teaching_assistant_role_pretty_plural">Pembantu-pembantu Pengajaran</msg>
-  <msg key="thank_you">Terima kasih</msg>
   <msg key="the_format_of_email_domains">Format untuk nilai ini adalah sekumpulan domain yang dipisahkan dengan aksara koma (,). Ia biasanya bermula dengan *@ iaitu menyamai &amp;lt;nama&amp;gt;@&amp;lt;nama-domain&amp;gt;. Sila lihat contoh di bawah:</msg>
   <msg key="The_name">Nama</msg>
   <msg key="there_are_no_users_matching">Tiada ahli menyamai %search_text%</msg>
   <msg key="this_user_is_deleted">ahli ini telah dihapuskan</msg>
-  <msg key="this_user_to_dotLRN">ahli ini kepada dotLRN.</msg>
   <msg key="To">Kepada</msg>
   <msg key="Type">Jenis</msg>
-  <msg key="type">jenis</msg>
   <msg key="Unknown_Term">Terma tidak diketahui</msg>
   <msg key="Update_Password">Kemaskini Kata Laluan</msg>
   <msg key="upload">muatnaik</msg>
@@ -257,15 +240,12 @@
   <msg key="Users_Bulk_Upload">Ahli-ahli: Muatnaik Secara Kelompok</msg>
   <msg key="Users_Search">Carian Ahli-ahli</msg>
   <msg key="View">Lihat</msg>
-  <msg key="visit">Lawat</msg>
   <msg key="Year">Tahun:</msg>
   <msg key="Yes">Ya</msg>
   <msg key="yes">ya</msg>
   <msg key="Yes_delete">Ya, padamkan</msg>
   <msg key="Yes_Im_sure">Ya, saya pasti.</msg>
   <msg key="You_can_specify_colors_by_name">Anda boleh memilih warna dengan nama</msg>
-  <msg key="you_have_been_added">Anda telah menjadi pengguna untuk</msg>
-  <msg key="you_may_change_password">Anda boleh mengubah kata laluan selepas anda masuk ke sistem</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Nota:&lt;/b&gt; Anda perlu mencipta &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; sebelum anda dibenarkan untuk mencipta %class_instances_pretty_plural%, kerana ia memerlukan %terms_pretty_plural% untuk integriti</msg>
   <msg key="your_icon_is_too_large">Ikon pilihan anda terlalu besar. Pengurusan %system_name% meletakkan %max_attachments_bytes% bait sebagai had maksimum.\n</msg>
   <msg key="Youre_editing">Anda sedang mengedit</msg>

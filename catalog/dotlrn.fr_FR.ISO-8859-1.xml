@@ -9,7 +9,6 @@
   <msg key="Actions">Actions</msg>
   <msg key="actions">Actions</msg>
   <msg key="Active_Applets">Activer les applets</msg>
-  <msg key="Add">Ajouter</msg>
   <msg key="add">ajouter</msg>
   <msg key="Add_A_Member">Ajouter un membre</msg>
   <msg key="Add_a_Professor">Ajouter un professeur</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Panneau de contrôle</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
-  <msg key="admin_role_pretty_name">Administrateur</msg>
-  <msg key="admin_role_pretty_plural">Administrateurs</msg>
   <msg key="Administer">Administrer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrateur</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Etes-vous sur de vouloir envoyé ce qui suit</msg>
   <msg key="arhive_group_name">Archiver le groupe %group_name%</msg>
   <msg key="Ask_a_question">Poser vos questions à: </msg>
-  <msg key="at">à</msg>
-  <msg key="bad_folder_id">Identificateur de dossier erroné</msg>
-  <msg key="be_either">être un de</msg>
   <msg key="Be_sure">Etre sur</msg>
-  <msg key="be_the_header_line">soit l'header de:</msg>
   <msg key="Become_this_user">Devenir cet utilisateur!</msg>
   <msg key="Biography">Biographie:</msg>
   <msg key="black">noir</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">bleu</msg>
   <msg key="Bulk_Upload">Envoyer</msg>
   <msg key="Bulk_Uploading">Envoyant...</msg>
-  <msg key="byte">octet</msg>
-  <msg key="bytes">octets</msg>
   <msg key="cannot_be_removed">ne peut pas être effacé</msg>
   <msg key="Change_Locale">Changer la langue</msg>
-  <msg key="Change_My_Password">Changer mon mot de passe</msg>
   <msg key="class_instance_portal_pretty_name">Cours</msg>
   <msg key="class_instances_pretty_name">Cours</msg>
   <msg key="class_instances_pretty_plural">Cours</msg>
@@ -105,7 +95,6 @@
   <msg key="Confirm_1">Confirmer:</msg>
   <msg key="Confirm_Drop">Confirmer l'effacement</msg>
   <msg key="Confirmation">Confirmation</msg>
-  <msg key="Control_Panel">Panneau de contrôle</msg>
   <msg key="control_panel">Panneau de contrôle</msg>
   <msg key="Copy">Copier</msg>
   <msg key="couldnt_find_user_id">L'utilisateur %user_id% n'a pas été trouvé; cette personne a peut-être été effacée.</msg>
@@ -151,7 +140,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Groupes</msg>
   <msg key="dotlrn_member_rel_pretty_name">Membre de la communauté dotLRN</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Membres de la communauté dotLRN</msg>
-  <msg key="Download">Télécharger</msg>
   <msg key="Drop">Effacer</msg>
   <msg key="Drop_Membership">Effacer membre</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Effacer membre&quot; border=0&gt;</msg>
@@ -180,7 +168,6 @@
   <msg key="Fields">Champs</msg>
   <msg key="First_Line">Première ligne</msg>
   <msg key="First_Name">Prénom</msg>
-  <msg key="First_Names">Prénoms</msg>
   <msg key="From">De</msg>
   <msg key="fuchsia">fushia</msg>
   <msg key="Full">Total</msg>
@@ -211,15 +198,12 @@
   <msg key="instructor_role_pretty_plural">Professeurs</msg>
   <msg key="Invalid">Non valide</msg>
   <msg key="is_already_in_use">est déjà utilisé</msg>
-  <msg key="item">élément</msg>
-  <msg key="items">éléments</msg>
   <msg key="Join">Joindre</msg>
   <msg key="Join_A_Group">Se joindre à un groupe</msg>
   <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Se joindre&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Politique d'inscription</msg>
   <msg key="Key">Clé</msg>
   <msg key="Large">Large</msg>
-  <msg key="Last_Modified">Dernière modification</msg>
   <msg key="Last_Name">Nom</msg>
   <msg key="Last_Visit">Dernière visite:</msg>
   <msg key="Last_visit_over">Dernière visite depuis</msg>
@@ -228,7 +212,6 @@
   <msg key="lime">lima</msg>
   <msg key="Limited">Limité</msg>
   <msg key="Limited_Access">Accès limité</msg>
-  <msg key="login_information">Information du compte:</msg>
   <msg key="logout">Déconnecter</msg>
   <msg key="lt_a_secondary">- un second identificateur pour cet utilisateur.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Ajouter un nouvel utilisateur dotLRN:</msg>
@@ -236,26 +219,20 @@
   <msg key="lt_Add_community_name_Me">Ajouter les membres de %community_name% à une autre communauté</msg>
   <msg key="lt_Add_Members_to_Anothe">Ajouter les membres à un autre communauté</msg>
   <msg key="lt_Add_members_to_anothe">Ajouter les membres à un autre groupe</msg>
-  <msg key="lt_Add_Membership_To_Com">Ajouter les membres à la communauté</msg>
   <msg key="lt_Add_These_Users_To_A_">Ajouter ces utilisateurs à un groupe</msg>
   <msg key="lt_Administrative_Action">Administration</msg>
   <msg key="lt_An_error_occured_whil">Erreur en ajoutant un utilisateur à une communauté. L'erreur a été enregistrée.</msg>
   <msg key="lt_An_error_occured_whil_1">Une erreur s'est produite en essayant de retirer un utilisateur d'une communauté. Cette erreur a été archivée.</msg>
   <msg key="lt_approve_and_add_to_do">approuver et ajouter à dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">ne sont pas encore membres de</msg>
   <msg key="lt_Are_you_sure_you_want">Etes-vous sûr de vouloir effacer ce département</msg>
   <msg key="lt_Be_sure_that_the_pers">Soyez sûr que la personne n'a pas déjà un compte sur SloanSpace sous une autre adresse email. Les double comptes posent des problèmes.  Pour ajouter une personne qui a déjà un compte, utilisez &lt;a href=members&gt;Gérer les membres&lt;/a &gt;.</msg>
-  <msg key="lt_Change_my_language_se">Changer la langue</msg>
   <msg key="lt_Class_Key_a_short_nam">Clé du cours (un nom court sans espace)</msg>
   <msg key="lt_Communitys_Web_Addres">URL du web de la communauté</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% existants</msg>
   <msg key="lt_Do_you_really_want_to">Voulez-vous réellement effacer les membres suivants?</msg>
   <msg key="lt_Do_you_really_want_to_1">Voulez-vous réellement effacer ces %num_users% utilisateurs?</msg>
   <msg key="lt_dotLRN_properties_for">propriétés dotLRN de cet utilisateur.</msg>
-  <msg key="lt_E-mail_address_must_b">L'adresse email doit être valide et unique. &lt;br&gt;Cet utilisateur a probablement déjà un compte sur SloanSpace. &lt;br&gt;Essayez d'ajouter cet utilisateur à travers de &lt;a href=members&gt;Gérer les membres&lt;/a &gt;.</msg>
   <msg key="lt_Edit_department_prope">Editer les propriétés du département.</msg>
-  <msg key="lt_Edit_My_Notifications">Editer mes notifications</msg>
-  <msg key="lt_Edit_My_Personal_Info">Editer mes données personnelles</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Editer les serveurs mail pré-approuvés</msg>
   <msg key="lt_Email_suffixes_listed">Les suffixes d'email énumérés ici sont utilisés pour que les utilisateurs qui indiquent une adresse email qui correspond à l'un d'eux, soient automatiquement registrés comme utilisateurs dotLRN.</msg>
   <msg key="lt_emailing_this_user_fa">erreur durant l'envoi d'email à cet utilisateur!</msg>
@@ -264,7 +241,6 @@
   <msg key="lt_Error_removing_user_c">Erreur durant l'effacement de la communauté</msg>
   <msg key="lt_Error_sending_email_t">Erreur durant l'envoi de courrier à %email% depuis password-update-2.tcl</msg>
   <msg key="lt_First_check_the_box_o">Sélectionnez dans un premier temps les utilisateurs que vous voulez ajouter, ensuite sélectionnez leur role, puis finalement envoyez le formulaire.</msg>
-  <msg key="lt_Folder_folder_name_is">Le dossier %folder_name% est vide</msg>
   <msg key="lt_Go_back_and_try_again">Retournez en arrière et réessayez</msg>
   <msg key="lt_having_trouble">Si un problème s'est produit au moment d'appliquer l'aspect choisi, voici quelques conseils</msg>
   <msg key="lt_Help_and_Personal_Con">Aide et Configuration personnelle</msg>
@@ -274,7 +250,6 @@
   <msg key="lt_if_you_misspell">Si la police de caractère n'est pas correct ou n'existe pas dans l'ordinateur de l'utilisateur, la police de caractère par défaut du système sera utilisée.</msg>
   <msg key="lt_If_you_wish_to_give_g">Si vous souhaitez donner aux invités le plein accès aux forum et aux sondages, vous pouvez demander à l'administrateur du site de changer le statut de votre communauté. Etant donné la politique de privacité du MIT, cette option n'est pas disponible pour les cours.</msg>
   <msg key="lt_Information_about_oth">L'information concernant les autres membres de cette communauté ne sera pas disponible pour cet utilisateur.</msg>
-  <msg key="lt_Interactive_setting_o">Option interactive des paramètres dotLRN</msg>
   <msg key="lt_Join_a_class_instance">Se joindre à %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">Se joindre à %club_pretty_name%</msg>
   <msg key="lt_Join_the_above_criter">Combiner le critère précédant avec</msg>
@@ -288,7 +263,6 @@
   <msg key="lt_Manage_this_users_por">Gérer le portrait de cet utilisateur</msg>
   <msg key="lt_Note_The_script_will_">Note: le script continuera son exécution même si vous fermez votre navigateur.</msg>
   <msg key="lt_Note_This_process_is_">Note: ce processus devrait durer %num_seconds% secondes.</msg>
-  <msg key="lt_What_others_see_about">(Ce que les autres verront de moi:</msg>
   <msg key="ltnone_set_upgt">&amp;lt;aucun fixé&amp;gt;</msg>
   <msg key="Personal_Options">Options personnelles</msg>
   <msg key="user_portal_page_calendar_title">Mon agenda</msg>

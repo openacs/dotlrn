@@ -8,7 +8,6 @@
   <msg key="Actions">Akcije</msg>
   <msg key="actions">Akcije</msg>
   <msg key="Active_Applets">Aktivni appleti</msg>
-  <msg key="Add">Dodaj</msg>
   <msg key="add">dodaj</msg>
   <msg key="Add_A_Member">Dodaj korisnika</msg>
   <msg key="Add_a_Professor">Dodaj profersora</msg>
@@ -25,8 +24,6 @@
   <msg key="AddDrop_Memberships">Dodaj/Izbaci Clanstva</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
-  <msg key="admin_role_pretty_name">Administrator</msg>
-  <msg key="admin_role_pretty_plural">Administratori</msg>
   <msg key="Administer">Administriraj</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratori</msg>
@@ -39,7 +36,6 @@
   <msg key="archived">Arhivirani</msg>
   <msg key="Ask_a_question">Postavite pitanje</msg>
   <msg key="Change_Locale">Promeni jezik</msg>
-  <msg key="Change_My_Password">Promeni lozinku</msg>
   <msg key="class_instances_pretty_name">Klase</msg>
   <msg key="class_instances_pretty_plural">Klase</msg>
   <msg key="class_page_calendar_title">Kalendar</msg>
@@ -60,7 +56,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Grupe</msg>
   <msg key="dotlrn_member_rel_pretty_name">dotLRN clanstvo u zajednici</msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN clanstva u zajednici</msg>
-  <msg key="Download">Preuzmi fajl (download)</msg>
   <msg key="Drop_Membership">Prekini clanstvo</msg>
   <msg key="Edit">Izmeni</msg>
   <msg key="edit_approved_email_servers">Izmeni unapred odobrene email servere</msg>
@@ -75,17 +70,12 @@
   <msg key="lt_a_secondary">- sekundarni identifikator korisnika.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Dodaj novog dotLRN korisnika:</msg>
   <msg key="lt_Add_members_to_anothe">Dodaj clanove u drugu grupu</msg>
-  <msg key="lt_Add_Membership_To_Com">Dodaj clanstvo u zajednici</msg>
   <msg key="lt_Add_These_Users_To_A_">Dodaj ove korisnike u grupu</msg>
   <msg key="lt_Administrative_Action">Administrativne akcije</msg>
-  <msg key="lt_are_not_yet_members_o">jos nisu clanovi</msg>
   <msg key="lt_Are_you_sure_you_want">Jeste li sigurni da zelite da izbrisete prazna odeljenja</msg>
-  <msg key="lt_Change_my_language_se">Promjenite jezicko podesavanje</msg>
-  <msg key="lt_Edit_My_Personal_Info">Promena licnih podataka</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Izmeni unapred-odobrene email servere</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">Postani clan/Prekini clanstvo u klasi ili zajednici</msg>
   <msg key="lt_Pre-approved_Email_Se">Unapred odobreni email serveri</msg>
-  <msg key="lt_What_others_see_about">(Sta drugi mogu videti o meni:</msg>
   <msg key="lt_Your_Current_Membersh">Vasa trenutna clanstva</msg>
   <msg key="Members">Broj clanova</msg>
   <msg key="Name">Ime</msg>

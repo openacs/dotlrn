@@ -2,15 +2,11 @@
 <message_catalog package_key="dotlrn" package_version="1.0" locale="tr_TR" charset="ISO-8859-9">
 
   <msg key="Ask_a_question">Bir soru sor:</msg>
-  <msg key="Change_My_Password">Þifremi Deðiþtir</msg>
   <msg key="control_panel">Kontrol Paneli</msg>
   <msg key="dotlrn_main_portlet_pretty_name">Gruplar</msg>
   <msg key="General_Site_Help">Genel Site Yardýmý</msg>
   <msg key="help">Yardým</msg>
-  <msg key="lt_Change_my_language_se">Lisan ayarýmý deðiþtir</msg>
-  <msg key="lt_Edit_My_Personal_Info">Kiþisel Bilgilerimi Düzenle</msg>
   <msg key="lt_Help_and_Personal_Con">Yardým ve Kiþisel Ayarlar</msg>
-  <msg key="lt_What_others_see_about">Diðerlerin benim hakkýmda gördükleri:</msg>
   <msg key="Personal_Options">Kiþisel Seçenekler</msg>
   <msg key="user_portal_page_home_title">Benim Yerim</msg>
 </message_catalog>

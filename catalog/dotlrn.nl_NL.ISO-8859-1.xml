@@ -9,7 +9,6 @@
   <msg key="Actions">Acties</msg>
   <msg key="actions">Acties</msg>
   <msg key="Active_Applets">Actieve Applets</msg>
-  <msg key="Add">Toevoegen</msg>
   <msg key="add">toevoegen</msg>
   <msg key="Add_A_Member">Toevoegen Lid</msg>
   <msg key="Add_a_Professor">Toevoegen Professor</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">Beheer</msg>
   <msg key="admin_page_name">Bedieningspaneel</msg>
   <msg key="admin_pages_navbar_name">Beheer</msg>
-  <msg key="admin_role_pretty_name">Beheerder</msg>
-  <msg key="admin_role_pretty_plural">Beheerders</msg>
   <msg key="Administer">Beheren</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Beheer&quot;&gt;</msg>
   <msg key="Administrator">Beheerder</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Weet u zeker dat u het volgende wilt verzenden</msg>
   <msg key="arhive_group_name">Archiveer groep %group_name%</msg>
   <msg key="Ask_a_question">Stel een vraag:</msg>
-  <msg key="at">bij</msg>
-  <msg key="bad_folder_id">onjuist folder id</msg>
-  <msg key="be_either">ben elk</msg>
   <msg key="Be_sure">Ben er zeker van</msg>
-  <msg key="be_the_header_line">is de kop:</msg>
   <msg key="Become_this_user">Wordt deze Gebruiker !</msg>
   <msg key="Biography">Biografie</msg>
   <msg key="black">zwart</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">blauw</msg>
   <msg key="Bulk_Upload">Massaal Importeren</msg>
   <msg key="Bulk_Uploading">Importeert massaal....</msg>
-  <msg key="byte">byte</msg>
-  <msg key="bytes">bytes</msg>
   <msg key="cannot_be_removed">kan niet worden verwijderd</msg>
   <msg key="Change_Locale">Wijzig Taal</msg>
-  <msg key="Change_My_Password">Wijzig Wachtwoord</msg>
   <msg key="class_instance_portal_pretty_name">Klassen</msg>
   <msg key="class_instances_pretty_name">Klas</msg>
   <msg key="class_instances_pretty_plural">Klassen</msg>
@@ -105,7 +95,6 @@
   <msg key="Confirm_1">Bevestig:</msg>
   <msg key="Confirm_Drop">Bevestig Verwijdering</msg>
   <msg key="Confirmation">Bevestiging</msg>
-  <msg key="Control_Panel">Bedieningspaneel</msg>
   <msg key="control_panel">Bedieningspaneel</msg>
   <msg key="Copy">Kopie</msg>
   <msg key="couldnt_find_user_id">We kunnen gebruiker #%user_id% niet vinden; mogelijk is deze persoon verwijderd.</msg>
@@ -151,7 +140,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Groepen</msg>
   <msg key="dotlrn_member_rel_pretty_name">dotLRN </msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN Gemeenschapsleden</msg>
-  <msg key="Download">Download</msg>
   <msg key="Drop">Verwijder</msg>
   <msg key="Drop_Membership">Opzeggen Lidmaatschap</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Verwijder Lidmaatschap&quot; border=0&gt;</msg>
@@ -180,7 +168,6 @@
   <msg key="Fields">Velden</msg>
   <msg key="First_Line">Eerste Regel</msg>
   <msg key="First_Name">Voornaam</msg>
-  <msg key="First_Names">Voornamen</msg>
   <msg key="From">Van</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Ongelimiteerd</msg>
@@ -211,15 +198,12 @@
   <msg key="instructor_role_pretty_plural">Professoren</msg>
   <msg key="Invalid">Ongeldig</msg>
   <msg key="is_already_in_use">is al in gebruik</msg>
-  <msg key="item">item</msg>
-  <msg key="items">items</msg>
   <msg key="Join">Lid worden</msg>
   <msg key="Join_A_Group">Groep Lidmaatschap</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Aanmelden&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Toelatingsbeleid</msg>
   <msg key="Key">Code</msg>
   <msg key="Large">Groot</msg>
-  <msg key="Last_Modified">Laatste Wijziging</msg>
   <msg key="Last_Name">Achternaam</msg>
   <msg key="Last_Visit">Laatste Bezoek</msg>
   <msg key="Last_visit_over">Laatste wijziging meer dan</msg>
@@ -228,7 +212,6 @@
   <msg key="lime">lime-groen</msg>
   <msg key="Limited">Beperkt</msg>
   <msg key="Limited_Access">Beperkte toegang</msg>
-  <msg key="login_information">Aanmeldingsgegevens:</msg>
   <msg key="logout">Loguit</msg>
   <msg key="lt_a_secondary">- een tweede kenmerk van de gebruiker</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Toevoegen nieuwe dotLRN gebruiker:</msg>
@@ -236,26 +219,20 @@
   <msg key="lt_Add_community_name_Me">Toevoegen %community_name% leden aan andere gemeenschap</msg>
   <msg key="lt_Add_Members_to_Anothe">Toevoegen leden aan andere gemeenschap</msg>
   <msg key="lt_Add_members_to_anothe">Toevoegen lid aan andere groep</msg>
-  <msg key="lt_Add_Membership_To_Com">Toevoegen Lidmaatschap aan Gemeenschap</msg>
   <msg key="lt_Add_These_Users_To_A_">Deze gebruikers toevoegen aan een groep</msg>
   <msg key="lt_Administrative_Action">Beheer Acties</msg>
   <msg key="lt_An_error_occured_whil">Er is een fout opgetreden bij het toevoegen van een gebruiker aan een gemeenschap. De fout is geregistreerd.</msg>
   <msg key="lt_An_error_occured_whil_1">Er is een fout opgetreden bij het verwijderen van een gebruiker uit een gemeenschap. De fout is geregistreerd.</msg>
   <msg key="lt_approve_and_add_to_do">Goedkeuren en toevoegen aan dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">zijn nog geen lid van</msg>
   <msg key="lt_Are_you_sure_you_want">Weet u zeker dat u deze lege Afdeling wilt verwijderen</msg>
   <msg key="lt_Be_sure_that_the_pers">Wees er zeker van dat de persoon nog niet is aangemeld met een ander e-mailadres. Dubbele aanmeldingen veroorzaken voor iedereen problemen. Gebruik &lt;a href=members&gt;Beheer Lidmaatschap&lt;/a&gt; om een persoon toe te voegen die al bekend is in het systeem. </msg>
-  <msg key="lt_Change_my_language_se">Wijzig mijn taalinstelling</msg>
   <msg key="lt_Class_Key_a_short_nam">Klascode (korte naam, geen spaties)</msg>
   <msg key="lt_Communitys_Web_Addres">Webadres Gemeenschap</msg>
   <msg key="lt_Current_clubs_pretty_">Huidige %clubs_pretty_plural% </msg>
   <msg key="lt_Do_you_really_want_to">Moeten de volgende leden daadwerkelijk worden verwijderd?</msg>
   <msg key="lt_Do_you_really_want_to_1">Moeten er daadwerkelijk %num_users% gebruikers worden verwijderd?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN kenmerken van deze gebruiker.</msg>
-  <msg key="lt_E-mail_address_must_b">E-mail adres moet geldig en uniek zijn. &lt;br&gt;Deze gebruiker was waarschijnlijk al ingeschreven in het systeem. &lt;br&gt;Tracht deze gebruiker toe te voegen via &lt;a href=members&gt;Beheer Lidmaatschap&lt;/a&gt;. </msg>
   <msg key="lt_Edit_department_prope">Wijzig Afdelingseigenschappen</msg>
-  <msg key="lt_Edit_My_Notifications">Wijzig mijn kennisgevingen</msg>
-  <msg key="lt_Edit_My_Personal_Info">Wijzig Persoonlijke Informatie</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Wijzig voor</msg>
   <msg key="lt_Email_suffixes_listed">Een gebruiker die zich aanmeldt met een E-mail adres dat een van de hier genoemde achtervoegsels heeft, wordt ook automatisch geregistreerd als een dotLRN gebruiker.</msg>
   <msg key="lt_emailing_this_user_fa">e-mailen naar deze gebruiker is mislukt!</msg>
@@ -264,7 +241,6 @@
   <msg key="lt_Error_removing_user_c">Fout bij verwijderen van gebruiker uit gemeenschap</msg>
   <msg key="lt_Error_sending_email_t">Fout bij het verzenden van de e-mail aan %email% vanuit password-update-2.tcl </msg>
   <msg key="lt_First_check_the_box_o">Selecteer de gebruikers die toegevoegd moeten worden, selecteer hun rol en verzend tenslotte het formulier. </msg>
-  <msg key="lt_Folder_folder_name_is">Map %folder_name% is leeg</msg>
   <msg key="lt_Go_back_and_try_again">Ga terug en probeer opnieuw</msg>
   <msg key="lt_having_trouble">Heeft u problemen om het gewenste resultaat te krijgen? Hier zijn enkele tips</msg>
   <msg key="lt_Help_and_Personal_Con">Hulp en persoonlijke instellingen</msg>
@@ -275,7 +251,6 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="lt_if_you_misspell">Indien u het lettertype foutief schrijft of als de gebruiker het lettertype niet op de computer heeft, wordt het standaard lettertype van het systeem gebruikt</msg>
   <msg key="lt_If_you_wish_to_give_g">Als gasten ook onbeperkte toegang dienen te krijgen, kan de systeembeheerder de eigennschappen van deze gemeenschap aanpassen. Alleen bij klassen is dit reglementair niet toegestaan. </msg>
   <msg key="lt_Information_about_oth">Informatie over andere leden van deze gemeenschap zullen niet beschikbaar zijn voor deze gebruiker</msg>
-  <msg key="lt_Interactive_setting_o">Interactieve instelling van dotLRN parameters</msg>
   <msg key="lt_Join_a_class_instance">Aansluiten bij %class_instances_pretty_name% </msg>
   <msg key="lt_Join_a_clubs_pretty_n">Aansluiten bij %clubs_pretty_name% </msg>
   <msg key="lt_Join_the_above_criter">Verenig bovenstaande criteria met</msg>
@@ -309,7 +284,6 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="lt_Some_of_the_emails_fa">Enkele e-mails konden niet worden verstuurd. Deze gebruikers hebben een willekeurig wachtwoord toegewezen gekregen. Zij kunnen na het aanmelden klikken op 'Ik ben mijn wachtwoord vergeten' om hun wachtwoord te achterhalen.</msg>
   <msg key="lt_spam_policy_must_be_o">Spambeleid moet zijn: alle of leden</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; is een %existing_role% in %community_name%. U kunt hieronder een nieuwe rol selecteren.</msg>
-  <msg key="lt_The_first_line_of_the">De eerste regel van dit bestand</msg>
   <msg key="lt_The_following_email_w">De volgende e-mail werd zojuist verzonden vanaf %system_name% </msg>
   <msg key="lt_The_following_email_w_1">De volgende e-mail werd zojuist verzonden vanaf %system_name% Verzonden door: %system_owner% Verzonden aan: %email% Onderwerp: %subject% Bericht: %body% </msg>
   <msg key="lt_The_following_members">De volgende leden van</msg>
@@ -330,13 +304,11 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="lt_This_user_is_a_site-w">Deze gebruiker is een systeembeheerder.</msg>
   <msg key="lt_This_user_is_currentl">De status van deze gebruiker is momenteel: &lt;i&gt;%member_state%&lt;/i&gt;. Om deze gebruiker toestemming te geven tot dotLRN dient eerst &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;goedkeuring en toevoeging aan dotLRN&lt;/a&gt; plaats te vinden.  </msg>
   <msg key="lt_this_user_is_deleted_">deze gebruiker is verwijderd en uitgesloten van de gemeenschap</msg>
-  <msg key="lt_this_user_to_another_">deze gebruiker aan een andere groep.</msg>
   <msg key="lt_to_use_vaild_email_ad">dat u een geldig e-mailadres gebruikt, omdat in het proces een nieuw wachtwoord moet worden toegestuurd aan de gebruiker via dit e-mailadres.</msg>
   <msg key="lt_Update_this_users_pas">Wachtwoord bijwerken van deze gebruiker</msg>
   <msg key="lt_Use_this_only_for_an_">Gebruik dit alleen voor officieel geregistreerde studenten in deze klas die &lt;b&gt;geen&lt;/b&gt; studenten van onze opleiding zijn.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog voor %user_name% </msg>
   <msg key="lt_Well_we_tried_to_nuke">We probeerde de gegevens van deze gebruiker te vernietigen, maar er trad een fout op. Het meest waarschijnlijke is dat er ergens in het systeem gerefereerd wordt aan deze gebruiker (user_id=%user_id%). Leg het probleem neer bij de programmeurs.</msg>
-  <msg key="lt_What_others_see_about">(Wat anderen van mij zien:</msg>
   <msg key="lt_You_are_about_to_dele">Er zullen %num_users% gebruikers verwijderd gaan worden.</msg>
   <msg key="lt_You_are_adding_strong">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; zal worden toegevoegd aan %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">Deze handeling wordt niet toegestaan door het systeem.</msg>
@@ -367,8 +339,6 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Memberships">Lidmaatschappen</msg>
   <msg key="Memberships_1">Lidmaatschappen:</msg>
   <msg key="Message">Bericht</msg>
-  <msg key="must">moet</msg>
-  <msg key="must_be_one_of">- moet er een zijn van</msg>
   <msg key="My_Communities">Lidmaatschappen</msg>
   <msg key="NA">n.v.t.</msg>
   <msg key="Name">Naam</msg>
@@ -411,17 +381,14 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Not_Allowed">Niet Toegestaan</msg>
   <msg key="Note">Notitie:</msg>
   <msg key="Nuke">Vernietigen</msg>
-  <msg key="nuke">Vernietigen</msg>
   <msg key="Nuke_">Vernietigen ...</msg>
   <msg key="Nuke_Users">Gebruikers vernietigen</msg>
   <msg key="olive">olijf-groen</msg>
   <msg key="Open">Open</msg>
   <msg key="optional_defaults_to">facultatief, standaardinstelling is</msg>
   <msg key="Or">Of</msg>
-  <msg key="or">of</msg>
   <msg key="or_by_RGB_number">of met het RGB nummer</msg>
   <msg key="or_return_to">of, keer terug naar</msg>
-  <msg key="password">Wachtwoord:</msg>
   <msg key="Pending">In Behandeling</msg>
   <msg key="Pending_Approval">In afwachting van toestemming</msg>
   <msg key="Personal_home_page">Persoonlijke Pagina</msg>
@@ -444,7 +411,6 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="reject">weigeren</msg>
   <msg key="Request_Membership">Verzoek Lidmaatschap</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Verzoek Lidmaatschap&quot;&gt; </msg>
-  <msg key="required">vereist</msg>
   <msg key="Results">Resultaten</msg>
   <msg key="Return_URL">Terugkeer URL </msg>
   <msg key="revoke">intrekken</msg>
@@ -461,8 +427,6 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Shared_Files">Gedeelde Bestanden</msg>
   <msg key="silver">zilver</msg>
   <msg key="Site-wide_Admin">Systeembeheer?</msg>
-  <msg key="Size">Grootte</msg>
-  <msg key="SloanSpace">SloanSpace</msg>
   <msg key="Small">Klein</msg>
   <msg key="Sorry">Sorry!</msg>
   <msg key="Spam_">Spam ...</msg>
@@ -487,20 +451,16 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Templates">Sjablonen</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Tri/Semester</msg>
-  <msg key="Term_eg_Spring_Fall">Tri/Semester (bijv. Lente, Herfst)</msg>
   <msg key="Term_ID">Tri/Semester ID</msg>
   <msg key="term_properties">Tri/Semester eigenschappen.</msg>
   <msg key="Terms">Tri/Semester</msg>
   <msg key="terms">Tri/Semester</msg>
-  <msg key="thank_you">Bedankt</msg>
   <msg key="the_format_of_email_domains">De opmaak van deze waarden is een door komma's gescheiden lijst van domeinen (normaal gesproken voorafgegaan door *@) gelijkend op &amp;lt;iets&amp;gt;@&amp;lt;e-maildomeinnaam&amp;gt;. Men kan bij voorbeeld gebruiken:</msg>
   <msg key="The_name">De naam</msg>
   <msg key="there_are_no_users_matching">Er zijn geen gebruikers </msg>
   <msg key="this_user_is_deleted">deze gebruiker is verwijderd</msg>
-  <msg key="this_user_to_dotLRN">deze gebruiker aan dotLRN</msg>
   <msg key="To">Aan</msg>
   <msg key="Type">Type</msg>
-  <msg key="type">type</msg>
   <msg key="Unknown_Term">Onbekend Tri/Semester</msg>
   <msg key="Update_Password">Bijwerken Wachtwoord</msg>
   <msg key="upload">aanbieden</msg>
@@ -528,15 +488,12 @@ U kunt gegevens uit een spreadsheet als een CSV bestand bewaren en hier importer
   <msg key="Users_Bulk_Upload">Gebruikers: Massaal Importeren</msg>
   <msg key="Users_Search">Zoek Gebruikers</msg>
   <msg key="View">Bekijk</msg>
-  <msg key="visit">Bezoek</msg>
   <msg key="Year">Jaar:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>
   <msg key="Yes_delete">Ja, verwijder</msg>
   <msg key="Yes_Im_sure">Ja, ik weet het zeker.</msg>
   <msg key="You_can_specify_colors_by_name">Kleuren kunnen via kleurnaam worden aangegeven</msg>
-  <msg key="you_have_been_added">U bent als gebruiker toegevoegd aan</msg>
-  <msg key="you_may_change_password">U kunt uw wachtwoord wijzigen nadat u bent ingelogd.</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Bericht:&lt;/b&gt; Een &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; moet zijn aangemaakt om een %class_instances_pretty_plural% te kunnen aanmaken, daar deze gekoppeld is aan %terms_pretty_plural%. </msg>
   <msg key="your_icon_is_too_large">Het Icoon is te groot. Attachments groter dan %max_attachments_bytes% bytes worden op %system_name% niet toegestaan.\n</msg>
   <msg key="Youre_editing">Wijzigen van</msg>

@@ -4,7 +4,6 @@
   <msg key="AddDrop_Memberships">สมัคร/ยกเลิก สมาชิก</msg>
   <msg key="Ask_a_question">ถามคำถาม</msg>
   <msg key="Change_Locale">เปลี่ยนภาษา</msg>
-  <msg key="Change_My_Password">เปลี่ยนรหัสผ่าน</msg>
   <msg key="clubs_pretty_plural">ชุมชน</msg>
   <msg key="control_panel">แผงควบคุม</msg>
   <msg key="dotlrn_main_portlet_pretty_name">กลุ่ม</msg>
@@ -13,7 +12,6 @@
   <msg key="Join">สมัคร</msg>
   <msg key="Join_A_Group">สมัครเข้ากลุ่ม</msg>
   <msg key="logout">ออกจากระบบ</msg>
-  <msg key="lt_Edit_My_Personal_Info">แก้ไขข้อมูลส่วนตัว</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">สมัคร/ยกเลิก วิชาเรียน หรือ กลุ่มชุมชน</msg>
   <msg key="Personal_home_page">หน้าโฮมเพจส่วนตัว:</msg>
   <msg key="Term">เทอม</msg>

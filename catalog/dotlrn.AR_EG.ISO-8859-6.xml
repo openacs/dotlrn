@@ -2,7 +2,6 @@
 <message_catalog package_key="dotlrn" package_version="?.?" locale="AR_EG" charset="ISO-????-?">
 
   <msg key="Actions">«д√бў«д</msg>
-  <msg key="Add">√÷б</msg>
   <msg key="add">√÷б</msg>
   <msg key="Add_A_Member">√÷бт ў÷и«л</msg>
   <msg key="Add_a_Professor">√÷бт »—пибр”пи—«л</msg>
@@ -14,7 +13,6 @@
   <msg key="Ask_a_question">:≈”√дт ”ƒ«д«л</msg>
   <msg key="Biography">:«д”к—… «д–« к…п</msg>
   <msg key="black">√”иѕ</msg>
-  <msg key="Change_My_Password">Џкс—т где…о ”—к</msg>
   <msg key="class_instances_pretty_name">«дб’д</msg>
   <msg key="class_instances_pretty_plural">«дб’ид</msg>
   <msg key="class_name_header">%class_instances_pretty_name% √”е</msg>
@@ -43,16 +41,12 @@
   <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;≈ж÷се&quot; border=&quot;?&quot;&gt; </msg>
   <msg key="Last_Name">«д‘з—…</msg>
   <msg key="logout">ќ—ић</msg>
-  <msg key="lt_Change_my_language_se">Џкс— и÷ў дЏ к</msg>
   <msg key="lt_Current_clubs_pretty_">%class_instances_pretty_name% «дЌ«дк…</msg>
-  <msg key="lt_Edit_My_Notifications">ўѕсдт  »дкЏ« ок</msg>
-  <msg key="lt_Edit_My_Personal_Info">ўѕсд еўдие« к «д‘сќ’кс…</msg>
   <msg key="lt_Help_and_Personal_Con">«де”«ўѕ…п и«д — к»п «д‘ќ’к</msg>
   <msg key="lt_Join_a_class_instance">%class_instances_pretty_name% ≈ж÷ест ≈дй</msg>
   <msg key="lt_Join_a_clubs_pretty_n">%clubs_pretty_name% ≈ж÷ест ≈дй </msg>
   <msg key="lt_JoinDrop_a_Class_or_C">≈ж÷оесо ≈дй/ ќдйсо ўж ’бсл √и ећеиў…л</msg>
   <msg key="lt_JoinDrop_Classes_or_C">≈ж÷есо ≈дй/  ќдйсо ўж б’ид«л √и ећеиў« л</msg>
-  <msg key="lt_What_others_see_about">:е«–« кў—бижо «д¬ќ—иж ўжк) </msg>
   <msg key="lt_Your_Current_Membersh">ў÷ик« го «дЌ«дк…</msg>
   <msg key="members">√ў÷«Ѕ</msg>
   <msg key="Members_of">«д√ў÷«Ѕ еж</msg>

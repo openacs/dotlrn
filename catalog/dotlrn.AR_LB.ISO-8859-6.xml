@@ -9,11 +9,9 @@
   <msg key="Actions">ֱֵַַּׁÊ</msg>
   <msg key="actions">ֱֵַַּׁÊ</msg>
   <msg key="Active_Applets">ַהַָׁוּ ַהוֽֿטֹֿן ַהזװך׳ֹן</msg>
-  <msg key="Add">ֳײסבע</msg>
   <msg key="add">ֳײסבע</msg>
   <msg key="Add_A_Member">ֳײבע Ùײטַכ</msg>
   <msg key="Add_a_Professor">ֳײבע ֳ׃Êַ׀ַכ</msg>
-  <msg key="Add_a_Professor_?">ֳײבע ֳ׃Êַ׀ַכ:</msg>
   <msg key="Add_A_User">ֳײבע ו׃Ê־ֿוַכ</msg>
   <msg key="Add_a_User">ֳײבע ו׃Ê־ֿוַכ</msg>
   <msg key="Add_New_Members">ֳײבע ֳÙײֱַ ּֿסֿ</msg>
@@ -28,8 +26,6 @@
   <msg key="admin">ַהֵַֹֿׁן</msg>
   <msg key="admin_page_name">הטֹֽ ַהÊסֽדסו</msg>
   <msg key="admin_pages_navbar_name">ַהֵַֹֿׁן</msg>
-  <msg key="admin_role_pretty_name">ַהוֿךׁן</msg>
-  <msg key="admin_role_pretty_plural">ַהוֱַֿׁן</msg>
   <msg key="Administer">ֳֿׁע</msg>
   <msg key="administer_link">&lt;img border=? valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;ַהוֿךׁ&quot;&gt;</msg>
   <msg key="Administrator">ַהוֿךׁן</msg>
@@ -50,11 +46,7 @@
   <msg key="are_you_sure_you_want_to_send">חה ֳזÊ וÊֳדסֹֿ ֳזסד Êןׁךֿן ֵׁע׃ַה ַהÊַהך</msg>
   <msg key="arhive_group_name">ֳׁװךב וּוטÙֹ %group_name%</msg>
   <msg key="Ask_a_question">ֵ׃ֳהע ׃ִַהַכ:</msg>
-  <msg key="at">Ùזֿ</msg>
-  <msg key="bad_folder_id">חטךֹן ַהַֽב״ֹנ ׃ךֶֹנ</msg>
-  <msg key="be_either">ךדטז ֳוסַ</msg>
   <msg key="Be_sure">דזע וÊֳדסַֿכ</msg>
-  <msg key="be_the_header_line">ךמדןטזן ׃מ׳ׁע ַהÙזטַז ַהֶׁך׃ך:</msg>
   <msg key="Become_this_user">ֳױָֽע ח׀ַ ַהו׃Ê־ֿו!</msg>
   <msg key="Biography">ַה׃ךֹׁ ַה׀ַÊךֹן:</msg>
   <msg key="black">ֳ׃טֿ</msg>
@@ -62,11 +54,8 @@
   <msg key="blue">ֳׁׂג</msg>
   <msg key="Bulk_Upload">ַׁ׃ַהע ָוּוטÙֹ</msg>
   <msg key="Bulk_Uploading">ֵׁ׃ַה ַהוּוטÙֹ....</msg>
-  <msg key="byte">ַָךÊ</msg>
-  <msg key="bytes">ַָךÊ׃</msg>
   <msg key="cannot_be_removed">הַ ךןועדז ֳזע ךןַׂהמ</msg>
   <msg key="Change_Locale">Úךסׁע ַההסÚֹ</msg>
-  <msg key="Change_My_Password">Úךסׁע דהוֹמ ׃ׁך</msg>
   <msg key="class_instance_portal_pretty_name">ַהױבטב</msg>
   <msg key="class_instances_pretty_name">ַהױב</msg>
   <msg key="class_instances_pretty_plural">ַהױבטב</msg>
@@ -102,10 +91,8 @@
   <msg key="Configure_Element">װדסהע Ùזױַׁכ</msg>
   <msg key="Configure_name">װדסהע %name%</msg>
   <msg key="Confirm">ֳדסֿע</msg>
-  <msg key="Confirm_?">ֳדסֿע:</msg>
   <msg key="Confirm_Drop">ֳדסֿע ַהÊ־הך</msg>
   <msg key="Confirmation">ַהÊסֳדךֿ</msg>
-  <msg key="Control_Panel">הטֹֽ ַהÊסֽדסו</msg>
   <msg key="control_panel">הטֹֽ ַהÊסֽדסו</msg>
   <msg key="Copy">ֵזס׃־ע</msg>
   <msg key="couldnt_find_user_id">הו ךדז וז ַהוודז ֳז זּֿ ַהו׃Ê־ֿו #%user_id%» ָׁסוַ ח׀ַ ַהװס־ױ ֽן׀נבמ ¿</msg>
@@ -132,7 +119,6 @@
   <msg key="deregister">ֵֽ׀בע וז ַה׃ּה</msg>
   <msg key="Description">ַהטױב</msg>
   <msg key="description">ַהטױב</msg>
-  <msg key="Description_?">ַהטױב:</msg>
   <msg key="Dont_Add">הַ Êײךבע</msg>
   <msg key="dotLRN_Admin">ֵַֹֿׁ ֿטÊהׁז</msg>
   <msg key="dotlrn_admin_pretty_name">ֵַֹֿׁ טַ׃Ùֹ ההוטגÙ</msg>
@@ -151,7 +137,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">ַהוּוטÙַÊ</msg>
   <msg key="dotlrn_member_rel_pretty_name">Ùײטךסֹ ּוÙךֹ ַהֿטÊהׁז</msg>
   <msg key="dotlrn_member_rel_pretty_plural">ÙײטךסַÊ ּוÙךֹ ַהֿטÊהׁז</msg>
-  <msg key="Download">ֽוסה</msg>
   <msg key="Drop">Ê־הי</msg>
   <msg key="Drop_Membership">Ê־הי Ùז ַהÙײטךֹ</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Ê־סהי Ùז ַהÙײטךֹ&quot; border=?&gt;</msg>
@@ -166,7 +151,6 @@
   <msg key="emacs_subject">וטײטÙ</msg>
   <msg key="Email">ַהָׁךֿ ַהֵהדÊׁטזך:</msg>
   <msg key="email">ַהָׁךֿ ַהֵהדÊׁטזך</msg>
-  <msg key="Email_?">ַהָׁךֿ ַהֵהדÊׁטזך</msg>
   <msg key="Email_Members">ֳÙײֱַ ַהָׁךֿ ַהֵהדÊׁטזךס</msg>
   <msg key="email_message">ׁ׃ַהֹ</msg>
   <msg key="email_sent">ַהָׁךֿ ַהֵהדÊׁטזך ֳׁ׃המ</msg>
@@ -175,12 +159,10 @@
   <msg key="Error_sending_mail">־׳ֳ בך ֵׁ׃ַה ַהָׁךֿ</msg>
   <msg key="Example_File">וַֻה והבס</msg>
   <msg key="External_URL">ַהוטגÙ ַה־ַּׁךס</msg>
-  <msg key="External_URL_?">וטגÙ ־ַּׁך:</msg>
   <msg key="Extra_Large">דָךׁ ַּֿכ</msg>
   <msg key="Fields">ַהֽגטה</msg>
   <msg key="First_Line">ַה׃׳ׁ ַהֳטה</msg>
   <msg key="First_Name">ַהֵ׃ו</msg>
-  <msg key="First_Names">ַהֳ׃וֱַ</msg>
   <msg key="From">ונזע</msg>
   <msg key="fuchsia">בטװךֹ</msg>
   <msg key="Full">דַוה</msg>
@@ -191,7 +173,6 @@
   <msg key="green">ֳ־ײׁ</msg>
   <msg key="groups_icon">ֳךגטזֹ ַהוּוטÙֹ</msg>
   <msg key="Guest">ײךבן¿</msg>
-  <msg key="Guest_?">ײךב¿</msg>
   <msg key="has_been_added_to">ֳןײךבמ ֵהי</msg>
   <msg key="Header_Alternate_Text">זסױ ֳׁ׃ ַהױבֹֽ ַהָֿךה</msg>
   <msg key="Header_Font">־׳ס ֳׁ׃ ַהױבֹֽ</msg>
@@ -206,20 +187,16 @@
   <msg key="Header_Logo_Item_ID">חטךֹן ָזֿ װÙַׁנ ֳׁ׃ ַהױבֹֽ</msg>
   <msg key="help">ַהו׃ַÙֹֿ</msg>
   <msg key="ID">ַהחטךסֹ:</msg>
-  <msg key="ID_?">חטךֹ</msg>
   <msg key="instructor_role_pretty_name">ֳ׃Êַ׀</msg>
   <msg key="instructor_role_pretty_plural">ַהֳ׃ַÊ׀ֹן</msg>
   <msg key="Invalid">ַָ׳נה</msg>
   <msg key="is_already_in_use">גךֿ ַהֵ׃ÊÙוַה</msg>
-  <msg key="item">ָמזעֿ</msg>
-  <msg key="items">ָזטֿ</msg>
   <msg key="Join">ֵזײוסע</msg>
   <msg key="Join_A_Group">ֵזײוסע ֵהי וּוטÙֹכ</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;ֵזײסו&quot; border=&quot;?&quot;&gt; </msg>
   <msg key="Join_Policy">׃ךַ׃ֹן ַהֵװÊַׁד</msg>
   <msg key="Key">ובÊַֽ</msg>
   <msg key="Large">דָךׁ</msg>
-  <msg key="Last_Modified">ֲ־ׁ ÊÙֿךה</msg>
   <msg key="Last_Name">ַהװחֹׁ</msg>
   <msg key="Last_Visit">ַהׂךַֹׁן ַהֳ־ךֹׁן:</msg>
   <msg key="Last_visit_over">ַהׂךַֹׁן ַהֳ־ךֹׁן ֵזÊחÊ</msg>
@@ -228,7 +205,6 @@
   <msg key="lime">הסךוטזך</msg>
   <msg key="Limited">וֽֿטֿ</msg>
   <msg key="Limited_Access">טױטה וֽֿטֿ</msg>
-  <msg key="login_information">וÙהטוַÊ ַהֿ־טה:</msg>
   <msg key="logout">־ׁטּ</msg>
   <msg key="lt_a_secondary">- וÙׁסב ַֻזטך ההו׃ÊÙוהנ.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">ֳײבע ו׃Ê־ֿו ֿטÊהׁז ּֿךַֿכ:</msg>
@@ -236,26 +212,18 @@
   <msg key="lt_Add_community_name_Me">ֳײבע ֳÙײֱַ %community_name% ֵהי ּוÙךֹ ֳ־ׁי </msg>
   <msg key="lt_Add_Members_to_Anothe">ֳײבע ֳÙײֱַ ֵהי וּוטÙֹ ֳ־ׁי</msg>
   <msg key="lt_Add_members_to_anothe">ֳײב ֳÙײֱַ הוּוטÙֹ ֳ־ׁי</msg>
-  <msg key="lt_Add_Membership_To_Com">ֳײבע Ùײטךֹ ֵהי ַהוּוטÙֹ</msg>
   <msg key="lt_Add_These_Users_To_A_">ֳײבע חִהֱַ ַהו׃Ê־ֿוךז הוּוטÙֹ</msg>
   <msg key="lt_Administrative_Action">ַהֳÙוַהן ַהֵַֿׁךֹן</msg>
   <msg key="lt_An_error_occured_whil">ֽמֻֿמ ־׳ֳ ֳֻזֱַ וַֽטהֹ ֵײַבֹ ו׃Ê־ֿו הּוÙךֹ. ח׀ַ ַה־׳ֳ גֿ ׃ןּה.</msg>
-  <msg key="lt_An_error_occured_whil_?">ֽמֻֿמ ־׳ֳ ֳֻזֱַ וַֽטהֹ ֽ׀ב ו׃Ê־ֿו הּוÙךֹ. ח׀ַ ַה־׳ֳ גֿ ׃ןּה. </msg>
   <msg key="lt_approve_and_add_to_do">טַבג טֳײבע ֵהי ֿטÊהׁז</msg>
-  <msg key="lt_are_not_yet_members_o">הך׃ ָÙֿ ֳÙײֱַ וז</msg>
   <msg key="lt_Are_you_sure_you_want">חה ֳזÊ וÊֳדסֿ ֳזסד Êׁךֿ ֽ׀ב ַהג׃ו ַהבַׁÚ</msg>
   <msg key="lt_Be_sure_that_the_pers">דןזס וÊֳדסַֿכ ֳָז ַהװ־ױ וַ Ùנזעֿמח ֽ׃ַָ ׃הטַז׃ַָ׃ ÊֽÊ Ùזטַז ָׁךֿ ֵהדÊׁטזך ֲ־ׁ. Êן׃ָסָן ַהֽ׃ַַָÊ ַהוײַÙבֹ ַהוװַדה הדןהס ַהֳװ־ַױ. הֵײַבֹ װ־ױ ֵָ׃ÊÙוַהנ ַהֽ׃ַָנ ַהַֽהך ֵ׃ÊÙוהע &lt;a href=members&gt;ֳֿׁע Ùײטךֹ &lt;/a&gt;.</msg>
-  <msg key="lt_Change_my_language_se">Úמךסׁע טײÙמ הןÚÊך</msg>
   <msg key="lt_Class_Key_a_short_nam">ובÊַֽן ַהױב (ַ׃ונ גױךׁנ¬ הַ בַׁÚַÊ)</msg>
   <msg key="lt_Communitys_Web_Addres">Ùזטַז וטגÙ טךָ הַהּוÙךֹ</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% ַהַֽהךֹ</msg>
   <msg key="lt_Do_you_really_want_to">חה Êׁךֿ ֵַׂהֹ ַהֳÙײֱַ ַהÊסַהךז בÙהַכ¿</msg>
-  <msg key="lt_Do_you_really_want_to_?">חה Êׁךֿ בÙהַכ ֵַׂהֹ %num_users% ו׃Ê־ֿו¿ </msg>
   <msg key="lt_dotLRN_properties_for">־ױֶַױ ֿטÊהׁז הח׀ַ ַהו׃Ê־ֿו.</msg>
-  <msg key="lt_E-mail_address_must_b">Ùזטַז ַהָׁךֿ ַהֵהדÊׁטזך ךָּ ֳז ךדטז ױֽךֽ טבׁךֿ. &lt;br&gt; וז ַהוֽÊוה ֵז ח׀ַ ַהו׃Ê־ֿו Ùזֿח ֽ׃ַָ ׃הטַז׃ַָ׃. &lt;br&gt; ַֽטהע ֳז Êײךב ח׀ַ ַהו׃Ê־ֿו ־הַה &lt;a href=members&gt;ֳֿׁ ַהÙײטךֹ&lt;/a&gt;. </msg>
   <msg key="lt_Edit_department_prope">ֽׁׁע ־ױֶַױ ַהג׃ו.</msg>
-  <msg key="lt_Edit_My_Notifications">ֽׁׁע ÊָהךÚַÊמך</msg>
-  <msg key="lt_Edit_My_Personal_Info">Ùמֿסהע וÙהטוַÊך ַהװס־ױךסֹ</msg>
   <msg key="lt_Edit_Pre-approved_Ema">ֽׁסׁ ־ַֿוַÊ ַהָׁךֿ ַהֵהדÊׁטזך ַהוטַבג Ùהךחַ ו׃ָגַ</msg>
   <msg key="lt_Email_suffixes_listed">.הטַֽג ַהָׁךֿ ַהֵהדÊׁטזךס ַהוֹּֿׁ חזַ הÙוה ָ׳ׁךגֹ ֳהךַ ו׃Ê־ֿוך ֿטÊהׁז וז ַהזסַ׃ ַה׀ךז ו׃ּסהטז ָÙזַטךז ַהָׁךֿ ַהֵהדÊׁטזךס ַהÊך Ê׳ַָג ֵֽֿי ַהגךו בך ח׀ח ַהגֶַוֹ</msg>
   <msg key="lt_emailing_this_user_fa">ֵׁע׃ַה ַָהָׁךֿ ַהֵהדÊׁטזך הח׀ַ ַהו׃ÊÙוהנ במװהמ!</msg>
@@ -264,7 +232,6 @@
   <msg key="lt_Error_removing_user_c">־׳ֳ בך ֵַׂהֹ ו׃Ê־ֿו ַהּוÙךֹ</msg>
   <msg key="lt_Error_sending_email_t">־׳ֳכ בך ֵׁ׃ַה ַהָׁךֿ ַהֵהדÊׁטזך ֵהי %email% וז password-update-?.tcl </msg>
   <msg key="lt_First_check_the_box_o">ֳטסהַכ ֵבֽױ ױזֿטג ַהו׃Ê־ֿוךז ַה׀ך Êׁךֿ ֵײַבÊח, ָÙֿ ׀הד ֵ־Êַׁ ֿטׁחו ט ֳ־ךׁכַ ֵׁ׃ה ַהַ׃Êוַֹׁ.</msg>
-  <msg key="lt_Folder_folder_name_is">ַהַֽב״ֹן %folder_name% בַׁÚֹ</msg>
   <msg key="lt_Go_back_and_try_again">Ùןֿע טַֽטהע ַֻזךֹכ</msg>
   <msg key="lt_having_trouble">הֿךד וװדהֹ בך ֳזע Êֽױה Ùהי ַהװדה ַה׀ך Êׁךֿח¿ חזַ ָÙײ ַהזסױֶַֽ</msg>
   <msg key="lt_Help_and_Personal_Con">ַהו׃ַÙֹֿן טַהÊׁÊךָן ַהװ־ױך</msg>
@@ -275,11 +242,9 @@
   <msg key="lt_if_you_misspell">ֵ׀ַ ֳ־׳ֶÊמ בך Êחֶֹּ ַ׃ומ ַה־׳סנ ֳמט ַ־ÊׁÊמ ־׳סַכ Úךׁ וטּטֿ Ùהי ַֽ׃טָ ַהו׃Ê־ֿו¬ ־׳סנ ַהז״ַונ ַה׳ָךÙך ׃מךן׃ÊמÙוהן.</msg>
   <msg key="lt_If_you_wish_to_give_g">הט ׁÚָÊ ֵÙ׳ֱַ ַהײךטב ַהטױטה ַהדַוה ההוזÊֿךַÊ ט ַהֿסַׁ׃ַÊ גֿ Ê׳הָ ֳז וז ֵַֹֿׁ ַהוטגÙ ַהÙַוֹ ÊÚךסׁ טײÙ ּוÙךÊד. ח׀ַ ַה־ךַׁ Úךׁ ובÊטֽ ההױבטב ָ׃ָָ ַה׃ךַ׃ֹ ַה׃ׁסךסֹ הך MIT.</msg>
   <msg key="lt_Information_about_oth">וÙהטוַÊן ֽטה ַהֳÙײֱַ ַהֲ־ׁךזנ בך ח׀ח ַהּוÙךֹ המזע Êמדןטזמ וÊטבֹׁמ ֵהי ח׀ַ ַהו׃ÊÙוה.</msg>
-  <msg key="lt_Interactive_setting_o">ַהֵÙַֿֿ ַהÊבַÙהך הַַָׁוÊַׁÊ ֿטÊהׁז</msg>
   <msg key="lt_Join_a_class_instance">ֵזײוסע ֵהי %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">ֵזײוסע ֵהי %clubs_pretty_name%</msg>
   <msg key="lt_Join_the_above_criter">ֵזײוסע ֵהי וÙַךךׁמ ֳÙהַחמ ומÙ</msg>
-  <msg key="lt_Join_the_above_criter_?">ֵזײוסע ֵהי וÙַךךׁמ ֳÙהַחמ בך</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">ֵזײמוסמ ֵהי/Ê־היסמ Ùז ױבסכ ֳט וּוטÙֹכ</msg>
   <msg key="lt_JoinDrop_Classes_or_C">ֵזײוסמ ֵהי/ Ê־היסמ Ùז ױבטבַכ ֳט וּוטÙַÊכ</msg>
   <msg key="lt_Key_a_short_name_no_s">ובÊַֽן (ַ׃ון גױךׁן¬ הַ בַׁÚַÊמ)</msg>
@@ -290,7 +255,6 @@
   <msg key="lt_No_I_dont_want_to_arc">הַ¬ ֳזַ הַ ֳןׁךֿן ֳמזע ֳןׁװבמ ח׀ח ַהוּוטÙֹנ.</msg>
   <msg key="lt_Note_The_script_will_">וןהַֽ״ֹ: ַהזױס ׃מךןטַױהן ַהÙוהע ֽÊי ֵ׀ַ ֳמÚעהגÊ וÊױבסֽמדמ.</msg>
   <msg key="lt_Note_This_process_is_">והַֽ״ֹ: ח׀ח ַהÙוהךֹ ÊןÊטגסÙן Êֳמ־ע׀ %num_seconds% ֻטַזך.</msg>
-  <msg key="lt_Note_This_process_is__?">והַֽ״ֹ: ח׀ח ַהÙוהךֹ ÊןÊטגסÙן Êֳמ־ע׀ %num_minutes% ֿגֶַג. </msg>
   <msg key="lt_Note_use_this_feature">וןהַֽ״ֹן: ַ׃ÊÙוהע ח׀ח ַהוךׂסֹנ ָו׃ִטהךֹ &lt;i&gt;במדסנׁע&lt;/i&gt; ֳטהַכ.</msg>
   <msg key="lt_Note_you_will_have_th">והַֽ״ֹ: ֳזÊ Ùנזעֿמדמ ־ךַׁמ ֵײַבֹ חִהֱַ ַהו׃Ê־ֿוךז ֵהי וּוטÙֹנ ָÙזֿוַ  ֳז ךדטזטַ גֿ ֳׁ׃הטַ.</msg>
   <msg key="lt_Nuke_first_names_last">ֵז׃בע (%first_names% %last_name% (%email</msg>
@@ -309,34 +273,27 @@
   <msg key="lt_Some_of_the_emails_fa">ָÙײ ַהׁ׃ֶַה ַהָׁךֿךֹ ַהֵהדÊׁטזךֹ בװהÊ. ֳטהֶד ַהו׃ÊÙוהךז דַז Ùזֿחו דהוַÊ ׃ׁ Ùװטֶַךֹ טהסֿÊ החו¬ Ùהי ֳךֹ ַֽה. ֳבײה ׳ׁךג הוײך ֳז הח חִהֱַ ַהו׃ÊÙוהךז ךÊסױהטז טך׳הָטז וזחו ַהזגׁ Ùהי 'ז׃ךÊ דהוֹ ׃ׁך'.</msg>
   <msg key="lt_spam_policy_must_be_o">׃ךַ׃ֹ ׃ַָו ךָּ ֳז Êדטז ֵֽֿי: דהס ֳט ֳÙײֱַ</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; חט %existing_role% בך %community_name%. ֳזÊ ךודזד ֳז Ê־Êַׁ ֿטׁ ּֿךֿ וז ַהÊַהך:</msg>
-  <msg key="lt_The_first_line_of_the">ַה׃׳ׁ ַהֳטהן ונזע ַהוהבנ</msg>
   <msg key="lt_The_following_email_w">ַהָׁךֿ ַהֵהדÊׁטזךס ַהÊסַהך ֳןׁע׃נהמ ַהֲז וז %system_name%</msg>
-  <msg key="lt_The_following_email_w_?">ַהָׁךֿ ַהֵהדÊׁטזךס ַהÊסַהך ֳןׁע׃נהמ ַהֲז וז %system_name% וׁ׃ה וז: %system_owner% וׁ׃ה ַהי: %email% ַהוטײטÙ: %subject% ַהׁ׃ַהֹ: %body%  </msg>
   <msg key="lt_The_following_members">ַהֳÙײֱַ ַהÊסַהטז וז</msg>
   <msg key="lt_The_following_variabl">ַהוÊÚךסַׁÊן ַהÊַהךֹן ךודז ֳז Êן׃ÊמÙוהמ הֵֿע־ַה ָךַזַÊ ַהוÙךזֹ הך ַהו׃Ê־ֿו / ַהּוÙךֹ:</msg>
   <msg key="lt_The_groups_data_will_">ָךַזַÊ ַהוּוטÙֹ הז ÊןÙמֿסמה, הדזס בג׳ ׃טב Êדטז ַהוּוטÙֹ בך ַהוןÊמזמַטמה וֱַֿׁ ַהזס״ַו.</msg>
   <msg key="lt_The_results_of_your_s">ֵזס זמÊֶַנּמ ָֻֽנדנ חך:</msg>
   <msg key="lt_The_system_was_unable">ַהז״ַון הו ךמ׃Ê׳ךÙ ֵׁע׃ַה ַהָׁךֿ ַהֵהדÊׁטזך. ֱַּׁכ ֳÙהוע ַהו׃Ê־ֿו װ־ױךַכ. ח׀ח ַהוװדהֹנ וז ַהוֽÊוה ׃ָָחַ ׃טֱנ ÊׁÊךָ בך ז״ַונ ָׁךֿדמ ַהֵהדÊׁטזך. חזַ ַה־׳ֳמ:</msg>
   <msg key="lt_There_was_a_bug_in_th">דַזÊ חזַד ־׳ֳ ָׁוּך בך ח׀ח ַהױסבֹֽ.</msg>
-  <msg key="lt_There_was_a_bug_in_th_?">דַזÊ חזַד ־׳ֳ ָׁוּך בך ח׀ח ַהױסבֹֽ. וז בײהד ַÙהו ח׀ַ ַה־׳ֳ.</msg>
   <msg key="lt_There_was_an_error_se">דַז חזַד ־׳ֳ בך ֵׁ׃ַה ַהָׁךֿ ֵהדÊׁטזךס ֵהי %email%</msg>
-  <msg key="lt_There_was_an_error_se_?">דַז חזַד ־׳ֳ בך ֵׁ׃ַה ַהָׁךֿ ֵהדÊׁטזךס ֵהי %system_owner%. </msg>
   <msg key="lt_There_was_an_error_tr">דַז חזַד ־׳ֳמ בך וַֽטהֹ ֵײַבֹ וֽÊטַדמ. Ùהי ַהֳÚהָ ַהֳ׃ַָָ Êהד חך:</msg>
   <msg key="lt_This_action_will_take">ח׀ַ ַהÙוהנ ׃מךמֳע־׀ן Êגׁךַָכ</msg>
-  <msg key="lt_This_action_will_take_?">ח׀ַ ַהÙוהנ ׃מךמֳע־׀ן Êגׁךַָכ &lt;strong&gt;%estimated_number_of_seconds%&lt;/strong&gt; ֻטַזך.</msg>
   <msg key="lt_This_allows_you_to_gi"> ח׀ַ ך׃וֽ הד ֳז ÊÙ׳ך װ־ױ Úךׁ וזÊוך ֵהי MIT ַהס׀ך הך׃ ׳ַהָ ו׃ּסה ַהטױטה הח׀ח ַהוּוטÙֹ. </msg>
   <msg key="lt_this_is_what_the_header">ח׀ַ וַ ַהÙזטַז ַהֶׁך׃ך ׃מךמָעֿט וֻה</msg>
   <msg key="lt_this_may_take_some_time">ח׀ַ גמֿע ךמ׃ÊÚׁגן ָÙײ ַהטגÊ. ֱַּׁכ דןז ױָטַׁכ.</msg>
   <msg key="lt_This_user_is_a_site-w">ח׀ַ ַהו׃Ê־ֿו וֿךׁ בך דַבֹ ֳזֱַֽמ וטגÙ.</msg>
   <msg key="lt_This_user_is_currentl">ח׀ַ ַהו׃ÊÙוה ַֽהךַ בך ַהַֽהֹ &lt;i&gt;%member_state%&lt;/i&gt;. ה׃וַֽ הח׀ַ ַהו׃Ê־ֿו ַהטױטה הֿטÊהׁז ֳזÊ ךָּ. &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;טַבג טֳײבע הֿטÊהׁז&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">ח׀ַ ַהו׃Ê־ֿו ֽן׀נבמ ט ֽן״נׁמ וז ַהּוÙךֹ.</msg>
-  <msg key="lt_this_user_to_another_">ח׀ַ ַהו׃Ê־ֿו ֵהי וּוטÙֹ ֳ־ׁי.</msg>
   <msg key="lt_to_use_vaild_email_ad">הֵ׃עÊנÙעוַה Ùזַטךז ָׁךֿ ֵהדÊׁטזך ױַהֹֽ הֳז דהוֹמ ׃ׁ ַהו׃Ê־ֿו ַהּֿךֹֿ ׃Êׁ׃הע ֵהי Ùזטַז ַהָׁךֿ ַהֵהדÊׁטזך ַהוןÙ׳י.</msg>
   <msg key="lt_Update_this_users_pas">ֽֿסֻ דהוֹ ׃ׁס ַהו׃Ê־ֿו ח׀ַ</msg>
   <msg key="lt_Use_this_only_for_an_">׳ַהָ ֵו ֲך Êך ֳט ׃הטז&lt;b&gt; הך׃&lt;/b&gt; ֵ׃ÊÙוה ח׀ַ בג׳ ה׳ַהָ ו׃ּסה ׁ׃וךַ בך ח׀ַ ַהױזב ַה׀ך הך׃.</msg>
   <msg key="lt_Web_Log_for_user_name">והב וÙהטוַÊ טךָן הך %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">ֽ׃זכַ, ַֽטהזַ ז׃ב ַהו׃Ê־ֿו, הדזס דַז חזַד ־׳ֳ . ַהַֽהֹ בך ַהֳÚהָ ֳזס ֵװַֹׁ הח׀ַ ַהו׃Ê־ֿו (ו׃Ê־ֿו _ חטךסֹ = %user_id%) ךÊטַּֿ בך ודַז וַ בך ו־׳ס׳ גַÙֹֿ ַהָךַזַÊ . ֵזסח טגÊ הזֱַֿ וָׁוּךד!</msg>
-  <msg key="lt_What_others_see_about">(וַ׀ַ ךÙׁבטזמ ַהֲ־ׁטז Ùזך: </msg>
   <msg key="lt_You_are_about_to_dele">ֳזÊ ֳמטעװמדעÊמ ֳמזע Êמֽע׀במ %num_users% ַהו׃Ê־ֿוטז</msg>
   <msg key="lt_You_are_adding_strong">ֳזÊ Êןײנבע &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; ַהי %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">Úךׁ ומ׃וטֽ הד ֳז Êִֿסך ׀הד ַהבÙה.</msg>
@@ -365,10 +322,7 @@
   <msg key="Members_of">ַהֳÙײֱַ וז</msg>
   <msg key="Membership_Requests">׳הַָÊ ַהÙײטךסֹ</msg>
   <msg key="Memberships">ַהÙײטךַÊ</msg>
-  <msg key="Memberships_?">ַהÙײטךַÊ:</msg>
   <msg key="Message">ׁ׃ַהֹ</msg>
-  <msg key="must">ךמּנָן ֳמזע </msg>
-  <msg key="must_be_one_of">- ךמּנָן ֳמזע ךמדןטזמ טַֽֿ וז</msg>
   <msg key="My_Communities">ּוÙךַÊך</msg>
   <msg key="NA">הַ ךז׳ָג</msg>
   <msg key="Name">ֵ׃ו</msg>
@@ -378,7 +332,6 @@
   <msg key="New">ּֿךֿ</msg>
   <msg key="new">ּֿךֿ</msg>
   <msg key="new_class">ּֿךֿ</msg>
-  <msg key="new_class_?">%classes_pretty_name% ּֿךֿ</msg>
   <msg key="new_class_instance">ּֿךֿ %class_instances_pretty_name%</msg>
   <msg key="new_class_navbar_name">ּֿךֿ</msg>
   <msg key="new_class_of_type_class_name">%class_name% ּֿךֿ וז זטÙ %class_instances_pretty_name%</msg>
@@ -411,17 +364,14 @@
   <msg key="Not_Allowed">הך׃ ו׃וטֽ</msg>
   <msg key="Note">והַֽ״ֹ:</msg>
   <msg key="Nuke">ֵז׃בע</msg>
-  <msg key="nuke">ֵז׃בע</msg>
   <msg key="Nuke_">ֵז׃בע ...</msg>
   <msg key="Nuke_Users">ֵז׃בע ַהו׃Ê־ֿוךז</msg>
   <msg key="olive">ׂךÊטזך</msg>
   <msg key="Open">ַבÊֽע</msg>
   <msg key="optional_defaults_to">ַ־Êךַׁךס¬ ַהֳױטה ֵהי</msg>
   <msg key="Or">ֳט</msg>
-  <msg key="or">ֳט</msg>
   <msg key="or_by_RGB_number">ֳמט ָÙֿֿנ RGB</msg>
   <msg key="or_return_to">ֳט¬ Ùטֿע ֵהי</msg>
-  <msg key="password">דהוֹן ַה׃ׁ:</msg>
   <msg key="Pending">ַָזÊ״ַׁ</msg>
   <msg key="Pending_Approval">בך ַזÊ״ַׁ ַהוטַבגֹ</msg>
   <msg key="Personal_home_page">ַהױבֹֽ ַהֶׁך׃ךֹן ַהװ־ױךֹן:</msg>
@@ -444,7 +394,6 @@
   <msg key="reject">ַׁבײע</msg>
   <msg key="Request_Membership">ַ׳סהָע Ùײטךסֹ</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;?&quot; title=&quot;ַ׳הָ Ùײטךֹ&quot;&gt;</msg>
-  <msg key="required">ו׳הטָ</msg>
   <msg key="Results">ַהזמÊֶַנּן</msg>
   <msg key="Return_URL">וטגÙ ַהÙטֹֿ</msg>
   <msg key="revoke">ֵהÚך</msg>
@@ -461,8 +410,6 @@
   <msg key="Shared_Files">ַהוהבַÊ ַהוװÊׁדֹ</msg>
   <msg key="silver">בײך</msg>
   <msg key="Site-wide_Admin">וֿךׁ בך דַבֹ ֳזֱַֽן ַהוטגÙמ¿</msg>
-  <msg key="Size">ּֽו</msg>
-  <msg key="SloanSpace">׃הטז׃ָך׃</msg>
   <msg key="Small">ױÚךׁ</msg>
   <msg key="Sorry">!ֲ׃מב</msg>
   <msg key="Spam_">׃ַָו ...</msg>
@@ -487,20 +434,16 @@
   <msg key="Templates">ַהזוַ׀ּ</msg>
   <msg key="Term">בױה ַהַֿׁ׃ךס</msg>
   <msg key="term">בױה ַהַֿׁ׃ךס</msg>
-  <msg key="Term_eg_Spring_Fall">בױה ַהַֿׁ׃ךס(וֻהַכ: ָׁךÙ¬ ־ׁךב)</msg>
   <msg key="Term_ID">חטךֹ ַהבױה ַהַֿׁ׃ךס </msg>
   <msg key="term_properties">־ױֶַױ ַהבױה ַהַֿׁ׃ך.</msg>
   <msg key="Terms">בױטה ַֿׁ׃ךֹס</msg>
   <msg key="terms">בױטה ַֿׁ׃ךֹס</msg>
-  <msg key="thank_you">װדַׁכ</msg>
   <msg key="the_format_of_email_domains">ֵזס ױךÚֹ ח׀ח ַהגךוֹ גֶַוֹ וזבױהֹ בַױהֹ ַהוַּהַÊ (Ùַֹֿ ו׃ָגֹ ַָהװדה @* ַה׀ך ךÊ׳ַָג &lt;» ֳךס װךֱ &gt;» @&lt;» וַּה ָׁךֿ ֵהדÊׁטזך &gt; ). Ùהי ׃ָךה ַהוַֻה¬ ֳזÊ גֿ Ê׃ÊÙוה:</msg>
   <msg key="The_name">ַהֵ׃ו</msg>
   <msg key="there_are_no_users_matching">הך׃ חזַד ו׃Ê־ֿוטז וÊ׳ַָגטז %search_text%.</msg>
   <msg key="this_user_is_deleted">ח׀ַ ַהו׃Ê־ֿו ֽן׀נבמ</msg>
-  <msg key="this_user_to_dotLRN">ח׀ַ ַהו׃Ê־ֿו ֵהי ֿטÊהׁז.</msg>
   <msg key="To">ַהי</msg>
   <msg key="Type">זטÙ</msg>
-  <msg key="type">זטÙ</msg>
   <msg key="Unknown_Term">ַהבױה וּחטה</msg>
   <msg key="Update_Password">ּֿֿס דהוֹ ַה׃ׁ</msg>
   <msg key="upload">ֵׁ׃הע</msg>
@@ -512,7 +455,6 @@
   <msg key="user_email_created">ַהו׃Ê־ֿו %user_email% ־ןהנגמ ...</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% Ùײטַכ בך %system_name% וז׀ %pretty_creation_date%</msg>
   <msg key="User_ID">חטךסֹ ַהו׃Ê־ֿו:</msg>
-  <msg key="User_ID_?">חטךֹ ַהו׃Ê־ֿו</msg>
   <msg key="User_Management">ֵַֹֿׁ ו׃Ê־ֿו</msg>
   <msg key="user_portal_page_calendar_title">ובדׁÊך</msg>
   <msg key="user_portal_page_file_storage_title">והבַÊך</msg>
@@ -528,15 +470,12 @@
   <msg key="Users_Bulk_Upload">ַהו׃Ê־ֿוטז: ַהֵׁ׃ַה ַהּוַÙך</msg>
   <msg key="Users_Search">ָֻֽע ַהו׃Ê־ֿוטז</msg>
   <msg key="View">װַחֿ</msg>
-  <msg key="visit">ׁׂע</msg>
   <msg key="Year">ַה׃זֹ:</msg>
   <msg key="Yes">זÙו</msg>
   <msg key="yes">זÙו</msg>
   <msg key="Yes_delete">זÙו¬ֵֽ׀ג</msg>
   <msg key="Yes_Im_sure">זÙו¬ֳזַ וÊֳדֿ</msg>
   <msg key="You_can_specify_colors_by_name">ֳזÊ Êמ׃Ê׳ךÙן Êמֽֿךֿ ַהֳהטַזנ ַָהֳ׃ו</msg>
-  <msg key="you_have_been_added">ֳזÊ גֿ ֳןײנבעÊמ דו׃Ê־ֿו ֵהי</msg>
-  <msg key="you_may_change_password">ֳזÊ ךודזד ֳז ÊןÚךסׁן דהוֹמ ׃ׁדמ ָÙֿ ֳז Êמֿ־ה</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;הַֽ״:&lt;/b&gt; ֳזÊ ךָּ ֳז Ê־הג &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; הÊדטז גַֿׁ Ùהי ַה־הג %class_instances_pretty_plural%¬ הֳז חִהֱַ ךָּ ֳז ךןׁעָמ׳טַ ָך¬ %terms_pretty_plural%.</msg>
   <msg key="your_icon_is_too_large">ֳךגטזÊדמ דָךֹׁ ַּֿכ. זַװׁן %system_name% ֵ־Êַׁמ Êמֽֿךֿ ַהוהֽגַÊנ ֵהי %system_name%  זַװׁן %max_attachments_bytes% ַָךÊ׃. \n</msg>
   <msg key="Youre_editing">ֳזÊ Êןײךבע</msg>

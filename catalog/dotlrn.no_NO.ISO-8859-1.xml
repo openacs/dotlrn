@@ -9,7 +9,6 @@
   <msg key="Actions">Oppgaver</msg>
   <msg key="actions">Oppgaver</msg>
   <msg key="Active_Applets">Aktive Applets</msg>
-  <msg key="Add">Legg til</msg>
   <msg key="add">legg til</msg>
   <msg key="Add_A_Member">Legg inn et medlem</msg>
   <msg key="Add_a_Professor">Legg inn en Professor</msg>
@@ -28,8 +27,6 @@
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Kontrollpanel</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
-  <msg key="admin_role_pretty_name">Administrator</msg>
-  <msg key="admin_role_pretty_plural">Administratorer</msg>
   <msg key="Administer">Administrer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
@@ -50,11 +47,7 @@
   <msg key="are_you_sure_you_want_to_send">Er du sikker på at du vil sende følgende</msg>
   <msg key="arhive_group_name">Archiv gruppe %group_name% </msg>
   <msg key="Ask_a_question">Spør et spørsmål:</msg>
-  <msg key="at">på</msg>
-  <msg key="bad_folder_id">feil i mappe-id</msg>
-  <msg key="be_either">vær enten</msg>
   <msg key="Be_sure">Vær sikker</msg>
-  <msg key="be_the_header_line">vær overskriftslinjen:</msg>
   <msg key="Become_this_user">Bli denne brukeren!</msg>
   <msg key="Biography">Biografi</msg>
   <msg key="black">svart</msg>
@@ -62,11 +55,8 @@
   <msg key="blue">blå</msg>
   <msg key="Bulk_Upload">Masseopplasting</msg>
   <msg key="Bulk_Uploading">Masseopplasting....</msg>
-  <msg key="byte">byte</msg>
-  <msg key="bytes">bytes</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
   <msg key="Change_Locale">Bytt Locale</msg>
-  <msg key="Change_My_Password">Endre mitt passord</msg>
   <msg key="class_instance_portal_pretty_name">Forelesninger</msg>
   <msg key="class_instances_pretty_name">Forelesning</msg>
   <msg key="class_instances_pretty_plural">Forelesninger</msg>
@@ -105,7 +95,6 @@
   <msg key="Confirm_1">Bekreft:</msg>
   <msg key="Confirm_Drop">Bekreft dropp</msg>
   <msg key="Confirmation">Bekreftelse</msg>
-  <msg key="Control_Panel">Kontrollpanel</msg>
   <msg key="control_panel">Kontrollpanel</msg>
   <msg key="Copy">Kopi</msg>
   <msg key="couldnt_find_user_id">Vi fant ikke bruker #%user_id%; kanskje er personen slettet? </msg>
@@ -151,7 +140,6 @@
   <msg key="dotlrn_main_portlet_pretty_name">Grupper</msg>
   <msg key="dotlrn_member_rel_pretty_name">dotLRN gruppemedlemskap</msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN gruppemedlemskap</msg>
-  <msg key="Download">Last ned </msg>
   <msg key="Drop">Dropp</msg>
   <msg key="Drop_Membership">Dropp medlemskap</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Dropp medlemskap&quot; border=0</msg>
@@ -180,7 +168,6 @@
   <msg key="Fields">Felt</msg>
   <msg key="First_Line">Første linje</msg>
   <msg key="First_Name">Fornavn</msg>
-  <msg key="First_Names">Fornavn</msg>
   <msg key="From">Fra</msg>
   <msg key="fuchsia">fuksia</msg>
   <msg key="Full">Full</msg>
@@ -211,15 +198,12 @@
   <msg key="instructor_role_pretty_plural">Professorer</msg>
   <msg key="Invalid">Ugyldig</msg>
   <msg key="is_already_in_use">er allerede i bruk</msg>
-  <msg key="item">del</msg>
-  <msg key="items">deler</msg>
   <msg key="Join">Bli medlem i</msg>
   <msg key="Join_A_Group">Abonner på en gruppe</msg>
   <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Abonner&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Regler for medlemsskap</msg>
   <msg key="Key">Nøkkel</msg>
   <msg key="Large">Stor</msg>
-  <msg key="Last_Modified">Sist endret</msg>
   <msg key="Last_Name">Etternavn</msg>
   <msg key="Last_Visit">Forrige besøk:</msg>
   <msg key="Last_visit_over">Siste besøk over</msg>
@@ -228,7 +212,6 @@
   <msg key="lime">lime</msg>
   <msg key="Limited">Begrenset</msg>
   <msg key="Limited_Access">Begrenset adgang</msg>
-  <msg key="login_information">Innloggingsinformasjon</msg>
   <msg key="logout">Logg ut</msg>
   <msg key="lt_a_secondary">- en sekundær indentifikator for brukeren.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Legg til en ny bruker at dotLRN:</msg>
@@ -236,26 +219,20 @@
   <msg key="lt_Add_community_name_Me">Legg til %community_name% medlemmer til en annen gruppe </msg>
   <msg key="lt_Add_Members_to_Anothe">Legg til medlemmer til en annen gruppe</msg>
   <msg key="lt_Add_members_to_anothe">Legg til medlemmer til en annen sammenslutning</msg>
-  <msg key="lt_Add_Membership_To_Com">Legg til medlemskap til gruppe</msg>
   <msg key="lt_Add_These_Users_To_A_">Legg disse brukerene til en sammenslutning</msg>
   <msg key="lt_Administrative_Action">Administrative oppgaver</msg>
   <msg key="lt_An_error_occured_whil">En feil oppstod under innlegging av en bruker i en gruppe. Denne feilen har blitt logget.</msg>
   <msg key="lt_An_error_occured_whil_1">En feil oppstod under forsøk på å fjerne en bruker i en gruppe. Feilen har blitt logget.</msg>
   <msg key="lt_approve_and_add_to_do">godkjenn en innlegging i dotLRN</msg>
-  <msg key="lt_are_not_yet_members_o">er ikke medlemmer av</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på at du vil slette den tomme avdelingen</msg>
   <msg key="lt_Be_sure_that_the_pers">Vær sikker på at personen ikke allerede har en konto ved institusjonen med en annen bruker-ID. Duplikerte kontoer skaper problemer for alle. For å legge inn en person med en eksisterende bruker-ID, bruk &lt;a href=members&gt;Organiser medlemskap&lt;/a&gt;.</msg>
-  <msg key="lt_Change_my_language_se">Skift språk-setting</msg>
   <msg key="lt_Class_Key_a_short_nam">Forelesningsnøkkel (et kort navn, ingen mellomrom)</msg>
   <msg key="lt_Communitys_Web_Addres">Gruppens webadresse</msg>
   <msg key="lt_Current_clubs_pretty_">Eksisterende %clubs_pretty_plural%</msg>
   <msg key="lt_Do_you_really_want_to">Vil du virkelig fjerne følgende medlemmer?</msg>
   <msg key="lt_Do_you_really_want_to_1">Vil du virkelig fjerne %num_users% brukere?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN-egenskaper for denne brukeren.</msg>
-  <msg key="lt_E-mail_address_must_b">Bruker-id'en må være gyldig og unik. &lt;br&gt;Denne brukeren har sannsynligvis konto ved institusjonen allerede&lt;br&gt;Prøv å legge inn brukeren gjennom &lt;a href=members&gt;Organiser medlemsskap&lt;/a&gt;.</msg>
   <msg key="lt_Edit_department_prope">Rediger avdelingsegenskaper</msg>
-  <msg key="lt_Edit_My_Notifications">Rediger mine meldinger</msg>
-  <msg key="lt_Edit_My_Personal_Info">Rediger min personlige informasjon</msg>
   <msg key="lt_Edit_Pre-approved_Ema">Rediger forhåndsgodkjente e-posttjenere</msg>
   <msg key="lt_Email_suffixes_listed">E-post-suffikser listet her er brukt for å lage dotLRN-brukere automatisk av folk som registrerer med e-postadresser som mascher verdiene i listen.</msg>
   <msg key="lt_emailing_this_user_fa">E-post til denne brukeren kom ikke fram!</msg>
@@ -264,7 +241,6 @@
   <msg key="lt_Error_removing_user_c">Feil under fjerning av brukergruppe</msg>
   <msg key="lt_Error_sending_email_t">Feil under sending av e-post fra password-update-2.tcl </msg>
   <msg key="lt_First_check_the_box_o">Først sjekk boksen til brukerene du ønsker å legge inn, så velger du deres rolle, og til slutt sender du inn skjemaet.</msg>
-  <msg key="lt_Folder_folder_name_is">Mappe %folder_name% is tom </msg>
   <msg key="lt_Go_back_and_try_again">Gå tilbake og prøv en gang til</msg>
   <msg key="lt_having_trouble">Har du problemer med å få utseendet du ønsker? Her er noen tips</msg>
   <msg key="lt_Help_and_Personal_Con">Hjelp og personlig konfigurering</msg>
@@ -274,7 +250,6 @@
   <msg key="lt_if_you_misspell">Dersom du skriver fontnavnet feil eller velger en font som brukeren ikke har på sin datamaskin, vil normal systemfont bli brukt.</msg>
   <msg key="lt_If_you_wish_to_give_g">Dersom du ønsker å gi gjester full aksess til fora og undersøkelser kan du be om at en administrator med fulle rettigheter endrer status til din gruppe. Denne muligheten er ikke tilgjengelig for klasser som bruker begrenset innsyn.</msg>
   <msg key="lt_Information_about_oth">Informasjon om andre medlemmer av denne gruppen fil ikke være tilgjengelig for denne brukeren.</msg>
-  <msg key="lt_Interactive_setting_o">interaktiv setting av dotLRN-parametre</msg>
   <msg key="lt_Join_a_class_instance">Abonner %class_instances_pretty_name% </msg>
   <msg key="lt_Join_a_clubs_pretty_n">Abonner %clubs_pretty_name%</msg>
   <msg key="lt_Join_the_above_criter">Meld deg inn i de overnevnte kriterier med</msg>
@@ -308,7 +283,6 @@
   <msg key="lt_Some_of_the_emails_fa">Noen av e-postene kom ikke fram til mottaker. Disse brukerene har imidlertid fått tildelt tilfeldige passord. Beste måten å fortsette på, er å be disse brukerene om å logge inn og klikke på 'jeg har glemt passordet mitt'.</msg>
   <msg key="lt_spam_policy_must_be_o">spam policy må vere en av: alle eller medlemmer </msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; er en %existing_role% i %community_name%. Du kan velge en ny rolle under: </msg>
-  <msg key="lt_The_first_line_of_the">Første linjen til filen</msg>
   <msg key="lt_The_following_email_w">Følgende e-post kom nettop fra %system_name%</msg>
   <msg key="lt_The_following_email_w_1">Følgende e-post kom nettopp fra %system_name% Sendt av: %system_owner% Sendt til: %email% Emne: %subject% Melding: %body% </msg>
   <msg key="lt_The_following_members">Følgende medlemmer av</msg>
@@ -329,13 +303,11 @@
   <msg key="lt_This_user_is_a_site-w">Denne brukeren er en site-wide admin.</msg>
   <msg key="lt_This_user_is_currentl">Senne brukerens status er i øyeblikket &lt;i&gt;%member_state%&lt;/i&gt;. For å gi denne brukeren aksess til dotLRN, må du &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;Godkjenne og legg inn i dotLRN&lt;/a&gt; </msg>
   <msg key="lt_this_user_is_deleted_">denne brukeren er slettet og ikke tillatt tilgang til gruppen.</msg>
-  <msg key="lt_this_user_to_another_">denne brukeren til en annen gruppe.</msg>
   <msg key="lt_to_use_vaild_email_ad">til å bruke en gyldig e-postadresse, siden prosessen vil sende brukerens nye passord til e-postadressen som er brukt. </msg>
   <msg key="lt_Update_this_users_pas">Oppdater denne brukerens passord</msg>
   <msg key="lt_Use_this_only_for_an_">Bruk denne bare for en offisielt registrert student i denne klassen som &lt;b&gt;ikke&lt;/b&gt; er en student ved institusjonen.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log for %user_name% </msg>
   <msg key="lt_Well_we_tried_to_nuke">Vel - vi prøvde å nuke brukeren, men vi fikk en feil. Den mest sannsynlige årsaken er at det eksisterer en referanse til denne brukeren (bruker_id=%user_id%) et sted i database schema. Tiden er inne til å rope på programmererene! </msg>
-  <msg key="lt_What_others_see_about">Hva andre ser om meg:</msg>
   <msg key="lt_You_are_about_to_dele">Du vil nå slette %num_users% brukere. </msg>
   <msg key="lt_You_are_adding_strong">Du legger inn &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; i %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">Du har ikke tilgang til å gjøre dette.</msg>
@@ -366,8 +338,6 @@
   <msg key="Memberships">Medlemskap</msg>
   <msg key="Memberships_1">Medlemskap:</msg>
   <msg key="Message">Melding</msg>
-  <msg key="must">må</msg>
-  <msg key="must_be_one_of">- må være en av</msg>
   <msg key="My_Communities">Mine grupper</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Navn</msg>
@@ -410,17 +380,14 @@
   <msg key="Not_Allowed">Ikke tillatt</msg>
   <msg key="Note">Obs:</msg>
   <msg key="Nuke">Nuke</msg>
-  <msg key="nuke">nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke brukere</msg>
   <msg key="olive">oliven</msg>
   <msg key="Open">Åpen</msg>
   <msg key="optional_defaults_to">valgfritt, standardverdi</msg>
   <msg key="Or">Eller</msg>
-  <msg key="or">eller</msg>
   <msg key="or_by_RGB_number">eller ved RGB-nummer</msg>
   <msg key="or_return_to">eller, gå tilbake til</msg>
-  <msg key="password">Passord:</msg>
   <msg key="Pending">Venter</msg>
   <msg key="Pending_Approval">Venter på godkjenning</msg>
   <msg key="Personal_home_page">Personlig web-side:</msg>
@@ -443,7 +410,6 @@
   <msg key="reject">forkast</msg>
   <msg key="Request_Membership">Be om medlemskap</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Be om medlemsskap&quot;&gt;</msg>
-  <msg key="required">forventet</msg>
   <msg key="Results">Resultat</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">gjenåpne</msg>
@@ -460,8 +426,6 @@
   <msg key="Shared_Files">Delte filer</msg>
   <msg key="silver">sølv</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
-  <msg key="Size">Størrelse</msg>
-  <msg key="SloanSpace">Institusjonen</msg>
   <msg key="Small">Liten</msg>
   <msg key="Sorry">Beklager!</msg>
   <msg key="Spam_">Spam ...</msg>
@@ -486,20 +450,16 @@
   <msg key="Templates">Maler</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Semester</msg>
-  <msg key="Term_eg_Spring_Fall">Semestre (f. ex. Vår, Høst)</msg>
   <msg key="Term_ID">Semester ID</msg>
   <msg key="term_properties">semesteregenskaper</msg>
   <msg key="Terms">Semestre</msg>
   <msg key="terms">Semestre</msg>
-  <msg key="thank_you">Takk</msg>
   <msg key="the_format_of_email_domains">Formatet av denne verdien er en komma-separert liste av områder (vanligvis innledet med *@ strengen som matcher &amp;lt;hvasomhelst&amp;gt;@&amp;lt;e-postområde&amp;gt;). For eksempel kunne du bruke:</msg>
   <msg key="The_name">navnet</msg>
   <msg key="there_are_no_users_matching">Ingen brukere passer til %search_text%.</msg>
   <msg key="this_user_is_deleted">denne brukeren er slettet</msg>
-  <msg key="this_user_to_dotLRN">denne bruker til dotLRN</msg>
   <msg key="To">For å</msg>
   <msg key="Type">Type</msg>
-  <msg key="type">type</msg>
   <msg key="Unknown_Term">Ukjent semester</msg>
   <msg key="Update_Password">Oppdater passord</msg>
   <msg key="upload">last opp</msg>
@@ -527,15 +487,12 @@
   <msg key="Users_Bulk_Upload">Brukere: Masseopplasting</msg>
   <msg key="Users_Search">Søk på brukere</msg>
   <msg key="View">Se</msg>
-  <msg key="visit">Besøk</msg>
   <msg key="Year">År:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>
   <msg key="Yes_delete">Ja, slett</msg>
   <msg key="Yes_Im_sure">Ja, jeg er sikker</msg>
   <msg key="You_can_specify_colors_by_name">Du kan spesifisere farger ved navn</msg>
-  <msg key="you_have_been_added">Du har blitt lagt inn som bruker i</msg>
-  <msg key="you_may_change_password">du kan endre passord etter at du logger inn</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;OBS:&lt;/b&gt; Du må opprette &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; for å kunne opprette %class_instances_pretty_plural%, da disse må være knyttet til %terms_pretty_plural%. </msg>
   <msg key="your_icon_is_too_large">Ikonet ditt er for stort. Redaktøren for %system_name% har bestemt å begrense tillegg til %max_attachments_bytes% bytes.\n </msg>
   <msg key="Youre_editing">Du redigerer</msg>
