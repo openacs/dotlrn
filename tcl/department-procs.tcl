@@ -62,9 +62,8 @@ namespace eval dotlrn_department {
     } {
         if {[db_0or1row check {}]} {
             return 0
-        } else {
-            return 1
         }
+        return 1
     }
 
     ad_proc -public select_as_list {
