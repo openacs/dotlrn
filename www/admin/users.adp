@@ -25,7 +25,7 @@
 <% set referer "[dotlrn::get_admin_url]/users" %>
 
 [<small>
-  <a href="../user-add?add_membership_p=f&referer=@referer@"><small>Create A New User</small></a> 
+  <a href="../user-add?add_membership_p=f&dotlrn_interactive_p=1&referer=@referer@"><small>Create A New User</small></a> 
   |
   <a href="users-search"><small>Search Users</small></a>
   |

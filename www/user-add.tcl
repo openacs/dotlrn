@@ -28,6 +28,7 @@ ad_page_contract {
     {can_browse_p 1}
     {read_private_data_p t}
     {add_membership_p t}
+    {dotlrn_interactive_p 0}
     {referer members}
 } -properties {
     context_bar:onevalue
@@ -113,9 +114,15 @@ element create add_user add_membership_p \
     -widget hidden \
     -value $add_membership_p
 
+element create add_user dotlrn_interactive_p \
+    -label "Interactive setting of dotLRN parameters" \
+    -datatype text \
+    -widget hidden \
+    -value $dotlrn_interactive_p
+
 if {[form is_valid add_user]} {
     form get_values add_user \
-        target_user_id id email first_names last_name referer type can_browse_p read_private_data_p
+        target_user_id id email first_names last_name referer type can_browse_p read_private_data_p dotlrn_interactive_p
 
     db_transaction {
 
@@ -125,16 +132,23 @@ if {[form is_valid add_user]} {
             set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" t approved $target_user_id]
         }
 
-        # make the user a dotLRN user
-        dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $target_user_id
-
         # can this user read private data?
         acs_privacy::set_user_read_private_data -user_id $target_user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+
+        if {!${dotlrn_interactive_p}} {
+            # make the user a dotLRN user
+            dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $target_user_id
+        }
     }
 
     set redirect "user-add-2?[export_vars {{user_id $target_user_id} email password first_names last_name referer}]"
     if {[string equal $add_membership_p t] == 1} {
-        ad_returnredirect "member-add-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
+        set redirect "member-add-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
+    }
+
+    if {${dotlrn_interactive_p}} {
+        set redirect "../${redirect}"
+        ad_returnredirect "admin/user-new-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
     } else {
         ad_returnredirect $redirect
     }
