@@ -279,12 +279,6 @@ begin
         storage => 'generic'
     );
 
-    acs_rel_type.create_role(
-        role => 'admin',
-        pretty_name => '#dotlrn.admin_role_pretty_name#',
-        pretty_plural => '#dotlrn.admin_role_pretty_plural#'
-    );
-
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
         attribute_name => 'admin_pretty_name',

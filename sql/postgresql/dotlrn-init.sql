@@ -167,7 +167,6 @@ begin
     perform acs_rel_type__create_role(''teaching_assistant'', ''#dotlrn.teaching_assistant_role_pretty_name#'', ''#dotlrn.teaching_assistant_role_pretty_plural#'');
     perform acs_rel_type__create_role(''instructor'', ''#dotlrn.instructor_role_pretty_name#'', ''#dotlrn.instructor_role_pretty_plural#'');
     perform acs_rel_type__create_role(''course_admin'', ''#dotlrn.course_admin_role_pretty_name#'', ''#dotlrn.course_admin_role_pretty_plural#'');
-    perform acs_rel_type__create_role(''admin'', ''#dotlrn.admin_role_pretty_name#'', ''#dotlrn.admin_role_pretty_plural#'');
 
     perform acs_attribute__create_attribute (
 	   ''dotlrn_community'',
