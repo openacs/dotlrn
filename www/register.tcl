@@ -47,7 +47,7 @@ set join_policy [db_string select_join_policy {
 
 switch -exact $join_policy {
     "open" {
-        dotlrn_community::add_user $community_id $user_id
+        dotlrn_community::add_user -member_state approved $community_id $user_id
     }
     "needs approval" {
         dotlrn_community::add_user -member_state "needs approval" $community_id $user_id
