@@ -698,7 +698,7 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public add_user_to_community {
-        {-rel_type dotlrn_member_rel}
+        {-rel_type ""}
         {-community_id:required}
         {-user_id:required}
         {-member_state approved}
@@ -707,8 +707,13 @@ namespace eval dotlrn_community {
         Assigns a user to a particular role for that class.
         Roles in DOTLRN can be student, prof, ta, admin
     } {
+
         if {[member_p $community_id $user_id]} {
             return
+        }
+
+        if {[empty_string_p $rel_type]} {
+            set rel_type dotlrn_member_rel
         }
 
         db_transaction {
@@ -743,6 +748,7 @@ namespace eval dotlrn_community {
                 membership_approve -user_id $user_id -community_id $community_id
             }
         }
+
     }
 
     ad_proc -public membership_approve {
