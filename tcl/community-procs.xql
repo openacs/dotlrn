@@ -256,6 +256,12 @@ select description from dotlrn_communities where community_id= :community_id
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_community_key.select_community_key">
+<querytext>
+select community_key from dotlrn_communities where community_id= :community_id
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::not_closed_p.check_community_not_closed">
 <querytext>
 select 1 from dotlrn_active_comms_not_closed where community_id= :community_id
