@@ -1,17 +1,20 @@
-
 --
--- The DotLRN communities construct
+-- The DotLRN applet service contract
+--
 -- copyright 2001, OpenForce, Inc.
 -- distributed under the GNU GPL v2
 --
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --
--- ben@openforce.net
+-- ben@openforce.net, arjun@openforce.net
+--
 -- started October 1st, 2001
 -- we remember September 11th
---
+-- 
 
--- This is the service contract for dotLRN components
+-- This is the service contract for dotLRN applets. A dotlrn applet MUST
+-- have AT LEAST the procs (with the proper arguments) defined below to work
+-- as a dotlrn applet.
 
 declare
 	sc_dotlrn_contract integer;
@@ -19,7 +22,7 @@ declare
 begin
 	sc_dotlrn_contract := acs_sc_contract.new (
 		  contract_name => 'dotlrn_applet',
-		  contract_desc => 'dotLRN Applet implement a specific interface'
+		  contract_desc => 'dotLRN Applet contract'
 	);
 
 	-- Get a pretty name
@@ -36,7 +39,7 @@ begin
 	foo := acs_sc_operation.new (
 	          'dotlrn_applet',
 		  'GetPrettyName',
-		  'Get the pretyt name',
+		  'Get the pretty name of the applet',
 		  't', -- not cacheable
 		  0,   -- n_args
 		  'dotlrn_applet.GetPrettyName.InputType',
@@ -59,7 +62,7 @@ begin
 		  'AddApplet',
 		  'Add the Applet to dotlrn - used for one-time initialization',
 		  'f', -- not cacheable
-		  1,   -- n_args
+		  0,   -- n_args
 		  'dotlrn_applet.AddApplet.InputType',
 		  'dotlrn_applet.AddApplet.OutputType'
 	);
@@ -99,7 +102,7 @@ begin
 	foo := acs_sc_operation.new (
 	          'dotlrn_applet',
 		  'AddUser',
-		  'Add a user to dotlrn, used for user-specific one-time stuff',
+		  'Add a user to dotlrn, used for user-specific one-time init',
 		  'f', -- not cacheable
 		  1,   -- n_args
 		  'dotlrn_applet.AddUser.InputType',
@@ -121,18 +124,17 @@ begin
 	foo := acs_sc_operation.new (
 	          'dotlrn_applet',
 		  'AddUserToCommunity',
-		  'Add a user to a community, and set up appropriate things for that applet',
+		  'Add a user to a community',
 		  'f', -- not cacheable
 		  2,   -- n_args
 		  'dotlrn_applet.AddUserToCommunity.InputType',
 		  'dotlrn_applet.AddUserToCommunity.OutputType'
 	);
 
-
-	-- remove a user from the community
+	-- remove a user from dotlrn
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.RemoveUser.InputType',
-		  msg_type_spec => 'community_id:integer,user_id:integer'
+		  msg_type_spec => 'user_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(
@@ -143,17 +145,38 @@ begin
 	foo := acs_sc_operation.new (
 	          'dotlrn_applet',
 		  'RemoveUser',
-		  'Remove a user from a community, and set up appropriate things for that applet',
+		  'Remove a user from dotlrn',
 		  'f', -- not cacheable
-		  2,   -- n_args
+		  1,   -- n_args
 		  'dotlrn_applet.RemoveUser.InputType',
 		  'dotlrn_applet.RemoveUser.OutputType'
 	);
 
-	-- remove the applet from a community
+	-- remove a user from the community
+	foo := acs_sc_msg_type.new(
+		  msg_type_name => 'dotlrn_applet.RemoveUserFromCommunity.InputType',
+		  msg_type_spec => 'community_id:integer,user_id:integer'
+	);
+
+	foo := acs_sc_msg_type.new(
+	          msg_type_name => 'dotlrn_applet.RemoveUserFromCommunity.OutputType',
+		  msg_type_spec => 'success_p:boolean,error_message:string'
+	);
+	
+	foo := acs_sc_operation.new (
+	          'dotlrn_applet',
+		  'RemoveUserFromCommunity',
+		  'Remove a user from a community, applet does appropriate cleanup',
+		  'f', -- not cacheable
+		  2,   -- n_args
+		  'dotlrn_applet.RemoveUserFromCommunity.InputType',
+		  'dotlrn_applet.RemoveUserFromCommunity.OutputType'
+	);
+
+	-- remove the applet from dotlrn
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.RemoveApplet.InputType',
-		  msg_type_spec => 'community_id:integer,package_id:integer'
+		  msg_type_spec => ''
 	);
 
 	foo := acs_sc_msg_type.new(
@@ -166,10 +189,32 @@ begin
 		  'RemoveApplet',
 		  'Remove the applet',
 		  'f', -- not cacheable
-		  2,   -- n_args
+		  0,   -- n_args
 		  'dotlrn_applet.RemoveApplet.InputType',
 		  'dotlrn_applet.RemoveApplet.OutputType'
 	);
+
+	-- remove the applet from a community
+	foo := acs_sc_msg_type.new(
+		  msg_type_name => 'dotlrn_applet.RemoveAppletFromCommunity.InputType',
+		  msg_type_spec => 'community_id:integer,package_id:integer'
+	);
+
+	foo := acs_sc_msg_type.new(
+	          msg_type_name => 'dotlrn_applet.RemoveAppletFromCommunity.OutputType',
+		  msg_type_spec => 'success_p:boolean,error_message:string'
+	);
+	
+	foo := acs_sc_operation.new (
+	          'dotlrn_applet',
+		  'RemoveAppletFromCommunity',
+		  'Remove the applet from a given community',
+		  'f', -- not cacheable
+		  2,   -- n_args
+		  'dotlrn_applet.RemoveAppletFromCommunity.InputType',
+		  'dotlrn_applet.RemoveAppletFromCommunity.OutputType'
+	);
+
 
 
 end;
