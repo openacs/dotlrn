@@ -5,7 +5,6 @@
     <fullquery name="select_classes">
         <querytext>
             select dotlrn_classes_full.class_key,
-                   dotlrn_classes_full.pretty_name as class_name,
                    dotlrn_classes_full.pretty_name,
                    dotlrn_classes_full.description,
                    dotlrn_classes_full.department_key,
@@ -18,6 +17,7 @@
             from dotlrn_classes_full,
                  dotlrn_departments_full
             where dotlrn_classes_full.department_key = dotlrn_departments_full.department_key
+            $keyword_clause
 	    [template::list::page_where_clause -and -name "classes" -key "dotlrn_classes_full.class_key"]
 	    [template::list::orderby_clause -orderby -name "classes"]
 
@@ -27,7 +27,6 @@
     <fullquery name="select_classes_paginator">
         <querytext>
             select dotlrn_classes_full.class_key,
-                   dotlrn_classes_full.pretty_name as class_name,
                    dotlrn_classes_full.pretty_name,
                    dotlrn_classes_full.description,
                    dotlrn_classes_full.department_key,
@@ -40,6 +39,7 @@
             from dotlrn_classes_full,
                  dotlrn_departments_full
             where dotlrn_classes_full.department_key = dotlrn_departments_full.department_key
+            $keyword_clause
             [template::list::orderby_clause -orderby -name "classes"]
 
         </querytext>
@@ -48,7 +48,6 @@
     <fullquery name="select_classes_by_department">
         <querytext>
             select dotlrn_classes_full.class_key,
-                   dotlrn_classes_full.pretty_name as class_name,
                    dotlrn_classes_full.pretty_name,
                    dotlrn_classes_full.description,
                    dotlrn_classes_full.department_key,
@@ -61,6 +60,7 @@
             from dotlrn_classes_full,
                  dotlrn_departments_full
             where dotlrn_classes_full.department_key = :department_key
+            $keyword_clause  
             and dotlrn_classes_full.department_key = dotlrn_departments_full.department_key
 	    [template::list::page_where_clause -and -name "classes" -key "dotlrn_classes_full.class_key"]
 	    [template::list::orderby_clause -orderby -name "classes"]
@@ -71,7 +71,6 @@
     <fullquery name="select_classes_by_department_paginator">
         <querytext>
             select dotlrn_classes_full.class_key,
-                   dotlrn_classes_full.pretty_name as class_name,
                    dotlrn_classes_full.pretty_name,
                    dotlrn_classes_full.description,
                    dotlrn_classes_full.department_key,
@@ -84,10 +83,18 @@
             from dotlrn_classes_full,
                  dotlrn_departments_full
             where dotlrn_classes_full.department_key = :department_key
+            $keyword_clause
             and dotlrn_classes_full.department_key = dotlrn_departments_full.department_key
             [template::list::orderby_clause -orderby -name "classes"]
 
         </querytext>
     </fullquery>
+
+
+    <partialquery name="classes_keyword">
+      <querytext>
+	 and lower(dotlrn_classes_full.pretty_name) like '%'||lower(:keyword)||'%' 
+      </querytext>
+    </partialquery>
 
 </queryset>

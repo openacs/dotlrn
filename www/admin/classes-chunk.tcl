@@ -26,6 +26,7 @@ ad_page_contract {
     classes:multirow
 }
 
+
 if {![exists_and_not_null department_key]} {
     set department_key ""
 }
@@ -64,6 +65,11 @@ if {![empty_string_p $department_key]} {
     set page_query select_classes_by_department_paginator
 }
 
+if { [exists_and_not_null keyword] } {
+    set keyword_clause [db_map classes_keyword]
+} else {
+    set keyword_clause ""
+}
 
 set can_create [dotlrn_class::can_create]
 set can_instantiate [dotlrn_class::can_instantiate]
@@ -84,7 +90,7 @@ template::list::create \
     -multirow classes \
     -actions $actions \
     -pass_properties { can_instantiate {} } \
-    -filters { department_key {} } \
+    -filters { department_key {} keyword {} } \
     -key class_key \
     -page_size 50 \
     -page_flush_p t \
@@ -96,10 +102,10 @@ template::list::create \
 	    orderby_desc {department_name desc}
             link_url_eval {[export_vars -base "department" { department_key }]}
         }
-	class_name {
+	pretty_name {
 	    label "[_ dotlrn.class_name]"
-	    orderby_asc {class_name asc}
-	    orderby_desc {class_name desc}
+	    orderby_asc {pretty_name asc}
+	    orderby_desc {pretty_name desc}
             link_url_eval {[export_vars -base "class" { class_key }]}
         }
         n_instances {

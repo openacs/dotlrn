@@ -18,30 +18,37 @@
 
 %>
 
-<master src="dotlrn-admin-master">
-<property name="title">@title@</property>
-<property name="context_bar">@context_bar@</property>
-
-<center>
-
- <if @departments:rowcount@ gt 0>
-        <listtemplate name="departments"></listtemplate>
+  <master src="dotlrn-admin-master">
+    <property name="title">@title@</property>
+    <property name="context_bar">@context_bar@</property>
+    <center>
+      <form action="departments" method="GET">
+	Search departments with : 
+	<input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
+	  <input type="submit" value="Go">
+      </form>
+    </center>
+    <if @departments:rowcount@ gt 0>
+      <center>
+	<listtemplate name="departments"></listtemplate>
+      </center>
     </if>
     <else>
-    </center>
-    <p align="right"><a href="department-new?referer=@referer@" class="button">#dotlrn.new_department#</a> </p>
-    <center>
-     <table>
-      <tr bgcolor="#eeeeee">
-        <td align="left" colspan="2">
-          <em>#dotlrn.no_departments#</em>
-        </td>
-      </tr>
-    </table>
+      
+      <p align="right"><a href="department-new?referer=@referer@" class="button">#dotlrn.new_department#</a> </p>
+      <center>
+	<table>
+	  <tr bgcolor="#eeeeee">
+	    <td align="left" colspan="2">
+	      <em>#dotlrn.no_departments#</em>
+	    </td>
+	  </tr>
+	</table>
+      </center>
     </else>
+    
+    <br>
 
-<br>
-</center>
-
+      
 
 

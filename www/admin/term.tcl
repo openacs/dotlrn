@@ -25,6 +25,7 @@ ad_page_contract {
     {department_key ""}
     {orderby "department_name,asc"}
     page:optional
+    {keyword ""}
 } -properties {
     classes:multirow
 }
@@ -104,11 +105,17 @@ if {$term_id == -1} {
     set query "select_all_classes"
     set paginator_query "select_all_classes_paginator"
 }
+
 if {![empty_string_p $department_key]} {
     append query "_by_department"
     append paginator_query "_by_department"
 }
 
+if { ![empty_string_p $keyword] } {
+    set keyword_clause [db_map select_all_instances_keyword]
+} else {
+    set keyword_clause [db_map select_all_instances_without_keyword]
+}
 if {$term_id == -1} {
     set title "[_ dotlrn.All_Terms]"
     set context_bar [list [list terms [_ dotlrn.Terms]] "[_ dotlrn.All_Terms]"]
@@ -167,7 +174,7 @@ lappend elements action \
 template::list::create \
     -name classes \
     -multirow classes \
-    -filters { department_key {} term_id {} } \
+    -filters { department_key {} term_id {} keyword {} } \
     -key class_key \
     -page_size 50 \
     -page_flush_p t \

@@ -1,52 +1,60 @@
 <%
 
-    #
-    #  Copyright (C) 2001, 2002 MIT
-    #
-    #  This file is part of dotLRN.
-    #
-    #  dotLRN is free software; you can redistribute it and/or modify it under the
-    #  terms of the GNU General Public License as published by the Free Software
-    #  Foundation; either version 2 of the License, or (at your option) any later
-    #  version.
-    #
-    #  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
-    #  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-    #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-    #  details.
-    #
+  #
+  #  Copyright (C) 2001, 2002 MIT
+  #
+  #  This file is part of dotLRN.
+  #
+  #  dotLRN is free software; you can redistribute it and/or modify it under the
+  #  terms of the GNU General Public License as published by the Free Software
+  #  Foundation; either version 2 of the License, or (at your option) any later
+  #  version.
+  #
+  #  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+  #  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  #  details.
+  #
 
-%>
+  %>
 
-<center>
+  <center>
+    <table bgcolor="#cccccc" cellpadding="5" width="95%">
+      <tr bgcolor="#eeeeee">
+	<th align="left" width="50%">
+	  <formtemplate id="department_form">
+	    <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+	  </formtemplate>
+	</th>
+      </tr>
+    </table>
+    <br/>
 
-  <table bgcolor="#cccccc" cellpadding="5" width="95%">
-    <tr bgcolor="#eeeeee">
-      <th align="left" width="50%">
-<formtemplate id="department_form">
-        <%= [parameter::get -localize -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
-</formtemplate>
-      </th>
-    </tr>
-  </table>
+	<div style="text-align:center;">
+	  <form action="classes" method="GET">
+	    Search subjects with : 
+	    <input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
+            <input type="hidden" name="department_key" value="@department_key@" />
+            <input type="hidden" name="page" value="@page@" />
+            <input type="submit" value="Go" />
+	  </form>
+	</div>
+      
+      <if @classes:rowcount@ gt 0>
 
-  <br>
+	<br />
 
-<if @classes:rowcount@ gt 0>
-        <listtemplate name="classes"></listtemplate>
-</if>
-<else>
-</center>
-<p align="right"><a href="class-new?department_key=@department_key@&referer=@referer@" class="button">#dotlrn.new_class_1#</a> </p>
-<center>
-<table>
-  <tr bgcolor="#eeeeee">
-    <td align="left" colspan="4">
-      <i>#dotlrn.no_classes#</i>
-    </td>
-  </tr>
-</table>
-</else>
+	<listtemplate name="classes"></listtemplate>
+      </if>
+      <else>
+	<table>
+	  <tr bgcolor="#eeeeee">
+	    <td align="left" colspan="4">
+	      <i>#dotlrn.no_classes#</i>
+	    </td>
+	  </tr>
+	</table>
+      </else>
 
-<br>
-</center>
+      <br>
+  </center>

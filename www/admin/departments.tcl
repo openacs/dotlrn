@@ -21,6 +21,7 @@ ad_page_contract {
     @creation-date 2002-01-20
     @version $Id$
 } -query {
+    {keyword ""}
     {orderby "department_name,asc"}
     page:optional
 } -properties {
@@ -42,7 +43,14 @@ set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name
 
 set actions [list "[_ dotlrn.new_department]" "[export_vars -base "department-new" -url { referer }]"]
 
+if { ![empty_string_p $keyword] } {
+    set keyword_clause [db_map departments_keyword]
+} {
+    set keyword_clause [db_map departments_without_keyword]
+}
+
 template::list::create \
+    -filters { keyword {} } \
     -name departments \
     -multirow departments \
     -actions $actions \
@@ -73,6 +81,7 @@ template::list::create \
 	    }
         }
     }
+
 
 
 db_multirow departments select_departments {}

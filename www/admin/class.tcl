@@ -25,6 +25,7 @@ ad_page_contract {
     class_key:notnull
     {term_id -1}
     {orderby "term_name,asc"}
+    {keyword ""}
 } -properties {
     pretty_name:onevalue
     description:onevalue
@@ -73,6 +74,12 @@ if {$term_id == -1} {
     set page_query select_all_class_instances_paginator
 }
 
+if { ![empty_string_p $keyword] } {
+    set keyword_clause [db_map class_instances_keyword]
+} else {
+    set keyword_clause ""
+}
+
 set can_instantiate [dotlrn_class::can_instantiate]
 
 set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] $pretty_name]
@@ -86,7 +93,7 @@ set class_instances_pretty_plural [parameter::get -localize -parameter class_ins
 template::list::create \
     -name class_instances \
     -multirow class_instances \
-    -filters { term_id {} class_key {} } \
+    -filters { term_id {} class_key {} keyword {} } \
     -key class_key \
     -page_size 50 \
     -page_flush_p t \
@@ -99,10 +106,10 @@ template::list::create \
 	    orderby_desc {term_name desc}
             link_url_eval {[export_vars -base "term" { term_id }]}
         }
-	class_name {
+	pretty_name {
 	    label "[_ dotlrn.class_name_header]"
-	    orderby_asc {class_name asc}
-	    orderby_desc {class_name desc}
+	    orderby_asc {pretty_name asc}
+	    orderby_desc {pretty_name desc}
             link_url_col url
         }
         n_members {
