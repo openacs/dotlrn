@@ -681,6 +681,21 @@ namespace eval dotlrn_community {
         return $subcomm_list
     }
 
+    ad_proc -public get_subcomm_chunk {
+        {-community_id:required}
+    } {
+        Returns a html fragment of the subcommunities of this community or 
+        if none, the empty list
+    } {
+        set subcomm_chunk "<ul>"
+
+        db_foreach select_subcomms {} {
+            append subcomm_chunk "<li><a href=[get_community_url $subcomm_id]>[get_community_name $subcomm_id]</a></li>"
+        } 
+
+        return [append subcomm_chunk "</ul>"]
+    }
+
     ad_proc -public get_community_type_url {
         community_type
     } {

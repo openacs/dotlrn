@@ -10,9 +10,8 @@
   <%= [ad_parameter classes_pretty_plural] %>
   <ul>
     <multiple name="classes">
-      <li><a href="@classes.url@">@classes.pretty_name@</a>
-      <ul></ul>
-      </li>
+      <li><a href="@classes.url@">@classes.pretty_name@</a></li>
+      <%=  [dotlrn_community::get_subcomm_chunk -community_id $classes(community_id)] %>
       
     </multiple>
   </ul>
@@ -26,6 +25,7 @@
         <a href="@clubs.url@">@clubs.pretty_name@</a>
         <if @clubs.admin_p@ eq t> - <a href="@clubs.url@one-community-admin">admin</a></if>
       </li>
+      <%=  [dotlrn_community::get_subcomm_chunk -community_id $clubs(community_id)] %>
     </multiple>
   </ul>
 </if>

@@ -3,7 +3,8 @@
 <queryset>
   <fullquery name="select_classes">
     <querytext>
-      select dotlrn_class_instances_full.pretty_name,
+      select community_id, 
+             dotlrn_class_instances_full.pretty_name,
              dotlrn_class_instances_full.url,
              acs_permission.permission_p(community_id, :user_id, 'admin') as admin_p
       from dotlrn_class_instances_full,
@@ -15,7 +16,8 @@
 
   <fullquery name="select_clubs">
     <querytext>
-      select dotlrn_clubs_full.pretty_name,
+      select community_id, 
+             dotlrn_clubs_full.pretty_name,
              dotlrn_clubs_full.url,
              acs_permission.permission_p(community_id, :user_id, 'admin') as admin_p
       from dotlrn_clubs_full,

@@ -197,6 +197,13 @@ select community_id as subcomm_id from dotlrn_communities where parent_community
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_subcomm_chunk.select_subcomms">
+<querytext>
+select community_id as subcomm_id from dotlrn_communities where parent_community_id = :community_id
+</querytext>
+</fullquery>
+
+
 <fullquery name="dotlrn_community::get_community_type_package_id.select_package_id">
 <querytext>
 select package_id from dotlrn_community_types where community_type= :community_type
