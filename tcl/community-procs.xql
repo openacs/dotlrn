@@ -190,14 +190,15 @@ select admin_portal_id from dotlrn_communities where community_id= :community_id
 
 <fullquery name="dotlrn_community::get_all_communities_by_user.select_communities_by_user">
   <querytext>
-    select dotlrn_communities.community_id,
-           dotlrn_communities.community_type,
-           dotlrn_communities.community_key,
-           dotlrn_communities.pretty_name,
-           dotlrn_communities.package_id
-    from dotlrn_communities,
+    select dotlrn_communities_full.community_id,
+           dotlrn_communities_full.community_type,
+           dotlrn_communities_full.community_key,
+           dotlrn_communities_full.pretty_name,
+           dotlrn_communities_full.package_id,
+           dotlrn_communities_full.url
+    from dotlrn_communities_full,
          dotlrn_member_rels_approved
-    where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
+    where dotlrn_communities_full.community_id = dotlrn_member_rels_approved.community_id
     and dotlrn_member_rels_approved.user_id = :user_id
   </querytext>
 </fullquery>

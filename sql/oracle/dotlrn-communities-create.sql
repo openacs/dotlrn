@@ -63,6 +63,7 @@ create table dotlrn_communities (
 create or replace view dotlrn_communities_full
 as
     select dotlrn_communities.*,
+           dotlrn_community.url(dotlrn_communities.community_id) as url,
            groups.group_name,
            groups.join_policy
     from dotlrn_communities,

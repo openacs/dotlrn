@@ -678,7 +678,7 @@ namespace eval dotlrn_community {
     } {
         set return_list [db_list_of_lists select_communities_by_user {}]
 
-        ns_log Notice "return list: $return_list"
+        # ns_log Notice "return list: $return_list"
 
         return $return_list
     }
