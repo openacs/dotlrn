@@ -37,9 +37,8 @@
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
 
-<!-- Header Begin -->
-<if @user_id@ ne 0>
-  <!-- User is logged in with user id @user_id@ -->
+  <!-- Header Begin -->
+
   <table width="100%" cellpadding=0 cellspacing=0> 
    <tr>
       <td class="header-logo">
@@ -57,46 +56,34 @@
 
       <td colspan=3 class="header-buttons" align="right" valign="bottom">
         <a href="@dotlrn_url@/?">#dotlrn.user_portal_page_home_title#</a>
-        <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
+        <img class="header-img" src="@dotlrn_url@/resources/spacer.gif" height="1" width="10">
         <a href="@help_url@">#dotlrn.help#</a>
-        <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
+        <img class="header-img" src="@dotlrn_url@/resources/spacer.gif" height="1" width="10">
         <a href="/register/logout">#dotlrn.logout#</a>
       </td>
   
     </tr>
 
-  <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
+  <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/resources/spacer.gif"></td></tr>
 
   <!-- navbars on every page -->
   <tr><td colspan=3 valign=top>@navbar;noquote@</td></tr>
   </table>
   <p>
   <p>
-</if>
-<else>
-  <!-- User is not logged in so we cannot use pretty header with graphics under dotlrn -->
-  <h1> .LRN </h1>
-  <hr />
-</else>
-<!-- Header End -->
 
-<slave>
+  <!-- Header End -->
 
+  <slave>
 
-<!-- Footer Begin -->
-<if @user_id@ ne 0>
-  <!-- User is logged in -->
+  <!-- Footer Begin: dotLRN info links -->
 
-  <!-- dotLRN info links -->
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr><td><small>@navbar;noquote@</small></td></tr>
-    <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
+    <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/resources/spacer.gif"></td></tr>
   </table>
-</if>
-<else>
-  <!-- User is not logged in so we cannot display pretty footer with graphics under dotlrn -->
-  <hr />
-</else>
+
+  <!-- Footer End -->
 
   <p>
     <div class="footer">

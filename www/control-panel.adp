@@ -31,7 +31,7 @@
 <tr> 
   <td colspan="3" class="element-header-text">#dotlrn.lt_Help_and_Personal_Con#</td>
 </tr>
-<tr><td colspan="3" class="dark-line" height="0"><img src="graphics/spacer.gif"></td></tr>
+<tr><td colspan="3" class="dark-line" height="0"><img src="resources/spacer.gif"></td></tr>
 <tr>
   <td class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
   <td class="element-text" width="100%">

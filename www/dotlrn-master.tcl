@@ -61,11 +61,11 @@ set header_font "Arial, Helvetica, sans-serif"
 set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
-set header_img_url "$dotlrn_url/graphics/logo" 
-set header_img_file "[acs_root_dir]/packages/dotlrn/www/graphics/logo"
+set header_img_url "$dotlrn_url/resources/logo" 
+set header_img_file "[acs_root_dir]/packages/dotlrn/www/resources/logo"
 set header_img_alt_text "Header Logo"
 
-set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"
+set extra_spaces "<img src=$dotlrn_url/resources/spacer.gif border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
 if {[dotlrn::user_p -user_id $user_id]} {
@@ -170,7 +170,7 @@ if { $make_navbar_p } {
     } else {
 	set link_control_panel 0
     }
-    set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"    
+    set extra_spaces "<img src=$dotlrn_url/resources/spacer.gif border=0 width=15>"    
     set navbar [dotlrn::portal_navbar \
         -user_id $user_id \
         -link_control_panel $link_control_panel \
@@ -371,7 +371,7 @@ UL {
     MARGIN-TOP: 0px;
 }
 UL UL LI {
-    LIST-STYLE-IMAGE: url(/dotlrn/graphics/dash.gif);
+    LIST-STYLE-IMAGE: url(/dotlrn/resources/dash.gif);
 }
 SMALL {
     FONT-SIZE: xsmall;

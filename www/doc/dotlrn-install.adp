@@ -182,11 +182,7 @@
       in the <tt>/openacs-4</tt> directory (where you see the <tt>bin,
       CVS, packages ...</tt> directories), make sure a directory named
       <tt>content-repository-content-files</tt> exists. If not, create
-      it with the same permissions as the other dirs. Second, create a
-      <tt>graphics</tt> directory inside the <tt>www</tt>
-      directory. Third, copy all the files in
-      <tt>/packages/dotlrn/www/graphics</tt> into the
-      <tt>graphics</tt> directory you just created.
+      it with the same permissions as the other dirs.
 
     <p class="indent">
       Next, copy the <tt>/openacs-4</tt> directory to where ever you

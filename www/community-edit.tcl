@@ -161,7 +161,7 @@ if {[empty_string_p $revision_id]} {
 	set scope_name "course"
     }
     
-    set header_url "[dotlrn::get_url]/graphics/logo-$scope_name.gif"
+    set header_url "[dotlrn::get_url]/resources/logo-$scope_name.gif"
 
 } else {
     set header_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$revision_id"

@@ -63,10 +63,10 @@ if {![exists_and_not_null referer]} {
 
 
 if {[string compare $order_direction "asc"]==0} {
-    set order_html "<img src=${dotlrn_url}/graphics/down.gif height=15 width=15>"
+    set order_html "<img src=${dotlrn_url}/resources/down.gif height=15 width=15>"
     set opposite_order_direction "desc"
 } else {
-    set order_html "<img src=${dotlrn_url}/graphics/up.gif height=15 width=15>"
+    set order_html "<img src=${dotlrn_url}/resources/up.gif height=15 width=15>"
     set opposite_order_direction "asc"
 }
 
