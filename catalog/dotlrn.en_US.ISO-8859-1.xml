@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="en_US" charset="ISO-8859-1">
 
+<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="en_US" charset="ISO-8859-1">
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
   <msg key="Access_Level">Access Level</msg>
@@ -25,6 +25,8 @@
   <msg key="Add_users_to">Add users to</msg>
   <msg key="Add_Users_to_Group">Add Users to Group</msg>
   <msg key="AddDrop_Memberships">Add/Drop Memberships</msg>
+  <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the &quot;Groups&quot; portlet.</msg>
+  <msg key="added_community_subject">You have been added to the &quot;%community_name%&quot; community at %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Control Panel</msg>
@@ -53,6 +55,7 @@
   <msg key="archived_classes_and_communities">Archived %class_instances_pretty_plural% and %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Archived %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Are you sure?</msg>
+  <msg key="Are_you_sure_del_class">Are you sure you want to delete subject</msg>
   <msg key="are_you_sure_you_want_to_send">Are you sure you want to send the following</msg>
   <description key="are_you_sure_you_want_to_send">Context?? the following what? Or is that the end of the phrase?</description>
 
@@ -71,6 +74,7 @@
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
   <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
+  <msg key="Class_instance_key">Class key</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -126,6 +130,8 @@
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
+  <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
+  <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
   <msg key="Deactivate_Users">Deactivate Users</msg>
   <msg key="Deactivated">Deactivated</msg>
@@ -133,7 +139,9 @@
   <msg key="Delete_Empty">Delete empty %departments_pretty_name%.</msg>
   <description key="Delete_Empty">Used as title of page for deleting empty department.</description>
 
+  <msg key="Delete_Empty_Class">Delete empty %pretty_name%.</msg>
   <msg key="Department">Department</msg>
+  <msg key="Department_key">Department key</msg>
   <msg key="department_must_be_empty_to_be_deleted">Error: %departments_pretty_name% must be empty to be deleted</msg>
   <msg key="department_name">%departments_pretty_name% Name</msg>
   <msg key="department_name_already_in_use">The name &lt;strong&gt;%department_pretty_name%&lt;/strong&gt; is already in use. \n Please select a different name.</msg>
@@ -183,6 +191,7 @@ notify this user.</msg>
   <msg key="Email_Members">Email Members</msg>
   <msg key="email_message">Message</msg>
   <msg key="email_sent">email sent</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
   <msg key="End_Date">End Date</msg>
   <msg key="End_date">End date:</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
@@ -263,6 +272,7 @@ notify this user.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
+  <msg key="lt_Delete_class">Delete subject</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
@@ -412,6 +422,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Name__Email">Name / Email</msg>
   <msg key="navy">navy</msg>
   <msg key="Needs_Approval">Needs Approval</msg>
+  <msg key="Never_visited">Never visited</msg>
   <msg key="New">New</msg>
   <msg key="new">new</msg>
   <msg key="new_class">New</msg>
@@ -452,6 +463,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Nuke">Nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke Users</msg>
+  <msg key="Number_of_db_objects">Number of database objects created by this user</msg>
   <msg key="olive">olive</msg>
   <msg key="Open">Open</msg>
   <msg key="optional_defaults_to">Optional field that defaults to the following value:</msg>
@@ -536,6 +548,7 @@ Thank you
   <msg key="subcommunities_pretty_plural">Subgroups</msg>
   <msg key="subcommunity_memberships">%subcommunities_pretty_name% Memberships</msg>
   <msg key="Subject">Subject</msg>
+  <msg key="Subject_key">Subject key</msg>
   <msg key="teaching_assistant_role_pretty_name">Teaching Assistant</msg>
   <msg key="teaching_assistant_role_pretty_plural">Teaching Assistants</msg>
   <msg key="teal">teal</msg>
