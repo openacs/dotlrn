@@ -176,7 +176,7 @@ if {[form is_valid user_search]} {
     }
 
     if {![empty_string_p $id]} {
-        lappend wheres "dotlrn_users.id = :id"
+        lappend wheres "(lower(dotlrn_users.id) like lower('%' || :id || '%'))"
     }
 
     if {![empty_string_p $type]} {
