@@ -26,16 +26,16 @@
 create or replace function dotlrn_community_admin_p (integer, integer)
 returns char as '
   declare 
-       group_id alias for $1;
-       party_id alias for $2;
+       p_group_id alias for $1;
+       p_party_id alias for $2;
   begin
     --
     -- direct permissions
     if exists (
         select 1
           from acs_object_grantee_priv_map
-         where object_id = dotlrn_community_admin_p.group_id
-           and grantee_id = dotlrn_community_admin_p.party_id
+         where object_id = p_group_id
+           and grantee_id =  p_party_id
            and privilege = ''admin'')
     then 
         return ''t'';
@@ -49,11 +49,11 @@ returns char as '
         select 1
         from acs_object_grantee_priv_map ogpm,
           rel_seg_approved_member_map rs
-        where rs.group_id = dotlrn_community_admin_p.group_id
+        where rs.group_id = p_group_id
           and ogpm.object_id = rs.group_id
           and ogpm.privilege = ''admin''
           and ogpm.grantee_id = rs.segment_id
-          and rs.member_id = dotlrn_community_admin_p.party_id)
+          and rs.member_id = p_party_id)
     then
         return ''t'';
     end if;
