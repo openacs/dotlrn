@@ -349,7 +349,7 @@ begin
 	   ''dotLRN Community Memberships'',
 	   ''membership_rel'',
 	   ''dotlrn_member_rels'',
-	   ''red_id'',
+	   ''rel_id'',
 	   ''dotlrn_member_rel'',
 	   ''dotlrn_community'',
 	   null,
