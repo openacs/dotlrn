@@ -41,6 +41,8 @@ if {![db_0or1row select_departments_info {}]} {
     ad_script_abort
 }
 
+set description [ad_quotehtml $description]
+
 set context_bar [list [list departments [parameter::get -parameter departments_pretty_plural]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"
 

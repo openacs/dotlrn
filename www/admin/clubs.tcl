@@ -32,6 +32,8 @@ ad_page_contract {
 set title [parameter::get -parameter clubs_pretty_plural]
 set context_bar [list $title]
 
-db_multirow clubs select_clubs {}
+db_multirow clubs select_clubs {} {
+    set description [ad_quotehtml $description]
+}
 
 ad_return_template

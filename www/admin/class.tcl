@@ -37,6 +37,8 @@ if {![db_0or1row select_class_info {}]} {
     ad_script_abort
 }
 
+set description [ad_quotehtml $description]
+
 set terms [db_list_of_lists select_terms_for_select_widget {
     select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,
            dotlrn_terms.term_id
