@@ -156,7 +156,8 @@ namespace eval dotlrn {
                 set member_p [dotlrn_community::member_p $community_id $user_id]
                 set show_control_panel 0
             } else {
-                # admins always get the control_panel_link
+                # admins always get the control_panel_link, unless it's
+                # explictly turned off
                 set show_control_panel 1
             }
         
