@@ -52,8 +52,7 @@ element create spam_message community_id \
 element create spam_message from \
     -label From \
     -datatype text \
-    -widget text \
-    -html {size 60} \
+    -widget hidden \
     -value $sender_email
 
 element create spam_message rel_type \
