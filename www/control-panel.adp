@@ -31,9 +31,9 @@
 <tr> 
   <td colspan=3 class="element-header-text">Help and Personal Configuration</td>
 </tr>
-<tr><td colspan=3 class="dark-line" height="0"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan=3 class="dark-line" height="0"><img src="graphics/spacer.gif"></td></tr>
 <tr>
-  <td class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+  <td class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
   <td class="element-text" width="100%">
 <table cellspacing="0" cellpadding="0" class="element-content" width="100%">
 	<tr><td>
@@ -61,10 +61,10 @@
 </ul>
 </td></tr></table>
  </td>
-	  <td align="right" class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+	  <td align="right" class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
 
 </tr>
-<tr><td colspan=3 class="light-line" width="1"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan=3 class="light-line" width="1"><img src="graphics/spacer.gif"></td></tr>
 </table>
 
     <td valign="top" width="50%">
@@ -72,16 +72,16 @@
 <tr> 
   <td colspan=3 class="element-header-text">Join/Drop Classes or Communities</td>
 </tr>
-<tr><td colspan=3 class="dark-line" height="0"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan=3 class="dark-line" height="0"><img src="graphics/spacer.gif"></td></tr>
 <tr>
-  <td class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+  <td class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
   <td class="element-text" width="100%">
   <include src="dotlrn-main-portlet" show_buttons_p=1 title="Groups" referer="@dotlrn_url@/control-panel">
  </td>
-	  <td align="right" class="light-line" width="1"><img src="/graphics/spacer.gif" width="1"></td>
+	  <td align="right" class="light-line" width="1"><img src="graphics/spacer.gif" width="1"></td>
 
 </tr>
-<tr><td colspan=3 class="light-line" width="1"><img src="/graphics/spacer.gif"></td></tr>
+<tr><td colspan=3 class="light-line" width="1"><img src="graphics/spacer.gif"></td></tr>
 </table>
 </table>
 
