@@ -294,12 +294,12 @@ namespace eval dotlrn_community {
                 
                 # Instantiate the package
                 set package_id \
-                        [site_node_create_package_instance \
+                    [site_node_create_package_instance \
                         $new_node_id \
                         $pretty_name \
                         $community_id \
                         [one_community_package_key] \
-                        ]
+                    ]
                 
                 # Set the right parameters
                 ad_parameter -package_id $package_id -set 0 dotlrn_level_p
