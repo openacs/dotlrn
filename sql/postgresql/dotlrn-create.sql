@@ -1,59 +1,22 @@
-
 --
 -- The DotLRN basic system
 -- copyright 2001, OpenForce, Inc.
 -- distributed under the GNU GPL v2
 --
--- ben@openforce.net
--- for PostgreSQL 7.1.2 and above
+-- for PG 7.1.3 and above
 --
+-- ben@openforce.net
 -- started August 18th, 2001
 --
 
-
-
--- Since a lot of stuff needs to happen to set up a group type,
--- this isn't going to be done at the data model level, it's going to
--- be done in Tcl. Woohoo.
-
-
--- We do need some basic data model to represent classes, class instances
--- and the associated information there
-
-create table dotlrn_classes (
-       class_key		    varchar(100) not null 
-				    constraint dotlrn_class_class_key_fk
-				    references group_types(group_type)
-				    constraint dotlrn_class_class_key_pk
-				    primary key,
-       node_id			    integer not null
-				    constraint dotlrn_class_node_id_fk
-				    references site_nodes (node_id)
-);
-
-create table dotlrn_class_instances (
-       class_instance_id	    integer not null
-				    constraint dotlrn_class_inst_id_fk
-				    references groups(group_id)
-				    constraint dotlrn_class_inst_id_pk
-				    primary key,
-       class_instance_key	    varchar(100) not null 
-				    constraint dotlrn_class_inst_key_un unique,
-       class_key		    varchar(100) not null
-				    constraint dotlrn_class_inst_class_key_fk
-				    references dotlrn_classes(class_key),
-       node_id			    integer not null
-				    constraint dotlrn_class_inst_node_id_fk
-				    references site_nodes(node_id)
-);
-
-create table dotlrn_class_inst_applets (
-       class_instance_id	    integer not null
-				    constraint dotlrn_class_inst_app_inst_fk
-				    references dotlrn_class_instances(class_instance_id),
-       applet			    varchar(200) not null,
-       constraint dotlrn_class_inst_app_pk primary key (class_instance_id, applet),
-       node_id		            integer not null
-				    constraint dotlrn_class_inst_app_node_id_fk
-				    references site_nodes(node_id)
-);
+\i dotlrn-users-create.sql
+\i dotlrn-communities-create.sql
+\i dotlrn-clubs-create.sql
+\i dotlrn-classes-create.sql
+\i dotlrn-applet-sc-create.sql
+\i dotlrn-init.sql
+\i dotlrn-community-memberships-create.sql
+\i dotlrn-community-memberships-packages-create.sql
+\i dotlrn-main-portlet-create.sql
+\i dotlrn-security-create.sql
+\i dotlrn-user-extension-create.sql

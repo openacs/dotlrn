@@ -1,0 +1,52 @@
+--
+-- Implementation of the profile provider interface for dotLRN Externals.
+--
+-- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @version $Id$
+--
+
+begin
+
+    -- create the implementation
+    select acs_sc_impl__new(
+        'profile_provider',
+        'dotlrn_external_profile_provider',
+        'dotlrn_external_profile_provider'
+    );
+
+    -- add the bindings to the method implementations
+
+        -- name method
+        select acs_sc_impl_alias__new(
+            'profile_provider',
+            'dotlrn_external_profile_provider',
+            'name',
+            'dotlrn_external_profile_provider::name',
+            'TCL'
+        );
+
+        -- prettyName method
+        select acs_sc_impl_alias__new(
+            'profile_provider',
+            'dotlrn_external_profile_provider',
+            'prettyName',
+            'dotlrn_external_profile_provider::prettyName',
+            'TCL'
+        );
+
+        -- render method
+        select acs_sc_impl_alias__new(
+            'profile_provider',
+            'dotlrn_external_profile_provider',
+            'render',
+            'dotlrn_external_profile_provider::render',
+            'TCL'
+        );
+
+    -- bind this implementation to the interface it implements
+    select acs_sc_binding__new(
+        'profile_provider',
+        'dotlrn_external_profile_provider'
+    );
+
+end;
