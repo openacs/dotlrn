@@ -21,12 +21,6 @@
 <master>
 <property name="title">#dotlrn.not_a_user#</property>
 
-<if @admin_p@>
-
-<p>#dotlrn.visit# <a href=@admin_url@>@admin_pretty_name@</a>.</p>
-
-</if>
-
 #dotlrn.registration_request_sent#
 
 

@@ -20,15 +20,14 @@ ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Dec 11, 2001
     @version $Id$
-} -query {
-} -properties {
-    admin_p:onevalue
-    admin_url:onevalue
 }
 
-set admin_p [dotlrn::admin_p]
-set admin_url [dotlrn::get_url]/admin
-set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
+if { [dotlrn::admin_p] } {
+    set return_url [export_vars -base "[dotlrn::get_admin_url]/user-new-2" { { user_id {[ad_conn user_id]} } { referer "[dotlrn::get_url]/"} }]
+    set self_approve_url [export_vars -base "[apm_package_url_from_key "acs-admin"]users/member-state-change" { { user_id {[ad_conn user_id]} } { member_state approved} return_url }]
+    ad_returnredirect $self_approve_url
+    ad_script_abort
+}
 
-ad_return_template
+
 
