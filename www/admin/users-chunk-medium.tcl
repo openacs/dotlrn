@@ -44,7 +44,7 @@ foreach dimension $dimension_list {
 }
 lappend dimensions [list Other Other {}]
 
-set control_bar [portal::dimensional [list [list section {} $section $dimensions]]]
+set control_bar [portal::dimensional -no_bars [list [list section {} $section $dimensions]]]
 
 set i 1
 if {[string equal $type deactivated] == 1} {
