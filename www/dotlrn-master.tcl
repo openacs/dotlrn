@@ -316,6 +316,10 @@ if { ![info exists header_stuff] } {
     set header_stuff ""
 }
 
+if { [info exists text] } {
+    set text [lang::util::localize $text]
+}
+
 # This style sheet should be moved over to an external file for performance
 append header_stuff "
 <STYLE TYPE=\"text/css\">
