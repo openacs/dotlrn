@@ -36,6 +36,18 @@ namespace eval site_nodes {
         }]
     }
 
+    ad_proc -public get_package_id_from_node_id {
+        {-node_id:required}
+    } {
+        get package_id from a node id
+    } {
+        return [db_string get_package_id_from_node_id {
+            select object_id 
+            from site_nodes
+            where node_id = :node_id
+        }]
+    }
+
     ad_proc -public get_url_from_package_id {
         {-package_id:required}
     } {
@@ -58,7 +70,7 @@ namespace eval site_nodes {
         }]
     }
 
-    ad_proc -public get_node_id_from_child {
+    ad_proc -public get_node_id_from_child_name {
         {-parent_node_id:required}
         {-name:required}
     } {
