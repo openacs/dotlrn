@@ -25,6 +25,7 @@ ad_library {
 namespace eval dotlrn_department {
 
     ad_proc -public new {
+	{-department_key ""}
         {-pretty_name:required}
         {-description ""}
         {-external_url ""}
@@ -32,7 +33,9 @@ namespace eval dotlrn_department {
         Create a new department.
     } {
 
-        set department_key [dotlrn::generate_key -name $pretty_name]
+	if [empty_string_p $department_key] {
+	    set department_key [dotlrn::generate_key -name $pretty_name]
+	}
         
         # check if the name is already in use, if so, complain loudly
         if {![check_department_key_valid_p \

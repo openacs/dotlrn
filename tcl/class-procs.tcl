@@ -105,6 +105,7 @@ namespace eval dotlrn_class {
     }
 
     ad_proc -public new {
+	{-class_key ""}
         {-department_key:required}
         {-pretty_name:required}
         {-description ""}
@@ -119,7 +120,9 @@ namespace eval dotlrn_class {
         This class can then be instantiated for a particular semester.
     } {
 
-        set class_key [dotlrn::generate_key -name $pretty_name]
+	if [empty_string_p $class_key] {
+	    set class_key [dotlrn::generate_key -name $pretty_name]
+	}
         
         # check if the name is already in use, if so, complain loudly
         if {![check_class_key_valid_p \
