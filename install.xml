@@ -11,6 +11,7 @@
     <set-parameter package="acs-kernel" name="IndexRedirectUrl" value="/dotlrn/index"/>
     <set-parameter package="acs-kernel" name="CommunityMemberURL" value="/dotlrn/community-member"/>
     <set-parameter package="acs-kernel" name="CommunityMemberAdminURL" value="/dotlrn/admin/user"/>
+    <set-parameter package="new-portal" name="default_theme_name" value="#new-portal.sloan_theme_name#"/>
   </actions>
 
 </application>
