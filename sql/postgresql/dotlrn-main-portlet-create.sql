@@ -79,8 +79,8 @@ begin
     select acs_sc_impl_alias__new (
            ''portal_datasource'',
            ''dotlrn_main_portlet'',
-           ''MyName'',
-           ''dotlrn_main_portlet::my_name'',
+           ''GetMyName'',
+           ''dotlrn_main_portlet::get_my_name'',
            ''TCL''
     );
 

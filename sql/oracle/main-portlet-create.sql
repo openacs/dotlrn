@@ -99,20 +99,12 @@ begin
 		'dotlrn_main_portlet'
 	);
 
-end;
-/
-show errors
-
-declare
-	foo integer;
-begin
-
 	-- add all the hooks
 	foo := acs_sc_impl.new_alias (
 	       'portal_datasource',
 	       'dotlrn_main_portlet',
-	       'MyName',
-	       'dotlrn_main_portlet::my_name',
+	       'GetMyName',
+	       'dotlrn_main_portlet::get_my_name',
 	       'TCL'
 	);
 
@@ -140,6 +132,15 @@ begin
 	       'TCL'
 	);
 
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'RemoveSelfFromPage',
+	       'dotlrn_main_portlet::remove_self_from_page',
+	       'TCL'
+	);
+
 	foo := acs_sc_impl.new_alias (
 	       'portal_datasource',
 	       'dotlrn_main_portlet',
@@ -155,23 +156,6 @@ begin
 	       'dotlrn_main_portlet::edit',
 	       'TCL'
 	);
-
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'RemoveSelfFromPage',
-	       'dotlrn_main_portlet::remove_self_from_page',
-	       'TCL'
-	);
-
-
-end;
-/
-show errors
-
-declare
-	foo integer;
-begin
 
 	-- Add the binding
 	acs_sc_binding.new (

@@ -103,19 +103,19 @@ namespace eval dotlrn {
         ns_set put $extra_vars access_level $access_level
         ns_set put $extra_vars id $id
 
+        set template_id \
+                [dotlrn_community::get_type_portal_id -community_type "user_workspace"] 
         db_transaction {
             set portal_id [portal::create \
-                -template_id [dotlrn_community::get_type_portal_id -community_type "user_workspace"] \
+                -template_id $template_id \
                 -name "Your dotLRN Workspace" \
                 $user_id
             ]
 
             ns_set put $extra_vars portal_id $portal_id
 
-            set page_id [portal::get_page_id -portal_id $portal_id -sort_key 0]
-            dotlrn_main_portlet::add_self_to_page -page_id $page_id $portal_id ""
-                
-            # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
+            # Add the relation (no need to feed in anything for object_id_one, 
+            # or two for that matter).
             set rel_id [relation_add \
                 -extra_vars $extra_vars \
                 -member_state approved \
@@ -124,6 +124,9 @@ namespace eval dotlrn {
                 $user_id \
             ]
 
+            # add the "dotlrn main" portlet to the user's workspace
+            dotlrn_main_portlet::add_self_to_page $portal_id
+                
             dotlrn_community::applets_dispatch -op AddUser -list_args [list $user_id]
 
             # if the user is a member of communities (from some previous
