@@ -30,8 +30,13 @@ ad_page_contract {
     context_bar:onevalue
 }
 
+if {![db_0or1row select_term_info {}]} {
+    ad_return_complaint 1 "<li>[_ dotlrn.Invalid] term_key $term_id</li>"
+    ad_script_abort
+}
+
 set referer "term?[export_vars {term_id}]"
-set context_bar [list [list terms [_ dotlrn.Terms]] [list $referer "one term"] [_ dotlrn.Edit]]
+set context_bar [list [list terms [_ dotlrn.Terms]] [list $referer "$term_name $term_year"] [_ dotlrn.Edit]]
 
 ad_form -name edit_term -export term_pretty_name -select_query_name select_term_info -form {
 
