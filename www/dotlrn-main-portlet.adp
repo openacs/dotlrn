@@ -15,6 +15,9 @@
           <small>[<a href="@classes.url@one-community-admin">admin</a>]</small>
         </if>
       </li>
+        <ul>
+          <%=  [dotlrn_community::get_subcomm_chunk -user_id $user_id -community_id $classes(community_id) -only_member_p 1] %>
+        </ul>
     </multiple>
   </ul>
 </if>
@@ -29,6 +32,9 @@
             <small>[<a href="@clubs.url@one-community-admin">admin</a>]</small>
         </if>
       </li>
+        <ul>
+          <%=  [dotlrn_community::get_subcomm_chunk -user_id $user_id -community_id $clubs(community_id) -only_member_p 1] %>
+        </ul>
     </multiple>
   </ul>
 </if>
