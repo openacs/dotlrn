@@ -134,7 +134,7 @@ namespace eval dotlrn_class {
         Returns the available roles
     } {
         return {
-            {instructor_rel "Instructor"}
+            {instructor_rel "Professor"}
             {ta_rel "Teaching Assistant"}
             {student_rel "Student"}
             {admin_rel "Administrator"}

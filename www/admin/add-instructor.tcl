@@ -9,6 +9,6 @@ ad_page_contract {
     {referer "./"}
 }
 
-set context_bar {{Add an Instructor}}
+set context_bar {{Add a Professor}}
 
 ad_return_template

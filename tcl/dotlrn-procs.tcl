@@ -116,7 +116,7 @@ namespace eval dotlrn {
         set package_list [nsv_array get site_nodes "*$package_key*"]
         set dotlrn_ancestor_p 0
 
-        # ns_log notice "is_package_mounted: pakage_list is $package_list"
+        # ns_log notice "is_package_mounted: package_list is $package_list"
 
         for {set x 1} {$x < [llength $package_list]} {incr x 2} {
             array set package_info [lindex $package_list $x]
@@ -130,6 +130,7 @@ namespace eval dotlrn {
                 break
             }
         }
+
         return $dotlrn_ancestor_p
     }
 

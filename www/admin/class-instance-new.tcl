@@ -44,7 +44,7 @@ element create add_class_instance class_key \
     -value $class_key
 
 element create add_class_instance add_instructor \
-    -label "Add Instructor" \
+    -label "Add Professor" \
     -datatype text \
     -widget radio \
     -options {{Yes 1} {No 0}} \
