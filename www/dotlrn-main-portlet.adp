@@ -22,7 +22,7 @@
   <%= [ad_parameter clubs_pretty_plural] %>
   <ul>
     <multiple name="clubs">
-      <li><a href="@clubs.url@">@clubs.pretty_name@</a></li>
+      <li><a href="@clubs.url@">@clubs.pretty_name@</a> <if @clubs.admin_p@ eq t>- <a href="@clubs.url@one-community-admin">admin</a></if></li>
     </multiple>
   </ul>
 </if>

@@ -4,7 +4,8 @@
   <fullquery name="select_classes">
     <querytext>
       select dotlrn_class_instances_full.pretty_name,
-             dotlrn_class_instances_full.url
+             dotlrn_class_instances_full.url,
+             acs_permission.permission_p(community_id, :user_id, 'admin') as admin_p
       from dotlrn_class_instances_full,
            dotlrn_member_rels_full
       where dotlrn_member_rels_full.user_id = :user_id
@@ -15,7 +16,8 @@
   <fullquery name="select_clubs">
     <querytext>
       select dotlrn_clubs_full.pretty_name,
-             dotlrn_clubs_full.url
+             dotlrn_clubs_full.url,
+             acs_permission.permission_p(community_id, :user_id, 'admin') as admin_p
       from dotlrn_clubs_full,
            dotlrn_member_rels_full
       where dotlrn_member_rels_full.user_id = :user_id
