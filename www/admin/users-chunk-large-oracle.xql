@@ -28,47 +28,64 @@
 
     <fullquery name="select_non_dotlrn_users">
       <querytext>
-        select cc_users.user_id,
-               cc_users.first_names,
-               cc_users.last_name,
-               cc_users.email,
+        select users.user_id,
+               persons.first_names,
+               persons.last_name,
+               parties.email,
                'limited' as access_level,
                'f' as read_private_data_p,
-               acs_permission.permission_p(:root_object_id, cc_users.user_id, 'admin') as site_wide_admin_p
-        from cc_users
-        where not exists (select 1
-                          from dotlrn_users
-                          where dotlrn_users.user_id = cc_users.user_id)
-        and cc_users.member_state = 'approved'
+               acs_permission.permission_p(:root_object_id, users.user_id, 'admin') as site_wide_admin_p
+        from parties,
+             users,
+             persons,
+             acs_rels,
+             membership_rels
+        where parties.party_id = users.user_id
+        and users.user_id = persons.person_id
+        and persons.person_id = acs_rels.object_id_two
+        and acs_rels.object_id_one = acs.magic_object_id('registered_users')
+        and acs_rels.rel_id = membership_rels.rel_id
+        and membership_rels.member_state = 'approved'
+        and not exists (select 1
+                        from acs_rels a,
+                             dotlrn_user_types
+                        where a.object_id_one = dotlrn_user_types.group_id
+                        and a.object_id_two = acs_rels.object_id_two)
         and (
-            lower(cc_users.last_name) like lower('%' || :search_text || '%')
-         or lower(cc_users.first_names) like lower('%' || :search_text || '%')
-         or lower(cc_users.email) like lower('%' || :search_text || '%')
+            lower(persons.last_name) like lower('%' || :search_text || '%')
+         or lower(persons.first_names) like lower('%' || :search_text || '%')
+         or lower(parties.email) like lower('%' || :search_text || '%')
         )
-        order by cc_users.last_name
+        order by persons.last_name
       </querytext>
     </fullquery>
 
     <fullquery name="select_deactivated_users">
       <querytext>
-        select cc_users.user_id,
-               cc_users.first_names,
-               cc_users.last_name,
-               cc_users.email,
+        select users.user_id,
+               persons.first_names,
+               persons.last_name,
+               parties.email,
                'limited' as access_level,
                'f' as read_private_data_p,
-               acs_permission.permission_p(:root_object_id, cc_users.user_id, 'admin') as site_wide_admin_p
-        from cc_users
-        where not exists (select 1
-                          from dotlrn_users
-                          where dotlrn_users.user_id = cc_users.user_id)
-        and cc_users.member_state = 'banned'
+               acs_permission.permission_p(:root_object_id, users.user_id, 'admin') as site_wide_admin_p
+        from parties,
+             users,
+             persons,
+             acs_rels,
+             membership_rels
+        where parties.party_id = users.user_id
+        and users.user_id = persons.person_id
+        and persons.person_id = acs_rels.object_id_two
+        and acs_rels.object_id_one = acs.magic_object_id('registered_users')
+        and acs_rels.rel_id = membership_rels.rel_id
+        and membership_rels.member_state = 'banned'
         and (
-            lower(cc_users.last_name) like lower('%' || :search_text || '%')
-         or lower(cc_users.first_names) like lower('%' || :search_text || '%')
-         or lower(cc_users.email) like lower('%' || :search_text || '%')
+            lower(persons.last_name) like lower('%' || :search_text || '%')
+         or lower(persons.first_names) like lower('%' || :search_text || '%')
+         or lower(parties.email) like lower('%' || :search_text || '%')
         )
-        order by cc_users.last_name
+        order by persons.last_name
       </querytext>
     </fullquery>
 
