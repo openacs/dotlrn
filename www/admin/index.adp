@@ -41,6 +41,7 @@
   <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>
   <li><a href="@parameters_url@">#dotlrn.edit_parameters#</a></li>
   <li><a href="@parameters_d_url@">#dotlrn.edit_community_parameters#</a></li>
+  <li><a href="toolbar-actions?action=@action@&return_url=@return_url@">@dotlrn_toolbar_action@</a></li>
   <p>
   <if @oacs_site_wide_admin_p@ true>
     <li><a href="/acs-admin/">OpenACS Site-Wide Administration</a></li>
