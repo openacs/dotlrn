@@ -219,6 +219,20 @@ begin
     );
 
     acs_rel_type.create_type (
+        rel_type => 'dotlrn_cadmin_rel',
+        supertype => 'dotlrn_admin_rel',
+        pretty_name => 'dotLRN Course Administrator Community Membership',
+        pretty_plural => 'dotLRN Course Administrator Community Memberships',
+        package_name => 'dotlrn_cadmin_rel',
+        table_name => 'dotlrn_cadmin_rels',        
+        id_column => 'rel_id',
+        object_type_one => 'dotlrn_class_instance', role_one => null, 
+        min_n_rels_one => 0, max_n_rels_one => null,
+        object_type_two => 'user', role_two => 'course_admin',
+        min_n_rels_two => 0, max_n_rels_two => null
+    );
+
+    acs_rel_type.create_type (
         rel_type => 'dotlrn_instructor_rel',
         supertype => 'dotlrn_admin_rel',
         pretty_name => 'dotLRN Instructor Community Membership',
