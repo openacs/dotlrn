@@ -390,6 +390,18 @@
       </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::archive.update_archive_p">
+      <querytext>
+        update dotlrn_communities set archive_p = 't' where community_id = :community_id
+      </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::unarchive.update_archive_p">
+      <querytext>
+        update dotlrn_communities set archive_p = 'f' where community_id = :community_id
+      </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::get_portal_id_not_cached.select_portal_id">
         <querytext>
             select portal_id

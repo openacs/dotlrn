@@ -516,23 +516,89 @@ namespace eval dotlrn_community {
         return [db_string select_rel_segment_id {} -default ""]
     }
 
+    ad_proc -private get_members_rel_id {
+        {-community_id:required}
+    } {
+    } {
+        return [get_rel_segment_id \
+                    -community_id $community_id \
+                    -rel_type "dotlrn_member_rel"
+        ]
+    }
+
+    ad_proc -private get_admin_rel_id {
+        {-community_id:required}
+    } {
+    } {
+        return [get_rel_segment_id \
+                    -community_id $community_id \
+                    -rel_type "dotlrn_admin_rel"
+        ]
+    }
+
+    ad_proc -private rel_segments_grant_permission {
+        {-community_id:required}
+    } {
+        Grant the standard set of privileges on the rel_segments of a community
+    } {
+        set member_segment_id [get_members_rel_id -community_id $community_id]
+        set admin_segment_id [get_admin_rel_id -community_id $community_id]
+
+        permission::grant \
+            -party_id $member_segment_id \
+            -object_id $community_id \
+            -privilege "read"
+        permission::grant \
+            -party_id $member_segment_id \
+            -object_id $community_id \
+            -privilege "write"
+        permission::grant \
+            -party_id $admin_segment_id \
+            -object_id $community_id \
+            -privilege "admin"
+    }
+
+    ad_proc -private rel_segments_revoke_permission {
+        {-community_id:required}
+    } {
+        Revoke the standard set of privileges on the rel_segments of a community
+    } {
+        set member_segment_id [get_members_rel_id -community_id $community_id]
+        set admin_segment_id [get_admin_rel_id -community_id $community_id]
+
+        permission::revoke \
+            -party_id $member_segment_id \
+            -object_id $community_id \
+            -privilege "read"
+        permission::revoke \
+            -party_id $member_segment_id \
+            -object_id $community_id \
+            -privilege "write"
+        permission::revoke \
+            -party_id $admin_segment_id \
+            -object_id $community_id \
+            -privilege "admin"
+    }
+    
     ad_proc -public create_rel_segments {
         {-community_id:required}
     } {
         create all the relational segments for a community
     } {
-        # Get some information about the community
         set community_name [get_community_name $community_id]
 
         db_transaction {
-            # Create a rel segment for Admins
-            set member_segment_id [rel_segments_new $community_id dotlrn_member_rel "Members of $community_name"]
-            set admin_segment_id [rel_segments_new $community_id dotlrn_admin_rel "Admins of $community_name"]
-
-            # Grant permissions
-            permission::grant -party_id $member_segment_id -object_id $community_id -privilege "read"
-            permission::grant -party_id $member_segment_id -object_id $community_id -privilege "write"
-            permission::grant -party_id $admin_segment_id -object_id $community_id -privilege "admin"
+            set member_segment_id [rel_segments_new \
+                                       $community_id \
+                                       dotlrn_member_rel \
+                                       "Members of $community_name"
+            ]
+            set admin_segment_id [rel_segments_new \
+                                      $community_id \
+                                      dotlrn_admin_rel \
+                                      "Admins of $community_name"
+            ]
+            rel_segments_grant_permission -community_id $community_id
         }
     }
 
@@ -541,10 +607,6 @@ namespace eval dotlrn_community {
     } {
         remove the rel segments for a community
     } {
-        # Take care of the admins
-        set admin_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
-        permission::revoke -party_id $admin_segment_id -object_id $community_id -privilege "admin"
-
         # a useful bit of code to find privs that you may not have properly revoked
         # set foo [db_list_of_lists select_outstanding_privs {
         #     select o.object_id, object_type, privilege
@@ -555,13 +617,11 @@ namespace eval dotlrn_community {
         # ad_return_complaint 1 "$foo"
         # end 
 
+        set member_segment_id [get_members_rel_id -community_id $community_id]
+        set admin_segment_id [get_admin_rel_id -community_id $community_id]
+
+        rel_segments_revoke_permission -community_id $community_id         
         rel_segments_delete $admin_segment_id
-
-        # Take care of the members
-        set member_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
-        permission::revoke -party_id $member_segment_id -object_id $community_id -privilege "read"
-        permission::revoke -party_id $member_segment_id -object_id $community_id -privilege "write"
-
         rel_segments_delete $member_segment_id
 
     }
@@ -1342,10 +1402,59 @@ namespace eval dotlrn_community {
         }
     }
 
-    ad_proc -public delete {
+    ad_proc -public archive {
         {-community_id:required}
     } {
-        Delete a community
+        Archives a community. This means that: 
+        
+        1. the community is marked as archived  
+        
+        2. the RemovePortlet callback is called for all users of the 
+        community (both members and GAs) and all the applets. This 
+        removes the comm's data from their workspaces
+
+        3. all users of the community have their "read" privs revoked on the
+        comm's portal so that only SWA's can view the archived community
+
+    } {
+        db_transaction {
+            # do RemovePortlet callback, we send comm_id, and user_id
+            foreach user [list_users $community_id] { 
+                set user_id [ns_set get $user user_id]
+                set portal_id [dotlrn::get_workspace_portal_id $user_id]
+                set list_args [list $portal_id [list \
+                                                    "user_id" $user_id \
+                                                    "community_id" $community_id]
+               ]
+
+                applets_dispatch \
+                    -community_id $community_id \
+                    -op RemovePortlet \
+                    -list_args $list_args
+            }
+
+            # revoke privs
+            rel_segments_revoke_permission -community_id $community_id
+
+            # mark the community as archived
+            db_dml update_archive_p {}
+        }
+    }
+
+    ad_proc -public unarchive {
+        {-community_id:required}
+    } {
+        Unarchives a community. ** not done yet **
+    } {
+        db_dml update_archive_p {}
+    }
+
+    ad_proc -public nuke {
+        {-community_id:required}
+    } {
+        NUKES the community. 
+        ** not done ** 
+        ** do not use! ** 
     } {
         db_transaction {
             # Remove all users
