@@ -27,3 +27,96 @@ end;
 /
 show errors
 
+declare
+	foo integer;
+begin
+	-- create the implementation
+	foo := acs_sc_impl.new (
+		'portal_datasource',
+		'dotlrn_main_portlet',
+		'dotlrn_main_portlet'
+	);
+
+end;
+/
+show errors
+
+declare
+	foo integer;
+begin
+
+	-- add all the hooks
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'MyName',
+	       'dotlrn_main_portlet::my_name',
+	       'TCL'
+	);
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'GetPrettyName',
+	       'dotlrn_main_portlet::get_pretty_name',
+	       'TCL'
+	);
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'Link',
+	       'dotlrn_main_portlet::link',
+	       'TCL'
+	);
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'AddSelfToPage',
+	       'dotlrn_main_portlet::add_self_to_page',
+	       'TCL'
+	);
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'Show',
+	       'dotlrn_main_portlet::show',
+	       'TCL'
+	);
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'Edit',
+	       'dotlrn_main_portlet::edit',
+	       'TCL'
+	);
+
+	foo := acs_sc_impl.new_alias (
+	       'portal_datasource',
+	       'dotlrn_main_portlet',
+	       'RemoveSelfFromPage',
+	       'dotlrn_main_portlet::remove_self_from_page',
+	       'TCL'
+	);
+
+
+end;
+/
+show errors
+
+declare
+	foo integer;
+begin
+
+	-- Add the binding
+	acs_sc_binding.new (
+	    contract_name => 'portal_datasource',
+	    impl_name => 'dotlrn_main_portlet'
+	);
+end;
+/
+show errors
+
