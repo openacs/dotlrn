@@ -192,7 +192,7 @@ if {[form is_valid user_search]} {
             lappend wheres "'t' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
         }
         0 {
-            lappend wheres "'t' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
+            lappend wheres "'f' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
         }
     }
 
