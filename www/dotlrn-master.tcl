@@ -63,6 +63,7 @@ set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
 set header_img_url "$dotlrn_url/graphics/logo" 
+set header_img_file "[acs_root_dir]/packages/dotlrn/www/graphics/logo"
 set header_img_alt_text "Header Logo"
 
 set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"
@@ -234,9 +235,16 @@ if {![empty_string_p $community_id]} {
 	}
     }
   
-    set header_img_url "$header_img_url-$scope_name.gif"
+    # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
+    # be replaced by custom gifs if prefered (as is done by SloanSpace)
 
-    # font hack
+    if { [file exists "$header_img_file-$scope_name.jpg"] } {
+        set header_img_url "$header_img_url-$scope_name.jpg"
+    } elseif { [file exists "$header_img_file-$scope_name.gif"] } {
+        set header_img_url "$header_img_url-$scope_name.gif"
+    }
+
+   # font hack
    set community_header_font [dotlrn_community::get_attribute \
         -community_id $community_id \
         -attribute_name header_font
@@ -288,9 +296,20 @@ if {![empty_string_p $community_id]} {
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
 } else {
     # under /dotlrn
-    set header_img_url "$header_img_url-$scope_name.gif" 
+
+    # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
+    # be replaced by custom gifs if prefered (as is done by SloanSpace)
+
+    if { [file exists "$header_img_file-$scope_name.jpg"] } {
+        set header_img_url "$header_img_url-$scope_name.jpg"
+    } elseif { [file exists "$header_img_file-$scope_name.gif"] } {
+        set header_img_url "$header_img_url-$scope_name.gif"
+    }
+
     set text $full_name    
 }
+
+ns_log Notice "Huh? header_img_url: $header_img_url scope_name: $scope_name file: [ns_url2file $header_img_url-$scope_name.jpg]"
 
 if { ![info exists header_stuff] } {
     set header_stuff ""

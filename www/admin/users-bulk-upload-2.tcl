@@ -106,7 +106,6 @@ db_transaction {
             acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
             
             doc_body_append "creation succeeded...."
-            lappend list_of_addresses_and_passwords $row(email) $password
         }
 
         doc_body_append "<br>"
