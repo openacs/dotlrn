@@ -264,42 +264,45 @@ community_id= :community_id and applet_key= :applet_key
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::list_applets.select_all_applets">
-<querytext>
-    select impl_name
-    from acs_sc_impls, acs_sc_bindings, acs_sc_contracts, dotlrn_applets
-    where acs_sc_impls.impl_id = acs_sc_bindings.impl_id
-    and acs_sc_impls.impl_name = dotlrn_applets.applet_key
-    and acs_sc_contracts.contract_id = acs_sc_bindings.contract_id
-    and acs_sc_contracts.contract_name = 'dotlrn_applet'
-</querytext>
-</fullquery>
+  <fullquery name="dotlrn_community::list_applets.select_all_applets">
+    <querytext>
+      select impl_name
+      from acs_sc_impls, acs_sc_bindings, acs_sc_contracts
+      where acs_sc_impls.impl_id = acs_sc_bindings.impl_id
+      and acs_sc_contracts.contract_id = acs_sc_bindings.contract_id
+      and acs_sc_contracts.contract_name = 'dotlrn_applet'
+    </querytext>
+  </fullquery>
 
-<fullquery name="dotlrn_community::list_applets.select_community_applets">
-<querytext>
-select applet_key
-from dotlrn_community_applets dca, dotlrn_applets da
-where community_id= :community_id
-and dca.applet_id = da.applet_id
-</querytext>
-</fullquery>
+  <fullquery name="dotlrn_community::list_applets.select_community_applets">
+    <querytext>
+      select applet_key
+      from dotlrn_community_applets dca,
+           dotlrn_applets da
+      where community_id = :community_id
+      and dca.applet_id = da.applet_id
+    </querytext>
+  </fullquery>
 
-<fullquery name="dotlrn_community::list_active_applets.select_all_active_applets">
-<querytext>
-select applet_key from dotlrn_applets where status = 'active'
-</querytext>
-</fullquery>
+  <fullquery name="dotlrn_community::list_active_applets.select_all_active_applets">
+    <querytext>
+      select applet_key
+      from dotlrn_applets
+      where status = 'active'
+    </querytext>
+  </fullquery>
 
-<fullquery name="dotlrn_community::list_active_applets.select_community_active_applets">
-<querytext>
-select applet_key
-from dotlrn_community_applets dca, dotlrn_applets da
-where community_id= :community_id
-and active_p = 't'
-and dca.applet_id = da.applet_id
-and status = 'active'
-</querytext>
-</fullquery>
+  <fullquery name="dotlrn_community::list_active_applets.select_community_active_applets">
+    <querytext>
+      select applet_key
+      from dotlrn_community_applets dca,
+           dotlrn_applets da
+      where community_id = :community_id
+      and active_p = 't'
+      and dca.applet_id = da.applet_id
+      and status = 'active'
+    </querytext>
+  </fullquery>
 
 
 

@@ -13,7 +13,7 @@ set community_id [dotlrn_community::get_community_id]
 set user_id [ad_conn user_id]
 
 # Get active applets
-set list_of_active_applets [dotlrn_community::list_applets -community_id $community_id]
+set list_of_active_applets [dotlrn_community::list_active_applets -community_id $community_id]
 
 template::multirow create active_applets applet_key applet_pretty_name
 
