@@ -116,6 +116,18 @@
 </multiple>
 
 </if>
+<else>
+  <tr bgcolor="#eeeeee">
+<if @term_id@ eq -1>
+    <td align="left" colspan="6">
+</if>
+<else>
+    <td align="left" colspan="5">
+</else>
+      <i>No <%= [parameter::get -parameter class_instances_pretty_plural] %></i>
+    </td>
+  </tr>
+</else>
 
   </table>
 
