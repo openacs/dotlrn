@@ -107,6 +107,12 @@ select community_type from dotlrn_community_types where package_id= :package_id
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_community_type_from_community_id.select_community_type">
+<querytext>
+select community_type from dotlrn_communities where community_id=:community_id
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::get_community_id.select_community">
 <querytext>
 select community_id from dotlrn_communities where package_id= :package_id
@@ -133,7 +139,13 @@ select package_id from dotlrn_community_applets where community_id= :community_i
 
 <fullquery name="dotlrn_community::get_community_type_name.select_community_type_name">
 <querytext>
+select pretty_name from dotlrn_community_types where community_type= :community_type
+</querytext>
+</fullquery>
 
+<fullquery name="dotlrn_community::get_community_name.select_community_name">
+<querytext>
+select pretty_name from dotlrn_communities where community_id= :community_id
 </querytext>
 </fullquery>
 

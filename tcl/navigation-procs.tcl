@@ -32,8 +32,8 @@ namespace eval dotlrn {
     } {
 	# Fetch community_id and community_type if they're not there
 	if {[empty_string_p $community_id] && [empty_string_p $community_type]} {
-	    set community_id [dotlrn::get_community_id]
-	    set community_type [dotlrn::get_community_type]
+	    set community_id [dotlrn_community::get_community_id]
+	    set community_type [dotlrn_community::get_community_type]
 	}
 
 	if {![empty_string_p $community_id]} {
@@ -49,10 +49,14 @@ namespace eval dotlrn {
 	}
 
 	foreach arg $args {
-	    lappend list_of_links "<a href=\"[lindex $arg 0]\">[lindex $arg 1]</a>"
+	    if {[llength $arg] == 2} {
+		lappend list_of_links "<a href=\"[lindex $arg 0]\">[lindex $arg 1]</a>"
+	    } else {
+		lappend list_of_links "$arg"
+	    }
 	}
 
-	return "[join $list_of_links " &gt; "] &gt;<br>"
+	return "[join $list_of_links " &gt; "]<br>"
     }
 	
 }

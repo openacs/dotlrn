@@ -85,6 +85,14 @@ namespace eval dotlrn_community {
 
 	return [db_string select_node_url {} -default ""]
     }
+
+    ad_proc -public get_url_from_package_id {
+	{-package_id ""}
+    } {
+	This gets the relative URL for a package_id.
+    } {
+	return [db_string select_node_url {} -default ""]
+    }
     
     ad_proc set_attribute {
 	community_id
@@ -281,6 +289,14 @@ namespace eval dotlrn_community {
 	return [db_list_of_lists select_all_communities {}]
     }
 
+    ad_proc -public get_toplevel_community_type_from_community_id {
+	community_id
+    } {
+	returns the community type from community_id
+    } {
+	return [db_string select_community_type {}]
+    }
+
     ad_proc -public get_community_type_from_community_id {
 	community_id
     } {
@@ -312,7 +328,7 @@ namespace eval dotlrn_community {
     } {
 	Get the URL for a community type
     } {
-	return [get_url -package_id [get_community_type_package_id $community_type]]
+	return [get_url_from_package_id -package_id [get_community_type_package_id $community_type]]
     }
 
     ad_proc -public get_community_url {
@@ -320,7 +336,7 @@ namespace eval dotlrn_community {
     } {
 	Get the URL for a community
     } {
-	return [get_url -package_id [get_package_id $community_id]]
+	return [get_url_from_package_id -package_id [get_package_id $community_id]]
     }
 
     ad_proc -public get_community_type_package_id {
