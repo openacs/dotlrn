@@ -31,13 +31,13 @@ ad_page_contract {
 }
 
 if {[empty_string_p $department_key]} {
-    ad_returnredirect "/dotlrn/admin/classes"
+    ad_returnredirect "[dotlrn::get_admin_url]/classes"
     ad_script_abort
 }
 
 # Get information about that class
 if {![db_0or1row select_departments_info {}]} {
-    ad_returnredirect "departments"
+    ad_returnredirect departments
     ad_script_abort
 }
 

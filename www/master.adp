@@ -23,33 +23,35 @@
 <property name="title">@title@</property>
 <property name="portal_id">@portal_id@</property>
 
+<% set dotlrn_url [dotlrn::get_url] %>
+
 <table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
   <tr bgcolor="#CC0000">
     <td colspan="3" valign="middle">
-      <img src="/dotlrn/graphics/spacer.gif" width="1" height="1">
+      <img src="@dotlrn_url@/graphics/spacer.gif" width="1" height="1">
      </td>
   </tr>
   <tr>
     <td width="12%" valign="middle" bgcolor="#ffffff">
-      <a href="/dotlrn/">
-      <img src="/dotlrn/logowhite.gif" width="100" height="65" border="0" alt="dotlrn"></a>
+      <a href="@dotlrn_url@">
+      <img src="@dotlrn_url@/logowhite.gif" width="100" height="65" border="0" alt="dotlrn"></a>
     </td>
     <td width="57%" valign="middle" bgcolor="#ffffff">
       <font face="arial,helvetica" size="+1" color="#000000">@text@</font>
     </td>
     <td valign="middle" width="31%" bgcolor="#ffffff">
       <div align="right">
-      <a href="/dotlrn/">
-      <img src="/dotlrn/myspace.gif" width="98" height="25" border="0" alt="my dotlrn" align="middle"></a>
-      <a href="/dotlrn/help">
-      <img src="/dotlrn/help.gif" width="67" height="25" border="0" alt="help" align="middle"></a>
+      <a href="@dotlrn_url@">
+      <img src="@dotlrn_url@/myspace.gif" width="98" height="25" border="0" alt="my dotlrn" align="middle"></a>
+      <a href="@dotlrn_url@/help">
+      <img src="@dotlrn_url@/help.gif" width="67" height="25" border="0" alt="help" align="middle"></a>
       <a href="/register/logout">
-      <img src="/dotlrn/logout.gif" width="62" height="25" border="0" alt="logout" align="middle"></a></div>
+      <img src="@dotlrn_url@/logout.gif" width="62" height="25" border="0" alt="logout" align="middle"></a></div>
     </td>
   </tr>
   <tr bgcolor="#cc0000">
     <td colspan="3"  valign="middle">
-    <img src="/dotlrn/graphics/spacer.gif" width="1" height="1">
+    <img src="@dotlrn_url@/graphics/spacer.gif" width="1" height="1">
     </td>
   </tr>
 </table>

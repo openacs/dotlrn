@@ -17,7 +17,7 @@ ad_page_contract {
     @creation-date 2002-03-05
     @version $Id$
 } -query {
-    {referer "/dotlrn/admin"}
+    {referer [dotlrn::get_admin_url]}
 } -properties {
     context_bar:onevalue
 }
@@ -31,8 +31,15 @@ element create edit_emails emails \
     -html {size 50} \
     -value [parameter::get -parameter auto_dotlrn_user_email_patterns]
 
+element create edit_emails referer \
+    -label Referer \
+    -datatype text \
+    -widget hidden \
+    -value $referer
+
 if {[form is_valid edit_emails]} {
-    form get_values edit_emails emails
+    form get_values edit_emails \
+        emails referer
 
     parameter::set_value -parameter auto_dotlrn_user_email_patterns -value $emails
 

@@ -25,8 +25,10 @@
 <property name="return_url">./</property>
 <property name="link_control_panel">0</property>
 
+<% set dotlrn_url [dotlrn::get_url] %>
+
 <ul>
-  <li><a href="/dotlrn/help">Help</a></li>
+  <li><a href="@dotlrn_url@/help">Help</a></li>
   <li>
     <a href="/user/basic-info-update?return_url=@referer@">Edit My Personal Information</a>
     <br>

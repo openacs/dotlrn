@@ -17,18 +17,18 @@
 # dotlrn/www/user-add.tcl
 
 ad_page_contract {
-    Adding a user by an administrator
+    adding a user by an administrator
 
     @author yon (yon@openforce.net)
-    @creation-date Jan 19, 2002
-    @cvs-id $Id$
+    @creation-date 2002-01-19
+    @version $Id$
 } -query {
     {id ""}
-    {type "student"}
-    {access_level "full"}
-    {read_private_data_p "t"}
-    {add_membership_p "t"}
-    {referer "members"}
+    {type student}
+    {access_level full}
+    {read_private_data_p t}
+    {add_membership_p t}
+    {referer members}
 } -properties {
     context_bar:onevalue
 }
@@ -55,14 +55,14 @@ element create add_user target_user_id \
     -value $target_user_id
 
 element create add_user id \
-    -label "ID" \
+    -label ID \
     -datatype text \
     -widget text \
     -html {size 30} \
     -value $id
 
 element create add_user email \
-    -label "Email" \
+    -label Email \
     -datatype text \
     -widget text \
     -html {size 50} \
@@ -84,13 +84,13 @@ element create add_user last_name \
     -html {size 50}
 
 element create add_user referer \
-    -label "Referer" \
+    -label Referer \
     -datatype text \
     -widget hidden \
     -value $referer
 
 element create add_user type \
-    -label "Type" \
+    -label Type \
     -datatype text \
     -widget hidden \
     -value $type
@@ -122,7 +122,7 @@ if {[form is_valid add_user]} {
         if {[empty_string_p [cc_email_from_party $target_user_id]]} {
             # create the ACS user
             set password [ad_generate_random_string]
-            set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" "t" "approved" $target_user_id]
+            set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" t approved $target_user_id]
         }
 
         # make the user a dotLRN user
@@ -133,7 +133,7 @@ if {[form is_valid add_user]} {
     }
 
     set redirect "user-add-2?[export_vars {{user_id $target_user_id} email password first_names last_name referer}]"
-    if {[string equal $add_membership_p "t"] == 1} {
+    if {[string equal $add_membership_p t] == 1} {
         ad_returnredirect "member-add-2?[export_vars {{user_id $target_user_id} {referer $redirect}}]"
     } else {
         ad_returnredirect $redirect

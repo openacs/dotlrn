@@ -33,7 +33,7 @@ if {![exists_and_not_null type]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer "/dotlrn/admin/users"
+    set referer "[dotlrn::get_admin_url]/users"
 }
 
 # Currently, just present a list of dotLRN users

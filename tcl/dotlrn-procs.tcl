@@ -36,7 +36,7 @@ namespace eval dotlrn {
     ad_proc -public community_type {} {
         returns the base community type
     } {
-        return "dotlrn_community"
+        return dotlrn_community
     }
 
     ad_proc -public class_group_type_key {
@@ -56,13 +56,19 @@ namespace eval dotlrn {
     ad_proc -public package_key {} {
 	returns the package key
     } {
-	return "dotlrn"
+	return dotlrn
     }
 
     ad_proc -public get_url {} {
 	returns the root URL for dotLRN
     } {
 	return "/[package_key]"
+    }
+
+    ad_proc -public get_admin_url {} {
+	returns the root URL for dotLRN
+    } {
+	return "[get_url]/admin"
     }
 
     ad_proc -public is_instantiated {} {
@@ -84,19 +90,19 @@ namespace eval dotlrn {
     }
 
     ad_proc -public init {} {
-        create base community_type for dotlrn and create the  "user" and
-        "subgroups" portal templates
+        create base community_type for dotlrn and create the user and subgroups
+        portal templates
     } {
         db_transaction {
             dotlrn_community::set_type_package_id [community_type] [get_package_id]
             
             dotlrn::new_type_portal \
-                -type "user" \
+                -type user \
                 -pretty_name [dotlrn::parameter -name user_portal_pretty_name]
             
             # do the same for subgroups (the dotlrn_community type)
             dotlrn::new_type_portal \
-                -type "dotlrn_community" \
+                -type dotlrn_community \
                 -pretty_name [dotlrn::parameter -name subcommunities_pretty_plural]
         }
     }
@@ -113,7 +119,7 @@ namespace eval dotlrn {
         for {set i 1} {$i < [llength $package_list]} {incr i 2} {
             array set package_info [lindex $package_list $i]
 
-            if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) "dotlrn"] != 0} {
+            if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) [package_key]] != 0} {
                 set dotlrn_ancestor_p 1
                 break
             }
@@ -334,8 +340,8 @@ namespace eval dotlrn {
 	
     ad_proc -public render_page {
 	{-workspace_p ""}
-	{-hide_links_p  "f"}
-        {-render_style "individual"}
+	{-hide_links_p  f}
+        {-render_style individual}
         {-page_num ""}
 	portal_id
     } {
@@ -395,12 +401,12 @@ namespace eval dotlrn {
         {-type:required}
     } {
         What's this type's portal_id? If the type is not matched, 
-        return the id of "dotlrn_class_instance" by default
+        return the id of dotlrn_class_instance by default
     } {
         set id [db_string select {} -default ""]
 
         if {[empty_string_p $id]} {
-            set type "dotlrn_class_instance"
+            set type dotlrn_class_instance
             set id [db_string select {}]
         } 
 
@@ -425,13 +431,13 @@ namespace eval dotlrn {
         # based on the type:
         # 1. get the page_names and layouts
         # 2. the the list of default applets for this type
-        if {[string equal $type "dotlrn_community"]} {
+        if {[string equal $type dotlrn_community]} {
             set csv_list [dotlrn::parameter -name subcomm_pages_csv]
             set default_applets [dotlrn::parameter -name default_subcomm_applets]
-        } elseif {[string equal $type "dotlrn_club"]} {
+        } elseif {[string equal $type dotlrn_club]} {
             set csv_list [dotlrn::parameter -name club_pages_csv]
             set default_applets [dotlrn::parameter -name default_club_applets]
-        } elseif {[string equal $type "user"]} {
+        } elseif {[string equal $type user]} {
             set csv_list [dotlrn::parameter -name user_portal_pages_csv]
             set default_applets [dotlrn::parameter -name default_user_portal_applets]
         } else {

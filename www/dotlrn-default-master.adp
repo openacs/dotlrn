@@ -26,6 +26,8 @@
 
 %>    
 
+<% set dotlrn_url [dotlrn::get_url] %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,7 +43,7 @@
     <!-- Ugly NN4 bar hack -->
       <table width="100%" bgcolor="@color_hack@" border="0" cellpadding="1" cellspacing="0">
          <tr bgcolor="@color_hack@"> 
-            <td><img src="/dotlrn/graphics/spacer.gif" width="1" height="1" alt=""></td>
+            <td><img src="@dotlrn_url@/graphics/spacer.gif" width="1" height="1" alt=""></td>
         </tr>
       </table>
     </td>
@@ -49,16 +51,16 @@
 
   <tr>
     <td width="10%" class="header-logo">
-      <a href="/dotlrn/">
-      <img class="header-img" border=0 src="/dotlrn/graphics/logowhite.gif" width="100" height="65" alt="SloanSpaceLogo"></a>
+      <a href="@dotlrn_url@">
+      <img class="header-img" border=0 src="@dotlrn_url@/graphics/logowhite.gif" width="100" height="65" alt="SloanSpaceLogo"></a>
     </td>
 
     <td width="50%"><big>@text@</big></td>
 
     <td width="40%" class="header-buttons" align="right">
-      <a href="/dotlrn/"><img class="header-img" border="0" src="/dotlrn/graphics/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
-      <a href="/dotlrn/preferences"><img class="header-img" border="0" src="/dotlrn/graphics/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
-      <a href="/register/logout"><img class="header-img" border="0" src="/dotlrn/graphics/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
+      <a href="@dotlrn_url@"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
+      <a href="@dotlrn_url@/preferences"><img class="header-img" border="0" src="@dotlrn_url@/graphics/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
+      <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_url@/graphics/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
     </td>
 
   </tr>
@@ -67,7 +69,7 @@
     <td colspan=3>
       <table width="100%" bgcolor="@color_hack@" border="0" cellpadding="1" cellspacing="0">
          <tr bgcolor="@color_hack@"> 
-            <td><img src="/dotlrn/graphics/spacer.gif" width="1" height="1" alt=""></td>
+            <td><img src="@dotlrn_url@/graphics/spacer.gif" width="1" height="1" alt=""></td>
         </tr>
       </table>
     </td>

@@ -22,8 +22,10 @@
 <property name="title">Users</property>
 <property name="context_bar">@context_bar@</property>
 
+<% set referer "[dotlrn::get_admin_url]/users" %>
+
 [<small>
-  <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><small>Create A New User</small></a> 
+  <a href="../user-add?add_membership_p=f&referer=@referer@"><small>Create A New User</small></a> 
   |
   <a href="users-search"><small>Search Users</small></a>
   |
@@ -41,13 +43,13 @@
 <p>@control_bar@</p>
 
 <if @n_users@ gt 300>
-  <include src="users-chunk-large" type=@type@ referer="/dotlrn/admin/users?type=@type@">
+  <include src="users-chunk-large" type=@type@ referer="@referer@?type=@type@">
 </if>
 <else>
   <if @n_users@ gt 30>
-    <include src="users-chunk-medium" type=@type@ referer="/dotlrn/admin/users?type=@type@">
+    <include src="users-chunk-medium" type=@type@ referer="@referer@?type=@type@">
   </if>
   <else>
-    <include src="users-chunk-small" type=@type@ referer="/dotlrn/admin/users?type=@type@">
+    <include src="users-chunk-small" type=@type@ referer="@referer@?type=@type@">
   </else>
 </else>

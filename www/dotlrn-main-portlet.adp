@@ -18,7 +18,9 @@
 
 %>
 
-<small>[&nbsp;<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]</small>
+<% set dotlrn_url [dotlrn::get_url] %>
+
+<small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]</small>
 
 <if @communities:rowcount@ gt 0>
 

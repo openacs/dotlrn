@@ -23,12 +23,11 @@
 
 You are a member of the following groups:
 <ul>
-<%
-foreach community $communities {
-        set url [lindex $community 5]
-        set pretty_name [lindex $community 3]
 
-        template::adp_puts "<li> <a href=\"$url\">$pretty_name</a>\n"
-}
+<%
+    foreach community $communities {
+        template::adp_puts "  <li><a href=\"[ns_set get $community url]\">[ns_set get $community pretty_name]</a>"
+    }
 %>
+
 </ul>

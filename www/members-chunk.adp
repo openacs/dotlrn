@@ -51,12 +51,14 @@
   </li>
 </if>
 
+<% set dotlrn_admin_url [dotlrn::get_admin_url] %>
+
 <if @site_wide_admin_p@ eq 1>
   <br>
   <li>
-    <a
-    href="/dotlrn/admin/users-add-to-community?users=@user_list@&referer=@referer@">Add
-    members to another group</a>
+    <a href="@dotlrn_admin_url@/users-add-to-community?users=@user_list@&referer=@referer@">
+      Add members to another group
+    </a>
   </li>
 </if>
 

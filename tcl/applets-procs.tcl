@@ -14,15 +14,6 @@
 #  details.
 #
 
-
-#
-# Procs for DOTLRN Class Management
-# Copyright 2001 OpenForce, inc.
-# Distributed under the GNU GPL v2
-#
-# October 1st, 2001
-#
-
 ad_library {
     Procs to manage dotLRN Applets
 
@@ -34,7 +25,7 @@ namespace eval dotlrn_applet {
 
     ad_proc -public get_url {} {
         # MAJOR FIXME NOW
-        return "/dotlrn/applets"
+        return "[dotlrn::get_url]/applets"
     }
 
     ad_proc -public get_applet_url {
@@ -45,51 +36,51 @@ namespace eval dotlrn_applet {
 
     ad_proc -public is_initalized {} {
         if {[site_nodes::get_node_id_from_url -url [get_url]] != [dotlrn::get_node_id] } {
-            return 1 
-        } else { 
+            return 1
+        } else {
             return 0
         }
     }
 
     ad_proc -public init {} {
         # Create the applets node
-        site_nodes::site_node_create -parent_node_id [dotlrn::get_node_id] -name "applets"
+        site_nodes::site_node_create -parent_node_id [dotlrn::get_node_id] -name applets
     }
 
     ad_proc -public register {
-	applet_key
+        applet_key
     } {
-	Register an applet.
+        Register an applet.
     } {
-	# Check if it's registered
+        # Check if it's registered
 
-	# Add it
-	nsv_lappend dotlrn applets $applet_key
+        # Add it
+        nsv_lappend dotlrn applets $applet_key
     }
 
     ad_proc -public deregister {
-	applet_key
+        applet_key
     } {
-	Deregister an applet. Not currently threadsafe!
+        Deregister an applet. Not currently threadsafe!
     } {
-	# If the array hasn't even been created! The Horror!
-	if {![nsv_exists dotlrn applets]} {
-	    return
-	}
+        # If the array hasn't even been created! The Horror!
+        if {![nsv_exists dotlrn applets]} {
+            return
+        }
 
-	# Get the list, remove the element, reset the list
-	set current_list [nsv_get dotlrn applets]
-	set index [lsearch -exact $current_list $applet_key]
-	set new_list [lreplace $current_list $index $index]
+        # Get the list, remove the element, reset the list
+        set current_list [nsv_get dotlrn applets]
+        set index [lsearch -exact $current_list $applet_key]
+        set new_list [lreplace $current_list $index $index]
 
-	nsv_set dotlrn applets $new_list
+        nsv_set dotlrn applets $new_list
     }
 
     ad_proc -public list_applets {
     } {
-	List all registered applets.
+        List all registered applets.
     } {
-	return [nsv_get dotlrn applets]
+        return [nsv_get dotlrn applets]
     }
 
     ad_proc -public applet_exists_p {
@@ -102,7 +93,7 @@ namespace eval dotlrn_applet {
 
     ad_proc -public add_applet_to_dotlrn {
         {-applet_key:required}
-        {-activate_p "t"}
+        {-activate_p t}
     } {
         dotlrn-init.tcl calls AddApplet on all applets using acs_sc directly.
         The add_applet proc in the applet (e.g. dotlrn-calendar) calls this
@@ -114,10 +105,10 @@ namespace eval dotlrn_applet {
             return
         }
 
-        if {[string equal $activate_p "t"] == 1} {
-            set status "active"
+        if {[string equal $activate_p t] == 1} {
+            set status active
         } else {
-            set status "inactive"
+            set status inactive
         }
 
         db_transaction {
@@ -166,13 +157,11 @@ namespace eval dotlrn_applet {
     ad_proc -public is_applet_mounted {
         {-url:required}
     } {
-        if {[site_nodes::get_node_id_from_url -url "/dotlrn/applets/$url"] 
-        ==  [site_nodes::get_node_id_from_url -url "/dotlrn/applets"]} {
+        if {[site_nodes::get_node_id_from_url -url "[get_url]/$url"] == [site_nodes::get_node_id_from_url -url [get_url]]} {
             return 0
         } else {
             return 1
         }
     }
-        
-        
+
 }

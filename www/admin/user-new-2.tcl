@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     user_id
-    {referer "/dotlrn/admin/users"}
+    {referer "[dotlrn::get_admin_url]/users"}
 }
 
 
@@ -45,7 +45,7 @@ element create add_user user_id \
     -value $user_id
 
 element create add_user id \
-    -label "ID" \
+    -label ID \
     -datatype text \
     -widget text \
     -html {size 30} \
@@ -62,16 +62,16 @@ element create add_user access_level \
     -label "Access Level" \
     -datatype text \
     -widget select \
-    -options {{"Full Access" "full"} {"Limited Access" "limited"}}
+    -options {{"Full Access" full} {"Limited Access" limited}}
 
 element create add_user read_private_data_p \
     -label "Guest?" \
     -datatype text \
     -widget select \
-    -options {{"No" "t"} {"Yes" "f"}}
+    -options {{No t} {Yes f}}
 
 element create add_user referer \
-    -label "Referer" \
+    -label Referer \
     -datatype text \
     -widget hidden \
     -value $referer
