@@ -123,6 +123,13 @@ template::list::create \
 		       \]</small>
 		</nobr>
 		</if>
+        <if @classes.n_instances@ eq 0>
+		<nobr>
+		<small>\[
+		<a href="class-delete?class_key=@classes.class_key@">[_ dotlrn.lt_Delete_class]</a>
+		       \]</small>
+		</nobr>
+        </if>
 	    }
         }
     }

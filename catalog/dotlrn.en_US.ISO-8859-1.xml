@@ -53,6 +53,7 @@
   <msg key="archived_classes_and_communities">Archived %class_instances_pretty_plural% and %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Archived %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Are you sure?</msg>
+  <msg key="Are_you_sure_del_class">Are you sure you want to delete subject</msg>
   <msg key="are_you_sure_you_want_to_send">Are you sure you want to send the following</msg>
   <description key="are_you_sure_you_want_to_send">Context?? the following what? Or is that the end of the phrase?</description>
 
@@ -132,7 +133,7 @@
   <msg key="Delete">Delete</msg>
   <msg key="Delete_Empty">Delete empty %departments_pretty_name%.</msg>
   <description key="Delete_Empty">Used as title of page for deleting empty department.</description>
-
+  <msg key="Delete_Empty_Class">Delete empty %pretty_name%.</msg>
   <msg key="Department">Department</msg>
   <msg key="department_must_be_empty_to_be_deleted">Error: %departments_pretty_name% must be empty to be deleted</msg>
   <msg key="department_name">%departments_pretty_name% Name</msg>
@@ -263,6 +264,7 @@ notify this user.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
+  <msg key="lt_Delete_class">Delete subject</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
