@@ -258,10 +258,6 @@ BODY {
     color: black;
 }
 
-LI {
-    list-style-type: circle;
-}
-
 img.header-img {
     /* NN4 hack */
     color: white;
@@ -296,7 +292,6 @@ img.element-header-button {
     background: $color_hack;
 }
 
-
 .element-content {    
     border-width: 1px;
     border-style: solid;
@@ -315,7 +310,5 @@ img.element-header-button {
     background: #eeeeee;
 }
 
-
 </STYLE>
 "
-
