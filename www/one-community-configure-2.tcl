@@ -7,7 +7,6 @@ ad_page_contract {
     @creation-date 2001-10-24
 } {
     portal_id:naturalnum,notnull
-    op:notnull
 }
 
 # Check that this is a community type
@@ -30,7 +29,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
 } else {
 
     # just call this, it will sort it out
-    portal::configure_dispatch $portal_id $op [ad_conn query]
+    portal::configure_dispatch $portal_id [ad_conn query]
 
     ns_returnredirect "one-community-configure"
 }
