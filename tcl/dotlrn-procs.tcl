@@ -249,7 +249,7 @@ namespace eval dotlrn {
 
 	# Mount
 	# The context is the community_id
-	set new_node_id [site_node_create $parent_node_id $package_key]
+	set new_node_id [site_node_create $parent_node_id $mount_point]
 	set new_package_id [site_node_create_package_instance $new_node_id $package_key $community_id $package_key]
 
 	# Return the newly created package_id
