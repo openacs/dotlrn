@@ -888,6 +888,14 @@ namespace eval dotlrn_community {
     } {
         Returns a html fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
+        
+        Brief notes: his proc always shows the subgroups of the
+        passed-in group, but shows deeper groups _only if_ you are a
+        member of all the supergroups to the leaf subgroup. Not even
+        admins see the whole tree.
+
+        FIXME: totally unoptimized!!
+
     } {
         set chunk ""
 
@@ -899,10 +907,12 @@ namespace eval dotlrn_community {
 
             if {[has_subcommunity_p -community_id $sc_id] \
                     && [member_p $sc_id $user_id]} {
-                # only go down a level if user is a member of the sc
+                # Shows the subcomms of this subcomm ONLY IF I'm a
+                # member of the current comm
                 set url [get_community_url $sc_id]
-                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
-
+                append chunk \
+                        "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
+                
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
                     append chunk \
                             "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
@@ -910,26 +920,36 @@ namespace eval dotlrn_community {
 
                 append chunk \
                         "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id]</ul>\n"
-            } elseif { [not_closed_p -community_id $sc_id] \
-                    || [member_p $sc_id $user_id]} {
-                # if the sc is not closed or i'm a member print it
+            } elseif { [member_p $sc_id $user_id] \
+                    || [dotlrn::user_can_admin_community_p $sc_id] \
+                    || [not_closed_p -community_id $sc_id]} {
+                # Shows the subcomm if: 
+                # 1. I'm a member of this subcomm OR
+                # 2. I'm have admin rights over the subcomm OR
+                # 3. The subcomm has an "open" OR "request" join policy
 
                 set url [get_community_url $sc_id]
 
-                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
+                append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>"
 
-                if {[not_closed_p -community_id $sc_id] \
-                    && ![member_p $sc_id $user_id]} {
+                if {![member_p $sc_id $user_id] && [not_closed_p -community_id $sc_id]} {
+                    # don't show the join link if the comm is closed, 
+                    # and the first space is good below
                     append chunk \
-                            "<small>\[<a href=${url}${join_target}>join</a>\]</small>"
+                            " <small>\[<a href=${url}${join_target}>"
+                    if {[needs_approval_p -community_id $sc_id]} {
+                        append chunk "request&nbsp;membership" 
+                    } else {
+                        append chunk "join"
+                    } 
+
+                    append chunk "</a>\]</small>"
                 }
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
                     append chunk \
-                            "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                            " <small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
                 }
-
-
             }
         }
         return $chunk
@@ -1027,6 +1047,22 @@ namespace eval dotlrn_community {
         returns 1 if the community's join policy is not closed
     } {
         return [db_0or1row check_community_not_closed {}]
+    }
+
+    ad_proc -public open_p {
+        {-community_id:required}
+    } {
+        returns 1 if the community's join policy is 'open'
+    } {
+        return [db_0or1row check_community_open {}]
+    }
+
+    ad_proc -public needs_approval_p {
+        {-community_id:required}
+    } {
+        returns 1 if the community's join policy is 'needs approval' aka "request approval"
+    } {
+        return [db_0or1row check_community_needs_approval {}]
     }
 
     ad_proc -public get_portal_template_id {
