@@ -188,7 +188,7 @@ set user_id [ad_get_user_id]
 set user_name "[dotlrn::get_user_name $user_id]"
 
 if {![exists_and_not_null title]} {
-    set title ".LRN"
+    set title [ad_system_name]
 }
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
