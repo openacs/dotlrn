@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Ustawienia</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administruj</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administruj&quot;&gt; </msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administruj&quot;&gt; </msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratorzy</msg>
   <msg key="Admins_of">Adminowie</msg>
@@ -143,7 +143,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Członkostwo Wspólnoty dotLRN</msg>
   <msg key="Drop">Usuń</msg>
   <msg key="Drop_Membership">Zrzeknij się Członkostwa</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Wypisz się&quot; border=0&gt; </msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Wypisz się&quot; border=0&gt; </msg>
   <msg key="Edit">Edytuj</msg>
   <msg key="Edit_a_User">Edytuj Dane Użytkownika</msg>
   <msg key="edit_approved_email_servers">Edytuj Zatwierdzone Serwery Emailowe</msg>
@@ -204,7 +204,7 @@ Data Końcowa:</msg>
   <msg key="is_already_in_use">jest już używany</msg>
   <msg key="Join">Dołącz</msg>
   <msg key="Join_A_Group">Dołącz do Grupy</msg>
-  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Zapisz się&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Zapisz się&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Zasady Zapisów</msg>
   <msg key="Key">Klucz</msg>
   <msg key="Large">Wielki</msg>
@@ -413,7 +413,7 @@ Data Końcowa:</msg>
   <msg key="Reject">Odrzuć</msg>
   <msg key="reject">odzrzuć</msg>
   <msg key="Request_Membership">Wystąp o członkostwo</msg>
-  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Wystąp o członkostwo&quot;&gt; </msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Wystąp o członkostwo&quot;&gt; </msg>
   <msg key="Results">Wyniki</msg>
   <msg key="Return_URL">Powrotny URL</msg>
   <msg key="revoke">odbierz</msg>

@@ -29,7 +29,7 @@
   <msg key="admin_page_name">Verwalten</msg>
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Verwalten&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -145,7 +145,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN Community Memberships</msg>
   <msg key="Drop">Abmelden</msg>
   <msg key="Drop_Membership">Abmelden </msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Abmelden&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Abmelden&quot; border=0&gt;</msg>
   <msg key="Edit">Bearbeiten</msg>
   <msg key="Edit_a_User">Benutzer bearbeiten</msg>
   <msg key="edit_approved_email_servers">Genehmigte E-Mail-Server</msg>
@@ -204,7 +204,7 @@
   <msg key="is_already_in_use">wird bereits verwendet.</msg>
   <msg key="Join">Hinzufügen </msg>
   <msg key="Join_A_Group">Einen Kurs oder Club hinzufügen</msg>
-  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Hinzufügen&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Hinzufügen&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Anmelderegelung</msg>
   <msg key="Key">Schlüssel</msg>
   <msg key="Large">Groß</msg>
@@ -415,7 +415,7 @@ auf der vorherigen Seite doppelt angeklickt.</msg>
   <msg key="Reject">Ablehnen</msg>
   <msg key="reject">Ablehnen</msg>
   <msg key="Request_Membership">Zugang beantragen</msg>
-  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Zugang beantragen&quot;&gt; </msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Zugang beantragen&quot;&gt; </msg>
   <msg key="Results">Ergebnisse</msg>
   <msg key="Return_URL">Return URL</msg>
   <msg key="revoke">Berechtigungen entziehen</msg>

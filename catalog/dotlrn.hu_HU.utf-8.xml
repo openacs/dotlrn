@@ -44,7 +44,7 @@
   <msg key="dotlrn_admin_pretty_name">Az egész website adminisztrációja</msg>
   <msg key="dotlrn_main_portlet_pretty_name">Csoportok</msg>
   <msg key="Drop_Membership">Kiiratkozás</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Leiratkozás&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Leiratkozás&quot; border=0&gt;</msg>
   <msg key="Email_1">Email-cím</msg>
   <msg key="First_Name">Keresztnév</msg>
   <msg key="General_Site_Help">Általános segítség</msg>
@@ -52,7 +52,7 @@
   <msg key="instructor_role_pretty_name">Professzor</msg>
   <msg key="instructor_role_pretty_plural">Professzorok</msg>
   <msg key="Join_A_Group">Csatlakozz egy csoporthoz</msg>
-  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Csatlakozás&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Csatlakozás&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Last_Name">Vezetéknév</msg>
   <msg key="logout">Kijelentkezés</msg>
   <msg key="lt_Current_clubs_pretty_">Jelenlegi %clubs_pretty_plural%</msg>
@@ -67,7 +67,7 @@
   <msg key="no_clubs">Nincsenek %clubs_pretty_plural%</msg>
   <msg key="Personal_Options">Személyes beállítások</msg>
   <msg key="Request_Membership">Tagság igénylése</msg>
-  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Tagság igénylése&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Tagság igénylése&quot;&gt;</msg>
   <msg key="Role">Funkció</msg>
   <msg key="student_role_pretty_name">Diák</msg>
   <msg key="subcommunities_pretty_plural">Alcsoportok</msg>

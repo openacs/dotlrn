@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Panneau de contrôle</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrer</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrateur</msg>
   <msg key="Administrators">Administrateurs</msg>
   <msg key="Admins_of">Administrateurs de</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Membres de la communauté dotLRN</msg>
   <msg key="Drop">Effacer</msg>
   <msg key="Drop_Membership">Effacer membre</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Effacer membre&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Effacer membre&quot; border=0&gt;</msg>
   <msg key="Edit">Editer</msg>
   <msg key="Edit_a_User">Editer un utilisateur</msg>
   <msg key="edit_approved_email_servers">Editer les serveurs mail pré-approuvés</msg>
@@ -199,7 +199,7 @@
   <msg key="is_already_in_use">est déjà utilisé</msg>
   <msg key="Join">Joindre</msg>
   <msg key="Join_A_Group">Se joindre à un groupe</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Se joindre&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Se joindre&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Politique d'inscription</msg>
   <msg key="Key">Clé</msg>
   <msg key="Large">Large</msg>

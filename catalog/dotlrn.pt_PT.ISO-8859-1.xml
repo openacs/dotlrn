@@ -30,7 +30,7 @@
   <msg key="admin_page_name">Painel de Controlo</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrar</msg>
-  <msg key="administer_link"> &lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
+  <msg key="administer_link"> &lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
   <msg key="Administrator">Administrador</msg>
   <msg key="Administrators">Administradores</msg>
   <msg key="Admins_of">Administradores de</msg>
@@ -143,7 +143,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Associações da Comunidade do dotLRN</msg>
   <msg key="Drop">Remover</msg>
   <msg key="Drop_Membership">Remover Associação</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Remover Associação&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Remover Associação&quot; border=0&gt;</msg>
   <msg key="Edit">Editar</msg>
   <msg key="Edit_a_User">Editar um Utilizador</msg>
   <msg key="edit_approved_email_servers">Editar Servidores de Email Pré-aprovados</msg>
@@ -203,7 +203,7 @@
   <msg key="is_already_in_use">já se encontra em uso</msg>
   <msg key="Join">Adira</msg>
   <msg key="Join_A_Group">Adira a um Grupo</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Adira&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Adira&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Politica de Adesão</msg>
   <msg key="Key">Chave</msg>
   <msg key="Large">Grande</msg>
@@ -414,7 +414,7 @@
   <msg key="Reject">Rejeitar</msg>
   <msg key="reject">rejeitar</msg>
   <msg key="Request_Membership">Pedir Associação</msg>
-  <msg key="request_membership_link">&lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Pedir Associação&quot;&gt; </msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Pedir Associação&quot;&gt; </msg>
   <msg key="required">Campo obrigatório</msg>
   <msg key="Results">Resultados</msg>
   <msg key="Return_URL">Retornar URL</msg>

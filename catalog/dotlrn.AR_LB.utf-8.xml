@@ -30,7 +30,7 @@
   <msg key="admin_page_name">لوحة التّحكّم</msg>
   <msg key="admin_pages_navbar_name">الإدارةُ</msg>
   <msg key="Administer">أدرْ</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;المدير&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;المدير&quot;&gt;</msg>
   <msg key="Administrator">المديرُ</msg>
   <msg key="Administrators">المدراءُ</msg>
   <msg key="Admins_of">إداراتُ من</msg>
@@ -143,7 +143,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">عضويّات جمعية الدوتلرن</msg>
   <msg key="Drop">تخلى</msg>
   <msg key="Drop_Membership">تخلى عن العضوية</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;تخّلى عن العضوية&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;تخّلى عن العضوية&quot; border=0&gt;</msg>
   <msg key="Edit">حررْ</msg>
   <msg key="Edit_a_User">حررْ مستخدماً</msg>
   <msg key="edit_approved_email_servers">حرّرْ مُلقمْ البريد الإلكتروني الموافق عليه مُسبقاً</msg>
@@ -203,7 +203,7 @@
   <msg key="is_already_in_use">قيد الإستعمال</msg>
   <msg key="Join">إنضمّْ</msg>
   <msg key="Join_A_Group">إنضمّْ إلى مجموعةً</msg>
-  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;إنضّم&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;إنضّم&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">سياسةُ الإشتراك</msg>
   <msg key="Key">مفتاح</msg>
   <msg key="Large">كبير</msg>
@@ -415,7 +415,7 @@
   <msg key="Reject">ارفضْ</msg>
   <msg key="reject">ارفضْ</msg>
   <msg key="Request_Membership">اطّلبْ عضويّة</msg>
-  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;اطلب عضوية&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;اطلب عضوية&quot;&gt;</msg>
   <msg key="required">الحقل المطلوب</msg>
   <msg key="Results">النَتائِجُ</msg>
   <msg key="Return_URL">موقع العودة</msg>

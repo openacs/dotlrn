@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Kontrollpanelen</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrera</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrera&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrera&quot;&gt;</msg>
   <msg key="Administrator">Administratör</msg>
   <msg key="Administrators">Administratörer</msg>
   <msg key="Admins_of">Administratörer för</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Medlemsskap i dotLRN Grupper</msg>
   <msg key="Drop">Gå ur</msg>
   <msg key="Drop_Membership">Säg upp medlemskap</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Säg upp medlemskap&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Säg upp medlemskap&quot; border=0&gt;</msg>
   <msg key="Edit">Redigera</msg>
   <msg key="Edit_a_User">Redigera användare</msg>
   <msg key="edit_approved_email_servers">Redigera förhandsgodkända e-postdomäner</msg>
@@ -200,7 +200,7 @@
   <msg key="is_already_in_use">är upptaget</msg>
   <msg key="Join">Gå med</msg>
   <msg key="Join_A_Group">Gå med i en kurs/grupp</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Gå med&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Gå med&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Medlemspolicy</msg>
   <msg key="Key">Kod</msg>
   <msg key="Large">Stor</msg>
@@ -409,7 +409,7 @@
   <msg key="Reject">Avslå</msg>
   <msg key="reject">avslå</msg>
   <msg key="Request_Membership">Ansök om medlemsskap</msg>
-  <msg key="request_membership_link"> &lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Ansök om medlemsskap&quot;&gt;</msg>
+  <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Ansök om medlemsskap&quot;&gt;</msg>
   <msg key="Results">Resultat</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">dra in</msg>

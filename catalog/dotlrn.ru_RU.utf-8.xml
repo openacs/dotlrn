@@ -30,7 +30,7 @@
   <msg key="admin_page_name">Панель Управления</msg>
   <msg key="admin_pages_navbar_name">Админ</msg>
   <msg key="Administer">Администрировать</msg>
-  <msg key="administer_link"> 	&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Администрировать&quot;&gt;</msg>
+  <msg key="administer_link"> 	&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Администрировать&quot;&gt;</msg>
   <msg key="Administrator">Администратор</msg>
   <msg key="Administrators">Администраторы</msg>
   <msg key="Admins_of">Админы</msg>
@@ -140,7 +140,7 @@
   <msg key="dotlrn_member_rel_pretty_name">Членство в Сообществе dotLRN</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Членство в Сообществе dotLRN</msg>
   <msg key="Drop_Membership">Удалить Членство</msg>
-  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;удалить членство&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;удалить членство&quot; border=0&gt;</msg>
   <msg key="Edit">Изменить</msg>
   <msg key="Edit_a_User">Редактировать Пользователя</msg>
   <msg key="edit_approved_email_servers">Редактировать авторизованные сервера электронной почты</msg>
@@ -286,7 +286,7 @@
   <msg key="Reject">Отказать</msg>
   <msg key="reject">отказать</msg>
   <msg key="Request_Membership">Заявления за Членство</msg>
-  <msg key="request_membership_link"> &lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Заявления за Членство&quot;&gt;</msg>
+  <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Заявления за Членство&quot;&gt;</msg>
   <msg key="Results">Результаты</msg>
   <msg key="Return_URL">Перейти на адрес (URL)</msg>
   <msg key="Revoke_site_wide_admin">Аннулировать разрешений Администратора сайта.</msg>

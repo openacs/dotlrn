@@ -25,7 +25,7 @@
   <msg key="Admin">Tadbir</msg>
   <msg key="admin">tadbir</msg>
   <msg key="admin_page_name">Kawal Paparan</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Tadbir&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Tadbir&quot;&gt;</msg>
   <msg key="Administrator">Pentadbir</msg>
   <msg key="Administrators">Para Pentadbir</msg>
   <msg key="All">Semua</msg>
