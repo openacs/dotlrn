@@ -24,7 +24,7 @@
   <tr>
     <th align="left" width="30%"><%= [ad_parameter departments_pretty_name] %></th>
     <th align="left" width="30%"><%= [ad_parameter classes_pretty_name] %></th>
-    <th align="left" width="30%"><%= [ad_parameter classes_pretty_name] %> Instance</th>
+    <th align="left" width="30%"><%= [ad_parameter class_instances_pretty_name] %></th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="classes">
@@ -32,7 +32,7 @@
     <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
     <td><a href="class?class_key=@classes.class_key@">@classes.class_name@</a></td>
     <td><a href="@classes.url@">@classes.pretty_name@</a></td>
-    <td>[&nbsp;<font size="-1"><a href="@classes.url@one-community-admin">admin</a></font>&nbsp;]</td>
+    <td>[<small><a href="@classes.url@one-community-admin">admin</a></small>]</td>
   </tr>
 </multiple>
 </table>

@@ -36,16 +36,16 @@ set ancestor_type [dotlrn_community::get_toplevel_community_type -community_type
 db_1row select_community_type_info {}
 
 if {[string equal ${community_type} "dotlrn_class_instance"] != 0} {
-    set community_type_title [ad_parameter classes_pretty_plural]
-    set communities_title "[ad_parameter classes_pretty_name] Instances"
-    set title [ad_parameter classes_pretty_plural]
+    set community_type_title [ad_parameter "classes_pretty_plural"]
+    set communities_title [ad_parameter "class_instances_pretty_name"]
+    set title [ad_parameter "classes_pretty_plural"]
 } elseif {[string equal ${community_type} "dotlrn_club"] != 0} {
-    set community_type_title [ad_parameter clubs_pretty_plural]
-    set communities_title [ad_parameter clubs_pretty_plural]
-    set title [ad_parameter clubs_pretty_plural]
+    set community_type_title [ad_parameter "clubs_pretty_plural"]
+    set communities_title [ad_parameter "clubs_pretty_plural"]
+    set title [ad_parameter "clubs_pretty_plural"]
 } elseif {[string equal ${ancestor_type} "dotlrn_class_instance"] != 0} {
-    set community_type_title [ad_parameter classes_pretty_plural]
-    set communities_title "[ad_parameter classes_pretty_name] Instances"
+    set community_type_title [ad_parameter "classes_pretty_plural"]
+    set communities_title [ad_parameter "class_instances_pretty_name"]
     set title $pretty_name
 } else {
     set community_type_title "Community Types"

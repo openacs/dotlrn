@@ -4,7 +4,7 @@
 <property name="portal_id">@portal_id@</property>
 
 [
-  <font size="-1">
+  <small>
     <include src="deregister-link">
     |
     <a href="configure">customize</a>
@@ -12,7 +12,7 @@
     |
     <a href="one-community-admin">admin</a>
 </if>
-  </font>
+  </small>
 ]
 
 @rendered_page@

@@ -17,7 +17,7 @@
   <tr>
     <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
     <td>@clubs.description@</td>
-    <td>[&nbsp<font size="-1"><a href="@clubs.url@one-community-admin">admin</a></font>&nbsp;]</td>
+    <td>[<small><a href="@clubs.url@one-community-admin">admin</a></small>]</td>
   </tr>
 </multiple>
 </table>

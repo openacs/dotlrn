@@ -15,9 +15,9 @@
 <multiple name="all_applets">
   <li>
     @all_applets.applet_pretty_name@ - [
-      <font size="-1">
+      <small>
         <a href=applet-add?applet_key=@all_applets.applet_key@>add</a>
-      </font>
+      </small>
     ]
   </li>
 </multiple>

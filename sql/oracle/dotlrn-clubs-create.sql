@@ -31,10 +31,13 @@ as
            dotlrn_communities.portal_id,
            dotlrn_communities.portal_template_id,
            dotlrn_communities.package_id,
-           dotlrn_community.url(dotlrn_communities.community_id) as url
+           dotlrn_community.url(dotlrn_communities.community_id) as url,
+           groups.join_policy
     from dotlrn_communities,
-         dotlrn_clubs
-    where dotlrn_communities.community_id = dotlrn_clubs.club_id;
+         dotlrn_clubs,
+         groups
+    where dotlrn_communities.community_id = dotlrn_clubs.club_id
+    and dotlrn_communities.community_id = groups.group_id;
 
 create or replace package dotlrn_club
 is

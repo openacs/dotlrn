@@ -23,12 +23,11 @@
 <h3>Add/Drop Memberships</h3>
 
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>
-  <br><hr>
+  <hr>
 
   <h4>Your Current Memberships</h4>
 
 <if @n_member_classes@ gt 0>
-    <br>
 
     <h4><%= [ad_parameter classes_pretty_plural] %></h4>
 
@@ -46,18 +45,26 @@
 <if @member_classes:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left"><%= [ad_parameter classes_pretty_name] %></th>
-        <th align="left">Term</th>
-        <th align="left">Role</th>
-        <th align="left">Actions</th>
+        <th align="left" width="55%"><%= [ad_parameter classes_pretty_name] %></th>
+        <th align="left" width="15%">Term</th>
+        <th align="left" width="15%">Role</th>
+        <th align="left" width="15%">Actions</th>
       </tr>
 
+<% set i 0 %>
+
 <multiple name="member_classes">
-      <tr>
+
+<%
+    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
+    set i [expr 1 - $i]
+%>
+
+      <tr bgcolor=@bgcolor@>
         <td><a href="@member_classes.url@">@member_classes.pretty_name@</td>
         <td>@member_classes.term_name@ @member_classes.term_year@</td>
         <td>@member_classes.role@</td>
-        <td>[&nbsp;<include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@>&nbsp;]</td>
+        <td>[<small><include src="deregister-link" url="@member_classes.url@deregister" referer=@referer@></small>]</td>
       </tr>
 </multiple>
     </table>
@@ -68,23 +75,29 @@
 
 </if>
 
-  <br>
-
   <h4><%= [ad_parameter clubs_pretty_plural] %></h4>
 
 <if @member_clubs:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left"><%= [ad_parameter clubs_pretty_name] %></th>
-        <th align="left">Role</th>
-        <th align="left">Actions</th>
+        <th align="left" colspan="2" width="70%"><%= [ad_parameter clubs_pretty_name] %></th>
+        <th align="left" width="15%">Role</th>
+        <th align="left" width="15%">Actions</th>
       </tr>
 
+<% set i 0 %>
+
 <multiple name="member_clubs">
-      <tr>
-        <td><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
+
+<%
+    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
+    set i [expr 1 - $i]
+%>
+
+      <tr bgcolor=@bgcolor@>
+        <td colspan="2"><a href="@member_clubs.url@">@member_clubs.pretty_name@</td>
         <td>@member_clubs.role@</td>
-        <td>[&nbsp;<include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@>&nbsp;]</td>
+        <td>[<small><include src="deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small>]</td>
       </tr>
 </multiple>
     </table>
@@ -97,12 +110,11 @@
 </if>
 
 <if @n_non_member_classes@ gt 0 or @non_member_clubs:rowcount@ gt 0>
-  <br><hr>
+  <hr>
 
   <h4>Join A Group</h4>
 
 <if @n_non_member_classes@ gt 0>
-    <br>
 
     <h4><%= [ad_parameter classes_pretty_plural] %></h4>
 
@@ -120,16 +132,26 @@
 <if @non_member_classes:rowcount@ gt 0>
     <table width="100%">
       <tr>
-        <th align="left"><%= [ad_parameter classes_pretty_name] %></th>
-        <th align="left">Term</th>
-        <th align="left">Actions</th>
+        <th align="left" width="55%"><%= [ad_parameter classes_pretty_name] %></th>
+        <th align="left" width="15%">Term</th>
+        <th align="left" width="15%">&nbsp;</th>
+        <th align="left" width="15%">Actions</th>
       </tr>
 
+<% set i 0 %>
+
 <multiple name="non_member_classes">
-      <tr>
+
+<%
+    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
+    set i [expr 1 - $i]
+%>
+
+      <tr bgcolor=@bgcolor@>
         <td><a href="@non_member_classes.url@">@non_member_classes.pretty_name@</td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
-        <td>[&nbsp;<include src="register-link" url="@non_member_classes.url@register" referer=@referer@>&nbsp;]</td>
+        <td>&nbsp;</td>
+        <td>[<small><include src="register-link" url="@non_member_classes.url@register" referer=@referer@></small>]</td>
       </tr>
 </multiple>
     </table>
@@ -140,21 +162,27 @@
 
 </if>
 
-  <br>
-
   <h4><%= [ad_parameter clubs_pretty_plural] %></h4>
 <if @non_member_clubs:rowcount@ gt 0>
 
     <table width="100%">
       <tr>
-        <th align="left"><%= [ad_parameter clubs_pretty_name] %></th>
+        <th align="left" colspan="3" width="85%"><%= [ad_parameter clubs_pretty_name] %></th>
         <th align="left">Actions</th>
       </tr>
 
+<% set i 0 %>
+
 <multiple name="non_member_clubs">
-      <tr>
-        <td><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
-        <td>[&nbsp;<include src="register-link" url="@non_member_clubs.url@register" referer=@referer@>&nbsp;]</td>
+
+<%
+    if {!$i} { set bgcolor "#ffffff" } else { set bgcolor "#ececec" }
+    set i [expr 1 - $i]
+%>
+
+      <tr bgcolor=@bgcolor@>
+        <td colspan="3"><a href="@non_member_clubs.url@">@non_member_clubs.pretty_name@</td>
+        <td>[<small><include src="register-link" url="@non_member_clubs.url@register" referer=@referer@></small>]</td>
       </tr>
 </multiple>
     </table>

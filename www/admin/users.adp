@@ -3,11 +3,11 @@
 <property name="context_bar">@context_bar@</property>
 
 [ 
-  <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><font size="-1">Create A New User</font></a> 
+  <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><small>Create A New User</small></a> 
   |
-  <a href="users-search"><font size="-1">Search Users</font></a>
+  <a href="users-search"><small>Search Users</small></a>
   |
-  <a href="users-bulk-upload"><font size=-1>Bulk Upload</font></a>
+  <a href="users-bulk-upload"><small>Bulk Upload</small></a>
 ]
 
 <p></p>

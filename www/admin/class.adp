@@ -8,7 +8,7 @@
 
 <p>
 <if @can_instantiate@ gt 0>
-  [ <a href="class-instance-new?class_key=@class_key@">New <%= [ad_parameter classes_pretty_name] %> Instance</a> ]
+  [ <a href="class-instance-new?class_key=@class_key@">New <%= [ad_parameter class_instances_pretty_name] %></a> ]
 </if>
 <else>
 <include src="need-term-note">
@@ -31,14 +31,14 @@
 <table width="100%">
   <tr>
     <th align="left" width="15%">Term</th>
-    <th align="left" width="50%"><%= [ad_parameter classes_pretty_name] %> Instance Name</th>
+    <th align="left" width="50%"><%= [ad_parameter class_instances_pretty_name] %> Name</th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="class_instances">
   <tr>
     <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
     <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
-    <td>[&nbsp;<font size="-1"><a href="@class_instances.url@one-community-admin">admin</a></font>&nbsp;]</td>
+    <td>[<small><a href="@class_instances.url@one-community-admin">admin</a></small>]</td>
   </tr>
 </multiple>
 </table>

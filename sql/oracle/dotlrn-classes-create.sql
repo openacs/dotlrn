@@ -118,16 +118,19 @@ as
            dotlrn_classes_full.url as class_url,
            dotlrn_classes_full.department_key,
            dotlrn_departments_full.pretty_name as department_name,
-           dotlrn_departments_full.url as department_url
+           dotlrn_departments_full.url as department_url,
+           groups.join_policy
     from dotlrn_communities,
          dotlrn_class_instances,
          dotlrn_terms,
          dotlrn_classes_full,
-         dotlrn_departments_full
+         dotlrn_departments_full,
+         groups
     where dotlrn_communities.community_id = dotlrn_class_instances.class_instance_id
     and dotlrn_class_instances.term_id = dotlrn_terms.term_id
     and dotlrn_communities.community_type = dotlrn_classes_full.class_key
-    and dotlrn_classes_full.department_key = dotlrn_departments_full.department_key;
+    and dotlrn_classes_full.department_key = dotlrn_departments_full.department_key
+    and dotlrn_communities.community_id = groups.group_id;
 
 create or replace view dotlrn_class_instances_current
 as
