@@ -1022,7 +1022,6 @@ namespace eval dotlrn_community {
         return [db_0or1row select_subcomm_check {}]
     }
 
-
     ad_proc -public get_subcomm_list {
         {-community_id:required}
     } {
@@ -1030,6 +1029,15 @@ namespace eval dotlrn_community {
         if none, the empty list
     } {
         return [db_list select_subcomms {}]
+    }
+
+    ad_proc -public get_subcomm_info_list {
+        {-community_id:required}
+    } {
+        Returns a tcl list of ns_sets with info about each subcomm. The keys
+	are: community_id, community_key, pretty_name, and url
+    } {
+        return [db_list_of_ns_sets select_subcomms_info {}]
     }
 
     ad_proc -public get_subcomm_chunk {
@@ -1047,9 +1055,11 @@ namespace eval dotlrn_community {
         member of all the supergroups to the leaf subgroup. Not even
         admins see the whole tree.
 
-        FIXME: still rather slow
+        FIXME: we want to be rid of this proc. it's only used in the dotlrn-portlet.
+	A better solution is to do a db_multirow like yon's in dotlrn-main-portlet.
 
-        things to get: has_subcom, member_p, url, name, admin_p, not_closed_p, member_pending, needs_approval
+        things to get: has_subcom, member_p, url, name, admin_p, not_closed_p, \
+		member_pending, needs_approval
         things to send: user_id, sc_id, 
     } {
         set chunk ""
@@ -1119,80 +1129,6 @@ namespace eval dotlrn_community {
                 }
             }
         }
-        return $chunk
-    }
-
-
-    ad_proc -public get_subcomm_chunk_new {
-        {-user_id ""}
-        {-community_id:required}
-        {-pretext "<li>"}
-        {-join_target "register"}
-        {-only_member_p 0}
-    } {
-        Returns a html fragment of the subcommunity hierarchy of this
-        community or if none, the empty list.
-        
-        Brief notes: his proc always shows the subgroups of the
-        passed-in group, but shows deeper groups _only if_ you are a
-        member of all the supergroups to the leaf subgroup. Not even
-        admins see the whole tree.
-
-        more things to get from PL/SQL:   not_closed_p, member_pending, needs_approval
-    } {
-        set chunk ""
-
-        if {[empty_string_p $user_id]} {
-            set user_id [ad_get_user_id]
-        }
-
-        set referer [ad_conn url]
-
-        db_foreach select_subcomm_info {} {
-            if {$has_subcomm_p && $member_p} {
-                # Shows the subcomms of this subcomm ONLY IF I'm a
-                # member of the current comm
-                append chunk "$pretext <a href=${url}>$name</a>\n"
-                
-                if {$admin_p} {
-                    append chunk "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
-                }
-
-                append chunk "<ul>\n[get_subcomm_chunk_new -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
-            } elseif { $member_p || $admin_p || [not_closed_p -community_id $sc_id]} {
-                # Shows the subcomm if: 
-                # 1. I'm a member of this subcomm OR
-                # 2. I'm have admin rights over the subcomm OR
-                # but if the only_member_p flag is true, the user must be 
-                # a member of the subcomm to see it.
-
-                if {$only_member_p && !$member_p} {
-                    continue
-                }
-
-                append chunk "$pretext <a href=$url>$name</a>\n"
-
-                if {!$member_p && [not_closed_p -community_id $sc_id]} {
-
-                      append chunk "<small>\["
-                      
-                      if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
-                          append chunk "waiting&nbsp;for&nbsp;approval"
-                      } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk "<a href=\"${url}${join_target}?referer=${referer}\">request&nbsp;membership</a>"
-                      } else {
-                          append chunk "<a href=${url}${join_target}>join</a>"
-                      }
-                      
-                      append chunk "\]</small>\n"
-                }
-
-                if {$admin_p} {
-                    append chunk " <small>\[<a href=${url}one-community-admin>admin</a>\]</small>\n"
-                }
-            }
-        }
-
         return $chunk
     }
 
