@@ -169,6 +169,7 @@ namespace eval dotlrn_community {
                     [portal::create \
                     -name "$pretty_name Administration Portal" \
                     -context_id $community_id \
+                    -layout_name "Simple 1-Column" \
                     $user_id]
 
             # update the portal_template_id and non_member_portal_id
