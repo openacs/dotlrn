@@ -1,4 +1,10 @@
-<a href="/dotlrn/all-communities">Join/Drop a Class or Community Group</a>
+[
+<font size="-1">
+  <a href="/dotlrn/all-communities">Join/Drop a Class or Community Group</a>
+</font>
+]
+
+<p></p>
 
 <table border="0" cellpadding="2" cellspacing="2" width="100%">
 <multiple name="communities">
