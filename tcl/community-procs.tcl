@@ -932,24 +932,24 @@ namespace eval dotlrn_community {
 
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-                if {![member_p $sc_id $user_id] 
-                  && [not_closed_p -community_id $sc_id] 
-                  || [member_pending_p -community_id $sc_id -user_id $user_id]} {
-                    # don't show the join link if the comm is closed, 
-                    # and the first space is good below
-                    append chunk \
-                            "<small>\[<a href=${url}${join_target}?referer=[ad_conn url]>"
-                    if {[needs_approval_p -community_id $sc_id]} {
-                        if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
-                            append chunk "waiting&nbsp;for&nbsp;approval" 
-                        } else {
-                            append chunk "request&nbsp;membership" 
-                        }
-                    } else {
-                        append chunk "join"
-                    } 
+                if {![member_p $sc_id $user_id]
+                  && [not_closed_p -community_id $sc_id]} {
 
-                    append chunk "</a>\]</small>\n"
+                      append chunk \
+                          "<small>\["
+                      
+                      if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
+                          append chunk \
+                              "waiting&nbsp;for&nbsp;approval"
+                      } elseif {[needs_approval_p -community_id $sc_id]} {
+                          append chunk \
+                              "<a href=${url}${join_target}?referer=[ad_conn url]>request&nbsp;membership</a>"
+                      } else {
+                          append chunk \
+                              "<a href=${url}${join_target}>join</a>"
+                      }
+                      
+                      append chunk "\]</small>\n"
                 }
 
                 if {[dotlrn::user_can_admin_community_p $sc_id]} {
