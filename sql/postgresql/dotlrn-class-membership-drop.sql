@@ -28,27 +28,27 @@ create function inline_0()
 returns integer as '
 begin
 
-    select acs_rel_type__drop_type (
+    perform acs_rel_type__drop_type (
         ''dotlrn_student_rel'',
         ''t''
     );
 
-    select acs_rel_type__drop_type (
+    perform acs_rel_type__drop_type (
         ''dotlrn_ta_rel'',
         ''t''
     );
 
-    select acs_rel_type__drop_type (
+    perform acs_rel_type__drop_type (
         ''dotlrn_ca_rel'',
         ''t''
     );
 
-    select acs_rel_type__drop_type (
+    perform acs_rel_type__drop_type (
         ''dotlrn_cadmin_rel'',
         ''t''
     );
 
-    select acs_rel_type__drop_type (
+    perform acs_rel_type__drop_type (
         ''dotlrn_instructor_rel'',
         ''t''
     );
@@ -57,7 +57,7 @@ begin
     
 end;' language 'plpgsql';
 
-select function inline_0();
+select  inline_0();
 drop function inline_0();
 
 drop view dotlrn_instructor_rels_full;

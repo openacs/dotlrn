@@ -78,7 +78,7 @@ begin
         foo
     );
 
-    acs_rel_type__drop_type(
+    perform acs_rel_type__drop_type(
         ''dotlrn_admin_profile_rel'',
         ''t''
     );

@@ -26,5 +26,5 @@
 \i dotlrn-professors-sanitize.sql
 \i dotlrn-professor-profile-provider-drop.sql
 
-drop table dotlrn_full_prof_profile_rels;
+drop table dotlrn_full_professor_profile_rels;
 drop table dotlrn_professor_profile_rels;

@@ -21,5 +21,4 @@
 -- @version $Id$
 --
 
-select drop_package('dotlrn_full_admin_profile_rel');
 select drop_package('dotlrn_admin_profile_rel');
