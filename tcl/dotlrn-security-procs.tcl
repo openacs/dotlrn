@@ -106,15 +106,19 @@ namespace eval dotlrn {
                 # Update the user and set the portal page correctly
                 ns_set put $extra_vars portal_id $portal_id
                 
+	    }
+
+	    # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
+	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type "" $user_id]
+
+	    if {$rel_type == "dotlrn_full_user_rel"} {
                 # must be here since wsp must exist in the dotlrn_full_users table,
                 #do the callbacks on the active dotlrn-wide applets
                 dotlrn_community::applets_dispatch \
                         -op AddUser \
                         -list_args [list $user_id]
-	    }
-
-	    # Add the relation (no need to feed in anything for object_id_one, or two for that matter).
-	    set rel_id [relation_add -extra_vars $extra_vars -member_state approved $rel_type "" $user_id]
+            }
+                
 	}
 
 	return $rel_id
