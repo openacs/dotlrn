@@ -713,7 +713,7 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public add_user {
-        {-rel_type ""}
+        {-rel_type dotlrn_member_rel}
         {-member_state approved}
         community_id
         user_id
@@ -1189,7 +1189,7 @@ namespace eval dotlrn_community {
                           append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">>Request Membership</a>\n"
 
                       } else {
-                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\"><img border=0 valign=\"bottom\" src=\"graphics/join.gif\" alt=\"Join\"></a>\n"
+                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">Join</a>\n"
                       }
 
                       append chunk " </small>\]</nobr>\n"
