@@ -22,22 +22,25 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
-    user_id
+    {user_id:multiple,notnull}
     rel_type
     {referer "one-community-admin"}
 }
 
 set community_id [dotlrn_community::get_community_id]
-# See if the user is already in the group
-set member_p [dotlrn_community::member_p $community_id $user_id]
 
-if {$member_p} {
-    dotlrn_community::remove_user $community_id $user_id
-}
+foreach uid $user_id {
+    
+    # See if the user is already in the group
+    set member_p [dotlrn_community::member_p $community_id $uid]
+    
+    if {$member_p} {
+	dotlrn_community::remove_user $community_id $uid
+    }
+    
+    # Add the relation
+    dotlrn_community::add_user -rel_type $rel_type $community_id $uid
 
-
-# Add the relation
-dotlrn_community::add_user -rel_type $rel_type $community_id $user_id
-
+}    
 ad_returnredirect $referer
 
