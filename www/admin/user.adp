@@ -177,32 +177,17 @@
 
 <ul>
   <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
-<if @portrait_p@>
-  <br>
-  <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
-</if>
-<if @dotlrn_user_p@ eq 1>
-  <br>
+  <if @portrait_p@>
+    <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
+  </if>
   <li>    
-<if @site_wide_admin_p@ eq t>
-This user is a site-wide admin. (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">revoke</a>)
-    </if>
-    <else>
-      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">Make this user a site wide admin.</a>
-    </else>
-</if>
-  <br>
-  <li>    
-<if @dotlrn_user_p@ eq 1>
-<if @site_wide_admin_p@ eq t>
-#dotlrn.lt_This_user_is_a_site-w# (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">#dotlrn.revoke#</a>)
-    </if>
-    <else>
-      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">#dotlrn.lt_Make_this_user_a_site#</a>
-    </else>
-</if>
-  <br>
+  <if @site_wide_admin_p@>
+    #dotlrn.lt_This_user_is_a_site-w# 
+    (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">#dotlrn.revoke#</a>)
+  </if>
+  <else>
+    <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">
+    #dotlrn.lt_Make_this_user_a_site#</a>
+  </else>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
 </ul>
-
-
