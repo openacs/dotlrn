@@ -299,7 +299,7 @@
     <fullquery name="dotlrn_community::get_package_id.select_package_id">
         <querytext>
             select package_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
