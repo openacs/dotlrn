@@ -50,10 +50,12 @@
         </querytext>
     </fullquery>
 
-<fullquery name="dotlrn_class::check_class_key_valid_p.collision_check">
-<querytext>
-select 1 from dotlrn_classes where dotlrn_classes.class_key = :class_key
-</querytext>
-</fullquery>
+    <fullquery name="dotlrn_class::check_class_key_valid_p.collision_check">
+        <querytext>
+            select 1
+            from dotlrn_classes
+            where dotlrn_classes.class_key = :class_key
+        </querytext>
+    </fullquery>
 
 </queryset>

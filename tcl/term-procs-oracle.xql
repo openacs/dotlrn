@@ -45,4 +45,5 @@
             where dotlrn_terms.term_id = :term_id
         </querytext>
     </fullquery>
+
 </queryset>

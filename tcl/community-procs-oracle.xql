@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <queryset>
-  <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
+    <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
 
     <fullquery name="dotlrn_community::get_community_id_not_cached.select_community">
         <querytext>
@@ -113,4 +113,5 @@
             connect by object_type = prior supertype
         </querytext>
     </fullquery>
+
 </queryset>

@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <queryset>
+
     <fullquery name="select_classes">
         <querytext>
             select dotlrn_classes_full.class_key,
@@ -32,4 +33,5 @@
                      dotlrn_classes_full.pretty_name
         </querytext>
     </fullquery>
+
 </queryset>
