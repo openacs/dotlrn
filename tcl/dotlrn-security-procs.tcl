@@ -40,6 +40,9 @@ namespace eval dotlrn {
         regsub -all -- {-+} $name "-" name
         set name [string tolower [string trim $name {-}]]
 
+        # Remove non-US ASCII characters
+        set name [util_text_to_url -replacement {} $name]
+
         if {$increment_p} {
             # increment the key by checking if the last 2 chars are -int
             # if so, incr the int. if not add "-1" to the key
