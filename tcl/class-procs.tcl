@@ -32,7 +32,7 @@ namespace eval dotlrn_class {
 
 	set parent_node_id [ad_conn -get node_id]
 
-	set group_type_name "DOTLRN_CLASS_$name"
+	set group_type_name "dotlrn_class_$name"
 
 	db_transaction {
 	    # Create a new group type for that class
@@ -45,8 +45,10 @@ namespace eval dotlrn_class {
 
 	    # Set some parameters
 	    ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-	    ad_parameter -package_id $package_id -set 1 class_level_p
-	    ad_parameter -package_id $package_id -set 0 class_instance_level_p
+	    ad_parameter -package_id $package_id -set 1 community_type_level_p
+	    ad_parameter -package_id $package_id -set 0 community_level_p
+
+	    # Insert the community into the DB
 
 	    # insert the class into the DB
 	    db_dml insert_class {}
