@@ -20,8 +20,5 @@
 
 <master src="dotlrn-master">
 <property name="title">Manage Membership</property>
-<property name="link_control_panel">@admin_p@</property>
-<property name="show_control_panel">@admin_p@</property>
-
 
 <include src="members-chunk-table" referer="members">

@@ -20,8 +20,6 @@
 
 <master src="dotlrn-master">
 
-<property name="show_control_panel">@admin_p@</property>
-
 <p></p>
 
 @rendered_page@

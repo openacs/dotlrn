@@ -21,7 +21,7 @@
 <master src="dotlrn-master">
 <property name="title">@title@</property>
 
-<property name="show_control_panel">1</property>
+
 
 
 <formtemplate id="add_subcomm"></formtemplate>

@@ -22,7 +22,7 @@
 <property name="title">@spam_name@ Community</property>
 <property name="context_bar">@context_bar@</property>
 
-<property name="show_control_panel">1</property>
+
 
 
 <formtemplate id="spam_message"></formtemplate>

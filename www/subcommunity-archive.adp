@@ -20,7 +20,7 @@
 
 <master src="dotlrn-master">
 <property name="title">@title@</property>
-<property name="show_control_panel">1</property>
+
 
 
 Are you sure you want to archive group <strong>@pretty_name@</strong>?

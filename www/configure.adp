@@ -20,8 +20,6 @@
 
 <master src="dotlrn-master">
 <property name="title">Configure @name@</property>
-<property name="show_control_panel">1</property>
-<property name="link_control_panel">1</property>
 
 <p></p>
 
