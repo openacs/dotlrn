@@ -46,7 +46,7 @@ begin
 	-- Add the applet to dotlrn (used for one-time initialization)
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.AddApplet.InputType',
-		  msg_type_spec => 'community_id:integer'
+		  msg_type_spec => ''
 	);
 
 	foo := acs_sc_msg_type.new(
