@@ -29,7 +29,7 @@
     <fullquery name="select_non_dotlrn_users">
       <querytext>
         select persons.person_id,
-               persons.first_name,
+               persons.first_names,
                persons.last_name,
                parties.email,
                't',
