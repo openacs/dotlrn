@@ -56,15 +56,15 @@
 
       <td colspan=3 class="header-buttons" align="right" valign="bottom">
         <a href="@dotlrn_url@/?">#dotlrn.user_portal_page_home_title#</a>
-        <img class="header-img" src="@dotlrn_url@/resources/spacer.gif" height="1" width="10">
+        <img class="header-img" src="/resources/dotlrn/spacer.gif" height="1" width="10">
         <a href="@help_url@">#dotlrn.help#</a>
-        <img class="header-img" src="@dotlrn_url@/resources/spacer.gif" height="1" width="10">
+        <img class="header-img" src="/resources/dotlrn/spacer.gif" height="1" width="10">
         <a href="/register/logout">#dotlrn.logout#</a>
       </td>
   
     </tr>
 
-  <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/resources/spacer.gif"></td></tr>
+  <tr><td colspan=3 class="dark-line" height="1"><img src="/resources/dotlrn/spacer.gif"></td></tr>
 
   <!-- navbars on every page -->
   <tr><td colspan=3 valign=top>@navbar;noquote@</td></tr>
@@ -80,7 +80,7 @@
 
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr><td><small>@navbar;noquote@</small></td></tr>
-    <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/resources/spacer.gif"></td></tr>
+    <tr><td colspan=3 class="dark-line" height="1"><img src="/resources/dotlrn/spacer.gif"></td></tr>
   </table>
 
   <!-- Footer End -->
