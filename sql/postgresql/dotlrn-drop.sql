@@ -25,7 +25,7 @@
 \i user-extension-drop.sql
 \i security-drop.sql
 \i main-portlet-drop.sql
-\i community-membership-packages-drop.sql
+\i community-memberships-packages-drop.sql
 \i applet-sc-drop.sql
 \i class-membership-drop.sql
 \i classes-drop.sql
