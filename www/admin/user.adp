@@ -157,8 +157,7 @@
 
   <ul>
     <li>
-      <a href="users-add-to-community?users=@user_id@&referer=@return_url@">#dotlrn.Add#</a>
-      #dotlrn.lt_this_user_to_another_#
+      <a href="users-add-to-community?users=@user_id@&referer=@return_url@">#dotlrn.add_to_another_group#</a>
     </li>
   </ul>
 
@@ -166,7 +165,7 @@
 <else>
 <p>
 <if @member_state@ eq "approved">
-  <a href="user-new-2?user_id=@user_id@&referer=@return_url@">#dotlrn.Add#</a> #dotlrn.this_user_to_dotLRN#
+  <a href="user-new-2?user_id=@user_id@&referer=@return_url@">#dotlrn.add_to_dotlrn#</a>
 </if>
 <else>
 #dotlrn.lt_This_user_is_currentl#.
