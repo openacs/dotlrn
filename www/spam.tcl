@@ -22,7 +22,8 @@ ad_page_contract {
     {recipients:integer,multiple ""}
     {recipients_str ""}
     {community_id ""}
-    {rel_type "dotlrn_member_rel"}
+    {rel_types:multiple "" }
+    {rel_types_str ""}
     {referer "control-panel"}
     {spam_all 0}
 } -validate {
@@ -36,6 +37,11 @@ ad_page_contract {
         set recipients [split $recipients_str]
       }
     }
+    rel_types_split {
+      if { [info exists rel_types_str] && ![info exists rel_types] } {
+        set rel_types [split $rel_types_str]
+      }
+  }
 } -properties {
     context_bar:onevalue
     portal_id:onevalue
@@ -61,7 +67,6 @@ db_1row select_sender_info {}
 set sender_first_names [db_quote $sender_first_names]
 set sender_last_name [db_quote $sender_last_name]
 
-
 form create spam_message
 
 element create spam_message community_id \
@@ -76,13 +81,6 @@ element create spam_message from \
     -widget hidden \
     -html {size 60} \
     -value $sender_email
-
-element create spam_message rel_type \
-    -label [_ dotlrn.To] \
-    -datatype text \
-    -widget select \
-    -options [list [list [_ dotlrn.Members] dotlrn_member_rel] [list [_ dotlrn.Administrators] dotlrn_admin_rel]] \
-    -value $rel_type
 
 element create spam_message subject \
     -label [_ dotlrn.Subject] \
@@ -122,6 +120,12 @@ element create spam_message recipients_str \
     -widget hidden \
     -value $recipients
 
+element create spam_message rel_types_str \
+    -label rel_types \
+    -datatype text \
+    -widget hidden \
+    -value $rel_types
+
 element create spam_message spam_all \
     -label spam \
     -datatype text \
@@ -130,23 +134,42 @@ element create spam_message spam_all \
 
 if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
-        community_id from rel_type subject message message_type send_date referer recipients_str spam_all
+        community_id from rel_types_str subject message message_type send_date referer recipients_str spam_all
 
-    set segment_id [db_string select_rel_segment_id {}]
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
+
     set recipients_str [join [split $recipients_str] ,]
+    set rel_types_str [join [split $rel_types_str] ',']
+
+
+
+# POSTGRES - change to plural
+# TODO - what if no rel_types
 
     set safe_community_name [db_quote $community_name]
 
+    set extra_where_clause ""
+
     if { $spam_all } {
-      set extra_where_clause ""
-    } else {
-      set extra_where_clause "and parties.party_id in ($recipients_str)"
+	# if there is a spam_all, choose all the rel_types!
+
+	set rel_types_str [join [db_list select_rel_segments "
+            select rel_segments.rel_type
+            from rel_segments
+            where rel_segments.group_id = :community_id"] ',']
+    } 
+
+    if {[empty_string_p $recipients_str]} {
+	set recipients_str ''
     }
+
+
     set query [db_map sender_info]
 
-ns_log notice "query: $query"
+    # TO DO CHANGE THE ORACLE QUERY
+    
+    ns_log notice "query: $query"
 
     bulk_mail::new \
         -package_id [site_node_apm_integration::get_child_package_id -package_key [bulk_mail::package_key]] \
