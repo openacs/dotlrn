@@ -24,7 +24,7 @@
 
 
 A member of the @system_name@ community since @pretty_creation_date@
-
+<ul>
 <if @member_state@ eq "deleted">
 
   <blockquote><font color="red">this user is deleted</font></blockquote>
@@ -37,12 +37,25 @@ A member of the @system_name@ community since @pretty_creation_date@
 
 </if></else>
 
+<if @portrait_p@ eq 1>
+
+  <if @inline_portrait_state@ eq "inline">
+  
+    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
+  
+  </if>
+  <if @inline_portrait_state@ eq "link">
+  
+      <li><a href="/user/portrait?@portrait_export_vars@">Portrait</a></li>
+  
+  </if>
+</if>
+
 <if @show_email_p@ eq 1>
-  <ul>
     <li>E-mail @first_names@ @last_name@: <a href="mailto:@email@">@email@</a></li>
 
-    <if @url@ not nil>
-      <li>Personal home page: <a href="@url@">@url@</a></li>
+    <if @home_url@ not nil>
+      <li>Personal home page: <a href="@home_url@" target=_new>@home_url@</a></li>
     </if>
 	<if @weblog_p@ true>
 	<multiple name="weblogs">
@@ -52,30 +65,17 @@ A member of the @system_name@ community since @pretty_creation_date@
     <if @bio@ not nil>
       <p> <em>Biography:</em> @bio@
     </if>
-  </ul>
 </if>
 <else>
-  <if @url@ not nil>
-    <ul><li>Personal home page: <a href="@url@">@url@</a></li></ul>
+  <if @home_url@ not nil>
+    <li>Personal home page: <a href="@home_url@" target=_new>@home_url@</a></li>
   </if>
 </else>
 
-<if @portrait_p@ eq 1>
-
-  <if @inline_portrait_state@ eq "inline">
-  
-    <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
-  
-  </if>
-  <if @inline_portrait_state@ eq "link">
-  
-      <ul><li><a href="/user/portrait?@portrait_export_vars@">Portrait</a></li></ul>
-  
-  </if>
-</if>
+</ul>
 
 <if @folder_id@ not nil>
-<h3>Shared Files</h3>
+<h3><a href="@folder_url@">Shared Files</a></h3><br>
 
 <include src=@scope_fs_url@ folder_id=@folder_id@ viewing_user_id=@user_id@ n_past_days=@n_past_days@ fs_url="@url@">
 </if>
