@@ -32,7 +32,7 @@
 
 <title>@title@</title>
 @header_stuff;noquote@
-
+<link rel="stylesheet" type="text/css" href="/lists.css" media="all">
 
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
