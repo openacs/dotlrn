@@ -5,7 +5,6 @@ You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
 
 <FORM method=get action=community-user-add-3>
 <INPUT TYPE=hidden name=user_id value=@user_id@>
-<INPUT TYPE=hidden name=community_id value=@community_id@>
 Role: 
 <SELECT name=rel_type>
 <multiple name="roles">

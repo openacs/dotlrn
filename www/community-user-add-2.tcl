@@ -6,8 +6,9 @@ ad_page_contract {
     @creation-date 2001-11-04
 } {
     user_id
-    community_id
 }
+
+set community_id [dotlrn_community::get_community_id]
 
 # Get user information
 db_1row select_user_info "select first_names, last_name, email from dotlrn_users_full where user_id=:user_id"

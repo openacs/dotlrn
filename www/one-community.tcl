@@ -44,5 +44,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
 
     set context_bar {View}
 
+    set admin_p [dotlrn::user_can_admin_community_p $community_id]
+
     ad_return_template
 }

@@ -5,9 +5,10 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-08
 } {
-    community_id
     applet_key
 }
+
+set community_id [dotlrn_community::get_community_id]
 
 # Check access
 if {![dotlrn_community::admin_access_p $community_id]} {

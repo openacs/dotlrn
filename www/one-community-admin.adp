@@ -1,8 +1,9 @@
 <master src="./master">
-<property name="title">dotLRN Class Instance</property>
+<property name="title">dotLRN Community Admin</property>
+<property name="context_bar">@context_bar@</property>
 
 <h3>Applets</h3>
-<a href=community-applets?community_id=@community_id@>manage applets</a>
+<a href=community-applets>manage applets</a>
 
 <p>
 
@@ -14,7 +15,7 @@
 
 <p>
 
-<form method=get action=community-user-add><li> Add a user: <input type=hidden name=community_id value=@community_id@><input type=text name=search_text> <input type=submit value=search></form>
+<form method=get action=community-user-add><li> Add a user: <input type=text name=search_text> <input type=submit value=search></form>
 </ul>
 
 <h3>Portal Template</h3>

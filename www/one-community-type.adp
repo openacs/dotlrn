@@ -22,7 +22,7 @@
 <h3>Active Communities of this Type</h3>
 <ul>
 <multiple name=active_communities>
-<li><a href=@active_communities.url@>@active_communities.pretty_name@</a> <if @active_communities.admin_p@ eq 1>(<a href=one-community-admin?community_id=@active_communities.community_id@>admin</a>)</if>
+<li><a href=@active_communities.url@>@active_communities.pretty_name@</a> <if @active_communities.admin_p@ eq 1>(<a href=@active_communities.url@one-community-admin>admin</a>)</if>
 </multiple>
 </ul>
 </else>

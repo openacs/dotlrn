@@ -17,6 +17,6 @@ Here you can do all sorts of administrative stuff.
 <h3>Applets to Add</h3>
 <ul>
 <multiple name=all_applets>
-<li> @all_applets.applet_pretty_name@ - [<a href=applet-add?community_id=@community_id@&applet_key=@all_applets.applet_key@>add</a>]
+<li> @all_applets.applet_pretty_name@ - [<a href=community-applet-add?applet_key=@all_applets.applet_key@>add</a>]
 </multiple>
 </ul>

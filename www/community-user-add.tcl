@@ -6,8 +6,9 @@ ad_page_contract {
     @creation-date 2001-11-04
 } {
     search_text
-    community_id
 }
+
+set community_id [dotlrn_community::get_community_id]
 
 # Just search
 db_multirow users select_users {}

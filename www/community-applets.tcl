@@ -6,8 +6,9 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-05
 } {
-    community_id
 }
+
+set community_id [dotlrn_community::get_community_id]
 
 set user_id [ad_conn user_id]
 
@@ -35,6 +36,6 @@ foreach applet_key $list_of_applets {
     }
 }
 
-set context_bar {Admin}
+set context_bar {Applets}
 
 ad_return_template
