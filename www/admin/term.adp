@@ -102,7 +102,7 @@
 <if @term_id@ eq -1>
       <td align="left">@classes.term_name@ @classes.term_year@</td>
 </if>
-      <td align="left"><a href="@classes.url@">@classes.pretty_name@</a></td>
+      <td align="left"><a href="@classes.url@">@classes.description@</a></td>
       <td align="center">@classes.n_members@</td>
       <td align="center">
         <nobr>

@@ -6,6 +6,7 @@
         <querytext>
             select department_key,
                    pretty_name,
+                   description,
                    (select count(*)
                     from dotlrn_classes
                     where department_key = dotlrn_departments_full.department_key) as n_classes

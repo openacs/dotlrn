@@ -39,7 +39,7 @@
 	<tr><td>
 <h3>#dotlrn.General_Site_Help#</h3> 
 <ul>
-  <li><a href="@dotlrn_url@/help">#dotlrn.help#</a></li>
+  <li><a href="/global/HELP/indice.htm">#dotlrn.help#</a></li>
   <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a>
 </ul>
 <h3>#dotlrn.Personal_Options#</h3>
