@@ -64,8 +64,15 @@
 
 </multiple>
 
-  </table>
 </if>
+<else>
+  <tr bgcolor="#eeeeee">
+    <td align="left" colspan="4">
+      <i>No Terms</i>
+    </td>
+  </tr>
+</else>
+  </table>
 
 <if @terms:rowcount@ gt 10>
   <br>
