@@ -100,7 +100,7 @@ element create spam_message message_type \
     -label "[_ dotlrn.Message_Type]" \
     -datatype text \
     -widget select \
-    -options {{"[_ dotlrn.Plain_Text]" "text"} {"[_ dotlrn.HTML]" "html"}} \
+    -options [list [list [_ dotlrn.Plain_Text] "text"] [list [_ dotlrn.HTML] "html"]] \
     -value "text"
 
 element create spam_message send_date \

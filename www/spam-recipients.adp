@@ -23,7 +23,7 @@
 <property name="context_bar">@context_bar@</property>
 
 
-<h3>#dotlrn.Choose_members_to_recieve#</h3>
+<h3>#dotlrn.Choose_members_to_receive#</h3>
 
 <form method="post" action="spam">
 <p>
