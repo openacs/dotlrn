@@ -57,9 +57,11 @@
     &nbsp;
     <i>@pending_users.role@</i>
     &nbsp;
-    [<small><include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@"></small>
-    &nbsp;|&nbsp;
-    <small><include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@"></small>]
+    [<small>
+      <include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@">
+      |
+      <include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@">
+    </small>]
   </li>
 </multiple>
 </ul>

@@ -75,7 +75,7 @@ if {$term_id == -1} {
 
 db_multirow class_instances $query {}
 
-set can_instantiate [dotlrn_class::can_instantiate -class_key $class_key]
+set can_instantiate [dotlrn_class::can_instantiate]
 
 set context_bar [list [list classes [dotlrn::parameter classes_pretty_plural]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"

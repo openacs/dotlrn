@@ -27,13 +27,13 @@ ad_page_contract {
 }
 
 # Check if this is a community type level thing
-if {[ad_parameter community_type_level_p] == 1} {
+if {[dotlrn::parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
     ad_script_abort
 }
 
 # Check if this is a community level thing
-if {[ad_parameter community_level_p] == 1} {
+if {[dotlrn::parameter community_level_p] == 1} {
     ad_returnredirect "one-community?page_num=$page_num"
     ad_script_abort
 }

@@ -27,7 +27,7 @@ ad_page_contract {
 }
 
 # Check if this is a community type level thing
-if {[ad_parameter community_type_level_p] == 1} {
+if {[dotlrn::parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
     return
 }

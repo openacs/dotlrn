@@ -65,5 +65,6 @@ if {![empty_string_p $department_key]} {
 db_multirow classes $query {}
 
 set can_create [dotlrn_class::can_create]
+set can_instantiate [dotlrn_class::can_instantiate]
 
 ad_return_template

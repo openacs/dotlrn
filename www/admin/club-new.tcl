@@ -27,9 +27,6 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "New [ad_parameter clubs_pretty_name]"
-set context_bar [list [list clubs [ad_parameter clubs_pretty_plural]] New]
-
 form create add_club
 
 element create add_club pretty_name \
@@ -69,5 +66,8 @@ if {[form is_valid add_club]} {
     ad_returnredirect $referer
     ad_script_abort
 }
+
+set title "New [dotlrn::parameter clubs_pretty_name]"
+set context_bar [list [list clubs [dotlrn::parameter clubs_pretty_plural]] [list New [dotlrn::parameter clubs_pretty_name]]]
 
 ad_return_template

@@ -29,7 +29,7 @@ ad_page_contract {
 set user_id [ad_get_user_id]
 dotlrn::require_user_admin_community $community_id
 set pretty_name [dotlrn_community::get_community_name $community_id]
-set subcomm_pn [ad_parameter subcommunity_pretty_name]
+set subcomm_pn [dotlrn::parameter subcommunity_pretty_name]
 set title "Archive $subcomm_pn"
 
 form create archive_subcomm

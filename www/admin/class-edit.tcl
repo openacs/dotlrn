@@ -33,8 +33,8 @@ if {![db_0or1row select_class_info {}]} {
     ad_script_abort
 }
 
-set title "Edit [ad_parameter classes_pretty_name] $pretty_name"
-set context_bar [list [list classes [ad_parameter classes_pretty_plural]] Edit]
+set title "Edit [dotlrn::parameter classes_pretty_name] $pretty_name"
+set context_bar [list [list classes [dotlrn::parameter classes_pretty_plural]] Edit]
 
 form create edit_class
 

@@ -34,11 +34,10 @@
 <ul>
 <multiple name="all_applets">
   <li>
-    @all_applets.applet_pretty_name@ - [
-      <small>
-        <a href=applet-add?applet_key=@all_applets.applet_key@>add</a>
-      </small>
-    ]
+    @all_applets.applet_pretty_name@
+    [<small>
+      <a href=applet-add?applet_key=@all_applets.applet_key@>Add</a>
+    </small>]
   </li>
 </multiple>
 </ul>

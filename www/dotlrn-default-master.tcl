@@ -135,7 +135,7 @@ if {$have_comm_id_p} {
         set navbar "<br>"
         set portal_id ""
     }
-} elseif {[ad_parameter -package_id [ad_conn package_id] community_type_level_p] == 1} {
+} elseif {[dotlrn::parameter -package_id [ad_conn package_id] community_type_level_p] == 1} {
     set extra_td_html ""
     set link_all 1
     set link [dotlrn::get_url]
@@ -214,7 +214,7 @@ if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_c
 }
 
 # in a community or just under one in a mounted package like /calendar 
-if {[ad_parameter community_level_p] == 1 || $parent_comm_p } {
+if {[dotlrn::parameter community_level_p] == 1 || $parent_comm_p } {
     set community_id [dotlrn_community::get_community_id]
     
     # color hack
@@ -236,7 +236,7 @@ if {[ad_parameter community_level_p] == 1 || $parent_comm_p } {
     # The header text is the name of the community
     set text [dotlrn_community::get_community_header_name $community_id] 
 
-} elseif {[ad_parameter community_type_level_p] == 1} {
+} elseif {[dotlrn::parameter community_type_level_p] == 1} {
     # in a community type
     set text \
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]

@@ -22,9 +22,21 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-  <ul>
-    <multiple name=templates>
-      <li>@templates.name@ [<a href="@url@/portal-show.tcl?portal_id=@templates.portal_id@&referer=@referer@">view</a>|<a href="@url@/portal-config?portal_id=@templates.portal_id@&referer=@referer@">edit</a>]</li>
-    </multiple>
-  </ul>
-</else>
+<table width="50%" cellpadding="3" cellspacing="3">
+  <tr>
+    <th align="left">Template</th>
+    <th align="left">Actions</th>
+  </tr>
+<multiple name=templates>
+  <tr>
+    <td>
+      <a href="@url@/portal-show.tcl?portal_id=@templates.portal_id@&referer=@referer@">@templates.name@</a>
+    </td>
+    <td>
+      [<small>
+        <a href="@url@/portal-config?portal_id=@templates.portal_id@&referer=@referer@">Edit</a>
+      </small>]
+    </td>
+  </tr>
+</multiple>
+</table>

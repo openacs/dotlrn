@@ -46,7 +46,9 @@
 
 <p>
 <if @can_instantiate@>
-  [<small><a href="class-instance-new?class_key=@class_key@">New <%= [dotlrn::parameter class_instances_pretty_name] %></a></small>]
+  [<small>
+    <a href="class-instance-new?class_key=@class_key@">New <%= [dotlrn::parameter class_instances_pretty_name] %></a>
+  </small>]
 </if>
 <else>
 <include src="need-term-note">
@@ -78,7 +80,7 @@
   <tr>
     <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
     <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
-    <td>[<small><a href="@class_instances.url@one-community-admin">admin</a></small>]</td>
+    <td>[<small> <a href="@class_instances.url@one-community-admin">Administer</a> </small>]</td>
   </tr>
 </multiple>
 </table>

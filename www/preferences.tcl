@@ -40,6 +40,6 @@ set title "Preferences"
 set admin_p [dotlrn::admin_p]
 set admin_url "[dotlrn::get_url]/admin"
 set referer [ns_conn url]
-set admin_pretty_name [ad_parameter "dotlrn_admin_pretty_name"]
+set admin_pretty_name [dotlrn::parameter dotlrn_admin_pretty_name]
 
 ad_return_template

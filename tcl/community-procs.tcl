@@ -57,9 +57,9 @@ namespace eval dotlrn_community {
 
             dotlrn_community::set_type_package_id $community_type $package_id
 
-            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-            ad_parameter -package_id $package_id -set 1 community_type_level_p
-            ad_parameter -package_id $package_id -set 0 community_level_p
+            dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
+            dotlrn::parameter -package_id $package_id -set 1 community_type_level_p
+            dotlrn::parameter -package_id $package_id -set 0 community_level_p
 
             # create a "dummy" community for this community
             # type to get a portal template with all of the
@@ -114,9 +114,9 @@ namespace eval dotlrn_community {
             ]
 
             # Set some parameters
-            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-            ad_parameter -package_id $package_id -set 1 community_type_level_p
-            ad_parameter -package_id $package_id -set 0 community_level_p
+            dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
+            dotlrn::parameter -package_id $package_id -set 1 community_type_level_p
+            dotlrn::parameter -package_id $package_id -set 0 community_level_p
 
             # Set the site node
             dotlrn_community::set_type_package_id $community_type_key $package_id
@@ -312,9 +312,9 @@ namespace eval dotlrn_community {
                 ]
 
                 # Set the right parameters
-                ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-                ad_parameter -package_id $package_id -set 0 community_type_level_p
-                ad_parameter -package_id $package_id -set 1 community_level_p
+                dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
+                dotlrn::parameter -package_id $package_id -set 0 community_type_level_p
+                dotlrn::parameter -package_id $package_id -set 1 community_level_p
 
                 # Set up the node
                 dotlrn_community::set_package_id $community_id $package_id
@@ -1500,9 +1500,9 @@ namespace eval dotlrn_community {
             ]
             
             # Set the right parameters
-            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-            ad_parameter -package_id $package_id -set 0 community_type_level_p
-            ad_parameter -package_id $package_id -set 1 community_level_p
+            dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
+            dotlrn::parameter -package_id $package_id -set 0 community_type_level_p
+            dotlrn::parameter -package_id $package_id -set 1 community_level_p
             
             # Set up the node
             dotlrn_community::set_package_id $clone_id $package_id
@@ -1707,7 +1707,7 @@ namespace eval dotlrn_community {
         if {![empty_string_p $reorder_hack_p]} {
             ns_log notice "aks1: applets_dispatch: reorder hack!"
 
-            set reorder_applets_string [ad_parameter user_wsp_applet_ordering "dotlrn" "dotlrn_news,dotlrn_bboard,dotlrn_survey,dotlrn_faq"]
+            set reorder_applets_string [dotlrn::parameter user_wsp_applet_ordering -default "dotlrn_news,dotlrn_bboard,dotlrn_survey,dotlrn_faq"]
 
             set reorder_applets_list [string trim [split $reorder_applets_string {,}]]
 

@@ -22,14 +22,16 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[<small><a href="department-new?referer=departments">New <%= [ad_parameter departments_pretty_name] %></a></small>]
+[<small>
+  <a href="department-new?referer=departments">New <%= [dotlrn::parameter departments_pretty_name] %></a>
+</small>]
 
 <p></p>
 
 <if @departments:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left"><%= [ad_parameter departments_pretty_name] %> Name</th>
+    <th align="left"><%= [dotlrn::parameter departments_pretty_name] %> Name</th>
   </tr>
 <multiple name="departments">
   <tr>
@@ -40,5 +42,7 @@
 </if>
 
 <if @departments:rowcount@ gt 10>
-[<small><a href="department-new?referer=departments">New <%= [ad_parameter departments_pretty_name] %></a></small>]
+[<small>
+  <a href="department-new?referer=departments">New <%= [dotlrn::parameter departments_pretty_name] %></a>
+</small>]
 </if>

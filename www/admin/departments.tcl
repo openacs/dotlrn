@@ -27,8 +27,8 @@ ad_page_contract {
     departments:multirow
 }
 
-set title "[ad_parameter departments_pretty_plural]"
-set context_bar "[ad_parameter departments_pretty_plural]"
+set title [dotlrn::parameter departments_pretty_plural]
+set context_bar [dotlrn::parameter departments_pretty_plural]
 
 db_multirow departments select_departments {}
 

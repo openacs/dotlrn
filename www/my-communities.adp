@@ -20,20 +20,30 @@
 
 <h3><if @title@ nil>My Communities</if><else>@title@</else></h3>
 
-<ul>
+<table>
 <multiple name="communities">
-  <li>
-    <a href="@communities.url@">@communities.pretty_name@</a>
-    - @communities.role@
+  <tr>
+    <td><a href="@communities.url@">@communities.pretty_name@</a></td>
+    <td>@communities.role@</td>
+    <td>
+      [<small>
 <if @communities.admin_p@ eq 1>
-    - [ <a href="@communities.url@one-community-admin">admin</a> ]
-    - [ <a href="@communities.url@spam?community_id=@communities.community_id@&referer=@referer@">Email Members</a> ]
+        <a href="@communities.url@one-community-admin">Administer</a>
+        |
+        <a href="@communities.url@spam?community_id=@communities.community_id@&referer=@referer@">Email Members</a>
+        |
 </if>
-    - [<include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">]
-  </li>
+        <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">
+      </small>]
+    </td>
+  </tr>
 </multiple>
 <if @user_can_browse_p@ eq 1>
-  <br>
-  <li><a href="manage-memberships">Join A Group</a></li>
+  <tr>
+    <td colspan="3">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="3"><a href="manage-memberships">Join A Group</a></td>
+  </tr>
 </if>
-</ul>
+</table>

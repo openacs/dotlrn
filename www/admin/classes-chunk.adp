@@ -19,7 +19,9 @@
 %>
 
 <if @can_create@>
-[<small><a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a></small>]
+[<small>
+  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [dotlrn::parameter classes_pretty_name] %></a>
+</small>]
 </if>
 
 <p></p>
@@ -41,17 +43,28 @@
   <tr>
     <th align="left" width="30%"><%= [dotlrn::parameter departments_pretty_name] %></th>
     <th align="left"><%= [dotlrn::parameter classes_pretty_name] %> Name</th>
+    <th align="left">Number of <%= [dotlrn::parameter class_instances_pretty_plural] %></th>
+    <th align="left">Actions</th>
   </tr>
 <multiple name="classes">
   <tr>
     <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
     <td><a href="class?class_key=@classes.class_key@">@classes.pretty_name@</a></td>
+    <td>@classes.n_instances@</td>
+    <td>
+<if @can_instantiate@>
+      [<small>
+        <a href="class-instance-new?class_key=@classes.class_key@">New <%= [dotlrn::parameter class_instances_pretty_name] %></a>
+      </small>]
+</if>
+    </td>
   </tr>
 </multiple>
 </table>
 </if>
 
 <if @can_create@ and @classes:rowcount@ gt 10>
-[<small><a
-href="class-new?department_key=@department_key@&referer=@referer@">New <%= [dotlrn::parameter classes_pretty_name] %></a></small>]
+[<small>
+  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [dotlrn::parameter classes_pretty_name] %></a>
+</small>]
 </if>

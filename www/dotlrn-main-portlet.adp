@@ -51,10 +51,10 @@
 <% set old_level [expr $new_level - 1] %>
       </if>
       <if @new_simple_community_type@ eq "dotlrn_class_instance">
-        <li><%= [ad_parameter "class_instances_pretty_plural"] %>:
+        <li><%= [dotlrn::parameter class_instances_pretty_plural] %>:
       </if>
       <else>
-        <li><%= [ad_parameter "clubs_pretty_plural"] %>:
+        <li><%= [dotlrn::parameter clubs_pretty_plural] %>:
       </else>
     </if>
 
@@ -65,7 +65,9 @@
       <li>
         <a href="@communities.url@">@communities.pretty_name@</a>
         <if @communities.admin_p@ eq t> 
-          <small>[<a href="@communities.url@one-community-admin">admin</a>]</small>
+          [<small>
+            <a href="@communities.url@one-community-admin">Administer</a>
+          </small>]
         </if>
       </li>
 

@@ -24,7 +24,7 @@ ad_page_contract {
 }
 
 # Check that this is a community type
-if {[ad_parameter community_type_level_p] != 1} {
+if {[dotlrn::parameter community_type_level_p] != 1} {
     ad_returnredirect "./"
     ad_script_abort
 }

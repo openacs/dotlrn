@@ -35,7 +35,7 @@ namespace eval dotlrn_main_portlet {
 
     ad_proc -public get_pretty_name {
     } {
-        return [ad_parameter dotlrn_main_portlet_pretty_name]
+        return [dotlrn::parameter dotlrn_main_portlet_pretty_name]
     }
 
     ad_proc -public link {
@@ -51,7 +51,7 @@ namespace eval dotlrn_main_portlet {
         # we use "portal::add_element" here since there is no
         # configuration necessary for this portlet (no params)
         return [portal::add_element \
-            -force_region [ad_parameter "dotlrn_main_portlet_region" dotlrn] \
+            -force_region [dotlrn::parameter dotlrn_main_portlet_region] \
             -pretty_name [get_pretty_name] \
             -portal_id $portal_id \
             -portlet_name [get_my_name] \

@@ -48,8 +48,7 @@
   <br>
 
   <li>
-    <a href="term-edit?term_id=@term_id@&referer=@referer@">Edit</a> term
-    properties.
+    <a href="term-edit?term_id=@term_id@&referer=@referer@">Edit</a> term properties.
   </li>
 
 </ul>
@@ -61,7 +60,7 @@
   <tr>
     <th align="left" width="50%">
 <formtemplate id="department_form">
-      <%= [ad_parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+      <%= [dotlrn::parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
     </th>
     <th align="left" width="50%">
@@ -77,12 +76,12 @@
 <if @classes:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="25%"><%= [ad_parameter departments_pretty_name] %></th>
-    <th align="left" width="25%"><%= [ad_parameter classes_pretty_name] %></th>
+    <th align="left" width="25%"><%= [dotlrn::parameter departments_pretty_name] %></th>
+    <th align="left" width="25%"><%= [dotlrn::parameter classes_pretty_name] %></th>
 <if @term_id@ eq -1>
     <th align="left" width="10%">Term</th>
 </if>
-    <th align="left" width="25%"><%= [ad_parameter class_instances_pretty_name] %></th>
+    <th align="left" width="25%"><%= [dotlrn::parameter class_instances_pretty_name] %></th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="classes">
@@ -93,7 +92,7 @@
     <td>@classes.term_name@ @classes.term_year@</td>
 </if>
     <td><a href="@classes.url@">@classes.pretty_name@</a></td>
-    <td>[<small><a href="@classes.url@one-community-admin">admin</a></small>]</td>
+    <td>[<small> <a href="@classes.url@one-community-admin">Administer</a> </small>]</td>
   </tr>
 </multiple>
 </table>

@@ -253,18 +253,15 @@ namespace eval dotlrn_class {
         ]
     }
 
-    ad_proc -public can_create {
-    } {
+    ad_proc -public can_create {} {
         can a class be created? essentially, does at least one department
         exist?
     } {
         return [db_string can_create {}]
     }
 
-    ad_proc -public can_instantiate {
-        {-class_key:required}
-    } {
-        can this class be instantiated?
+    ad_proc -public can_instantiate {} {
+        can we instantiate classes? essentially, are there any current terms?
     } {
         return [db_string can_instantiate {}]
     }

@@ -8,7 +8,10 @@
                    dotlrn_classes_full.pretty_name,
                    dotlrn_classes_full.description,
                    dotlrn_classes_full.department_key,
-                   dotlrn_departments_full.pretty_name as department_name
+                   dotlrn_departments_full.pretty_name as department_name,
+                   (select count(*)
+                    from dotlrn_class_instances
+                    where dotlrn_class_instances.class_key = dotlrn_classes_full.class_key) as n_instances
             from dotlrn_classes_full,
                  dotlrn_departments_full
             where dotlrn_classes_full.department_key = dotlrn_departments_full.department_key
@@ -24,7 +27,10 @@
                    dotlrn_classes_full.pretty_name,
                    dotlrn_classes_full.description,
                    dotlrn_classes_full.department_key,
-                   dotlrn_departments_full.pretty_name as department_name
+                   dotlrn_departments_full.pretty_name as department_name,
+                   (select count(*)
+                    from dotlrn_class_instances
+                    where dotlrn_class_instances.class_key = dotlrn_classes_full.class_key) as n_instances
             from dotlrn_classes_full,
                  dotlrn_departments_full
             where dotlrn_classes_full.department_key = :department_key

@@ -29,19 +29,19 @@
   <li>
     Name:
     @first_names@ @last_name@
-    [<small><a href="/user/basic-info-update?@export_edit_vars@">edit</a></small>]
+    [<small> <a href="/user/basic-info-update?@export_edit_vars@">Edit</a> </small>]
   </li>
 
   <li>
     Email:
     <a href="mailto:@email@">@email@</a>
-    [<small><a href="/user/basic-info-update?@export_edit_vars@">edit</a></small>]
+    [<small> <a href="/user/basic-info-update?@export_edit_vars@">Edit</a> </small>]
   </li>
 
   <li>
     Screen name:
     @screen_name@
-    [<small><a href="/user/basic-info-update?@export_edit_vars@">edit</a></small>]
+    [<small> <a href="/user/basic-info-update?@export_edit_vars@">Edit</a> </small>]
   </li>
 
   <li>
@@ -63,8 +63,7 @@
 
 <if @portrait_p@ eq 1>
   <li>
-    Portrait:
-    <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
+    Portrait: <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
   </li>
 </if>
 
@@ -105,15 +104,14 @@
   <br>
 
   <li>
-    <a href="user-edit?@export_edit_vars@">Edit</a> dotLRN properties for this
-    user.
+    <a href="user-edit?@export_edit_vars@">Edit</a> dotLRN properties for this user.
   </li>
 
 </ul>
 
 <if @member_classes:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [ad_parameter "class_instances_pretty_name"] %> Memberships</h4>
+    <h4><%= [dotlrn::parameter class_instances_pretty_name] %> Memberships</h4>
 
     <ul>
 <multiple name="member_classes">
@@ -129,7 +127,7 @@
 
 <if @member_clubs:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [ad_parameter "clubs_pretty_name"] %> Memberships</h4>
+    <h4><%= [dotlrn::parameter clubs_pretty_name] %> Memberships</h4>
 
     <ul>
 <multiple name="member_clubs">
@@ -144,7 +142,7 @@
 
 <if @member_subgroups:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [ad_parameter "subcommunities_pretty_name"] %> Memberships</h4>
+    <h4><%= [dotlrn::parameter subcommunities_pretty_name] %> Memberships</h4>
 
     <ul>
 <multiple name="member_subgroups">
@@ -177,10 +175,10 @@
 
 <ul>
   <li><a href="/user/password-update?@export_edit_vars@">Update this user's password</a></li>
-  <if @portrait_p@>
-    <br>
-    <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
-    <br>
-  </if>
+<if @portrait_p@>
+  <br>
+  <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
+</if>
+  <br>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">Become this user!</a></li>
 </ul>

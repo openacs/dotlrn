@@ -31,7 +31,9 @@
     <i>@users.role@</i>
     <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
       &nbsp;
-      <small>[<include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">]</small>
+      [<small>
+        <include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="Drop Membership">
+      </small>]
     </if>
   </li>
 </group>
@@ -74,9 +76,11 @@
     &nbsp;
     <i>@pending_users.role@</i>
     &nbsp;
-    [<small><include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@"></small>
-    &nbsp;|&nbsp;
-    <small><include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@"></small>]
+    [<small>
+      <include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@">
+      |
+      <include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@">
+    </small>]
   </li>
 </multiple>
 </ul>

@@ -37,7 +37,7 @@ namespace eval dotlrn_user_extension {
     ad_proc -public automatic_email_patterns {} {
         Returns a list of email patterns for which a user is automatically made into a dotLRN user
     } {
-        set param [ad_parameter -package_id [dotlrn::get_package_id] auto_dotlrn_user_email_patterns]
+        set param [dotlrn::parameter -package_id [dotlrn::get_package_id] auto_dotlrn_user_email_patterns]
 
         return [split $param ","]
     }

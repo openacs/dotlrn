@@ -28,7 +28,10 @@
   <small>
     <a href="#current_clubs">Current <%= [dotlrn::parameter clubs_pretty_plural] %></a>
     |
-    <a href="#join">Join a Group</a>
+    <a href="#join_class">Join a <%= [dotlrn::parameter class_instances_pretty_name] %></a>
+    |
+    <a href="#join_club">Join a <%= [dotlrn::parameter clubs_pretty_name] %></a>
+  </small>
 </p>
 
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>

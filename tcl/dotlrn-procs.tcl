@@ -50,7 +50,7 @@ namespace eval dotlrn {
     } {
 	Returns the group_type key that is being used for class management
     } {
-	return [parameter "group_type_key"]
+	return [parameter group_type_key]
     }
 
     ad_proc -public package_key {} {
@@ -369,15 +369,16 @@ namespace eval dotlrn {
 
     ad_proc -public parameter {
         -set
+        {-package_id ""}
         {-default ""}
         name
     } {
         wrap ad_parameter
     } {
         if {[info exists set]} {
-            return [ad_parameter -set -package_id [get_package_id] -default $default $name]
+            return [parameter::set_value -package_id $package_id -parameter $name -value $set]
         } else {
-            return [ad_parameter -package_id [get_package_id] $name]
+            return [parameter::get -package_id $package_id -parameter $name -default $default]
         }
     }
 

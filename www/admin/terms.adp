@@ -22,7 +22,7 @@
 <property name="title">Terms</property>
 <property name="context_bar">@context_bar@</property>
 
-[<small><a href="term-new">New Term</a></small>]
+[<small> <a href="term-new">New Term</a> </small>]
 
 <p></p>
 
@@ -46,5 +46,5 @@
 </if>
 
 <if @terms:rowcount@ gt 10>
-[<small><a href="term-new">New Term</a></small>]
+[<small> <a href="term-new">New Term</a> </small>]
 </if>

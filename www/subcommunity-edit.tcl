@@ -29,7 +29,7 @@ ad_page_contract {
 set user_id [ad_get_user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
-set title "Edit [ad_parameter subcommunity_pretty_name]"
+set title "Edit [dotlrn::parameter subcommunity_pretty_name]"
 set old_pn [dotlrn_community::get_community_name $community_id]
 
 dotlrn::require_user_admin_community $community_id

@@ -33,13 +33,13 @@ if {![db_0or1row select_department_info {}]} {
     ad_script_abort
 }
 
-set title "Edit [ad_parameter departments_pretty_name] $pretty_name"
-set context_bar [list [list departments [ad_parameter departments_pretty_plural]] Edit]
+set title "Edit [dotlrn::parameter departments_pretty_name] $pretty_name"
+set context_bar [list [list departments [dotlrn::parameter departments_pretty_plural]] Edit]
 
 form create edit_department
 
 element create edit_department department_key \
-    -label "[ad_parameter departments_pretty_name] Key (a short name, no spaces)" \
+    -label "[dotlrn::parameter departments_pretty_name] Key (a short name, no spaces)" \
     -datatype text \
     -widget hidden \
     -value $department_key

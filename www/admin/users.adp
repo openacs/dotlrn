@@ -22,13 +22,13 @@
 <property name="title">Users</property>
 <property name="context_bar">@context_bar@</property>
 
-[ 
+[<small>
   <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><small>Create A New User</small></a> 
   |
   <a href="users-search"><small>Search Users</small></a>
   |
   <a href="users-bulk-upload"><small>Bulk Upload</small></a>
-]
+</small>]
 
 <p></p>
 

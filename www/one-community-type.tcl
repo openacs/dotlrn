@@ -35,7 +35,7 @@ ad_page_contract {
 }
 
 # Check that this is a community type
-if {[ad_parameter community_type_level_p] != 1} {
+if {[dotlrn::parameter community_type_level_p] != 1} {
     ad_returnredirect "./"
     ad_script_abort
 }
@@ -51,17 +51,17 @@ set ancestor_type [dotlrn_community::get_toplevel_community_type -community_type
 # Load some community type info
 db_1row select_community_type_info {}
 
-if {[string equal ${community_type} "dotlrn_class_instance"] != 0} {
-    set community_type_title [ad_parameter "classes_pretty_plural"]
-    set communities_title [ad_parameter "class_instances_pretty_name"]
-    set title [ad_parameter "classes_pretty_plural"]
-} elseif {[string equal ${community_type} "dotlrn_club"] != 0} {
-    set community_type_title [ad_parameter "clubs_pretty_plural"]
-    set communities_title [ad_parameter "clubs_pretty_plural"]
-    set title [ad_parameter "clubs_pretty_plural"]
-} elseif {[string equal ${ancestor_type} "dotlrn_class_instance"] != 0} {
-    set community_type_title [ad_parameter "classes_pretty_plural"]
-    set communities_title [ad_parameter "class_instances_pretty_name"]
+if {[string equal ${community_type} dotlrn_class_instance] != 0} {
+    set community_type_title [dotlrn::parameter classes_pretty_plural]
+    set communities_title [dotlrn::parameter class_instances_pretty_name]
+    set title [dotlrn::parameter classes_pretty_plural]
+} elseif {[string equal ${community_type} dotlrn_club] != 0} {
+    set community_type_title [dotlrn::parameter clubs_pretty_plural]
+    set communities_title [dotlrn::parameter clubs_pretty_plural]
+    set title [dotlrn::parameter clubs_pretty_plural]
+} elseif {[string equal ${ancestor_type} dotlrn_class_instance] != 0} {
+    set community_type_title [dotlrn::parameter classes_pretty_plural]
+    set communities_title [dotlrn::parameter class_instances_pretty_name]
     set title $pretty_name
 } else {
     set community_type_title "Community Types"
