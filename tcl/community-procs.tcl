@@ -177,6 +177,8 @@ namespace eval dotlrn_community {
     } {
 
         if {[empty_string_p $community_key]} {
+            # LARS 2003-10-21: Should be replaced with a direct call to util_text_to_url
+            # which resolves conflicts with existing community-keys
             set community_key [dotlrn::generate_key -name $pretty_name]
         }
 
@@ -1072,6 +1074,7 @@ namespace eval dotlrn_community {
         if {![empty_string_p $parent_community_id]} {
             set valid_p [ad_decode [db_string collision_check_with_parent {}] 0 1 0]
         } else {
+            # LARS 2003-10-21: Should this check only against communities with null parent_id?
             set valid_p [ad_decode [db_string collision_check_simple {}] 0 1 0]
         }
 
