@@ -14,7 +14,6 @@
 #  details.
 #
 
-
 #
 # Procs for DOTLRN basic system
 # Copyright 2001 OpenForce, inc.

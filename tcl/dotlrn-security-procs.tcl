@@ -42,13 +42,12 @@ namespace eval dotlrn {
     } {
         Generate a key from a name. Compresses all adjacent non-alphanum
         chars to a dash. Yes, this is not unique, grows rapidly, will
-        need collision detection and resolution, yada yada. 
+        need collision detection and resolution, yada yada.
     } {
-        
-        regsub -all {\W+} [string tolower $name] "-" name
+        regsub -all {\W+} $name "-" name
         regsub -all -- {-+} $name "-" name
-        
-        return "[string trim $name {-}]"
+
+        return [string tolower [string trim $name {-}]]
     }
 
     ad_proc -private do_abort {} {
@@ -104,7 +103,7 @@ namespace eval dotlrn {
         ns_set put $extra_vars id $id
 
         set template_id \
-                [dotlrn_community::get_type_portal_id -community_type "user_workspace"] 
+                [dotlrn_community::get_type_portal_id -community_type "user_workspace"]
         db_transaction {
             set portal_id [portal::create \
                 -template_id $template_id \
@@ -114,7 +113,7 @@ namespace eval dotlrn {
 
             ns_set put $extra_vars portal_id $portal_id
 
-            # Add the relation (no need to feed in anything for object_id_one, 
+            # Add the relation (no need to feed in anything for object_id_one,
             # or two for that matter).
             set rel_id [relation_add \
                 -extra_vars $extra_vars \
@@ -126,7 +125,7 @@ namespace eval dotlrn {
 
             # add the "dotlrn main" portlet to the user's workspace
             dotlrn_main_portlet::add_self_to_page -portal_id $portal_id
-                
+
             dotlrn_community::applets_dispatch -op AddUser -list_args [list $user_id]
 
             # if the user is a member of communities (from some previous

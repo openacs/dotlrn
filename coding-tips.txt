@@ -29,6 +29,3 @@ PL/SQL
         (package_id, content)
         values
         (new.package_id, new.content);
-
-
-   
