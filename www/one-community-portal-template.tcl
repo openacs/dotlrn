@@ -1,4 +1,4 @@
-# /dotlrn/www/admin/one-instance-portal-template.tcl
+# /dotlrn/www/one-community-portal-template.tcl
 ad_page_contract {
     Configuration page for an instance's portal template
 
