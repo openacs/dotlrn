@@ -88,7 +88,7 @@ begin
 	-- add a user to dotlrn (used for user-specific one time stuff)
 	foo := acs_sc_msg_type.new(
 		  msg_type_name => 'dotlrn_applet.AddUser.InputType',
-		  msg_type_spec => 'community_id:integer,user_id:integer'
+		  msg_type_spec => 'user_id:integer'
 	);
 
 	foo := acs_sc_msg_type.new(
@@ -101,7 +101,7 @@ begin
 		  'AddUser',
 		  'Add a user to dotlrn, used for user-specific one-time stuff',
 		  'f', -- not cacheable
-		  2,   -- n_args
+		  1,   -- n_args
 		  'dotlrn_applet.AddUser.InputType',
 		  'dotlrn_applet.AddUser.OutputType'
 	);
