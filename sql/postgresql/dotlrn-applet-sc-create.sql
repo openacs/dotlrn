@@ -17,11 +17,6 @@
 --
 -- The DotLRN applet service contract
 --
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
---
--- for Oracle 8/8i. (We're guessing 9i works, too).
---
 -- ben@openforce.net, arjun@openforce.net
 -- ported to PG by Yon and Ben
 --
@@ -32,6 +27,9 @@
 -- This is the service contract for dotLRN applets. A dotlrn applet MUST
 -- have AT LEAST the procs (with the proper arguments) defined below to work
 -- as a dotlrn applet.
+--
+-- **** SEE THE ORACLE VERSION FOR FULL DESCRIPTIONS ****
+--
 
 begin
         select acs_sc_contract__new (
@@ -227,6 +225,69 @@ begin
                   2,   -- n_args
                   'dotlrn_applet.RemoveAppletFromCommunity.InputType',
                   'dotlrn_applet.RemoveAppletFromCommunity.OutputType'
+        );
+
+        -- addportlet
+        select acs_sc_msg_type__new(
+                  'dotlrn_applet.AddPortlet.InputType',
+                  'args:string'
+        );
+
+        select acs_sc_msg_type__new(
+                  'dotlrn_applet.AddPortlet.OutputType',
+                  'success_p:boolean,error_message:string'
+        );
+        
+        select acs_sc_operation__new (
+                  'dotlrn_applet',
+                  'AddPortlet',
+                  'Adds the underlying portlet to the portal specified',
+                  'f', -- not cacheable
+                  1,   -- n_args
+                  'dotlrn_applet.AddPortlet.InputType',
+                  'dotlrn_applet.AddPortlet.OutputType'
+        );
+
+        -- removeportlet
+        select acs_sc_msg_type__new(
+                  'dotlrn_applet.RemovePortlet.InputType',
+                  'portal_id:integer'
+        );
+
+        select acs_sc_msg_type__new(
+                  'dotlrn_applet.RemovePortlet.OutputType',
+                  'success_p:boolean,error_message:string'
+        );
+        
+        select acs_sc_operation__new (
+                  'dotlrn_applet',
+                  'RemovePortlet',
+                  'Removes the underlying portlet from the given portal',
+                  'f', -- not cacheable
+                  1,   -- n_args
+                  'dotlrn_applet.RemovePortlet.InputType',
+                  'dotlrn_applet.RemovePortlet.OutputType'
+        );
+
+        -- clone
+        select acs_sc_msg_type__new(
+                  'dotlrn_applet.Clone.InputType',
+                  'old_community_id:integer,new_community_id:integer'
+        );
+
+        select acs_sc_msg_type__new(
+                  'dotlrn_applet.Clone.OutputType',
+                  'success_p:boolean,error_message:string'
+        );
+        
+        select acs_sc_operation__new (
+                  'dotlrn_applet',
+                  'Clone',
+                  'Clone this applets content from the old to the new community',
+                  'f', -- not cacheable
+                  2,   -- n_args
+                  'dotlrn_applet.Clone.InputType',
+                  'dotlrn_applet.Clone.OutputType'
         );
 
 end;

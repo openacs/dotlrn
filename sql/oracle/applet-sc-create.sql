@@ -17,9 +17,6 @@
 --
 -- The DotLRN applet service contract
 --
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
---
 -- started October 1st, 2001
 -- we remember September 11th
 -- 
@@ -37,7 +34,7 @@ begin
         contract_desc => 'dotLRN Applet contract'
     );
   
-    -- A simple proc to return the pretty name of the applet
+    -- GetPrettyName: A simple proc to return the pretty name of the applet
     foo := acs_sc_msg_type.new (
         msg_type_name => 'dotlrn_applet.GetPrettyName.InputType',
         msg_type_spec => ''
@@ -58,7 +55,7 @@ begin
         'dotlrn_applet.GetPrettyName.OutputType'
     );
   
-    -- Adds the applet to dotlrn (used for one-time initialization)
+    -- AddApplet: Adds the applet to dotlrn (used for one-time initialization)
     -- Call in the the dotlrn-init sequence
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.AddApplet.InputType',
@@ -80,7 +77,7 @@ begin
         'dotlrn_applet.AddApplet.OutputType'
     );
   
-    -- Removes the applet from dotlrn (used for one-time destroy)
+    -- RemoveApplet: Removes the applet from dotlrn (used for one-time destroy)
     -- ** Not yet implimented **
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.RemoveApplet.InputType',
@@ -102,7 +99,7 @@ begin
         'dotlrn_applet.RemoveApplet.OutputType'
     );
 
-    -- Adds the applet to a community
+    -- AddAppletToCommunity: Adds the applet to a community
     -- Called at community creation time. Adding applets after creation time
     -- is ** not implimented yet **
     foo := acs_sc_msg_type.new(
@@ -125,7 +122,7 @@ begin
         'dotlrn_applet.AddAppletToCommunity.OutputType'
     );
   
-    -- Removes the applet from a community
+    -- RemoveAppletFromCommunity: Removes the applet from a community
     -- Called at community delete time. Deleting applets before that time
     -- ** not implimented yet **
     foo := acs_sc_msg_type.new(
@@ -194,9 +191,9 @@ begin
         'dotlrn_applet.RemoveUser.OutputType'
     );
   
-    -- Adds a user to the a specfic dotlrn community. An example of this 
-    -- is to make the community's calendar items visable on user's personal 
-    -- calendar
+    -- AddUserToCommunity: Adds a user to the a specfic dotlrn community. 
+    -- An example of this is to make the community's calendar items 
+    -- visable on user's personal calendar
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.AddUserToCommunity.InputType',
         msg_type_spec => 'community_id:integer,user_id:integer'
@@ -217,8 +214,8 @@ begin
         'dotlrn_applet.AddUserToCommunity.OutputType'
     );
 
-    -- Removes a user from a specfic dotlrn community. Just like above, 
-    -- but removal.
+    -- RemoveUserFromCommunity: Removes a user from a specfic dotlrn
+    -- community. Just like above, but removal.
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.RemoveUserFromCommunity.InputType',
         msg_type_spec => 'community_id:integer,user_id:integer'
@@ -239,8 +236,73 @@ begin
         'dotlrn_applet.RemoveUserFromCommunity.OutputType'
     );
   
+    -- AddPortlet: Adds the underlying portlet to the given portal
+    -- with the given args. Why do we need this when we have AddAppletToCommunity?
+    -- Because besides communities there are per-commnuity portal templates that
+    -- need to call all dotlrn applets and have the underlying portlet added to 
+    -- them. This way code is not duplicated.
+    foo := acs_sc_msg_type.new(
+        msg_type_name => 'dotlrn_applet.AddPortlet.InputType',
+        msg_type_spec => 'args:string'
+    );
   
+    foo := acs_sc_msg_type.new(
+        msg_type_name => 'dotlrn_applet.AddPortlet.OutputType',
+        msg_type_spec => 'success_p:boolean,error_message:string'
+    );
+    
+    foo := acs_sc_operation.new (
+        'dotlrn_applet',
+        'AddPortlet',
+        'Adds the underlying portlet to the portal specified',
+        'f', -- not cacheable
+        1,   -- n_args
+        'dotlrn_applet.AddPortlet.InputType',
+        'dotlrn_applet.AddPortlet.OutputType'
+    );
   
+    -- RemovePortlet: the remove corollary of above
+    foo := acs_sc_msg_type.new(
+        msg_type_name => 'dotlrn_applet.RemovePortlet.InputType',
+        msg_type_spec => 'portal_id:integer'
+    );
+  
+    foo := acs_sc_msg_type.new(
+        msg_type_name => 'dotlrn_applet.RemovePortlet.OutputType',
+        msg_type_spec => 'success_p:boolean,error_message:string'
+    );
+    
+    foo := acs_sc_operation.new (
+        'dotlrn_applet',
+        'RemovePortlet',
+        'Removes the underlying portlet from the given portal',
+        'f', -- not cacheable
+        1,   -- n_args
+        'dotlrn_applet.RemovePortlet.InputType',
+        'dotlrn_applet.RemovePortlet.OutputType'
+    );
+
+    -- Clone: Attack of the Clones! 
+    foo := acs_sc_msg_type.new(
+        msg_type_name => 'dotlrn_applet.Clone.InputType',
+        msg_type_spec => 'old_community_id:integer,new_community_id:integer'
+    );
+  
+    foo := acs_sc_msg_type.new(
+        msg_type_name => 'dotlrn_applet.Clone.OutputType',
+        msg_type_spec => 'success_p:boolean,error_message:string'
+    );
+    
+    foo := acs_sc_operation.new (
+        'dotlrn_applet',
+        'Clone',
+        'Clone this applets content from the old to the new community',
+        'f', -- not cacheable
+        2,   -- n_args
+        'dotlrn_applet.Clone.InputType',
+        'dotlrn_applet.Clone.OutputType'
+    );  
+
   
 end;
 /
