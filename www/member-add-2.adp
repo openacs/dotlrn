@@ -1,10 +1,11 @@
 <master src="./master">
-<property name="title">dotLRN Admin: Add a User to a Community</property>
+<property name="title">Add A Member To A Community</property>
 
 You're adding <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
 
 <form method="get" action="member-add-3">
   <input type="hidden" name="user_id" value="@user_id@">
+  <input type="hidden" name="referer" value="@referer@">
   Role: 
   <select name="rel_type">
 <multiple name="roles">

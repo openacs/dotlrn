@@ -7,6 +7,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     user_id
+    {referer "one-community-admin"}
 } -properties {
     roles:multirow
 }

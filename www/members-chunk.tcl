@@ -6,12 +6,17 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
+    users:multirow
 }
 
 set community_id [dotlrn_community::get_community_id]
 
 # Permissions
 dotlrn::require_user_admin_community $community_id
+
+if {![exists_and_not_null referer]} {
+    set referer "one-community-admin"
+}
 
 # Get all users for this community, including role
 set list_of_users [dotlrn_community::list_users $community_id]

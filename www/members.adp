@@ -2,4 +2,4 @@
 <property name="title">Manage Membership</property>
 <property name="context_bar">@context_bar@</property>
 
-<include src="members-chunk">
+<include src="members-chunk" referer="members">

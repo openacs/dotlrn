@@ -8,7 +8,7 @@
 <if @communities.admin_p@ eq 1>
     - [ <a href="@communities.url@community-spam?community_id=@communities.community_id@&referer=@referer@">Email Members</a> ]
 </if>
-    - [<include src="deregister-link" url="community-deregister?community_id=@communities.community_id@&referer=@referer@">]
+    - [<include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@">]
   </li>
 </multiple>
   <p></p>

@@ -7,6 +7,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     search_text
+    {referer "one-community-admin"}
 }
 
 set community_id [dotlrn_community::get_community_id]
@@ -14,6 +15,6 @@ set community_id [dotlrn_community::get_community_id]
 # Just search
 db_multirow users select_users {}
 
-set context_bar {{one-community-admin Admin} "New User"}
+set context_bar {{"one-community-admin" Admin} {New User}}
 
 ad_return_template
