@@ -1,8 +1,7 @@
-<div class="note">
-[&nbsp;<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>&nbsp;]
-</div>
 
-<br>
+<small>[<a href="/dotlrn/manage-memberships">Join/Drop a Class or Community Group</a>]</small>
+
+<P>
 
 <if @classes:rowcount@ gt 0>
   <%= [ad_parameter classes_pretty_plural] %>:
@@ -11,7 +10,7 @@
       <li>
         <a href="@classes.url@">@classes.pretty_name@</a>
         <if @classes.admin_p@ eq t> 
-          - [&nbsp;<a class="note" href="@classes.url@one-community-admin">admin</a>&nbsp;]
+          <small>[<a href="@classes.url@one-community-admin">admin</a>]</small>
         </if>
       </li>
         <ul>
@@ -28,7 +27,7 @@
       <li>
         <a href="@clubs.url@">@clubs.pretty_name@</a>
         <if @clubs.admin_p@ eq t> 
-          - [&nbsp;<a class="note" href="@clubs.url@one-community-admin">admin</a>&nbsp;]
+            <small>[<a href="@clubs.url@one-community-admin">admin</a>]</small>
         </if>
       </li>
         <ul>
