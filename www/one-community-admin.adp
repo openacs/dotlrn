@@ -18,10 +18,14 @@
     Membership
     <ul>
       <li><a href="members">Manage Membership</a> - Add/Remove @pretty_name@ members</li>
-      <li>Change Enrollment Policy - [<b>Here goes the widget</b>]</li>
       <li>
-        <a
-        href="user-add?type_id=1&rel_type=dotlrn_user_rel&read_private_data_p=t">Add a Limited Access user to this community</a>
+        Change Enrollment Policy
+        - <if @join_policy@ eq "closed">closed</if><else><a href="join-policy-toggle?policy=closed">closed</a></else>
+        | <if @join_policy@ eq "open">open</if><else><a href="join-policy-toggle?policy=open">open</a></else>
+        | <if @join_policy@ eq "needs approval">wait</if><else><a href="join-policy-toggle?policy=needs%20approval">wait</a></else>
+      </li>
+      <li>
+        <a href="user-add?type_id=1&rel_type=dotlrn_user_rel&read_private_data_p=t">Add a Limited Access user to this community</a>
         - This allows you to register new users and give them access to just this community.
       </li>
       <li>
@@ -32,7 +36,7 @@
     </ul>
   </li>
 
-<if @subgroups:rowcount@ gt 0>
+<if @n_subgroups@ gt 0>
   <p></p>
   <li><include src="subgroups"></li>
 </if>

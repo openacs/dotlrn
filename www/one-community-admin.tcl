@@ -13,7 +13,8 @@ ad_page_contract {
     community_type:onevalue
     pretty_name:onevalue
     description:onevalue
-    subgroups:multirow
+    join_policy:onevalue
+    n_subgroups:onevalue
 }
 
 set community_id [dotlrn_community::get_community_id]
@@ -25,9 +26,9 @@ set dotlrn_admin_url "[dotlrn::get_url]/admin"
 
 db_1row select_community_info {}
 
-db_multirow subgroups select_subgroups_count {
+set n_subgroups [db_string select_subgroups_count {
     select 1 from dual where 1 = 0
-}
+} -default 0]
 
 set context_bar {Admin}
 
