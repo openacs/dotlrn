@@ -1,6 +1,6 @@
 
 ad_page_contract {
-    Displays a configuration page community
+    Displays a configuration page
     
     @author Ben Adida (ben@openforce.net)
     @author Arjun Sanyal (arjun@openforce.net)
@@ -8,33 +8,31 @@ ad_page_contract {
 } {
 }
 
-# Check that this is a community type
-if {[ad_parameter community_level_p] != 1} {
-    ns_returnredirect "./"
+# Check if this is a community type level thing
+if {[ad_parameter community_type_level_p] == 1} {
+    ad_returnredirect "one-community-type"
     return
 }
 
-set user_id [ad_conn user_id]
-
-# What community type are we at?
-set community_id [dotlrn_community::get_community_id]
-
-# Check that this user is a member
-if {![dotlrn_community::member_p $community_id $user_id]} {
-    set context_bar [list "Not a member"]
-
-    ad_return_template one-community-not-member
+# Check if this is a community level thing
+if {[ad_parameter community_level_p] == 1} {
+    ad_returnredirect "one-community"
     return
+}
+
+# Make sure user is logged in
+set user_id [ad_maybe_redirect_for_registration]
+
+# Get the page
+set page_id [db_string select_page_id {} -default ""]
+
+# If there is no page_id, this user is either a guest or something else
+if {[empty_string_p $page_id]} {
+    # do something
 } else {
-    # Pull out the NPP page ID and render it!
-    set page_id [dotlrn_community::get_page_id $community_id $user_id]
-
-    # Get the portal's name for the title
-    set name [portal::get_name $page_id]
-
     set rendered_page [portal::configure $page_id]
-
-    set context_bar {Configure}
-
-    ad_return_template
 }
+
+
+ad_return_template
+
