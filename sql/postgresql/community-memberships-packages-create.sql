@@ -33,9 +33,6 @@
 
 select define_function_args('dotlrn_member_rel__new','rel_id,rel_type;dotlrn_member_rel,portal_id,community_id,user_id,member_state;approved,creation_user,creation_ip');
 
-select define_function_args('dotlrn_member_rel__delete','rel_id');
-
-
 create function dotlrn_member_rel__new(integer,varchar,integer,integer,integer,varchar,integer,varchar)
 returns integer as '
 DECLARE
@@ -70,12 +67,14 @@ END;
 ' language 'plpgsql';
 
 
+select define_function_args('dotlrn_member_rel__delete','rel_id');
+
 create function dotlrn_member_rel__delete(integer)
 returns integer as '
 DECLARE
         p_rel_id                alias for $1;
 BEGIN
-        delete from dotlrn_member_rels where rel_id= p_rel_id;
+        delete from dotlrn_member_rels where rel_id = p_rel_id; 
 
         PERFORM membership_rel__delete(p_rel_id);
 
@@ -86,8 +85,6 @@ END;
 
 
 select define_function_args('dotlrn_admin_rel__new','rel_id,rel_type;dotlrn_admin_rel,community_id,user_id,member_state,portal_id,creation_user,creation_ip');
-
-select define_function_args('dotlrn_admin_rel__delete','rel_id');
 
 create function dotlrn_admin_rel__new(integer,varchar,integer,integer,varchar,integer,integer,varchar)
 returns integer as '
@@ -124,14 +121,16 @@ END;
 ' language 'plpgsql';
 
 
+select define_function_args('dotlrn_admin_rel__delete','rel_id');
+
 create function dotlrn_admin_rel__delete(integer)
 returns integer as '
 DECLARE
         p_rel_id                alias for $1;
 BEGIN
-        delete from dotlrn_admin_rels where rel_id= p_rel_id;
+        delete from dotlrn_admin_rels where rel_id = p_rel_id;
 
-        PERFORM dotlrn_admin_rel__delete(p_rel_id);
+        PERFORM dotlrn_member_rel__delete(p_rel_id);
 
         return 0;
 END;
@@ -139,8 +138,6 @@ END;
 
 
 select define_function_args('dotlrn_student_rel__new','rel_id,rel_type;dotlrn_student_rel,portal_id,class_instance_id,user_id,member_state,creation_user,creation_ip');
-
-select define_function_args('dotlrn_student_rel__delete','rel_id');
 
 create function dotlrn_student_rel__new(integer,varchar,integer,integer,integer,varchar,integer,varchar)
 returns integer as '
@@ -176,6 +173,8 @@ BEGIN
 END;
 ' language 'plpgsql';
 
+
+select define_function_args('dotlrn_student_rel__delete','rel_id');
 
 create function dotlrn_student_rel__delete(integer)
 returns integer as '
