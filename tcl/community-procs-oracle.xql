@@ -73,14 +73,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_url_from_package_id_not_cached.select_node_url">
-        <querytext>
-            select site_node.url(node_id)
-            from site_nodes
-            where object_id = :package_id
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::get_community_type_from_community_id.select_community_type">
         <querytext>
             select community_type

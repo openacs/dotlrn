@@ -140,29 +140,22 @@ namespace eval dotlrn {
         set parent_node_id [ad_decode $parent_node_id "" [get_node_id] $parent_node_id]
 
         db_transaction {
-            set node_id [db_string get_next_seq_val {
-                select acs_object_id_seq.nextval from dual
-            }]
-            array set parent_node [site_node \
-                [site_nodes::get_url_from_node_id -node_id $parent_node_id]
-            ]
+            array set parent_node [site_node::get -node_id $parent_node_id]
             set parent_package_id $parent_node(object_id)
 
             ns_log notice "dotlrn::mount_package: [array get parent_node]"
 
-            set node_id [site_nodes::site_node_create \
-                    -parent_node_id $parent_node_id \
-                    -node_id $node_id \
-                    -name $url \
-                    -directory_p $directory_p]
+            if {[empty_string_p $pretty_name]} {
+                set pretty_name $package_key
+            }
 
-                if {[empty_string_p $pretty_name]} {
-                    set pretty_name $package_key
-                }
-
-            ns_log notice "dotlrn::mount_package: $node_id / $pretty_name / $parent_package_id / $package_key"
-
-            set package_id [site_node_create_package_instance $node_id $pretty_name $parent_package_id $package_key]
+            set package_id [site_node::new_with_package \
+                -name $url \
+                -parent_id $parent_node_id \
+                -package_key $package_key \
+                -instance_name $pretty_name \
+                -context_id $parent_package_id \
+            ]
         }
 
         return $package_id
@@ -178,10 +171,8 @@ namespace eval dotlrn {
         db_transaction {
             # site node del package instance
             site_node_delete_package_instance \
-                    -package_id $package_id \
-                    -node_id [site_nodes::get_node_id_from_package_id \
-                                 -package_id $package_id
-                             ]
+                -package_id $package_id \
+                -node_id [site_node::get_node_id_from_object_id -object_id $package_id]
         }
     }
 
@@ -193,14 +184,14 @@ namespace eval dotlrn {
         this should probably be done by querying the dotlrn_community_applets table
         directly, but we can do it through site_map:: too
     } {
-        set parent_node_id [site_nodes::get_node_id_from_package_id \
-                -package_id [dotlrn_community::get_package_id $community_id]
+        set parent_node_id [site_node::get_node_id_from_object_id \
+            -object_id [dotlrn_community::get_package_id $community_id]
         ]
 
         return [site_nodes::get_node_id_from_child_name \
-                -parent_node_id $parent_node_id \
-                -name $package_key]
-
+            -parent_node_id $parent_node_id \
+            -name $package_key \
+        ]
     }
 
     ad_proc -public get_community_applet_package_id {
@@ -210,10 +201,11 @@ namespace eval dotlrn {
         like above but returns the package_id
     } {
         set node_id [get_community_applet_node_id \
-                -community_id $community_id \
-                -package_key $package_key
+            -community_id $community_id \
+            -package_key $package_key
         ]
-        return [site_nodes::get_package_id_from_node_id -node_id $node_id]
+
+        return [site_node::get_object_id -node_id $node_id]
     }
         
     ad_proc -public unmount_community_applet_package {
@@ -237,14 +229,13 @@ namespace eval dotlrn {
     ad_proc -public get_node_id {} {
 	return the root node id for dotLRN
     } {
-	return [site_node_id [get_url]]
+	return [site_node::get_node_id -url [get_url]]
     }
 
     ad_proc -public get_package_id {} {
 	return the package ID for dotLRN
     } {
-	array set node [site_node [get_url]]
-	return $node(object_id)
+        return [site_node::get_object_id -node_id [get_node_id]]
     }
 
     ad_proc -public get_users_rel_segment_id {} {
@@ -330,13 +321,16 @@ namespace eval dotlrn {
 
 	# We only take the first node right now
 	# FIXME: in case of multi-mounting, which is doubtful, but possible
-	# we have a proble here.
+	# we have a problem here.
 	set parent_node_id [db_string select_node_id {}]
 
-	# Mount
-	# The context is the community_id
-	set new_node_id [site_node_create $parent_node_id $mount_point]
-	set new_package_id [site_node_create_package_instance $new_node_id $package_key $package_id $package_key]
+        set new_package_id [site_node::new_with_package \
+            -name $mount_point \
+            -parent_id $parent_node_id \
+            -package_key $package_key \
+            -instance_name $package_key \
+            -context_id $package_id \
+        ]
 
 	# Return the newly created package_id
 	return $new_package_id

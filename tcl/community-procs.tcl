@@ -82,27 +82,18 @@ namespace eval dotlrn_community {
     } {
         # Figure out parent_node_id
         set parent_node_id [get_type_node_id $parent_type]
-        array set parent_node [site_node \
-                [site_nodes::get_url_from_node_id \
-                -node_id $parent_node_id]
-        ]
+        array set parent_node [get -node_id $parent_node_id]
 
         db_transaction {
             # Create the class directly using PL/SQL API
             set community_type_key [db_exec_plsql create_community_type {}]
 
-            # Create the node
-            set new_node_id [site_node_create \
-                $parent_node_id \
-                [ad_decode $url_part "" $community_type_key $url_part] \
-            ]
-
-            # Instantiate the package
-            set package_id [site_node_create_package_instance \
-                $new_node_id \
-                $pretty_name \
-                $parent_node(object_id) \
-                [one_community_type_package_key] \
+            set package_id [site_node::new_with_package \
+                -name [ad_decode $url_part "" $community_type_key $url_part] \
+                -parent_id $parent_node_id \
+                -package_key [one_community_type_package_key] \
+                -instance_name $pretty_name \
+                -context_id $parent_node(object_id) \
             ]
 
             # Set some parameters
@@ -231,15 +222,12 @@ namespace eval dotlrn_community {
                 set parent_node_id [get_community_node_id $parent_community_id]
             }
 
-            # Create the node
-            set new_node_id [site_node_create $parent_node_id $community_key]
-
-            # Instantiate the package
-            set package_id [site_node_create_package_instance \
-                $new_node_id \
-                $pretty_name \
-                $community_id \
-                [one_community_package_key] \
+            set package_id [site_node::new_with_package \
+                -name $community_key \
+                -parent_id $parent_node_id \
+                -package_key [one_community_package_key] \
+                -instance_name $pretty_name \
+                -context_id $community_id \
             ]
 
             # Set the right parameters
@@ -329,25 +317,9 @@ namespace eval dotlrn_community {
         This gets the relative URL for a package_id under a particular node_id
     } {
         if {[empty_string_p $current_node_id]} {
-            set current_node_id [site_node_id [ad_conn url]]
+            set current_node_id [site_node::get_node_id [ad_conn url]]
         }
 
-        return [db_string select_node_url {} -default ""]
-    }
-
-    ad_proc -public get_url_from_package_id {
-        {-package_id ""}
-    } {
-        This gets the relative URL for a package_id.
-    } {
-        return [util_memoize "dotlrn_community::get_url_from_package_id_not_cached -package_id $package_id"]
-    }
-
-    ad_proc -private get_url_from_package_id_not_cached {
-        {-package_id ""}
-    } {
-        Memoizing helper
-    } {
         return [db_string select_node_url {} -default ""]
     }
 
@@ -999,9 +971,9 @@ namespace eval dotlrn_community {
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
     } {
-        set parent_pkg_id [site_nodes::get_parent_object_id -package_id $package_id]
+        array set parent_node [site_node::get_from_object_id -object_id $package_id]
 
-        return [get_community_id -package_id $parent_pkg_id]
+        return [get_community_id -package_id $parent_node(object_id)]
     }
 
     ad_proc -public get_parent_id {
@@ -1192,7 +1164,7 @@ namespace eval dotlrn_community {
     } {
         Get the URL for a community type
     } {
-        return [get_url_from_package_id -package_id [get_community_type_package_id $community_type]]
+        return [site_node::get_url_from_object_id -object_id [get_community_type_package_id $community_type]]
     }
 
     ad_proc -public get_community_url {
@@ -1200,7 +1172,7 @@ namespace eval dotlrn_community {
     } {
         Get the URL for a community
     } {
-        return [get_url_from_package_id -package_id [get_package_id $community_id]]
+        return [site_node::get_url_from_object_id -object_id [get_package_id $community_id]]
     }
 
     ad_proc -public get_community_type_package_id {
@@ -1243,6 +1215,7 @@ namespace eval dotlrn_community {
         update the name for a community
     } {
         db_dml update_community_name {}
+        util_memoize_flush "dotlrn_community::get_community_name_not_cached $community_id"
     }
 
     ad_proc -public get_community_name {
@@ -1250,7 +1223,7 @@ namespace eval dotlrn_community {
     } {
         get the name for a community
     } {
-        return [util_memoize "dotlrn_community::get_community_name_not_cached $community_id" 10]
+        return [util_memoize "dotlrn_community::get_community_name_not_cached $community_id"]
     }
 
     ad_proc -private get_community_name_not_cached {
@@ -1391,8 +1364,7 @@ namespace eval dotlrn_community {
         Helper proc for add_applet_to_community and clone, since
         they both need to set up the community <-> applet map
     } {
-        set applet_id [dotlrn_applet::get_applet_id_from_key \
-            -applet_key $applet_key]
+        set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
 
         # auto activate for now
         set active_p t
@@ -1586,15 +1558,12 @@ namespace eval dotlrn_community {
                 set parent_node_id [get_type_node_id $community_type]
             }
 
-            # Create the node
-            set new_node_id [site_node_create $parent_node_id $key]
-
-            # Instantiate the package
-            set package_id [site_node_create_package_instance \
-                $new_node_id \
-                $pretty_name \
-                $clone_id \
-                [one_community_package_key] \
+            set package_id [site_node::new_with_package \
+                -name $key \
+                -parent_id $parent_node_id \
+                -package_key [one_community_package_key] \
+                -instance_name $pretty_name \
+                -context_id $clone_id \
             ]
 
             # Set the right parameters

@@ -24,52 +24,6 @@ ad_library {
 
 namespace eval site_nodes {
 
-    ad_proc -public get_node_id_from_package_id {
-        {-package_id:required}
-    } {
-        get node_id of a package instance
-    } {
-        return [db_string get_node_id_from_package_id {
-            select node_id
-            from site_nodes
-            where object_id = :package_id
-        }]
-    }
-
-    ad_proc -public get_package_id_from_node_id {
-        {-node_id:required}
-    } {
-        get package_id from a node id
-    } {
-        return [db_string get_package_id_from_node_id {
-            select object_id 
-            from site_nodes
-            where node_id = :node_id
-        }]
-    }
-
-    ad_proc -public get_url_from_package_id {
-        {-package_id:required}
-    } {
-        get node_id of a package instance
-    } {
-        return [db_string get_node_id_from_package_id {
-            select site_node.url(node_id)
-            from site_nodes
-            where object_id = :package_id
-        }]
-    }
-
-    ad_proc -public get_url_from_node_id {
-        {-node_id:required}
-    } {
-        get url from node_id
-    } {
-        return [db_string get_url_from_node_id {
-            select site_node.url(:node_id) from dual
-        }]
-    }
-
     ad_proc -public get_node_id_from_child_name {
         {-parent_node_id:required}
         {-name:required}
@@ -77,43 +31,6 @@ namespace eval site_nodes {
         return [db_string get_child_node_id {
             select node_id from site_nodes where parent_id = :parent_node_id
             and name = :name} -default ""]
-    }
-
-    ad_proc -public get_node_id_from_url {
-        {-url:required}
-        {-parent_node_id ""}
-    } {
-        get node_id from url
-    } {
-        return [db_exec_plsql get_node_id_from_url {
-            begin
-                :1 := site_node.node_id(url => :url, parent_id => :parent_node_id);
-            end;
-        }]
-    }
-
-    ad_proc -public get_parent_id {
-        {-node_id ""}
-        {-package_id ""}
-    } {
-        get the parent_id (a node_id) of this node_id
-    } {
-        if {![empty_string_p $node_id]} {
-            return [db_string select_parent_by_node_id {}]
-        } elseif {![empty_string_p $package_id]} {
-            return [db_string select_parent_by_package_id {}]
-        } else {
-            ns_log error "site_nodes::get_parent_id Bad params!"
-            ad_return_complaint 1  "site_nodes::get_parent_id Bad params! Tell your admin."
-        }
-    }
-
-    ad_proc -public get_parent_object_id {
-        {-package_id ""}
-    } {
-        get the object_id (not node_id!) of the parent of this instance
-    } {
-        return [db_string select_parent_oid_by_package_id {} -default ""]
     }
 
     ad_proc -public get_parent_name {
@@ -154,7 +71,6 @@ namespace eval site_nodes {
     } {
         return [lindex $site_nodes_list [expr $index + 1]]
     }
-
 
     ad_proc -public get_site_nodes_list_value_param {
         {-site_nodes_list:required}
@@ -292,48 +208,6 @@ namespace eval site_nodes {
             ns_log error "site_nodes::get_info get_count_p assertion failed!\n
             we should never get here"
         }
-    }
-
-    ad_proc -public mount_count {
-        {-package_key:required}
-    } {
-        returns the number of times this package_key is mounted
-    } {
-        return [get_info -return count -package_key $package_key]
-    }
-
-    ad_proc -public singleton_p {
-        {-package_key:required}
-    } {
-        is this package a singleton?
-    } {
-        if {[package_mount_count -package_key $package_key] == 1} {
-            return 1
-        }
-        return 0
-    }
-
-    ad_proc -public site_node_create {
-        {-node_id ""}
-        {-parent_node_id:required}
-        {-name:required}
-        {-directory_p "t"}
-    } {
-        create a site node the real way (the site-node stuff needs a user_id)
-    } {
-        set node_id [db_exec_plsql create_node {
-            begin
-                :1 := site_node.new(
-                    node_id => :node_id,
-                    parent_id => :parent_node_id,
-                    name => :name,
-                    directory_p => :directory_p,
-                    pattern_p => 't'
-                );
-            end;
-        }]
-
-        return $node_id
     }
 
     ad_proc -public get_child_package_id {

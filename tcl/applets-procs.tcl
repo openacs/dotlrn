@@ -35,7 +35,7 @@ namespace eval dotlrn_applet {
     }
 
     ad_proc -public is_initalized {} {
-        if {[site_nodes::get_node_id_from_url -url [get_url]] != [dotlrn::get_node_id] } {
+        if {[site_node::get_node_id -url [get_url]] != [dotlrn::get_node_id] } {
             return 1
         } else {
             return 0
@@ -44,7 +44,7 @@ namespace eval dotlrn_applet {
 
     ad_proc -public init {} {
         # Create the applets node
-        site_nodes::site_node_create -parent_node_id [dotlrn::get_node_id] -name applets
+        site_node::new -name applets -parent_id [dotlrn::get_node_id]
     }
 
     ad_proc -public register {
@@ -157,7 +157,7 @@ namespace eval dotlrn_applet {
     ad_proc -public is_applet_mounted {
         {-url:required}
     } {
-        if {[site_nodes::get_node_id_from_url -url "[get_url]/$url"] == [site_nodes::get_node_id_from_url -url [get_url]]} {
+        if {[site_node::get_node_id -url "[get_url]/$url"] == [site_node::get_node_id -url [get_url]]} {
             return 0
         } else {
             return 1
