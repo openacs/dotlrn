@@ -149,6 +149,13 @@ select pretty_name from dotlrn_communities where community_id= :community_id
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_portal_template_id.select_portal_template_id">
+<querytext>
+select portal_template_id from dotlrn_communities where community_id= :community_id
+</querytext>
+</fullquery>
+
+
 <fullquery name="dotlrn_community::add_applet.insert_applet">
 <querytext>
 insert into dotlrn_community_applets

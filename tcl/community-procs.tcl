@@ -379,6 +379,14 @@ namespace eval dotlrn_community {
     } {
 	return [db_string select_community_name {} -default ""]
     }
+
+    ad_proc -public get_portal_template_id {
+	community_id
+    } {
+	get the id of the portal template for a community
+    } {
+	return [db_string select_portal_template_id {} -default ""]
+    }
     
     ad_proc -public add_applet {
 	community_id
