@@ -17,5 +17,6 @@
     #
 
 %>
-
-<a href="<if @url@ nil>deregister<if @referer@ not nil>?referer=@referer@</if></if><else>@url@<if @referer@ not nil>?referer=@referer@</if></else>"><if @label@ nil>Drop Membership</if><else>@label@</else></a>
+<center>
+<a href="<if @url@ nil>deregister<if @referer@ not nil>?referer=@referer@</if></if><else>@url@<if @referer@ not nil>?referer=@referer@</if></else>"><if @label@ nil><img src=graphics/drop.gif alt="Drop Membership" border=0></if><else>@label@</else></a>
+</center>
