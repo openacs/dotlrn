@@ -23,14 +23,27 @@ ad_page_contract {
 
 } -query {
     {referer "community-edit"}
+    {header_logo_only ""}
 }
 
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id $community_id
 
-# blow way all the attributes
-dotlrn_community::unset_attributes \
-    -community_id $community_id
+if {![empty_string_p $header_logo_only]} {
+    # just blow away the header logo stuff
+    dotlrn_community::unset_attribute \
+        -community_id $community_id \
+        -attribute_name header_logo_item_id
+    
+    dotlrn_community::unset_attribute \
+        -community_id $community_id \
+        -attribute_name header_logo_alt_text
+} else {
+    # blow way all the attributes
+    dotlrn_community::unset_attributes \
+        -community_id $community_id
+    
+}
 
 ad_returnredirect $referer

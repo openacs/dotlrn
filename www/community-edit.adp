@@ -84,4 +84,6 @@
 </form>
 </p>
 
+<strong>[<a href=community-edit-revert.tcl?header_logo_only=1>Revert ONLY the Header Icon properties to defaults</a>]</strong>
+<br>
 <strong>[<a href=community-edit-revert.tcl>Revert all properties to defaults</a>]</strong>
