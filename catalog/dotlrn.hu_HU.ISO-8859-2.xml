@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<message_catalog package_key="dotlrn" package_version="1.0" locale="hu_HU" charset="ISO-8859-2">
+
+  <msg key="admin_page_name">Beállítások</msg>
+  <msg key="Change_Locale">Helyszín és nyelv</msg>
+  <msg key="class_instances_pretty_name">Osztály</msg>
+  <msg key="class_instances_pretty_plural">Osztályok</msg>
+  <msg key="class_name_header">%class_instances_pretty_name% neve</msg>
+  <msg key="clubs_name_header">%clubs_pretty_name% neve</msg>
+  <msg key="clubs_pretty_name">Klub</msg>
+  <msg key="clubs_pretty_plural">közösségek</msg>
+  <msg key="control_panel">Beállítások</msg>
+  <msg key="departments_pretty_name">Szak</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Csoportok</msg>
+  <msg key="help">Segítség</msg>
+  <msg key="Join_A_Group">Csatlakozz egy csoporthoz</msg>
+  <msg key="logout">Kijelentkezés</msg>
+  <msg key="no_clubs">Nincsenek %clubs_pretty_plural%</msg>
+  <msg key="Personal_Options">Személyes beállítások</msg>
+  <msg key="Term">Szemeszter</msg>
+</message_catalog>

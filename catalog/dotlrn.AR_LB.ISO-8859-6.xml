@@ -13,6 +13,7 @@
   <msg key="add">ÃÖסבע</msg>
   <msg key="Add_A_Member">ÃÖבע ÙÖטÇכ</msg>
   <msg key="Add_a_Professor">ÃÖבע ÃÓÊÇÐÇכ</msg>
+  <msg key="Add_a_Professor_?">ÃÖבע ÃÓÊÇÐÇכ:</msg>
   <msg key="Add_A_User">ÃÖבע וÓÊÎÏוÇכ</msg>
   <msg key="Add_a_User">ÃÖבע וÓÊÎÏוÇכ</msg>
   <msg key="Add_New_Members">ÃÖבע ÃÙÖÇÁ ÌÏסÏ</msg>
@@ -30,7 +31,7 @@
   <msg key="admin_role_pretty_name">ÇהוÏךÑן</msg>
   <msg key="admin_role_pretty_plural">ÇהוÏÑÇÁן</msg>
   <msg key="Administer">ÃÏÑע</msg>
-  <msg key="administer_link">&lt;img border=? valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;ÇהוÏךÑ&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=? valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;ÇהוÏךÑ&quot;&gt;</msg>
   <msg key="Administrator">ÇהוÏךÑן</msg>
   <msg key="Administrators">ÇהוÏÑÇÁן</msg>
   <msg key="Admins_of">ÅÏÇÑÇÊן וז</msg>
@@ -64,16 +65,16 @@
   <msg key="byte">ÈÇךÊ</msg>
   <msg key="bytes">ÈÇךÊÓ</msg>
   <msg key="cannot_be_removed">הÇ ךןועדז Ãזע ךןÒÇהמ</msg>
-  <msg key="Change_Locale">ÚךסÑע ÇהוטגÙ</msg>
+  <msg key="Change_Locale">ÚךסÑע ÇההסÚÉ</msg>
   <msg key="Change_My_Password">ÚךסÑע דהוÉמ ÓÑך</msg>
   <msg key="class_instance_portal_pretty_name">ÇהÕבטב</msg>
-  <msg key="class_instances_pretty_name">Õב</msg>
+  <msg key="class_instances_pretty_name">ÇהÕב</msg>
   <msg key="class_instances_pretty_plural">ÇהÕבטב</msg>
   <msg key="Class_Key">ובÊÇÍ ÇהÕב</msg>
   <msg key="class_may_not_be_deleted">Î×Ã: %subject% ךמÌנÈן Ãמזע ךדטזמ ÙנזעÏמחן &lt;em&gt;הÇ&lt;/em&gt; הÊÍÐב</msg>
   <msg key="class_memberships">ÙÖטךÇÊ %class_instances_pretty_name%</msg>
   <msg key="class_name">ÅÓו Çהא %classes_pretty_name%</msg>
-  <msg key="class_name_header">ÃÓו Çהא %class_instances_pretty_name%</msg>
+  <msg key="class_name_header">ÃÓו %class_instances_pretty_name%</msg>
   <msg key="class_page_calendar_title">ÇהובדÑÉ</msg>
   <msg key="class_page_file_storage_title">ÎÒז ÇהוהבÇÊ</msg>
   <msg key="class_page_home_title">ÇהÑÆךÓךÉ הÇהÕב</msg>
@@ -85,8 +86,8 @@
   <msg key="club_page_file_storage_title">ÎÒז ÇהוהבÇÊ</msg>
   <msg key="club_page_home_title">ÇהÕבÍÉ ÇהÑÆךÓךÉ הÇהÌוÙךÉ</msg>
   <msg key="club_page_people_title">ÇהזÇÓן</msg>
-  <msg key="clubs_name_header">ÃÓו Çהא %clubs_pretty_name%</msg>
-  <msg key="clubs_pretty_name">ÌוÙךÉ</msg>
+  <msg key="clubs_name_header">ÃÓו %clubs_pretty_name%</msg>
+  <msg key="clubs_pretty_name">ÇהÌוÙךÉ</msg>
   <msg key="clubs_pretty_plural">ÌוÙךÇÊ</msg>
   <msg key="Communities">ÌוÙךÇÊ</msg>
   <msg key="Community">ÌוÙךÉ</msg>
@@ -101,6 +102,7 @@
   <msg key="Configure_Element">Ôדסהע ÙזÕÑÇכ</msg>
   <msg key="Configure_name">Ôדסהע %name%</msg>
   <msg key="Confirm">ÃדסÏע</msg>
+  <msg key="Confirm_?">ÃדסÏע:</msg>
   <msg key="Confirm_Drop">ÃדסÏע ÇהÊÎהך</msg>
   <msg key="Confirmation">ÇהÊסÃדךÏ</msg>
   <msg key="Control_Panel">הטÍÉ ÇהÊסÍדסו</msg>
@@ -130,12 +132,13 @@
   <msg key="deregister">ÅÍÐבע וז ÇהÓÌה</msg>
   <msg key="Description">ÇהטÕב</msg>
   <msg key="description">ÇהטÕב</msg>
+  <msg key="Description_?">ÇהטÕב:</msg>
   <msg key="Dont_Add">הÇ ÊÖךבע</msg>
   <msg key="dotLRN_Admin">ÅÏÇÑÉ ÏטÊהÑז</msg>
   <msg key="dotlrn_admin_pretty_name">ÅÏÇÑÉ טÇÓÙÉ ההוטגÙ</msg>
   <msg key="dotlrn_admin_rel_pretty_name">ÙÖטךסÉ ÅÏÇÑÉ ÌוÙךÉ ÏטÊהÑז</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">ÙÖטךסÇÊ ÅÏÇÑÉ ÌוÙךÉ ÏטÊהÑז</msg>
-  <msg key="dotlrn_class_instance_description">Ùהי ÓÈךה ÇהוËÇה ?.???</msg>
+  <msg key="dotlrn_class_instance_description">Ùהי ÓÈךה ÇהוËÇה  ?.???</msg>
   <msg key="dotlrn_class_instance_pretty_name">Õב</msg>
   <msg key="dotlrn_class_instance_pretty_plural">ÇהÕבטב</msg>
   <msg key="dotlrn_club_description">Ùהי ÓÈךה ÇהוËÇה ÎÑסךÌטז</msg>
@@ -163,6 +166,7 @@
   <msg key="emacs_subject">וטÖטÙ</msg>
   <msg key="Email">ÇהÈÑךÏ ÇהÅהדÊÑטזך:</msg>
   <msg key="email">ÇהÈÑךÏ ÇהÅהדÊÑטזך</msg>
+  <msg key="Email_?">ÇהÈÑךÏ ÇהÅהדÊÑטזך</msg>
   <msg key="Email_Members">ÃÙÖÇÁ ÇהÈÑךÏ ÇהÅהדÊÑטזךס</msg>
   <msg key="email_message">ÑÓÇהÉ</msg>
   <msg key="email_sent">ÇהÈÑךÏ ÇהÅהדÊÑטזך ÃÑÓהמ</msg>
@@ -171,6 +175,7 @@
   <msg key="Error_sending_mail">Î×Ã בך ÅÑÓÇה ÇהÈÑךÏ</msg>
   <msg key="Example_File">וËÇה והבס</msg>
   <msg key="External_URL">ÇהוטגÙ ÇהÎÇÑÌךס</msg>
+  <msg key="External_URL_?">וטגÙ ÎÇÑÌך:</msg>
   <msg key="Extra_Large">דÈךÑ ÌÏÇכ</msg>
   <msg key="Fields">ÇהÍגטה</msg>
   <msg key="First_Line">ÇהÓ×Ñ ÇהÃטה</msg>
@@ -186,6 +191,7 @@
   <msg key="green">ÃÎÖÑ</msg>
   <msg key="groups_icon">ÃךגטזÉ ÇהוÌוטÙÉ</msg>
   <msg key="Guest">Öךבן¿</msg>
+  <msg key="Guest_?">Öךב¿</msg>
   <msg key="has_been_added_to">ÃןÖךבמ Åהי</msg>
   <msg key="Header_Alternate_Text">זסÕ ÑÃÓ ÇהÕבÍÉ ÇהÈÏךה</msg>
   <msg key="Header_Font">Î×ס ÑÃÓ ÇהÕבÍÉ</msg>
@@ -200,6 +206,7 @@
   <msg key="Header_Logo_Item_ID">חטךÉן ÈזÏ ÔÙÇÑנ ÑÃÓ ÇהÕבÍÉ</msg>
   <msg key="help">ÇהוÓÇÙÏÉ</msg>
   <msg key="ID">ÇהחטךסÉ:</msg>
+  <msg key="ID_?">חטךÉ</msg>
   <msg key="instructor_role_pretty_name">ÃÓÊÇÐ</msg>
   <msg key="instructor_role_pretty_plural">ÇהÃÓÇÊÐÉן</msg>
   <msg key="Invalid">ÈÇ×נה</msg>
@@ -208,7 +215,7 @@
   <msg key="items">ÈזטÏ</msg>
   <msg key="Join">ÅזÖוסע</msg>
   <msg key="Join_A_Group">ÅזÖוסע Åהי וÌוטÙÉכ</msg>
-  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;ÅזÖסו&quot; border=&quot;?&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;ÅזÖסו&quot; border=&quot;?&quot;&gt; </msg>
   <msg key="Join_Policy">ÓךÇÓÉן ÇהÅÔÊÑÇד</msg>
   <msg key="Key">ובÊÇÍ</msg>
   <msg key="Large">דÈךÑ</msg>
@@ -233,6 +240,7 @@
   <msg key="lt_Add_These_Users_To_A_">ÃÖבע חÄהÇÁ ÇהוÓÊÎÏוךז הוÌוטÙÉ</msg>
   <msg key="lt_Administrative_Action">ÇהÃÙוÇהן ÇהÅÏÇÑךÉן</msg>
   <msg key="lt_An_error_occured_whil">ÍמÏËמ Î×Ã ÃËזÇÁ וÍÇטהÉ ÅÖÇבÉ וÓÊÎÏו הÌוÙךÉ. חÐÇ ÇהÎ×Ã גÏ ÓןÌה.</msg>
+  <msg key="lt_An_error_occured_whil_?">ÍמÏËמ Î×Ã ÃËזÇÁ וÍÇטהÉ ÍÐב וÓÊÎÏו הÌוÙךÉ. חÐÇ ÇהÎ×Ã גÏ ÓןÌה. </msg>
   <msg key="lt_approve_and_add_to_do">טÇבג טÃÖבע Åהי ÏטÊהÑז</msg>
   <msg key="lt_are_not_yet_members_o">הךÓ ÈÙÏ ÃÙÖÇÁ וז</msg>
   <msg key="lt_Are_you_sure_you_want">חה ÃזÊ וÊÃדסÏ Ãזסד ÊÑךÏ ÍÐב ÇהגÓו ÇהבÇÑÚ</msg>
@@ -242,6 +250,7 @@
   <msg key="lt_Communitys_Web_Addres">ÙזטÇז וטגÙ טךÈ הÇהÌוÙךÉ</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% ÇהÍÇהךÉ</msg>
   <msg key="lt_Do_you_really_want_to">חה ÊÑךÏ ÅÒÇהÉ ÇהÃÙÖÇÁ ÇהÊסÇהךז בÙהÇכ¿</msg>
+  <msg key="lt_Do_you_really_want_to_?">חה ÊÑךÏ בÙהÇכ ÅÒÇהÉ %num_users% וÓÊÎÏו¿ </msg>
   <msg key="lt_dotLRN_properties_for">ÎÕÇÆÕ ÏטÊהÑז החÐÇ ÇהוÓÊÎÏו.</msg>
   <msg key="lt_E-mail_address_must_b">ÙזטÇז ÇהÈÑךÏ ÇהÅהדÊÑטזך ךÌÈ Ãז ךדטז ÕÍךÍ טבÑךÏ. &lt;br&gt; וז ÇהוÍÊוה Åז חÐÇ ÇהוÓÊÎÏו ÙזÏח ÍÓÇÈ ÓהטÇזÓÈÇÓ. &lt;br&gt; ÍÇטהע Ãז ÊÖךב חÐÇ ÇהוÓÊÎÏו ÎהÇה &lt;a href=members&gt;ÃÏÑ ÇהÙÖטךÉ&lt;/a&gt;. </msg>
   <msg key="lt_Edit_department_prope">ÍÑÑע ÎÕÇÆÕ ÇהגÓו.</msg>
@@ -270,6 +279,7 @@
   <msg key="lt_Join_a_class_instance">ÅזÖוסע Åהי %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">ÅזÖוסע Åהי %clubs_pretty_name%</msg>
   <msg key="lt_Join_the_above_criter">ÅזÖוסע Åהי וÙÇךךÑמ ÃÙהÇחמ ומÙ</msg>
+  <msg key="lt_Join_the_above_criter_?">ÅזÖוסע Åהי וÙÇךךÑמ ÃÙהÇחמ בך</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">ÅזÖמוסמ Åהי/ÊÎהיסמ Ùז Õבסכ Ãט וÌוטÙÉכ</msg>
   <msg key="lt_JoinDrop_Classes_or_C">ÅזÖוסמ Åהי/ ÊÎהיסמ Ùז ÕבטבÇכ Ãט וÌוטÙÇÊכ</msg>
   <msg key="lt_Key_a_short_name_no_s">ובÊÇÍן (ÇÓון גÕךÑן¬ הÇ בÑÇÚÇÊמ)</msg>
@@ -280,6 +290,7 @@
   <msg key="lt_No_I_dont_want_to_arc">הÇ¬ ÃזÇ הÇ ÃןÑךÏן Ãמזע ÃןÑÔבמ חÐח ÇהוÌוטÙÉנ.</msg>
   <msg key="lt_Note_The_script_will_">וןהÇÍØÉ: ÇהזÕס ÓמךןטÇÕהן ÇהÙוהע ÍÊי ÅÐÇ ÃמÚעהגÊ וÊÕבסÍמדמ.</msg>
   <msg key="lt_Note_This_process_is_">והÇÍØÉ: חÐח ÇהÙוהךÉ ÊןÊטגסÙן ÊÃמÎעÐ %num_seconds% ËטÇזך.</msg>
+  <msg key="lt_Note_This_process_is__?">והÇÍØÉ: חÐח ÇהÙוהךÉ ÊןÊטגסÙן ÊÃמÎעÐ %num_minutes% ÏגÇÆג. </msg>
   <msg key="lt_Note_use_this_feature">וןהÇÍØÉן: ÇÓÊÙוהע חÐח ÇהוךÒסÉנ ÈוÓÄטהךÉ &lt;i&gt;במדסנÑע&lt;/i&gt; ÃטהÇכ.</msg>
   <msg key="lt_Note_you_will_have_th">והÇÍØÉ: ÃזÊ ÙנזעÏמדמ ÎךÇÑמ ÅÖÇבÉ חÄהÇÁ ÇהוÓÊÎÏוךז Åהי וÌוטÙÉנ ÈÙזÏוÇ  Ãז ךדטזטÇ גÏ ÃÑÓהטÇ.</msg>
   <msg key="lt_Nuke_first_names_last">ÅזÓבע (%first_names% %last_name% (%email</msg>
@@ -300,15 +311,19 @@
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; חט %existing_role% בך %community_name%. ÃזÊ ךודזד Ãז ÊÎÊÇÑ ÏטÑ ÌÏךÏ וז ÇהÊÇהך:</msg>
   <msg key="lt_The_first_line_of_the">ÇהÓ×Ñ ÇהÃטהן ונזע Çהוהבנ</msg>
   <msg key="lt_The_following_email_w">ÇהÈÑךÏ ÇהÅהדÊÑטזךס ÇהÊסÇהך ÃןÑעÓנהמ ÇהÂז וז %system_name%</msg>
+  <msg key="lt_The_following_email_w_?">ÇהÈÑךÏ ÇהÅהדÊÑטזךס ÇהÊסÇהך ÃןÑעÓנהמ ÇהÂז וז %system_name% וÑÓה וז: %system_owner% וÑÓה Çהי: %email% ÇהוטÖטÙ: %subject% ÇהÑÓÇהÉ: %body%  </msg>
   <msg key="lt_The_following_members">ÇהÃÙÖÇÁ ÇהÊסÇהטז וז</msg>
   <msg key="lt_The_following_variabl">ÇהוÊÚךסÑÇÊן ÇהÊÇהךÉן ךודז Ãז ÊןÓÊמÙוהמ הÅÏעÎÇה ÈךÇזÇÊ ÇהוÙךזÉ הך ÇהוÓÊÎÏו / ÇהÌוÙךÉ:</msg>
   <msg key="lt_The_groups_data_will_">ÈךÇזÇÊ ÇהוÌוטÙÉ הז ÊןÙמÏסמה, הדזס בג× Óטב Êדטז ÇהוÌוטÙÉ בך ÇהוןÊמזמÇטמה וÏÑÇÁ ÇהזסØÇו.</msg>
   <msg key="lt_The_results_of_your_s">Åזס זמÊÇÆנÌמ ÈÍËנדנ חך:</msg>
   <msg key="lt_The_system_was_unable">ÇהזØÇון הו ךמÓÊ×ךÙ ÅÑעÓÇה ÇהÈÑךÏ ÇהÅהדÊÑטזך. ÑÌÇÁכ ÃÙהוע ÇהוÓÊÎÏו ÔÎÕךÇכ. חÐח ÇהוÔדהÉנ וז ÇהוÍÊוה ÓÈÈחÇ ÓטÁנ ÊÑÊךÈ בך זØÇונ ÈÑךÏדמ ÇהÅהדÊÑטזך. חזÇ ÇהÎ×Ãמ:</msg>
   <msg key="lt_There_was_a_bug_in_th">דÇזÊ חזÇד Î×Ã ÈÑוÌך בך חÐח ÇהÕסבÍÉ.</msg>
+  <msg key="lt_There_was_a_bug_in_th_?">דÇזÊ חזÇד Î×Ã ÈÑוÌך בך חÐח ÇהÕסבÍÉ. וז בÖהד ÇÙהו חÐÇ ÇהÎ×Ã.</msg>
   <msg key="lt_There_was_an_error_se">דÇז חזÇד Î×Ã בך ÅÑÓÇה ÇהÈÑךÏ ÅהדÊÑטזךס Åהי %email%</msg>
+  <msg key="lt_There_was_an_error_se_?">דÇז חזÇד Î×Ã בך ÅÑÓÇה ÇהÈÑךÏ ÅהדÊÑטזךס Åהי %system_owner%. </msg>
   <msg key="lt_There_was_an_error_tr">דÇז חזÇד Î×Ãמ בך וÍÇטהÉ ÅÖÇבÉ וÍÊטÇדמ. Ùהי ÇהÃÚהÈ ÇהÃÓÈÇÈ Êהד חך:</msg>
   <msg key="lt_This_action_will_take">חÐÇ ÇהÙוהנ ÓמךמÃעÎÐן ÊגÑךÈÇכ</msg>
+  <msg key="lt_This_action_will_take_?">חÐÇ ÇהÙוהנ ÓמךמÃעÎÐן ÊגÑךÈÇכ &lt;strong&gt;%estimated_number_of_seconds%&lt;/strong&gt; ËטÇזך.</msg>
   <msg key="lt_This_allows_you_to_gi"> חÐÇ ךÓוÍ הד Ãז ÊÙ×ך ÔÎÕ ÚךÑ וזÊוך Åהי MIT ÇהסÐך הךÓ ×ÇהÈ וÓÌסה ÇהטÕטה החÐח ÇהוÌוטÙÉ. </msg>
   <msg key="lt_this_is_what_the_header">חÐÇ וÇ ÇהÙזטÇז ÇהÑÆךÓך ÓמךמÈעÏט וËה</msg>
   <msg key="lt_this_may_take_some_time">חÐÇ גמÏע ךמÓÊÚÑגן ÈÙÖ ÇהטגÊ. ÑÌÇÁכ דןז ÕÈטÑÇכ.</msg>
@@ -350,6 +365,7 @@
   <msg key="Members_of">ÇהÃÙÖÇÁ וז</msg>
   <msg key="Membership_Requests">×הÈÇÊ ÇהÙÖטךסÉ</msg>
   <msg key="Memberships">ÇהÙÖטךÇÊ</msg>
+  <msg key="Memberships_?">ÇהÙÖטךÇÊ:</msg>
   <msg key="Message">ÑÓÇהÉ</msg>
   <msg key="must">ךמÌנÈן Ãמזע </msg>
   <msg key="must_be_one_of">- ךמÌנÈן Ãמזע ךמדןטזמ טÇÍÏ וז</msg>
@@ -362,6 +378,7 @@
   <msg key="New">ÌÏךÏ</msg>
   <msg key="new">ÌÏךÏ</msg>
   <msg key="new_class">ÌÏךÏ</msg>
+  <msg key="new_class_?">%classes_pretty_name% ÌÏךÏ</msg>
   <msg key="new_class_instance">ÌÏךÏ %class_instances_pretty_name%</msg>
   <msg key="new_class_navbar_name">ÌÏךÏ</msg>
   <msg key="new_class_of_type_class_name">%class_name% ÌÏךÏ וז זטÙ %class_instances_pretty_name%</msg>
@@ -426,7 +443,7 @@
   <msg key="Reject">ÇÑבÖע</msg>
   <msg key="reject">ÇÑבÖע</msg>
   <msg key="Request_Membership">Ç×סהÈע ÙÖטךסÉ</msg>
-  <msg key="request_membership_link">&lt;img src=/graphics/request.gif alt=&quot;%label%&quot; border=&quot;?&quot; title=&quot;Ç×הÈ ÙÖטךÉ&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;?&quot; title=&quot;Ç×הÈ ÙÖטךÉ&quot;&gt;</msg>
   <msg key="required">ו×הטÈ</msg>
   <msg key="Results">ÇהזמÊÇÆנÌן</msg>
   <msg key="Return_URL">וטגÙ ÇהÙטÏÉ</msg>
@@ -495,6 +512,7 @@
   <msg key="user_email_created">ÇהוÓÊÎÏו %user_email% Îןהנגמ ...</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% ÙÖטÇכ בך %system_name% וזÐ %pretty_creation_date%</msg>
   <msg key="User_ID">חטךסÉ ÇהוÓÊÎÏו:</msg>
+  <msg key="User_ID_?">חטךÉ ÇהוÓÊÎÏו</msg>
   <msg key="User_Management">ÅÏÇÑÉ וÓÊÎÏו</msg>
   <msg key="user_portal_page_calendar_title">ובדÑÊך</msg>
   <msg key="user_portal_page_file_storage_title">והבÇÊך</msg>
