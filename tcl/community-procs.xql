@@ -40,13 +40,19 @@ update dotlrn_communities set package_id= :package_id where community_id= :commu
 </querytext>
 </fullquery>
 
-    <fullquery name="dotlrn_community::get_parent_id.select_parent_id">
-        <querytext>
-            select dotlrn_communities.parent_community_id
-            from dotlrn_communities
-            where dotlrn_communities.community_id = :community_id
-        </querytext>
-    </fullquery>
+<fullquery name="dotlrn_community::get_parent_id.select_parent_id">
+<querytext>
+select dotlrn_communities.parent_community_id
+from dotlrn_communities
+where dotlrn_communities.community_id = :community_id
+</querytext>
+</fullquery>
+
+<fullquery name="dotlrn_community::check_community_key_valid_p.collision_check">
+<querytext>
+select 1 from dotlrn_communities where :parent_community_id in (select parent_community_id from dotlrn_communities where dotlrn_communities.community_key = :community_key)
+</querytext>
+</fullquery>
 
 <fullquery name="dotlrn_community::get_type_node_id.select_node_id">
 <querytext>
