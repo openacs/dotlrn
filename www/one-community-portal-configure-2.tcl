@@ -21,12 +21,12 @@ ad_page_contract {
     @version $Id$
 } -query {
 }
-
+ns_log warning "starting one-community-portal-configure"
 set form [ns_getform]
 set portal_id [ns_set get $form portal_id]
 set return_url [ns_set get $form return_url]
 set anchor [ns_set get $form anchor]
-
+ns_log warning "about to call dispatch"
 portal::configure_dispatch -portal_id $portal_id -form $form
 
 #ad_return_complaint 1 "one-community-portal-configure?portal_id=$portal_id&referer=$return_url#$anchor"

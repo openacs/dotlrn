@@ -32,6 +32,7 @@ dotlrn::require_user_admin_community \
     -community_id [dotlrn_community::get_community_id]
 
 set rendered_page [portal::configure \
+    -allow_theme_change_p "0" \
     [dotlrn_community::get_portal_id] \
     $referer
 ]
