@@ -23,8 +23,10 @@
 --
 -- ben@openforce
 -- ported to PG by Yon and Ben
+-- @author dan chak (chak@openforce.net)
+-- @version $Id$
 --
--- 11/28/2001
+-- creation date 11/28/2001
 --
 -- Security Setup for dotLRN
 -- privileges, privilege inheritance

@@ -15,16 +15,20 @@
 --
 
 --
--- Drop the dotLRN Students package
+-- DotLRN portal types map - a mapping table b/w  a type
+-- like "subgroups" or "user" and their portal_id
 --
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
--- pg port on 2002-07-01
+-- @author arjun (arjun@openforce.net)
 -- @version $Id$
 --
 
-\i dotlrn-students-package-drop.sql
-\i dotlrn-students-sanitize.sql
-\i dotlrn-student-profile-provider-drop.sql
-
-drop table dotlrn_student_profile_rels;
+create table dotlrn_portal_types_map (
+    type                        varchar(100)
+                                constraint dotlrn_p_t_map_type_pk
+                                primary key,
+    portal_id                   integer
+				constraint dotlrn_p_t_map_portal_id_fk
+                                references portals (portal_id)
+                                constraint dotlrn_p_t_map_portal_id_un
+                                unique
+);

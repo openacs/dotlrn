@@ -15,16 +15,11 @@
 --
 
 --
--- Drop the dotLRN Students package
+-- DotLRN portal templates - drop script
 --
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
--- pg port on 2002-07-01
+-- @author arjun (arjun@openforce.net)
+-- @autho dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
-\i dotlrn-students-package-drop.sql
-\i dotlrn-students-sanitize.sql
-\i dotlrn-student-profile-provider-drop.sql
-
-drop table dotlrn_student_profile_rels;
+drop table dotlrn_portal_types_map;

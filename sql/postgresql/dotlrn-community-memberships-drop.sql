@@ -15,16 +15,18 @@
 --
 
 --
--- Drop the dotLRN Students package
+-- drop the dotLRN communities membership model
 --
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
--- pg port on 2002-07-01
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
+-- @author dan chak (chak@openforce.net)
+-- @creation-date  November 6th, 2001
+-- porting to PG 2002-07-01
 -- @version $Id$
 --
 
-\i dotlrn-students-package-drop.sql
-\i dotlrn-students-sanitize.sql
-\i dotlrn-student-profile-provider-drop.sql
-
-drop table dotlrn_student_profile_rels;
+drop view dotlrn_admin_rels_full;
+drop table dotlrn_admin_rels;
+drop view dotlrn_member_rels_approved;
+drop view dotlrn_member_rels_full;
+drop table dotlrn_member_rels;

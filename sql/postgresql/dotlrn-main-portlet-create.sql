@@ -22,6 +22,7 @@
 
 -- Copyright (C) 2001 OpenForce, Inc.
 -- @author Ben Adida (ben@openforce.net)
+-- @author dan chak (chak@openforce.net)
 -- @creation-date 2001-11-05
 
 -- $Id$
@@ -111,6 +112,14 @@ begin
         select acs_sc_impl_alias__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet'',
+               ''RemoveSelfFromPage'',
+               ''dotlrn_main_portlet::remove_self_from_page'',
+               ''TCL''
+        );
+
+        select acs_sc_impl_alias__new (
+               ''portal_datasource'',
+               ''dotlrn_main_portlet'',
                ''Show'',
                ''dotlrn_main_portlet::show'',
                ''TCL''
@@ -124,18 +133,13 @@ begin
                ''TCL''
         );
 
-        select acs_sc_impl_alias__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''RemoveSelfFromPage'',
-               ''dotlrn_main_portlet::remove_self_from_page'',
-               ''TCL''
-        );
-
+        -- Add the binding
         select acs_sc_binding__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet''
         );
+
+	return 0;
 
 end;
 ' language 'plpgsql';

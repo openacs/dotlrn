@@ -24,26 +24,18 @@
 create table dotlrn_user_profile_rels (
     rel_id                      integer
                                 constraint dotlrn_usr_prfl_rels_rel_id_fk
-                                references user_profile_rels (rel_id)
+                                references dotlrn_user_profile_rels (rel_id)
                                 constraint dotlrn_user_profile_rels_pk
                                 primary key,
-    id                          varchar(100)
-);
-
-create table dotlrn_full_user_profile_rels (
-    rel_id                      integer
-                                constraint dotlrn_fup_rels_rel_fk
-                                references dotlrn_user_profile_rels (rel_id)
-                                constraint dotlrn_full_user_prfl_rels_pk
-                                primary key,
     portal_id                   integer
-                                constraint dotlrn_fup_rels_portal_fk
+				constraint dotlrn_user_p_rels_portal_fk
                                 references portals (portal_id)
-                                constraint dotlrn_fup_rels_portal_nn
+                                constraint dotlrn_user_p_rels_portal_nn
                                 not null,
     theme_id                    integer
-                                constraint dotlrn_fup_rels_theme_fk
-                                references portal_element_themes (theme_id)
+				constraint dotlrn_user_p_rels_theme_id_fk
+                                references portal_element_themes (theme_id),
+    id                          varchar(100)
 );
 
 create table dotlrn_user_types (
@@ -58,7 +50,7 @@ create table dotlrn_user_types (
                                 not null
 );
 
-create or replace view dotlrn_users
+create view dotlrn_users
 as
     select acs_rels.rel_id,
            dotlrn_user_profile_rels.id,
@@ -80,15 +72,6 @@ as
     and acs_rels.object_id_two = parties.party_id
     and parties.party_id = users.user_id
     and users.user_id = persons.person_id;
-
-create view dotlrn_full_users
-as
-    select dotlrn_users.*,
-           dotlrn_full_user_profile_rels.portal_id,
-           dotlrn_full_user_profile_rels.theme_id
-    from dotlrn_users,
-         dotlrn_full_user_profile_rels
-    where dotlrn_users.rel_id = dotlrn_full_user_profile_rels.rel_id;
 
 \i dotlrn-user-profile-provider-create.sql
 \i dotlrn-users-init.sql

@@ -13,18 +13,10 @@
 --  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 --  details.
 --
-
---
--- Drop the dotLRN Students package
---
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
--- pg port on 2002-07-01
+-- @author dan chak (chak@openforce.net)
+-- @creation-date 2001-08-18
 -- @version $Id$
---
 
-\i dotlrn-students-package-drop.sql
-\i dotlrn-students-sanitize.sql
-\i dotlrn-student-profile-provider-drop.sql
-
-drop table dotlrn_student_profile_rels;
+drop view dotlrn_communities_full;
+perform drop_package('dotlrn_community');
+perform drop_package('dotlrn_community_type');

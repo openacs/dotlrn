@@ -29,10 +29,15 @@
 --
 
 create table dotlrn_community_types (
-    community_type              varchar(100) constraint dotlrn_ct_community_type_fk
+    community_type              varchar(100) 
+				constraint dotlrn_ct_community_type_fk
                                 references group_types (group_type)
                                 constraint dotlrn_community_types_pk
                                 primary key,
+    supertype                   varchar(100)
+				constraint dotlrn_ct_supertype_fk
+                                references dotlrn_community_types (community_type),
+    constraint dotlrn_ct_type_supertype_un unique (community_type, supertype),
     pretty_name                 varchar(100)
                                 constraint dotlrn_ct_pretty_name_nn
                                 not null,
@@ -40,18 +45,18 @@ create table dotlrn_community_types (
     package_id                  integer
                                 constraint dotlrn_ct_package_id_fk
                                 references apm_packages (package_id),
-    supertype                   varchar(100) constraint dotlrn_ct_supertype_fk
-                                references dotlrn_community_types (community_type),
-    portal_template_id          constraint dotlrn_ct_portal_template_id_fk
-                                references portals (portal_id)
+    tree_sortkey		varbit,
+    max_child_sortkey		varbit
 );
 
-create table dotlrn_communities (
-    community_id                integer constraint dotlrn_c_community_id_fk
+create table dotlrn_communities_all (
+    community_id                integer 
+				constraint dotlrn_c_community_id_fk
                                 references groups (group_id)
                                 constraint dotlrn_communities_pk
                                 primary key,
-    parent_community_id         integer constraint dotlrn_c_parent_comm_id_fk
+    parent_community_id         integer 
+				constraint dotlrn_c_parent_comm_id_fk
                                 references dotlrn_communities (community_id),
     community_type              varchar(100) not null
                                 constraint dotlrn_c_community_type_fk
@@ -65,19 +70,44 @@ create table dotlrn_communities (
     description                 varchar(4000),
     active_start_date           date,
     active_end_date             date,
-    portal_id                   integer constraint dotlrn_c_portal_id_fk
+    archived_p                  char(1)
+                                default 'f'
+                                constraint dotlrn_c_archived_p_ck
+                                check (archived_p in ('t', 'f'))
+                                constraint dotlrn_c_archived_p_nn
+                                not null,
+    portal_id                   integer 
+				constraint dotlrn_c_portal_id_fk
                                 references portals (portal_id),
-    admin_portal_id             integer constraint dotlrn_c_admin_portal_id_fk
+    non_member_portal_id        integer
+				constraint dotlrn_c_non_member_portal_fk
                                 references portals (portal_id),
-    portal_template_id          integer constraint dotlrn_c_portal_template_id_fk
+    admin_portal_id             integer 
+				constraint dotlrn_c_admin_portal_id_fk
                                 references portals (portal_id),
-    package_id                  integer constraint dotlrn_c_package_id_fk
+    package_id                  integer 
+				constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),
-    -- We can't have two communities with the same parent with the same key (url)
-    -- even if the parent_community_id is null, which it will be for non-subcommunities
-    constraint dotlrn_c_community_key_un
-    unique (community_key, parent_community_id)
+    font			varchar(100)
+				default '',
+    font_size			integer
+				default 0,
+    header_img			varchar(100)
+				default '',
+    tree_sortkey		varbit,
+    max_child_sortkey		varbit
 );
+
+create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id;
+create index dtlrn_com_all_archived_p_idx on dotlrn_communities_all (archived_p);
+
+create or replace view dotlrn_communities
+as
+    select dotlrn_communities_all.*
+    from dotlrn_communities_all
+    where dotlrn_communities_all.archived_p = 'f';
+
+
 
 create view dotlrn_communities_not_closed
 as
@@ -106,8 +136,6 @@ as
 
 create table dotlrn_applets (
     applet_id                   integer
-                                constraint dotlrn_applets_applet_id_nn
-                                not null
                                 constraint dotlrn_applets_applet_pk 
                                 primary key,
     applet_key                  varchar(100)
@@ -133,13 +161,16 @@ create table dotlrn_community_applets (
                                 constraint dotlrn_ca_applet_key_nn
                                 not null
                                 references dotlrn_applets (applet_id),
-    constraint dotlrn_community_applets_pk primary key (community_id, applet_id),
     -- this is the package_id of the package this applet represents
     package_id                  integer,
     active_p                    char(1)
                                 default 't'
-                                constraint dotlrn_ca_active_p_nn
-                                not null
                                 constraint dotlrn_ca_active_p_ck
                                 check (active_p in ('t','f'))
+                                constraint dotlrn_ca_active_p_nn
+                                not null,
+    constraint dotlrn_community_applets_pk 
+    primary key (community_id, applet_id)
 );
+
+\i dotlrn-communities-tree-create.sql

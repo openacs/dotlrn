@@ -14,17 +14,8 @@
 --  details.
 --
 
---
--- Drop the dotLRN Students package
---
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
--- pg port on 2002-07-01
--- @version $Id$
---
+-- drop the dotLRN communities tree model
+-- @author dan chak (chak@openforce.net)
 
-\i dotlrn-students-package-drop.sql
-\i dotlrn-students-sanitize.sql
-\i dotlrn-student-profile-provider-drop.sql
-
-drop table dotlrn_student_profile_rels;
+drop trigger dotlrn_communities_in_tr;
+drop trigger dotlrn_community_types_in_tr;

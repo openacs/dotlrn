@@ -27,7 +27,7 @@ declare
     foo                         integer;
 begin
 
-    acs_rel_type.create_type(
+    acs_rel_type__create_type(
         ''dotlrn_user_profile_rel'',
         ''dotLRN User Profile Membership'',
         ''dotLRN User Profile Memberships'',
@@ -56,9 +56,9 @@ begin
     );
 
     foo := rel_segment__new(
-        segment_name => ''dotLRN Profiled Users'',
-        group_id => foo,
-        rel_type => ''dotlrn_user_profile_rel''
+        ''dotLRN Profiled Users'',
+        foo,
+        ''dotlrn_user_profile_rel''
     );
 
     return(0);
@@ -67,7 +67,6 @@ end;
 
 select inline_1();
 drop function inline_1();
-
 
 create function inline_2()
 returns integer as '

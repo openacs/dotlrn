@@ -15,16 +15,24 @@
 --
 
 --
--- Drop the dotLRN Students package
+-- drop the dotLRN model
 --
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- author dan chak (chak@openforce.net)
--- pg port on 2002-07-01
+-- @author dan chak (chak@openforce.net)
+-- @creation-date 2001-08-18
 -- @version $Id$
 --
 
-\i dotlrn-students-package-drop.sql
-\i dotlrn-students-sanitize.sql
-\i dotlrn-student-profile-provider-drop.sql
-
-drop table dotlrn_student_profile_rels;
+\i dotlrn-user-extension-drop.sql
+\i dotlrn-security-drop.sql
+\i dotlrn-main-portlet-drop.sql
+\i dotlrn-community-memberships-packages-drop.sql
+\i dotlrn-applet-sc-drop.sql
+\i dotlrn-class-memberships-drop.sql
+\i dotlrn-classes-drop.sql
+\i dotlrn-clubs-drop.sql
+\i dotlrn-dotlrn-sanitize.sql
+\i dotlrn-communities-package-drop.sql
+\i dotlrn-community-memberships-drop.sql
+\i dotlrn-communities-drop.sql
+\i dotlrn-portal-types-drop.sql
+\i dotlrn-users-drop.sql

@@ -22,14 +22,17 @@
 --
 -- for PostgreSQL v7.1 and above
 --
--- ben@openforce.net
--- September 25th, 2001
--- we remember September 11th, 2001
+-- @author Ben Adida (ben@openforce.net)
+-- @author dan chak (chak@openforce.net)
+-- @creation-date 2001-09-25
+-- @version $Id$
+--
+-- @note We remember September 11th, 2001
 --
 
 begin
     -- Create the base community type
-    select dotlrn_community_type__new(
+    perform dotlrn_community_type__new(
         'dotlrn_community',
         null,
         'Community',
@@ -37,8 +40,65 @@ begin
         'Communities - the base community type'
     );
 
+    -- these are the possible attributes of a community
+    perform acs_attribute__create_attribute(
+	   'dotlrn_community',
+	   'header_font',
+	   'string',
+	   'Header Font',
+	   'Header Fonts',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_attribute(
+	   'dotlrn_community',
+	   'header_font_size',
+	   'string',
+	   'Header Fon Sizet',
+	   'Header Fonts Sizes',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_attribute(
+	   'dotlrn_community',
+	   'header_font_color',
+	   'string',
+	   'Header Font Color',
+	   'Header Fonts Colors',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_attribute(
+	   'dotlrn_community',
+	   'header_logo_item_id',
+	   'integer',
+	   'Header Logo Item ID',
+	   'Header Logo Item ID',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_attribute(
+	   'dotlrn_community',
+	   'header_logo_alt_text',
+	   'integer',
+	   'Header Logo Alt Text',
+	   'Header Logo Alt Text',
+	   0,
+	   1,
+	   'generic'
+    );
+
+
     -- create the dotlrn_class community type
-    select dotlrn_community_type__new(
+    perform dotlrn_community_type__new(
         'dotlrn_class_instance',
         'dotlrn_community',
         'Class',
@@ -59,6 +119,28 @@ begin
     update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
     update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
 
+    perform acs_attribute__create_atribute(
+	   'dotlrn_community',
+	   'member_pretty_name',
+	   'string',
+	   'Member Pretty Name',
+	   'Member Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute(
+	   'dotlrn_community',
+	   'member_pretty_plural',
+	   'string',
+	   'Member Pretty Plural',
+	   'Member Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
     -- create roles
     acs_rel_type__create_role('student', 'Student', 'Students');
     acs_rel_type__create_role('course_assistant', 'Course Assistant', 'Course Assistants');
@@ -66,4 +148,183 @@ begin
     acs_rel_type__create_role('instructor', 'Professor', 'Professors');
     acs_rel_type__create_role('course_admin', 'Course Administrator', 'Course Administrators');
     acs_rel_type__create_role('admin', 'Administrator', 'Administrators');
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'student_pretty_name',
+	   'string',
+	   'Student Pretty Name',
+	   'Student Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'student_pretty_plural',
+	   'string',
+	   'Student Pretty Plural',
+	   'Student Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'course_assistant_pretty_name',
+	   'string',
+	   'Course Assistant Pretty Name',
+	   'Course Assistant Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'course_assistant_pretty_plural',
+	   'string',
+	   'Course Assistant Pretty Plural',
+	   'Course Assistant Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'teaching_assistant_pretty_name',
+	   'string',
+	   'Teaching Assistant Pretty Name',
+	   'Teaching Assistant Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'teaching_assistant_pretty_plural',
+	   'string',
+	   'Teaching Assistant Pretty Plural',
+	   'Teaching Assistant Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'instructor_pretty_name',
+	   'string',
+	   'Professor Pretty Name',
+	   'Professor Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'instructor_pretty_plural',
+	   'string',
+	   'Professor Pretty Plural',
+	   'Professor Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'course_admin_pretty_name',
+	   'string',
+	   'Course Administrator Pretty Name',
+	   'Course Administrator Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'course_admin_pretty_plural',
+	   'string',
+	   'Course Administrator Pretty Plural',
+	   'Course Administrator Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',		  
+	   'admin_pretty_name',
+	   'string',
+	   'Administrator Pretty Name',
+	   'Administrator Pretty Name',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    perform acs_attribute__create_atribute (
+	   'dotlrn_community',
+	   'admin_pretty_plural',
+	   'string',
+	   'Administrator Pretty Plural',
+	   'Administrator Pretty Plural',
+	   0,
+	   1,
+	   'generic'
+    );
+
+    -- create basic rel_types
+
+    perform acs_rel_type__create_type (
+	   'dotlrn_member_rel',
+	   'membership_rel',
+	   'dotLRN Community Membership',
+	   'dotLRN Community Memberships',
+	   'dotlrn_member_rel',
+	   'dotlrn_member_rels',
+	   'red_id',
+	   'dotlrn_community',
+	   null,
+	   0,
+	   null,
+	   'user',
+	   'member',
+	   0,
+	   null
+    );
+
+    perform acs_rel_type__create_type (
+	   'dotlrn_admin_rel',
+	   'dotlrn_member_rel',
+	   'dotLRN Admin Community Membership',
+	   'dotLRN Admin Community Memberships',
+	   'dotlrn_admin_rel',
+	   'dotlrn_admin_rels',
+	   'red_id',
+	   'dotlrn_community',
+	   null,
+	   0,
+	   null,
+	   0,
+	   'admin',
+	   0,
+	   null
+    );
+
+    -- all rels to communities must have a portal_id
+    perform acs_rel_type__create_type (
+	  'dotlrn_member_rel',
+	  'portal_id',
+	  'integer',
+	  'Page ID',
+	  'Page IDs'
+    );
 end;

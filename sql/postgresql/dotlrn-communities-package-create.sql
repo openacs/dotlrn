@@ -24,6 +24,7 @@
 -- @author Ben Adida (ben@openforce.net)
 -- @author yon (yon@openforce.net
 -- @author arjun (arjun@openforce.net)
+-- @author dan chak (chak@openforce.net)
 -- @creation-date September 20th, 2001 (redone)
 -- @version $Id$
 --
@@ -37,11 +38,11 @@ select define_function_args ('dotlrn_community_type__name','community_type');
 create function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar)
 returns varchar as '
 DECLARE
-        p_community_type                        alias for $1;
-        p_parent_type                                alias for $2;
-        p_pretty_name                                alias for $3;
-        p_pretty_plural                                alias for $4;
-        p_description                                alias for $5;
+        p_community_type                       alias for $1;
+        p_parent_type                          alias for $2;
+        p_pretty_name                          alias for $3;
+        p_pretty_plural                        alias for $4;
+        p_description                          alias for $5;
 BEGIN
         return dotlrn_community_type__new(
             p_community_type,
@@ -85,12 +86,12 @@ BEGIN
         from dual;
 
         PERFORM acs_object_type__create_type (
+	    v_parent_object_type,
             p_community_type,
             p_community_type,
             p_community_type,
-            v_parent_object_type,
-            ''dotlrn_communities'',
-            ''community_id'',
+            v_unique_name,
+            v_unique_name,
             v_unique_name,
             ''acs_group.name''
         );
@@ -103,9 +104,17 @@ BEGIN
 
         insert
         into dotlrn_community_types
-        (community_type, pretty_name, description, package_id, supertype)
+        (community_type, 
+	 pretty_name, 
+	 description, 
+	 package_id, 
+	 supertype)
         values
-        (p_community_type, p_pretty_name, p_description, p_package_id, p_parent_type);
+        (p_community_type, 
+	 p_pretty_name, 
+	 p_description, 
+	 p_package_id, 
+	 p_parent_type);
 
         return p_community_type;
 END;
@@ -131,15 +140,21 @@ create function dotlrn_community_type__name(varchar)
 returns varchar as '
 DECLARE
         p_community_type                alias for $1;
+        v_name dotlrn_community_types.pretty_name%TYPE;
 BEGIN
-        return name from dotlrn_community_types where community_type= p_community_type;
+        select dotlrn_community_types.pretty_name
+        into v_name
+        from dotlrn_community_types
+        where dotlrn_community_types.community_type = p_community_type;
+
+        return v_name;
 END;
 ' language 'plpgsql';
 
 
 -- dotlrn_community
 
-select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_id,community_key,pretty_name,description,portal_id,portal_template_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
+select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,portal_id,non_member_portal_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
 
 select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
 
@@ -154,36 +169,35 @@ select define_function_args('dotlrn_community__admin_p','community_id,party_id')
 select define_function_args('dotlrn_community__url','community_id');
 
 
-create function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamp,integer,varchar,integer)
+create function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamp,integer,varchar,integer)
 returns integer as '
 DECLARE
-        p_community_id                        alias for $1;
-        p_parent_community_id                alias for $2;
+        p_community_id                  alias for $1;
+        p_parent_community_id           alias for $2;
         p_community_type                alias for $3;
-        p_community_key                        alias for $4;
-        p_pretty_name                        alias for $5;
-        p_description                        alias for $6;
-        p_portal_id                        alias for $7;
-        p_portal_template_id                alias for $8;
-        p_package_id                        alias for $9;
-        p_join_policy                        alias for $10;
-        p_creation_date                        alias for $11;
-        p_creation_user                        alias for $12;
-        p_creation_ip                        alias for $13;
-        p_context_id                        alias for $14;
-        c_id                                integer;
+        p_community_key                 alias for $4;
+        p_pretty_name                   alias for $5;
+        p_description                   alias for $6;
+	archived_p			alias for $7
+        p_portal_id                     alias for $8;
+        p_non_member_portal_id          alias for $9;
+        p_package_id                    alias for $10;
+        p_join_policy                   alias for $11;
+        p_creation_date                 alias for $12;
+        p_creation_user                 alias for $13;
+        p_creation_ip                   alias for $14;
+        p_context_id                    alias for $15;
+        c_id                            integer;
 BEGIN
         c_id := acs_group__new (
+	    p_context_id,
             p_community_id,
             p_community_type,
             p_creation_date,
             p_creation_user,
             p_creation_ip,
-            NULL,
-            NULL,
             p_community_key,
             p_join_policy
-            p_context_id,
         );
 
         insert into dotlrn_communities
@@ -204,8 +218,10 @@ BEGIN
            p_pretty_name, 
            p_description,    
            p_package_id, 
-           p_portal_id, 
-           p_portal_template_id);
+           p_portal_id,
+	   p_archived_p,
+	   p_portal_id,
+           p_non_member_portal_id);
 
         return c_id;        
 END;
@@ -215,11 +231,11 @@ END;
 create function dotlrn_community__set_active_dates(integer,date,date)
 returns integer as '
 DECLARE
-        p_community_id                alias for $1;
-        p_start_date                alias for $2;
+        p_community_id            alias for $1;
+        p_start_date              alias for $2;
         p_end_date                alias for $3;
 BEGIN
-        update dotlrn_communities
+        update dotlrn_communities_all
         set active_start_date = p_start_date,
             active_end_date = p_end_date
         where community_id = p_community_id;
@@ -256,11 +272,24 @@ END;
 create function dotlrn_community__member_p(integer,integer)
 returns boolean as '
 DECLARE
-        p_community_id                        alias for $1;
+        p_community_id                    alias for $1;
         p_party_id                        alias for $2;
+        v_member_p			  char(1);
 BEGIN
-        -- to do (ben)
-        return ''t'';
+       select CASE 
+		   WHEN count(*) = 0
+		   THEN 'f'
+		   ELSE 't'
+	      END
+        into v_member_p
+        from dual
+        where exists (select 1
+                      from dotlrn_member_rels_approved
+                      where dotlrn_member_rels_approved.user_id = dotlrn_community.member_p.party_id
+                      and dotlrn_member_rels_approved.community_id = dotlrn_community.member_p.community_id);
+
+        return v_member_p;
+
 END;
 ' language 'plpgsql';
 
@@ -268,18 +297,21 @@ END;
 create function dotlrn_community__admin_p(integer,integer)
 returns boolean as '
 DECLARE
-        p_community_id                        alias for $1;
+        p_community_id                    alias for $1;
         p_party_id                        alias for $2;
+        v_rv				  char(1);
 BEGIN
-        IF acs_permission__permission_p(p_community_id, p_party_id, ''dotlrn_admin_community'') = ''t''
-        then return ''t'';
-        end if;
+	-- THIS NEEDS TO BE CHECKED!
+	-- chak, 2002-07-01
+	select CASE
+		WHEN acs_permission__permission_p(p_community_id, p_party_id, ''dotlrn_admin_community'') = ''f''
+		THEN acs_permission__permission_p(p_community_id,p_party_id,''admin'')
+		ELSE ''t''	
+	     END
+	   into r_rv
+           from dual;
 
-        IF acs_permission__permission_p(p_community_id, p_party_id, ''admin'') = ''t''
-        then return ''t'';
-        end if;
-
-        return ''f'';
+	return r_rv;
 END;
 ' language 'plpgsql';
 
@@ -288,15 +320,41 @@ create function dotlrn_community__url(integer)
 returns varchar as '
 DECLARE
         p_community_id                alias for $1;
+        v_node_id		      site_nodes.node_id%TYPE;
 BEGIN
-        return site_node__url(site_nodes.node_id)
-        from dotlrn_communities,
+        select site_nodes.node_id into v_node_id
+        from dotlrn_communities_all,
              site_nodes
-        where dotlrn_communities.community_id = p_community_id
-        and site_nodes.object_id = dotlrn_communities.package_id;
+        where dotlrn_communities_all.community_id = p_community_id
+        and site_nodes.object_id = dotlrn_communities_all.package_id;
+
+	return v_node_id;
+
+        exception
+            when no_data_found then
+                return '';
 END;
 ' language 'plpgsql';
 
+
+create dotlrn_community__function has_subcomm_p(integer)
+returns varchar as '
+DECLARE
+	p_community_id		alias for $1;
+	v_rv char(1);
+BEGIN
+	select CASE
+		WHEN count(*) = 0
+		THEN 'f'
+		ELSE 't'
+	       END
+	  into r_rv
+	  from dual 
+         where dotlrn_communities_all.community_id = p_community_id;
+	 
+	 return r_rv;
+END;
+' language 'plpgsql';
 
 create view dotlrn_communities_full
 as

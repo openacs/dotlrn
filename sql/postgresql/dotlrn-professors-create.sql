@@ -29,14 +29,6 @@ create table dotlrn_professor_profile_rels (
                                 primary key
 );
 
-create table dotlrn_full_prof_profile_rels (
-    rel_id                      integer
-                                constraint dotlrn_fp_prfl_rels_rel_fk
-                                references dotlrn_full_user_profile_rels (rel_id)
-                                constraint dotlrn_full_prof_prfl_rels_pk
-                                primary key
-);
-
 \i dotlrn-professor-profile-provider-create.sql
 \i dotlrn-professors-init.sql
 \i dotlrn-professors-package-create.sql

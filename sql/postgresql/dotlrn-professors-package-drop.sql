@@ -18,8 +18,9 @@
 -- Create the dotLRN Professors package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @author dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
-drop package dotlrn_full_prof_profile_rel;
-drop package dotlrn_professor_profile_rel;
+select drop_package('dotlrn_full_prof_profile_rel');
+select drop_package('dotlrn_professor_profile_rel');

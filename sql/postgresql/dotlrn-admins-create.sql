@@ -29,14 +29,6 @@ create table dotlrn_admin_profile_rels (
                                 primary key
 );
 
-create table dotlrn_full_admin_profile_rels (
-    rel_id                      integer
-                                constraint dotlrn_fl_adm_prfl_rels_rel_fk
-                                references dotlrn_full_user_profile_rels (rel_id)
-                                constraint dotlrn_full_admin_prfl_rels_pk
-                                primary key
-);
-
 @@ dotlrn-admin-profile-provider-create.sql
 @@ dotlrn-admins-init.sql
 @@ dotlrn-admins-package-create.sql

@@ -15,11 +15,25 @@
 --
 
 --
--- Create the dotLRN Students package
+-- drop the dotLRN classes model
 --
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
 -- @author dan chak (chak@openforce.net)
+-- @creation-date 2001-08-18
+-- ported to pg 2002-07-01
 -- @version $Id$
 --
 
-select drop_package('dotlrn_student_profile_rel');
+select drop_package('dotlrn_class_instance');
+select drop_package('dotlrn_class');
+select drop_package('dotlrn_department');
+drop view dotlrn_class_instances_not_old;
+drop view dotlrn_class_instances_current;
+drop view dotlrn_class_instances_full;
+drop table dotlrn_class_instances;
+drop view dotlrn_classes_full;
+drop table dotlrn_classes;
+drop table dotlrn_terms;
+drop view dotlrn_departments_full;
+drop table dotlrn_departments;

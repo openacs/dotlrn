@@ -26,6 +26,7 @@
 --
 
 \i dotlrn-users-create.sql
+\i dotlrn-portal-types-create.sql
 \i dotlrn-communities-create.sql
 \i dotlrn-clubs-create.sql
 \i dotlrn-classes-create.sql

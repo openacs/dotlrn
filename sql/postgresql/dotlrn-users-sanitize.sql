@@ -18,9 +18,12 @@
 -- Sanitize the User Profile package
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @author dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
+create function inline_0() 
+returns integer as '
 declare
     foo                         integer;
 begin
@@ -28,21 +31,27 @@ begin
     select min(segment_id)
     into foo
     from rel_segments
-    where segment_name = 'dotLRN Full Profiled Users';
+    where segment_name = ''dotLRN Full Profiled Users'';
 
-    rel_segment.delete(
-        segment_id => foo
+    perform rel_segment__delete(
+        foo
     );
 
-    acs_rel_type.drop_type(
-        rel_type => 'dotlrn_full_user_profile_rel',
-        cascade_p => 't'
+    perform acs_rel_type__drop_type(
+        ''dotlrn_full_user_profile_rel'',
+        ''t''
     );
 
+    return 0;
 end;
-/
-show errors
+' language 'plpgsql';
 
+select inline_0();
+drop function inline_0();
+
+create function inline_1()
+returns integer
+as '
 declare
     foo                         integer;
 begin
@@ -50,10 +59,10 @@ begin
     select min(segment_id)
     into foo
     from rel_segments
-    where segment_name = 'dotLRN Profiled Users';
+    where segment_name = ''dotLRN Profiled Users'';
 
-    rel_segment.delete(
-        segment_id => foo
+    perform rel_segment__delete(
+        foo
     );
 
     select min(group_id)
@@ -61,17 +70,20 @@ begin
     from profiled_groups
     where profile_provider = (select min(impl_id)
                               from acs_sc_impls
-                              where impl_name = 'dotlrn_user_profile_provider');
+                              where impl_name = ''dotlrn_user_profile_provider'');
 
-    profiled_group.delete(
-        group_id => foo
+    perform profiled_group__delete(
+        foo
     );
 
-    acs_rel_type.drop_type(
-        rel_type => 'dotlrn_user_profile_rel',
-        cascade_p => 't'
+    perform acs_rel_type__drop_type(
+        ''dotlrn_user_profile_rel'',
+        ''t''
     );
 
+    return 0;
 end;
-/
-show errors
+' language 'plpgsql';
+
+select inline_1();
+drop function inline_1();

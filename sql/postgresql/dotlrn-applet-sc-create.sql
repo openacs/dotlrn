@@ -19,6 +19,7 @@
 --
 -- ben@openforce.net, arjun@openforce.net
 -- ported to PG by Yon and Ben
+-- @author dan chak (chak@openforce.net)
 --
 -- started October 1st, 2001
 -- we remember September 11th
@@ -32,23 +33,23 @@
 --
 
 begin
-        select acs_sc_contract__new (
+        perform acs_sc_contract__new (
                   'dotlrn_applet',
                   'dotLRN Applet contract'
         );
 
         -- Get a pretty name
-        select acs_sc_msg_type__new (
+        perform acs_sc_msg_type__new (
                   'dotlrn_applet.GetPrettyName.InputType',
                   ''
         );
 
-        select acs_sc_msg_type__new (
+        perform acs_sc_msg_type__new (
                   'dotlrn_applet.GetPrettyName.OutputType',
                   'pretty_name:string'
         );
 
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'GetPrettyName',
                   'Get the pretty name of the applet',
@@ -59,17 +60,17 @@ begin
         );
 
         -- Add the applet to dotlrn (used for one-time initialization)
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddApplet.InputType',
                   ''
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddApplet.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'AddApplet',
                   'Add the Applet to dotlrn - used for one-time initialization',
@@ -79,18 +80,42 @@ begin
                   'dotlrn_applet.AddApplet.OutputType'
         );
 
+    -- RemoveApplet: Removes the applet from dotlrn (used for one-time destroy)
+    -- ** Not yet implimented **
+    perform acs_sc_msg_type__new(
+        'dotlrn_applet.RemoveApplet.InputType',
+        ''
+    );
+  
+    perform acs_sc_msg_type__new(
+        'dotlrn_applet.RemoveApplet.OutputType',
+        'success_p:boolean,error_message:string'
+    );
+    
+    perform acs_sc_operation__new (
+        'dotlrn_applet',
+        'RemoveApplet',
+        'Remove the applet',
+        'f', -- not cacheable
+        0,   -- n_args
+        'dotlrn_applet.RemoveApplet.InputType',
+        'dotlrn_applet.RemoveApplet.OutputType'
+    );
+
         -- Add the applet to a community
-        select acs_sc_msg_type__new(
+	-- Called at community creation time. Adding applets after creation time
+	-- is ** not implimented yet **
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddAppletToCommunity.InputType',
                   'community_id:integer'
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddAppletToCommunity.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'AddAppletToCommunity',
                   'Add the Applet to a specific dotlrn community',
@@ -100,18 +125,43 @@ begin
                   'dotlrn_applet.AddAppletToCommunity.OutputType'
         );
 
+       -- RemoveAppletFromCommunity: Removes the appletl from a community
+       -- Called at community delete time. Deleting applets before that time
+       -- ** not implimented yet **
+       perform acs_sc_msg_type__new(
+	      'dotlrn_applet.RemoveAppletFromCommunity.InputType',
+	      'community_id:integer'
+       );
+  
+	perform acs_sc_msg_type__new(
+	       'dotlrn_applet.RemoveAppletFromCommunity.OutputType',
+	       'success_p:boolean,error_message:string'
+        );
+    
+	perform acs_sc_operation__new (
+	       'dotlrn_applet',
+	       'RemoveAppletFromCommunity',
+	       'Remove the applet from a given community',
+	       'f', -- not cacheable
+	       1,   -- n_args
+	       'dotlrn_applet.RemoveAppletFromCommunity.InputType',
+	       'dotlrn_applet.RemoveAppletFromCommunity.OutputType'
+	);
+  
         -- add a user to dotlrn (used for user-specific one time stuff)
-        select acs_sc_msg_type__new(
+	-- Called when a user is added as a dotlrn user. An example:        
+	-- dotlrn-calendar will create a personal calendar for the new user.
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddUser.InputType',
                   'user_id:integer'
         );
 
-        select acs_sc_msg_type.new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddUser.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'AddUser',
                   'Add a user to dotlrn, used for user-specific one-time init',
@@ -122,18 +172,43 @@ begin
         );
 
 
-        -- add a user to the a specfic dotlrn community
-        select acs_sc_msg_type__new(
+    -- RemoveUser: used for user-specific one time stuff
+    -- Just like AddUser above, but when we delete a dotlrn user
+    -- Example: dotlrn-calendar would delete the user's personal calendar
+    perform acs_sc_msg_type__new(
+        'dotlrn_applet.RemoveUser.InputType',
+        'user_id:integer'
+    );
+  
+    perform acs_sc_msg_type__new(
+        'dotlrn_applet.RemoveUser.OutputType',
+        'success_p:boolean,error_message:string'
+    );
+    
+    perform acs_sc_operation__new (
+        'dotlrn_applet',
+        'RemoveUser',
+        'Remove a user from dotlrn',
+        'f', -- not cacheable
+        1,   -- n_args
+        'dotlrn_applet.RemoveUser.InputType',
+        'dotlrn_applet.RemoveUser.OutputType'
+    );
+  
+    -- AddUserToCommunity: Adds a user to the a specfic dotlrn community. 
+    -- An example of this is to make the community's calendar items 
+    -- visable on user's personal calendar
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddUserToCommunity.InputType',
                   'community_id:integer,user_id:integer'
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddUserToCommunity.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'AddUserToCommunity',
                   'Add a user to a community',
@@ -143,39 +218,19 @@ begin
                   'dotlrn_applet.AddUserToCommunity.OutputType'
         );
 
-        -- remove a user from dotlrn
-        select acs_sc_msg_type__new(
-                  'dotlrn_applet.RemoveUser.InputType',
-                  'user_id:integer'
-        );
-
-        select acs_sc_msg_type__new(
-                  'dotlrn_applet.RemoveUser.OutputType',
-                  'success_p:boolean,error_message:string'
-        );
-        
-        select acs_sc_operation__new (
-                  'dotlrn_applet',
-                  'RemoveUser',
-                  'Remove a user from dotlrn',
-                  'f', -- not cacheable
-                  1,   -- n_args
-                  'dotlrn_applet.RemoveUser.InputType',
-                  'dotlrn_applet.RemoveUser.OutputType'
-        );
-
-        -- remove a user from the community
-        select acs_sc_msg_type__new(
+    -- RemoveUserFromCommunity: Removes a user from a specfic dotlrn
+    -- community. Just like above, but removal.
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.RemoveUserFromCommunity.InputType',
                   'community_id:integer,user_id:integer'
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.RemoveUserFromCommunity.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'RemoveUserFromCommunity',
                   'Remove a user from a community, applet does appropriate cleanup',
@@ -185,60 +240,18 @@ begin
                   'dotlrn_applet.RemoveUserFromCommunity.OutputType'
         );
 
-        -- remove the applet from dotlrn
-        select acs_sc_msg_type__new(
-                  'dotlrn_applet.RemoveApplet.InputType',
-                  ''
-        );
-
-        select acs_sc_msg_type__new(
-                  'dotlrn_applet.RemoveApplet.OutputType',
-                  'success_p:boolean,error_message:string'
-        );
-        
-        select acs_sc_operation__new (
-                  'dotlrn_applet',
-                  'RemoveApplet',
-                  'Remove the applet',
-                  'f', -- not cacheable
-                  0,   -- n_args
-                  'dotlrn_applet.RemoveApplet.InputType',
-                  'dotlrn_applet.RemoveApplet.OutputType'
-        );
-
-        -- remove the applet from a community
-        select acs_sc_msg_type__new(
-                  'dotlrn_applet.RemoveAppletFromCommunity.InputType',
-                  'community_id:integer'
-        );
-
-        select acs_sc_msg_type__new(
-                  'dotlrn_applet.RemoveAppletFromCommunity.OutputType',
-                  'success_p:boolean,error_message:string'
-        );
-        
-        select acs_sc_operation__new (
-                  'dotlrn_applet',
-                  'RemoveAppletFromCommunity',
-                  'Remove the applet from a given community',
-                  'f', -- not cacheable
-                  2,   -- n_args
-                  'dotlrn_applet.RemoveAppletFromCommunity.InputType',
-                  'dotlrn_applet.RemoveAppletFromCommunity.OutputType'
-        );
-
-        -- addportlet
-        select acs_sc_msg_type__new(
+    -- AddPortlet: Adds the underlying portlet to the given portal
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddPortlet.InputType',
-                  'args:string'
+                  'portal_id:integer'
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.AddPortlet.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'AddPortlet',
                   'Adds the underlying portlet to the portal specified',
@@ -248,39 +261,39 @@ begin
                   'dotlrn_applet.AddPortlet.OutputType'
         );
 
-        -- removeportlet
-        select acs_sc_msg_type__new(
+    -- RemovePortlet: the remove corollary of above
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.RemovePortlet.InputType',
-                  'portal_id:integer'
+		  'portal_id:integer,args:string'
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.RemovePortlet.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'RemovePortlet',
                   'Removes the underlying portlet from the given portal',
                   'f', -- not cacheable
-                  1,   -- n_args
+                  2,   -- n_args
                   'dotlrn_applet.RemovePortlet.InputType',
                   'dotlrn_applet.RemovePortlet.OutputType'
         );
 
-        -- clone
-        select acs_sc_msg_type__new(
+    -- Clone: Attack of the Clones! 
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.Clone.InputType',
                   'old_community_id:integer,new_community_id:integer'
         );
 
-        select acs_sc_msg_type__new(
+        perform acs_sc_msg_type__new(
                   'dotlrn_applet.Clone.OutputType',
                   'success_p:boolean,error_message:string'
         );
         
-        select acs_sc_operation__new (
+        perform acs_sc_operation__new (
                   'dotlrn_applet',
                   'Clone',
                   'Clone this applets content from the old to the new community',

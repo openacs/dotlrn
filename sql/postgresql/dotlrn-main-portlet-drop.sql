@@ -27,23 +27,78 @@
 -- License version 2 or higher.  Full text of the license is available
 -- from the GNU Project: http://www.fsf.org/copyleft/gpl.html
 
+create function inline_0 ()
+returns integer as '
 declare  
   ds_id portal_datasources.datasource_id%TYPE;
 begin
 
+    perform acs_sc_binding__delete(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''GetMyName''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''GetPrettyName''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''Link''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''AddSelfToPage''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''RemoveSelfFromPage''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''Show''
+    );
+
+    perform acs_sc_impl__delete_alias(
+        ''portal_datasource'',
+        ''dotlrn_main_portlet'',
+        ''Edit''
+    );
+
+    perform acs_sc_impl__delete(
+        ''portal_datasource','
+        ''dotlrn_main_portlet''
+    );
+
   begin 
     select datasource_id into ds_id
       from portal_datasources
-     where name = 'dotlrn-main-portlet';
+     where name = ''dotlrn-main-portlet'';
    exception when no_data_found then
      ds_id := null;
   end;
 
   if ds_id is not null then
-    portal_datasource.delete(ds_id);
+    portal_datasource__delete(ds_id);
   end if;
 
 end;
-/
-show errors;
+' language 'plpgsql';
 
+perform inline_0();
+delete function inline_0;

@@ -18,49 +18,54 @@
 -- Implementation of the profile provider interface for dotLRN Students.
 --
 -- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @author dan chak (chak@openforce.net)
 -- @version $Id$
 --
 
+create function inline_0()
+returns integer as '
 declare
     foo                         integer;
 begin
 
     -- drop the binding between this implementation and the interface it
-    -- implements.
-    acs_sc_binding.delete(
-        contract_name => 'profile_provider',
-        impl_name => 'dotlrn_student_profile_provider'
+    -- implements__
+    perform acs_sc_binding__delete(
+        ''profile_provider'',
+        ''dotlrn_student_profile_provider''
     );
 
     -- drop the bindings to the method implementations
 
         -- name method
-        foo := acs_sc_impl.delete_alias(
-            impl_contract_name => 'profile_provider',
-            impl_name => 'dotlrn_student_profile_provider',
-            impl_operation_name => 'name'
+        perform acs_sc_impl_alias__delete(
+            ''profile_provider'',
+            ''dotlrn_student_profile_provider'',
+            ''name''
         );
 
         -- prettyName method
-        foo := acs_sc_impl.delete_alias(
-            impl_contract_name => 'profile_provider',
-            impl_name => 'dotlrn_student_profile_provider',
-            impl_operation_name => 'prettyName'
+        perform acs_sc_impl_alias__delete(
+            ''profile_provider'',
+            ''dotlrn_student_profile_provider'',
+            ''prettyName''
         );
 
         -- render method
-        foo := acs_sc_impl.delete_alias(
-            impl_contract_name => 'profile_provider',
-            impl_name => 'dotlrn_student_profile_provider',
-            impl_operation_name => 'render'
+        perform acs_sc_impl_alias__delete(
+            ''profile_provider'',
+            ''dotlrn_student_profile_provider'',
+            ''render''
         );
 
     -- drop the implementation
-    acs_sc_impl.delete(
-        impl_contract_name => 'profile_provider',
-        impl_name => 'dotlrn_student_profile_provider'
+    perform acs_sc_impl__delete(
+        ''profile_provider'',
+        ''dotlrn_student_profile_provider''
     );
 
-end;
-/
-show errors
+    return 0;
+end;' language 'plpgsql';
+
+select inline_0();
+drop function inline_0();

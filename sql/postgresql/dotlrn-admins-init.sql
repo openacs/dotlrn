@@ -32,12 +32,12 @@ begin
 
     PERFORM acs_rel_type__create_type(
         ''dotlrn_admin_profile_rel'',
-        ''dotLRN Admin Profile Membership'',
-        ''dotLRN Admin Profile Memberships'',
-        ''dotlrn_user_profile_rel'',
+	''dotlrn_user_profile_rel'',
+        ''dotLRN Profile Admin'',
+        ''dotLRN Profile Admins'',
+        ''dotlrn_admin_profile_rel'',
         ''dotlrn_admin_profile_rels'',
         ''rel_id'',
-        ''dotlrn_admin_profile_rel'',
         ''profiled_group'',
         null,
         0,
@@ -65,7 +65,7 @@ begin
     (''admin'', ''Staff'', group_id);
 
     foo := rel_segment__new(
-        ''dotLRN Profiled Admins'',
+        ''dotLRN Admins'',
         group_id,
         ''dotlrn_admin_profile_rel''
     );
@@ -85,46 +85,3 @@ end;
 
 select inline_1();
 drop function inline_1();
-
-
-create function inline_2()
-returns integer as '
-declare
-    foo                         integer;
-begin
-    PERFORM acs_rel_type--create_type(
-        ''dotlrn_full_admin_profile_rel'',
-        ''dotLRN Full Admin Profile Membership'',
-        ''dotLRN Full Admin Profile Memberships'',
-        ''dotlrn_full_user_profile_rel'',
-        ''dotlrn_full_admin_profile_rels'',
-        ''rel_id'',
-        ''dotlrn_full_admin_profile_rel'',
-        ''profiled_group'',
-        null,
-        0,
-        null,
-        ''user'',
-        null,
-        0,
-        1
-    );
-
-    select min(group_id)
-    into foo
-    from profiled_groups
-    where profile_provider = (select min(impl_id)
-                              from acs_sc_impls
-                              where impl_name = ''dotlrn_admin_profile_provider'');
-
-    foo := rel_segment__new(
-        ''dotLRN Full Profiled Admins'',
-        foo,
-        ''dotlrn_full_admin_profile_rel''
-    );
-
-end;
-' language 'plpgsql';
-
-select inline_2();
-drop function inline_2();
