@@ -13,7 +13,7 @@
 #  details.
 #
 #
-# /www/dotlrn-default-master.tcl
+# /www/dotlrn-master.tcl
 #
 # This is the "default-master" template for dotlrn sites. 
 #
@@ -25,7 +25,7 @@
 # ignored by the next step.
 # 
 # 2. Change the "Main Site"'s "DefaultMaster" parameter 
-# from "/www/default-master" to "/www/dotlrn-default-master"
+# from "/www/default-master" to "/www/dotlrn-master"
 # at http://yoursite.com/admin/site-map
 #
 # This tells OpenACS to to use these files instead of the "default-master"

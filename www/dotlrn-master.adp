@@ -31,7 +31,7 @@
 <head>
 
 <title>@title@</title>
-@header_stuff@
+@header_stuff;noquote@
 
 
 </head>
@@ -68,7 +68,7 @@
   <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
 
   <!-- navbars on every page -->
-  <tr><td colspan=3 valign=top>@navbar@</td></tr>
+  <tr><td colspan=3 valign=top>@navbar;noquote@</td></tr>
   </table>
   <p>
   <p>
@@ -89,7 +89,7 @@
 
   <!-- dotLRN info links -->
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr><td><small>@navbar@</small></td></tr>
+    <tr><td><small>@navbar;noquote@</small></td></tr>
     <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
   </table>
 </if>

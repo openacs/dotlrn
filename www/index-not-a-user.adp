@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.not_a_user#</property>
 
 <if @admin_p@>

@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.Add_A_Member#</property>
 
 <if @member_p@ eq 1>

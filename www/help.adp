@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.help#</property>
 
 <p><a href="#Edit%20PersonalInfo">Editing Personal Information</a> | <a href="#JoinDrop">Joining/Dropping 

@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">@title@</property>
 
 <i><strong>#dotlrn.Note#</strong> #dotlrn.lt_this_may_take_some_time#</i>

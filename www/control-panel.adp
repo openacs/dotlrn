@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">@title@</property>
 <property name="link_control_panel">0</property>
 

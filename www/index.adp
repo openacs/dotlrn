@@ -18,6 +18,6 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 
 @rendered_page@

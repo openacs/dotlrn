@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.Customize_Layout#</property>
 
 <p></p>

@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.Add_A_User#</property>
 <property name="context_bar">@context_bar@</property>
 

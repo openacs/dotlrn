@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.Manage_Memberships#</property>
 <property name="context_bar">#dotlrn.Manage_Memberships#</property>
 

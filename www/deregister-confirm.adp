@@ -18,7 +18,7 @@
 
 %>
 
-<master src="dotlrn-master">
+<master>
 <property name="title">#dotlrn.Confirm_Drop#</property>
 
 #dotlrn.lt_You_are_about_to_dele#
