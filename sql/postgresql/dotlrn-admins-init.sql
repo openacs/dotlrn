@@ -26,7 +26,7 @@ create function inline_1()
 returns integer as '
 declare
     foo                         integer;
-    group_id                    integer;
+    gid				integer;
     dotlrn_users_group_id       integer;
 begin
 
@@ -53,7 +53,7 @@ begin
     from acs_sc_impls
     where impl_name = ''dotlrn_admin_profile_provider'';
 
-    group_id := profiled_group__new(
+    gid := profiled_group__new(
         foo,
         ''dotLRN Admins''
     );
@@ -62,11 +62,11 @@ begin
     into dotlrn_user_types
     (type, pretty_name, group_id)
     values
-    (''admin'', ''Staff'', group_id);
+    (''admin'', ''Staff'', gid);
 
     foo := rel_segment__new(
         ''dotLRN Admins'',
-        group_id,
+        gid,
         ''dotlrn_admin_profile_rel''
     );
 
@@ -77,8 +77,10 @@ begin
 
     foo := composition_rel__new(
         dotlrn_users_group_id,
-        group_id
+        gid
     );
+
+    return 0;
 
 end;
 ' language 'plpgsql';
