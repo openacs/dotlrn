@@ -176,56 +176,6 @@ namespace eval dotlrn {
         }
     }
 
-    ad_proc -public get_community_applet_node_id {
-        {-community_id:required}
-        {-package_key:required}
-    } {
-        returns the node_id of the applet in the given community. 
-        this should probably be done by querying the dotlrn_community_applets table
-        directly, but we can do it through site_map:: too
-    } {
-        set parent_node_id [site_node::get_node_id_from_object_id \
-            -object_id [dotlrn_community::get_package_id $community_id]
-        ]
-
-        return [site_nodes::get_node_id_from_child_name \
-            -parent_node_id $parent_node_id \
-            -name $package_key \
-        ]
-    }
-
-    ad_proc -public get_community_applet_package_id {
-        {-community_id:required}
-        {-package_key:required}
-    } {
-        like above but returns the package_id
-    } {
-        set node_id [get_community_applet_node_id \
-            -community_id $community_id \
-            -package_key $package_key
-        ]
-
-        return [site_node::get_object_id -node_id $node_id]
-    }
-        
-    ad_proc -public unmount_community_applet_package {
-        {-community_id:required}
-        {-package_key:required}
-    } {
-        unmount a package from under a community. 
-        should be in dotlrn_community::
-    } {
-        db_transaction {
-            set child_node_id [get_community_applet_node_id \
-                    -community_id $community_id \
-                    -package_key $package_key
-            ]
-            
-            # site node del package instance
-            site_node_delete_package_instance -node_id $child_node_id
-        }
-    }
-
     ad_proc -public get_node_id {} {
 	return the root node id for dotLRN
     } {
@@ -449,10 +399,9 @@ namespace eval dotlrn {
         set user_id -1        
         
         set portal_id [portal::create \
-                           -name "$pretty_name Portal" \
-                           -csv_list $csv_list \
-                           $user_id
-                           
+            -name "$pretty_name Portal" \
+            -csv_list $csv_list \
+            $user_id
         ]
         
         # Associate this type with portal_id, must be before applet

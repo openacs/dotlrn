@@ -306,12 +306,12 @@
 
     <fullquery name="dotlrn_community::get_applet_package_id.select_package_id">
         <querytext>
-            select package_id
-            from dotlrn_community_applets dca,
-                 dotlrn_applets da
-            where community_id = :community_id
-            and applet_key = :applet_key
-            and dca.applet_id = da.applet_id
+            select dotlrn_community_applets.package_id
+            from dotlrn_community_applets,
+                 dotlrn_applets
+            where dotlrn_community_applets.community_id = :community_id
+            and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
+            and dotlrn_applets.applet_key = :applet_key
         </querytext>
     </fullquery>
 
@@ -444,7 +444,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::register_community_applet.insert">
+    <fullquery name="dotlrn_community::register_applet.insert">
         <querytext>
             insert into dotlrn_community_applets
             (community_id, applet_id, package_id, active_p)

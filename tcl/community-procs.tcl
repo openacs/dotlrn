@@ -1355,10 +1355,10 @@ namespace eval dotlrn_community {
         return [db_string select_admin_portal_id {}]
     }
 
-    ad_proc -public register_community_applet {
+    ad_proc -public register_applet {
         {-community_id:required}
         {-package_id:required}
-        {-applet_key ""}
+        {-applet_key:required}
     } {
         Helper proc for add_applet_to_community and clone, since
         they both need to set up the community <-> applet map
@@ -1382,7 +1382,7 @@ namespace eval dotlrn_community {
                 AddAppletToCommunity \
                 [list $community_id]]
             
-            register_community_applet \
+            register_applet \
                 -community_id $community_id \
                 -package_id $package_id \
                 -applet_key $applet_key
@@ -1594,7 +1594,7 @@ namespace eval dotlrn_community {
                     [list $community_id $clone_id]
                 ]
 
-                register_community_applet \
+                register_applet \
                     -community_id $clone_id \
                     -package_id $package_id \
                     -applet_key $applet_key
