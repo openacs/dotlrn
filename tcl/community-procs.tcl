@@ -1522,10 +1522,10 @@ namespace eval dotlrn_community {
 #                     dotlrn_community::add_applet_to_community $community_id $applet_key
 #                 }
 #             }
-#         }
 # 
 #         return $community_id
 # 
+        }
     }
 
     ad_proc -public archive {
