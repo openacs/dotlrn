@@ -17,7 +17,7 @@
 
     <fullquery name="dotlrn_privacy::set_read_private_data_for_rel.set_read_private_data_for_rel">
         <querytext>
-	    select dotlrn_privacy__${action}_rd_prv_dt_for_rel(:object_id,:rel_type)
+	    select dotlrn_privacy__${db_proc}(:object_id,:rel_type)
         </querytext>
     </fullquery>
 

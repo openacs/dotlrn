@@ -9,7 +9,7 @@
                    dotlrn_users.first_names,
                    dotlrn_users.last_name,
                    dotlrn_users.email,
-                   dotlrn_guest_p(dotlrn_users.user_id) as guest_p,
+                   dotlrn_privacy.guest_p(dotlrn_users.user_id) as guest_p,
                    acs_permission.permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p
             from dotlrn_users
             where dotlrn_users.type = :type

@@ -38,3 +38,4 @@
 \i user-extension-create.sql
 \i custom-permissions.sql
 \i privacy-init.sql
+\i privacy-package-create.sql

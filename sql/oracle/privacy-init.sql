@@ -92,33 +92,3 @@ where m.rel_id = r.rel_id
   and (r.rel_type = 'dotlrn_guest_rel' 
        or r.rel_type = 'dotlrn_non_guest_rel')
   and r.object_id_one = acs.magic_object_id('registered_users');
-
---
--- Provides extra checking to a simple view query, since Guest status is not
--- yet used uniformly across OACS.
---
-create or replace function dotlrn_guest_p (
-  v_user_id in integer
-) return char
-as
-  v_count integer;
-  v_guest_p char(1);
-begin
-  select count(*) into v_count from dotlrn_guest_status where user_id = v_user_id;
-  if v_count > 1 then
-    raise_application_error (
-       -20000,
-       'Guest status is multiply defined for user ' || v_user_id
-    );
-  end if;
-  if v_count = 0 then
-    raise_application_error (
-       -20000,
-       'Guest status is not defined for user ' || v_user_id
-    );
-  end if;
-  select guest_p into v_guest_p from dotlrn_guest_status where user_id = v_user_id;
-  return v_guest_p;
-end;
-/
-show errors

@@ -10,7 +10,7 @@
                    dotlrn_users.last_name,
                    dotlrn_users.email,
                    dotlrn_users.type,
-                   dotlrn_guest_p(:user_id) as guest_p
+                   dotlrn_privacy.guest_p(:user_id) as guest_p
             from dotlrn_users
             where dotlrn_users.user_id = :user_id
         </querytext>
