@@ -61,6 +61,7 @@ set dotlrn_user_p 0
 if {[db_0or1row select_dotlrn_user_info {}]} {
     set dotlrn_user_p 1
 }
+set can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
 set portrait_p 0
 if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info {}]} {

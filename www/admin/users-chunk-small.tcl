@@ -26,7 +26,7 @@ ad_page_contract {
 
 set user_id [ad_conn user_id]
 set dotlrn_package_id [dotlrn::get_package_id]
-set root_object_id [acs_magic_object "security_context_root"]
+set root_object_id [acs_magic_object security_context_root]
 
 if {![exists_and_not_null type]} {
     set type admin
@@ -37,12 +37,26 @@ if {![exists_and_not_null referer]} {
 }
 
 # Currently, just present a list of dotLRN users
-if {[string equal $type "deactivated"] == 1} {
-    db_multirow users select_deactivated_users {}
-} elseif {[string equal $type "pending"] == 1} {
-    db_multirow users select_non_dotlrn_users {}
+set i 1
+if {[string equal $type deactivated] == 1} {
+    db_multirow users select_deactivated_users {} {
+        set users:${i}(access_level) Limited
+        incr i
+    }
+} elseif {[string equal $type pending] == 1} {
+    db_multirow users select_non_dotlrn_users {} {
+        set users:${i}(access_level) Limited
+        incr i
+    }
 } else {
-    db_multirow users select_dotlrn_users {}
+    db_multirow users select_dotlrn_users {} {
+        if {[dotlrn::user_can_browse_p -user_id $user_id]} {
+            set users:${i}(access_level) Full
+        } else {
+            set users:${i}(access_level) Limited
+        }
+        incr i
+    }
 }
 
 ad_return_template

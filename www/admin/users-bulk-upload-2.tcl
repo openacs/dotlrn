@@ -71,7 +71,15 @@ db_transaction {
             }
             
             # Now we make them a dotLRN user
-            dotlrn::user_add -id $row(id) -type $row(type) -access_level $row(access_level) -user_id $user_id
+            switch -exact $row(access_level) {
+                limited {
+                    dotlrn::user_add -user_id $user_id -id $row(id) -type $row(type)
+                }
+                full -
+                default {
+                    dotlrn::user_add -user_id $user_id -id $row(id) -type $row(type) -can_browse
+                }
+            }
             
             if {$row(guest) == "f"} {
                 set inverse_row_guest "t"

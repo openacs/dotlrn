@@ -54,7 +54,7 @@ namespace eval dotlrn_user_extension {
         foreach pattern [automatic_email_patterns] {
             if {[string match $pattern $email]} {
                 # create the dotLRN user now
-                dotlrn::user_add -type "student" -access_level "full" -user_id $user_id
+                dotlrn::user_add -type student -can_browse_p -user_id $user_id
                 break
             }
         }

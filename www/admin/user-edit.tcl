@@ -30,6 +30,7 @@ set context_bar {{users Users} {Edit}}
 set dotlrn_package_id [dotlrn::get_package_id]
 
 db_1row select_user_info {}
+set can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
 form create edit_user
 
@@ -40,7 +41,7 @@ element create edit_user user_id \
     -value $user_id
 
 element create edit_user id \
-    -label "ID" \
+    -label ID \
     -datatype text \
     -widget text \
     -html {size 30} \
@@ -54,18 +55,18 @@ element create edit_user type \
     -options [dotlrn::get_user_types_as_options] \
     -value $type
 
-element create edit_user access_level \
+element create edit_user can_browse_p \
     -label "Access Level" \
     -datatype text \
     -widget select \
-    -options {{"Full" "full"} {"Limited" "limited"}} \
-    -value $access_level
+    -options {{Full 1} {Limited 0}} \
+    -value $can_browse_p
 
 element create edit_user read_private_data_p \
     -label "Guest?" \
     -datatype text \
     -widget select \
-    -options {{"No" "t"} {"Yes" "f"}} \
+    -options {{No t} {Yes f}} \
     -value $read_private_data_p
 
 element create edit_user return_url \
@@ -76,7 +77,7 @@ element create edit_user return_url \
 
 if {[form is_valid edit_user]} {
     form get_values edit_user \
-        user_id id type access_level read_private_data_p return_url
+        user_id id type can_browse_p read_private_data_p return_url
 
     db_transaction {
         # remove the user
@@ -86,7 +87,7 @@ if {[form is_valid edit_user]} {
         dotlrn::user_add \
             -id $id \
             -type $type \
-            -access_level $access_level \
+            -can_browse\=$can_browse_p \
             -user_id $user_id
 
         # Update permissions

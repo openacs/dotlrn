@@ -41,18 +41,6 @@ if {![dotlrn::user_p -user_id $user_id]} {
 }    
 
 set communities [dotlrn_community::get_all_communities_by_user $user_id]
-
-set access_level [db_string select_users_access_level {
-    select access_level
-    from dotlrn_users
-    where user_id = :user_id
-}]
-
-if {[string match $access_level limited] && [llength $communities] == 1} {
-    ad_returnredirect [ns_set get [lindex $communities 0] url]
-    ad_script_abort
-}
-
 if {![dotlrn::user_can_browse_p -user_id $user_id]} {
 
     if {[llength $communities] == 0} {

@@ -77,7 +77,7 @@
 
 <h3>dotLRN Information</h3>
 
-<if @dotlrn_user_p@ eq 1>
+<if @dotlrn_user_p@>
 
 <ul>
 
@@ -88,12 +88,12 @@
 
   <li>
     Access level:
-    <if @access_level@ eq "full">Full</if><else>Limited</else>
+    <if @can_browse_p@>Full</if><else>Limited</else>
   </li>
 
   <li>
     Guest?:
-    <if @read_private_data_p@ eq "t">No</if><else>Yes</else>
+    <if @read_private_data_p@>No</if><else>Yes</else>
   </li>
 
   <li>
@@ -157,8 +157,7 @@
 
   <ul>
     <li>
-      <a
-      href="users-add-to-community?users=@user_id@&referer=@return_url@">Add</a>
+      <a href="users-add-to-community?users=@user_id@&referer=@return_url@">Add</a>
       this user to another group.
     </li>
   </ul>

@@ -24,7 +24,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {type "any"}
-    {access_level "any"}
+    {can_browse_p "any"}
     {private_data_p "any"}
     {join_criteria "and"}
     {n_users 0}
@@ -103,12 +103,12 @@ element create user_search type \
     -options "{Any any} [dotlrn::get_user_types_as_options]" \
     -value $type
 
-element create user_search access_level \
+element create user_search can_browse_p \
     -label "Access Level" \
     -datatype text \
     -widget select \
-    -options {{Any any} {Limited limited} {Full full}} \
-    -value $access_level
+    -options {{Any any} {Limited 0} {Full 1}} \
+    -value $can_browse_p
 
 element create user_search private_data_p \
     -label "Guest?" \
@@ -149,7 +149,7 @@ set is_request [form is_request user_search]
 
 if {[form is_valid user_search]} {
     form get_values user_search \
-        id type access_level private_data_p last_visit_greater last_visit_less name join_criteria
+        id type can_browse_p private_data_p last_visit_greater last_visit_less name join_criteria
 
     if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
         ad_return_error \
@@ -167,7 +167,6 @@ if {[form is_valid user_search]} {
         "dotlrn_users.last_name" \
         "dotlrn_users.email" \
         "dotlrn_users.type" \
-        "dotlrn_users.access_level" \
     ]
     set wheres [list]
 
@@ -187,8 +186,14 @@ if {[form is_valid user_search]} {
         }
     }
 
-    if {![string equal "any" $access_level]} {
-        lappend wheres "dotlrn_users.access_level = :access_level"
+    switch -exact $can_browse_p {
+        any {}
+        1 {
+            lappend wheres "'t' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
+        }
+        0 {
+            lappend wheres "'t' = acs_permission.permission_p(:package_id, dotlrn_users.user_id, 'dotlrn_browse')"
+        }
     }
 
     switch -exact $private_data_p {

@@ -41,7 +41,7 @@ if {[dotlrn::is_instantiated]} {
                 -parent_node_id [site_node_id "/"] \
                 -package_key $portal_package_key \
                 -url $portal_mount_point \
-                -directory_p "t"
+                -directory_p t
     }
 
     db_transaction {
@@ -59,7 +59,7 @@ if {[dotlrn::is_instantiated]} {
         # called repeatedly since this script is eval'd at every server startup
         foreach applet [dotlrn_community::list_applets] {
             # Callback on all applets
-            dotlrn_community::applet_call $applet "AddApplet" [list]
+            dotlrn_community::applet_call $applet AddApplet [list]
         }
 
         ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn::init"
@@ -77,15 +77,10 @@ if {[dotlrn::is_instantiated]} {
         ns_log notice "dotlrn-init: done with dotlrn_club::init"
 
         # Grantee
-        set grantee_id [dotlrn::get_users_rel_segment_id]
         set package_id [dotlrn::get_package_id]
-
-        # Grant the permission
-        permission::grant -party_id $grantee_id -object_id $package_id -privilege "dotlrn_browse"
-
-        # check read permission on dotLRN for all users
         set grantee_id [dotlrn::get_users_rel_segment_id]
-        permission::grant -party_id $grantee_id -object_id $package_id -privilege "read"
+
+        permission::grant -party_id $grantee_id -object_id $package_id -privilege read
 
     }
 }

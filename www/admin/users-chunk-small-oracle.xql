@@ -9,7 +9,6 @@
                    dotlrn_users.first_names,
                    dotlrn_users.last_name,
                    dotlrn_users.email,
-                   dotlrn_users.access_level,
                    acs_permission.permission_p(:dotlrn_package_id, dotlrn_users.user_id, 'read_private_data') as read_private_data_p,
                    acs_permission.permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p
             from dotlrn_users
@@ -24,7 +23,6 @@
                    persons.first_names,
                    persons.last_name,
                    parties.email,
-                   'limited' as access_level,
                    'f' as read_private_data_p,
                    acs_permission.permission_p(:root_object_id, users.user_id, 'admin') as site_wide_admin_p
             from parties,
@@ -53,7 +51,6 @@
                    persons.first_names,
                    persons.last_name,
                    parties.email,
-                   'limited' as access_level,
                    'f' as read_private_data_p,
                    acs_permission.permission_p(:root_object_id, users.user_id, 'admin') as site_wide_admin_p
             from parties,

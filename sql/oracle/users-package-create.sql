@@ -27,7 +27,6 @@ as
         rel_id in dotlrn_user_profile_rels.rel_id%TYPE default null,
         user_id in users.user_id%TYPE,
         portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
-        access_level in dotlrn_user_profile_rels.access_level%TYPE,
         theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
         id in dotlrn_user_profile_rels.id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_user_profile_rel',
@@ -50,7 +49,6 @@ as
         rel_id in dotlrn_user_profile_rels.rel_id%TYPE default null,
         user_id in users.user_id%TYPE,
         portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
-        access_level in dotlrn_user_profile_rels.access_level%TYPE,
         theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
         id in dotlrn_user_profile_rels.id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_user_profile_rel',
@@ -84,9 +82,9 @@ as
 
         insert
         into dotlrn_user_profile_rels
-        (rel_id, portal_id, theme_id, access_level, id)
+        (rel_id, portal_id, theme_id, id)
         values
-        (v_rel_id, portal_id, theme_id, access_level, id);
+        (v_rel_id, portal_id, theme_id, id);
 
         return v_rel_id;
     end;

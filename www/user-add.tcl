@@ -25,7 +25,7 @@ ad_page_contract {
 } -query {
     {id ""}
     {type student}
-    {access_level full}
+    {can_browse_p 1}
     {read_private_data_p t}
     {add_membership_p t}
     {referer members}
@@ -95,11 +95,11 @@ element create add_user type \
     -widget hidden \
     -value $type
 
-element create add_user access_level \
+element create add_user can_browse_p \
     -label "Access Level" \
     -datatype text \
     -widget hidden \
-    -value $access_level
+    -value $can_browse_p
 
 element create add_user read_private_data_p \
     -label "Guest?" \
@@ -115,7 +115,7 @@ element create add_user add_membership_p \
 
 if {[form is_valid add_user]} {
     form get_values add_user \
-        target_user_id id email first_names last_name referer type access_level read_private_data_p
+        target_user_id id email first_names last_name referer type can_browse_p read_private_data_p
 
     db_transaction {
 
@@ -126,7 +126,7 @@ if {[form is_valid add_user]} {
         }
 
         # make the user a dotLRN user
-        dotlrn::user_add -id $id -type $type -access_level $access_level -user_id $target_user_id
+        dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $target_user_id
 
         # can this user read private data?
         acs_privacy::set_user_read_private_data -user_id $target_user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p

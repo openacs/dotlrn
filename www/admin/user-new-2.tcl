@@ -58,11 +58,11 @@ element create add_user type \
     -widget select \
     -options [dotlrn::get_user_types_as_options]
 
-element create add_user access_level \
+element create add_user can_browse_p \
     -label "Access Level" \
     -datatype text \
     -widget select \
-    -options {{"Full Access" full} {"Limited Access" limited}}
+    -options {{"Full Access" 1} {"Limited Access" 0}}
 
 element create add_user read_private_data_p \
     -label "Guest?" \
@@ -78,17 +78,15 @@ element create add_user referer \
 
 if {[form is_valid add_user]} {
     form get_values add_user \
-        user_id id type access_level read_private_data_p referer
+        user_id id type can_browse_p read_private_data_p referer
 
     db_transaction {
-        dotlrn::user_add -id $id -type $type -access_level $access_level -user_id $user_id
+        dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $user_id
         acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
     }
 
     ad_returnredirect $referer
-    # I don't think a script abort is the right thing (ben)
-    # ad_script_abort
-    return
+    ad_script_abort
 }
 
 set context_bar {{users Users} New}

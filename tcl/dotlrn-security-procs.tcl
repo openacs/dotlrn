@@ -99,8 +99,8 @@ namespace eval dotlrn {
     }
 
     ad_proc -public user_add {
-        {-type "student"}
-        {-access_level "limited"}
+        {-type student}
+        {-can_browse:boolean}
         {-id ""}
         {-user_id:required}
     } {
@@ -119,14 +119,13 @@ namespace eval dotlrn {
         # set up extra vars
         set extra_vars [ns_set create]
         ns_set put $extra_vars user_id $user_id
-        ns_set put $extra_vars access_level $access_level
         ns_set put $extra_vars id $id
 
-        set template_id [dotlrn::get_portal_id_from_type \
-                             -type "user"
-        ]
+        set template_id [dotlrn::get_portal_id_from_type -type user]
 
         db_transaction {
+            set_can_browse -user_id $user_id -can_browse\=$can_browse_p
+
             set portal_id [portal::create \
                 -template_id $template_id \
                 -name "Your dotLRN Workspace" \
@@ -230,6 +229,25 @@ namespace eval dotlrn {
         return [db_string select_user_type {} -default ""]
     }
 
+    ad_proc -public set_can_browse {
+        {-user_id ""}
+        {-can_browse:boolean}
+    } {
+        sets whether a user can browse communities
+    } {
+        if {$can_browse_p} {
+            permission::grant \
+                -party_id $user_id \
+                -object_id [dotlrn::get_package_id] \
+                -privilege dotlrn_browse
+        } else {
+            permission::revoke \
+                -party_id $user_id \
+                -object_id [dotlrn::get_package_id] \
+                -privilege dotlrn_browse
+        }
+    }
+
     ad_proc -public user_can_browse_p {
         {-user_id ""}
     } {
@@ -238,7 +256,7 @@ namespace eval dotlrn {
         return [permission::permission_p \
             -party_id $user_id \
             -object_id [dotlrn::get_package_id] \
-            -privilege "dotlrn_browse" \
+            -privilege dotlrn_browse \
         ]
     }
 

@@ -32,11 +32,6 @@ create table dotlrn_user_profile_rels (
                                 not null,
     theme_id                    constraint dotlrn_user_p_rels_theme_id_fk
                                 references portal_element_themes (theme_id),
-    access_level                varchar(100)
-                                constraint dotlrn_user_p_rels_access_ck
-                                check (access_level in ('full', 'limited'))
-                                constraint dotlrn_user_p_rels_access_nn
-                                not null,
     id                          varchar(200)
 );
 
@@ -56,7 +51,6 @@ as
     select acs_rels.rel_id,
            dotlrn_user_profile_rels.portal_id,
            dotlrn_user_profile_rels.theme_id,
-           dotlrn_user_profile_rels.access_level,
            dotlrn_user_profile_rels.id,
            users.user_id,
            persons.first_names,

@@ -45,7 +45,7 @@
 
       <tr>
         <th align="left">Access Level</th>
-        <td><formwidget id="access_level"></td>
+        <td><formwidget id="can_browse_p"></td>
       </tr>
 
       <tr>
