@@ -100,9 +100,15 @@ if {[form is_valid add_user]} {
         target_user_id id email first_names last_name referer type access_level read_private_data_p
 
     db_transaction {
-        # create the ACS user
-        set password [ad_generate_random_string]
-        set target_user_id [ad_user_new $email $first_names $last_name $password "" "" "" "t" "approved" $target_user_id]
+
+        if {![cc_email_from_party $target_user_id]} {
+            # create the ACS user
+            set password [ad_generate_random_string]
+            set target_user_id [ad_user_new \
+                $email $first_names $last_name $password \
+                "" "" "" "t" "approved" $target_user_id \
+            ]
+        }
 
         # make the user a dotLRN user
         dotlrn::user_add -id $id -type $type -access_level $access_level -user_id $target_user_id
