@@ -75,13 +75,6 @@ element create spam_message message \
     -widget textarea \
     -html {rows 10 cols 80 wrap soft}
 
-element create spam_message message_type \
-    -label "Message Type" \
-    -datatype text \
-    -widget select \
-    -options {{"Plain text" "text"} {HTML "html"}} \
-    -value "text"
-
 element create spam_message send_date \
     -label {Send Date} \
     -datatype date \
@@ -97,7 +90,7 @@ element create spam_message referer \
 
 if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
-        community_id from rel_type subject message message_type send_date referer
+        community_id from rel_type subject message send_date referer
 
     set segment_id [db_string select_rel_segment_id {}]
     set community_name [dotlrn_community::get_community_name $community_id]
@@ -158,7 +151,6 @@ ns_log notice "query: $query"
         -from_addr $from \
         -subject "\[$community_name\] $subject" \
         -message $message \
-        -message_type $message_type \
         -query $query
 
     ad_returnredirect $referer

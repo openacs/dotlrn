@@ -20,26 +20,10 @@
 <property name="title">@spam_name@</property>
 <property name="context_bar">@context_bar@</property>
 
-
-
-
 <p>
   Are you sure you want to send the following @spam_name@ Message?
 </p>
 
-<if @message_type@ eq "html">
-  <table class="z_dark" bgcolor="#eeeeee" width="95%" cellpadding="3" cellspacing="3">
-    <tr>
-      <td width="10%">Subject</td>
-      <td><pre>@subject@</pre></td>
-    </tr>
-    <tr>
-      <td>Message</td>
-      <td>@preview_message@</td>
-    </tr>
-  </table>
-</if>
-<else>
   <table class="z_dark" bgcolor="#eeeeee" width="95%" cellpadding="3" cellspacing="3">
     <tr>
       <td width="10%">Subject</td>
@@ -50,7 +34,7 @@
       <td>        <%= [ad_text_to_html --  "$preview_message"] %></td>
     </tr>
   </table>
-</else>
+
 <form action="spam" method="post">
   @confirm_data@
   <input type="submit" value="Confirm"></input>

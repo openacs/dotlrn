@@ -30,20 +30,9 @@ ad_page_contract {
     portal_id:onevalue
 }
 
-form get_values spam_message subject message message_type
+form get_values spam_message subject message
 
-# the following is just to make sure the previewing works ok.
-# in case the user types a html message and chooses the messsage 
-# to be a plain text type or vice-versa.
-if {$message_type == "html"} {
-	if [ad_looks_like_html_p $message] {
-	     set preview_message "<pre>$message</pre>"
-           } else {
-	     set preview_message "$message"
-        }
-} else {
-	set preview_message [ad_quotehtml $message]
-}
+set preview_message [ad_quotehtml $message]
 
 set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
 set context_bar [list [list $referer Admin] "$spam_name Community"]
