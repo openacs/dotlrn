@@ -31,8 +31,6 @@ set groups_pretty_plural "[parameter::get -localize -parameter class_instances_p
 set title "[_ dotlrn.archived_groups]"
 set context_bar [list $title]
 
-db_multirow archived_comms select_archived_comms {} {
-    set description [ad_quotehtml $description]
-}
+db_multirow archived_comms select_archived_comms {}
 
 ad_return_template

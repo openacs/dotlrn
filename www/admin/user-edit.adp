@@ -23,6 +23,8 @@
 <property name="context_bar">@context_bar@</property>
 
 #dotlrn.Youre_editing# <strong>@first_names@ @last_name@</strong>.
+<p>
+<font color=red>#dotlrn.Note_if_you_make#</font>
 
 <p></p>
 
