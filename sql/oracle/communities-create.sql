@@ -89,7 +89,7 @@ create table dotlrn_communities_all (
     max_child_sortkey           raw(3)
 );
 
-create index dtlrn_com_all_com_parent_id_idx on dotlrn_communities_all (community_id, parent_community_id;
+create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id;
 create index dtlrn_com_all_archived_p_idx on dotlrn_communities_all (archived_p);
 
 create or replace view dotlrn_communities
