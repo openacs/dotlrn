@@ -288,7 +288,7 @@ namespace eval dotlrn_community {
         set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
         set date_format "YYYY MM DD"
 
-        db_dml set_active_dates {}
+        db_exec_plsql set_active_dates {}
     }
 
     ad_proc set_package_id {
