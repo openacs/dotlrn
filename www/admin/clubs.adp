@@ -7,7 +7,7 @@
 <p></p>
 
 <if @clubs:rowcount@ gt 0>
-<table border="0" cellspacing="0" cellpadding="3" width="100%">
+<table>
   <tr>
     <th align="left" width="15%"><%= [ad_parameter clubs_pretty_name] %> Name</th>
     <th align="left" width="50%">Description</th>

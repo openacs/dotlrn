@@ -1,7 +1,7 @@
-<table border="0" cellpadding="2" cellspacing="0" width="95%">
+<table width="95%">
   <tr bgcolor="black">
     <td>
-      <table border="0" cellpadding="2" cellspacing="0" width="100%">
+      <table>
         <tr bgcolor="#aaaaaa">
           <th align="left" width="50%">User</th>
           <th align="left">Access</th>

@@ -7,7 +7,7 @@
 <p></p>
 
 <if @terms:rowcount@ gt 0>
-<table border="0" cellspacing="0" cellpadding="3" width="100%">
+<table>
   <tr>
     <th align="left" width="15%">Term</th>
     <th align="left" width="15%">Start Date</th>

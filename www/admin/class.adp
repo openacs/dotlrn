@@ -15,7 +15,7 @@
 </else>
 </p>
 
-<table bgcolor="#ececec" border="0" cellspacing="0" cellpadding="3" width="100%">
+<table bgcolor="#ececec">
   <tr>
     <th align="left" width="50%">
 <formtemplate id="term_form">
@@ -28,7 +28,7 @@
 <p></p>
 
 <if @class_instances:rowcount@ gt 0>
-<table border="0" cellspacing="0" cellpadding="3" width="100%">
+<table>
   <tr>
     <th align="left" width="15%">Term</th>
     <th align="left" width="50%"><%= [ad_parameter classes_pretty_name] %> Instance Name</th>
@@ -36,7 +36,7 @@
   </tr>
 <multiple name="class_instances">
   <tr>
-    <td>@class_instances.term_name@&nbsp;@class_instances.term_year@</td>
+    <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
     <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
     <td>[&nbsp;<font size="-1"><a href="@class_instances.url@one-community-admin">admin</a></font>&nbsp;]</td>
   </tr>

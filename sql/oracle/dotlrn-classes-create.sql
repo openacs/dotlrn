@@ -113,12 +113,21 @@ as
            dotlrn_communities.portal_id,
            dotlrn_communities.portal_template_id,
            dotlrn_communities.package_id,
-           dotlrn_community.url(dotlrn_communities.community_id) as url
+           dotlrn_community.url(dotlrn_communities.community_id) as url,
+           dotlrn_classes_full.pretty_name as class_name,
+           dotlrn_classes_full.url as class_url,
+           dotlrn_classes_full.department_key,
+           dotlrn_departments_full.pretty_name as department_name,
+           dotlrn_departments_full.url as department_url
     from dotlrn_communities,
          dotlrn_class_instances,
-         dotlrn_terms
-    where  dotlrn_communities.community_id = dotlrn_class_instances.class_instance_id
-    and dotlrn_class_instances.term_id = dotlrn_terms.term_id;
+         dotlrn_terms,
+         dotlrn_classes_full,
+         dotlrn_departments_full
+    where dotlrn_communities.community_id = dotlrn_class_instances.class_instance_id
+    and dotlrn_class_instances.term_id = dotlrn_terms.term_id
+    and dotlrn_communities.community_type = dotlrn_classes_full.class_key
+    and dotlrn_classes_full.department_key = dotlrn_departments_full.department_key;
 
 create or replace view dotlrn_class_instances_current
 as
