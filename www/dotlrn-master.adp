@@ -67,7 +67,7 @@
   
 </table>
 
-<small>@navbar@</small>
+<div style="font-size: small">@navbar@</div>
 
 <P>
 
