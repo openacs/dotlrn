@@ -7,8 +7,11 @@
         <querytext>
             select count(*)
             from (select acs_rels.object_id_two
-                  from acs_rels
+                  from acs_rels, membership_rels
                   where acs_rels.object_id_one = (select acs.magic_object_id('registered_users') from dual)
+		  and acs_rels.rel_id = membership_rels.rel_id
+		  and membership_rels.member_state 
+	              not in ('banned','deleted','rejected')
                  minus
                   select acs_rels.object_id_two
                   from acs_rels, dotlrn_user_types

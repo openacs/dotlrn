@@ -6,6 +6,7 @@
     <fullquery name="select_dotlrn_user_info">
         <querytext>
             select dotlrn_users.*,
+                   acs_permission__permission_p(:root_object_id, dotlrn_users.user_id, 'admin') as site_wide_admin_p,
                    acs_permission__permission_p(:dotlrn_package_id, :user_id, 'read_private_data') as read_private_data_p
             from dotlrn_users
             where dotlrn_users.user_id = :user_id
@@ -31,8 +32,7 @@
             select dotlrn_class_instances_full.*,
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
-                   '' as role_pretty_name,
-                   acs_permission__permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
+                   '' as role_pretty_name
             from dotlrn_class_instances_full,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.user_id = :user_id
@@ -49,8 +49,7 @@
             select dotlrn_clubs_full.*,
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
-                   '' as role_pretty_name,
-                   acs_permission__permission_p(dotlrn_clubs_full.club_id, :user_id, 'admin') as admin_p
+                   '' as role_pretty_name
             from dotlrn_clubs_full,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.user_id = :user_id
@@ -66,8 +65,7 @@
                    dotlrn_community__url(dotlrn_communities.community_id) as url,
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
-                   '' as role_pretty_name,
-                   acs_permission__permission_p(dotlrn_communities.community_id, :user_id, 'admin') as admin_p
+                   '' as role_pretty_name
             from dotlrn_communities,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.user_id = :user_id

@@ -39,6 +39,12 @@ element create confirm_delete users \
     -widget hidden \
     -value $users
 
+element create confirm_delete referer \
+    -label "&nbsp;" \
+    -datatype text \
+    -widget hidden \
+    -value $referer
+
 if {[form is_valid confirm_delete]} {
     form get_values confirm_delete \
         users

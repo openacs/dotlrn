@@ -18,13 +18,34 @@
 
 %>
 
+<%
+    # The structure of this table is determined by the type of user we
+    # are displaying.  It doesn't make much sense to display access
+    # level, guest status, and admin status for pending users.  Instead we
+    # will offer links to common actions. 
+
+    # Note: There is some redundant logic inside the table and in
+    # other files that display access and guest status fields as N/A
+    # for pending users.  Previous to the change, this page was
+    # displaying "Limited" and "Yes", respectively, which are wrong
+    # and confused our site administrator.
+    # The N/A logic is a failsafe in case these columns come back for
+    # some reason.  aegrumet@mit.edu 2002-08-08.
+
+%>
+
 <center>
 <table bgcolor="#cccccc" cellpadding="5" cellspacing="3" width="95%">
   <tr>
     <th align="left" width="50%">User</th>
+    <if @type@ eq "pending">
+    <th align="left">Actions</th>
+    </if>
+    <else>
     <th align="left">Access</th>
     <th align="left">Guest?</th>
     <th align="left">Site-wide Admin?</th>
+    </else>
   </tr>
 
 <if @users:rowcount@ gt 0>
@@ -49,8 +70,22 @@
     </else>
   </else>
     </td>
+<if @type@ eq "pending">
+    <td align="left">
+    <% # We had to escape to Tcl to get the desired behavior. AG %>
+    <small><a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=<%= [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$users(user_id)&referer=$referer] %>">approve and add to dotLRN</a> | <a href="user-nuke?user_id=@users.user_id@&referer=@referer@">nuke</small>
+    </td>
+</if>
+<else>
     <td align="center">@users.access_level@</td>
-    <td align="center"><if @users.read_private_data_p@ eq t>no</if><else>yes</else></td>
+    <td align="center">
+     <if @type@ eq "pending">
+     N/A
+     </if>
+     <else>
+     <if @users.read_private_data_p@ eq t>no</if><else>yes</else>
+     </else>
+    </td>
     <td align="center">
   <if @user_id@ ne @users.user_id@>
     <if @users.site_wide_admin_p@ eq t>
@@ -62,6 +97,7 @@
   </if>
       <else>yes</else>
     </td>
+</else>
   </tr>
 
 </multiple>

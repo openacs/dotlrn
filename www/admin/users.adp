@@ -34,6 +34,13 @@
 
 <p></p>
 
+<form method="get" action="users-search">
+  Search dotLRN users for user: <input type="text" name="name"><input type="submit" value="search">
+
+  <input type="hidden" name="form:id" value="user_search">
+
+</form>
+
 <form method="get" action="user-new">
   Add a new dotLRN user: <input type="text" name="search_text"><input type="submit" value="search">
 </form>

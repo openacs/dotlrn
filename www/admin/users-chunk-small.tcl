@@ -45,7 +45,7 @@ if {[string equal $type deactivated] == 1} {
     }
 } elseif {[string equal $type pending] == 1} {
     db_multirow users select_non_dotlrn_users {} {
-        set users:${i}(access_level) Limited
+        set users:${i}(access_level) N/A
         incr i
     }
 } else {

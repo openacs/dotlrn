@@ -103,7 +103,7 @@
       <td align="center">
         <nobr>
         <small>
-          [ <a href="@class_instances.url@one-community-admin">Administer</a> ]
+              <a href="@class_instances.url@one-community-admin"><img border=0 valign="bottom" src="../graphics/admin.gif" alt="Administer"></a>
         </small>
         </nobr>
       </td>

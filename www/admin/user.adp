@@ -165,17 +165,33 @@
 </if>
 <else>
 <p>
+<if @member_state@ eq "approved">
   <a href="user-new-2?user_id=@user_id@&referer=@return_url@">Add</a> this user to dotLRN.
+</if>
+<else>
+This user is currently in state <i>@member_state@</i>.  To allow this user access to dotLRN you must <br><a href="/acs-admin/users/member-state-change?user_id=@user_id@&member_state=approved&return_url=@dual_approve_return_url@">approve and add to dotLRN</a>.
+</else>
 </p>
 </else>
+
 
 <h3>Administrative Actions</h3>
 
 <ul>
-  <li><a href="/user/password-update?@export_edit_vars@">Update this user's password</a></li>
+  <li><a href="password-update?@export_edit_vars@">Update this user's password</a></li>
 <if @portrait_p@>
   <br>
   <li><a href="/user/portrait/index.tcl?@export_edit_vars@">Manage this user's portrait</a></li>
+</if>
+  <br>
+  <li>    
+<if @dotlrn_user_p@ eq 1>
+<if @site_wide_admin_p@ eq t>
+This user is a site-wide admin. (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">revoke</a>)
+    </if>
+    <else>
+      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">Make this user a site wide admin.</a>
+    </else>
 </if>
   <br>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">Become this user!</a></li>
