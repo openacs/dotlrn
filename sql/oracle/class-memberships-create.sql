@@ -14,11 +14,13 @@
 --  details.
 --
 
--- Membership stuff for classes
--- ben@openforce
-
 --
--- For Classes
+-- create the dotLRN class membership model
+--
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
+-- @creation-date 2001-08-18
+-- @version $Id$
 --
 
 create table dotlrn_student_rels (
@@ -119,7 +121,6 @@ as
 
 
 declare
-    foo        integer;
 begin
     acs_rel_type.create_type (
         rel_type => 'dotlrn_student_rel',

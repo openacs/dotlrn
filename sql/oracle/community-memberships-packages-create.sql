@@ -14,18 +14,12 @@
 --  details.
 --
 
-
 --
--- The DotLRN memberships packages
+-- create the dotLRN memberships packages
 --
--- for Oracle 8/8i. (We're guessing 9i works, too).
---
--- ben@openforce.net
--- started November 6th, 2001
---
-
---
--- Basic dotLRN membership rel
+-- @author Ben Adida (ben@openforce.net)
+-- @creation-daate 2001-11-06
+-- @version $Id$
 --
 
 create or replace package dotlrn_member_rel

@@ -15,9 +15,7 @@
 --
 
 --
--- The DotLRN communities construct
---
--- for Oracle 8/8i. (We're guessing 9i works, too).
+-- create the dotLRN communities model
 --
 -- @author Ben Adida (ben@openforce.net)
 -- @author yon (yon@openforce.net
@@ -31,16 +29,19 @@ create table dotlrn_community_types (
                                 references group_types (group_type)
                                 constraint dotlrn_community_types_pk
                                 primary key,
+    supertype                   constraint dotlrn_ct_supertype_fk
+                                references dotlrn_community_types (community_type),
+    constraint dotlrn_ct_type_supertype_un unique (community_type, supertype),
     pretty_name                 varchar2(100)
                                 constraint dotlrn_ct_pretty_name_nn
                                 not null,
     description                 varchar2(4000),
     package_id                  constraint dotlrn_ct_package_id_fk
                                 references apm_packages (package_id),
-    supertype                   constraint dotlrn_ct_supertype_fk
-                                references dotlrn_community_types (community_type),
     portal_id                   constraint dotlrn_ct_portal_id_fk
-                                references portals (portal_id)
+                                references portals (portal_id),
+    tree_sortkey                raw(240),
+    max_child_sortkey           raw(3)
 );
 
 create table dotlrn_communities_all (
@@ -50,6 +51,7 @@ create table dotlrn_communities_all (
                                 primary key,
     parent_community_id         constraint dotlrn_c_parent_comm_id_fk
                                 references dotlrn_communities_all (community_id),
+    constraint dotlrn_c_community_key_un unique (community_key, parent_community_id),
     community_type              constraint dotlrn_c_community_type_nn
                                 not null
                                 constraint dotlrn_c_community_type_fk
@@ -83,8 +85,8 @@ create table dotlrn_communities_all (
                                 default 0,
     header_img                  varchar2(100)
                                 default '',
-    constraint dotlrn_c_community_key_un
-    unique (community_key, parent_community_id)
+    tree_sortkey                raw(240),
+    max_child_sortkey           raw(3)
 );
 
 create or replace view dotlrn_communities
@@ -120,7 +122,7 @@ as
 
 create table dotlrn_applets (
     applet_id                   integer
-                                constraint dotlrn_applets_applet_pk 
+                                constraint dotlrn_applets_applet_pk
                                 primary key,
     applet_key                  varchar(100)
                                 constraint dotlrn_applets_applet_key_nn

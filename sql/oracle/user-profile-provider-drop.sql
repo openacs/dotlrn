@@ -34,26 +34,26 @@ begin
 
     -- drop the bindings to the method implementations
 
-        -- name method
-        foo := acs_sc_impl.delete_alias(
-            impl_contract_name => 'profile_provider',
-            impl_name => 'dotlrn_user_profile_provider',
-            impl_operation_name => 'name'
-        );
+    -- name method
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'profile_provider',
+        impl_name => 'dotlrn_user_profile_provider',
+        impl_operation_name => 'name'
+    );
 
-        -- prettyName method
-        foo := acs_sc_impl.delete_alias(
-            impl_contract_name => 'profile_provider',
-            impl_name => 'dotlrn_user_profile_provider',
-            impl_operation_name => 'prettyName'
-        );
+    -- prettyName method
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'profile_provider',
+        impl_name => 'dotlrn_user_profile_provider',
+        impl_operation_name => 'prettyName'
+    );
 
-        -- render method
-        foo := acs_sc_impl.delete_alias(
-            impl_contract_name => 'profile_provider',
-            impl_name => 'dotlrn_user_profile_provider',
-            impl_operation_name => 'render'
-        );
+    -- render method
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'profile_provider',
+        impl_name => 'dotlrn_user_profile_provider',
+        impl_operation_name => 'render'
+    );
 
     -- drop the implementation
     acs_sc_impl.delete(

@@ -14,9 +14,8 @@
 --  details.
 --
 
-
 --
--- The DotLRN communities membership constructs
+-- create the dotLRN communities membership model
 --
 -- for Oracle 8/8i. (We're guessing 9i works, too).
 --

@@ -15,11 +15,7 @@
 --
 
 --
--- The DotLRN basic system
--- copyright 2001, OpenForce, inc.
--- distributed under the GNU GPL v2
---
--- for Oracle 8/8i. (We're guessing 9i works, too).
+-- create the dotLRN classes model
 --
 -- @author Ben Adida (ben@openforce.net)
 -- @author yon (yon@openforce.net)
@@ -120,15 +116,7 @@ as
            dotlrn_terms.term_year,
            dotlrn_terms.start_date,
            dotlrn_terms.end_date,
-           dotlrn_communities.community_type,
-           dotlrn_communities.community_key,
-           dotlrn_communities.pretty_name,
-           dotlrn_communities.description,
-           dotlrn_communities.active_start_date,
-           dotlrn_communities.active_end_date,
-           dotlrn_communities.portal_id,
-           dotlrn_communities.non_member_portal_id,
-           dotlrn_communities.package_id,
+           dotlrn_communities.*,
            dotlrn_community.url(dotlrn_communities.community_id) as url,
            dotlrn_classes_full.pretty_name as class_name,
            dotlrn_classes_full.url as class_url,

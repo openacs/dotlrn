@@ -15,7 +15,7 @@
 --
 
 --
--- The DotLRN basic system
+-- bootstrap dotLRN
 --
 -- @author Ben Adida (ben@openforce.net)
 -- @creation-date 2001-09-25
@@ -37,11 +37,6 @@ begin
         pretty_plural => 'Communities',
         description => 'Communities - the base community type'
     );
-
-    update acs_object_types
-    set table_name = 'dotlrn_community',
-        package_name = 'dotlrn_community'
-    where object_type = 'dotlrn_community';
 
     -- these are the possible attributes of a community
     bar := acs_attribute.create_attribute(
@@ -96,11 +91,6 @@ begin
         pretty_plural => 'Classes',
         description => 'e.g. 6.001'
     );
-
-    update acs_object_types
-    set table_name = 'dotlrn_class_instance',
-        package_name = 'dotlrn_class_instance'
-    where object_type = 'dotlrn_class_instance';
 
     -- create the dotlrn_club community type
     foo := dotlrn_community_type.new(

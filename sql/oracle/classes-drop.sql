@@ -15,24 +15,26 @@
 --
 
 --
--- create the dotLRN model
+-- drop the dotLRN classes model
 --
 -- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
 -- @creation-date 2001-08-18
 -- @version $Id$
 --
 
-@@ users-create.sql
-@@ portal-types-create.sql
-@@ communities-create.sql
-@@ community-memberships-create.sql
-@@ communities-package-create.sql
-@@ dotlrn-init.sql
-@@ clubs-create.sql
-@@ classes-create.sql
-@@ class-memberships-create.sql
-@@ applet-sc-create.sql
-@@ community-memberships-packages-create.sql
-@@ main-portlet-create.sql
-@@ security-create.sql
-@@ user-extension-create.sql
+drop package body dotlrn_class_instance;
+drop package dotlrn_class_instance;
+drop package body dotlrn_class;
+drop package dotlrn_class;
+drop package body dotlrn_department;
+drop package dotlrn_department;
+drop view dotlrn_class_instances_not_old;
+drop view dotlrn_class_instances_current;
+drop view dotlrn_class_instances_full;
+drop table dotlrn_class_instances;
+drop view dotlrn_classes_full;
+drop table dotlrn_classes;
+drop table dotlrn_terms;
+drop view dotlrn_departments_full;
+drop table dotlrn_departments;

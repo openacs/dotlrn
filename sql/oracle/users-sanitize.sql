@@ -22,27 +22,29 @@
 --
 
 declare
-    foo                         integer;
+    v_segment_id                        integer;
+    v_group_id                          integer;
 begin
 
-    select min(segment_id)
-    into foo
+    select segment_id, group_id
+    into v_segment_id, v_group_id
     from rel_segments
-    where segment_name = 'dotLRN Users';
+    where rel_type = 'dotlrn_user_profile_rel';
+
+    delete
+    from acs_permissions
+    where grantee_id = v_segment_id;
 
     rel_segment.delete(
-        segment_id => foo
+        segment_id => v_segment_id
     );
 
-    select min(group_id)
-    into foo
-    from profiled_groups
-    where profile_provider = (select min(impl_id)
-                              from acs_sc_impls
-                              where impl_name = 'dotlrn_user_profile_provider');
+    delete
+    from acs_permissions
+    where grantee_id = v_group_id;
 
     profiled_group.delete(
-        group_id => foo
+        group_id => v_group_id
     );
 
     acs_rel_type.drop_type(

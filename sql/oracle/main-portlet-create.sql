@@ -31,137 +31,130 @@
 -- from the GNU Project: http://www.fsf.org/copyleft/gpl.html
 
 declare
-  ds_id portal_datasources.datasource_id%TYPE;
+    ds_id portal_datasources.datasource_id%TYPE;
+    foo integer;
 begin
-  ds_id := portal_datasource.new(
-    name             => 'dotlrn_main_portlet',
-    description      => 'Displays the list of communities a user belongs to'
-  );
 
-  --  the standard 4 params
+    ds_id := portal_datasource.new(
+        name => 'dotlrn_main_portlet',
+        description => 'Displays the list of communities a user belongs to'
+    );
 
-  -- shadeable_p 
-  portal_datasource.set_def_param (
-	datasource_id => ds_id,
-	config_required_p => 't',
-	configured_p => 't',
-	key => 'shadeable_p',
-	value => 'f'
-);	
+    -- shadeable_p 
+    portal_datasource.set_def_param (
+        datasource_id => ds_id,
+        config_required_p => 't',
+        configured_p => 't',
+        key => 'shadeable_p',
+        value => 'f'
+    );	
 
+    -- hideable_p 
+    portal_datasource.set_def_param (
+        datasource_id => ds_id,
+        config_required_p => 't',
+        configured_p => 't',
+        key => 'hideable_p',
+        value => 'f'
+    );	
 
-  -- hideable_p 
-  portal_datasource.set_def_param (
-	datasource_id => ds_id,
-	config_required_p => 't',
-	configured_p => 't',
-	key => 'hideable_p',
-	value => 'f'
-);	
+    -- user_editable_p 
+    portal_datasource.set_def_param (
+        datasource_id => ds_id,
+        config_required_p => 't',
+        configured_p => 't',
+        key => 'user_editable_p',
+        value => 'f'
+    );	
 
-  -- user_editable_p 
-  portal_datasource.set_def_param (
-	datasource_id => ds_id,
-	config_required_p => 't',
-	configured_p => 't',
-	key => 'user_editable_p',
-	value => 'f'
-);	
+    -- shaded_p 
+    portal_datasource.set_def_param (
+        datasource_id => ds_id,
+        config_required_p => 't',
+        configured_p => 't',
+        key => 'shaded_p',
+        value => 'f'
+    );	
 
-  -- shaded_p 
-  portal_datasource.set_def_param (
-	datasource_id => ds_id,
-	config_required_p => 't',
-	configured_p => 't',
-	key => 'shaded_p',
-	value => 'f'
-);	
+    -- link_hideable_p 
+    portal_datasource.set_def_param (
+        datasource_id => ds_id,
+        config_required_p => 't',
+        configured_p => 't',
+        key => 'link_hideable_p',
+        value => 't'
+    );
 
-  -- link_hideable_p 
-  portal_datasource.set_def_param (
-	datasource_id => ds_id,
-	config_required_p => 't',
-	configured_p => 't',
-	key => 'link_hideable_p',
-	value => 't'
-);
-end;
-/
-show errors
+    -- create the implementation
+    foo := acs_sc_impl.new (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_owner_name => 'dotlrn_main_portlet'
+    );
 
-declare
-	foo integer;
-begin
-	-- create the implementation
-	foo := acs_sc_impl.new (
-		'portal_datasource',
-		'dotlrn_main_portlet',
-		'dotlrn_main_portlet'
-	);
+    -- add all the hooks
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'GetMyName',
+        impl_alias => 'dotlrn_main_portlet::get_my_name',
+        impl_pl => 'TCL'
+    );
 
-	-- add all the hooks
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'GetMyName',
-	       'dotlrn_main_portlet::get_my_name',
-	       'TCL'
-	);
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'GetPrettyName',
+        impl_alias => 'dotlrn_main_portlet::get_pretty_name',
+        impl_pl => 'TCL'
+    );
 
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'GetPrettyName',
-	       'dotlrn_main_portlet::get_pretty_name',
-	       'TCL'
-	);
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'Link',
+        impl_alias => 'dotlrn_main_portlet::link',
+        impl_pl => 'TCL'
+    );
 
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'Link',
-	       'dotlrn_main_portlet::link',
-	       'TCL'
-	);
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'AddSelfToPage',
+        impl_alias => 'dotlrn_main_portlet::add_self_to_page',
+        impl_pl => 'TCL'
+    );
 
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'AddSelfToPage',
-	       'dotlrn_main_portlet::add_self_to_page',
-	       'TCL'
-	);
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'RemoveSelfFromPage',
+        impl_alias => 'dotlrn_main_portlet::remove_self_from_page',
+        impl_pl => 'TCL'
+    );
 
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'Show',
+        impl_alias => 'dotlrn_main_portlet::show',
+        impl_pl => 'TCL'
+    );
 
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'RemoveSelfFromPage',
-	       'dotlrn_main_portlet::remove_self_from_page',
-	       'TCL'
-	);
+    foo := acs_sc_impl.new_alias (
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'Edit',
+        impl_alias => 'dotlrn_main_portlet::edit',
+        impl_pl => 'TCL'
+    );
 
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'Show',
-	       'dotlrn_main_portlet::show',
-	       'TCL'
-	);
+    -- Add the binding
+    acs_sc_binding.new (
+        contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet'
+    );
 
-	foo := acs_sc_impl.new_alias (
-	       'portal_datasource',
-	       'dotlrn_main_portlet',
-	       'Edit',
-	       'dotlrn_main_portlet::edit',
-	       'TCL'
-	);
-
-	-- Add the binding
-	acs_sc_binding.new (
-	    contract_name => 'portal_datasource',
-	    impl_name => 'dotlrn_main_portlet'
-	);
 end;
 /
 show errors

@@ -16,13 +16,8 @@
 
 
 --
--- The DotLRN basic system
--- copyright 2001, OpenForce, Inc.
--- distributed under the GNU GPL v2
+-- create dotLRN clubs model
 --
--- for Oracle 8/8i. (We're guessing 9i works, too).
---
--- @author Ben Adida (ben@openforce.net)
 -- @author yon (yon@openforce.net)
 -- @creation-date August 18th, 2001
 -- @version $Id$
@@ -38,15 +33,7 @@ create table dotlrn_clubs (
 create or replace view dotlrn_clubs_full
 as
     select dotlrn_clubs.club_id,
-           dotlrn_communities.community_type,
-           dotlrn_communities.community_key,
-           dotlrn_communities.pretty_name,
-           dotlrn_communities.description,
-           dotlrn_communities.active_start_date,
-           dotlrn_communities.active_end_date,
-           dotlrn_communities.portal_id,
-           dotlrn_communities.non_member_portal_id,
-           dotlrn_communities.package_id,
+           dotlrn_communities.*,
            dotlrn_community.url(dotlrn_communities.community_id) as url,
            groups.join_policy
     from dotlrn_communities,

@@ -41,15 +41,27 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/admins-package-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/admins-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/applet-sc-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/applet-sc-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/class-memberships-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/class-memberships-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/classes-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/classes-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/classes-memberships-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/clubs-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/clubs-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/communities-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/communities-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/communities-package-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/communities-package-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/communities-tree-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-packages-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/community-memberships-packages-drop.sql"/>
             <file type="data_model_create" db_type="oracle" path="sql/oracle/dotlrn-create.sql"/>
+            <file type="data_model_drop" db_type="oracle" path="sql/oracle/dotlrn-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-init.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/external-profile-provider-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/external-profile-provider-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/externals-create.sql"/>
@@ -60,6 +72,8 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/externals-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/main-portlet-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/main-portlet-drop.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/portal-types-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/portal-types-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/professor-profile-provider-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/professor-profile-provider-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/professors-create.sql"/>
@@ -69,6 +83,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/professors-package-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/professors-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/security-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/security-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/student-profile-provider-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/student-profile-provider-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/students-create.sql"/>
@@ -78,6 +93,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/students-package-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/students-sanitize.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/user-extension-create.sql"/>
+            <file type="data_model" db_type="oracle" path="sql/oracle/user-extension-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/user-profile-provider-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/user-profile-provider-drop.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/users-create.sql"/>
@@ -284,6 +300,8 @@
             <file type="content_page" path="www/applets.tcl"/>
             <file type="content_page" path="www/approve-link.adp"/>
             <file type="content_page" path="www/approve.tcl"/>
+            <file type="content_page" path="www/clone.adp"/>
+            <file type="content_page" path="www/clone.tcl"/>
             <file type="query_file" db_type="oracle" path="www/communities-chunk-oracle.xql"/>
             <file type="content_page" path="www/communities-chunk.adp"/>
             <file type="content_page" path="www/communities-chunk.tcl"/>

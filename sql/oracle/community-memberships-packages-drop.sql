@@ -15,24 +15,24 @@
 --
 
 --
--- create the dotLRN model
+-- drop the dotLRN memberships packages
 --
 -- @author Ben Adida (ben@openforce.net)
--- @creation-date 2001-08-18
+-- @creation-date 2001-11-06
 -- @version $Id$
 --
 
-@@ users-create.sql
-@@ portal-types-create.sql
-@@ communities-create.sql
-@@ community-memberships-create.sql
-@@ communities-package-create.sql
-@@ dotlrn-init.sql
-@@ clubs-create.sql
-@@ classes-create.sql
-@@ class-memberships-create.sql
-@@ applet-sc-create.sql
-@@ community-memberships-packages-create.sql
-@@ main-portlet-create.sql
-@@ security-create.sql
-@@ user-extension-create.sql
+drop package body dotlrn_cadmin_rel;
+drop package dotlrn_cadmin_rel;
+drop package body dotlrn_ca_rel;
+drop package dotlrn_ca_rel;
+drop package body dotlrn_ta_rel;
+drop package dotlrn_ta_rel;
+drop package body dotlrn_instructor_rel;
+drop package dotlrn_instructor_rel;
+drop package body dotlrn_student_rel;
+drop package dotlrn_student_rel;
+drop package body dotlrn_admin_rel;
+drop package dotlrn_admin_rel;
+drop package body dotlrn_member_rel;
+drop package dotlrn_member_rel;

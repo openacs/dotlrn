@@ -111,10 +111,6 @@ is
         from dotlrn_community_types
         where community_type = dotlrn_community_type.delete.community_type;
 
-        delete
-        from group_types
-        where group_types.group_type = dotlrn_community_type.delete.community_type;
-
         acs_object_type.drop_type(dotlrn_community_type.delete.community_type);
     end;
 

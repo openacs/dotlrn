@@ -28,20 +28,73 @@
 -- from the GNU Project: http://www.fsf.org/copyleft/gpl.html
 
 declare  
-  ds_id portal_datasources.datasource_id%TYPE;
+    ds_id portal_datasources.datasource_id%TYPE;
+    foo integer;
 begin
 
-  begin 
-    select datasource_id into ds_id
-      from portal_datasources
-     where name = 'dotlrn-main-portlet';
-   exception when no_data_found then
-     ds_id := null;
-  end;
+    acs_sc_binding.delete(
+        contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet'
+    );
 
-  if ds_id is not null then
-    portal_datasource.delete(ds_id);
-  end if;
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'GetMyName'
+    );
+
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'GetPrettyName'
+    );
+
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'Link'
+    );
+
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'AddSelfToPage'
+    );
+
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'RemoveSelfFromPage'
+    );
+
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'Show'
+    );
+
+    foo := acs_sc_impl.delete_alias(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet',
+        impl_operation_name => 'Edit'
+    );
+
+    acs_sc_impl.delete(
+        impl_contract_name => 'portal_datasource',
+        impl_name => 'dotlrn_main_portlet'
+    );
+
+    begin 
+        select datasource_id into ds_id
+        from portal_datasources
+        where name = 'dotlrn-main-portlet';
+    exception when no_data_found then
+        ds_id := null;
+    end;
+
+    if ds_id is not null then
+        portal_datasource.delete(ds_id);
+    end if;
 
 end;
 /

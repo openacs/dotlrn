@@ -31,62 +31,45 @@ declare
     foo integer;
 begin
 
-    -- create the implementation
-    foo := acs_sc_impl.new (
-        'UserData',
-        'dotlrn_user_extension',
-        'dotlrn_user_extension'
-    );
-
-    -- UserNew
-    foo := acs_sc_impl.new_alias (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserNew',
-        'dotlrn_user_extension::user_new',
-        'TCL'
-    );
-
-    -- UserNew
-    foo := acs_sc_impl.new_alias (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserApprove',
-        'dotlrn_user_extension::user_approve',
-        'TCL'
-    );
-
-    -- UserNew
-    foo := acs_sc_impl.new_alias (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserDeapprove',
-        'dotlrn_user_extension::user_deapprove',
-        'TCL'
-    );
-
-    -- UserNew
-    foo := acs_sc_impl.new_alias (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserModify',
-        'dotlrn_user_extension::user_modify',
-        'TCL'
-    );
-
-    -- UserNew
-    foo := acs_sc_impl.new_alias (
-        'UserData',
-        'dotlrn_user_extension',
-        'UserDelete',
-        'dotlrn_user_extension::user_delete',
-        'TCL'
-    );
-
-    -- Add the binding
-    acs_sc_binding.new (
+    acs_sc_binding.delete (
         contract_name => 'UserData',
         impl_name => 'dotlrn_user_extension'
+    );
+
+    foo := acs_sc_impl.delete_alias (
+        'UserData',
+        'dotlrn_user_extension',
+        'UserNew'
+    );
+
+    foo := acs_sc_impl.delete_alias (
+        'UserData',
+        'dotlrn_user_extension',
+        'UserApprove'
+    );
+
+    foo := acs_sc_impl.delete_alias (
+        'UserData',
+        'dotlrn_user_extension',
+        'UserDeapprove'
+    );
+
+    foo := acs_sc_impl.delete_alias (
+        'UserData',
+        'dotlrn_user_extension',
+        'UserModify'
+    );
+
+    foo := acs_sc_impl.delete_alias (
+        'UserData',
+        'dotlrn_user_extension',
+        'UserDelete'
+    );
+
+    -- create the implementation
+    acs_sc_impl.delete(
+        'UserData',
+        'dotlrn_user_extension'
     );
 
 end;
