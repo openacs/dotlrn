@@ -30,7 +30,7 @@ namespace eval dotlrn_community {
 	# Insert the community type
 	db_exec_plsql create_community_type {}
     }
-
+    
     ad_proc set_type_package_id {
 	community_type
 	package_id
@@ -40,7 +40,7 @@ namespace eval dotlrn_community {
 	# Exec the statement, easy
 	db_dml update_package_id {}
     }
-
+    
     ad_proc -public new {
 	{-description ""}
 	community_type
@@ -61,10 +61,9 @@ namespace eval dotlrn_community {
     } {
 	Update the node ID for the community
     } {
-	# Exec the statement, easy
 	db_dml update_package_id {}
     }
-
+    
     ad_proc admin_access_p {
 	community_id
     } {
@@ -73,7 +72,7 @@ namespace eval dotlrn_community {
 	# HACK FOR NOW!! (ben) FIXIT
 	return 1
     }
-
+    
     ad_proc -public get_url {
 	{-current_node_id ""}
 	{-package_id ""}
@@ -97,15 +96,23 @@ namespace eval dotlrn_community {
 	# Not sure what to do here yet
     }
 
-    ad_proc -public list_users {
+    ad_proc -public list_admin_users {
 	community_id
+    } {
+	Returns list of admin users
+    } {
+	return [list_users -rel_type "dotlrn_admin_rel" $community_id]
+    }
+    
+    ad_proc -public list_users {
 	{-rel_type "dotlrn_member_rel"}
+	community_id
     } {
 	Returns the list of users with a membership_id, a user_id, first name, last name, email, and role
     } {
 	return [db_list_of_lists select_users {}]
     }
-
+    
     ad_proc -public member_p {
 	community_id
 	user_id
@@ -114,7 +121,7 @@ namespace eval dotlrn_community {
     } {
 	return [db_string select_count_membership {}]
     }
-
+    
     ad_proc -public add_user {
 	community_id
 	rel_type
@@ -182,8 +189,11 @@ namespace eval dotlrn_community {
     } {
 	returns all communities for a user
     } {
-	set list_of_communities [list]
-	### HACK HERE !!! (ben)
+	set return_list [db_list_of_lists select_communities_by_user {}]
+
+	ns_log Notice "return list: $return_list"
+
+	return $return_list
     }
 
     ad_proc -public get_communities_by_user {
@@ -197,10 +207,10 @@ namespace eval dotlrn_community {
 	db_foreach select_communities {} {
 	    lappend list_of_communities [list $community_id $community_type $pretty_name $description [get_url -package_id $package_id]]
 	}
-
+	
 	return $list_of_communities
     }
-
+    
     ad_proc -public get_active_communities {
 	community_type
     } {
@@ -214,6 +224,14 @@ namespace eval dotlrn_community {
 	}
 
 	return $list_of_communities
+    }
+
+    ad_proc -public get_all_communities {
+	community_type
+    } {
+	Returns a list of all communities, and whether or not they are active.
+    } {
+	return [db_list_of_lists select_all_communities {}]
     }
 
     ad_proc -public get_community_type {

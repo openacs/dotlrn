@@ -1,15 +1,12 @@
 
 ad_page_contract {
-    Add an actual user
+    Displays dotLRN classes admin page
     
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-11-04
 } {
-    user_id
 }
 
-# Add the user
-dotlrn::user_add $user_id
+db_multirow classes select_classes {}
 
-ad_returnredirect "users"
-
+ad_return_template

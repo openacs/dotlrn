@@ -1,15 +1,9 @@
-<master src="../master">
+<master src="./master">
 <property name="title">dotLRN Admin</property>
 
-<h3>dotLRN users</h3>
 <ul>
-<multiple name="users">
-<li> @users.last_name@, @users.first_names@
-</multiple>
+<li> <a href=classes>dotLRN Classes</a>
+<li> <a href=clubs>dotLRN Clubs</a>
+<li> <a href=users>dotLRN Users</a>
 </ul>
-
-<form method=get action=user-new>
-Add a new dotLRN user: <input type=text name=search_text> <input type=submit value=search>
-</form>
-
 

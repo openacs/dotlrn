@@ -8,4 +8,6 @@ ad_page_contract {
 } {
 }
 
-ad_return_template
+# Currently, just present a list of dotLRN users
+db_multirow users select_dotlrn_users {}
+

@@ -17,6 +17,8 @@ create table dotlrn_classes (
 				    primary key
 );
 
+create view dotlrn_classes_full as select class_key, pretty_name, description, package_id, supertype from dotlrn_classes, dotlrn_community_types where dotlrn_community_types.community_type=dotlrn_classes.class_key;
+
 create table dotlrn_class_instances (
        class_instance_id	    constraint dotlrn_class_i_id_fk
 				    references dotlrn_communities(community_id)
@@ -27,6 +29,8 @@ create table dotlrn_class_instances (
        year			    varchar(10),
        term			    varchar(20)
 );
+
+create view dotlrn_class_instances_full as select class_instance_id, class_key, year, term, community_key, pretty_name, description, package_id from dotlrn_class_instances, dotlrn_communities where dotlrn_class_instances.class_instance_id = dotlrn_communities.community_id;
 
 
 

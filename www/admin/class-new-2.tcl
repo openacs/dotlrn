@@ -12,5 +12,5 @@ ad_page_contract {
 
 set class_key [dotlrn_class::new -description $description $class_key $class_pretty_name]
 
-ns_returnredirect ./
+ad_returnredirect "classes"
 
