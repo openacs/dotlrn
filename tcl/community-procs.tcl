@@ -1526,7 +1526,6 @@ namespace eval dotlrn_community {
 # 
 #         return $community_id
 # 
-        }
     }
 
     ad_proc -public archive {
