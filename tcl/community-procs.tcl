@@ -615,12 +615,35 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -public get_community_id {
+        {-package_id ""}
     } {
-        Returns the community id depending on the node we're at
+        Returns the community id depending on the package_id 
+        we're at, or the package_id passed in
     } {
-        set package_id [ad_conn package_id]
+        if {[empty_string_p $package_id]} {
+            set package_id [ad_conn package_id]
+        }
 
         return [db_string select_community {} -default ""]
+    }
+
+    ad_proc -public get_parent_community_id {
+        {-package_id ""}
+    } {
+        Returns the community_id of our parent node or the parent 
+        of the passed in package_id. This is used for certain scripts
+        under a dotlrn community, such as workflow panels, that cannot
+        be passed their community_id.
+    } {
+        if {[empty_string_p $package_id]} {
+            set package_id [ad_conn package_id]
+        }
+
+        set parent_pkg_id [site_nodes::get_parent_object_id \
+                -instance_id $package_id
+        ]
+
+        return [get_community_id -package_id $parent_pkg_id]
     }
 
     ad_proc -public get_parent_id {
