@@ -34,6 +34,6 @@ ad_page_contract {
 
 db_1row select_club {}
 
-set context_bar [list [list clubs [dotlrn::parameter clubs_pretty_plural]] $pretty_name]
+set context_bar [list [list clubs [parameter::get -parameter clubs_pretty_plural]] $pretty_name]
 
 ad_return_template

@@ -29,7 +29,7 @@ set portal_id [ns_set get $form portal_id]
 set anchor [ns_set get $form anchor]
 
 # Check if this is a community type level thing
-if {[dotlrn::parameter community_type_level_p] == 1} {
+if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
     return
 }

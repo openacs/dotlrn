@@ -23,7 +23,7 @@
 <property name="context_bar">@context_bar@</property>
 
 [<small>
-  <a href="department-new?referer=@referer@">New <%= [dotlrn::parameter departments_pretty_name] %></a>
+  <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
 </small>]
 
 <p></p>
@@ -31,7 +31,7 @@
 <if @departments:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left"><%= [dotlrn::parameter departments_pretty_name] %> Name</th>
+    <th align="left"><%= [parameter::get -parameter departments_pretty_name] %> Name</th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="departments">
@@ -40,7 +40,7 @@
     <td>
 <if @can_create@>
       [<small>
-        <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">New <%= [dotlrn::parameter classes_pretty_name] %></a>
+        <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
       </small>]
 </if>
     </td>
@@ -51,6 +51,6 @@
 
 <if @departments:rowcount@ gt 10>
 [<small>
-  <a href="department-new?referer=@referer@">New <%= [dotlrn::parameter departments_pretty_name] %></a>
+  <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
 </small>]
 </if>

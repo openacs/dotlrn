@@ -29,8 +29,8 @@ ad_page_contract {
     clubs:multirow
 }
 
-set title [dotlrn::parameter clubs_pretty_plural]
-set context_bar [list [dotlrn::parameter clubs_pretty_plural]]
+set title [parameter::get -parameter clubs_pretty_plural]
+set context_bar [list $title]
 
 db_multirow clubs select_clubs {}
 

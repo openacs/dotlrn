@@ -19,10 +19,9 @@ ad_page_contract {
 
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-11-04
-} -query {
 }
 
-set admin_pretty_name [dotlrn::parameter dotlrn_admin_pretty_name]
+set admin_pretty_name [parameter::get -parameter dotlrn_admin_pretty_name]
 set context_bar {}
 
 ad_return_template

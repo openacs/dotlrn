@@ -31,10 +31,10 @@
 <ul>
   <li><a href="users">Users</a></li>
   <li><a href="terms">Terms</a></li>
-  <li><a href="departments"><%= [dotlrn::parameter departments_pretty_plural] %></a></li>
-  <li><a href="classes"><%= [dotlrn::parameter classes_pretty_plural] %></a></li>
-  <li><a href="term?term_id=-1"><%= [dotlrn::parameter class_instances_pretty_plural] %></a></li>
-  <li><a href="clubs"><%= [dotlrn::parameter clubs_pretty_plural] %></a></li>
+  <li><a href="departments"><%= [parameter::get -parameter departments_pretty_plural] %></a></li>
+  <li><a href="classes"><%= [parameter::get -parameter classes_pretty_plural] %></a></li>
+  <li><a href="term?term_id=-1"><%= [parameter::get -parameter class_instances_pretty_plural] %></a></li>
+  <li><a href="clubs"><%= [parameter::get -parameter clubs_pretty_plural] %></a></li>
   <li><a href="edit-preapproved-emails">Edit Pre-approved Email Servers</a></li>
   <li><a href="portal-templates">Portal Templates</a></li>
 </ul>

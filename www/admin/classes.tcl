@@ -27,7 +27,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title [dotlrn::parameter classes_pretty_plural]
-set context_bar [dotlrn::parameter classes_pretty_plural]
+set title [parameter::get -parameter classes_pretty_plural]
+set context_bar $title
 
 ad_return_template

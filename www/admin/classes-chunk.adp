@@ -20,7 +20,7 @@
 
 <if @can_create@>
 [<small>
-  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [dotlrn::parameter classes_pretty_name] %></a>
+  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
 </small>]
 </if>
 
@@ -30,7 +30,7 @@
   <tr>
     <th align="left" width="50%">
 <formtemplate id="department_form">
-      <%= [dotlrn::parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+      <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
     </th>
   </tr>
@@ -41,9 +41,9 @@
 <if @classes:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="30%"><%= [dotlrn::parameter departments_pretty_name] %></th>
-    <th align="left"><%= [dotlrn::parameter classes_pretty_name] %> Name</th>
-    <th align="left">Number of <%= [dotlrn::parameter class_instances_pretty_plural] %></th>
+    <th align="left" width="30%"><%= [parameter::get -parameter departments_pretty_name] %></th>
+    <th align="left"><%= [parameter::get -parameter classes_pretty_name] %> Name</th>
+    <th align="left">Number of <%= [parameter::get -parameter class_instances_pretty_plural] %></th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="classes">
@@ -54,7 +54,7 @@
     <td>
 <if @can_instantiate@>
       [<small>
-        <a href="class-instance-new?class_key=@classes.class_key@">New <%= [dotlrn::parameter class_instances_pretty_name] %></a>
+        <a href="class-instance-new?class_key=@classes.class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
       </small>]
 </if>
     </td>
@@ -65,6 +65,6 @@
 
 <if @can_create@ and @classes:rowcount@ gt 10>
 [<small>
-  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [dotlrn::parameter classes_pretty_name] %></a>
+  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
 </small>]
 </if>

@@ -22,14 +22,14 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[<small> <a href="club-new">New <%= [dotlrn::parameter clubs_pretty_name] %></a> </small>]
+[<small> <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a> </small>]
 
 <p></p>
 
 <if @clubs:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="15%"><%= [dotlrn::parameter clubs_pretty_name] %> Name</th>
+    <th align="left" width="15%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
     <th align="left" width="50%">Description</th>
     <th align="left">Actions</th>
   </tr>
@@ -44,5 +44,5 @@
 </if>
 
 <if @clubs:rowcount@ gt 10>
-[<small> <a href="club-new">New <%= [dotlrn::parameter clubs_pretty_name] %></a> </small>]
+[<small> <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a> </small>]
 </if>

@@ -368,18 +368,12 @@ namespace eval dotlrn {
     }
 
     ad_proc -public parameter {
-        -set
-        {-package_id ""}
+        {-name:required}
         {-default ""}
-        name
     } {
-        wrap ad_parameter
+        wrap 
     } {
-        if {[info exists set]} {
-            return [parameter::set_value -package_id $package_id -parameter $name -value $set]
-        } else {
-            return [parameter::get -package_id $package_id -parameter $name -default $default]
-        }
+        return [parameter::get -package_id [get_package_id] -parameter $name -default $default]
     }
 
 }

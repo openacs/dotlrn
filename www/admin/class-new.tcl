@@ -29,13 +29,13 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "New [dotlrn::parameter classes_pretty_name]"
-set context_bar [list [list classes [dotlrn::parameter classes_pretty_plural]] New]
+set title "New [parameter::get -parameter classes_pretty_name]"
+set context_bar [list [list classes [parameter::get -parameter classes_pretty_plural]] New]
 
 form create add_class
 
 element create add_class department_key \
-    -label [dotlrn::parameter departments_pretty_name] \
+    -label [parameter::get -parameter departments_pretty_name] \
     -datatype text \
     -widget select \
     -options [dotlrn_department::select_as_list] \

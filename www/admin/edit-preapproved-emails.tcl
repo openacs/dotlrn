@@ -29,12 +29,12 @@ element create edit_emails emails \
     -datatype text \
     -widget text \
     -html {size 50} \
-    -value [dotlrn::parameter auto_dotlrn_user_email_patterns]
+    -value [parameter::get -parameter auto_dotlrn_user_email_patterns]
 
 if {[form is_valid edit_emails]} {
     form get_values edit_emails emails
 
-    dotlrn::parameter -set $emails auto_dotlrn_user_email_patterns
+    parameter::set_value -parameter auto_dotlrn_user_email_patterns -value $emails
 
     ad_returnredirect $referer
     ad_script_abort

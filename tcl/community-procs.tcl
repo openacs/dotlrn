@@ -57,9 +57,9 @@ namespace eval dotlrn_community {
 
             dotlrn_community::set_type_package_id $community_type $package_id
 
-            dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
-            dotlrn::parameter -package_id $package_id -set 1 community_type_level_p
-            dotlrn::parameter -package_id $package_id -set 0 community_level_p
+            parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_type_level_p -value 1
+            parameter::set_value -package_id $package_id -parameter community_level_p -value 0
 
             # create a "dummy" community for this community
             # type to get a portal template with all of the
@@ -114,9 +114,9 @@ namespace eval dotlrn_community {
             ]
 
             # Set some parameters
-            dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
-            dotlrn::parameter -package_id $package_id -set 1 community_type_level_p
-            dotlrn::parameter -package_id $package_id -set 0 community_level_p
+            parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_type_level_p -value 1
+            parameter::set_value -package_id $package_id -parameter community_level_p -value 0
 
             # Set the site node
             dotlrn_community::set_type_package_id $community_type_key $package_id
@@ -248,21 +248,21 @@ namespace eval dotlrn_community {
             # 1. get the page_names and layouts
             # 2. the the list of default applets for this type
             if {[string equal $community_type "dotlrn_community"]} {
-                set csv_list [dotlrn::parameter -package_id $package_id subcomm_pages_csv]
-                set default_applets [dotlrn::parameter -package_id $package_id default_subcomm_applets]
+                set csv_list [parameter::get -package_id $package_id -parameter subcomm_pages_csv]
+                set default_applets [parameter::get -package_id $package_id -parameter default_subcomm_applets]
             } elseif {[string equal $community_type "dotlrn_club"]} {
-                set csv_list [dotlrn::parameter -package_id $package_id club_pages_csv]
-                set default_applets [dotlrn::parameter -package_id $package_id default_club_applets]
+                set csv_list [parameter::get -package_id $package_id -parameter club_pages_csv]
+                set default_applets [parameter::get -package_id $package_id -parameter default_club_applets]
             } elseif {[string equal $community_type "user_workspace"]} {
-                set csv_list [dotlrn::parameter -package_id $package_id user_wsp_page_names]
+                set csv_list [parameter::get -package_id $package_id -parameter user_wsp_page_names]
                 set default_applets [list]
              } else {
-                set csv_list [dotlrn::parameter -package_id $package_id class_instance_pages_csv]
-                set default_applets [dotlrn::parameter -package_id $package_id default_class_instance_applets]
+                set csv_list [parameter::get -package_id $package_id -parameter class_instance_pages_csv]
+                set default_applets [parameter::get -package_id $package_id -parameter default_class_instance_applets]
             }
 
-            set non_member_page_name [dotlrn::parameter -package_id $package_id non_member_page_name]
-            set admin_page_name [dotlrn::parameter -package_id $package_id admin_page_name]
+            set non_member_page_name [parameter::get -package_id $package_id -parameter non_member_page_name]
+            set admin_page_name [parameter::get -package_id $package_id -parameter admin_page_name]
 
             if {[empty_string_p $dummy_comm_p]} {
                 set user_id [ad_conn user_id]
@@ -314,9 +314,9 @@ namespace eval dotlrn_community {
                 ]
 
                 # Set the right parameters
-                dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
-                dotlrn::parameter -package_id $package_id -set 0 community_type_level_p
-                dotlrn::parameter -package_id $package_id -set 1 community_level_p
+                parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
+                parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
+                parameter::set_value -package_id $package_id -parameter community_level_p -value 1
 
                 # Set up the node
                 dotlrn_community::set_package_id $community_id $package_id
@@ -1570,9 +1570,9 @@ namespace eval dotlrn_community {
             ]
             
             # Set the right parameters
-            dotlrn::parameter -package_id $package_id -set 0 dotlrn_level_p
-            dotlrn::parameter -package_id $package_id -set 0 community_type_level_p
-            dotlrn::parameter -package_id $package_id -set 1 community_level_p
+            parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_level_p -value 1
             
             # Set up the node
             dotlrn_community::set_package_id $clone_id $package_id
@@ -1777,7 +1777,7 @@ namespace eval dotlrn_community {
         if {![empty_string_p $reorder_hack_p]} {
             ns_log notice "aks1: applets_dispatch: reorder hack!"
 
-            set reorder_applets_string [dotlrn::parameter -default "dotlrn_news,dotlrn_bboard,dotlrn_survey,dotlrn_faq" user_wsp_applet_ordering]
+            set reorder_applets_string [parameter::get -parameter user_wsp_applet_ordering -default "dotlrn_news,dotlrn_bboard,dotlrn_faq"]
 
             set reorder_applets_list [string trim [split $reorder_applets_string {,}]]
 
@@ -1788,21 +1788,16 @@ namespace eval dotlrn_community {
             foreach applet $reorder_applets_list {
                 set index [lsearch -exact $list_of_applets $applet]
 
-                if {$index != -1 } {
-                    ns_log notice "aks2: reorder HIT with '$applet' against '$list_of_applets' // $index"
+                if {$index != -1} {
                     set list_of_applets [lreplace $list_of_applets $index $index]
                     lappend result_list $applet
-                } else {
-                    ns_log notice "aks3: reorder MISS with '$applet' against '$list_of_applets'"
                 }
             }
 
             set list_of_applets [concat $result_list $list_of_applets]
         }
 
-
         foreach applet $list_of_applets {
-            # Callback on applet
             applet_call $applet $op $list_args
         }
     }

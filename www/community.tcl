@@ -23,7 +23,7 @@ ad_page_contract {
 }
 
 # Check that this is a community type
-if {[dotlrn::parameter community_level_p] != 1} {
+if {[parameter::get -parameter community_level_p] != 1} {
     ns_returnredirect "./"
     return
 }

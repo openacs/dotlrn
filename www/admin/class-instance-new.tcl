@@ -61,7 +61,7 @@ element create add_class_instance join_policy \
     -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
 
 element create add_class_instance class_key \
-    -label "[dotlrn::parameter classes_pretty_name] Key" \
+    -label "[parameter::get -parameter classes_pretty_name] Key" \
     -datatype text \
     -widget hidden \
     -value $class_key
@@ -104,7 +104,7 @@ if {[form is_valid add_class_instance]} {
     ad_script_abort
 }
 
-set class_instances_pretty_name [dotlrn::parameter class_instances_pretty_name]
+set class_instances_pretty_name [parameter::get -parameter class_instances_pretty_name]
 
 set context_bar [list \
     {classes Classes} \

@@ -60,7 +60,7 @@
   <tr>
     <th align="left" width="50%">
 <formtemplate id="department_form">
-      <%= [dotlrn::parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+      <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
     </th>
     <th align="left" width="50%">
@@ -76,12 +76,12 @@
 <if @classes:rowcount@ gt 0>
 <table width="100%">
   <tr>
-    <th align="left" width="25%"><%= [dotlrn::parameter departments_pretty_name] %></th>
-    <th align="left" width="25%"><%= [dotlrn::parameter classes_pretty_name] %></th>
+    <th align="left" width="25%"><%= [parameter::get -parameter departments_pretty_name] %></th>
+    <th align="left" width="25%"><%= [parameter::get -parameter classes_pretty_name] %></th>
 <if @term_id@ eq -1>
     <th align="left" width="10%">Term</th>
 </if>
-    <th align="left" width="25%"><%= [dotlrn::parameter class_instances_pretty_name] %></th>
+    <th align="left" width="25%"><%= [parameter::get -parameter class_instances_pretty_name] %></th>
     <th align="left">Actions</th>
   </tr>
 <multiple name="classes">

@@ -26,7 +26,7 @@ ad_page_contract {
 }
 
 # Check if this is a community type level thing
-if {[dotlrn::parameter community_type_level_p] == 1} {
+if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
     return
 }
@@ -34,7 +34,7 @@ if {[dotlrn::parameter community_type_level_p] == 1} {
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-if {[dotlrn::parameter community_level_p] == 1} {
+if {[parameter::get -parameter community_level_p] == 1} {
     # This is a community
     # What community type are we at?
     set community_id [dotlrn_community::get_community_id]

@@ -67,7 +67,7 @@ if {[form is_valid add_club]} {
     ad_script_abort
 }
 
-set title "New [dotlrn::parameter clubs_pretty_name]"
-set context_bar [list [list clubs [dotlrn::parameter clubs_pretty_plural]] [list New [dotlrn::parameter clubs_pretty_name]]]
+set title "New [parameter::get -parameter clubs_pretty_name]"
+set context_bar [list [list clubs [parameter::get -parameter clubs_pretty_plural]] $title]
 
 ad_return_template
