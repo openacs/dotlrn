@@ -234,7 +234,11 @@ namespace eval dotlrn {
 
         @see acs_user::get_element.
     } {
-        return [acs_user::get_element -user_id $user_id -element name]
+        if { $user_id == 0 } {
+            return {}
+        } else {
+            return [acs_user::get_element -user_id $user_id -element name]
+        }
     }
 
     ad_proc -public instantiate_and_mount {
