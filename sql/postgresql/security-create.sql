@@ -76,16 +76,14 @@ begin
         perform acs_privilege__add_child(''read'', ''dotlrn_view_community_type'');
         perform acs_privilege__add_child(''admin'', ''dotlrn_admin_community'');
         perform acs_privilege__add_child(''admin'', ''dotlrn_admin_community_type'');
+        -- for now, we only want admins to be able to browse by default
+        perform acs_privilege__add_child(''admin'', ''dotlrn_browse'');
 
         -- re-enable the trigger before the last insert to force the 
         -- acs_privilege_hierarchy_index table to be updated.
-
         create trigger acs_priv_hier_ins_del_tr after insert or delete
         on acs_privilege_hierarchy for each row
         execute procedure acs_priv_hier_ins_del_tr ();
-
-        -- for now, we only want admins to be able to browse by default
-        perform acs_privilege__add_child(''admin'', ''dotlrn_browse'');
 
         -- no default permissions
         return 0;
