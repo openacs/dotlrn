@@ -6,7 +6,6 @@ ad_page_contract {
     @creation-date 2001-10-04
     @version $Id$
 } -query {
-} -properties {
 }
 
 # Check that this is a community type

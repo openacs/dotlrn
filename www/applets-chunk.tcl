@@ -6,7 +6,6 @@ ad_page_contract {
     @creation-date 2001-10-05
     @version $Id$
 } -query {
-} -properties {
 }
 
 set community_id [dotlrn_community::get_community_id]

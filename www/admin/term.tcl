@@ -4,7 +4,7 @@ ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date 2001-12-03
     @version $Id$
-} {
+} -query {
 } -properties {
     term_id:onevalue
     term_name:onevalue

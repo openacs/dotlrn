@@ -1,4 +1,3 @@
-
 ad_page_contract {
     Displays a configuration page
     

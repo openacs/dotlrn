@@ -5,7 +5,6 @@ ad_page_contract {
     @creation-date Jan 19, 2002
     @version $Id$
 } -query {
-} -properties {
 }
 
 set context_bar {{"one-community-admin" Admin} {Manage Members}}

@@ -8,7 +8,6 @@ ad_page_contract {
     user_id:integer,notnull
     community_id:integer,notnull
     {referer ""}
-} -properties {
 }
 
 set is_dotlrn_user [db_string is_dotlrn_user {}]

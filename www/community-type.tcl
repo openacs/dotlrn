@@ -5,7 +5,6 @@ ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date 2001-10-04
 } -query {
-} -properties {
 }
 
 # Check that this is a community type

@@ -4,7 +4,8 @@ ad_page_contract {
 
     @author Arjun Sanyal (arjun@openforce.net)
     @version $Id$
-} { }
+} -query {
+}
 
 set form [ns_getform]
 set portal_id [ns_set get $form portal_id]

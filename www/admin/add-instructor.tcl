@@ -7,7 +7,6 @@ ad_page_contract {
 } -query {
     community_id:integer,notnull
     {referer "./"}
-} -properties {
 }
 
 set context_bar {{Add an Instructor}}

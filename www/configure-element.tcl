@@ -5,7 +5,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @author Arjun Sanyal (arjun@openforce.net)
     @creation-date 2001-10-24
-} {
+} -query {
     element_id:naturalnum,notnull
     op:notnull
 }

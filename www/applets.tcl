@@ -5,7 +5,6 @@ ad_page_contract {
     @creation-date 2002-01-19
     @version $Id$
 } -query {
-} -properties {
 }
 
 set context_bar {{"one-community-admin" Admin} {Manage Applets}}

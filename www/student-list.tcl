@@ -3,7 +3,7 @@ ad_page_contract {
     
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-09
-} {
+} -query {
 }
 
 # Check that this is a community type

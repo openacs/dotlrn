@@ -8,7 +8,6 @@ ad_page_contract {
     user_id
     value
     {referer "users"}
-} -properties {
 }
 
 if {[string equal $value "grant"] == 1} {
