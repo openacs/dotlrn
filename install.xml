@@ -2,7 +2,7 @@
 
 <!-- This must be moved to the OpenACS page root when making a release tarball -->
 
-<application name="dotlrn" pretty-name=".LRN" home="http://openacs.org/projects/dotlrn">
+<application name="dotlrn" pretty-name=".LRN" home="http://openacs.org/projects/dotlrn" min_stack_size="512">
 
   <actions>
     <!-- Installing all applets gives us what we need as applets depend on both dotlrn, the portlets
@@ -29,6 +29,7 @@
     <set-parameter package="acs-kernel" name="CommunityMemberURL" value="/dotlrn/community-member"/>
     <set-parameter package="acs-kernel" name="CommunityMemberAdminURL" value="/dotlrn/admin/user"/>
     <set-parameter package="new-portal" name="default_theme_name" value="#new-portal.sloan_theme_name#"/>
+    <set-parameter package="acs-bootstrap-installer" name="post_installation_message" value="When the server restarts click <a href='/dotlrn'>here</a> to configure .LRN"/>
   </actions>
 
 </application>

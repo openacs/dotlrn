@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">Añadir nuevos miembros</msg>
   <msg key="Add_Professor">Añadir profesor</msg>
   <msg key="add_selected_members">Añadir los usuarios seleccionados</msg>
+  <msg key="add_to_another_group">Agregar a este usuario a otro grupo</msg>
+  <msg key="add_to_dotlrn">Agregar a este usuario a .LRN</msg>
   <msg key="Add_to_group_">Añadir al grupo ...</msg>
   <msg key="Add_User">Añadir usuario</msg>
   <msg key="Add_users_to">Añadir usuarios a</msg>
@@ -142,10 +144,12 @@
   <msg key="Drop">Borrar</msg>
   <msg key="Drop_Membership">Dar de baja</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Baja&quot; border=0&gt;</msg>
+  <msg key="Drop_selected_members">Eliminar los usuarios seleccionados</msg>
   <msg key="Edit">Editar</msg>
   <msg key="Edit_a_User">Editar usuario</msg>
   <msg key="edit_approved_email_servers">Editar dominios pre-aprobados</msg>
   <msg key="edit_message_and_hit_send">Edite el mensaje a continuación y pulse &quot;Enviar correo&quot; para notificar al usuario.</msg>
+  <msg key="edit_parameters">Editar parámetros</msg>
   <msg key="Edit_Properties">Editar propiedades</msg>
   <msg key="edit_subject">Editar</msg>
   <msg key="edit_subject_properties">Editar propiedades de %classes_pretty_name%.</msg>
@@ -166,6 +170,7 @@
   <msg key="Extra_Large">Muy grande</msg>
   <msg key="Fields">Campos</msg>
   <msg key="First_Line">Primera Línea</msg>
+  <msg key="first_line_of_file_must_be">La primera línea del archivo debe contener el siguiente línea de título:</msg>
   <msg key="First_Name">Nombre</msg>
   <msg key="From">Desde</msg>
   <msg key="fuchsia">fucsia</msg>
@@ -173,6 +178,7 @@
   <msg key="Full_Access">Acceso ilimitado</msg>
   <msg key="General_Information">Información general</msg>
   <msg key="General_Site_Help">Ayuda general</msg>
+  <msg key="Grant_site_wide_admin">Dar permisos de administración general</msg>
   <msg key="gray">gris</msg>
   <msg key="green">verde</msg>
   <msg key="groups_icon">ícono de grupo</msg>
@@ -337,6 +343,7 @@
   <msg key="Memberships">Miembros</msg>
   <msg key="Memberships_1">Miembros:</msg>
   <msg key="Message">Mensaje</msg>
+  <msg key="must_have_values">Los campos deben contener alguno de los siguientes valores:</msg>
   <msg key="My_Communities">Mis comunidades</msg>
   <msg key="NA">n/a</msg>
   <msg key="Name">Nombre</msg>
@@ -393,6 +400,7 @@
   <msg key="Personal_Options">Opciones personales</msg>
   <msg key="portal_templates">Plantillas de portales</msg>
   <msg key="Portrait">Foto:</msg>
+  <msg key="Portrait_1">Portaretrato</msg>
   <msg key="Post_to">Enviar a:</msg>
   <msg key="Pretty_Name">Nombre</msg>
   <msg key="Pretty_Plural">Plural</msg>
@@ -403,6 +411,7 @@
   <msg key="Recipients_Last_Name">Apellidos del remitente</msg>
   <msg key="red">rojo</msg>
   <msg key="Referer">Remite</msg>
+  <msg key="registered_user_welcome_email_body">%first_names% %last_name%, ha sido agregado como usuario de %system_name% en %system_url% Información de Logueo: Email %email% Password: %password% (debe cambiar el password después de loguearse) Gracias %administration_name%  </msg>
   <msg key="Registration_date">Fecha de registro:</msg>
   <msg key="registration_request_sent">Gracias. Su solicitud de registro ha sido enviada al administrador del sistema</msg>
   <msg key="Reject">Rechazar</msg>
@@ -413,6 +422,7 @@
   <msg key="Results">Resultados</msg>
   <msg key="Return_URL">URL donde volver</msg>
   <msg key="revoke">revocar</msg>
+  <msg key="Revoke_site_wide_admin">Revocar privilegios de administración a lo largo del sitio.</msg>
   <msg key="Role">Rol</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Nick:</msg>

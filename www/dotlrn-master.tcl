@@ -164,25 +164,6 @@ if {$have_comm_id_p} {
     }
 }
 
-if { $make_navbar_p } {
-    if {$link_control_panel} {
-	set link_control_panel 1
-    } else {
-	set link_control_panel 0
-    }
-    set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"    
-    set navbar [dotlrn::portal_navbar \
-        -user_id $user_id \
-        -link_control_panel $link_control_panel \
-        -control_panel_text [_ "dotlrn.control_panel"] \
-	-pre_html "$extra_spaces" \
-	-post_html $extra_spaces \
-        -link_all $link_all
-    ]
-} else {
-    set navbar "<br>"
-}
-
 # Set up some basic stuff
 set user_id [ad_get_user_id]
 if { [ad_conn untrusted_user_id] == 0 } {
@@ -203,9 +184,12 @@ if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_c
 
 set community_id [dotlrn_community::get_community_id]
 
+set control_panel_text [_ "dotlrn.control_panel"]
+
 if {![empty_string_p $community_id]} {
     # in a community or just under one in a mounted package like /calendar 
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
+    set control_panel_text [_ acs-subsite.Admin]
 
     if {[dotlrn_community::subcommunity_p -community_id $community_id]} {
 	#The colors for a subgroup are set by the parent group with a few overwritten.
@@ -315,6 +299,26 @@ if {![empty_string_p $community_id]} {
 
     set text ""
 }
+
+if { $make_navbar_p } {
+    if {$link_control_panel} {
+	set link_control_panel 1
+    } else {
+	set link_control_panel 0
+    }
+    set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"    
+    set navbar [dotlrn::portal_navbar \
+        -user_id $user_id \
+        -link_control_panel $link_control_panel \
+        -control_panel_text $control_panel_text \
+	-pre_html "$extra_spaces" \
+	-post_html $extra_spaces \
+        -link_all $link_all
+    ]
+} else {
+    set navbar "<br>"
+}
+
 
 if { ![info exists header_stuff] } {
     set header_stuff ""
@@ -557,3 +561,6 @@ set lang_admin_p [permission::permission_p \
                       -privilege admin \
                       -party_id [ad_conn untrusted_user_id]]
 set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translator-mode-toggle" { { return_url [ad_return_url] } }]
+
+# Curriculum bar
+set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]

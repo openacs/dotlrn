@@ -252,26 +252,27 @@ namespace eval dotlrn {
 
     ad_proc -public user_can_read_private_data_p {
         {-user_id ""}
+        {-object_id:required}
     } {
         Check if a user can read sensitive data in dotLRN
     } {
-	if { [parameter::get -parameter protect_private_data_p -default 1] } {
-	    return [ad_permission_p \
-		    -user_id $user_id \
-		    [dotlrn::get_package_id] \
-		    read_private_data
-	    ]
-	} else {
-	    return 1
-	}
+        if { [parameter::get -parameter protect_private_data_p -default 1] } {
+            return [acs_privacy::user_can_read_private_data_p \
+                        -user_id $user_id \
+                        -object_id $object_id
+                   ]
+        } else {
+            return 1
+        }
     }
 
     ad_proc -public require_user_read_private_data {
         {-user_id ""}
+        {-object_id:required}
     } {
         Require that a user be able to read sensitive data
     } {
-        if {![user_can_read_private_data_p -user_id $user_id]} {
+        if {![user_can_read_private_data_p -user_id $user_id -object_id $object_id]} {
             do_abort
         }
     }

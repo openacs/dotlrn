@@ -31,5 +31,7 @@ set context_bar $title
 set url "[portal::mount_point]admin"
 set referer [ad_conn url]
 
-db_multirow templates select_portal_templates {}
+db_multirow templates select_portal_templates {} {
+    set name [lang::util::localize $name]
+}
 

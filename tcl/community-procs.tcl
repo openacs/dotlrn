@@ -311,21 +311,24 @@ namespace eval dotlrn_community {
         # this community should be able to read this instance (and
         # it's children)
         permission::set_not_inherit -object_id $community_id
-	
-	#this block sets permissions for subcommunities
-	while {1} {
-	    if {![empty_string_p $parent_community_id]} {
-		#admin of the parent need admin on the subcommunity.
-		set parent_admin_party [db_string "parent_admin_party" "select segment_id from rel_segments where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'"]
-		permission::grant -party_id $parent_admin_party -object_id $community_id -privilege "admin"
-		
-		#if this community has a parent we need to work up the chain.
-		set parent_community_id [get_parent_id -community_id $parent_community_id]
-		
-	    } else {
-		return $community_id
-	    }
-	}
+
+        # Grant read_private_data permission to "non guest" users.
+        dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $community_id
+        
+        #this block sets permissions for subcommunities
+        while {1} {
+            if {![empty_string_p $parent_community_id]} {
+                #admin of the parent need admin on the subcommunity.
+                set parent_admin_party [db_string "parent_admin_party" "select segment_id from rel_segments where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'"]
+                permission::grant -party_id $parent_admin_party -object_id $community_id -privilege "admin"
+                
+                #if this community has a parent we need to work up the chain.
+                set parent_community_id [get_parent_id -community_id $parent_community_id]
+                
+            } else {
+                return $community_id
+            }
+        }
     }
 
     ad_proc set_active_dates {
@@ -1736,7 +1739,15 @@ namespace eval dotlrn_community {
                         -start_date [dotlrn_term::get_start_date -term_id $term_id] \
                         -end_date [dotlrn_term::get_end_date -term_id $term_id]
                 }
+
+                # Copy community attribute values from original.
+                # See "YON MAJOR HACK" above. -AG
+                db_dml delete_default_acs_attribute_values {}
+                db_dml copy_customizations_if_any {}
             }
+
+            # Grant read_private_data permission to "non guest" users.
+            dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $clone_id
 
             # recursively clone the subcommunities
             set subcomm_list [get_subcomm_info_list -community_id $community_id]

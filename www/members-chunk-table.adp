@@ -61,20 +61,8 @@
   <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.first_names@] %></td>
   <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.last_name@]%></td>
   <td>
-    <if @read_private_data_p@ eq 1>
         <a href="mailto:@current_members.email@">
 	@current_members.email@</a>	
-    </if>
-    <else>
-	<if @my_user_id@ eq @current_members.user_id@>
-    	    <a href="mailto:@current_members.email@">
-	@current_members.email@</a>
-	</if>
-        <else>
-           &nbsp;
-        </else>
-    </else>
-
    </td>
   <td><%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @current_members.rel_type@] "Student"]%>
   </td>
@@ -130,9 +118,7 @@
 <multiple name="pending_users">
   <li>
     <%= [acs_community_member_link -user_id $pending_users(user_id) -label "$pending_users(first_names) $pending_users(last_name)"] %>
-<if @read_private_data_p@ eq 1 or @user_id@ eq @pending_users.user_id@>
     (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
-</if>
     &nbsp;
     <i>@pending_users.role@</i>
     &nbsp;

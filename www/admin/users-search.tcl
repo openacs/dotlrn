@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     {type "any"}
     {can_browse_p "any"}
-    {private_data_p "any"}
+    {guest_p "any"}
     {join_criteria "and"}
     {n_users 0}
     {action "none"}
@@ -108,12 +108,12 @@ element create user_search can_browse_p \
     -options [list [list [_ dotlrn.Any] any] [list [_ dotlrn.Limited] 0] [list [_ dotlrn.Full] 1]] \
     -value $can_browse_p
 
-element create user_search private_data_p \
+element create user_search guest_p \
     -label "[_ dotlrn.Guest_1]" \
     -datatype text \
     -widget select \
-    -options [list [list [_ dotlrn.Any] any] [list [_ dotlrn.Yes] f] [list [_ dotlrn.No] t]] \
-    -value $private_data_p
+    -options [list [list [_ dotlrn.Any] any] [list [_ dotlrn.Yes] t] [list [_ dotlrn.No] f]] \
+    -value $guest_p
 
 element create user_search role \
     -label "[_ dotlrn.Role]" \
@@ -147,7 +147,7 @@ set is_request [form is_request user_search]
 
 if {[form is_valid user_search]} {
     form get_values user_search \
-        id type can_browse_p private_data_p last_visit_greater last_visit_less name join_criteria
+        id type can_browse_p guest_p last_visit_greater last_visit_less name join_criteria
 
     if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
         ad_return_error \
@@ -194,13 +194,13 @@ if {[form is_valid user_search]} {
         }
     }
 
-    switch -exact $private_data_p {
+    switch -exact $guest_p {
         any {}
         t {
-            lappend wheres "exists (select 1 from acs_permissions where object_id = :package_id and grantee_id = dotlrn_users.user_id and privilege = 'read_private_data')"
+            lappend wheres "exists (select 1 from dotlrn_guest_status where dotlrn_guest_status.user_id = dotlrn_users.user_id and guest_p = 't')"
         }
         f {
-            lappend wheres "not exists (select 1 from acs_permissions where object_id = :package_id and grantee_id = dotlrn_users.user_id and privilege = 'read_private_data')"
+            lappend wheres "exists (select 1 from dotlrn_guest_status where dotlrn_guest_status.user_id = dotlrn_users.user_id and guest_p = 'f')"
         }
     }
 

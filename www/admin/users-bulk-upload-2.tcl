@@ -98,14 +98,8 @@ db_transaction {
                 }
             }
             
-            if {$row(guest) == "f"} {
-                set inverse_row_guest "t"
-            } else {
-                set inverse_row_guest "f"
-            }
-            
             # Set the privacy
-            acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
+            dotlrn_privacy::set_user_guest_p -user_id $user_id -value $row(guest)
             
             doc_body_append [_ dotlrn.user_email_created [list user_email $row(email)]]
             set msg_subst_list [list system_name [ad_system_name] \

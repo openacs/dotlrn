@@ -44,8 +44,32 @@ namespace eval dotlrn_user_extension {
         # Loop through patterns
         foreach pattern [automatic_email_patterns] {
             if {[string match $pattern $email]} {
+                # get AutoAddUser-parameters 
+                set type [parameter::get \
+                              -parameter AutoUserType \
+                              -package_id [dotlrn::get_package_id] \
+                              -default "student"]
+
+                set can_browse_p [parameter::get \
+                                      -parameter AutoUserAccessLevel \
+                                      -package_id [dotlrn::get_package_id] \
+                                      -default 1]
+
+                set read_private_data_p [parameter::get \
+                                             -parameter AutoUserReadPrivateDataP \
+                                             -package_id [dotlrn::get_package_id] \
+                                             -default 1]
+
+		set guest_p [ad_decode $read_private_data_p 1 0 0 1 $read_private_data_p]
+
                 # create the dotLRN user now
-                dotlrn::user_add -type student -can_browse_p -user_id $user_id
+                db_transaction {
+                    dotlrn::user_add -type $type -can_browse=$can_browse_p -user_id $user_id
+
+		    dotlrn_privacy::set_user_guest_p \
+			-user_id $user_id \
+			-value $guest_p
+                }
                 break
             }
         }

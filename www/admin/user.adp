@@ -27,7 +27,7 @@
 <ul>
 
   <li>
-    #dotlrn.Name#
+    #dotlrn.Person_name#
     @first_names@ @last_name@
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </li>
@@ -93,7 +93,7 @@
 
   <li>
     #dotlrn.Guest#
-    <if @read_private_data_p@>#dotlrn.No#</if><else>#dotlrn.Yes#</else>
+    <if @guest_p@ eq t>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
   </li>
 
   <li>

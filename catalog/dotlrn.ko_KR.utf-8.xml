@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">새 회원 추가</msg>
   <msg key="Add_Professor">교수 추가</msg>
   <msg key="add_selected_members">선택한 회원 추가</msg>
+  <msg key="add_to_another_group">사용자를 다른 그룹에 추가</msg>
+  <msg key="add_to_dotlrn">사용자를 .LRN에 추가</msg>
   <msg key="Add_to_group_">그룹에 추가 ...</msg>
   <msg key="Add_User">사용자 추가</msg>
   <msg key="Add_users_to">사용자 추가</msg>
@@ -142,10 +144,12 @@
   <msg key="Drop">삭제</msg>
   <msg key="Drop_Membership">회원자격 반납</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;삭제&quot; border=0&gt;</msg>
+  <msg key="Drop_selected_members">선택된 멤버 삭제</msg>
   <msg key="Edit">수정</msg>
   <msg key="Edit_a_User">사용자 수정</msg>
   <msg key="edit_approved_email_servers">사전 승인된 전자우편 서버를 수정</msg>
   <msg key="edit_message_and_hit_send">아래의 메시지를 수정하고 사용자에게 알리기 위해 &quot;전자우편 보내기&quot;를 치시오.</msg>
+  <msg key="edit_parameters">파라미터 수정</msg>
   <msg key="Edit_Properties">속성 수정</msg>
   <msg key="edit_subject">수정 </msg>
   <msg key="edit_subject_properties">%classes_pretty_name% 속성 수정 </msg>
@@ -166,6 +170,7 @@
   <msg key="Extra_Large">특대의 </msg>
   <msg key="Fields">필드</msg>
   <msg key="First_Line">첫째 줄</msg>
+  <msg key="first_line_of_file_must_be">파일의 첫번째 줄은 반드시 다음과 같은 헤더가 와야 합니다.</msg>
   <msg key="First_Name">이름</msg>
   <msg key="From">로부터</msg>
   <msg key="fuchsia">퓨셔</msg>
@@ -173,6 +178,7 @@
   <msg key="Full_Access">전체 접속권한</msg>
   <msg key="General_Information">일반 정보</msg>
   <msg key="General_Site_Help">일반적인 사이트 도움말</msg>
+  <msg key="Grant_site_wide_admin">전체 사이트 관리의 특권을 부여하다</msg>
   <msg key="gray">회색</msg>
   <msg key="green">녹색</msg>
   <msg key="groups_icon">그룹 아이콘</msg>
@@ -337,6 +343,7 @@
   <msg key="Memberships">회원자격</msg>
   <msg key="Memberships_1">회원자격:</msg>
   <msg key="Message">메시지</msg>
+  <msg key="must_have_values">다음 값 중에 하나여야 합니다:</msg>
   <msg key="My_Communities">나의 커뮤니티</msg>
   <msg key="NA">계정없음</msg>
   <msg key="Name">이름</msg>
@@ -389,20 +396,34 @@
   <msg key="or_return_to">또는 반환</msg>
   <msg key="Pending">보류중</msg>
   <msg key="Pending_Approval">승인 계류중</msg>
+  <msg key="Person_name">이름</msg>
   <msg key="Personal_home_page">개인 홈페이지:</msg>
   <msg key="Personal_Options">개인 옵션</msg>
   <msg key="portal_templates">포탈 템플릿</msg>
   <msg key="Portrait">사진:</msg>
+  <msg key="Portrait_1">사진</msg>
   <msg key="Post_to">전송:</msg>
   <msg key="Pretty_Name">프리티 이름</msg>
   <msg key="Pretty_Plural">프리티 복수</msg>
   <msg key="Preview">미리보기</msg>
+  <msg key="prv_policy_must_be_one_of">프라이버시 정책은 &quot;yes&quot; 또는 &quot;no&quot; 중의 하나이어야 합니다. </msg>
   <msg key="Public_Web_Log">공개 웹 로그</msg>
   <msg key="purple">자주색</msg>
   <msg key="Recipients_Email">수신자 전자우편</msg>
   <msg key="Recipients_Last_Name">수신자의 성(姓)</msg>
   <msg key="red">빨간색</msg>
   <msg key="Referer">조회자</msg>
+  <msg key="registered_user_welcome_email_body">%last_name% %first_names%,
+
+%system_url%의 %system_name%에 사용자로 추가되었습니다.
+
+로그인 정보:
+이메일: %email%
+비밀번호: %password%
+     (로그인 후에 비밀번호를 변경할 수 있습니다.)
+
+감사합니다.
+%administration_name%</msg>
   <msg key="Registration_date">등록일:</msg>
   <msg key="registration_request_sent">고맙습니다. 등록요청이 시스템 관리자에게 전송되었습니다.</msg>
   <msg key="Reject">거절</msg>
@@ -413,6 +434,7 @@
   <msg key="Results">결과 </msg>
   <msg key="Return_URL">URL 반환</msg>
   <msg key="revoke">철회</msg>
+  <msg key="Revoke_site_wide_admin">전체 사이트 관리의 특권을 철회하다</msg>
   <msg key="Role">역할</msg>
   <msg key="rrggbb">rrggbb </msg>
   <msg key="Screen_name">스크린 이름:</msg>
