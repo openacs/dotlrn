@@ -25,6 +25,15 @@ db_1row select_community_info {}
 if {![dotlrn_community::member_p $community_id $user_id]} {
     set context_bar [list "Not a member"]
 
+    set page_id [dotlrn_community::get_community_non_members_page_id $community_id]
+
+    # Possible that there is no portal page for non-members
+    if {! [empty_string_p $page_id]} {
+	set rendered_page [portal::render $page_id]
+    } else {
+	set rendered_page ""
+    }
+
     ad_return_template one-community-not-member
     return
 } else {

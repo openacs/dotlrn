@@ -127,6 +127,7 @@ is
     pretty_name			in dotlrn_communities.pretty_name%TYPE,
     description			in dotlrn_communities.description%TYPE,
     package_id			in dotlrn_communities.package_id%TYPE default null,
+    page_id			in dotlrn_communities.page_id%TYPE default null,
     creation_date		in acs_objects.creation_date%TYPE
 				default sysdate,
     creation_user		in acs_objects.creation_user%TYPE
@@ -154,6 +155,7 @@ is
     pretty_name			in dotlrn_communities.pretty_name%TYPE,
     description			in dotlrn_communities.description%TYPE,
     package_id			in dotlrn_communities.package_id%TYPE default null,
+    page_id			in dotlrn_communities.page_id%TYPE default null,
     creation_date		in acs_objects.creation_date%TYPE
 				default sysdate,
     creation_user		in acs_objects.creation_user%TYPE
@@ -171,6 +173,7 @@ is
  	pretty_name => pretty_name,
  	description => description,
  	package_id => package_id,
+	page_id => page_id,
  	creation_date => creation_date,
  	creation_user => creation_user,
  	creation_ip => creation_ip,

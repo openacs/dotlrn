@@ -36,6 +36,7 @@ create table dotlrn_communities (
 				constraint dlrn_comm_key_un unique,
        pretty_name		varchar(100) not null,
        description		varchar(4000),
+       page_id			references portals(portal_id),
        package_id		constraint dlrn_comm_pack_id_fk
 				references apm_packages(package_id)
 );
@@ -166,6 +167,7 @@ is
    community_key	in dotlrn_communities.community_key%TYPE,
    pretty_name		in dotlrn_communities.pretty_name%TYPE,
    description		in dotlrn_communities.description%TYPE,
+   page_id		in dotlrn_communities.page_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
                            default sysdate,
@@ -201,6 +203,7 @@ as
    community_key	in dotlrn_communities.community_key%TYPE,
    pretty_name		in dotlrn_communities.pretty_name%TYPE,
    description		in dotlrn_communities.description%TYPE,
+   page_id		in dotlrn_communities.page_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
                            default sysdate,
@@ -222,9 +225,9 @@ as
    );
 
    insert into dotlrn_communities
-   (community_id, community_type, community_key, pretty_name, description, package_id)
+   (community_id, community_type, community_key, pretty_name, description, package_id, page_id)
    values
-   (c_id, community_type, community_key, pretty_name, description, package_id);
+   (c_id, community_type, community_key, pretty_name, description, package_id, page_id);
 
    return c_id;
  end;

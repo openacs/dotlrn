@@ -223,6 +223,14 @@ namespace eval dotlrn_community {
 	return [db_string select_user_page_id {}]
     }
 
+    ad_proc -public get_community_non_members_page_id {
+	community_id
+    } {
+	Get the community page ID for non-members
+    } {
+	return [db_string select_community_page_id {}]
+    }
+
     ad_proc -public get_all_communities_by_user {
 	user_id
     } {

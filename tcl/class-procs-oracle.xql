@@ -31,7 +31,8 @@ begin
 	term => :term,
 	community_key => :short_name,
 	pretty_name => :class_name,
-	description => :description
+	description => :description,
+	page_id => :page_id
 );
 
 end;
