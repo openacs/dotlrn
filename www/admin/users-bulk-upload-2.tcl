@@ -106,6 +106,7 @@ db_transaction {
             acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $inverse_row_guest
             
             doc_body_append "creation succeeded...."
+            lappend list_of_addresses_and_passwords $row(email) $password
         }
 
         doc_body_append "<br>"
@@ -125,7 +126,7 @@ foreach {email password} $list_of_addresses_and_passwords {
         set message "
 You have been added as a user to [ad_system_name] at [ad_parameter -package_id [ad_acs_kernel_id] SystemURL].
             
-Login: $row(email)
+Login: $email
 Password: $password
 "
         # Send note to new user
