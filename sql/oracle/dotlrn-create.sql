@@ -19,3 +19,4 @@
 @dotlrn-init.sql
 @dotlrn-community-memberships-create.sql
 @dotlrn-community-memberships-packages-create.sql
+@dotlrn-main-portlet-create.sql

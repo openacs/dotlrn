@@ -1,0 +1,441 @@
+
+--
+-- The DotLRN memberships packages
+-- copyright 2001, OpenForce, Inc.
+-- distributed under the GNU GPL v2
+--
+-- for Oracle 8/8i. (We're guessing 9i works, too).
+--
+-- ben@openforce.net
+-- started November 6th, 2001
+--
+
+--
+-- Basic dotLRN membership rel
+--
+
+create or replace package dotlrn_member_rel
+is
+  function new (
+    rel_id		in dotlrn_member_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
+    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    community_id	in dotlrn_communities.community_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_member_rels.rel_id%TYPE;
+
+  procedure delete (
+    rel_id		in dotlrn_member_rels.rel_id%TYPE
+  );
+
+end;
+/
+show errors;
+
+
+create or replace package body dotlrn_member_rel
+is
+  function new (
+    rel_id		in dotlrn_member_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
+    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    community_id	in dotlrn_communities.community_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_member_rels.rel_id%TYPE
+  is
+    v_rel_id	membership_rels.rel_id%TYPE;
+  begin
+    v_rel_id:= membership_rel.new(rel_id => rel_id,
+			rel_type => rel_type,
+			object_id_one => community_id,
+			object_id_two => user_id,
+			creation_user => creation_user,
+			creation_ip => creation_ip);
+
+    insert into dotlrn_member_rels
+    (rel_id, page_id) values
+    (v_rel_id, page_id);
+
+    return v_rel_id;
+  end;
+
+  procedure delete (
+    rel_id		in dotlrn_member_rels.rel_id%TYPE
+  )
+  is 
+  begin
+    delete from dotlrn_member_rels where rel_id= rel_id;
+
+    membership_rel.delete(rel_id);
+  end;
+
+end;
+/
+show errors;
+
+
+--
+-- dotLRN Admin rel
+--
+
+create or replace package dotlrn_admin_rel
+is
+  function new (
+    rel_id		in dotlrn_admin_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
+    community_id	in dotlrn_communities.community_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_admin_rels.rel_id%TYPE;
+
+  procedure delete (
+    rel_id		in dotlrn_admin_rels.rel_id%TYPE
+  );
+
+end;
+/
+show errors;
+
+
+create or replace package body dotlrn_admin_rel
+is
+  function new (
+    rel_id		in dotlrn_admin_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
+    community_id	in dotlrn_communities.community_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_admin_rels.rel_id%TYPE
+  is
+    v_rel_id	dotlrn_admin_rels.rel_id%TYPE;
+  begin
+    v_rel_id:= dotlrn_member_rel.new(rel_id => rel_id,
+			rel_type => rel_type,
+			community_id => community_id,
+			user_id => user_id,
+			context_id => context_id,
+			creation_user => creation_user,
+			creation_ip => creation_ip);
+
+    insert into dotlrn_admin_rels
+    (rel_id) values
+    (v_rel_id);
+
+    return v_rel_id;
+  end;
+
+  procedure delete (
+    rel_id		in dotlrn_admin_rels.rel_id%TYPE
+  )
+  is 
+  begin
+    delete from dotlrn_admin_rels where rel_id= rel_id;
+
+    dotlrn_member_rel.delete(rel_id);
+  end;
+
+end;
+/
+show errors;
+
+
+--
+-- dotLRN Student rel
+--
+
+create or replace package dotlrn_student_rel
+is
+  function new (
+    rel_id		in dotlrn_student_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
+    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_student_rels.rel_id%TYPE;
+
+  procedure delete (
+    rel_id		in dotlrn_student_rels.rel_id%TYPE
+  );
+
+end;
+/
+show errors;
+
+
+create or replace package body dotlrn_student_rel
+is
+  function new (
+    rel_id		in dotlrn_student_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
+    page_id		in dotlrn_member_rels.page_id%TYPE default NULL,
+    class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_student_rels.rel_id%TYPE
+  is
+    v_rel_id	dotlrn_student_rels.rel_id%TYPE;
+  begin
+    v_rel_id:= dotlrn_member_rel.new(rel_id => rel_id,
+			rel_type => rel_type,
+			page_id => page_id,
+			community_id => class_instance_id,
+			user_id => user_id,
+			context_id => context_id,
+			creation_user => creation_user,
+			creation_ip => creation_ip);
+
+    insert into dotlrn_student_rels
+    (rel_id) values
+    (v_rel_id);
+
+    return v_rel_id;
+  end;
+
+  procedure delete (
+    rel_id		in dotlrn_student_rels.rel_id%TYPE
+  )
+  is 
+  begin
+    delete from dotlrn_student_rels where rel_id= rel_id;
+
+    dotlrn_member_rel.delete(rel_id);
+  end;
+
+end;
+/
+show errors;
+
+
+--
+-- dotLRN TA rel
+--
+
+create or replace package dotlrn_ta_rel
+is
+  function new (
+    rel_id		in dotlrn_ta_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
+    class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_ta_rels.rel_id%TYPE;
+
+  procedure delete (
+    rel_id		in dotlrn_ta_rels.rel_id%TYPE
+  );
+
+end;
+/
+show errors;
+
+
+create or replace package body dotlrn_ta_rel
+is
+  function new (
+    rel_id		in dotlrn_ta_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
+    class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_ta_rels.rel_id%TYPE
+  is
+    v_rel_id	dotlrn_ta_rels.rel_id%TYPE;
+  begin
+    v_rel_id:= dotlrn_admin_rel.new(rel_id => rel_id,
+			rel_type => rel_type,
+			community_id => class_instance_id,
+			user_id => user_id,
+			context_id => context_id,
+			creation_user => creation_user,
+			creation_ip => creation_ip);
+
+    insert into dotlrn_ta_rels
+    (rel_id) values
+    (v_rel_id);
+
+    return v_rel_id;
+  end;
+
+  procedure delete (
+    rel_id		in dotlrn_ta_rels.rel_id%TYPE
+  )
+  is 
+  begin
+    delete from dotlrn_ta_rels where rel_id= rel_id;
+
+    dotlrn_admin_rel.delete(rel_id);
+  end;
+
+end;
+/
+show errors;
+
+
+--
+-- dotLRN Instructor rel
+--
+
+create or replace package dotlrn_instructor_rel
+is
+  function new (
+    rel_id		in dotlrn_instructor_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
+    class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_instructor_rels.rel_id%TYPE;
+
+  procedure delete (
+    rel_id		in dotlrn_instructor_rels.rel_id%TYPE
+  );
+
+end;
+/
+show errors;
+
+
+create or replace package body dotlrn_instructor_rel
+is
+  function new (
+    rel_id		in dotlrn_instructor_rels.rel_id%TYPE default NULL,
+    rel_type		in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
+    class_instance_id	in dotlrn_class_instances.class_instance_id%TYPE,
+    user_id		in dotlrn_users.user_id%TYPE,
+    context_id		in acs_objects.context_id%TYPE default null,
+    creation_user	in acs_objects.creation_user%TYPE default null,
+    creation_ip		in acs_objects.creation_ip%TYPE default null
+  ) return dotlrn_instructor_rels.rel_id%TYPE
+  is
+    v_rel_id	dotlrn_instructor_rels.rel_id%TYPE;
+  begin
+    v_rel_id:= dotlrn_admin_rel.new(rel_id => rel_id,
+			rel_type => rel_type,
+			community_id => class_instance_id,
+			user_id => user_id,
+			context_id => context_id,
+			creation_user => creation_user,
+			creation_ip => creation_ip);
+
+    insert into dotlrn_instructor_rels
+    (rel_id) values
+    (v_rel_id);
+
+    return v_rel_id;
+  end;
+
+  procedure delete (
+    rel_id		in dotlrn_instructor_rels.rel_id%TYPE
+  )
+  is 
+  begin
+    delete from dotlrn_instructor_rels where rel_id= rel_id;
+
+    dotlrn_admin_rel.delete(rel_id);
+  end;
+
+end;
+/
+show errors;
+
+
+
+--
+-- Now we actually create the rel_types
+--
+
+declare
+begin
+	acs_rel_type.create_type (
+	   rel_type => 'dotlrn_member_rel',
+	   supertype => 'membership_rel',
+	   pretty_name => 'dotLRN Membership',
+	   pretty_plural => 'dotLRN Memberships',
+	   package_name => 'dotlrn_member_rel',
+	   table_name => 'dotlrn_member_rels',	
+	   id_column => 'rel_id',
+	   object_type_one => 'dotlrn_community', role_one => NULL, 
+	   min_n_rels_one => 0, max_n_rels_one => NULL,
+	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   min_n_rels_two => 0, max_n_rels_two => NULL
+	);
+
+	acs_rel_type.create_type (
+	   rel_type => 'dotlrn_admin_rel',
+	   supertype => 'dotlrn_member_rel',
+	   pretty_name => 'dotLRN Admin Membership',
+	   pretty_plural => 'dotLRN Admin Memberships',
+	   package_name => 'dotlrn_admin_rel',
+	   table_name => 'dotlrn_admin_rels',	
+	   id_column => 'rel_id',
+	   object_type_one => 'dotlrn_community', role_one => NULL, 
+	   min_n_rels_one => 0, max_n_rels_one => NULL,
+	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   min_n_rels_two => 0, max_n_rels_two => NULL
+	);
+
+	acs_rel_type.create_type (
+	   rel_type => 'dotlrn_student_rel',
+	   supertype => 'dotlrn_member_rel',
+	   pretty_name => 'dotLRN Student Membership',
+	   pretty_plural => 'dotLRN Student Memberships',
+	   package_name => 'dotlrn_student_rel',
+	   table_name => 'dotlrn_student_rels',	
+	   id_column => 'rel_id',
+	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
+	   min_n_rels_one => 0, max_n_rels_one => NULL,
+	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   min_n_rels_two => 0, max_n_rels_two => NULL
+	);
+
+	acs_rel_type.create_type (
+	   rel_type => 'dotlrn_ta_rel',
+	   supertype => 'dotlrn_admin_rel',
+	   pretty_name => 'dotLRN TA Membership',
+	   pretty_plural => 'dotLRN TA Memberships',
+	   package_name => 'dotlrn_ta_rel',
+	   table_name => 'dotlrn_ta_rels',	
+	   id_column => 'rel_id',
+	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
+	   min_n_rels_one => 0, max_n_rels_one => NULL,
+	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   min_n_rels_two => 0, max_n_rels_two => NULL
+	);
+
+	acs_rel_type.create_type (
+	   rel_type => 'dotlrn_instructor_rel',
+	   supertype => 'dotlrn_admin_rel',
+	   pretty_name => 'dotLRN Instructor Membership',
+	   pretty_plural => 'dotLRN Instructor Memberships',
+	   package_name => 'dotlrn_instructor_rel',
+	   table_name => 'dotlrn_instructor_rels',	
+	   id_column => 'rel_id',
+	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
+	   min_n_rels_one => 0, max_n_rels_one => NULL,
+	   object_type_two => 'dotlrn_user', role_two => NULL,
+	   min_n_rels_two => 0, max_n_rels_two => NULL
+	);
+
+end;
+/
+show errors
