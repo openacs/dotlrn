@@ -26,7 +26,7 @@
 
 <p></p>
 
-<table bgcolor="#ececec" width="100%">
+<table bgcolor="#eeeeee" width="100%">
   <tr>
     <th align="left" width="50%">
 <formtemplate id="department_form">

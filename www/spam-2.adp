@@ -28,7 +28,7 @@
   Are you sure you want to send the following @spam_name@ Message?
 </p>
 
-<table bgcolor="#ececec" width="95%" cellpadding="3" cellspacing="3">
+<table bgcolor="#eeeeee" width="95%" cellpadding="3" cellspacing="3">
   <tr>
     <td width="10%">Subject</td>
     <td><pre>@subject@</pre></td>

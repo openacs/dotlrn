@@ -43,7 +43,7 @@
 
     <h4><a name="current_classes"><%= [parameter::get -parameter class_instances_pretty_plural] %></a></h4>
 
-    <table bgcolor="#ececec" width="100%">
+    <table bgcolor="#eeeeee" width="100%">
 <formtemplate id="member_form">
         <th align="left" width="50%">
           <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="member_department_key">
@@ -66,7 +66,7 @@
 <multiple name="member_classes">
 
     <if @member_classes.rownum@ odd>
-      <tr bgcolor="#ececec">
+      <tr bgcolor="#eeeeee">
     </if>
     <else>
       <tr bgcolor="#ffffff">
@@ -103,7 +103,7 @@
 <multiple name="member_clubs">
 
     <if @member_clubs.rownum@ odd>
-      <tr bgcolor="#ececec">
+      <tr bgcolor="#eeeeee">
     </if>
     <else>
       <tr bgcolor="#ffffff">
@@ -135,7 +135,7 @@
 
     <h4><a name="join_classes"><%= [parameter::get -parameter class_instances_pretty_plural] %></a></h4>
 
-    <table bgcolor="#ececec" width="100%">
+    <table bgcolor="#eeeeee" width="100%">
 <formtemplate id="non_member_form">
         <th align="left" width="50%">
           <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="non_member_department_key">
@@ -158,7 +158,7 @@
 <multiple name="non_member_classes">
 
     <if @non_member_classes.rownum@ odd>
-      <tr bgcolor="#ececec">
+      <tr bgcolor="#eeeeee">
     </if>
     <else>
       <tr bgcolor="#ffffff">
@@ -196,7 +196,7 @@
 <multiple name="non_member_clubs">
 
     <if @non_member_clubs.rownum@ odd>
-      <tr bgcolor="#ececec">
+      <tr bgcolor="#eeeeee">
     </if>
     <else>
       <tr bgcolor="#ffffff">
