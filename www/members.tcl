@@ -128,7 +128,7 @@ if { [exists_and_not_null orderby] } {
 set orderby [template::list::orderby_clause -name "members" -orderby]
 
 db_multirow -extend { member_url referer } members select_current_members {} {
-    set member_url [acs_community_member_url -user_id $user_id]
+    set member_url "[dotlrn::get_url]/community-member?user_id=$user_id"
     set referer $referer
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
