@@ -203,8 +203,8 @@ namespace eval dotlrn_community {
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
 
-            # Assign proper permissions to the site node
-            # NOT CERTAIN what to do here yet
+            # Add the basic dotlrn applet (we can't do without)
+            dotlrn_community::add_applet_to_community $community_id dotlrn_dotlrn
         }
 
         return $community_id
