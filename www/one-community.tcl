@@ -51,7 +51,7 @@ if {![empty_string_p $parent_id]} {
 } 
 
 # Check that this user is a member
-if {![dotlrn_community::member_p $community_id $user_id]} {
+if {![dotlrn_community::member_p $community_id $user_id] && !$admin_p} {
     set context_bar [list "Not a member"]
 
     if {[dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]} {

@@ -54,11 +54,6 @@ if {[dotlrn::user_p -user_id $user_id]} {
     set portal_id [dotlrn::get_workspace_portal_id $user_id]
 }
 
-
-
-# ad_return_complaint 1 "$portal_id |$community_id|"
-
-
 if {![empty_string_p $community_id]} {
     set have_comm_id_p 1
 } else {
@@ -87,9 +82,10 @@ if {![info exists return_url]} {
     set link $return_url
 }
 
+set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]
+
 if {![info exists show_control_panel]} {
-    if {$have_comm_id_p 
-    && [dotlrn::user_can_admin_community_p -user_id $user_id $community_id]} {
+    if {$have_comm_id_p && $admin_p } {
         set show_control_panel 1
     } else {
         set show_control_panel 0
@@ -111,17 +107,18 @@ if {$have_comm_id_p} {
     set text [dotlrn_community::get_community_header_name $community_id] 
     set link [dotlrn_community::get_community_url $community_id]
 
+#    ns_log notice "aks9: $link"
+
 #    ad_return_complaint 1 "$portal_id | $text | $link"
-    if {[empty_string_p $portal_id]} {
+    if {[empty_string_p $portal_id] && !$admin_p } {
         # not a member yet
         set portal_id [dotlrn_community::get_community_non_members_portal_id $community_id]
     }
 
-
     if { $have_portal_id_p && $show_navbar_p } {
         if {$show_control_panel} {
             if {$link_control_panel} {
-                set extra_td_html " &nbsp; <a href=one-community-admin> $control_panel_text</a>"
+                set extra_td_html " &nbsp; <a href=${link}one-community-admin> $control_panel_text</a>"
             } else {
                 set extra_td_html " &nbsp; $control_panel_text"
             }
@@ -129,7 +126,7 @@ if {$have_comm_id_p} {
             # don't show control panel
             set extra_td_html ""
         }
-            
+
         set navbar [portal::navbar \
                 -portal_id $portal_id \
                 -link_all $link_all \
@@ -224,7 +221,7 @@ if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_c
 if {[ad_parameter community_level_p] == 1 || $parent_comm_p } {
     set community_id [dotlrn_community::get_community_id]
     
-    # aks color hack
+    # color hack
     if {[dotlrn_community::subcommunity_p -community_id $community_id]} {
         set color_hack "#663366"
         set color_hack_name "purple"
