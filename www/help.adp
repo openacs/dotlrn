@@ -120,6 +120,8 @@
     through the "Edit My Forum Email Alerts" link on the My Account page. 
     Limited Access users can access their My Account page through the Help icon 
     in the group banner.</p>
+  <p><b><font size="4"><a name="Help">Additional Help</a></font></b><br>
+    <a href="dotlrn-user-faq">User FAQ</a>
 <p></p>
 <p><br>
 </p>
