@@ -166,6 +166,8 @@ db_multirow pending_users select_pending_users {
     where dotlrn_users.user_id = dotlrn_member_rels_full.user_id
     and dotlrn_member_rels_full.community_id = :community_id
     and dotlrn_member_rels_full.member_state = 'needs approval'
+} {
+    set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
 # If we are in a subcomm. get the list of the users of the parent
