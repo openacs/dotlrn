@@ -38,6 +38,9 @@
   <li><a href="portal-templates">#dotlrn.portal_templates#</a></li>
   <li><a href="archived-communities">#dotlrn.archived_classes_and_communities#</a></li>
   <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>
+  <p>
+    <li><a href="/acs-admin/">OpenACS Site-Wide Administration</a></li>
+  </p>
 </ul>
 
 
