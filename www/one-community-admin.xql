@@ -3,14 +3,13 @@
 <queryset>
   <fullquery name="select_community_info">
     <querytext>
-      select dotlrn_communities.community_type,
-             dotlrn_communities.pretty_name,
-             dotlrn_communities.description,
-             groups.join_policy
-      from dotlrn_communities,
-           groups
-      where dotlrn_communities.community_id = :community_id
-      and groups.group_id = :community_id
+      select community_type,
+             pretty_name,
+             description,
+             portal_template_id,
+             admin_portal_id
+      from dotlrn_communities
+      where community_id = :community_id
     </querytext>
   </fullquery>
 </queryset>

@@ -7,29 +7,25 @@ ad_page_contract {
     @version $Id$
 } -query {
 } -properties {
-    dotlrn_admin_p:onevalue
-    dotlrn_admin_url:onevalue
     community_id:onevalue
     community_type:onevalue
     pretty_name:onevalue
     description:onevalue
-    join_policy:onevalue
-    n_subgroups:onevalue
+    portal_template_id:onevalue
+    users:multirow
 }
 
 set portal_id ""
+
 set community_id [dotlrn_community::get_community_id]
 
+# Permissions
 dotlrn::require_user_admin_community $community_id
-
-set dotlrn_admin_p [dotlrn::admin_p]
-set dotlrn_admin_url "[dotlrn::get_url]/admin"
 
 db_1row select_community_info {}
 
-set n_subgroups [db_string select_subgroups_count {
-    select 1 from dual where 1 = 0
-} -default 0]
+# render the admin page
+set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id]
 
 set context_bar {Admin}
 
