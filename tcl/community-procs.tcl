@@ -731,19 +731,20 @@ namespace eval dotlrn_community {
                         "[get_community_name $subcomm_id]</a>\n" 
 
                 if {[dotlrn::user_can_admin_community_p $subcomm_id]} {
-                    append subcomm_chunk " - <a class=note href=${url}one-community-admin>\[admin\]</a>"
+                    append subcomm_chunk " - \[\&nbsp\;<a class=note href=${url}one-community-admin>admin</a>\&nbsp\;\]"
                 }
                 
                 append subcomm_chunk \
                     "<ul>\n" \
-                        [get_subcomm_chunk -community_id $subcomm_id] \
-                        "</ul>\n"
+                    [get_subcomm_chunk -community_id $subcomm_id] \
+                    "</ul>\n"
             } else {
                 append subcomm_chunk \
-                        "$pretext <a href=[get_community_url $subcomm_id]>" \
-                        "[get_community_name $subcomm_id]</a>\n" 
+                    "$pretext <a href=[get_community_url $subcomm_id]>" \
+                    "[get_community_name $subcomm_id]</a>\n" 
             }
         } 
+
         return $subcomm_chunk
     }
 
