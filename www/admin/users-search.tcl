@@ -236,7 +236,7 @@ if {[form is_valid user_search]} {
     set selected_users_options [list]
     set selected_users_values [list]
     db_foreach select_users $sql {
-        lappend selected_users_options [list "<a href=\"user-edit?[export_vars {user_id referer}]\">$last_name, $first_names</a> ($email)" $user_id]
+        lappend selected_users_options [list "<a href=\"user?[export_vars user_id]\">$last_name, $first_names</a> ($email)" $user_id]
         lappend selected_users_values $user_id
     }
 

@@ -4,7 +4,7 @@
 
 <if @inline_portrait_state@ eq "inline">
 
-  <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align=right width=@width@ height=@height@></a><br>
+  <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
 
 </if>
 <else><if @inline_portrait_state eq "link">
@@ -17,12 +17,12 @@ A member of the @system_name@ community since @pretty_creation_date@
 
 <if @member_state@ eq "deleted">
 
-  <blockquote><font color=red>this user is deleted</font></blockquote>
+  <blockquote><font color="red">this user is deleted</font></blockquote>
 
 </if>
 <else><if @member_state@ eq "banned">
 
-  <blockquote><font color=red>this user is deleted and
+  <blockquote><font color="red">this user is deleted and
   banned from the community.</font></blockquote>
 
 </if></else>
@@ -48,7 +48,7 @@ A member of the @system_name@ community since @pretty_creation_date@
 
 <h3>Shared Files</h3>
 
-<include src="folder-chunk" folder_id=@folder_id@></include>
+<include src="folder-chunk" folder_id=@folder_id@>
 
 <multiple name="user_contributions">
   <h3>@user_contributions.pretty_plural@</h3>

@@ -101,7 +101,6 @@
       </tr>
 </multiple>
     </table>
-
 </if>
 <else>
   <p><small>No <%= [ad_parameter clubs_pretty_plural] %></small></p>

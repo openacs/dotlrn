@@ -2,21 +2,21 @@
 <property name="title">@title@</property>
 <property name="portal_id">@portal_id@</property>
 
-<table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#FFFFFF">
+<table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
   <tr bgcolor="#CC0000">
     <td colspan="3" valign="middle">
       <img src="/dotlrn/spacer.gif" width="1" height="1">
      </td>
   </tr>
   <tr>
-    <td width="12%" valign="middle" bgcolor="ffffff">
+    <td width="12%" valign="middle" bgcolor="#ffffff">
       <a href="/dotlrn/">
       <img src="/dotlrn/logowhite.gif" width="100" height="65" border="0" alt="dotlrn"></a>
     </td>
-    <td width="57%" valign="middle" bgcolor="#FFFFFF">
+    <td width="57%" valign="middle" bgcolor="#ffffff">
       <font face="arial,helvetica" size="+1" color="#000000">@text@</font>
     </td>
-    <td valign="middle" width="31%" bgcolor="#FFFFFF">
+    <td valign="middle" width="31%" bgcolor="#ffffff">
       <div align="right">
       <a href="/dotlrn/">
       <img src="/dotlrn/myspace.gif" width="98" height="25" border="0" alt="my dotlrn" align="middle"></a>
@@ -26,7 +26,7 @@
       <img src="/dotlrn/logout.gif" width="62" height="25" border="0" alt="logout" align="middle"></a></div>
     </td>
   </tr>
-  <tr bgcolor="#CC0000">
+  <tr bgcolor="#cc0000">
     <td colspan="3"  valign="middle">
     <img src="/dotlrn/spacer.gif" width="1" height="1">
     </td>

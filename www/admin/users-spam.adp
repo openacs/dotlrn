@@ -4,4 +4,4 @@
 
 <formtemplate id="spam_message"></formtemplate>
 
-<include src="../spam-variables"></include>
+<include src="../spam-variables">
