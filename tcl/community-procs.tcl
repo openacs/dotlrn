@@ -217,15 +217,11 @@ namespace eval dotlrn_community {
                 where object_id = :community_id
             }
 
-            set template_id [dotlrn::get_portal_id_from_type -type $object_type]
+	    ReturnHeaders
 
-            # Create comm's portal page
-            set portal_id [portal::create \
-                -template_id $template_id \
-                -name "$pretty_name Portal" \
-                -context_id $community_id \
-                $user_id \
-            ]
+            set template_id [dotlrn::get_portal_id_from_type -type $object_type]
+	    set portal_id [dotlrn::get_portal_id_from_type -type $object_type]
+
 
             # Create the comm's non-member page
             set non_member_portal_id [portal::create \
@@ -234,6 +230,7 @@ namespace eval dotlrn_community {
                 -context_id $community_id \
                 $user_id \
             ]
+
 
             # Create the comm's admin page
             set admin_portal_id [portal::create \
@@ -245,6 +242,7 @@ namespace eval dotlrn_community {
 
             # Set up the rel segments
             dotlrn_community::create_rel_segments -community_id $community_id
+
 
             # Set up the node
             if {[empty_string_p $parent_community_id]} {
@@ -260,6 +258,10 @@ namespace eval dotlrn_community {
                 -package_name $pretty_name \
                 -context_id $community_id \
             ]
+
+	ns_write "<P> You are here <p>" 
+
+
 
             # Set the right parameters
             ad_parameter -package_id $package_id -set 0 dotlrn_level_p
@@ -297,6 +299,8 @@ namespace eval dotlrn_community {
             }
 
             set default_applets_list [string trim [split $default_applets {,}]]
+
+	ns_write "default applets list $default_applets_list <br>"
 
             foreach applet_key $default_applets_list {
                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
@@ -1508,6 +1512,7 @@ namespace eval dotlrn_community {
     } {
         Adds an applet to the community
     } {
+	ns_write "add applet to community $applet_key <br>"
         db_transaction {
             set package_id [applet_call \
                 $applet_key \
@@ -1948,6 +1953,7 @@ namespace eval dotlrn_community {
     } {
         call a particular applet op
     } {
+	ns_write "applet call is $applet_key <br>"
         acs_sc_call dotlrn_applet $op $list_args $applet_key
     }
 

@@ -105,15 +105,13 @@ namespace eval dotlrn {
         ns_set put $extra_vars user_id $user_id
         ns_set put $extra_vars id $id
 
-        set template_id [dotlrn::get_portal_id_from_type -type user]
+        set portal_id [dotlrn::get_portal_id_from_type -type user]
 
         db_transaction {
             set_can_browse -user_id $user_id -can_browse\=$can_browse_p
 
-            set portal_id [portal::create \
-                -template_id $template_id \
-                -name "[_ dotlrn.lt_Your_dotLRN_Workspace]" \
-                $user_id]
+	    # The user will start with a the default portal.
+	    # A new one will be created when they go to configure
 
             ns_set put $extra_vars portal_id $portal_id
 
