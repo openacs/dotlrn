@@ -4,7 +4,7 @@
 
 <ul>
 <multiple name="class_instances">
-<li> <A href=../@class_key@/@class_instances.community_key@/one-community-admin>@class_instances.pretty_name@</a>
+<li> <A href=../classes/@class_key@/@class_instances.community_key@/one-community-admin>@class_instances.pretty_name@</a>
 </multiple>
 
 <p>
