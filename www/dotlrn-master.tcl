@@ -120,10 +120,11 @@ if {!$no_navbar_p} {
     set navbar "<br>"
 }
 
-
 # the ColorHack and FontHack and LogoHack!
 set color_hack "#cc0000"
 set color_hack_name "red"
+set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 204 } { g 0 } { b 0 }}]"
+
 set header_font ""
 set header_font_size "medium"
 set header_font_color "black"
@@ -152,15 +153,18 @@ if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 |
     if {[dotlrn_community::subcommunity_p -community_id $community_id]} {
         set color_hack "#663366"
         set color_hack_name "purple"
+        set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 153 } { g 102 } { b 153 }}]"
     } else {
         set comm_type \
                 [dotlrn_community::get_community_type_from_community_id $community_id]
         if {$comm_type == "dotlrn_club"} {
             set color_hack "#006666"
             set color_hack_name "green"
+            set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 0 } { g 102 } { b 102 }}]"
         } else {
             set color_hack "#6699cc"
             set color_hack_name "blue"
+            set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 102 } { g 153 } { b 204 }}]"
         }
     }
 

@@ -48,9 +48,9 @@
     <td><div class=header-text>@text@</div></td>
 
     <td class="header-buttons">
-      <img src="/shared/1pixel.tcl?r=204&g=0&b=0" width="9" height="9"> <a href="@dotlrn_url@">#dotlrn.myspace#</a>
-      <img src="/shared/1pixel.tcl?r=204&g=0&b=0" width="9" height="9"> <a href="@dotlrn_url@/control-panel">#dotlrn.help#</a>
-      <img src="/shared/1pixel.tcl?r=204&g=0&b=0" width="9" height="9"> <a href="/register/logout">#dotlrn.logout#</a>
+      <img src="@color_1pixel@" width="9" height="9"> <a href="@dotlrn_url@">#dotlrn.myspace#</a>
+      <img src="@color_1pixel@" width="9" height="9"> <a href="@dotlrn_url@/control-panel">#dotlrn.help#</a>
+      <img src="@color_1pixel@" width="9" height="9"> <a href="/register/logout">#dotlrn.logout#</a>
     </td>
 
   </tr>
@@ -78,7 +78,7 @@
 
 <P>
 
-<small>@navbar@</small>
+<div style="font-size: small">@navbar@</div>
 
 <hr>
 
@@ -86,9 +86,11 @@
   <table width="100%" border="0" cellpadding="1" cellspacing="0">
     <tr>
       <td align=left valign=top>
-        <a href="http://dotlrn.openforce.net">#dotlrn.dotLRN#</a>
+        <a href="http://dotlrn.org">dotLRN</a>
         | 
-        <a href="http://openacs.org">#dotlrn.OpenACS#</a>
+        <a href="http://openacs.org">OpenACS</a>
+        |
+        <a href="/acs-lang/">#dotlrn.Change_Locale#</a>
       </td>
       <td align=right>
         @ds_link@
@@ -96,6 +98,3 @@
     </tr>
   </table>
 </div>
-
-
-
