@@ -269,6 +269,37 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::set_community_type.update_community_type">
+        <querytext>
+            update dotlrn_communities_all
+            set community_type = :community_type
+            where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_community_type.get_portal_template">
+        <querytext>
+            select
+              portal_id
+            from
+              dotlrn_portal_types_map
+            where
+              type = :community_type
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_community_type.set_portal_template">
+        <querytext>
+            update portals
+            set template_id = :portal_id
+            where portal_id = (
+              select portal_id
+              from dotlrn_communities
+              where community_id = :community_id
+            )
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::has_subcommunity_p_not_cached.select_subcomm_check">
         <querytext>
             select 1
@@ -604,4 +635,11 @@
         </querytext>
     </fullquery>
 
+  <fullquery name="dotlrn_community::type_exists.type_exists">
+    <querytext>
+      select 1
+        from dotlrn_community_types
+        where community_type = :community_type
+    </querytext>
+  </fullquery>
 </queryset>
