@@ -20,6 +20,23 @@ ad_library {
 
 # if installed
 if {[dotlrn::is_instantiated]} {
+
+    set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]"
+    if {![dotlrn::is_instantiated_here -url $dotlrn_classes_url]} {
+        dotlrn::mount_package \
+            -package_key [dotlrn::package_key] \
+            -url [dotlrn_class::get_url_part] \
+            -directory_p "t"
+    }
+
+    set dotlrn_clubs_url "[dotlrn::get_url][dotlrn_club::get_url]"
+    if {![dotlrn::is_instantiated_here -url $dotlrn_clubs_url]} {
+        dotlrn::mount_package \
+            -package_key [dotlrn::package_key] \
+            -url [dotlrn_club::get_url_part] \
+            -directory_p "t"
+    }
+
     # Grantee
     set grantee_id [dotlrn::get_full_users_rel_segment_id]
 
@@ -27,7 +44,7 @@ if {[dotlrn::is_instantiated]} {
 
     # Grant the permission
     if {![ad_permission_p -user_id $grantee_id $package_id dotlrn_browse]} {
-	ad_permission_grant $grantee_id $package_id dotlrn_browse
+        ad_permission_grant $grantee_id $package_id dotlrn_browse
     }
 
     # We go through all Applets and make sure they are added.
@@ -37,24 +54,8 @@ if {[dotlrn::is_instantiated]} {
     # called repeatedly since this script is eval'd at every server startup
     # - aks
     foreach applet [dotlrn_community::list_applets] {
-	# Callback on all applets
-	dotlrn_community::applet_call $applet "AddApplet" [list]
-    }
-
-    set dotlrn_classes_url "[dotlrn::get_url][dotlrn_class::get_url]"
-    if {![dotlrn::is_instantiated_here $dotlrn_classes_url]} {
-        dotlrn::mount_package
-            -package_key [dotlrn::package_key] \
-            -url $dotlrn_classes_url \
-            -directory_p 1
-    }
-
-    set dotlrn_clubs_url "[dotlrn::get_url][dotlrn_club::get_url]"
-    if {![dotlrn::is_instantiated_here $dotlrn_clubs_url]} {
-        dotlrn::mount_package
-            -package_key [dotlrn::package_key] \
-            -url $dotlrn_clubs_url \
-            -directory_p 1
+        # Callback on all applets
+        dotlrn_community::applet_call $applet "AddApplet" [list]
     }
 }
 

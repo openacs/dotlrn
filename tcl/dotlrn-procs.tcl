@@ -97,27 +97,33 @@ namespace eval dotlrn {
     }
 
     ad_proc -public mount_package {
+        {-parent_node_id ""}
         {-package_key:required}
         {-url:required}
         {-directory_p:required}
     } {
         mount a package under dotlrn
     } {
+        set parent_node_id [ad_decode $parent_node_id "" [get_node_id] $parent_node_id]
         db_transaction {
-            set parent_node [site_node [site_node::get_url_from_node_id [site_node::get_parent_id [site_node::get_node_id_from_url $url]]]]
-            set parent_id $parent_node(node_id)
+            set node_id [db_string get_next_seq_val {
+                select acs_object_id_seq.nextval from dual
+            }]
+            array set parent_node [site_node \
+                [site_nodes::get_url_from_node_id -node_id $parent_node_id]
+            ]
             set parent_package_id $parent_node(object_id)
 
             set node_id [db_exec_plsql mount_package {
                 begin
                     :1 := site_node.new(
-                        node_id => acs_object_id_seq.nextval,
-                        parent_id => :parent_id,
+                        node_id => :node_id,
+                        parent_id => :parent_node_id,
                         name => :url,
                         directory_p => :directory_p
                     );
                 end;
-            }
+            }]
 
             return [site_node_create_package_instance $node_id $package_key $parent_package_id $package_key]
         }
