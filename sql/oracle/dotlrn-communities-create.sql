@@ -37,6 +37,7 @@ create table dotlrn_communities (
        pretty_name		varchar(100) not null,
        description		varchar(4000),
        page_id			references portals(portal_id),
+       portal_template_id	references portals(portal_id),
        package_id		constraint dlrn_comm_pack_id_fk
 				references apm_packages(package_id)
 );
