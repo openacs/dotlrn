@@ -25,9 +25,9 @@
   </tr>
 <multiple name="classes">
   <tr>
-    <td><a href="one-department?department_key=@classes.department_key@">@classes.department_name@</a></td>
-    <td><a href="one-class?class_key=@classes.class_key@">@classes.class_key@</a></td>
-    <td><a href="one-class?class_key=@classes.class_key@">@classes.pretty_name@</a></td>
+    <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
+    <td><a href="class?class_key=@classes.class_key@">@classes.class_key@</a></td>
+    <td><a href="class?class_key=@classes.class_key@">@classes.pretty_name@</a></td>
   </tr>
 </multiple>
 </table>

@@ -152,21 +152,9 @@
             <file type="content_page" path="www/admin/index.tcl"/>
             <file type="content_page" path="www/admin/master.adp"/>
             <file type="content_page" path="www/admin/need-term-note.adp"/>
-            <file type="content_page" path="www/admin/one-class.adp"/>
-            <file type="content_page" path="www/admin/one-class.tcl"/>
-            <file type="query_file" path="www/admin/one-class.xql"/>
-            <file type="query_file" db_type="oracle" path="www/admin/one-club-oracle.xql"/>
-            <file type="content_page" path="www/admin/one-club.adp"/>
-            <file type="content_page" path="www/admin/one-club.tcl"/>
-            <file type="content_page" path="www/admin/one-department.adp"/>
-            <file type="content_page" path="www/admin/one-department.tcl"/>
-            <file type="query_file" path="www/admin/one-department.xql"/>
             <file type="content_page" path="www/admin/site-wide-admin-toggle.tcl"/>
             <file type="content_page" path="www/admin/term-new.adp"/>
             <file type="content_page" path="www/admin/term-new.tcl"/>
-            <file type="content_page" path="www/admin/term.adp"/>
-            <file type="content_page" path="www/admin/term.tcl"/>
-            <file type="query_file" path="www/admin/term.xql"/>
             <file type="content_page" path="www/admin/terms.adp"/>
             <file type="content_page" path="www/admin/terms.tcl"/>
             <file type="query_file" path="www/admin/terms.xql"/>

@@ -14,8 +14,8 @@
   </tr>
 <multiple name="departments">
   <tr>
-    <td><a href="one-department?department_key=@departments.department_key@">@departments.department_key@</a></td>
-    <td><a href="one-department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
+    <td><a href="department?department_key=@departments.department_key@">@departments.department_key@</a></td>
+    <td><a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
   </tr>
 </multiple>
 </table>

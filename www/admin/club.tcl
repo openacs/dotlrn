@@ -1,4 +1,4 @@
-# dotlrn/www/admin/one-club.tcl
+# dotlrn/www/admin/club.tcl
 
 ad_page_contract {
     displays single dotLRN club page

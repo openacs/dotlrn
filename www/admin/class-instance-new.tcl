@@ -69,7 +69,7 @@ if {[form is_valid add_class_instance]} {
     ]
 
     if {[empty_string_p $referer]} {
-        set referer "one-class?class_key=$class_key"
+        set referer "class?class_key=$class_key"
     }
 
     if {${add_instructor}} {
@@ -85,7 +85,7 @@ set class_name [dotlrn_community::get_community_type_name $class_key]
 
 set context_bar [list \
         {classes Classes} \
-        [list "one-class?class_key=$class_key" "$class_name"] \
+        [list "class?class_key=$class_key" "$class_name"] \
         {New Instance}]
 
 ad_return_template
