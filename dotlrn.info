@@ -31,6 +31,9 @@
         <requires url="user-profile" version="0.1d"/>
 
         <files>
+            <file type="message_catalog" path="catalog/dotlrn.da_DK.ISO-8859-1.xml"/>
+            <file type="message_catalog" path="catalog/dotlrn.de_DE.ISO-8859-1.xml"/>
+            <file type="message_catalog" path="catalog/dotlrn.en_US.ISO-8859-1.xml"/>
             <file type="package_spec" path="dotlrn.info"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/admin-profile-provider-create.sql"/>
             <file type="data_model" db_type="oracle" path="sql/oracle/admin-profile-provider-drop.sql"/>
