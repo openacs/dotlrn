@@ -14,7 +14,7 @@ select segment_id from rel_segments where segment_name='dotLRN Full Profiled Use
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn::get_user_theme_memoized.select_user_theme">
+<fullquery name="dotlrn::get_user_theme_not_cached.select_user_theme">
 <querytext>
 select theme_id from dotlrn_full_users where user_id = :user_id
 </querytext>
@@ -26,7 +26,7 @@ update dotlrn_full_user_rels set theme_id= :theme_id where rel_id= (select rel_i
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn::get_workspace_portal_id_memoized.select_user_portal_id">
+<fullquery name="dotlrn::get_workspace_portal_id_not_cached.select_user_portal_id">
 <querytext>
 select portal_id from dotlrn_full_users where user_id= :user_id
 </querytext>

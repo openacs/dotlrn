@@ -3,7 +3,7 @@
 <queryset>
   <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
 
-    <fullquery name="dotlrn_community::get_community_id_memoized.select_community">
+    <fullquery name="dotlrn_community::get_community_id_not_cached.select_community">
         <querytext>
             select dotlrn_communities.community_id
             from dotlrn_communities,
@@ -73,7 +73,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_url_from_package_id_memoized.select_node_url">
+    <fullquery name="dotlrn_community::get_url_from_package_id_not_cached.select_node_url">
         <querytext>
             select site_node.url(node_id)
             from site_nodes

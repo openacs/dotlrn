@@ -109,10 +109,10 @@ namespace eval site_nodes {
     } {
         get the name of the parent of this instance
     } {
-        return [util_memoize "site_nodes::get_parent_name_memoized -instance_id $instance_id"]
+        return [util_memoize "site_nodes::get_parent_name_not_cached -instance_id $instance_id"]
     }
 
-    ad_proc -public get_parent_name_memoized {
+    ad_proc -public get_parent_name_not_cached {
         {-instance_id ""}
     } {
         memoizing helper

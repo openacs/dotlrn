@@ -46,7 +46,7 @@ update dotlrn_communities set package_id= :package_id where community_id= :commu
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_parent_id_memoized.select_parent_id">
+<fullquery name="dotlrn_community::get_parent_id_not_cached.select_parent_id">
 <querytext>
 select dotlrn_communities.parent_community_id
 from dotlrn_communities
@@ -250,19 +250,19 @@ where community_type= :community_type
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_type_memoized.select_community_type">
+<fullquery name="dotlrn_community::get_community_type_not_cached.select_community_type">
 <querytext>
 select community_type from dotlrn_community_types where package_id= :package_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_type_from_community_id_memoized.select_community_type">
+<fullquery name="dotlrn_community::get_community_type_from_community_id_not_cached.select_community_type">
 <querytext>
 select community_type from dotlrn_communities where community_id=:community_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::has_subcommunity_p_memoized.select_subcomm_check">
+<fullquery name="dotlrn_community::has_subcommunity_p_not_cached.select_subcomm_check">
 <querytext>
 select 1 from dual where exists (select 1 from dotlrn_communities where parent_community_id = :community_id)
 </querytext>
@@ -315,7 +315,7 @@ select pretty_name from dotlrn_community_types where community_type= :community_
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_community_name_memoized.select_community_name">
+<fullquery name="dotlrn_community::get_community_name_not_cached.select_community_name">
 <querytext>
 select pretty_name from dotlrn_communities where community_id= :community_id
 </querytext>
@@ -351,7 +351,7 @@ select 1 from dotlrn_active_comms_not_closed where community_id= :community_id a
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_portal_template_id_memoized.select_portal_template_id">
+<fullquery name="dotlrn_community::get_portal_template_id_not_cached.select_portal_template_id">
 <querytext>
 select portal_template_id from dotlrn_communities where community_id= :community_id
 </querytext>

@@ -199,10 +199,10 @@ namespace eval dotlrn {
     } {
 	Return the user default theme
     } {
-	return [util_memoize "dotlrn::get_user_theme_memoized $user_id"]
+	return [util_memoize "dotlrn::get_user_theme_not_cached $user_id"]
     }
 
-    ad_proc -private get_user_theme_memoized {
+    ad_proc -private get_user_theme_not_cached {
 	user_id
     } {
 	helper
@@ -224,10 +224,10 @@ namespace eval dotlrn {
     } {
 	Get the workspace page ID for a particular user
     } {
-        return [util_memoize "dotlrn::get_workspace_portal_id_memoized $user_id"]
+        return [util_memoize "dotlrn::get_workspace_portal_id_not_cached $user_id"]
     }
 
-    ad_proc -private get_workspace_portal_id_memoized {
+    ad_proc -private get_workspace_portal_id_not_cached {
 	user_id
     } {
 	Get the workspace page ID for a particular user
@@ -240,10 +240,10 @@ namespace eval dotlrn {
     } {
 	Get the names the the user
     } {
-        return [util_memoize "dotlrn::get_user_name_memoized $user_id"]
+        return [util_memoize "dotlrn::get_user_name_not_cached $user_id"]
     }
 
-    ad_proc -private get_user_name_memoized {
+    ad_proc -private get_user_name_not_cached {
 	user_id
     } {
         helper

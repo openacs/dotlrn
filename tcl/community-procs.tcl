@@ -399,10 +399,10 @@ namespace eval dotlrn_community {
     } {
         This gets the relative URL for a package_id.
     } {
-        return [util_memoize "dotlrn_community::get_url_from_package_id_memoized -package_id $package_id"]
+        return [util_memoize "dotlrn_community::get_url_from_package_id_not_cached -package_id $package_id"]
     }
 
-    ad_proc -private get_url_from_package_id_memoized {
+    ad_proc -private get_url_from_package_id_not_cached {
         {-package_id ""}
     } {
         Memoizing helper
@@ -852,10 +852,10 @@ namespace eval dotlrn_community {
     } {
         returns the community type from community_id
     } {
-        return [util_memoize "dotlrn_community::get_community_type_from_community_id_memoized -community_id $community_id"]
+        return [util_memoize "dotlrn_community::get_community_type_from_community_id_not_cached -community_id $community_id"]
     }
 
-    ad_proc -private get_community_type_from_community_id_memoized {
+    ad_proc -private get_community_type_from_community_id_not_cached {
         {-community_id:required}
     } {
         returns the community type from community_id
@@ -868,10 +868,10 @@ namespace eval dotlrn_community {
         Returns the community type key depending on the node we're at
     } {
         set package_id [ad_conn package_id]
-        return [util_memoize "dotlrn_community::get_community_type_memoized -package_id $package_id"]
+        return [util_memoize "dotlrn_community::get_community_type_not_cached -package_id $package_id"]
     }
 
-    ad_proc -private get_community_type_memoized {
+    ad_proc -private get_community_type_not_cached {
         {-package_id:required}
     } {
         Returns the community type key depending on the node we're at
@@ -903,10 +903,10 @@ namespace eval dotlrn_community {
             set package_id [ad_conn package_id]
         }
 
-        return [util_memoize "dotlrn_community::get_community_id_memoized -package_id $package_id"]
+        return [util_memoize "dotlrn_community::get_community_id_not_cached -package_id $package_id"]
     }
 
-    ad_proc -private get_community_id_memoized {
+    ad_proc -private get_community_id_not_cached {
         {-package_id:required}
     } {
         Returns the community id depending on the package_id
@@ -927,10 +927,10 @@ namespace eval dotlrn_community {
             set package_id [ad_conn package_id]
         }
 
-        return [util_memoize "dotlrn_community::get_parent_community_id_memoized -package_id $package_id"]
+        return [util_memoize "dotlrn_community::get_parent_community_id_not_cached -package_id $package_id"]
     }
 
-    ad_proc -private get_parent_community_id_memoized {
+    ad_proc -private get_parent_community_id_not_cached {
         {-package_id:required}
     } {
         Returns the community_id of our parent node or the parent
@@ -951,10 +951,10 @@ namespace eval dotlrn_community {
         Returns the parent community's id or null
     } {
         return [util_memoize \
-                "dotlrn_community::get_parent_id_memoized -community_id $community_id"]
+                "dotlrn_community::get_parent_id_not_cached -community_id $community_id"]
     }
 
-    ad_proc -private get_parent_id_memoized {
+    ad_proc -private get_parent_id_not_cached {
         {-community_id:required}
     } {
         Returns the parent community's id or null
@@ -1009,10 +1009,10 @@ namespace eval dotlrn_community {
     } {
         Returns 1 if the community has a subcommunity, memoized for 1 min
     } {
-        return [util_memoize "dotlrn_community::has_subcommunity_p_memoized -community_id $community_id" 60]        
+        return [util_memoize "dotlrn_community::has_subcommunity_p_not_cached -community_id $community_id" 60]        
     }
 
-    ad_proc -private has_subcommunity_p_memoized {
+    ad_proc -private has_subcommunity_p_not_cached {
         {-community_id:required}
     } {
         Returns 1 if the community has a subcommunity
@@ -1248,10 +1248,10 @@ namespace eval dotlrn_community {
     } {
         get the name for a community
     } {
-        return [util_memoize "dotlrn_community::get_community_name_memoized $community_id"]
+        return [util_memoize "dotlrn_community::get_community_name_not_cached $community_id"]
     }
 
-    ad_proc -private get_community_name_memoized {
+    ad_proc -private get_community_name_not_cached {
         community_id
     } {
         memo helper
@@ -1321,10 +1321,10 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        return [util_memoize "dotlrn_community::get_portal_template_id_memoized -community_id $community_id"]
+        return [util_memoize "dotlrn_community::get_portal_template_id_not_cached -community_id $community_id"]
     }
 
-    ad_proc -private get_portal_template_id_memoized {
+    ad_proc -private get_portal_template_id_not_cached {
         {-community_id:required}
     } {
         get the id of the portal template for a community
