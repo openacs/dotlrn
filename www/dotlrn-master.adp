@@ -83,7 +83,7 @@
 
   <!-- Footer Begin: dotLRN info links -->
 
-  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="clear: both;">
     <tr><td><small>@navbar;noquote@</small></td></tr>
     <tr><td colspan=3 class="dark-line" height="1"><img src="/resources/dotlrn/spacer.gif"></td></tr>
   </table>
