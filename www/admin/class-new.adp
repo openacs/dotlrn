@@ -21,5 +21,6 @@
 <master src="dotlrn-admin-master">
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
+<property name="focus">add_class.department_key</property>
 
 <formtemplate id="add_class"></formtemplate>
