@@ -198,8 +198,13 @@ namespace eval dotlrn_community {
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
 
-            # Add the basic dotlrn applet (we can't do without)
-            dotlrn_community::add_applet_to_community $community_id dotlrn_dotlrn
+            # Add the applets specified as default applets for a community as
+            # specified by the DefaultCommunityApplets ad_parameter
+            foreach applet_key [string trim [split [ad_parameter DefaultCommunityApplets] {,}]] {
+                if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
+                    dotlrn_community::add_applet_to_community $community_id $applet_key
+                }
+            }
         }
 
         return $community_id
@@ -684,7 +689,6 @@ namespace eval dotlrn_community {
     } {
         return [db_string select {} -default ""]
     }
-
 
     ad_proc -public add_applet_to_community {
         community_id

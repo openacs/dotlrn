@@ -44,6 +44,7 @@
             <file type="data_model" db_type="oracle" path="sql/oracle/dotlrn-users-package-create.sql"/>
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
             <file type="tcl_procs" path="tcl/applets-procs.tcl"/>
+            <file type="query_file" path="tcl/applets-procs.xql"/>
             <file type="tcl_procs" path="tcl/class-applets-procs.tcl"/>
             <file type="tcl_procs" path="tcl/class-procs.tcl"/>
             <file type="query_file" path="tcl/class-procs.xql"/>
@@ -261,6 +262,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="community_admin_first_page_name"  default="Group Admin" description="just that"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityApplets"  default="dotlrn_dotlrn" description="dotLRN applets to add by default to each new community"/>
         </parameters>
 
     </version>

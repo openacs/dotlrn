@@ -52,4 +52,11 @@ namespace eval dotlrn_applet {
 	return [nsv_get dotlrn applets]
     }
 
+    ad_proc -public applet_exists_p {
+        {-applet_key:required}
+    } {
+        check whether "applet_key" is a real dotLRN applet
+    } {
+        return [db_string select_applet_exists_p {}]
+    }
 }
