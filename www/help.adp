@@ -19,6 +19,6 @@
 %>
 
 <master src="dotlrn-master">
-<property name="title">dotLRN Help</property>
+<property name="title">Help</property>
 
 This page will eventually include help
