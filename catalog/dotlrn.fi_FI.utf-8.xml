@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.0a3" locale="fi_FI" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.0.3" locale="fi_FI" charset="utf-8">
 
   <msg key="A_copy_of">Kopio kohteesta</msg>
   <msg key="Access">Pääsy</msg>
@@ -175,6 +175,7 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="Full_Access">Täydet oikeudet</msg>
   <msg key="General_Information">Yleisiä tietoja</msg>
   <msg key="General_Site_Help">Yleiset sivuihin liittyvät ohjeet</msg>
+  <msg key="Grant_site_wide_admin">Myönnä sivustonlaajuiset ylläpito-oikeudet.</msg>
   <msg key="gray">harmaa</msg>
   <msg key="green">vihreä</msg>
   <msg key="groups_icon">ryhmän ikoni</msg>
@@ -416,6 +417,7 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="Results">Tulokset</msg>
   <msg key="Return_URL">Palauta URL</msg>
   <msg key="revoke">evää oikeus</msg>
+  <msg key="Revoke_site_wide_admin">Poista sivustonlaajuiset ylläpito-oikeudet.</msg>
   <msg key="Role">Rooli</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Käyttäjätunnus:</msg>
@@ -428,7 +430,7 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="send_email">Lähetä sähköpostilla</msg>
   <msg key="Shared_Files">Jaetut tiedostot</msg>
   <msg key="silver">hopea</msg>
-  <msg key="Site-wide_Admin">Sivustonlaajuinen ylläpito?</msg>
+  <msg key="Site-wide_Admin">Sivustonlaajuinen ylläpitäjä?</msg>
   <msg key="Small">Pieni</msg>
   <msg key="Sorry">Pahoittelut!</msg>
   <msg key="Spam_">Spammaa ...</msg>

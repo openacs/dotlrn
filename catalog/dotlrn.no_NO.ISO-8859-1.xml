@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.0a3" locale="no_NO" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.0.3" locale="no_NO" charset="ISO-8859-1">
 
   <msg key="A_copy_of">En kopi av</msg>
   <msg key="Access">Tilgang</msg>
@@ -8,7 +8,7 @@
   <msg key="Action">Oppgave</msg>
   <msg key="Actions">Oppgaver</msg>
   <msg key="actions">Oppgaver</msg>
-  <msg key="Active_Applets">Aktive Applets</msg>
+  <msg key="Active_Applets">Aktive modular (ruter)</msg>
   <msg key="add">legg til</msg>
   <msg key="Add_A_Member">Legg inn et medlem</msg>
   <msg key="Add_a_Professor">Legg inn en Professor</msg>
@@ -18,6 +18,8 @@
   <msg key="Add_New_Members">Legg inn nye medlemmer</msg>
   <msg key="Add_Professor">Legg inn professor</msg>
   <msg key="add_selected_members">legg inn utvalgte medlemmer</msg>
+  <msg key="add_to_another_group">Legg denne brukeren til en annen gruppe</msg>
+  <msg key="add_to_dotlrn">Legg denne brukenen inn i .LRN</msg>
   <msg key="Add_to_group_">Legg til en gruppe ...</msg>
   <msg key="Add_User">Legg til bruker</msg>
   <msg key="Add_users_to">Legg til brukere til</msg>
@@ -42,6 +44,7 @@
   <msg key="aqua">aqua</msg>
   <msg key="archived">arkivert</msg>
   <msg key="archived_classes_and_communities">Archivert %class_instances_pretty_plural% og %clubs_pretty_plural%</msg>
+  <msg key="archived_groups">Arkivert %groups_pretty_plural</msg>
   <msg key="Are_you_sure">Er du sikker?</msg>
   <msg key="are_you_sure_you_want_to_send">Er du sikker på at du vil sende følgende</msg>
   <msg key="arhive_group_name">Archiv gruppe %group_name% </msg>
@@ -56,9 +59,9 @@
   <msg key="Bulk_Uploading">Masseopplasting....</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
   <msg key="Change_Locale">Bytt Locale</msg>
-  <msg key="class_instance_portal_pretty_name">Forelesninger</msg>
-  <msg key="class_instances_pretty_name">Forelesning</msg>
-  <msg key="class_instances_pretty_plural">Forelesninger</msg>
+  <msg key="class_instance_portal_pretty_name">Emner</msg>
+  <msg key="class_instances_pretty_name">Emne</msg>
+  <msg key="class_instances_pretty_plural">Emner</msg>
   <msg key="Class_Key">Klassenøkkel</msg>
   <msg key="class_may_not_be_deleted">Feil: Et %subject% må &lt;em&gt;ikke&lt;/em&gt; ha noen %class_instances% for å kunne slettes</msg>
   <msg key="class_memberships">%class_instances_pretty_name% Medlemskap </msg>
@@ -125,7 +128,7 @@
   <msg key="dotlrn_admin_pretty_name">Site Wide Administration </msg>
   <msg key="dotlrn_admin_rel_pretty_name">dotLRN Admin-gruppe medlemskap</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin-gruppe medlemskap</msg>
-  <msg key="dotlrn_class_instance_description">f.l ex. 6.001</msg>
+  <msg key="dotlrn_class_instance_description">f. ex. 6.001</msg>
   <msg key="dotlrn_class_instance_pretty_name">Forelesning</msg>
   <msg key="dotlrn_class_instance_pretty_plural">Forelesninger</msg>
   <msg key="dotlrn_club_description">f.ex. Alumni</msg>
@@ -141,10 +144,12 @@
   <msg key="Drop">Dropp</msg>
   <msg key="Drop_Membership">Dropp medlemskap</msg>
   <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Dropp medlemskap&quot; border=0</msg>
+  <msg key="Drop_selected_members">Dropp utvalgte medlemmer</msg>
   <msg key="Edit">Rediger</msg>
   <msg key="Edit_a_User">Rediger eg bruker</msg>
   <msg key="edit_approved_email_servers">Rediger forhåndsgodkjente e-posttjenere</msg>
   <msg key="edit_message_and_hit_send">Rediger meldingen under to klikk &quot;Send e-post&quot; for å gi melding til brukeren.</msg>
+  <msg key="edit_parameters">Rediger parametre</msg>
   <msg key="Edit_Properties">Rediger egenskaper</msg>
   <msg key="edit_subject">Rediger</msg>
   <msg key="edit_subject_properties">Rediger %classes_pretty_name% egenskaper.</msg>
@@ -165,6 +170,7 @@
   <msg key="Extra_Large">Ekstra stor</msg>
   <msg key="Fields">Felt</msg>
   <msg key="First_Line">Første linje</msg>
+  <msg key="first_line_of_file_must_be">Den første linjen i filen må ha følgende header-linje:</msg>
   <msg key="First_Name">Fornavn</msg>
   <msg key="From">Fra</msg>
   <msg key="fuchsia">fuksia</msg>
@@ -172,6 +178,7 @@
   <msg key="Full_Access">Full aksess</msg>
   <msg key="General_Information">Generell informasjon</msg>
   <msg key="General_Site_Help">Generell hjelp for nettstedet</msg>
+  <msg key="Grant_site_wide_admin">Gi rettigheter som administrator for hele systemet.</msg>
   <msg key="gray">grå</msg>
   <msg key="green">grønn</msg>
   <msg key="groups_icon">gruppens ikon</msg>
@@ -192,8 +199,8 @@
   <msg key="help">Hjelp</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
-  <msg key="instructor_role_pretty_name">Professor</msg>
-  <msg key="instructor_role_pretty_plural">Professorer</msg>
+  <msg key="instructor_role_pretty_name">Emneansvarlig</msg>
+  <msg key="instructor_role_pretty_plural">Emneansvarlige</msg>
   <msg key="Invalid">Ugyldig</msg>
   <msg key="is_already_in_use">er allerede i bruk</msg>
   <msg key="Join">Bli medlem i</msg>
@@ -336,6 +343,7 @@
   <msg key="Memberships">Medlemskap</msg>
   <msg key="Memberships_1">Medlemskap:</msg>
   <msg key="Message">Melding</msg>
+  <msg key="must_have_values">Feltet må ha en av følgende verdier:</msg>
   <msg key="My_Communities">Mine grupper</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Navn</msg>
@@ -388,20 +396,24 @@
   <msg key="or_return_to">eller, gå tilbake til</msg>
   <msg key="Pending">Venter</msg>
   <msg key="Pending_Approval">Venter på godkjenning</msg>
+  <msg key="Person_name">Navn</msg>
   <msg key="Personal_home_page">Personlig web-side:</msg>
   <msg key="Personal_Options">Personlige valg</msg>
   <msg key="portal_templates">Portalmaler</msg>
   <msg key="Portrait">Bilde:</msg>
+  <msg key="Portrait_1">Portrett</msg>
   <msg key="Post_to">Send til:</msg>
   <msg key="Pretty_Name">Pent navn</msg>
   <msg key="Pretty_Plural">Pent navn, flertall</msg>
   <msg key="Preview">Forhåndsvisning</msg>
+  <msg key="prv_policy_must_be_one_of">Politikk for skjuling av informasjon må være enten &quot;ja&quot; eller &quot;nei&quot;.</msg>
   <msg key="Public_Web_Log">Offentilg weblogg</msg>
   <msg key="purple">purpur</msg>
   <msg key="Recipients_Email">Mottakers e-post</msg>
   <msg key="Recipients_Last_Name">Mottakers etternavn</msg>
   <msg key="red">rød</msg>
   <msg key="Referer">Referer</msg>
+  <msg key="registered_user_welcome_email_body">%first_names% %last_name%, Du har blitt lagt inn som bruker av %system_name% ved %system_url% Innloggingsinformasjon: E-post %email% Passord: %password% (du kan endre passord etter at du har logget inn). Takk %administration_name%</msg>
   <msg key="Registration_date">Registreringsdato:</msg>
   <msg key="registration_request_sent">Takk! Registreringsforespørselen har blitt sendt til systemadministrator.</msg>
   <msg key="Reject">Forkast</msg>
@@ -412,6 +424,7 @@
   <msg key="Results">Resultat</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">gjenåpne</msg>
+  <msg key="Revoke_site_wide_admin">Ta tilbake rettigheter som administrator for hele systemet.</msg>
   <msg key="Role">Rolle</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Skjermnavn:</msg>
