@@ -6,6 +6,8 @@
   <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><font size="-1">Create A New User</font></a> 
   |
   <a href="users-search"><font size="-1">Search Users</font></a>
+  |
+  <a href="users-bulk-upload"><font size=-1>Bulk Upload</font></a>
 ]
 
 <p></p>
