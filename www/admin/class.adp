@@ -37,7 +37,7 @@
   <br>
 
   <li>
-    <a href="class-edit?class_key=@class_key@&referer=@referer@">#dotlrn.edit_subject#</a> <%= [parameter::get -localize -parameter classes_pretty_name] %> #dotlrn.properties#
+    <a href="class-edit?class_key=@class_key@&referer=@referer@">#dotlrn.edit_subject_properties#</a>
   </li>
 
 </ul>
@@ -52,7 +52,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="class-instance-new?class_key=@class_key@">#dotlrn.new_class# <%= [parameter::get -localize -parameter class_instances_pretty_name] %></a>
+            <a href="class-instance-new?class_key=@class_key@">#dotlrn.new_class_instance#</a>
           ]</small>
         </nobr>
       </td>
@@ -81,7 +81,7 @@
     <tr>
       <th align="left" width="15%">#dotlrn.term#</th>
       <th align="left">
-        <%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Name#
+        #dotlrn.class_name_header#
       </th>
       <th align="center" width="5%">#dotlrn.members#</th>
       <th align="center" width="10%">#dotlrn.actions#</th>
@@ -115,7 +115,7 @@
 <else>
     <tr bgcolor="#eeeeee">
       <td align="left" colspan="4">
-        <i>#dotlrn.No# <%= [parameter::get -localize -parameter class_instances_pretty_plural] %></i>
+        <i>#dotlrn.no_class_instances#</i>
       </td>
     </tr>
 </else>

@@ -36,5 +36,8 @@ db_multirow clubs select_clubs {} {
     set description [ad_quotehtml $description]
 }
 
-ad_return_template
+# Some of the en_US messages in the adp use these variables
+set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
+set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
 
+ad_return_template

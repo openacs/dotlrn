@@ -177,5 +177,9 @@ db_multirow non_member_clubs select_non_member_clubs {}
 
 set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
 
-ad_return_template
+# en_US messages make use of these configurable pretty names
+set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
+set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
+set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
 
+ad_return_template

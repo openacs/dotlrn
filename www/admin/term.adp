@@ -124,7 +124,7 @@
 <else>
     <td align="left" colspan="5">
 </else>
-      <i>#dotlrn.No# <%= [parameter::get -localize -parameter class_instances_pretty_plural] %></i>
+      <i>#dotlrn.no_class_instances#</i>
     </td>
   </tr>
 </else>
@@ -132,7 +132,3 @@
   </table>
 
 </center>
-
-
-
-

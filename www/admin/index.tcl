@@ -24,5 +24,8 @@ ad_page_contract {
 set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
 set context_bar {}
 
-ad_return_template
+# Some en_US messages reuse these configurable pretty names
+set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
+set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
 
+ad_return_template

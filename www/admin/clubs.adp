@@ -29,7 +29,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="club-new">#dotlrn.New# <%= [parameter::get -localize -parameter clubs_pretty_name] %></a>
+            <a href="club-new">#dotlrn.new_community#</a>
           ]</small>
         </nobr>
       </td>
@@ -41,7 +41,7 @@
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
 
     <tr>
-      <th align="left" width="30%"><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Name#</th>
+      <th align="left" width="30%">#dotlrn.community_header_name#</th>
       <th align="left">#dotlrn.Description#</th>
       <th align="center" width="5%">#dotlrn.Members#</th>
       <th align="center" width="10%">#dotlrn.Actions#</th>
@@ -75,7 +75,7 @@
 <else>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
-      <i>#dotlrn.No# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></i>
+      <i>#dotlrn.no_communities#</i>
     </td>
   </tr>
 </else>
@@ -89,7 +89,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="club-new">#dotlrn.New# <%= [parameter::get -localize -parameter clubs_pretty_name] %></a>
+            <a href="club-new">#dotlrn.new_community#</a>
           ]</small>
         </nobr>
       </td>
@@ -98,7 +98,3 @@
 </if>
 
 </center>
-
-
-
-

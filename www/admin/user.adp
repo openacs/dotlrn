@@ -111,7 +111,7 @@
 
 <if @member_classes:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Memberships#</h4>
+    <h4>#dotlrn.class_memberships#</h4>
 
     <ul>
 <multiple name="member_classes">
@@ -127,7 +127,7 @@
 
 <if @member_clubs:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Memberships#</h4>
+    <h4>#dotlrn.community_memberships#</h4>
 
     <ul>
 <multiple name="member_clubs">
@@ -142,7 +142,7 @@
 
 <if @member_subgroups:rowcount@ gt 0>
   <blockquote>
-    <h4><%= [parameter::get -localize -parameter subcommunities_pretty_name] %> #dotlrn.Memberships#</h4>
+    <h4>#dotlrn.subcommunity_memberships#</h4>
 
     <ul>
 <multiple name="member_subgroups">

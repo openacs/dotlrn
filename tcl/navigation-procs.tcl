@@ -33,10 +33,11 @@ namespace eval dotlrn {
     } {
         # Prepend some args
         set first_args [list [list [get_url] "dotLRN"]]
+        set admin_pretty_name [_ dotlrn.admin_pages_navbar_name]
         if {[llength $args] > 0} {
-            lappend first_args [list [get_admin_url] Admin]
+            lappend first_args [list [get_admin_url] $admin_pretty_name]
         } else {
-            lappend first_args Admin
+            lappend first_args $admin_pretty_name
         }
 
         set args [concat $first_args $args]

@@ -29,8 +29,10 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set title "[_ dotlrn.New] [parameter::get -localize -parameter classes_pretty_name]"
-set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] New]
+# Used in en_US title
+set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
+set title "[_ dotlrn.new_class_1]"
+set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] [_ dotlrn.new_class_navbar_name]]
 
 form create add_class
 
@@ -74,4 +76,3 @@ if {[form is_valid add_class]} {
 }
 
 ad_return_template
-

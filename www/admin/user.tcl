@@ -88,4 +88,9 @@ set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?use
 
 set approve_user_url "/acs-admin/users/member-state-change?user_id=$user_id&member_state=approved&return_url=$dual_approve_return_url"
 
+# Used in some en_US messages in the adp file
+set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
+set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
+set subcommunities_pretty_name [parameter::get -localize -parameter subcommunities_pretty_name]
+
 ad_return_template

@@ -39,7 +39,5 @@
 </table>
 </if>
 <else>
-  #dotlrn.No_archived# @groups_pretty_plural@
+  #dotlrn.no_arhived_groups#
 </else>
-
-

@@ -28,7 +28,7 @@ ad_page_contract {
 
 set groups_pretty_plural "[parameter::get -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
 
-set title "[_ dotlrn.Archived] $groups_pretty_plural"
+set title "[_ dotlrn.archived_groups]"
 set context_bar [list $title]
 
 db_multirow archived_comms select_archived_comms {} {
@@ -36,4 +36,3 @@ db_multirow archived_comms select_archived_comms {} {
 }
 
 ad_return_template
-

@@ -26,11 +26,11 @@
 
 <p>
   <small>
-    <a href="#current_clubs">#dotlrn.Current# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></a>
+    <a href="#current_clubs">#dotlrn.lt_Current_clubs_pretty_#</a>
     |
-    <a href="#join_classes">#dotlrn.Join_a# <%= [parameter::get -localize -parameter class_instances_pretty_name] %></a>
+    <a href="#join_classes">#dotlrn.lt_Join_a_class_instance#</a>
     |
-    <a href="#join_clubs">#dotlrn.Join_a# <%= [parameter::get -localize -parameter clubs_pretty_name] %></a>
+    <a href="#join_clubs">#dotlrn.lt_Join_a_clubs_pretty_n#</a>
   </small>
 </p>
 
@@ -58,7 +58,7 @@
 <if @member_classes:rowcount@ gt 0>
     <table cellpadding="0" cellspacing="0" width="100%">
       <tr class="table-title">
-        <th align="left" width="55%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" width="55%">#dotlrn.class_name_header#</th>
         <th align="left" width="15%">#dotlrn.Term#</th>
         <th align="left" width="15%">#dotlrn.Role#</th>
         <th align="center" width="15%">#dotlrn.Actions#</th>
@@ -94,7 +94,7 @@
 <if @member_clubs:rowcount@ gt 0>
     <table cellpadding="0" cellspacing="0" width="100%">
       <tr class="table-title">
-        <th align="left" colspan="2" width="70%"><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" colspan="2" width="70%">#dotlrn.clubs_name_header#</th>
         <th align="left" width="15%">#dotlrn.Role#</th>
         <th align="center" width="15%">#dotlrn.Actions#</th>
       </tr>
@@ -120,7 +120,7 @@
     </table>
 </if>
 <else>
-  <p><small>#dotlrn.No# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></small></p>
+  <p><small>#dotlrn.no_clubs#</small></p>
 </else>
 
 </if>
@@ -148,7 +148,7 @@
 <if @non_member_classes:rowcount@ gt 0>
     <table celladding="0" cellspacing="0" width="100%">
       <tr class="table-title">
-        <th align="left" width="55%"><%= [parameter::get -localize -parameter class_instances_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" width="55%">#dotlrn.class_name_header#</th>
         <th align="left" width="15%">#dotlrn.Term#</th>
         <th align="left" width="15%">&nbsp;</th>
         <th align="center" width="15%">#dotlrn.Actions#</th>
@@ -185,7 +185,7 @@
 <a name="join_club"><p></a>
     <table cellpadding="0" cellspacing="0" width="100%">
       <tr class="table-title">
-        <th align="left" width="55%"><%= [parameter::get -localize -parameter clubs_pretty_name] %> #dotlrn.Name#</th>
+        <th align="left" width="55%">#dotlrn.clubs_name_header#</th>
         <th align="left" width="15%">&nbsp;</th>
         <th align="left" width="15%">&nbsp;</th>
         <th align="center">#dotlrn.Actions#</th>
@@ -214,7 +214,7 @@
 
 </if>
 <else>
-  <p><small>#dotlrn.No# <%= [parameter::get -localize -parameter clubs_pretty_plural] %></small></p>
+  <p><small>#dotlrn.no_clubs#</small></p>
 </else>
 
 </if>

@@ -28,7 +28,7 @@
     <tr>
       <td align="left" style="white-space: nowrap; font-size: x-small;">
         [
-          <a href="department-new?referer=@referer@">#dotlrn.New# @departments_pretty_name@</a>
+          <a href="department-new?referer=@referer@">#dotlrn.new_department#</a>
         ]
       </td>
     </tr>
@@ -39,7 +39,7 @@
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
 
     <tr>
-      <th align="left">@departments_pretty_name@ #dotlrn.Name#</th>
+      <th align="left">#dotlrn.department_name#</th>
       <th align="center" width="10%">#dotlrn.Actions#</th>
     </tr>
 
@@ -62,7 +62,7 @@
         
           <if @can_create@>
             [
-              <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">#dotlrn.New# @classes_pretty_name@</a>
+              <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">#dotlrn.new_class_1#</a>
             
             <if @departments.n_classes@ eq 0>
             |
@@ -80,7 +80,7 @@
     <else>
       <tr bgcolor="#eeeeee">
         <td align="left" colspan="2">
-          <em>#dotlrn.No# @departments_pretty_plural@</em>
+          <em>#dotlrn.no_departments#</em>
         </td>
       </tr>
     </else>
@@ -94,7 +94,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="department-new?referer=@referer@">#dotlrn.New# @departments_pretty_name@</a>
+            <a href="department-new?referer=@referer@">#dotlrn.new_department#</a>
           ]</small>
         </nobr>
       </td>

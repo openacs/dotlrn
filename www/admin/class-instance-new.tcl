@@ -104,13 +104,13 @@ if {[form is_valid add_class_instance]} {
     ad_script_abort
 }
 
+# Used by en_US version of new_class_instance message
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
 
 set context_bar [list \
     [list classes [_ dotlrn.Classes]] \
     [list "class?class_key=$class_key" $class_name] \
-    [list [_ dotlrn.New] $class_instances_pretty_name] \
+    [_ dotlrn.new_class_instance]
 ]
 
 ad_return_template
-

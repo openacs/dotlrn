@@ -492,7 +492,7 @@ namespace eval dotlrn_community {
         set role_options [list]
 
         foreach {rel_type role pretty_name pretty_plural} [eval concat [get_all_roles]] {
-            lappend role_options [list $pretty_name $rel_type]
+            lappend role_options [list [lang::util::localize $pretty_name] $rel_type]
         }
 
         return $role_options
@@ -1175,11 +1175,6 @@ namespace eval dotlrn_community {
 
 		append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>\n"
 		 
-# Removing admin to improve performance
-#                if {[dotlrn::user_can_admin_community_p -community_id $sc_id]} {
-#                    append chunk " <a href=\"${url}one-community-admin\"><img border=0 valign=\"bottom\" src=\"graphics/admin.gif\" alt=\"Administer\"></a>\n"
-#                }
-
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif {[member_p $sc_id $user_id] || [not_closed_p -community_id $sc_id]} {
 

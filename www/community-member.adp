@@ -35,7 +35,7 @@
   </if></else>
 </if>
 
-#dotlrn.a_member_of# @system_name@ #dotlrn.community_since# @pretty_creation_date@
+#dotlrn.user_has_been_a_member_since#
 
 <if @member_state@ eq "deleted">
 
@@ -50,7 +50,7 @@
 
 <if @show_email_p@ eq 1>
   <ul>
-    <li>#dotlrn.email# @first_names@ @last_name@: <a href="mailto:@email@">@email@</a></li>
+    <li>#dotlrn.email#: <a href="mailto:@email@">@email@</a></li>
 
     <if @url@ not nil>
       <li>#dotlrn.Personal_home_page# <a href="@url@">@url@</a></li>

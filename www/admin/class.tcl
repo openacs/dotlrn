@@ -74,5 +74,9 @@ set can_instantiate [dotlrn_class::can_instantiate]
 set context_bar [list [list classes [parameter::get -localize -parameter classes_pretty_plural]] $pretty_name]
 set referer "[ns_conn url]?[ns_conn query]"
 
-ad_return_template
+# Used by some en_US messages on the adp page
+set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name]
+set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
+set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
 
+ad_return_template
