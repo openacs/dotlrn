@@ -31,7 +31,7 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
     # Pull out the NPP page ID and render it!
     set page_id [dotlrn_community::get_page_id $community_id $user_id]
 
-    set rendered_page [portal::render_portal $page_id]
+    set rendered_page [portal::render $page_id]
 
     set context_bar {View}
 

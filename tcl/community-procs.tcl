@@ -125,7 +125,7 @@ namespace eval dotlrn_community {
 	    set rel_id [relation_add -member_state approved $rel_type $community_id $user_id]
 	    
 	    # Set up a portal page for that user
-	    set page_id [portal::create_portal $user_id]
+	    set page_id [portal::create $user_id]
 	    
 	    # Insert the membership
 	    db_dml insert_membership {}
@@ -152,7 +152,7 @@ namespace eval dotlrn_community {
 	    db_dml delete_membership {}
 	    
 	    # Remove the page
-	    portal::delete_portal $page_id
+	    portal::delete $page_id
 	    
 	    # Remove it
 	    relation_remove $rel_id
