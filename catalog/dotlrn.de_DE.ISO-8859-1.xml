@@ -347,6 +347,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Memberships">Der Benutzer ist Teilnehmer folgender Gruppen: </msg>
   <msg key="Memberships_1">Der Benutzer ist Teilnehmer folgender Gruppen:</msg>
   <msg key="Message">Nachricht</msg>
+  <msg key="Minutes">Minuten</msg>
   <msg key="must_have_values">Das Feld muss einen der folgenden Werte aufweisen:</msg>
   <msg key="My_Communities">Eigene Kurse und Communities</msg>
   <msg key="NA">Nicht vorhanden</msg>
@@ -479,6 +480,7 @@ Beispiel:</msg>
   <msg key="there_are_no_users_matching">Es wurden keine mit Ihrer Suchanfrage &quot;%search_text%&quot; übereinstimmenden Benutzer gefunden.</msg>
   <msg key="this_user_is_deleted">Dieser Benutzer ist gelöscht.</msg>
   <msg key="To">Teilnehmertypen, an die eine E-Mail gesendet werden soll:</msg>
+  <msg key="Total_count">Anzahl:</msg>
   <msg key="Type">Typ</msg>
   <msg key="Unarchive">Wiederherstellen</msg>
   <msg key="unarchive">wiederherstellen</msg>

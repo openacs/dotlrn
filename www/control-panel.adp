@@ -50,7 +50,7 @@
   <p><li><a href="configure">#dotlrn.Customize_Layout#</a></li>
 
 <if @admin_p@>
-  <p><li><a href="@admin_url@">@admin_pretty_name@</a></li>
+  <p><li><a href="@admin_url@">@admin_pretty_name@</a> (<a href="@cockpit_url@">#dotlrn.Cockpit#</a>)</li>
 </if>
 </ul>
 </td></tr></table>
