@@ -126,7 +126,7 @@ namespace eval dotlrn_applet {
     } {
         is the applet specified mounted
     } {
-        if {[apm_package_id_from_key [get_package_key -applet_key $applet_key]] != 0} {
+        if { [llength [site_node::get_package_url -package_key [get_package_key -applet_key $applet_key]]] > 0 } {
             return 1
         } else {
             return 0
