@@ -3,9 +3,9 @@
 <multiple name="users">
   <li>
     @users.last_name@, @users.first_names@
-    (<a href=mailto:@users.email@>@users.email@</a>),
+    (<a href="mailto:@users.email@">@users.email@</a>),
     <i>@users.rel_type@</i>&nbsp;
-    (<include src="deregister" url="community-deregister?user_id=@users.user_id@&referer=one-community-admin" label="remove">)
+    (<include src="deregister-link" url="community-deregister?user_id=@users.user_id@&referer=one-community-admin" label="remove">)
   </li>
 </multiple>
   <p></p>

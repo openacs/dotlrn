@@ -4,7 +4,7 @@
 
 [
   <font size="-1">
-    <include src="register">
+    <include src="register-link">
 <if @admin_p@ eq 1>
     |
     <a href="one-community-admin">admin</a>

@@ -4,7 +4,7 @@
 
 [
   <font size="-1">
-    <include src="deregister">
+    <include src="deregister-link">
     |
     <a href="configure">customize</a>
 <if @admin_p@ eq 1>
