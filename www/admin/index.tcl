@@ -28,4 +28,6 @@ set context_bar {}
 set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
 set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
 
+set parameters_url [export_vars -base /shared/parameters { { package_id {[dotlrn::get_package_id]} } { return_url [ad_return_url] } }] 
+
 ad_return_template
