@@ -10,7 +10,7 @@ ad_page_contract {
     description
 }
 
-set class_key [dotlrn_class::new -description $description $class_key $class_pretty_name]
+set class_key [dotlrn_class::new -description $description -class_key $class_key -pretty_name $class_pretty_name]
 
 ad_returnredirect "classes"
 

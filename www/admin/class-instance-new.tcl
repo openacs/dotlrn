@@ -30,7 +30,7 @@ element create add_class_instance class_key \
 if {[form is_valid add_class_instance]} {
     template::form get_values add_class_instance class_key pretty_name year term description
 
-    set class_instance_id [dotlrn_class::new_instance -description $description $class_key $pretty_name $term $year]
+    set class_instance_id [dotlrn_class::new_instance -description $description -class_type $class_key -class_name $pretty_name -term $term -year $year]
 
     ad_returnredirect "one-class?class_key=$class_key"
     return

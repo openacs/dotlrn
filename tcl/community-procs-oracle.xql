@@ -9,8 +9,8 @@ declare
 begin
 	
 :1 := dotlrn_community_type.new (
-	community_type => :community_type,
-	parent_type => :supertype,
+	community_type => :community_type_key,
+	parent_type => :parent_type,
 	pretty_name => :pretty_name,
 	pretty_plural => :pretty_name,
 	description => :description
@@ -19,7 +19,6 @@ begin
 end;
 </querytext>
 </fullquery>
-
 
 <fullquery name="dotlrn_community::new.create_community">
 <querytext>

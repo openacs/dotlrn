@@ -23,6 +23,12 @@ update dotlrn_communities set package_id= :package_id where community_id= :commu
 </querytext>
 </fullquery>
 
+<fullquery name="dotlrn_community::get_type_node_id.select_node_id">
+<querytext>
+select node_id from site_nodes where object_id= (select package_id from dotlrn_community_types where community_type= :community_type)
+</querytext>
+</fullquery>
+
 <fullquery name="dotlrn_community::get_rel_segment_id.select_rel_segment_id">
 <querytext>
 select segment_id from rel_segments where group_id= :community_id and rel_type= :rel_type

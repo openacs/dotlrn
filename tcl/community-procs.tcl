@@ -19,19 +19,49 @@ ad_library {
 
 namespace eval dotlrn_community {
 
+    ad_proc -public one_community_package_key {} {
+	return "dotlrn"
+    }
+
+    ad_proc -public one_community_type_package_key {} {
+	return "dotlrn"
+    }
+
     ad_proc -public new_type {
 	{-description ""}
-	community_type
-	supertype
-	pretty_name
+	{-community_type_key:required}
+	{-parent_type "dotlrn_community"}
+	{-pretty_name:required}
     } {
 	Create a new community type.
     } {
-	# Insert the community type
-	db_exec_plsql create_community_type {}
+	# Figure out parent_node_id
+	set parent_node_id [dotlrn::get_node_id]
+
+	db_transaction {
+	    # Create the class directly using PL/SQL API
+	    set community_type_key [db_exec_plsql create_community_type {}]
+
+	    # Create the node
+	    set new_node_id [site_node_create $parent_node_id $community_type_key]
+
+	    # Instantiate the package
+	    # Note that the context_id is the dotLRN package
+	    set package_id [site_node_create_package_instance $new_node_id $pretty_name [dotlrn::get_package_id] [one_community_type_package_key]]
+
+	    # Set some parameters
+	    ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+	    ad_parameter -package_id $package_id -set 1 community_type_level_p
+	    ad_parameter -package_id $package_id -set 0 community_level_p
+
+	    # Set the site node
+	    dotlrn_community::set_type_package_id $community_type_key $package_id
+	}
+	
+	return $community_type_key
     }
     
-    ad_proc set_type_package_id {
+    ad_proc -public set_type_package_id {
 	community_type
 	package_id
     } {
@@ -40,20 +70,77 @@ namespace eval dotlrn_community {
 	# Exec the statement, easy
 	db_dml update_package_id {}
     }
+
+    ad_proc -public get_type_node_id {
+	community_type
+    } {
+	get the node ID of a community type
+    } {
+	return [db_string select_node_id {}]
+    }
     
     ad_proc -public new {
 	{-description ""}
-	community_type
-	name
-	pretty_name
+	{-community_type:required}
+	{-object_type "dotlrn_community"}
+	{-community_key:required}
+	{-pretty_name:required}
+	{-extra_vars ""}
     } {
 	create a new community
     } {
-	# Create the community
-	set community_id [db_exec_plsql create_community {}]
+	# Set up extra vars
+	if {[empty_string_p $extra_vars]} {
+	    set extra_vars [ns_set create]
+	}
+	
+	# Add core vars
+	ns_set put $extra_vars community_type $community_type
+	ns_set put $extra_vars community_key $community_key
+	ns_set put $extra_vars pretty_name $pretty_name
+	ns_set put $extra_vars pretty_plural $pretty_name
+	ns_set put $extra_vars description $description
 
-	# Rel segments
-	create_rel_segments -community_id $community_id
+	db_transaction {
+	    # the user_id is needed to set the perms on the portals - aks
+	    set user_id [ad_conn user_id]
+	    
+	    # Create portal template page
+	    set portal_template_name "$pretty_name Portal Template"
+	    set portal_template_id [portal::create -portal_template_p "t" -name $portal_template_name $user_id ]
+	    ns_set put $extra_vars portal_template_id $portal_template_id
+
+	    # Create the non-member page
+	    set non_member_portal_name "$pretty_name Non-Member Portal"
+	    set page_id [portal::create -name $non_member_portal_name -template_id $portal_template_id  $user_id]
+	    ns_set put $extra_vars page_id $page_id
+
+	    # Insert the community
+	    set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
+	    
+	    # Set up the rel segments
+	    dotlrn_community::create_rel_segments -community_id $community_id
+
+	    # Set up the node
+	    set parent_node_id [get_type_node_id $community_type]
+	    
+	    # Create the node
+	    set new_node_id [site_node_create $parent_node_id $community_key]
+
+	    # Instantiate the package
+	    set package_id [site_node_create_package_instance $new_node_id $pretty_name $community_id [one_community_package_key]]
+
+	    # Set the right parameters
+	    ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+	    ad_parameter -package_id $package_id -set 0 community_type_level_p
+	    ad_parameter -package_id $package_id -set 1 community_level_p
+	    
+	    # Set up the node
+	    dotlrn_community::set_package_id $community_id $package_id
+	    
+	    # Assign proper permissions to the site node
+	    # NOT CERTAIN what to do here yet
+	}
 
 	return $community_id
     }
@@ -115,7 +202,7 @@ namespace eval dotlrn_community {
 	    set community_type [get_toplevel_community_type_from_community_id $community_id]
 	}
 	
-	if {$community_type == "dotlrn_class"} {
+	if {$community_type == "dotlrn_class_instance"} {
 	    return {
 		{dotlrn_student_rel Student}
 		{dotlrn_ta_rel TA}

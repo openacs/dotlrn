@@ -32,6 +32,26 @@ namespace eval dotlrn {
 	return [ad_parameter group_type_key]
     }
 
+    ad_proc -public get_url {} {
+	returns the root URL for dotLRN
+    } {
+	return [apm_package_url_from_key dotlrn]
+    }
+
+    ad_proc -public get_node_id {} {
+	return the root node id for dotLRN
+    } {
+	set url [get_url]
+	return [site_node_id $url]
+    }
+
+    ad_proc -public get_package_id {} {
+	return the package ID for dotLRN
+    } {
+	array set node [site_node [get_url]]
+	return $node(object_id)
+    }
+
     ad_proc -public get_user_theme {
 	user_id
     } {

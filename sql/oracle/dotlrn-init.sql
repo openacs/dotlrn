@@ -28,7 +28,7 @@ begin
 
 	-- create the dotlrn_class community type
 	foo := dotlrn_community_type.new (
-	  community_type => 'dotlrn_class',
+	  community_type => 'dotlrn_class_instance',
 	  parent_type => 'dotlrn_community',
 	  pretty_name => 'dotLRN Class',
 	  pretty_plural => 'dotLRN Classes',
@@ -46,7 +46,7 @@ begin
 
 	-- year attribute
 	year_attr_id:= acs_attribute.create_attribute (
-	  object_type => 'dotlrn_class',
+	  object_type => 'dotlrn_class_instance',
 	  attribute_name => 'year',
 	  datatype => 'string',
 	  pretty_name => 'Year',
@@ -57,7 +57,7 @@ begin
 
 	-- term attribute
 	term_attr_id:= acs_attribute.create_attribute (
-	  object_type => 'dotlrn_class',
+	  object_type => 'dotlrn_class_instance',
 	  attribute_name => 'term',
 	  datatype => 'string',
 	  pretty_name => 'Term',

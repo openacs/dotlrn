@@ -104,7 +104,7 @@ begin
 	   package_name => 'dotlrn_student_rel',
 	   table_name => 'dotlrn_student_rels',	
 	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_class', role_one => NULL, 
+	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
 	   object_type_two => 'dotlrn_user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
@@ -118,7 +118,7 @@ begin
 	   package_name => 'dotlrn_ta_rel',
 	   table_name => 'dotlrn_ta_rels',	
 	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_class', role_one => NULL, 
+	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
 	   object_type_two => 'dotlrn_user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
@@ -132,7 +132,7 @@ begin
 	   package_name => 'dotlrn_instructor_rel',
 	   table_name => 'dotlrn_instructor_rels',	
 	   id_column => 'rel_id',
-	   object_type_one => 'dotlrn_class', role_one => NULL, 
+	   object_type_one => 'dotlrn_class_instance', role_one => NULL, 
 	   min_n_rels_one => 0, max_n_rels_one => NULL,
 	   object_type_two => 'dotlrn_user', role_two => NULL,
 	   min_n_rels_two => 0, max_n_rels_two => NULL
