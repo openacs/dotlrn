@@ -23,7 +23,7 @@
 <property name="context_bar">@context_bar@</property>
 
 <if @archived_comms:rowcount@ gt 0>
-<p><small><font color="red">#dotlrn.Note_the_term_column</font></small></p>
+<p><small><font color="red">#dotlrn.Note_the_term_column#</font></small></p>
 <table width="100%">
   <tr>
     <th align="left" width="25%">#dotlrn.Parent#</th>
