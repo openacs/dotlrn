@@ -18,53 +18,93 @@
 
 %>
 
+<center>
+
 <if @can_create@>
-[<small>
-  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
-</small>]
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
+
+  <br>
 </if>
 
-<p></p>
-
-<table bgcolor="#eeeeee" width="100%">
-  <tr>
-    <th align="left" width="50%">
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+    <tr bgcolor="#eeeeee">
+      <th align="left" width="50%">
 <formtemplate id="department_form">
-      <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+        <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
 </formtemplate>
-    </th>
-  </tr>
-</table>
+      </th>
+    </tr>
+  </table>
 
-<p></p>
+  <br>
+
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+
+    <tr>
+      <th align="left" width="30%"><%= [parameter::get -parameter departments_pretty_name] %></th>
+      <th align="left"><%= [parameter::get -parameter classes_pretty_name] %> Name</th>
+      <th align="center" width="5%"><%= [parameter::get -parameter class_instances_pretty_plural] %></th>
+      <th align="center" width="10%">Actions</th>
+    </tr>
 
 <if @classes:rowcount@ gt 0>
-<table width="100%">
-  <tr>
-    <th align="left" width="30%"><%= [parameter::get -parameter departments_pretty_name] %></th>
-    <th align="left"><%= [parameter::get -parameter classes_pretty_name] %> Name</th>
-    <th align="left">Number of <%= [parameter::get -parameter class_instances_pretty_plural] %></th>
-    <th align="left">Actions</th>
-  </tr>
 <multiple name="classes">
-  <tr>
-    <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
-    <td><a href="class?class_key=@classes.class_key@">@classes.pretty_name@</a></td>
-    <td>@classes.n_instances@</td>
-    <td>
+
+<if @classes.rownum@ odd>
+    <tr bgcolor="#eeeeee">
+</if>
+<else>
+    <tr bgcolor="#d9e4f9">
+</else>
+      <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
+      <td><a href="class?class_key=@classes.class_key@">@classes.pretty_name@</a></td>
+      <td align="center">@classes.n_instances@</td>
+      <td align="center">
 <if @can_instantiate@>
-      [<small>
-        <a href="class-instance-new?class_key=@classes.class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
-      </small>]
+        <nobr>
+          <small>[
+            <a href="class-instance-new?class_key=@classes.class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
+          ]</small>
+        </nobr>
 </if>
     </td>
   </tr>
+
 </multiple>
-</table>
 </if>
+<else>
+  <tr bgcolor="#eeeeee">
+    <td colspan="4">
+      <i>No <%= [parameter::get -parameter classes_pretty_plural] %></i>
+    </td>
+  </tr>
+</else>
+  </table>
 
 <if @can_create@ and @classes:rowcount@ gt 10>
-[<small>
-  <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
-</small>]
+  <br>
+
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
 </if>
+
+</center>

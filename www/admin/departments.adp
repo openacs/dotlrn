@@ -22,35 +22,78 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[<small>
-  <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
-</small>]
+<center>
 
-<p></p>
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+
+    <tr>
+      <th align="left"><%= [parameter::get -parameter departments_pretty_name] %> Name</th>
+      <th align="center" width="10%">Actions</th>
+    </tr>
 
 <if @departments:rowcount@ gt 0>
-<table width="100%">
-  <tr>
-    <th align="left"><%= [parameter::get -parameter departments_pretty_name] %> Name</th>
-    <th align="left">Actions</th>
-  </tr>
+
 <multiple name="departments">
-  <tr>
-    <td><a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
-    <td>
+
+<if @departments.rownum@ odd>
+    <tr bgcolor="#eeeeee">
+</if>
+<else>
+    <tr bgcolor="#d9e4f9">
+</else>
+      <td><a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
+      <td align="center">
 <if @can_create@>
-      [<small>
-        <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
-      </small>]
+        <nobr>
+          <small>[
+            <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
+          ]</small>
+        </nobr>
 </if>
-    </td>
-  </tr>
+      </td>
+    </tr>
+
 </multiple>
-</table>
+
 </if>
+<else>
+    <tr bgcolor="#eeeeee">
+      <td colspan="2">
+        <i>No <%= [parameter::get -parameter clubs_pretty_plural] %></i>
+      </td>
+    </tr>
+</else>
+
+  </table>
 
 <if @departments:rowcount@ gt 10>
-[<small>
-  <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
-</small>]
+  <br>
+
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
 </if>
+
+</center>

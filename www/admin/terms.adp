@@ -22,29 +22,65 @@
 <property name="title">Terms</property>
 <property name="context_bar">@context_bar@</property>
 
-[<small> <a href="term-new">New Term</a> </small>]
+<center>
 
-<p></p>
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="term-new">New Term</a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+    <tr>
+      <th align="left">Term</th>
+      <th align="center" width="15%">Start Date</th>
+      <th align="center" width="15%">End Date</th>
+      <th align="center" width="15%">Classes</th>
+    </tr>
 
 <if @terms:rowcount@ gt 0>
-<table width="100%">
-  <tr>
-    <th align="left" width="15%">Term</th>
-    <th align="left" width="15%">Start Date</th>
-    <th align="left" width="15%">End Date</th>
-    <th align="left" width="15%">Number of Classes</th>
-  </tr>
+
 <multiple name="terms">
-  <tr>
-    <td><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
-    <td>@terms.start_date@</td>
-    <td>@terms.end_date@</td>
-    <td>@terms.n_classes@</td>
-  </tr>
+
+<if @terms.rownum@ odd>
+    <tr bgcolor="#eeeeee">
+</if>
+<else>
+    <tr bgcolor="#d9e4f9">
+</else>
+      <td><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
+      <td align="center">@terms.start_date@</td>
+      <td align="center">@terms.end_date@</td>
+      <td align="center">@terms.n_classes@</td>
+    </tr>
+
 </multiple>
-</table>
+
+  </table>
 </if>
 
 <if @terms:rowcount@ gt 10>
-[<small> <a href="term-new">New Term</a> </small>]
+  <br>
+
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="term-new">New Term</a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
 </if>
+
+</center>

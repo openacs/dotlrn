@@ -22,29 +22,79 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[<small> <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a> </small>]
+<center>
 
-<p></p>
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+
+    <tr>
+      <th align="left" width="30%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
+      <th align="left">Description</th>
+      <th align="center" width="5%">Members</th>
+      <th align="center" width="10%">Actions</th>
+    </tr>
 
 <if @clubs:rowcount@ gt 0>
-<table width="100%">
-  <tr>
-    <th align="left" width="15%"><%= [parameter::get -parameter clubs_pretty_name] %> Name</th>
-    <th align="left" width="50%">Description</th>
-    <th align="left" width="15%">Members</th>
-    <th align="left">Actions</th>
-  </tr>
+
 <multiple name="clubs">
-  <tr>
-    <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
-    <td><pre>@clubs.description@</pre></td>
-    <td>@clubs.n_members@</td>
-    <td>[<small> <a href="@clubs.url@one-community-admin">Administer</a> </small>]</td>
-  </tr>
-</multiple>
-</table>
+
+<if @clubs.rownum@ odd>
+    <tr bgcolor="#eeeeee">
 </if>
+<else>
+    <tr bgcolor="#d9e4f9">
+</else>
+      <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
+      <td><pre>@clubs.description@</pre></td>
+      <td align="center">@clubs.n_members@</td>
+      <td align="center">
+        <nobr>
+          <small>
+            [ <a href="@clubs.url@one-community-admin">Administer</a> ]
+          </small>
+        </nobr>
+      </td>
+    </tr>
+
+</multiple>
+
+</if>
+<else>
+  <tr bgcolor="#eeeeee">
+    <td colspan="4">
+      <i>No <%= [parameter::get -parameter clubs_pretty_plural] %></i>
+    </td>
+  </tr>
+</else>
+  </table>
 
 <if @clubs:rowcount@ gt 10>
-[<small> <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a> </small>]
+  <br>
+
+  <table cellpadding="5" width="95%">
+    <tr>
+      <td>
+        <nobr>
+          <small>[
+            <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+  </table>
 </if>
+
+</center>

@@ -56,46 +56,67 @@
 <br>
 </if>
 
-<table bgcolor="#eeeeee" width="100%">
-  <tr>
-    <th align="left" width="50%">
-<formtemplate id="department_form">
-      <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
-</formtemplate>
-    </th>
-    <th align="left" width="50%">
-<formtemplate id="term_form">
-      Term:&nbsp;<formwidget id="term_id">
-</formtemplate>
-    </th>
-  </tr>
-</table>
+<center>
 
-<p></p>
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+    <tr bgcolor="#eeeeee">
+      <th align="left" width="50%">
+<formtemplate id="department_form">
+        <%= [parameter::get -parameter departments_pretty_name] %>:&nbsp;<formwidget id="department_key">
+</formtemplate>
+      </th>
+      <th align="left" width="50%">
+<formtemplate id="term_form">
+        Term:&nbsp;<formwidget id="term_id">
+</formtemplate>
+      </th>
+    </tr>
+  </table>
+
+  <br>
+
+  <table bgcolor="#cccccc" cellpadding="5" width="95%">
+    <tr>
+      <th align="left" width="20%"><%= [parameter::get -parameter departments_pretty_name] %></th>
+      <th align="left" width="20%"><%= [parameter::get -parameter classes_pretty_name] %></th>
+<if @term_id@ eq -1>
+      <th align="left" width="10%">Term</th>
+</if>
+      <th align="left" width="25%"><%= [parameter::get -parameter class_instances_pretty_name] %></th>
+      <th align="center" width="10%">Members</th>
+      <th align="center">Actions</th>
+    </tr>
 
 <if @classes:rowcount@ gt 0>
-<table width="100%">
-  <tr>
-    <th align="left" width="20%"><%= [parameter::get -parameter departments_pretty_name] %></th>
-    <th align="left" width="20%"><%= [parameter::get -parameter classes_pretty_name] %></th>
-<if @term_id@ eq -1>
-    <th align="left" width="10%">Term</th>
-</if>
-    <th align="left" width="25%"><%= [parameter::get -parameter class_instances_pretty_name] %></th>
-    <th align="left" width="10%">Members</th>
-    <th align="left">Actions</th>
-  </tr>
+
 <multiple name="classes">
-  <tr>
-    <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
-    <td><a href="class?class_key=@classes.class_key@">@classes.class_name@</a></td>
+
+<if @classes.rownum@ odd>
+    <tr bgcolor="#eeeeee">
+</if>
+<else>
+    <tr bgcolor="#d9e4f9">
+</else>
+      <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
+      <td><a href="class?class_key=@classes.class_key@">@classes.class_name@</a></td>
 <if @term_id@ eq -1>
-    <td>@classes.term_name@ @classes.term_year@</td>
+      <td>@classes.term_name@ @classes.term_year@</td>
 </if>
-    <td><a href="@classes.url@">@classes.pretty_name@</a></td>
-    <td>@classes.n_members@</td>
-    <td>[<small> <a href="@classes.url@one-community-admin">Administer</a> </small>]</td>
-  </tr>
+      <td><a href="@classes.url@">@classes.pretty_name@</a></td>
+      <td align="center">@classes.n_members@</td>
+      <td align="center">
+        <nobr>
+          <small>[
+            <a href="@classes.url@one-community-admin">Administer</a>
+          ]</small>
+        </nobr>
+      </td>
+    </tr>
+
 </multiple>
-</table>
+
 </if>
+
+  </table>
+
+</center>
