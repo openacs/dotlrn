@@ -231,7 +231,7 @@ namespace eval dotlrn {
     }
 
     ad_proc -public user_can_browse_p {
-        {user_id ""}
+        {-user_id ""}
     } {
         Check is a user can browse dotLRN
     } {

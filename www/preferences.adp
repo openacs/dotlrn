@@ -26,6 +26,7 @@
 <property name="link_control_panel">0</property>
 
 <ul>
+  <li><a href="/dotlrn/help">Help</a></li>
   <li>
     <a href="/user/basic-info-update?return_url=@referer@">Edit My Personal Information</a>
     <br>
@@ -37,7 +38,7 @@
   <li><a href="/user/password-update?return_url=@referer@">Change My Password</a></li>
   <li><a href="applets/bboard/alerts">Edit My Bulletin Board Email Alerts</a></li>
   <li><a href="configure">Customize Layout</a></li>
-<if @admin_p@ eq 1>
+<if @admin_p@>
   <li><a href="@admin_url@">@admin_pretty_name@</a></li>
 </if>
 </ul>

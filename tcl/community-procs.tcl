@@ -812,7 +812,7 @@ namespace eval dotlrn_community {
     } {
         returns all communities for a user
     } {
-        return [db_list_of_lists select_communities_by_user {}]
+        return [db_list_of_ns_sets select_communities_by_user {}]
     }
 
     ad_proc -public get_communities_by_user {

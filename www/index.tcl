@@ -23,61 +23,55 @@ ad_page_contract {
 } -query {
     {filter ""}
     {page_num 0}
-} -properties {
 }
 
-# Check if this is a community type level thing
 if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
     ad_script_abort
-}
-
-# Check if this is a community level thing
-if {[parameter::get -parameter community_level_p] == 1} {
+} elseif {[parameter::get -parameter community_level_p] == 1} {
     ad_returnredirect "one-community?page_num=$page_num"
     ad_script_abort
 }
 
-# Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-# Permission dotLRN
 if {![dotlrn::user_p -user_id $user_id]} {
     ad_returnredirect "index-not-a-user"
     ad_script_abort
 }    
 
-if {![dotlrn::user_can_browse_p]} {
-    # Figure out if the user is a member of a community
-    set communities [dotlrn_community::get_all_communities_by_user $user_id]
+set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
-    # If no communities
+set access_level [db_string select_users_access_level {
+    select access_level
+    from dotlrn_users
+    where user_id = :user_id
+}]
+
+if {[string match $access_level limited] && [llength $communities] == 1} {
+    ad_returnredirect [dotlrn_community::get_url_from_package_id \
+        -package_id [ns_set get [lindex $communities 0] package_id] \
+    ]
+    ad_script_abort
+}
+
+if {![dotlrn::user_can_browse_p -user_id $user_id]} {
+
     if {[llength $communities] == 0} {
         ad_returnredirect "index-not-a-user"
         ad_script_abort
-    }
-
-    # If just one community
-    if {[llength $communities] == 1} {
-        ad_returnredirect \
-            [dotlrn_community::get_url_from_package_id  \
-                -package_id [lindex [lindex $communities 0] 4] \
-            ]
+    } elseif {[llength $communities] == 1} {
+        ad_returnredirect [dotlrn_community::get_url_from_package_id \
+            -package_id [ns_set get [lindex $communities 0] package_id] \
+        ]
         ad_script_abort
     }
 
-    # If more than one
     ad_return_template index-no-browse
     return
 }
 
 set portal_id [dotlrn::get_portal_id -user_id $user_id]
-
-set rendered_page \
-    [dotlrn::render_page \
-        -page_num $page_num \
-        -hide_links_p "t" \
-        $portal_id \
-    ]
+set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p t $portal_id]
 
 ad_return_template

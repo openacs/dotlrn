@@ -57,7 +57,7 @@
 
     <td width="40%" class="header-buttons" align="right">
       <a href="/dotlrn/"><img class="header-img" border="0" src="/dotlrn/graphics/myspace-@color_hack_name@.gif" width="98" height="25" alt="MySloanSpace"></a>
-      <a href="/dotlrn/help"><img class="header-img" border="0" src="/dotlrn/graphics/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
+      <a href="/dotlrn/preferences"><img class="header-img" border="0" src="/dotlrn/graphics/help-@color_hack_name@.gif" width="67" height="25" alt="Help"></a>
       <a href="/register/logout"><img class="header-img" border="0" src="/dotlrn/graphics/logout-@color_hack_name@.gif" width="62" height="25" alt="Logout"></a>
     </td>
 

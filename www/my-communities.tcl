@@ -26,7 +26,7 @@ ad_page_contract {
 }
 
 set user_id [ad_maybe_redirect_for_registration]
-set user_can_browse_p [dotlrn::user_can_browse_p]
+set user_can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
 if {![info exists referer]} {
     set referer "my-communities"
