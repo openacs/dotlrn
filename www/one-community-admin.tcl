@@ -42,7 +42,7 @@ dotlrn::require_user_admin_community -user_id $user_id -community_id $community_
 db_1row select_community_info {}
 
 # render the admin page
-set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id]
+set rendered_page [dotlrn::render_page -render_style all_in_$admin_portal_id]
 
 set context_bar {Admin}
 

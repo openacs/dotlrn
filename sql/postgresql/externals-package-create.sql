@@ -21,7 +21,7 @@
 -- @version $Id$
 --
 
-select define_function_args ('dotlrn_external_profile_rel__new','rel_id,id,rel_type;dotlrn_external_profile_rel,group_id,user_id,creation_user,creation_ip');
+select define_function_args ('dotlrn_external_profile_rel__new','rel_id,user_id,portal_id,theme_id,id,rel_type;dotlrn_external_profile_rel,group_id,creation_user,creation_ip');
 
 select define_function_args ('dotlrn_external_profile_rel__delete','rel_id');
 

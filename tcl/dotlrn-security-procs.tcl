@@ -119,7 +119,7 @@ namespace eval dotlrn {
             set portal_id [portal::create \
                 -template_id $template_id \
                 -name "Your dotLRN Workspace" \
-                $user_id
+                $user_id \
             ]
 
             ns_set put $extra_vars portal_id $portal_id
