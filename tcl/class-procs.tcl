@@ -36,7 +36,7 @@ namespace eval dotlrn_class {
 
 	db_transaction {
 	    # Create a new group type for that class
-	    set one_class_group_type_key [group_type::new -group_type $group_type_name -supertype $top_group_type $pretty_name $pretty_name]
+	    set class_group_type_key [group_type::new -group_type $group_type_name -supertype $top_group_type $pretty_name $pretty_name]
 	    
 	    # Instantiate the DOTLRN Class Manager package at that node
 	    set result [site_node_mount_application -return "package_id,node_id" $parent_node_id $name [package_key] $name]
@@ -48,7 +48,9 @@ namespace eval dotlrn_class {
 	    ad_parameter -package_id $package_id -set 1 community_type_level_p
 	    ad_parameter -package_id $package_id -set 0 community_level_p
 
-	    # Insert the community into the DB
+	    # Insert the community
+	    dotlrn_community::new_type $class_group_type_key dotlrn_class $pretty_name
+	    dotlrn_community::set_type_site_node $class_group_type_key $node_id
 
 	    # insert the class into the DB
 	    db_dml insert_class {}
@@ -57,6 +59,7 @@ namespace eval dotlrn_class {
 
 
     ad_proc -public new_instance {
+	class_type
 	class_name
 	term
 	year
@@ -64,19 +67,19 @@ namespace eval dotlrn_class {
 	Creates a new instance of a class for a particular term and year,
 	and returns the class instance key.
     } {
+	set short_name "$class_type-$term-$year"
+
+	# Create the community
+	set community_id [dotlrn_community::new dotlrn_class $short_name $pretty_name]
+
+	# Insert the class instance
+	db_dml insert_class_instance {}
+
+	# Set up the node
 	set parent_node_id [db_string select_parent_node_id {}]
-	set class_inst_key "$class_name-$term-$year"
-
-	# Create a group of the right group type
-	template::form create add_group
-	template::element create add_group group_name -value $class_inst_key
-	template::element create add_group term -value $term
-	template::element create add_group year -value $year
-
-	set group_id [group::new -form_id add_group $class_name]
 
 	# Instantiate the right package at that site node, probably portals
-	set result [site_node_mount_application -return "package_id,node_id" $parent_node_id $class_inst_key [one_class_package_key] $class_inst_key]
+	set result [site_node_mount_application -return "package_id,node_id" $parent_node_id $short_name [one_class_package_key] $short_name]
 	set package_id [lindex $result 0]
 	set node_id [lindex $result 1]
 
@@ -85,37 +88,24 @@ namespace eval dotlrn_class {
 	ad_parameter -package_id $package_id -set 0 class_level_p
 	ad_parameter -package_id $package_id -set 1 class_instance_level_p
 
-	# Insert the class instance
-	db_dml insert_class_instance {}
+	# Set up the node
+	dotlrn_community::set_site_node $community_id $node_id
 
 	# Assign proper permissions to the site node
 	# NOT CERTAIN what to do here yet
 
     }
 
-    ad_proc -public assign_role {
-	class_instance_name
-	rel_type
-	user_id
+    ad_proc -public available_roles {
     } {
-	Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
+	Returns the available roles
     } {
-	# Get the group_id
-	set group_id [db_string select_group_id {}]
-
-	# Do the right relationship mapping to assigne the role
-	relation_add $rel_type $group_id $user_id
-    }
-    
-    ad_proc -public add_applet {
-	class_instance_name
-	applet_name
-    } {
-	Adds an applet for a particular class
-    } {
-	# Create the site node for that applet
-
-	# Instantiate the right package at the site node
+	return {
+	    {instructor_rel "Instructor"}
+	    {ta_rel "Teaching Assistant"}
+	    {student_rel "Student"}
+	    {admin_rel "Administrator"}
+	}
     }
 
     ad_proc -public package_key {

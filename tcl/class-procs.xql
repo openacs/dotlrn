@@ -4,7 +4,7 @@
 
 <fullquery name="dotlrn_class::new.insert_class">
 <querytext>
-insert into dotlrn_classes (class_key, node_id) values (:one_class_group_type_key, :node_id)
+insert into dotlrn_classes (class_key) values (:class_group_type_key)
 </querytext>
 </fullquery>
 
@@ -17,15 +17,9 @@ select node_id from dotlrn_classes where class_key=:class_name
 <fullquery name="dotlrn_class::new_instance.insert_class_instance">
 <querytext>
 insert into dotlrn_class_instances 
-	(class_instance_id, class_instance_key, class_key, node_id)
+	(class_instance_id, class_key)
 values
-	(:group_id, :class_inst_key, :class_name, :node_id)
-</querytext>
-</fullquery>
-
-<fullquery name="dotlrn_class::assign_role.select_group_id">
-<querytext>
-select class_instance_id from dotlrn_class_instances where class_instance_key= :class_instance_name
+	(:community_id, :short_name)
 </querytext>
 </fullquery>
 
