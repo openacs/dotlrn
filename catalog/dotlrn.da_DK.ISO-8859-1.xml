@@ -56,7 +56,7 @@
   <msg key="Bulk_Upload">Masseupload</msg>
   <msg key="Bulk_Uploading">Masseuploader...</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
-  <msg key="Change_Locale">Skift Locale</msg>
+  <msg key="Change_Locale">Vælg sprog</msg>
   <msg key="class_instance_portal_pretty_name">Klasser</msg>
   <msg key="class_instances_pretty_name">Klasse</msg>
   <msg key="class_instances_pretty_plural">Klasser</msg>
@@ -66,7 +66,7 @@
   <msg key="class_name">%classes_pretty_name%-navn</msg>
   <msg key="class_name_header">%class_instances_pretty_name%-navn</msg>
   <msg key="class_page_calendar_title">Kalender</msg>
-  <msg key="class_page_file_storage_title">Fildepot</msg>
+  <msg key="class_page_file_storage_title">Filer</msg>
   <msg key="class_page_home_title">Hjem for Klassen</msg>
   <msg key="Classes">Klasser</msg>
   <msg key="classes_pretty_name">Fag</msg>
