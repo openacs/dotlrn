@@ -909,7 +909,7 @@ namespace eval dotlrn_community {
                 }
 
                 append chunk \
-                        "<ul>\n[get_chunk -community_id $sc_id -user_id $user_id]</ul>\n"
+                        "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id]</ul>\n"
             } elseif { [not_closed_p -community_id $sc_id] \
                     || [member_p $sc_id $user_id]} {
                 # if the sc is not closed or i'm a member print it
