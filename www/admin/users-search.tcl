@@ -83,21 +83,21 @@ element create user_search id \
 element create user_search type \
     -label "Type" \
     -datatype text \
-    -widget radio \
+    -widget select \
     -options "{Any any} [dotlrn::get_user_types_as_options]" \
     -value $type
 
 element create user_search access_level \
     -label "Access Level" \
     -datatype text \
-    -widget radio \
+    -widget select \
     -options {{Any any} {Limited limited} {Full full}} \
     -value $access_level
 
 element create user_search private_data_p \
     -label "Guest?" \
     -datatype text \
-    -widget radio \
+    -widget select \
     -options {{Any any} {Yes f} {No t}} \
     -value $private_data_p
 
@@ -125,7 +125,7 @@ element create user_search last_visit_less \
 element create user_search join_criteria \
     -label "Join the above criteria by" \
     -datatype text \
-    -widget radio \
+    -widget select \
     -options {{And and} {Or or}} \
     -value $join_criteria
 
