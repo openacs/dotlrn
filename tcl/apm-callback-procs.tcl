@@ -86,7 +86,7 @@ ad_proc -public dotlrn::apm::after_upgrade {
         -from_version_name $from_version_name \
         -to_version_name $to_version_name \
 	-spec {  
-	    2.0.3 2.1.0 {     
+	    2.0.3 2.1.0a2 {     
                 db_transaction {
 
                         ns_log notice "dotlrn upgrade: starting..."
