@@ -167,10 +167,10 @@
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
 <if @non_member_classes.join_policy@ eq "open">
-        <td>[<small><include src="register-link" url="@non_member_classes.url@register" referer=@referer@></small>]</td>
+        <td>[<small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small>]</td>
 </if>
 <else>
-        <td>[<small><include src="register-link" url="@non_member_classes.url@register" label="Request Membership" referer=@referer@></small>]</td>
+        <td>[<small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small>]</td>
 </else>
       </tr>
 </multiple>
@@ -205,10 +205,10 @@
         <td>&nbsp;</td>
         <td>&nbsp;</td>
 <if @non_member_clubs.join_policy@ eq "open">
-        <td>[<small><include src="register-link" url="@non_member_clubs.url@register" referer=@referer@></small>]</td>
+        <td>[<small><include src="register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small>]</td>
 </if>
 <else>
-        <td>[<small><include src="register-link" url="@non_member_clubs.url@register" label="Request Membership" referer=@referer@></small>]</td>
+        <td>[<small><include src="register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small>]</td>
 </else>
       </tr>
 </multiple>
