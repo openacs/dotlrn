@@ -249,11 +249,11 @@ namespace eval dotlrn_community {
 	Adds an applet to the community
     } {
 	db_transaction {
-	    # Insert in the DB
-	    db_dml insert_applet {}
-	    
 	    # Callback
-	    applet_call $applet_key AddApplet [list $community_id]
+	    set package_id [applet_call $applet_key AddApplet [list $community_id]]
+
+	    # Insert in the DB
+	    db_dml insert_applet {}	    
 	}
     }
 
