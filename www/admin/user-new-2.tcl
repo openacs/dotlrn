@@ -25,7 +25,6 @@ ad_page_contract {
     {referer "[dotlrn::get_admin_url]/users"}
 }
 
-
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 db_1row select_user_info {
@@ -76,13 +75,49 @@ element create add_user referer \
     -widget hidden \
     -value $referer
 
+
 if {[form is_valid add_user]} {
+
     form get_values add_user \
         user_id id type can_browse_p read_private_data_p referer
+
+    set subject "Your [ad_system_name] membership has been approved"
+    set message "Your [ad_system_name] membership has been approved. Please return to [ad_url] to log into [ad_system_name]."
+
+    set email_from [ad_parameter -package_id [ad_acs_kernel_id] SystemOwner]
 
     db_transaction {
         dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $user_id
         acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+    }
+    
+    
+    if [catch {ns_sendmail $email $email_from $subject $message} errmsg] {
+	
+	ns_log Error "Error sending email from user-new-2.tcl" $errmsg
+	ad_return_error \
+        "Error sending mail" \
+        "There was an error sending email to $email."
+    } else {
+
+	set admin_subject "The following email was just sent from [ad_system_name]"
+
+	set admin_message "The following email was just sent from [ad_system_name]
+
+Sent by: $email_from
+Sent to: $email
+Subject: $subject
+Message: $message"
+
+
+        if [catch {ns_sendmail $email_from $email_from $admin_subject $admin_message} errmsg] {
+	
+	    ns_log Error "Error sending email from user-new-2.tcl" $errmsg
+	    ad_return_error \
+		    "Error sending mail" \
+		    "There was an error sending email to $email."
+	}
+
     }
 
     ad_returnredirect $referer
@@ -92,4 +127,3 @@ if {[form is_valid add_user]} {
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 ad_return_template
-

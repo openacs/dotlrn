@@ -59,15 +59,20 @@
         <input type="text" name="header_font_color" value="@header_font_color@" size="50" /></td>
       </tr>
 
-      <tr>
-        <td><b>#dotlrn.Header_Icon#</b>&nbsp;&nbsp;</td>
-        <td><input type="file" name="header_img"/></td>
+     <tr>
+           <td><b>#dotlrn.header_logo#</b>&nbsp;&nbsp;</td>
+           <td><img src=@header_url@></tr>
+      </tr>
+
+     <tr>
+           <td>&nbsp;&nbsp;</td>
+           <td><input type=file name=header_img size=20></tr>
       </tr>
 
       <tr>
-        <td><b>#dotlrn.Header_Icon_Alt_text#</b>&nbsp;&nbsp;</td>
-        <td><input type="text" name="header_alt_text" value="@header_alt_text@" size="50" /></td>
-        
+        <td><b>#dotlrn.Header_Alternate_Text#</b>&nbsp;&nbsp;</td>
+        <td nowrap>
+        <input type="text" name="header_alt_text" value="@header_alt_text@" size="50" /></td>
       </tr>
 
       <tr><td align=center colspan=2>

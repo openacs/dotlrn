@@ -248,6 +248,7 @@ if {[form is_valid user_search]} {
     if {[llength $wheres]} {
         append sql " where "
         append sql [join $wheres " $join_criteria "]
+	append sql "order by last_name, first_names"
     }
 
     set referer [ns_conn url]

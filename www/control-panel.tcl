@@ -36,11 +36,12 @@ set portal_id [dotlrn::get_portal_id -user_id [ad_get_user_id]]
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 
-set title "[_ dotlrn.Control_Panel]"
+set title [parameter::get -localize -parameter admin_page_name]
 set admin_p [dotlrn::admin_p]
 set admin_url "[dotlrn::get_url]/admin"
 set referer [ns_conn url]
 set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
+set system_owner [ad_system_owner]
 
 ad_return_template
 

@@ -49,9 +49,13 @@ begin
     -- the ability to create a community type
     acs_privilege.create_privilege('dotlrn_create_community_type');
 
+    -- the ability to spam a community
+    acs_privilege.create_privilege('dotlrn_spam_community');
+
     -- consistent permissions
     acs_privilege.add_child('dotlrn_edit_community', 'dotlrn_view_community');
     acs_privilege.add_child('dotlrn_admin_community', 'dotlrn_edit_community');
+    acs_privilege.add_child('dotlrn_admin_community', 'dotlrn_spam_community');
 
     -- inheritance
     acs_privilege.add_child('create', 'dotlrn_create_community_type');

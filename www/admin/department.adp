@@ -25,22 +25,22 @@
 <ul>
 
   <li>
-    External URL:
+    #dotlrn.External_URL_1#
 <if @external_url@ not nil>
     <a href="@external_url@">@external_url@</a>
 </if>
 <else>
-    &lt;none set up&gt;
+    &lt;#dotlrn.none_set_up#&gt;
 </else>
   </li>
 
   <li>
-    Description:
+    #dotlrn.Description_1#
 <if @description@ not nil>
     @description@
 </if>
 <else>
-    &lt;none set up&gt;
+    &lt;#dotlrn.none_set_up#&gt;
 </else>
   </li>
 
@@ -48,8 +48,7 @@
 
   <li>
     <a
-    href="department-edit?department_key=@department_key@&referer=@referer@">Edit</a>
-    department properties.
+    href="department-edit?department_key=@department_key@&referer=@referer@">#dotlrn.lt_Edit_department_prope#</a>
   </li>
 
 </ul>
@@ -57,4 +56,5 @@
 <br>
 
 <include src="classes-chunk" department_key="@department_key@">
+
 

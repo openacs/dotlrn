@@ -20,24 +20,101 @@
 
 <h3>#dotlrn.Members_of# <%= [dotlrn_community::get_community_name $community_id] %></h3>
 
-@table@
+<if @admin_p@ eq 1 and @subcomm_p@ eq 0>
+<form method="get" action="member-add">
+   #dotlrn.Add_A_Member# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
+   <input type="hidden" name="referer" value="@referer@">
+</form>
+
+
+<form method="post" action="deregister-confirm">
+</if>
+
+
+<table  width="85%" class="table-display" cellpadding="5" cellspacing="0">
+    <tr class="table-header">
+      <td>&nbsp;</td>
+      <td><a href=@referer@?order=first_names&order_direction=@first_names_order_direction@>
+	#dotlrn.First_Name#</a> @first_names_order_html@
+      </td>	
+      <td><a href=@referer@?order=last_name&order_direction=@last_name_order_direction@>
+	#dotlrn.Last_Name#</a> @last_name_order_html@
+      </td>
+      <td><a href=@referer@?order=email&order_direction=@email_order_direction@>
+	#dotlrn.Email_1#</a> @email_order_html@
+      </td>
+      <td>#dotlrn.Role#</td>
+      <td>#dotlrn.Actions#</td>
+    </tr>
+<multiple name="current_members">
+<if @current_members.rownum@ odd>
+    <tr class="odd">
+</if>
+<else>
+    <tr class="even">
+</else>
+  <td>
+   <if @admin_p@ eq 1>
+	<input type=checkbox name=user_id value=@current_members.user_id@>
+   </if>
+ </td>
+  <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.first_names@] %></td>
+  <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.last_name@]%></td>
+  <td>
+    <if @read_private_data_p@ eq 1>
+        <a href="mailto:@current_members.email@">
+	@current_members.email@</a>	
+    </if>
+    <else>
+	<if @my_user_id@ eq @current_members.user_id@>
+    	    <a href="mailto:@current_members.email@">
+	@current_members.email@</a>
+	</if>
+        <else>
+           &nbsp;
+        </else>
+    </else>
+
+   </td>
+  <td><%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @current_members.rel_type@] "Student"]%>
+  </td>
+  <td align=center>
+  <if @admin_p@ eq 1>
+     &nbsp; <a href="deregister?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.Drop_Membership#</a> | <a href="member-add-2?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.User_Admin_Page#</a>
+  </if>
+  <else> 
+      <if @my_user_id@ eq @current_members.user_id@>
+	  <a href="deregister?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.Drop_Membership#</a>
+      </if>
+      <else>
+	   &nbsp;
+      </else>
+  </else>
+</td>
+</tr>
+</multiple>
+</table>
+
+<p>
+
+<if @admin_p@ eq 1>
+<input type=hidden name=referer value="@referer@">
+<input type=submit value="Drop selected members">
+</form>
+</if>
 
 <ul>
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 0>
   <br>
-  <li>
-    <form method="get" action="member-add">
-      #dotlrn.Add_A_Member# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
-      <input type="hidden" name="referer" value="@referer@">
-    </form>
+
   </li>
 </if>
 <if @site_wide_admin_p@ eq 1>
 <% set dotlrn_admin_url [dotlrn::get_admin_url] %>
   <br>
   <li>
-    <a href="@dotlrn_admin_url@/users-add-to-community?users=@user_list@&referer=@referer@">
+    <a href="@dotlrn_admin_url@/community-members-add-to-community?source_community_id=@community_id@&referer=@referer@">
       #dotlrn.lt_Add_members_to_anothe#
     </a>
   </li>

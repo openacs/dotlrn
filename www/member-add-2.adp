@@ -21,7 +21,14 @@
 <master src="dotlrn-master">
 <property name="title">#dotlrn.Add_A_Member#</property>
 
-#dotlrn.Youre_adding# <strong>@first_names@ @last_name@ (@email@)</strong>:<p>
+<if @member_p@ eq 1>
+
+#dotlrn.lt_strongfirst_names_las#
+
+</if>
+<else>
+#dotlrn.lt_You_are_adding_strong#<p>
+</else>
 
 <form method="get" action="member-add-3">
   <input type="hidden" name="user_id" value="@user_id@">
@@ -34,6 +41,7 @@
   </select>
   <input type="submit" value="#dotlrn.add#">
 </form>
+
 
 
 

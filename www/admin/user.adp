@@ -165,19 +165,35 @@
 </if>
 <else>
 <p>
+<if @member_state@ eq "approved">
   <a href="user-new-2?user_id=@user_id@&referer=@return_url@">#dotlrn.Add#</a> #dotlrn.this_user_to_dotLRN#
+</if>
+<else>
+#dotlrn.lt_This_user_is_currentl#.
+</else>
 </p>
 </else>
 
 <h3>#dotlrn.lt_Administrative_Action#</h3>
 
 <ul>
-  <li><a href="/user/password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
+  <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
 <if @portrait_p@>
   <br>
   <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
 </if>
   <br>
+  <li>    
+<if @dotlrn_user_p@ eq 1>
+<if @site_wide_admin_p@ eq t>
+#dotlrn.lt_This_user_is_a_site-w# (<a href="site-wide-admin-toggle?user_id=@user_id@&value=revoke&referer=@return_url@">#dotlrn.revoke#</a>)
+    </if>
+    <else>
+      <a href="site-wide-admin-toggle?user_id=@user_id@&value=grant&referer=@return_url@">#dotlrn.lt_Make_this_user_a_site#</a>
+    </else>
+</if>
+  <br>
   <li><a href="/acs-admin/users/become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
 </ul>
+
 

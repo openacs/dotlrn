@@ -26,6 +26,7 @@ ad_page_contract {
     {referer "one-community-admin"}
 }
 
+set search_text [string trim $search_text]
 set community_id [dotlrn_community::get_community_id]
 
 # Just search

@@ -21,6 +21,11 @@ ad_page_contract {
 
     @author Arjun Sanyal (arjun@openforce.net)
     @version $Id$
+} {
+}
+
+if {![exists_and_not_null show_buttons_p]} {
+    set show_buttons_p 0
 }
 
 set user_id [ad_conn user_id]
@@ -36,5 +41,6 @@ db_multirow communities select_communities {} {
     }
 }
 
-ad_return_template
+set dotlrn_url [dotlrn::get_url]
 
+ad_return_template

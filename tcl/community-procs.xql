@@ -26,12 +26,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_type_package_id.select_package_id">
-        <querytext>
-            select package_id from dotlrn_community_types where community_type= :community_type
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::set_package_id.update_package_id">
         <querytext>
             update dotlrn_communities_all set package_id= :package_id where community_id= :community_id
@@ -166,7 +160,7 @@
             and registered_users.user_id not in (select dm.user_id
                                                  from dotlrn_member_rels_full dm
                                                  where dm.community_id = :subcomm_id)
-            order by dotlrn_member_rels_approved.rel_type, registered_users.last_name
+            order by last_name
         </querytext>
     </fullquery>
 
@@ -372,7 +366,7 @@
     <fullquery name="dotlrn_community::not_closed_p.check_community_not_closed">
         <querytext>
             select 1
-            from dotlrn_active_comms_not_closed
+            from dotlrn_communities_not_closed
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -380,7 +374,7 @@
     <fullquery name="dotlrn_community::open_p.check_community_open">
         <querytext>
             select 1
-            from dotlrn_active_comms_not_closed
+            from dotlrn_communities_not_closed
             where community_id = :community_id
             and join_policy = 'open'
         </querytext>
@@ -389,7 +383,7 @@
     <fullquery name="dotlrn_community::needs_approval_p.check_community_needs_approval">
         <querytext>
             select 1
-            from dotlrn_active_comms_not_closed
+            from dotlrn_communities_not_closed
             where community_id = :community_id
             and join_policy = 'needs approval'
         </querytext>
@@ -468,6 +462,18 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::list_applets.select_all_applets">
+        <querytext>
+            select impl_name
+            from acs_sc_impls,
+                 acs_sc_bindings,
+                 acs_sc_contracts
+            where acs_sc_impls.impl_id = acs_sc_bindings.impl_id
+            and acs_sc_contracts.contract_id = acs_sc_bindings.contract_id
+            and acs_sc_contracts.contract_name = 'dotlrn_applet'
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::list_applets.select_community_applets">
         <querytext>
             select dotlrn_applets.applet_key
@@ -475,6 +481,14 @@
                  dotlrn_applets
             where dotlrn_community_applets.community_id = :community_id
             and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::list_active_applets.select_all_active_applets">
+        <querytext>
+            select applet_key
+            from dotlrn_applets
+            where active_p = 't'
         </querytext>
     </fullquery>
 

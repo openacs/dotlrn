@@ -36,9 +36,8 @@
 
 <slave>
 
+
 <div class="footer">@ds_link@</div>
 
 </body>
 </html>
-
-

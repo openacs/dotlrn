@@ -210,7 +210,7 @@ set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
 set header_img_url "$dotlrn_graphics_url/logowhite.gif" 
-set header_img_alt_text "[_ dotlrn.Header_Logo]"
+set header_img_alt_text "[_ dotlrn.header_logo]"
 
 if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id $package_id]]} {
     set parent_comm_p 0

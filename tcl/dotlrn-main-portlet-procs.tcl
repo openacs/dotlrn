@@ -35,7 +35,7 @@ namespace eval dotlrn_main_portlet {
 
     ad_proc -public get_pretty_name {
     } {
-        return [parameter::get -parameter dotlrn_main_portlet_pretty_name]
+        return [parameter::get -package_id [dotlrn::get_package_id] -parameter dotlrn_main_portlet_pretty_name]
     }
 
     ad_proc -public link {

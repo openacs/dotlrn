@@ -18,8 +18,6 @@
 
 %>
 
-<% set dotlrn_url [dotlrn::get_url] %>
-
 <if @user_can_browse_p@>
   <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
   <br></br>
@@ -35,35 +33,51 @@
     set depth 0
 %>
 
+<h3>
   <if @communities.simple_community_type@ eq "dotlrn_class_instance">
-    <li><%= [parameter::get -localize -parameter class_instances_pretty_plural] %>:
+    <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>:
   </if>
   <else>
-    <li><%= [parameter::get -localize -parameter clubs_pretty_plural] %>:
+    <%= [parameter::get -localize -parameter clubs_pretty_plural] %>:
   </else>
+</h3>
 
 <group column="simple_community_type">
 
 <% set new_level $communities(tree_level) %>
 
   <if @new_level@ lt @old_level@>
-<% incr depth -1 %>
+    <% incr depth -1 %>
     </ul>
-  </if>
+	<if @new_level@ eq 1 and @depth@ gt 1>
+	<% while {$depth > 1} {	
+		append close_tags "</ul>" 
+		incr depth -1 
+	} 
+	%>
+	@close_tags@
+        </if>
+     </if>
 
   <if @new_level@ gt @old_level@>
 <% incr depth 1 %>
     <ul>
+	<nobr>
   </if>
 
       <li>
         <nobr>
           <a href="@communities.url@">@communities.pretty_name@</a>
-          <if @communities.admin_p@ eq t> 
-            [<small>
-              <a href="@communities.url@one-community-admin">#dotlrn.Administer#</a>
-            </small>]
-          </if>
+	<if @show_buttons_p@ eq 1>
+		&nbsp [<small> 
+                        <a href="@communities.url@deregister?referer=@referer@">#dotlrn.Drop_Membership#</a>
+                      </small>]
+		<if @communities.admin_p@ eq 1>
+                  &nbsp; [<small>
+                           <a href="@communities.url@one-community-admin">#dotlrn.Administer#</a>
+                         </small>]
+		</if>
+	</if>
         </nobr>
       </li>
 
@@ -80,6 +94,4 @@
 </multiple>
 
 </if>
-
-
 

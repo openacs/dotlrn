@@ -32,5 +32,5 @@ if {[string equal $value "grant"] == 1} {
     ad_permission_revoke $user_id [acs_magic_object "security_context_root"] "admin"
 }
 
+util_memoize_flush_regexp  $user_id
 ad_returnredirect $referer
-

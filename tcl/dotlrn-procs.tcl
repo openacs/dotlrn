@@ -412,7 +412,9 @@ namespace eval dotlrn {
         
         foreach applet_key $default_applets_list {
             if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
-                dotlrn_community::applet_call $applet_key AddPortlet [list $portal_id]
+                if {[catch {dotlrn_community::applet_call $applet_key AddPortlet [list $portal_id]} errMsg]} { 
+                    ns_log warning "FAILED: dotlrn_community::applet_call $applet_key AddPortlet [list $portal_id]\n$errMsg"
+                }
             }
         }
     }

@@ -31,7 +31,7 @@ ad_page_contract {
             [string equal $policy "needs approval"] == 1 ||
             [string equal $policy "closed"] == 1
         )} {
-            ad_complain {policy must be one of: open, needs approval, or closed}
+            ad_complain [_ dotlrn.lt_policy_must_be_one_of]
         }
     }
 }

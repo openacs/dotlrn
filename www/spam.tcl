@@ -34,7 +34,7 @@ if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]
 }
 
-dotlrn::require_user_admin_community -community_id $community_id
+dotlrn::require_user_spam_community -community_id $community_id
 
 set sender_id [ad_conn user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
@@ -75,6 +75,13 @@ element create spam_message message \
     -widget textarea \
     -html {rows 10 cols 80 wrap soft}
 
+element create spam_message message_type \
+    -label "Message Type" \
+    -datatype text \
+    -widget select \
+    -options {{"Plain text" "text"} {HTML "html"}} \
+    -value "text"
+
 element create spam_message send_date \
     -label [_ dotlrn.Send_Date] \
     -datatype date \
@@ -90,11 +97,13 @@ element create spam_message referer \
 
 if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
-        community_id from rel_type subject message send_date referer
+        community_id from rel_type subject message message_type send_date referer
 
     set segment_id [db_string select_rel_segment_id {}]
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
+
+    set safe_community_name [db_quote $community_name]
 
     set query "
         select '$from' as from_addr,
@@ -121,7 +130,7 @@ if {[ns_queryexists "form:confirm"]} {
                        from persons
                        where person_id = parties.party_id),
                       '') as last_name,
-               '$community_name' as community_name,
+               '$safe_community_name' as community_name,
                '$community_url' as community_url
             from party_approved_member_map,
                  parties,
@@ -130,7 +139,17 @@ if {[ns_queryexists "form:confirm"]} {
             and party_approved_member_map.member_id <> $segment_id
             and party_approved_member_map.member_id = parties.party_id
             and parties.party_id = acs_objects.object_id
+            and parties.party_id in (select acs_rels.object_id_two  
+                                     from acs_rels, membership_rels
+                                     where acs_rels.object_id_one = 
+                                        acs.magic_object_id('registered_users')
+                                     and acs_rels.rel_id = 
+                                        membership_rels.rel_id
+                                     and membership_rels.member_state 
+                                        = 'approved')
     "
+
+ns_log notice "query: $query"
 
     bulk_mail::new \
         -package_id [site_node_apm_integration::get_child_package_id -package_key [bulk_mail::package_key]] \
@@ -139,6 +158,7 @@ if {[ns_queryexists "form:confirm"]} {
         -from_addr $from \
         -subject "\[$community_name\] $subject" \
         -message $message \
+        -message_type $message_type \
         -query $query
 
     ad_returnredirect $referer

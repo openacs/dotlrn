@@ -34,6 +34,13 @@
 
 <p></p>
 
+<form method="get" action="users-search">
+  #dotlrn.lt_Search_dotLRN_users_f# <input type="text" name="name"><input type="submit" value="#dotlrn.search#">
+
+  <input type="hidden" name="form:id" value="user_search">
+
+</form>
+
 <form method="get" action="user-new">
   #dotlrn.lt_Add_a_new_dotLRN_user# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
 </form>
@@ -53,8 +60,3 @@
     <include src="users-chunk-small" type=@type@ referer="@referer@?type=@type@">
   </else>
 </else>
-
-
-
-
-

@@ -41,6 +41,18 @@ db_1row select_user_info {
     where user_id = :user_id
 }
 
+set community_name [dotlrn_community::get_community_name $community_id]
+
+# See if the user is already in the group
+set member_p [dotlrn_community::member_p $community_id $user_id]
+
+if {$member_p} {
+    set existing_role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type [db_string select_role {}]]
+    if {[empty_string_p $existing_role]} {
+	set existing_role "member"
+    }
+}
+            
 # Depending on the community_type, we have allowable rel_types
 set rel_types [dotlrn_community::get_roles -community_id $community_id]
 

@@ -38,28 +38,33 @@ dotlrn::require_user_admin_community -user_id $user_id -community_id $community_
 set page_title [_ dotlrn.Preview]
 set header_text [dotlrn_community::get_community_header_name $community_id]
 
-#
 # Image stuff
-#
+
 set tmp_filename [ns_queryget header_img.tmpfile]
+
+#TODO - better way to get typs.
+# THIS DOESN'T WORK.
 set mime_type [ns_guesstype $header_img]
 
+
 if {[empty_string_p $tmp_filename]} {
-    set tmp_size 0
-    set revision_id 0
-} else {
-    set tmp_size [file size $tmp_filename]
-}
+      set tmp_size 0
+      set revision_id 0
+  } else {
+      set tmp_size [file size $tmp_filename]
+  }
+
 set title "$header_img-[db_nextval acs_object_id_seq]"
 
-# strip off the C:\directories... crud and just get the file name
+#  # strip off the C:\directories... crud and just get the file name
+
 if ![regexp {([^/\\]+)$} $header_img match client_filename] {
-    set client_filename $header_img
+      set client_filename $header_img
 }
 
 if { ![empty_string_p [ad_parameter MaximumFileSize]] 
-     && $tmp_size > 0
-     && $tmp_size > [ad_parameter MaximumFileSize] } {
+       && $tmp_size > 0
+      && $tmp_size > [ad_parameter MaximumFileSize] } {
 
     set msg_subst_list [list system_name [ad_system_name] \
                              max_attachments_bytes [util_commify_number [ad_parameter MaximumFileSize]]]
@@ -70,8 +75,11 @@ if { ![empty_string_p [ad_parameter MaximumFileSize]]
 if { $tmp_size > 0 } {
     # import the content now, so that we can spit it out in the preview
     db_transaction {
-        set parent_id 0
-        
+
+        # We will store the image in the communities' shared folder.
+        set parent_id [dotlrn_fs::get_community_shared_folder -community_id $community_id]
+               
+
         # the last param "object name" is unused
         set revision_id [cr_import_content \
             -title $title \
@@ -86,7 +94,7 @@ if { $tmp_size > 0 } {
 
         ns_log notice "aks1: new revision_id $revision_id"
 
-    } on_error {
+    } on_error { 
         # most likely a duplicate name, double click, etc.
         ad_return_complaint 1 "
             [_ dotlrn.lt_There_was_an_error_tr]
@@ -101,7 +109,6 @@ if { $tmp_size > 0 } {
                   $errmsg
                 </pre>
               </blockquote>"
-        
         ad_script_abort
     }
 } else {
@@ -143,6 +150,35 @@ if {[empty_string_p $header_font_color]} {
 
 append style_fragment " " "color: $header_font_color;"
 
+#logo stuff
+if {[empty_string_p $revision_id]} {
+
+    set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
+
+    set temp_community_id $community_id
+    while {[dotlrn_community::subcommunity_p -community_id $temp_community_id]} {
+	# For a subcommunity, we use the logo of the
+	# the first ancestor that is not a sub_community
+
+	set temp_community_id [dotlrn_community::get_parent_id -community_id $temp_community_id]
+	set comm_type [dotlrn_community::get_community_type_from_community_id $temp_community_id]
+ 
+    }
+
+    if {$comm_type == "dotlrn_club"} {
+	#community colors
+	set scope_name "comm"
+    } else {
+	set scope_name "course"
+    }
+    
+    set header_url "[dotlrn::get_url]/graphics/logo-$scope_name.gif"
+
+} else {
+    set header_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$revision_id"
+}
+
+
 form create header_form
 set yes_label "[_ dotlrn.lt_Save_and_use_this_hea]"
 
@@ -158,16 +194,16 @@ element create header_form yes_button \
     -widget submit
 
 element create header_form header_logo_item_id \
-    -label header_logo_item_id \
-    -datatype text \
-    -widget hidden \
-    -value $revision_id
+      -label header_logo_item_id \
+      -datatype text \
+      -widget hidden \
+      -value $revision_id
 
 element create header_form header_logo_alt_text \
-    -label header_logo_alt_text \
-    -datatype text \
-    -widget hidden \
-    -value $header_alt_text
+      -label header_logo_alt_text \
+      -datatype text \
+      -widget hidden \
+      -value $header_alt_text
 
 element create header_form header_font \
     -label header_font \
@@ -204,8 +240,8 @@ if {[form is_valid header_form]} {
                 [list header_font_size $header_font_size] \
                 [list header_font_color $header_font_color] \
                 [list header_logo_item_id $header_logo_item_id] \
-                [list header_logo_alt_text $header_logo_alt_text] \
-            ]
+                [list header_logo_alt_text $header_logo_alt_text]]
+ 
 
         ad_returnredirect "one-community-admin"
     } else {

@@ -36,11 +36,11 @@
                  acs_rels,
                  membership_rels
             where parties.party_id = users.user_id
+	    and member_state not in ('banned','deleted','rejected')
             and users.user_id = persons.person_id
             and persons.person_id = acs_rels.object_id_two
             and acs_rels.object_id_one = acs.magic_object_id('registered_users')
             and acs_rels.rel_id = membership_rels.rel_id
-            and membership_rels.member_state = 'approved'
             and not exists (select 1
                             from acs_rels a,
                                  dotlrn_user_types

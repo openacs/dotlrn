@@ -20,6 +20,8 @@
 
 <master src="dotlrn-master">
 
+<p></p>
+
 @rendered_page@
 
 

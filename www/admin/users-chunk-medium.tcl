@@ -62,7 +62,7 @@ if {[string equal $type deactivated] == 1} {
         append query "_other"
     }
     db_multirow users $query {} {
-        set users:${i}(access_level) Limited
+        set users:${i}(access_level) N/A
         incr i
     }
 } else {

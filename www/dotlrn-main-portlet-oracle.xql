@@ -10,11 +10,11 @@
                    decode(dotlrn_communities.community_type, 'dotlrn_community', 'dotlrn_community',
                                                              'dotlrn_club', 'dotlrn_club',
                                                              'dotlrn_class_instance') as simple_community_type,
+                   decode(dotlrn_community_admin_p(dotlrn_communities.community_id, dotlrn_member_rels_approved.user_id),'f',0,1) as admin_p,	
                    tree.tree_level(dotlrn_communities.tree_sortkey) as tree_level,
                    nvl((select tree.tree_level(dotlrn_community_types.tree_sortkey)
                         from dotlrn_community_types
-                        where dotlrn_community_types.community_type = dotlrn_communities.community_type), 0) as community_type_level,
-                   acs_permission.permission_p(dotlrn_communities.community_id, :user_id, 'admin') as admin_p
+                        where dotlrn_community_types.community_type = dotlrn_communities.community_type), 0) as community_type_level
             from dotlrn_communities,
                  dotlrn_member_rels_approved
             where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id

@@ -21,8 +21,30 @@
 <master src="dotlrn-master">
 <property name="title">#dotlrn.Add_A_User#</property>
 <property name="context_bar">@context_bar@</property>
+<h3>#dotlrn.lt_Add_a_new_user_to_Slo#</h3>
+<if @community_p@ eq 1>
+<blockquote>
+ #dotlrn.lt_Note_use_this_feature#
+<ol>
+	<li>#dotlrn.lt_If_this_person_is_a_M#
+	<li>#dotlrn.lt_Be_sure_that_the_pers#
 
+<if @read_private_data_p@ eq t>
+	<li>#dotlrn.lt_Use_this_only_for_an_#
+
+</if>
+<else>
+      <li>#dotlrn.lt_This_allows_you_to_gi#
+      </li>
+<ul>        
+<li>#dotlrn.lt_Information_about_oth#
+<li>#dotlrn.lt_If_you_wish_to_give_g#
+</else>      
+</ul>
+</ol>
+</blockquote>
+</if>
+<center>
 <formtemplate id="add_user"></formtemplate>
-
-
+</center>
 

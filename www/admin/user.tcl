@@ -44,6 +44,8 @@ ad_page_contract {
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
 set export_edit_vars "user_id=$user_id&return_url=$return_url"
 
+set dotlrn_url [dotlrn::get_url]
+set root_object_id [acs_magic_object security_context_root]
 if {![db_0or1row select_user_info {}]} {
     ad_return_complaint 1 "<li>[_ dotlrn.couldnt_find_user_id [list user_id $user_id]]</li>"
     ad_script_abort
@@ -82,5 +84,8 @@ db_multirow member_subgroups select_member_subgroups {} {
 
 set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 
-ad_return_template
+set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
 
+set approve_user_url "/acs-admin/users/member-state-change?user_id=$user_id&member_state=approved&return_url=$dual_approve_return_url"
+
+ad_return_template

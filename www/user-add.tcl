@@ -40,9 +40,11 @@ set community_id [dotlrn_community::get_community_id]
 if {![empty_string_p $community_id]} {
     dotlrn::require_user_admin_community -community_id [dotlrn_community::get_community_id]
     set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
+    set community_p 1
 } else {
     dotlrn::require_admin
     set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Add_User]]
+    set community_p 0
 }
 
 set target_user_id [db_nextval acs_object_id_seq]
@@ -54,13 +56,6 @@ element create add_user target_user_id \
     -datatype integer \
     -widget hidden \
     -value $target_user_id
-
-element create add_user id \
-    -label [_ dotlrn.ID_1] \
-    -datatype text \
-    -widget text \
-    -html {size 30} \
-    -value $id
 
 element create add_user email \
     -label [_ dotlrn.Email_1] \
@@ -120,10 +115,9 @@ element create add_user dotlrn_interactive_p \
 
 if {[form is_valid add_user]} {
     form get_values add_user \
-        target_user_id id email first_names last_name referer type can_browse_p read_private_data_p dotlrn_interactive_p
+        target_user_id email first_names last_name referer type can_browse_p read_private_data_p dotlrn_interactive_p
 
     db_transaction {
-
         if {[empty_string_p [cc_email_from_party $target_user_id]]} {
             # create the ACS user
             set password [ad_generate_random_string]
@@ -135,7 +129,7 @@ if {[form is_valid add_user]} {
 
         if {!${dotlrn_interactive_p}} {
             # make the user a dotLRN user
-            dotlrn::user_add -id $id -type $type -can_browse\=$can_browse_p -user_id $target_user_id
+            dotlrn::user_add -type $type -can_browse\=$can_browse_p -user_id $target_user_id
         }
     }
 
@@ -155,4 +149,3 @@ if {[form is_valid add_user]} {
 }
 
 ad_return_template
-

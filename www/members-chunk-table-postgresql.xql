@@ -31,12 +31,7 @@
                     WHEN role = 'member'
                     THEN 7
                 END
-            ) asc,
-            last_name
-            -- note, last_name should be sorted by the variable order, but b/c this
-            -- query gets called by ad_table, ad_table would have to know to uplevel
-            -- order.. not going to happen.  So no reversals on last name for now,
-            -- sorry.
+            ) asc, $order_by
         </querytext>
     </fullquery>
 

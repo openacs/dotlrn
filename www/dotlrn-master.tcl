@@ -1,4 +1,3 @@
-#
 #  Copyright (C) 2001, 2002 MIT
 #
 #  This file is part of dotLRN.
@@ -14,7 +13,7 @@
 #  details.
 #
 #
-# /www/dotlrn-master.tcl
+# /www/dotlrn-default-master.tcl
 #
 # This is the "default-master" template for dotlrn sites. 
 #
@@ -43,137 +42,201 @@
 #
 # $Id$
 
-ad_page_contract {
 
-    Q: What is this file?
-
-    A: This is the master template for dotlrn. It sets up the navbar and
-    dynamically generates a CSS file for the dotlrn banner color, font, header 
-    image, and the portal themes.
-
-    Q: How do I use this file?
-
-    A: This template is meant to replace your OpenACS default-master template.    
-    
-    To do this change the "Main Site"'s "DefaultMaster" parameter 
-    from "/www/default-master" to "/packages/dotlrn/www/dotlrn-master"
-    at http://yoursite.com/admin/site-map
-
-    Q: Do I have to replace my site's default-master template with this 
-    one for dotlrn to work?
-
-    A: Yes
-
-    Q: How do I customize the banner, images, CSS, etc?
-
-    A: You can change the default banner and generated CSS by editing this template
-    and the associated ADP.
-
-    WARNING: Some portal themes depend on the CSS generated below. Be careful when
-    you edit the CSS below and check that the portal theme has not broken.
-
-    @author arjun (arjun@openforce.net)
-    @version $Id$
-
-}
-
-#
-# Set up some basic vars
-# 
 set user_id [ad_get_user_id] 
+set community_id [dotlrn_community::get_community_id]
 set dotlrn_url [dotlrn::get_url]
-set dotlrn_graphics_url "/graphics"
 
-#
-# Get passed in properties
-#
+#Scope Related graphics/css parameters
 
-# title - if passed in appends it to the default title
-set default_title "dotLRN"
+# Set everything for user level scope as default then modify it later as we refine the scope.
+set scope_name "user"
+set scope_main_color "#003366"
+set scope_header_color "#6DB2C9"
+set scope_highlight_text "white"
+set scope_z_dark "#C9D7DC"
+set scope_z_light "#EAF0F2"
+set scope_light_border "#DDEBF5"
+set help_url "[dotlrn::get_url]/control-panel"
+set header_font "Arial, Helvetica, sans-serif"
+set header_font_size "medium"
+set header_font_color "black"
+set header_logo_item_id ""
+set header_img_url "/graphics/logo" 
+set header_img_alt_text "Header Logo"
 
-if {![info exists title]} {
-    set title $default_title
+set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"
+set td_align "align=\"center\" valign=\"top\""
+
+
+if {[dotlrn::user_p -user_id $user_id]} {
+    set portal_id [dotlrn::get_portal_id -user_id $user_id]
+}
+
+if {![empty_string_p $community_id]} {
+    set have_comm_id_p 1
 } else {
-    set title "$default_title : $title"
+    set have_comm_id_p 0
 }
 
-# no_navbar_p - a property to turn off the navbar, not currently used
-if {![info exists no_navbar_p]} {
-    set no_navbar_p 0
+if {[exists_and_not_null portal_id]} {
+    set have_portal_id_p 1
+} else {
+    set have_portal_id_p 0 
 }
 
-# link_control_panel - a special property used by "control-panel" pages
+# navbar vars
+set show_navbar_p 1
+if {[exists_and_not_null no_navbar_p] && $no_navbar_p} {
+    set show_navbar_p 0
+} 
+
+if {![info exists link_all]} {
+    set link_all 0
+}
+
+if {![info exists return_url]} {
+    set link [ad_conn -get extra_url]
+} else {
+    set link $return_url
+}
+
+
 if {![info exists link_control_panel]} {
     set link_control_panel 1
 }
 
-#                    
-# navbar generation
-#
-if {!$no_navbar_p} {
+if {![info exists control_panel_text]} {
+    set control_panel_text "Control Panel"
+}
+
+if {$have_comm_id_p} {
+    # get this comm's info
+    set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
+    set text [dotlrn_community::get_community_header_name $community_id] 
+    set link [dotlrn_community::get_community_url $community_id]
+    set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
+
+    if {[empty_string_p $portal_id] && !$admin_p } {
+        # not a member yet
+        set portal_id [dotlrn_community::get_non_member_portal_id -community_id $community_id]
+    }
+
+    if { $have_portal_id_p && $show_navbar_p } {
+	set make_navbar_p 1
+
+    } else {
+	set make_navbar_p 0
+        set portal_id ""
+    }
+} elseif {[parameter::get -parameter community_type_level_p] == 1} {
+    set extra_td_html ""
+    set link_all 1
+    set link [dotlrn::get_url]
+    # in a community type
+    set text \
+            [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
+    
+    if {$have_portal_id_p && $show_navbar_p} {
+	set make_navbar_p 1
+    } else {
+	set make_navbar_p 0
+        set portal_id ""
+    }
+} else {
+    # we could be anywhere (maybe under /dotlrn, maybe not)
+    set link "[dotlrn::get_url]/"
+    set community_id ""
+    set text ""
+    set make_navbar_p 1
+    if {$have_portal_id_p && $show_navbar_p} {
+    } else {
+	set make_navbar_p 0
+	set portal_id ""
+    }
+}
+
+if { $make_navbar_p } {
+    if {$link_control_panel} {
+	set link_control_panel 1
+    } else {
+	set link_control_panel 0
+    }
+    set extra_spaces "<img src=$dotlrn_url/graphics/spacer.gif border=0 width=15>"    
     set navbar [dotlrn::portal_navbar \
         -user_id $user_id \
         -link_control_panel $link_control_panel \
-        -control_panel_text [_ "dotlrn.control_panel"]
+        -control_panel_text [_ "dotlrn.control_panel"] \
+	-pre_html "$extra_spaces" \
+	-post_html $extra_spaces \
+        -link_all $link_all
     ]
 } else {
     set navbar "<br>"
 }
 
-# the ColorHack and FontHack and LogoHack!
-set color_hack "#cc0000"
-set color_hack_name "red"
-set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 204 } { g 0 } { b 0 }}]"
+# Set up some basic stuff
+set user_id [ad_get_user_id]
+set full_name "[dotlrn::get_user_name $user_id]"
 
-set header_font ""
-set header_font_size "medium"
-set header_font_color "black"
-set header_logo_item_id ""
-set header_img_url "$dotlrn_graphics_url/dotlrn.gif" 
-set header_img_alt_text [_ "dotlrn.header_logo"]
+if {![exists_and_not_null title]} {
+    set title "SloanSpace"
+}
 
-
-# gets the package_id for the passed in dotlrn instace,
-# if the community_id is invalid, returns the pacakge_id of the 
-# main dotlrn instance ???
-set community_id [dotlrn_community::get_community_id]
-set package_id [dotlrn_community::get_package_id $community_id]
-
-if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id $package_id]]} {
+if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
     set parent_comm_p 0
 } else {
     set parent_comm_p 1
 }
 
-# in a community or just under one in a mounted package like /calendar 
-if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 || $parent_comm_p } {
-    set community_id [dotlrn_community::get_community_id]
-    
-    # color hack
+set community_id [dotlrn_community::get_community_id]
+
+if {![empty_string_p $community_id]} {
+    # in a community or just under one in a mounted package like /calendar 
+    set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
+
     if {[dotlrn_community::subcommunity_p -community_id $community_id]} {
-        set color_hack "#663366"
-        set color_hack_name "purple"
-        set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 153 } { g 102 } { b 153 }}]"
-    } else {
-        set comm_type \
-                [dotlrn_community::get_community_type_from_community_id $community_id]
-        if {$comm_type == "dotlrn_club"} {
-            set color_hack "#006666"
-            set color_hack_name "green"
-            set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 0 } { g 102 } { b 102 }}]"
-        } else {
-            set color_hack "#6699cc"
-            set color_hack_name "blue"
-            set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 102 } { g 153 } { b 204 }}]"
-        }
+	#The colors for a subgroup are set by the parent group with a few overwritten.
+	set comm_type [dotlrn_community::get_community_type_from_community_id [dotlrn_community::get_parent_id -community_id $community_id]]
     }
 
+    if {$comm_type == "dotlrn_club"} {
+	    #community colors
+	    set scope_name "comm"
+	    set scope_main_color "#CC6633"
+	    set scope_header_color "#F48F5C"
+	    set scope_z_dark "#FFDDB0"
+	    set scope_z_light "#FFF2E2"
+	    set scope_light_border "#E7B59C"
+	if {[dotlrn_community::subcommunity_p -community_id $community_id]} {
+	    set scope_z_dark "#FFDDB0"
+	    set scope_z_light "#FFF2E2"
+	}
+    } else {
+	set scope_name "course"
+	set scope_main_color "#6C9A83"
+	set scope_header_color $scope_main_color
+	set scope_z_dark "#CDDED5"
+	set scope_z_light "#E6EEEA"
+	set scope_light_border "#D0DFD9"
+	if {[dotlrn_community::subcommunity_p -community_id $community_id]} {
+	    set scope_z_dark "#D0DFD9"
+	    set scope_z_light "#ECF3F0"
+	}
+    }
+  
+    set header_img_url "$header_img_url-$scope_name.gif"
+
     # font hack
-    set header_font [dotlrn_community::get_attribute \
+   set community_header_font [dotlrn_community::get_attribute \
         -community_id $community_id \
         -attribute_name header_font
     ]
-    append header_font ", "
+
+    if {![empty_string_p $community_header_font]} {
+	set header_font "$community_header_font,$header_font"
+    }
+
 
     set header_font_size [dotlrn_community::get_attribute \
         -community_id $community_id \
@@ -193,9 +256,11 @@ if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 |
 
     if {![empty_string_p $header_logo_item_id]} {
 
-        set header_img_url "community-image?revision_id=$header_logo_item_id" 
-    } 
-
+	# Need filename
+        set header_img_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$header_logo_item_id" 
+    }
+	
+   
     set header_logo_alt_text [dotlrn_community::get_attribute \
         -community_id $community_id \
         -attribute_name header_logo_alt_text
@@ -208,13 +273,14 @@ if {[parameter::get -package_id $package_id -parameter community_level_p] == 1 |
     # The header text is the name of the community
     set text [dotlrn_community::get_community_header_name $community_id] 
 
-} elseif {[parameter::get -package_id $package_id -parameter community_type_level_p] == 1} {
+} elseif {[parameter::get -parameter community_type_level_p] == 1} {
     # in a community type
     set text \
             [dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
 } else {
     # under /dotlrn
-    set text "[dotlrn::get_user_name $user_id]"
+    set header_img_url "$header_img_url-$scope_name.gif" 
+    set text $full_name    
 }
 
 if { ![info exists header_stuff] } {
@@ -225,87 +291,258 @@ if { ![info exists header_stuff] } {
 append header_stuff "
 <meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">
 
+
 <STYLE TYPE=\"text/css\">
-
 BODY {
-    font-family: Verdana, Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    background: white;
-    color: black;
+    FONT-WEIGHT: normal; 
+    FONT-SIZE: small; 
+    BACKGROUND: white; 
+    COLOR: black; 
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
 }
 
-img.header-img {
-    /* NN4 hack */
-    color: white;
-    background: white;
-    /* end NN4 hack */
+H2 {
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+   FONT-SIZE: medium;
+   FONT-WEIGHT: bold;
 }
 
+H3 {
+   FONT-FAMILY: Arial, Helvetica, sans-serif;
+   FONT-SIZE: small;
+   COLOR: $scope_main_color; 
+   FONT-WEIGHT: bold;
+   MARGIN-BOTTOM: 0px;
+}
+
+
+
+H2.portal-page-name {
+    FONT-WEIGHT: bold; FONT-SIZE: medium; COLOR: black; FONT-FAMILY: Arial, Helvetica, sans-serif; margin-top: 5px; margin-left: 5px;
+}
+
+TD.dark-line {
+    font-size: 1px;
+    background-color: $scope_main_color;
+}
+
+TD.light-line {
+    font-size: 1px;
+    background-color: $scope_light_border;
+}
+
+A {
+    COLOR: #003399;
+	
+}
+A:visited {
+    COLOR: #666666;
+}
+
+UL {
+    MARGIN-TOP: 0px;
+}
+UL UL LI {
+    LIST-STYLE-IMAGE: url(/dotlrn/graphics/dash.gif);
+}
+SMALL {
+    FONT-SIZE: xsmall;
+}
+IMG.header-img {
+    BACKGROUND: white; 
+    COLOR: white;
+}
 .header-logo {
-    color: white;
-    background: white;
-    width: 140px;
+    BACKGROUND: white; 
+    WIDTH: 100px; 
+    COLOR: white;
+    PADDING-RIGHT: 35px;
+    PADDING-BOTTOM: 10px;
 }
-
-.header-buttons {
-    vertical-align: middle;
-    text-align: right;
-}
-
 .header-text {
-    font-family: $header_font Verdana, Arial, Helvetica, sans-serif;;
-    font-size: $header_font_size;
-    color: $header_font_color;
-    background: white;
-    white-space: nowrap;
-    padding-left: 20px;
-}
-
-table.element {
-}
-
-td.element-header-text {
+    FONT-SIZE: $header_font_size; 
+    BACKGROUND: white; 
+    WIDTH: 100px; 
+    COLOR: $header_font_color; 
+    FONT-FAMILY: $header_font;
+    WHITE-SPACE: nowrap;
     font-weight: bold;
-    color: #ffffcc;
-    background: $color_hack;     
-    padding: 2px;
 }
 
-td.element-header-buttons {    
-    background: $color_hack;
-    color: $color_hack;
-    white-space: nowrap;
+.element-header-text {
+    FONT-SIZE: small; 
+    font-weight:bold; 
+    BACKGROUND: white;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    font-WEIGHT: bold; 
+    COLOR: $scope_main_color; 
+    text-transform: uppercase;
 }
 
-td.element-header-plain {
-    color: black;
-    background: \#ddddff;
+TD.element-text {
+    FONT-SIZE: small; 
+    BACKGROUND: white; 
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+TH.element-text {
+    BACKGROUND: white; 
+    FONT-SIZE: small; 
+    FONT-FAMILY: Arial, Helvetica, sans-serif; 
+}
+TD.element-header-buttons {
+    BACKGROUND: white; 
+    COLOR: $scope_main_color; 
+    WHITE-SPACE: nowrap;
+}
+IMG.element-header-button {
+    BACKGROUND: $scope_main_color; 
+    COLOR: $scope_main_color;
 }
 
-img.element-header-button {
-    color: $color_hack;
-    background: $color_hack;
+TR.table-header {
+    BACKGROUND: $scope_header_color;
+    FONT-SIZE: small;
+    FONT-FAMILY: Arial, Helvetica, sans-serif; 
 }
 
-.element-content {    
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+STRONG.table-header {
+    BACKGROUND: $scope_header_color; 
+    COLOR: $scope_highlight_text; 
+    FONT-FAMILY: Arial, Helvetica, sans-serif; 
+    FONT-SIZE: small;
 }
 
-.navbar {
-    font-size: small;
+TD.selected {
+    BACKGROUND: $scope_main_color; 
+    COLOR: $scope_highlight_text; 
+    FONT-FAMILY: Arial, Helvetica, sans-serif; 
+    font-weight: bold;
+    BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
+}
+
+TABLE.element-content {
+	padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px
+}
+
+TABLE.z_light {
+    BACKGROUND: $scope_z_light;
+}
+
+TABLE.z_dark {
+    BACKGROUND: $scope_z_dark;
+}
+
+TR.even {
+    BACKGROUND: $scope_z_light;
+}
+
+TR.odd {
+    BACKGROUND: $scope_z_dark;
+}
+
+HR.main_color {
+    COLOR: $scope_main_color;
+}
+
+TR.table-title {
+    BACKGROUND: $scope_z_dark;
+}
+
+TD.cal-week {
+    BACKGROUND: $scope_z_light;
+    VALIGN: top;
+}
+
+TD.cal-week-event {
+    BACKGROUND: $scope_z_dark;
+}
+
+TD.cal-month-day {
+    BACKGROUND: $scope_z_dark;
+   BORDER: 1px c0c0c0 solid; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px ;
+}
+
+TD.cal-month-today {
+    BACKGROUND: $scope_z_light;
+    BORDER-RIGHT: grey 1px solid; BORDER-TOP: grey 1px solid; BORDER-LEFT: grey 1px solid; BORDER-BOTTOM: grey 1px solid;
+}
+
+.element {
+    BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
+}
+
+.no-border {
+    BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none;
 }
 
 .footer {
-    font-size: x-small;
+    FONT-SIZE: x-small;
+}
+.navbar A {
+    COLOR: $scope_main_color; 
+    TEXT-DECORATION: none; 
+    text-weight: bold;
 }
 
-.navbar A {
-    background: #eeeeee;
+.navbar A:visited {
+    COLOR: $scope_main_color; 
+    TEXT-DECORATION: none; 
+    text-weight: bold;
 }
+
+TD.navbar {
+    COLOR: $scope_main_color; 
+    TEXT-DECORATION: none; 
+    font-weight: bold;
+    padding-top: 7px; padding-bottom:7px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif; 
+    text-align: center; 
+    FONT-SIZE: x-small;
+}
+
+TD.navbar-selected {
+    background-color: $scope_main_color; 
+    COLOR: $scope_highlight_text; 
+    FONT-FAMILY: Arial, Helvetica, sans-serif; 
+    FONT-SIZE: x-small; 
+    text-align: center; 
+    font-weight: bold;
+    TEXT-DECORATION: none; 
+    padding-top: 7px; padding-bottom:7px;
+}
+
+TABLE.table-display {
+    BORDER-RIGHT: $scope_main_color 1px solid; BORDER-TOP: $scope_main_color 1px solid; BORDER-LEFT: $scope_main_color 1px solid; BORDER-BOTTOM: $scope_main_color 1px solid;
+}
+
+TABLE.portlet-config {
+    BACKGROUND: white;
+    CELLPADDING:5px;
+    CELLSPACING: 5px;
+}
+
+TABLE.portal-page-config {
+    BACKGROUND: $scope_z_dark;
+    WIDTH: 700px;
+    CELLPADDING: 5;
+}
+
+
+TD.bottom-border {
+    BORDER-Bottom: $scope_main_color 1px solid;
+}
+
+TR.bottom-border {
+    BORDER-Bottom: $scope_main_color 1px solid;
+}
+
+TD.center {
+    ALIGN: center;
+}
+
 
 </STYLE>
+
 "
 
 # Developer-support support
@@ -321,18 +558,6 @@ if {$ds_enabled_p} {
     set ds_link {}
 }
 
-set change_locale_url "/acs-lang/?package_id=[ad_conn package_id]"
+set color_1pixel "/shared/1pixel.tcl?[export_vars { { r 204 } { g 0 } { b 0 }}]"
 
-multirow create body_attributes key value
-
-if { [exists_and_not_null focus] } {
-    # Handle elements wohse name contains a dot
-    regexp {^([^.]*)\.(.*)$} $focus match form_name element_name
-    
-    multirow append \
-            body_attributes onload "javascript:document.forms\['${form_name}'\].elements\['${element_name}'\].focus()"
-}
-
-ad_return_template
-
-
+set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_id]" } }]"

@@ -23,7 +23,7 @@ ad_page_contract {
     @version $Id$
 
 } -query {
-    {referer "community-edit"}
+    {referer "one-community-admin"}
 }
 
 set user_id [ad_conn user_id]
@@ -128,9 +128,46 @@ set header_alt_text [dotlrn_community::get_attribute \
     -community_id $community_id \
     -attribute_name header_logo_alt_text
 ]
-  
+
+set revision_id [dotlrn_community::get_attribute \
+      -community_id $community_id \
+      -attribute_name header_logo_item_id
+  ]
+
+# Default logos are served from know locations in the file system
+# based on community type.
+
+# Customized logos are stored in the public file-storage folder
+# for the community.
+ 
+if {[empty_string_p $revision_id]} {
+
+    set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
+
+    set temp_community_id $community_id
+    while {[dotlrn_community::subcommunity_p -community_id $temp_community_id]} {
+	# For a subcommunity, we use the logo of the
+	# the first ancestor that is not a sub_community
+
+	set temp_community_id [dotlrn_community::get_parent_id -community_id $temp_community_id]
+	set comm_type [dotlrn_community::get_community_type_from_community_id $temp_community_id]
+ 
+    }
+
+    if {$comm_type == "dotlrn_club"} {
+	#community colors
+	set scope_name "comm"
+    } else {
+	set scope_name "course"
+    }
+    
+    set header_url "[dotlrn::get_url]/graphics/logo-$scope_name.gif"
+
+} else {
+    set header_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$revision_id"
+}
+ 
 set title [_ dotlrn.Edit_Properties]
 set context_bar [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
 
 ad_return_template
-

@@ -34,7 +34,7 @@
       <td><img src="graphics/folder.gif"></td>
       <td>
         <a href="index?folder_id=@contents.object_id@&n_past_days=@n_past_days@">@contents.name@</a>
-<if @contents.new_p@ and @contents.content_size@ gt 0>(&nbsp;new&nbsp;)</if>
+<if @contents.new_p@ and @contents.content_size@ gt 0>(&nbsp;#dotlrn.new#&nbsp;)</if>
       </td>
       <td>&nbsp;</td>
       <td>
@@ -82,7 +82,7 @@
   </table>
 </if>
 <else>
-  <p><blockquote><i>Folder @folder_name@ is empty</i></blockquote></p>
+  <p><blockquote><i>#dotlrn.lt_Folder_folder_name_is#</i></blockquote></p>
 </else>
 
 

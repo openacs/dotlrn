@@ -20,6 +20,8 @@
 
 <master>
 <property name="title">@title@</property>
+<property name="link_all">1</property>
+
 
 <h2>@title@</h2>
 
@@ -28,5 +30,3 @@
 </if>
 <hr>
 <slave>
-
-

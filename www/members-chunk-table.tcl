@@ -23,7 +23,8 @@ ad_page_contract {
     @version $Id$
 }  -query {
     {parent_user_role:multiple,array,optional}
-    {orderby "role"}
+    {order "last_name"}
+    {order_direction "asc"}
 } -properties {
     users:multirow
     n_parent_users:onevalue
@@ -58,92 +59,58 @@ if {![exists_and_not_null referer]} {
     }
 }
 
-# Get all users for this community, including role
-set community_members [dotlrn_community::list_users $community_id]
 
-set table_def [list]
-
-lappend table_def [list \
-    first_names \
-    [_ dotlrn.First_Names] \
-    {upper(first_names) $order} \
-    {<td>[acs_community_member_link -user_id $user_id -label $first_names</td>]} \
-]
-
-lappend table_def [list \
-    last_name \
-    [_ dotlrn.Last_Name] \
-    {upper(last_name) $order} \
-    {<td>[acs_community_member_link -user_id $user_id -label $last_name</td>]} \
-]
-
-if {$read_private_data_p || [string equal $my_user_id \$user_id]} {
-    lappend table_def [list \
-        email \
-        [_ dotlrn.Email_1] \
-        {upper(email) $order, upper(role)} \
-        {<td><a href="mailto:$email">$email</a></td>} \
-    ]
+if {[string compare $order_direction "asc"]==0} {
+    set order_html "<img src=/graphics/down.gif height=15 width=15>"
+    set opposite_order_direction "desc"
 } else {
-    lappend table_def [list \
-        email \
-        [_ dotlrn.Email_1] \
-        {upper(email) $order, upper(role)} \
-        {<td>&nbsp;</td>} \
-    ]
+    set order_html "<img src=/graphics/up.gif height=15 width=15>"
+    set opposite_order_direction "asc"
 }
 
-lappend table_def [list \
-    role \
-    [_ dotlrn.Role] \
-    {decode(role,'instructor',1,'admin',2,'teaching_assistant',3,'course_assistant',4,'course_admin',5,'student',6,'member',7) asc, last_name $order} \
-    {<td><nobr>[dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]</nobr></td>} \
-]
+# Variables that will be used if the column
+# is not selected.
+set first_names_order_html ""
+set last_name_order_html ""
+set email_order_html ""
 
-if {$site_wide_admin_p} {
-    lappend table_def [list \
-        manage \
-        [_ dotlrn.Actions] \
-        {} \
-        {<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">[_ dotlrn.Drop_Membership]</a> | <a href=\"[dotlrn::get_url]/admin/user?user_id=$user_id\">[_ dotlrn.Manage]</a> </small>\]</td>} \
-    ]
-} elseif {$admin_p} {
-    lappend table_def [list \
-        manage \
-        [_ dotlrn.Actions] \
-        {} \
-        {<td>\[<small> <a href="deregister?user_id=$user_id&referer=$referer">Drop&nbsp;Membership</a> <small>\]} \
-    ]
-} else {
-    lappend table_def [list \
-        manage \
-        [_ dotlrn.Actions] \
-        {} \
-        {
-            [eval {
-                if {$my_user_id == $user_id} {
-                    return "<td>\[<small> <a href=\"deregister?user_id=$user_id&referer=$referer\">[_ dotlrn.Drop_nbsp_Membership]</a> </small>\]</td>"
-                } else {
-                    return "<td>&nbsp;</td>"
-                }
-            }]
-        } \
-    ]
+set first_names_order_direction $order_direction
+set last_name_order_direction $order_direction
+set email_order_direction $order_direction
+
+
+# Special case for the selected column.
+switch $order {
+    "first_names" {
+	set first_names_order_html $order_html
+	set first_names_order_direction $opposite_order_direction
+    }
+    "last_name"  {
+	set last_name_order_html $order_html
+	set last_name_order_direction $opposite_order_direction
+    }
+    "email"  {
+	set email_order_html $order_html
+	set email_order_direction $opposite_order_direction
+    }
 }
 
-set table [ad_table \
-    -Tmissing_text "<blockquote><i>[_ dotlrn.No_members]</i></blockquote>" \
-    -Textra_vars {referer my_user_id community_id rel_type} \
-    -Torderby $orderby \
-    select_current_members \
-    "" \
-    $table_def
-]
+# vars to carry over (from previous script)
+# Do a special clause for role!
 
-set user_list [list]
-foreach user $community_members {
-    lappend user_list [ns_set get $user user_id]
-}
+# The note in the members-chunk-table.xql indicated that
+# it would be very hard to make sorting work with ad_table
+# and sorting by columns functionality was incomplete.  After 
+# struggling with ad_table for a while, I went to the
+# OpenACS IRC and asked some questions.  The response
+# basically was that ad_table needs a refactoring.
+# Therefore, I (teadams@alum.mit.edu) decided to 
+# simplify and use db_multirow and code my own column
+# sorting.  
+
+set order_by "$order $order_direction"
+
+db_multirow current_members select_current_members {}
 
 db_multirow pending_users select_pending_users {
     select dotlrn_users.*,

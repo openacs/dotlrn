@@ -36,6 +36,7 @@ begin
 
     acs_privilege.remove_child('dotlrn_edit_community', 'dotlrn_view_community');
     acs_privilege.remove_child('dotlrn_admin_community', 'dotlrn_edit_community');
+    acs_privilege.remove_child('dotlrn_admin_community', 'dotlrn_spam_community');
 
     delete
     from acs_permissions
@@ -46,7 +47,8 @@ begin
                         'dotlrn_create_community_type',
                         'dotlrn_edit_community',
                         'dotlrn_view_community',
-                        'dotlrn_view_community_type');
+                        'dotlrn_view_community_type',
+                        'dotlrn_spam_community');
 
     acs_privilege.drop_privilege('dotlrn_admin_community');
     acs_privilege.drop_privilege('dotlrn_admin_community_type');
@@ -56,6 +58,7 @@ begin
     acs_privilege.drop_privilege('dotlrn_edit_community');
     acs_privilege.drop_privilege('dotlrn_view_community');
     acs_privilege.drop_privilege('dotlrn_view_community_type');
+    acs_privilege.drop_privilege('dotlrn_spam_community');
 
 end;
 /

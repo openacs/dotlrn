@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2002-01-30
     @version $Id$
 } -query {
-    {type "admin"}
+    {type "pending"}
 } -properties {
     context_bar:onevalue
     control_bar:onevalue
@@ -53,7 +53,7 @@ lappend dotlrn_roles_localized [list pending "[_ dotlrn.Pending] ($n_pending_use
 set n_deactivated_users [db_string select_deactivated_users_count {}]
 lappend dotlrn_roles_localized [list deactivated "[_ dotlrn.Deactivated] ($n_deactivated_users)" {}]
 
-set control_bar [ad_dimensional [list [list type "[_ dotlrn.User_Type]:" admin $dotlrn_roles_localized]]]
+set control_bar [ad_dimensional [list [list type "[_ dotlrn.User_Type]:" $type $dotlrn_roles_localized]]]
 
 if {[string equal $type "deactivated"] == 1} {
     set n_users $n_deactivated_users

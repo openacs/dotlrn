@@ -28,6 +28,13 @@ ad_page_contract {
 }
 
 set community_id [dotlrn_community::get_community_id]
+# See if the user is already in the group
+set member_p [dotlrn_community::member_p $community_id $user_id]
+
+if {$member_p} {
+    dotlrn_community::remove_user $community_id $user_id
+}
+
 
 # Add the relation
 dotlrn_community::add_user -rel_type $rel_type $community_id $user_id

@@ -22,12 +22,16 @@
 <property name="title">#dotlrn.Add_A_Member#</property>
 <property name="context_bar">@context_bar@</property>
 
+<if @users:rowcount@ eq 0>
+     #dotlrn.there_are_no_users_matching#
+  </tr>
+</if>
+<else>
 #dotlrn.lt_The_results_of_your_s#
+</else>
+
 <ul>
 <multiple name="users">
-  <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a></li>
+  <li><a href="member-add-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)</a>  </li>
 </multiple>
 </ul>
-
-
-

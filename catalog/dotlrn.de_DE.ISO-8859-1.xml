@@ -5,7 +5,6 @@
   <msg key="Administer">Administrieren</msg>
   <msg key="Change_Locale">Neues Sprach</msg>
   <msg key="Change_My_Password">Meine Kennwort Ändern</msg>
-  <msg key="Help">Hilfe</msg>
   <msg key="actions">Aktionen</msg>
   <msg key="admin_page_name">Einstellungen</msg>
   <msg key="and">und</msg>
@@ -37,7 +36,6 @@
   <msg key="logout">Ausloggen</msg>
   <msg key="lt_Edit_My_Personal_Info">Meine Persönliche Information Bearbeiten</msg>
   <msg key="members">Mitglieder</msg>
-  <msg key="myspace">Meine Startseite</msg>
   <msg key="new_class">Neuer</msg>
   <msg key="no_description">keine</msg>
   <msg key="non_member_page_name">Nicht Registriert</msg>
