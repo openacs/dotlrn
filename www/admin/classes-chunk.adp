@@ -1,5 +1,5 @@
 <if @can_create@ gt 0>
-[ <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a> ]
+[<small><a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a></small>]
 </if>
 
 <p></p>
@@ -34,5 +34,5 @@
 </if>
 
 <if @can_create@ gt 0 and @classes:rowcount@ gt 10>
-[ <a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a> ]
+[<small><a href="class-new?department_key=@department_key@&referer=@referer@">New <%= [ad_parameter classes_pretty_name] %></a></small>]
 </if>

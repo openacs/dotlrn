@@ -4,7 +4,7 @@
 <ul>
 
 <if @classes:rowcount@ gt 0>
- <li><%= [ad_parameter classes_pretty_plural] %>:
+ <li><%= [ad_parameter class_instances_pretty_plural] %>:
   <ul>
     <multiple name="classes">
       <li>

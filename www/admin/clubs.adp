@@ -2,7 +2,7 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[ <a href="club-new">New <%= [ad_parameter clubs_pretty_name] %></a> ]
+[<small><a href="club-new">New <%= [ad_parameter clubs_pretty_name] %></a></small>]
 
 <p></p>
 
@@ -24,5 +24,5 @@
 </if>
 
 <if @clubs:rowcount@ gt 10>
-[ <a href="club-new">New <%= [ad_parameter clubs_pretty_name] %></a> ]
+[<small><a href="club-new">New <%= [ad_parameter clubs_pretty_name] %></a></small>]
 </if>

@@ -2,7 +2,7 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
-[ <a href="department-new?referer=departments">New <%= [ad_parameter departments_pretty_name] %></a> ]
+[<small><a href="department-new?referer=departments">New <%= [ad_parameter departments_pretty_name] %></a></small>]
 
 <p></p>
 
@@ -22,5 +22,5 @@
 </if>
 
 <if @departments:rowcount@ gt 10>
-[ <a href="department-new?referer=departments">New <%= [ad_parameter departments_pretty_name] %></a> ]
+[<small><a href="department-new?referer=departments">New <%= [ad_parameter departments_pretty_name] %></a></small>]
 </if>
