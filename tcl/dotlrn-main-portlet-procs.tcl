@@ -44,17 +44,17 @@ namespace eval dotlrn_main_portlet {
     }
 
     ad_proc -public add_self_to_page {
-        portal_id
+        {-portal_id:required}
     } {
         @return new element_id
     } {
         # we use "portal::add_element" here since there is no
         # configuration necessary for this portlet (no params)
         return [portal::add_element \
-                -force_region [ad_parameter "dotlrn_main_portlet_region" dotlrn] \
-                -pretty_name [get_pretty_name] \
-                -portal_id $portal_id \
-                -portlet_name [get_my_name]
+            -force_region [ad_parameter "dotlrn_main_portlet_region" dotlrn] \
+            -pretty_name [get_pretty_name] \
+            -portal_id $portal_id \
+            -portlet_name [get_my_name] \
         ]
     }
 
@@ -77,4 +77,5 @@ namespace eval dotlrn_main_portlet {
                 -package_key "dotlrn" \
                 -config_list $cf
     }
+
 }

@@ -94,14 +94,14 @@ namespace eval site_nodes {
 
     ad_proc -public get_parent_id {
         {-node_id ""}
-        {-instance_id ""}
+        {-package_id ""}
     } {
         get the parent_id (a node_id) of this node_id
     } {
         if {![empty_string_p $node_id]} {
             return [db_string select_parent_by_node_id {}]
-        } elseif {![empty_string_p $instance_id]} {
-            return [db_string select_parent_by_instance_id {}]
+        } elseif {![empty_string_p $package_id]} {
+            return [db_string select_parent_by_package_id {}]
         } else {
             ns_log error "site_nodes::get_parent_id Bad params!"
             ad_return_complaint 1  "site_nodes::get_parent_id Bad params! Tell your admin."
@@ -109,23 +109,23 @@ namespace eval site_nodes {
     }
 
     ad_proc -public get_parent_object_id {
-        {-instance_id ""}
+        {-package_id ""}
     } {
         get the object_id (not node_id!) of the parent of this instance
     } {
-        return [db_string select_parent_oid_by_instance_id {} -default ""]
+        return [db_string select_parent_oid_by_package_id {} -default ""]
     }
 
     ad_proc -public get_parent_name {
-        {-instance_id ""}
+        {-package_id ""}
     } {
         get the name of the parent of this instance
     } {
-        return [util_memoize "site_nodes::get_parent_name_not_cached -instance_id $instance_id"]
+        return [util_memoize "site_nodes::get_parent_name_not_cached -package_id $package_id"]
     }
 
     ad_proc -public get_parent_name_not_cached {
-        {-instance_id ""}
+        {-package_id ""}
     } {
         memoizing helper
     } {

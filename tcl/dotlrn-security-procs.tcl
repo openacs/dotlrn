@@ -125,7 +125,7 @@ namespace eval dotlrn {
             ]
 
             # add the "dotlrn main" portlet to the user's workspace
-            dotlrn_main_portlet::add_self_to_page $portal_id
+            dotlrn_main_portlet::add_self_to_page -portal_id $portal_id
                 
             dotlrn_community::applets_dispatch -op AddUser -list_args [list $user_id]
 

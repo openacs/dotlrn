@@ -75,8 +75,7 @@ if {[form is_valid add_subcomm]} {
             # we want to make a subgroup of a class instance
             # get the term_id, since the subgroup should not
             # outlive the class
-            set term_id [dotlrn_class::get_term_id \
-                    -class_instance_id $parent_community_id]
+            set term_id [dotlrn_class::get_term_id -class_instance_id $parent_community_id]
         
             ns_set put $extra_vars term_id $term_id
     } 

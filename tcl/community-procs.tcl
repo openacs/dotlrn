@@ -895,9 +895,7 @@ namespace eval dotlrn_community {
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
     } {
-        set parent_pkg_id [site_nodes::get_parent_object_id \
-                -instance_id $package_id
-        ]
+        set parent_pkg_id [site_nodes::get_parent_object_id -package_id $package_id]
 
         return [get_community_id -package_id $parent_pkg_id]
     }
@@ -907,8 +905,7 @@ namespace eval dotlrn_community {
     } {
         Returns the parent community's id or null
     } {
-        return [util_memoize \
-                "dotlrn_community::get_parent_id_not_cached -community_id $community_id"]
+        return [util_memoize "dotlrn_community::get_parent_id_not_cached -community_id $community_id"]
     }
 
     ad_proc -private get_parent_id_not_cached {

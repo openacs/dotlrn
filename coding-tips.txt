@@ -23,12 +23,12 @@ PL/SQL
 
 - Always use fully qualified argument names in procs and funcs:
 
-  e.g. in a func named "new" with args "instance_id" and "content"
+  e.g. in a func named "new" with args "package_id" and "content"
 
         insert into static_portal_content
-        (instance_id, content)
+        (package_id, content)
         values
-        (new.instance_id, new.content);
+        (new.package_id, new.content);
 
 
    
