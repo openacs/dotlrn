@@ -253,11 +253,11 @@ namespace eval dotlrn_community {
                 set parent_node_id [get_community_node_id $parent_community_id]
             }
 
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name $community_key \
-                -parent_id $parent_node_id \
+            set package_id [site_node::instantiate_and_mount \
+                -parent_node_id $parent_node_id \
+                -node_name $community_key \
                 -package_key [one_community_package_key] \
-                -instance_name $pretty_name \
+                -package_name $pretty_name \
                 -context_id $community_id \
             ]
 
