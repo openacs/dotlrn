@@ -363,7 +363,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::open_p.check_community_open_p">
+    <fullquery name="dotlrn_community::open_p.check_community_open">
         <querytext>
             select 1
             from dotlrn_active_comms_not_closed

@@ -31,6 +31,16 @@ set parent_community_id [dotlrn_community::get_community_id]
 set title "New [parameter::get -parameter subcommunity_pretty_name]"
 set portal_id [dotlrn_community::get_portal_id -community_id $parent_community_id]
 
+# set the join policy widget to default to
+# the same as it's parent
+if {[dotlrn_community::open_p -community_id $parent_community_id]} {
+    set join_policy_list {{Open open} {Closed closed} {{Needs Approval} {needs approval}}}
+} elseif {[dotlrn_community::needs_approval_p -community_id $parent_community_id]} {
+    set join_policy_list {{{Needs Approval} {needs approval}} {Open open} {Closed closed}}
+} else {
+    set join_policy_list {{Closed closed} {{Needs Approval} {needs approval}} {Open open}}
+}
+
 form create add_subcomm
 
 element create add_subcomm pretty_name \
@@ -50,7 +60,7 @@ element create add_subcomm join_policy \
     -label "Join Policy" \
     -datatype text \
     -widget select \
-    -options {{Closed closed} {{Needs Approval} {needs approval}} {Open open}}
+    -options $join_policy_list
 
 element create add_subcomm referer \
     -label Referer \

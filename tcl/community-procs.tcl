@@ -1275,7 +1275,7 @@ namespace eval dotlrn_community {
     } {
         returns 1 if the community's join policy is not closed
     } {
-        return [db_0or1row check_community_not_closed {}]
+        return [db_string check_community_not_closed {} -default 0]
     }
 
     ad_proc -public open_p {
@@ -1283,7 +1283,7 @@ namespace eval dotlrn_community {
     } {
         returns 1 if the community's join policy is 'open'
     } {
-        return [db_0or1row check_community_open {}]
+        return [db_string check_community_open {} -default 0]
     }
 
     ad_proc -public needs_approval_p {
@@ -1291,7 +1291,7 @@ namespace eval dotlrn_community {
     } {
         returns 1 if the community's join policy is 'needs approval' aka "request approval"
     } {
-        return [db_0or1row check_community_needs_approval {}]
+        return [db_string check_community_needs_approval {} -default 0]
     }
 
     ad_proc -public get_portal_id {
