@@ -90,7 +90,7 @@
         | 
         <a href="http://openacs.org">OpenACS</a>
         |
-        <a href="/acs-lang/">#dotlrn.Change_Locale#</a>
+        <a href="/acs-lang/?return_p=t">#dotlrn.Change_Locale#</a>
       </td>
       <td align=right>
         @ds_link@
