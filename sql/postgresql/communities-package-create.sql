@@ -160,20 +160,7 @@ END;
 
 -- dotlrn_community
 
-select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,portal_id,non_member_portal_id,archived_p,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
-
-select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
-
-select define_function_args('dotlrn_community__delete','community_id');
-
-select define_function_args('dotlrn_community__name','community_id');
-
-select define_function_args('dotlrn_community__member_p','community_id,party_id');
-
-select define_function_args('dotlrn_community__admin_p','community_id,party_id');
-
-select define_function_args('dotlrn_community__url','community_id');
-
+select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,archived_p;f,portal_id,non_member_portal_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
 
 create function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamp,integer,varchar,integer)
 returns integer as '
@@ -194,7 +181,9 @@ DECLARE
         p_creation_ip                   alias for $14;
         p_context_id                    alias for $15;
         c_id                            integer;
+
 BEGIN
+
         c_id := acs_group__new (
             p_community_id,
             p_community_type,
@@ -236,6 +225,8 @@ END;
 ' language 'plpgsql';
 
 
+select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
+
 create function dotlrn_community__set_active_dates(integer,date,date)
 returns integer as '
 DECLARE
@@ -252,6 +243,8 @@ BEGIN
 END;
 ' language 'plpgsql';
 
+select define_function_args('dotlrn_community__delete','community_id');
+
 create function dotlrn_community__delete(integer)
 returns integer as '
 DECLARE
@@ -267,6 +260,8 @@ END;
 ' language 'plpgsql';
 
 
+select define_function_args('dotlrn_community__name','community_id');
+
 create function dotlrn_community__name(integer)
 returns varchar as '
 DECLARE
@@ -276,6 +271,8 @@ BEGIN
 END;
 ' language 'plpgsql';
 
+
+select define_function_args('dotlrn_community__member_p','community_id,party_id');
 
 create function dotlrn_community__member_p(integer,integer)
 returns boolean as '
@@ -302,6 +299,8 @@ END;
 ' language 'plpgsql';
 
 
+select define_function_args('dotlrn_community__admin_p','community_id,party_id');
+
 create function dotlrn_community__admin_p(integer,integer)
 returns boolean as '
 DECLARE
@@ -323,6 +322,8 @@ BEGIN
 END;
 ' language 'plpgsql';
 
+
+select define_function_args('dotlrn_community__url','community_id');
 
 create function dotlrn_community__url(integer)
 returns varchar as '
