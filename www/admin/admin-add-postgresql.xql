@@ -2,6 +2,8 @@
 
 <queryset>
 
+    <rdbms><type>postgresql</type><version>7.2</version></rdbms>
+
     <fullquery name="select_users">
         <querytext>
             select user_id,

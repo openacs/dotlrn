@@ -2,6 +2,8 @@
 
 <queryset>
 
+    <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
+
     <fullquery name="select_users">
         <querytext>
             select user_id,
