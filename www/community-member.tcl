@@ -128,7 +128,7 @@ db_multirow user_contributions user_contributions {}
 set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
 set scope_fs_url "/packages/file-storage/www/folder-chunk"
 set n_past_days ""
-set url [site_node_object_map::get_url -object_id $folder_id]
+set url "[site_node_object_map::get_url -object_id $folder_id]index?folder_id=$folder_id&n_past_days=99999"
 
 set context_bar [ad_context_bar_ws_or_index "Community member"]
 set system_name [ad_system_name]
