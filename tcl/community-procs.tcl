@@ -879,6 +879,14 @@ namespace eval dotlrn_community {
         return [db_string select_community_description {} -default ""]
     }
 
+    ad_proc -public get_community_key {
+        {-community_id:required}
+    } {
+        Get the key for a community
+    } {
+        return [db_string select_community_key {} -default ""]
+    }
+
     ad_proc -public not_closed_p {
         {-community_id:required}
     } {
