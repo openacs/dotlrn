@@ -13,13 +13,9 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-db_1row select_user_info {
-    select email,
-           first_names,
-           last_name
-    from cc_users
-    where user_id = :user_id
-}
+db_1row select_user_info {}
+
+set pretty_last_visit [lc_time_fmt $last_visit "%Q %T"]
 
 form create confirm_delete
 
