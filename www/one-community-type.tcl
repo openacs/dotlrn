@@ -51,6 +51,8 @@ set ancestor_type [dotlrn_community::get_toplevel_community_type -community_type
 # Load some community type info
 db_1row select_community_type_info {}
 
+set description [lang::util::localize $description]
+
 if {[string equal ${community_type} dotlrn_class_instance] != 0} {
     set community_type_title [parameter::get -localize -parameter classes_pretty_plural]
     set communities_title [parameter::get -localize -parameter class_instances_pretty_name]
@@ -62,7 +64,7 @@ if {[string equal ${community_type} dotlrn_class_instance] != 0} {
 } elseif {[string equal ${ancestor_type} dotlrn_class_instance] != 0} {
     set community_type_title [parameter::get -localize -parameter classes_pretty_plural]
     set communities_title [parameter::get -localize -parameter class_instances_pretty_name]
-    set title $pretty_name
+    set title [lang::util::localize $pretty_name]
 } else {
     set community_type_title "[_ dotlrn.Community_Types]"
     set communities_title "[_ dotlrn.Communities]"
