@@ -42,7 +42,7 @@
     #dotlrn.first_line_of_file_must_be#
     
     <div style="text-indent: 3em; font-family: monospace">
-      username,password,first_names,last_name,email,id,type,access_level,guest,notify
+      first_names,last_name,email,username,password,type,access_level,guest,notify
     </div>
    
   </p>
@@ -54,12 +54,11 @@
   <strong>#dotlrn.Fields#</strong>
   
   <ul>
-    <li><tt>username</tt> - <em>#dotlrn.required#</em>
-    <li><tt>password</tt> - <em><em>#dotlrn.optional_defaults_to# random value</em>
     <li><tt>first_names</tt> - <em>#dotlrn.required#</em>
     <li><tt>last_name</tt> - <em>#dotlrn.required#</em>
     <li><tt>email</tt> - <em>#dotlrn.required#</em>
-    <li><tt>id</tt> - <em>#dotlrn.optional_defaults_to# email</em> #dotlrn.lt_a_secondary#
+    <li><tt>username</tt> - <em>#dotlrn.optional_defaults_to# email</em>
+    <li><tt>password</tt> - <em><em>#dotlrn.optional_defaults_to# random value</em>
     <li><tt>type</tt> - <em>#dotlrn.required#</em> #dotlrn.must_have_values# 
       <ul>
         <li>professor
@@ -69,9 +68,10 @@
       </ul>
     <li><tt>access_level</tt> - <em>#dotlrn.optional_defaults_to# full</em> - 
         <em>#dotlrn.must_have_values#</em> <tt>full</tt>, <tt>limited</tt>
-    <li><tt>guest</tt> - <em>#dotlrn.optional_defaults_to# guest</em> -
+    <li><tt>guest</tt> - <em>#dotlrn.optional_defaults_to# f</em> -
         <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt>
     <li><tt>notify</tt> - <em>#dotlrn.optional_defaults_to# f</em>    
+        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt>
   </ul>
   
 </p>
@@ -81,11 +81,11 @@
   <strong>#dotlrn.Example_File#</strong>
   
   <pre>
-    username,password,first_names,last_name,email,id,type,access_level,guest,notify
-    joestue,4jfe3,Joe,Student,joe@_somewhere_.net,123-456-7890,student,full,f,f
-    al1stein,emc2,Albert,Einstein,al@_school_.edu,al,professor,full,f,t
-    syshack,,Systems,Hacker,syshacker@_company_.com,,admin,,,,
-    tester,test,Intersted,Onlooker,onlooker@_somewhere_.net,,external,,limited,t,t
+    first_names,last_name,email,username,password,type,access_level,guest,notify
+    Joe,Student,joe@_somewhere_.net,joestue,4jfe3,student,full,f,f
+    Albert,Einstein,al@_school_.edu,al,emc2,professor,full,f,t
+    Systems,Hacker,syshacker@_company_.com,syshack,,admin
+    Intersted,Onlooker,onlooker@_somewhere_.net,,,external,limited,t,t
   </pre>
   
 </p>
