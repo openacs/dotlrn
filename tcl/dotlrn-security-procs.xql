@@ -4,6 +4,14 @@
 
   <fullquery name="dotlrn::get_user_types.select_user_types">
     <querytext>
+      select type
+      from dotlrn_user_types
+      order by pretty_name
+    </querytext>
+  </fullquery>
+
+  <fullquery name="dotlrn::get_user_types_as_options.select_user_types_as_options">
+    <querytext>
       select pretty_name,
              type
       from dotlrn_user_types

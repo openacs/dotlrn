@@ -310,6 +310,24 @@ namespace eval dotlrn_community {
         return {}
     }
 
+    ad_proc -public get_all_roles {} {
+        return the list of roles used in dotLRN
+    } {
+        return {dotlrn_admin_rel dotlrn_member_rel dotlrn_instructor_rel dotlrn_ta_rel dotlrn_student_rel}
+    }
+
+    ad_proc -public get_all_roles_as_options {} {
+        return the list of roles used in dotLRN
+    } {
+        set roles [list]
+
+        foreach role [get_all_roles] {
+            lappend roles [list [get_role_pretty_name_from_rel_type -rel_type $role] $role]
+        }
+
+        return $roles
+    }
+
     ad_proc -public get_pretty_rel_type {
         rel_type
     } {
@@ -447,6 +465,10 @@ namespace eval dotlrn_community {
     } {
         Assigns a user to a particular role for that class. Roles in DOTLRN can be student, prof, ta, admin
     } {
+        if {[member_p $community_id $user_id]} {
+            return
+        }
+
         db_transaction {
             # Set up a portal page for that user and that community
             set portal_id [portal::create \

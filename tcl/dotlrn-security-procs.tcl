@@ -28,9 +28,15 @@ namespace eval dotlrn {
     }
 
     ad_proc -public get_user_types {} {
-        return the list of possible user types, first type then group_id of the type
+        return the list of possible user types
     } {
         return [db_list_of_lists select_user_types {}]
+    }
+
+    ad_proc -public get_user_types_as_options {} {
+        return the list of possible user types
+    } {
+        return [db_list_of_lists select_user_types_as_options {}]
     }
 
     ad_proc -public user_p {
