@@ -11,4 +11,5 @@ ad_page_contract {
 # Just search
 db_multirow users select_users {}
 
+set context_bar {{users Users} {New}}
 ad_return_template

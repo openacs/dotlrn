@@ -1,5 +1,6 @@
 <master src="master">
 <property name="title">dotLRN New Class</property>
+<property name="context_bar">@context_bar@</property>
 
 <form action="class-new-2" method=POST>
 <table border=0>

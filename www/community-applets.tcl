@@ -36,6 +36,6 @@ foreach applet_key $list_of_applets {
     }
 }
 
-set context_bar {Applets}
+set context_bar {{one-community-admin Admin} Applets}
 
 ad_return_template

@@ -69,6 +69,8 @@ namespace eval dotlrn {
 	set parent_node_id [db_string select_node_id {}]
 
 	# Mount
+	# FIXME: here we want to figure out how to set the context_id correctly!
+	# THIS IS A SERIOUS ISSUE
 	set new_package_id [site_node_mount_application -return package_id $parent_node_id $mount_point $package_key $package_key]
 
 	# Return the newly created package_id

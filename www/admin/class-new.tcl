@@ -7,6 +7,6 @@ ad_page_contract {
 } {
 }
 
-
+set context_bar {{classes Classes} New}
 ad_return_template
 

@@ -31,7 +31,7 @@ BEGIN
 	acs_privilege.create_privilege('dotlrn_view_community_type');
 
 	-- the ability to admin a community type
-	acs.privilege.create_privilege('dotlrn_admin_community_type');
+	acs_privilege.create_privilege('dotlrn_admin_community_type');
 	
 	-- the ability to create a community type
 	acs_privilege.create_privilege('dotlrn_create_community_type');
@@ -43,7 +43,7 @@ BEGIN
 	-- inheritance
 	acs_privilege.add_child('create', 'dotlrn_create_community_type');
 	acs_privilege.add_child('create', 'dotlrn_create_community');
-	acs_privilege.add_child('edit', 'dotlrn_edit_community');
+	acs_privilege.add_child('write', 'dotlrn_edit_community');
 	acs_privilege.add_child('read', 'dotlrn_view_community');
 	acs_privilege.add_child('read', 'dotlrn_view_community_type');
 	acs_privilege.add_child('admin', 'dotlrn_admin_community');

@@ -1,5 +1,6 @@
-<master src="../master">
+<master src="./master">
 <property name="title">dotLRN Admin: Add a User</property>
+<property name="context_bar">@context_bar@</property>
 
 The results of your search are:
 <ul>

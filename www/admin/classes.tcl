@@ -9,4 +9,5 @@ ad_page_contract {
 
 db_multirow classes select_classes {}
 
+set context_bar "Classes"
 ad_return_template

@@ -1,5 +1,6 @@
 <master src="./master">
 <property name="title">dotLRN Classes</property>
+<property name="context_bar">@context_bar@</property>
 
 <ul>
 <multiple name="classes">

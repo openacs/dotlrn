@@ -1,5 +1,6 @@
-<master src="../master">
+<master src="./master">
 <property name="title">dotLRN Admin</property>
+<property name="context_bar">@context_bar@</property>
 
 <h3>dotLRN users</h3>
 <ul>

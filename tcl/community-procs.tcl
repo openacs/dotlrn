@@ -162,15 +162,13 @@ namespace eval dotlrn_community {
 	set community_name [get_community_name $community_id]
 
 	db_transaction {
-	    # Go through the allowed rel types
-	    foreach rel_type [get_allowed_rel_types -community_id $community_id] {
-		set rel_type_key [lindex $rel_type 0]
-		set rel_type_name [lindex $rel_type 1]
-		set name "${rel_type_name}s for $community_name"
+	    # Create a rel segment for Admins
+	    set member_segment_id [rel_segments_new $community_id dotlrn_member_rel "Members of $community_name"]
+	    set admin_segment_id [rel_segments_new $community_id dotlrn_admin_rel "Admins of $community_name"]
 
-		# Create the segment
-		rel_segments_new $community_id $rel_type_key $name
-	    }
+	    # Grant permissions
+	    ad_permission_grant $member_segment_id $community_id edit
+	    ad_permission_grant $admin_segment_id $community_id admin
 	}
     }
 
@@ -179,24 +177,17 @@ namespace eval dotlrn_community {
     } {
 	remove the rel segments for a community
     } {
-	set rel_types [get_allowed_rel_types -community_id $community_id]
-	set segment_ids [list]
-	
-	# Collect the segment IDs
-	foreach rel_type $rel_types {
-	    lappend segment_ids [get_rel_segment_id -community_id $community_id -rel_type [lindex $rel_type 0]]
-	}
+	# Take care of the admins
+	set admin_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
+	ad_permission_revoke $admin_segment_id $community_id admin
+	rel_segments_delete $admin_segment_id
 
-	db_transaction {
-	    # Go through the segment IDs
-	    foreach segment_id $segment_ids {
-		# Delete the segment
-		rel_segments_delete $segment_id
-	    }
-	}
+	# Take care of the members
+	set member_segment_id [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
+	ad_permission_revoke $member_segment_id $community_id edit
+	rel_segments_delete $member_segment_id
     }
 	
-
     ad_proc -public list_admin_users {
 	community_id
     } {

@@ -11,3 +11,5 @@ ad_page_contract {
 # Currently, just present a list of dotLRN users
 db_multirow users select_dotlrn_users {}
 
+set context_bar {Users}
+ad_return_template

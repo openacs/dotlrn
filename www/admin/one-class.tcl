@@ -23,4 +23,5 @@ foreach instance $list_of_class_instances {
     template::multirow append class_instances [lindex $instance 0] [lindex $instance 5] [lindex $instance 2] [lindex $instance 3]
 }
 
+set context_bar {{classes Classes} One}
 ad_return_template

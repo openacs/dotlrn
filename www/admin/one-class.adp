@@ -1,5 +1,6 @@
 <master src="./master">
 <property name="title">dotLRN Class Instances for @class_key@</property>
+<property name="context_bar">@context_bar@</property>
 
 <ul>
 <multiple name="class_instances">

@@ -8,4 +8,5 @@ ad_page_contract {
 } {
 }
 
+set context_bar {}
 ad_return_template

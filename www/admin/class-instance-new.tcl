@@ -36,5 +36,12 @@ if {[form is_valid add_class_instance]} {
     return
 }
 
+set class_name [dotlrn_community::get_community_type_name $class_key]
+
+set context_bar [list \
+	{classes Classes} \
+	[list "one-class?class_key=$class_key" "$class_name"] \
+	{New Instance}]
+
 ad_return_template
 

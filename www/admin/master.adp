@@ -19,8 +19,6 @@
 
 
 <h2>@title@</h2>
- <if @context_bar@ not nil>
-  <%= [eval ad_context_bar $context_bar] %>
- </if>
+  <%= [eval dotlrn::admin_navbar $context_bar] %>
 <hr>
 <slave>
