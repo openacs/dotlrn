@@ -29,32 +29,56 @@ set target_user_id [db_nextval acs_object_id_seq]
 form create add_user
 
 element create add_user target_user_id \
-    -label "User ID" -value $target_user_id -datatype integer -widget hidden
+    -label "User ID" \
+    -datatype integer \
+    -widget hidden \
+    -value $target_user_id
 
 element create add_user email \
-    -label "Email" -datatype text -widget text -html {size 50} \
+    -label "Email" \
+    -datatype text \
+    -widget text \
+    -html {size 50} \
     -validate {
         {expr (([util_email_valid_p $value] == 1) && ([util_email_unique_p $value] == 1))}
         {E-mail address must be valid and unique}
     }
 
 element create add_user first_names \
-    -label "First Names" -datatype text -widget text -html {size 50}
+    -label "First Names" \
+    -datatype text \
+    -widget text \
+    -html {size 50}
 
 element create add_user last_name \
-    -label "Last Name" -datatype text -widget text -html {size 50}
+    -label "Last Name" \
+    -datatype text \
+    -widget text \
+    -html {size 50}
 
 element create add_user referer \
-    -label "Referer" -value $referer -datatype text -widget hidden
+    -label "Referer" \
+    -datatype text \
+    -widget hidden \
+    -value $referer
 
 element create add_user rel_type \
-    -label "Rel Type" -value $rel_type -datatype text -widget hidden
+    -label "Rel Type" \
+    -datatype text \
+    -widget hidden \
+    -value $rel_type
 
 element create add_user type \
-    -label "Type" -value $type -datatype text -widget hidden
+    -label "Type" \
+    -datatype text \
+    -widget hidden \
+    -value $type
 
 element create add_user read_private_data_p \
-    -label "Can Read Private Data" -value $read_private_data_p -datatype text -widget hidden
+    -label "Can Read Private Data" \
+    -datatype text \
+    -widget hidden \
+    -value $read_private_data_p
 
 if {[form is_valid add_user]} {
     template::form get_values add_user target_user_id email first_names last_name referer rel_type type read_private_data_p
