@@ -14,7 +14,6 @@
 #  details.
 #
 
-
 ad_library {
 
     Procs to manage DOTLRN Communities
@@ -716,11 +715,7 @@ namespace eval dotlrn_community {
     } {
         returns all communities for a user
     } {
-        set return_list [db_list_of_lists select_communities_by_user {}]
-
-        # ns_log Notice "return list: $return_list"
-
-        return $return_list
+        return [db_list_of_lists select_communities_by_user {}]
     }
 
     ad_proc -public get_communities_by_user {
@@ -1022,53 +1017,24 @@ namespace eval dotlrn_community {
             set user_id [ad_get_user_id]
         }
 
+        set referer [ad_conn url]
+
         db_foreach select_subcomm_info {} {
-
-            # the lazy man's decode
-            if {[string equal $has_subcomm_p t]} {
-                set has_subcomm_p 1
-            } else {
-                set has_subcomm_p 0
-            }
-
-            set m_s $member_p
-
-            if {[string equal $member_p t]} {
-                set member_p 1
-            } else {
-                set member_p 0
-            }
-
-            set a_s $admin_p
-
-            if {[string equal $admin_p t]} {
-                set admin_p 1
-            } else {
-                set admin_p 0
-            }
-
-
-
+ns_log notice "XXX select dotlrn_community.member_p($sc_id, 2384) from dual;"
             if {$has_subcomm_p && $member_p} {
                 # Shows the subcomms of this subcomm ONLY IF I'm a
                 # member of the current comm
-                append chunk \
-                        "$pretext <a href=${url}>$name</a>\n"
-
-                append chunk "<p>debug: $has_subcomm_p / $m_s = $member_p / $a_s = $admin_p "
+                append chunk "$pretext <a href=${url}>$name</a>\n"
                 
                 if {$admin_p} {
-                    append chunk \
-                            "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
+                    append chunk "<small>\[<a href=${url}one-community-admin>admin</a>\]</small>"
                 }
 
-                append chunk \
-                        "<ul>\n[get_subcomm_chunk_new -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
+                append chunk "<ul>\n[get_subcomm_chunk_new -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif { $member_p || $admin_p || [not_closed_p -community_id $sc_id]} {
                 # Shows the subcomm if: 
                 # 1. I'm a member of this subcomm OR
                 # 2. I'm have admin rights over the subcomm OR
-                # 3. The subcomm has an "open" OR "request" join policy
                 # but if the only_member_p flag is true, the user must be 
                 # a member of the subcomm to see it.
 
@@ -1078,30 +1044,23 @@ namespace eval dotlrn_community {
 
                 append chunk "$pretext <a href=$url>$name</a>\n"
 
-                append chunk "<p>debug: $has_subcomm_p / $m_s = $member_p / $a_s = $admin_p "
-
                 if {!$member_p && [not_closed_p -community_id $sc_id]} {
 
-                      append chunk \
-                          "<small>\["
+                      append chunk "<small>\["
                       
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
-                          append chunk \
-                              "waiting&nbsp;for&nbsp;approval"
+                          append chunk "waiting&nbsp;for&nbsp;approval"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk \
-                              "<a href=${url}${join_target}?referer=[ad_conn url]>request&nbsp;membership</a>"
+                          append chunk "<a href=\"${url}${join_target}?referer=${referer}\">request&nbsp;membership</a>"
                       } else {
-                          append chunk \
-                              "<a href=${url}${join_target}>join</a>"
+                          append chunk "<a href=${url}${join_target}>join</a>"
                       }
                       
                       append chunk "\]</small>\n"
                 }
 
                 if {$admin_p} {
-                    append chunk \
-                            " <small>\[<a href=${url}one-community-admin>admin</a>\]</small>\n"
+                    append chunk " <small>\[<a href=${url}one-community-admin>admin</a>\]</small>\n"
                 }
             }
         }
@@ -1352,9 +1311,6 @@ namespace eval dotlrn_community {
         Lists the applets associated with a community or only the active dotlrn
         applets
     } {
-
-        ns_log notice "aks debug list_active_applets called with comm_id = $community_id"
-
         if {[empty_string_p $community_id]} {
             # List all applets
             return [db_list select_all_active_applets {}]

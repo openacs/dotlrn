@@ -268,18 +268,18 @@ select community_id as subcomm_id from dotlrn_communities where parent_community
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn_community::get_subcomm_chunk_new.select_subcomm_info">
-<querytext>
-      select community_id as sc_id, 
-             acs_permission.permission_p(community_id, :user_id, 'admin') as admin_p, 
-             dotlrn_community.member_p(community_id, :user_id) as member_p,
-             dotlrn_community.has_subcomm_p(community_id) as has_subcomm_p,
-             dotlrn_community.name(community_id) as name,
-             dotlrn_community.url(community_id) as url
-      from dotlrn_communities
-      where parent_community_id = :community_id
-</querytext>
-</fullquery>
+    <fullquery name="dotlrn_community::get_subcomm_chunk_new.select_subcomm_info">
+        <querytext>
+            select community_id as sc_id, 
+                   decode(acs_permission.permission_p(community_id, :user_id, 'admin'), 'f', 0, 1) as admin_p, 
+                   decode(dotlrn_community.member_p(community_id, :user_id), 'f', 0, 1) as member_p,
+                   decode(dotlrn_community.has_subcomm_p(community_id), 'f', 0, 1) as has_subcomm_p,
+                   dotlrn_community.name(community_id) as name,
+                   dotlrn_community.url(community_id) as url
+            from dotlrn_communities
+            where parent_community_id = :community_id
+        </querytext>
+    </fullquery>
 
 <fullquery name="dotlrn_community::get_community_type_package_id.select_package_id">
 <querytext>
