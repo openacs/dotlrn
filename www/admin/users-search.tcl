@@ -62,6 +62,13 @@ if {[form is_valid user_search_results]} {
 
 form create user_search
 
+element create user_search name \
+    -label "Name / Email" \
+    -datatype text \
+    -widget text \
+    -html {size 30} \
+    -optional
+
 element create user_search id \
     -label "ID" \
     -datatype text \
@@ -111,20 +118,6 @@ element create user_search last_visit_less \
     -html {size 10} \
     -optional
 
-element create user_search last_name \
-    -label "Last name starts with" \
-    -datatype text \
-    -widget text \
-    -html {size 30} \
-    -optional
-
-element create user_search email \
-    -label "Email starts with" \
-    -datatype text \
-    -widget text \
-    -html {size 30} \
-    -optional
-
 element create user_search join_criteria \
     -label "Join the above criteria by" \
     -datatype text \
@@ -136,7 +129,7 @@ set is_request [form is_request user_search]
 
 if {[form is_valid user_search]} {
     form get_values user_search \
-        id type access_level private_data_p last_visit_greater last_visit_less last_name email join_criteria
+        id type access_level private_data_p last_visit_greater last_visit_less name join_criteria
 
     if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
         ad_return_error \
@@ -156,6 +149,10 @@ if {[form is_valid user_search]} {
         "dotlrn_users.type" \
     ]
     set wheres [list]
+
+    if {![empty_string_p $name]} {
+        lappend wheres "(lower(dotlrn_users.last_name) like lower('%' || :name || '%') or lower(dotlrn_users.first_names) like lower('%' || :name || '%') or lower(dotlrn_users.email) like lower('%' || :name || '%'))"
+    }
 
     if {![empty_string_p $id]} {
         lappend wheres "dotlrn_users.id = :id"
@@ -206,14 +203,6 @@ if {[form is_valid user_search]} {
             lappend tables "users"
         }
         lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit >= (sysdate - :last_visit_less))"
-    }
-
-    if {![empty_string_p $last_name]} {
-        lappend wheres "lower(dotlrn_users.last_name) like lower(:last_name || '%')"
-    }
-
-    if {![empty_string_p $email]} {
-        lappend wheres "lower(dotlrn_users.email) like lower(:email || '%')"
     }
 
     set role_list [element get_values user_search role]
