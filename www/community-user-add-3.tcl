@@ -14,4 +14,4 @@ set community_id [dotlrn_community::get_community_id]
 # Add the relation
 dotlrn_community::add_user -rel_type $rel_type $community_id $user_id
 
-ad_returnredirect "one-class-instance?class_instance_id=$community_id"
+ad_returnredirect "one-community-admin?class_instance_id=$community_id"
