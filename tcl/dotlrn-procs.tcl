@@ -32,17 +32,28 @@ namespace eval dotlrn {
 	return [ad_parameter group_type_key]
     }
 
+    ad_proc -public package_key {} {
+	returns the package key
+    } {
+	return "dotlrn"
+    }
+
     ad_proc -public get_url {} {
 	returns the root URL for dotLRN
     } {
-	return "/dotlrn"
+	return "/[package_key]"
+    }
+
+    ad_proc -public is_instantiated {} {
+	returns 1 if dotlrn is instantiated, 0 otherwise
+    } {
+        return [ad_decode [apm_num_instances [package_key]] 0 0 1]
     }
 
     ad_proc -public get_node_id {} {
 	return the root node id for dotLRN
     } {
-	set url [get_url]
-	return [site_node_id $url]
+	return [site_node_id [get_url]]
     }
 
     ad_proc -public get_package_id {} {
