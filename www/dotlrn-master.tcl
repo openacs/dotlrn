@@ -110,15 +110,17 @@ if {![info exists control_panel_text]} {
     set control_panel_text "Control Panel"
 }
 
+if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
+    # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance 
+    # (i.e. in a news instance of a class)
+    # and we want all links in the navbar to be active so the user can return easily to the class homepage
+    # or to the MySpace page
+    set link_all 1
+}
+
 if {$have_comm_id_p} {
     # We are under a dotlrn package instance
     # get this comm's info
-    if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
-        # Peter M: We are in a package (an application) under a dotlrn instance (i.e. in a news instance of a class)
-        # and we want all links in the navbar to be active so the user can return easily to the class homepage
-        set link_all 1
-    }
-
     set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
     set text [dotlrn_community::get_community_header_name $community_id] 
     set link [dotlrn_community::get_community_url $community_id]
