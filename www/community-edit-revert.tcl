@@ -45,6 +45,13 @@ if {![empty_string_p $header_logo_only]} {
         -community_id $community_id
     
 }
+# either way, remove the logo from the CR
+set parent_id [db_string get_root_folder {}]
+set logo_name "community_logo_$community_id"
+set item_id [db_string get_item_id "" -default ""]
+if { ![empty_string_p $item_id] }  {
+    db_exec_plsql delete_cr_item ""
+}
 
 ad_returnredirect $referer
 

@@ -62,6 +62,10 @@ if ![regexp {([^/\\]+)$} $header_img match client_filename] {
       set client_filename $header_img
 }
 
+# title of CR item.  This must be unique because all uploaded logos are stored
+# in the CR root folder (-100).
+set logo_name "community_logo_$community_id"
+
 if { ![empty_string_p [ad_parameter MaximumFileSize]] 
        && $tmp_size > 0
       && $tmp_size > [ad_parameter MaximumFileSize] } {
@@ -76,21 +80,39 @@ if { $tmp_size > 0 } {
     # import the content now, so that we can spit it out in the preview
     db_transaction {
 
-        # We will store the image in the communities' shared folder.
-        set parent_id [dotlrn_fs::get_community_shared_folder -community_id $community_id]
-               
+        # We will store the image in the topmost root folder
+        set parent_id [db_string get_root_folder {}]
 
-        # the last param "object name" is unused
-        set revision_id [cr_import_content \
-            -title $title \
-            -description "[_ dotlrn.groups_icon]" \
-            -image_only \
-            $parent_id \
-            $tmp_filename \
-            $tmp_size \
-            $mime_type \
-            "$client_filename-$title"
-       ]
+        # if this is a re-upload, pass along the item_id
+        set item_id [db_string get_item_id "" -default ""]
+        if { ![empty_string_p $item_id] } {
+            # the last param is the title of the new file in the CR.
+            set revision_id [cr_import_content \
+                -title $title \
+                -description "group's icon" \
+                -image_only \
+                -item_id $item_id \
+                $parent_id \
+                $tmp_filename \
+                $tmp_size \
+                $mime_type \
+                $logo_name
+            ]
+        } else {
+            # the last param is the title of the new file in the CR.
+            set revision_id [cr_import_content \
+                -title $title \
+                -description "group's icon" \
+                -image_only \
+                $parent_id \
+                $tmp_filename \
+                $tmp_size \
+                $mime_type \
+                $logo_name
+            ]
+        }
+
+        cr_set_imported_content_live $mime_type $revision_id
 
         ns_log notice "aks1: new revision_id $revision_id"
 
