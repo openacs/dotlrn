@@ -153,7 +153,7 @@ namespace eval dotlrn_community {
                     [portal::create \
                     -portal_template_p "t" \
                     -name "$pretty_name Portal Template" \
-                    -default_page_name [ad_parameter class_first_page_name] \
+                    -default_page_name [ad_parameter community_first_page_name] \
                     -context_id $community_id \
                     $user_id ]
 
@@ -162,20 +162,15 @@ namespace eval dotlrn_community {
                     [portal::create \
                     -template_id $portal_template_id \
                     -name "$pretty_name Non-Member Portal" \
-                    -default_page_name [ad_parameter class_first_page_name] \
+                    -default_page_name [ad_parameter community_first_page_name] \
                     -context_id $community_id \
                     $user_id]
-
-            ns_log notice "aks1 [db_string foobar {
-                select page_id 
-                from portal_current_page 
-                where portal_id = :portal_id}]"
 
             # Create the admin page
             set admin_portal_id \
                     [portal::create \
                     -name "$pretty_name Administration Portal" \
-                    -default_page_name [ad_parameter class_admin_first_page_name] \
+                    -default_page_name [ad_parameter community_admin_first_page_name] \
                     -context_id $community_id \
                     -layout_name "Simple 1-Column" \
                     $user_id]

@@ -47,17 +47,31 @@ namespace eval dotlrn {
 	ns_set put $extra_vars type_id $type_id
 
 	db_transaction {
+
+            # get the first page name and theme
+            set page_name_and_layout_list [split [ad_parameter user_wsp_page_names "Untitled Page,Simple 2-Column" ] ";"]
+            set page_name_list [list]
+            set layout_list [list]
+            
+            # seperate name and theme
+            foreach item $page_name_and_layout_list {
+                lappend page_name_list [lindex [split $item ","] 0]
+                lappend layout_name_list [lindex [split $item ","] 1]
+            }
+
 	    if {$rel_type == "dotlrn_full_user_rel"} {
 		# Create a portal page for this user
 		set portal_id [portal::create \
                         -name "Your dotLRN Workspace" \
-                        -default_page_name [ad_parameter user_wsp_first_page_name] \
+                        -default_page_name [lindex $page_name_list 0] \
+                        -layout_name [lindex $layout_name_list 0] \
                         $user_id]
 
-                # create the default pages from the ad_param
-                foreach name [split [ad_parameter user_wsp_page_names] ","] {
-
-                    portal::page_create -portal_id $portal_id -pretty_name $name
+                # create rest of the default pages from the ad_param
+                for {set i 1} {$i < [expr [llength $page_name_list]]} {incr i} {
+                    portal::page_create -portal_id $portal_id \
+                            -pretty_name [lindex $page_name_list $i] \
+                            -layout_name [lindex $layout_name_list $i] 
                 }
 
                 # manually switch back to the first page 
