@@ -187,7 +187,7 @@ if { $make_navbar_p } {
 
 # Set up some basic stuff
 set user_id [ad_get_user_id]
-set full_name "[dotlrn::get_user_name $user_id]"
+set user_name "[dotlrn::get_user_name $user_id]"
 
 if {![exists_and_not_null title]} {
     set title "SloanSpace"
@@ -306,7 +306,7 @@ if {![empty_string_p $community_id]} {
         set header_img_url "$header_img_url-$scope_name.gif"
     }
 
-    set text $full_name    
+    set text ""
 }
 
 if { ![info exists header_stuff] } {

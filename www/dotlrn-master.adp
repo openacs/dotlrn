@@ -47,10 +47,10 @@
         <img class="header-img" border=0 src="@header_img_url@" alt="@header_img_alt_text@"></a>
       </td>
 
-      <td width="50%"><div class=header-text><nobr>@text@<nobr></div></td>
+      <td><div class=header-text><nobr>@text@<nobr></div></td>
 
-      <td align="right">
-        <include src="/www/login-status" />
+      <td align="right" class="header-text">
+        @user_name@
       </td>
 
     <tr>
