@@ -59,7 +59,7 @@ create table dotlrn_terms (
     term_name                   varchar(20)
                                 constraint dotlrn_t_term_name_nn
                                 not null,
-    term_year                   varchar(4)
+    term_year                   varchar(9)
                                 constraint dotlrn_t_term_year_nn
                                 not null,
     start_date                  date
