@@ -5,19 +5,8 @@
   <msg key="Access_Level">访问特权</msg>
   <msg key="Access_level">访问特权</msg>
   <msg key="control_panel">控制菜单</msg>
-  <msg key="Copy">鹸崙</msg>
-  <msg key="Description">傍苧</msg>
-  <msg key="description">傍苧</msg>
-  <msg key="Description_1">傍苧 :</msg>
-  <msg key="Edit">園辞</msg>
-  <msg key="Email">窮徨喨周</msg>
-  <msg key="Email_1">窮徨喨周</msg>
   <msg key="help">动 帮忙</msg>
   <msg key="logout">退出</msg>
-  <msg key="New">仟議</msg>
-  <msg key="new">仟議</msg>
-  <msg key="new_class">仟議</msg>
-  <msg key="new_class_navbar_name">仟議</msg>
   <msg key="user_portal_page_calendar_title">名 历</msg>
   <msg key="user_portal_page_home_title">桌面 桌上型电脑</msg>
 </message_catalog>

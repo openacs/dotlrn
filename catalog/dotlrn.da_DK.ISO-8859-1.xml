@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Kontrolpanel</msg>
   <msg key="admin_pages_navbar_name">Administrér</msg>
   <msg key="Administer">Administrér</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratorer</msg>
   <msg key="Admins_of">Administratorer af</msg>
@@ -56,7 +56,7 @@
   <msg key="Bulk_Upload">Masseupload</msg>
   <msg key="Bulk_Uploading">Masseuploader...</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
-  <msg key="Change_Locale">Vælg sprog</msg>
+  <msg key="Change_Locale">Skift Locale</msg>
   <msg key="class_instance_portal_pretty_name">Klasser</msg>
   <msg key="class_instances_pretty_name">Klasse</msg>
   <msg key="class_instances_pretty_plural">Klasser</msg>
@@ -66,7 +66,7 @@
   <msg key="class_name">%classes_pretty_name%-navn</msg>
   <msg key="class_name_header">%class_instances_pretty_name%-navn</msg>
   <msg key="class_page_calendar_title">Kalender</msg>
-  <msg key="class_page_file_storage_title">Dokumenter</msg>
+  <msg key="class_page_file_storage_title">Fildepot</msg>
   <msg key="class_page_home_title">Hjem for Klassen</msg>
   <msg key="Classes">Klasser</msg>
   <msg key="classes_pretty_name">Fag</msg>
@@ -74,11 +74,11 @@
   <msg key="Closed">Lukket</msg>
   <msg key="club_page_calendar_title">Kalender</msg>
   <msg key="club_page_file_storage_title">Fildepot</msg>
-  <msg key="club_page_home_title">Hjem for gruppen</msg>
+  <msg key="club_page_home_title">Hjem for Fællesskabet</msg>
   <msg key="club_page_people_title">Folk</msg>
   <msg key="clubs_name_header">%clubs_pretty_name%-navn</msg>
-  <msg key="clubs_pretty_name">Gruppe</msg>
-  <msg key="clubs_pretty_plural">Grupper</msg>
+  <msg key="clubs_pretty_name">Fællesskab</msg>
+  <msg key="clubs_pretty_plural">Fællesskaber</msg>
   <msg key="Communities">Fællesskaber</msg>
   <msg key="Community">Fællesskab</msg>
   <msg key="community_header_name">%clubs_pretty_name%-navn</msg>
@@ -123,7 +123,7 @@
   <msg key="Description_1">Beskrivelse:</msg>
   <msg key="Dont_Add">Tilføj ikke</msg>
   <msg key="dotLRN_Admin">Administrator af dotLRN</msg>
-  <msg key="dotlrn_admin_pretty_name">.LRN Administration</msg>
+  <msg key="dotlrn_admin_pretty_name">Administration af hele webstedet</msg>
   <msg key="dotlrn_admin_rel_pretty_name">Medlemsskab af fællesskabet for administrator af dotLRN </msg>
   <msg key="dotlrn_admin_rel_pretty_plural">Medlemsskaber af fællesskabet for administrator af dotLRN</msg>
   <msg key="dotlrn_class_instance_description">eksempelvis 6.001</msg>
@@ -141,8 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Mellemsskaber af dotLRN fællesskab</msg>
   <msg key="Drop">Slet</msg>
   <msg key="Drop_Membership">Slet medlemsskab</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Slet medlemsskab&quot; border=0&gt;  </msg>
-  <msg key="Drop_selected_members">Fjern de valgte medlemmer fra gruppen</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Slet medlemsskab&quot; border=0&gt;  </msg>
   <msg key="Edit">Redigér</msg>
   <msg key="Edit_a_User">Redigér en bruger</msg>
   <msg key="edit_approved_email_servers">Redigér forhåndsgodkendte mailservere</msg>
@@ -200,7 +199,7 @@
   <msg key="is_already_in_use">er allerede i brug</msg>
   <msg key="Join">Slut til</msg>
   <msg key="Join_A_Group">Slut til en gruppe</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Tilslut&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Tilslut&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Tilslutningspolitik</msg>
   <msg key="Key">Nøgle</msg>
   <msg key="Large">Stor</msg>
@@ -215,7 +214,7 @@
   <msg key="logout">Log ud</msg>
   <msg key="lt_a_secondary">- en sekundær identificering af brugeren.</msg>
   <msg key="lt_Add_a_new_dotLRN_user">Tilføj en ny dotLRN-bruger:</msg>
-  <msg key="lt_Add_a_new_user_to_Slo">Tilføj en ny bruger til .LRN</msg>
+  <msg key="lt_Add_a_new_user_to_Slo">Tilføj en ny bruger til SloanSpace</msg>
   <msg key="lt_Add_community_name_Me">Tilføj medlemmer af %community_name% til et nyt fællesskab</msg>
   <msg key="lt_Add_Members_to_Anothe">Tilføj medlemmer til et nyt fællesskab</msg>
   <msg key="lt_Add_members_to_anothe">Tilføj medlemmer til en anden gruppe</msg>
@@ -254,7 +253,7 @@
   <msg key="lt_Join_a_clubs_pretty_n">Tilslut en %clubs_pretty_name% </msg>
   <msg key="lt_Join_the_above_criter">Saml de ovenstående kriterier med</msg>
   <msg key="lt_Join_the_above_criter_1">Saml de ovenstående kriterier ved at</msg>
-  <msg key="lt_JoinDrop_a_Class_or_C">Tilmeld/Afmeld grupper</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Tilmeld/Afmeld en klasse eller et fællesskab</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Tilslut/Fjern Klasser eller Fællesskaber</msg>
   <msg key="lt_Key_a_short_name_no_s">Nøgle (en kort navn uden mellemrum)</msg>
   <msg key="lt_Last_Visit_Over_in_da">Seneste besøg over (i dage)</msg>
@@ -262,7 +261,7 @@
   <msg key="lt_Make_this_user_a_site">Gør denne bruger til site-wide administrator</msg>
   <msg key="lt_Manage_this_users_por">Administrér brugerens portræt</msg>
   <msg key="lt_No_I_dont_want_to_arc">Nej, jeg vil ikke arkivere denne gruppe.</msg>
-  <msg key="lt_Note_The_script_will_">Bemærk: Denne process vil fortsætte, også selvom du lukker din browser.</msg>
+  <msg key="lt_Note_The_script_will_">Bemærk: Dette script vil blive ved at køre, også selvom du lukker din browser.</msg>
   <msg key="lt_Note_This_process_is_">Bemærk: Denne proces forventes at tage %num_seconds% sekunder.</msg>
   <msg key="lt_Note_This_process_is__1">Bemærk: Denne proces forventes at tage %num_minutes% sekunder.</msg>
   <msg key="lt_Note_use_this_feature">Bemærk: Brug denne funktionalitet ansvarligt og &lt;i&gt;tænk&lt;/i&gt; først.</msg>
@@ -356,7 +355,7 @@
   <msg key="New_Password">Ny adgangskode:</msg>
   <msg key="New_Term">Nyt termin</msg>
   <msg key="New_User">Ny bruger</msg>
-  <msg key="No">Nej</msg>
+  <msg key="No">Ingen</msg>
   <msg key="no">nej</msg>
   <msg key="no_arhived_groups">Ingen arkiverede %groups_pretty_plural%</msg>
   <msg key="no_class_instances">Ingen %class_instances_pretty_plural%</msg>
@@ -383,7 +382,7 @@
   <msg key="Nuke_">Tilintetgør...</msg>
   <msg key="Nuke_Users">Tilintetgør brugere</msg>
   <msg key="olive">olivengrøn</msg>
-  <msg key="Open">Åben</msg>
+  <msg key="Open">Åbn</msg>
   <msg key="optional_defaults_to">valgfri, normalsvaret er</msg>
   <msg key="Or">Eller</msg>
   <msg key="or_by_RGB_number">eller efter RGB-værdi</msg>
@@ -410,6 +409,7 @@
   <msg key="reject">afvis</msg>
   <msg key="Request_Membership">Anmod om medlemsskab</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Anmod om medlemsskab&quot;&gt;</msg>
+  <msg key="required">påkrævet</msg>
   <msg key="Results">Resultater</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">inddrag</msg>
@@ -475,7 +475,7 @@
   <msg key="User_Management">Administration af brugere</msg>
   <msg key="user_portal_page_calendar_title">Kalender</msg>
   <msg key="user_portal_page_file_storage_title">Mine filer</msg>
-  <msg key="user_portal_page_home_title">Min Startside</msg>
+  <msg key="user_portal_page_home_title">MitRum</msg>
   <msg key="user_portal_pretty_name">Bruger</msg>
   <msg key="User_Search">Brugersøgning</msg>
   <msg key="User_Type">Brugertype</msg>

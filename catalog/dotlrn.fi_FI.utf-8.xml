@@ -412,6 +412,7 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="reject">hylkää</msg>
   <msg key="Request_Membership">Ano ryhmän jäsenyyttä</msg>
   <msg key="request_membership_link">Ano jäsenyyttä</msg>
+  <msg key="required">pakollinen</msg>
   <msg key="Results">Tulokset</msg>
   <msg key="Return_URL">Palauta URL</msg>
   <msg key="revoke">evää oikeus</msg>

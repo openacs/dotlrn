@@ -28,7 +28,7 @@
   <msg key="admin_page_name">제어판</msg>
   <msg key="admin_pages_navbar_name">관리자</msg>
   <msg key="Administer">관리자</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;관리자&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;관리자&quot;&gt;</msg>
   <msg key="Administrator">관리자</msg>
   <msg key="Administrators">관리자</msg>
   <msg key="Admins_of">관리자</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN 커뮤니티 회원</msg>
   <msg key="Drop">삭제</msg>
   <msg key="Drop_Membership">회원자격 반납</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;삭제&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;삭제&quot; border=0&gt;</msg>
   <msg key="Edit">수정</msg>
   <msg key="Edit_a_User">사용자 수정</msg>
   <msg key="edit_approved_email_servers">사전 승인된 전자우편 서버를 수정</msg>
@@ -199,7 +199,7 @@
   <msg key="is_already_in_use">(은)는 이미 사용중입니다.</msg>
   <msg key="Join">등록</msg>
   <msg key="Join_A_Group">그룹 등록</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;등록&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;등록&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">등록 방침</msg>
   <msg key="Key">키</msg>
   <msg key="Large">커다란</msg>
@@ -409,6 +409,7 @@
   <msg key="reject">거절</msg>
   <msg key="Request_Membership">회원자격 거절</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;등록 요청&quot;&gt;</msg>
+  <msg key="required">요청하다</msg>
   <msg key="Results">결과 </msg>
   <msg key="Return_URL">URL 반환</msg>
   <msg key="revoke">철회</msg>

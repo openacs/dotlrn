@@ -18,7 +18,6 @@
   <msg key="Add_New_Members">Neue Benutzer hinzufügen</msg>
   <msg key="Add_Professor">Professor hinzufügen</msg>
   <msg key="add_selected_members">Ausgewählte Benutzer hinzufügen</msg>
-  <msg key="add_to_dotlrn">Diesen Benutzer zu dotLRN hinzufügen</msg>
   <msg key="Add_to_group_">Zu Gruppe hinzufügen...</msg>
   <msg key="Add_User">Benutzer hinzufügen</msg>
   <msg key="Add_users_to">Benutzer hinzufügen zu</msg>
@@ -29,7 +28,7 @@
   <msg key="admin_page_name">Verwalten</msg>
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Verwalten&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -71,7 +70,7 @@
   <msg key="class_page_home_title">Kurs-Startseite</msg>
   <msg key="Classes">Kurse</msg>
   <msg key="classes_pretty_name">Kursvorlage</msg>
-  <msg key="classes_pretty_plural">Subjects</msg>
+  <msg key="classes_pretty_plural">Kursvorlagen</msg>
   <msg key="Closed">Geschlossen</msg>
   <msg key="club_page_calendar_title">Kalender</msg>
   <msg key="club_page_file_storage_title">Dateien</msg>
@@ -108,7 +107,7 @@
   <msg key="Create_A_New_User">Neuen Benutzer erstellen</msg>
   <msg key="Create_a_Web_Log">Ein Web-Tagebuch anlegen</msg>
   <msg key="CSV_File_Format">Dateiformat CSV</msg>
-  <msg key="Customize_Layout">Layout anpassen</msg>
+  <msg key="Customize_Layout">Layout des persönlichen Zugangsportals anpassen</msg>
   <msg key="Deactivate_">Deaktivieren...</msg>
   <msg key="Deactivate_Users">Benutzer deaktivieren</msg>
   <msg key="Deactivated">Deaktiviert</msg>
@@ -145,7 +144,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN Community Memberships</msg>
   <msg key="Drop">Abmelden</msg>
   <msg key="Drop_Membership">Abmelden </msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Abmelden&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Abmelden&quot; border=0&gt;</msg>
   <msg key="Edit">Bearbeiten</msg>
   <msg key="Edit_a_User">Benutzer bearbeiten</msg>
   <msg key="edit_approved_email_servers">Genehmigte E-Mail-Server</msg>
@@ -177,7 +176,6 @@
   <msg key="Full_Access">Unbeschränkter Zugriff</msg>
   <msg key="General_Information">Allgemeine Informationen</msg>
   <msg key="General_Site_Help">Hilfe</msg>
-  <msg key="Grant_site_wide_admin">Systemverwaltungsrechte erteilen</msg>
   <msg key="gray">Grau</msg>
   <msg key="green">Grün</msg>
   <msg key="groups_icon">Logo der Gruppe</msg>
@@ -204,7 +202,7 @@
   <msg key="is_already_in_use">wird bereits verwendet.</msg>
   <msg key="Join">Hinzufügen </msg>
   <msg key="Join_A_Group">Einen Kurs oder Club hinzufügen</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Hinzufügen&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Hinzufügen&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Anmelderegelung</msg>
   <msg key="Key">Schlüssel</msg>
   <msg key="Large">Groß</msg>
@@ -286,7 +284,7 @@
   <msg key="lt_Senders_Email_Address">E-Mail-Adresse des Absenders</msg>
   <msg key="lt_Some_of_the_emails_fa">Einige der E-Mails konnten nicht gesendet werden. Für die betreffenden Benutzer war jedoch ein Zufalls-Passwort erzeugt worden. Für das weitere Vorgehen ist zu empfehlen, dass sich diese Benutzer anmelden und dann auf &quot;Passwort vergessen&quot; klicken.</msg>
   <msg key="lt_spam_policy_must_be_o">Für die Rundmailoptionen muss einer der folgenden Werte gewählt werden: &quot;Alle&quot; oder &quot;Mitglieder&quot;.</msg>
-  <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; ist bei &quot;%community_name%&quot; als %existing_role% angemeldet. Hier können Sie die Rolle neu festlegen:</msg>
+  <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; ist bei &quot;%community_name%&quot; als %existing_role% angemeldet. Hier können Sie die Rolle neu auswählen:</msg>
   <msg key="lt_The_following_email_w">Folgende E-Mail wurde soeben von %system_name% gesendet:</msg>
   <msg key="lt_The_following_email_w_1">Folgende E-Mail wurde soeben von %system_name% gesendet:\n Von: %system_owner% \n An: %email% \n Betreff: %subject% \n Nachricht: %body% </msg>
   <msg key="lt_The_following_members">Die folgenden Teilnehmer von</msg>
@@ -362,7 +360,7 @@ auf der vorherigen Seite doppelt angeklickt.</msg>
   <msg key="New_Password">Neues Passwort:</msg>
   <msg key="New_Term">Neues Semester erstellen</msg>
   <msg key="New_User">Neuer Benutzer</msg>
-  <msg key="No">Nein</msg>
+  <msg key="No">Keine</msg>
   <msg key="no">Keine</msg>
   <msg key="no_arhived_groups">Keine archivierten %groups_pretty_plural% vorhanden</msg>
   <msg key="no_class_instances">Keine %class_instances_pretty_plural% vorhanden</msg>
@@ -416,6 +414,7 @@ auf der vorherigen Seite doppelt angeklickt.</msg>
   <msg key="reject">Ablehnen</msg>
   <msg key="Request_Membership">Zugang beantragen</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Zugang beantragen&quot;&gt; </msg>
+  <msg key="required">erforderlich</msg>
   <msg key="Results">Ergebnisse</msg>
   <msg key="Return_URL">Return URL</msg>
   <msg key="revoke">Berechtigungen entziehen</msg>
@@ -449,7 +448,8 @@ auf der vorherigen Seite doppelt angeklickt.</msg>
   <msg key="subcommunities_pretty_plural">Untergruppen</msg>
   <msg key="subcommunity_memberships">%subcommunities_pretty_name%-Mitgliedschaften</msg>
   <msg key="Subject">Betreff</msg>
-  <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter</msg>
+  <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter
+</msg>
   <msg key="teaching_assistant_role_pretty_plural">Dozenten und Lehrbeauftragte</msg>
   <msg key="teal">Dunkeltürkis</msg>
   <msg key="Template">Vorlage</msg>
@@ -463,7 +463,7 @@ auf der vorherigen Seite doppelt angeklickt.</msg>
   <msg key="the_format_of_email_domains">Die genehmigten E-Mail-Server müssen als kommaseparierte Liste von Domains eingetragen werden, denen in der Regel die Zeichenfolge *@ vorangestellt ist,  so dass die Werte für irgendwas@emaildomain.de stehen.&lt;/p&gt;
 Beispiel:</msg>
   <msg key="The_name">Die Bezeichnung</msg>
-  <msg key="there_are_no_users_matching">Es wurden keine Benutzer passend zu Ihrer Suchanfrage &quot;%search_text%&quot; gefunden.</msg>
+  <msg key="there_are_no_users_matching">Es wurden keine Benutzer passend zu Ihrer Eingabe &quot;%search_text%&quot; gefunden.</msg>
   <msg key="this_user_is_deleted">Dieser Benutzer ist gelöscht.</msg>
   <msg key="To">An</msg>
   <msg key="Type">Typ</msg>

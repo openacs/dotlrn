@@ -28,6 +28,8 @@
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Control Panel</msg>
+  <description key="admin_page_name">The name of the administration page in the navbar on the MySpace page.</description>
+
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
@@ -38,6 +40,8 @@
   <msg key="All_Terms">All Terms</msg>
   <msg key="And">And</msg>
   <msg key="Any">Any</msg>
+  <description key="Any">Used in user search form in checkboxes to indicate that you want to search for user of any type, or users of any level of access etc, i.e. don't restrict the search with the given criteria.</description>
+
   <msg key="Applets_to_Add">Applets To Add</msg>
   <msg key="Approve">Approve</msg>
   <msg key="approve">approve</msg>
@@ -92,6 +96,9 @@
   <msg key="Community_Types">Community Types</msg>
   <msg key="Communitys_Name">Community's Name</msg>
   <msg key="Configure_Element">Configure Element</msg>
+  <description key="Configure_Element">Used in title on page for configuring a portal element, i.e. a portal application mini window.
+</description>
+
   <msg key="Configure_name">Configure %name%</msg>
   <msg key="Confirm">Confirm</msg>
   <msg key="Confirm_1">Confirm:</msg>
@@ -113,6 +120,8 @@
   <msg key="Deactivated">Deactivated</msg>
   <msg key="Delete">Delete</msg>
   <msg key="Delete_Empty">Delete empty %departments_pretty_name%.</msg>
+  <description key="Delete_Empty">Used as title of page for deleting empty department.</description>
+
   <msg key="Department">Department</msg>
   <msg key="department_must_be_empty_to_be_deleted">Error: %departments_pretty_name% must be empty to be deleted</msg>
   <msg key="department_name">%departments_pretty_name% Name</msg>
@@ -213,7 +222,11 @@ notify this user.</msg>
   <msg key="Last_Name">Last Name</msg>
   <msg key="Last_Visit">Last Visit:</msg>
   <msg key="Last_visit_over">Number of days since last visit is more than:</msg>
+  <description key="Last_visit_over">On the user search form. What follows the text is a select box for the number of days.</description>
+
   <msg key="Last_visit_under">Number of days since last visit is less than:</msg>
+  <description key="Last_visit_under">On the user search form. What follows the text is a select box for the number of days.</description>
+
   <msg key="Latest_post">Latest post:</msg>
   <msg key="lime">lime</msg>
   <msg key="Limited">Limited</msg>
@@ -431,6 +444,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Personal_Options">Personal Options</msg>
   <msg key="portal_templates">Portal Templates</msg>
   <msg key="Portrait">Portrait:</msg>
+  <msg key="Portrait_1">Portrait</msg>
   <msg key="Post_to">Post to:</msg>
   <msg key="Pretty_Name">Pretty Name</msg>
   <msg key="Pretty_Plural">Pretty Plural</msg>

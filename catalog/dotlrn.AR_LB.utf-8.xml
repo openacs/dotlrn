@@ -18,8 +18,6 @@
   <msg key="Add_New_Members">أضفْ أعضاء جدّد</msg>
   <msg key="Add_Professor">أضّفْ أستاذاً</msg>
   <msg key="add_selected_members">أضّفْ أعضاء مختارينَ</msg>
-  <msg key="add_to_another_group">أضفْ هذا المستخدم الى مجموعة أخرى</msg>
-  <msg key="add_to_dotlrn">أضف هذا المستخدم لي دوتلرن</msg>
   <msg key="Add_to_group_">أضّفْ للمَجموعة ...</msg>
   <msg key="Add_User">أضّفْ مُستخدماُ</msg>
   <msg key="Add_users_to">أضفْ مُستخدماُ لـِ</msg>
@@ -30,7 +28,7 @@
   <msg key="admin_page_name">لوحة التّحكّم</msg>
   <msg key="admin_pages_navbar_name">الإدارةُ</msg>
   <msg key="Administer">أدرْ</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;المدير&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;المدير&quot;&gt;</msg>
   <msg key="Administrator">المديرُ</msg>
   <msg key="Administrators">المدراءُ</msg>
   <msg key="Admins_of">إداراتُ من</msg>
@@ -143,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">عضويّات جمعية الدوتلرن</msg>
   <msg key="Drop">تخلى</msg>
   <msg key="Drop_Membership">تخلى عن العضوية</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;تخّلى عن العضوية&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;تخّلى عن العضوية&quot; border=0&gt;</msg>
   <msg key="Edit">حررْ</msg>
   <msg key="Edit_a_User">حررْ مستخدماً</msg>
   <msg key="edit_approved_email_servers">حرّرْ مُلقمْ البريد الإلكتروني الموافق عليه مُسبقاً</msg>
@@ -164,11 +162,10 @@
   <msg key="Error_sending_mail">خطأ في إرسال البريد</msg>
   <msg key="Example_File">مثال ملفّ</msg>
   <msg key="External_URL">الموقع الخارجيّ</msg>
-  <msg key="External_URL_1">الموقع الخارجيّ:</msg>
+  <msg key="External_URL_1">موقع خارجي:</msg>
   <msg key="Extra_Large">كبير جداً</msg>
   <msg key="Fields">الحقول</msg>
   <msg key="First_Line">السطر الأول</msg>
-  <msg key="first_line_of_file_must_be">السطر الأول من الملف يجب أن يكون عنده خطّ العنوان الرأسي التالي:</msg>
   <msg key="First_Name">الإسم</msg>
   <msg key="From">مِنْ</msg>
   <msg key="fuchsia">فوشية</msg>
@@ -176,12 +173,11 @@
   <msg key="Full_Access">الوصولُ الكاملُ</msg>
   <msg key="General_Information">المعلومات العامةُ</msg>
   <msg key="General_Site_Help">موقعِ المساعدةُ العامّةِ</msg>
-  <msg key="Grant_site_wide_admin">إمنح إمتيازات إدارية في كافة أنحاء الموقع.</msg>
   <msg key="gray">رّماديّ</msg>
   <msg key="green">أخضر</msg>
   <msg key="groups_icon">أيقونة المجموعة</msg>
   <msg key="Guest">ضيفُ؟</msg>
-  <msg key="Guest_1">الضيف؟</msg>
+  <msg key="Guest_1">ضيف؟</msg>
   <msg key="has_been_added_to">أُضيفَ إلى</msg>
   <msg key="Header_Alternate_Text">نّص رأس الصفحة البديل</msg>
   <msg key="Header_Font">خطّ رأس الصفحة</msg>
@@ -196,14 +192,14 @@
   <msg key="Header_Logo_Item_ID">هويةُ بند شعارِ رأس الصفحة</msg>
   <msg key="help">المساعدة</msg>
   <msg key="ID">الهويّة:</msg>
-  <msg key="ID_1">الهويّة</msg>
+  <msg key="ID_1">هوية</msg>
   <msg key="instructor_role_pretty_name">أستاذ</msg>
   <msg key="instructor_role_pretty_plural">الأساتذةُ</msg>
   <msg key="Invalid">باطِل</msg>
   <msg key="is_already_in_use">قيد الإستعمال</msg>
   <msg key="Join">إنضمّْ</msg>
   <msg key="Join_A_Group">إنضمّْ إلى مجموعةً</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;إنضّم&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;إنضّم&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">سياسةُ الإشتراك</msg>
   <msg key="Key">مفتاح</msg>
   <msg key="Large">كبير</msg>
@@ -225,7 +221,7 @@
   <msg key="lt_Add_These_Users_To_A_">أضفْ هؤلاء المستخدمين لمجموعة</msg>
   <msg key="lt_Administrative_Action">الأعمالُ الإداريةُ</msg>
   <msg key="lt_An_error_occured_whil">حَدثَ خطأ أثناء محاولة إضافة مستخدم لجمعية. هذا الخطأ قد سُجل.</msg>
-  <msg key="lt_An_error_occured_whil_1">حَدثَ خطأ أثناء محاولة إضافة مستخدم لجمعية. هذا الخطأ قد سُجل.</msg>
+  <msg key="lt_An_error_occured_whil_1">حَدثَ خطأ أثناء محاولة حذف مستخدم لجمعية. هذا الخطأ قد سُجل. </msg>
   <msg key="lt_approve_and_add_to_do">وافق وأضفْ إلى دوتلرن</msg>
   <msg key="lt_Are_you_sure_you_want">هل أنت متأكّد أنّك تريد حذف القسم الفارغ</msg>
   <msg key="lt_Be_sure_that_the_pers">كُنّ متأكّداً بأن الشخص ما عِنْدَه حساب سلوانسباس تحت عنوان بريد إلكتروني آخر. تُسبّبُ الحسابات المضاعفة المشاكل لكُلّ الأشخاص. لإضافة شخص بإستعمالِ الحسابِ الحالي إستعملْ &lt;a href=members&gt;أدرْ عضوية &lt;/a&gt;.</msg>
@@ -233,7 +229,7 @@
   <msg key="lt_Communitys_Web_Addres">عنوان موقع ويب لالجمعية</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% الحالية</msg>
   <msg key="lt_Do_you_really_want_to">هل تريد إزالة الأعضاء التّالين فعلاً؟</msg>
-  <msg key="lt_Do_you_really_want_to_1">هل تريد إزالة %num_users% مستخدمين فعلاً؟</msg>
+  <msg key="lt_Do_you_really_want_to_1">هل تريد فعلاً إزالة %num_users% مستخدم؟ </msg>
   <msg key="lt_dotLRN_properties_for">خصائص دوتلرن لهذا المستخدم.</msg>
   <msg key="lt_Edit_department_prope">حررْ خصائص القسم.</msg>
   <msg key="lt_Edit_Pre-approved_Ema">حرّر خادمات البريد الإلكتروني الموافق عليها مسبقا</msg>
@@ -242,7 +238,7 @@
   <msg key="lt_Error_adding_user_to_">خطأ في إضافة مستخدم للجمعية</msg>
   <msg key="lt_Error_Nuking_first_na">خطأ في نسف (%first_names% %last_name% (%email%</msg>
   <msg key="lt_Error_removing_user_c">خطأ في إزالة مستخدم الجمعية</msg>
-  <msg key="lt_Error_sending_email_t">خطأً في إرسال البريد الإلكتروني إلى %email% من password-update-?.tcl </msg>
+  <msg key="lt_Error_sending_email_t">خطأً في إرسال البريد الإلكتروني إلى %email% من password-update-2.tcl </msg>
   <msg key="lt_First_check_the_box_o">أوّلاً إفحص صندوق المستخدمين الذي تريد إضافته, بعد ذلك إختار دورهم و أخيرًا إرسل الاستمارة.</msg>
   <msg key="lt_Go_back_and_try_again">عُدْ وحاولْ ثانيةً</msg>
   <msg key="lt_having_trouble">لديك مشكلة في أنْ تحصل على الشكل الذي تريده؟ هنا بعض النّصائح</msg>
@@ -257,7 +253,7 @@
   <msg key="lt_Join_a_class_instance">إنضمّْ إلى %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">إنضمّْ إلى %clubs_pretty_name%</msg>
   <msg key="lt_Join_the_above_criter">إنضمّْ إلى معاييرَ أعلاهَ مَع</msg>
-  <msg key="lt_Join_the_above_criter_1">إنضمّْ إلى معاييرَ أعلاهَ قبل</msg>
+  <msg key="lt_Join_the_above_criter_1">إنضمّْ إلى معاييرَ أعلاهَ في</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">إنضَمَّ إلى/تخلىَّ عن صفًّ أو مجموعةً</msg>
   <msg key="lt_JoinDrop_Classes_or_C">إنضمَّ إلى/ تخلىَّ عن صفوفاً أو مجموعاتً</msg>
   <msg key="lt_Key_a_short_name_no_s">مفتاحُ (اسمُ قصيرُ، لا فراغاتَ)</msg>
@@ -268,7 +264,7 @@
   <msg key="lt_No_I_dont_want_to_arc">لا، أنا لا أُريدُ أَنْ أُرشفَ هذه المجموعةِ.</msg>
   <msg key="lt_Note_The_script_will_">مُلاحظة: النصّ سَيُواصلُ العملْ حتى إذا أَغْلقت متصفّحَكَ.</msg>
   <msg key="lt_Note_This_process_is_">ملاحظة: هذه العملية تُتوقّعُ تأَخْذ %num_seconds% ثواني.</msg>
-  <msg key="lt_Note_This_process_is__1">ملاحظة: هذه العملية تُتوقّعُ أن تأَخْذ%num_minutes% دقائق.</msg>
+  <msg key="lt_Note_This_process_is__1">ملاحظة: هذه العملية تُتوقّعُ تأَخْذ %num_minutes% دقائق. </msg>
   <msg key="lt_Note_use_this_feature">مُلاحظةُ: استعملْ هذه الميزّةِ بمسؤولية &lt;i&gt;فَكِّرْ&lt;/i&gt; أولاً.</msg>
   <msg key="lt_Note_you_will_have_th">ملاحظة: أنت عِنْدَكَ خيارَ إضافة هؤلاء المستخدمين إلى مجموعةِ بعندما  أن يكونوا قد أرسلوا.</msg>
   <msg key="lt_Nuke_first_names_last">إنسفْ (%first_names% %last_name% (%email</msg>
@@ -288,16 +284,16 @@
   <msg key="lt_spam_policy_must_be_o">سياسة سبام يجب أن تكون إحدى: كلّ أو أعضاء</msg>
   <msg key="lt_strongfirst_names_las">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; هو %existing_role% في %community_name%. أنت يمكنك أن تختار دور جديد من التالي:</msg>
   <msg key="lt_The_following_email_w">البريد الإلكترونيّ التّالي أُرْسِلَ الآن من %system_name%</msg>
-  <msg key="lt_The_following_email_w_1">البريد الإلكترونيّ التّالي أُرْسِلَ الآن من %system_name% مرسلْ من: %system_owner% مرسلْ الى: %email% الموضوع: %subject% الرسالة: %body%</msg>
+  <msg key="lt_The_following_email_w_1">البريد الإلكترونيّ التّالي أُرْسِلَ الآن من %system_name% مرسل من: %system_owner% مرسل الى: %email% الموضوع: %subject% الرسالة: %body%  </msg>
   <msg key="lt_The_following_members">الأعضاء التّالون من</msg>
   <msg key="lt_The_following_variabl">المتغيّراتُ التاليةُ يمكن أن تُستَعملَ لإدْخال بيانات المعينة لي المستخدم / الجمعية:</msg>
   <msg key="lt_The_groups_data_will_">بيانات المجموعة لن تُعَدَّل, لكنّ فقط سوف تكون المجموعة في المُتَنَاوَل مدراء النّظام.</msg>
   <msg key="lt_The_results_of_your_s">إنّ نَتائِجَ بحثِكِ هي:</msg>
   <msg key="lt_The_system_was_unable">النظامُ لم يَستطيع إرْسال البريد الإلكتروني. رجاءً أعلمْ المستخدم شخصياً. هذه المشكلةِ من المحتمل سببها سوءِ ترتيب في نظامِ بريدكَ الإلكتروني. هنا الخطأَ:</msg>
-  <msg key="lt_There_was_a_bug_in_th">كانت هناك خطأ برمجي في هذه الصّفحة</msg>
-  <msg key="lt_There_was_a_bug_in_th_1">كانت هناك خطأ برمجي في هذه الصّفحة. رجاء أبلغ عن هذه المشكلة. </msg>
+  <msg key="lt_There_was_a_bug_in_th">كانت هناك خطأ برمجي في هذه الصّفحة.</msg>
+  <msg key="lt_There_was_a_bug_in_th_1">كانت هناك خطأ برمجي في هذه الصّفحة. من فضلك اعلم هذا الخطأ.</msg>
   <msg key="lt_There_was_an_error_se">كان هناك خطأ في إرسال البريد إلكترونيّ إلى %email%</msg>
-  <msg key="lt_There_was_an_error_se_1">كان هناك خطأ في إرسال البريد إلكترونيّ إلى %system_owner%.</msg>
+  <msg key="lt_There_was_an_error_se_1">كان هناك خطأ في إرسال البريد إلكترونيّ إلى %system_owner%. </msg>
   <msg key="lt_There_was_an_error_tr">كان هناك خطأَ في محاولة إضافة محتواكَ. على الأغلب الأسباب تلك هي:</msg>
   <msg key="lt_This_action_will_take">هذا العملِ سَيَأْخذُ تقريباً</msg>
   <msg key="lt_This_action_will_take_1">هذا العملِ سَيَأْخذُ تقريباً &lt;strong&gt;%estimated_number_of_seconds%&lt;/strong&gt; ثواني.</msg>
@@ -342,7 +338,6 @@
   <msg key="Memberships">العضويات</msg>
   <msg key="Memberships_1">العضويات:</msg>
   <msg key="Message">رسالة</msg>
-  <msg key="must_have_values">الحقل يجب أن يكون عنده أحد القيم التالية:</msg>
   <msg key="My_Communities">جمعياتي</msg>
   <msg key="NA">لا ينطبق</msg>
   <msg key="Name">إسم</msg>
@@ -409,18 +404,16 @@
   <msg key="Recipients_Last_Name">شهرة المستلم</msg>
   <msg key="red">أحمر</msg>
   <msg key="Referer">المعرف</msg>
-  <msg key="registered_user_welcome_email_body">%last_name% %last_name%، أضفت كمستعمل إلى %system_name% على %system_url% معلومات الدخول: البريد الإلكتروني %email% كلمة السر: %password% (أنت قد تغيّر كلمة سرك بعد أن تدخل) شكرا لك %administration_name%</msg>
   <msg key="Registration_date">تاريخ التسجيل:</msg>
   <msg key="registration_request_sent">شكراً لكم. طلبُ تسجيلُكَ أُرسلَ إلى مديرِ النظامِ</msg>
   <msg key="Reject">ارفضْ</msg>
   <msg key="reject">ارفضْ</msg>
   <msg key="Request_Membership">اطّلبْ عضويّة</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;اطلب عضوية&quot;&gt;</msg>
-  <msg key="required">الحقل المطلوب</msg>
+  <msg key="required">مطلوب</msg>
   <msg key="Results">النَتائِجُ</msg>
   <msg key="Return_URL">موقع العودة</msg>
   <msg key="revoke">إلغي</msg>
-  <msg key="Revoke_site_wide_admin">أبطل إمتيازات الإدارية في كافة أنحاء موقع.</msg>
   <msg key="Role">دور</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">اسمُ الشاشةِ:</msg>
@@ -479,7 +472,7 @@
   <msg key="user_email_created">المستخدم %user_email% خُلِقَ ...</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% عضواً في %system_name% منذ %pretty_creation_date%</msg>
   <msg key="User_ID">هويّة المستخدم:</msg>
-  <msg key="User_ID_1">هويّة المستخدم</msg>
+  <msg key="User_ID_1">هوية المستخدم</msg>
   <msg key="User_Management">إدارة مستخدم</msg>
   <msg key="user_portal_page_calendar_title">مفكرتي</msg>
   <msg key="user_portal_page_file_storage_title">ملفاتي</msg>

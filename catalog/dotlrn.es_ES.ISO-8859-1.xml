@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Panel de control</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrar</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
   <msg key="Administrator">Administrador</msg>
   <msg key="Administrators">Administradores</msg>
   <msg key="Admins_of">Administradores de</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Miembro de comunidades</msg>
   <msg key="Drop">Borrar</msg>
   <msg key="Drop_Membership">Dar de baja</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Baja&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Baja&quot; border=0&gt;</msg>
   <msg key="Edit">Editar</msg>
   <msg key="Edit_a_User">Editar usuario</msg>
   <msg key="edit_approved_email_servers">Editar dominios pre-aprobados</msg>
@@ -199,7 +199,7 @@
   <msg key="is_already_in_use">está siendo utilizado</msg>
   <msg key="Join">Alta</msg>
   <msg key="Join_A_Group">Alta en un grupo</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Alta&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Alta&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Política de suscripción</msg>
   <msg key="Key">Clave</msg>
   <msg key="Large">Grande</msg>
@@ -409,6 +409,7 @@
   <msg key="reject">rechazar</msg>
   <msg key="Request_Membership">Solicitar alta</msg>
   <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Solicitar alta&quot;&gt;</msg>
+  <msg key="required">requerido</msg>
   <msg key="Results">Resultados</msg>
   <msg key="Return_URL">URL donde volver</msg>
   <msg key="revoke">revocar</msg>

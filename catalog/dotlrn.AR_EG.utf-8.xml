@@ -29,7 +29,7 @@
   <msg key="departments_pretty_name">القسمُ</msg>
   <msg key="dotlrn_main_portlet_pretty_name">المجموعات</msg>
   <msg key="Drop_Membership">تخلى عن العضوية</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;تخّلى عن العضوية&quot; border=?&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;تخّلى عن العضوية&quot; border=?&gt;</msg>
   <msg key="Email">:البريد الإلكتروني</msg>
   <msg key="email">البريد الإلكتروني</msg>
   <msg key="First_Name">الإسم</msg>
@@ -38,10 +38,9 @@
   <msg key="instructor_role_pretty_name">أستاذ</msg>
   <msg key="instructor_role_pretty_plural">الأساتذةُ</msg>
   <msg key="Join_A_Group">إنضمّْ إلى مجموعةً</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;إنضّم&quot; border=&quot;?&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;إنضّم&quot; border=&quot;?&quot;&gt; </msg>
   <msg key="Last_Name">الشهرة</msg>
   <msg key="logout">خروج</msg>
-  <msg key="lt_Current_clubs_pretty_">%class_instances_pretty_name% الحالية</msg>
   <msg key="lt_Help_and_Personal_Con">المساعدةُ والترتيبُ الشخصي</msg>
   <msg key="lt_Join_a_class_instance">%class_instances_pretty_name% إنضمّْ إلى</msg>
   <msg key="lt_Join_a_clubs_pretty_n">%clubs_pretty_name% إنضمّْ إلى </msg>

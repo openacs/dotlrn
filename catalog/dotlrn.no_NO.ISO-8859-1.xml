@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Kontrollpanel</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrer</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratorer</msg>
   <msg key="Admins_of">Admins for</msg>
@@ -42,7 +42,6 @@
   <msg key="aqua">aqua</msg>
   <msg key="archived">arkivert</msg>
   <msg key="archived_classes_and_communities">Archivert %class_instances_pretty_plural% og %clubs_pretty_plural%</msg>
-  <msg key="archived_groups">Archivert %class_instances_pretty_plural% and %clubs_pretty_plural%</msg>
   <msg key="Are_you_sure">Er du sikker?</msg>
   <msg key="are_you_sure_you_want_to_send">Er du sikker på at du vil sende følgende</msg>
   <msg key="arhive_group_name">Archiv gruppe %group_name% </msg>
@@ -141,7 +140,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN gruppemedlemskap</msg>
   <msg key="Drop">Dropp</msg>
   <msg key="Drop_Membership">Dropp medlemskap</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Dropp medlemskap&quot; border=0</msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Dropp medlemskap&quot; border=0</msg>
   <msg key="Edit">Rediger</msg>
   <msg key="Edit_a_User">Rediger eg bruker</msg>
   <msg key="edit_approved_email_servers">Rediger forhåndsgodkjente e-posttjenere</msg>
@@ -199,7 +198,7 @@
   <msg key="is_already_in_use">er allerede i bruk</msg>
   <msg key="Join">Bli medlem i</msg>
   <msg key="Join_A_Group">Abonner på en gruppe</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Abonner&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="join_link">&lt;img src=&quot;graphics/join.gif&quot; alt=&quot;Abonner&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Regler for medlemsskap</msg>
   <msg key="Key">Nøkkel</msg>
   <msg key="Large">Stor</msg>
@@ -409,6 +408,7 @@
   <msg key="reject">forkast</msg>
   <msg key="Request_Membership">Be om medlemskap</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Be om medlemsskap&quot;&gt;</msg>
+  <msg key="required">forventet</msg>
   <msg key="Results">Resultat</msg>
   <msg key="Return_URL">Retur URL</msg>
   <msg key="revoke">gjenåpne</msg>

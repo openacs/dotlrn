@@ -28,7 +28,7 @@
   <msg key="admin_page_name">Pannello di Controllo</msg>
   <msg key="admin_pages_navbar_name">Amministra</msg>
   <msg key="Administer">Amministra</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Amministra&quot;&gt; </msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Amministra&quot;&gt; </msg>
   <msg key="Administrator">Amministratore</msg>
   <msg key="Administrators">Amministratori</msg>
   <msg key="Admins_of">Amministratori di</msg>
@@ -141,7 +141,7 @@
   <msg key="dotlrn_member_rel_pretty_plural">Gruppi di Comunit&amp;agrave; dotLRN</msg>
   <msg key="Drop">Lascia</msg>
   <msg key="Drop_Membership">Ritira l'associazione</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Cancella l'associazione&quot; border=0&gt; </msg>
+  <msg key="drop_membership_link">&lt;img src=graphics/drop.gif alt=&quot;Cancella l'associazione&quot; border=0&gt; </msg>
   <msg key="Edit">Modifica</msg>
   <msg key="Edit_a_User">Modifica un utente</msg>
   <msg key="edit_approved_email_servers">Modifica i Server di Posta pre-approvati</msg>
@@ -199,7 +199,7 @@
   <msg key="is_already_in_use">&amp;egrave; gi&amp;agrave; in uso</msg>
   <msg key="Join">Partecipa</msg>
   <msg key="Join_A_Group">Partecipa a un Gruppo</msg>
-  <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Partecipa&quot; border=&quot;0&quot;&gt; </msg>
+  <msg key="join_link">&lt;img src=&quot;/graphics/join.gif&quot; alt=&quot;Partecipa&quot; border=&quot;0&quot;&gt; </msg>
   <msg key="Join_Policy">Politica di Partecipazione</msg>
   <msg key="Key">Chiave</msg>
   <msg key="Large">Large</msg>
@@ -409,6 +409,7 @@
   <msg key="reject">respingi</msg>
   <msg key="Request_Membership">Richiedi l'associazione</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Richiedi l'associazione&quot;&gt;</msg>
+  <msg key="required">richiesto</msg>
   <msg key="Results">Risultati</msg>
   <msg key="Return_URL">indirizzo a cui tornare</msg>
   <msg key="revoke">revoca</msg>
