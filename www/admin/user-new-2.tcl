@@ -12,39 +12,41 @@ ad_page_contract {
 form create add_user
 
 element create add_user user_id \
-        -label "User ID" \
-        -datatype integer \
-        -widget hidden \
-        -value $user_id
+    -label "User ID" \
+    -datatype integer \
+    -widget hidden \
+    -value $user_id
 
 element create add_user id \
-        -label "ID" \
-        -datatype text \
-        -widget text \
+    -label "ID" \
+    -datatype text \
+    -widget text \
+    -html {size 60} \
+    -optional
 
 element create add_user type \
-        -label "User Type" \
-        -datatype text \
-        -widget select \
-        -options [dotlrn::get_user_types]
+    -label "User Type" \
+    -datatype text \
+    -widget select \
+    -options [dotlrn::get_user_types_as_options]
 
 element create add_user access_level \
-        -label "Access Level" \
-        -datatype text \
-        -widget select \
-        -options {{"Full Access" "full"} {"Limited Access" "limited"}}
+    -label "Access Level" \
+    -datatype text \
+    -widget select \
+    -options {{"Full Access" "full"} {"Limited Access" "limited"}}
 
 element create add_user read_private_data_p \
-        -label "Can Access Private Information?" \
-        -datatype text \
-        -widget select \
-        -options {{"Yes" "t"} {"No" "f"}}
+    -label "Can Access Private Information?" \
+    -datatype text \
+    -widget select \
+    -options {{"Yes" "t"} {"No" "f"}}
 
 element create add_user referer \
-        -label "Referer" \
-        -datatype text \
-        -widget hidden \
-        -value $referer
+    -label "Referer" \
+    -datatype text \
+    -widget hidden \
+    -value $referer
 
 if {[form is_valid add_user]} {
     form get_values add_user \

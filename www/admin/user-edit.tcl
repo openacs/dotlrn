@@ -27,6 +27,7 @@ element create edit_user id \
     -label "ID" \
     -datatype text \
     -widget text \
+    -html {size 60} \
     -value $id \
     -optional
 
@@ -34,7 +35,7 @@ element create edit_user type \
     -label "User Type" \
     -datatype text \
     -widget select \
-    -options [dotlrn::get_user_types] \
+    -options [dotlrn::get_user_types_as_options] \
     -value $type
 
 element create edit_user access_level \

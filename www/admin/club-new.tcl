@@ -20,13 +20,13 @@ element create add_club club_key \
     -label "[ad_parameter clubs_pretty_name] Key (a short name, no spaces)" \
     -datatype text \
     -widget text \
-    -html {size 50}
+    -html {size 60}
 
 element create add_club pretty_name \
     -label "Name" \
     -datatype text \
     -widget text \
-    -html {size 50}
+    -html {size 60}
 
 element create add_club description \
     -label "Charter" \

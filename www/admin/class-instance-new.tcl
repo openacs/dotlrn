@@ -21,7 +21,7 @@ element create add_class_instance pretty_name \
     -label "Name" \
     -datatype text \
     -widget text \
-    -html {size 50} \
+    -html {size 60} \
     -optional
 
 element create add_class_instance description \
