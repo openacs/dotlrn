@@ -1,3 +1,4 @@
+
 <%
 
     #
@@ -25,7 +26,7 @@
 <table width="100%" border="0" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
   <tr bgcolor="#CC0000">
     <td colspan="3" valign="middle">
-      <img src="/dotlrn/spacer.gif" width="1" height="1">
+      <img src="/dotlrn/graphics/spacer.gif" width="1" height="1">
      </td>
   </tr>
   <tr>
@@ -48,7 +49,7 @@
   </tr>
   <tr bgcolor="#cc0000">
     <td colspan="3"  valign="middle">
-    <img src="/dotlrn/spacer.gif" width="1" height="1">
+    <img src="/dotlrn/graphics/spacer.gif" width="1" height="1">
     </td>
   </tr>
 </table>

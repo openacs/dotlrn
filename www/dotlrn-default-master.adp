@@ -41,7 +41,7 @@
     <!-- Ugly NN4 bar hack -->
       <table width="100%" bgcolor="@color_hack@" border="0" cellpadding="1" cellspacing="0">
          <tr bgcolor="@color_hack@"> 
-            <td><img src="/dotlrn/spacer.gif" width="1" height="1" alt=""></td>
+            <td><img src="/dotlrn/graphics/spacer.gif" width="1" height="1" alt=""></td>
         </tr>
       </table>
     </td>
@@ -67,7 +67,7 @@
     <td colspan=3>
       <table width="100%" bgcolor="@color_hack@" border="0" cellpadding="1" cellspacing="0">
          <tr bgcolor="@color_hack@"> 
-            <td><img src="/dotlrn/spacer.gif" width="1" height="1" alt=""></td>
+            <td><img src="/dotlrn/graphics/spacer.gif" width="1" height="1" alt=""></td>
         </tr>
       </table>
     </td>
