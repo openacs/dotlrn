@@ -169,6 +169,7 @@ is
    pretty_name		in dotlrn_communities.pretty_name%TYPE,
    description		in dotlrn_communities.description%TYPE,
    page_id		in dotlrn_communities.page_id%TYPE default null,
+   portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
                            default sysdate,
@@ -205,6 +206,7 @@ as
    pretty_name		in dotlrn_communities.pretty_name%TYPE,
    description		in dotlrn_communities.description%TYPE,
    page_id		in dotlrn_communities.page_id%TYPE default null,
+   portal_template_id	in dotlrn_communities.portal_template_id%TYPE default null,
    package_id		in dotlrn_communities.package_id%TYPE default null,
    creation_date        in acs_objects.creation_date%TYPE
                            default sysdate,
@@ -215,6 +217,7 @@ as
  ) return dotlrn_communities.community_id%TYPE
  is
    c_id integer;
+   p_id integer;
  begin
    c_id := acs_group.new (
 	group_id => community_id,
@@ -225,10 +228,17 @@ as
 	group_name => community_key
    );
 
+   p_id := portal.new (
+	portal_template_p => 't'
+   );
+
+
    insert into dotlrn_communities
-   (community_id, community_type, community_key, pretty_name, description, package_id, page_id)
+   (community_id, community_type, community_key, pretty_name, description, package_id, page_id, portal_template_id)
    values
-   (c_id, community_type, community_key, pretty_name, description, package_id, page_id);
+   (c_id, community_type, community_key, pretty_name, description, package_id, page_id, p_id);
+
+
 
    return c_id;
  end;
