@@ -26,6 +26,12 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::get_type_package_id.select_package_id">
+        <querytext>
+            select package_id from dotlrn_community_types where community_type= :community_type
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::set_package_id.update_package_id">
         <querytext>
             update dotlrn_communities_all set package_id= :package_id where community_id= :community_id
@@ -160,7 +166,7 @@
             and registered_users.user_id not in (select dm.user_id
                                                  from dotlrn_member_rels_full dm
                                                  where dm.community_id = :subcomm_id)
-            order by dotlrn_member_rels_approved.rel_type
+            order by dotlrn_member_rels_approved.rel_type, registered_users.last_name
         </querytext>
     </fullquery>
 
