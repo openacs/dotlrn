@@ -26,7 +26,7 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a>
@@ -57,8 +57,8 @@
 <else>
     <tr bgcolor="#d9e4f9">
 </else>
-      <td><a href="@clubs.url@">@clubs.pretty_name@</a></td>
-      <td><pre>@clubs.description@</pre></td>
+      <td align="left"><a href="@clubs.url@">@clubs.pretty_name@</a></td>
+      <td align="left"><pre>@clubs.description@</pre></td>
       <td align="center">@clubs.n_members@</td>
       <td align="center">
         <nobr>
@@ -74,7 +74,7 @@
 </if>
 <else>
   <tr bgcolor="#eeeeee">
-    <td colspan="4">
+    <td align="left" colspan="4">
       <i>No <%= [parameter::get -parameter clubs_pretty_plural] %></i>
     </td>
   </tr>
@@ -86,7 +86,7 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="club-new">New <%= [parameter::get -parameter clubs_pretty_name] %></a>

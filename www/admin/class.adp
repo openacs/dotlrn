@@ -49,7 +49,7 @@
 <if @can_instantiate@>
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="class-instance-new?class_key=@class_key@">New <%= [parameter::get -parameter class_instances_pretty_name] %></a>
@@ -97,8 +97,8 @@
 <else>
     <tr bgcolor="#d9e4f9">
 </else>
-      <td><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
-      <td><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
+      <td align="left"><a href="term?term_id=@class_instances.term_id@">@class_instances.term_name@&nbsp;@class_instances.term_year@</a></td>
+      <td align="left"><a href="@class_instances.url@">@class_instances.pretty_name@</a></td>
       <td align="center">@class_instances.n_members@</td>
       <td align="center">
         <nobr>
@@ -114,7 +114,7 @@
 </if>
 <else>
     <tr bgcolor="#eeeeee">
-      <td colspan="4">
+      <td align="left" colspan="4">
         <i>No <%= [parameter::get -parameter class_instances_pretty_plural] %></i>
       </td>
     </tr>

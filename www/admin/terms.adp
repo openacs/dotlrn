@@ -26,7 +26,7 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="term-new">New Term</a>
@@ -56,7 +56,7 @@
 <else>
     <tr bgcolor="#d9e4f9">
 </else>
-      <td><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
+      <td align="left"><a href="term?term_id=@terms.term_id@">@terms.term_name@ @terms.term_year@</a></td>
       <td align="center">@terms.start_date@</td>
       <td align="center">@terms.end_date@</td>
       <td align="center">@terms.n_classes@</td>
@@ -72,7 +72,7 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="term-new">New Term</a>

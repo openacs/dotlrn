@@ -97,12 +97,12 @@
 <else>
     <tr bgcolor="#d9e4f9">
 </else>
-      <td><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
-      <td><a href="class?class_key=@classes.class_key@">@classes.class_name@</a></td>
+      <td align="left"><a href="department?department_key=@classes.department_key@">@classes.department_name@</a></td>
+      <td align="left"><a href="class?class_key=@classes.class_key@">@classes.class_name@</a></td>
 <if @term_id@ eq -1>
-      <td>@classes.term_name@ @classes.term_year@</td>
+      <td align="left">@classes.term_name@ @classes.term_year@</td>
 </if>
-      <td><a href="@classes.url@">@classes.pretty_name@</a></td>
+      <td align="left"><a href="@classes.url@">@classes.pretty_name@</a></td>
       <td align="center">@classes.n_members@</td>
       <td align="center">
         <nobr>

@@ -28,6 +28,7 @@ set user_can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
 
 set comm_type ""
 db_multirow communities select_communities {} {
+    set tree_level [expr $tree_level - $community_type_level]
     if {![string equal $simple_community_type dotlrn_community]} {
         set comm_type $simple_community_type
     } else {

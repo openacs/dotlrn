@@ -36,7 +36,7 @@
 <else>
   <tr bgcolor="#d9e4f9">
 </else>
-    <td>
+    <td align="left">
   <if @type@ eq "deactivated">
       <a href="user?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
   </if>
@@ -68,7 +68,7 @@
 </if>
 <else>
   <tr bgcolor="#eeeeee">
-    <td colspan="4"><i>No Users</i></td>
+    <td align="left" colspan="4"><i>No Users</i></td>
   </tr>
 </else>
 

@@ -26,7 +26,7 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
@@ -55,7 +55,7 @@
 <else>
     <tr bgcolor="#d9e4f9">
 </else>
-      <td><a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
+      <td align="left"><a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
       <td align="center">
 <if @can_create@>
         <nobr>
@@ -72,7 +72,7 @@
 </if>
 <else>
     <tr bgcolor="#eeeeee">
-      <td colspan="2">
+      <td align="left" colspan="2">
         <i>No <%= [parameter::get -parameter clubs_pretty_plural] %></i>
       </td>
     </tr>
@@ -85,7 +85,7 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td>
+      <td align="left">
         <nobr>
           <small>[
             <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
