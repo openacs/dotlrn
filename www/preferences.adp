@@ -7,7 +7,7 @@
 
 <ul>
   <li><a href="/pvt/home">Edit My Profile</a></li>
-  <li><a href="/user/password-update">Change My Password</a></li>
+  <li><a href="/user/password-update?return_url=@referer@">Change My Password</a></li>
   <li><a href="applets/bboard/alerts">Edit My Bulletin Board Email Alerts</a></li>
   <li><a href="configure">Customize This Portal</a></li>
 <if @admin_p@ eq 1>
