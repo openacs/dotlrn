@@ -7,7 +7,107 @@
 --
 
 -- prompt Creating relationships, relational segments, helper views and package...
-\i ../privacy-init.sql
+
+-- This function was copied in from privacy-init.sql (v1.1.2.3) but
+-- given an extra "if" condition.  We could have put the "if" directly
+-- in privacy-init.sql but it doesn't really belong there.
+create function inline_1()
+returns integer as '
+declare
+    v_guest_segment_id integer;
+    v_non_guest_segment_id integer;
+    v_object_id integer;
+    v_count integer;
+begin
+
+    --
+    -- Only run this code if the new rel_types haven''t been created.
+    -- Fix for bug #1633.
+    --
+    select count(*) into v_count
+    from acs_object_types
+    where object_type = ''dotlrn_guest_rel'';
+
+    if v_count = 0 then
+
+    --
+    -- Guests
+    --
+
+    perform acs_rel_type__create_type(
+        ''dotlrn_guest_rel'',
+        ''.LRN Guest'',
+        ''.LRN Guests'',
+        ''membership_rel'',
+        ''dotlrn_guest_rels'',
+        ''rel_id'',
+        ''dotlrn_guest_rel'',
+        ''group'',
+        null,
+        0,
+        null,
+        ''user'',
+        null,
+        0,
+        1
+    );
+
+    v_guest_segment_id := rel_segment__new(
+        ''Registered .LRN Guests'',
+        acs__magic_object_id(''registered_users''),
+        ''dotlrn_guest_rel''
+    );
+
+    --
+    -- Non Guests
+    --
+
+    perform acs_rel_type__create_type(
+        ''dotlrn_non_guest_rel'',
+        ''.LRN Non-Guest'',
+        ''.LRN Non-Guests'',
+        ''membership_rel'',
+        ''dotlrn_non_guest_rels'',
+        ''rel_id'',
+        ''dotlrn_non_guest_rel'',
+        ''group'',
+        null,
+        0,
+        null,
+        ''user'',
+        null,
+        0,
+        1
+    );
+
+    v_non_guest_segment_id := rel_segment__new(
+        ''Registered .LRN Non-Guests'',
+        acs__magic_object_id(''registered_users''),
+        ''dotlrn_non_guest_rel''
+    );
+
+    end if;
+
+    return(0);
+end;
+' language 'plpgsql';
+
+select inline_1();
+drop function inline_1();
+
+-- Copied in from privacy-init.sql (v.1.1.2.3)
+create or replace view dotlrn_guest_status
+as
+select r.object_id_two as user_id,
+       case when r.rel_type = 'dotlrn_guest_rel' then 't' else 'f' end as guest_p
+  from acs_rels r, 
+       membership_rels m 
+where m.rel_id = r.rel_id 
+  and (r.rel_type = 'dotlrn_guest_rel' 
+       or r.rel_type = 'dotlrn_non_guest_rel')
+  and r.object_id_one = acs__magic_object_id('registered_users');
+
+
 \i ../privacy-package-create.sql
 
 -- prompt Establishing non-guest or guest status for each user...
