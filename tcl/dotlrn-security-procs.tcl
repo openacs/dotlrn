@@ -158,6 +158,9 @@ namespace eval dotlrn {
                     $user_id
             }
         }
+        
+        # always flush when creating a new user
+        util_memoize_flush "dotlrn::get_portal_id_not_cached -user_id $user_id"
 
         return $rel_id
     }
