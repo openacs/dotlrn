@@ -43,5 +43,6 @@ set referer [ns_conn url]
 set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
 set system_owner [ad_system_owner]
 
-ad_return_template
+set pvt_home [ad_pvt_home]
+set pvt_home_name [ad_pvt_home_name]
 

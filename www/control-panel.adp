@@ -45,18 +45,12 @@
 <h3>#dotlrn.Personal_Options#</h3>
 <ul>
   <li>
-    <a href="/user/basic-info-update?return_url=@referer@">#dotlrn.lt_Edit_My_Personal_Info#</a>
-    <li>
-      #dotlrn.lt_What_others_see_about#
-      <%= [acs_community_member_link -user_id $user_id -label "[ad_url][acs_community_member_url -user_id $user_id]"] %>
-  </li>
-  <li><a href="/user/password-update?return_url=@referer@">#dotlrn.Change_My_Password#</a></li>
-  <li><a href="/acs-lang/">#dotlrn.lt_Change_my_language_se#</a></li>
-  <li><a href="/notifications/manage">#dotlrn.lt_Edit_My_Notifications#</a></li>
-  <li><a href="configure">#dotlrn.Customize_Layout#</a></li>
+    <a href="@pvt_home@">@pvt_home_name@</a></li>
+
+  <p><li><a href="configure">#dotlrn.Customize_Layout#</a></li>
 
 <if @admin_p@>
-  <li><a href="@admin_url@">@admin_pretty_name@</a></li>
+  <p><li><a href="@admin_url@">@admin_pretty_name@</a></li>
 </if>
 </ul>
 </td></tr></table>
