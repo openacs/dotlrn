@@ -25,12 +25,12 @@
 <if @portrait_p@ eq 1>
   <if @inline_portrait_state@ eq "inline">
   
-    <a href="portrait?@portrait_export_vars@"><img src="portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
+    <a href="portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
   
   </if>
   <else><if @inline_portrait_state eq "link">
   
-    <li><a href="portrait?@portrait_export_vars@">Portrait</a>
+    <li><a href="/shared/portrait?@portrait_export_vars@">Portrait</a>
   
   </if></else>
 </if>
