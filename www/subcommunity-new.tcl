@@ -32,7 +32,7 @@ element create add_subcomm join_policy \
     -label "Join Policy" \
     -datatype text \
     -widget select \
-    -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+    -options {{Closed closed} {"Needs Approval" "needs approval"} {Open open}}
 
 element create add_subcomm referer \
     -label "Referer" \

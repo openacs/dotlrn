@@ -1,5 +1,5 @@
 <if @classes:rowcount@ gt 0>
-  <div class=larger><%= [ad_parameter classes_pretty_plural] %></div>
+  <%= [ad_parameter classes_pretty_plural] %>:
   <ul>
     <multiple name="classes">
       <li>
@@ -16,7 +16,7 @@
 </if>
 
 <if @clubs:rowcount@ gt 0>
-  <div class=larger><%= [ad_parameter clubs_pretty_plural] %></div>
+  <%= [ad_parameter clubs_pretty_plural] %>:
   <ul>
     <multiple name="clubs">
       <li>

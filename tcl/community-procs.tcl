@@ -716,14 +716,23 @@ namespace eval dotlrn_community {
         Returns a html fragment of the subcommunity hierarchy of this
         community or if none, the empty list
     } {
+        set user_id [ad_get_user_id]
         set subcomm_chunk ""
 
         foreach subcomm_id [get_subcomm_list -community_id $community_id] {
             if {[has_subcommunity_p -community_id $subcomm_id]} {
+                set url [get_community_url $subcomm_id]
+                
                 append subcomm_chunk \
-                        "$pretext <a href=[get_community_url $subcomm_id]>" \
-                        "[get_community_name $subcomm_id]</a>\n" \
-                        "<ul>\n" \
+                        "$pretext <a href=$url>" \
+                        "[get_community_name $subcomm_id]</a>\n" 
+
+                if {[dotlrn::user_can_admin_community_p $subcomm_id]} {
+                    append subcomm_chunk " - <a class=note href=${url}one-community-admin>\[admin\]</a>"
+                }
+                
+                append subcomm_chunk \
+                    "<ul>\n" \
                         [get_subcomm_chunk -community_id $subcomm_id] \
                         "</ul>\n"
             } else {
@@ -790,6 +799,20 @@ namespace eval dotlrn_community {
         get the name for a community
     } {
         return [db_string select_community_name {} -default ""]
+    }
+
+    ad_proc -public get_community_header_name {
+        community_id
+    } {
+        get the name for a community for the header
+    } {
+        if {[subcommunity_p -community_id $community_id]} {
+            set parent_id [get_parent_id -community_id $community_id]
+            set parent_name [get_community_name $parent_id]
+            return [concat "<a href=\"..\">$parent_name</a> : [get_community_name $community_id]"]
+        } else {
+            return [get_community_name $community_id]
+        }
     }
 
     ad_proc -public get_community_description {
