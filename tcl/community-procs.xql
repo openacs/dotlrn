@@ -266,11 +266,12 @@ community_id= :community_id and applet_key= :applet_key
 
 <fullquery name="dotlrn_community::list_applets.select_all_applets">
 <querytext>
-select impl_name from acs_sc_impls, acs_sc_bindings, acs_sc_contracts
-where
-acs_sc_impls.impl_id = acs_sc_bindings.impl_id and
-acs_sc_contracts.contract_id= acs_sc_bindings.contract_id and
-acs_sc_contracts.contract_name='dotlrn_applet'
+    select impl_name
+    from acs_sc_impls, acs_sc_bindings, acs_sc_contracts, dotlrn_applets
+    where acs_sc_impls.impl_id = acs_sc_bindings.impl_id
+    and acs_sc_impls.impl_name = dotlrn_applets.applet_key
+    and acs_sc_contracts.contract_id = acs_sc_bindings.contract_id
+    and acs_sc_contracts.contract_name = 'dotlrn_applet'
 </querytext>
 </fullquery>
 
