@@ -118,7 +118,7 @@
       <li>
         <a href="@member_classes.url@">@member_classes.pretty_name@</a>
         @member_classes.term_name@ @member_classes.term_year@
-        (@member_classes.role@)
+        (@member_classes.role_pretty_name@)
       </li>
 </multiple>
     </ul>
@@ -133,7 +133,7 @@
 <multiple name="member_clubs">
       <li>
         <a href="@member_clubs.url@">@member_clubs.pretty_name@</a>
-        (@member_clubs.role@)
+        (@member_clubs.role_pretty_name@)
       </li>
 </multiple>
     </ul>
@@ -148,7 +148,7 @@
 <multiple name="member_subgroups">
       <li>
         <a href="@member_subgroups.url@">@member_subgroups.pretty_name@</a>
-        (@member_subgroups.role@)
+        (@member_subgroups.role_pretty_name@)
       </li>
 </multiple>
     </ul>

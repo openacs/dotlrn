@@ -32,6 +32,8 @@ if {![info exists referer]} {
     set referer "my-communities"
 }
 
-db_multirow communities select_my_communities {}
+db_multirow communities select_my_communities {} {
+    set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
+}
 
 ad_return_template

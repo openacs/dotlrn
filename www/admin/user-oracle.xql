@@ -29,7 +29,9 @@
     <fullquery name="select_member_classes">
         <querytext>
             select dotlrn_class_instances_full.*,
+                   dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
+                   '' as role_pretty_name,
                    acs_permission.permission_p(dotlrn_class_instances_full.class_instance_id, :user_id, 'admin') as admin_p
             from dotlrn_class_instances_full,
                  dotlrn_member_rels_approved
@@ -45,7 +47,9 @@
     <fullquery name="select_member_clubs">
         <querytext>
             select dotlrn_clubs_full.*,
+                   dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
+                   '' as role_pretty_name,
                    acs_permission.permission_p(dotlrn_clubs_full.club_id, :user_id, 'admin') as admin_p
             from dotlrn_clubs_full,
                  dotlrn_member_rels_approved
@@ -60,7 +64,9 @@
         <querytext>
             select dotlrn_communities.*,
                    dotlrn_community.url(dotlrn_communities.community_id) as url,
+                   dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
+                   '' as role_pretty_name,
                    acs_permission.permission_p(dotlrn_communities.community_id, :user_id, 'admin') as admin_p
             from dotlrn_communities,
                  dotlrn_member_rels_approved

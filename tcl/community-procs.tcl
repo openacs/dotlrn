@@ -444,8 +444,11 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -private get_roles {
-        {-community_id:required}
+        {-community_id ""}
     } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
         set default_roles [eval concat [get_default_roles -community_id $community_id]]
         set attributes [eval concat [get_attributes -community_id $community_id]]
 
@@ -474,6 +477,27 @@ namespace eval dotlrn_community {
         }
 
         return $roles
+    }
+
+    ad_proc -public get_role_pretty_name {
+        {-community_id ""}
+        {-rel_type:required}
+    } {
+        get the pretty name for the role associated with this rel_type
+    } {
+        if {[empty_string_p $community_id]} {
+            set community_id [get_community_id]
+        }
+
+        set roles [eval concat [get_roles -community_id $community_id]]
+        set i [lsearch -exact $roles $rel_type]
+        set pretty_name ""
+
+        if {$i > -1} {
+            set pretty_name [lindex $roles [expr $i + 2]]
+        }
+
+        return $pretty_name
     }
 
     ad_proc -public get_all_roles {} {

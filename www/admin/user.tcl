@@ -69,9 +69,15 @@ if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info 
 
 set change_state_links "\[<small>[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]</small>\]"
 
-db_multirow member_classes select_member_classes {}
-db_multirow member_clubs select_member_clubs {}
-db_multirow member_subgroups select_member_subgroups {}
+db_multirow member_classes select_member_classes {} {
+    set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]
+}
+db_multirow member_clubs select_member_clubs {} {
+    set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $club_id -rel_type $rel_type]
+}
+db_multirow member_subgroups select_member_subgroups {} {
+    set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
+}
 
 set context_bar [list [list users Users] "$first_names $last_name"]
 

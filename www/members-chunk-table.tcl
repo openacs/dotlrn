@@ -91,14 +91,8 @@ if {$read_private_data_p || [string equal $my_user_id $user_id]} {
 lappend table_def [list \
     role \
     "Role" \
-    {decode(role, 'Professor', 1, 
-                      'Administrator', 2, 
-                      'Teaching Assistant', 3, 
-                      'Course Assistant', 4, 
-                      'Course Administrator', 5, 
-                      'Student', 6, 
-                      'Member', 7) asc, last_name $order} \
-        {<td><nobr>$role</nobr></td>}
+    {decode(role, 'instructor', 1, 'admin', 2, 'teaching_assistant', 3, 'course_assistant', 4, 'course_admin', 5, 'student', 6, 'member', 7) asc, last_name $order} \
+    "<td><nobr>\[dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type \$rel_type\]</nobr></td>"
 ]
 
 if {$site_wide_admin_p} {

@@ -11,7 +11,9 @@
                    dotlrn_communities.description,
                    dotlrn_communities.package_id,
                    dotlrn_community.url(dotlrn_communities.community_id) as url,
+                   dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
+                   '' as role_pretty_name,
                    decode(dotlrn_community.admin_p(dotlrn_communities.community_id, dotlrn_member_rels_approved.user_id),'f',0,1) as admin_p
             from dotlrn_communities,
                  dotlrn_member_rels_approved

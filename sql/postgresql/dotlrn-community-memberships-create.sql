@@ -46,11 +46,9 @@ as
            acs_rels.object_id_one as community_id,
            acs_rels.object_id_two as user_id,
            acs_rels.rel_type,
-           (select acs_rel_roles.pretty_name
-            from acs_rel_roles
-            where acs_rel_roles.role = (select acs_rel_types.role_two
-                                        from acs_rel_types
-                                        where acs_rel_types.rel_type = acs_rels.rel_type)) as role,
+           (select acs_rel_types.role_two
+            from acs_rel_types
+            where acs_rel_types.rel_type = acs_rels.rel_type) as role,
            dotlrn_member_rels.portal_id,
            membership_rels.member_state
     from dotlrn_member_rels,

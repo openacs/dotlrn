@@ -24,7 +24,7 @@
 <multiple name="communities">
   <tr>
     <td><a href="@communities.url@">@communities.pretty_name@</a></td>
-    <td>@communities.role@</td>
+    <td>@communities.role_pretty_name@</td>
     <td>
       [<small>
 <if @communities.admin_p@ eq 1>
