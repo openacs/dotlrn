@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="it_IT" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="it_IT" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia di</msg>
   <msg key="Access">Accesso</msg>
@@ -160,7 +160,7 @@
   <msg key="Email_1">Email</msg>
   <msg key="Email_Members">Email membri</msg>
   <msg key="email_message">Messaggio</msg>
-  <msg key="email_sent">Meial inviati</msg>
+  <msg key="email_sent">Mail inviati</msg>
   <msg key="End_Date">Fine Data</msg>
   <msg key="End_date">Fine data:</msg>
   <msg key="Error_sending_mail">Errore inviando l'email</msg>
@@ -224,7 +224,7 @@
   <msg key="lt_Add_community_name_Me">Aggiungi i membri della %community_name% a un'altra comunità</msg>
   <msg key="lt_Add_Members_to_Anothe">Aggiungi i membri a un'altra comunità</msg>
   <msg key="lt_Add_members_to_anothe">Aggiungi i membri a un altro gruppo</msg>
-  <msg key="lt_Add_These_Users_To_A_">Aggiungi questi utenti a un gruppo</msg>
+  <msg key="lt_Add_These_Users_To_A_">Aggiungere questo/i utente/i a un gruppo</msg>
   <msg key="lt_Administrative_Action">Azioni Amministrative</msg>
   <msg key="lt_An_error_occured_whil">Si è verificato un errore durante l'aggiunta di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
   <msg key="lt_An_error_occured_whil_1">Si è verificato un errore durante la rimozione di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
@@ -416,6 +416,8 @@
   <msg key="registration_request_sent">Grazie. La tua richiesta di registrazione è stata inviata all'amministratore del sito.</msg>
   <msg key="Reject">Respingi</msg>
   <msg key="reject">respingi</msg>
+  <msg key="Reject_all">Respingi tutti</msg>
+  <msg key="Remove_all">Rimuovi tutti</msg>
   <msg key="Request_Membership">Richiedi l'associazione</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Richiedi l'associazione&quot;&gt;</msg>
   <msg key="required">richiesto</msg>
@@ -479,7 +481,7 @@ Per esempio, potresti usare:</msg>
 Login: %user_email% Password: %user_password%</msg>
   <msg key="user_add_confirm_email_subject">Sei stato aggiunto come utente a %system_name% all'indirizzo %system_url%</msg>
   <msg key="User_Admin_Page">Pagina di amministrazione utente</msg>
-  <msg key="user_email_already_exists">L'utente %user_email% esiste già... archiviazione user_id</msg>
+  <msg key="user_email_already_exists">L'utente %user_email% esiste già...</msg>
   <msg key="user_email_created">Utente %user_email% creato....</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% è membro di %system_name% dal %pretty_creation_date%</msg>
   <msg key="User_ID">User ID:</msg>
@@ -509,4 +511,9 @@ Login: %user_email% Password: %user_password%</msg>
   <msg key="your_icon_is_too_large">La tua icona è troppo grande. L'amministratore del sistema ha scelto di limitare gli allegati a una dimensione massima di %max_attachments_bytes% bytes.\n </msg>
   <msg key="Youre_editing">Stai modificando</msg>
   <msg key="Youve_chosen_to_add">Hai scelto di aggiungere</msg>
+  <msg key="added_community_subject">Sei stato aggiunto alla communità "%community_name%" in %package%</msg>
+  <msg key="added_community_message">Per visitare la home page della communità, vai su %package% e dopo esserti autenticato clicca sul link "%community_name%" nel portlet "Gruppi".</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email spedita a %email%.</msg>
+  <msg key="datafile_must">&lt;p&gt;Il file deve includere al meno i campi: email, first_names, last_name.&lt;p&gt;</msg>
+  <msg key="database_choked">&lt;p&gt;Errore nell'aggiunta dell'utente al database!&lt;br&gt;  La transazione è stata abortita, nessun utente è stato aggiunto.&lt;p&gt;</msg>
 </message_catalog>
