@@ -34,9 +34,9 @@ create or replace package dotlrn_member_rel
 is
 
     function new (
-        rel_id in dotlrn_member_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_member_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default NULL,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -56,9 +56,9 @@ create or replace package body dotlrn_member_rel
 is
 
     function new (
-        rel_id in dotlrn_member_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_member_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default NULL,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -107,7 +107,7 @@ create or replace package dotlrn_admin_rel
 is
 
     function new (
-        rel_id in dotlrn_admin_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_admin_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
@@ -129,7 +129,7 @@ create or replace package body dotlrn_admin_rel
 is
 
     function new (
-        rel_id in dotlrn_admin_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_admin_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
         community_id in dotlrn_communities.community_id%TYPE,
         user_id in users.user_id%TYPE,
@@ -181,9 +181,9 @@ create or replace package dotlrn_student_rel
 is
 
     function new (
-        rel_id in dotlrn_student_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_student_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default NULL,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -203,9 +203,9 @@ create or replace package body dotlrn_student_rel
 is
 
     function new (
-        rel_id in dotlrn_student_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_student_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-        portal_id in dotlrn_member_rels.portal_id%TYPE default NULL,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
@@ -255,12 +255,12 @@ create or replace package dotlrn_ta_rel
 is
 
     function new (
-        rel_id in dotlrn_ta_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_ta_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ta_rels.rel_id%TYPE;
@@ -277,12 +277,12 @@ create or replace package body dotlrn_ta_rel
 is
 
     function new (
-        rel_id in dotlrn_ta_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_ta_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ta_rels.rel_id%TYPE
@@ -329,12 +329,12 @@ create or replace package dotlrn_ca_rel
 is
 
     function new (
-        rel_id in dotlrn_ca_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_ca_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ca_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ca_rels.rel_id%TYPE;
@@ -351,12 +351,12 @@ create or replace package body dotlrn_ca_rel
 is
 
     function new (
-        rel_id in dotlrn_ca_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_ca_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ca_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ca_rels.rel_id%TYPE
@@ -403,12 +403,12 @@ create or replace package dotlrn_cadmin_rel
 is
 
     function new (
-        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_cadmin_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_cadmin_rels.rel_id%TYPE;
@@ -425,12 +425,12 @@ create or replace package body dotlrn_cadmin_rel
 is
 
     function new (
-        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_cadmin_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_cadmin_rels.rel_id%TYPE
@@ -477,12 +477,12 @@ create or replace package dotlrn_instructor_rel
 is
 
     function new (
-        rel_id in dotlrn_instructor_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_instructor_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_instructor_rels.rel_id%TYPE;
@@ -499,12 +499,12 @@ create or replace package body dotlrn_instructor_rel
 is
 
     function new (
-        rel_id in dotlrn_instructor_rels.rel_id%TYPE default NULL,
+        rel_id in dotlrn_instructor_rels.rel_id%TYPE default null,
         rel_type in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
         user_id in users.user_id%TYPE,
         member_state in membership_rels.member_state%TYPE default 'approved',
-        portal_id in dotlrn_member_rels.portal_id%TYPE,
+        portal_id in dotlrn_member_rels.portal_id%TYPE default null,
         creation_user in acs_objects.creation_user%TYPE default null,
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_instructor_rels.rel_id%TYPE
