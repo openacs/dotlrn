@@ -21,10 +21,10 @@
         <tr bgcolor="@bgcolor@">
           <td>
             <if @type@ eq "pending">
-              <a href="user-new-2?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+              <a href="user-new-2?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
             </if>
             <else>
-              <a href="user-edit?user_id=@users.user_id@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
+              <a href="user-edit?user_id=@users.user_id@&referer=@referer@">@users.last_name@, @users.first_names@</a> (<a href="mailto:@users.email@">@users.email@</a>)
             </else>
           </td>
           <td align="center"><if @users.limited_access_p@ eq t>limited</if><else>full</else></td>
@@ -32,10 +32,10 @@
           <td align="center">
             <if @user_id@ ne @users.user_id@>
               <if @users.site_wide_admin_p@ eq t>
-                <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=users">yes</a>
+                <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@">yes</a>
               </if>
               <else>
-                <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=users">no</a>
+                <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@">no</a>
               </else>
             </if>
             <else>yes</else>

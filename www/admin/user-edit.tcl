@@ -24,6 +24,9 @@ element create edit_user rel_type \
 element create edit_user read_private_data_p \
         -label "Can Access Private Information?" -datatype text -widget select -options {{yes t} {no f}}
 
+element create edit_user referer \
+        -label "Referer" -datatype text -widget hidden -value $referer
+
 # Create a form of hidden vars
 form create verif_edit_user
 
@@ -31,13 +34,14 @@ element create verif_edit_user user_id -label "User ID" -datatype integer -widge
 element create verif_edit_user type_id -label "Type ID" -datatype integer -widget hidden
 element create verif_edit_user rel_type -label "Relationship Type" -datatype text -widget hidden
 element create verif_edit_user read_private_data_p -label "Can Read Private Data?" -datatype text -widget hidden
+element create verif_edit_user referer -label "Referer" -datatype text -widget hidden -value $referer
 
 set context_bar {{users Users} {Edit}}
 set dotlrn_package_id [dotlrn::get_package_id]
 
 # We verified everything, now we make the change
 if {[form is_valid verif_edit_user]} {
-    template::form get_values verif_edit_user user_id type_id rel_type read_private_data_p
+    template::form get_values verif_edit_user user_id type_id rel_type read_private_data_p referer
 
     set rel_id [db_string select_rel_id {
         select rel_id
@@ -62,7 +66,7 @@ if {[form is_valid verif_edit_user]} {
 
 
 if {[form is_valid edit_user]} {
-    template::form get_values edit_user user_id type_id rel_type read_private_data_p
+    template::form get_values edit_user user_id type_id rel_type read_private_data_p referer
 
     # Do something
     set new_rel_type $rel_type

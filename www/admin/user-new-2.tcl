@@ -5,6 +5,7 @@ ad_page_contract {
     @creation-date 2001-11-04
 } -query {
     user_id
+    {referer "users"}
 }
 
 form create add_user
@@ -21,8 +22,11 @@ element create add_user rel_type \
 element create add_user read_private_data_p \
         -label "Can Access Private Information?" -datatype text -widget select -options {{yes t} {no f}}
 
+element create add_user referer \
+        -label "Referer" -datatype text -widget hidden -value $referer
+
 if {[form is_valid add_user]} {
-    template::form get_values add_user user_id type_id rel_type read_private_data_p
+    template::form get_values add_user user_id type_id rel_type read_private_data_p referer
 
     db_transaction {
         # add the user
@@ -32,7 +36,7 @@ if {[form is_valid add_user]} {
     }
 
     # redirect
-    ad_returnredirect "users"
+    ad_returnredirect $referer
     ad_script_abort
 }
 

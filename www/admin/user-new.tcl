@@ -4,6 +4,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-11-04
 } -query {
+    {referer "users"}
     search_text
 }
 
