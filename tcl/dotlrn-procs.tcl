@@ -61,7 +61,7 @@ namespace eval dotlrn {
 	}
 
 	# Get the parent node_id correctly
-	set package_id [dotlrn_community:get_package_id $community_id]
+	set package_id [dotlrn_community::get_package_id $community_id]
 
 	# We only take the first node right now
 	# FIXME: in case of multi-mounting, which is doubtful, but possible

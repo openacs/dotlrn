@@ -32,7 +32,7 @@ update dotlrn_users set theme_id= :theme_id where user_id= :user_id
 </querytext>
 </fullquery>
 
-<fullquery name="dotlrn::mount.select_node_id">
+<fullquery name="dotlrn::instantiate_and_mount.select_node_id">
 <querytext>
 select node_id from site_nodes where object_id= :package_id
 </querytext>
