@@ -28,7 +28,7 @@
 <p></p>
 
 <form method="post" action="user-add-3">
-  @export_vars@
+  @export_vars;noquote@
   #dotlrn.Message#
 
   <p></p>

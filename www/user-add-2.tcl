@@ -22,12 +22,13 @@ ad_page_contract {
     @version $Id$
 } -query {
     user_id
-    email
     password
-    first_names
-    last_name
-    {id ""}
     {referer "/acs-admin/users"}
+    type
+    can_browse_p
+    read_private_data_p
+    dotlrn_interactive_p
+    add_membership_p
 } -properties {
     context_bar:onevalue
     export_vars:onevalue
@@ -41,6 +42,40 @@ ad_page_contract {
     administration_name:onevalue
 }
 
+# Get user info
+acs_user::get -user_id $user_id -array user
+# easier to work with scalar vars than array
+foreach var_name [array names user] {
+    set $var_name $user($var_name)
+}
+
+set dotlrn_user_p [dotlrn::user_p -user_id $user_id]
+
+db_transaction {
+    # can this user read private data?
+    acs_privacy::set_user_read_private_data -user_id $user_id -object_id [dotlrn::get_package_id] -value $read_private_data_p
+
+    if {!${dotlrn_interactive_p} && !$dotlrn_user_p} {
+        # make the user a dotLRN user
+        dotlrn::user_add -type $type -can_browse\=$can_browse_p -user_id $user_id
+    }
+}
+
+set redirect "user-add-2?[export_vars {user_id password referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]"
+if { [string equal $add_membership_p t] } {
+    set redirect "member-add-2?[export_vars {user_id {referer $redirect}}]"
+}
+
+# Don't redirect back to the user-new-2 page if we've already been there
+if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
+    set redirect "../${redirect}"
+    ad_returnredirect "admin/user-new-2?[export_vars {user_id {referer $redirect}}]"
+    ad_script_abort
+} elseif { [string equal $add_membership_p t] } {
+    ad_returnredirect "member-add-2?[export_vars {user_id {referer $redirect}}]"
+    ad_script_abort
+}
+
 set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
 
 set admin_user_id [ad_verify_and_get_user_id]
@@ -51,8 +86,5 @@ set administration_name [db_string select_admin_name {
 }]
 
 set system_name [ad_system_name]
-set export_vars [export_vars -form {email referer}]
+set export_vars [export_vars -form {email referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]
 set system_url [ad_parameter -package_id [ad_acs_kernel_id] SystemURL ""]
-
-ad_return_template
-
