@@ -58,22 +58,28 @@ create table dotlrn_user_types (
                                 not null
 );
 
-create view dotlrn_users
+create or replace view dotlrn_users
 as
     select acs_rels.rel_id,
            dotlrn_user_profile_rels.id,
-           registered_users.user_id,
-           registered_users.first_names,
-           registered_users.last_name,
-           registered_users.email,
-           dotlrn_user_types.type
+           users.user_id,
+           persons.first_names,
+           persons.last_name,
+           parties.email,
+           dotlrn_user_types.type,
+           dotlrn_user_types.pretty_name as pretty_type,
+           dotlrn_user_types.group_id
     from dotlrn_user_profile_rels,
+         dotlrn_user_types,
          acs_rels,
-         registered_users,
-         dotlrn_user_types
-    where acs_rels.object_id_two = registered_users.user_id
+         parties,
+         users,
+         persons
+    where dotlrn_user_profile_rels.rel_id = acs_rels.rel_id
     and acs_rels.object_id_one = dotlrn_user_types.group_id
-    and acs_rels.rel_id = dotlrn_user_profile_rels.rel_id;
+    and acs_rels.object_id_two = parties.party_id
+    and parties.party_id = users.user_id
+    and users.user_id = persons.person_id;
 
 create view dotlrn_full_users
 as
