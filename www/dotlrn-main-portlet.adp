@@ -40,16 +40,10 @@
         set new_simple_community_type $communities(simple_community_type)
     }
 
-#    if {[string equal $communities(simple_community_type) dotlrn_club]} {
-#        set new_level [expr $communities(tree_level) - 1]
-#    } elseif {[string equal $communities(simple_community_type) dotlrn_class_instance]} {
-#        set new_level [expr $communities(tree_level) - 3]
-#    }
-
     set new_level $communities(tree_level)
 %>
 
-    <if @new_level@ lt @old_level@ and @old_simple_community_type@ eq @new_simple_community_type@>
+    <if @new_level@ lt @old_level@>
       </ul>
     </if>
 

@@ -16,8 +16,7 @@
                  dotlrn_member_rels_approved
             where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
             and dotlrn_member_rels_approved.user_id = :user_id
-            order by decode(dotlrn_communities.community_type, 'dotlrn_community', 2, 'dotlrn_club', 1, 0),
-                     tree_level
+            order by dotlrn_communities.tree_sortkey
         </querytext>
     </fullquery>
 
