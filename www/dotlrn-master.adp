@@ -32,10 +32,14 @@
 
 <title>@title@<if @text@ not nil> - @text@</if></title>
 @header_stuff;noquote@
-<link rel="stylesheet" type="text/css" href="/lists.css" media="all">
+<link rel="stylesheet" type="text/css" href="/resources/acs-templating/lists.css" media="all">
 
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>
+
+<p>
+<a href="/register/admin-login">Admin login</a> | <a href="/register/professor-login">Professor login</a> | <a href="/register/student-login">Student login</a>
+</p>
 
   <!-- Header Begin -->
 
@@ -94,5 +98,8 @@
     <div class="footer">@ds_link;noquote@</div>
   </p>
 
+  <p>
+    <include src="/packages/acs-lang/lib/messages-to-translate">
+  </p>
 </body>
 </html>
