@@ -3,9 +3,10 @@
 <queryset>
   <fullquery name="dotlrn_class::new.insert_class">
     <querytext>
-      insert
-      into dotlrn_classes (class_key)
-      values (:class_key)
+      insert into dotlrn_classes
+      (class_key, department_key)
+      values
+      (:class_key, :department_key)
     </querytext>
   </fullquery>
 
@@ -15,7 +16,7 @@
       from site_nodes
       where object_id = (select package_id
                          from dotlrn_classes_full
-                         where class_key = :class_type)
+                         where class_key = :class_key)
     </querytext>
   </fullquery>
 </queryset>

@@ -64,10 +64,10 @@ namespace eval dotlrn_class {
     }
 
     ad_proc -public new {
-        {-description ""}
         {-class_key:required}
+        {-department_key:required}
         {-pretty_name:required}
-        {-parent_type "dotlrn_class_instance"}
+        {-description ""}
     } {
         Creates a new class, like "Structure and Interpretation of Computer Programs."
         The return value is the short class name, a key that works in SQL, and that uniquely
@@ -76,24 +76,22 @@ namespace eval dotlrn_class {
         This class can then be instantiated for a particular semester.
     } {
         db_transaction {
-            # create the community type
             set class_key [dotlrn_community::new_type \
-                    -description $description \
-                    -community_type_key $class_key \
-                    -parent_type $parent_type \
-                    -pretty_name $pretty_name]
+                -community_type_key $class_key \
+                -parent_type $department_key \
+                -pretty_name $pretty_name \
+                -description $description]
 
-            # insert the class row (this would be much easier if object types were objects, too - ben)
             db_dml insert_class {}
         }
     }
 
     ad_proc -public new_instance {
-        {-class_type:required}
+        {-class_key:required}
         {-term_id:required}
         {-pretty_name ""}
         {-description ""}
-        {-join_policy "needs approval"}
+        {-join_policy "closed"}
     } {
         Creates a new instance of a class for a particular term and year,
         and returns the class instance key.
@@ -101,22 +99,22 @@ namespace eval dotlrn_class {
 #        dotlrn_term::get_term_info -term_id $term_id -term_name_var "term" -term_year_var "year"
         set term [dotlrn_term::get_term_name -term_id $term_id]
         set year [dotlrn_term::get_term_year -term_id $term_id]
-        set community_key "${class_type}-${term}-${year}"
+        set community_key "${class_key}-${term}-${year}"
 
         set extra_vars [ns_set create]
         ns_set put $extra_vars term_id $term_id
-        ns_set put $extra_vars class_key $class_type
+        ns_set put $extra_vars class_key $class_key
         ns_set put $extra_vars join_policy $join_policy
 
         if {[empty_string_p $pretty_name]} {
-            set pretty_name "[dotlrn_community::get_community_type_name $class_type]; $term $year"
+            set pretty_name "[dotlrn_community::get_community_type_name $class_key]; $term $year"
         }
 
         db_transaction {
             # Create the community
             set community_id [dotlrn_community::new \
                     -description $description \
-                    -community_type $class_type \
+                    -community_type $class_key \
                     -object_type [community_type] \
                     -community_key $community_key \
                     -pretty_name $pretty_name \

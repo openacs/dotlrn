@@ -44,13 +44,14 @@
             <file type="data_model_create" db_type="postgresql" path="sql/postgresql/dotlrn-create.sql"/>
             <file type="tcl_procs" path="tcl/applets-procs.tcl"/>
             <file type="tcl_procs" path="tcl/class-applets-procs.tcl"/>
-            <file type="query_file" db_type="oracle" path="tcl/class-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/class-procs.tcl"/>
             <file type="query_file" path="tcl/class-procs.xql"/>
             <file type="tcl_procs" path="tcl/club-procs.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/community-procs-oracle.xql"/>
             <file type="tcl_procs" path="tcl/community-procs.tcl"/>
             <file type="query_file" path="tcl/community-procs.xql"/>
+            <file type="tcl_procs" path="tcl/department-procs.tcl"/>
+            <file type="query_file" path="tcl/department-procs.xql"/>
             <file type="tcl_util" path="tcl/dotlrn-filter.tcl"/>
             <file type="tcl_init" path="tcl/dotlrn-init.tcl"/>
             <file type="query_file" db_type="oracle" path="tcl/dotlrn-main-portlet-procs-oracle.xql"/>
@@ -98,6 +99,14 @@
             <file type="query_file" db_type="oracle" path="www/admin/clubs-oracle.xql"/>
             <file type="content_page" path="www/admin/clubs.adp"/>
             <file type="content_page" path="www/admin/clubs.tcl"/>
+            <file type="content_page" path="www/admin/department-new.adp"/>
+            <file type="content_page" path="www/admin/department-new.tcl"/>
+            <file type="content_page" path="www/admin/department.adp"/>
+            <file type="content_page" path="www/admin/department.tcl"/>
+            <file type="query_file" path="www/admin/department.xql"/>
+            <file type="content_page" path="www/admin/departments.adp"/>
+            <file type="content_page" path="www/admin/departments.tcl"/>
+            <file type="query_file" path="www/admin/departments.xql"/>
             <file type="content_page" path="www/admin/index.adp"/>
             <file type="content_page" path="www/admin/index.tcl"/>
             <file type="content_page" path="www/admin/master.adp"/>
@@ -108,6 +117,9 @@
             <file type="query_file" db_type="oracle" path="www/admin/one-club-oracle.xql"/>
             <file type="content_page" path="www/admin/one-club.adp"/>
             <file type="content_page" path="www/admin/one-club.tcl"/>
+            <file type="content_page" path="www/admin/one-department.adp"/>
+            <file type="content_page" path="www/admin/one-department.tcl"/>
+            <file type="query_file" path="www/admin/one-department.xql"/>
             <file type="content_page" path="www/admin/site-wide-admin-toggle.tcl"/>
             <file type="content_page" path="www/admin/term-new.adp"/>
             <file type="content_page" path="www/admin/term-new.tcl"/>
@@ -163,6 +175,7 @@
             <file type="content_page" path="www/deregister.tcl"/>
             <file type="content_page" path="www/dotlrn-main-portlet.adp"/>
             <file type="content_page" path="www/dotlrn-main-portlet.tcl"/>
+            <file type="content_page" path="www/help.gif"/>
             <file type="content_page" path="www/index-not-a-user.adp"/>
             <file type="content_page" path="www/index-not-a-user.tcl"/>
             <file type="query_file" db_type="oracle" path="www/index-oracle.xql"/>
@@ -173,6 +186,9 @@
             <file type="content_page" path="www/install.tcl"/>
             <file type="content_page" path="www/join-policy-toggle.tcl"/>
             <file type="query_file" path="www/join-policy-toggle.xql"/>
+            <file type="content_page" path="www/left.gif"/>
+            <file type="content_page" path="www/logout.gif"/>
+            <file type="content_page" path="www/logowhite.gif"/>
             <file path="www/master.adp"/>
             <file type="content_page" path="www/master.tcl"/>
             <file type="content_page" path="www/member-add-2.adp"/>
@@ -188,6 +204,7 @@
             <file type="query_file" db_type="oracle" path="www/my-communities-oracle.xql"/>
             <file type="content_page" path="www/my-communities.adp"/>
             <file type="content_page" path="www/my-communities.tcl"/>
+            <file type="content_page" path="www/myspace.gif"/>
             <file type="content_page" path="www/not-allowed.adp"/>
             <file type="content_page" path="www/one-community-admin.adp"/>
             <file type="content_page" path="www/one-community-admin.tcl"/>
@@ -206,9 +223,15 @@
             <file type="content_page" path="www/preferences.tcl"/>
             <file type="content_page" path="www/register-link.adp"/>
             <file type="content_page" path="www/register.tcl"/>
+            <file type="content_page" path="www/right.gif"/>
+            <file type="content_page" path="www/spacer.gif"/>
+            <file type="content_page" path="www/spam.adp"/>
+            <file type="content_page" path="www/spam.tcl"/>
+            <file type="query_file" path="www/spam.xql"/>
             <file type="content_page" path="www/student-list.adp"/>
             <file type="content_page" path="www/student-list.tcl"/>
             <file type="query_file" path="www/student-list.xql"/>
+            <file type="content_page" path="www/switch-page.tcl"/>
             <file type="content_page" path="www/user-add-2.adp"/>
             <file type="content_page" path="www/user-add-2.tcl"/>
             <file type="content_page" path="www/user-add-3.tcl"/>
@@ -231,6 +254,8 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_wsp_first_page_name"  default="MySpace" description="The name of the first (default) page for a user's workspace page (e.g. MySloanSpace)"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_first_page_name"  default="Class Info" description="the first page's pretty name"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_admin_first_page_name"  default="Class Admin" description="just that"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_name"  default="Department" description="used everywhere in the ui"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="departments_pretty_plural"  default="Departments" description="used everywhere in the ui"/>
         </parameters>
 
     </version>

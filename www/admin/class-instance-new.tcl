@@ -12,33 +12,58 @@ ad_page_contract {
 form create add_class_instance
 
 element create add_class_instance term \
-    -label "Term" -datatype integer -widget select -options [db_list_of_lists select_terms_for_select_widget {}]
+    -label "Term" \
+    -datatype integer \
+    -widget select \
+    -options [db_list_of_lists select_terms_for_select_widget {}]
 
-element create add_class_instance name \
-    -label "Name" -datatype text -widget text -html {size 50} -optional
+element create add_class_instance pretty_name \
+    -label "Name" \
+    -datatype text \
+    -widget text \
+    -html {size 50} \
+    -optional
 
 element create add_class_instance description \
-    -label "Description" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft} -optional
+    -label "Description" \
+    -datatype text \
+    -widget textarea \
+    -html {rows 5 cols 60 wrap soft} \
+    -optional
 
 element create add_class_instance join_policy \
-    -label "Join Policy" -datatype text -widget select -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+    -label "Join Policy" \
+    -datatype text \
+    -widget select \
+    -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
 
 element create add_class_instance class_key \
-    -label "[ad_parameter classes_pretty_name] Key" -value $class_key -datatype text -widget hidden
-
-element create add_class_instance referer \
-    -label "Referer" -value $referer -datatype text -widget hidden
+    -label "[ad_parameter classes_pretty_name] Key" \
+    -datatype text \
+    -widget hidden \
+    -value $class_key
 
 element create add_class_instance add_instructor \
-    -label "Add Instructor" -datatype text -widget radio -options {{Yes 1} {No 0}} -value 1
+    -label "Add Instructor" \
+    -datatype text \
+    -widget radio \
+    -options {{Yes 1} {No 0}} \
+    -value 1
+
+element create add_class_instance referer \
+    -label "Referer" \
+    -datatype text \
+    -widget hidden \
+    -value $referer
 
 if {[form is_valid add_class_instance]} {
-    template::form get_values add_class_instance class_key term name description join_policy referer add_instructor
+    form get_values add_class_instance \
+        class_key term pretty_name description join_policy add_instructor referer
 
     set class_instance_id [dotlrn_class::new_instance \
-        -class_type $class_key \
+        -class_key $class_key \
         -term_id $term \
-        -pretty_name $name \
+        -pretty_name $pretty_name \
         -description $description \
         -join_policy $join_policy \
     ]

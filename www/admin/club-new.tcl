@@ -17,24 +17,44 @@ set context_bar [list [list clubs [ad_parameter clubs_pretty_plural]] New]
 form create add_club
 
 element create add_club club_key \
-    -label "[ad_parameter clubs_pretty_name] Key (a short name, no spaces)" -datatype text -widget text -html {size 50}
+    -label "[ad_parameter clubs_pretty_name] Key (a short name, no spaces)" \
+    -datatype text \
+    -widget text \
+    -html {size 50}
 
-element create add_club name \
-    -label "Name" -datatype text -widget text -html {size 50}
+element create add_club pretty_name \
+    -label "Name" \
+    -datatype text \
+    -widget text \
+    -html {size 50}
 
 element create add_club description \
-    -label "Charter" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft}
+    -label "Charter" \
+    -datatype text \
+    -widget textarea \
+    -html {rows 5 cols 60 wrap soft}
 
 element create add_club join_policy \
-    -label "Join Policy" -datatype text -widget select -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
+    -label "Join Policy" \
+    -datatype text \
+    -widget select \
+    -options {{Open open} {"Needs Approval" "needs approval"} {Closed closed}}
 
 element create add_club referer \
-    -label "Referer" -value $referer -datatype text -widget hidden
+    -label "Referer" \
+    -datatype text \
+    -widget hidden \
+    -value $referer
 
 if {[form is_valid add_club]} {
-    form get_values add_club club_key name description join_policy referer
+    form get_values add_club \
+        club_key pretty_name description join_policy referer
 
-    set key [dotlrn_club::new -description $description -key $club_key -pretty_name $name -join_policy $join_policy]
+    set key [dotlrn_club::new \
+        -description $description \
+        -key $club_key \
+        -pretty_name $pretty_name \
+        -join_policy $join_policy]
 
     ad_returnredirect $referer
     ad_script_abort

@@ -17,22 +17,46 @@ set context_bar [list [list classes [ad_parameter classes_pretty_plural]] New]
 
 form create add_class
 
-element create add_class class_key \
-    -label "[ad_parameter classes_pretty_name] Key (a short name, no spaces)" -datatype text -widget text -html {size 50}
+element create add_class department_key \
+    -label "[ad_parameter departments_pretty_name]" \
+    -datatype text \
+    -widget select \
+    -options [dotlrn_department::select_as_list]
 
-element create add_class name \
-    -label "Name" -datatype text -widget text -html {size 50}
+element create add_class class_key \
+    -label "[ad_parameter classes_pretty_name] Key (a short name, no spaces)" \
+    -datatype text \
+    -widget text \
+    -html {size 60}
+
+element create add_class pretty_name \
+    -label "Name" \
+    -datatype text \
+    -widget text \
+    -html {size 60}
 
 element create add_class description \
-    -label "Description" -datatype text -widget textarea -html {rows 5 cols 60 wrap soft}
+    -label "Description" \
+    -datatype text \
+    -widget textarea \
+    -html {rows 5 cols 60 wrap soft} \
+    -optional
 
 element create add_class referer \
-    -label "Referer" -value $referer -datatype text -widget hidden
+    -label "Referer" \
+    -datatype text \
+    -widget hidden \
+    -value $referer
 
 if {[form is_valid add_class]} {
-    form get_values add_class class_key name description referer
+    form get_values add_class \
+        department_key class_key pretty_name description referer
 
-    set class_key [dotlrn_class::new -class_key $class_key -pretty_name $name -description $description]
+    set class_key [dotlrn_class::new \
+        -class_key $class_key \
+        -department_key $department_key \
+        -pretty_name $pretty_name \
+        -description $description]
 
     ad_returnredirect $referer
     ad_script_abort

@@ -11,26 +11,28 @@
 -- @version $Id$
 --
 
-create table dotlrn_classes (
-    class_key                   constraint dotlrn_class_class_key_fk
-                                references dotlrn_community_types(community_type)
-                                constraint dotlrn_class_class_key_pk
-                                primary key
+create table dotlrn_departments (
+    department_key              constraint dotlrn_departments_dept_key_fk
+                                references dotlrn_community_types (community_type)
+                                constraint dotlrn_departments_pk
+                                primary key,
+    external_url                varchar2(4000)
 );
 
-create or replace view dotlrn_classes_full
+create or replace view dotlrn_departments_full
 as
-    select dotlrn_classes.class_key,
+    select dotlrn_departments.department_key,
            dotlrn_community_types.pretty_name,
            dotlrn_community_types.description,
            dotlrn_community_types.package_id,
            dotlrn_community_types.supertype,
            (select site_node.url(site_nodes.node_id)
             from site_nodes
-            where site_nodes.object_id = dotlrn_community_types.package_id) as url
-    from dotlrn_classes,
+            where site_nodes.object_id = dotlrn_community_types.package_id) as url,
+           dotlrn_departments.external_url
+    from dotlrn_departments,
          dotlrn_community_types
-    where dotlrn_classes.class_key = dotlrn_community_types.community_type;
+    where dotlrn_departments.department_key = dotlrn_community_types.community_type;
 
 create table dotlrn_terms (
     term_id                     integer
@@ -51,6 +53,32 @@ create table dotlrn_terms (
                                 constraint dotlrn_t_end_date_nn
                                 not null
 );
+
+create table dotlrn_classes (
+    class_key                   constraint dotlrn_classes_class_key_fk
+                                references dotlrn_community_types (community_type)
+                                constraint dotlrn_classes_pk
+                                primary key,
+    department_key              constraint dotlrn_classes_dept_key_fk
+                                references dotlrn_departments (department_key)
+                                constraint dotlrn_classes_dept_key_nn
+                                not null
+);
+
+create or replace view dotlrn_classes_full
+as
+    select dotlrn_classes.class_key,
+           dotlrn_community_types.pretty_name,
+           dotlrn_community_types.description,
+           dotlrn_community_types.package_id,
+           dotlrn_community_types.supertype,
+           (select site_node.url(site_nodes.node_id)
+            from site_nodes
+            where site_nodes.object_id = dotlrn_community_types.package_id) as url,
+           dotlrn_classes.department_key
+    from dotlrn_classes,
+         dotlrn_community_types
+    where dotlrn_classes.class_key = dotlrn_community_types.community_type;
 
 create table dotlrn_class_instances (
     class_instance_id           constraint dotlrn_ci_class_instance_id_fk
@@ -104,12 +132,85 @@ as
     from dotlrn_class_instances_full
     where active_end_date >= sysdate;
 
+create or replace package dotlrn_department
+is
+    function new (
+        department_key in dotlrn_departments.department_key%TYPE,
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
+        description in dotlrn_community_types.description%TYPE,
+        package_id in dotlrn_community_types.package_id%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_departments.department_key%TYPE;
+
+    procedure delete (
+        department_key in dotlrn_departments.department_key%TYPE
+    );
+end;
+/
+show errors
+
+create or replace package body dotlrn_department
+is
+    function new (
+        department_key in dotlrn_departments.department_key%TYPE,
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
+        description in dotlrn_community_types.description%TYPE,
+        package_id in dotlrn_community_types.package_id%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_departments.department_key%TYPE
+    is
+        v_department_key dotlrn_departments.department_key%TYPE;
+    begin
+        v_department_key := dotlrn_community_type.new (
+            community_type => department_key,
+            parent_type => 'dotlrn_class_instance',
+            pretty_name => pretty_name,
+            pretty_plural => pretty_plural,
+            description => description,
+            package_id => package_id,
+            creation_date => creation_date,
+            creation_user => creation_user,
+            creation_ip => creation_ip,
+            context_id => context_id
+        );
+
+        insert
+        into dotlrn_departments
+        (department_key) values (v_department_key);
+
+        return v_department_key;
+    end;
+
+    procedure delete (
+        department_key in dotlrn_departments.department_key%TYPE
+    )
+    is
+    begin
+        delete
+        from dotlrn_departments
+        where department_key = department_key;
+
+        dotlrn_community_type.delete(department_key);
+    end;
+end;
+/
+show errors
+
 create or replace package dotlrn_class
 is
     function new (
         class_key in dotlrn_classes.class_key%TYPE,
-        pretty_name in dotlrn_communities.pretty_name%TYPE,
-        pretty_plural in dotlrn_community_types.pretty_name%TYPE default null,
+        department_key in dotlrn_departments.department_key%TYPE,
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
         description in dotlrn_community_types.description%TYPE,
         package_id in dotlrn_community_types.package_id%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
@@ -129,8 +230,9 @@ create or replace package body dotlrn_class
 is
     function new (
         class_key in dotlrn_classes.class_key%TYPE,
-        pretty_name in dotlrn_communities.pretty_name%TYPE,
-        pretty_plural in dotlrn_community_types.pretty_name%TYPE default null,
+        department_key in dotlrn_departments.department_key%TYPE,
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
         description in dotlrn_community_types.description%TYPE,
         package_id in dotlrn_community_types.package_id%TYPE default null,
         creation_date in acs_objects.creation_date%TYPE default sysdate,
@@ -143,7 +245,7 @@ is
     begin
         v_class_key := dotlrn_community_type.new (
             community_type => class_key,
-            parent_type => 'dotlrn_class',
+            parent_type => department_key,
             pretty_name => pretty_name,
             pretty_plural => pretty_plural,
             description => description,
@@ -156,7 +258,7 @@ is
 
         insert
         into dotlrn_classes
-        (class_key) values (v_class_key);
+        (class_key, department_key) values (v_class_key, department_key);
 
         return v_class_key;
     end;
