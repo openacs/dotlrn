@@ -55,6 +55,13 @@ element create add_department external_url \
     -html {size 60} \
     -optional
 
+element create add_department department_key \
+    -label "[_ dotlrn.Department_key]" \
+    -datatype text \
+    -widget text \
+    -html {size 60} \
+    -optional
+
 element create add_department referer \
     -label "[_ dotlrn.Referer]" \
     -datatype text \
@@ -63,9 +70,10 @@ element create add_department referer \
 
 if {[form is_valid add_department]} {
     form get_values add_department \
-         pretty_name description external_url referer
+         pretty_name description external_url referer department_key
 
     set department_key [dotlrn_department::new \
+        -department_key $department_key \
         -pretty_name $pretty_name \
         -description $description \
         -external_url $external_url]

@@ -59,6 +59,13 @@ element create add_class description \
     -html {rows 5 cols 60 wrap soft} \
     -optional
 
+element create add_class subject_key \
+    -label [_ dotlrn.Subject_key] \
+    -datatype text \
+    -widget text \
+    -html {size 60 maxlength 100} \
+    -optional
+
 element create add_class referer \
     -label [_ dotlrn.Referer] \
     -datatype text \
@@ -67,9 +74,10 @@ element create add_class referer \
 
 if {[form is_valid add_class]} {
     form get_values add_class \
-        department_key pretty_name description referer
+        department_key pretty_name description referer subject_key
 
     set class_key [dotlrn_class::new \
+        -class_key $subject_key \
         -department_key $department_key \
         -pretty_name $pretty_name \
         -description $description]

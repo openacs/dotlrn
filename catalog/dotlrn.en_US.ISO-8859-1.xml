@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.1" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -25,6 +25,8 @@
   <msg key="Add_users_to">Add users to</msg>
   <msg key="Add_Users_to_Group">Add Users to Group</msg>
   <msg key="AddDrop_Memberships">Add/Drop Memberships</msg>
+  <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the &quot;Groups&quot; portlet.</msg>
+  <msg key="added_community_subject">You have been added to the &quot;%community_name%&quot; community at %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Control Panel</msg>
@@ -72,6 +74,7 @@
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
   <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
+  <msg key="Class_instance_key">Class key</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -127,14 +130,18 @@
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
+  <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
+  <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
   <msg key="Deactivate_Users">Deactivate Users</msg>
   <msg key="Deactivated">Deactivated</msg>
   <msg key="Delete">Delete</msg>
   <msg key="Delete_Empty">Delete empty %departments_pretty_name%.</msg>
   <description key="Delete_Empty">Used as title of page for deleting empty department.</description>
+
   <msg key="Delete_Empty_Class">Delete empty %pretty_name%.</msg>
   <msg key="Department">Department</msg>
+  <msg key="Department_key">Department key</msg>
   <msg key="department_must_be_empty_to_be_deleted">Error: %departments_pretty_name% must be empty to be deleted</msg>
   <msg key="department_name">%departments_pretty_name% Name</msg>
   <msg key="department_name_already_in_use">The name &lt;strong&gt;%department_pretty_name%&lt;/strong&gt; is already in use. \n Please select a different name.</msg>
@@ -184,6 +191,7 @@ notify this user.</msg>
   <msg key="Email_Members">Email Members</msg>
   <msg key="email_message">Message</msg>
   <msg key="email_sent">email sent</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
   <msg key="End_Date">End Date</msg>
   <msg key="End_date">End date:</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
@@ -540,6 +548,7 @@ Thank you
   <msg key="subcommunities_pretty_plural">Subgroups</msg>
   <msg key="subcommunity_memberships">%subcommunities_pretty_name% Memberships</msg>
   <msg key="Subject">Subject</msg>
+  <msg key="Subject_key">Subject key</msg>
   <msg key="teaching_assistant_role_pretty_name">Teaching Assistant</msg>
   <msg key="teaching_assistant_role_pretty_plural">Teaching Assistants</msg>
   <msg key="teal">teal</msg>
@@ -603,9 +612,4 @@ Thank you
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">You're editing</msg>
   <msg key="Youve_chosen_to_add">You've chosen to add</msg>
-  <msg key="added_community_subject">You have been added to the "%community_name%" community at %package%</msg>
-  <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the "Groups" portlet.</msg>
-  <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
-  <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
-  <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
 </message_catalog>
