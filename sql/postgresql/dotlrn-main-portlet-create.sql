@@ -32,7 +32,7 @@
 -- from the GNU Project: http://www.fsf.org/copyleft/gpl.html
 
 create function inline_0 ()
-return integer as '
+returns integer as '
 declare
 begin
     ds_id portal_datasources.datasource_id%TYPE;
@@ -45,39 +45,39 @@ begin
     --  the standard 4 params
 
     -- shadeable_p
-    select portal_datasource.set_def_param(
+    perform portal_datasource.set_def_param(
         ds_id, ''t'', ''t'', ''shadeable_p'', ''f''
     );
 
     -- hideable_p
-    select portal_datasource__set_def_param(
+    perform portal_datasource__set_def_param(
         ds_id, ''t'', ''t'', ''hideable_p'', ''f''
     );
 
     -- user_editable_p
-    select portal_datasource__set_def_param(
+    perform portal_datasource__set_def_param(
         ds_id, ''t'', ''t'', ''user_editable_p'', ''f''
     );
 
     -- shaded_p
-    select portal_datasource__set_def_param(
+    perform portal_datasource__set_def_param(
         ds_id, ''t'', ''t'', ''shaded_p'', ''f''
     );
 
     -- link_hideable_p
-    select portal_datasource__set_def_param(
+    perform portal_datasource__set_def_param(
         ds_id, ''t'', ''t'', ''link_hideable_p'', ''t''
     );
 
     -- create the implementation
-    select acs_sc_impl__new(
+    perform acs_sc_impl__new(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''dotlrn_main_portlet''
     );
 
         -- add all the hooks
-    select acs_sc_impl_alias__new (
+    perform acs_sc_impl_alias__new (
            ''portal_datasource'',
            ''dotlrn_main_portlet'',
            ''GetMyName'',
@@ -85,7 +85,7 @@ begin
            ''TCL''
     );
 
-    select acs_sc_impl_alias__new (
+    perform acs_sc_impl_alias__new (
            ''portal_datasource'',
                ''dotlrn_main_portlet'',
                ''GetPrettyName'',
@@ -93,7 +93,7 @@ begin
                ''TCL''
         );
 
-        select acs_sc_impl_alias__new (
+        perform acs_sc_impl_alias__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet'',
                ''Link'',
@@ -101,7 +101,7 @@ begin
                ''TCL''
         );
 
-        select acs_sc_impl_alias__new (
+        perform acs_sc_impl_alias__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet'',
                ''AddSelfToPage'',
@@ -109,7 +109,7 @@ begin
                ''TCL''
         );
 
-        select acs_sc_impl_alias__new (
+        perform acs_sc_impl_alias__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet'',
                ''RemoveSelfFromPage'',
@@ -117,7 +117,7 @@ begin
                ''TCL''
         );
 
-        select acs_sc_impl_alias__new (
+        perform acs_sc_impl_alias__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet'',
                ''Show'',
@@ -125,7 +125,7 @@ begin
                ''TCL''
         );
 
-        select acs_sc_impl_alias__new (
+        perform acs_sc_impl_alias__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet'',
                ''Edit'',
@@ -134,7 +134,7 @@ begin
         );
 
         -- Add the binding
-        select acs_sc_binding__new (
+        perform acs_sc_binding__new (
                ''portal_datasource'',
                ''dotlrn_main_portlet''
         );

@@ -28,150 +28,150 @@
 
 begin
 
-    perform acs_rel_type__drop_type(
+    select acs_rel_type__drop_type(
         'dotlrn_admin_rel',
         't'
     );
 
     -- all rels to communities must have a portal_id
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_member_rel',
         'portal_id'
     );
 
     -- drop basic rel_types
-    perform acs_rel_type__drop_type(
+    select acs_rel_type__drop_type(
         'dotlrn_member_rel',
         't'
     );
 
     -- drop roles
-    perform acs_rel_type__drop_role(
+    select acs_rel_type__drop_role(
         'student'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'student_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'student_pretty_plural'
     );
 
-    perform acs_rel_type__drop_role(
+    select acs_rel_type__drop_role(
         'course_assistant'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'course_assistant_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'course_assistant_pretty_plural'
     );
 
-    perform acs_rel_type__drop_role(
+    select acs_rel_type__drop_role(
         'teaching_assistant'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'teaching_assistant_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'teaching_assistant_pretty_plural'
     );
 
-    perform acs_rel_type__drop_role(
+    select acs_rel_type__drop_role(
         'instructor'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'instructor_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'instructor_pretty_plural'
     );
 
-    perform acs_rel_type__drop_role(
+    select acs_rel_type__drop_role(
         'course_admin'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'course_admin_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'course_admin_pretty_plural'
     );
 
-    perform acs_rel_type__drop_role(
+    select acs_rel_type__drop_role(
         'admin'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'admin_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'admin_pretty_plural'
     );
 
     -- drop the dotlrn_club community type
-    dotlrn_community_type__delete(
+    select dotlrn_community_type__delete(
         'dotlrn_club'
     );
 
     -- drop the dotlrn_class community type
-    dotlrn_community_type__delete(
+    select dotlrn_community_type__delete(
         'dotlrn_class_instance'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'header_font'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'header_font_size'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'header_font_color'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'header_logo_item_id'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'member_pretty_name'
     );
 
-    perform acs_attribute__drop_attribute(
+    select acs_attribute__drop_attribute(
         'dotlrn_community',
         'member_pretty_plural'
     );
 
     -- drop the base community type
-    perform dotlrn_community_type__delete(
+    select dotlrn_community_type__delete(
         'dotlrn_community'
     );
 

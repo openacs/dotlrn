@@ -80,6 +80,8 @@ begin
         group_id
     );
 
+    return 0;
+
 end;
 ' language 'plpgsql';
 

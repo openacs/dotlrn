@@ -278,8 +278,8 @@ DECLARE
 BEGIN
        select CASE 
 		   WHEN count(*) = 0
-		   THEN 'f'
-		   ELSE 't'
+		   THEN ''f''
+		   ELSE ''t''
 	      END
         into v_member_p
         from dual

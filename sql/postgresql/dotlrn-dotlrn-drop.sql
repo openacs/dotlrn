@@ -25,7 +25,7 @@
 \i dotlrn-user-extension-drop.sql
 \i dotlrn-security-drop.sql
 \i dotlrn-main-portlet-drop.sql
-\i dotlrn-community-memberships-packages-drop.sql
+\i dotlrn-community-membership-packages-drop.sql
 \i dotlrn-applet-sc-drop.sql
 \i dotlrn-class-memberships-drop.sql
 \i dotlrn-classes-drop.sql

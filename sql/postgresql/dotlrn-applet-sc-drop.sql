@@ -25,163 +25,163 @@
 
 begin
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'GetPrettyName'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.GetPrettyName.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.GetPrettyName.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'AddApplet'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddApplet.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddApplet.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'RemoveApplet'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveApplet.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveApplet.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'AddAppletToCommunity'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddAppletToCommunity.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddAppletToCommunity.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'RemoveAppletFromCommunity'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveAppletFromCommunity.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveAppletFromCommunity.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'AddUser'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddUser.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddUser.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'RemoveUser'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveUser.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveUser.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'AddUserToCommunity'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddUserToCommunity.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddUserToCommunity.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'RemoveUserFromCommunity'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveUserFromCommunity.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemoveUserFromCommunity.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'AddPortlet'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddPortlet.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.AddPortlet.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'RemovePortlet'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemovePortlet.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.RemovePortlet.OutputType'
     );
 
-    perform acs_sc_operation__delete(
+    select acs_sc_operation__delete(
         'dotlrn_applet',
         'Clone'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.Clone.InputType'
     );
 
-    perform acs_sc_msg_type__delete(
+    select acs_sc_msg_type__delete(
         'dotlrn_applet.Clone.OutputType'
     );
 
-    perform acs_sc_contract__delete(
+    select acs_sc_contract__delete(
         'dotlrn_applet'
     );
 

@@ -29,6 +29,6 @@ create table dotlrn_admin_profile_rels (
                                 primary key
 );
 
-@@ dotlrn-admin-profile-provider-create.sql
-@@ dotlrn-admins-init.sql
-@@ dotlrn-admins-package-create.sql
+\i dotlrn-admin-profile-provider-create.sql
+\i dotlrn-admins-init.sql
+\i dotlrn-admins-package-create.sql

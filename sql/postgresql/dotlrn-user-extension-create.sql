@@ -22,69 +22,77 @@
 --
 -- ported to PG by Yon and Ben
 -- ben@openforce.net
+-- @author dan chak (chak@openforce.net)
+-- $Id$
 --
 -- 01/22/2002
 --
 
-
+create function inline_0()
+returns integer as '
 begin
         -- create the implementation
-        select acs_sc_impl__new (
-                'UserData',
-                'dotlrn_user_extension',
-                'dotlrn_user_extension'
+        perform acs_sc_impl__new (
+                ''UserData'',
+                ''dotlrn_user_extension'',
+                ''dotlrn_user_extension''
         );
 
         -- add all the hooks
 
         -- UserNew
-        select acs_sc_impl_alias__new (
-               'UserData',
-               'dotlrn_user_extension',
-               'UserNew',
-               'dotlrn_user_extension::user_new',
-               'TCL'
+        perform acs_sc_impl_alias__new (
+               ''UserData'',
+               ''dotlrn_user_extension'',
+               ''UserNew'',
+               ''dotlrn_user_extension::user_new'',
+               ''TCL''
         );
 
         -- UserNew
-        select acs_sc_impl_alias__new (
-               'UserData',
-               'dotlrn_user_extension',
-               'UserApprove',
-               'dotlrn_user_extension::user_approve',
-               'TCL'
+        perform acs_sc_impl_alias__new (
+               ''UserData'',
+               ''dotlrn_user_extension'',
+               ''UserApprove'',
+               ''dotlrn_user_extension::user_approve'',
+               ''TCL''
         );
 
         -- UserNew
-        select acs_sc_impl_alias__new (
-               'UserData',
-               'dotlrn_user_extension',
-               'UserDeapprove',
-               'dotlrn_user_extension::user_deapprove',
-               'TCL'
+        perform acs_sc_impl_alias__new (
+               ''UserData'',
+               ''dotlrn_user_extension'',
+               ''UserDeapprove'',
+               ''dotlrn_user_extension::user_deapprove'',
+               ''TCL''
         );
 
         -- UserNew
-        select acs_sc_impl_alias__new (
-               'UserData',
-               'dotlrn_user_extension',
-               'UserModify',
-               'dotlrn_user_extension::user_modify',
-               'TCL'
+        perform acs_sc_impl_alias__new (
+               ''UserData'',
+               ''dotlrn_user_extension'',
+               ''UserModify'',
+               ''dotlrn_user_extension::user_modify'',
+               ''TCL''
         );
 
         -- UserNew
-        select acs_sc_impl_alias__new (
-               'UserData',
-               'dotlrn_user_extension',
-               'UserDelete',
-               'dotlrn_user_extension::user_delete',
-               'TCL'
+        perform acs_sc_impl_alias__new (
+               ''UserData'',
+               ''dotlrn_user_extension'',
+               ''UserDelete'',
+               ''dotlrn_user_extension::user_delete'',
+               ''TCL''
         );
 
         -- Add the binding
-        select acs_sc_binding__new (
-            'UserData',
-            'dotlrn_user_extension'
+        perform acs_sc_binding__new (
+            ''UserData'',
+            ''dotlrn_user_extension''
         );
-end;
+
+	return 0;
+end;' language 'plpgsql';
+
+select inline_0();
+drop function inline_0();

@@ -80,18 +80,11 @@ begin
         group_id
     );
 
+    return 0;
+
 end;
 ' language 'plpgsql';
 
 select inline_1();
 drop function inline_1();
 
-
-create function inline_2()
-returns integer as '
-declare
-    foo                         integer;
-begin
-    PERFORM acs_rel_type--create_type(
-        ''dotlrn_full_professor_profile_rel'',
-        ''dotLRN Full Professor Profile Membership'',

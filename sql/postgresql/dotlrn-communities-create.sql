@@ -24,6 +24,7 @@
 -- @author Ben Adida (ben@openforce.net)
 -- @author yon (yon@openforce.net
 -- @author arjun (arjun@openforce.net)
+-- @author dan chak (chak@openforce.net)
 -- @creation-date September 20th, 2001 (redone)
 -- @version $Id$
 --
@@ -57,7 +58,7 @@ create table dotlrn_communities_all (
                                 primary key,
     parent_community_id         integer 
 				constraint dotlrn_c_parent_comm_id_fk
-                                references dotlrn_communities (community_id),
+                                references dotlrn_communities_all (community_id),
     community_type              varchar(100) not null
                                 constraint dotlrn_c_community_type_fk
                                 references dotlrn_community_types (community_type),
@@ -101,7 +102,7 @@ create table dotlrn_communities_all (
 create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id;
 create index dtlrn_com_all_archived_p_idx on dotlrn_communities_all (archived_p);
 
-create or replace view dotlrn_communities
+create view dotlrn_communities
 as
     select dotlrn_communities_all.*
     from dotlrn_communities_all

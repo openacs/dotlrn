@@ -30,45 +30,46 @@
 
 begin
 
-    perform acs_sc_binding__delete (
+    select acs_sc_binding__delete (
         'UserData',
         'dotlrn_user_extension'
     );
 
-    perform acs_sc_impl__delete_alias (
+    select acs_sc_impl_alias__delete (
         'UserData',
         'dotlrn_user_extension',
         'UserNew'
     );
 
-    perform acs_sc_impl__delete_alias (
+    select acs_sc_impl_alias__delete (
         'UserData',
         'dotlrn_user_extension',
         'UserApprove'
     );
 
-    perform acs_sc_impl__delete_alias (
+    select acs_sc_impl_alias__delete (
         'UserData',
         'dotlrn_user_extension',
         'UserDeapprove'
     );
 
-    perform acs_sc_impl__delete_alias (
+    select acs_sc_impl_alias__delete (
         'UserData',
         'dotlrn_user_extension',
         'UserModify'
     );
 
-    perform acs_sc_impl__delete_alias (
+    select acs_sc_impl_alias__delete (
         'UserData',
         'dotlrn_user_extension',
         'UserDelete'
     );
 
     -- create the implementation
-    perform acs_sc_impl__delete(
+    select acs_sc_impl__delete(
         'UserData',
         'dotlrn_user_extension'
     );
 
 end;
+

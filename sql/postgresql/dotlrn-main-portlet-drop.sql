@@ -38,50 +38,50 @@ begin
         ''dotlrn_main_portlet''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''GetMyName''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''GetPrettyName''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''Link''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''AddSelfToPage''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''RemoveSelfFromPage''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''Show''
     );
 
-    perform acs_sc_impl__delete_alias(
+    perform acs_sc_impl_alias__delete(
         ''portal_datasource'',
         ''dotlrn_main_portlet'',
         ''Edit''
     );
 
     perform acs_sc_impl__delete(
-        ''portal_datasource','
+        ''portal_datasource'',
         ''dotlrn_main_portlet''
     );
 
@@ -100,5 +100,6 @@ begin
 end;
 ' language 'plpgsql';
 
-perform inline_0();
-delete function inline_0;
+select inline_0();
+delete function inline_0();
+

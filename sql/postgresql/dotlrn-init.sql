@@ -32,7 +32,7 @@
 
 begin
     -- Create the base community type
-    perform dotlrn_community_type__new(
+    select dotlrn_community_type__new(
         'dotlrn_community',
         null,
         'Community',
@@ -41,7 +41,7 @@ begin
     );
 
     -- these are the possible attributes of a community
-    perform acs_attribute__create_attribute(
+    select acs_attribute__create_attribute(
 	   'dotlrn_community',
 	   'header_font',
 	   'string',
@@ -52,7 +52,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_attribute(
+    select acs_attribute__create_attribute(
 	   'dotlrn_community',
 	   'header_font_size',
 	   'string',
@@ -63,7 +63,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_attribute(
+    select acs_attribute__create_attribute(
 	   'dotlrn_community',
 	   'header_font_color',
 	   'string',
@@ -74,7 +74,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_attribute(
+    select acs_attribute__create_attribute(
 	   'dotlrn_community',
 	   'header_logo_item_id',
 	   'integer',
@@ -85,7 +85,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_attribute(
+    select acs_attribute__create_attribute(
 	   'dotlrn_community',
 	   'header_logo_alt_text',
 	   'integer',
@@ -98,7 +98,7 @@ begin
 
 
     -- create the dotlrn_class community type
-    perform dotlrn_community_type__new(
+    select dotlrn_community_type__new(
         'dotlrn_class_instance',
         'dotlrn_community',
         'Class',
@@ -119,7 +119,7 @@ begin
     update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
     update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
 
-    perform acs_attribute__create_atribute(
+    select acs_attribute__create_atribute(
 	   'dotlrn_community',
 	   'member_pretty_name',
 	   'string',
@@ -130,7 +130,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute(
+    select acs_attribute__create_atribute(
 	   'dotlrn_community',
 	   'member_pretty_plural',
 	   'string',
@@ -142,14 +142,14 @@ begin
     );
 
     -- create roles
-    acs_rel_type__create_role('student', 'Student', 'Students');
-    acs_rel_type__create_role('course_assistant', 'Course Assistant', 'Course Assistants');
-    acs_rel_type__create_role('teaching_assistant', 'Teaching Assistant', 'Teaching Assistants');
-    acs_rel_type__create_role('instructor', 'Professor', 'Professors');
-    acs_rel_type__create_role('course_admin', 'Course Administrator', 'Course Administrators');
-    acs_rel_type__create_role('admin', 'Administrator', 'Administrators');
+    select acs_rel_type__create_role('student', 'Student', 'Students');
+    select acs_rel_type__create_role('course_assistant', 'Course Assistant', 'Course Assistants');
+    select acs_rel_type__create_role('teaching_assistant', 'Teaching Assistant', 'Teaching Assistants');
+    select acs_rel_type__create_role('instructor', 'Professor', 'Professors');
+    select acs_rel_type__create_role('course_admin', 'Course Administrator', 'Course Administrators');
+    select acs_rel_type__create_role('admin', 'Administrator', 'Administrators');
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'student_pretty_name',
 	   'string',
@@ -160,7 +160,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'student_pretty_plural',
 	   'string',
@@ -171,7 +171,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'course_assistant_pretty_name',
 	   'string',
@@ -182,7 +182,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'course_assistant_pretty_plural',
 	   'string',
@@ -193,7 +193,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'teaching_assistant_pretty_name',
 	   'string',
@@ -204,7 +204,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'teaching_assistant_pretty_plural',
 	   'string',
@@ -215,7 +215,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'instructor_pretty_name',
 	   'string',
@@ -226,7 +226,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'instructor_pretty_plural',
 	   'string',
@@ -237,7 +237,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'course_admin_pretty_name',
 	   'string',
@@ -248,7 +248,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'course_admin_pretty_plural',
 	   'string',
@@ -259,7 +259,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',		  
 	   'admin_pretty_name',
 	   'string',
@@ -270,7 +270,7 @@ begin
 	   'generic'
     );
 
-    perform acs_attribute__create_atribute (
+    select acs_attribute__create_atribute (
 	   'dotlrn_community',
 	   'admin_pretty_plural',
 	   'string',
@@ -283,7 +283,7 @@ begin
 
     -- create basic rel_types
 
-    perform acs_rel_type__create_type (
+    select acs_rel_type__create_type (
 	   'dotlrn_member_rel',
 	   'membership_rel',
 	   'dotLRN Community Membership',
@@ -301,7 +301,7 @@ begin
 	   null
     );
 
-    perform acs_rel_type__create_type (
+    select acs_rel_type__create_type (
 	   'dotlrn_admin_rel',
 	   'dotlrn_member_rel',
 	   'dotLRN Admin Community Membership',
@@ -320,7 +320,7 @@ begin
     );
 
     -- all rels to communities must have a portal_id
-    perform acs_rel_type__create_type (
+    select acs_rel_type__create_type (
 	  'dotlrn_member_rel',
 	  'portal_id',
 	  'integer',

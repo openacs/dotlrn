@@ -27,7 +27,7 @@ declare
     foo                         integer;
 begin
 
-    acs_rel_type__create_type(
+    perform acs_rel_type__create_type(
         ''dotlrn_user_profile_rel'',
         ''dotLRN User Profile Membership'',
         ''dotLRN User Profile Memberships'',

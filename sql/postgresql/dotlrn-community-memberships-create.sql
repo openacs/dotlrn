@@ -34,7 +34,7 @@ create table dotlrn_member_rels (
                                 constraint dotlrn_member_rels_rel_id_fk
                                 references membership_rels (rel_id)
                                 constraint dotlrn_member_rels_rel_id_pk
-                                primary key,
+                                primary key
 );                                          
 
 create view dotlrn_member_rels_full

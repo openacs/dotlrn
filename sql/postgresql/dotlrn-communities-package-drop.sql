@@ -18,5 +18,5 @@
 -- @version $Id$
 
 drop view dotlrn_communities_full;
-perform drop_package('dotlrn_community');
-perform drop_package('dotlrn_community_type');
+select drop_package('dotlrn_community');
+select drop_package('dotlrn_community_type');
