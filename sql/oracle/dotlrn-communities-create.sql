@@ -229,13 +229,30 @@ as
 	group_name => community_key
    );
 
-   select pretty_name || ' portal template' into v_portal_name from dual;
+   v_portal_name := pretty_name || ' portal template' ;
 
    p_id := portal.new (
 	name => v_portal_name,
 	portal_template_p => 't'
    );
 
+   acs_permission.grant_permission ( 
+   object_id => p_id,
+   grantee_id => creation_user,
+   privilege => 'portal_read_portal' 
+   );
+   
+   acs_permission.grant_permission ( 
+   object_id => p_id,
+   grantee_id => creation_user,
+   privilege => 'portal_edit_portal'
+   );
+   
+   acs_permission.grant_permission ( 
+   object_id => p_id,
+   grantee_id => creation_user,
+   privilege => 'portal_admin_portal'
+   );
 
    insert into dotlrn_communities
    (community_id, community_type, community_key, pretty_name, description, package_id, page_id, portal_template_id)
