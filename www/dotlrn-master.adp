@@ -40,7 +40,7 @@
 <!-- Header Begin -->
 <if @user_id@ ne 0>
   <!-- User is logged in with user id @user_id@ -->
-  <table width="100%" cellpadding=0 cellspacing=0> 
+  <table width="100%" cellpadding=0 cellspacing=2> 
    <tr>
       <td width="10%" class="header-logo">
         <a href="@dotlrn_url@/?">
@@ -49,14 +49,19 @@
 
       <td width="50%"><div class=header-text><nobr>@text@<nobr></div></td>
 
-      <td width="40%" class="header-buttons" align="right" valign="bottom">
+      <td align="right">
+        <include src="/www/login-status" />
+      </td>
+
+    <tr>
+      <td colspan=3 class="header-buttons" align="right" valign="bottom">
         <a href="@dotlrn_url@/?"><img class="header-img" border="0" src="@dotlrn_url@/graphics/myspace-@scope_name@.gif" alt="MySloanSpace"></a>
         <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
         <a href="@help_url@"><img class="header-img" border="0" src="@dotlrn_url@/graphics/help-@scope_name@.gif" alt="Help"></a>
         <img class="header-img" src="@dotlrn_url@/graphics/spacer.gif" height="1" width="10">
         <a href="/register/logout"><img class="header-img" border="0" src="@dotlrn_url@/graphics/logout-@scope_name@.gif" alt="Logout"></a>
       </td>
-
+  
     </tr>
 
   <tr><td colspan=3 class="dark-line" height="1"><img src="@dotlrn_url@/graphics/spacer.gif"></td></tr>
@@ -73,8 +78,6 @@
   <hr />
 </else>
 <!-- Header End -->
-
-
 
 <slave>
 
