@@ -17,7 +17,7 @@
   <br>
 
   <li>
-    Click <a href="class-edit?class_key=@class_key@&referer=@referer@">here</a> to edit <%= [ad_parameter "classes_pretty_name"] %> properties.
+    <a href="class-edit?class_key=@class_key@&referer=@referer@">Edit</a> <%= [ad_parameter "classes_pretty_name"] %> properties.
   </li>
 
 </ul>

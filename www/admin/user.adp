@@ -121,9 +121,9 @@
 
   <ul>
     <li>
-      Click <a
-      href="users-add-to-community?users=@user_id@&referer=@return_url@">here</a>
-      to add this user to another group.
+      <a
+      href="users-add-to-community?users=@user_id@&referer=@return_url@">Add</a>
+      this user to another group.
     </li>
   </ul>
 

@@ -112,10 +112,11 @@ namespace eval dotlrn_class {
 
         db_transaction {
             set class_key [dotlrn_community::new_type \
-                -community_type_key $class_key \
+                -community_type_key "$department_key.$class_key" \
                 -parent_type $department_key \
                 -pretty_name $pretty_name \
-                -description $description]
+                -description $description \
+                -url_part $class_key]
 
             db_dml insert_class {}
         }

@@ -27,9 +27,9 @@
   <br>
 
   <li>
-    Click <a
-    href="department-edit?department_key=@department_key@&referer=@referer@">here</a>
-    to edit department properties.
+    <a
+    href="department-edit?department_key=@department_key@&referer=@referer@">Edit</a>
+    department properties.
   </li>
 
 </ul>

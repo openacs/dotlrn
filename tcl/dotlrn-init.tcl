@@ -61,16 +61,15 @@ if {[dotlrn::is_instantiated]} {
         dotlrn_community::applet_call $applet "AddApplet" [list]
     }
 
-    set portal_package_key "new-portal"
-    if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
-        ns_log notice "aks: dotlrn-init: new-portal being automounted"
-
-        dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
-    } else {
-        ns_log notice "aks: dotlrn-init: new-portal NOT being automounted"
-    }
-
 }
+
+set portal_package_key "new-portal"
+if {[site_nodes::mount_count -package_key $portal_package_key] == 0} {
+    ns_log notice "aks: dotlrn-init: new-portal being automounted"
+
+    dotlrn::mount_package -parent_node_id [site_node_id "/"] -package_key $portal_package_key -url "portal" -directory_p "t"
+}
+
 
 # Make sure that privacy is turned on
 acs_privacy::privacy_control_set 1

@@ -28,8 +28,8 @@
   <br>
 
   <li>
-    Click <a href="term-edit?term_id=@term_id@&referer=@referer@">here</a> to
-    edit term properties.
+    <a href="term-edit?term_id=@term_id@&referer=@referer@">Edit</a> term
+    properties.
   </li>
 
 </ul>

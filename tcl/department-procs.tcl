@@ -29,10 +29,11 @@ namespace eval dotlrn_department {
 
         db_transaction {
             dotlrn_community::new_type \
-                -community_type_key $department_key \
+                -community_type_key "$department_key" \
                 -parent_type "dotlrn_class_instance" \
                 -pretty_name $pretty_name \
-                -description $description
+                -description $description \
+                -url_part $department_key
 
             db_dml insert_department {}
         }

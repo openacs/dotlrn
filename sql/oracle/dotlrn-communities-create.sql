@@ -177,8 +177,8 @@ is
         acs_object_type.create_type (
             supertype => v_parent_object_type,
             object_type => community_type,
-            pretty_name => pretty_name,
-            pretty_plural => pretty_plural,
+            pretty_name => community_type,
+            pretty_plural => community_type,
             table_name => community_type,
             id_column => 'XXX',
             package_name => community_type,
