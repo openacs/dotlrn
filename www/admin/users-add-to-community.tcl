@@ -13,7 +13,7 @@ ad_page_contract {
     context_bar:onevalue
 }
 
-set context_bar {{users Users} {users-search {User Search}} {Add Users to Community}}
+set context_bar {{users Users} {users-search {User Search}} {Add Users to Group}}
 
 form create select_community
 
@@ -42,7 +42,7 @@ if {[llength $communities]} {
         -options "{{} {}} $communities"
 } else {
     element create select_community community_id \
-        -label "No communities to add to" \
+        -label "No groups to add to" \
         -datatype text \
         -widget hidden \
         -value ""

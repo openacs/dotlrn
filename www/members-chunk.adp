@@ -32,7 +32,7 @@
   <li>
     <a
     href="/dotlrn/admin/users-add-to-community?users=@user_list@&referer=@referer@">Add
-    members to another community</a>
+    members to another group</a>
   </li>
 </if>
 

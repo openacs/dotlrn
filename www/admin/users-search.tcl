@@ -37,7 +37,7 @@ element create user_search_results action \
     -options {
         {None none}
         {{Spam ...} spam}
-        {{Add to community ...} add_to_community}
+        {{Add to group ...} add_to_community}
         {{Deactivate ...} deactivate}
         {{Nuke ...} delete}
     } \
