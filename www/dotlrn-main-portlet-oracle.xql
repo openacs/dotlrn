@@ -5,21 +5,21 @@
 
     <fullquery name="select_communities">
         <querytext>
-            select dotlrn_communities.*,
-                   dotlrn_community.url(dotlrn_communities.community_id) as url,
-                   decode(dotlrn_communities.community_type, 'dotlrn_community', 'dotlrn_community',
+            select dotlrn_communities_all.*,
+                   dotlrn_community.url(dotlrn_communities_all.community_id) as url,
+                   decode(dotlrn_communities_all.community_type, 'dotlrn_community', 'dotlrn_community',
                                                              'dotlrn_club', 'dotlrn_club',
                                                              'dotlrn_class_instance') as simple_community_type,
-                   decode(dotlrn_community_admin_p(dotlrn_communities.community_id, dotlrn_member_rels_approved.user_id),'f',0,1) as admin_p,	
-                   tree.tree_level(dotlrn_communities.tree_sortkey) as tree_level,
+                   decode(dotlrn_community_admin_p(dotlrn_communities_all.community_id, dotlrn_member_rels_approved.user_id),'f',0,1) as admin_p,	
+                   tree.tree_level(dotlrn_communities_all.tree_sortkey) as tree_level,
                    nvl((select tree.tree_level(dotlrn_community_types.tree_sortkey)
                         from dotlrn_community_types
-                        where dotlrn_community_types.community_type = dotlrn_communities.community_type), 0) as community_type_level
-            from dotlrn_communities,
+                        where dotlrn_community_types.community_type = dotlrn_communities_all.community_type), 0) as community_type_level
+            from dotlrn_communities_all,
                  dotlrn_member_rels_approved
-            where dotlrn_communities.community_id = dotlrn_member_rels_approved.community_id
+            where dotlrn_communities_all.community_id = dotlrn_member_rels_approved.community_id
             and dotlrn_member_rels_approved.user_id = :user_id
-            order by dotlrn_communities.tree_sortkey
+            order by dotlrn_communities_all.tree_sortkey
         </querytext>
     </fullquery>
 

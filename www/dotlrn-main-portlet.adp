@@ -68,6 +68,7 @@
       <li>
         <nobr>
           <a href="@communities.url@">@communities.pretty_name@</a>
+	<if @communities.archived_p@><font color=red>Archived</font></if>
 	<if @show_buttons_p@ eq 1>
 		&nbsp; <small> 
                         <a href="@communities.url@deregister?referer=@referer@">#dotlrn.drop_membership_link#</a>
