@@ -401,7 +401,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Message_Type">Message Type</msg>
   <msg key="Minutes">Minutes</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
-  <msg key="Must_specify_recipients">You must specify at least one recipient for your message</msg>
+  <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">My Communities</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
