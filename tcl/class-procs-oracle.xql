@@ -33,6 +33,7 @@ begin
 	pretty_name => :class_name,
 	description => :description,
 	page_id => :page_id,
+	portal_template_id => :portal_template_id,
 	creation_user => :user_id
 );
 
