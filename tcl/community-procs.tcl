@@ -1846,10 +1846,10 @@ namespace eval dotlrn_community {
             # call the communitie's delete pl/sql, which removes the group
             db_exec_plsql \
                 remove_community \
-                "begin dotlrn_community.delete(:community_id); end;"
+                "begin dotlrn_community.del(:community_id); end;"
 
             # Remove the package
-            db_exec_plsql delete_package "begin acs_object.delete(:package_id) end;"
+            db_exec_plsql delete_package "begin acs_object.del(:package_id) end;"
         }
     }
 

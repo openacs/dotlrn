@@ -35,7 +35,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_member_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_member_rels.rel_id%TYPE
     );
 
@@ -77,16 +77,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_member_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_member_rels
-        where rel_id = dotlrn_member_rel.delete.rel_id;
+        where rel_id = dotlrn_member_rel.del.rel_id;
 
-        membership_rel.delete(rel_id);
+        membership_rel.del(rel_id);
     end;
 
 end;
@@ -106,7 +106,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_admin_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_admin_rels.rel_id%TYPE
     );
 
@@ -148,16 +148,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_admin_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_admin_rels
-        where rel_id = dotlrn_admin_rel.delete.rel_id;
+        where rel_id = dotlrn_admin_rel.del.rel_id;
 
-        dotlrn_member_rel.delete(rel_id);
+        dotlrn_member_rel.del(rel_id);
     end;
 
 end;
@@ -177,7 +177,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_student_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_student_rels.rel_id%TYPE
     );
 
@@ -219,16 +219,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_student_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_student_rels
-        where rel_id = dotlrn_student_rel.delete.rel_id;
+        where rel_id = dotlrn_student_rel.del.rel_id;
 
-        dotlrn_member_rel.delete(rel_id);
+        dotlrn_member_rel.del(rel_id);
     end;
 
 end;
@@ -248,7 +248,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ta_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_ta_rels.rel_id%TYPE
     );
 
@@ -290,16 +290,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_ta_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_ta_rels
-        where rel_id = dotlrn_ta_rel.delete.rel_id;
+        where rel_id = dotlrn_ta_rel.del.rel_id;
 
-        dotlrn_admin_rel.delete(rel_id);
+        dotlrn_admin_rel.del(rel_id);
     end;
 
 end;
@@ -319,7 +319,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_ca_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_ca_rels.rel_id%TYPE
     );
 
@@ -361,16 +361,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_ca_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_ca_rels
-        where rel_id = dotlrn_ca_rel.delete.rel_id;
+        where rel_id = dotlrn_ca_rel.del.rel_id;
 
-        dotlrn_admin_rel.delete(rel_id);
+        dotlrn_admin_rel.del(rel_id);
     end;
 
 end;
@@ -390,7 +390,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_cadmin_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_cadmin_rels.rel_id%TYPE
     );
 
@@ -432,16 +432,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_cadmin_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_cadmin_rels
-        where rel_id = dotlrn_cadmin_rel.delete.rel_id;
+        where rel_id = dotlrn_cadmin_rel.del.rel_id;
 
-        dotlrn_admin_rel.delete(rel_id);
+        dotlrn_admin_rel.del(rel_id);
     end;
 
 end;
@@ -461,7 +461,7 @@ is
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_instructor_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_instructor_rels.rel_id%TYPE
     );
 
@@ -503,16 +503,16 @@ is
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_instructor_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_instructor_rels
-        where rel_id = dotlrn_instructor_rel.delete.rel_id;
+        where rel_id = dotlrn_instructor_rel.del.rel_id;
 
-        dotlrn_admin_rel.delete(rel_id);
+        dotlrn_admin_rel.del(rel_id);
     end;
 
 end;

@@ -35,7 +35,7 @@ as
         creation_ip in acs_objects.creation_ip%TYPE default null
     ) return dotlrn_user_profile_rels.rel_id%TYPE;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_user_profile_rels.rel_id%TYPE
     );
 
@@ -89,16 +89,16 @@ as
         return v_rel_id;
     end;
 
-    procedure delete (
+    procedure del (
         rel_id in dotlrn_user_profile_rels.rel_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_user_profile_rels
-        where rel_id = dotlrn_user_profile_rel.delete.rel_id;
+        where rel_id = dotlrn_user_profile_rel.del.rel_id;
 
-        user_profile_rel.delete(rel_id);
+        user_profile_rel.del(rel_id);
     end;
 
 end;

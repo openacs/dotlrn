@@ -89,6 +89,7 @@ begin
     foo := acs_sc_impl.new (
         impl_contract_name => 'portal_datasource',
         impl_name => 'dotlrn_main_portlet',
+        impl_pretty_name => 'Dotlrn main portlet',
         impl_owner_name => 'dotlrn_main_portlet'
     );
 

@@ -27,7 +27,7 @@ begin
 
     -- drop the binding between this implementation and the interface it
     -- implements.
-    acs_sc_binding.delete(
+    acs_sc_binding.del(
         contract_name => 'profile_provider',
         impl_name => 'dotlrn_external_profile_provider'
     );
@@ -56,7 +56,7 @@ begin
         );
 
     -- drop the implementation
-    acs_sc_impl.delete(
+    acs_sc_impl.del(
         impl_contract_name => 'profile_provider',
         impl_name => 'dotlrn_external_profile_provider'
     );

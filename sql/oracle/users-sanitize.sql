@@ -35,7 +35,7 @@ begin
     from acs_permissions
     where grantee_id = v_segment_id;
 
-    rel_segment.delete(
+    rel_segment.del(
         segment_id => v_segment_id
     );
 
@@ -43,7 +43,7 @@ begin
     from acs_permissions
     where grantee_id = v_group_id;
 
-    profiled_group.delete(
+    profiled_group.del(
         group_id => v_group_id
     );
 

@@ -29,7 +29,7 @@ is
         context_id in acs_objects.context_id%TYPE default null
     ) return dotlrn_community_types.community_type%TYPE;
 
-    procedure delete (
+    procedure del (
         community_type in dotlrn_community_types.community_type%TYPE
     );
 
@@ -102,20 +102,20 @@ is
         return community_type;
     end;
 
-    procedure delete (
+    procedure del (
         community_type in dotlrn_community_types.community_type%TYPE
     )
     is
     begin
         delete
         from dotlrn_community_types
-        where community_type = dotlrn_community_type.delete.community_type;
+        where community_type = dotlrn_community_type.del.community_type;
 
         delete
         from group_types
-        where group_types.group_type = dotlrn_community_type.delete.community_type;
+        where group_types.group_type = dotlrn_community_type.del.community_type;
 
-        acs_object_type.drop_type(dotlrn_community_type.delete.community_type);
+        acs_object_type.drop_type(dotlrn_community_type.del.community_type);
     end;
 
     function name (
@@ -162,7 +162,7 @@ is
         end_date in dotlrn_communities_all.active_end_date%TYPE
     );
 
-    procedure delete (
+    procedure del (
         community_id in dotlrn_communities_all.community_id%TYPE
     );
 
@@ -265,16 +265,16 @@ as
         where dotlrn_communities_all.community_id = dotlrn_community.set_active_dates.community_id;
     end;
 
-    procedure delete (
+    procedure del (
         community_id in dotlrn_communities_all.community_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_communities_all
-        where dotlrn_communities_all.community_id = dotlrn_community.delete.community_id;
+        where dotlrn_communities_all.community_id = dotlrn_community.del.community_id;
 
-        acs_group.delete(dotlrn_community.delete.community_id);
+        acs_group.del(dotlrn_community.del.community_id);
     end;
 
     function name (

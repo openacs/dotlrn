@@ -30,7 +30,7 @@ begin
     from rel_segments
     where segment_name = 'dotLRN Professors';
 
-    rel_segment.delete(
+    rel_segment.del(
         segment_id => foo
     );
 
@@ -45,7 +45,7 @@ begin
     from dotlrn_user_types
     where group_id = foo;
 
-    profiled_group.delete(
+    profiled_group.del(
         group_id => foo
     );
 

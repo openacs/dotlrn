@@ -30,6 +30,7 @@ begin
     foo := acs_sc_impl.new (
         impl_contract_name => 'UserData',
         impl_name => 'dotlrn_user_extension',
+        impl_pretty_name => 'Dotlrn user extension',
         impl_owner_name => 'dotlrn_user_extension'
     );
 

@@ -163,7 +163,7 @@ is
         context_id in acs_objects.context_id%TYPE default null
     ) return dotlrn_departments.department_key%TYPE;
 
-    procedure delete (
+    procedure del (
         department_key in dotlrn_departments.department_key%TYPE
     );
 end;
@@ -206,7 +206,7 @@ is
         return v_department_key;
     end;
 
-    procedure delete (
+    procedure del (
         department_key in dotlrn_departments.department_key%TYPE
     )
     is
@@ -215,7 +215,7 @@ is
         from dotlrn_departments
         where department_key = department_key;
 
-        dotlrn_community_type.delete(department_key);
+        dotlrn_community_type.del(department_key);
     end;
 end;
 /
@@ -236,7 +236,7 @@ is
         context_id in acs_objects.context_id%TYPE default null
     ) return dotlrn_classes.class_key%TYPE;
 
-    procedure delete (
+    procedure del (
         class_key in dotlrn_classes.class_key%TYPE
     );
 end;
@@ -280,7 +280,7 @@ is
         return v_class_key;
     end;
 
-    procedure delete (
+    procedure del (
         class_key in dotlrn_classes.class_key%TYPE
     )
     is
@@ -289,7 +289,7 @@ is
         from dotlrn_classes
         where class_key = class_key;
 
-        dotlrn_community_type.delete(class_key);
+        dotlrn_community_type.del(class_key);
     end;
 end;
 /
@@ -314,7 +314,7 @@ is
         context_id in acs_objects.context_id%TYPE default null
     ) return dotlrn_class_instances.class_instance_id%TYPE;
 
-    procedure delete (
+    procedure del (
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE
     ); 
 end;
@@ -367,7 +367,7 @@ is
         return v_class_instance_id;
     end;
 
-    procedure delete (
+    procedure del (
         class_instance_id in dotlrn_class_instances.class_instance_id%TYPE
     )
     is
@@ -376,7 +376,7 @@ is
         from dotlrn_class_instances
         where class_instance_id= class_instance_id;
 
-        dotlrn_community.delete(community_id => class_instance_id);
+        dotlrn_community.del(community_id => class_instance_id);
     end;
 end;
 /

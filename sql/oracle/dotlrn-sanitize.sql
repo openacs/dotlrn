@@ -130,12 +130,12 @@ begin
     );
 
     -- drop the dotlrn_club community type
-    dotlrn_community_type.delete(
+    dotlrn_community_type.del(
         community_type => 'dotlrn_club'
     );
 
     -- drop the dotlrn_class community type
-    dotlrn_community_type.delete(
+    dotlrn_community_type.del(
         community_type => 'dotlrn_class_instance'
     );
 
@@ -170,7 +170,7 @@ begin
     );
 
     -- drop the base community type
-    dotlrn_community_type.delete(
+    dotlrn_community_type.del(
         community_type => 'dotlrn_community'
     );
 

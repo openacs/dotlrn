@@ -59,7 +59,7 @@ is
         context_id in acs_objects.context_id%TYPE default null
     ) return dotlrn_clubs.club_id%TYPE;
 
-    procedure delete (
+    procedure del (
         club_id in dotlrn_clubs.club_id%TYPE
     );
 end;
@@ -108,16 +108,16 @@ is
         return v_club_id;
     end;
 
-    procedure delete (
+    procedure del (
         club_id in dotlrn_clubs.club_id%TYPE
     )
     is
     begin
         delete
         from dotlrn_clubs
-        where club_id = dotlrn_club.delete.club_id;
+        where club_id = dotlrn_club.del.club_id;
 
-        dotlrn_community.delete(community_id => club_id);
+        dotlrn_community.del(community_id => club_id);
     end;
 end;
 /

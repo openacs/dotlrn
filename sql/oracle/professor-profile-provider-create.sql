@@ -29,6 +29,7 @@ begin
     foo := acs_sc_impl.new(
         impl_contract_name => 'profile_provider',
         impl_name => 'dotlrn_professor_profile_provider',
+        impl_pretty_name => 'Dotlrn professor profile provider',
         impl_owner_name => 'dotlrn_professor_profile_provider'
     );
 

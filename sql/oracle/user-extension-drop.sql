@@ -26,7 +26,7 @@ declare
     foo integer;
 begin
 
-    acs_sc_binding.delete (
+    acs_sc_binding.del (
         contract_name => 'UserData',
         impl_name => 'dotlrn_user_extension'
     );
@@ -62,7 +62,7 @@ begin
     );
 
     -- create the implementation
-    acs_sc_impl.delete(
+    acs_sc_impl.del(
         'UserData',
         'dotlrn_user_extension'
     );
