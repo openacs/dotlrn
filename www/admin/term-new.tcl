@@ -43,6 +43,10 @@ ad_form -name add_term -export referer -form {
         { [template::util::date::compare $start_date $end_date] <= 0 }
         "The term must start before it ends"
     }
+    {start_date
+        { [template::util::date::compare [template::util::date::from_ansi [clock format [clock seconds] -format "%Y-%m-%d"]] $start_date] <= 0 }
+        "The term must start in the future"
+    }
 } -on_submit {
 
     set term_year [dotlrn_term::start_end_dates_to_term_year \
