@@ -2,7 +2,11 @@
 <property name="title">Users</property>
 <property name="context_bar">@context_bar@</property>
 
-[ <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><font size="-1">Create A New User</font></a> ]
+[ 
+  <a href="../user-add?add_membership_p=f&referer=/dotlrn/admin/users"><font size="-1">Create A New User</font></a> 
+  |
+  <a href="users-search"><font size="-1">Search Users</font></a>
+]
 
 <p></p>
 
