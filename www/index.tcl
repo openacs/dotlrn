@@ -35,16 +35,21 @@ if {![dotlrn::user_can_browse_p]} {
     # Figure out if the user is a member of a community
     set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
+    # If no communities
     if {[llength $communities] == 0} {
         ad_returnredirect "index-not-a-user"
         ad_script_abort
     }
 
-    # For now, we assume only ONE community (FIXME: ben)
-    set the_community [lindex $communities 0]
+    # If just one community
+    if {[llength $communities] == 1} {
+        ad_returnredirect [dotlrn_community::get_url_from_package_id -package_id [lindex [lindex $communities 0] 4]]
+        ad_script_abort
+    }
 
-    ad_returnredirect [dotlrn_community::get_url_from_package_id -package_id [lindex $the_community 4]]
-    ad_script_abort
+    # If more than one
+    ad_return_template index-no-browse
+    return
 }
 
 # Get the page
