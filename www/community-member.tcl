@@ -26,6 +26,7 @@ ad_page_contract {
     bio:onevalue
     verified_user_id:onevalue
     user_contributions:multirow
+    folder_id:onevalue
 }
 
 set verified_user_id [ad_verify_and_get_user_id]
@@ -104,6 +105,8 @@ db_multirow user_contributions user_contributions {
     order by object_name,
              creation_date
 }
+
+set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
 
 set context_bar [ad_context_bar_ws_or_index "Community member"]
 set system_name [ad_system_name]
