@@ -376,9 +376,17 @@ as
         party_id in parties.party_id%TYPE
     ) return char
     is
+        v_member_p              char(1);
     begin
-        -- TODO: a-la aD, implement this for real (bma)
-        return 't';
+        select decode(count(*), 0, 'f', 't')
+        into v_member_p
+        from dual
+        where exists (select 1
+                      from dotlrn_member_rels_approved
+                      where dotlrn_member_rels_approved.user_id = party_id
+                      and dotlrn_member_rels_approved.community_id = community_id);
+
+        return v_member_p;
     end;
 
     function admin_p (

@@ -40,7 +40,7 @@ template::util::list_of_ns_sets_to_multirow \
 
 set user_list [list]
 foreach user $community_members {
-    lappend user_list [ns_set get $community_members user_id]
+    lappend user_list [ns_set get $user user_id]
 }
 
 db_multirow pending_users select_pending_users {

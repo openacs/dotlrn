@@ -18,7 +18,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             1 member_p,
+             1 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -41,7 +41,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             1 member_p,
+             1 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -64,7 +64,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             0 member_p,
+             0 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -88,7 +88,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             0 member_p,
+             0 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -121,7 +121,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             1 member_p,
+             1 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -145,7 +145,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             1 member_p,
+             1 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -169,7 +169,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             0 member_p,
+             0 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types
@@ -194,7 +194,7 @@
              dotlrn_communities.description,
              dotlrn_communities.package_id,
              dotlrn_community.url(dotlrn_communities.community_id) as url,
-             0 member_p,
+             0 as member_p,
              decode(acs_permission.permission_p(:user_id, dotlrn_communities.community_id, 'admin'),'f',0,1) as admin_p,
              (select community_type
               from dotlrn_community_types

@@ -169,7 +169,7 @@ select segment_id from rel_segments where group_id= :community_id and rel_type= 
             select count(*)
             from dual
             where exists (select 1
-                          from dotlrn_member_rels_full
+                          from dotlrn_member_rels_approved
                           where community_id = :community_id
                           and user_id = :user_id)
         </querytext>
