@@ -2,7 +2,14 @@
 <property name="title">Users</property>
 <property name="context_bar">@context_bar@</property>
 
-<h3>Users</h3>
+[ <a href="/acs-admin/users/user-add?referer=/dotlrn/admin/users"><font size="-1">create a new user</font></a> ]
+
+<p></p>
+
+<form method="get" action="user-new">
+  Add a new dotLRN user: <input type="text" name="search_text"><input type="submit" value="search">
+</form>
+
 <table border="0" cellpadding="2" cellspacing="0" width="650">
   <tr bgcolor="black">
     <td>
@@ -51,10 +58,12 @@
 
 <p></p>
 
+<if @users:rowcount@ gt 10>
 <form method="get" action="user-new">
   Add a new dotLRN user: <input type="text" name="search_text"><input type="submit" value="search">
 </form>
 
 <p></p>
 
-<a href="/acs-admin/users/user-add?referer=/dotlrn/admin/users">Create a new user.</a>
+[ <a href="/acs-admin/users/user-add?referer=/dotlrn/admin/users"><font size="-1">create a new user</font></a> ]
+</if>
