@@ -26,12 +26,10 @@
 
   <table cellpadding="5" width="95%">
     <tr>
-      <td align="left">
-        <nobr>
-          <small>[
-            <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
-          ]</small>
-        </nobr>
+      <td align="left" style="white-space: nowrap; font-size: x-small;">
+        [
+          <a href="department-new?referer=@referer@">New @departments_pretty_name@</a>
+        ]
       </td>
     </tr>
   </table>
@@ -41,43 +39,51 @@
   <table bgcolor="#cccccc" cellpadding="5" width="95%">
 
     <tr>
-      <th align="left"><%= [parameter::get -parameter departments_pretty_name] %> Name</th>
+      <th align="left">@departments_pretty_name@ Name</th>
       <th align="center" width="10%">Actions</th>
     </tr>
 
-<if @departments:rowcount@ gt 0>
+    <if @departments:rowcount@ gt 0>
 
-<multiple name="departments">
+      <multiple name="departments">
 
-<if @departments.rownum@ odd>
-    <tr bgcolor="#eeeeee">
-</if>
-<else>
-    <tr bgcolor="#d9e4f9">
-</else>
-      <td align="left"><a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a></td>
-      <td align="center">
-<if @can_create@>
-        <nobr>
-          <small>[
-            <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">New <%= [parameter::get -parameter classes_pretty_name] %></a>
-          ]</small>
-        </nobr>
-</if>
-      </td>
-    </tr>
+        <if @departments.rownum@ odd>
+          <tr bgcolor="#eeeeee">
+        </if>
+        <else>
+          <tr bgcolor="#d9e4f9">
+        </else>
+        
+        <td align="left">
+          <a href="department?department_key=@departments.department_key@">@departments.pretty_name@</a>
+        </td>
+        
+        <td align="center" style="white-space: nowrap; font-size: x-small;">
+        
+          <if @can_create@>
+            [
+              <a href="class-new?department_key=@departments.department_key@&referer=department?department_key=@departments.department_key@">New @classes_pretty_name@</a>
+            
+            <if @departments.n_classes@ eq 0>
+            |
+              <a href="department-delete?department_key=@departments.department_key@&pretty_name=@departments.pretty_name@&referer=departments">Delete</a>
+            </if>
+            ]
+          </if>
+        </td>
 
-</multiple>
+          </tr>
+      
+      </multiple>
 
-</if>
-<else>
-    <tr bgcolor="#eeeeee">
-      <td align="left" colspan="2">
-        <i>No <%= [parameter::get -parameter departments_pretty_plural] %></i>
-      </td>
-    </tr>
-</else>
-
+    </if>
+    <else>
+      <tr bgcolor="#eeeeee">
+        <td align="left" colspan="2">
+          <em>No @departments_pretty_plural@</em>
+        </td>
+      </tr>
+    </else>
   </table>
 
 <if @departments:rowcount@ gt 10>
@@ -88,7 +94,7 @@
       <td align="left">
         <nobr>
           <small>[
-            <a href="department-new?referer=@referer@">New <%= [parameter::get -parameter departments_pretty_name] %></a>
+            <a href="department-new?referer=@referer@">New @departments_pretty_name@</a>
           ]</small>
         </nobr>
       </td>
