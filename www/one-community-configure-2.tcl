@@ -6,8 +6,12 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-24
 } {
-    portal_id:naturalnum,notnull
+
 }
+
+
+set form [ns_getform]
+set portal_id [ns_set get $form portal_id]
 
 # Check that this is a community type
 if {[ad_parameter community_level_p] != 1} {
@@ -29,7 +33,9 @@ if {![dotlrn_community::member_p $community_id $user_id]} {
 } else {
 
     # just call this, it will sort it out
-    portal::configure_dispatch $portal_id [ad_conn query]
+    # portal::configure_dispatch $portal_id [ad_conn query]
+    
+    portal::configure_dispatch_ns_set $portal_id $form
 
     ns_returnredirect "one-community-configure"
 }
