@@ -88,7 +88,6 @@ element create clone_form referer \
 
 if {[form is_valid clone_form]} {
     
-
     set term ""
 
     if {!$class_instance_p} {
@@ -100,6 +99,7 @@ if {[form is_valid clone_form]} {
     set clone_id [dotlrn_community::clone \
                       -community_id $community_id \
                       -key $key \
+                      -pretty_name $pretty_name \
                       -description $description \
                       -term_id $term
     ]

@@ -1430,6 +1430,7 @@ namespace eval dotlrn_community {
     ad_proc -public clone {
         {-community_id:required}
         {-key:required}
+        {-pretty_name ""}
         {-description ""}
         {-parent_community_id ""}
         {-term_id ""}
@@ -1498,7 +1499,10 @@ namespace eval dotlrn_community {
                 }
             }
 
-            set pretty_name $key
+            if {[empty_string_p $pretty_name]} {
+                set pretty_name $key
+            }
+
             ns_set put $extra_vars community_type $community_type
             ns_set put $extra_vars community_key $key
             # just the key for now
