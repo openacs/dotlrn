@@ -59,14 +59,16 @@ namespace eval dotlrn_user_extension {
                                              -parameter AutoUserReadPrivateDataP \
                                              -package_id [dotlrn::get_package_id] \
                                              -default 1]
+
+		set guest_p [ad_decode $read_private_data_p 1 0 0 1 $read_private_data_p]
+
                 # create the dotLRN user now
                 db_transaction {
                     dotlrn::user_add -type $type -can_browse=$can_browse_p -user_id $user_id
 
-                    acs_privacy::set_user_read_private_data \
-                        -user_id $user_id \
-                        -object_id [dotlrn::get_package_id] \
-                        -value $read_private_data_p
+		    dotlrn_privacy::set_user_guest_p \
+			-user_id $user_id \
+			-value $guest_p
                 }
                 break
             }
