@@ -480,6 +480,8 @@ Beispiel:</msg>
   <msg key="this_user_is_deleted">Dieser Benutzer ist gelöscht.</msg>
   <msg key="To">Teilnehmertypen, an die eine E-Mail gesendet werden soll:</msg>
   <msg key="Type">Typ</msg>
+  <msg key="Unarchive">Wiederherstellen</msg>
+  <msg key="unarchive">wiederherstellen</msg>
   <msg key="Unknown_Term">Unbekanntes Semester</msg>
   <msg key="Update_Password">Passwort aktualisieren</msg>
   <msg key="upload">Hochladen</msg>

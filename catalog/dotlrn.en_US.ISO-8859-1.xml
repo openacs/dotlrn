@@ -543,6 +543,8 @@ Thank you
   <msg key="this_user_is_deleted">this user is deleted</msg>
   <msg key="To">Member types to email:</msg>
   <msg key="Type">Type</msg>
+  <msg key="Unarchive">Unarchive</msg>
+  <msg key="unarchive">unarchive</msg>
   <msg key="Unknown_Term">Unknown Term</msg>
   <msg key="Update_Password">Update Password</msg>
   <msg key="upload">upload</msg>
