@@ -135,10 +135,21 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'student_role_pretty_name',
+        attribute_name => 'student_pretty_name',
         datatype => 'string',
-        pretty_name => 'Student Role Pretty Name',
-        pretty_plural => 'Student Role Pretty Names',
+        pretty_name => 'Student Pretty Name',
+        pretty_plural => 'Student Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'student_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Student Pretty Plural',
+        pretty_plural => 'Student Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -152,10 +163,21 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'coure_assistant_role_pretty_name',
+        attribute_name => 'coure_assistant_pretty_name',
         datatype => 'string',
-        pretty_name => 'Course Assistant Role Pretty Name',
-        pretty_plural => 'Course Assistant Role Pretty Names',
+        pretty_name => 'Course Assistant Pretty Name',
+        pretty_plural => 'Course Assistant Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'coure_assistant_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Course Assistant Pretty Plural',
+        pretty_plural => 'Course Assistant Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -169,10 +191,21 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'teaching_assistant_role_pretty_name',
+        attribute_name => 'teaching_assistant_pretty_name',
         datatype => 'string',
-        pretty_name => 'Teaching Assistant Role Pretty Name',
-        pretty_plural => 'Teaching Assistant Role Pretty Names',
+        pretty_name => 'Teaching Assistant Pretty Name',
+        pretty_plural => 'Teaching Assistant Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'teaching_assistant_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Teaching Assistant Pretty Plural',
+        pretty_plural => 'Teaching Assistant Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -186,10 +219,21 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'instructor_role_pretty_name',
+        attribute_name => 'instructor_pretty_name',
         datatype => 'string',
-        pretty_name => 'Professor Role Pretty Name',
-        pretty_plural => 'Professor Role Pretty Names',
+        pretty_name => 'Professor Pretty Name',
+        pretty_plural => 'Professor Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'instructor_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Professor Pretty Plural',
+        pretty_plural => 'Professor Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -203,10 +247,21 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'course_admin_role_pretty_name',
+        attribute_name => 'course_admin_pretty_name',
         datatype => 'string',
-        pretty_name => 'Course Adminsitrator Role Pretty Name',
-        pretty_plural => 'Course Adminsitrator Role Pretty Names',
+        pretty_name => 'Course Adminsitrator Pretty Name',
+        pretty_plural => 'Course Adminsitrator Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'course_admin_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Course Adminsitrator Pretty Plural',
+        pretty_plural => 'Course Adminsitrator Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -220,10 +275,21 @@ begin
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',
-        attribute_name => 'admin_role_pretty_name',
+        attribute_name => 'admin_pretty_name',
         datatype => 'string',
-        pretty_name => 'Administrator Role Pretty Name',
-        pretty_plural => 'RAdministrator ole Pretty Names',
+        pretty_name => 'Administrator Pretty Name',
+        pretty_plural => 'RAdministrator Pretty Name',
+        min_n_values => 0,
+        max_n_values => 1,
+        storage => 'generic'
+    );
+
+    bar := acs_attribute.create_attribute(
+        object_type => 'dotlrn_community',
+        attribute_name => 'admin_pretty_plural',
+        datatype => 'string',
+        pretty_name => 'Administrator Pretty Plural',
+        pretty_plural => 'RAdministrator Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
