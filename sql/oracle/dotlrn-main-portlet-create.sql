@@ -22,6 +22,15 @@ begin
     description      => 'Displays the list of communities a user belongs to'
   );
 
+  -- user_editable_p 
+  portal_datasource.set_def_param (
+	datasource_id => ds_id,
+	config_required_p => 't',
+	configured_p => 't',
+	key => 'user_editable_p',
+	value => 'f'
+);	
+
 end;
 /
 show errors
