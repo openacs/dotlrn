@@ -65,6 +65,7 @@
   <msg key="Bulk_Uploading">Bulk uploading in progress.</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
+  <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -97,6 +98,7 @@
   <msg key="Community_Type">Community Type</msg>
   <msg key="Community_Types">Community Types</msg>
   <msg key="Communitys_Name">Community's Name</msg>
+  <msg key="Compose_bulk_message">Compose Bulk Message</msg>
   <msg key="Configure_Element">Configure Element</msg>
   <description key="Configure_Element">Used in title on page for configuring a portal element, i.e. a portal application mini window.
 </description>
@@ -115,6 +117,7 @@
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
+  <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
@@ -209,6 +212,7 @@ notify this user.</msg>
   <msg key="Header_Logo_Alt_Text">Header Logo Alt Text</msg>
   <msg key="Header_Logo_Item_ID">Header Logo Item ID</msg>
   <msg key="help">Help</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Professor</msg>
@@ -246,7 +250,7 @@ notify this user.</msg>
   <msg key="lt_An_error_occured_whil">An error occured while trying to add a user to a community.  This error has been logged.</msg>
   <msg key="lt_An_error_occured_whil_1">An error occured while trying to remove a user to a community.  This error has been logged.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
-  <msg key="lt_Are_you_sure_you_want">Are you sure you want to delete the empty department</msg>
+  <msg key="lt_Are_you_sure_you_want">Are you sure you want to archive group &lt;strong&gt;%pretty_name%&lt;/strong&gt; and all its subgroups (if any)?</msg>
   <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have an account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
@@ -330,7 +334,7 @@ Subject: %subject%
 Message: %body%</msg>
   <msg key="lt_The_following_members">The following members of</msg>
   <msg key="lt_The_following_variabl">The following variables can be used to insert user/community specific data:</msg>
-  <msg key="lt_The_groups_data_will_">The group's data will not be modified, but the group will only be accessible to system administrators.</msg>
+  <msg key="lt_The_groups_data_will_">The group's data will not be modified, but members will no longer have links to the group or its content from their home portal.</msg>
   <msg key="lt_The_results_of_your_s">The results of your search are:</msg>
   <msg key="lt_The_system_was_unable">The system was unable to send email. Please notify the user personally. This problem is probably caused by a misconfiguration of your email system. Here is the error:</msg>
   <msg key="lt_There_was_a_bug_in_th">There was a bug in this page</msg>
@@ -388,7 +392,9 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Memberships">Memberships</msg>
   <msg key="Memberships_1">Memberships:</msg>
   <msg key="Message">Message</msg>
+  <msg key="Message_Type">Message Type</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
+  <msg key="Must_specify_recipients">You must specify at least one recipient for your message</msg>
   <msg key="My_Communities">My Communities</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
@@ -430,6 +436,8 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="not_a_user">Not a User</msg>
   <msg key="Not_Allowed">Not Allowed</msg>
   <msg key="Note">Note:</msg>
+  <msg key="Note_if_you_make">Note: if you make any changes using this form, the user will lose their portal customizations.</msg>
+  <msg key="Note_the_term_column">Note: the &quot;Term&quot; column applies to classes and subgroups of classes.  For subgroups of classes, the &quot;Term&quot; column holds the term of the subgroup's parent class.  No term is displayed for sub-subgroups and deeper descendants.</msg>
   <msg key="Nuke">Nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke Users</msg>
@@ -439,11 +447,13 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Or">Or</msg>
   <msg key="or_by_RGB_number">or by RGB number</msg>
   <msg key="or_return_to">or, return to</msg>
+  <msg key="Parent">Parent</msg>
   <msg key="Pending">Pending</msg>
   <msg key="Pending_Approval">Pending Approval</msg>
   <msg key="Person_name">Name</msg>
   <msg key="Personal_home_page">Personal home page:</msg>
   <msg key="Personal_Options">Personal Options</msg>
+  <msg key="Plain_Text">Plain Text</msg>
   <msg key="portal_templates">Portal Templates</msg>
   <msg key="Portrait">Portrait:</msg>
   <msg key="Portrait_1">Portrait</msg>
@@ -492,6 +502,7 @@ Thank you
   <msg key="seconds">seconds.</msg>
   <msg key="Send_Date">Send Date</msg>
   <msg key="send_email">Send Email</msg>
+  <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Shared_Files">Shared Files</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>

@@ -82,6 +82,12 @@ db_multirow member_subgroups select_member_subgroups {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
+set site_wide_admin_p [permission::permission_p \
+        -party_id $user_id \
+        -object_id [acs_magic_object "security_context_root"] \
+        -privilege admin \
+        ]
+
 set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 
 set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]

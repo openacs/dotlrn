@@ -58,6 +58,7 @@
                                         membership_rels.rel_id
                                      and membership_rels.member_state 
                                         = 'approved')
+            $extra_where_clause
         </querytext>
     </fullquery>
 

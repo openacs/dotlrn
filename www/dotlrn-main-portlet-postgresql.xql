@@ -13,6 +13,8 @@
                       THEN 'dotlrn_community'
                       WHEN dotlrn_communities_all.community_type = 'dotlrn_club'
                       THEN 'dotlrn_club'
+                      WHEN dotlrn_communities_all.community_type = 'dotlrn_pers_community'
+                      THEN 'dotlrn_pers_community'
                       ELSE 'dotlrn_class_instance'
                    END) as simple_community_type,
                    tree_level(dotlrn_communities_all.tree_sortkey) as tree_level,
@@ -24,6 +26,7 @@
                  dotlrn_member_rels_approved
             where dotlrn_communities_all.community_id = dotlrn_member_rels_approved.community_id
             and dotlrn_member_rels_approved.user_id = :user_id
+            $archived_clause
             order by dotlrn_communities_all.tree_sortkey
         </querytext>
     </fullquery>

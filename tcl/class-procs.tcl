@@ -96,6 +96,9 @@ namespace eval dotlrn_class {
         too.
         
     } {
+
+	set community_type_key "$department_key.$class_key"
+
         if {[db_0or1row collision_check {}]} {
             # got a collision
             return 0

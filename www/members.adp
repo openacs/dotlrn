@@ -26,6 +26,6 @@
 
 <if @spam_p@ true>
   <ul>
-    <li>        <a href="spam?community_id=@community_id@&referer=@return_url@">#dotlrn.Email_Members#</a>
+    <li>        <a href="spam-recipients?community_id=@community_id@&referer=@return_url@">#dotlrn.Email_Members#</a>
   </ul>
 </if>

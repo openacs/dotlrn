@@ -392,7 +392,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_default_roles_not_cached {
         {-community_type:required}
     } {
-        if {[string match $community_type dotlrn_club]} {
+        if {[string match $community_type dotlrn_club] || [string match $community_type dotlrn_pers_community]} {
             set community_type dotlrn_community
         } elseif {![string match $community_type dotlrn_community]} {
             set community_type dotlrn_class_instance
@@ -665,13 +665,6 @@ namespace eval dotlrn_community {
     } {
         Returns list of admin users
     } {
-        set bio_attribute_id [db_string bio_attribute_id {
-            select attribute_id
-            from acs_attributes
-            where object_type = 'person'
-            and attribute_name = 'bio'
-        }]
-
         return [list_users -rel_type dotlrn_admin_rel $community_id]
     }
 
@@ -681,8 +674,6 @@ namespace eval dotlrn_community {
     } {
         Returns the list of users with a membership_id, a user_id, first name,
         last name, email, and role. 
-
-        AKS: uncaching this until we figure out how to cache ns_sets correctly
     } {
         return [dotlrn_community::list_users_not_cached \
             -rel_type $rel_type \
@@ -696,6 +687,13 @@ namespace eval dotlrn_community {
     } {
         Memoizing helper
     } {
+        set bio_attribute_id [db_string bio_attribute_id {
+            select attribute_id
+            from acs_attributes
+            where object_type = 'person'
+            and attribute_name = 'bio'
+        }]
+
         return [db_list_of_ns_sets select_users {}]
     }
 
@@ -889,6 +887,18 @@ namespace eval dotlrn_community {
 	util_memoize_flush_regexp $user_id
     }
 
+    ad_proc -public remove_user_from_all {
+        {-user_id:required}
+    } {
+        Remove a user from all communities
+    } {
+        foreach community_ns_set [dotlrn_community::get_all_communities_by_user $user_id] {
+            set community_id [ns_set get $community_ns_set community_id]
+            if { [member_p $community_id $user_id] } {
+                dotlrn_community::remove_user $community_id $user_id
+            }
+        }
+    }
 
     ad_proc -public get_all_communities_by_user {
         user_id
@@ -1154,7 +1164,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
     } {
         Returns a tcl list of ns_sets with info about each subcomm. The keys
-        are: community_id, community_key, pretty_name, and url
+        are: community_id, community_key, pretty_name, archived_p and url. Returns both archived and unarchived subcommunities.
     } {
         return [db_list_of_ns_sets select_subcomms_info {}]
     }
@@ -1195,7 +1205,7 @@ namespace eval dotlrn_community {
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-		append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>\n"
+		append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
 		 
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif {[member_p $sc_id $user_id] || [not_closed_p -community_id $sc_id]} {
@@ -1230,14 +1240,14 @@ namespace eval dotlrn_community {
                       } elseif {[needs_approval_p -community_id $sc_id]} {
                           append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Request_Membership]</a>\n"
                       } else {
-                          append chunk "<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Join]</a>\n"
+                          append chunk "(<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Join]</a>)\n"
                       }
 
                       append chunk "\n"
                 }  elseif {[member_p $sc_id $user_id]} {
 
 		    # User is a member.
-		    append chunk "<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>\n"
+		    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
 		    
 		}
             }
@@ -1781,26 +1791,26 @@ namespace eval dotlrn_community {
         1. the community is marked as archived
 
         2. the RemovePortlet callback is called for all users of the
-        community (both members and GAs) and all the applets. This
-        removes the comm's data from their workspaces
+        community (both members and GAs) and all the applets.
 
-        3. all users of the community have their "read" privs revoked on the
-        comm's portal so that only SWA's can view the archived community
+        3. Do this recursively for all subcommunities.
 
     } {
         db_transaction {
             # do RemoveUserFromCommunity callback, which
             # calls the RemovePortlet proc with the right params
+
+            foreach subcomm_id [get_subcomm_list -community_id $community_id] {
+                archive -community_id $subcomm_id
+            }
+
             foreach user [list_users $community_id] {
                 set user_id [ns_set get $user user_id]
                 applets_dispatch \
-                    -community_id $community_id \
-                    -op RemoveUserFromCommunity \
-                    -list_args [list $community_id $user_id]
+                        -community_id $community_id \
+                        -op RemoveUserFromCommunity \
+                        -list_args [list $community_id $user_id]
             }
-
-            # revoke privs
-            rel_segments_revoke_permission -community_id $community_id
 
             # mark the community as archived
             db_dml update_archive_p {}

@@ -88,12 +88,13 @@
 
   <li>
     #dotlrn.Access_level#
-    <if @can_browse_p@>#dotlrn.Full#</if><else>#dotlrn.Limited#</else>
+    <if @can_browse_p@>#dotlrn.Full# [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else>#dotlrn.Limited# [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
+se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   </li>
 
   <li>
     #dotlrn.Guest#
-    <if @guest_p@ eq t>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
+    <if @guest_p@ eq t>#dotlrn.Yes# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else>#dotlrn.No# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
   </li>
 
   <li>

@@ -354,7 +354,6 @@ TD.light-line {
 .header-text {
     FONT-SIZE: $header_font_size; 
     BACKGROUND: white; 
-    WIDTH: 100px; 
     COLOR: $header_font_color; 
     FONT-FAMILY: $header_font;
     WHITE-SPACE: nowrap;

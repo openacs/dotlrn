@@ -6,7 +6,7 @@
     <fullquery name="dotlrn_community::get_community_id_not_cached.select_community">
         <querytext>
             select community_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where package_id = :package_id
         </querytext>
     </fullquery>
@@ -99,6 +99,20 @@
             where dotlrn_community_types.tree_sortkey = (select tree.ancestor_key(dct.tree_sortkey, 1)
                                                          from dotlrn_community_types dct
                                                          where dct.community_type = :community_type)
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::get_subcomm_info_list.select_subcomms_info">
+        <querytext>
+            select community_id, 
+                   community_key, 
+                   pretty_name,   
+                   archived_p,
+                   dotlrn_community.url(community_id) as url
+            from dotlrn_communities_all 
+            where parent_community_id = :community_id 
+            and archived_p = 'f'
+            order by pretty_name
         </querytext>
     </fullquery>
 

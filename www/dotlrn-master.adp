@@ -34,6 +34,7 @@
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/lists.css" media="all">
 <link rel="stylesheet" type="text/css" href="/resources/acs-templating/forms.css" media="all">
 <link rel="stylesheet" type="text/css" href="/resources/dotlrn/dotlrn-master.css" media="all">
+<script src="/resources/acs-subsite/core.js" language="javascript"></script>
 @header_stuff;noquote@
 </head>
 <body<multiple name=attribute> @attribute.key@="@attribute.value@"</multiple>>

@@ -65,7 +65,7 @@ if {!$dotlrn_user_p} {
 
 set redirect "user-add-2?[export_vars {user_id password referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]"
 if { [string equal $add_membership_p t] } {
-    set redirect "member-add-2?[export_vars {user_id {referer $redirect}}]"
+    set redirect "one-community-admin"
 }
 
 # Don't redirect back to the user-new-2 page if we've already been there

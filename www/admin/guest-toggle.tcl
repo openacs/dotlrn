@@ -14,23 +14,25 @@
 #  details.
 #
 
-ad_page_contract {
-    displays archived communities
+# dotlrn/www/admin/site-wide-admin-toggle.tcl
 
-    @author arjun (arjun@openforce.net)
+ad_page_contract {
+    @author Caroline Meeks (caroline@meekshome.com)
+    @creation-date November 19, 2002
     @version $Id$
 } -query {
-} -properties {
-    title:onevalue
-    context_bar:onevalue
-    archived_comms:multirow
+    user_id
+    guest_p
+    {referer "users"}
 }
 
-set groups_pretty_plural "[parameter::get -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
+# Update permissions
+dotlrn_privacy::set_user_guest_p \
+        -user_id $user_id \
+        -value $guest_p
 
-set title "[_ dotlrn.archived_groups]"
-set context_bar [list $title]
 
-db_multirow archived_comms select_archived_comms {}
+util_memoize_flush_regexp  $user_id
+ad_returnredirect $referer
 
-ad_return_template
+

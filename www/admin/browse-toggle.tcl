@@ -14,23 +14,23 @@
 #  details.
 #
 
-ad_page_contract {
-    displays archived communities
+# dotlrn/www/admin/browse-toggle.tcl
 
-    @author arjun (arjun@openforce.net)
+ad_page_contract {
+    @author Caroline Meeks (caroline@meekshome.com)
+    @creation-date November 19, 2002
     @version $Id$
 } -query {
-} -properties {
-    title:onevalue
-    context_bar:onevalue
-    archived_comms:multirow
+    user_id
+    can_browse_p
+    {referer "users"}
 }
 
-set groups_pretty_plural "[parameter::get -localize -parameter class_instances_pretty_plural] / [parameter::get -localize -parameter clubs_pretty_plural]"
 
-set title "[_ dotlrn.archived_groups]"
-set context_bar [list $title]
+#update can_browse_p
+dotlrn::set_can_browse -user_id $user_id -can_browse\=$can_browse_p
 
-db_multirow archived_comms select_archived_comms {}
+util_memoize_flush_regexp  $user_id
+ad_returnredirect $referer
 
-ad_return_template
+

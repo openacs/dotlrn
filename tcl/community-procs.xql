@@ -140,16 +140,11 @@
                    dotlrn_member_rels_approved.user_id,
                    acs_users_all.first_names,
                    acs_users_all.last_name,
-                   acs_users_all.email
+                   acs_users_all.email,
                   (select count(*) 
                    from   acs_rels 
                    where  rel_type = 'user_portrait_rel' 
-                   and    object_id_one = dotlrn_member_rels_approved.user_id) as portrait_p,
-                  (select count(*) 
-                   from   acs_attribute_values 
-                   where  object_id = dotlrn_member_rels_approved.user_id
-                   and    attribute_id = :bio_attribute_id 
-                   and    attr_value != '') as bio_p
+                   and    object_id_one = dotlrn_member_rels_approved.user_id) as portrait_p, 0 as bio_p
             from acs_users_all,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.community_id = :community_id
@@ -269,7 +264,7 @@
     <fullquery name="dotlrn_community::get_community_type_from_community_id_not_cached.select_community_type">
         <querytext>
             select community_type
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -289,18 +284,6 @@
             select community_id as subcomm_id
             from dotlrn_communities
             where parent_community_id = :community_id
-            order by pretty_name
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::get_subcomm_info_list.select_subcomms_info">
-        <querytext>
-            select community_id, 
-                   community_key, 
-                   pretty_name,   
-                   url
-            from dotlrn_communities_full 
-            where parent_community_id = :community_id 
             order by pretty_name
         </querytext>
     </fullquery>
@@ -351,7 +334,7 @@
     <fullquery name="dotlrn_community::get_community_name_not_cached.select_community_name">
         <querytext>
             select pretty_name
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -457,7 +440,7 @@
     <fullquery name="dotlrn_community::get_portal_id_not_cached.select_portal_id">
         <querytext>
             select portal_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>
@@ -465,7 +448,7 @@
     <fullquery name="dotlrn_community::get_non_member_portal_id_not_cached.select_non_member_portal_id">
         <querytext>
             select non_member_portal_id
-            from dotlrn_communities
+            from dotlrn_communities_all
             where community_id = :community_id
         </querytext>
     </fullquery>

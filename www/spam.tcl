@@ -19,9 +19,23 @@ ad_page_contract {
     @creation-date Jan 19, 2002
     @version $Id$
 } -query {
+    {recipients:integer,multiple ""}
+    {recipients_str ""}
     {community_id ""}
     {rel_type "dotlrn_member_rel"}
     {referer "control-panel"}
+    {spam_all 0}
+} -validate {
+    recipients_specified {
+      if { ![info exists recipients_str] && ![info exists recipients] } {
+        ad_complain "[_ dotlrn.Must_specify_recipients]"
+      }
+    }
+    recipients_split {
+      if { [info exists recipients_str] && ![info exists recipients] } {
+        set recipients [split $recipients_str]
+      }
+    }
 } -properties {
     context_bar:onevalue
     portal_id:onevalue
@@ -41,6 +55,13 @@ set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
 db_1row select_sender_info {}
 
+# names can have single quotes in them, and since they are being selected
+# from the database as literals down below, when the sender_info query is
+# passed to bulk_mail::new, we have to make sure they are properly quoted
+set sender_first_names [db_quote $sender_first_names]
+set sender_last_name [db_quote $sender_last_name]
+
+
 form create spam_message
 
 element create spam_message community_id \
@@ -53,6 +74,7 @@ element create spam_message from \
     -label [_ dotlrn.From] \
     -datatype text \
     -widget hidden \
+    -html {size 60} \
     -value $sender_email
 
 element create spam_message rel_type \
@@ -75,10 +97,10 @@ element create spam_message message \
     -html {rows 10 cols 80 wrap soft}
 
 element create spam_message message_type \
-    -label "Message Type" \
+    -label "[_ dotlrn.Message_Type]" \
     -datatype text \
     -widget select \
-    -options {{"Plain text" "text"} {HTML "html"}} \
+    -options [list [list [_ dotlrn.Plain_Text] "text"] [list [_ dotlrn.HTML] "html"]] \
     -value "text"
 
 element create spam_message send_date \
@@ -94,16 +116,34 @@ element create spam_message referer \
     -widget hidden \
     -value $referer
 
+element create spam_message recipients_str \
+    -label Recipients \
+    -datatype text \
+    -widget hidden \
+    -value $recipients
+
+element create spam_message spam_all \
+    -label spam \
+    -datatype text \
+    -widget hidden \
+    -value $spam_all
+
 if {[ns_queryexists "form:confirm"]} {
     form get_values spam_message \
-        community_id from rel_type subject message message_type send_date referer
+        community_id from rel_type subject message message_type send_date referer recipients_str spam_all
 
     set segment_id [db_string select_rel_segment_id {}]
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
+    set recipients_str [join [split $recipients_str] ,]
 
     set safe_community_name [db_quote $community_name]
 
+    if { $spam_all } {
+      set extra_where_clause ""
+    } else {
+      set extra_where_clause "and parties.party_id in ($recipients_str)"
+    }
     set query [db_map sender_info]
 
 ns_log notice "query: $query"

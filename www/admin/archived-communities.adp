@@ -23,17 +23,33 @@
 <property name="context_bar">@context_bar@</property>
 
 <if @archived_comms:rowcount@ gt 0>
+<p><small><font color="red">#dotlrn.Note_the_term_column</font></small></p>
 <table width="100%">
   <tr>
-    <th align="left" width="15%">#dotlrn.Name#</th>
-    <th align="left" width="50%">#dotlrn.Description#</th>
-    <th align="left">#dotlrn.Actions#</th>
+    <th align="left" width="25%">#dotlrn.Parent#</th>
+    <th align="left" width="50%">#dotlrn.Name#</th>
+    <th align="left">#dotlrn.Term#</th>
+    <th align="left">#dotlrn.Created#</th>
   </tr>
 <multiple name="archived_comms">
-  <tr>
-    <td><a href="@archived_comms.url@">@archived_comms.pretty_name@</a></td>
-    <td><pre>@archived_comms.description@</pre></td>
-    <td></td>
+<if @archived_comms.rownum@ odd>
+  <tr class="odd">
+</if><else>
+  <tr class="even">
+</else>
+    <td>
+      <if @archived_comms.parent_community_id@ not eq ""><a href="@archived_comm
+s.parent_url@">@archived_comms.parent_pretty_name@</a></if>
+    </td>
+    <td>
+      <a href="@archived_comms.url@">@archived_comms.pretty_name@</a></td>
+    <td>
+        @archived_comms.term_name@ @archived_comms.term_year@
+        <% # look for a parent term if no child term is found %>
+        <if @archived_comms.term_name@ eq "">@archived_comms.parent_term_name@ @
+archived_comms.parent_term_year@</if>
+    </td>
+    <td><em>@archived_comms.creation_date@</em></td>
   </tr>
 </multiple>
 </table>
