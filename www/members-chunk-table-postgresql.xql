@@ -9,13 +9,13 @@
                    dotlrn_member_rels_approved.rel_type,
                    dotlrn_member_rels_approved.role,
                    dotlrn_member_rels_approved.user_id,
-                   registered_users.first_names,
-                   registered_users.last_name,
-                   registered_users.email
-            from registered_users,
+                   acs_users_all.first_names,
+                   acs_users_all.last_name,
+                   acs_users_all.email
+            from acs_users_all,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.community_id = :community_id
-            and dotlrn_member_rels_approved.user_id = registered_users.user_id
+            and dotlrn_member_rels_approved.user_id = acs_users_all.user_id
             order by (
                 CASE 
                     WHEN role = 'instructor'
