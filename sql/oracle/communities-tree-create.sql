@@ -35,7 +35,7 @@ begin
     end if;
 
     -- increment the sort_key
-    v_max_child_sortkey := lpad(tree.increment_key(v_max_child_sortkey), 6, '0');
+    v_max_child_sortkey := tree.increment_key(v_max_child_sortkey);
 
     update dotlrn_community_types
     set max_child_sortkey = v_max_child_sortkey
@@ -73,7 +73,7 @@ begin
     end if;
 
     -- increment the sort_key
-    v_max_child_sortkey := lpad(tree.increment_key(v_max_child_sortkey), 6, '0');
+    v_max_child_sortkey := tree.increment_key(v_max_child_sortkey);
 
     if :new.parent_community_id is null then
         update dotlrn_community_types
