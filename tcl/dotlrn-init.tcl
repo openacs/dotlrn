@@ -103,6 +103,9 @@ if {[dotlrn::is_instantiated]} {
         # redirect to pages inside dotlrn
         permission::grant -party_id [acs_magic_object "the_public"] -object_id $package_id -privilege read
     }
+
+    # Set master template
+    parameter::set_value -parameter "DefaultMaster" -value "/packages/dotlrn/www/dotlrn-master" -package_id [subsite::main_site_id]
 }
 
 # Make sure that privacy is turned on
