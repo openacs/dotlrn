@@ -50,7 +50,7 @@ namespace eval dotlrn_club {
     ad_proc -public new {
         {-key:required}
         {-pretty_name:required}
-        {-description:required}
+        {-description ""}
         {-join_policy "open"}
         {-parent_community_id ""}
     } {
