@@ -21,6 +21,8 @@
 <master>
 <property name="title">#dotlrn.Add_A_User#</property>
 <property name="context_bar">@context_bar@</property>
+<property name="focus">register.email</property>
+
 <h3>#dotlrn.lt_Add_a_new_user_to_Slo#</h3>
 <if @community_p@ eq 1>
 <blockquote>
