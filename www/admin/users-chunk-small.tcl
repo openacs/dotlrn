@@ -1,8 +1,7 @@
 ad_page_contract {
-    Displays main dotLRN admin page
-
-    @author Ben Adida (ben@openforce.net)
-    @creation-date 2001-11-04
+    @author yon (yon@openforce.net)
+    @creation-date 2002-01-30
+    @version $Id$
 } -query {
 } -properties {
     user_id:onevalue
