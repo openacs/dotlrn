@@ -21,7 +21,7 @@ create table dotlrn_users (
 			  references users(user_id)
 			  constraint dlrn_user_id_pk
 			  primary key,
-       role		  varchar(100) default 'user' not null check (role in ('student','guest','professor','admin')),
+       role		  varchar(100) default 'student' not null check (role in ('student','guest','professor','admin')),
        theme_id		  references portal_element_themes(theme_id),
        page_id		  integer 
 			  constraint dlrn_user_page_id_fk

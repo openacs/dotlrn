@@ -11,7 +11,7 @@ Choose a role:
 
 <SELECT name=role>
 <OPTION value=guest> Guest
-<OPTION value=user> User
+<OPTION value=student> Student
 <OPTION value=professor> Professor
 </SELECT>
 

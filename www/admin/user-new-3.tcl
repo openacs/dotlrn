@@ -6,7 +6,7 @@ ad_page_contract {
     @creation-date 2001-11-04
 } {
     user_id
-    {role user}
+    {role student}
 }
 
 # Add the user
