@@ -40,8 +40,9 @@ if {![dotlrn::user_p -user_id $user_id]} {
     ad_script_abort
 }    
 
-set communities [dotlrn_community::get_all_communities_by_user $user_id]
 if {![dotlrn::user_can_browse_p -user_id $user_id]} {
+
+    set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
     if {[llength $communities] == 0} {
         ad_returnredirect "index-not-a-user"
