@@ -205,8 +205,7 @@ namespace eval site_nodes {
         if {$get_count_p} {
             return $count
         } else {
-            ns_log error "site_nodes::get_info get_count_p assertion failed!\n
-            we should never get here"
+            ns_log error "site_nodes::get_info get_count_p assertion failed! We should never get here return=$return param=$param package_key=$package_key"
         }
     }
 }
