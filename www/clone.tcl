@@ -50,11 +50,12 @@ if { $top_community_type != "dotlrn_club"
 form create clone_form
 
 # generate the clone's key, with collision resolution here
-set key [dotlrn::generate_key -increment -name $community_name]
-
-while {![dotlrn_community::check_community_key_valid_p -community_key $key]} {
-    set key [dotlrn::generate_key -increment -name $key]
+set key [dotlrn_community::generate_key -name $community_name]
+if { ![regexp {^.*[^0-9]([0-9]*)$} $key match number] } {
+    set number {}
 }
+set new_name "${community_name}${number}"
+
 
 if {$class_instance_p} {
     element create clone_form term \
@@ -68,8 +69,7 @@ element create clone_form pretty_name \
     -label "[_ dotlrn.Name]" \
     -datatype text \
     -widget text \
-    -html {size 40} \
-    -value $key
+    -html {size 40}
 
 element create clone_form description \
     -label [_ dotlrn.Description] \
@@ -84,6 +84,10 @@ element create clone_form referer \
     -datatype text \
     -widget hidden \
     -value $referer
+
+if { [form is_request clone_form] } {
+    element set_value clone_form pretty_name $new_name
+}
 
 if {[form is_valid clone_form]} {
     
