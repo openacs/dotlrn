@@ -355,7 +355,6 @@ namespace eval dotlrn {
 
         if {[empty_string_p $id]} {
             set type dotlrn_class_instance
-            set id [db_string select {}]
         } 
 
         return $id
