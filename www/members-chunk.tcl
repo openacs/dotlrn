@@ -49,8 +49,7 @@ db_multirow pending_users select_pending_users {
            dotlrn_member_rels_full.role
     from dotlrn_users,
          dotlrn_member_rels_full
-    where dotlrn_users.user_id = :user_id
-    and dotlrn_users.user_id = dotlrn_member_rels_full.user_id
+    where dotlrn_users.user_id = dotlrn_member_rels_full.user_id
     and dotlrn_member_rels_full.community_id = :community_id
     and dotlrn_member_rels_full.member_state = 'needs approval'
 }
