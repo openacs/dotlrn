@@ -29,7 +29,7 @@
 \i applet-sc-drop.sql
 \i class-membership-drop.sql
 \i classes-drop.sql
-\i dotlrn-clubs-drop.sql
+\i clubs-drop.sql
 \i dotlrn-sanitize.sql
 \i communities-package-drop.sql
 \i community-memberships-drop.sql
