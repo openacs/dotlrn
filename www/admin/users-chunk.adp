@@ -95,7 +95,7 @@
       <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <b>#dotlrn.No#</b>
     </else>
   </if>
-      <else>#dotlrn.yes#</else>
+      <else>#dotlrn.Yes#</else>
     </td>
 </else>
   </tr>
