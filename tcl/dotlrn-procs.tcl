@@ -149,7 +149,7 @@ namespace eval dotlrn {
                 set pretty_name $package_key
             }
 
-            set package_id [site_node::new_with_package \
+            set package_id [site_node_apm_integration::new_site_node_and_package \
                 -name $url \
                 -parent_id $parent_node_id \
                 -package_key $package_key \
@@ -324,7 +324,7 @@ namespace eval dotlrn {
 	# we have a problem here.
 	set parent_node_id [db_string select_node_id {}]
 
-        set new_package_id [site_node::new_with_package \
+        set new_package_id [site_node_apm_integration::new_site_node_and_package \
             -name $mount_point \
             -parent_id $parent_node_id \
             -package_key $package_key \
