@@ -202,7 +202,7 @@ namespace eval dotlrn {
             }
             
             # cycle through the applets and invoke their RemoveUser procs
-            foreach applet_key [dotlrn_applet::list_applets] {
+            foreach applet_key [dotlrn_applet::list_mounted_applets] {
                 dotlrn_community::applet_call \
                     $applet_key \
                     RemoveUser \
