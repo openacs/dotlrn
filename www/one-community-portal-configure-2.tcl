@@ -25,7 +25,11 @@ ad_page_contract {
 set form [ns_getform]
 set portal_id [ns_set get $form portal_id]
 set return_url [ns_set get $form return_url]
+set anchor [ns_set get $form anchor]
+
+#ad_return_complaint 1 "$anchor"
+#ad_script_abort
 
 portal::configure_dispatch -portal_id $portal_id -form $form
 
-ns_returnredirect "one-community-portal-configure?portal_id=$portal_id&return_url=$return_url"
+ns_returnredirect "one-community-portal-configure?portal_id=$portal_id&referer=$return_url#$anchor"

@@ -48,13 +48,20 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check">
+    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check_with_parent">
         <querytext>
             select count(*)
             from dotlrn_communities_all
             where :parent_community_id in (select dc.parent_community_id
                                            from dotlrn_communities_all dc
                                            where dc.community_key = :community_key)
+        </querytext>
+    </fullquery>
+
+
+    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check_simple">
+        <querytext>
+            select count(*) from dotlrn_communities_all where community_key = :community_key
         </querytext>
     </fullquery>
 
@@ -388,6 +395,16 @@
         delete from dotlrn_community_applets 
           where community_id= :community_id and applet_id = :applet_id
       </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::clone.update_portal_ids">
+        <querytext>
+            update dotlrn_communities
+            set portal_id = :portal_id,
+                non_member_portal_id = :non_member_portal_id,
+                admin_portal_id = :admin_portal_id
+            where community_id = :clone_id
+        </querytext>
     </fullquery>
 
     <fullquery name="dotlrn_community::archive.update_archive_p">

@@ -39,15 +39,30 @@ namespace eval dotlrn {
 
     ad_proc -public generate_key {
         {-name:required}
+        {-increment:boolean}
     } {
         Generate a key from a name. Compresses all adjacent non-alphanum
         chars to a dash. Yes, this is not unique, grows rapidly, will
         need collision detection and resolution, yada yada.
     } {
+        set next ""
         regsub -all {\W+} $name "-" name
         regsub -all -- {-+} $name "-" name
+        set name [string tolower [string trim $name {-}]]
 
-        return [string tolower [string trim $name {-}]]
+        if {$increment_p} {
+            # increment the key by checking if the last 2 chars are -int
+            # if so, incr the int. if not add "-1" to the key
+            regexp -- {^(.*)-(\d+)$} $name match namepart intpart
+
+            if {[info exists intpart]} {
+                set name "$namepart-[incr intpart]"
+            } else {
+                set name "$name-1"
+            }
+        }
+        
+        return $name
     }
 
     ad_proc -private do_abort {} {

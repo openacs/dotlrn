@@ -224,15 +224,11 @@ namespace eval dotlrn_community {
         }
 
         # check if the name is already in use, if so, complain loudly
-        if {![check_community_key_valid_p \
-                -community_key $community_key \
-                -parent_community_id $parent_community_id]} {
-            ad_return_complaint \
-                    1 "The name <strong>$pretty_name</strong> is already in use either by 
-                       an active or archived group. \n Please select a different name."
-            ad_script_abort
-        }
-
+        check_community_key_valid_p \
+            -complain_if_invalid \
+            -community_key $community_key \
+            -parent_community_id $parent_community_id
+        
         # Add core vars
         ns_set put $extra_vars parent_community_id $parent_community_id
         ns_set put $extra_vars community_type $community_type
@@ -243,7 +239,6 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars context_id [dotlrn::get_package_id]
 
         db_transaction {
-
             # Insert the community
             set community_id [package_instantiate_object -extra_vars $extra_vars $object_type]
 
@@ -294,7 +289,6 @@ namespace eval dotlrn_community {
                     -context_id $community_id \
                     $user_id \
                 ]
-
 
                 # Set up the rel segments
                 dotlrn_community::create_rel_segments -community_id $community_id
@@ -1008,16 +1002,36 @@ namespace eval dotlrn_community {
     ad_proc -public check_community_key_valid_p {
         {-community_key:required}
         {-parent_community_id ""}
+        {-complain_if_invalid:boolean}
     } {
         Checks if the community_key passed in is valid for creating a new
         community by checking that it's not the same as an existing (possible)
         sibling's name.
     } {
-        if {[db_string collision_check {}] > 0} {
-            # got a collision
-            return 0
+        if {![empty_string_p $parent_community_id]} {
+            set valid_p [ad_decode [db_string collision_check_with_parent {}] \
+                             0 \
+                             1 \
+                             0
+           ]
         } else {
-            return 1
+            set valid_p [ad_decode [db_string collision_check_simple {}] \
+                             0 \
+                             1 \
+                             0
+            ]
+        }
+            
+#        ad_return_complaint 1 "valid $valid_p / key $community_key"
+
+        if {$complain_if_invalid_p && !$valid_p} {
+            ad_return_complaint \
+                1 \
+                "The name <strong>$community_key</strong> is already in use either by 
+                  an active or archived group. \n Please go back and select a different name."
+            ad_script_abort
+        } else {
+            return $valid_p
         }
     }
 
@@ -1400,6 +1414,118 @@ namespace eval dotlrn_community {
             # Delete from the DB
             set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
             db_dml delete_applet_from_community {}
+        }
+    }
+
+    ad_proc -public clone {
+        {-community_id:required}
+        {-description ""}
+    } {
+        Clones a community. Cloning is a deep copy of the 
+        comm's metadata with a newly generated key. Callbacks are 
+        made to the comm's applets "clone" procs. Subgoups of comm's
+        are also recursively cloned as well.
+
+        @param community_id the community to clone
+        @return the clone's community_id
+    } {
+        db_transaction {
+            # check that the passed in key is ok
+            check_community_key_valid_p -complain_if_invalid -community_key $key
+            
+            # create the clone, by manually copying the metadata
+            # this code is copied from ::new
+            set community_type \
+                [get_community_type_from_community_id $community_id]
+
+            set extra_vars [ns_set create]
+            set pretty_name $key
+            ns_set put $extra_vars community_type $community_type
+            ns_set put $extra_vars community_key $key
+            # just the key for now
+            ns_set put $extra_vars pretty_name $pretty_name
+            ns_set put $extra_vars pretty_plural $key
+            ns_set put $extra_vars description $description
+            ns_set put $extra_vars context_id [dotlrn::get_package_id]
+
+            # Create the clone object - "dotlrn community A"
+            # Note: the "object_type" to pass into package_instantiate_object
+            # is just the community_type
+            set clone_id \
+                [package_instantiate_object -extra_vars $extra_vars $community_type]
+
+            set user_id [ad_conn user_id]
+
+            # clone the comm's portal by using it as a template
+            # this will get the pages, layouts, and theme, but not
+            # the elements and parameters
+            set portal_id [portal::create \
+                    -template_id [get_portal_id -community_id $community_id] \
+                    -name "$pretty_name Portal" \
+                    -context_id $clone_id \
+                    $user_id
+            ]
+
+            # clone the non-member page
+            set non_member_portal_id [portal::create \
+                    -template_id [get_non_member_portal_id -community_id $community_id] \
+                    -name "$pretty_name Non-Member Portal" \
+                    -context_id $clone_id \
+                    $user_id
+            ]
+
+            # clone the admin page
+            set admin_portal_id [portal::create \
+                    -template_id [get_admin_portal_id -community_id $community_id] \
+                    -name "$pretty_name Administration Portal" \
+                    -context_id $clone_id \
+                    $user_id
+            ]
+            
+            # Set up the rel segments
+            dotlrn_community::create_rel_segments -community_id $clone_id
+            
+            # Set up the node
+            set parent_node_id [get_type_node_id $community_type]
+            
+            # Create the node
+            set new_node_id [site_node_create $parent_node_id $key]
+            
+            # Instantiate the package
+            set package_id [site_node_create_package_instance \
+                $new_node_id \
+                $pretty_name \
+                $clone_id \
+                [one_community_package_key]
+            ]
+            
+            # Set the right parameters
+            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
+            ad_parameter -package_id $package_id -set 0 community_type_level_p
+            ad_parameter -package_id $package_id -set 1 community_level_p
+            
+            # Set up the node
+            dotlrn_community::set_package_id $clone_id $package_id
+
+            # update the portal_id and non_member_portal_id
+            db_dml update_portal_ids {}
+
+            #ad_return_complaint 1 "aks77 got here"
+            #ad_script_abort
+            
+            # Add the default applets specified above. They are
+            # different per community type!
+#             set default_applets_list [string trim [split $default_applets {,}]]
+# 
+#             foreach applet_key $default_applets_list {
+#                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
+#                     dotlrn_community::add_applet_to_community $community_id $applet_key
+#                 }
+#             }
+#         }
+# 
+#         return $community_id
+# 
         }
     }
 
