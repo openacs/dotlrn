@@ -1003,6 +1003,7 @@ namespace eval dotlrn_community {
         }
 
         if {$complain_if_invalid_p && !$valid_p} {
+            ns_log notice "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_return_complaint 1 \
                 "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_script_abort
@@ -1169,7 +1170,7 @@ namespace eval dotlrn_community {
     } {
         get the package ID for a particular community
     } {
-        return [db_string select_package_id {} -default ""]
+        return [db_string select_package_id {}]
     }
 
     ad_proc -public get_applet_package_id {
@@ -1404,6 +1405,8 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-key:required}
         {-description ""}
+        {-parent_community_id ""}
+        {-term_id ""}
     } {
         Clones a community. Cloning is a deep copy of the
         comm's metadata with a newly generated key. Callbacks are
@@ -1427,7 +1430,11 @@ namespace eval dotlrn_community {
             # there is some special stuff for cloning subcomms
             if {[string equal "dotlrn_community" $community_type]} {
                 set subcomm_p 1
-                set parent_community_id [get_parent_id -community_id $community_id]
+                
+                # we needs this here in case we are being called from ourself
+                if {[empty_string_p $parent_community_id]} {
+                    set parent_community_id [get_parent_id -community_id $community_id]
+                }
                 set parent_type [dotlrn_community::get_community_type_from_community_id $parent_community_id]
 
                 if {![string equal $parent_type [dotlrn_club::community_type]] &&
@@ -1446,9 +1453,23 @@ namespace eval dotlrn_community {
 
                 ns_set put $extra_vars parent_community_id $parent_community_id
             } else {
+                # we want to clone a club or class instance
                 check_community_key_valid_p \
                     -complain_if_invalid \
                     -community_key $key
+                
+                if {![empty_string_p $term_id]} {
+                    # it's a class instance that we're cloning
+                    ns_set put $extra_vars class_key [db_string get_class_key {
+                        select class_key 
+                        from dotlrn_class_instances_full
+                        where class_instance_id = :community_id
+                    }]
+
+                    ns_set put $extra_vars term_id $term_id
+                    # re-write the comm type for class instances
+                    set community_type [dotlrn_community::get_toplevel_community_type -community_type $community_type]
+                }
             }
 
             set pretty_name $key
@@ -1575,11 +1596,21 @@ namespace eval dotlrn_community {
                 }
             }
 
-            # TODO:
             # recursively clone the subcommunities
-            #            ad_return_complaint 1 "aks77 got here"
-            #           ad_script_abort
+            set subcomm_list [get_subcomm_info_list -community_id $community_id]
+
+            foreach subcomm $subcomm_list {
+                set subcomm_id [ns_set get $subcomm community_id]
+                
+                clone \
+                    -community_id $subcomm_id \
+                    -key [ns_set get $subcomm community_key] \
+                    -description [get_community_description -community_id $subcomm_id]  \
+                    -parent_community_id $clone_id
+            }
         }
+        
+        return $clone_id
     }
 
     ad_proc -public archive {
