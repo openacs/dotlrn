@@ -40,6 +40,13 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::generate_key.existing_community_keys">
+        <querytext>
+            select community_key 
+            from   dotlrn_communities_all
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check_with_parent">
         <querytext>
             select count(*)

@@ -1062,6 +1062,22 @@ namespace eval dotlrn_community {
         }
     }
 
+    ad_proc -public generate_key {
+        {-name:required}
+    } {
+        Generate a key from a name. Compresses all adjacent non-alphanum
+        chars to a dash. Yes, this is not unique, grows rapidly, will
+        need collision detection and resolution, yada yada.
+    } {
+        set existing [db_list existing_community_keys {}]
+
+        return [util_text_to_url \
+                    -replacement {} \
+                    -existing_urls [concat $existing { members configure spam index not-allowed clone help }] \
+                    -- $name]
+    }
+
+
     ad_proc -public check_community_key_valid_p {
         {-community_key:required}
         {-parent_community_id ""}
