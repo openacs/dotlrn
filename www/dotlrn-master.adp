@@ -81,7 +81,7 @@
 <tr><td colspan=3 class="dark-line" height="1"><img src="/graphics/spacer.gif"></td></tr>
       </table>
 <p>
-<div class="footer"><a href="http://mitsloan.mit.edu">MIT Sloan School of Management</a> | <a href="http://web.mit.edu">MIT</a></div>
+<div class="footer"><a href="http://www.dotlrn.org">dotLRN Home</a> | <a href="http://www.openacs.org/projects/dotlrn">dotLRN Project Central</a></div>
 
 <div class="footer">@ds_link@</div>
 
