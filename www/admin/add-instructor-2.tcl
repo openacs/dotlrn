@@ -12,7 +12,7 @@ ad_page_contract {
     users:multirow
 }
 
-set context_bar {Add an Instructor}
+set context_bar {{Add an Instructor}}
 
 db_multirow users select_users {}
 

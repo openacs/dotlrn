@@ -10,6 +10,6 @@ ad_page_contract {
 } -properties {
 }
 
-set context_bar {Add an Instructor}
+set context_bar {{Add an Instructor}}
 
 ad_return_template
