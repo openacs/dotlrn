@@ -28,7 +28,7 @@
   <small>
     <a href="#current_clubs">Current <%= [dotlrn::parameter clubs_pretty_plural] %></a>
     |
-    <a href="#join">Join Group</a>
+    <a href="#join">Join a Group</a>
 </p>
 
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>
