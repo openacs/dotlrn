@@ -44,7 +44,6 @@
 </ul>
 <h3>Personal Options</h3>
 <ul>
-<li><include src="weblog-control-panel">
   <li>
     <a href="/user/basic-info-update?return_url=@referer@">Edit My Personal Information</a>
     <li>
