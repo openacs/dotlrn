@@ -674,13 +674,21 @@ namespace eval dotlrn_community {
             ns_set put $extra_vars community_id $community_id
 
             # Set up the relationship
-            set rel_id [relation_add \
+            if {[catch {set rel_id [relation_add \
                 -member_state "needs approval" \
                 -extra_vars $extra_vars \
                 $rel_type \
                 $community_id \
                 $user_id \
-            ]
+            ]} errmsg]} {
+                set savedInfo $errorInfo
+        
+                if {[string match -nocase {acs_object_rels_un} $errmsg]} {
+                    return
+                } else {
+                    error $errmsg $savedInfo
+                }
+            }
 
             if {[string equal $member_state "approved"] == 1} {
                 membership_approve -user_id $user_id -community_id $community_id
