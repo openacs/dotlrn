@@ -3,7 +3,7 @@
 #
 
 # if we have a portal_id show navbar
-if {![empty_string_p $portal_id] && ![exists_and_not_null no_navbar_p]} {
+if {[info exists portal_id] && ![empty_string_p $portal_id] && ![exists_and_not_null no_navbar_p]} {
 #    if {[portal::page_count -portal_id $portal_id] > 1} {
         set navbar "<table border=0 cellpadding=5><tr>"
 
@@ -15,6 +15,7 @@ if {![empty_string_p $portal_id] && ![exists_and_not_null no_navbar_p]} {
 #    }
 } else {
     set navbar ""
+    set portal_id ""
 }
 
 set user_id [ad_verify_and_get_user_id]

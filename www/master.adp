@@ -20,7 +20,7 @@
       <div align="right">
       <a href="/dotlrn/">
       <img src="/dotlrn/myspace.gif" width="98" height="25" border="0" alt="my dotlrn" align="middle"></a>
-      <a href="/help">
+      <a href="/dotlrn/help">
       <img src="/dotlrn/help.gif" width="67" height="25" border="0" alt="help" align="middle"></a>
       <a href="/register/logout">
       <img src="/dotlrn/logout.gif" width="62" height="25" border="0" alt="logout" align="middle"></a></div>
