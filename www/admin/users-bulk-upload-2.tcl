@@ -47,7 +47,6 @@ db_transaction {
     oacs_util::csv_foreach -file $file_location -array_name row {
 
         # First make sure the required data is there
-
         if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
             doc_body_append "<br>Datafile must include at least the email, first_names and last_name fields<br>"
             db_abort_transaction
@@ -63,7 +62,17 @@ db_transaction {
             doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id
         } else {
-            set user_id [ad_user_new $row(email) $row(first_names) $row(last_name) $password "" "" "" "t" "approved"]
+
+	    set user_id [db_nextval acs_object_id_seq]
+
+	    auth::create_user \
+		-user_id $user_id \
+		-username "" \
+		-email $row(email) \
+		-first_names $row(first_names) \
+		-last_name $row(last_name) \
+		-password $password
+
             
             lappend list_of_user_ids $user_id
             
