@@ -503,10 +503,25 @@ multirow create attribute key value
 
 if { ![template::util::is_nil focus] } {
     # Handle elements wohse name contains a dot
-    regexp {^([^.]*)\.(.*)$} $focus match form_name element_name
-    
-    template::multirow append \
-            attribute onload "javascript:document.forms\['${form_name}'\].elements\['${element_name}'\].focus()"
+    if { [regexp {^([^.]*)\.(.*)$} $focus match form_name element_name] } {
+
+        # Add safety code to test that the element exists '
+        set header_stuff "$header_stuff
+          <script language=\"JavaScript\">
+            function acs_focus( form_name, element_name ){
+                if (document.forms == null) return;
+                if (document.forms\[form_name\] == null) return;
+                if (document.forms\[form_name\].elements\[element_name\] == null) return;
+                if (document.forms\[form_name\].elements\[element_name\].type == 'hidden') return;
+
+                document.forms\[form_name\].elements\[element_name\].focus();
+            }
+          </script>
+        "
+        
+        template::multirow append \
+                attribute onload "javascript:acs_focus('${form_name}', '${element_name}')"
+    }
 }
 
 # Developer-support support
