@@ -19,11 +19,12 @@
         select count(*)
         from dual
         where exists (select 1
-                      from persons
+                      from cc_users
                       where not exists (select 1
                                         from dotlrn_users
-                                        where dotlrn_users.user_id = persons.person_id)
-                      and upper(substr(persons.last_name, 1, 1)) = upper(:dimension))
+                                        where dotlrn_users.user_id = cc_users.user_id)
+                      and cc_users.member_state = 'approved'
+                      and upper(substr(cc_users.last_name, 1, 1)) = upper(:dimension))
       </querytext>
     </fullquery>
 
@@ -48,21 +49,20 @@
 
     <fullquery name="select_non_dotlrn_users">
       <querytext>
-        select persons.person_id as user_id,
-               persons.first_names,
-               persons.last_name,
-               parties.email,
+        select cc_users.user_id,
+               cc_users.first_names,
+               cc_users.last_name,
+               cc_users.email,
                'limited' as access_level,
                'f' as read_private_data_p,
-               acs_permission.permission_p(:root_object_id, persons.person_id, 'admin') as site_wide_admin_p
-        from persons,
-             parties
-        where persons.person_id = parties.party_id
-        and not exists (select 1
-                        from dotlrn_users
-                        where dotlrn_users.user_id = persons.person_id)
-        and upper(substr(persons.last_name, 1, 1)) = upper(:section)
-        order by persons.last_name
+               acs_permission.permission_p(:root_object_id, cc_users.user_id, 'admin') as site_wide_admin_p
+        from cc_users
+        where not exists (select 1
+                          from dotlrn_users
+                          where dotlrn_users.user_id = cc_users.person_id)
+        and cc_users.member_state = 'approved'
+        and upper(substr(cc_users.last_name, 1, 1)) = upper(:section)
+        order by cc_users.last_name
       </querytext>
     </fullquery>
 

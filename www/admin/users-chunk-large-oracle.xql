@@ -28,25 +28,24 @@
 
     <fullquery name="select_non_dotlrn_users">
       <querytext>
-        select persons.person_id as user_id,
-               persons.first_names,
-               persons.last_name,
-               parties.email,
+        select cc_users.user_id,
+               cc_users.first_names,
+               cc_users.last_name,
+               cc_users.email,
                'limited' as access_level,
                'f' as read_private_data_p,
-               acs_permission.permission_p(:root_object_id, persons.person_id, 'admin') as site_wide_admin_p
-        from persons,
-             parties
-        where persons.person_id = parties.party_id
-        and not exists (select 1
-                        from dotlrn_users
-                        where dotlrn_users.user_id = persons.person_id)
+               acs_permission.permission_p(:root_object_id, cc_users.user_id, 'admin') as site_wide_admin_p
+        from cc_users
+        where not exists (select 1
+                          from dotlrn_users
+                          where dotlrn_users.user_id = cc_users.user_id)
+        and cc_users.member_state = 'approved'
         and (
-            lower(dotlrn_users.last_name) like lower('%' || :search_text || '%')
-         or lower(dotlrn_users.first_names) like lower('%' || :search_text || '%')
-         or lower(dotlrn_users.email) like lower('%' || :search_text || '%')
+            lower(cc_users.last_name) like lower('%' || :search_text || '%')
+         or lower(cc_users.first_names) like lower('%' || :search_text || '%')
+         or lower(cc_users.email) like lower('%' || :search_text || '%')
         )
-        order by persons.last_name
+        order by cc_users.last_name
       </querytext>
     </fullquery>
 
