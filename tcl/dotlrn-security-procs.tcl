@@ -33,6 +33,14 @@ namespace eval dotlrn {
 	return [db_list_of_lists select_user_types {}]
     }
 
+    ad_proc -public user_p {
+        {-user_id:required}
+    } {
+        check if a user is a dotLRN user
+    } {
+        return [db_string select_count "select count(*) from dotlrn_users where user_id= :user_id"]
+    }
+
     ad_proc -public user_add {
 	{-rel_type "dotlrn_user_rel"}
 	{-user_id:required}
@@ -40,6 +48,11 @@ namespace eval dotlrn {
     } {
 	Add a user as a dotLRN user
     } {
+        # Check if the user is already a dotLRN user
+        if {[user_p -user_id $user_id]} {
+            return
+        }
+
 	# set up extra vars
 	set extra_vars [ns_set create]
 	
@@ -124,6 +137,8 @@ namespace eval dotlrn {
 	user_id
     } {
 	returns the dotLRN user role or empty string if not a dotLRN user
+        
+        FIXME: THIS DOES NOT WORK ANYMORE!
     } {
 	return [db_string select_user_type {} -default ""]
     }
