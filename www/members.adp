@@ -40,36 +40,15 @@
 
 <listtemplate name="members"></listtemplate>
 
-<if @admin_p@ eq 1 and @pending_users:rowcount@ gt 0>
+<h1>#dotlrn.Membership_Requests#</h1>
 
-<h3>#dotlrn.Membership_Requests#</h3>
-
-<ul>
-<multiple name="pending_users">
-  <li>
-    <%= [acs_community_member_link -user_id $pending_users(user_id) -label "$pending_users(first_names) $pending_users(last_name)"] %>
-    (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
-    &nbsp;
-    <i>@pending_users.role@</i>
-    &nbsp;
-    [<small>
-      <include src="approve-link"
-      url="approve?user_id=@pending_users.user_id@&referer=@referer@">
-      |
-      <include src="reject-link"
-      url="reject?user_id=@pending_users.user_id@&referer=@referer@">
-    </small>]
-  </li>
-</multiple>
-</ul>
-
-</if>
+<listtemplate name="pending_users"></listtemplate>
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
 
   <hr>
 
-  <h3>#dotlrn.Add_New_Members#</h3>
+  <h1>#dotlrn.Add_New_Members#</h1>
 
   <blockquote>
     <p>

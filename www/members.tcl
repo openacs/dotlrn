@@ -152,8 +152,57 @@ if { $size > 0 } {
     multirow append members "" "" "" "" "" $selection
 }
 
-db_multirow pending_users select_pending_users {} {
+
+set user_ids ""
+db_multirow -extend { member_url referer } pending_users select_pending_users {} {
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
+    append user_ids "user_id=$user_id&"
+    set member_url "$member_page?user_id=$user_id"
+    set referer $referer
+}
+
+
+if {$admin_p} {
+    if { [template::multirow size pending_users] > 0 } {
+	set pend_actions [list "[_ dotlrn.Approve_all]" "approve?${user_ids}referer=$referer" "[_ dotlrn.Approve_all]" \
+			      "[_ dotlrn.Reject_all]" "reject?${user_ids}referer=$referer" "[_ dotlrn.Reject_all]"]
+    } else {
+	set pend_actions ""
+    }
+} else {
+    set pend_actions ""
+}
+
+template::list::create -name pending_users -multirow pending_users -key user_id -actions $pend_actions -elements {
+    last_name {
+	label "[_ acs-subsite.Last_name]"
+            html "align left"
+	display_template {
+	    <a href="@pending_users.member_url@">@pending_users.last_name;noquote@</a>
+	}
+    } first_names {
+	label "[_ acs-subsite.First_names]"
+            html "align left"
+	display_template {
+                <a href="@pending_users.member_url@">@pending_users.first_names@</a>
+	}
+    } email {
+	label "[_ dotlrn.Email_1]"
+            html "align left"
+	display_template {
+                <a href="mailto:@pending_users.email@">@pending_users.email@</a>
+	}
+    } role {
+	label "[_ dotlrn.Role]"
+            html "align left"
+    } action {
+	label "[_ dotlrn.Actions]"
+            html "align left"
+	display_template {
+                <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.referer@">#dotlrn.Approve#</a> |
+                <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.referer@">#dotlrn.Reject#</a>
+	}
+    }
 }
 
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]

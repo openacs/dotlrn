@@ -45,6 +45,7 @@
 
   <msg key="Applets_to_Add">Applets To Add</msg>
   <msg key="Approve">Approve</msg>
+  <msg key="Approve_all">Approve all</msg>
   <msg key="approve">approve</msg>
   <msg key="aqua">aqua</msg>
   <msg key="archived">Archived</msg>
@@ -493,6 +494,7 @@ Thank you
   <msg key="Registration_date">Registration date:</msg>
   <msg key="registration_request_sent">Thank you. Your registration request has been sent to the System Administrator</msg>
   <msg key="Reject">Reject</msg>
+  <msg key="Reject_all">Reject all</msg>
   <msg key="reject">reject</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
