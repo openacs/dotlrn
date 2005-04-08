@@ -61,7 +61,7 @@ db_transaction {
         ns_log Debug "%%% $row(email)"
 
         # We need to insert the ACS user
-        if {![info exists row(password)]} {
+        if {![info exists row(password)] || [empty_string_p $row(password)]} {
 
             # We need to insert the ACS user
             set password [ad_generate_random_string]
