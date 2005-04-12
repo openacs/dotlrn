@@ -46,15 +46,59 @@ if { $show_archived_p } {
 }
 
 set comm_type ""
-db_multirow communities select_communities {} {
-    set tree_level [expr $tree_level - $community_type_level]
+set old_depth 0
+set depth 0
+db_multirow -extend {intra_type_ul_tags previous_type_ul_tags} communities select_communities {} {
+    set intra_type_ul_tags ""
+    set previous_type_ul_tags ""
+    set new_type_p 0
     if {![string equal $simple_community_type dotlrn_community]} {
         set comm_type $simple_community_type
     } else {
         set simple_community_type $comm_type
     }
+    #Checking for existence of old_simple_community_type gives us an
+    #easy way to detect the first row.  Don't pre-define it!
+    if { ![info exists old_simple_community_type] ||
+         ![string equal $old_simple_community_type $simple_community_type] } {
+        set base_level $tree_level
+        set new_type_p 1
+    }
+    if { [info exists old_simple_community_type] &&
+         ![string equal $old_simple_community_type $simple_community_type] } {
+        append previous_type_ul_tags [string repeat "</li></ul>" $old_depth]
+        set old_depth 0
+    }
+
+    set depth [expr $tree_level - $base_level]
+    if { $depth > $old_depth } {
+        append intra_type_ul_tags [string repeat "<ul><li>" [expr $depth - $old_depth]]
+    }
+    if { $old_depth > $depth } {
+        append intra_type_ul_tags [string repeat "</li></ul>" [expr $old_depth - $depth]]
+        append intra_type_ul_tags "</li><li>"
+    }
+    if { $depth == $old_depth && !$new_type_p } {
+        append intra_type_ul_tags "</li><li>"
+    }
+
+    set old_depth $depth
+    set old_simple_community_type $simple_community_type
+}
+
+if { $old_depth > 0 } {
+    set final_ul_tags [string repeat "</li></ul>" $old_depth]
+} else {
+    set final_ul_tags ""
 }
 
 set dotlrn_url [dotlrn::get_url]
+
+# Add the dhtml tree javascript to the HEAD.
+global dotlrn_master__header_stuff
+append dotlrn_master__header_stuff {
+     <script src="/resources/acs-templating/mktree.js" language="javascript"></SCRIPT>
+     <link rel="stylesheet" href="/resources/acs-templating/mktree.css" media="all">
+}
 
 ad_return_template
