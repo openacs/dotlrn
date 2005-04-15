@@ -16,7 +16,7 @@
       from
         dotlrn_community_types
       order by
-        community_type
+        dotlrn_community_types.community_type
     </querytext>
   </fullquery>
 
