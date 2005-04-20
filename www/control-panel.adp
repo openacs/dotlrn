@@ -45,7 +45,7 @@
 <h3>#dotlrn.Personal_Options#</h3>
 <ul>
   <li>
-    <a href="@pvt_home@">@pvt_home_name@</a></li>
+    <a href="@pvt_home@">#dotlrn.pvt_home_name#</a></li>
 
   <p><li><a href="configure">#dotlrn.Customize_Layout#</a></li>
 
