@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.1" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.2d1" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -29,6 +29,7 @@
   <msg key="added_community_subject">You have been added to the &quot;%community_name%&quot; community at %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
+  <msg key="Admin_help">Help for .LRN Administrators</msg>
   <msg key="admin_page_name">Control Panel</msg>
   <description key="admin_page_name">The name of the administration page in the navbar on the MySpace page.</description>
 
@@ -228,6 +229,7 @@ notify this user.</msg>
   <msg key="Header_Logo_Alt_Text">Header Logo Alt Text</msg>
   <msg key="Header_Logo_Item_ID">Header Logo Item ID</msg>
   <msg key="help">Help</msg>
+  <msg key="hide_lrn_toolbar">Hide .LRN toolbar</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
@@ -487,6 +489,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="prv_policy_must_be_one_of">The privacy policy must be either &quot;yes&quot; or &quot;no&quot;.</msg>
   <msg key="Public_Web_Log">Public Web Log</msg>
   <msg key="purple">purple</msg>
+  <msg key="pvt_home_name">Mi Account</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
@@ -584,6 +587,7 @@ Thank you
   <msg key="user_email_already_exists">User %user_email% already exists... storing user_id</msg>
   <msg key="user_email_created">User %user_email% created....</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% has been a member of %system_name% since %pretty_creation_date%</msg>
+  <msg key="User_help">Help!</msg>
   <msg key="User_ID">User ID:</msg>
   <msg key="User_ID_1">User ID</msg>
   <msg key="User_Management">User Management</msg>
