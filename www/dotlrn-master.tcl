@@ -65,7 +65,7 @@ set header_img_url "/resources/dotlrn/logo"
 set header_img_file "[acs_root_dir]/packages/dotlrn/www/resources/logo"
 set header_img_alt_text "Header Logo"
 
-set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"
+set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" alt=\"\" border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
 
