@@ -76,9 +76,9 @@ In addition, send to the following people (if you have not selected "Send to Eve
 </table>
 
 @exported_vars;noquote@
-<center>
+<div class="submit-button">
 <input type=submit value="#dotlrn.Compose_bulk_message#">
-</center>
+</div>
 </form>
 
 <p>

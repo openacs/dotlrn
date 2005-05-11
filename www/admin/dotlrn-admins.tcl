@@ -39,7 +39,7 @@ set elements [list user \
                    remove \
                   [list label "Remove" \
                    link_url_col remove_url \
-		       display_template { <if @dotlrn_admins.no_auto_remove@ true><center><img src="/resources/acs-subsite/Delete16.gif" width="16" height="16" border="0"></center></if> } \
+		       display_template { <if @dotlrn_admins.no_auto_remove@ true><img src="/resources/acs-subsite/Delete16.gif" width="16" height="16" border="0"></if> } \
                        sub_class narrow ] \
 		  ]
 

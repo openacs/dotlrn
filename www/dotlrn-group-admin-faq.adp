@@ -23,14 +23,10 @@
 
 <font face="Verdana, Arial, Helvetica, sans-serif"> 
 <H1> 
-  <center>
     Group Administrator FAQ 
-  </center>
 </H1>
 <p> 
-  <center>
     (For user information, please read the Help page in your Control Panel) 
-  </center>
 <p>This FAQ contains these sections: 
 <p><a href="../Members"><b>Dealing with Members</b></a><br>
   <a href="../Content"><b>Managing Content</b></a><br>

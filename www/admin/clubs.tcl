@@ -69,13 +69,11 @@ template::list::create \
         actions {
             label "[_ dotlrn.Actions]"
 	    display_template {
-		<center>
 		<nobr>
 		<small>
 		<a href="@clubs.url@one-community-admin">#dotlrn.administer_link#</a> 
 		</small>
 		</nobr>
-		</center>
 	    }
 	}
 	

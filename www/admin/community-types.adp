@@ -2,8 +2,6 @@
   <property name="title">@title@</property>
   <property name="context_bar">@context_bar@</property>
   
-  <center>
-    
     <table cellpadding="5" width="95%">
       <tr>
 	<td align="left">
@@ -69,5 +67,4 @@
 	</table>
     </if>
 
-  </center>
 	  

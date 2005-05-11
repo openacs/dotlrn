@@ -34,7 +34,7 @@
 
 %>
 
-<center>
+
 <table bgcolor="#cccccc" cellpadding="5" cellspacing="3" width="95%">
   <tr>
     <th align="left" width="50%">#dotlrn.User#</th>
@@ -117,7 +117,6 @@
 </else>
 
 </table>
-</center>
 
 
 

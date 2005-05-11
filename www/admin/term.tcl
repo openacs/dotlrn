@@ -161,13 +161,11 @@ lappend elements n_members \
 lappend elements action \
     [list label "[_ dotlrn.Actions]" \
 	 display_template {
-	     <center>
 	     <nobr>
 	     <small>
 	     <a href="@classes.url@one-community-admin">[_ dotlrn.administer_link]</a>
 	     </small>
 	     </nobr>
-	     </center>
 	 }]
 
 
