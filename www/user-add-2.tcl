@@ -85,7 +85,7 @@ if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
 
 set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
 
-set admin_user_id [ad_conn user_id]
+set admin_user_id [ad_verify_and_get_user_id]
 set administration_name [db_string select_admin_name {
     select first_names || ' ' || last_name
     from persons

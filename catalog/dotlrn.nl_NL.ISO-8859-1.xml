@@ -338,7 +338,7 @@ Dit was de foutmelding:</msg>
   <msg key="lt_Your_passwords_dont_m">De wachtwoorden komen niet overeen! Waarschijnlijk is er een fout gemaakt bij het intypen van één van de wachtwoorden.</msg>
   <msg key="lt_Your_search_returned_">De zoekopdracht leverde geen resultaten op. Pas de zoekcriteria aan.</msg>
   <msg key="lt_Youre_asking_to_chang">De toegangsrechten van deze gebruiker zullen worden gewijzigd.  Is dit gewenst? Dit heeft belangrijke consequenties.</msg>
-  <msg key="ltnone_set_upgt">&lt;geen beschikbaar&gt; </msg>
+  <msg key="ltnone_set_upgt">&amp;lt;geen beschikbaar&amp;gt; </msg>
   <msg key="Mail_Failed">E-mail verzending is mislukt</msg>
   <msg key="Manage">Beheren</msg>
   <msg key="Manage_Applets">Applets beheren</msg>
@@ -492,7 +492,7 @@ Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="term_properties">Semester eigenschappen.</msg>
   <msg key="Terms">Semesters</msg>
   <msg key="terms">Semesters</msg>
-  <msg key="the_format_of_email_domains">De opmaak van deze waarden is een door komma's gescheiden lijst van domeinen (normaal gesproken voorafgegaan door *@) gelijkend op &lt;iets&gt;@&lt;e-maildomeinnaam&gt;. Bij voorbeeld:</msg>
+  <msg key="the_format_of_email_domains">De opmaak van deze waarden is een door komma's gescheiden lijst van domeinen (normaal gesproken voorafgegaan door *@) gelijkend op &amp;lt;iets&amp;gt;@&amp;lt;e-maildomeinnaam&amp;gt;. Bij voorbeeld:</msg>
   <msg key="The_name">De naam</msg>
   <msg key="there_are_no_users_matching">Geen gebruikers met zoektekst %search_text%. </msg>
   <msg key="this_user_is_deleted">deze gebruiker is verwijderd</msg>

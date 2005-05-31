@@ -27,7 +27,7 @@ ad_page_contract {
     {referer "./"}
 }
 
-auth::require_login
+ad_maybe_redirect_for_registration
 
 if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]

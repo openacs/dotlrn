@@ -330,7 +330,7 @@
   <msg key="lt_Your_passwords_dont_m">Les contrasenyes no coincideixen. Potser heu comés un error de tecleig. </msg>
   <msg key="lt_Your_search_returned_">No s'han obtingut resultats per a la vostra recerca; per favor, reviseu els criteris de recerca. </msg>
   <msg key="lt_Youre_asking_to_chang">Heu sol·licitat canviar el nivell d'accés d'aquest usuari. Això tindrà conseqüències importants. ¿N'esteu segur? </msg>
-  <msg key="ltnone_set_upgt">&lt;none set up&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;none set up&amp;gt;</msg>
   <msg key="Mail_Failed">Enviament de correu fallit </msg>
   <msg key="Manage">Administrar </msg>
   <msg key="Manage_Applets">Administrar miniaplicacions </msg>
@@ -477,7 +477,7 @@
   <msg key="term_properties">propietats del període. </msg>
   <msg key="Terms">Períodes </msg>
   <msg key="terms">Períodes </msg>
-  <msg key="the_format_of_email_domains">El format d'aquest valor és una llista de dominis separats per comes (normalment precedit per la cadena *@ que coincideix amb &lt;anything&gt;@&lt;email-domain&gt;). Per exemple, podeu emprar: </msg>
+  <msg key="the_format_of_email_domains">El format d'aquest valor és una llista de dominis separats per comes (normalment precedit per la cadena *@ que coincideix amb &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). Per exemple, podeu emprar: </msg>
   <msg key="The_name">El nom </msg>
   <msg key="there_are_no_users_matching">No hi ha usuaris que coincidisquen amb %search_text%. </msg>
   <msg key="this_user_is_deleted">aquest usuari ha sigut eliminat </msg>

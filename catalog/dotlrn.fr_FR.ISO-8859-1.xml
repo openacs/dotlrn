@@ -316,7 +316,7 @@
   <msg key="lt_Your_password_on_syst">Votre mot de passe sur %system_name%</msg>
   <msg key="lt_Your_passwords_dont_m">Vos mots de passe sont différents ! Vous avez probablement fait une faute de frappe en en écrivant un des deux.</msg>
   <msg key="lt_Youre_asking_to_chang">Vous demandez à changer le niveau d'accès pour cet utilisateur. Ceci peut avoir de sérieuses répercussions. Etes-vous sûr de vouloir le faire ?</msg>
-  <msg key="ltnone_set_upgt">&lt;aucun fixé&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;aucun fixé&amp;gt;</msg>
   <msg key="Mail_Failed">La remise du courrier a échoué</msg>
   <msg key="Manage">Gérer</msg>
   <msg key="Manage_Applets">Gérer les Applets</msg>

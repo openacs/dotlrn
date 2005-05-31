@@ -57,23 +57,14 @@ element create add_club referer \
     -widget hidden \
     -value $referer
 
-element create add_club community_type \
-    -label "[_ dotlrn.Community_Type]" \
-    -datatype text \
-    -widget select \
-    -options [linsert [db_list_of_lists community_types { *SQL* }] 0 {{} {}}] \
-    -optional
-
 if {[form is_valid add_club]} {
     form get_values add_club \
-         pretty_name description join_policy referer community_type
+         pretty_name description join_policy referer
 
     set key [dotlrn_club::new \
-		 -description $description \
-		 -pretty_name $pretty_name \
-		 -join_policy $join_policy \
-		 -community_type $community_type \
-		]
+        -description $description \
+        -pretty_name $pretty_name \
+        -join_policy $join_policy]
 
     ad_returnredirect $referer
     ad_script_abort

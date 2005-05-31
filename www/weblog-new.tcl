@@ -26,7 +26,7 @@ ad_page_contract {
     
 }
 
-set user_id [auth::require_login]
+set user_id [ad_maybe_redirect_for_registration]
 
 set weblog_package_id [site_node_apm_integration::get_child_package_id  -package_key "forums"]
 set existing_forum_ids [db_list weblog_forum_id {select forum_id from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}]

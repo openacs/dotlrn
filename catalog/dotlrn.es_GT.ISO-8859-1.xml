@@ -31,6 +31,7 @@
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrar</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
+  <msg key="Administration_Cockpit">Administración Cockpit</msg>
   <msg key="Administrator">Administrador</msg>
   <msg key="Administrators">Administradores</msg>
   <msg key="Admins_of">Administradores de</msg>
@@ -41,7 +42,9 @@
   <msg key="Applets_to_Add">Applets que Agregar</msg>
   <msg key="Approve">Aprobar</msg>
   <msg key="approve">aprobar</msg>
+  <msg key="Approve_all">Aprovar todos</msg>
   <msg key="aqua">aqua</msg>
+  <msg key="Archive">Archivar</msg>
   <msg key="archived">Archivado</msg>
   <msg key="archived_classes_and_communities">%class_instances_pretty_plural% y %clubs_pretty_plural% Archivados</msg>
   <msg key="archived_groups">%groups_pretty_plural% Archivados</msg>
@@ -55,6 +58,8 @@
   <msg key="black">negro</msg>
   <msg key="Black_None_chosen">Negro (Ninguno Seleccionado)</msg>
   <msg key="blue">azul</msg>
+  <msg key="Bulk_Approve">Aprobación masiva</msg>
+  <msg key="Bulk_Approving">Aprobación masiva en progreso</msg>
   <msg key="Bulk_Upload">Subir en Bloque</msg>
   <msg key="Bulk_Uploading">Subiendo...</msg>
   <msg key="cannot_be_removed">no puede ser borrado</msg>
@@ -81,6 +86,7 @@
   <msg key="clubs_name_header">Título de la %clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Comunidad</msg>
   <msg key="clubs_pretty_plural">Comunidades</msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">Comunidades</msg>
   <msg key="Community">Comunidad</msg>
   <msg key="community_header_name">Título de %clubs_pretty_name%</msg>
@@ -148,6 +154,7 @@
   <msg key="Edit">Editar</msg>
   <msg key="Edit_a_User">Editar un Usuario</msg>
   <msg key="edit_approved_email_servers">Editar dominios Pre-aprobados</msg>
+  <msg key="edit_community_parameters">Editar los parametros de la comunidad</msg>
   <msg key="edit_message_and_hit_send">Edite el mensaje a continuación y pulse &quot;Enviar correo&quot; para notificar al usuario.</msg>
   <msg key="edit_parameters">Editar parámetros</msg>
   <msg key="Edit_Properties">Editar Propiedades</msg>
@@ -230,6 +237,7 @@
   <msg key="lt_An_error_occured_whil_1">Ha ocurrido un error al dar de baja el usuario de la comunidad. El error ha sido archivado.</msg>
   <msg key="lt_approve_and_add_to_do">aprobar y agregar a dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">¿Desea realmente borrar este departamento?</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Estas seguro que quieres eliminar estos usuarios? Note que solo tratamos de borrar estos usuarios y se pueden presentar errores para algunos de ellos.</msg>
   <msg key="lt_Be_sure_that_the_pers">Asegurese de que el usuario no tenga otra cuenta en SloanSpace con otra dirección de correo. El duplicar cuenta es un problema para todos. Para agregar una persona que ya dispone de una cuenta, diríjase a &lt;a href=members&gt;Administrar miembros&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Clave del Curso (un nombre corto, sin espacios)</msg>
   <msg key="lt_Communitys_Web_Addres">Dirección Web de la Comunidad</msg>
@@ -262,6 +270,7 @@
   <msg key="lt_JoinDrop_a_Class_or_C">Alta/baja de un Curso o Grupo de Comunidad</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Alta/baja en Cursos o Comunidades</msg>
   <msg key="lt_Key_a_short_name_no_s">Clave (un nombre corto, sin espacios)</msg>
+  <msg key="lt_Last_Visit_None_">El usuario no ha visitado todavía.</msg>
   <msg key="lt_Last_Visit_Over_in_da">Última Visita Después de (en días)</msg>
   <msg key="lt_Last_Visit_Within_in_">Última visita en (en días)</msg>
   <msg key="lt_Make_this_user_a_site">Convertir este usuario en administrador del sitio.</msg>
@@ -313,6 +322,7 @@
   <msg key="lt_Use_this_only_for_an_">Utilizar esta opción sólo para los estudiantes oficialmente registrados en este curso que &lt;b&gt;no&lt;/b&gt; sean alumnos del MIT o de Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log de %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Se ha intentado borrar este usuario pero ha ocurrido un error. Lo más probable es que existan referencias a este usuario (user_id=%user_id%) en la base de datos. Es hora de llamar a sus programadores!</msg>
+  <msg key="lt_Year_eg_2003_20032004">Año (ejemplo. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_about_to_dele">Va a borrar %num_users% usuarios.</msg>
   <msg key="lt_You_are_adding_strong">Va a agregar &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; a %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">No está autorizado para realizar este proceso.</msg>
@@ -326,7 +336,7 @@
   <msg key="lt_Your_passwords_dont_m">Las contraseñas no coinciden. Puede que haya cometido un error de tecleo.</msg>
   <msg key="lt_Your_search_returned_">No hay resultado alguno, por favor, revise los criterios de búsqueda.</msg>
   <msg key="lt_Youre_asking_to_chang">Ha solicitado cambiar el nivel de acceso de este usuario. Esto tendrá consecuencias importantes. ¿Está seguro de ello?</msg>
-  <msg key="ltnone_set_upgt">$lt;ninguno&gt;</msg>
+  <msg key="ltnone_set_upgt">$lt;ninguno&amp;gt;</msg>
   <msg key="Mail_Failed">Envío de correo fallido</msg>
   <msg key="Manage">Administrar</msg>
   <msg key="Manage_Applets">Administrar Applets</msg>
@@ -343,6 +353,7 @@
   <msg key="Memberships">Miembros</msg>
   <msg key="Memberships_1">Miembros:</msg>
   <msg key="Message">Mensaje</msg>
+  <msg key="Minutes">Minutos</msg>
   <msg key="must_have_values">Los campos deben contener alguno de los siguientes valores:</msg>
   <msg key="My_Communities">Mis comunidades</msg>
   <msg key="NA">n/a</msg>
@@ -418,6 +429,7 @@
   <msg key="registration_request_sent">Gracias. Su solicitud de registro ha sido enviada al administrador del sistema</msg>
   <msg key="Reject">Rechazar</msg>
   <msg key="reject">rechazar</msg>
+  <msg key="Reject_all">Rechazar todos</msg>
   <msg key="Request_Membership">Solicitar Membresia </msg>
   <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Solicitar membresia&quot;&gt;</msg>
   <msg key="required">Requerido</msg>
@@ -462,6 +474,7 @@
   <msg key="Templates">Plantillas</msg>
   <msg key="Term">Período</msg>
   <msg key="term">Período</msg>
+  <msg key="Term_eg_Spring_Fall">Período (ejemplo. Primavera, Otoño)</msg>
   <msg key="Term_ID">Identificador del período</msg>
   <msg key="term_properties">propiedades del período.</msg>
   <msg key="Terms">Períodos</msg>
@@ -472,7 +485,10 @@
   <msg key="there_are_no_users_matching">No hay usuarios que coincidan con %search_text%.</msg>
   <msg key="this_user_is_deleted">este usuario ha sido borrado</msg>
   <msg key="To">A</msg>
+  <msg key="Total_count">Cuenta total:</msg>
   <msg key="Type">Tipo</msg>
+  <msg key="Unarchive">Sin archivar</msg>
+  <msg key="unarchive">sin archivar</msg>
   <msg key="Unknown_Term">Período desconocido</msg>
   <msg key="Update_Password">Actualizar contraseña</msg>
   <msg key="upload">subir</msg>
@@ -500,6 +516,7 @@
   <msg key="Users_Bulk_Upload">Usuarios: Subir Paquetes</msg>
   <msg key="Users_Search">Búsqueda de usuarios</msg>
   <msg key="View">Ver</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Advertencia!&lt;/strong&gt; Esto puede tardar hasta %hours% horas, %minutes% minutos!!</msg>
   <msg key="Year">Año: </msg>
   <msg key="Yes">Sí</msg>
   <msg key="yes">sí</msg>

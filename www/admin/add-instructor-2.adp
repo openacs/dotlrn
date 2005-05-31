@@ -24,15 +24,15 @@
 
 <p>#dotlrn.lt_The_results_of_your_s#</p>
 <ul>
-  <if @users:rowcount@ gt 0>
-    <multiple name="users">
-      <li>
-        <a href="add-instructor-3?user_id=@users.user_id@&community_id=@community_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)
-      </li>
-    </multiple>
-  </if>
-  <else>
-    <li><em>#dotlrn.No_user_found#</em></li>
-  </else>
+  <multiple name="users">
+    <li>
+      <a href="add-instructor-3?user_id=@users.user_id@&community_id=@community_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)
+    </li>
+  </multiple>
 </ul>
+
+
+
+
+
 

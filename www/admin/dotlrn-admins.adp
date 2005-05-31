@@ -34,7 +34,11 @@
 </form>
 
 
+<blockquote>
+    <center>
          <listtemplate name="dotlrn_admins"></listtemplate>
+    </center>
+</blockquote>
 
 
 

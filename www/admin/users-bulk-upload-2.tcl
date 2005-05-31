@@ -31,7 +31,7 @@ set file_location [ns_queryget users_csv_file.tmpfile]
 # Prepare stuff
 set headers {first_names last_name email username}
 
-set admin_user_id [ad_conn user_id]
+set admin_user_id [ad_verify_and_get_user_id]
 set admin_email [db_string select_admin_email {
     select email
     from parties
@@ -52,7 +52,7 @@ db_transaction {
     oacs_util::csv_foreach -file $file_location -array_name row {
 
         # First make sure the required data is there
-        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] || ![info exists row(username)] } {
+        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
             doc_body_append [_ dotlrn.datafile_must]
             db_abort_transaction
             return
@@ -109,10 +109,9 @@ db_transaction {
             
             if {![info exists row(notify)]} {
                 set row(notify) f
-            }
-            
-            doc_body_append "Creating user $row(email)...."
+	    }
 
+            ns_log Debug "%%% $row(username)...$row(access_level)...$row(type)"
 
             # Now we make them a dotLRN user
             switch -exact $row(access_level) {

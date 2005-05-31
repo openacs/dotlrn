@@ -53,4 +53,3 @@
  @confirm_data;noquote@
   <input type="submit" value="#dotlrn.Confirm#"></input>
 </form>
-

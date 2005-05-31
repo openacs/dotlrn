@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.1" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -10,7 +10,7 @@
   <msg key="actions">Aktionen</msg>
   <msg key="Active_Applets">Aktive Anwendungen</msg>
   <msg key="add">Hinzufügen</msg>
-  <msg key="Add_A_Member">Neuen Teilnehmer hinzufügen</msg>
+  <msg key="Add_A_Member">Neuen Teilnehmer aus der zentralen Userdatenbank hinzufügen</msg>
   <msg key="Add_a_Professor">Neuen Professor hinzufügen</msg>
   <msg key="Add_a_Professor_2">Neuen Professor hinzufügen:</msg>
   <msg key="Add_A_User">Neuen Benutzer hinzufügen</msg>
@@ -155,6 +155,7 @@
   <msg key="Edit">Bearbeiten</msg>
   <msg key="Edit_a_User">Einen Benutzer bearbeiten</msg>
   <msg key="edit_approved_email_servers">Vorgenehmigte E-Mail-Server bearbeiten</msg>
+  <msg key="edit_community_parameters">Community Parameter ändern</msg>
   <msg key="edit_message_and_hit_send">Bearbeiten Sie folgende Nachricht und klicken Sie auf auf 'E-Mail senden', um diesen Benutzer zu benachrichtigen.</msg>
   <msg key="edit_parameters">Parameter bearbeiten</msg>
   <msg key="Edit_Properties">Eigenschaften bearbeiten</msg>
@@ -337,7 +338,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="lt_Your_passwords_dont_m">Sie haben zwei unterschiedliche Passwörter eingegeben.</msg>
   <msg key="lt_Your_search_returned_">Ihre Suche ergab keine Treffer. Bitte lockern Sie die Suchkriterien.</msg>
   <msg key="lt_Youre_asking_to_chang">Wollen Sie wirklich die Zugriffsebene dieses Benutzers ändern? Diese Aktion hat umfangreiche Auswirkungen.</msg>
-  <msg key="ltnone_set_upgt">&lt; Nicht festgelegt &gt; </msg>
+  <msg key="ltnone_set_upgt">&amp;lt; Nicht festgelegt &amp;gt; </msg>
   <msg key="Mail_Failed">Die E-Mail(s) konnte(n) nicht gesendet werden.</msg>
   <msg key="Manage">Verwalten</msg>
   <msg key="Manage_Applets">Anwendungen verwalten</msg>
@@ -438,6 +439,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="registration_request_sent">Vielen Dank. Ihr Registrierungsantrag wurde an den Systemadministrator übermittelt.</msg>
   <msg key="Reject">Ablehnen</msg>
   <msg key="reject">Ablehnen</msg>
+  <msg key="Remove_all">Entferne alle</msg>
   <msg key="Request_Membership">Zugang beantragen</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Zugang beantragen&quot;&gt; </msg>
   <msg key="required">Angabe erforderlich</msg>

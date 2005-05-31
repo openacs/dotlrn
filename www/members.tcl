@@ -33,6 +33,7 @@ set community_id [dotlrn_community::get_community_id]
 set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_get_user_id] -community_id $community_id]
 set referer [ns_conn url]
 set return_url "[ns_conn url]?[ns_conn query]"
+
 set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
 
 if {!$site_wide_admin_p} {
@@ -84,6 +85,10 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 		<img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" border="0">
 		</a>
 		</if>
+		<if @members.update_bio_p@ eq 1>
+                <br><a href=bio-update?user_id=@members.user_id@&return_url=$return_url>Update bio</a>
+		</if>
+
             }
         } last_name {
             label "[_ acs-subsite.Last_name]"
@@ -101,7 +106,7 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	    label "[_ dotlrn.Email_1]"
 	    html "align left"
 	    display_template {
-		@members.user_email;noquote@
+		<a href="mailto:@members.email@">@members.email@</a>
 	    }
 	} role {
 	    label "[_ dotlrn.Role]"
@@ -129,10 +134,14 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 
 set member_page [acs_community_member_page]
 
-db_multirow -extend { member_url referer user_email } members select_current_members {} {
+
+
+db_multirow -extend { update_bio_p member_url referer } members select_current_members {} {
     set member_url "$member_page?user_id=$user_id"
-    set user_email [email_image::get_user_email -user_id $user_id]
     set referer $referer
+
+
+    set update_bio_p $admin_p
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 

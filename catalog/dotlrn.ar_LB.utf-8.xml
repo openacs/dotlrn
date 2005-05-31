@@ -327,7 +327,7 @@
   <msg key="lt_Your_passwords_dont_m">كلمات سركَ لا تَتطابك! من المفترض، أنت اقمت خطأ مطبعياً بينما تُدْخلْ أحدهمَ.</msg>
   <msg key="lt_Your_search_returned_">بحثكَ ما أرجعَ أي نَتائِجِ، رجاءً وسّعْ معاييرَ بحثِك.</msg>
   <msg key="lt_Youre_asking_to_chang">أنت تَطْلبُ تَغيير مستوى وصولِ هذا المستخدم. هذا لَهُ نتائجُ قويةُ. هَلْ أنت مستخدم حول هذا؟</msg>
-  <msg key="ltnone_set_upgt">&lt;لا أحد أنشئ&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;لا أحد أنشئ&amp;gt;</msg>
   <msg key="Mail_Failed">البريدُ فَشلَ</msg>
   <msg key="Manage">أدرْ</msg>
   <msg key="Manage_Applets">أدرْ البرامج المحدودةَ</msg>

@@ -36,7 +36,6 @@
   <li><a href="classes"><%= [parameter::get -localize -parameter classes_pretty_plural] %></a></li>
   <li><a href="term?term_id=-1"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></a></li>
   <li><a href="clubs"><%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></li> 
-  <li><a href="community-types">#dotlrn.Community_Types#</a></li> 
   <li><a href="portal-templates">#dotlrn.portal_templates#</a></li>
   <li><a href="archived-communities">#dotlrn.archived_classes_and_communities#</a></li>
   <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>

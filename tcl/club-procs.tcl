@@ -79,24 +79,19 @@ namespace eval dotlrn_club {
         {-description ""}
         {-join_policy "open"}
         {-parent_community_id ""}
-	{-community_type "dotlrn_club"}
     } {
         creates a new club and returns the club key
     } {
         set extra_vars [ns_set create]
         ns_set put $extra_vars join_policy $join_policy
 
-	if { [empty_string_p $community_type] } {
-	    set community_type [community_type]
-	}
-
         return [dotlrn_community::new \
-		    -community_type $community_type \
-		    -object_type [community_type] \
-		    -pretty_name $pretty_name \
-		    -description $description \
-		    -parent_community_id $parent_community_id \
-		    -extra_vars $extra_vars]
+            -community_type [community_type] \
+            -object_type [community_type] \
+            -pretty_name $pretty_name \
+            -description $description \
+            -parent_community_id $parent_community_id \
+            -extra_vars $extra_vars]
     }
 
     ad_proc -public add_user {

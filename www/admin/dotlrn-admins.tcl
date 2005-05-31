@@ -31,7 +31,7 @@ set referer [ns_conn url]
 set dotlrn_admins_group [db_string group_id_from_name "
             select group_id from groups where group_name='dotlrn-admin'" -default ""]
 
-set admin_id [ad_conn user_id]
+set admin_id [ad_verify_and_get_user_id]
 
 set elements [list user \
 		  [list label "User" \
@@ -39,7 +39,7 @@ set elements [list user \
                    remove \
                   [list label "Remove" \
                    link_url_col remove_url \
-		       display_template { <if @dotlrn_admins.no_auto_remove@ true><img src="/resources/acs-subsite/Delete16.gif" width="16" height="16" border="0"></if> } \
+		       display_template { <if @dotlrn_admins.no_auto_remove@ true><center><img src="/resources/acs-subsite/Delete16.gif" width="16" height="16" border="0"></center></if> } \
                        sub_class narrow ] \
 		  ]
 

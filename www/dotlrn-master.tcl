@@ -65,7 +65,7 @@ set header_img_url "/resources/dotlrn/logo"
 set header_img_file "[acs_root_dir]/packages/dotlrn/www/resources/logo"
 set header_img_alt_text "Header Logo"
 
-set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" alt=\"\" border=0 width=15>"
+set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
 
@@ -575,3 +575,10 @@ $recolor_css
 </STYLE>
 
 "
+
+# Bring in header stuff from portlets, e.g. dhtml tree javascript
+# from dotlrn-main-portlet.
+global dotlrn_master__header_stuff
+if { ![info exists dotlrn_master__header_stuff] } {
+    set dotlrn_master__header_stuff ""
+}

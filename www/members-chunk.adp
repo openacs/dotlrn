@@ -25,7 +25,7 @@
 <group column="role">  <li>
     <%= [acs_community_member_link -user_id $users(user_id) -label "$users(first_names) $users(last_name)"] %>
     <if @read_private_data_p@ eq 1 or @user_id@ eq @users.user_id@>
-    <%= [email_image::get_user_email -user_id $users(user_id) %>
+      (<a href="mailto:@users.email@">@users.email@</a>)
     </if>
     &nbsp;
     <i>@users.role@</i>
@@ -73,7 +73,7 @@
   <li>
     <%= [acs_community_member_link -user_id $pending_users(user_id) -label "$pending_users(first_names) $pending_users(last_name)"] %>
 <if @read_private_data_p@ eq 1 or @user_id@ eq @pending_users.user_id@>
-    <%= [email_image::get_user_email -user_id $pending_users(user_id) %>
+    (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
 </if>
     &nbsp;
     <i>@pending_users.role@</i>

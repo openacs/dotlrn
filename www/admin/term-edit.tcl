@@ -72,10 +72,6 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
         { [template::util::date::compare $start_date $end_date] <= 0 }
         "The term must start before it ends"
     }
-    {end_date
-        { [template::util::date::compare [template::util::date::from_ansi [clock format [clock seconds] -format "%Y-%m-%d"]] $end_date] <= 0 }
-        "The term must end in the future"
-    }
 } -edit_data {
 
     # Setting the rigth format to send to the procedures

@@ -326,7 +326,7 @@
   <msg key="lt_Your_passwords_dont_m">Le password non coincidono! Probabilmente hai sbagliato a digitarne una.</msg>
   <msg key="lt_Your_search_returned_">La tua ricerca non ha fornito risultati, ripeti la ricerca con criteri più ampi.</msg>
   <msg key="lt_Youre_asking_to_chang">Stai chiedendo di modificare il livello di accesso di questo utente. Questo ha notevoli ripercussioni. Sei conscio di questo?</msg>
-  <msg key="ltnone_set_upgt">&lt;nessuna scelta&gt; </msg>
+  <msg key="ltnone_set_upgt">&amp;lt;nessuna scelta&amp;gt; </msg>
   <msg key="Mail_Failed">Invio email fallito</msg>
   <msg key="Manage">Controlla</msg>
   <msg key="Manage_Applets">Controlla le Applet</msg>
@@ -466,7 +466,7 @@
   <msg key="term_properties">proprietà della sessione.</msg>
   <msg key="Terms">Sessioni</msg>
   <msg key="terms">sessioni</msg>
-  <msg key="the_format_of_email_domains">Il formato di questo campo è una lista di domini separati da virgola (solitamente preceduti dalla stringa *@ che corrisponde a &lt;anything&gt;@&lt;email-domain&gt;). 
+  <msg key="the_format_of_email_domains">Il formato di questo campo è una lista di domini separati da virgola (solitamente preceduti dalla stringa *@ che corrisponde a &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). 
 Per esempio, potresti usare:</msg>
   <msg key="The_name">Il nome</msg>
   <msg key="there_are_no_users_matching">Non ci sono utenti che corrispondono alla stinga %search_text%.</msg>

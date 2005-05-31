@@ -42,6 +42,8 @@
 
     </ul>
 
+    <center>
+
       <if @can_instantiate@>
 	<table cellpadding="5" width="95%">
 	  <tr>
@@ -95,7 +97,7 @@
 	  </table>
 	</else>
 
-
+    </center>
 
 
 

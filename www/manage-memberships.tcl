@@ -35,7 +35,6 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date 2002-03-08
-    @version $Id$
 } -query {
     {member_department_key ""}
     {non_member_department_key ""}
@@ -178,6 +177,15 @@ if {$non_member_term_id != -1} {
 set n_non_member_classes [db_string select_n_non_member_classes {}]
 db_multirow non_member_classes $non_member_query {}
 db_multirow non_member_clubs select_non_member_clubs {}
+
+# hack for eabis
+set non_member_club_ids [db_list non_member_club_ids {                select f.club_id
+                from dotlrn_clubs_full f
+                where f.join_policy <> 'closed'
+                  and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
+                                          from dotlrn_member_rels_full
+                                         where dotlrn_member_rels_full.user_id = :user_id)
+}]
 
 set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
 

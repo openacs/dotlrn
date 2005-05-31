@@ -18,6 +18,7 @@
 
 %>
 
+
 <if @user_can_browse_p@>
   <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
   <br></br>
@@ -26,47 +27,24 @@
 <if @communities:rowcount@ gt 0>
 
 <multiple name="communities">
+@communities.previous_type_ul_tags;noquote@
 
-<%
-    set old_level 0
-    set new_level 0
-    set depth 0
-%>
-
-<h3>
+<ul class="mktree" style="padding-left: 5px;"><li id="dotlrn-main-@communities.simple_community_type@" remember="1">
+<h3 style="display: inline; margin: 5px 0 0 0;">
   <if @communities.simple_community_type@ eq "dotlrn_class_instance">
-    <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>:
+    <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>
   </if>
   <else>
-    <%= [parameter::get -localize -parameter clubs_pretty_plural] %>:
+    <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
   </else>
-</h3>
 
+</h3><small>( <a href="#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); return false;">--</a> )</small>
+
+<ul id="tree-@communities.simple_community_type@"><li>
 <group column="simple_community_type">
 
-<% set new_level $communities(tree_level) %>
+@communities.intra_type_ul_tags;noquote@
 
-  <if @new_level@ lt @old_level@>
-    <% incr depth -1 %>
-    </ul>
-	<if @new_level@ eq 1 and @depth@ gt 1>
-	<% while {$depth > 1} {	
-		append close_tags "</ul>" 
-		incr depth -1 
-	} 
-	%>
-	@close_tags;noquote@
-        </if>
-     </if>
-
-  <if @new_level@ gt @old_level@>
-<% incr depth 1 %>
-    <ul>
-	<nobr>
-  </if>
-
-      <li>
-        <nobr>
           <a href="@communities.url@">@communities.pretty_name@</a>
 	<if @communities.archived_p@><font color=red>Archived</font></if>
 	<if @show_buttons_p@ eq 1>
@@ -75,25 +53,18 @@
                         <a href="@communities.url@deregister?referer=@referer@">#dotlrn.drop_membership_link#</a>
                       </small>
            </if>
-		<if @communities.admin_p@ eq 1>
+           <if @communities.admin_p@ eq 1>
                   &nbsp; <small>
                            <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a>
                          </small>
-		</if>
+	   </if>
 	</if>
-        </nobr>
-      </li>
-
-<% set old_level $new_level %>
 
 </group>
-
-<%
-    for {set i $depth} {$i > 0} {incr i -1} {
-        template::adp_puts "</ul>\n"
-    }
-%>
+</li></ul></li></ul>
 
 </multiple>
+
+@final_ul_tags;noquote@
 
 </if>

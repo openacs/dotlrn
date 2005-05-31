@@ -31,7 +31,6 @@ set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
 set description [dotlrn_community::get_community_description -community_id $community_id]
 set pretty_name [dotlrn_community::get_community_name $community_id]
-set community_type [dotlrn_community::get_community_type_from_community_id $community_id]
 
 form create edit_community_info
 
@@ -50,16 +49,8 @@ element create edit_community_info description \
     -value $description \
     -optional
 
-element create edit_community_info community_type \
-    -label "[_ dotlrn.Community_Type]" \
-    -datatype text \
-    -widget select \
-    -options [linsert [db_list_of_lists community_types { *SQL* }] 0 {{} {}}] \
-    -value $community_type \
-    -optional
-
 if {[form is_valid edit_community_info]} {
-    form get_values edit_community_info pretty_name description community_type
+    form get_values edit_community_info pretty_name description
     
     dotlrn_community::set_community_name \
         -community_id $community_id \
@@ -68,10 +59,6 @@ if {[form is_valid edit_community_info]} {
     dotlrn_community::set_community_description \
         -community_id $community_id \
         -description $description
-
-    dotlrn_community::set_community_type \
-        -community_id $community_id \
-        -community_type $community_type
 
     ad_returnredirect $referer
     ad_script_abort

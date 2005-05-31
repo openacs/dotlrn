@@ -326,7 +326,7 @@
   <msg key="lt_Your_passwords_dont_m">密码错误！可能输入有误。</msg>
   <msg key="lt_Your_search_returned_">你的搜索没有结果，请放宽搜索标准。</msg>
   <msg key="lt_Youre_asking_to_chang">正在请求更改此用户的访问级别。这一操作较大。确实要进行吗？</msg>
-  <msg key="ltnone_set_upgt">&lt;没有设置&gt; </msg>
+  <msg key="ltnone_set_upgt">&amp;lt;没有设置&amp;gt; </msg>
   <msg key="Mail_Failed">邮件发送失败</msg>
   <msg key="Manage">管理</msg>
   <msg key="Manage_Applets">管理Java程序</msg>
@@ -466,7 +466,7 @@
   <msg key="term_properties">学期属性。</msg>
   <msg key="Terms">学期</msg>
   <msg key="terms">学期</msg>
-  <msg key="the_format_of_email_domains">此数值的格式为各域逗号为间隔的列表（通常以*@字符串开头，与&lt;anything&gt;@&lt;email-domain&gt;匹配)。例如，你可以使用：</msg>
+  <msg key="the_format_of_email_domains">此数值的格式为各域逗号为间隔的列表（通常以*@字符串开头，与&amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;匹配)。例如，你可以使用：</msg>
   <msg key="The_name">名字</msg>
   <msg key="there_are_no_users_matching">没有与%search_text%相匹配的用户。</msg>
   <msg key="this_user_is_deleted">此用户已删除</msg>

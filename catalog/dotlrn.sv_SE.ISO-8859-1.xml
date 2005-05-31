@@ -324,7 +324,7 @@
   <msg key="lt_Your_passwords_dont_m">Dina lösenord stämmer inte överens! Troligtvis har du stavat ett av dem fel.</msg>
   <msg key="lt_Your_search_returned_">Din sökning gav inget resultat. Försök att utöka dina sökkriterier.</msg>
   <msg key="lt_Youre_asking_to_chang">Du önskar ändra behörighetsnivån för denna användare. Detta får stora konsekvenser. Är du säker på detta?</msg>
-  <msg key="ltnone_set_upgt">&lt;ingen uppsatt&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;ingen uppsatt&amp;gt;</msg>
   <msg key="Mail_Failed">E-posten fungerade inte</msg>
   <msg key="Manage">Hantera</msg>
   <msg key="Manage_Applets">Hantera applets</msg>
@@ -461,7 +461,7 @@
   <msg key="term_properties">Egenskaper termin.</msg>
   <msg key="Terms">Terminer</msg>
   <msg key="terms">terminer</msg>
-  <msg key="the_format_of_email_domains">E-postdomänerna du kan ange ska vara i form av en kommaseparerad lista. Varje domän i listan föregås vanligtvis av &amp;quot;*@&amp;quot;, som innebär &lt;vad-som-helst&gt;@&lt;e-postdomän&gt;. Här är ett exempel:</msg>
+  <msg key="the_format_of_email_domains">E-postdomänerna du kan ange ska vara i form av en kommaseparerad lista. Varje domän i listan föregås vanligtvis av &amp;quot;*@&amp;quot;, som innebär &amp;lt;vad-som-helst&amp;gt;@&amp;lt;e-postdomän&amp;gt;. Här är ett exempel:</msg>
   <msg key="The_name">Namnet</msg>
   <msg key="there_are_no_users_matching">Det finns inga användare som matchar %search_text%.</msg>
   <msg key="this_user_is_deleted">denna användare är borttagen</msg>
