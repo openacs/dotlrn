@@ -15,8 +15,7 @@ aa_register_case -cats {api} \
     dotlrn__remove_user_completely {test the sequence of creating a user, adding to dotlrn, then removing the user } {
         aa_run_with_teardown \
             -rollback \
-            -test_code 
-        {
+            -test_code {
                 array set creation_info [auth::create_user -email "an.email.unlikely.to.exist@i.hope.it.does.not" -first_names "test" -last_name "user"]
                 aa_log "create user result is: $creation_info(creation_status)"
                 aa_equals creation_ok $creation_info(creation_status) ok
