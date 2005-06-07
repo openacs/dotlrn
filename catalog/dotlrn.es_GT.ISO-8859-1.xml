@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="es_GT" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.2d1" locale="es_GT" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
   <msg key="Access">Acceso</msg>
@@ -25,8 +25,11 @@
   <msg key="Add_users_to">Agregar usuarios a</msg>
   <msg key="Add_Users_to_Group">Agregar Usuarios al Grupo</msg>
   <msg key="AddDrop_Memberships">Alta/Baja en grupos</msg>
+  <msg key="added_community_message">Para visitar la página de la comunidad, con su navegador vayaa %pacakge%, ingrese, y luego haga click en el vínculo de %community_name% que se encuentra en el portlet de &quot;Grupos&quot;.</msg>
+  <msg key="added_community_subject">Usted ha sido agregado a la comunidad &quot;%community_name%&quot; en %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
+  <msg key="Admin_help">Ayuda para Administradores de .LRN</msg>
   <msg key="admin_page_name">Panel de control</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrar</msg>
@@ -49,6 +52,7 @@
   <msg key="archived_classes_and_communities">%class_instances_pretty_plural% y %clubs_pretty_plural% Archivados</msg>
   <msg key="archived_groups">%groups_pretty_plural% Archivados</msg>
   <msg key="Are_you_sure">¿Está seguro?</msg>
+  <msg key="Are_you_sure_del_class">Está seguro de querer borrar esta asignatura</msg>
   <msg key="are_you_sure_you_want_to_send">¿Desea realmente enviar lo siguiente?</msg>
   <msg key="arhive_group_name">Archivar el grupo %group_name%</msg>
   <msg key="Ask_a_question">Consultas:</msg>
@@ -64,6 +68,8 @@
   <msg key="Bulk_Uploading">Subiendo...</msg>
   <msg key="cannot_be_removed">no puede ser borrado</msg>
   <msg key="Change_Locale">Cambiar Idioma</msg>
+  <msg key="Choose_members_to_receive">Seleccione a los miembros de %community_name% para que reciban este mensaje:</msg>
+  <msg key="Class_instance_key">Llave de la Clase</msg>
   <msg key="class_instance_portal_pretty_name">Cursos</msg>
   <msg key="class_instances_pretty_name">Curso</msg>
   <msg key="class_instances_pretty_plural">Cursos</msg>
@@ -97,6 +103,7 @@
   <msg key="Community_Type">Tipo de comunidad</msg>
   <msg key="Community_Types">Tipos de comunidad</msg>
   <msg key="Communitys_Name">Título de la comunidad</msg>
+  <msg key="Compose_bulk_message">Redactar Mensaje Masivo</msg>
   <msg key="Configure_Element">Configurar Elemento</msg>
   <msg key="Configure_name">Configurar %name%</msg>
   <msg key="Confirm">Confirmar</msg>
@@ -112,14 +119,19 @@
   <msg key="course_assistant_role_pretty_plural">Tutores</msg>
   <msg key="Create_A_New_User">Crear un Nuevo Usuario</msg>
   <msg key="Create_a_Web_Log">Crear un Web Log</msg>
+  <msg key="Created">Creado</msg>
   <msg key="CSV_File_Format">Formato CSV</msg>
   <msg key="Customize_Layout">Personalizar este Portal</msg>
+  <msg key="database_choked">&lt;p&gt; Error en Base de Datos tratando de crear el último usuario de la lista de arriba &lt;br&gt; La transacción ha sido abortada, ningun usuario ha sido agregado y ninguna notificación ha sido enviada.&lt;p&gt;</msg>
+  <msg key="datafile_must">&lt;p&gt; El archivo de datos debe de incluir al menos los campos email,first_names,last_name&lt;p&gt;</msg>
   <msg key="Deactivate_">Desactivar...</msg>
   <msg key="Deactivate_Users">Desactivar Usuarios</msg>
   <msg key="Deactivated">Desactivado</msg>
   <msg key="Delete">Borrar</msg>
   <msg key="Delete_Empty">Borrar vacío</msg>
+  <msg key="Delete_Empty_Class">Borrar %pretty_name% vacía</msg>
   <msg key="Department">Departamento</msg>
+  <msg key="Department_key">Llave del Departamento</msg>
   <msg key="department_must_be_empty_to_be_deleted">Error: el %departments_pretty_name% debe estar vacío para poder ser borrado</msg>
   <msg key="department_name">Nombre del %departments_pretty_name%</msg>
   <msg key="department_name_already_in_use">El nombre &lt;strong&gt;%department_pretty_name%&lt;/strong&gt; está siendo utilizado. \n Por favor, introduzca otro nombre.</msg>
@@ -168,6 +180,7 @@
   <msg key="Email_Members">Escribir a los Miembros</msg>
   <msg key="email_message">Mensaje</msg>
   <msg key="email_sent">correo enviado</msg>
+  <msg key="email_sent_to">&lt;p&gt; Correo enviado a %email%</msg>
   <msg key="End_Date">Fecha fin</msg>
   <msg key="End_date">Fecha fin:</msg>
   <msg key="Error_sending_mail">Error al enviar el correo</msg>
@@ -204,6 +217,8 @@
   <msg key="Header_Logo_Alt_Text">Texto Alternativo para el Icono del Encabezado</msg>
   <msg key="Header_Logo_Item_ID">Identificador para el Logo del Encabezado</msg>
   <msg key="help">Ayuda</msg>
+  <msg key="hide_lrn_toolbar">Esconder la barra de .LRN</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">Identificador:</msg>
   <msg key="ID_1">Identificador</msg>
   <msg key="instructor_role_pretty_name">Profesor</msg>
@@ -242,6 +257,7 @@
   <msg key="lt_Class_Key_a_short_nam">Clave del Curso (un nombre corto, sin espacios)</msg>
   <msg key="lt_Communitys_Web_Addres">Dirección Web de la Comunidad</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% actuales</msg>
+  <msg key="lt_Delete_class">Borrar Asignatura</msg>
   <msg key="lt_Do_you_really_want_to">¿Desea realmente borrar los miembros siguientes?</msg>
   <msg key="lt_Do_you_really_want_to_1">¿Desea realmente borrar estos %num_users% usuarios?</msg>
   <msg key="lt_dotLRN_properties_for">Propiedades dotLRN para este usuario.</msg>
@@ -353,14 +369,17 @@
   <msg key="Memberships">Miembros</msg>
   <msg key="Memberships_1">Miembros:</msg>
   <msg key="Message">Mensaje</msg>
+  <msg key="Message_Type">Tipode Mensaje</msg>
   <msg key="Minutes">Minutos</msg>
   <msg key="must_have_values">Los campos deben contener alguno de los siguientes valores:</msg>
+  <msg key="Must_specify_recipients">No seleccionó ningun recipiente para este mensaje. Por favor, utilice el botón de &quot;Atrás&quot; de su navegador para retornary seleccione los recipientes que desea. Muchas Gracias!.  </msg>
   <msg key="My_Communities">Mis comunidades</msg>
   <msg key="NA">n/a</msg>
   <msg key="Name">Nombre</msg>
   <msg key="Name__Email">Nombre / Correo</msg>
   <msg key="navy">azul marino</msg>
   <msg key="Needs_Approval">Esperando aprobación</msg>
+  <msg key="Never_visited">Nunca visitado</msg>
   <msg key="New">Nuevo</msg>
   <msg key="new">nuevo</msg>
   <msg key="new_class">Nuevo</msg>
@@ -396,20 +415,25 @@
   <msg key="not_a_user">No es usuario</msg>
   <msg key="Not_Allowed">No autorizado</msg>
   <msg key="Note">Nota:</msg>
+  <msg key="Note_if_you_make">Nota: Si usted realiza cambios utilizando esta forma, el usuario perderá las customizaciones de su portal.</msg>
+  <msg key="Note_the_term_column">Nota: La columna &quot;Período&quot; aplica a clases y subgrupos de clases. Para subgrupos de clases, la columna &quot;Período&quot; guarda el período de la clase padre.</msg>
   <msg key="Nuke">Borrar</msg>
   <msg key="Nuke_">Borrar ...</msg>
   <msg key="Nuke_Users">Borrar Usuarios</msg>
+  <msg key="Number_of_db_objects">Número de objectos en la base de datos creados por este usuario</msg>
   <msg key="olive">oliva</msg>
   <msg key="Open">Abierto</msg>
   <msg key="optional_defaults_to">Opcional, configuración por defecto </msg>
   <msg key="Or">O</msg>
   <msg key="or_by_RGB_number">o por números RGB</msg>
   <msg key="or_return_to">o, volver a</msg>
+  <msg key="Parent">Padre</msg>
   <msg key="Pending">Pendiente</msg>
   <msg key="Pending_Approval">Esperando aprobación</msg>
   <msg key="Person_name">Nombre</msg>
   <msg key="Personal_home_page">Página personal:</msg>
   <msg key="Personal_Options">Opciones personales</msg>
+  <msg key="Plain_Text">Texto Plano</msg>
   <msg key="portal_templates">Plantillas de portales</msg>
   <msg key="Portrait">Foto:</msg>
   <msg key="Portrait_1">Portaretrato</msg>
@@ -420,6 +444,7 @@
   <msg key="prv_policy_must_be_one_of">La regla de privacidad debe ser &quot;Si&quot; o &quot;No&quot;.</msg>
   <msg key="Public_Web_Log">Bitácora Web pública</msg>
   <msg key="purple">púrpura</msg>
+  <msg key="pvt_home_name">Mi Cuenta</msg>
   <msg key="Recipients_Email">Dirección de correo del remitente</msg>
   <msg key="Recipients_Last_Name">Apellidos del remitente</msg>
   <msg key="red">rojo</msg>
@@ -430,6 +455,7 @@
   <msg key="Reject">Rechazar</msg>
   <msg key="reject">rechazar</msg>
   <msg key="Reject_all">Rechazar todos</msg>
+  <msg key="Remove_all">Borrar todos</msg>
   <msg key="Request_Membership">Solicitar Membresia </msg>
   <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Solicitar membresia&quot;&gt;</msg>
   <msg key="required">Requerido</msg>
@@ -447,6 +473,7 @@
   <msg key="seconds">segundos.</msg>
   <msg key="Send_Date">Fecha de envío</msg>
   <msg key="send_email">Enviar correo</msg>
+  <msg key="Send_to_all">Enviar a todos en el grupo</msg>
   <msg key="Shared_Files">Archivos Compartidos</msg>
   <msg key="silver">plateado</msg>
   <msg key="Site-wide_Admin">¿Administrador del sitio?</msg>
@@ -467,6 +494,7 @@
   <msg key="subcommunities_pretty_plural">Subgrupos</msg>
   <msg key="subcommunity_memberships">Miembros de %subcommunities_pretty_name%</msg>
   <msg key="Subject">Asunto</msg>
+  <msg key="Subject_key">Llave de la Asignatura</msg>
   <msg key="teaching_assistant_role_pretty_name">Profesor asociado</msg>
   <msg key="teaching_assistant_role_pretty_plural">Profesores asociados</msg>
   <msg key="teal">turquesa</msg>
@@ -499,6 +527,7 @@
   <msg key="user_email_already_exists">El usuario %user_email% ya existe... guardando user_id</msg>
   <msg key="user_email_created">Usuario %user_email% creado...</msg>
   <msg key="user_has_been_a_member_since"> %first_names% %last_name% es miembro de %system_name% desde %pretty_creation_date%</msg>
+  <msg key="User_help">Ayuda!</msg>
   <msg key="User_ID">Identificador de usuario:</msg>
   <msg key="User_ID_1">Identificador de usuario</msg>
   <msg key="User_Management">Administración de usuarios</msg>
