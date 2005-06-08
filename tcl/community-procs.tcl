@@ -85,18 +85,23 @@ namespace eval dotlrn_community {
         # Figure out parent_node_id
         set parent_node_id [get_type_node_id $parent_type]
         array set parent_node [site_node::get -node_id $parent_node_id]
+	
+        ns_log Notice [ad_decode $url_part "" $community_type_key $url_part]
+        #ns_log Notice "$parent_node_id"
+        ns_log Notice [one_community_type_package_key]
+        ns_log Notice "$pretty_name"
+        ns_log Notice "$parent_node(object_id)"
 
-        db_transaction {
+	db_transaction {
             set community_type_key [db_exec_plsql create_community_type {}]
 
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name [ad_decode $url_part "" $community_type_key $url_part] \
-                -parent_id $parent_node_id \
+            set package_id [site_node::instantiate_and_mount \
+                -parent_node_id $parent_node_id \
+                -node_name $[ad_decode $url_part "" $community_type_key $url_part] \
+                -package_name $pretty_name \
                 -package_key [one_community_type_package_key] \
-                -instance_name $pretty_name \
-                -context_id $parent_node(object_id) \
-            ]
-
+                -context_id $parent_node(object_id)]
+            
             # Set some parameters
             parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
             parameter::set_value -package_id $package_id -parameter community_type_level_p -value 1
@@ -602,7 +607,7 @@ namespace eval dotlrn_community {
         set member_segment_id [get_members_rel_id -community_id $community_id]
         set admin_segment_id [get_admin_rel_id -community_id $community_id]
 
-	set parent_id [dotlrn_community::get_parent_id -community_id $community_id]
+        set parent_id [dotlrn_community::get_parent_id -community_id $community_id]
         set parent_admin_segment_id [get_admin_rel_id -community_id $parent_id]
 
         # Member privs
@@ -764,7 +769,7 @@ namespace eval dotlrn_community {
                 [get_toplevel_community_type_from_community_id $community_id]
 
         if {[string equal $toplevel_community_type dotlrn_class_instance]} {
-	    if {$rel_type == "dotlrn_member_rel"} {
+            if {$rel_type == "dotlrn_member_rel"} {
                 set rel_type "dotlrn_student_rel"
             }
             dotlrn_class::add_user \
@@ -787,7 +792,7 @@ namespace eval dotlrn_community {
         }
 
         util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
-	util_memoize_flush_regexp  $user_id
+        util_memoize_flush_regexp  $user_id
     }
 
     ad_proc -public add_user_to_community {
@@ -904,7 +909,7 @@ namespace eval dotlrn_community {
             # flush the list_users cache
             util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         }
-	util_memoize_flush_regexp $user_id
+        util_memoize_flush_regexp $user_id
     }
 
     ad_proc -public remove_user_from_all {
@@ -1194,7 +1199,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-pretext "<li>"}
         {-join_target register}
-	{-drop_target deregister}
+        {-drop_target deregister}
         {-only_member_p 0}
     } {
         Returns a html fragment of the subcommunity hierarchy of this
@@ -1218,10 +1223,10 @@ namespace eval dotlrn_community {
             set user_id [ad_get_user_id]
         }
 
-	set show_drop_link_p [parameter::get_from_package_key \
-				  -package_key dotlrn-portlet \
-				  -parameter AllowMembersDropGroups \
-				  -default 0]
+        set show_drop_link_p [parameter::get_from_package_key \
+                                  -package_key dotlrn-portlet \
+                                  -parameter AllowMembersDropGroups \
+                                  -default 0]
 
         foreach sc_id [get_subcomm_list -community_id $community_id] {
             if {[has_subcommunity_p -community_id $sc_id] \
@@ -1231,9 +1236,9 @@ namespace eval dotlrn_community {
                 set url [get_community_url $sc_id]
                 append chunk "$pretext <a href=$url>[get_community_name $sc_id]</a>\n"
 
-		if {$show_drop_link_p} {
-		    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
-		}
+                if {$show_drop_link_p} {
+                    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
+                }
 
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
             } elseif {[member_p $sc_id $user_id] || [not_closed_p -community_id $sc_id]} {
@@ -1274,11 +1279,11 @@ namespace eval dotlrn_community {
                       append chunk "\n"
                 }  elseif {[member_p $sc_id $user_id]} {
 
-		    # User is a member.
-		    if {$show_drop_link_p} {
-			append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
-		    }
-		}
+                    # User is a member.
+                    if {$show_drop_link_p} {
+                        append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\">[_ dotlrn.Drop]</a>)\n"
+                    }
+                }
             }
         }
 
@@ -1344,11 +1349,11 @@ namespace eval dotlrn_community {
 
         db_dml update_community_name {}
 
-	# rename the package - this is used in the user interface. ie - context bar and
-	# in the portlets
+        # rename the package - this is used in the user interface. ie - context bar and
+        # in the portlets
 
-	set package_id [dotlrn_community::get_package_id $community_id]
-	apm_package_rename -package_id $package_id -instance_name $pretty_name
+        set package_id [dotlrn_community::get_package_id $community_id]
+        apm_package_rename -package_id $package_id -instance_name $pretty_name
 
         util_memoize_flush "dotlrn_community::get_community_name_not_cached $community_id"
 
@@ -1383,8 +1388,8 @@ namespace eval dotlrn_community {
     } {
         if {[subcommunity_p -community_id $community_id]} {
             set parent_name [get_parent_name -community_id $community_id]
-	    set parent_url [get_community_url [get_parent_id -community_id $community_id]]
-	    return [concat "<a href=$parent_url>$parent_name</a> : [get_community_name $community_id]"]
+            set parent_url [get_community_url [get_parent_id -community_id $community_id]]
+            return [concat "<a href=$parent_url>$parent_name</a> : [get_community_name $community_id]"]
         } else {
             return [get_community_name $community_id]
         }
@@ -1402,13 +1407,13 @@ namespace eval dotlrn_community {
 
         if {[subcommunity_p -community_id $community_id]} {
             set parent_name [get_parent_name -community_id $community_id]
-	    set parent_url [get_community_url [get_parent_id -community_id $community_id]]
+            set parent_url [get_community_url [get_parent_id -community_id $community_id]]
 
             lappend context [list $parent_url $parent_name]
         }
 
         set community_name [get_community_name $community_id]
-	set community_url [get_community_url $community_id]
+        set community_url [get_community_url $community_id]
 
         lappend context [list $community_url $community_name]
 
@@ -1728,14 +1733,14 @@ namespace eval dotlrn_community {
             } else {
                 set parent_node_id [get_type_node_id $community_type]
             }
-
-            set package_id [site_node_apm_integration::new_site_node_and_package \
-                -name $key \
-                -parent_id $parent_node_id \
-                -package_key [one_community_package_key] \
-                -instance_name $pretty_name \
+           
+           set package_id [site_node::instantiate_and_mount \
+                -node_name $key \
+                -parent_node_id $parent_node_id \
+                -package_key [one_community_type_package_key] \
+                -package_name $pretty_name \
                 -context_id $clone_id \
-            ]
+            ]  
 
             # Set the right parameters
             parameter::set_value \
