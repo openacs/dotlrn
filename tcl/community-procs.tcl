@@ -86,12 +86,6 @@ namespace eval dotlrn_community {
         set parent_node_id [get_type_node_id $parent_type]
         array set parent_node [site_node::get -node_id $parent_node_id]
 	
-        ns_log Notice [ad_decode $url_part "" $community_type_key $url_part]
-        #ns_log Notice "$parent_node_id"
-        ns_log Notice [one_community_type_package_key]
-        ns_log Notice "$pretty_name"
-        ns_log Notice "$parent_node(object_id)"
-
 	db_transaction {
             set community_type_key [db_exec_plsql create_community_type {}]
 
