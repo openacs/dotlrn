@@ -345,7 +345,6 @@ namespace eval dotlrn_community {
 
             set default_applets_list [string trim [split $default_applets {,}]]
 
-	    ad_return_error "$community_type" "$default_applets_list"
             foreach applet_key $default_applets_list {
                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
                     dotlrn_community::add_applet_to_community $community_id $applet_key
