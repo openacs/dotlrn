@@ -120,3 +120,40 @@ namespace eval dotlrn_club {
 
 }
 
+
+ad_proc -public -callback contact::contact_form -impl dotlrn_club {
+    {-package_id:required}
+    {-form:required}
+    {-object_type:required}
+} {
+    If organisation, ask to create new club
+} {
+    if {$object_type != "person" } {
+	ad_form -extend -name $form -form {
+	    {create_club_p:text(radio) \
+		 {label "[_ dotlrn.Create_club]"} \
+		 {options {{[_ acs-kernel.common_Yes] "t"} {[_ acs-kernel.common_no] "f"}}} \
+		 {values "f"}
+	    }
+	}
+    }
+}
+
+ad_proc -public -callback contact::organization_new -impl dotlrn_club {
+    {-package_id:required}
+    {-contact_id:required}
+    {-name:required}
+} {
+    create a new club for new organization
+} {
+    upvar create_club_p create_club_p
+    
+    if {[exists_and_not_null create_club_p]
+	&& $create_club_p == "t"} {
+	# Create the new club and create a link between it and
+	# the new contact.
+
+	set club_id [dotlrn_club::new -pretty_name "$name"]
+	application_data_link::new -this_object_id $contact_id -target_object_id $club_id
+    }
+}
