@@ -226,6 +226,7 @@ namespace eval dotlrn_community {
             -parent_community_id $parent_community_id
 
         set package_id [dotlrn::get_package_id]
+	set dotlrn_package_id $package_id
 
         # Set up extra vars
         if {[empty_string_p $extra_vars]} {
@@ -322,31 +323,33 @@ namespace eval dotlrn_community {
             # 2. the the list of default applets for this type
             if {[string equal $community_type dotlrn_class_instance]} {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_class_instance_applets \
                 ]
             } elseif {[string equal $community_type dotlrn_club]} {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_club_applets \
                 ]
             } elseif {[string equal $community_type user]} {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_user_portal_applets \
                 ]
             } else {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_subcomm_applets \
                 ]
             }
 
             set default_applets_list [string trim [split $default_applets {,}]]
 
+	    ad_return_error "$community_type" "$default_applets_list"
             foreach applet_key $default_applets_list {
                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
                     dotlrn_community::add_applet_to_community $community_id $applet_key
+		    ns_log Notice "Added applet:::: $applet_key"
                 }
             }
 
@@ -2268,4 +2271,3 @@ namespace eval dotlrn_community {
     }
 
 }
-
