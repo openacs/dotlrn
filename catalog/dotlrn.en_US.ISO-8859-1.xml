@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
+<message_catalog package_key="dotlrn" package_version="2.1.1" locale="en_US" charset="ISO-8859-1">
 
-<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="en_US" charset="ISO-8859-1">
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
   <msg key="Access_Level">Access Level</msg>
@@ -106,6 +106,7 @@
   <msg key="community_memberships">%clubs_pretty_name% Memberships</msg>
   <msg key="community_name_already_in_use">The name &lt;strong&gt;%community_key%&lt;/strong&gt; is already in use either by an active or archived group. Please go back and select a different name.</msg>
   <msg key="Community_Type">Community Type</msg>
+  <msg key="community_type_exists">This community type already exists</msg>
   <msg key="Community_Types">Community Types</msg>
   <msg key="Communitys_Name">Community's Name</msg>
   <msg key="Compose_bulk_message">Compose Bulk Message</msg>
@@ -127,6 +128,7 @@
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
+  <msg key="Create_Club">Create Club</msg>
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
@@ -177,6 +179,7 @@
   <msg key="Edit_a_User">Edit a User</msg>
   <msg key="edit_approved_email_servers">Edit Pre-approved Email Servers</msg>
   <msg key="edit_community_parameters">Edit community parameters</msg>
+  <msg key="edit_community_type">Edit Community Type</msg>
   <msg key="edit_message_and_hit_send">Edit the message below and hit &quot;Send Email&quot; to
 notify this user.</msg>
   <msg key="edit_parameters">Edit parameters</msg>
@@ -431,6 +434,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="new_class_navbar_name">New</msg>
   <msg key="new_class_of_type_class_name">New %class_instances_pretty_name% of type %class_name%</msg>
   <msg key="new_community">New %clubs_pretty_name%</msg>
+  <msg key="new_community_type">New Community Type</msg>
   <msg key="new_department">New %departments_pretty_name%</msg>
   <msg key="New_Password">New Password:</msg>
   <msg key="New_Term">New Term</msg>
@@ -444,6 +448,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="no_clubs">No %clubs_pretty_plural%</msg>
   <msg key="no_communities">No %clubs_pretty_plural%</msg>
   <msg key="no_community_member_with_id">There is no community member with the user_id of %user_id%</msg>
+  <msg key="no_community_types">No %Community_Types%</msg>
   <msg key="no_departments">No %departments_pretty_plural%</msg>
   <msg key="no_description">none set up</msg>
   <msg key="No_dont_delete_it">No, don't delete it</msg>
@@ -471,6 +476,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="or_by_RGB_number">or by RGB number</msg>
   <msg key="or_return_to">or, return to</msg>
   <msg key="Parent">Parent</msg>
+  <msg key="Parent_Type">Parent Type</msg>
   <msg key="Pending">Pending</msg>
   <msg key="Pending_Approval">Pending Approval</msg>
   <msg key="Person_name">Name</msg>
@@ -612,14 +618,4 @@ Thank you
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">You're editing</msg>
   <msg key="Youve_chosen_to_add">You've chosen to add</msg>
-  <msg key="new_community_type">New Community Type</msg>
-  <msg key="edit_community_type">Edit Community Type</msg>
-  <msg key="no_community_types">No %Community_Types%</msg>
-  <msg key="Parent_Type">Parent Type</msg>
-  <msg key="community_type_exists">This community type already exists</msg>
-  <msg key="added_community_subject">You have been added to the "%community_name%" community at %package%</msg>
-  <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the "Groups" portlet.</msg>
-  <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
-  <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
-  <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
 </message_catalog>
