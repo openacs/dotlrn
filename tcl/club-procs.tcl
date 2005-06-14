@@ -131,7 +131,7 @@ ad_proc -public -callback contact::contact_form -impl dotlrn_club {
     if {$object_type != "person" } {
 	ad_form -extend -name $form -form {
 	    {create_club_p:text(radio) \
-		 {label "[_ dotlrn.Create_club]"} \
+		 {label "[_ dotlrn.Create_Club]"} \
 		 {options {{[_ acs-kernel.common_Yes] "t"} {[_ acs-kernel.common_no] "f"}}} \
 		 {values "f"}
 	    }
@@ -153,7 +153,7 @@ ad_proc -public -callback contact::organization_new -impl dotlrn_club {
 	# Create the new club and create a link between it and
 	# the new contact.
 
-	set club_id [dotlrn_club::new -pretty_name "$name"]
+	set club_id [dotlrn_club::new -pretty_name "$contact_id"]
 	application_data_link::new -this_object_id $contact_id -target_object_id $club_id
     }
 }
