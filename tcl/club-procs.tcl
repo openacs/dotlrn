@@ -155,5 +155,9 @@ ad_proc -public -callback contact::organization_new -impl dotlrn_club {
 
 	set club_id [dotlrn_club::new -pretty_name "$contact_id"]
 	application_data_link::new -this_object_id $contact_id -target_object_id $club_id
+
+	# Link the file storage directly to the contact
+	set fs_id [fs::get_root_folder -package_id [dotlrn_community::get_package_id_from_package_key -package_key "file-storage" -community_id $club_id]]
+	application_data_link::new -this_object_id $contact_id -target_object_id $fs_id
     }
 }
