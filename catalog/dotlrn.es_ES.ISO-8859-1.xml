@@ -8,7 +8,7 @@
   <msg key="Action">Opción</msg>
   <msg key="Actions">Opciones</msg>
   <msg key="actions">Opciones</msg>
-  <msg key="Active_Applets">Applets activos</msg>
+  <msg key="Active_Applets">Módulos activos</msg>
   <msg key="add">añadir</msg>
   <msg key="Add_A_Member">Añadir un miembro</msg>
   <msg key="Add_a_Professor">Añadir un profesor</msg>
@@ -42,7 +42,7 @@
   <msg key="All_Terms">Todos los períodos</msg>
   <msg key="And">Y</msg>
   <msg key="Any">Algún</msg>
-  <msg key="Applets_to_Add">Applets a añadir</msg>
+  <msg key="Applets_to_Add">Módulos a añadir</msg>
   <msg key="Approve">Aprobar</msg>
   <msg key="approve">aprobar</msg>
   <msg key="Approve_all">Aprobar a todos</msg>
@@ -80,6 +80,10 @@
   <msg key="class_name_header">Nombre del %class_instances_pretty_name%</msg>
   <msg key="class_page_calendar_title">Calendario</msg>
   <msg key="class_page_file_storage_title">Documentos</msg>
+  <msg key="class_page_home_activities">Actividades</msg>
+  <msg key="class_page_home_communication">Comunicación</msg>
+  <msg key="class_page_home_information">Información</msg>
+  <msg key="class_page_home_resources">Recursos</msg>
   <msg key="class_page_home_title">Curso</msg>
   <msg key="Classes">Cursos</msg>
   <msg key="classes_pretty_name">Asignatura</msg>
@@ -355,7 +359,7 @@
   <msg key="ltnone_set_upgt">$lt;ninguno&amp;gt;</msg>
   <msg key="Mail_Failed">Envío de correo fallido</msg>
   <msg key="Manage">Administrar</msg>
-  <msg key="Manage_Applets">Administrar Applets</msg>
+  <msg key="Manage_Applets">Administrar Módulos</msg>
   <msg key="Manage_Members">Administrar miembros</msg>
   <msg key="Manage_Membership">Administrar miembros</msg>
   <msg key="Manage_Memberships">Administrar miembros</msg>
@@ -444,7 +448,7 @@
   <msg key="prv_policy_must_be_one_of">La regla de privacidad debe ser &quot;Si&quot; o &quot;No&quot;.</msg>
   <msg key="Public_Web_Log">Bitácora Web pública</msg>
   <msg key="purple">púrpura</msg>
-  <msg key="pvt_home_name">Mi Account</msg>
+  <msg key="pvt_home_name">Mi cuenta</msg>
   <msg key="Recipients_Email">Dirección de correo del remitente</msg>
   <msg key="Recipients_Last_Name">Apellidos del remitente</msg>
   <msg key="red">rojo</msg>
@@ -475,6 +479,7 @@
   <msg key="send_email">Enviar correo</msg>
   <msg key="Send_to_all">Enviar a todos los miembros del grupo</msg>
   <msg key="Shared_Files">Archivos Compartidos</msg>
+  <msg key="show_lrn_toolbar">Mostrar barra de herramientas dotLearn</msg>
   <msg key="silver">plateado</msg>
   <msg key="Site-wide_Admin">¿Administrador del sitio?</msg>
   <msg key="Small">Pequeño</msg>
