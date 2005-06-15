@@ -55,6 +55,10 @@ ad_form -name add_term -export referer -form {
         { [template::util::date::compare $start_date $end_date] <= 0 }
         "The term must start before it ends"
     }
+    {end_date
+        { [template::util::date::compare [template::util::date::from_ansi [clock format [clock seconds] -format "%Y-%m-%d"]] $end_date] <= 0 }
+        "The term must end in the future"
+    }
 } -on_submit {
     
     # Setting the rigth format to send to the procedures
