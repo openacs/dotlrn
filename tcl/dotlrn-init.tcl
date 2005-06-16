@@ -105,7 +105,8 @@ if {[dotlrn::is_instantiated]} {
     }
 
     # Set master template
-    parameter::set_value -parameter "DefaultMaster" -value "/packages/dotlrn/www/dotlrn-master" -package_id [subsite::main_site_id]
+    # Whoever had this wonderful idea is nuts. Why on earth FORCE a parameter?
+    #    parameter::set_value -parameter "DefaultMaster" -value "/packages/dotlrn/www/dotlrn-master" -package_id [subsite::main_site_id]
 }
 
 # Make sure that privacy is turned on
