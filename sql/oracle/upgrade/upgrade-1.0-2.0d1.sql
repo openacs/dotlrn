@@ -43,6 +43,575 @@ end;
 /
 show errors
 
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+--
+-- create the dotLRN classes model
+--
+-- @author Ben Adida (ben@openforce.net)
+-- @author yon (yon@openforce.net)
+-- @creation-date 2001-08-18
+-- @version $Id$
+--
+
+create or replace package dotlrn_department
+is
+    function new (
+        department_key in dotlrn_departments.department_key%TYPE,
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
+        description in dotlrn_community_types.description%TYPE,
+        package_id in dotlrn_community_types.package_id%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_departments.department_key%TYPE;
+
+    procedure del (
+        department_key in dotlrn_departments.department_key%TYPE
+    );
+end;
+/
+show errors
+
+create or replace package dotlrn_class
+is
+    function new (
+        class_key in dotlrn_classes.class_key%TYPE,
+        department_key in dotlrn_departments.department_key%TYPE,
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
+        description in dotlrn_community_types.description%TYPE,
+        package_id in dotlrn_community_types.package_id%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_classes.class_key%TYPE;
+
+    procedure del (
+        class_key in dotlrn_classes.class_key%TYPE
+    );
+end;
+/
+show errors
+
+create or replace package dotlrn_class_instance
+is
+    function new (
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE default null,
+        class_key in dotlrn_class_instances.class_key%TYPE,
+        term_id in dotlrn_class_instances.term_id%TYPE,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
+        join_policy in groups.join_policy%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_class_instances.class_instance_id%TYPE;
+
+    procedure del (
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE
+    ); 
+end;
+/
+show errors
+
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+
+--
+-- create dotLRN clubs model
+--
+-- @author yon (yon@openforce.net)
+-- @creation-date August 18th, 2001
+-- @version $Id$
+--
+
+create or replace package dotlrn_club
+is
+    function new (
+        club_id in dotlrn_clubs.club_id%TYPE default null,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
+        join_policy in groups.join_policy%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_clubs.club_id%TYPE;
+
+    procedure del (
+        club_id in dotlrn_clubs.club_id%TYPE
+    );
+end;
+/
+show errors
+
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+create or replace package dotlrn_community_type
+is
+    function new (
+        community_type in dotlrn_community_types.community_type%TYPE,
+        parent_type in dotlrn_community_types.supertype%TYPE default 'dotlrn_community',
+        pretty_name in dotlrn_community_types.pretty_name%TYPE,
+        pretty_plural in dotlrn_community_types.pretty_name%TYPE default null,
+        description in dotlrn_community_types.description%TYPE,
+        package_id in dotlrn_community_types.package_id%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_community_types.community_type%TYPE;
+
+    procedure del (
+        community_type in dotlrn_community_types.community_type%TYPE
+    );
+
+    function name (
+        community_type in dotlrn_community_types.community_type%TYPE
+    ) return varchar;
+end;
+/
+show errors
+
+create or replace package dotlrn_community
+is
+
+    function new (
+        community_id in dotlrn_communities_all.community_id%TYPE default null,
+        parent_community_id in dotlrn_communities_all.parent_community_id%TYPE default null,
+        community_type in dotlrn_communities_all.community_type%TYPE,
+        community_key in dotlrn_communities_all.community_key%TYPE,
+        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
+        description in dotlrn_communities_all.description%TYPE,
+        archived_p in dotlrn_communities_all.archived_p%TYPE default 'f',
+        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
+        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
+        package_id in dotlrn_communities_all.package_id%TYPE default null,
+        join_policy in groups.join_policy%TYPE default null,
+        creation_date in acs_objects.creation_date%TYPE default sysdate,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null,
+        context_id in acs_objects.context_id%TYPE default null
+    ) return dotlrn_communities_all.community_id%TYPE;
+
+    procedure set_active_dates (
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        start_date in dotlrn_communities_all.active_start_date%TYPE,
+        end_date in dotlrn_communities_all.active_end_date%TYPE
+    );
+
+    procedure del (
+        community_id in dotlrn_communities_all.community_id%TYPE
+    );
+
+    function name (
+        community_id in dotlrn_communities_all.community_id%TYPE
+    ) return varchar; 
+
+    function member_p (
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        party_id in parties.party_id%TYPE
+    ) return char;
+
+    function admin_p (
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        party_id in parties.party_id%TYPE
+    ) return char;
+
+    function url (
+        community_id in dotlrn_communities_all.community_id%TYPE
+    ) return varchar2;
+
+    function has_subcomm_p (
+        community_id in dotlrn_communities_all.community_id%TYPE
+    ) return char;
+
+end dotlrn_community;
+/
+show errors
+
+create or replace package dotlrn_member_rel
+is
+
+    function new (
+        rel_id in dotlrn_member_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_member_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_member_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package dotlrn_admin_rel
+is
+
+    function new (
+        rel_id in dotlrn_admin_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
+        community_id in dotlrn_communities_all.community_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_admin_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_admin_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package dotlrn_student_rel
+is
+
+    function new (
+        rel_id in dotlrn_student_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_student_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_student_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package dotlrn_ta_rel
+is
+
+    function new (
+        rel_id in dotlrn_ta_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_ta_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_ta_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package dotlrn_ca_rel
+is
+
+    function new (
+        rel_id in dotlrn_ca_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ca_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_ca_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_ca_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package dotlrn_cadmin_rel
+is
+
+    function new (
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_cadmin_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_cadmin_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_cadmin_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+create or replace package dotlrn_instructor_rel
+is
+
+    function new (
+        rel_id in dotlrn_instructor_rels.rel_id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
+        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
+        user_id in users.user_id%TYPE,
+        member_state in membership_rels.member_state%TYPE default 'approved',
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_instructor_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_instructor_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors;
+
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+--
+-- Create the External package
+--
+-- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @version $Id$
+--
+
+create or replace package dotlrn_external_profile_rel
+as
+    function new (
+        rel_id in dotlrn_external_profile_rels.rel_id%TYPE default null,
+        user_id in users.user_id%TYPE,
+        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
+        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
+        id in dotlrn_user_profile_rels.id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_external_profile_rel',
+        group_id in groups.group_id%TYPE default null,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_user_profile_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_external_profile_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors
+
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+--
+-- Create the Professor package
+--
+-- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @version $Id$
+--
+
+create or replace package dotlrn_professor_profile_rel
+as
+    function new (
+        rel_id in dotlrn_professor_profile_rels.rel_id%TYPE default null,
+        user_id in users.user_id%TYPE,
+        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
+        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
+        id in dotlrn_user_profile_rels.id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_professor_profile_rel',
+        group_id in groups.group_id%TYPE default null,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_user_profile_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_professor_profile_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors
+
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+--
+-- Create the Student package
+--
+-- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @version $Id$
+--
+
+create or replace package dotlrn_student_profile_rel
+as
+    function new (
+        rel_id in dotlrn_student_profile_rels.rel_id%TYPE default null,
+        user_id in users.user_id%TYPE,
+        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
+        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
+        id in dotlrn_user_profile_rels.id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_profile_rel',
+        group_id in groups.group_id%TYPE default null,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_user_profile_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_student_profile_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors
+
+--
+--  Copyright (C) 2001, 2002 MIT
+--
+--  This file is part of dotLRN.
+--
+--  dotLRN is free software; you can redistribute it and/or modify it under the
+--  terms of the GNU General Public License as published by the Free Software
+--  Foundation; either version 2 of the License, or (at your option) any later
+--  version.
+--
+--  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
+--  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+--  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+--  details.
+--
+
+--
+-- Create the User Profile package
+--
+-- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
+-- @version $Id$
+--
+
+create or replace package dotlrn_user_profile_rel
+as
+    function new (
+        rel_id in dotlrn_user_profile_rels.rel_id%TYPE default null,
+        user_id in users.user_id%TYPE,
+        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
+        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
+        id in dotlrn_user_profile_rels.id%TYPE default null,
+        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_user_profile_rel',
+        group_id in groups.group_id%TYPE default null,
+        creation_user in acs_objects.creation_user%TYPE default null,
+        creation_ip in acs_objects.creation_ip%TYPE default null
+    ) return dotlrn_user_profile_rels.rel_id%TYPE;
+
+    procedure del (
+        rel_id in dotlrn_user_profile_rels.rel_id%TYPE
+    );
+
+end;
+/
+show errors
+
 create or replace package body dotlrn_admin_profile_rel
 as
     function new (
@@ -107,51 +676,6 @@ as
 end;
 /
 show errors
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
---
--- create the dotLRN classes model
---
--- @author Ben Adida (ben@openforce.net)
--- @author yon (yon@openforce.net)
--- @creation-date 2001-08-18
--- @version $Id$
---
-
-create or replace package dotlrn_department
-is
-    function new (
-        department_key in dotlrn_departments.department_key%TYPE,
-        pretty_name in dotlrn_community_types.pretty_name%TYPE,
-        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
-        description in dotlrn_community_types.description%TYPE,
-        package_id in dotlrn_community_types.package_id%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_departments.department_key%TYPE;
-
-    procedure del (
-        department_key in dotlrn_departments.department_key%TYPE
-    );
-end;
-/
-show errors
 
 create or replace package body dotlrn_department
 is
@@ -204,28 +728,6 @@ end;
 /
 show errors
 
-create or replace package dotlrn_class
-is
-    function new (
-        class_key in dotlrn_classes.class_key%TYPE,
-        department_key in dotlrn_departments.department_key%TYPE,
-        pretty_name in dotlrn_community_types.pretty_name%TYPE,
-        pretty_plural in acs_object_types.pretty_plural%TYPE default null,
-        description in dotlrn_community_types.description%TYPE,
-        package_id in dotlrn_community_types.package_id%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_classes.class_key%TYPE;
-
-    procedure del (
-        class_key in dotlrn_classes.class_key%TYPE
-    );
-end;
-/
-show errors
-
 create or replace package body dotlrn_class
 is
     function new (
@@ -274,32 +776,6 @@ is
 
         dotlrn_community_type.del(class_key);
     end;
-end;
-/
-show errors
-
-create or replace package dotlrn_class_instance
-is
-    function new (
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE default null,
-        class_key in dotlrn_class_instances.class_key%TYPE,
-        term_id in dotlrn_class_instances.term_id%TYPE,
-        community_key in dotlrn_communities_all.community_key%TYPE,
-        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
-        description in dotlrn_communities_all.description%TYPE,
-        package_id in dotlrn_communities_all.package_id%TYPE default null,
-        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
-        join_policy in groups.join_policy%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_class_instances.class_instance_id%TYPE;
-
-    procedure del (
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE
-    ); 
 end;
 /
 show errors
@@ -364,54 +840,6 @@ is
 end;
 /
 show errors
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
-
---
--- create dotLRN clubs model
---
--- @author yon (yon@openforce.net)
--- @creation-date August 18th, 2001
--- @version $Id$
---
-
-create or replace package dotlrn_club
-is
-    function new (
-        club_id in dotlrn_clubs.club_id%TYPE default null,
-        community_key in dotlrn_communities_all.community_key%TYPE,
-        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
-        description in dotlrn_communities_all.description%TYPE,
-        package_id in dotlrn_communities_all.package_id%TYPE default null,
-        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
-        join_policy in groups.join_policy%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_clubs.club_id%TYPE;
-
-    procedure del (
-        club_id in dotlrn_clubs.club_id%TYPE
-    );
-end;
-/
-show errors
 
 create or replace package body dotlrn_club
 is
@@ -466,47 +894,6 @@ is
 
         dotlrn_community.del(community_id => club_id);
     end;
-end;
-/
-show errors
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
-create or replace package dotlrn_community_type
-is
-    function new (
-        community_type in dotlrn_community_types.community_type%TYPE,
-        parent_type in dotlrn_community_types.supertype%TYPE default 'dotlrn_community',
-        pretty_name in dotlrn_community_types.pretty_name%TYPE,
-        pretty_plural in dotlrn_community_types.pretty_name%TYPE default null,
-        description in dotlrn_community_types.description%TYPE,
-        package_id in dotlrn_community_types.package_id%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_community_types.community_type%TYPE;
-
-    procedure del (
-        community_type in dotlrn_community_types.community_type%TYPE
-    );
-
-    function name (
-        community_type in dotlrn_community_types.community_type%TYPE
-    ) return varchar;
 end;
 /
 show errors
@@ -603,63 +990,6 @@ is
         return v_name;
     end;
 end;
-/
-show errors
-
-create or replace package dotlrn_community
-is
-
-    function new (
-        community_id in dotlrn_communities_all.community_id%TYPE default null,
-        parent_community_id in dotlrn_communities_all.parent_community_id%TYPE default null,
-        community_type in dotlrn_communities_all.community_type%TYPE,
-        community_key in dotlrn_communities_all.community_key%TYPE,
-        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
-        description in dotlrn_communities_all.description%TYPE,
-        archived_p in dotlrn_communities_all.archived_p%TYPE default 'f',
-        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
-        package_id in dotlrn_communities_all.package_id%TYPE default null,
-        join_policy in groups.join_policy%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_communities_all.community_id%TYPE;
-
-    procedure set_active_dates (
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        start_date in dotlrn_communities_all.active_start_date%TYPE,
-        end_date in dotlrn_communities_all.active_end_date%TYPE
-    );
-
-    procedure del (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    );
-
-    function name (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    ) return varchar; 
-
-    function member_p (
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        party_id in parties.party_id%TYPE
-    ) return char;
-
-    function admin_p (
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        party_id in parties.party_id%TYPE
-    ) return char;
-
-    function url (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    ) return varchar2;
-
-    function has_subcomm_p (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    ) return char;
-
-end dotlrn_community;
 /
 show errors
 
@@ -831,27 +1161,6 @@ end;
 show errors
 
 
-create or replace package dotlrn_member_rel
-is
-
-    function new (
-        rel_id in dotlrn_member_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_member_rel',
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_member_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_member_rels.rel_id%TYPE
-    );
-
-end;
-/
-show errors;
-
 create or replace package body dotlrn_member_rel
 is
 
@@ -897,27 +1206,6 @@ is
 
         membership_rel.del(rel_id);
     end;
-
-end;
-/
-show errors;
-
-create or replace package dotlrn_admin_rel
-is
-
-    function new (
-        rel_id in dotlrn_admin_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_admin_rel',
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_admin_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_admin_rels.rel_id%TYPE
-    );
 
 end;
 /
@@ -973,27 +1261,6 @@ end;
 /
 show errors;
 
-create or replace package dotlrn_student_rel
-is
-
-    function new (
-        rel_id in dotlrn_student_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_rel',
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_student_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_student_rels.rel_id%TYPE
-    );
-
-end;
-/
-show errors;
-
 create or replace package body dotlrn_student_rel
 is
 
@@ -1039,27 +1306,6 @@ is
 
         dotlrn_member_rel.del(rel_id);
     end;
-
-end;
-/
-show errors;
-
-create or replace package dotlrn_ta_rel
-is
-
-    function new (
-        rel_id in dotlrn_ta_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ta_rel',
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_ta_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_ta_rels.rel_id%TYPE
-    );
 
 end;
 /
@@ -1115,27 +1361,6 @@ end;
 /
 show errors;
 
-create or replace package dotlrn_ca_rel
-is
-
-    function new (
-        rel_id in dotlrn_ca_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_ca_rel',
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_ca_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_ca_rels.rel_id%TYPE
-    );
-
-end;
-/
-show errors;
-
 create or replace package body dotlrn_ca_rel
 is
 
@@ -1181,27 +1406,6 @@ is
 
         dotlrn_admin_rel.del(rel_id);
     end;
-
-end;
-/
-show errors;
-
-create or replace package dotlrn_cadmin_rel
-is
-
-    function new (
-        rel_id in dotlrn_cadmin_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_cadmin_rel',
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_cadmin_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_cadmin_rels.rel_id%TYPE
-    );
 
 end;
 /
@@ -1257,27 +1461,6 @@ end;
 /
 show errors;
 
-create or replace package dotlrn_instructor_rel
-is
-
-    function new (
-        rel_id in dotlrn_instructor_rels.rel_id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_instructor_rel',
-        class_instance_id in dotlrn_class_instances.class_instance_id%TYPE,
-        user_id in users.user_id%TYPE,
-        member_state in membership_rels.member_state%TYPE default 'approved',
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_instructor_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_instructor_rels.rel_id%TYPE
-    );
-
-end;
-/
-show errors;
-
 create or replace package body dotlrn_instructor_rel
 is
 
@@ -1327,50 +1510,6 @@ is
 end;
 /
 show errors;
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
---
--- Create the External package
---
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- @version $Id$
---
-
-create or replace package dotlrn_external_profile_rel
-as
-    function new (
-        rel_id in dotlrn_external_profile_rels.rel_id%TYPE default null,
-        user_id in users.user_id%TYPE,
-        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
-        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
-        id in dotlrn_user_profile_rels.id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_external_profile_rel',
-        group_id in groups.group_id%TYPE default null,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_user_profile_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_external_profile_rels.rel_id%TYPE
-    );
-
-end;
-/
-show errors
 
 create or replace package body dotlrn_external_profile_rel
 as
@@ -1432,50 +1571,6 @@ as
 
         dotlrn_user_profile_rel.del(rel_id);
     end;
-
-end;
-/
-show errors
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
---
--- Create the Professor package
---
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- @version $Id$
---
-
-create or replace package dotlrn_professor_profile_rel
-as
-    function new (
-        rel_id in dotlrn_professor_profile_rels.rel_id%TYPE default null,
-        user_id in users.user_id%TYPE,
-        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
-        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
-        id in dotlrn_user_profile_rels.id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_professor_profile_rel',
-        group_id in groups.group_id%TYPE default null,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_user_profile_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_professor_profile_rels.rel_id%TYPE
-    );
 
 end;
 /
@@ -1545,50 +1640,6 @@ as
 end;
 /
 show errors
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
---
--- Create the Student package
---
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- @version $Id$
---
-
-create or replace package dotlrn_student_profile_rel
-as
-    function new (
-        rel_id in dotlrn_student_profile_rels.rel_id%TYPE default null,
-        user_id in users.user_id%TYPE,
-        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
-        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
-        id in dotlrn_user_profile_rels.id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_student_profile_rel',
-        group_id in groups.group_id%TYPE default null,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_user_profile_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_student_profile_rels.rel_id%TYPE
-    );
-
-end;
-/
-show errors
 
 create or replace package body dotlrn_student_profile_rel
 as
@@ -1650,50 +1701,6 @@ as
 
         dotlrn_user_profile_rel.del(rel_id);
     end;
-
-end;
-/
-show errors
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
---
--- Create the User Profile package
---
--- @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
--- @version $Id$
---
-
-create or replace package dotlrn_user_profile_rel
-as
-    function new (
-        rel_id in dotlrn_user_profile_rels.rel_id%TYPE default null,
-        user_id in users.user_id%TYPE,
-        portal_id in dotlrn_user_profile_rels.portal_id%TYPE,
-        theme_id in dotlrn_user_profile_rels.theme_id%TYPE default null,
-        id in dotlrn_user_profile_rels.id%TYPE default null,
-        rel_type in acs_rels.rel_type%TYPE default 'dotlrn_user_profile_rel',
-        group_id in groups.group_id%TYPE default null,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null
-    ) return dotlrn_user_profile_rels.rel_id%TYPE;
-
-    procedure del (
-        rel_id in dotlrn_user_profile_rels.rel_id%TYPE
-    );
 
 end;
 /
