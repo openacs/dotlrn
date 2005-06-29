@@ -491,6 +491,10 @@ a.file-type-icon:active {
   background-color: white;
 }
 
+#site-header .user-greeting {
+  color: #036;
+}
+
 #site-header .action-list a {
   color: #036;
   border: 0;
