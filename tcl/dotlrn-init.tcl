@@ -105,9 +105,9 @@ if {[dotlrn::is_instantiated]} {
     }
 
 
-# Make sure that privacy is turned on
-acs_privacy::privacy_control_set 1
-
-ns_log notice "dotlrn-init: done"
-
+    # Make sure that privacy is turned on
+    acs_privacy::privacy_control_set 1
+    
+    ns_log notice "dotlrn-init: done"
+}
 
