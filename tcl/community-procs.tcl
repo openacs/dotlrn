@@ -185,6 +185,7 @@ namespace eval dotlrn_community {
             -parent_community_id $parent_community_id
 
         set package_id [dotlrn::get_package_id]
+	set dotlrn_package_id $package_id
 
         # Set up extra vars
         if {[empty_string_p $extra_vars]} {
@@ -251,7 +252,7 @@ namespace eval dotlrn_community {
             } else {
                 set parent_node_id [get_community_node_id $parent_community_id]
             }
-
+	    
 
             set package_id [site_node::instantiate_and_mount \
                 -parent_node_id $parent_node_id \
@@ -276,22 +277,22 @@ namespace eval dotlrn_community {
             # 2. the the list of default applets for this type
             if {[string equal $community_type dotlrn_community]} {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_subcomm_applets \
                 ]
             } elseif {[string equal $community_type dotlrn_club]} {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_club_applets \
                 ]
             } elseif {[string equal $community_type user]} {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_user_portal_applets \
                 ]
             } else {
                 set default_applets [parameter::get \
-                    -package_id $package_id \
+                    -package_id $dotlrn_package_id \
                     -parameter default_class_instance_applets \
                 ]
             }
@@ -2177,5 +2178,29 @@ namespace eval dotlrn_community {
             -list_args [list $community_id $event $old_value $new_value]
     }
 
+    ad_proc -public get_package_id_from_package_key {
+	{-package_key:required}
+	{-community_id:required}
+    } {
+	Return the package_id of a certain package type mounted in a community
+	
+	@author Malte Sussdorff (sussdorff@sussdorff.de)
+	@creation-date 2005-06-13
+	
+	@param package_key
+	
+       @param community_id
+	
+	@return 
+	
+	@error 
+    } {
+	
+	set package_id [dotlrn_community::get_package_id $community_id]
+	set site_node_id [site_node::get_node_id_from_object_id -object_id $package_id]
+	set url [site_node::get_children -package_key "$package_key" -node_id $site_node_id]
+	array set site_node [site_node::get_from_url -url $url]
+	return $site_node(package_id)
+    }
 }
 
