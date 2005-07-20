@@ -18,7 +18,7 @@
 	  <a href="@dotlrn_admin_url@/classes" title=""#dotlrn.classes_pretty_plural#">#dotlrn.classes_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
 	  
-	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="#dotlrn.All_Terms#>#dotlrn.All_Terms#
+	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="Classes">Classes
 	  <span style="color: #cccccc;">|</span>
 	  
 	  <a href="@dotlrn_admin_url@/clubs" title="#dotlrn.clubs_pretty_plural#">#dotlrn.clubs_pretty_plural#</a>
