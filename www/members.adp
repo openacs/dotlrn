@@ -33,7 +33,7 @@
 <form method="get" action="member-add">
    #dotlrn.Add_A_Member# <input type="text" name="search_text"><input
    type="submit" value="#dotlrn.search#">
-   <input type="hidden" name="referer" value="@referer@">
+   <input type="hidden" name="referer" value="@return_url@">
 </form>
 </if>
 
