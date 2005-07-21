@@ -855,6 +855,9 @@ namespace eval dotlrn_community {
                 -community_id $community_id \
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
+
+	    # Send membership email
+            send_member_email -community_id $community_id -to_user $user_id -type "on join"
         }
     }
 
@@ -2202,5 +2205,68 @@ namespace eval dotlrn_community {
 	array set site_node [site_node::get_from_url -url $url]
 	return $site_node(package_id)
     }
+
+    ad_proc -public send_member_email {
+        {-community_id:required}
+        {-to_user:required}
+	{-type "on join"}
+    } {
+        Send a membership email to the user
+
+        @author Roel Canicula (roel@solutiongrove.com)
+        @creation-date 2004-09-05
+
+        @param community_id
+        @param to_user
+        @param type
+
+        @return
+
+        @error
+    } {
+        if { [db_0or1row member_email {
+            select from_addr,
+	           subject,
+                   email
+            from dotlrn_member_emails
+            where enabled_p 
+	          and community_id = :community_id
+	          and type = :type
+        }] } {
+            # Shamelessly cut & pasted from bulk mail
+            if { [empty_string_p $from_addr] } {
+                set from_addr [ad_system_owner]
+            }
+            set to_addr [cc_email_from_party $to_user]
+
+            set extra_headers [ns_set create]
+
+            set message_html [ad_html_text_convert -from html -to html $email]
+            # some mailers are chopping off the last few characters.
+            append message_html "   "
+            set message_text [ad_html_text_convert -from html -to text $email]
+	    
+            # Send email in iso8859-1 charset
+            set message_data [build_mime_message $message_text $message_html]
+            ns_set put $extra_headers MIME-Version [ns_set get $message_data MIME-Version]
+            ns_set put $extra_headers Content-ID [ns_set get $message_data Content-ID]
+            ns_set put $extra_headers Content-Type [ns_set get $message_data Content-Type]
+            set message [ns_set get $message_data body]
+	    
+            # both html and plain messages can now be sent the same way
+            acs_mail_lite::send \
+                -to_addr $to_addr \
+                -from_addr $from_addr \
+                -subject $subject \
+                -body $message \
+                -extraheaders $extra_headers
+
+	    set return_val 1
+        } else {
+	    set return_val 0
+	}
+	return $return_val
+    }
+    
 }
 
