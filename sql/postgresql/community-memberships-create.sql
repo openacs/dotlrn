@@ -74,8 +74,6 @@ as
          dotlrn_admin_rels
     where dotlrn_member_rels_full.rel_id = dotlrn_admin_rels.rel_id;
 
---
-
 -- Store emails to be sent when user joins a community
 create table dotlrn_member_emails (
         email_id	serial primary key,

@@ -18,15 +18,7 @@ ad_page_contract {
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -community_id $community_id
 
-db_0or1row member_email {
-    select
-      email_id
-    from
-      dotlrn_member_emails
-    where 
-      community_id = :community_id and 
-      type = 'on join'
-}
+db_0or1row member_email { }
 
 ad_form -name "member_email" -form {
     {email_id:key}
@@ -44,41 +36,17 @@ ad_form -name "member_email" -form {
 
 } -new_data {
     
-    db_dml new_email {
-	insert into
-	  dotlrn_member_emails
-	  (community_id, type, from_addr, subject, email)
-	values
-	  (:community_id, 'on join', :from_addr, :subject, :email)
-    }
+    db_dml new_email { }
 
 } -edit_request {
 
-    db_1row member_email {
-	select
-	  from_addr,
-	  subject,
-	  email
-	from
-	  dotlrn_member_emails
-	where 
-	  email_id = :email_id
-    }
+    db_1row member_email_values { }
 
     set email [list $email ""]
 
 } -edit_data {
 
-    db_dml new_email {
-	update
-	  dotlrn_member_emails
-	set
-	  from_addr = :from_addr,
-	  subject = :subject,
-	  email = :email
-	where
-	  email_id = :email_id
-    }
+    db_dml update_email { }
 
 } -after_submit {
     

@@ -17,14 +17,6 @@ ad_page_contract {
 
 set community_id [dotlrn_community::get_community_id]
 
-db_dml toggle_member_email {
-    update
-      dotlrn_member_emails
-    set
-      enabled_p = case when enabled_p = 't' then 'f'::boolean else 't'::boolean end
-    where
-      community_id = :community_id and
-      type = 'on join'
-}
+db_dml toggle_member_email { }
 
 ad_returnredirect "one-community-admin"
