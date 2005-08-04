@@ -20,7 +20,7 @@
 
 <master src="dotlrn-master">
 <property name="title">@spam_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context_bar@</property>
 
 
 <h3>#dotlrn.Choose_members_to_receive#</h3>

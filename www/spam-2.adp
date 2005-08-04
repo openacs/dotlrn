@@ -18,7 +18,7 @@
 
 <master>
 <property name="title">@spam_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context_bar@</property>
 
 <p>
  #dotlrn.lt_Are_you_sure_you_want_to_send#?
