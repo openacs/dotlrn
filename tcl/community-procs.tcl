@@ -2232,7 +2232,16 @@ namespace eval dotlrn_community {
             where enabled_p 
 	          and community_id = :community_id
 	          and type = :type
-        }] } {
+        }] }  else {
+            set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type] 0]
+            if {[llength $default_email]} {
+                set from_addr [lindex $default_email 0]
+                set subject [lindex $default_email 1]
+                set email [lindex $default_email 2]
+            }
+        }
+        if {[exists_and_not_null email]} {
+
             # Shamelessly cut & pasted from bulk mail
             if { [empty_string_p $from_addr] } {
                 set from_addr [ad_system_owner]

@@ -136,3 +136,22 @@ ad_proc -callback merge::MergePackageUser -impl dotlrn {
     
     return $result
 }
+
+ad_proc -callback dotlrn::default_member_email {
+    -community_id
+    -to_user
+    -type
+} {
+    Used to define a default email body message for member emails if
+    an email template is not found for community_id,type in
+    dotlrn_email_templates
+
+    @param community_id dotlrn community_id sending email
+    @param to_user user_id to send email to
+    @param type type of email from dotlrn_email_templates table
+
+    @return should return a 3 element list of from_addr subject
+            email_body. If no email exists, should return -code
+            continue to return no results to the caller
+    
+} -
