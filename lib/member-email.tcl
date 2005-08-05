@@ -49,8 +49,14 @@ ad_form \
 	{enabled_p:text(hidden) {value $type}}
         {return_url:text(hidden) {value $return_url}}
     } -on_request {
-        set from_addr [cc_email_from_party [ad_conn user_id]]
-        set subject "Welcome to [dotlrn_community::get_community_name $community_id]!"
+        set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -type $type] 0]
+        if {![llength $default_email]} {
+            set from_addr [cc_email_from_party [ad_conn user_id]]
+            set subject "Welcome to [dotlrn_community::get_community_name $community_id]!"
+        }
+        set from_addr [lindex $default_email 0]
+        set subject [lindex $default_email 1]
+        set email [template::util::richtext::create [lindex $default_email 2] text/html]
     } -edit_request {
         db_1row member_email {
             select from_addr,
