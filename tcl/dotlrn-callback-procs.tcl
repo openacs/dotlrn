@@ -139,8 +139,9 @@ ad_proc -callback merge::MergePackageUser -impl dotlrn {
 
 ad_proc -callback dotlrn::default_member_email {
     -community_id
-    -to_user
     -type
+    {-to_user ""}
+    {-var_list ""}
 } {
     Used to define a default email body message for member emails if
     an email template is not found for community_id,type in
@@ -154,4 +155,21 @@ ad_proc -callback dotlrn::default_member_email {
             email_body. If no email exists, should return -code
             continue to return no results to the caller
     
+} -
+
+ad_proc -callback dotlrn::member_email_var_list {
+    -community_id
+    -type
+    {-to_user ""}
+} {
+    
+    @return list of varname value pairs to pass to an email template
+} -
+
+ad_proc -callback dotlrn::member_email_available_vars {
+    -type
+} {
+    @return list of varname description pairs suitable for
+    display in the user interface so an editor of an email template will know what variables are available
+    description can contain HTML and will be shown with noquote
 } -

@@ -35,12 +35,27 @@ db_0or1row member_email {
           and type = :type
 }
 
+array set available_vars [lindex [callback dotlrn::member_email_available_vars -type $type] 0]
+set available_vars_help ""
+foreach var [array names available_vars] {
+    append available_vars_help "$var $available_vars($var) <br />"
+}
+
 ad_form \
     -name "member_email" \
     -export $extra_vars \
     -cancel_url $return_url \
     -form {
         {email_id:key}
+    }
+
+if {![string equal "" $available_vars_help]} {
+    ad_form -extend -name "member_email" -form {
+	{help:text(inform) {label "Available variables"} {value $available_vars_help}}
+    }
+}
+
+ad_form -extend -name "member_email" -form {
         {from_addr:text {label "From Address"} {html {size 40}}}
         {subject:text {label "Subject"} {html {size 40}}}
         {email:richtext,optional {label "Message"} {html {rows 30 cols 80 wrap soft}} {htmlarea_p 1}}
@@ -49,10 +64,11 @@ ad_form \
 	{enabled_p:text(hidden) {value $type}}
         {return_url:text(hidden) {value $return_url}}
     } -on_request {
-        set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -type $type] 0]
+	set community_name [dotlrn_community::get_community_name $community_id]
+        set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -type $type -var_list [list course_name $community_name community_name $community_name]] 0]
         if {![llength $default_email]} {
             set from_addr [cc_email_from_party [ad_conn user_id]]
-            set subject "Welcome to [dotlrn_community::get_community_name $community_id]!"
+            set subject "Welcome to ${community_name}!"
         }
         set from_addr [lindex $default_email 0]
         set subject [lindex $default_email 1]

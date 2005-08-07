@@ -2210,6 +2210,7 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-to_user:required}
 	{-type "on join"}
+	{-var_list ""}
     } {
         Send a membership email to the user
 
@@ -2224,7 +2225,11 @@ namespace eval dotlrn_community {
 
         @error
     } {
-        if { [db_0or1row member_email {
+	set course_name [dotlrn_community::get_community_name $community_id]
+	lappend var_list course_name $course_name community_name $course_name
+	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
+
+        if {![db_0or1row member_email {
             select from_addr,
 	           subject,
                    email
@@ -2232,8 +2237,9 @@ namespace eval dotlrn_community {
             where enabled_p 
 	          and community_id = :community_id
 	          and type = :type
-        }] }  else {
-            set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type] 0]
+        }] }  {
+	    # no email in database, use default
+            set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type -var_list $var_list] 0]
             if {[llength $default_email]} {
                 set from_addr [lindex $default_email 0]
                 set subject [lindex $default_email 1]
@@ -2241,6 +2247,18 @@ namespace eval dotlrn_community {
             }
         }
         if {[exists_and_not_null email]} {
+
+	    # user %varname% to substitute variables in email
+	    set subject_vars [lang::message::get_embedded_vars $subject]
+	    set email_vars [lang::message::get_embedded_vars $email]
+	    foreach var [concat $subject_vars $email_vars] {
+		if {![info exists vars($var)]} {
+		    set vars($var) ""
+		}
+	    }
+	    set var_list [array get vars]
+	    set subject [lang::message::format $subject $var_list]
+	    set email "[lang::message::format $email $var_list]"
 
             # Shamelessly cut & pasted from bulk mail
             if { [empty_string_p $from_addr] } {
