@@ -65,7 +65,8 @@ if {$admin_p} {
     set bulk_actions_export_vars [list "user_id" "rel_type" "referer" "reset"]
     set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
     foreach role $rel_types {
-		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+		# lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "member-confirm?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
     }
 
 } else {
