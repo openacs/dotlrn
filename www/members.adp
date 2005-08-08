@@ -35,6 +35,8 @@
    type="submit" value="#dotlrn.search#">
    <input type="hidden" name="referer" value="@return_url@">
 </form>
+<a href="@add_member_url;noquote@" class="button">Create and add a member</a>
+<p />
 </if>
 
 
