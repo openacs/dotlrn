@@ -118,8 +118,8 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	    html "align left"
 	    display_template {
 		<if @members.user_id@ ne "">
-		<a href="deregister?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.Drop_Membership#</a> | 
-		<a href="member-add-2?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.User_Admin_Page#</a>
+		<a href="member-confirm?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
+		<a href="member-add-2?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
 		</if>
 	    }
 	}
@@ -136,12 +136,9 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 
 set member_page [acs_community_member_page]
 
-
-
-db_multirow -extend { update_bio_p member_url referer } members select_current_members {} {
+db_multirow -extend { update_bio_p member_url member_referer } members select_current_members {} {
     set member_url "$member_page?user_id=$user_id"
-    set referer $referer
-
+    set member_referer $referer
 
     set update_bio_p $admin_p
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
@@ -164,13 +161,12 @@ if { $size > 0 } {
     multirow append members "" "" "" "" "" $selection
 }
 
-
 set user_ids ""
-db_multirow -extend { member_url referer } pending_users select_pending_users {} {
+db_multirow -extend { member_url pending_user_referer } pending_users select_pending_users {} {
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
     append user_ids "user_id=$user_id&"
     set member_url "$member_page?user_id=$user_id"
-    set referer $referer
+    set pending_user_referer $referer
 }
 
 
@@ -211,8 +207,8 @@ template::list::create -name pending_users -multirow pending_users -key user_id 
 	label "[_ dotlrn.Actions]"
             html "align left"
 	display_template {
-                <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.referer@">#dotlrn.Approve#</a> |
-                <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.referer@">#dotlrn.Reject#</a>
+                <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Approve#</a> |
+                <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Reject#</a>
 	}
     }
 }
