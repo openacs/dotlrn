@@ -800,7 +800,7 @@ namespace eval dotlrn_community {
         Assigns a user to a particular role for that class.
         Roles in DOTLRN can be student, prof, ta, admin
     } {
-
+	ns_log notice "dotlrn_community::add_user_to_community community_id '${community_id}' user_id '${user_id}'"
         if {[member_p $community_id $user_id]} {
             return
         }
@@ -2211,6 +2211,8 @@ namespace eval dotlrn_community {
         {-to_user:required}
 	{-type "on join"}
 	{-var_list ""}
+	{-override_email ""}
+	{-override_subject ""}
     } {
         Send a membership email to the user
 
@@ -2225,6 +2227,8 @@ namespace eval dotlrn_community {
 
         @error
     } {
+	
+	ns_log notice "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
 	set course_name [dotlrn_community::get_community_name $community_id]
 	lappend var_list course_name $course_name community_name $course_name
 	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
@@ -2239,13 +2243,22 @@ namespace eval dotlrn_community {
 	          and type = :type
         }] }  {
 	    # no email in database, use default
+	    ns_log notice "DAVEB checking for default email community_id '${community_id}' type '${type}'"
             set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type -var_list $var_list] 0]
+	    ns_log notice "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
             if {[llength $default_email]} {
                 set from_addr [lindex $default_email 0]
                 set subject [lindex $default_email 1]
                 set email [lindex $default_email 2]
             }
         }
+	ns_log notice "DAVEB override email '${override_email}' override_subject '${override_subject}'"
+	if {[exists_and_not_null override_email]} {
+	    set email $override_email
+	}
+	if {[exists_and_not_null override_subject]} {
+	    set subject $override_subject
+	}
         if {[exists_and_not_null email]} {
 
 	    # user %varname% to substitute variables in email
@@ -2281,6 +2294,7 @@ namespace eval dotlrn_community {
             set message [ns_set get $message_data body]
 	    
             # both html and plain messages can now be sent the same way
+
             acs_mail_lite::send \
                 -to_addr $to_addr \
                 -from_addr $from_addr \
