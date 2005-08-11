@@ -26,7 +26,11 @@ if {![template::util::is_true $enabled_p]} {
     set enabled_p t
 }
 
-dotlrn::require_user_admin_community -community_id $community_id
+if {$community_id eq ""} {
+    permission::require_permission -object_id [ad_conn package_id] -privilege "admin"
+} else {
+    dotlrn::require_user_admin_community -community_id $community_id
+}
 
 db_0or1row member_email {
     select email_id
@@ -64,7 +68,12 @@ ad_form -extend -name "member_email" -form {
 	{enabled_p:text(hidden) {value $type}}
         {return_url:text(hidden) {value $return_url}}
     } -on_request {
-	set community_name [dotlrn_community::get_community_name $community_id]
+	if {$community_id ne "" } {
+	    set community_name [dotlrn_community::get_community_name $community_id]
+	} else {
+	    set community_name ""
+	}
+
         set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -type $type -var_list [list course_name $community_name community_name $community_name]] 0]
         if {![llength $default_email]} {
             set from_addr [cc_email_from_party [ad_conn user_id]]
