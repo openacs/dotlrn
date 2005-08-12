@@ -2229,10 +2229,9 @@ namespace eval dotlrn_community {
     } {
 	
 	ns_log notice "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
-	set course_name [dotlrn_community::get_community_name $community_id]
-	lappend var_list course_name $course_name community_name $course_name
-	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
 
+	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
+	array set vars $var_list
         if {![db_0or1row member_email {
             select from_addr,
 	           subject,
