@@ -2202,7 +2202,7 @@ namespace eval dotlrn_community {
 	set package_id [dotlrn_community::get_package_id $community_id]
 	set site_node_id [site_node::get_node_id_from_object_id -object_id $package_id]
 	set url [site_node::get_children -package_key "$package_key" -node_id $site_node_id]
-	array set site_node [site_node::get_from_url -url $url]
+	array set site_node [site_node::get_from_url -url [lindex $url 0]]
 	return $site_node(package_id)
     }
 
