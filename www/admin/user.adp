@@ -187,14 +187,16 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
 </p>
 </else>
 
+<if @portrait_p@ true or @administrative_action_p@ true>
 <h3>#dotlrn.lt_Administrative_Action#</h3>
 
 <ul>
-  <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
   <if @portrait_p@>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
- <if @oacs_site_wide_admin_p@ true or @dotlrn_admin_p@ true>
-  <li><a href="become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
- </if> 
+  <if @administrative_action_p@>
+    <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
+    <li><a href="become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
+  </if>
 </ul>
+</if>
