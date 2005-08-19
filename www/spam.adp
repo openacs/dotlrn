@@ -20,7 +20,7 @@
 
 <master>
 <property name="title">@spam_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context;noquote@</property>
 
 <formtemplate id="spam_message"></formtemplate>
 
