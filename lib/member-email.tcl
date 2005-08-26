@@ -62,7 +62,7 @@ if {![string equal "" $available_vars_help]} {
 ad_form -extend -name "member_email" -form {
         {from_addr:text {label "From Address"} {html {size 40}}}
         {subject:text {label "Subject"} {html {size 40}}}
-        {email:textarea,optional {label "Message"} {html {rows 30 cols 80 wrap soft}} {htmlarea_p 1}}
+        {email:richtext,optional {label "Message"} {html {rows 30 cols 80 wrap soft}} {htmlarea_p 0}}
 	{community_id:text(hidden) {value $community_id}}
         {type:text(hidden) {value $type}}
 	{enabled_p:text(hidden) {value $type}}
