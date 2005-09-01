@@ -40,6 +40,9 @@ if {!$site_wide_admin_p} {
     set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id -community_id $community_id]
 } else {
     set admin_p 1
+}
+
+if {$admin_p} {
     set add_member_url [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }]
 }
 
