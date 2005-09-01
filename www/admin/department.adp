@@ -55,4 +55,4 @@
 
 <br>
 
-<include src="classes-chunk" department_key="@department_key@">
+<include src="classes-chunk" page="@page@" department_key="@department_key@">
