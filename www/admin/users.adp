@@ -22,7 +22,6 @@
 <property name="title">#dotlrn.Users#</property>
 <property name="context_bar">@context_bar;noquote@</property>
 
-<% set referer "[dotlrn::get_admin_url]/users" %>
 
 [<small>
   <a href="../user-add?add_membership_p=f&dotlrn_interactive_p=1&referer=@referer@"><small>#dotlrn.Create_A_New_User#</small></a> 

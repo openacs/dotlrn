@@ -77,7 +77,7 @@ if { [string equal $add_membership_p t] && [string equal $referer "/acs-admin/us
 
 # Don't redirect back to the user-new-2 page if we've already been there
 if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
-    set redirect "../${redirect}"
+    # set redirect "../${redirect}"
     ad_returnredirect "admin/user-new-2?[export_vars {user_id {referer $redirect}}]"
     ad_script_abort
 } elseif { [string equal $add_membership_p t] } {
