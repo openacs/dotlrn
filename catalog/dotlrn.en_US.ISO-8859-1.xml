@@ -128,6 +128,7 @@
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
+  <msg key="Create_Club">Create Club</msg>
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
@@ -419,6 +420,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
   <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">My Communities</msg>
+  <msg key="My_Workspace">My Workspace</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
   <msg key="Name__Email">Name / Email</msg>
@@ -483,6 +485,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Portrait">Portrait:</msg>
   <msg key="Portrait_1">Portrait</msg>
   <msg key="Post_to">Post to:</msg>
+  <msg key="Preferences">Preferences</msg>
   <msg key="Pretty_Name">Pretty Name</msg>
   <msg key="Pretty_Plural">Pretty Plural</msg>
   <msg key="Preview">Preview</msg>

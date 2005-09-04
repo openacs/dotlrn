@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.1" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.1.2d1" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -31,6 +31,7 @@
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt; </msg>
+  <msg key="Administration_Cockpit">Administrations Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -42,6 +43,7 @@
   <msg key="Approve">Freischalten</msg>
   <msg key="approve">Freischalten</msg>
   <msg key="aqua">Aqua</msg>
+  <msg key="Archive">Archive</msg>
   <msg key="archived">Archiviert</msg>
   <msg key="archived_classes_and_communities">Archivierte %class_instances_pretty_plural% und %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Archivierte %groups_pretty_plural%</msg>
@@ -84,7 +86,8 @@
   <msg key="clubs_name_header">Bezeichnung der %clubs_pretty_name%
 </msg>
   <msg key="clubs_pretty_name">Community</msg>
-  <msg key="clubs_pretty_plural">Communities</msg>
+  <msg key="clubs_pretty_plural">Kunden</msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">Communities</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">Bezeichnung der %clubs_pretty_name%</msg>
@@ -111,6 +114,7 @@
   <msg key="course_assistant_role_pretty_plural">Tutoren</msg>
   <msg key="Create_A_New_User">Neuen Benutzer erstellen</msg>
   <msg key="Create_a_Web_Log">Ein Web-Tagebuch anlegen</msg>
+  <msg key="Create_Club">Club erzeugen</msg>
   <msg key="Created">Erstellt</msg>
   <msg key="CSV_File_Format">Dateiformat CSV</msg>
   <msg key="Customize_Layout">Layout anpassen</msg>
@@ -145,7 +149,7 @@
   <msg key="dotlrn_community_pretty_name">Gruppe</msg>
   <msg key="dotlrn_community_pretty_plural">Gruppen</msg>
   <msg key="dotLRN_Information">dotLRN-Informationen</msg>
-  <msg key="dotlrn_main_portlet_pretty_name">Kurse und Module</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Kunden</msg>
   <msg key="dotlrn_member_rel_pretty_name">Der Benutzer ist Teilnehmer folgender Gruppe:</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Der Benutzer ist Teilnehmer folgender Gruppen:</msg>
   <msg key="Drop">Abmelden</msg>
@@ -268,7 +272,8 @@
   <msg key="lt_Join_a_clubs_pretty_n">Community hinzufügen</msg>
   <msg key="lt_Join_the_above_criter">Obige Suchkriterien verknüpfen mit</msg>
   <msg key="lt_Join_the_above_criter_1">Obige Suchkriterien verknüpfen mit</msg>
-  <msg key="lt_JoinDrop_a_Class_or_C">Kurse oder Communities hinzufügen/entfernen</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Zu einem Kundenportal
+hinzufügen/entfernen</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Kurse oder Communities hinzufügen/entfernen</msg>
   <msg key="lt_Key_a_short_name_no_s">Schlüssel (kurze Bezeichnung, keine Leerzeichen)</msg>
   <msg key="lt_Last_Visit_Over_in_da">Letzter Zugriff vor mehr als (in Tagen)</msg>
@@ -360,6 +365,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="must_have_values">Das Feld muss einen der folgenden Werte aufweisen:</msg>
   <msg key="Must_specify_recipients">Bitte geben Sie mindestens einen Empfänger für die Nachricht an</msg>
   <msg key="My_Communities">Eigene Kurse und Communities</msg>
+  <msg key="My_Workspace">Mein Workspace</msg>
   <msg key="NA">Nicht vorhanden</msg>
   <msg key="Name">Bezeichnung</msg>
   <msg key="Name__Email">Name/E-Mail-Adresse</msg>
@@ -422,6 +428,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Portrait">Bild:</msg>
   <msg key="Portrait_1">Bild</msg>
   <msg key="Post_to">Veröffentlichen auf:</msg>
+  <msg key="Preferences">Einstellungen</msg>
   <msg key="Pretty_Name">Benutzerdefinierte Bezeichnung</msg>
   <msg key="Pretty_Plural">Benutzerdefinierte Bezeichnung (Plural)</msg>
   <msg key="Preview">Vorschau</msg>
@@ -430,6 +437,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
 </msg>
   <msg key="Public_Web_Log">Öffentliches Web-Tagebuch</msg>
   <msg key="purple">Dunkelviolett</msg>
+  <msg key="pvt_home_name">Mein Account</msg>
   <msg key="Recipients_Email">E-Mail-Adresse des Empfängers</msg>
   <msg key="Recipients_Last_Name">Nachname des Empfängers</msg>
   <msg key="red">Rot</msg>
