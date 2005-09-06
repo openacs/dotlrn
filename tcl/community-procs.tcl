@@ -2213,6 +2213,7 @@ namespace eval dotlrn_community {
 	{-var_list ""}
 	{-override_email ""}
 	{-override_subject ""}
+	{-override_enabled:boolean}
     } {
         Send a membership email to the user
 
@@ -2237,7 +2238,7 @@ namespace eval dotlrn_community {
 	           subject,
                    email
             from dotlrn_member_emails
-            where enabled_p 
+            where (enabled_p or :override_enabled_p = 1)
 	          and community_id = :community_id
 	          and type = :type
         }] }  {
