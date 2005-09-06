@@ -2213,7 +2213,9 @@ namespace eval dotlrn_community {
 	{-var_list ""}
 	{-override_email ""}
 	{-override_subject ""}
+	{-email_send_to ""}
 	{-override_enabled:boolean}
+
     } {
         Send a membership email to the user
 
@@ -2228,7 +2230,7 @@ namespace eval dotlrn_community {
 
         @error
     } {
-	
+
 	ns_log notice "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
 
 	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
@@ -2277,8 +2279,13 @@ namespace eval dotlrn_community {
             if { [empty_string_p $from_addr] } {
                 set from_addr [ad_system_owner]
             }
-            set to_addr [cc_email_from_party $to_user]
-
+	    ns_log Notice "before egetting email email send it is $email_send_to"
+	    if {[empty_string_p $email_send_to]} {
+		set to_addr [cc_email_from_party $to_user]
+	    }  else {
+		set to_addr [cc_email_from_party $email_send_to]
+	    }
+	       
             set extra_headers [ns_set create]
 
             set message_html [ad_html_text_convert -from html -to html $email]
@@ -2294,7 +2301,6 @@ namespace eval dotlrn_community {
             set message [ns_set get $message_data body]
 	    
             # both html and plain messages can now be sent the same way
-
             acs_mail_lite::send \
                 -to_addr $to_addr \
                 -from_addr $from_addr \
