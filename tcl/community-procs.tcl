@@ -2279,7 +2279,7 @@ namespace eval dotlrn_community {
             if { [empty_string_p $from_addr] } {
                 set from_addr [ad_system_owner]
             }
-	    ns_log Notice "before egetting email email send it is $email_send_to"
+
 	    if {[empty_string_p $email_send_to]} {
 		set to_addr [cc_email_from_party $to_user]
 	    }  else {
