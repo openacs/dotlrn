@@ -32,11 +32,19 @@ if {$community_id eq ""} {
     dotlrn::require_user_admin_community -community_id $community_id
 }
 
-db_0or1row member_email {
-    select email_id
-    from dotlrn_member_emails
-    where community_id = :community_id 
-          and type = :type
+if {[empty_string_p $community_id]} {
+    db_0or1row member_email {
+	select email_id from
+	dotlrn_member_emails
+	where community_id is null
+	and type = :type}
+} else {
+    db_0or1row member_email {
+	select email_id
+	from dotlrn_member_emails
+	where community_id = :community_id 
+	and type = :type
+    }
 }
 
 array set available_vars [lindex [callback dotlrn::member_email_available_vars -type $type] 0]
