@@ -10,6 +10,9 @@ ad_page_contract {
     {user_id ""}
 }
 
+# HAM : 090705 user must be logged in to view this page
+auth::require_login
+
 set page_title [_ dotlrn._Update_Bio]
 
 if {[empty_string_p $user_id]} {
@@ -30,7 +33,32 @@ set focus {}
 
 set form_elms { authority_id username }
 
-acs_user::get -user_id $user_id -array user -include_bio
+# HAM : 090705 do some permission checks here
+# - are we given a user_id
+# - if yes
+# 	check if current user is a site wide admin
+#		if not then 
+#			check if currently logged in user_id = given user_id
+#			if not then
+#				show permission denied
+# - if no given user_id then get user_id of current logged in user for editing
+
+ns_log Notice " HAM : $user_id "
+
+if { [exists_and_not_null user_id ] } {
+	if { ![acs_user::site_wide_admin_p -user_id [ad_conn user_id] ] } {
+		if { $user_id != [ad_conn user_id] } {
+			ad_return_forbidden  "Permission Denied"  "<blockquote> You don't have permission to view this page. </blockquote>"
+        		ad_script_abort
+		} else {
+			acs_user::get -user_id $user_id -array user -include_bio	
+		}
+	} else {
+		acs_user::get -user_id $user_id -array user -include_bio	
+	}
+} else {
+	acs_user::get -user_id [ad_conn user_id] -array user -include_bio	
+}
 
 set fullname $user(name)
 
@@ -112,8 +140,9 @@ ad_form -extend -name user_info -form {
 
         # remove the first . from the file extension
         regsub "\." $file_extension "" file_extension
-        
+
         set guessed_file_type [template::util::file::get_property mime_type $upload_file]
+
         if {[string equal $guessed_file_type "image/pjpeg"]} {
             set guessed_file_type "image/jpeg"
         }
@@ -161,7 +190,7 @@ ad_form -extend -name user_info -form {
                     }
                 }
             }
-                
+
             set convert_path [parameter::get -parameter ConvertBinPath -package_id [dotlrn::get_package_id] -default "/bin/convert"]
             exec $convert_path -scale 135 $tmp_filename $tmp_filename
 
