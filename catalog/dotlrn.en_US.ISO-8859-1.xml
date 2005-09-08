@@ -492,7 +492,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="prv_policy_must_be_one_of">The privacy policy must be either &quot;yes&quot; or &quot;no&quot;.</msg>
   <msg key="Public_Web_Log">Public Web Log</msg>
   <msg key="purple">purple</msg>
-  <msg key="pvt_home_name">Mi Account</msg>
+  <msg key="pvt_home_name">My Account</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
