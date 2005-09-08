@@ -13,6 +13,7 @@
                     where site_nodes.object_id = dotlrn_community_types.package_id) as url
             from dotlrn_community_types
             where dotlrn_community_types.supertype = :community_type
+            order by dotlrn_community_types.description
         </querytext>
     </fullquery>
 
