@@ -211,14 +211,14 @@ if {[form is_valid user_search]} {
         if {[lsearch -exact $tables "users"] == -1} {
             lappend tables "users"
         }
-        lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit <= (sysdate - :last_visit_greater))"
+        lappend wheres [db_map last_visit_g]
     }
 
     if {![empty_string_p $last_visit_less]} {
         if {[lsearch -exact $tables "users"] == -1} {
             lappend tables "users"
         }
-        lappend wheres "(dotlrn_users.user_id = users.user_id and users.last_visit >= (sysdate - :last_visit_less))"
+        lappend wheres [db_map last_visit_l]
     }
 
     set role_list [element get_values user_search role]
