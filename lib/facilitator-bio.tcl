@@ -71,7 +71,7 @@ if {$portrait_p} {
 }
 
 if {[empty_string_p $community_id]} {
-    set edit_bio_url [export_vars -base "bio-update" {return_url}]
+    set edit_bio_url [export_vars -base "bio-update" {return_url user_id}]
 } else {
-    set edit_bio_url [export_vars -base "[dotlrn_community::get_community_url $community_id]bio-update" {return_url}]
+    set edit_bio_url [export_vars -base "[dotlrn_community::get_community_url $community_id]bio-update" {return_url user_id}]
 }
