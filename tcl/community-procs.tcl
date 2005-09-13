@@ -2215,7 +2215,7 @@ namespace eval dotlrn_community {
 	{-override_subject ""}
 	{-email_send_to ""}
 	{-override_enabled:boolean}
-
+	{-message_only:boolean}
     } {
         Send a membership email to the user
 
@@ -2274,7 +2274,10 @@ namespace eval dotlrn_community {
 	    set var_list [array get vars]
 	    set subject [lang::message::format $subject $var_list]
 	    set email "[lang::message::format $email $var_list]"
-
+	    
+	    if {$message_only_p} {
+		return [list $subject $email]
+	    }
             # Shamelessly cut & pasted from bulk mail
             if { [empty_string_p $from_addr] } {
                 set from_addr [ad_system_owner]
@@ -2288,9 +2291,11 @@ namespace eval dotlrn_community {
 	       
             set extra_headers [ns_set create]
 
-            set message_html [ad_html_text_convert -from html -to html $email]
+            #set message_html [ad_html_text_convert -from text/enhanced -to text/html $email]
+set message_html [ad_html_text_convert -from html -to html $email]
             # some mailers are chopping off the last few characters.
             append message_html "   "
+#            set message_text [ad_html_text_convert -from text/html -to text/plain $email]
             set message_text [ad_html_text_convert -from html -to text $email]
 	    
             # Send email in iso8859-1 charset
