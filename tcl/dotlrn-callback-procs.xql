@@ -21,4 +21,16 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="callback::contact::person_new::impl::dotlrn_user.get_community_id">
+        <querytext>	
+
+	select c.community_id 
+	  from acs_rels r, dotlrn_communities c 
+         where r.object_id_one = :contact_id 
+         and r.object_id_two = c.community_id
+
+        </querytext>
+    </fullquery>
+
+
 </queryset>

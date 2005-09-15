@@ -173,3 +173,25 @@ ad_proc -callback dotlrn::member_email_available_vars {
     display in the user interface so an editor of an email template will know what variables are available
     description can contain HTML and will be shown with noquote
 } -
+
+ad_proc -public -callback contact::person_new -impl dotlrn_user {
+    {-package_id:required}
+    {-contact_id:required}
+    {-party_id:required}
+} {
+    Callback to add an organization's employee to dotLRN.
+    It also registers all employees of the organization within the club
+} {
+    
+    
+    db_1row get_community_id { }
+    
+    
+    dotlrn_privacy::set_user_guest_p -user_id $party_id -value "t"
+    dotlrn::user_add -can_browse  -user_id $party_id
+    dotlrn_community::add_user_to_community -community_id $community_id -user_id $party_id
+    
+    
+    
+    
+}
