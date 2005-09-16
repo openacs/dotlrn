@@ -83,14 +83,14 @@ set bio [db_string biography {
 } -default ""]
 
 set weblog_p 0
-if {1} {
-    set weblog_package_id  [site_node_apm_integration::get_child_package_id  -package_key "forums"]
-    set weblog_url "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view"
-#set to check if you are using webloggers
+#set to check if you are using forums
+if {[apm_package_installed_p "forums"]} {
+    set forums_package_id  [site_node_apm_integration::get_child_package_id  -package_key "forums"]
+    set forums_url "[dotlrn_community::get_url -package_id $forums_package_id]/forum-view"
 
-    db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id 
-    and o.creation_user = :user_id and f.package_id = :weblog_package_id}
-    set weblog_p 1
+    db_multirow forums forums {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id 
+    and o.creation_user = :user_id and f.package_id = :forums_package_id}
+    set forums_p 1
 }
 
 set portrait_p 0

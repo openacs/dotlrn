@@ -45,9 +45,9 @@
     <if @url@ not nil>
       <li>#dotlrn.Personal_home_page# <a href="@homepage_url@">@homepage_url@</a></li>
     </if>
-	<if @weblog_p@ true>
-	<multiple name="weblogs">
-	<li><a href=@weblog_url@?forum_id=@weblogs.forum_id@>@weblogs.name@</a> - #dotlrn.Latest_post# @weblogs.lastest_post@
+	<if @forums_p@ true>
+	<multiple name="forumss">
+	<li><a href=@forums_url@?forum_id=@forums.forum_id@>@forums.name@</a> - #dotlrn.Latest_post# @forums.lastest_post@
         </multiple>
         </if>
     <if @bio@ not nil>
