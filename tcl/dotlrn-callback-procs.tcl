@@ -68,11 +68,7 @@ ad_proc -public -callback contact::organization_new -impl dotlrn_club {
 	set fs_id [fs::get_root_folder -package_id [dotlrn_community::get_package_id_from_package_key -package_key "file-storage" -community_id $club_id]]
 	application_data_link::new -this_object_id $contact_id -target_object_id $fs_id
 
-	# Get list of employees and register them within the community
-	set employee_list [contact::util::get_employees -organization_id $contact_id]
-	foreach employee_id $employee_list {
-	    dotlrn_club::add_user -community_id $club_id -user_id $employee_id
-	}
+	callback dotlrn_community::add_members -community_id $club_id	
     }
 }
 
@@ -172,6 +168,12 @@ ad_proc -callback dotlrn::member_email_available_vars {
     @return list of varname description pairs suitable for
     display in the user interface so an editor of an email template will know what variables are available
     description can contain HTML and will be shown with noquote
+} -
+
+ad_proc -callback dotlrn_community::add_members {
+    -community_id
+} {
+    This callback will allow other packages to add members to a community
 } -
 
 ad_proc -public -callback contact::person_new -impl dotlrn_user {
