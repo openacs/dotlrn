@@ -679,7 +679,7 @@ div#header-footer-des{
           [ SCHEDA ] Added by www.sii.it 
 ************************************************************/
 div#scheda-container-sfondo{
-	width: inherit;
+	width: 100%;
 	background-image:url(00_headport_shadow_des.png);
 	background-repeat: repeat-y;
 	background-position: top right;
@@ -738,8 +738,8 @@ div#scheda-contenuto{
 }
 
 div#scheda-footer{
-	width: inherit;
-    height: 20px;
+	width: 100%;
+        height: 20px;
 	background-image:url(00_headport_shadow_base.png);
 	background-repeat: repeat-x;
 	margin-bottom: 10px;
@@ -790,7 +790,7 @@ div#container-00-gen{
 }
 
 div#container-shadows-sin{
-    white-space:normal; /* corregge l'errore del control panel della classe*/
+        white-space:normal; /* corregge l'errore del control panel della classe*/
 	width: 100%;
 	height:100%;
 	background-image:url(01_cont_shadow_sin.png);
@@ -798,7 +798,8 @@ div#container-shadows-sin{
 }
 
 div#container-shadows-des{
-    float: right;
+        float: right;
+	width:100%;
 	background-image: url(01_cont_shadow_des.png);
 	background-repeat: repeat-y;
 	background-position: right;
