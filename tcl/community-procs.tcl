@@ -2261,7 +2261,7 @@ namespace eval dotlrn_community {
 	if {[exists_and_not_null override_subject]} {
 	    set subject $override_subject
 	}
-        if {[exists_and_not_null email]} {
+        if {[info exists email] && ![string equal "" [string trim $email]]} {
 
 	    # user %varname% to substitute variables in email
 	    set subject_vars [lang::message::get_embedded_vars $subject]
