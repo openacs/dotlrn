@@ -164,6 +164,7 @@ ad_proc -callback dotlrn::member_email_var_list {
 
 ad_proc -callback dotlrn::member_email_available_vars {
     -type
+    {-community_id ""}
 } {
     @return list of varname description pairs suitable for
     display in the user interface so an editor of an email template will know what variables are available
