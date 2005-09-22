@@ -2291,13 +2291,12 @@ namespace eval dotlrn_community {
 	       
             set extra_headers [ns_set create]
 
-            #set message_html [ad_html_text_convert -from text/enhanced -to text/html $email]
-set message_html [ad_html_text_convert -from html -to html $email]
+            set message_html [ad_html_text_convert -from text/enhanced -to text/html $email]
+	    #set message_html [ad_html_text_convert -from html -to html $email]
             # some mailers are chopping off the last few characters.
             append message_html "   "
-#            set message_text [ad_html_text_convert -from text/html -to text/plain $email]
-            set message_text [ad_html_text_convert -from html -to text $email]
-	    
+            set message_text [ad_html_text_convert -from text/html -to text/plain $message_html]
+
             # Send email in iso8859-1 charset
             set message_data [build_mime_message $message_text $message_html]
             ns_set put $extra_headers MIME-Version [ns_set get $message_data MIME-Version]
