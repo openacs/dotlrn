@@ -2,7 +2,7 @@
 <br />
 <if @user_id@>
 <h3>@user.name;noquote@
-<if @user_id@ eq @my_user_id@ or @facilitator_p@>
+<if @edit_bio_url@ not nil>
 <a href="@edit_bio_url;noquote@" class="button">Edit My Bio</a>
 </if>
 </h3>

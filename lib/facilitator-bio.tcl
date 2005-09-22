@@ -70,8 +70,10 @@ if {$portrait_p} {
     set export_vars "user_id=$user_id"
 }
 
-if {[empty_string_p $community_id]} {
-    set edit_bio_url [export_vars -base "bio-update" {return_url user_id}]
-} else {
-    set edit_bio_url [export_vars -base "[dotlrn_community::get_community_url $community_id]bio-update" {return_url user_id}]
+if {[string equal $my_user_id $user_id] || $facilitator_p} {
+    if {[empty_string_p $community_id]} {
+        set edit_bio_url [export_vars -base "bio-update" {return_url user_id}]
+    } else {
+        set edit_bio_url [export_vars -base "[dotlrn_community::get_community_url $community_id]bio-update" {return_url user_id}]
+    }
 }
