@@ -25,7 +25,7 @@ if {![exists_and_not_null community_id]} {
 }
 
 set facilitator_p [dotlrn::user_can_admin_community_p \
-                       -user_id $user_id \
+                       -user_id $my_user_id \
                        -community_id $community_id]
 
 #if {!$facilitator_p} {
