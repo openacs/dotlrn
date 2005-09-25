@@ -25,7 +25,7 @@
 <% set dotlrn_url [dotlrn::get_url] %>
 
 <table>
-	<tr><td>
+	<tr><td width="35%">
 <div class="portlet-wrapper">
 <div class="portlet-title">
 	<span><h2>#dotlrn.General_Site_Help#</h2></span>
