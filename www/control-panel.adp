@@ -24,25 +24,23 @@
 
 <% set dotlrn_url [dotlrn::get_url] %>
 
-<table border="0" width="100%">
-  <tr>
-    <td valign="top" width="50%">
-<table class="element" border=0 cellpadding="0" cellspacing="0" width="100%">
-<tr> 
-  <td colspan="3" class="element-header-text">#dotlrn.lt_Help_and_Personal_Con#</td>
-</tr>
-<tr><td colspan="3" class="dark-line" height="0"><img src="/resources/dotlrn/spacer.gif"></td></tr>
-<tr>
-  <td class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" width="1"></td>
-  <td class="element-text" width="100%">
-<table cellspacing="0" cellpadding="0" class="element-content" width="100%">
+<table>
 	<tr><td>
-<h3>#dotlrn.General_Site_Help#</h3> 
+<div class="portlet-wrapper">
+<div class="portlet-title">
+	<span><h2>#dotlrn.General_Site_Help#</h2></span>
+</div>
+<div class="portlet">
 <ul>
   <li><a href="@dotlrn_url@/help">#dotlrn.help#</a></li>
-  <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a>
+  <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a></li>
 </ul>
-<h3>#dotlrn.Personal_Options#</h3>
+</div></div>
+<div class="portlet-wrapper">
+<div class="portlet-title">
+        <span><h2>#dotlrn.Personal_Options#</h2></span>
+</div>
+<div class="portlet">
 <ul>
   <li>
     <a href="@pvt_home@">#dotlrn.pvt_home_name#</a></li>
@@ -53,28 +51,18 @@
   <p><li><a href="@admin_url@">@admin_pretty_name@</a> (<a href="@cockpit_url@">#dotlrn.Cockpit#</a>)</li>
 </if>
 </ul>
-</td></tr></table>
- </td>
-	  <td align="right" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" width="1"></td>
 
-</tr>
-<tr><td colspan="3" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif"></td></tr>
-</table>
+</div>
+</div>
 
     <td valign="top" width="50%">
-<table class="element" border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr> 
-  <td colspan="3" class="element-header-text">#dotlrn.lt_JoinDrop_Classes_or_C#</td>
-</tr>
-<tr><td colspan="3" class="dark-line" height="0"><img src="/resources/dotlrn/spacer.gif"></td></tr>
-<tr>
-  <td class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" width="1"></td>
-  <td class="element-text" width="100%">
+<div class="portlet-wrapper">
+<div class="portlet-title">
+  <span><h2>#dotlrn.lt_JoinDrop_Classes_or_C#</h2></span>
+</div>
+<div class="portlet">
   <include src="dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@dotlrn_url@/control-panel">
- </td>
-	  <td align="right" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" width="1"></td>
 
-</tr>
-<tr><td colspan="3" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif"></td></tr>
-</table>
+</div>
+</div>
 </table>
