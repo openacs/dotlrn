@@ -41,6 +41,6 @@ if {$format == "html"} {
     set preview_message [ad_quotehtml $message]
 }
 
-set context_bar [list [list $referer Admin] "[_ dotlrn.Spam_Community]"]
+set context [list [list $referer Admin] "[_ dotlrn.Spam_Community]"]
 set community_id [dotlrn_community::get_community_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]

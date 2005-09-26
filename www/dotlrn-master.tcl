@@ -83,6 +83,16 @@ if {[exists_and_not_null no_navbar_p] && $no_navbar_p} {
     set show_navbar_p 0
 } 
 
+if { [empty_string_p $community_id] && \
+         [parameter::get \
+              -parameter hide_personal_portal_p \
+              -package_id [dotlrn::get_package_id] \
+              -default 0] } {
+    #We're not in a community portal, and we've been asked to
+    #hide the personal portal.
+    set show_navbar_p 0
+}
+
 if {![info exists link_all]} {
     set link_all 0
 }
@@ -370,7 +380,7 @@ set lang_admin_p [permission::permission_p \
 set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translator-mode-toggle" { { return_url [ad_return_url] } }]
 
 # Curriculum bar
-set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
+#set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
 
 #################################
 # CLASS/COMMUNITY-SPECIFIC COLORS

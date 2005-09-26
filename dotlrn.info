@@ -7,14 +7,14 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.1.2d1" url="http://openacs.org/repository/download/apm/dotlrn-2.1.2d1">
+    <version name="2.1.3" url="http://openacs.org/repository/download/apm/dotlrn-2.1.3">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
-        <release-date>2004-03-10</release-date>
+        <release-date>2005-09-03</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.1.2d1"/>
+        <provides url="dotlrn" version="2.1.3"/>
         <requires url="acs-kernel" version="5.0.0b4"/>
         <requires url="acs-lang" version="5.1.2d1"/>
         <requires url="attachments" version="0.5"/>
@@ -69,6 +69,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="#dotlrn.subcommunities_pretty_plural#" description="the plural"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="hide_personal_portal_p"  default="0" description="Some systems may wish to keep the personal portal hidden.  Setting this value to 1 will cause dotlrn to exclude navigation to the personal portal from community portals, and disable the entire navbar on non-community portal pages."/>
         </parameters>
 
     </version>

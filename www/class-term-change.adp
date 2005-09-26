@@ -19,9 +19,8 @@
 %>
 
 <master>
-<property name="title">@spam_name@</property>
-<property name="context">@context;noquote@</property>
+<property name="title">#dotlrn.change_class_term#</property>
+<property name="context_bar">@context_bar@</property>
+<property name="focus">change_class_term.term_id</property>
 
-<formtemplate id="spam_message"></formtemplate>
-
-<include src="spam-variables">
+<formtemplate id="change_class_term"></formtemplate>

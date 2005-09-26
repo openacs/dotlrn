@@ -95,6 +95,11 @@ set site_wide_admin_p [permission::permission_p \
 
 set dotlrn_admin_p [dotlrn::admin_p]
 
+set administrative_action_p 0
+if { ($oacs_site_wide_admin_p && $site_wide_admin_p) || (!$site_wide_admin_p && ($oacs_site_wide_admin_p || $dotlrn_admin_p))} {
+	set administrative_action_p 1
+}
+
 set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 
 set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]

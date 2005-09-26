@@ -286,8 +286,7 @@
   <msg key="lt_Join_a_clubs_pretty_n">Community hinzufügen</msg>
   <msg key="lt_Join_the_above_criter">Obige Suchkriterien verknüpfen mit</msg>
   <msg key="lt_Join_the_above_criter_1">Obige Suchkriterien verknüpfen mit</msg>
-  <msg key="lt_JoinDrop_a_Class_or_C">Zu einem Kundenportal
-hinzufügen/entfernen</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Zu einem Kundenportalhinzufügen/entfernen</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Kurse oder Communities hinzufügen/entfernen</msg>
   <msg key="lt_Key_a_short_name_no_s">Schlüssel (kurze Bezeichnung, keine Leerzeichen)</msg>
   <msg key="lt_Last_Visit_None_">Der User hat das System noch nicht besucht</msg>
@@ -505,8 +504,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="subcommunity_memberships">Der Benutzer ist Teilnehmer folgender %subcommunities_pretty_name%</msg>
   <msg key="Subject">Betreff</msg>
   <msg key="Subject_key">#dotlrn.Subject# Code</msg>
-  <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter
-</msg>
+  <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter</msg>
   <msg key="teaching_assistant_role_pretty_plural">Dozenten und Lehrbeauftragte</msg>
   <msg key="teal">Dunkeltürkis</msg>
   <msg key="Template">Vorlage</msg>
