@@ -126,6 +126,7 @@
   <msg key="course_admin_role_pretty_plural">Course Administrators</msg>
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
+  <msg key="Courses">Courses</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
   <msg key="Create_Club">Create Club</msg>
