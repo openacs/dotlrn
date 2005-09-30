@@ -438,8 +438,9 @@ a:hover {
 /* $scope_name substitutions: 035156 -> ${color3} */
 
 a:link, a:visited {
-  border-bottom: 1px solid #${color3};
+  border-bottom: 1px solid #${color3}; 
   color: #${color3};
+  text-decoration: none;
   }
 
 a:visited {
@@ -539,7 +540,7 @@ switch $scope_name {
     course {
 	set color1 white
 	set color2 white
-	set color3 white
+	set color3 black
 	set color4 white
 	set color5 white
 	set tabscope course
@@ -548,7 +549,7 @@ switch $scope_name {
     comm {
 	set color1 white
 	set color2 white
-        set color3 white
+        set color3 #FDB64B
         set color4 white
 	set color5 white
 	set tabscope comm
