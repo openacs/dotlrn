@@ -716,6 +716,10 @@ div#scheda-titolo{
 	text-decoration:none;
 	float:left;
 }
+div#scheda-titolo a:link, a:visited {
+        text-decoration:none;
+        border-bottom: 0;
+}
 div#scheda-immagine{
 	padding-left: 8px;
 	background-image:url(00_headport_shadow_sin.png);
@@ -803,6 +807,7 @@ div#container-shadows-des{
 	background-image: url(01_cont_shadow_des.png);
 	background-repeat: repeat-y;
 	background-position: right;
+	width: 100%;
 }
 
 div#container-gen{
