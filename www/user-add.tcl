@@ -35,8 +35,13 @@ ad_page_contract {
 
 #prevent this page from being called when it is not allowed
 # i.e.   AllowCreateGuestUsersInCommunity 0
-dotlrn_portlet::is_allowed -parameter guestuser
-dotlrn_portlet::is_allowed -parameter limiteduser
+
+if {[string equal $read_private_data_p f]} {
+	dotlrn_portlet::is_allowed -parameter guestuser
+}
+if {[string equal $can_browse_p 0]} {
+	dotlrn_portlet::is_allowed -parameter limiteduser
+}
 
 # Set read_private_data_p and can_browse_p to me the most restrictive defaults.
 
