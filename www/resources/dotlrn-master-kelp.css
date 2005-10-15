@@ -135,6 +135,16 @@ TR.table-header {BACKGROUND: #6DB2C9; COLOR: white; FONT-FAMILY: Arial, Helvetic
 #head-area, #head-area a, #footer-area, #footer-area a {font-family: arial, helvetica, sans-serif; font-size:11px; }
 #head-area td, #footer-area td {vertical-align:middle}
 
+/* Portal layout */
+.leftColumn { 
+              width: 50%;
+              vertical-align: top;
+}
+.rightColumn { 
+               width: 50%;
+               vertical-align: top;
+}
+
 /* dotlrn-overrides of standard CSS nodes */
 
 a:link{
