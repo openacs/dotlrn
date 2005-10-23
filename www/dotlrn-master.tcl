@@ -369,7 +369,7 @@ set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_
 set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
 
 if { [info exists context] } {
-    set context_bar [eval ad_context_bar $context]
+    set context_bar [eval ad_context_bar -- $context]
 }
 
 set acs_lang_url [apm_package_url_from_key "acs-lang"]
