@@ -15,13 +15,13 @@
   
   <partialquery name="last_visit_g">
     <querytext>
-    (dotlrn_users.user_id = users.user_id and users.last_visit <= (now() - to_interval(:last_visit_greater,'days')))
+    (dotlrn_users.user_id = users.user_id and users.last_visit <= (current_timestamp - (:last_visit_greater || 'days') :: interval ))
     </querytext>
   </partialquery>
   
   <partialquery name="last_visit_l">
     <querytext>
-    (dotlrn_users.user_id = users.user_id and users.last_visit >= (now() - to_interval(:last_visit_less,'days')))
+    (dotlrn_users.user_id = users.user_id and users.last_visit >= (current_timestamp - (:last_visit_less || 'days') :: interval ))
     </querytext>
   </partialquery>
   
