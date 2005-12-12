@@ -11,6 +11,16 @@ body {
   margin-top: 6px;
 }
 
+a div#listlink {
+	display:none;
+} 
+
+a:hover div#listlink {
+	display:block;
+	background:white;
+	width:300px;
+}
+
 .header-blank {background-color:white;}
 .header-quadrat {background-color:#587D91;}
 .header-zufall {background-color:#003B53;}
@@ -531,3 +541,4 @@ a.file-type-icon:active {
 #oacs-admin-url {
   display: none;
 }
+

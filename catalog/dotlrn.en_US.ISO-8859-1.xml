@@ -126,10 +126,8 @@
   <msg key="course_admin_role_pretty_plural">Course Administrators</msg>
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
-  <msg key="Courses">Courses</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
-  <msg key="Create_Club">Create Club</msg>
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
@@ -277,6 +275,7 @@ notify this user.</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
   <msg key="lt_Delete_class">Delete subject</msg>
+  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;Do not use P tags for paragraphs&lt;/font&gt;</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
@@ -421,7 +420,6 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
   <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">My Communities</msg>
-  <msg key="My_Workspace">My Workspace</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
   <msg key="Name__Email">Name / Email</msg>
@@ -486,14 +484,13 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Portrait">Portrait:</msg>
   <msg key="Portrait_1">Portrait</msg>
   <msg key="Post_to">Post to:</msg>
-  <msg key="Preferences">Preferences</msg>
   <msg key="Pretty_Name">Pretty Name</msg>
   <msg key="Pretty_Plural">Pretty Plural</msg>
   <msg key="Preview">Preview</msg>
   <msg key="prv_policy_must_be_one_of">The privacy policy must be either &quot;yes&quot; or &quot;no&quot;.</msg>
   <msg key="Public_Web_Log">Public Web Log</msg>
   <msg key="purple">purple</msg>
-  <msg key="pvt_home_name">My Account</msg>
+  <msg key="pvt_home_name">Mi Account</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
@@ -536,6 +533,7 @@ Thank you
   <msg key="send_email">Send Email</msg>
   <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Shared_Files">Shared Files</msg>
+  <msg key="show_lrn_toolbar">.LRN Toolbar anzeigen</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
   <msg key="Small">Small</msg>
@@ -597,7 +595,7 @@ Thank you
   <msg key="User_Management">User Management</msg>
   <msg key="user_portal_page_calendar_title">My Calendar</msg>
   <msg key="user_portal_page_file_storage_title">My Files</msg>
-  <msg key="user_portal_page_home_title">Home</msg>
+  <msg key="user_portal_page_home_title">My Space</msg>
   <msg key="user_portal_pretty_name">User</msg>
   <msg key="User_Search">User Search</msg>
   <msg key="User_Type">User Type</msg>

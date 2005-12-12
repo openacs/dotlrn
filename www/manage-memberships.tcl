@@ -174,6 +174,7 @@ if {$non_member_term_id != -1} {
     append non_member_query "_by_term"
 }
 
+set swa_p [acs_user::site_wide_admin_p -user_id $user_id] 
 set n_non_member_classes [db_string select_n_non_member_classes {}]
 db_multirow non_member_classes $non_member_query {}
 db_multirow non_member_clubs select_non_member_clubs {}

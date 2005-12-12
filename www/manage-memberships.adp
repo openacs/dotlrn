@@ -168,13 +168,16 @@
     <else>
       <tr class="even">
     </else>
-        <td>@non_member_classes.pretty_name@</td>
+<if @non_member_classes.join_policy@ eq "open">
+        <td><a href="<if @swa_p@ eq 1>@non_member_classes.url@</if><else>#</else>"><div id="listlink">@non_member_classes.description;noquote@</div>@non_member_classes.pretty_name@</a></td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
         <td>&nbsp;</td>
-<if @non_member_classes.join_policy@ eq "open">
         <td><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small></td>
 </if>
 <else>
+        <td>@non_member_classes.pretty_name@</td>
+        <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
+        <td>&nbsp;</td>
         <td><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small></td>
 </else>
       </tr>

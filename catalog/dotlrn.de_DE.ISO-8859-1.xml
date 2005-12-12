@@ -25,16 +25,12 @@
   <msg key="Add_users_to">Benutzer hinzufügen zu</msg>
   <msg key="Add_Users_to_Group">Benutzer zu Gruppe hinzufügen</msg>
   <msg key="AddDrop_Memberships">Kurse oder Communities hinzufügen/entfernen</msg>
-  <msg key="added_community_message">Um die Homepage der Community zu besuchen, gehen Sie mit Ihrem Browser auf %package%, loggen Sie ein und klicken Sie auf den  %community_name% Link in dem Gruppen Portlet.</msg>
-  <msg key="added_community_subject">Sie wurden zu der Community &quot;%community_name%&quot; bei %package% hinzugefügt</msg>
   <msg key="Admin">Verwalten</msg>
   <msg key="admin">Verwalten</msg>
-  <msg key="Admin_help">Hilfe für .LRN Administratoren</msg>
   <msg key="admin_page_name">Verwalten</msg>
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt; </msg>
-  <msg key="Administration_Cockpit">Administrations Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -45,14 +41,11 @@
   <msg key="Applets_to_Add">Anwendungen, die hinzugefügt werden können</msg>
   <msg key="Approve">Freischalten</msg>
   <msg key="approve">Freischalten</msg>
-  <msg key="Approve_all">Alle genehmigen</msg>
   <msg key="aqua">Aqua</msg>
-  <msg key="Archive">Archive</msg>
   <msg key="archived">Archiviert</msg>
   <msg key="archived_classes_and_communities">Archivierte %class_instances_pretty_plural% und %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Archivierte %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Wirklich?</msg>
-  <msg key="Are_you_sure_del_class">Sind Sie sicher das Sie den #dotlrn.Subject# löschen wollen?</msg>
   <msg key="are_you_sure_you_want_to_send">Wollen sie das Folgende wirklich senden</msg>
   <msg key="arhive_group_name">Gruppe %group_name% archivieren</msg>
   <msg key="Ask_a_question">Ansprechpartner bei Fragen:</msg>
@@ -69,7 +62,6 @@
   <msg key="cannot_be_removed">Kann nicht entfernt werden</msg>
   <msg key="Change_Locale">Sprachversion ändern</msg>
   <msg key="Choose_members_to_receive">Wählen Sie die Teilnehmer von %community_name% aus, die diese Nachricht erhalten sollen:</msg>
-  <msg key="Class_instance_key">Code für die Klasse</msg>
   <msg key="class_instance_portal_pretty_name">Kurse</msg>
   <msg key="class_instances_pretty_name">Kurs</msg>
   <msg key="class_instances_pretty_plural">Kurse</msg>
@@ -92,8 +84,7 @@
   <msg key="clubs_name_header">Bezeichnung der %clubs_pretty_name%
 </msg>
   <msg key="clubs_pretty_name">Community</msg>
-  <msg key="clubs_pretty_plural">Kunden</msg>
-  <msg key="Cockpit">Cockpit</msg>
+  <msg key="clubs_pretty_plural">Communities</msg>
   <msg key="Communities">Communities</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">Bezeichnung der %clubs_pretty_name%</msg>
@@ -118,26 +109,19 @@
   <msg key="course_admin_role_pretty_plural">Kursadministrator</msg>
   <msg key="course_assistant_role_pretty_name">Tutor</msg>
   <msg key="course_assistant_role_pretty_plural">Tutoren</msg>
-  <msg key="Courses">Kurse</msg>
   <msg key="Create_A_New_User">Neuen Benutzer erstellen</msg>
   <msg key="Create_a_Web_Log">Ein Web-Tagebuch anlegen</msg>
-  <msg key="Create_Club">Club erzeugen</msg>
   <msg key="Created">Erstellt</msg>
   <msg key="CSV_File_Format">Dateiformat CSV</msg>
   <msg key="Customize_Layout">Layout anpassen</msg>
-  <msg key="database_choked">&lt;p&gt;Datenbankfehler bei dem Versuch, den letzten User in der oben stehenden Liste anzulegen!&lt;br&gt; Die Transaktion wurde abgebrochen, es wurden keine neuen User angelegt, es wurden keine e-Mail Benachrichtigungen verschickt.&lt;p&gt;</msg>
-  <msg key="datafile_must">&lt;p&gt;Die Datendatei muss mindestens email, first_names und last_name Felder enthalten&lt;p&gt;</msg>
   <msg key="Deactivate_">Deaktivieren...</msg>
   <msg key="Deactivate_Users">Benutzer deaktivieren</msg>
   <msg key="Deactivated">Deaktiviert</msg>
   <msg key="Delete">Löschen</msg>
   <msg key="Delete_Empty">Leeres %departments_pretty_name% löschen</msg>
-  <msg key="Delete_Empty_Class">Leeren %pretty_name% löschen.</msg>
   <msg key="Department">Fachgebiet</msg>
-  <msg key="Department_key">Abteilungs Kennziffer</msg>
   <msg key="department_must_be_empty_to_be_deleted">Fehler: Das %departments_pretty_name% muss leer sein, damit es gelöscht werden kann.</msg>
-  <msg key="department_name">Bezeichnung des %departments_pretty_name%s nach
-&lt;a href=&quot;http://www.uni-heidelberg.de/faecher/schluessel.html&quot;&gt;Schlüssel des Statistischen Bundesamts&lt;/a&gt;</msg>
+  <msg key="department_name">Bezeichnung des %departments_pretty_name%s </msg>
   <msg key="department_name_already_in_use">Die Bezeichnung &lt;strong&gt;%department_pretty_name%&lt;/strong&gt; wird bereits verwendet. \n Bitte wählen Sie eine andere Bezeichnung.</msg>
   <msg key="departments_pretty_name">Fachgebiet</msg>
   <msg key="departments_pretty_plural">Fachgebiete</msg>
@@ -160,7 +144,7 @@
   <msg key="dotlrn_community_pretty_name">Gruppe</msg>
   <msg key="dotlrn_community_pretty_plural">Gruppen</msg>
   <msg key="dotLRN_Information">dotLRN-Informationen</msg>
-  <msg key="dotlrn_main_portlet_pretty_name">Kunden</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Kurse und Semester</msg>
   <msg key="dotlrn_member_rel_pretty_name">Der Benutzer ist Teilnehmer folgender Gruppe:</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Der Benutzer ist Teilnehmer folgender Gruppen:</msg>
   <msg key="Drop">Abmelden</msg>
@@ -184,7 +168,6 @@
   <msg key="Email_Members">E-Mail an Teilnehmer senden</msg>
   <msg key="email_message">Nachricht</msg>
   <msg key="email_sent">Die E-Mail wurde gesendet.</msg>
-  <msg key="email_sent_to">&lt;p&gt;e-Mail gesendet an %email%.</msg>
   <msg key="End_Date">Enddatum</msg>
   <msg key="End_date">Enddatum:</msg>
   <msg key="Error_sending_mail">Fehler beim Senden der E-Mail</msg>
@@ -221,7 +204,7 @@
   <msg key="Header_Logo_Alt_Text">Alternativer Text für Kopfzeilenlogo</msg>
   <msg key="Header_Logo_Item_ID">Kopfzeilenlogo-ID</msg>
   <msg key="help">Hilfe</msg>
-  <msg key="hide_lrn_toolbar">.LRN Toolbar verbergen</msg>
+  <msg key="hide_lrn_toolbar">.LRN toolbar verstecken</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">Interne ID</msg>
   <msg key="ID_1">ID</msg>
@@ -256,12 +239,11 @@
   <msg key="lt_An_error_occured_whil_1">Bei dem Versuch, einen Benutzer aus der Gruppe zu entfernen, ist ein Fehler aufgetreten. Der Fehler wurde protokolliert.</msg>
   <msg key="lt_approve_and_add_to_do">Freischalten und zu dotLRN hinzufügen</msg>
   <msg key="lt_Are_you_sure_you_want">Möchten Sie dieses leere Fachgebiet wirklich löschen:</msg>
-  <msg key="lt_Are_you_sure_you_want_nuke_users">Sind Sie sicher das Sie diese Benutzer endgültig entfernen wollen? Wir werden versuchen die Benutzer zu entfernen, das kann jedoch zu einigen Probleme führen.</msg>
   <msg key="lt_Be_sure_that_the_pers">Stellen Sie sicher, dass die Person nicht bereits für eine andere E-Mail-Adresse ein Benutzerkonto bei dotLRN besitzt, da doppelte Benutzerkonten Probeme verursachen. Um eine Person mit einem bestehenden Benutzerkonto hinzuzufügen, benutzen Sie die Option &lt;a href=members&gt;Teilnehmer verwalten&lt;/a&gt;. </msg>
   <msg key="lt_Class_Key_a_short_nam">Kursschlüssel (eine kurze Bezeichnung ohne Leerzeichen)</msg>
   <msg key="lt_Communitys_Web_Addres">Web-Adresse der Gruppe</msg>
   <msg key="lt_Current_clubs_pretty_">Eigene %clubs_pretty_plural%</msg>
-  <msg key="lt_Delete_class">#dotlrn.Subject# entfernen</msg>
+  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;Verwenden Sie keine P Tags für Paragraphen&lt;/font&gt;</msg>
   <msg key="lt_Do_you_really_want_to">Wollen Sie folgende Teilnehmer wirklich entfernen?</msg>
   <msg key="lt_Do_you_really_want_to_1">Wollen Sie wirklich %num_users% Benutzer entfernen?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN-Eigenschaften für diesen Benutzer</msg>
@@ -287,10 +269,9 @@
   <msg key="lt_Join_a_clubs_pretty_n">Community hinzufügen</msg>
   <msg key="lt_Join_the_above_criter">Obige Suchkriterien verknüpfen mit</msg>
   <msg key="lt_Join_the_above_criter_1">Obige Suchkriterien verknüpfen mit</msg>
-  <msg key="lt_JoinDrop_a_Class_or_C">Zu einem Kundenportalhinzufügen/entfernen</msg>
+  <msg key="lt_JoinDrop_a_Class_or_C">Kurse oder Communities hinzufügen/entfernen</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Kurse oder Communities hinzufügen/entfernen</msg>
   <msg key="lt_Key_a_short_name_no_s">Schlüssel (kurze Bezeichnung, keine Leerzeichen)</msg>
-  <msg key="lt_Last_Visit_None_">Der User hat das System noch nicht besucht</msg>
   <msg key="lt_Last_Visit_Over_in_da">Letzter Zugriff vor mehr als (in Tagen)</msg>
   <msg key="lt_Last_Visit_Within_in_">Letzter Zugriff innerhalb von (in Tagen)</msg>
   <msg key="lt_Make_this_user_a_site">Diesem Benutzer Systemadministrationsrechte erteilen</msg>
@@ -380,13 +361,11 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="must_have_values">Das Feld muss einen der folgenden Werte aufweisen:</msg>
   <msg key="Must_specify_recipients">Bitte geben Sie mindestens einen Empfänger für die Nachricht an</msg>
   <msg key="My_Communities">Eigene Kurse und Communities</msg>
-  <msg key="My_Workspace">Mein Workspace</msg>
   <msg key="NA">Nicht vorhanden</msg>
   <msg key="Name">Bezeichnung</msg>
   <msg key="Name__Email">Name/E-Mail-Adresse</msg>
   <msg key="navy">Marineblau</msg>
   <msg key="Needs_Approval">Auf Antrag</msg>
-  <msg key="Never_visited">niemals besucht</msg>
   <msg key="New">Neu</msg>
   <msg key="new">Neu</msg>
   <msg key="new_class">Neuer</msg>
@@ -427,7 +406,6 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Nuke">Löschen</msg>
   <msg key="Nuke_">Löschen...</msg>
   <msg key="Nuke_Users">Benutzer löschen</msg>
-  <msg key="Number_of_db_objects">Anzahl an Datenbankobjekten, die von dem User erzeugt wurden</msg>
   <msg key="olive">Olivgrün</msg>
   <msg key="Open">Selbstregistrierung</msg>
   <msg key="optional_defaults_to">Angabe optional, Standardwert ist</msg>
@@ -445,7 +423,6 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Portrait">Bild:</msg>
   <msg key="Portrait_1">Bild</msg>
   <msg key="Post_to">Veröffentlichen auf:</msg>
-  <msg key="Preferences">Einstellungen</msg>
   <msg key="Pretty_Name">Benutzerdefinierte Bezeichnung</msg>
   <msg key="Pretty_Plural">Benutzerdefinierte Bezeichnung (Plural)</msg>
   <msg key="Preview">Vorschau</msg>
@@ -454,7 +431,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
 </msg>
   <msg key="Public_Web_Log">Öffentliches Web-Tagebuch</msg>
   <msg key="purple">Dunkelviolett</msg>
-  <msg key="pvt_home_name">Mein Account</msg>
+  <msg key="pvt_home_name">My Account</msg>
   <msg key="Recipients_Email">E-Mail-Adresse des Empfängers</msg>
   <msg key="Recipients_Last_Name">Nachname des Empfängers</msg>
   <msg key="red">Rot</msg>
@@ -464,7 +441,6 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="registration_request_sent">Vielen Dank. Ihr Registrierungsantrag wurde an den Systemadministrator übermittelt.</msg>
   <msg key="Reject">Ablehnen</msg>
   <msg key="reject">Ablehnen</msg>
-  <msg key="Reject_all">Alle ablehnen</msg>
   <msg key="Remove_all">Entferne alle</msg>
   <msg key="Request_Membership">Zugang beantragen</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Zugang beantragen&quot;&gt; </msg>
@@ -504,15 +480,15 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="subcommunities_pretty_plural">Untergruppen</msg>
   <msg key="subcommunity_memberships">Der Benutzer ist Teilnehmer folgender %subcommunities_pretty_name%</msg>
   <msg key="Subject">Betreff</msg>
-  <msg key="Subject_key">#dotlrn.Subject# Code</msg>
-  <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter</msg>
+  <msg key="teaching_assistant_role_pretty_name">Dozent/Lehrbeauftragter
+</msg>
   <msg key="teaching_assistant_role_pretty_plural">Dozenten und Lehrbeauftragte</msg>
   <msg key="teal">Dunkeltürkis</msg>
   <msg key="Template">Vorlage</msg>
   <msg key="Templates">Vorlagen</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Semester</msg>
-  <msg key="Term_eg_Spring_Fall">Semester (z.B. SS, WS)</msg>
+  <msg key="Term_eg_Spring_Fall">Semestername</msg>
   <msg key="Term_ID">Semester-ID</msg>
   <msg key="term_properties">Eigenschaften des Semesters</msg>
   <msg key="Terms">Semester</msg>
@@ -537,7 +513,6 @@ Beispiel:</msg>
   <msg key="user_email_already_exists">Benutzer %user_email% besteht bereits. Die Benutzeridentifikation (user_id) wird gespeichert.</msg>
   <msg key="user_email_created">Benutzeridentifikation %user_email% erstellt...</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% ist seit %pretty_creation_date% als Benutzer von %system_name% registriert.</msg>
-  <msg key="User_help">Hilfe!</msg>
   <msg key="User_ID">Interne Benutzer-ID:</msg>
   <msg key="User_ID_1">Interne Benutzer-ID:</msg>
   <msg key="User_Management">Benutzerverwaltung</msg>

@@ -40,6 +40,7 @@ ad_form -name edit_community_info -form {
     {description:text(textarea),optional
 	{label "#dotlrn.Description#"}
 	{html {rows 5 cols 60 wrap soft}}
+	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
     }	
     
     {active_start_date:date(date),to_sql(ansi),from_sql(ansi)
