@@ -29,36 +29,40 @@ ad_page_contract {
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
-set description [dotlrn_community::get_community_description -community_id $community_id]
-set pretty_name [dotlrn_community::get_community_name $community_id]
 
-form create edit_community_info
-
-element create edit_community_info pretty_name \
-    -label [_ dotlrn.Name] \
-    -datatype text \
-    -widget text \
-    -html {size 60} \
-    -value $pretty_name
-
-element create edit_community_info description \
-    -label [_ dotlrn.Description] \
-    -datatype text \
-    -widget textarea \
-    -html {rows 5 cols 60 wrap soft} \
-    -value $description \
-    -optional
-
-if {[form is_valid edit_community_info]} {
-    form get_values edit_community_info pretty_name description
+ad_form -name edit_community_info -form {
     
-    dotlrn_community::set_community_name \
-        -community_id $community_id \
-        -pretty_name $pretty_name
+    {pretty_name:text(text)
+	{label "#dotlrn.Name#"}
+	{html {size 60}}
+    }
 
-    dotlrn_community::set_community_description \
-        -community_id $community_id \
-        -description $description
+    {description:text(textarea),optional
+	{label "#dotlrn.Description#"}
+	{html {rows 5 cols 60 wrap soft}}
+    }	
+    
+    {active_start_date:date(date),to_sql(ansi),from_sql(ansi)
+	{label "#dotlrn.Start_date#"}
+    }
+
+    {active_end_date:date(date),to_sql(ansi),from_sql(ansi)
+	{label "#dotlrn.End_date#"}
+    }
+
+} -on_request {
+
+    db_1row get_community_info {select pretty_name, description, active_start_date, active_end_date from dotlrn_communities_all where community_id = :community_id} 
+
+} -on_submit {
+
+    db_dml update_community_info {update dotlrn_communities_all
+	set pretty_name = :pretty_name,
+	description = :description,
+	active_start_date = :active_start_date,
+	active_end_date = :active_end_date
+	where community_id = :community_id
+    }
 
     ad_returnredirect $referer
     ad_script_abort
