@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.3" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a1" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -536,6 +536,25 @@ Thank you
   <msg key="show_lrn_toolbar">.LRN Toolbar anzeigen</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
+  <msg key="Site_Template_Add">Add New Site Template</msg>
+  <msg key="Site_Template_Adding">Add Site Template</msg>
+  <msg key="Site_Template_AdminParams">Admin Parameters for Site Templating</msg>
+  <msg key="Site_Template_Commchange">Can community administrators change the Community's Site Template?</msg>
+  <msg key="Site_Template_Commdefault">Default Site Tamplate for communities</msg>
+  <msg key="Site_Template_Editting">Edit Site Template</msg>
+  <msg key="Site_Template_ID">Site Template ID</msg>
+  <msg key="Site_Template_Name">Site Template Name</msg>
+  <msg key="Site_Template_Name_help">Provide a pretty name for this Site Template</msg>
+  <msg key="Site_Template_Nonedefault">Master Tempalate used for not registered visitors.</msg>
+  <msg key="Site_Template_Portal_theme">Associated Portal Theme</msg>
+  <msg key="Site_Template_Portal_theme_help">Select a portal theme. This portal theme is going to be used for the Site Template.</msg>
+  <msg key="Site_Template_Sitemaster">Master Template</msg>
+  <msg key="Site_Template_Sitemaster_help">Provide the entire path for the master template (i.e. /packages/dotlrn/www/dotlrn-master )</msg>
+  <msg key="Site_Template_Userchange">Can users change their Site Template?</msg>
+  <msg key="Site_Template_Userdefault">Defautl Site Template for users</msg>
+  <msg key="Site_Templates">Site Templates</msg>
+  <msg key="site_templates">Site Templates</msg>
+  <msg key="Site_Templates_Template_AdminParams">Parameters Administration</msg>
   <msg key="Small">Small</msg>
   <msg key="Sorry">Sorry!</msg>
   <msg key="Spam_">Spam ...</msg>

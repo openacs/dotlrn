@@ -609,4 +609,45 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::set_site_template_id.update_site_template">
+      <querytext>
+        update dotlrn_communities_all
+        set site_template_id = :site_template_id
+        where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_site_template_id.select_portal_theme">
+      <querytext>
+        select portal_theme_id
+        from dotlrn_site_templates
+        where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+   <fullquery name="dotlrn_community::set_site_template_id.update_portal_theme">
+      <querytext>
+        update portals
+        set theme_id = :new_theme_id
+        where portal_id = :portal_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::get_site_template_id_not_cached.select_site_template_id">
+        <querytext>
+            select site_template_id
+            from dotlrn_communities_all
+            where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+   <fullquery name="dotlrn_community::get_dotlrn_master_not_cached.select_dotlrn_master">
+        <querytext>
+            select dst.site_master
+            from dotlrn_site_templates dst, dotlrn_communities_all dca
+            where dca.community_id = :community_id
+            and dca.site_template_id = dst.site_template_id
+        </querytext>
+   </fullquery>
+
 </queryset>

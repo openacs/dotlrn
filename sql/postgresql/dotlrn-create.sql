@@ -21,6 +21,7 @@
 -- started August 18th, 2001
 --
 
+\i site-templates-create.sql
 \i users-create.sql
 \i portal-types-create.sql
 \i communities-create.sql

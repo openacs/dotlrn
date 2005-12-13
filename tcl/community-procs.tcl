@@ -307,6 +307,10 @@ namespace eval dotlrn_community {
             }
         }
 
+	# Assign default community site template
+	dotlrn_community::set_site_template_id -community_id $community_id \
+	    -site_template_id [parameter::get -package_id [dotlrn::get_package_id] -parameter "CommDefaultSiteTemplate_p"]
+
         # This new community should _not_ inherit it's permissions
         # from the root dotlrn instance. Why? All dotlrn users
         # can read the root dotlrn instance, but only members of
@@ -2319,5 +2323,59 @@ namespace eval dotlrn_community {
 	return $return_val
     }
     
+    ad_proc -public set_site_template_id {
+        {-community_id:required}
+        {-site_template_id:required}
+    } {
+        set the site_template_id for a given community_id
+    } {
+        db_dml update_site_template {}
+        set new_theme_id [db_string select_portal_theme {}]
+        set portal_id [get_portal_id -community_id $community_id]
+        db_dml update_portal_theme {}
+        set portal_id [get_admin_portal_id -community_id $community_id]
+	db_dml update_portal_theme {}
+	util_memoize_flush [list dotlrn_community::get_site_template_id_not_cached -community_id $community_id]
+	util_memoize_flush [list dotlrn_community::get_dotlrn_master_not_cached -community_id $community_id]
+    }
+
+    ad_proc -public get_dotlrn_master {
+        {-community_id:required}
+    } {
+        Returns the master configured for the user_id
+    } {
+        set site_template_id [get_site_template_id -community_id $community_id]
+	return [dotlrn::get_master_from_site_template_id -site_template_id $site_template_id]
+    }
+    
+    ad_proc -public get_site_template_id {
+        {-community_id:required}
+    } {
+        get the id of the comm's site template
+    } {
+        return [util_memoize [list dotlrn_community::get_site_template_id_not_cached -community_id $community_id]]
+    }
+    
+    ad_proc -private get_site_template_id_not_cached { 
+        {-community_id:required}
+    } {
+    } {
+	ns_log Warning "vguerra obteniendo template de commr $community_id proc cached"
+	set dotlrn_package_id [dotlrn::get_package_id] 
+	set comm_site_template_id [db_string select_site_template_id {} -default "0"]
+	if {[parameter::get -package_id $dotlrn_package_id -parameter AdminChangeSiteTemplate_p]} {
+	    ns_log Warning "vguerra cached 1"
+	    set site_template_id [get_site_template_id -community_id $community_id]
+	} else {
+	    ns_log Warning "vguerra cached 2"
+	    set site_template_id [parameter::get -package_id $dotlrn_package_id -parameter CommDefaultSiteTemplate_p]
+	    if {$site_template_id != $comm_site_template_id} {
+		set_site_template_id -community_id $community_id -site_template_id $site_template_id
+	    }
+	}
+	ns_log Warning "vguerra retornando del proc cacheado"
+	return $site_template_id
+    }
 }
+    
 

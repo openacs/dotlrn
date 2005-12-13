@@ -162,6 +162,10 @@ namespace eval dotlrn {
         # always flush when creating a new user
         util_memoize_flush "dotlrn::get_portal_id_not_cached -user_id $user_id"
 
+	#Site Template Customization
+	dotlrn::set_site_template_id -user_id $user_id \
+	    -site_template_id [parameter::get -package_id [dotlrn::get_package_id] -parameter "UserDefaultSiteTemplate_p"]
+
         return $rel_id
     }
 

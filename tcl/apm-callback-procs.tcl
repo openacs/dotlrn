@@ -51,6 +51,23 @@ ad_proc -private dotlrn::apm::after_instantiate {
             -privilege "admin"
 
         }
+       #Setting the default Site Template
+       set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
+       
+       #for communities
+       parameter::set_value -package_id $package_id \
+	   -parameter  "CommDefaultSiteTemplate_p" \
+	   -value $site_template_id
+	   
+       #for users
+       parameter::set_value -package_id $package_id \
+	   -parameter  "UserDefaultSiteTemplate_p" \
+	   -value $site_template_id
+
+       parameter::set_from_package_key -package_key "acs-subsite" \
+	   -parameter "DefaultMaster" \
+	   -value "/packages/dotlrn/www/dotlrn-master-custom"
+	
 }
 
 
@@ -102,7 +119,6 @@ ad_proc -public dotlrn::apm::after_upgrade {
 
                         ns_log notice "dotlrn upgrade: dotlrn permission granted..."
 
-
                         #grant dotlrn-portlet admin permission
                         permission::grant \
                              -party_id $dotlrn_admins_group \
@@ -120,25 +136,45 @@ ad_proc -public dotlrn::apm::after_upgrade {
 			ns_log notice "dotlrn upgrade: new-portal permission granted..."
 
 		    }
-
+		
 		db_transaction {
-
+		    
                         #grant admin permission on old communities
                         db_foreach community_group "select community_id from dotlrn_communities" {
- 
                         permission::grant \
                              -party_id $dotlrn_admins_group \
                              -object_id $community_id \
                              -privilege "admin"   
-
+			
                         ns_log notice "dotlrn upgrade: community $community_id permission granted to dotlrn-admin ..."
-
-
+			
 		    }
-	         }
-	      }
+		}
 	    }
+	    2.1.3 2.2.0a1 {
+		ns_log Warning "vguerra doing upgrade from 2.1.3 to 2.2.0a1"
+		#Setting the default Site Template
+		set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
+		
+		set package_id [dotlrn::get_package_id]
+		#for communities
+		parameter::set_value -package_id $package_id \
+		    -parameter  "CommDefaultSiteTemplate_p" \
+		    -value $site_template_id
+		
+		#for users
+		parameter::set_value -package_id $package_id \
+		    -parameter  "UserDefaultSiteTemplate_p" \
+		    -value $site_template_id
+		
+		parameter::set_from_package_key -package_key "acs-subsite" \
+		    -parameter "DefaultMaster" \
+		    -value "/packages/dotlrn/www/dotlrn-master-custom"
+		
+		
+	    }
+	}
 }
-
-
+    
+    
 

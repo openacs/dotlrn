@@ -46,6 +46,7 @@
     <a href="@pvt_home@">#dotlrn.pvt_home_name#</a></li>
 
   <p><li><a href="configure">#dotlrn.Customize_Layout#</a></li>
+  <p><li><a href="change-site-template?referer=@dotlrn_url@/control-panel">#dotlrn.Customize_Template#</a></li>
 
 <if @admin_p@>
   <p><li><a href="@admin_url@">@admin_pretty_name@</a> (<a href="@cockpit_url@">#dotlrn.Cockpit#</a>)</li>

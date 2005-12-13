@@ -410,4 +410,75 @@ namespace eval dotlrn {
         }
     }
 
+    ad_proc -public set_site_template_id {
+        {-user_id:required}
+        {-site_template_id:required}
+    } {
+        Sets the site_template_id for a given user
+    } {
+        set portal_id [dotlrn::get_portal_id -user_id $user_id]
+	ns_log Warning "tratando con vguerra $site_template_id"
+        set new_theme_id [db_string select_portal_theme {}]
+        db_dml update_portal_theme {}
+        db_dml update_user_site_template {}
+        util_memoize_flush [list dotlrn::get_site_template_id_not_cached -user_id $user_id]
+        util_memoize_flush [list dotlrn::get_dotlrn_master_not_cached -user_id $user_id]
+    }
+
+    ad_proc -public get_dotlrn_master {
+        {-user_id:required}
+    } {
+        Returns the master configured for the user_id
+    } {
+	set site_template_id [get_site_template_id -user_id $user_id]
+	ns_log Warning "vguerra obteniendo template de user $user_id"
+        return [get_master_from_site_template_id -site_template_id $site_template_id]
+    }
+
+    ad_proc -public get_site_template_id {
+	{-user_id:required}
+    } {
+        Get the site_template_id from a particular user
+    } {
+        return [util_memoize [list dotlrn::get_site_template_id_not_cached -user_id $user_id] ]
+    }
+
+    ad_proc -private get_site_template_id_not_cached {
+        {-user_id:required}
+    } {
+    } {
+	ns_log Warning "vguerra obteniendo template de user $user_id proc cached"
+	set dotlrn_package_id [dotlrn::get_package_id]
+	set user_site_template_id [db_string select_site_template_id {} -default "0"]
+	if {[parameter::get -package_id $dotlrn_package_id -parameter UserChangeSiteTemplate_p]} {
+	    ns_log Warning "vguerra cached 1"
+	    set site_template_id $user_site_template_id
+	} else {
+	    ns_log Warning "vguerra cached 2"
+	    set site_template_id [parameter::get -package_id $dotlrn_package_id -parameter UserDefaultSiteTemplate_p]
+	    if {$site_template_id != $user_site_template_id} {
+		set_site_template_id -user_id $user_id -site_template_id $site_template_id
+	    }
+	}
+	ns_log Warning "vguerra retornando del proc cacheado"
+	return $site_template_id
+    }
+    
+    
+    ad_proc -public get_master_from_site_template_id {
+	{-site_template_id:required}
+    } {
+    } {
+	return [util_memoize [list dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id]]
+    }
+    
+    ad_proc -private get_master_from_site_template_id_not_cached {
+	{-site_template_id:required}
+    } {
+    } {
+	return [db_string select_site_template_master {} \
+		    -default [parameter::get -package_id [dotlrn::get_package_id] \
+				  -parameter DefaultMaster_p]]
+    }
+
 }
