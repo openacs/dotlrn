@@ -152,7 +152,6 @@ ad_proc -public dotlrn::apm::after_upgrade {
 		}
 	    }
 	    2.1.3 2.2.0a1 {
-		ns_log Warning "vguerra doing upgrade from 2.1.3 to 2.2.0a1"
 		#Setting the default Site Template
 		set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
 		
