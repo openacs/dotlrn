@@ -131,6 +131,7 @@
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
+  <msg key="Customize_Template">Customize Site Template</msg>
   <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
   <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
