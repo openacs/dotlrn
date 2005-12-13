@@ -135,6 +135,7 @@ set class_instances_pretty_name [parameter::get -localize -parameter class_insta
 
 set context_bar [list \
                      [list classes [parameter::get -localize -parameter classes_pretty_plural]] \
-                     [list "class?class_key=$class_key" $class_name] \
+                     [list "class?class_key=$class_key" $pretty_name] \
                      [_ dotlrn.new_class_instance]]
 
+set class_name $pretty_name
