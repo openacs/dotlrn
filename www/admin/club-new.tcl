@@ -30,45 +30,64 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-form create add_club
+set join_options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approval]" "needs approval"] [list [_ dotlrn.Closed] closed]]
 
-element create add_club pretty_name \
-    -label "[_ dotlrn.Name]" \
-    -datatype text \
-    -widget text \
-    -html {size 60 maxlength 100}
+ad_form -name add_club -form {
+    
+    {pretty_name:text(text),optional
+	{label "#dotlrn.Name#"}
+	{html {size 60 maxlength 100}}
+	{help_text "[_ dotlrn.Name_help]"}
+    }
 
-element create add_club description \
-    -label "[_ dotlrn.Description]" \
-    -datatype text \
-    -widget textarea \
-    -html {rows 5 cols 60 wrap soft} \
-    -optional
+    {description:text(textarea),optional
+	{label "#dotlrn.Description#"}
+	{html {rows 5 cols 60 wrap soft}}
+	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
+    }	
+    
+    {active_start_date:date(date),to_sql(ansi),from_sql(ansi),optional
+	{label "#dotlrn.Start_date#"}
+	{help_text "[_ dotlrn.Start_date_help]"}
+    }
 
-element create add_club join_policy \
-    -label "[_ dotlrn.Join_Policy]" \
-    -datatype text \
-    -widget select \
-    -options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approval]" "needs approval"] [list [_ dotlrn.Closed] closed]]
+    {active_end_date:date(date),to_sql(ansi),from_sql(ansi),optional
+	{label "#dotlrn.End_date#"}
+	{help_text "[_ dotlrn.End_date_help]"}
+    }
+    
+    {join_policy:text(select)
+	{label "#dotlrn.Join_Policy#"}
+	{options $join_options}
+	{help_text "[_ dotlrn.Join_Policy_help]"}
+    }
+    {referer:text(hidden)
+	{label "[_ dotlrn.Referer]"}
+	{value "$referer"}
+    }
 
-element create add_club referer \
-    -label "[_ dotlrn.Referer]" \
-    -datatype text \
-    -widget hidden \
-    -value $referer
-
-if {[form is_valid add_club]} {
-    form get_values add_club \
-         pretty_name description join_policy referer
+} -on_submit {
 
     set key [dotlrn_club::new \
         -description $description \
         -pretty_name $pretty_name \
         -join_policy $join_policy]
 
+    # Update the time
+    # This should go into the dotlrn_club::new procedure and the dotlrn_community::new
+    # But this would involve too much code changes at the moment, so we stick with this for 
+    # the time being :-) MS (openacs@sussdorff.de)
+
+    db_dml update_community_info {update dotlrn_communities_all
+	set active_start_date = :active_start_date,
+	active_end_date = :active_end_date
+	where community_id = :key
+    }
+
     ad_returnredirect $referer
     ad_script_abort
 }
+
 
 set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
 set title "[_ dotlrn.new_community]"

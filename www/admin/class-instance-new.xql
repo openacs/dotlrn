@@ -4,8 +4,8 @@
 
     <fullquery name="select_class_info">
         <querytext>
-            select pretty_name as class_name,
-                   description as class_description
+            select pretty_name,
+                   description
             from dotlrn_classes_full
             where class_key = :class_key
         </querytext>
