@@ -67,14 +67,14 @@ ad_form -cancel_url $return_url -export { dotlrn_package_id return_url user_chan
 	parameter::set_value -package_id $dotlrn_package_id \
 	    -parameter "UserDefaultSiteTemplate_p" \
 	    -value $user_default_p
-	util_memoize_flush_regexp "get_dotlrn_master_not_cached *"
+	util_memoize_flush_regexp "get_site_template_id_not_cached *"
     }
     
     if {$comm_default_p != $comm_default_p_old} {
 	parameter::set_value -package_id $dotlrn_package_id \
 	    -parameter "CommDefaultSiteTemplate_p" \
 	    -value $comm_default_p
-	util_memoize_flush_regexp "get_dotlrn_master_not_cached *"
+	util_memoize_flush_regexp "get_site_template_id_not_cached *"
     }
     
     parameter::set_value -package_id $dotlrn_package_id \
