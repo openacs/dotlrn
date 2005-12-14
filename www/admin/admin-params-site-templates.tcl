@@ -22,6 +22,7 @@ set context [list $title]
 
 set dotlrn_package_id [dotlrn::get_package_id]
 set template_options [db_list_of_lists select_templates {select pretty_name, site_template_id from dotlrn_site_templates}]
+set template_options [lang::util::localize_list_of_lists -list $template_options]
 
 set user_change_p_old [parameter::get -package_id $dotlrn_package_id -parameter UserChangeSiteTemplate_p]
 set user_default_p_old [parameter::get -package_id $dotlrn_package_id -parameter UserDefaultSiteTemplate_p]
