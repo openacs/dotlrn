@@ -17,6 +17,7 @@
   <msg key="Add_a_User">Add a User</msg>
   <msg key="Add_New_Members">Add New Members</msg>
   <msg key="Add_Professor">Add Professor</msg>
+  <msg key="Add_Professor_help">Shall a professor be added to this class (this will open a query box on the next page)</msg>
   <msg key="add_selected_members">Add Selected Members</msg>
   <msg key="add_to_another_group">Add this user to another group</msg>
   <msg key="add_to_dotlrn">Add this user to .LRN</msg>
@@ -76,6 +77,7 @@
   <msg key="Change_Locale">Change Locale</msg>
   <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
   <msg key="Class_instance_key">Class key</msg>
+  <msg key="Class_instance_key_help">Alternatively use the class key.</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -126,6 +128,7 @@
   <msg key="course_admin_role_pretty_plural">Course Administrators</msg>
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
+  <msg key="Courses">Courses</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
   <msg key="Created">Created</msg>
@@ -196,6 +199,7 @@ notify this user.</msg>
   <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
   <msg key="End_Date">End Date</msg>
   <msg key="End_date">End date:</msg>
+  <msg key="End_date_help">Actual end date</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
   <msg key="Example_File">Example File</msg>
   <msg key="External_URL">External URL</msg>
@@ -242,6 +246,7 @@ notify this user.</msg>
   <msg key="Join_A_Group">Join A Group</msg>
   <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Join&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Join Policy</msg>
+  <msg key="Join_Policy_help">Join policy that is being applied</msg>
   <msg key="Key">Key</msg>
   <msg key="Large">Large</msg>
   <msg key="Last_Name">Last Name</msg>
@@ -421,9 +426,11 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
   <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">My Communities</msg>
+  <msg key="My_Workspace">My Workspace</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
   <msg key="Name__Email">Name / Email</msg>
+  <msg key="Name_help">Name of the class</msg>
   <msg key="navy">navy</msg>
   <msg key="Needs_Approval">Needs Approval</msg>
   <msg key="Never_visited">Never visited</msg>
@@ -485,6 +492,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Portrait">Portrait:</msg>
   <msg key="Portrait_1">Portrait</msg>
   <msg key="Post_to">Post to:</msg>
+  <msg key="Preferences">Preferences</msg>
   <msg key="Pretty_Name">Pretty Name</msg>
   <msg key="Pretty_Plural">Pretty Plural</msg>
   <msg key="Preview">Preview</msg>
@@ -563,6 +571,7 @@ Thank you
   <msg key="Spam_Users">Spam Users</msg>
   <msg key="Start_Date">Start Date</msg>
   <msg key="Start_date">Start date:</msg>
+  <msg key="Start_date_help">Actual start date</msg>
   <msg key="student_role_pretty_name">Student</msg>
   <msg key="student_role_pretty_plural">Students</msg>
   <msg key="subcomm_page_calendar_title">Calendar</msg>
@@ -582,6 +591,7 @@ Thank you
   <msg key="Term">Term</msg>
   <msg key="term">Term</msg>
   <msg key="Term_eg_Spring_Fall">Term (e.g. Spring, Fall)</msg>
+  <msg key="Term_help">Term for which this class is generated</msg>
   <msg key="Term_ID">Term ID</msg>
   <msg key="term_properties">term properties.</msg>
   <msg key="Terms">Terms</msg>

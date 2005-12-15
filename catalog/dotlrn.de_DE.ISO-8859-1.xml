@@ -31,6 +31,7 @@
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt; </msg>
+  <msg key="Administration_Cockpit">.LRN Administration</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -109,6 +110,7 @@
   <msg key="course_admin_role_pretty_plural">Kursadministrator</msg>
   <msg key="course_assistant_role_pretty_name">Tutor</msg>
   <msg key="course_assistant_role_pretty_plural">Tutoren</msg>
+  <msg key="Courses">Kurse</msg>
   <msg key="Create_A_New_User">Neuen Benutzer erstellen</msg>
   <msg key="Create_a_Web_Log">Ein Web-Tagebuch anlegen</msg>
   <msg key="Created">Erstellt</msg>
@@ -361,9 +363,11 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="must_have_values">Das Feld muss einen der folgenden Werte aufweisen:</msg>
   <msg key="Must_specify_recipients">Bitte geben Sie mindestens einen Empfänger für die Nachricht an</msg>
   <msg key="My_Communities">Eigene Kurse und Communities</msg>
+  <msg key="My_Workspace">Eigene Startseite</msg>
   <msg key="NA">Nicht vorhanden</msg>
   <msg key="Name">Bezeichnung</msg>
   <msg key="Name__Email">Name/E-Mail-Adresse</msg>
+  <msg key="Name_help">Bezeichnung des Kurses / Community</msg>
   <msg key="navy">Marineblau</msg>
   <msg key="Needs_Approval">Auf Antrag</msg>
   <msg key="New">Neu</msg>
@@ -423,6 +427,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Portrait">Bild:</msg>
   <msg key="Portrait_1">Bild</msg>
   <msg key="Post_to">Veröffentlichen auf:</msg>
+  <msg key="Preferences">Einstellungen</msg>
   <msg key="Pretty_Name">Benutzerdefinierte Bezeichnung</msg>
   <msg key="Pretty_Plural">Benutzerdefinierte Bezeichnung (Plural)</msg>
   <msg key="Preview">Vorschau</msg>
