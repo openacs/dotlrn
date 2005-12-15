@@ -110,6 +110,7 @@
             select dotlrn_class_instances_full.*
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.join_policy <> 'closed'
+	    and active_end_date > (select sysdate from dual)
             and not exists (select 1
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
@@ -127,11 +128,13 @@
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.department_key = :non_member_department_key
             and dotlrn_class_instances_full.join_policy <> 'closed'
+	    and active_end_date > (select sysdate from dual)
             and not exists (select 1
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.active_start_date,
+            	     dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>

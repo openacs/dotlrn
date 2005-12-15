@@ -156,7 +156,7 @@
       <tr class="table-title">
         <th align="left" width="55%">#dotlrn.class_name_header#</th>
         <th align="left" width="15%">#dotlrn.Term#</th>
-        <th align="left" width="15%">&nbsp;</th>
+        <th align="left" width="15%">#dotlrn.Start_date#</th>
         <th align="center" width="15%">#dotlrn.Actions#</th>
       </tr>
 
@@ -171,13 +171,13 @@
 <if @non_member_classes.join_policy@ eq "open">
         <td><a href="<if @swa_p@ eq 1>@non_member_classes.url@</if><else>#</else>"><div id="listlink">@non_member_classes.description;noquote@</div>@non_member_classes.pretty_name@</a></td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
-        <td>&nbsp;</td>
+        <td>@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@</td>
         <td><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small></td>
 </if>
 <else>
         <td>@non_member_classes.pretty_name@</td>
         <td>@non_member_classes.term_name@ @non_member_classes.term_year@</td>
-        <td>&nbsp;</td>
+        <td>@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@</td>
         <td><small><include src="register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small></td>
 </else>
       </tr>
@@ -208,13 +208,16 @@
     <else>
       <tr class="even">
     </else>
-        <td>@non_member_clubs.pretty_name@</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
 <if @non_member_clubs.join_policy@ eq "open">
+        <td><a href="<if @swa_p@ eq 1>@non_member_clubs.url@</if><else>#</else>"><div id="listlink">@non_member_clubs.description;noquote@</div>@non_member_clubs.pretty_name@</a></td>
+        <td>&nbsp;</td>
+        <td>@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@</td>
         <td><small><include src="register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small></td>
 </if>
 <else>
+        <td>@non_member_clubs.pretty_name@</td>
+        <td>&nbsp;</td>
+        <td>@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@</td>
         <td><small><include src="register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small></td>
 </else>
       </tr>
