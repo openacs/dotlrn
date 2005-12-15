@@ -2248,78 +2248,93 @@ namespace eval dotlrn_community {
 	          and community_id = :community_id
 	          and type = :type
         }] }  {
-	    # no email in database, use default
-	    ns_log notice "DAVEB checking for default email community_id '${community_id}' type '${type}'"
-            set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type -var_list $var_list] 0]
-	    ns_log notice "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
-            if {[llength $default_email]} {
-                set from_addr [lindex $default_email 0]
-                set subject [lindex $default_email 1]
-                set email [lindex $default_email 2]
+
+            # Only use the default mail if this is set in a parameter (off by default).
+            if {[parameter::get_from_package_key -package_key "dotlrn" -parameter "DefaultCommunityJoinMailP" -default 0]} {
+                # no email in database, use default
+                ns_log notice "DAVEB checking for default email community_id '${community_id}' type '${type}'"
+                set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type -var_list $var_list] 0]
+                ns_log notice "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
+                if {[llength $default_email]} {
+                    set from_addr [lindex $default_email 0]
+                    set subject [lindex $default_email 1]
+                    set email [lindex $default_email 2]
+                }
+            } else {
+                set subject ""
             }
         }
-	ns_log notice "DAVEB override email '${override_email}' override_subject '${override_subject}'"
-	if {[exists_and_not_null override_email]} {
-	    set email $override_email
-	}
-	if {[exists_and_not_null override_subject]} {
-	    set subject $override_subject
-	}
-        if {[info exists email] && ![string equal "" [string trim $email]]} {
 
-	    # user %varname% to substitute variables in email
-	    set subject_vars [lang::message::get_embedded_vars $subject]
-	    set email_vars [lang::message::get_embedded_vars $email]
-	    foreach var [concat $subject_vars $email_vars] {
-		if {![info exists vars($var)]} {
-		    set vars($var) ""
-		}
-	    }
-	    set var_list [array get vars]
-	    set subject [lang::message::format $subject $var_list]
-	    set email "[lang::message::format $email $var_list]"
-	    
-	    if {$message_only_p} {
-		return [list $subject $email]
-	    }
-            # Shamelessly cut & pasted from bulk mail
-            if { [empty_string_p $from_addr] } {
-                set from_addr [ad_system_owner]
+        # This is a trick. If the subject is set, send the mail. Otherwise don't. 
+        # We gracefully assume that the subject will be empty if no mail should be send. Otherwise why
+        # bother to create the welcome message in the first place (will be spam filtered...) MalteS
+        if {![string eq $subject ""]} {
+            ns_log notice "DAVEB override email '${override_email}' override_subject '${override_subject}'"
+            if {[exists_and_not_null override_email]} {
+                set email $override_email
             }
-
-	    if {[empty_string_p $email_send_to]} {
-		set to_addr [cc_email_from_party $to_user]
-	    }  else {
-		set to_addr [cc_email_from_party $email_send_to]
-	    }
-	       
-            set extra_headers [ns_set create]
-
-            set message_html [ad_html_text_convert -from text/enhanced -to text/html $email]
-	    #set message_html [ad_html_text_convert -from html -to html $email]
-            # some mailers are chopping off the last few characters.
-            append message_html "   "
-            set message_text [ad_html_text_convert -from text/html -to text/plain $message_html]
-
-            # Send email in iso8859-1 charset
-            set message_data [build_mime_message $message_text $message_html]
-            ns_set put $extra_headers MIME-Version [ns_set get $message_data MIME-Version]
-            ns_set put $extra_headers Content-ID [ns_set get $message_data Content-ID]
-            ns_set put $extra_headers Content-Type [ns_set get $message_data Content-Type]
-            set message [ns_set get $message_data body]
-	    
-            # both html and plain messages can now be sent the same way
-            acs_mail_lite::send \
-                -to_addr $to_addr \
-                -from_addr $from_addr \
-                -subject $subject \
-                -body $message \
-                -extraheaders $extra_headers
-
-	    set return_val 1
+            if {[exists_and_not_null override_subject]} {
+                set subject $override_subject
+            }
+            if {[info exists email] && ![string equal "" [string trim $email]]} {
+                
+                # user %varname% to substitute variables in email
+                set subject_vars [lang::message::get_embedded_vars $subject]
+                set email_vars [lang::message::get_embedded_vars $email]
+                foreach var [concat $subject_vars $email_vars] {
+                    if {![info exists vars($var)]} {
+                        set vars($var) ""
+                    }
+                }
+                set var_list [array get vars]
+                set subject [lang::message::format $subject $var_list]
+                set email "[lang::message::format $email $var_list]"
+                
+                if {$message_only_p} {
+                    return [list $subject $email]
+                }
+                # Shamelessly cut & pasted from bulk mail
+                if { [empty_string_p $from_addr] } {
+                    set from_addr [ad_system_owner]
+                }
+                
+                if {[empty_string_p $email_send_to]} {
+                    set to_addr [cc_email_from_party $to_user]
+                }  else {
+                    set to_addr [cc_email_from_party $email_send_to]
+                }
+                
+                set extra_headers [ns_set create]
+                
+                set message_html [ad_html_text_convert -from text/enhanced -to text/html $email]
+                #set message_html [ad_html_text_convert -from html -to html $email]
+                # some mailers are chopping off the last few characters.
+                append message_html "   "
+                set message_text [ad_html_text_convert -from text/html -to text/plain $message_html]
+                
+                # Send email in iso8859-1 charset
+                set message_data [build_mime_message $message_text $message_html]
+                ns_set put $extra_headers MIME-Version [ns_set get $message_data MIME-Version]
+                ns_set put $extra_headers Content-ID [ns_set get $message_data Content-ID]
+                ns_set put $extra_headers Content-Type [ns_set get $message_data Content-Type]
+                set message [ns_set get $message_data body]
+                
+                # both html and plain messages can now be sent the same way
+                acs_mail_lite::send \
+                    -to_addr $to_addr \
+                    -from_addr $from_addr \
+                    -subject $subject \
+                    -body $message \
+                    -extraheaders $extra_headers
+                
+                set return_val 1
+            } else {
+                set return_val 0
+            }
         } else {
-	    set return_val 0
-	}
+            # We did not send the mail so we still succeed :). MS
+            set return_val 1
+        }
 	return $return_val
     }
     

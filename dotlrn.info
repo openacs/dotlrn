@@ -7,14 +7,14 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.2.0a1" url="http://openacs.org/repository/download/apm/dotlrn-2.2.0a1">
+    <version name="2.2.0a2" url="http://openacs.org/repository/download/apm/dotlrn-2.2.0a2">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
         <release-date>2005-11-01</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.2.0a1"/>
+        <provides url="dotlrn" version="2.2.0a2"/>
         <requires url="acs-kernel" version="5.0.0b4"/>
         <requires url="acs-lang" version="5.1.2d1"/>
         <requires url="attachments" version="0.5"/>
@@ -79,6 +79,7 @@
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="UserDefaultSiteTemplate_p"  default="0" description="This is the site_template_id used by default when creating a user. If you want to change this parameter go to Dotlrn Admin and Click in Site Templates; then Choose wich is the Site Template for default when creating users." section_name=".LRN Portal Types"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityJoinMailP" default="0" description="If there is no welcome mail for new members in the database, should a default one be send?" section_name="Communities"/>
         </parameters>
 
     </version>
