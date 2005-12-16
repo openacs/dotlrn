@@ -211,13 +211,13 @@
 <if @non_member_clubs.join_policy@ eq "open">
         <td><a href="<if @swa_p@ eq 1>@non_member_clubs.url@</if><else>#</else>"><div id="listlink">@non_member_clubs.description;noquote@</div>@non_member_clubs.pretty_name@</a></td>
         <td>&nbsp;</td>
-        <td>@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@</td>
+        <td>@non_member_clubs.active_start_date@ - @non_member_clubs.active_end_date@</td>
         <td><small><include src="register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small></td>
 </if>
 <else>
         <td>@non_member_clubs.pretty_name@</td>
         <td>&nbsp;</td>
-        <td>@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@</td>
+        <td>@non_member_clubs.active_start_date@ - @non_member_clubs.active_end_date@</td>
         <td><small><include src="register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small></td>
 </else>
       </tr>
