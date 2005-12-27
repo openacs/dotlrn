@@ -85,7 +85,6 @@ create table dotlrn_member_emails (
         email           long,
         enabled_p       char(1) default 'f'
 	                check (enabled_p in ('t', 'f')),
-
 			constraint dotlrn_member_emails_un unique(community_id, type)
 );
 
@@ -100,3 +99,4 @@ for each row
 begin
 	select dotlrn_member_emails_seq.nextval into :new.email_id from dual;
 end;
+/
