@@ -2239,15 +2239,7 @@ namespace eval dotlrn_community {
 
 	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
 	array set vars $var_list
-        if {![db_0or1row member_email {
-            select from_addr,
-	           subject,
-                   email
-            from dotlrn_member_emails
-            where (enabled_p or :override_enabled_p = 1)
-	          and community_id = :community_id
-	          and type = :type
-        }] }  {
+        if {![db_0or1row member_email {*SQL*}] }  {
 
             # Only use the default mail if this is set in a parameter (off by default).
             if {[parameter::get_from_package_key -package_key "dotlrn" -parameter "DefaultCommunityJoinMailP" -default 0]} {
