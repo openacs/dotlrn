@@ -103,10 +103,6 @@ if {[dotlrn::is_instantiated]} {
         # redirect to pages inside dotlrn
         permission::grant -party_id [acs_magic_object "the_public"] -object_id $package_id -privilege read
     }
-
-
-    # Make sure that privacy is turned on
-    acs_privacy::privacy_control_set 1
     
     ns_log notice "dotlrn-init: done"
 }

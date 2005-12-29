@@ -67,6 +67,9 @@ ad_proc -private dotlrn::apm::after_instantiate {
        parameter::set_from_package_key -package_key "acs-subsite" \
 	   -parameter "DefaultMaster" \
 	   -value "/packages/dotlrn/www/dotlrn-master-custom"
+
+       # Make sure that privacy is turned on
+       acs_privacy::privacy_control_set 1
 	
 }
 
