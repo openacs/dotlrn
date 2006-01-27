@@ -101,4 +101,6 @@ append dotlrn_master__header_stuff {
      <link rel="stylesheet" href="/resources/acs-templating/mktree.css" media="all">
 }
 
+set self_registration_p [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1]
+
 ad_return_template

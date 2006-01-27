@@ -80,6 +80,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityJoinMailP" default="0" description="If there is no welcome mail for new members in the database, should a default one be send?" section_name="Communities"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="SelfRegistrationP"  default="1" description="Allow a user to join/leave communities or classes."/>
         </parameters>
 
     </version>

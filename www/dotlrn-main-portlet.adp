@@ -19,7 +19,7 @@
 %>
 
 
-<if @user_can_browse_p@>
+<if @user_can_browse_p@ and @self_registration_p@>
   <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
   <br></br>
 </if>

@@ -43,6 +43,11 @@ ad_page_contract {
 } -properties {
 }
 
+if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {
+    ad_returnredirect "not-allowed"
+    ad_script_abort
+}
+
 set user_id [ad_conn user_id]
 
 set show_drop_button_p [parameter::get_from_package_key \
