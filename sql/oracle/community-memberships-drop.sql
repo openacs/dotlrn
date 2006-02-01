@@ -23,6 +23,10 @@
 -- @version $Id$
 --
 
+
+drop trigger dotlrn_member_emails_trigger;
+drop sequence dotlrn_member_emails_seq;
+drop table dotlrn_member_emails;
 drop view dotlrn_admin_rels_full;
 drop table dotlrn_admin_rels;
 drop view dotlrn_member_rels_approved;

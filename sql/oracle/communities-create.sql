@@ -79,8 +79,12 @@ create table dotlrn_communities_all (
     package_id                  constraint dotlrn_c_package_id_fk
                                 references apm_packages (package_id),
     tree_sortkey                raw(240),
-    max_child_sortkey           raw(3)
+    max_child_sortkey           raw(3),
+	site_template_id			integer
+				constraint dotlrn_c_site_template_id_fk
+                                references dotlrn_site_templates(site_template_id)
 );
+
 
 create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id);
 create index dtlrn_com_all_archived_p_idx on dotlrn_communities_all (archived_p);

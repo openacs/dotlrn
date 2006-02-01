@@ -22,6 +22,7 @@
 -- @version $Id$
 --
 
+@@ site-templates-create.sql
 @@ users-create.sql
 @@ portal-types-create.sql
 @@ communities-create.sql
