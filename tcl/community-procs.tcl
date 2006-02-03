@@ -1797,7 +1797,7 @@ namespace eval dotlrn_community {
 	    # can read the root dotlrn instance, but only members of
 	    # this community should be able to read this instance (and
 	    # it's children)
-	    permission::set_not_inherit -object_id $package_id
+	    permission::set_not_inherit -object_id $clone_id
 
             # Grant read_private_data permission to "non guest" users.
             dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $clone_id
