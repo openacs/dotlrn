@@ -44,7 +44,13 @@ ad_page_contract {
 }
 
 if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {
-    ad_returnredirect "not-allowed"
+    set redirect_to [parameter::get -parameter SelfRegistrationRedirectTo -package_id [dotlrn::get_package_id] -default ""]
+
+    if { $redirect_to ne "" } {
+	ad_returnredirect $redirect_to
+    } else {
+	ad_returnredirect "not-allowed"
+    }
     ad_script_abort
 }
 

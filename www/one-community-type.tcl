@@ -34,6 +34,9 @@ ad_page_contract {
     title:onevalue
 }
 
+set self_registration_p [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1]
+
+
 # Check that this is a community type
 if {[parameter::get -localize -parameter community_type_level_p] != 1} {
     ad_returnredirect "./"

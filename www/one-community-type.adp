@@ -34,10 +34,11 @@
   <include src="community-types-chunk" title="@community_type_title@">
 </blockquote>
 
+<if @self_registration_p@>
 <p></p>
 
 <blockquote>
   <include src="communities-chunk" title="@communities_title@" community_type="@community_type@">
 </blockquote>
-
+</if>
 
