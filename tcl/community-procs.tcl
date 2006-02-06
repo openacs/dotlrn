@@ -1783,6 +1783,13 @@ namespace eval dotlrn_community {
                 db_dml copy_customizations_if_any {}
             }
 
+	    # This new community should _not_ inherit it's permissions
+	    # from the root dotlrn instance. Why? All dotlrn users
+	    # can read the root dotlrn instance, but only members of
+	    # this community should be able to read this instance (and
+	    # it's children)
+	    permission::set_not_inherit -object_id $clone_id
+
             # Grant read_private_data permission to "non guest" users.
             dotlrn_privacy::grant_read_private_data_to_non_guests -object_id $clone_id
 

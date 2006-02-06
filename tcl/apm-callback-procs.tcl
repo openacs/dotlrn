@@ -137,8 +137,17 @@ ad_proc -public dotlrn::apm::after_upgrade {
 		    }
 	         }
 	      }
+	    2.1.3 2.1.4a1 {
+		# This fixes a security hole opened up when cloning
+		# communities/classes
+		db_foreach get_communities_with_inherit {
+		    select community_id
+		    from dotlrn_communities_all c, acs_objects o
+		    where c.community_id = o.object_id
+		    and o.security_inherit_p = 't'
+		} {
+		    permission::set_not_inherit -object_id $community_id
+		}	
 	    }
+	}
 }
-
-
-
