@@ -2,7 +2,7 @@
 
 ad_library {
     
-    
+    Automated tests for security hole found on cloned communities
     
     @author Roel Canicula (roel@solutiongrove.com)
     @creation-date 2006-02-08
