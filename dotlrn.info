@@ -81,6 +81,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityJoinMailP" default="0" description="If there is no welcome mail for new members in the database, should a default one be send?" section_name="Communities"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="SelfRegistrationP"  default="1" description="Allow a user to join/leave communities or classes."/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="SelfRegistrationRedirectTo"  default="/dotlrn" description="URL to redirect to if user is not allowed to join/leave a community or class instead of displaying the 'Not Allowed' page."/>
         </parameters>
 
     </version>
