@@ -276,6 +276,7 @@ notify this user.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Are you sure you want to archive group &lt;strong&gt;%pretty_name%&lt;/strong&gt; and all its subgroups (if any)?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>
+  <msg key="lt_Are_you_sure_you_want_to_send">Are you sure you want to send the following email?</msg>
   <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have an account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
