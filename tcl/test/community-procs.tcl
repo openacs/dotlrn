@@ -40,7 +40,7 @@ aa_register_case -cats { db security_risk } \
 	    -rollback \
 	    -test_code {
 		db_foreach get_communities_with_inherit {
-		    select 1
+		    select 1 from dual
 		    where exists (select *
 				  from dotlrn_communities_all c, acs_objects o
 				  where c.community_id = o.object_id
