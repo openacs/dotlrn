@@ -44,12 +44,12 @@ if {!$site_wide_admin_p} {
 
 # make it so that only course admins 
 # and site wide admins can read this page 
-if { !$admin_p } {
-        ad_return_forbidden  "Permission Denied"  "<blockquote>
-    You don't have permission to view this page.
-    </blockquote>"
-        ad_script_abort
-}
+# if { !$admin_p } {
+#        ad_return_forbidden  "Permission Denied"  "<blockquote>
+#    You don't have permission to view this page.
+#    </blockquote>"
+#        ad_script_abort
+#}
 
 if {$admin_p} {
     set add_member_url [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }]
