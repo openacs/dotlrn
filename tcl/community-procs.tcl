@@ -2377,7 +2377,7 @@ namespace eval dotlrn_community {
 	set dotlrn_package_id [dotlrn::get_package_id] 
 	set comm_site_template_id [db_string select_site_template_id {} -default "0"]
 	if {[parameter::get -package_id $dotlrn_package_id -parameter AdminChangeSiteTemplate_p]} {
-	    set site_template_id [get_site_template_id -community_id $community_id]
+		set site_template_id $comm_site_template_id
 	} else {
 	    set site_template_id [parameter::get -package_id $dotlrn_package_id -parameter CommDefaultSiteTemplate_p]
 	    if {$site_template_id != $comm_site_template_id} {
