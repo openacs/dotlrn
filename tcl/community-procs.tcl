@@ -2377,7 +2377,7 @@ namespace eval dotlrn_community {
 	set dotlrn_package_id [dotlrn::get_package_id] 
 	set comm_site_template_id [db_string select_site_template_id {} -default "0"]
 	if {[parameter::get -package_id $dotlrn_package_id -parameter AdminChangeSiteTemplate_p]} {
-		set site_template_id $comm_site_template_id
+	    set site_template_id $comm_site_template_id
 	} else {
 	    set site_template_id [parameter::get -package_id $dotlrn_package_id -parameter CommDefaultSiteTemplate_p]
 	    if {$site_template_id != $comm_site_template_id} {
@@ -2386,6 +2386,20 @@ namespace eval dotlrn_community {
 	}
 	return $site_template_id
     }
+    
+    ad_proc -public assign_default_sitetemplate {
+	{-site_template_id:required}
+    } {
+    } {
+	
+	# We need to update the portal theme before the first hit!
+	set new_theme_id [db_string select_portal_theme {}]
+        db_dml update_portal_themes {}
+	db_dml update_portal_admin_themes {}
+	
+	util_memoize_flush_regexp "dotlrn_community::get_site_template_id_not_cached *" 
+    }
+
 }
     
 

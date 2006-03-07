@@ -73,6 +73,22 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn::assign_default_sitetemplate.select_portal_theme">
+        <querytext>
+            select portal_theme_id
+            from dotlrn_site_templates
+            where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::assign_default_sitetemplate.update_portal_themes">
+        <querytext>
+            update portals
+            set theme_id = :new_theme_id
+            where portal_id in ( select portal_id from dotlrn_users )
+        </querytext>
+    </fullquery>
+
     <fullquery name="dotlrn::set_site_template_id.update_portal_theme">
         <querytext>
             update portals

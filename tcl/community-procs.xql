@@ -625,6 +625,15 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.select_portal_theme">
+      <querytext>
+        select portal_theme_id
+        from dotlrn_site_templates
+        where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+
    <fullquery name="dotlrn_community::set_site_template_id.update_portal_theme">
       <querytext>
         update portals
@@ -632,6 +641,23 @@
         where portal_id = :portal_id
         </querytext>
     </fullquery>
+
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.update_portal_themes">
+      <querytext>
+        update portals
+        set theme_id = :new_theme_id
+        where portal_id in (select portal_id from dotlrn_communities_all )
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.update_portal_admin_themes">
+      <querytext>
+        update portals
+        set theme_id = :new_theme_id
+        where portal_id in (select admin_portal_id from dotlrn_communities_all )
+        </querytext>
+    </fullquery>
+
 
     <fullquery name="dotlrn_community::get_site_template_id_not_cached.select_site_template_id">
         <querytext>

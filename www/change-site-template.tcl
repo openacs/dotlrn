@@ -57,6 +57,6 @@ ad_form -export {community_id user_id referer site_template_id} -cancel_url $ref
 	ad_returnredirect $referer
 	ad_script_abort
     } else {
-	template::form::set_error site_templates site_templates "Debe seleccionar un Template!!"
+	template::form::set_error site_templates site_templates "You must select a Site Template!!"
     } 
 }

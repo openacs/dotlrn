@@ -474,5 +474,17 @@ namespace eval dotlrn {
 		    -default [parameter::get -package_id [dotlrn::get_package_id] \
 				  -parameter DefaultMaster_p]]
     }
+    
+    ad_proc -public assign_default_sitetemplate {
+	{-site_template_id:required}
+    } {
+    } {
+	
+	# We need to update the portal theme before the first hit!
+	set new_theme_id [db_string select_portal_theme {}]
+        db_dml update_portal_themes {update }
+
+	util_memoize_flush_regexp "dotlrn::get_site_template_id_not_cached *" 
+    }
 
 }
