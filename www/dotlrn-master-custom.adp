@@ -7,5 +7,6 @@
   <if @doc_type@ not nil><property name="doc_type">@doc_type;noquote@</property></if>
   <if @link_control_panel@ not nil><property name="link_control_panel">@link_control_panel;noquote@</property></if>
   <if @hide_feedback@ not nil><property name="hide_feedback">@hide_feedback@</property></if>
+  <if @title@ not nil><property name="title">@title;noquote@</property></if>
 
   <slave>
