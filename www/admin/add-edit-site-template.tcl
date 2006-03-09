@@ -15,7 +15,7 @@ ad_page_contract {
     {site_master ""}
 } -properties {
     title:onevalue
-    context:onevalue
+    context_bar:onevalue
 } -validate {
 } -errors {
 }
@@ -28,7 +28,7 @@ if {![info exists site_template_id]} {
     set title "[_ dotlrn.Site_Template_Editting]"
 }
 
-set context_bar [list "$title"]
+set context_bar [list [list site-templates "[_ dotlrn.Site_Templates]"] "$title"]
 
 set options [db_list_of_lists select_portal_themes { *SQL* }]
 ad_form -cancel_url $referer -export {referer} -name site_template -form {

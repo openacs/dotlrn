@@ -12,13 +12,13 @@ ad_page_contract {
     return_url:notnull
 } -properties {
     title:onevalue
-    contex:onevalue
+    contex_bar:onevalue
 } -validate {
 } -errors {
 }
 
 set title "[_ dotlrn.Site_Templates_Template_AdminParams]"
-set context [list $title]
+set context_bar [list [list site-templates "[_ dotlrn.Site_Templates]"] "$title"]
 
 set dotlrn_package_id [dotlrn::get_package_id]
 set template_options [db_list_of_lists select_templates {select pretty_name, site_template_id from dotlrn_site_templates}]
