@@ -5,7 +5,7 @@ create table apm_parameter_values_copy (
 	value_id	        integer,	
 	package_id		integer, 
 	parameter_id		integer, 
-	attr_value		text
+	attr_value		varchar(4000)
 );
 
 insert into apm_parameter_values_copy (
