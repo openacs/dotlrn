@@ -15,7 +15,7 @@
         <description format="text/html">Course Management</description>
 
         <provides url="dotlrn" version="2.2.0a3"/>
-        <requires url="acs-kernel" version="5.0.0b4"/>
+        <requires url="acs-kernel" version="5.2.2"/>
         <requires url="acs-lang" version="5.1.2d1"/>
         <requires url="attachments" version="0.5"/>
         <requires url="new-portal" version="0.1a"/>

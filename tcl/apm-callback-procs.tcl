@@ -172,7 +172,61 @@ ad_proc -public dotlrn::apm::after_upgrade {
 		parameter::set_from_package_key -package_key "acs-subsite" \
 		    -parameter "DefaultMaster" \
 		    -value "/packages/dotlrn/www/dotlrn-master-custom"
-		
+               
+               # This fixes parameter reseting from dotlrn
+               set community_level_p_param_id [db_string select_clevel_id { 
+                                                  select parameter_id
+                                                  from apm_parameters 
+                                                  where package_key='dotlrn' and
+                                                  parameter_name='community_level_p'}]
+               
+               set community_type_level_p_param_id [db_string select_ctlevel_id { 
+                                                  select parameter_id
+                                                  from apm_parameters 
+                                                  where package_key='dotlrn' and
+                                                  parameter_name='community_type_level_p'}]
+              
+              set dotlrn_level_p_param_id [db_string select_dlevel_id { 
+                                                  select parameter_id
+                                                  from apm_parameters 
+                                                  where package_key='dotlrn' and
+                                                  parameter_name='dotlrn_level_p'}]
+                
+               db_foreach select_attr_values {
+                   select community_id from dotlrn_communities_all
+                } {
+                   set package_id [dotlrn_community::get_package_id $community_id] 
+                   ns_log Notice "upgrade: $package_id parameter_id:
+                   $community_level_p_param_id"
+
+                   db_dml community_level_p_update { 
+                    update apm_parameter_values set 
+                    attr_value=(select attr_value from
+                    apm_parameter_values_copy where package_id=:package_id 
+                    and parameter_id=:community_level_p_param_id)
+                    where package_id=:package_id and
+                    parameter_id=:community_level_p_param_id
+                   }
+                   
+                   db_dml community_type_level_p_update { 
+                    update apm_parameter_values set 
+                    attr_value=(select attr_value from
+                    apm_parameter_values_copy where package_id=:package_id 
+                    and parameter_id=:community_type_level_p_param_id)
+                    where package_id=:package_id and
+                    parameter_id=:community_type_level_p_param_id
+                   }
+                   
+                   db_dml dotlrn_level_p_update { 
+                    update apm_parameter_values set 
+                    attr_value=(select attr_value from
+                    apm_parameter_values_copy where package_id=:package_id 
+                    and parameter_id=:dotlrn_level_p_param_id)
+                    where package_id=:package_id and
+                    parameter_id=:dotlrn_level_p_param_id
+                   }
+
+               }
 		
 	    }
 	    2.2.0a2 2.2.0a3 {
@@ -186,9 +240,7 @@ ad_proc -public dotlrn::apm::after_upgrade {
 		} {
 		    permission::set_not_inherit -object_id $community_id
 		}		
-	    }
+	    
+            }
 	}
 }
-    
-    
-
