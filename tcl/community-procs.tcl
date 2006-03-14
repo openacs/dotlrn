@@ -2341,7 +2341,14 @@ namespace eval dotlrn_community {
         {-community_id:required}
         {-site_template_id:required}
     } {
-        set the site_template_id for a given community_id
+        Sets a given Site Template for a Community
+
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+	
+	@param community_id The id of the Community that will change it's Site Template 
+	@param site_template_id The id of the Site Template that will be used by the Community
+
     } {
         db_dml update_site_template {}
         set new_theme_id [db_string select_portal_theme {}]
@@ -2356,7 +2363,15 @@ namespace eval dotlrn_community {
     ad_proc -public get_dotlrn_master {
         {-community_id:required}
     } {
-        Returns the master configured for the user_id
+        Returns the master configured for a given Community
+
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+
+	@param community_id The id of the Community in order to obtain the master template configured for it
+
+	@returns The path of the master template that will be used.
+
     } {
         set site_template_id [get_site_template_id -community_id $community_id]
 	return [dotlrn::get_master_from_site_template_id -site_template_id $site_template_id]
@@ -2365,7 +2380,15 @@ namespace eval dotlrn_community {
     ad_proc -public get_site_template_id {
         {-community_id:required}
     } {
-        get the id of the comm's site template
+        Gets the id of the community's site template
+
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+
+	@param community_id The id of the Community of which we want to abtain the Site Template
+   
+	@returns The id of the Site Template assigned to the Community
+
     } {
         return [util_memoize [list dotlrn_community::get_site_template_id_not_cached -community_id $community_id]]
     }
@@ -2373,6 +2396,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_site_template_id_not_cached { 
         {-community_id:required}
     } {
+	Gets the id of the community's site template - not cached
     } {
 	set dotlrn_package_id [dotlrn::get_package_id] 
 	set comm_site_template_id [db_string select_site_template_id {} -default "0"]
@@ -2390,6 +2414,14 @@ namespace eval dotlrn_community {
     ad_proc -public assign_default_sitetemplate {
 	{-site_template_id:required}
     } {
+	Assigns a portal theme associated to a Site Template
+	to all communities
+
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+
+	@param site_template_id The id of The Site Template to obtain the portal theme to be assigned
+    
     } {
 	
 	# We need to update the portal theme before the first hit!
