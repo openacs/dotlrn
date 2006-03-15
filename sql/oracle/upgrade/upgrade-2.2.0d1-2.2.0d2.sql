@@ -21,14 +21,14 @@ create table dotlrn_site_templates (
 -- Altering dotlrn communities table in order to have which
 -- site template is going to be using the community
 
-alter table dotlrn_communities_all add column site_template_id integer;
+alter table dotlrn_communities_all add site_template_id integer;
 alter table dotlrn_communities_all add constraint dotlrn_c_site_template_id_fk foreign key (site_template_id) references dotlrn_site_templates(site_template_id);
 
 
 -- Altering Users Profile table and dotlrn users view in order to have
 -- which site teemplate is going to be using the user
 
-alter table dotlrn_user_profile_rels add column site_template_id integer;
+alter table dotlrn_user_profile_rels add site_template_id integer;
 alter table dotlrn_user_profile_rels add constraint dotlrn_upr_site_template_id_fk foreign key (site_template_id) references dotlrn_site_templates(site_template_id);
 
 create or replace view dotlrn_users
@@ -109,15 +109,16 @@ show errors
 
 -- Store emails to be sent when user joins a community
 create table dotlrn_member_emails (
-        email_id	serial primary key,
+        email_id	integer primary key,
         community_id    integer references dotlrn_communities_all
                         on delete cascade,
 -- Might be useful
-        type            text default 'on join',
-        from_addr       text,
-        subject         text,
-        email           text,
-        enabled_p       boolean default 'f',
+        type            varchar2(200) default 'on join',
+        from_addr       varchar2(200),
+        subject         varchar2(200),
+        email           clob,
+        enabled_p       char(1) default 'f',
+			constraint dotlrn_member_emails_ck check(enabled_p in ('t','f')),
 	                constraint dotlrn_member_emails_un unique(community_id, type)
 );
 
