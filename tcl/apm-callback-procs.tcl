@@ -154,7 +154,8 @@ ad_proc -public dotlrn::apm::after_upgrade {
 		    }
 		}
 	    }
-	    2.1.3 2.2.0a1 {
+	    2.2.0d1 2.2.0d2 {
+
 		#Setting the default Site Template
 		set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
 		
