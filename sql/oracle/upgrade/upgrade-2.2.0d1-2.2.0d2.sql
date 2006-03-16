@@ -110,16 +110,16 @@ show errors
 -- Store emails to be sent when user joins a community
 create table dotlrn_member_emails (
         email_id	integer primary key,
-        community_id    integer references dotlrn_communities_all
+        community_id    integer references dotlrn_communities_all (community_id)
                         on delete cascade,
 -- Might be useful
-        type            varchar2(200) default 'on join',
-        from_addr       varchar2(200),
-        subject         varchar2(200),
-        email           clob,
-        enabled_p       char(1) default 'f',
-			constraint dotlrn_member_emails_ck check(enabled_p in ('t','f')),
-	                constraint dotlrn_member_emails_un unique(community_id, type)
+        type            varchar2(30) default 'on join',
+        from_addr       varchar2(256),
+        subject         varchar2(4000),
+        email           long,
+        enabled_p       char(1) default 'f'
+	                check (enabled_p in ('t', 'f')),
+			constraint dotlrn_member_emails_un unique(community_id, type)
 );
 
 create sequence dotlrn_member_emails_seq
