@@ -181,7 +181,7 @@ ad_proc -public dotlrn::apm::after_upgrade {
                                                   where package_key='dotlrn' and
                                                   parameter_name='community_level_p'}]
                
-               set community_type_level_p_param_id [db_string select_ctlevel_id { 
+               set comm_type_level_p_param_id [db_string select_ctlevel_id { 
                                                   select parameter_id
                                                   from apm_parameters 
                                                   where package_key='dotlrn' and
@@ -213,9 +213,9 @@ ad_proc -public dotlrn::apm::after_upgrade {
                     update apm_parameter_values set 
                     attr_value=(select attr_value from
                     apm_parameter_values_copy where package_id=:package_id 
-                    and parameter_id=:community_type_level_p_param_id)
+                    and parameter_id=:comm_type_level_p_param_id)
                     where package_id=:package_id and
-                    parameter_id=:community_type_level_p_param_id
+                    parameter_id=:comm_type_level_p_param_id
                    }
                    
                    db_dml dotlrn_level_p_update { 
