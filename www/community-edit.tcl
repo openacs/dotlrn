@@ -173,7 +173,7 @@ if {[empty_string_p $revision_id]} {
 }
  
 set title [_ dotlrn.Edit_Properties]
-set context_bar [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
+set context [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
 
 ad_return_template
 

@@ -18,7 +18,7 @@
 
 <master>
 <property name="title">@title@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context;noquote@</property>
 
 <p>
   <formtemplate id="edit_community_info"></formtemplate>
