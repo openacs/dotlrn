@@ -60,8 +60,8 @@ ad_form -name edit_community_info -form {
     db_dml update_community_info {update dotlrn_communities_all
 	set pretty_name = :pretty_name,
 	description = :description,
-	active_start_date = :active_start_date,
-	active_end_date = :active_end_date
+	active_start_date = to_date(:active_start_date , 'YYYY-MM-DD HH24:MI:SS'),
+	active_end_date = to_date(:active_end_date , 'YYYY-MM-DD HH24:MI:SS')
 	where community_id = :community_id
     }
 
