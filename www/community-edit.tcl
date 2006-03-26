@@ -65,6 +65,10 @@ ad_form -name edit_community_info -form {
 	where community_id = :community_id
     }
 
+    dotlrn_community::set_community_name \
+        -community_id $community_id \
+        -pretty_name $pretty_name    
+    
     ad_returnredirect $referer
     ad_script_abort
 }
