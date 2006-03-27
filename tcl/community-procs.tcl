@@ -1830,6 +1830,9 @@ namespace eval dotlrn_community {
                     -applet_key $applet_key
             }
 
+            set_site_template_id -community_id $clone_id \
+                -site_template_id [get_site_template_id -community_id $community_id]
+
         }
         
         return $clone_id
