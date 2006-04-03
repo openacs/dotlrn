@@ -106,7 +106,7 @@ TR.table-header {BACKGROUND: #6DB2C9; COLOR: white; FONT-FAMILY: Arial, Helvetic
 .cal-table-header { BACKGROUND: #DDEEFF; color: #000000; margin: 0px; padding: 0px; font-weight: bold; }
 .cal-week-event {BACKGROUND: #C9D7DC;}
 .cal-month {font-weight: bold; background-color: #C9D7DC; text-align: center; line-height: 160%;}
-.cal-month-day {BACKGROUND: #C9D7DC; BORDER: 1px c0c0c0 solid; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px ;}
+.cal-month-day {BACKGROUND: #C9D7DC; BORDER: 1px #C0C0C0 solid; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px ;}
 .cal-month-today {BACKGROUND: #003366; BORDER-RIGHT: grey 1px solid; BORDER-TOP: grey 1px solid; BORDER-LEFT: grey 1px solid; BORDER-BOTTOM: grey 1px solid;}
 .table-display {BORDER-RIGHT: #003366 1px solid; BORDER-TOP: #003366 1px solid; BORDER-LEFT: #003366 1px solid;BORDER-BOTTOM: #003366 1px solid;}
 .portal-page-config {BACKGROUND: #C9D7DC; WIDTH: 700px; CELLPADDING: 5;}
