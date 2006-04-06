@@ -55,7 +55,7 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 	{label "[_ dotlrn.Start_Date]"}
 	#{format {[lc_get formbuilder_date_format]}}
 	{html {id sel1}}
-        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel1', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel1', 'yyyy-mm-dd');\"> \[<b>yyyy-mm-dd </b>\]
         }}
     }
 
@@ -63,7 +63,7 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 	{label "[_ dotlrn.End_Date]"}
 	#{format {[lc_get formbuilder_date_format]}}
 	{html {id sel2}}
-        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel2', 'y-m-d');\"> \[<b>y-m-d </b>\]
+        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('sel2', 'yyyy-mm-dd');\"> \[<b>yyyy-mm-dd </b>\]
         }}
     }
     
