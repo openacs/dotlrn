@@ -18,6 +18,8 @@
     <install package="dotlrn-portlet"/>
     <install package="dotlrn-static"/>
     <install package="dotlrn-survey"/>
+    <install package="dotlrn-assessment"/>
+    <install package="dotlrn-evaluation"/>
 
     <mount package="dotlrn" mount-point="/dotlrn" instance-name="dotLRN"/>
     <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master"/>
