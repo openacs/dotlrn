@@ -17,7 +17,6 @@
     <install package="dotlrn-news"/>
     <install package="dotlrn-portlet"/>
     <install package="dotlrn-static"/>
-    <install package="dotlrn-survey"/>
     <install package="dotlrn-assessment"/>
     <install package="dotlrn-evaluation"/>
 
