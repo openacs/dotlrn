@@ -9,7 +9,8 @@ ad_page_contract {
     @arch-tag: 0578045b-3a01-4072-a15b-e6af5a729079
     @cvs-id $Id$
 } {
-	{rel_type "dotlrn_admin_rel"}
+    {rel_type "dotlrn_admin_rel"}
+    {community_id ""}
 } -properties {
 } -validate {
 } -errors {
@@ -18,7 +19,9 @@ ad_page_contract {
 set title "Facilitator Bios"
 set context [list $title]
 
-set community_id [dotlrn_community::get_community_id]
+if { $community_id eq "" } {
+    set community_id [dotlrn_community::get_community_id]
+}
 # set rel_type "dotlrn_admin_rel"
 
 db_multirow user_id_list get_user_id_list {
