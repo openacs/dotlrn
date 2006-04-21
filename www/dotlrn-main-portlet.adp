@@ -38,7 +38,7 @@
     <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
   </else>
 
-</h3><small>( <a href="#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); return false;">--</a> )</small>
+</h3><small>( <a href="#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )</small>
 
 <ul id="tree-@communities.simple_community_type@"><li>
 <group column="simple_community_type">
