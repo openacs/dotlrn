@@ -804,7 +804,7 @@ namespace eval dotlrn_community {
         Assigns a user to a particular role for that class.
         Roles in DOTLRN can be student, prof, ta, admin
     } {
-	ns_log notice "dotlrn_community::add_user_to_community community_id '${community_id}' user_id '${user_id}'"
+#	ns_log notice "dotlrn_community::add_user_to_community community_id '${community_id}' user_id '${user_id}'"
         if {[member_p $community_id $user_id]} {
             return
         }
@@ -2245,18 +2245,19 @@ namespace eval dotlrn_community {
         @error
     } {
 
-	ns_log notice "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
+#	ns_log notice "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
 
 	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
 	array set vars $var_list
         if {![db_0or1row member_email {*SQL*}] }  {
 
             # Only use the default mail if this is set in a parameter (off by default).
-            if {[parameter::get_from_package_key -package_key "dotlrn" -parameter "DefaultCommunityJoinMailP" -default 0]} {
+
+            if {[parameter::get -package_id [dotlrn::get_package_id] -parameter "DefaultCommunityJoinMailP" -default 0]} {
                 # no email in database, use default
-                ns_log notice "DAVEB checking for default email community_id '${community_id}' type '${type}'"
+#                ns_log notice "DAVEB checking for default email community_id '${community_id}' type '${type}'"
                 set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type -var_list $var_list] 0]
-                ns_log notice "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
+#                ns_log notice "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
                 if {[llength $default_email]} {
                     set from_addr [lindex $default_email 0]
                     set subject [lindex $default_email 1]
@@ -2267,11 +2268,11 @@ namespace eval dotlrn_community {
             }
         }
 
-        # This is a trick. If the subject is set, send the mail. Otherwise don't. 
+	#This is a trick. If the subject is set, send the mail. Otherwise don't. 
         # We gracefully assume that the subject will be empty if no mail should be send. Otherwise why
         # bother to create the welcome message in the first place (will be spam filtered...) MalteS
-        if {![string eq $subject ""]} {
-            ns_log notice "DAVEB override email '${override_email}' override_subject '${override_subject}'"
+        if { ([info exists subject] && $subject ne "") || $override_subject ne "" } {
+#            ns_log notice "DAVEB override email '${override_email}' override_subject '${override_subject}'"
             if {[exists_and_not_null override_email]} {
                 set email $override_email
             }
@@ -2296,7 +2297,7 @@ namespace eval dotlrn_community {
                     return [list $subject $email]
                 }
                 # Shamelessly cut & pasted from bulk mail
-                if { [empty_string_p $from_addr] } {
+                if { ![exists_and_not_null from_addr] } {
                     set from_addr [ad_system_owner]
                 }
                 
@@ -2322,6 +2323,7 @@ namespace eval dotlrn_community {
                 set message [ns_set get $message_data body]
                 
                 # both html and plain messages can now be sent the same way
+
                 acs_mail_lite::send \
                     -to_addr $to_addr \
                     -from_addr $from_addr \
