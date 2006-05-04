@@ -804,7 +804,8 @@ namespace eval dotlrn_community {
         Assigns a user to a particular role for that class.
         Roles in DOTLRN can be student, prof, ta, admin
     } {
-#	ns_log notice "dotlrn_community::add_user_to_community community_id '${community_id}' user_id '${user_id}'"
+	ns_log debug "dotlrn_community::add_user_to_community community_id '${community_id}' user_id '${user_id}'"
+
         if {[member_p $community_id $user_id]} {
             return
         }
@@ -1817,7 +1818,7 @@ namespace eval dotlrn_community {
 
             foreach applet_key [list_applets -community_id $community_id] {
                 # do the clone call on each applet in this community
-                ns_log notice "dotlrn_community::clone cloning applet = $applet_key"
+                ns_log debug "dotlrn_community::clone cloning applet = $applet_key"
                 set package_id [applet_call \
                     $applet_key \
                     "Clone" \
@@ -2245,7 +2246,7 @@ namespace eval dotlrn_community {
         @error
     } {
 
-#	ns_log notice "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
+	ns_log debug "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
 
 	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
 	array set vars $var_list
@@ -2255,9 +2256,9 @@ namespace eval dotlrn_community {
 
             if {[parameter::get -package_id [dotlrn::get_package_id] -parameter "DefaultCommunityJoinMailP" -default 0]} {
                 # no email in database, use default
-#                ns_log notice "DAVEB checking for default email community_id '${community_id}' type '${type}'"
+                ns_log debug "DAVEB checking for default email community_id '${community_id}' type '${type}'"
                 set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -to_user $to_user -type $type -var_list $var_list] 0]
-#                ns_log notice "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
+                ns_log debug "DAVEB default email '${default_email}' community_id '${community_id}' type '${type}'"
                 if {[llength $default_email]} {
                     set from_addr [lindex $default_email 0]
                     set subject [lindex $default_email 1]
@@ -2272,7 +2273,7 @@ namespace eval dotlrn_community {
         # We gracefully assume that the subject will be empty if no mail should be send. Otherwise why
         # bother to create the welcome message in the first place (will be spam filtered...) MalteS
         if { ([info exists subject] && $subject ne "") || $override_subject ne "" } {
-#            ns_log notice "DAVEB override email '${override_email}' override_subject '${override_subject}'"
+            ns_log Debug "DAVEB override email '${override_email}' override_subject '${override_subject}'"
             if {[exists_and_not_null override_email]} {
                 set email $override_email
             }
