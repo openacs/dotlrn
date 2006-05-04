@@ -25,6 +25,9 @@ ad_page_contract {
     {page_num 0}
 }
 
+# Used to keep track of navigation links
+ad_set_client_property dotlrn page_num $page_num
+
 if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
     ad_script_abort

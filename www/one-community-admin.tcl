@@ -33,6 +33,9 @@ ad_page_contract {
     users:multirow
 }
 
+# Used to keep track of navigation links
+ ad_set_client_property dotlrn page_num "-1"
+
 set community_id [dotlrn_community::get_community_id]
 set user_id [ad_get_user_id]
 
