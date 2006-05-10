@@ -80,13 +80,17 @@ namespace eval dotlrn_club {
         {-join_policy "open"}
         {-parent_community_id ""}
 	{-community_type "dotlrn_club"}
+	{-community_key ""}
     } {
         creates a new club and returns the club key
+	
+	@param pretty_name The name the community will have
+	@param community_key The key of the community, used e.g. in the URL
     } {
         set extra_vars [ns_set create]
         ns_set put $extra_vars join_policy $join_policy
 
-	if { [empty_string_p $community_type] } {
+	if {$community_type eq "" } {
 	    set community_type [community_type]
 	}
 
@@ -96,6 +100,7 @@ namespace eval dotlrn_club {
 		    -pretty_name $pretty_name \
 		    -description $description \
 		    -parent_community_id $parent_community_id \
+		    -community_key $community_key \
 		    -extra_vars $extra_vars]
     }
 
@@ -116,6 +121,27 @@ namespace eval dotlrn_club {
             -community_id $community_id \
             -user_id $user_id \
             -member_state $member_state
+    }
+
+    ad_proc -public add_user_multiple {
+        {-rel_type ""}
+        {-community_ids:required}
+        {-user_id:required}
+        {-member_state approved}
+    } {
+        Assigns a user to a particular role for these clubs.
+    } {
+        if [empty_string_p $rel_type] {
+            set rel_type "dotlrn_member_rel"
+        }
+
+	foreach community_id $community_ids {
+	    dotlrn_community::add_user_to_community \
+		-rel_type $rel_type \
+		-community_id $community_id \
+		-user_id $user_id \
+		-member_state $member_state
+	}
     }
 
 }
