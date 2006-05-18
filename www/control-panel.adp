@@ -22,8 +22,6 @@
 <property name="title">@title@</property>
 <property name="link_control_panel">0</property>
 
-<% set dotlrn_url [dotlrn::get_url] %>
-
 <table>
   <tr><td width="35%" valign="top">
 
@@ -100,36 +98,6 @@
         </ul>
       </div>
     </div>
-
-    <if @portrait_state@ eq upload>
-
-      <div class="portlet-wrapper">
-        <div class="portlet-title">
-	  <span><h2>#acs-subsite.Your_Portrait#</h2></span>
-	</div>
-        <div class="portlet">
-	  <p>
-	    #acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@">#acs-subsite.upload_a_portrait#</a>
-	  </p>
-	</div>
-      </div>
-    </if>
-
-    <if @portrait_state@ eq show>
-      <div class="portlet-wrapper">  
-        <div class="portlet-title">
-          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
-        </div>
-        <div class="portlet">
-          <p>#acs-subsite.lt_On_portrait_publish_d#.</p>
-          <table><tr valign="top"><td>
-            <img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="Portrait"><p>
-            <a href="/user/portrait/?return_url=/pvt/home">#acs-subsite.Edit#</a>
-            </td><td>@portrait_description@</td></tr>
-          </table>
-        </div>
-      </div>
-    </if>
 
   </td></tr>
 </table>
