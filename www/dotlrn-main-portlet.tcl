@@ -32,12 +32,15 @@ if {![exists_and_not_null show_archived_p]} {
     set show_archived_p 0
 }
 
+#DRB: This is a hack that depends on .LRN having clubs and classes.  Done quickly for
+#theme-selva for .LRN 2.2.
+
 set community_type_clause ""
 if { [exists_and_not_null community_filter] } {
     if { $community_filter eq "class_instances" } {
         set community_type_clause "and dotlrn_communities_all.community_type not in ('dotlrn_community', 'dotlrn_club', 'dotlrn_pers_community')"
     } elseif { $community_filter eq "communities" } {
-        set community_type_clause "and dotlrn_communities_all.community_type in ('dotlrn_community', 'dotlrn_club', 'dotlrn_pers_community')"
+        set community_type_clause "and dotlrn_communities_all.community_type in ('dotlrn_club', 'dotlrn_pers_community')"
     }
 }
 
