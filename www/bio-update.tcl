@@ -13,7 +13,7 @@ ad_page_contract {
 # HAM : 090705 user must be logged in to view this page
 auth::require_login
 
-set page_title [_ dotlrn.Edit_Bio]
+set page_title [_ dotlrn.Edit_Biography]
 
 if {[empty_string_p $user_id]} {
     set user_id [ad_conn user_id]
