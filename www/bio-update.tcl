@@ -13,7 +13,7 @@ ad_page_contract {
 # HAM : 090705 user must be logged in to view this page
 auth::require_login
 
-set page_title [_ dotlrn._Update_Bio]
+set page_title [_ dotlrn.Edit_Bio]
 
 if {[empty_string_p $user_id]} {
     set user_id [ad_conn user_id]
@@ -135,7 +135,6 @@ ad_form -extend -name user_info -form {
 
     if {![empty_string_p $upload_file]} {
         set tmp_filename [template::util::file::get_property tmp_filename $upload_file]
-
         set file_extension [string tolower [file extension $upload_file]]
 
         # remove the first . from the file extension
@@ -191,8 +190,13 @@ ad_form -extend -name user_info -form {
                 }
             }
 
-            set convert_path [parameter::get -parameter ConvertBinPath -package_id [dotlrn::get_package_id] -default "/bin/convert"]
-            exec $convert_path -scale 135 $tmp_filename $tmp_filename
+            set convert_path [parameter::get -parameter ConvertBinPath -package_id [dotlrn::get_package_id] -default "/usr/local/bin/convert"]
+
+            if { [file exists $convert_path] } {
+                if { [catch {exec $convert_path -type [lindex [split $guessed_file_type /] 1] -scale 135 $tmp_filename $tmp_filename} errmsg] } {
+                    ns_log Warning "\"convert\" failed with the following error: $errmsg"
+                }
+            }
 
             set revision_id [cr_import_content \
                                  -image_only \
@@ -206,7 +210,7 @@ ad_form -extend -name user_info -form {
                                  $guessed_file_type \
                                  portrait-of-user-$user_id]
             
-            cr_set_imported_content_live $guessed_file_type $revision_id
+            item::publish -item_id $item_id -revision_id $revision_id
             
         }
     } else {

@@ -75,4 +75,4 @@
   </if>
 </if>
 
-<include src="/packages/dotlrn/lib/facilitator-bio" user_id="@user_id@" community_id="@community_id@" return_url="@return_url_2;noquote@">
+<include src="/packages/dotlrn/lib/bio" user_id="@user_id@" community_id="@community_id@" return_url="@return_url_2;noquote@">
