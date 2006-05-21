@@ -31,6 +31,10 @@ ad_proc -private dotlrn::apm::after_install {
 	    -object_id [apm_package_id_from_key new-portal] \
 	    -privilege "admin"
 
+    parameter::set_from_package_key \
+        -package_key acs-kernel \
+        -parameter HomeURL \
+        -value /dotlrn/control-panel
 }
 
 
@@ -243,5 +247,11 @@ ad_proc -public dotlrn::apm::after_upgrade {
 		}		
 	    
             }
-	}
+	    2.2.0a3 2.2.0a4 {
+                parameter::set_from_package_key \
+                    -package_key acs-kernel \
+                    -parameter HomeURL \
+                    -value /dotlrn/control-panel
+	    }
+    }
 }
