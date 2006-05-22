@@ -24,63 +24,78 @@
 <p><a href="#Edit%20PersonalInfo">Editing Personal Information</a> | <a href="#JoinDrop">Joining/Dropping 
   Groups</a> | <a href="#RequestGroup">Requesting a New Group</a> | <a href="#BulkEmail">Sending Bulk Email</a> 
   | <a href="#Alerts">Modifying Your Forum Email Alerts</a>| <a href="#Help">Additional Help</a></p> 
-<p><b><font size="4"><a name="EditPersonalInfo">Editing Personal Information</a></font></b><br>
+
+<a name="EditPersonalInfo"><h1>Editing Personal Information</h1></a>
+<p>
   You can change your personal information at any time. This enables you to protect 
   your password, correct or change your full name, publish a URL for a your website, 
   and change your login name/email address. If you do not keep this login name 
   the same as your current email address or a forwarding address, you will not 
   receive group emails and forum alerts from .LRN. </p>
-<p><b>To Change Password:</b><br>
- 
-<li> Login and go to your My Account page<br>
- 
+</p>
+
+<h2>To Change Password:</h2>
+
+<ul>
+<li>Login and go to your My Account page</li>
+ <li>If you do not have a personal portal, click on the Help icon in the group 
+  banner to get to your My Account.</li>
+  <li> Click on &quot;Change My Password&quot;</li>
+  <li> Enter your new password twice and click &quot;Update.&quot;</li>
+	</ul>
+
+<h2>To change personal information:</h2>
+
+<ul>
+<li> Login and go to your My Account page</li>
 <li>If you do not have a personal portal, click on the Help icon in the group 
-  banner to get to your My Account.<br>
-  <li> Click on &quot;Change My Password&quot;<br>
-  <li> Enter your new password twice and click &quot;Update.&quot;
-<p>To change personal information:<br>
-  
-<li> Login and go to your My Account page<br>
-<li>If you do not have a personal portal, click on the Help icon in the group 
-  banner to get to your My Account.<br>
-  <li>  Click on &quot;Edit My Personal Information&quot;<br>
+  banner to get to your My Account.</li>
+  <li>  Click on &quot;Edit My Personal Information&quot;</li>
   <li>  Edit your full name, your email address (which also changes your login 
-  name to the system) and/or your personal URL.<br>
-  
-<li> Click &quot;Update.&quot; 
-  <p><b><font size="4"><a name="JoinDrop">Joining/Dropping Groups</a></font></b><br>
-    There are three types of groups: classes, communities and subgroups (of classes 
+  name to the system) and/or your personal URL.</li>
+  <li> Click &quot;Update.&quot;</li>
+	</ul>
+
+<a name="JoinDrop"><h1>Joining/Dropping Groups</h1></a>
+
+<p>There are three types of groups: classes, communities and subgroups (of classes 
     and communities). Limited Access users (non-affiliated) cannot join 
     or drop groups.</p>
-  <p><b>To join/drop classes and communities:</b><br>
-<li> Go to your personal Home page, My Space.<br>
+
+<h2>To join/drop classes and communities:</h2>
+<ul>
+<li> Go to your personal Home page, My Space.</li>
   <li> Click on &quot;Join/Drop a Class or Community Group&quot; in the Groups 
-  portlet.<br>
+  portlet.</li>
   <li>  On the top of the page, you will see the list of your current class 
-  and community memberships.<br>
-  <li> Beside each group name is a &quot;Drop Membership&quot; icon.<br>
-  <li> Scroll down the page to view the list of open classes and communities.<br>
+  and community memberships.</li>
+  <li> Beside each group name is a &quot;Drop Membership&quot; icon.</li>
+  <li> Scroll down the page to view the list of open classes and communities.</li>
   <li> Join any one by clicking on the join icon to the right of the group 
-  name.<br>
+  name.</li>
   <li> Some groups have an approval process. For those, the link is called 
-  &quot;Request Membership.&quot;<br>
-  
-<li> An email will be sent to the group administrator who will approve/disapprove 
-  your request and reply to you.
-<p><b>To join/drop subgroups:</b><br>
+  &quot;Request Membership.&quot;</li>
+  <li> An email will be sent to the group administrator who will approve/disapprove 
+  your request and reply to you.</li>
+	</ul>
+
+<h2>To join/drop subgroups:</h2>
+<ul>
   <li>  Since subgroups are subsets of groups, their memberships are handled 
-  within the groups.<br>
-  <li>  Go to your personal Home page, My Space.<br>
-  <li>  Go to the class or community through the link in the Groups portlet.<br>
-  <li> Locate the Subgroups portlet on the class or community portal pages.<br>
-  <li> Click the &quot;Join/Drop a Subgroup&quot; link.<br>
+  within the groups.</li>
+  <li>  Go to your personal Home page, My Space.</li>
+  <li>  Go to the class or community through the link in the Groups portlet.</li>
+  <li> Locate the Subgroups portlet on the class or community portal pages.</li>
+  <li> Click the &quot;Join/Drop a Subgroup&quot; link.</li>
   <li>  Click the &quot;join&quot; or &quot;drop&quot; link next to the desired 
-  subgroup.<br>
-  <li> Your membership status will change when the page reloads.<br>
-  
-<li> Then, return to the Subgroup Home page or My Space to continue.
-  <p><b><font size="4"><a name="RequestGroup">Requesting a New Class or Community</a></font></b><br>
-  The Site Wide Administrator handles class and community requests. </p>
+  subgroup.</li>
+  <li> Your membership status will change when the page reloads.</li>
+  <li> Then, return to the Subgroup Home page or My Space to continue.</li>
+	</ul>
+
+<a name="RequestGroup"><h1>Requesting a New Class or Community</h1></a>
+
+<p>The Site Wide Administrator handles class and community requests. </p>
 <p>To request a new class or to copy and reuse a class from a previous semester:<br>
   Send email <%=[ad_host_administrator]%>. For a new class, include the class 
   number, class title, professor(s), teaching assistants and course assistants. 
@@ -89,38 +104,41 @@
   and previous semester of the course. Include professor, teaching assistant and 
   course assistant information if any of that has changed. The &quot;recycled&quot; 
   class will contain all old content, but the student list will be cleared.</p>
-<p><b>To request a new community:</b><br>
+
+<h2>To request a new community:</h2>
+<p>
     Send email to  <%=[ad_host_administrator]%>. Include the name of the community, 
     a brief description of its purpose, the faculty or staff sponsor, the name(s) 
     of any persons who will need to be administrators of this community. You will 
     be notified by email when the community shell has been created. </p>
-  <p><b><font size="4"><a name="BulkEmail">Bulk Mail</a></font></b><br>
-  Class and community administrators can send group emails through the group administration
+
+<a name="BulkEmail"><h1>Bulk Mail</h1></a>
+
+<p>Class and community administrators can send group emails through the group administration
  page. If enabled, class and community members can send group emails through 
   the &quot;Email Members&quot; links on the user's My Account page.</p>
-<p><b>To send a group email:</b><br>
+
+<h2>To send a group email:</h2>
   
-<li> For admins, go to the administration page and click &quot;New Bulk Mail.&quot; 
-  <br>
-  
+<ul>
+<li> For admins, go to the administration page and click &quot;New Bulk Mail.&quot;</li>
 <li> For students in classes, go to the Staff List portlet and click on Member 
-  List. <br>
-  <li> Click "Email Members."<br>
-  <li> Select roles to email: Members or Administrators.<br>
-  <li> Fill out subject heading and enter message.<br>
-  <li> Select Send date and time and click &quot;Submit.&quot;<br>
-  <li>  Review the message and click &quot;Confirm.&quot;<br>
+  List. </li>
+  <li> Click "Email Members."</li>
+  <li> Select roles to email: Members or Administrators.</li>
+  <li> Fill out subject heading and enter message.</li>
+  <li> Select Send date and time and click &quot;Submit.&quot;</li>
+  <li>  Review the message and click &quot;Confirm.&quot;</li>
+  <li> The email is sent to all members with the role chosen. Group admins can view 
+  the bulk mail history from the group administration page.</li>
+	</ul>
   
-<li> The email is sent to all members with the role chosen. Group admins can view 
-  the bulk mail history from the group administration page.
-  
-  <p><b><font size="4"><a name="Alerts">Modifying Your Forum Email Alerts</a></font></b><br>
+<a name="Alerts"><h1>Modifying Your Forum Email Alerts</h1></a>
+<p>
     You can subscribe and unsubscribe to email alerts for any forum open to you 
     through the "Edit My Forum Email Alerts" link on the My Account page. 
     Limited Access users can access their My Account page through the Help icon 
     in the group banner.</p>
-  <p><b><font size="4"><a name="Help">Additional Help</a></font></b><br>
-    <a href="dotlrn-user-faq">User FAQ</a>
-<p></p>
-<p><br>
-</p>
+
+<a name="Help"><h1>Additional Help</h1></a>
+<p><a href="dotlrn-user-faq">User FAQ</a></p>
