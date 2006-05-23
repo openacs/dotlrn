@@ -453,6 +453,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="no_description">none set up</msg>
   <msg key="No_dont_delete_it">No, don't delete it</msg>
   <msg key="No_groups_to_add_to">No groups to add to</msg>
+  <msg key="No_notification_requested">No notification requested.</msg>
   <msg key="No_Terms">No Terms</msg>
   <msg key="No_user_found">No user found</msg>
   <msg key="No_Users">No Users</msg>
