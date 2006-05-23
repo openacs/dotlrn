@@ -466,6 +466,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="No_Terms">No Terms</msg>
   <msg key="No_user_found">No user found</msg>
   <msg key="No_Users">No Users</msg>
+  <msg key="No_notification_requested">No notification requested.</msg>
   <msg key="non_member_page_name">Not-A-Member</msg>
   <msg key="None">None</msg>
   <msg key="none_set_up">none set up</msg>
