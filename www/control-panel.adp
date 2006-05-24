@@ -61,13 +61,43 @@
   </td>
   <td valign="top">
 
+    <if @portrait_state@ eq upload>
+      <div class="portlet-wrapper">
+        <div class="portlet-title">
+          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
+        </div>
+        <div class="portlet">
+          <p>
+            #acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@">#acs-subsite.upload_a_portrait#</a>
+          </p>
+        </div>
+      </div>
+    </if>
+
+    <if @portrait_state@ eq show>
+      <div class="portlet-wrapper">  
+        <div class="portlet-title">
+          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
+        </div>
+        <div class="portlet">
+          <p>
+            #acs-subsite.lt_On_portrait_publish_d#.
+          </p>
+          <table><tr valign="top"><td>
+            <img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="Portrait"><p>
+            <a href="/user/portrait/?return_url=/pvt/home">#acs-subsite.Edit#</a>
+            </td><td>@portrait_description@</td></tr>
+          </table>
+        </div>
+      </div>
+    </if>
+
     <div class="portlet-wrapper">
       <div class="portlet-title">
         <span><h2>#acs-subsite.Privacy#<h2></span>
       </div>
       <div class="portlet">
         <ul>
-          <li><a href="@community_member_url@">#acs-subsite.lt_What_other_people_see#</a></li>
           <li><a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a></li>
           <li><a href="../user/email-privacy-level">#acs-subsite.Change_my_email_P#</a></li>
         </ul>

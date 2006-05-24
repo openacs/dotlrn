@@ -67,3 +67,16 @@ set whos_online_url "[subsite::get_element -element url]shared/whos-online"
 set make_visible_url "[subsite::get_element -element url]shared/make-visible"
 set make_invisible_url "[subsite::get_element -element url]shared/make-invisible"
 set invisible_p [whos_online::user_invisible_p [ad_conn untrusted_user_id]]
+
+if { ![db_0or1row get_portrait_info {}] } {
+    set portrait_state "upload"
+} else {
+    if { $portrait_title eq "" } {
+        set portrait_title "[_ acs-subsite.no_portrait_title_message]"
+	set portrait_state "show"
+	set portrait_publish_date [lc_time_fmt $publish_date "%q"]
+    }
+}
+set portrait_upload_url [export_vars -base "../user/portrait/upload" { { return_url [ad_return_url] } }]
+set subsite_url [ad_conn vhost_subsite_url]
+set pvt_home_url [ad_pvt_home]
