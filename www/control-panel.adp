@@ -58,9 +58,6 @@
       </div>
     </div>
 
-  </td>
-  <td valign="top">
-
     <if @portrait_state@ eq upload>
       <div class="portlet-wrapper">
         <div class="portlet-title">
@@ -91,6 +88,9 @@
         </div>
       </div>
     </if>
+
+  </td>
+  <td valign="top">
 
     <div class="portlet-wrapper">
       <div class="portlet-title">
