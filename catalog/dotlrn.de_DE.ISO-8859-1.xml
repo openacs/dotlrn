@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0a2" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -25,7 +25,7 @@
   <msg key="Add_users_to">Benutzer hinzufügen zu</msg>
   <msg key="Add_Users_to_Group">Benutzer zu Gruppe hinzufügen</msg>
   <msg key="AddDrop_Memberships">Kurse oder Communities hinzufügen/entfernen</msg>
-  <msg key="added_community_message">Um die Homepage der Community zu sehen gehen sie zu %package%, loggen Sie sich ein und clicken sie auf %community_name% in dem &quot;Gruppen&quot; portlet.</msg>
+  <msg key="added_community_message">Um die Homepage der Community zu sehen, gehen Sie zu %package%, loggen Sie sich ein und Klicken sie auf %community_name% in dem &quot;Gruppen&quot;-portlet.</msg>
   <msg key="added_community_subject">Sie wurden zu der Community &quot;%community_name%&quot; bei %package% hinzugefügt.</msg>
   <msg key="Admin">Verwalten</msg>
   <msg key="admin">Verwalten</msg>
@@ -34,7 +34,7 @@
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt; </msg>
-  <msg key="Administration_Cockpit">.LRN Administration</msg>
+  <msg key="Administration_Cockpit">.LRN-Administration</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -47,7 +47,7 @@
   <msg key="approve">Freischalten</msg>
   <msg key="Approve_all">Alle genehmigen</msg>
   <msg key="aqua">Aqua</msg>
-  <msg key="Archive">Archiv</msg>
+  <msg key="Archive">Archivieren</msg>
   <msg key="archived">Archiviert</msg>
   <msg key="archived_classes_and_communities">Archivierte %class_instances_pretty_plural% und %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Archivierte %groups_pretty_plural%</msg>
@@ -93,7 +93,7 @@
 </msg>
   <msg key="clubs_pretty_name">Community</msg>
   <msg key="clubs_pretty_plural">Communities</msg>
-  <msg key="Cockpit">Übersicht</msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">Communities</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">Bezeichnung der %clubs_pretty_name%</msg>
@@ -125,8 +125,9 @@
   <msg key="CSV_File_Format">Dateiformat CSV</msg>
   <msg key="Customize_Layout">Layout anpassen</msg>
   <msg key="Customize_Template">System Template anpassen</msg>
-  <msg key="database_choked">&lt;p&gt;Datenbank fehler währen wir versuchten den letzten Benutzer der obigen Liste anzulegen!&lt;br&gt;Die Transaktion wurde abgebroche, kein Benutzer wurde angelegt und keine E-Mail Benachrichtigung wurde verschickt.</msg>
-  <msg key="datafile_must">&lt;p&gt;Datenfile muss mindestens die Felder email,first_names,last_name enthalten&lt;p&gt;</msg>
+  <msg key="database_choked">&amp;lt;p&amp;gt;Ein Datenbank-Fehler ist aufgetreten, beim Versuch, den letzten Benutzer in obiger Liste zu erstellen! &amp;lt;br&amp;gt; Die Transaktion wurde abgebrochen, es wurden keine Benutzer eingetragen und keine Email-Benachrichtigungen verschickt.
+&amp;lt;p&amp;gt;</msg>
+  <msg key="datafile_must">&amp;lt;p&amp;gt;Die Datei muss mindestens die Datenfelder email, first_names und  last_name enthalten.&amp;lt;p&amp;gt;</msg>
   <msg key="Deactivate_">Deaktivieren...</msg>
   <msg key="Deactivate_Users">Benutzer deaktivieren</msg>
   <msg key="Deactivated">Deaktiviert</msg>
@@ -159,7 +160,7 @@
   <msg key="dotlrn_community_pretty_name">Gruppe</msg>
   <msg key="dotlrn_community_pretty_plural">Gruppen</msg>
   <msg key="dotLRN_Information">dotLRN-Informationen</msg>
-  <msg key="dotlrn_main_portlet_pretty_name">Kurse und Semester</msg>
+  <msg key="dotlrn_main_portlet_pretty_name">Kurse und Communities</msg>
   <msg key="dotlrn_member_rel_pretty_name">Der Benutzer ist Teilnehmer folgender Gruppe:</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Der Benutzer ist Teilnehmer folgender Gruppen:</msg>
   <msg key="Drop">Abmelden</msg>
@@ -183,7 +184,7 @@
   <msg key="Email_Members">E-Mail an Teilnehmer senden</msg>
   <msg key="email_message">Nachricht</msg>
   <msg key="email_sent">Die E-Mail wurde gesendet.</msg>
-  <msg key="email_sent_to">&lt;p&gt;Email wurde gesendet an %email%</msg>
+  <msg key="email_sent_to">&amp;lt;p&amp;gt;Email wurde verschickt an %email%.</msg>
   <msg key="End_Date">Enddatum</msg>
   <msg key="End_date">Enddatum:</msg>
   <msg key="Error_sending_mail">Fehler beim Senden der E-Mail</msg>
@@ -255,7 +256,9 @@
   <msg key="lt_An_error_occured_whil_1">Bei dem Versuch, einen Benutzer aus der Gruppe zu entfernen, ist ein Fehler aufgetreten. Der Fehler wurde protokolliert.</msg>
   <msg key="lt_approve_and_add_to_do">Freischalten und zu dotLRN hinzufügen</msg>
   <msg key="lt_Are_you_sure_you_want">Möchten Sie dieses leere Fachgebiet wirklich löschen:</msg>
-  <msg key="lt_Are_you_sure_you_want_nuke_users">Sind Sie sicher das Sie diese Benutzer komplett löschen wollen? Beachten Sie das wir nur versuchen werden diese Nutzer zu entfernen und dabei auf Fehler stossen könnten für einige der Nutzer.</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Wollen Sie diese Benutzer wirklich
+löschen? Hinweis: das System wird nur
+versuchen, diese Benutzer zu entfernen, und es könnte Probleme für andere Benutzer bekommen.</msg>
   <msg key="lt_Be_sure_that_the_pers">Stellen Sie sicher, dass die Person nicht bereits für eine andere E-Mail-Adresse ein Benutzerkonto bei dotLRN besitzt, da doppelte Benutzerkonten Probeme verursachen. Um eine Person mit einem bestehenden Benutzerkonto hinzuzufügen, benutzen Sie die Option &lt;a href=members&gt;Teilnehmer verwalten&lt;/a&gt;. </msg>
   <msg key="lt_Class_Key_a_short_nam">Kursschlüssel (eine kurze Bezeichnung ohne Leerzeichen)</msg>
   <msg key="lt_Communitys_Web_Addres">Web-Adresse der Gruppe</msg>
@@ -455,7 +458,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
 </msg>
   <msg key="Public_Web_Log">Öffentliches Web-Tagebuch</msg>
   <msg key="purple">Dunkelviolett</msg>
-  <msg key="pvt_home_name">My Account</msg>
+  <msg key="pvt_home_name">Ihr Account</msg>
   <msg key="Recipients_Email">E-Mail-Adresse des Empfängers</msg>
   <msg key="Recipients_Last_Name">Nachname des Empfängers</msg>
   <msg key="red">Rot</msg>

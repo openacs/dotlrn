@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="no_NO" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="no_NO" charset="ISO-8859-1">
 
   <msg key="A_copy_of">En kopi av</msg>
   <msg key="Access">Tilgang</msg>
@@ -25,12 +25,15 @@
   <msg key="Add_users_to">Legg til brukere til</msg>
   <msg key="Add_Users_to_Group">Legg til brukere til Gruppe</msg>
   <msg key="AddDrop_Memberships">Abonner/Slett medlemskap</msg>
+  <msg key="added_community_message">For å komme til gruppens hjemmeside, gå til adressen %package% , logg inn, og klikk på lenken %community_name% i ruten &quot;Grupper&quot;.</msg>
+  <msg key="added_community_subject">Du har blitt medlem i &quot;%community_name%&quot; gruppen i %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Kontrollpanel</msg>
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
+  <msg key="Administration_Cockpit">Administrasjonsside</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratorer</msg>
   <msg key="Admins_of">Admins for</msg>
@@ -41,7 +44,9 @@
   <msg key="Applets_to_Add">Applets å legge til</msg>
   <msg key="Approve">Godkjenn</msg>
   <msg key="approve">Godkjenn</msg>
+  <msg key="Approve_all">Godkjenn alt</msg>
   <msg key="aqua">aqua</msg>
+  <msg key="Archive">Arkiver</msg>
   <msg key="archived">arkivert</msg>
   <msg key="archived_classes_and_communities">Archivert %class_instances_pretty_plural% og %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Arkivert %groups_pretty_plural</msg>
@@ -55,10 +60,13 @@
   <msg key="black">svart</msg>
   <msg key="Black_None_chosen">Svart (Ingen valgt)</msg>
   <msg key="blue">blå</msg>
+  <msg key="Bulk_Approve">Masskgodkjenn</msg>
+  <msg key="Bulk_Approving">Massegodkjenning pågår</msg>
   <msg key="Bulk_Upload">Masseopplasting</msg>
   <msg key="Bulk_Uploading">Masseopplasting....</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
   <msg key="Change_Locale">Bytt Locale</msg>
+  <msg key="Choose_members_to_receive">Velg medlemmer i %community_name% som skal motta denne meldingen:</msg>
   <msg key="class_instance_portal_pretty_name">Emner</msg>
   <msg key="class_instances_pretty_name">Emne</msg>
   <msg key="class_instances_pretty_plural">Emner</msg>
@@ -77,10 +85,11 @@
   <msg key="club_page_calendar_title">Kalender</msg>
   <msg key="club_page_file_storage_title">Fillager</msg>
   <msg key="club_page_home_title">Gruppens hjemmeside</msg>
-  <msg key="club_page_people_title">Mennesker</msg>
+  <msg key="club_page_people_title">Personer</msg>
   <msg key="clubs_name_header">%clubs_pretty_name% Navn </msg>
   <msg key="clubs_pretty_name">Gruppe</msg>
   <msg key="clubs_pretty_plural">Grupper</msg>
+  <msg key="Cockpit">Kontrollpanel</msg>
   <msg key="Communities">Grupper</msg>
   <msg key="Community">Gruppe</msg>
   <msg key="community_header_name">%clubs_pretty_name% Navn </msg>
@@ -91,6 +100,7 @@
   <msg key="Community_Type">Gruppe type</msg>
   <msg key="Community_Types">Gruppe typer</msg>
   <msg key="Communitys_Name">Gruppens navn</msg>
+  <msg key="Compose_bulk_message">Skriv massemelding</msg>
   <msg key="Configure_Element">konfigurer element</msg>
   <msg key="Configure_name">Konfigurer %name%</msg>
   <msg key="Confirm">Bekreft</msg>
@@ -106,8 +116,11 @@
   <msg key="course_assistant_role_pretty_plural">Kursassistenter</msg>
   <msg key="Create_A_New_User">Legg inn ny bruker</msg>
   <msg key="Create_a_Web_Log">Legg inn en web-logg</msg>
+  <msg key="Created">Innlagt</msg>
   <msg key="CSV_File_Format">CSV filformat</msg>
   <msg key="Customize_Layout">Tilpass layout</msg>
+  <msg key="database_choked">&lt;p&gt;Databasefeil under forsøk på å legge inn siste bruker i listen over!&lt;br&gt; Transaksjonen er avbrutt, ingen brukere er lagt inn og ingen e-postvarsel er sendt.&lt;p&gt;</msg>
+  <msg key="datafile_must">&lt;p&gt;Datafilen må inneholde miimum email, first_names, last_name feltene.&lt;p&gt;</msg>
   <msg key="Deactivate_">Deaktiver ...</msg>
   <msg key="Deactivate_Users">Deaktiver brukere</msg>
   <msg key="Deactivated">Deaktivert</msg>
@@ -148,6 +161,7 @@
   <msg key="Edit">Rediger</msg>
   <msg key="Edit_a_User">Rediger eg bruker</msg>
   <msg key="edit_approved_email_servers">Rediger forhåndsgodkjente e-posttjenere</msg>
+  <msg key="edit_community_parameters">Rediger gruppeparametre</msg>
   <msg key="edit_message_and_hit_send">Rediger meldingen under to klikk &quot;Send e-post&quot; for å gi melding til brukeren.</msg>
   <msg key="edit_parameters">Rediger parametre</msg>
   <msg key="Edit_Properties">Rediger egenskaper</msg>
@@ -161,6 +175,7 @@
   <msg key="Email_Members">Epost medlemmer</msg>
   <msg key="email_message">Melding</msg>
   <msg key="email_sent">e-post sendt</msg>
+  <msg key="email_sent_to">&lt;p&gt;E-post sendt til %email%.</msg>
   <msg key="End_Date">Slutt-dato</msg>
   <msg key="End_date">Slutt dato:</msg>
   <msg key="Error_sending_mail">Feil ved sending av e-post</msg>
@@ -197,6 +212,7 @@
   <msg key="Header_Logo_Alt_Text">Alternativ tekst for overskriftslogo</msg>
   <msg key="Header_Logo_Item_ID">Overskriftslogos ID</msg>
   <msg key="help">Hjelp</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Emneansvarlig</msg>
@@ -230,6 +246,7 @@
   <msg key="lt_An_error_occured_whil_1">En feil oppstod under forsøk på å fjerne en bruker i en gruppe. Feilen har blitt logget.</msg>
   <msg key="lt_approve_and_add_to_do">godkjenn en innlegging i dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på at du vil slette den tomme avdelingen</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Er du sikker på at du vil fjerne disse brukerene for godt? Legg merke til at vi bare prøver å fjerne disse brukerene, og  kan muligens møte feil for noen av brukerene.</msg>
   <msg key="lt_Be_sure_that_the_pers">Vær sikker på at personen ikke allerede har en konto ved institusjonen med en annen bruker-ID. Duplikerte kontoer skaper problemer for alle. For å legge inn en person med en eksisterende bruker-ID, bruk &lt;a href=members&gt;Organiser medlemskap&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Forelesningsnøkkel (et kort navn, ingen mellomrom)</msg>
   <msg key="lt_Communitys_Web_Addres">Gruppens webadresse</msg>
@@ -262,6 +279,7 @@
   <msg key="lt_JoinDrop_a_Class_or_C">Abonner/Dropp en klasse eller gruppe</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Abonner/Dropp klasser eller grupper</msg>
   <msg key="lt_Key_a_short_name_no_s">Nøkkel (et kort navn, ingen bokstavmellomrom)</msg>
+  <msg key="lt_Last_Visit_None_">Brukerene har ikke besøkt ennå</msg>
   <msg key="lt_Last_Visit_Over_in_da">Liste besøk over (i dager)</msg>
   <msg key="lt_Last_Visit_Within_in_">Liste besøk i (i dager)</msg>
   <msg key="lt_Make_this_user_a_site">Gjør denne brukeren site-side admin.</msg>
@@ -281,7 +299,7 @@
   <msg key="lt_Recipients_First_Name">Mottakers fornavn</msg>
   <msg key="lt_Return_to_where_you_w">Gå tilbake til der du kom fra.</msg>
   <msg key="lt_Revert_all_properties">Sett alle egenskaper tilbake til utgangspunktet.</msg>
-  <msg key="lt_Revert_ONLY_the_Heade">BARE sett egenskapen til oferskriftsikonet tilbake til utgangspunktet</msg>
+  <msg key="lt_Revert_ONLY_the_Heade">BARE sett egenskapen til overskriftsikonet tilbake til utgangspunktet</msg>
   <msg key="lt_Save_and_use_this_hea">Lagre og bruk denne overskriften</msg>
   <msg key="lt_Search_dotLRN_users_f">Søk dotLRNs brukere for følgende bruker:</msg>
   <msg key="lt_Senders_Email_Address">Senders e-postadresse</msg>
@@ -313,6 +331,7 @@
   <msg key="lt_Use_this_only_for_an_">Bruk denne bare for en offisielt registrert student i denne klassen som &lt;b&gt;ikke&lt;/b&gt; er en student ved institusjonen.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log for %user_name% </msg>
   <msg key="lt_Well_we_tried_to_nuke">Vel - vi prøvde å nuke brukeren, men vi fikk en feil. Den mest sannsynlige årsaken er at det eksisterer en referanse til denne brukeren (bruker_id=%user_id%) et sted i database schema. Tiden er inne til å rope på programmererene! </msg>
+  <msg key="lt_Year_eg_2003_20032004">År (f.ex. 2005, 2005/2006)</msg>
   <msg key="lt_You_are_about_to_dele">Du vil nå slette %num_users% brukere. </msg>
   <msg key="lt_You_are_adding_strong">Du legger inn &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; i %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">Du har ikke tilgang til å gjøre dette.</msg>
@@ -343,7 +362,10 @@
   <msg key="Memberships">Medlemskap</msg>
   <msg key="Memberships_1">Medlemskap:</msg>
   <msg key="Message">Melding</msg>
+  <msg key="Message_Type">Meldingstype</msg>
+  <msg key="Minutes">Minutter</msg>
   <msg key="must_have_values">Feltet må ha en av følgende verdier:</msg>
+  <msg key="Must_specify_recipients">Du har ikke valgt mottakere for denne meldingen. Vennligst bruk tilbake-knappen på webleseren for å komme tilbake til siden for Ny masseutsendelse og velg mottakere. Takk.</msg>
   <msg key="My_Communities">Mine grupper</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Navn</msg>
@@ -385,6 +407,8 @@
   <msg key="not_a_user">Ikke bruker</msg>
   <msg key="Not_Allowed">Ikke tillatt</msg>
   <msg key="Note">Obs:</msg>
+  <msg key="Note_if_you_make">Obs: dersom du gjør noen endringer når du bruker dette skjemaet vil brukeren miste sine private portaltilpasninger.</msg>
+  <msg key="Note_the_term_column">Obs: Kolonnen &quot;Semester&quot;-kolonnen blir brukt for emner og undergrupper av emner. For undergrupper av emner, holder kolonnen &quot;Semester&quot; semesteret til subgruppens modergruppe. Det vises ikke noe semester for under-undergrupper og dypere avleggere.</msg>
   <msg key="Nuke">Nuke</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke brukere</msg>
@@ -394,11 +418,13 @@
   <msg key="Or">Eller</msg>
   <msg key="or_by_RGB_number">eller ved RGB-nummer</msg>
   <msg key="or_return_to">eller, gå tilbake til</msg>
+  <msg key="Parent">Moder</msg>
   <msg key="Pending">Venter</msg>
   <msg key="Pending_Approval">Venter på godkjenning</msg>
   <msg key="Person_name">Navn</msg>
   <msg key="Personal_home_page">Personlig web-side:</msg>
   <msg key="Personal_Options">Personlige valg</msg>
+  <msg key="Plain_Text">Enkel tekst</msg>
   <msg key="portal_templates">Portalmaler</msg>
   <msg key="Portrait">Bilde:</msg>
   <msg key="Portrait_1">Portrett</msg>
@@ -418,6 +444,8 @@
   <msg key="registration_request_sent">Takk! Registreringsforespørselen har blitt sendt til systemadministrator.</msg>
   <msg key="Reject">Forkast</msg>
   <msg key="reject">forkast</msg>
+  <msg key="Reject_all">Forkast alt</msg>
+  <msg key="Remove_all">Fjern alt</msg>
   <msg key="Request_Membership">Be om medlemskap</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Be om medlemsskap&quot;&gt;</msg>
   <msg key="required">forventet</msg>
@@ -435,6 +463,7 @@
   <msg key="seconds">sekunder</msg>
   <msg key="Send_Date">Send-dato</msg>
   <msg key="send_email">Send e-post</msg>
+  <msg key="Send_to_all">Send til alle i gruppen</msg>
   <msg key="Shared_Files">Delte filer</msg>
   <msg key="silver">sølv</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
@@ -452,7 +481,7 @@
   <msg key="subcomm_page_home_title">Undergruppe Hjemmeside</msg>
   <msg key="subcomm_page_info_title">Undergruppeinformasjon </msg>
   <msg key="subcommunities_pretty_name">Subgruppe</msg>
-  <msg key="subcommunities_pretty_plural">Subgrupper</msg>
+  <msg key="subcommunities_pretty_plural">Undergrupper</msg>
   <msg key="subcommunity_memberships">%subcommunities_pretty_name% medlemsskap</msg>
   <msg key="Subject">Emne</msg>
   <msg key="teaching_assistant_role_pretty_name">Undervisningsassistent</msg>
@@ -462,6 +491,7 @@
   <msg key="Templates">Maler</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Semester</msg>
+  <msg key="Term_eg_Spring_Fall">Semester (f. ex. Vår, Høst)</msg>
   <msg key="Term_ID">Semester ID</msg>
   <msg key="term_properties">semesteregenskaper</msg>
   <msg key="Terms">Semestre</msg>
@@ -471,7 +501,10 @@
   <msg key="there_are_no_users_matching">Ingen brukere passer til %search_text%.</msg>
   <msg key="this_user_is_deleted">denne brukeren er slettet</msg>
   <msg key="To">For å</msg>
+  <msg key="Total_count">Total:</msg>
   <msg key="Type">Type</msg>
+  <msg key="Unarchive">De-arkiver</msg>
+  <msg key="unarchive">de-arkiver</msg>
   <msg key="Unknown_Term">Ukjent semester</msg>
   <msg key="Update_Password">Oppdater passord</msg>
   <msg key="upload">last opp</msg>
@@ -499,6 +532,7 @@
   <msg key="Users_Bulk_Upload">Brukere: Masseopplasting</msg>
   <msg key="Users_Search">Søk på brukere</msg>
   <msg key="View">Se</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Advarsel!&lt;/strong&gt; Dette kan ta opp til %hours% timer, %minutes% minutter!!</msg>
   <msg key="Year">År:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>

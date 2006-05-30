@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="ru_RU" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="ru_RU" charset="utf-8">
 
   <msg key="A_copy_of">Копия</msg>
   <msg key="Access">Доступ</msg>
@@ -275,7 +275,7 @@
   <msg key="User_ID">Код Пользователя:</msg>
   <msg key="User_ID_1">Код Пользователя:</msg>
   <msg key="User_Management">Управление Пользователями</msg>
-  <msg key="user_portal_page_calendar_title">Календарь</msg>
+  <msg key="user_portal_page_calendar_title">Мой календарь</msg>
   <msg key="user_portal_page_file_storage_title">Мои документы</msg>
   <msg key="user_portal_page_home_title">Моя рабочая область</msg>
   <msg key="user_portal_pretty_name">Пользователь</msg>

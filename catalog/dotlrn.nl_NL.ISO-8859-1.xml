@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="nl_NL" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="nl_NL" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Een kopie van</msg>
   <msg key="Access">Toegang</msg>
@@ -25,12 +25,15 @@
   <msg key="Add_users_to">Gebruikers toevoegen aan</msg>
   <msg key="Add_Users_to_Group">Gebruikers aan groep toevoegen</msg>
   <msg key="AddDrop_Memberships">Bij vak of groep in/uitschrijven</msg>
+  <msg key="added_community_message">De homepage van een een groep bezoeken: Ga met de browser naar %package%, log in, en klik daar op de koppeling naar %community_name% in de &quot;Groepen&quot; portlet. </msg>
+  <msg key="added_community_subject">De gebruiker is toegevoegd aan de &quot;%community_name%&quot; groep van %package% </msg>
   <msg key="Admin">Beheren</msg>
   <msg key="admin">Beheren</msg>
   <msg key="admin_page_name">Mijn instellingen</msg>
   <msg key="admin_pages_navbar_name">Beheren</msg>
   <msg key="Administer">Beheren</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Beheer&quot;&gt;</msg>
+  <msg key="Administration_Cockpit">Administratie Cockpit</msg>
   <msg key="Administrator">Beheerder</msg>
   <msg key="Administrators">Beheerders</msg>
   <msg key="Admins_of">Beheerders van</msg>
@@ -41,7 +44,9 @@
   <msg key="Applets_to_Add">Beschikbare Applets</msg>
   <msg key="Approve">Goedkeuren</msg>
   <msg key="approve">goedkeuren</msg>
+  <msg key="Approve_all">Alle goedkeuren</msg>
   <msg key="aqua">aqua-blauw</msg>
+  <msg key="Archive">Archiveren</msg>
   <msg key="archived">Gearchiveerd</msg>
   <msg key="archived_classes_and_communities">Gearchiveerde %class_instances_pretty_plural% en %clubs_pretty_plural%</msg>
   <msg key="archived_groups">Gearchiveerde %groups_pretty_plural%</msg>
@@ -55,6 +60,8 @@
   <msg key="black">zwart</msg>
   <msg key="Black_None_chosen">Zwart (Niets geselecteerd)</msg>
   <msg key="blue">blauw</msg>
+  <msg key="Bulk_Approve">Groepsgewijs goedkeuren</msg>
+  <msg key="Bulk_Approving">Groepsgewijs goedkeuring bezig</msg>
   <msg key="Bulk_Upload">Groepsgewijs importeren</msg>
   <msg key="Bulk_Uploading">Groepsgewijs importeren in gang gezet....</msg>
   <msg key="cannot_be_removed">kan niet verwijderd worden </msg>
@@ -82,6 +89,7 @@
   <msg key="clubs_name_header">%clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Groep</msg>
   <msg key="clubs_pretty_plural">Groepen</msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">Groepen</msg>
   <msg key="Community">Groep</msg>
   <msg key="community_header_name">%clubs_pretty_name% naam</msg>
@@ -111,6 +119,8 @@
   <msg key="Created">Aangemaakt</msg>
   <msg key="CSV_File_Format">CSV bestandsformaat</msg>
   <msg key="Customize_Layout">Pagina-indeling aanpassen</msg>
+  <msg key="database_choked">&lt;p&gt;Database storing bij het creëren van de laatste gebruiker in bovenstaande lijst!&lt;br&gt; De transactie is afgebroken en teruggedraaid. Er zijn geen gebruikers toegevoegd en er zijn dus ook geen emails verzonden aan de gebruikers.&lt;p&gt; </msg>
+  <msg key="datafile_must">&lt;p&gt;Het databestand moet tenminste velden voor het emailadres, de voornaam en de achternaam bevatten.&lt;p&gt; </msg>
   <msg key="Deactivate_">Deactiveren ...</msg>
   <msg key="Deactivate_Users">Gebruikers deactiveren</msg>
   <msg key="Deactivated">Gedeactiveerd</msg>
@@ -151,6 +161,7 @@
   <msg key="Edit">Bewerken</msg>
   <msg key="Edit_a_User">Gebruiker bewerken</msg>
   <msg key="edit_approved_email_servers">Servers aanpassen waarvan e-mail bij voorbaat wordt geaccepteerde </msg>
+  <msg key="edit_community_parameters">Groepsparameters bewerken</msg>
   <msg key="edit_message_and_hit_send">Het onderstaande bericht bewerken. 
 Klik daarna op &quot;E-mail verzenden&quot; om de gebruiker te informeren. </msg>
   <msg key="edit_parameters">Parameters bewerken</msg>
@@ -165,6 +176,7 @@ Klik daarna op &quot;E-mail verzenden&quot; om de gebruiker te informeren. </msg
   <msg key="Email_Members">E-mail leden</msg>
   <msg key="email_message">Bericht</msg>
   <msg key="email_sent">e-mail verzonden</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email verzonden aan %email%. </msg>
   <msg key="End_Date">Einddatum</msg>
   <msg key="End_date">Einddatum:</msg>
   <msg key="Error_sending_mail">Fout bij verzenden van e-mail</msg>
@@ -235,6 +247,7 @@ Klik daarna op &quot;E-mail verzenden&quot; om de gebruiker te informeren. </msg
   <msg key="lt_An_error_occured_whil_1">Er is een fout opgetreden bij het verwijderen van een gebruiker uit een groep. De fout is geregistreerd.</msg>
   <msg key="lt_approve_and_add_to_do">Goedkeuren en toevoegen aan .LRN</msg>
   <msg key="lt_Are_you_sure_you_want">Dit lege vakgebied echt verwijderen?</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Deze gebruikers echt geheel verwijderen? Bericht: we zullen deze gebruikers trachten te verwijderen maar er kunnen bij sommingen foutmeldingen ontstaan.</msg>
   <msg key="lt_Be_sure_that_the_pers">Let op dat de persoon nog niet is aangemeld met een ander e-mailadres. Dubbele inschrijvingen veroorzaken voor iedereen problemen. Gebruik &lt;a href=members&gt;Leden beheren&lt;/a&gt; om een persoon toe te voegen die al bekend is in het systeem. </msg>
   <msg key="lt_Class_Key_a_short_nam">Sleutelcode voor dit vak (korte naam, geen spaties)</msg>
   <msg key="lt_Communitys_Web_Addres">Groepswebsite</msg>
@@ -268,6 +281,7 @@ De gegevens uit een spreadsheet kunnen als een CSV bestand worden bewaard en ver
   <msg key="lt_JoinDrop_a_Class_or_C">Bij vak of groep in/uitschrijven</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Bij vak of groep in/uitschrijven</msg>
   <msg key="lt_Key_a_short_name_no_s">Sleutelcode (korte naam, geen spaties)</msg>
+  <msg key="lt_Last_Visit_None_">Gebruiker heeft het nog niet bezocht</msg>
   <msg key="lt_Last_Visit_Over_in_da">Laatste bezoek meer dan (dagen)</msg>
   <msg key="lt_Last_Visit_Within_in_">Laatste bezoek minder dan (dagen)</msg>
   <msg key="lt_Make_this_user_a_site">Deze gebruiker hoofdbeheerder maken</msg>
@@ -325,6 +339,7 @@ Dit was de foutmelding:</msg>
   <msg key="lt_Use_this_only_for_an_">Dit alleen gebruiken voor officieel geregistreerde leerlingen in deze groep die &lt;b&gt;geen&lt;/b&gt; leerlingen van ons instituut zijn.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog voor %user_name% </msg>
   <msg key="lt_Well_we_tried_to_nuke">We probeerden de gegevens van deze gebruiker te vernietigen, maar er trad een fout op. Het meest waarschijnlijke is dat er ergens in het systeem gerefereerd wordt aan deze gebruiker (user_id=%user_id%). Leg dit probleem neer bij de programmeurs van dit systeem!</msg>
+  <msg key="lt_Year_eg_2003_20032004">Jaar (bijv. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_about_to_dele">Er zullen %num_users% gebruikers worden verwijderd.</msg>
   <msg key="lt_You_are_adding_strong">&lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; zal worden toegevoegd aan %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">Deze handeling is niet toegestaan.</msg>
@@ -356,6 +371,7 @@ Dit was de foutmelding:</msg>
   <msg key="Memberships_1">Inschrijvingen:</msg>
   <msg key="Message">Bericht</msg>
   <msg key="Message_Type">Berichtsoort</msg>
+  <msg key="Minutes">Minuten</msg>
   <msg key="must_have_values">Dit veld moet één van de volgende waarden hebben:</msg>
   <msg key="Must_specify_recipients">Er moet tenminste 1 ontvanger voor dit bericht zijn geselecteerd </msg>
   <msg key="My_Communities">Mijn groepen</msg>
@@ -443,6 +459,8 @@ Wachtwoord: %password% (het wachtwoord kan worden veranderd na het aanmelden).
 Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="Reject">Weigeren</msg>
   <msg key="reject">weigeren</msg>
+  <msg key="Reject_all">Alle weigeren</msg>
+  <msg key="Remove_all">Allen verwijderen</msg>
   <msg key="Request_Membership">Toegang verzoeken</msg>
   <msg key="request_membership_link">&lt;img src=graphics/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Toegang verzoeken&quot;&gt; </msg>
   <msg key="required">Verplicht veld</msg>
@@ -488,6 +506,7 @@ Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="Templates">Sjablonen</msg>
   <msg key="Term">Semester</msg>
   <msg key="term">Semester</msg>
+  <msg key="Term_eg_Spring_Fall">Semester (bijv. Lente, Herfst)</msg>
   <msg key="Term_ID">Semester ID</msg>
   <msg key="term_properties">Semester eigenschappen.</msg>
   <msg key="Terms">Semesters</msg>
@@ -497,7 +516,10 @@ Uw verzoek om inschrijving is verzonden aan de systeembeheerder</msg>
   <msg key="there_are_no_users_matching">Geen gebruikers met zoektekst %search_text%. </msg>
   <msg key="this_user_is_deleted">deze gebruiker is verwijderd</msg>
   <msg key="To">Lidsoorten om te e-mailen:</msg>
+  <msg key="Total_count">Totaal aantal</msg>
   <msg key="Type">Type</msg>
+  <msg key="Unarchive">Uit archief halen</msg>
+  <msg key="unarchive">Uit archief halen</msg>
   <msg key="Unknown_Term">Onbekend semester</msg>
   <msg key="Update_Password">Wachtwoord bijwerken</msg>
   <msg key="upload">aanbieden</msg>
@@ -527,6 +549,7 @@ Wachtwoord: %user_password% </msg>
   <msg key="Users_Bulk_Upload">Gebruikers: Groepsgewijs importeren</msg>
   <msg key="Users_Search">Gebruikers zoeken</msg>
   <msg key="View">Bekijken</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Waarschuwing!&lt;/strong&gt; Dit kan %hours% uren, %minutes% minuten duren!! </msg>
   <msg key="Year">Jaar:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>

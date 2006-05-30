@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="da_DK" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="da_DK" charset="ISO-8859-1">
 
   <msg key="A_copy_of">En kopi af</msg>
   <msg key="Access">Adgang</msg>
@@ -25,12 +25,15 @@
   <msg key="Add_users_to">Tilføj brugere til</msg>
   <msg key="Add_Users_to_Group">Tilføj brugere til en brugergruppe</msg>
   <msg key="AddDrop_Memberships">Tilføj/Slet medlemsskaber</msg>
+  <msg key="added_community_message">For at besøge gruppens hjemmeside, gå til %package%, log ind og klik på %community_name% linket under &quot;Grupper&quot;.</msg>
+  <msg key="added_community_subject">Du er blevet tilføjet til &quot;%community_name%&quot; gruppen i %package%</msg>
   <msg key="Admin">Administrér</msg>
   <msg key="admin">administrér</msg>
   <msg key="admin_page_name">Kontrolpanel</msg>
   <msg key="admin_pages_navbar_name">Administrér</msg>
   <msg key="Administer">Administrér</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Administrer&quot;&gt;</msg>
+  <msg key="Administration_Cockpit">Administration Kontrolpanel</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratorer</msg>
   <msg key="Admins_of">Administratorer til</msg>
@@ -41,7 +44,9 @@
   <msg key="Applets_to_Add">Programmer der skal tilføjes</msg>
   <msg key="Approve">Godkend</msg>
   <msg key="approve">godkend</msg>
+  <msg key="Approve_all">Godkend alle</msg>
   <msg key="aqua">aqua</msg>
+  <msg key="Archive">Arkiv</msg>
   <msg key="archived">Arkiveret</msg>
   <msg key="archived_classes_and_communities">Arkiverede %class_instances_pretty_plural% og %clubs_pretty_plural% </msg>
   <msg key="archived_groups">Arkiverede %groups_pretty_plural% </msg>
@@ -55,6 +60,8 @@
   <msg key="black">sort</msg>
   <msg key="Black_None_chosen">Sort (Ingen valgt)</msg>
   <msg key="blue">blå</msg>
+  <msg key="Bulk_Approve">Massegodkende</msg>
+  <msg key="Bulk_Approving">Massegodkendelse i gang</msg>
   <msg key="Bulk_Upload">Masseupload</msg>
   <msg key="Bulk_Uploading">Masseuploader...</msg>
   <msg key="cannot_be_removed">kan ikke fjernes</msg>
@@ -82,6 +89,7 @@
   <msg key="clubs_name_header">%clubs_pretty_name%-navn</msg>
   <msg key="clubs_pretty_name">Gruppe</msg>
   <msg key="clubs_pretty_plural">Grupper</msg>
+  <msg key="Cockpit">Kontrolpanel</msg>
   <msg key="Communities">Grupper</msg>
   <msg key="Community">Gruppe</msg>
   <msg key="community_header_name">%clubs_pretty_name%-navn</msg>
@@ -113,6 +121,8 @@ Gå venligst tilbage og vælg et andet navn.</msg>
   <msg key="Created">Oprettet</msg>
   <msg key="CSV_File_Format">CSV-format</msg>
   <msg key="Customize_Layout">Tilpas Layout</msg>
+  <msg key="database_choked">&lt;b&gt;Databasefejl under forsøget på at oprette den sidste bruger i listen foroven!&lt;br&gt; Transaktionen er blevet afbrudt, ingen brugere er blevet oprettet og ingen email-notifikationer er blevet sendt.&lt;p&gt;</msg>
+  <msg key="datafile_must">&lt;p&gt;Datafilen skal i hvert fald indeholde felterne email, first_names og last_name.&lt;/p&gt;</msg>
   <msg key="Deactivate_">Deaktivér...</msg>
   <msg key="Deactivate_Users">Deaktiver Brugere</msg>
   <msg key="Deactivated">Deaktiveret</msg>
@@ -154,6 +164,7 @@ Vælg venligst et andet navn.</msg>
   <msg key="Edit">Redigér</msg>
   <msg key="Edit_a_User">Rediger en bruger</msg>
   <msg key="edit_approved_email_servers">Rediger Forhåndsgodkendte Mailservere</msg>
+  <msg key="edit_community_parameters">Redigere gruppens parametere</msg>
   <msg key="edit_message_and_hit_send">Rediger beskeden nedenfor og tryk &quot;Send E-mail&quot; for at give brugeren besked.</msg>
   <msg key="edit_parameters">Rediger parametre</msg>
   <msg key="Edit_Properties">Rediger egenskaber</msg>
@@ -167,6 +178,7 @@ Vælg venligst et andet navn.</msg>
   <msg key="Email_Members">Send e-mail til medlemmer</msg>
   <msg key="email_message">Besked</msg>
   <msg key="email_sent">e-mail afsendt</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email sendt til %email%.</msg>
   <msg key="End_Date">Slutdato</msg>
   <msg key="End_date">Slutdato:</msg>
   <msg key="Error_sending_mail">Fejl under afsendelse af e-mail</msg>
@@ -237,6 +249,7 @@ Vælg venligst et andet navn.</msg>
   <msg key="lt_An_error_occured_whil_1">Der opstod en fejl under frameldingen af brugeren fra en gruppe. Fejlen er blevet logget.</msg>
   <msg key="lt_approve_and_add_to_do">godkend og tilføj til dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på at du ønsker at slette den tomme afdeling</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Er du sikker på at du ønsker at fjerne disse brugere fuldstændigt? Bemærk at at vi kun forsøger at fjerne disse brugere. Og der kan opstaa fejl for nogle af brugerne.  </msg>
   <msg key="lt_Be_sure_that_the_pers">Vær sikker på at denne person ikke allerede har en konto under en anden e-mail-adresse. Duplikat-konti skaber problemer for alle. For at tilføje en person med en eksisterende konto, skal du bruge siden &lt;a href=&quot;members&quot;&gt;Administrer Medlemsskaber&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Klassenøgle (en kort navn uden mellemrum)</msg>
   <msg key="lt_Communitys_Web_Addres">Gruppens Webadresse</msg>
@@ -269,6 +282,7 @@ Vælg venligst et andet navn.</msg>
   <msg key="lt_JoinDrop_a_Class_or_C">Tilmeld/afmeld en klasse eller en guppe</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Tilmeld/fjern klasser eller grupper</msg>
   <msg key="lt_Key_a_short_name_no_s">Nøgle (en kort navn uden mellemrum)</msg>
+  <msg key="lt_Last_Visit_None_">Bruger har ikke besøgt endnu</msg>
   <msg key="lt_Last_Visit_Over_in_da">Seneste besøg over (i dage)</msg>
   <msg key="lt_Last_Visit_Within_in_">Seneste besøg er indenfor (i dage)</msg>
   <msg key="lt_Make_this_user_a_site">Gør denne bruger til administrator for hele sitet.</msg>
@@ -326,6 +340,7 @@ Besked:
   <msg key="lt_Use_this_only_for_an_">Brug kun dette for en officielt registreret studerende i klassen som &lt;b&gt;ikke&lt;/b&gt; er en MIT- eller Sloan-studerende.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog for %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Vi prøvede at eliminere brugeren, men der opstod en fejl. Dette skyldes højst sandsynligt en reference til brugeren (user_id=%user_id%) ét eller andet sted i databaseskabelonen. Det er tid til at kontakt programmørerne!</msg>
+  <msg key="lt_Year_eg_2003_20032004">År (e.g. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_about_to_dele">Du er ved at slette %num_users% brugere.</msg>
   <msg key="lt_You_are_adding_strong">Du er ved at tilføje &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; til %community_name%: </msg>
   <msg key="lt_You_are_not_allowed_t">Du har ikke ret til at udføre den handling.</msg>
@@ -357,6 +372,7 @@ Besked:
   <msg key="Memberships_1">Medlemskaber:</msg>
   <msg key="Message">Besked</msg>
   <msg key="Message_Type">Besked Type</msg>
+  <msg key="Minutes">Minutter</msg>
   <msg key="must_have_values">Feltet skal have en af følgende værdier:</msg>
   <msg key="Must_specify_recipients">Du skal specificere mindst en modtager til din besked</msg>
   <msg key="My_Communities">Mine Grupper</msg>
@@ -447,6 +463,8 @@ Tak
   <msg key="registration_request_sent">Mange tak. Din tilmeldingsforespørgsel er blevet sendt til systemadministratoren.</msg>
   <msg key="Reject">Afvis</msg>
   <msg key="reject">afvis</msg>
+  <msg key="Reject_all">Afvis alle</msg>
+  <msg key="Remove_all">Fjern alle</msg>
   <msg key="Request_Membership">Anmod om Medlemskab</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Anmod om Medlemskab&quot;&gt;</msg>
   <msg key="required">Påkrævet felt</msg>
@@ -492,6 +510,7 @@ Tak
   <msg key="Templates">Skabeloner</msg>
   <msg key="Term">Termin</msg>
   <msg key="term">Termin</msg>
+  <msg key="Term_eg_Spring_Fall">Termin (e.g. Forår, Efterår)</msg>
   <msg key="Term_ID">Termin ID</msg>
   <msg key="term_properties">egenskaber for termin.</msg>
   <msg key="Terms">Terminer</msg>
@@ -501,7 +520,10 @@ Tak
   <msg key="there_are_no_users_matching">Der er ingen brugere der matcher søgeteksten %search_text%. </msg>
   <msg key="this_user_is_deleted">denne bruger er slettet</msg>
   <msg key="To">Medlemstyper der skal sendes til:</msg>
+  <msg key="Total_count">Antal</msg>
   <msg key="Type">Type</msg>
+  <msg key="Unarchive">Genoprette</msg>
+  <msg key="unarchive">genoprette</msg>
   <msg key="Unknown_Term">Ukendt termin</msg>
   <msg key="Update_Password">Opdater Adgangskode</msg>
   <msg key="upload">indsend</msg>
@@ -532,6 +554,7 @@ Adgangskode: %user_password% </msg>
   <msg key="Users_Bulk_Upload">Brugere: Masseupload</msg>
   <msg key="Users_Search">Brugersøgning</msg>
   <msg key="View">Vis</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Advarsel!&lt;/strong&gt; Dette kan tage op til %hours% timer, %minutes% minutter!!</msg>
   <msg key="Year">År:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">ja</msg>

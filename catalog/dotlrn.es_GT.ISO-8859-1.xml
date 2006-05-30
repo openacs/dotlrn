@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="es_GT" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="es_GT" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
   <msg key="Access">Acceso</msg>
@@ -25,6 +25,8 @@
   <msg key="Add_users_to">Agregar usuarios a</msg>
   <msg key="Add_Users_to_Group">Agregar Usuarios al Grupo</msg>
   <msg key="AddDrop_Memberships">Alta/Baja en grupos</msg>
+  <msg key="added_community_message">Para visitar la página de la comunidad, vaya con su navegador al %package%, abra una sesión, pinche en el enlace %community_name% dentro del portlet &amp;quot;Grupos&amp;quot;.</msg>
+  <msg key="added_community_subject">Ha sido añadido a la comunidad &amp;quot;%community_name%&amp;quot; en %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
   <msg key="admin_page_name">Panel de control</msg>
@@ -114,6 +116,8 @@
   <msg key="Create_a_Web_Log">Crear un Web Log</msg>
   <msg key="CSV_File_Format">Formato CSV</msg>
   <msg key="Customize_Layout">Personalizar este Portal</msg>
+  <msg key="database_choked">&amp;lt;p&amp;gt;¡Ha ocurrido un error en la base de datos mientras se intentaba crear al ultimo usuario de la lista!&amp;lt;br&amp;gt;La transacción ha sido abortada, no se ha añadido ningún usuario y no se ha enviado ningún correo.&amp;lt;p&amp;gt;</msg>
+  <msg key="datafile_must">&amp;lt;p&amp;gt; El fichero de datos debe incluir por lo menos los campos email, first_names y last_name.&amp;lt;p&amp;gt;</msg>
   <msg key="Deactivate_">Desactivar...</msg>
   <msg key="Deactivate_Users">Desactivar Usuarios</msg>
   <msg key="Deactivated">Desactivado</msg>
@@ -168,6 +172,7 @@
   <msg key="Email_Members">Escribir a los Miembros</msg>
   <msg key="email_message">Mensaje</msg>
   <msg key="email_sent">correo enviado</msg>
+  <msg key="email_sent_to">&amp;lt;p&amp;gt;Correo enviado a %email%.</msg>
   <msg key="End_Date">Fecha fin</msg>
   <msg key="End_date">Fecha fin:</msg>
   <msg key="Error_sending_mail">Error al enviar el correo</msg>
@@ -430,6 +435,7 @@
   <msg key="Reject">Rechazar</msg>
   <msg key="reject">rechazar</msg>
   <msg key="Reject_all">Rechazar todos</msg>
+  <msg key="Remove_all">Eliminar todos</msg>
   <msg key="Request_Membership">Solicitar Membresia </msg>
   <msg key="request_membership_link"> &lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Solicitar membresia&quot;&gt;</msg>
   <msg key="required">Requerido</msg>

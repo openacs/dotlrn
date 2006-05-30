@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="ca_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="ca_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una còpia de</msg>
   <msg key="Access">Accés</msg>
@@ -31,6 +31,7 @@
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administrar</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt; </msg>
+  <msg key="Administration_Cockpit">Administració de cockpit</msg>
   <msg key="Administrator">Administrador</msg>
   <msg key="Administrators">Administradors</msg>
   <msg key="Admins_of">Administradors de</msg>
@@ -41,7 +42,9 @@
   <msg key="Applets_to_Add">Miniaplicacions que cal afegir</msg>
   <msg key="Approve">Aprovar</msg>
   <msg key="approve">aprovar</msg>
+  <msg key="Approve_all">Aprovar-ho tot</msg>
   <msg key="aqua">aqua</msg>
+  <msg key="Archive">Arxiu</msg>
   <msg key="archived">Arxivat</msg>
   <msg key="archived_classes_and_communities">%class_instances_pretty_plural% i %clubs_pretty_plural% arxivats</msg>
   <msg key="archived_groups">%groups_pretty_plural% arxivats</msg>
@@ -55,6 +58,8 @@
   <msg key="black">negre</msg>
   <msg key="Black_None_chosen">negre </msg>
   <msg key="blue">blau </msg>
+  <msg key="Bulk_Approve">Aprovar correu massiu</msg>
+  <msg key="Bulk_Approving">S'està aprovant el correu massiu.</msg>
   <msg key="Bulk_Upload">Carregar en bloc </msg>
   <msg key="Bulk_Uploading">S'està carregant el bloc. </msg>
   <msg key="cannot_be_removed">No es pot llevar </msg>
@@ -82,6 +87,7 @@
   <msg key="clubs_name_header">Nom de %clubs_pretty_name% </msg>
   <msg key="clubs_pretty_name">Comunitat </msg>
   <msg key="clubs_pretty_plural">Comunitats </msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">Comunitats </msg>
   <msg key="Community">Comunitat </msg>
   <msg key="community_header_name">Nom de %clubs_pretty_name% </msg>
@@ -151,6 +157,7 @@
   <msg key="Edit">Editar </msg>
   <msg key="Edit_a_User">Editar un usuari </msg>
   <msg key="edit_approved_email_servers">Editar dominis preaprovats </msg>
+  <msg key="edit_community_parameters">Editar paràmetres de la comunitat</msg>
   <msg key="edit_message_and_hit_send">Editeu el missatge següent i pitgeu &quot;Enviar correu&quot; per a notificar l'usuari. </msg>
   <msg key="edit_parameters">Editar els paràmetres </msg>
   <msg key="Edit_Properties">Editar propietats </msg>
@@ -234,6 +241,7 @@
   <msg key="lt_An_error_occured_whil_1">S'ha produït un error en intentar eliminar un usuari d'una comunitat. L'error s'ha arxivat. </msg>
   <msg key="lt_approve_and_add_to_do">aprovar i afegir a dotLRN </msg>
   <msg key="lt_Are_you_sure_you_want">¿Desitja realment esborrar este departament ?</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Esteu segur que voleu eliminar aquests usuaris completament? Tingueu en compte que només intentem eliiminar aquests usuaris i potser alguns usuaris hi trobaran errors.</msg>
   <msg key="lt_Be_sure_that_the_pers">Assegureu-vos que aquesta persona no té ja un compte en la UV amb una altra adreça electrònica. Els comptes dobles causen problemes a tothom. Per a afegir una persona que ja hi té un compte, dirigiu-vos a &lt;a href=members&gt;Administrar membres&lt;/a&gt;. </msg>
   <msg key="lt_Class_Key_a_short_nam">Clau del curs (nom curt, sense espais) </msg>
   <msg key="lt_Communitys_Web_Addres">Adreça web de la comunitat </msg>
@@ -266,6 +274,7 @@
   <msg key="lt_JoinDrop_a_Class_or_C">Donar-se d'alta o baixa en un curs o comunitat </msg>
   <msg key="lt_JoinDrop_Classes_or_C">Donar-se d'alta o baixa en cursos o comunitats </msg>
   <msg key="lt_Key_a_short_name_no_s">Clau (un nom curt, sense espais) </msg>
+  <msg key="lt_Last_Visit_None_">L'usuari encara no ha visitat</msg>
   <msg key="lt_Last_Visit_Over_in_da">Clau (un nom curt, sense espais) </msg>
   <msg key="lt_Last_Visit_Within_in_">Última visita fins a (en dies) </msg>
   <msg key="lt_Make_this_user_a_site">Convertir aquest usuari en administrador del lloc. </msg>
@@ -317,6 +326,7 @@
   <msg key="lt_Use_this_only_for_an_">Utilitzeu aquesta opció només per als estudiants registrats oficialment aquest curs que &lt;b&gt;no&lt;/b&gt; sigun alumnes de la UV. </msg>
   <msg key="lt_Web_Log_for_user_name">Diari interactiu per a %user_name% </msg>
   <msg key="lt_Well_we_tried_to_nuke">Bé, hem intentat eliminar aquest usuari, però s'ha produït un error. El més probable és que hi haja referències a aquest usuari (user_id=%user_id%) en la base de dades. És hora de cridar els vostres programadors! </msg>
+  <msg key="lt_Year_eg_2003_20032004">Any (p.ex. 2003, 2003/2004) </msg>
   <msg key="lt_You_are_about_to_dele">Esteu a punt d'eliminar %num_users% usuaris. </msg>
   <msg key="lt_You_are_adding_strong">Esteu afegint &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; a %community_name%: </msg>
   <msg key="lt_You_are_not_allowed_t">No esteu autoritzat per a dur a terme aquest procés. </msg>
@@ -348,6 +358,7 @@
   <msg key="Memberships_1">Membres</msg>
   <msg key="Message">Missatge </msg>
   <msg key="Message_Type">Tipus de Missatge </msg>
+  <msg key="Minutes">Minuts </msg>
   <msg key="must_have_values">El camp ha de tenir un dels valors següents: </msg>
   <msg key="Must_specify_recipients">Ha d'especificar almenys un contenidor per al seu missatge </msg>
   <msg key="My_Communities">Les meues comunitats </msg>
@@ -428,6 +439,7 @@
   <msg key="registration_request_sent">Gràcies. La vostra sol·licitud de registre s'ha enviat a l'administrador del sistema </msg>
   <msg key="Reject">Refusar </msg>
   <msg key="reject">refusar </msg>
+  <msg key="Reject_all">Rebutjar-ho tot</msg>
   <msg key="Request_Membership">Sol·licitar l'ingrés </msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt; </msg>
   <msg key="required">Camp obligatori </msg>
@@ -473,6 +485,7 @@
   <msg key="Templates">Plantilles </msg>
   <msg key="Term">Període </msg>
   <msg key="term">Període </msg>
+  <msg key="Term_eg_Spring_Fall">Quadrimestre (p.ex. primer, segon)</msg>
   <msg key="Term_ID">Identificador del període </msg>
   <msg key="term_properties">propietats del període. </msg>
   <msg key="Terms">Períodes </msg>
@@ -482,7 +495,10 @@
   <msg key="there_are_no_users_matching">No hi ha usuaris que coincidisquen amb %search_text%. </msg>
   <msg key="this_user_is_deleted">aquest usuari ha sigut eliminat </msg>
   <msg key="To">Tipus de membres a què s'envia correu: </msg>
+  <msg key="Total_count">Compte total</msg>
   <msg key="Type">Tipus </msg>
+  <msg key="Unarchive">Desarxivar</msg>
+  <msg key="unarchive">desarxivar</msg>
   <msg key="Unknown_Term">Període desconegut </msg>
   <msg key="Update_Password">Actualitzar la contrasenya </msg>
   <msg key="upload">carregar </msg>
@@ -510,6 +526,7 @@
   <msg key="Users_Bulk_Upload">Usuaris: importar </msg>
   <msg key="Users_Search">Recerca d'usuari </msg>
   <msg key="View">Veure </msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Atenció!&lt;/strong&gt; Això pot tardar fins %hours% hores, %minutes% minuts!! </msg>
   <msg key="Year">Any: </msg>
   <msg key="Yes">Sí </msg>
   <msg key="yes">sí </msg>

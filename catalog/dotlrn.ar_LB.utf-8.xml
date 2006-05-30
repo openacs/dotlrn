@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="ar_LB" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="ar_LB" charset="utf-8">
 
   <msg key="A_copy_of">نسخة عن</msg>
   <msg key="Access">وصول</msg>
@@ -25,12 +25,15 @@
   <msg key="Add_users_to">أضفْ مُستخدماُ لـِ</msg>
   <msg key="Add_Users_to_Group">أضفْ مُستخدمون للمجموعة</msg>
   <msg key="AddDrop_Memberships">إنضَمَّ إلى/تخلىَّ عن العضوياتُ</msg>
+  <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the &amp;quot;Groups&amp;quot; portlet.</msg>
+  <msg key="added_community_subject">You have been added to the &amp;quot;%community_name%&amp;quot; community at %package%</msg>
   <msg key="Admin">الإدارةُ</msg>
   <msg key="admin">الإدارةُ</msg>
   <msg key="admin_page_name">لوحة التّحكّم</msg>
   <msg key="admin_pages_navbar_name">الإدارةُ</msg>
   <msg key="Administer">أدرْ</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;المدير&quot;&gt;</msg>
+  <msg key="Administration_Cockpit">Administration Cockpit</msg>
   <msg key="Administrator">المديرُ</msg>
   <msg key="Administrators">المدراءُ</msg>
   <msg key="Admins_of">إداراتُ من</msg>
@@ -41,7 +44,9 @@
   <msg key="Applets_to_Add">البرامج المحدودةُ للإضافة</msg>
   <msg key="Approve">وافِقْ</msg>
   <msg key="approve">وافِقْ</msg>
+  <msg key="Approve_all">Approve all</msg>
   <msg key="aqua">سماوي</msg>
+  <msg key="Archive">Archive</msg>
   <msg key="archived">مؤرشف</msg>
   <msg key="archived_classes_and_communities">%clubs_pretty_plural% و %class_instances_pretty_plural% مؤرشفون</msg>
   <msg key="archived_groups">%groups_pretty_plural% مؤرشفون</msg>
@@ -55,10 +60,13 @@
   <msg key="black">أسود</msg>
   <msg key="Black_None_chosen">أسود - ليس مختار</msg>
   <msg key="blue">أزرق</msg>
+  <msg key="Bulk_Approve">Bulk Approve</msg>
+  <msg key="Bulk_Approving">Bulk approving in progress.</msg>
   <msg key="Bulk_Upload">ارسالْ بمجموعة</msg>
   <msg key="Bulk_Uploading">إرسال المجموعة....</msg>
   <msg key="cannot_be_removed">لا يُمْكن أنْ يُزالَ</msg>
   <msg key="Change_Locale">غيّرْ اللّغة</msg>
+  <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
   <msg key="class_instance_portal_pretty_name">الصفوف</msg>
   <msg key="class_instances_pretty_name">الصف</msg>
   <msg key="class_instances_pretty_plural">الصفوف</msg>
@@ -81,6 +89,7 @@
   <msg key="clubs_name_header">أسم %clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">المجتمع</msg>
   <msg key="clubs_pretty_plural">مجتمعات</msg>
+  <msg key="Cockpit">Cockpit</msg>
   <msg key="Communities">جمعيات</msg>
   <msg key="Community">جمعية</msg>
   <msg key="community_header_name">%clubs_pretty_name% إسم</msg>
@@ -91,6 +100,7 @@
   <msg key="Community_Type">نوع المجتمع</msg>
   <msg key="Community_Types">أنواع المجتمع</msg>
   <msg key="Communitys_Name">إسم المجتمع</msg>
+  <msg key="Compose_bulk_message">Compose Bulk Message</msg>
   <msg key="Configure_Element">شكّلْ عنصراً</msg>
   <msg key="Configure_name">شكّلْ %name%</msg>
   <msg key="Confirm">أكّدْ</msg>
@@ -106,8 +116,11 @@
   <msg key="course_assistant_role_pretty_plural">مُساعدو الفصلِ</msg>
   <msg key="Create_A_New_User">انشئ  مُستخدم جَديد</msg>
   <msg key="Create_a_Web_Log">انشئ  سجلّ الشبكة (Web Log)</msg>
+  <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">ملف على شكل CVS</msg>
   <msg key="Customize_Layout">تخصيص المخطط</msg>
+  <msg key="database_choked">&amp;lt;p&amp;gt;Database error while trying to create the last user in the list above!&amp;lt;br&amp;gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&amp;lt;p&amp;gt;</msg>
+  <msg key="datafile_must">&amp;lt;p&amp;gt;Datafile must include at least the email, first_names, last_name fields.&amp;lt;p&amp;gt;</msg>
   <msg key="Deactivate_">إبْطلْ ...</msg>
   <msg key="Deactivate_Users">إبْطلْ المستخدمون</msg>
   <msg key="Deactivated">أُبْطِلْ</msg>
@@ -148,6 +161,7 @@
   <msg key="Edit">حررْ</msg>
   <msg key="Edit_a_User">حررْ مستخدماً</msg>
   <msg key="edit_approved_email_servers">حرّرْ مُلقمْ البريد الإلكتروني الموافق عليه مُسبقاً</msg>
+  <msg key="edit_community_parameters">Edit community parameters</msg>
   <msg key="edit_message_and_hit_send">حرّرْ الرسالةَ إلى الأسفل واضرب &quot;أرسلْ البريد إلكتروني&quot; لإشعار هذا المستخدم.</msg>
   <msg key="edit_parameters">تحرير المتغيرات</msg>
   <msg key="Edit_Properties">حررْ خصائص</msg>
@@ -161,6 +175,7 @@
   <msg key="Email_Members">أعضاء البريد الإلكترونيّ</msg>
   <msg key="email_message">رسالة</msg>
   <msg key="email_sent">البريد الإلكتروني أرسلَ</msg>
+  <msg key="email_sent_to">&amp;lt;p&amp;gt;Email sent to %email%.</msg>
   <msg key="End_Date">نهاية تاريخ</msg>
   <msg key="End_date">نهاية تاريخ:</msg>
   <msg key="Error_sending_mail">خطأ في إرسال البريد</msg>
@@ -197,6 +212,7 @@
   <msg key="Header_Logo_Alt_Text">نّص البديل لشعار رأس الصفحة</msg>
   <msg key="Header_Logo_Item_ID">هويةُ بند شعارِ رأس الصفحة</msg>
   <msg key="help">المساعدة</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">الهويّة:</msg>
   <msg key="ID_1">هوية</msg>
   <msg key="instructor_role_pretty_name">أستاذ</msg>
@@ -230,6 +246,7 @@
   <msg key="lt_An_error_occured_whil_1">حَدثَ خطأ أثناء محاولة حذف مستخدم لجمعية. هذا الخطأ قد سُجل. </msg>
   <msg key="lt_approve_and_add_to_do">وافق وأضفْ إلى دوتلرن</msg>
   <msg key="lt_Are_you_sure_you_want">هل أنت متأكّد أنّك تريد حذف القسم الفارغ</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>
   <msg key="lt_Be_sure_that_the_pers">كُنّ متأكّداً بأن الشخص ما عِنْدَه حساب سلوانسباس تحت عنوان بريد إلكتروني آخر. تُسبّبُ الحسابات المضاعفة المشاكل لكُلّ الأشخاص. لإضافة شخص بإستعمالِ الحسابِ الحالي إستعملْ &lt;a href=members&gt;أدرْ عضوية &lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">مفتاحُ الصف- اسمِ قصيرِ، لا فراغات</msg>
   <msg key="lt_Communitys_Web_Addres">عنوان موقع ويب لالجمعية</msg>
@@ -263,6 +280,7 @@
   <msg key="lt_JoinDrop_a_Class_or_C">إنضَمَّ إلى/تخلىَّ عن صفًّ أو مجموعةً</msg>
   <msg key="lt_JoinDrop_Classes_or_C">إنضمَّ إلى/ تخلىَّ عن صفوفاً أو مجموعاتً</msg>
   <msg key="lt_Key_a_short_name_no_s">مفتاحُ - اسمُ قصيرُ، لا فراغاتَ</msg>
+  <msg key="lt_Last_Visit_None_">User has not visited yet</msg>
   <msg key="lt_Last_Visit_Over_in_da">الزيارةُ الأخيرةُ على - بالأيامِ</msg>
   <msg key="lt_Last_Visit_Within_in_">الزيارةُ الأخيرةُ ضمن - بالأيامِ</msg>
   <msg key="lt_Make_this_user_a_site">إجعل هذا المستخدم مدير الموقع ذو صلاحيات واسعة.</msg>
@@ -314,6 +332,7 @@
   <msg key="lt_Use_this_only_for_an_">طالب إم آي تي أو سلون&lt;b&gt; ليس&lt;/b&gt; إستعمل هذا فقط لطالب مسجّل رسميا في هذا الصنف الذي ليس.</msg>
   <msg key="lt_Web_Log_for_user_name">ملف معلومات ويبُ لي %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">حسنًا, حاولنا نسف المستخدم, لكنّ كان هناك خطأ . الحالة في الأغلب أنّ إشارة لهذا المستخدم -مستخدم _ هويّة = %user_id%- يتواجد في مكان ما في مخطّط قاعدة البيانات . إنّه وقت لنداء مبرمجيك!</msg>
+  <msg key="lt_Year_eg_2003_20032004">Year (e.g. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_about_to_dele">أنت أَوْشَكْتَ أَنْ تَحْذفَ %num_users% المستخدمون</msg>
   <msg key="lt_You_are_adding_strong">أنت تُضِفْ &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; الى %community_name%:</msg>
   <msg key="lt_You_are_not_allowed_t">غير مَسموح لك أن تؤدّي ذلك الفعل.</msg>
@@ -344,7 +363,10 @@
   <msg key="Memberships">العضويات</msg>
   <msg key="Memberships_1">العضويات:</msg>
   <msg key="Message">رسالة</msg>
+  <msg key="Message_Type">Message Type</msg>
+  <msg key="Minutes">Minutes</msg>
   <msg key="must_have_values">يجب ان بحوي الحقل القيم التالية</msg>
+  <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">جمعياتي</msg>
   <msg key="NA">لا ينطبق</msg>
   <msg key="Name">إسم</msg>
@@ -386,6 +408,8 @@
   <msg key="not_a_user">ليس مُستخدماً</msg>
   <msg key="Not_Allowed">ليس مسموح</msg>
   <msg key="Note">ملاحظة:</msg>
+  <msg key="Note_if_you_make">Note: if you make any changes using this form, the user will lose their portal customizations.</msg>
+  <msg key="Note_the_term_column">Note: the &amp;quot;Term&amp;quot; column applies to classes and subgroups of classes.  For subgroups of classes, the &amp;quot;Term&amp;quot; column holds the term of the subgroup's parent class.  No term is displayed for sub-subgroups and deeper descendants.</msg>
   <msg key="Nuke">إنسفْ</msg>
   <msg key="Nuke_">إنسفْ ...</msg>
   <msg key="Nuke_Users">إنسفْ المستخدمين</msg>
@@ -395,11 +419,13 @@
   <msg key="Or">أو</msg>
   <msg key="or_by_RGB_number">أَو بعددِ RGB</msg>
   <msg key="or_return_to">أو، عودْ إلى</msg>
+  <msg key="Parent">Parent</msg>
   <msg key="Pending">بانتظار</msg>
   <msg key="Pending_Approval">في انتظار الموافقة</msg>
   <msg key="Person_name">الاسم</msg>
   <msg key="Personal_home_page">الصفحة الرئيسيةُ الشخصيةُ:</msg>
   <msg key="Personal_Options">الخياراتُ الشخصيةُ</msg>
+  <msg key="Plain_Text">Plain Text</msg>
   <msg key="portal_templates">نماذجُ بوابة الإنترنت</msg>
   <msg key="Portrait">بورتريه</msg>
   <msg key="Portrait_1">بورتريه</msg>
@@ -419,6 +445,8 @@
   <msg key="registration_request_sent">شكراً لكم. طلبُ تسجيلُكَ أُرسلَ إلى مديرِ النظامِ</msg>
   <msg key="Reject">ارفضْ</msg>
   <msg key="reject">ارفضْ</msg>
+  <msg key="Reject_all">Reject all</msg>
+  <msg key="Remove_all">Remove all</msg>
   <msg key="Request_Membership">اطّلبْ عضويّة</msg>
   <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;اطلب عضوية&quot;&gt;</msg>
   <msg key="required">مطلوب</msg>
@@ -436,6 +464,7 @@
   <msg key="seconds">ثانية.</msg>
   <msg key="Send_Date">أرسلْ تاريخا</msg>
   <msg key="send_email">أرسلْ بريد إلكتروني</msg>
+  <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Shared_Files">الملفات المشتركة</msg>
   <msg key="silver">فضي</msg>
   <msg key="Site-wide_Admin">مدير في كافة أنحاءُ الموقعَ؟</msg>
@@ -463,6 +492,7 @@
   <msg key="Templates">النماذج</msg>
   <msg key="Term">فصل الدراسيّ</msg>
   <msg key="term">فصل الدراسيّ</msg>
+  <msg key="Term_eg_Spring_Fall">Term (e.g. Spring, Fall)</msg>
   <msg key="Term_ID">هوية الفصل الدراسيّ </msg>
   <msg key="term_properties">خصائص الفصل الدراسي.</msg>
   <msg key="Terms">فصول دراسيةّ</msg>
@@ -472,7 +502,10 @@
   <msg key="there_are_no_users_matching">ليس هناك مستخدمون متطابقون %search_text%.</msg>
   <msg key="this_user_is_deleted">هذا المستخدم حُذِفَ</msg>
   <msg key="To">الى</msg>
+  <msg key="Total_count">Total count:</msg>
   <msg key="Type">نوع</msg>
+  <msg key="Unarchive">Unarchive</msg>
+  <msg key="unarchive">unarchive</msg>
   <msg key="Unknown_Term">الفصل مجهول</msg>
   <msg key="Update_Password">جددّ كلمة السر</msg>
   <msg key="upload">إرسلْ</msg>
@@ -500,6 +533,7 @@
   <msg key="Users_Bulk_Upload">المستخدمون: الإرسال الجماعي</msg>
   <msg key="Users_Search">بحثْ المستخدمون</msg>
   <msg key="View">شاهد</msg>
+  <msg key="Warning_can_take">&amp;lt;strong&amp;gt;Warning!&amp;lt;/strong&amp;gt; This could take up to %hours% hours, %minutes% minutes!!</msg>
   <msg key="Year">السنة:</msg>
   <msg key="Yes">نعم</msg>
   <msg key="yes">نعم</msg>
