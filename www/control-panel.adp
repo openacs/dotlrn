@@ -22,8 +22,8 @@
 <property name="title">@title@</property>
 <property name="link_control_panel">0</property>
 
-<table>
-  <tr><td width="35%" valign="top">
+<table width="100%">
+  <tr><td width="50%" valign="top">
 
     <div class="portlet-wrapper">
       <div class="portlet-title">
@@ -90,7 +90,7 @@
     </if>
 
   </td>
-  <td valign="top">
+  <td width="50%" valign="top">
 
     <div class="portlet-wrapper">
       <div class="portlet-title">
