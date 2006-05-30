@@ -28,7 +28,7 @@
             <callback type="after-upgrade"  proc="dotlrn::apm::after_upgrade"/>
         </callbacks>
         <parameters>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AdminChangeSiteTemplate_p"  default="0" description="desc" section_name=".LRN Portal Types"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AdminChangeSiteTemplate_p"  default="1" description="desc" section_name=".LRN Portal Types"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="admin_page_name"  default="#dotlrn.admin_page_name#" description="The name of the admin page"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="AutoAddAuthorities"  default="*" description="A comma-separated list of short-names of authorities for which users should be automatically added to .LRN, or '*' for all. In order for users to be auto-added, AutoAddUsersP needs to be set to 1, and this needs to be set to * or include the relevant authority short_names. Example: 'local,ldap'." section_name="Auto-Adding Users to .LRN"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="AutoAddUsersP"  default="0" description="Automatically add OpenACS users to .LRN. 1 = yes, 0 = no. In order for users to be auto-added, this needs to be set to 1, and AutoAddAuthorities needs to be set to * or include the relevant authority short_names." section_name="Auto-Adding Users to .LRN"/>
