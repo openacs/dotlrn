@@ -33,6 +33,7 @@ ad_page_contract {
 
 
 set dotlrn_url [dotlrn::get_url]
+set dotlrn_package_id [dotlrn::get_package_id]
 set portal_id [dotlrn::get_portal_id -user_id [ad_get_user_id]]
 
 # Make sure user is logged in
@@ -80,3 +81,6 @@ if { ![db_0or1row get_portrait_info {}] } {
 set portrait_upload_url [export_vars -base "../user/portrait/upload" { { return_url [ad_return_url] } }]
 set subsite_url [ad_conn vhost_subsite_url]
 set pvt_home_url [ad_pvt_home]
+
+set allowed_to_change_site_template_p [parameter::get -package_id $dotlrn_package_id -parameter "UserChangeSiteTemplate_p" \
+			      -default 0]

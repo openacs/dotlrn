@@ -36,7 +36,9 @@
   	</if>
         <ul>
           <li><a href="configure">#dotlrn.Customize_Layout#</a></li>
-          <li><a href="change-site-template?referer=@dotlrn_url@/control-panel">#dotlrn.Customize_Template#</a></li>
+          <if @allowed_to_change_site_template_p@>
+            <li><a href="change-site-template?referer=@dotlrn_url@/control-panel">#dotlrn.Customize_Template#</a></li>
+          </if>
           <li><a href="../user/password-update">#acs-subsite.Change_my_Password#</a></li>
 
           <if @change_locale_url@ not nil>
