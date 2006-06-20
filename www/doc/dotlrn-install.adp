@@ -45,9 +45,9 @@
     <p class="indent">
 
       <pre>      
-      cvs -d :pserver:anonymous@openacs.org:/cvsroot login
+      cvs -d :pserver:anonymous@cvs.openacs.org:/cvsroot login
       (just hit return for the password)
-      cvs -z3 -d :pserver:anonymous@openacs.org:/cvsroot checkout acs-core
+      cvs -z3 -d :pserver:anonymous@cvs.openacs.org:/cvsroot checkout acs-core
       </pre>
       
     <p class="note">
@@ -97,7 +97,7 @@
 
     <p class="indent">
       <pre> 
-      cvs -z3 -d :pserver:anonymous@openacs.org:/cvsroot co \
+      cvs -z3 -d :pserver:anonymous@cvs.openacs.org:/cvsroot co \
       acs-datetime acs-developer-support acs-events acs-mail-lite \
       attachments bulk-mail calendar faq file-storage forums general-comments \
       news notifications ref-timezones user-preferences
