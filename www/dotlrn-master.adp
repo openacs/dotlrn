@@ -11,6 +11,9 @@
   <if @doc_type@ not nil><property name="doc_type">@doc_type;noquote@</property></if>
   <if @title@ not nil><property name="title">@title;noquote@</property></if>
 
+<div id="pre-page-body">
+</div>
+
 <div id="page-body">
 
   <if @title@ not nil>
