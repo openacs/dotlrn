@@ -17,7 +17,8 @@
     <h1 class="page-title">@title;noquote@</h1>
   </if>
 
-  <if @navbar@ not nil>@navbar;noquote@</if>
+  <div id="pre-navbar" class="header" style="clear: both;"></div>
+  <if @navbar@ not nil><div id="navbarx">@navbar;noquote@</div></if>
   <div style="clear: both;"></div>
 
   <div id="main-container">
