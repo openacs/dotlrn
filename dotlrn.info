@@ -7,7 +7,7 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.2.0b3" url="http://openacs.org/repository/download/apm/dotlrn-2.2.0b2">
+    <version name="2.2.0b3" url="http://openacs.org/repository/download/apm/dotlrn-2.2.0b3">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
         <release-date>2006-07-15</release-date>
