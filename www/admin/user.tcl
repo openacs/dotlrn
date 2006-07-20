@@ -110,4 +110,13 @@ set subcommunities_pretty_name [parameter::get -localize -parameter subcommuniti
 
 set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
 
+if {$site_wide_admin_p} {
+    set toggle_value revoke
+    set toggle_text [_ dotlrn.Revoke_site_wide_admin]
+} else {
+    set toggle_value grant
+    set toggle_text [_ dotlrn.Grant_site_wide_admin]
+}
+set toggle_swa_url [export_vars -base "site-wide-admin-toggle" {user_id {value $toggle_value} {referer $return_url}}]
+
 ad_return_template

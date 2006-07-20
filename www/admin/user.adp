@@ -194,6 +194,9 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
   <if @portrait_p@>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
+ <if @oacs_site_wide_admin_p@ true>
+  <li><a href="@toggle_swa_url;noquote@">@toggle_text;noquote@</a></li>
+ </if>
  <if @oacs_site_wide_admin_p@ true or @dotlrn_admin_p@ true>
   <li><a href="become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
  </if> 
