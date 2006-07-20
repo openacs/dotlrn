@@ -56,7 +56,7 @@ if {![db_0or1row select_user_info {}]} {
     ad_script_abort
 }
 if {[empty_string_p $screen_name]} {
-    set screen_name "&lt;[_ dotlrn.none_set_up]&gt;"
+    set screen_name "([_ dotlrn.none_set_up])"
 }
 set registration_date [lc_time_fmt $registration_date "%q"]
 if {![empty_string_p $last_visit]} {
@@ -75,7 +75,7 @@ if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info 
     set portrait_p 1
 }
 
-set change_state_links "\[<small>[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]</small>\]"
+set change_state_links "\[ <small>[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]</small> \]"
 
 db_multirow member_classes select_member_classes {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]

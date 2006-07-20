@@ -28,7 +28,7 @@
 
   <li>
     #dotlrn.Person_name#
-    @first_names@ @last_name@
+    <strong>@first_names@ @last_name@</strong>
   <if @oacs_site_wide_admin_p@ true> 
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if>
@@ -36,7 +36,7 @@
 
   <li>
     #dotlrn.Email#
-    <a href="mailto:@email@">@email@</a>
+    <strong><a href="mailto:@email@">@email@</a></strong>
   <if @oacs_site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if> 
@@ -44,7 +44,7 @@
 
   <li>
     #dotlrn.Screen_name#
-    @screen_name@
+    <strong>@screen_name@</strong>
   <if @oacs_site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if>
@@ -52,18 +52,18 @@
 
   <li>
     #dotlrn.User_ID#
-    @user_id@
+    <strong>@user_id@</strong>
   </li>
 
   <li>
     #dotlrn.Registration_date#
-    @registration_date@
+    <strong>@registration_date@</strong>
   </li>
 
 <if @last_visit@ not nil>
   <li>
     #dotlrn.Last_Visit#
-    @last_visit@
+    <strong>@last_visit@</strong>
   </li>
 </if>
 <else>
@@ -74,13 +74,13 @@
 
 <if @portrait_p@ eq 1>
   <li>
-    #dotlrn.Portrait# <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
+    #dotlrn.Portrait# <strong><a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a></strong>
   </li>
 </if>
 
   <li>
     #dotlrn.Member_state#
-    @member_state@
+    <strong>@member_state@</strong>
   <if @oacs_site_wide_admin_p@ true> 
     @change_state_links;noquote@
   </if>
@@ -96,23 +96,23 @@
 
   <li>
     #dotlrn.User_type#
-    <%= [lang::util::localize @pretty_type@] %>
+    <strong><%= [lang::util::localize @pretty_type@] %></strong>
   </li>
 
   <li>
     #dotlrn.Access_level#
-    <if @can_browse_p@>#dotlrn.Full# [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else>#dotlrn.Limited# [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
-se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
+    <if @can_browse_p@><strong>#dotlrn.Full#</strong> [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else><strong>#dotlrn.Limited#</strong> [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
+se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
   </li>
 
   <li>
     #dotlrn.Guest#
-    <if @guest_p@ eq t>#dotlrn.Yes# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else>#dotlrn.No# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
+    <if @guest_p@ eq t><strong>#dotlrn.Yes#</strong> [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else><strong>#dotlrn.No#</strong> [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
   </li>
 
   <li>
     #dotlrn.ID#
-    <if @id@ nil>#dotlrn.ltnone_set_upgt#</if><else>@id@</else>
+    <if @id@ nil><strong>#dotlrn.ltnone_set_upgt#</strong></if><else><strong>@id@</strong></else>
   </li>
 
   <br>
