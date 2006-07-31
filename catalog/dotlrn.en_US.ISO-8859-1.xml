@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0a4" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -309,10 +309,10 @@ notify this user.</msg>
   <msg key="lt_Here_you_can_create_s">Here you can create several users at once using a correctly formatted CSV
 (comma-separated values) file. You can create a spreadsheet and save it as
 a CSV file to import here.</msg>
-  <msg key="lt_If_this_person_is_a_M">If this person is a MIT or Sloan Student have him self-register at sloanspace.mit.edu so he will have a full access account.</msg>
+  <msg key="lt_If_this_person_is_a_M">If this person is an institutional user have him self-register so he will have a full access account.</msg>
   <msg key="lt_if_you_misspell">If you misspell the font name or pick a font that a user doesn't
   have on her computer, the normal system font will be used.</msg>
-  <msg key="lt_If_you_wish_to_give_g">If you wish to give guests full access to forums and surveys you may request that the site-wide admin change the status of your community. This option is not open to classes due to MIT privacy policy.</msg>
+  <msg key="lt_If_you_wish_to_give_g">If you wish to give guests full access to forums and surveys you may request that the site-wide admin change the status of your community.</msg>
   <msg key="lt_Information_about_oth">Information about other members of this community will not be available to this user.</msg>
   <msg key="lt_Join_a_class_instance">Join a %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">Join a %clubs_pretty_name%</msg>
@@ -378,7 +378,7 @@ Message: %body%</msg>
             The most likely causes are that:</msg>
   <msg key="lt_This_action_will_take">This action will take approximately</msg>
   <msg key="lt_This_action_will_take_1">This action will take approximately &lt;strong&gt;%estimated_number_of_seconds%&lt;/strong&gt; seconds.</msg>
-  <msg key="lt_This_allows_you_to_gi">This allows you to give a non-MIT  person who is not a registered student access to this group.</msg>
+  <msg key="lt_This_allows_you_to_gi">This allows you to give non-institutional users access (use this wisely, this is logged).</msg>
   <msg key="lt_this_is_what_the_header">This is what the header title will look like</msg>
   <msg key="lt_this_may_take_some_time">This may take some time. Please be patient.</msg>
   <msg key="lt_This_user_is_a_site-w">This user is a site-wide admin.</msg>
@@ -388,7 +388,7 @@ Message: %body%</msg>
   <msg key="lt_to_use_vaild_email_ad">to use vaild email addresses since the process
 will send the new user's password to the given email address.</msg>
   <msg key="lt_Update_this_users_pas">Update this user's password</msg>
-  <msg key="lt_Use_this_only_for_an_">Use this only for an officially registered student in this class who is &lt;b&gt;not&lt;/b&gt; a MIT or Sloan student.</msg>
+  <msg key="lt_Use_this_only_for_an_">Only use this for people you want to add who are &amp;lt;b&amp;gt;not&amp;lt;/b&amp;gt; institutional users.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log for %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Well, we tried to nuke the user, but there was an error.  The most
 likely case is that a reference to this user (user_id=%user_id%)
@@ -465,6 +465,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="No_dont_delete_it">No, don't delete it</msg>
   <msg key="No_groups_to_add_to">No groups to add to</msg>
   <msg key="No_notification_requested">No notification requested.</msg>
+  <msg key="No_Site_Templates_data">No Site Templates data</msg>
   <msg key="No_Terms">No Terms</msg>
   <msg key="No_user_found">No user found</msg>
   <msg key="No_Users">No Users</msg>
@@ -490,7 +491,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Parent">Parent</msg>
   <msg key="Pending">Pending</msg>
   <msg key="Pending_Approval">Pending Approval</msg>
-  <msg key="Person_name">Name</msg>
+  <msg key="Person_name">Name:</msg>
   <msg key="Personal_home_page">Personal home page:</msg>
   <msg key="Personal_Options">Personal Options</msg>
   <msg key="Plain_Text">Plain Text</msg>
