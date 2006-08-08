@@ -69,13 +69,15 @@ if {!$dotlrn_user_p} {
 }
 
 set redirect "user-add-2?[export_vars {user_id password referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]"
-if { [string equal $add_membership_p t] } {
+if { [string equal $add_membership_p t] && [string equal $referer "/acs-admin/users"] } {
     set redirect "one-community-admin"
+} else {
+    set redirect $referer
 }
 
 # Don't redirect back to the user-new-2 page if we've already been there
 if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
-    set redirect "../${redirect}"
+    # set redirect "../${redirect}"
     ad_returnredirect "admin/user-new-2?[export_vars {user_id {referer $redirect}}]"
     ad_script_abort
 } elseif { [string equal $add_membership_p t] } {
@@ -85,7 +87,7 @@ if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
 
 set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
 
-set admin_user_id [ad_conn user_id]
+set admin_user_id [ad_verify_and_get_user_id]
 set administration_name [db_string select_admin_name {
     select first_names || ' ' || last_name
     from persons

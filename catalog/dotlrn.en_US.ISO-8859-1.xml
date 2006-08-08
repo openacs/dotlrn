@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.1" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -17,6 +17,7 @@
   <msg key="Add_a_User">Add a User</msg>
   <msg key="Add_New_Members">Add New Members</msg>
   <msg key="Add_Professor">Add Professor</msg>
+  <msg key="Add_Professor_help">Shall a professor be added to this class (this will open a query box on the next page)</msg>
   <msg key="add_selected_members">Add Selected Members</msg>
   <msg key="add_to_another_group">Add this user to another group</msg>
   <msg key="add_to_dotlrn">Add this user to .LRN</msg>
@@ -29,12 +30,14 @@
   <msg key="added_community_subject">You have been added to the &quot;%community_name%&quot; community at %package%</msg>
   <msg key="Admin">Admin</msg>
   <msg key="admin">admin</msg>
+  <msg key="Admin_help">Help for .LRN Administrators</msg>
   <msg key="admin_page_name">Control Panel</msg>
   <description key="admin_page_name">The name of the administration page in the navbar on the MySpace page.</description>
 
   <msg key="admin_pages_navbar_name">Admin</msg>
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
+  <msg key="Administration">Administration</msg>
   <msg key="Administration_Cockpit">Administration Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administrators</msg>
@@ -75,6 +78,7 @@
   <msg key="Change_Locale">Change Locale</msg>
   <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
   <msg key="Class_instance_key">Class key</msg>
+  <msg key="Class_instance_key_help">Alternatively use the class key.</msg>
   <msg key="class_instance_portal_pretty_name">Classes</msg>
   <msg key="class_instances_pretty_name">Class</msg>
   <msg key="class_instances_pretty_plural">Classes</msg>
@@ -98,6 +102,7 @@
   <msg key="clubs_pretty_name">Community</msg>
   <msg key="clubs_pretty_plural">Communities</msg>
   <msg key="Cockpit">Cockpit</msg>
+  <msg key="Comma_Separated_Values">Comma Separated Values</msg>
   <msg key="Communities">Communities</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">%clubs_pretty_name% Name</msg>
@@ -126,12 +131,14 @@
   <msg key="course_admin_role_pretty_plural">Course Administrators</msg>
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
+  <msg key="Courses">Courses</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
   <msg key="Create_Club">Create Club</msg>
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
+  <msg key="Customize_Template">Customize Site Template</msg>
   <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
   <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
@@ -178,6 +185,7 @@
   <msg key="Edit">Edit</msg>
   <msg key="Edit_a_User">Edit a User</msg>
   <msg key="edit_approved_email_servers">Edit Pre-approved Email Servers</msg>
+  <msg key="Edit_Biography">Edit Biography</msg>
   <msg key="edit_community_parameters">Edit community parameters</msg>
   <msg key="edit_community_type">Edit Community Type</msg>
   <msg key="edit_message_and_hit_send">Edit the message below and hit &quot;Send Email&quot; to
@@ -197,6 +205,7 @@ notify this user.</msg>
   <msg key="email_sent_to">&lt;p&gt;Email sent to %email%.</msg>
   <msg key="End_Date">End Date</msg>
   <msg key="End_date">End date:</msg>
+  <msg key="End_date_help">Actual end date</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
   <msg key="Example_File">Example File</msg>
   <msg key="External_URL">External URL</msg>
@@ -231,6 +240,8 @@ notify this user.</msg>
   <msg key="Header_Logo_Alt_Text">Header Logo Alt Text</msg>
   <msg key="Header_Logo_Item_ID">Header Logo Item ID</msg>
   <msg key="help">Help</msg>
+  <msg key="hide_lrn_toolbar">Hide .LRN toolbar</msg>
+  <msg key="Home">Home</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
@@ -242,6 +253,7 @@ notify this user.</msg>
   <msg key="Join_A_Group">Join A Group</msg>
   <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Join&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Join Policy</msg>
+  <msg key="Join_Policy_help">Join policy that is being applied</msg>
   <msg key="Key">Key</msg>
   <msg key="Large">Large</msg>
   <msg key="Last_Name">Last Name</msg>
@@ -271,11 +283,13 @@ notify this user.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Are you sure you want to archive group &lt;strong&gt;%pretty_name%&lt;/strong&gt; and all its subgroups (if any)?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>
+  <msg key="lt_Are_you_sure_you_want_to_send">Are you sure you want to send the following email?</msg>
   <msg key="lt_Be_sure_that_the_pers">Be sure that the person does not already have an account under another email address. Duplicate accounts cause problems for everyone. To add a person with an existing account use &lt;a href=members&gt;Manage Membership&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Class Key (a short name, no spaces)</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
   <msg key="lt_Delete_class">Delete subject</msg>
+  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;Do not use P tags for paragraphs&lt;/font&gt;</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
@@ -298,10 +312,10 @@ notify this user.</msg>
   <msg key="lt_Here_you_can_create_s">Here you can create several users at once using a correctly formatted CSV
 (comma-separated values) file. You can create a spreadsheet and save it as
 a CSV file to import here.</msg>
-  <msg key="lt_If_this_person_is_a_M">If this person is a MIT or Sloan Student have him self-register at sloanspace.mit.edu so he will have a full access account.</msg>
+  <msg key="lt_If_this_person_is_a_M">If this person is an institutional user have him self-register so he will have a full access account.</msg>
   <msg key="lt_if_you_misspell">If you misspell the font name or pick a font that a user doesn't
   have on her computer, the normal system font will be used.</msg>
-  <msg key="lt_If_you_wish_to_give_g">If you wish to give guests full access to forums and surveys you may request that the site-wide admin change the status of your community. This option is not open to classes due to MIT privacy policy.</msg>
+  <msg key="lt_If_you_wish_to_give_g">If you wish to give guests full access to forums and surveys you may request that the site-wide admin change the status of your community.</msg>
   <msg key="lt_Information_about_oth">Information about other members of this community will not be available to this user.</msg>
   <msg key="lt_Join_a_class_instance">Join a %class_instances_pretty_name%</msg>
   <msg key="lt_Join_a_clubs_pretty_n">Join a %clubs_pretty_name%</msg>
@@ -367,7 +381,7 @@ Message: %body%</msg>
             The most likely causes are that:</msg>
   <msg key="lt_This_action_will_take">This action will take approximately</msg>
   <msg key="lt_This_action_will_take_1">This action will take approximately &lt;strong&gt;%estimated_number_of_seconds%&lt;/strong&gt; seconds.</msg>
-  <msg key="lt_This_allows_you_to_gi">This allows you to give a non-MIT  person who is not a registered student access to this group.</msg>
+  <msg key="lt_This_allows_you_to_gi">This allows you to give non-institutional users access (use this wisely, this is logged).</msg>
   <msg key="lt_this_is_what_the_header">This is what the header title will look like</msg>
   <msg key="lt_this_may_take_some_time">This may take some time. Please be patient.</msg>
   <msg key="lt_This_user_is_a_site-w">This user is a site-wide admin.</msg>
@@ -377,7 +391,7 @@ Message: %body%</msg>
   <msg key="lt_to_use_vaild_email_ad">to use vaild email addresses since the process
 will send the new user's password to the given email address.</msg>
   <msg key="lt_Update_this_users_pas">Update this user's password</msg>
-  <msg key="lt_Use_this_only_for_an_">Use this only for an officially registered student in this class who is &lt;b&gt;not&lt;/b&gt; a MIT or Sloan student.</msg>
+  <msg key="lt_Use_this_only_for_an_">Only use this for people you want to add who are &amp;lt;b&amp;gt;not&amp;lt;/b&amp;gt; institutional users.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log for %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Well, we tried to nuke the user, but there was an error.  The most
 likely case is that a reference to this user (user_id=%user_id%)
@@ -398,7 +412,7 @@ programmers! The actual error returned was:</msg>
   <msg key="lt_Your_search_returned_">Your search returned no results, please broaden your search criteria.</msg>
   <msg key="lt_Youre_asking_to_chang">You're asking to change the level of access of this user.
 This has strong repercussions. Are you user about this?</msg>
-  <msg key="ltnone_set_upgt">&lt;none set up&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;none set up&amp;gt;</msg>
   <msg key="Mail_Failed">Mail Failed</msg>
   <msg key="Manage">Manage</msg>
   <msg key="Manage_Applets">Manage Applets</msg>
@@ -420,9 +434,11 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="must_have_values">Field must have one of the following values:</msg>
   <msg key="Must_specify_recipients">You did not select any recipients for this message. Please use the back button on your browser to return to the New Bulk Mail page and select recipients. Thank you.</msg>
   <msg key="My_Communities">My Communities</msg>
+  <msg key="My_Workspace">My Workspace</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Name</msg>
   <msg key="Name__Email">Name / Email</msg>
+  <msg key="Name_help">Name of the class</msg>
   <msg key="navy">navy</msg>
   <msg key="Needs_Approval">Needs Approval</msg>
   <msg key="Never_visited">Never visited</msg>
@@ -454,6 +470,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="No_dont_delete_it">No, don't delete it</msg>
   <msg key="No_groups_to_add_to">No groups to add to</msg>
   <msg key="No_notification_requested">No notification requested.</msg>
+  <msg key="No_Site_Templates_data">No Site Templates data</msg>
   <msg key="No_Terms">No Terms</msg>
   <msg key="No_user_found">No user found</msg>
   <msg key="No_Users">No Users</msg>
@@ -480,7 +497,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Parent_Type">Parent Type</msg>
   <msg key="Pending">Pending</msg>
   <msg key="Pending_Approval">Pending Approval</msg>
-  <msg key="Person_name">Name</msg>
+  <msg key="Person_name">Name:</msg>
   <msg key="Personal_home_page">Personal home page:</msg>
   <msg key="Personal_Options">Personal Options</msg>
   <msg key="Plain_Text">Plain Text</msg>
@@ -488,12 +505,14 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Portrait">Portrait:</msg>
   <msg key="Portrait_1">Portrait</msg>
   <msg key="Post_to">Post to:</msg>
+  <msg key="Preferences">Preferences</msg>
   <msg key="Pretty_Name">Pretty Name</msg>
   <msg key="Pretty_Plural">Pretty Plural</msg>
   <msg key="Preview">Preview</msg>
   <msg key="prv_policy_must_be_one_of">The privacy policy must be either &quot;yes&quot; or &quot;no&quot;.</msg>
   <msg key="Public_Web_Log">Public Web Log</msg>
   <msg key="purple">purple</msg>
+  <msg key="pvt_home_name">My Account</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
@@ -536,8 +555,28 @@ Thank you
   <msg key="send_email">Send Email</msg>
   <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Shared_Files">Shared Files</msg>
+  <msg key="show_lrn_toolbar">.LRN Toolbar anzeigen</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
+  <msg key="Site_Template_Add">Add New Site Template</msg>
+  <msg key="Site_Template_Adding">Add Site Template</msg>
+  <msg key="Site_Template_AdminParams">Admin Parameters for Site Templating</msg>
+  <msg key="Site_Template_Commchange">Can community administrators change the Community's Site Template?</msg>
+  <msg key="Site_Template_Commdefault">Default Site Tamplate for communities</msg>
+  <msg key="Site_Template_Editting">Edit Site Template</msg>
+  <msg key="Site_Template_ID">Site Template ID</msg>
+  <msg key="Site_Template_Name">Site Template Name</msg>
+  <msg key="Site_Template_Name_help">Provide a pretty name for this Site Template</msg>
+  <msg key="Site_Template_Nonedefault">Master Tempalate used for not registered visitors.</msg>
+  <msg key="Site_Template_Portal_theme">Associated Portal Theme</msg>
+  <msg key="Site_Template_Portal_theme_help">Select a portal theme. This portal theme is going to be used for the Site Template.</msg>
+  <msg key="Site_Template_Sitemaster">Master Template</msg>
+  <msg key="Site_Template_Sitemaster_help">Provide the entire path for the master template (i.e. /packages/dotlrn/www/dotlrn-master )</msg>
+  <msg key="Site_Template_Userchange">Can users change their Site Template?</msg>
+  <msg key="Site_Template_Userdefault">Defautl Site Template for users</msg>
+  <msg key="Site_Templates">Site Templates</msg>
+  <msg key="site_templates">Site Templates</msg>
+  <msg key="Site_Templates_Template_AdminParams">Parameters Administration</msg>
   <msg key="Small">Small</msg>
   <msg key="Sorry">Sorry!</msg>
   <msg key="Spam_">Spam ...</msg>
@@ -545,6 +584,7 @@ Thank you
   <msg key="Spam_Users">Spam Users</msg>
   <msg key="Start_Date">Start Date</msg>
   <msg key="Start_date">Start date:</msg>
+  <msg key="Start_date_help">Actual start date</msg>
   <msg key="student_role_pretty_name">Student</msg>
   <msg key="student_role_pretty_plural">Students</msg>
   <msg key="subcomm_page_calendar_title">Calendar</msg>
@@ -564,13 +604,14 @@ Thank you
   <msg key="Term">Term</msg>
   <msg key="term">Term</msg>
   <msg key="Term_eg_Spring_Fall">Term (e.g. Spring, Fall)</msg>
+  <msg key="Term_help">Term for which this class is generated</msg>
   <msg key="Term_ID">Term ID</msg>
   <msg key="term_properties">term properties.</msg>
   <msg key="Terms">Terms</msg>
   <msg key="terms">Terms</msg>
   <msg key="the_format_of_email_domains">The format of this value is a comma-separated list of domains (usually
   preceded by the *@ string which match
-  &lt;anything&gt;@&lt;email-domain&gt;). For example, you might use:</msg>
+  &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). For example, you might use:</msg>
   <msg key="The_name">The name</msg>
   <msg key="there_are_no_users_matching">There are no users matching %search_text%.</msg>
   <msg key="this_user_is_deleted">this user is deleted</msg>
@@ -591,6 +632,7 @@ Thank you
   <msg key="user_email_already_exists">User %user_email% already exists... storing user_id</msg>
   <msg key="user_email_created">User %user_email% created....</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% has been a member of %system_name% since %pretty_creation_date%</msg>
+  <msg key="User_help">Help!</msg>
   <msg key="User_ID">User ID:</msg>
   <msg key="User_ID_1">User ID</msg>
   <msg key="User_Management">User Management</msg>

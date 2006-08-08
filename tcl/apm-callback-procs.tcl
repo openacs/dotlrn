@@ -31,6 +31,10 @@ ad_proc -private dotlrn::apm::after_install {
 	    -object_id [apm_package_id_from_key new-portal] \
 	    -privilege "admin"
 
+    parameter::set_from_package_key \
+        -package_key acs-kernel \
+        -parameter HomeURL \
+        -value /dotlrn/control-panel
 }
 
 
@@ -51,6 +55,26 @@ ad_proc -private dotlrn::apm::after_instantiate {
             -privilege "admin"
 
         }
+       #Setting the default Site Template
+       set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
+       
+       #for communities
+       parameter::set_value -package_id $package_id \
+	   -parameter  "CommDefaultSiteTemplate_p" \
+	   -value $site_template_id
+	   
+       #for users
+       parameter::set_value -package_id $package_id \
+	   -parameter  "UserDefaultSiteTemplate_p" \
+	   -value $site_template_id
+
+       parameter::set_from_package_key -package_key "acs-subsite" \
+	   -parameter "DefaultMaster" \
+	   -value "/packages/dotlrn/www/dotlrn-master-custom"
+
+       # Make sure that privacy is turned on
+       acs_privacy::privacy_control_set 1
+	
 }
 
 
@@ -102,7 +126,6 @@ ad_proc -public dotlrn::apm::after_upgrade {
 
                         ns_log notice "dotlrn upgrade: dotlrn permission granted..."
 
-
                         #grant dotlrn-portlet admin permission
                         permission::grant \
                              -party_id $dotlrn_admins_group \
@@ -120,25 +143,115 @@ ad_proc -public dotlrn::apm::after_upgrade {
 			ns_log notice "dotlrn upgrade: new-portal permission granted..."
 
 		    }
-
+		
 		db_transaction {
-
+		    
                         #grant admin permission on old communities
                         db_foreach community_group "select community_id from dotlrn_communities" {
- 
                         permission::grant \
                              -party_id $dotlrn_admins_group \
                              -object_id $community_id \
                              -privilege "admin"   
-
+			
                         ns_log notice "dotlrn upgrade: community $community_id permission granted to dotlrn-admin ..."
-
-
+			
 		    }
-	         }
-	      }
+		}
 	    }
+	    2.2.0d1 2.2.0d2 {
+
+		#Setting the default Site Template
+		set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
+		
+		set package_id [dotlrn::get_package_id]
+		#for communities
+		parameter::set_value -package_id $package_id \
+		    -parameter  "CommDefaultSiteTemplate_p" \
+		    -value $site_template_id
+		
+		#for users
+		parameter::set_value -package_id $package_id \
+		    -parameter  "UserDefaultSiteTemplate_p" \
+		    -value $site_template_id
+		
+		parameter::set_from_package_key -package_key "acs-subsite" \
+		    -parameter "DefaultMaster" \
+		    -value "/packages/dotlrn/www/dotlrn-master-custom"
+               
+               # This fixes parameter reseting from dotlrn
+               set community_level_p_param_id [db_string select_clevel_id { 
+                                                  select parameter_id
+                                                  from apm_parameters 
+                                                  where package_key='dotlrn' and
+                                                  parameter_name='community_level_p'}]
+               
+               set comm_type_level_p_param_id [db_string select_ctlevel_id { 
+                                                  select parameter_id
+                                                  from apm_parameters 
+                                                  where package_key='dotlrn' and
+                                                  parameter_name='community_type_level_p'}]
+              
+              set dotlrn_level_p_param_id [db_string select_dlevel_id { 
+                                                  select parameter_id
+                                                  from apm_parameters 
+                                                  where package_key='dotlrn' and
+                                                  parameter_name='dotlrn_level_p'}]
+                
+               db_foreach select_attr_values {
+                   select community_id from dotlrn_communities_all
+                } {
+                   set package_id [dotlrn_community::get_package_id $community_id] 
+                   ns_log Notice "upgrade: $package_id parameter_id:
+                   $community_level_p_param_id"
+
+                   db_dml community_level_p_update { 
+                    update apm_parameter_values set 
+                    attr_value=(select attr_value from
+                    apm_parameter_values_copy where package_id=:package_id 
+                    and parameter_id=:community_level_p_param_id)
+                    where package_id=:package_id and
+                    parameter_id=:community_level_p_param_id
+                   }
+                   
+                   db_dml community_type_level_p_update { 
+                    update apm_parameter_values set 
+                    attr_value=(select attr_value from
+                    apm_parameter_values_copy where package_id=:package_id 
+                    and parameter_id=:comm_type_level_p_param_id)
+                    where package_id=:package_id and
+                    parameter_id=:comm_type_level_p_param_id
+                   }
+                   
+                   db_dml dotlrn_level_p_update { 
+                    update apm_parameter_values set 
+                    attr_value=(select attr_value from
+                    apm_parameter_values_copy where package_id=:package_id 
+                    and parameter_id=:dotlrn_level_p_param_id)
+                    where package_id=:package_id and
+                    parameter_id=:dotlrn_level_p_param_id
+                   }
+
+               }
+		
+	    }
+	    2.2.0a2 2.2.0a3 {
+		# This fixes a security hole opened up when cloning
+		# communities/classes
+		db_foreach get_communities_with_inherit {
+		    select community_id
+		    from dotlrn_communities_all c, acs_objects o
+		    where c.community_id = o.object_id
+		    and o.security_inherit_p = 't'
+		} {
+		    permission::set_not_inherit -object_id $community_id
+		}		
+	    
+            }
+	    2.2.0a3 2.2.0a4 {
+                parameter::set_from_package_key \
+                    -package_key acs-kernel \
+                    -parameter HomeURL \
+                    -value /dotlrn/control-panel
+	    }
+    }
 }
-
-
-

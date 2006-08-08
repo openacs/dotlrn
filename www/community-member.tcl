@@ -23,6 +23,7 @@ ad_page_contract {
 } {
     user_id:integer,notnull
     {community_id ""}
+    {return_url ""}
 } -properties {
     context_bar:onevalue
     portal_id:onevalue
@@ -45,9 +46,13 @@ ad_page_contract {
     user_contributions:multirow
 }
 
+if {[dotlrn_community::get_community_id] != $community_id} {
+    ad_returnredirect [export_vars -base "[dotlrn_community::get_community_url $community_id]community-member" {user_id community_id}]
+}
+
 auth::require_login
 
-set verified_user_id [ad_conn user_id]
+set verified_user_id [ad_verify_and_get_user_id]
 
 set user_info_sql {
     select first_names,
@@ -78,18 +83,18 @@ set bio [db_string biography {
 } -default ""]
 
 set weblog_p 0
-if {1} {
-    set weblog_package_id  [site_node_apm_integration::get_child_package_id  -package_key "forums"]
-    set weblog_url "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view"
-#set to check if you are using webloggers
+#set to check if you are using forums
+if {[apm_package_installed_p "forums"]} {
+    set forums_package_id  [site_node_apm_integration::get_child_package_id  -package_key "forums"]
+    set forums_url "[dotlrn_community::get_url -package_id $forums_package_id]/forum-view"
 
-    db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id 
-    and o.creation_user = :user_id and f.package_id = :weblog_package_id}
-    set weblog_p 1
+    db_multirow forums forums {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id 
+    and o.creation_user = :user_id and f.package_id = :forums_package_id}
+    set forums_p 1
 }
 
 set portrait_p 0
-if {[ad_parameter "show_portrait_p" dotlrn]} {
+if {[ad_parameter "show_portrait_p" dotlrn] && 0} {
     set portrait_p 1
     set inline_portrait_state ""
     set portrait_export_vars [export_vars user_id]
@@ -121,9 +126,9 @@ if {[ad_parameter "show_portrait_p" dotlrn]} {
 }
 
 set show_email_p 0
-if { $priv_email <= [ad_privacy_threshold] } {
-    set show_email_p 1
-}
+#if { $priv_email <= [ad_privacy_threshold] } {
+#    set show_email_p 1
+#}
 
 db_multirow user_contributions user_contributions {}
 
@@ -131,12 +136,23 @@ set folder_id [dotlrn_fs::get_user_shared_folder -user_id $user_id]
 
 set scope_fs_url "/packages/file-storage/www/folder-chunk"
 set n_past_days ""
-set url "[site_node_object_map::get_url -object_id $folder_id]index?folder_id=$folder_id&n_past_days=99999"
+#set url "[site_node_object_map::get_url -object_id $folder_id]index?folder_id=$folder_id&n_past_days=99999"
 
 set context_bar [ad_context_bar "[_ dotlrn.Community_member]"]
+set context [list "Member Page"]
 set system_name [ad_system_name]
 set pretty_creation_date [lc_time_fmt $creation_date "%q"]
 set login_export_vars "return_url=[ns_urlencode [acs_community_member_url -user_id $user_id]]"
+
+set return_url_2 [ad_return_url]
+if {[empty_string_p $return_url]} {
+    set return_url [get_referrer]
+    if {[regexp {\?} $return_url_2]} {
+        append return_url_2 "&return_url=$return_url"
+    } else {
+        append return_url_2 "?return_url=$return_url"
+    }
+}
 
 ad_return_template
 

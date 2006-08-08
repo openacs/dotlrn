@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b4" locale="it_IT" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="it_IT" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia di</msg>
   <msg key="Access">Accesso</msg>
@@ -25,12 +25,15 @@
   <msg key="Add_users_to">Aggiungi utente a</msg>
   <msg key="Add_Users_to_Group">Aggiungi utenti al gruppo</msg>
   <msg key="AddDrop_Memberships">Aggiungi/Rimuovi Associazioni</msg>
+  <msg key="added_community_message">Per visitare la home page della communità, vai su %package% e dopo esserti autenticato clicca sul link &quot;%community_name%&quot; nel portlet &quot;Gruppi&quot;.</msg>
+  <msg key="added_community_subject">Sei stato aggiunto alla communità &quot;%community_name%&quot; in %package%</msg>
   <msg key="Admin">Amministra</msg>
   <msg key="admin">amministrazione</msg>
   <msg key="admin_page_name">Pannello di Controllo</msg>
   <msg key="admin_pages_navbar_name">Amministra</msg>
   <msg key="Administer">Amministra</msg>
-  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/graphics/admin.gif&quot; alt=&quot;Amministra&quot;&gt; </msg>
+  <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Amministra&quot;&gt; </msg>
+  <msg key="Administration_Cockpit">Panoramica Amministrazione</msg>
   <msg key="Administrator">Amministratore</msg>
   <msg key="Administrators">Amministratori</msg>
   <msg key="Admins_of">Amministratori di</msg>
@@ -41,7 +44,9 @@
   <msg key="Applets_to_Add">Applet da aggiungere</msg>
   <msg key="Approve">Approva</msg>
   <msg key="approve">approva</msg>
-  <msg key="aqua">acqua</msg>
+  <msg key="Approve_all">Approva tutti</msg>
+  <msg key="aqua">verde acqua</msg>
+  <msg key="Archive">Archivia</msg>
   <msg key="archived">Archiviate:</msg>
   <msg key="archived_classes_and_communities">%class_instances_pretty_plural% e %clubs_pretty_plural% archiviati</msg>
   <msg key="archived_groups">%groups_pretty_plural% archiviati</msg>
@@ -55,10 +60,13 @@
   <msg key="black">nero</msg>
   <msg key="Black_None_chosen">Nero (Nessuna scelta)</msg>
   <msg key="blue">blu</msg>
+  <msg key="Bulk_Approve">Approva &quot;spam&quot;</msg>
+  <msg key="Bulk_Approving">Approvazione &quot;spam&quot; in corso.</msg>
   <msg key="Bulk_Upload">Caricamento di massa</msg>
   <msg key="Bulk_Uploading">Caricamento di massa...</msg>
   <msg key="cannot_be_removed">non può essere rimosso</msg>
   <msg key="Change_Locale">Cambia Impostazioni Locali</msg>
+  <msg key="Choose_members_to_receive">Seleziona i partecipanti di %community_name% che devono ricevere questo messaggio:</msg>
   <msg key="class_instance_portal_pretty_name">Classi</msg>
   <msg key="class_instances_pretty_name">Classe</msg>
   <msg key="class_instances_pretty_plural">Classi</msg>
@@ -81,6 +89,7 @@
   <msg key="clubs_name_header">Nomi delle %clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Comunità</msg>
   <msg key="clubs_pretty_plural">Comunità</msg>
+  <msg key="Cockpit">Panoramica</msg>
   <msg key="Communities">Comunità</msg>
   <msg key="Community">Comunità</msg>
   <msg key="community_header_name">Nome %clubs_pretty_name%</msg>
@@ -91,6 +100,7 @@
   <msg key="Community_Type">Tipo di comunità</msg>
   <msg key="Community_Types">Tipi di comunità</msg>
   <msg key="Communitys_Name">Nome della comunità</msg>
+  <msg key="Compose_bulk_message">Componi messaggio &quot;spam&quot;</msg>
   <msg key="Configure_Element">Configura l'elemento</msg>
   <msg key="Configure_name">Configura %name%</msg>
   <msg key="Confirm">Conferma</msg>
@@ -106,8 +116,11 @@
   <msg key="course_assistant_role_pretty_plural">Assistenti</msg>
   <msg key="Create_A_New_User">Crea un nuovo utente</msg>
   <msg key="Create_a_Web_Log">Crea un Web Log</msg>
+  <msg key="Created">Creato</msg>
   <msg key="CSV_File_Format">File formato CVS</msg>
   <msg key="Customize_Layout">Personalizza il Layout</msg>
+  <msg key="database_choked">&lt;p&gt;Errore nell'aggiunta dell'utente al database!&lt;br&gt;  La transazione è stata abortita, nessun utente è stato aggiunto.&lt;p&gt;</msg>
+  <msg key="datafile_must">&lt;p&gt;Il file deve includere al meno i campi: email, first_names, last_name.&lt;p&gt;</msg>
   <msg key="Deactivate_">Disattiva...</msg>
   <msg key="Deactivate_Users">Disattiva gli utenti</msg>
   <msg key="Deactivated">Disattivato</msg>
@@ -148,6 +161,7 @@
   <msg key="Edit">Modifica</msg>
   <msg key="Edit_a_User">Modifica un utente</msg>
   <msg key="edit_approved_email_servers">Modifica i Server di Posta pre-approvati</msg>
+  <msg key="edit_community_parameters">Modifica i parametri della comunità</msg>
   <msg key="edit_message_and_hit_send">Modifica il messaggio sottostante e premi &quot;Invia l'Email&quot; per notificarlo a questo utente.</msg>
   <msg key="edit_parameters">Modifica i parametri</msg>
   <msg key="Edit_Properties">Modifica le Proprietà</msg>
@@ -161,6 +175,7 @@
   <msg key="Email_Members">Email membri</msg>
   <msg key="email_message">Messaggio</msg>
   <msg key="email_sent">Mail inviati</msg>
+  <msg key="email_sent_to">&lt;p&gt;Email spedita a %email%.</msg>
   <msg key="End_Date">Fine Data</msg>
   <msg key="End_date">Fine data:</msg>
   <msg key="Error_sending_mail">Errore inviando l'email</msg>
@@ -197,6 +212,7 @@
   <msg key="Header_Logo_Alt_Text">Testo alternativo del logo dell'intestazione</msg>
   <msg key="Header_Logo_Item_ID">ID logo intestazione</msg>
   <msg key="help">Aiuto</msg>
+  <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
   <msg key="instructor_role_pretty_name">Professore</msg>
@@ -230,6 +246,7 @@
   <msg key="lt_An_error_occured_whil_1">Si è verificato un errore durante la rimozione di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
   <msg key="lt_approve_and_add_to_do">approva e aggiungi a dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Sei sicuro di voler cancellare il dipartimento vuoto</msg>
+  <msg key="lt_Are_you_sure_you_want_nuke_users">Sei sicuro di voler rimuovere questi utenti? Tieni conto che per alcuni utenti potremo avere degli errori.</msg>
   <msg key="lt_Be_sure_that_the_pers">Accertati che la persona non abbia già un'account con un altro indirizzo email. Le account doppie creano problemi a tutti. Per aggiungere una persona con un'account già esistente, usa la &lt;a href=members&gt;Gestione Associazioni&lt;/a&gt;.</msg>
   <msg key="lt_Class_Key_a_short_nam">Chiave della Classe (un nome breve, senza spazi)</msg>
   <msg key="lt_Communitys_Web_Addres">Indirizzo Web della Comunità</msg>
@@ -262,6 +279,7 @@
   <msg key="lt_JoinDrop_a_Class_or_C">Partecipa/Abbandona una Classe o un Gruppo della Comunità</msg>
   <msg key="lt_JoinDrop_Classes_or_C">Partecipazione/Abbandono di Classi o Gruppi della Comunità</msg>
   <msg key="lt_Key_a_short_name_no_s">Chiave (un nome breve, senza spazi)</msg>
+  <msg key="lt_Last_Visit_None_">L'utente non ha ancora visitato</msg>
   <msg key="lt_Last_Visit_Over_in_da">Giorni dall'ultima visita</msg>
   <msg key="lt_Last_Visit_Within_in_">Giorni dall'ultima visita</msg>
   <msg key="lt_Make_this_user_a_site">Rendi questo utente un amministratore globale del sito.</msg>
@@ -313,6 +331,7 @@
   <msg key="lt_Use_this_only_for_an_">Usa questo solo per uno studente ufficialmente registrato in questa classe che &lt;b&gt;non&lt;/b&gt; sia uno studente del MIT o della Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log per %user_name%</msg>
   <msg key="lt_Well_we_tried_to_nuke">Bene, abbiamo tentato di eliminare l'utente, ma si è verificato un errore. La causa più probabile è che ci sia una reference a questo user (user_id=%user_id%) da qualche parte all'interno dello schema del database. è il momento di chiamare i tuoi programmatori! </msg>
+  <msg key="lt_Year_eg_2003_20032004">Anno (es. 2003, 2003/2004)</msg>
   <msg key="lt_You_are_about_to_dele">Stai per cancellare %num_users% utenti.</msg>
   <msg key="lt_You_are_adding_strong">Stai aggiungendo &lt;strong&gt;%first_names% %last_name% (%email%)&lt;/strong&gt; a %community_name%: </msg>
   <msg key="lt_You_are_not_allowed_t">Non sei autorizzato a compiere questa azione.</msg>
@@ -326,7 +345,7 @@
   <msg key="lt_Your_passwords_dont_m">Le password non coincidono! Probabilmente hai sbagliato a digitarne una.</msg>
   <msg key="lt_Your_search_returned_">La tua ricerca non ha fornito risultati, ripeti la ricerca con criteri più ampi.</msg>
   <msg key="lt_Youre_asking_to_chang">Stai chiedendo di modificare il livello di accesso di questo utente. Questo ha notevoli ripercussioni. Sei conscio di questo?</msg>
-  <msg key="ltnone_set_upgt">&lt;nessuna scelta&gt; </msg>
+  <msg key="ltnone_set_upgt">&amp;lt;nessuna scelta&amp;gt; </msg>
   <msg key="Mail_Failed">Invio email fallito</msg>
   <msg key="Manage">Controlla</msg>
   <msg key="Manage_Applets">Controlla le Applet</msg>
@@ -343,7 +362,10 @@
   <msg key="Memberships">Associazioni</msg>
   <msg key="Memberships_1">Associazioni:</msg>
   <msg key="Message">Messaggio</msg>
+  <msg key="Message_Type">Tipo di Messaggio</msg>
+  <msg key="Minutes">Minuti</msg>
   <msg key="must_have_values">Il campo deve avere uno dei seguenti valori:</msg>
+  <msg key="Must_specify_recipients">Non hai selezionato nessuno come destinatario. Devi usare il pulsante 'Indietro' sul tuo browser per tornare alla pagina di creazione della posta e selezionare i destinatari.</msg>
   <msg key="My_Communities">Le mie comunità</msg>
   <msg key="NA">N/A</msg>
   <msg key="Name">Nome</msg>
@@ -385,6 +407,8 @@
   <msg key="not_a_user">Non Utente</msg>
   <msg key="Not_Allowed">Non Permesso</msg>
   <msg key="Note">Nota:</msg>
+  <msg key="Note_if_you_make">Avvertenza: se fai modifiche utilizzando questa form, l'utente perderà la sua configurazione (eventuale) personalizzata.</msg>
+  <msg key="Note_the_term_column">Nota: il campo &quot;Sessione&quot; si applica a classi e sottogruppi di classi. Per sottogruppi di classi, il campo &quot;Sessione&quot; contiene la sessione della relativa classe. Nessuna sessione è visualizzata per ulteriori sottogruppi. </msg>
   <msg key="Nuke">Elimina</msg>
   <msg key="Nuke_">Elimina...</msg>
   <msg key="Nuke_Users">Elimina utenti</msg>
@@ -394,10 +418,13 @@
   <msg key="Or">Oppure</msg>
   <msg key="or_by_RGB_number">o per numero RGB</msg>
   <msg key="or_return_to">oppure, ritorna a</msg>
+  <msg key="Parent">Parente</msg>
   <msg key="Pending">Pendente</msg>
   <msg key="Pending_Approval">In attesa di approvazione</msg>
+  <msg key="Person_name">Nome</msg>
   <msg key="Personal_home_page">Home page personale:</msg>
   <msg key="Personal_Options">Opzioni personali</msg>
+  <msg key="Plain_Text">Testo Semplice</msg>
   <msg key="portal_templates">Modelli di Portale</msg>
   <msg key="Portrait">Ritratto:</msg>
   <msg key="Portrait_1">Ritratto</msg>
@@ -405,13 +432,23 @@
   <msg key="Pretty_Name">Nome &quot;bello&quot;</msg>
   <msg key="Pretty_Plural">Plurale &quot;bello&quot;</msg>
   <msg key="Preview">Anteprima</msg>
+  <msg key="prv_policy_must_be_one_of">La policy della privacy deve essere &quot;sì&quot; oppure &quot;no&quot;.</msg>
   <msg key="Public_Web_Log">Web log pubblico</msg>
   <msg key="purple">porpora</msg>
   <msg key="Recipients_Email">Email del destinatario</msg>
   <msg key="Recipients_Last_Name">Cognome del destinatario</msg>
   <msg key="red">rosso</msg>
   <msg key="Referer">Assegna</msg>
-  <msg key="registered_user_welcome_email_body"> %first_names% %last_name%, sei entrato a far parte dei membri di %system_name% all'indirizzo %system_url% Informazioni per la login: Email %email% Password: %password% (puoi cambiarla dopo esserti autentificato) Grazie %administration_name%</msg>
+  <msg key="registered_user_welcome_email_body">%first_names% %last_name%, 
+
+Sei entrato a far parte dei membri di %system_name% all'indirizzo: %system_url%.
+
+Informazioni per la login: 
+Email %email% 
+Password: %password% (puoi cambiarla dopo esserti autenticato). 
+
+Grazie.
+%administration_name%</msg>
   <msg key="Registration_date">Data di registrazione:</msg>
   <msg key="registration_request_sent">Grazie. La tua richiesta di registrazione è stata inviata all'amministratore del sito.</msg>
   <msg key="Reject">Respingi</msg>
@@ -435,6 +472,7 @@
   <msg key="seconds">secondi</msg>
   <msg key="Send_Date">Data di invio</msg>
   <msg key="send_email">Invia l'email</msg>
+  <msg key="Send_to_all">Manda a tutti gli appartenenti al gruppo</msg>
   <msg key="Shared_Files">Files condivisi</msg>
   <msg key="silver">argento</msg>
   <msg key="Site-wide_Admin">Amministrazione di tutto il sito?</msg>
@@ -449,7 +487,7 @@
   <msg key="student_role_pretty_plural">Studenti</msg>
   <msg key="subcomm_page_calendar_title">Calendario</msg>
   <msg key="subcomm_page_file_storage_title">Files</msg>
-  <msg key="subcomm_page_home_title">Nome del sottogruppo</msg>
+  <msg key="subcomm_page_home_title">Home del sottogruppo</msg>
   <msg key="subcomm_page_info_title">Informazioni sul sottogruppo</msg>
   <msg key="subcommunities_pretty_name">Sottogruppo</msg>
   <msg key="subcommunities_pretty_plural">Sottogruppi</msg>
@@ -462,17 +500,21 @@
   <msg key="Templates">Modelli</msg>
   <msg key="Term">Sessione</msg>
   <msg key="term">sessione</msg>
+  <msg key="Term_eg_Spring_Fall">Semestre (es. Primavera, Autunno)</msg>
   <msg key="Term_ID">Id Sessione</msg>
   <msg key="term_properties">proprietà della sessione.</msg>
   <msg key="Terms">Sessioni</msg>
   <msg key="terms">sessioni</msg>
-  <msg key="the_format_of_email_domains">Il formato di questo campo è una lista di domini separati da virgola (solitamente preceduti dalla stringa *@ che corrisponde a &lt;anything&gt;@&lt;email-domain&gt;). 
+  <msg key="the_format_of_email_domains">Il formato di questo campo è una lista di domini separati da virgola (solitamente preceduti dalla stringa *@ che corrisponde a &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). 
 Per esempio, potresti usare:</msg>
   <msg key="The_name">Il nome</msg>
   <msg key="there_are_no_users_matching">Non ci sono utenti che corrispondono alla stinga %search_text%.</msg>
   <msg key="this_user_is_deleted">questo utente è cancellato</msg>
   <msg key="To">a</msg>
+  <msg key="Total_count">Conteggio totale:</msg>
   <msg key="Type">Tipo</msg>
+  <msg key="Unarchive">Discarchivia</msg>
+  <msg key="unarchive">disarchivia</msg>
   <msg key="Unknown_Term">Sessione sconosciuta</msg>
   <msg key="Update_Password">Aggiorna Password</msg>
   <msg key="upload">carica</msg>
@@ -501,6 +543,7 @@ Login: %user_email% Password: %user_password%</msg>
   <msg key="Users_Bulk_Upload">Utenti: Iscrizione di massa</msg>
   <msg key="Users_Search">Ricerca Utente</msg>
   <msg key="View">Vedi</msg>
+  <msg key="Warning_can_take">&lt;strong&gt;Attenzione!&lt;/strong&gt; Questo potrebbe impiegare %hours% ore e %minutes% minuti !!</msg>
   <msg key="Year">Anno:</msg>
   <msg key="Yes">Sì</msg>
   <msg key="yes">sì</msg>
@@ -511,9 +554,4 @@ Login: %user_email% Password: %user_password%</msg>
   <msg key="your_icon_is_too_large">La tua icona è troppo grande. L'amministratore del sistema ha scelto di limitare gli allegati a una dimensione massima di %max_attachments_bytes% bytes.\n </msg>
   <msg key="Youre_editing">Stai modificando</msg>
   <msg key="Youve_chosen_to_add">Hai scelto di aggiungere</msg>
-  <msg key="added_community_subject">Sei stato aggiunto alla communità "%community_name%" in %package%</msg>
-  <msg key="added_community_message">Per visitare la home page della communità, vai su %package% e dopo esserti autenticato clicca sul link "%community_name%" nel portlet "Gruppi".</msg>
-  <msg key="email_sent_to">&lt;p&gt;Email spedita a %email%.</msg>
-  <msg key="datafile_must">&lt;p&gt;Il file deve includere al meno i campi: email, first_names, last_name.&lt;p&gt;</msg>
-  <msg key="database_choked">&lt;p&gt;Errore nell'aggiunta dell'utente al database!&lt;br&gt;  La transazione è stata abortita, nessun utente è stato aggiunto.&lt;p&gt;</msg>
 </message_catalog>

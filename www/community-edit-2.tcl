@@ -84,10 +84,15 @@ if { $tmp_size > 0 } {
         set parent_id [db_string get_root_folder {}]
 
         # if this is a re-upload, pass along the item_id
-        set item_id [db_string get_item_id "" -default ""]
-        if { ![empty_string_p $item_id] } {
-            # the last param is the title of the new file in the CR.
-            set revision_id [cr_import_content \
+        set item_id [content::item::get_id_by_name -name $logo_name -parent_id $parent_id]
+
+	# if it's a new upload, create the item
+	if { [empty_string_p $item_id]} {
+	    set item_id [content::item::new -name $logo_name -parent_id $parent_id -content_type image]
+	}
+
+	# the last param is the title of the new file in the CR.
+	set revision_id [cr_import_content \
                 -title $title \
                 -description "group's icon" \
                 -image_only \
@@ -98,21 +103,8 @@ if { $tmp_size > 0 } {
                 $mime_type \
                 $logo_name
             ]
-        } else {
-            # the last param is the title of the new file in the CR.
-            set revision_id [cr_import_content \
-                -title $title \
-                -description "group's icon" \
-                -image_only \
-                $parent_id \
-                $tmp_filename \
-                $tmp_size \
-                $mime_type \
-                $logo_name
-            ]
-        }
 
-        cr_set_imported_content_live $mime_type $revision_id
+        content::item::set_live_revision -revision_id $revision_id
         # since it's just the header logo, which can't be accessed outside of
 
         # the community anyway, let everyone have access to see it.  That way

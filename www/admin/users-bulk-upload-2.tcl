@@ -31,7 +31,7 @@ set file_location [ns_queryget users_csv_file.tmpfile]
 # Prepare stuff
 set headers {first_names last_name email username}
 
-set admin_user_id [ad_conn user_id]
+set admin_user_id [ad_verify_and_get_user_id]
 set admin_email [db_string select_admin_email {
     select email
     from parties
@@ -52,7 +52,7 @@ db_transaction {
     oacs_util::csv_foreach -file $file_location -array_name row {
 
         # First make sure the required data is there
-        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] || ![info exists row(username)] } {
+        if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
             doc_body_append [_ dotlrn.datafile_must]
             db_abort_transaction
             return
@@ -61,7 +61,7 @@ db_transaction {
         ns_log Debug "%%% $row(email)"
 
         # We need to insert the ACS user
-        if {![info exists row(password)] || [empty_string_p $row(password)]} {
+        if {![info exists row(password)] || $row(password) eq ""} {
 
             # We need to insert the ACS user
             set password [ad_generate_random_string]
@@ -71,11 +71,30 @@ db_transaction {
  
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
-        if {![empty_string_p $user_id]} {
+        if { $user_id ne "" } {
             doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id
         } else {
 
+            if {![info exists row(type)] || $row(type) eq ""} {
+                set row(type) student
+            }
+            
+            if {![info exists row(access_level)] || $row(access_level) eq ""} {
+                set row(access_level) full
+            }
+            
+            if {![info exists row(guest)] || $row(guest) eq ""} {
+                set row(guest) f
+            }
+
+            if {![info exists row(username)] || $row(username) eq ""} {
+                set row(username) $row(email)
+            }
+            
+            if {![info exists row(notify)] || $row(notify) eq ""} {
+                set row(notify) f
+	    }
 	
 	    set user_id [db_nextval acs_object_id_seq]
 
@@ -90,29 +109,8 @@ db_transaction {
 		-password $password
             
             lappend list_of_user_ids $user_id
-            
-            if {![info exists row(type)]} {
-                set row(type) student
-            }
-            
-            if {![info exists row(access_level)]} {
-                set row(access_level) full
-            }
-            
-            if {![info exists row(guest)]} {
-                set row(guest) f
-            }
 
-            if {![info exists row(username)]} {
-                set row(username) $row(email)
-            }
-            
-            if {![info exists row(notify)]} {
-                set row(notify) f
-            }
-            
-            doc_body_append "Creating user $row(email)...."
-
+            ns_log Debug "%%% $row(username)...$row(access_level)...$row(type)"
 
             # Now we make them a dotLRN user
             switch -exact $row(access_level) {
@@ -151,10 +149,12 @@ db_transaction {
         }
 
         doc_body_append "<br>"
+        unset row
         
     }
-} on_error {
-    ns_log Error "The database choked while trying to create the last user in the list above! The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent."
+} on_error  {
+    ns_log Error "The database choked while trying to create the last user in the list above! The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.\n
+$errmsg"
     doc_body_append [_ dotlrn.database_choked]
     ad_script_abort
 }

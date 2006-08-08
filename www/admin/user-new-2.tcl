@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     user_id
-    {referer "[dotlrn::get_admin_url]/users"}
+    {referer "[dotlrn::get_admin_url]/users" }
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.

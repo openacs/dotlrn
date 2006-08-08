@@ -20,8 +20,11 @@
 
 <master>
 <property name="title">@first_names@ @last_name@</property>
-<property name="context_bar">@context_bar;noquote@</property>
+<property name="context">@context;noquote@</property>
 
+<p>
+<a href="@return_url;noquote@" title="Go back" class="button">Go back</a>
+</p>
 #dotlrn.user_has_been_a_member_since#
 
 <if @member_state@ eq "deleted">
@@ -36,21 +39,19 @@
 </if></else>
 
 <if @show_email_p@ eq 1>
-<table>
-<tr><td valign="top">
   <ul>
     <li>#dotlrn.email#: <a href="mailto:@email@">@email@</a></li>
 
     <if @url@ not nil>
       <li>#dotlrn.Personal_home_page# <a href="@homepage_url@">@homepage_url@</a></li>
     </if>
-	<if @weblog_p@ true>
-	<multiple name="weblogs">
-	<li><a href=@weblog_url@?forum_id=@weblogs.forum_id@>@weblogs.name@</a> - #dotlrn.Latest_post# @weblogs.lastest_post@
+	<if @forums_p@ true>
+	<multiple name="forumss">
+	<li><a href=@forums_url@?forum_id=@forums.forum_id@>@forums.name@</a> - #dotlrn.Latest_post# @forums.lastest_post@
         </multiple>
         </if>
     <if @bio@ not nil>
-      <p> <em>#dotlrn.Biography#</em> @bio;noquote@
+      <p> <em>#dotlrn.Biography#</em> @bio@
     </if>
   </ul>
 </if>
@@ -60,27 +61,11 @@
   </if>
 </else>
 
-<if @folder_id@ not nil>
-<h3>#dotlrn.Shared_Files#</h3>
-
-<include src=@scope_fs_url@ folder_id=@folder_id@ viewing_user_id=@user_id@ n_past_days=@n_past_days@ fs_url="@url@">
-</if>
-
-<multiple name="user_contributions">
-  <h3>@user_contributions.pretty_plural@</h3>
-  <ul>
-<group column="pretty_name">
-    <li>@creation_date@: @user_contributions.object_name@
-</group>
-  </ul>
-</multiple>
-</td>
-<td valign="top">
 <if @portrait_p@ eq 1>
 
   <if @inline_portrait_state@ eq "inline">
   
-    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@" border="0"></a><br>
+    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
   
   </if>
   <if @inline_portrait_state@ eq "link">
@@ -89,6 +74,5 @@
   
   </if>
 </if>
-</td>
-</tr>
-</table>
+
+<include src="/packages/dotlrn/lib/bio" user_id="@user_id@" community_id="@community_id@" return_url="@return_url_2;noquote@">

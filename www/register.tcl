@@ -27,7 +27,18 @@ ad_page_contract {
     {referer "./"}
 }
 
-auth::require_login
+if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {
+    set redirect_to [parameter::get -parameter SelfRegistrationRedirectTo -package_id [dotlrn::get_package_id] -default ""]
+
+    if { $redirect_to ne "" } {
+	ad_returnredirect $redirect_to
+    } else {
+	ad_returnredirect "not-allowed"
+    }
+    ad_script_abort
+}
+
+ad_maybe_redirect_for_registration
 
 if {[empty_string_p $community_id]} {
     set community_id [dotlrn_community::get_community_id]

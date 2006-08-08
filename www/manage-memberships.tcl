@@ -35,13 +35,23 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date 2002-03-08
-    @version $Id$
 } -query {
     {member_department_key ""}
     {non_member_department_key ""}
     {member_term_id -1}
     {non_member_term_id -1}
 } -properties {
+}
+
+if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {
+    set redirect_to [parameter::get -parameter SelfRegistrationRedirectTo -package_id [dotlrn::get_package_id] -default ""]
+
+    if { $redirect_to ne "" } {
+	ad_returnredirect $redirect_to
+    } else {
+	ad_returnredirect "not-allowed"
+    }
+    ad_script_abort
 }
 
 set user_id [ad_conn user_id]
@@ -175,9 +185,30 @@ if {$non_member_term_id != -1} {
     append non_member_query "_by_term"
 }
 
+# Is the user a .LRN admin or a sitewide admin
+set swa_p [acs_user::site_wide_admin_p -user_id $user_id] 
+if {!$swa_p} {
+    set swa_p [dotlrn::admin_p -user_id $user_id]
+}
+
 set n_non_member_classes [db_string select_n_non_member_classes {}]
-db_multirow non_member_classes $non_member_query {}
-db_multirow non_member_clubs select_non_member_clubs {}
+db_multirow non_member_classes $non_member_query {} {
+    regsub -all {<p>} $description {<br />} description
+}
+
+db_multirow non_member_clubs select_non_member_clubs {} {
+    regsub -all {<p>} $description {<br />} description
+}
+    
+
+# hack for eabis
+set non_member_club_ids [db_list non_member_club_ids {                select f.club_id
+                from dotlrn_clubs_full f
+                where f.join_policy <> 'closed'
+                  and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
+                                          from dotlrn_member_rels_full
+                                         where dotlrn_member_rels_full.user_id = :user_id)
+}]
 
 set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
 

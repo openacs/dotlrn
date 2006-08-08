@@ -37,3 +37,4 @@
 @@ communities-drop.sql
 @@ portal-types-drop.sql
 @@ users-drop.sql
+@@ site-templates-drop.sql

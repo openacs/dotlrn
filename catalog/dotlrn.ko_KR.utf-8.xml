@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="ko_KR" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="ko_KR" charset="utf-8">
 
   <msg key="A_copy_of">의 복사본</msg>
   <msg key="Access">접근</msg>
@@ -326,7 +326,7 @@
   <msg key="lt_Your_passwords_dont_m">비밀번호가 일치하지 않습니다. 비밀번호를 입력하는 동안 잘못 입력하여였습니다. </msg>
   <msg key="lt_Your_search_returned_">검색 결과가 없다면, 검색 기준을 확대하시오.</msg>
   <msg key="lt_Youre_asking_to_chang">이 사용자의 접근 레벨 변경을 요청하였습니다. 이것은 강한 영향을 가지고 있습니다. 이것에 대한 사용자입니까?</msg>
-  <msg key="ltnone_set_upgt">&lt;아무것도 설정하지 않음up&gt; </msg>
+  <msg key="ltnone_set_upgt">&amp;lt;아무것도 설정하지 않음up&amp;gt; </msg>
   <msg key="Mail_Failed">메일 실패</msg>
   <msg key="Manage">관리하다</msg>
   <msg key="Manage_Applets">애플릿을 관리</msg>
@@ -476,7 +476,7 @@
   <msg key="term_properties">기간 속성</msg>
   <msg key="Terms">기간</msg>
   <msg key="terms">기간</msg>
-  <msg key="the_format_of_email_domains">이 값의 형태는 콤마로 분리된 도메인의 리스트입니다.(보통 &amp;lt xxxxx&gt;@&lt;email-domain&gt;). 예를들면, 다음과 같이 쓸 수 있습니다.</msg>
+  <msg key="the_format_of_email_domains">이 값의 형태는 콤마로 분리된 도메인의 리스트입니다.(보통 &amp;lt xxxxx&amp;gt;@&amp;lt;email-domain&amp;gt;). 예를들면, 다음과 같이 쓸 수 있습니다.</msg>
   <msg key="The_name">이름</msg>
   <msg key="there_are_no_users_matching">%search_text%와 일치하는 사용자가 없습니다.</msg>
   <msg key="this_user_is_deleted">이 사용자는 삭제되었습니다. </msg>

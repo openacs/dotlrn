@@ -65,6 +65,6 @@ if {[string equal $type "deactivated"] == 1} {
 } else {
     set n_users [db_string select_dotlrn_users_count {}]
 }
-
+set referer [ad_return_url]
 ad_return_template
 

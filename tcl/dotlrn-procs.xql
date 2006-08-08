@@ -65,4 +65,62 @@
         </querytext>
     </fullquery>
 
+      <fullquery name="dotlrn::set_site_template_id.select_portal_theme">
+        <querytext>
+            select portal_theme_id
+            from dotlrn_site_templates
+            where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::assign_default_sitetemplate.select_portal_theme">
+        <querytext>
+            select portal_theme_id
+            from dotlrn_site_templates
+            where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::assign_default_sitetemplate.update_portal_themes">
+        <querytext>
+            update portals
+            set theme_id = :new_theme_id
+            where portal_id in ( select portal_id from dotlrn_users )
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::set_site_template_id.update_portal_theme">
+        <querytext>
+            update portals
+            set theme_id = :new_theme_id
+            where portal_id = :portal_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::set_site_template_id.update_user_site_template">
+        <querytext>
+            update dotlrn_user_profile_rels
+            set site_template_id = :site_template_id
+            where rel_id = (select rel_id
+                            from dotlrn_users
+                            where user_id = :user_id)
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn::get_site_template_id_not_cached.select_site_template_id">
+        <querytext>
+            select site_template_id
+            from dotlrn_users
+            where user_id = :user_id
+        </querytext>
+    </fullquery>
+
+   <fullquery name="dotlrn::get_master_from_site_template_id_not_cached.select_site_template_master">
+        <querytext>
+            select site_master
+            from dotlrn_site_templates 
+            where site_template_id = :site_template_id
+         </querytext>
+   </fullquery>
+
 </queryset>

@@ -9,7 +9,7 @@
 	  <a href="@dotlrn_url@" title="Dotlrn Home">Home</a>
 	  <span style="color: #cccccc;">|</span>
 	  
-	  <a href="@dotlrn_admin_url@/terms" title="Terms">Terms</a>
+	  <a href="@dotlrn_admin_url@/terms" title="#dotlrn.Terms#">#dotlrn.Terms#</a>
 	  <span style="color: #cccccc;">|</span>
 	  
 	  <a href="@dotlrn_admin_url@/departments" title="#dotlrn.departments_pretty_plural#">#dotlrn.departments_pretty_plural#</a>
@@ -18,7 +18,7 @@
 	  <a href="@dotlrn_admin_url@/classes" title=""#dotlrn.classes_pretty_plural#">#dotlrn.classes_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
 	  
-	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="#dotlrn.All_Terms#>#dotlrn.All_Terms#
+	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="#dotlrn.Classes#">#dotlrn.Classes#
 	  <span style="color: #cccccc;">|</span>
 	  
 	  <a href="@dotlrn_admin_url@/clubs" title="#dotlrn.clubs_pretty_plural#">#dotlrn.clubs_pretty_plural#</a>
@@ -27,7 +27,7 @@
 	  <a href="@dotlrn_admin_url@/users" title=""#dotlrn.Users#">#dotlrn.Users#</a>
 	  <span style="color: #cccccc;">|</span>
 
-	  <a href="@dotlrn_admin_url@/" title="Dotlrn admin">Admin</a>
+	  <a href="@dotlrn_admin_url@/" title="Dotlrn admin">#dotlrn.Admin#</a>
 	  <span style="color: #cccccc;">|</span>
   
 	  <a href="@dotlrn_admin_url@/toolbar-actions?action=@info_action@&return_url=@return_url@" title="@info_title@">@info_title@</a>

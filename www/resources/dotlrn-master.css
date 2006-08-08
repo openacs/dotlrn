@@ -11,6 +11,16 @@ body {
   margin-top: 6px;
 }
 
+a div#listlink {
+	display:none;
+} 
+
+a:hover div#listlink {
+	display:block;
+	background:white;
+	width:300px;
+}
+
 .header-blank {background-color:white;}
 .header-quadrat {background-color:#587D91;}
 .header-zufall {background-color:#003B53;}
@@ -131,6 +141,16 @@ TR.table-header {BACKGROUND: #6DB2C9; COLOR: white; FONT-FAMILY: Arial, Helvetic
 #head-area, #head-area a, #footer-area, #footer-area a {font-family: arial, helvetica, sans-serif; font-size:11px; }
 #head-area td, #footer-area td {vertical-align:middle}
 
+/* Portal layout */
+.leftColumn { 
+              width: 50%;
+              vertical-align: top;
+}
+.rightColumn { 
+               width: 50%;
+               vertical-align: top;
+}
+
 /* dotlrn-overrides of standard CSS nodes */
 
 a:link, a:visited {
@@ -178,7 +198,6 @@ h1 {
 #breadcrumbs {
   margin: 0;
   padding: 0;
-  font-size: 100%;
   float: left;
   padding-bottom: 5px;
   margin-left: 5px;
@@ -492,6 +511,10 @@ a.file-type-icon:active {
   background-color: white;
 }
 
+#site-header .user-greeting {
+  color: #036;
+}
+
 #site-header .action-list a {
   color: #036;
   border: 0;
@@ -519,3 +542,4 @@ a.file-type-icon:active {
 #oacs-admin-url {
   display: none;
 }
+

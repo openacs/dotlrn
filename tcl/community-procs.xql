@@ -141,10 +141,9 @@
                    acs_users_all.first_names,
                    acs_users_all.last_name,
                    acs_users_all.email,
-                  (select count(*) 
-                   from   acs_rels 
-                   where  rel_type = 'user_portrait_rel' 
-                   and    object_id_one = dotlrn_member_rels_approved.user_id) as portrait_p, 0 as bio_p
+                   (select count(*) from acs_rels where rel_type = 'user_portrait_rel' and object_id_one = dotlrn_member_rels_approved.user_id) as portrait_p,
+                   (select count(*) from acs_attribute_values where object_id = dotlrn_member_rels_approved.user_id and attribute_id = 
+:bio_attribute_id and attr_value is not null) as bio_p
             from acs_users_all,
                  dotlrn_member_rels_approved
             where dotlrn_member_rels_approved.community_id = :community_id
@@ -269,37 +268,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::set_community_type.update_community_type">
-        <querytext>
-            update dotlrn_communities_all
-            set community_type = :community_type
-            where community_id = :community_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::set_community_type.get_portal_template">
-        <querytext>
-            select
-              portal_id
-            from
-              dotlrn_portal_types_map
-            where
-              type = :community_type
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::set_community_type.set_portal_template">
-        <querytext>
-            update portals
-            set template_id = :portal_id
-            where portal_id = (
-              select portal_id
-              from dotlrn_communities
-              where community_id = :community_id
-            )
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::has_subcommunity_p_not_cached.select_subcomm_check">
         <querytext>
             select 1
@@ -315,7 +283,7 @@
             select community_id as subcomm_id
             from dotlrn_communities
             where parent_community_id = :community_id
-            order by pretty_name
+	    order by pretty_name 
         </querytext>
     </fullquery>
 
@@ -641,11 +609,71 @@
         </querytext>
     </fullquery>
 
-  <fullquery name="dotlrn_community::type_exists.type_exists">
-    <querytext>
-      select 1
-        from dotlrn_community_types
-        where community_type = :community_type
-    </querytext>
-  </fullquery>
+    <fullquery name="dotlrn_community::set_site_template_id.update_site_template">
+      <querytext>
+        update dotlrn_communities_all
+        set site_template_id = :site_template_id
+        where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::set_site_template_id.select_portal_theme">
+      <querytext>
+        select portal_theme_id
+        from dotlrn_site_templates
+        where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.select_portal_theme">
+      <querytext>
+        select portal_theme_id
+        from dotlrn_site_templates
+        where site_template_id = :site_template_id
+        </querytext>
+    </fullquery>
+
+
+   <fullquery name="dotlrn_community::set_site_template_id.update_portal_theme">
+      <querytext>
+        update portals
+        set theme_id = :new_theme_id
+        where portal_id = :portal_id
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.update_portal_themes">
+      <querytext>
+        update portals
+        set theme_id = :new_theme_id
+        where portal_id in (select portal_id from dotlrn_communities_all )
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.update_portal_admin_themes">
+      <querytext>
+        update portals
+        set theme_id = :new_theme_id
+        where portal_id in (select admin_portal_id from dotlrn_communities_all )
+        </querytext>
+    </fullquery>
+
+
+    <fullquery name="dotlrn_community::get_site_template_id_not_cached.select_site_template_id">
+        <querytext>
+            select site_template_id
+            from dotlrn_communities_all
+            where community_id = :community_id
+        </querytext>
+    </fullquery>
+
+   <fullquery name="dotlrn_community::get_dotlrn_master_not_cached.select_dotlrn_master">
+        <querytext>
+            select dst.site_master
+            from dotlrn_site_templates dst, dotlrn_communities_all dca
+            where dca.community_id = :community_id
+            and dca.site_template_id = dst.site_template_id
+        </querytext>
+   </fullquery>
+
 </queryset>

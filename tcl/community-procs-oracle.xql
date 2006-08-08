@@ -116,4 +116,16 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::send_member_email.member_email">
+        <querytext>
+            select from_addr,
+	           subject,
+               email
+            from dotlrn_member_emails
+            where (enabled_p='t' or :override_enabled_p = 1)
+	          and community_id = :community_id
+	          and type = :type
+		</querytext>
+	</fullquery>
+
 </queryset>

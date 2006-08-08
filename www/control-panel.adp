@@ -22,67 +22,114 @@
 <property name="title">@title@</property>
 <property name="link_control_panel">0</property>
 
-<% set dotlrn_url [dotlrn::get_url] %>
+<table width="100%">
+  <tr><td width="50%" valign="top">
 
-<table border="0" width="100%">
-  <tr>
-    <td valign="top" width="50%">
-<table class="element" border=0 cellpadding="0" cellspacing="0" width="100%">
-<tr> 
-  <td colspan="3" class="element-header-text">#dotlrn.lt_Help_and_Personal_Con#</td>
-</tr>
-<tr><td colspan="3" class="dark-line" height="0"><img src="/resources/dotlrn/spacer.gif" alt="" ></td></tr>
+    <div class="portlet-wrapper">
+      <div class="portlet-title">
+        <span><h2> #acs-subsite.My_Account# </h2></span>
+      </div>
+      <div class="portlet">
+        <include src="/packages/acs-subsite/lib/user-info" />
+  	<if @account_status@ eq "closed">
+    	  #acs-subsite.Account_closed_workspace_msg#
+  	</if>
+        <ul>
+          <li><a href="configure">#dotlrn.Customize_Layout#</a></li>
+          <if @allowed_to_change_site_template_p@>
+            <li><a href="change-site-template?referer=@dotlrn_url@/control-panel">#dotlrn.Customize_Template#</a></li>
+          </if>
+          <li><a href="../user/password-update">#acs-subsite.Change_my_Password#</a></li>
 
-<tr>
-  <td class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" alt=""  width="1"></td>
+          <if @change_locale_url@ not nil>
+            <li><a href="@change_locale_url@">#acs-subsite.Change_locale_label#</a></li>
+          </if>
 
-  <td class="element-text" width="100%">
-<table cellspacing="0" cellpadding="0" class="element-content" width="100%">
-	<tr><td>
-<h3>#dotlrn.General_Site_Help#</h3> 
-<ul>
-  <li><a href="@dotlrn_url@/help">#dotlrn.help#</a></li>
-  <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a>
-</ul>
-<h3>#dotlrn.Personal_Options#</h3>
-<ul>
-  <li>
-    <a href="@pvt_home@">@pvt_home_name@</a></li>
+          <if @notifications_url@ not nil>
+            <li><a href="@notifications_url@">#acs-subsite.Manage_your_notifications#</a></li>
+          </if>
 
-  <p><li><a href="configure">#dotlrn.Customize_Layout#</a></li>
+          <if @account_status@ ne "closed">
+            <li><a href="unsubscribe">#acs-subsite.Close_your_account#</a></li>
+          </if>
 
-<if @admin_p@>
-  <p><li><a href="@admin_url@">@admin_pretty_name@</a> (<a href="@cockpit_url@">#dotlrn.Cockpit#</a>)</li>
-</if>
-</ul>
-</td></tr></table>
- </td>
-	  <td align="right" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" alt=""  width="1"></td>
+          <if @admin_p@>
+            <li><a href="@admin_url@">@admin_pretty_name@</a></li>
+          </if>
+        </ul>
+      </div>
+    </div>
 
+    <if @portrait_state@ eq upload>
+      <div class="portlet-wrapper">
+        <div class="portlet-title">
+          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
+        </div>
+        <div class="portlet">
+          <p>
+            #acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@">#acs-subsite.upload_a_portrait#</a>
+          </p>
+        </div>
+      </div>
+    </if>
 
-</tr>
-<tr><td colspan="3" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" alt="" ></td></tr>
+    <if @portrait_state@ eq show>
+      <div class="portlet-wrapper">  
+        <div class="portlet-title">
+          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
+        </div>
+        <div class="portlet">
+          <p>
+            #acs-subsite.lt_On_portrait_publish_d#.
+          </p>
+          <table><tr valign="top"><td>
+            <img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="Portrait"><p>
+            <a href="/user/portrait/?return_url=/pvt/home">#acs-subsite.Edit#</a>
+            </td><td>@portrait_description@</td></tr>
+          </table>
+        </div>
+      </div>
+    </if>
 
-</table>
+  </td>
+  <td width="50%" valign="top">
 
-    <td valign="top" width="50%">
-<table class="element" border="0" cellpadding="0" cellspacing="0" width="100%">
-<tr> 
-  <td colspan="3" class="element-header-text">#dotlrn.lt_JoinDrop_Classes_or_C#</td>
-</tr>
-<tr><td colspan="3" class="dark-line" height="0"><img src="/resources/dotlrn/spacer.gif" alt="" ></td></tr>
+    <div class="portlet-wrapper">
+      <div class="portlet-title">
+        <span><h2>#acs-subsite.Privacy#<h2></span>
+      </div>
+      <div class="portlet">
+        <ul>
+          <li><a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a></li>
+          <li><a href="../user/email-privacy-level">#acs-subsite.Change_my_email_P#</a></li>
+        </ul>
 
-<tr>
-  <td class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" alt=""  width="1"></td>
+        <if @invisible_p@ true>
+          #acs-subsite.Currently_invisible_msg#
+          <ul>
+            <li><a href="@make_visible_url@">#acs-subsite.Make_yourself_visible_label#</a></li>
+          </ul>
+        </if>
+        <else>
+          #acs-subsite.Currently_visible_msg#
+          <ul>
+            <li><a href="@make_invisible_url@">#acs-subsite.Make_yourself_invisible_label#</a></li>
+          </ul>
+        </else>
+      </div>
+    </div>
 
-  <td class="element-text" width="100%">
-  <include src="dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@dotlrn_url@/control-panel">
- </td>
-	  <td align="right" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" alt=""  width="1"></td>
+    <div class="portlet-wrapper">
+      <div class="portlet-title">
+        <span><h2>#dotlrn.General_Site_Help#</h2></span>
+      </div>
+      <div class="portlet">
+        <ul>
+          <li><a href="@dotlrn_url@/help">#dotlrn.help#</a></li>
+          <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a></li>
+        </ul>
+      </div>
+    </div>
 
-
-</tr>
-<tr><td colspan="3" class="light-line" width="1"><img src="/resources/dotlrn/spacer.gif" alt="" ></td></tr>
-
-</table>
+  </td></tr>
 </table>

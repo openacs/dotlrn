@@ -30,7 +30,6 @@
 <form method="post" action="deregister-confirm">
 </if>
 
-
 <table  width="85%" class="table-display" cellpadding="5" cellspacing="0">
     <tr class="table-header">
       <td>&nbsp;</td>

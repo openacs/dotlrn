@@ -26,7 +26,7 @@ ad_page_contract {
     {referer ""}
 }
 
-auth::require_login
+ad_maybe_redirect_for_registration
 
 set time_per_user 15
 set num_users_display_limit 99

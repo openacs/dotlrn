@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="pl_PL" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="pl_PL" charset="utf-8">
 
   <msg key="A_copy_of">Kopia </msg>
   <msg key="Access">Dostęp</msg>
@@ -325,7 +325,7 @@ Data Końcowa:</msg>
   <msg key="lt_Your_passwords_dont_m">Twoje hasła nie pasują! Chyba literówka podczas pisania jednego z nich.</msg>
   <msg key="lt_Your_search_returned_">Brak wyników wyszukiwania, proszę rozszerzyć warunki poszukiwania.</msg>
   <msg key="lt_Youre_asking_to_chang">Żądasz zmiany praw dostępu dla tego użytkownika, co spowoduje znaczące skutki. Czy dokonać tego NA PEWNO?</msg>
-  <msg key="ltnone_set_upgt">&lt;żaden nie skonfigurowany&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;żaden nie skonfigurowany&amp;gt;</msg>
   <msg key="Mail_Failed">Wysłanie poczty nie powiodło się</msg>
   <msg key="Manage">Zarządzaj</msg>
   <msg key="Manage_Applets">Zarządzaj Apletami</msg>
@@ -459,7 +459,7 @@ Data Końcowa:</msg>
   <msg key="term_properties">własności terminu.</msg>
   <msg key="Terms">Terminy</msg>
   <msg key="terms">Terminy</msg>
-  <msg key="the_format_of_email_domains">W tym polu powinny się znajdować domeny, oddzielone przecinkami (zwykle poprzedzone *@, co oznacza &lt;cokolwiek&gt;@&lt;email-domain&gt;). Na przykład:
+  <msg key="the_format_of_email_domains">W tym polu powinny się znajdować domeny, oddzielone przecinkami (zwykle poprzedzone *@, co oznacza &amp;lt;cokolwiek&amp;gt;@&amp;lt;email-domain&amp;gt;). Na przykład:
 </msg>
   <msg key="The_name">Nazwa</msg>
   <msg key="there_are_no_users_matching">Nie ma użytkowników pasujących do %search_text%.</msg>

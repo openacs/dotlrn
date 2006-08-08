@@ -22,14 +22,16 @@
 <property name="title">#dotlrn.Terms#</property>
 <property name="context_bar">@context_bar@</property>
 
+<center>
+
 
 <if @terms:rowcount@ gt 0>
   <listtemplate name="terms"></listtemplate>
 </if>
 <else>
-
+</center>
 <p align="right"><a href="term-new" class="button">#dotlrn.New_Term#</a> </p>
-
+<center>
 <table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
@@ -40,7 +42,7 @@
 </else>
 
 <br>
-
+</center>
 
 
 

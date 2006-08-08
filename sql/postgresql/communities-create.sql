@@ -91,7 +91,10 @@ create table dotlrn_communities_all (
     header_img			varchar(100)
 				default '',
     tree_sortkey		varbit,
-    max_child_sortkey		varbit
+    max_child_sortkey		varbit,
+    site_template_id		integer
+				constraint dotlrn_c_site_template_id_fk
+                                references dotlrn_site_templates(site_template_id)
 );
 
 create index dtlrn_com_all_com_par_id_idx on dotlrn_communities_all (community_id, parent_community_id);

@@ -21,6 +21,7 @@
             where dotlrn_communities_all.community_id = dotlrn_member_rels_approved.community_id
             and dotlrn_member_rels_approved.user_id = :user_id
             $archived_clause
+            $community_type_clause
             order by dotlrn_communities_all.tree_sortkey
         </querytext>
     </fullquery>

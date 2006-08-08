@@ -38,10 +38,10 @@ set parameters_url [export_vars -base /shared/parameters { { package_id {[dotlrn
 set parameters_d_url [export_vars -base /shared/parameters { { package_id {[apm_package_id_from_key dotlrn-portlet]} } { return_url [ad_return_url] } }]
 
 if { ![parameter::get -localize -package_id [dotlrn::get_package_id] -parameter dotlrn_toolbar_enabled_p -default 1] } {
-    set dotlrn_toolbar_action "Show .LRN toolbar"
+    set dotlrn_toolbar_action [_ dotlrn.show_lrn_toolbar]
     set action "show"
 } else {
-    set dotlrn_toolbar_action "Hide .LRN toolbar"
+    set dotlrn_toolbar_action [_ dotlrn.hide_lrn_toolbar]
     set action "hide"
 }
 

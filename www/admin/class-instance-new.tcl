@@ -28,71 +28,74 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-if {![db_0or1row select_class_info {}]} {
-    set class_name ""
-    set class_description ""
-}
+set join_options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approval]" "needs approval"] [list [_ dotlrn.Closed] closed]]
+set term_options [db_list_of_lists select_terms_for_select_widget {}]
 
-form create add_class_instance
+ad_form -name add_class_instance -form {
 
-element create add_class_instance term \
-    -label [_ dotlrn.Term] \
-    -datatype integer \
-    -widget select \
-    -options [db_list_of_lists select_terms_for_select_widget {}]
+    {term:integer(select)
+	{label "#dotlrn.Term#"}
+	{options $term_options}
+	{help_text "[_ dotlrn.Term_help]"}
+    }
 
-element create add_class_instance pretty_name \
-    -label [_ dotlrn.Name] \
-    -datatype text \
-    -widget text \
-    -html {size 60} \
-    -value $class_name \
-    -optional
+    {pretty_name:text(text),optional
+	{label "#dotlrn.Name#"}
+	{html {size 60 maxlength 100}}
+	{help_text "[_ dotlrn.Name_help]"}
+    }
 
-element create add_class_instance description \
-    -label [_ dotlrn.Description] \
-    -datatype text \
-    -widget textarea \
-    -html {rows 5 cols 60 wrap soft} \
-    -value $class_description \
-    -optional
+    {description:text(textarea),optional
+	{label "#dotlrn.Description#"}
+	{html {rows 5 cols 60 wrap soft}}
+	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
+    }	
+    
+    {active_start_date:date(date),to_sql(ansi),from_sql(ansi),optional
+	{label "#dotlrn.Start_date#"}
+	{help_text "[_ dotlrn.Start_date_help]"}
+    }
 
-element create add_class_instance join_policy \
-    -label "[_ dotlrn.Join_Policy]" \
-    -datatype text \
-    -widget select \
-    -options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approval]" "needs approval"] [list [_ dotlrn.Closed] closed]]
+    {active_end_date:date(date),to_sql(ansi),from_sql(ansi),optional
+	{label "#dotlrn.End_date#"}
+	{help_text "[_ dotlrn.End_date_help]"}
+    }
+    
+    {join_policy:text(select)
+	{label "#dotlrn.Join_Policy#"}
+	{options $join_options}
+	{help_text "[_ dotlrn.Join_Policy_help]"}
+    }
 
-element create add_class_instance class_key \
-    -label "[parameter::get -localize -parameter classes_pretty_name] [_ dotlrn.Key]" \
-    -datatype text \
-    -widget hidden \
-    -value $class_key
+    {class_key:text(hidden)
+	{label "[parameter::get -localize -parameter classes_pretty_name] [_ dotlrn.Key]"}
+	{value $class_key}
+    }
 
-element create add_class_instance add_instructor \
-    -label "[_ dotlrn.Add_Professor]" \
-    -datatype text \
-    -widget radio \
-    -options [list [list [_ dotlrn.Yes] 1] [list [_ dotlrn.No] 0]] \
-    -value 1
+    {add_instructor:text(radio)
+	{label "[_ dotlrn.Add_Professor]"}
+	{options {{"[_ dotlrn.Yes]" 1} {"[_ dotlrn.No]" 0}}}
+	{value 1}
+	{help_text "[_ dotlrn.Add_Professor_help]"}
+    }
+	
+    {class_instance_key:text(text),optional
+	{label "[_ dotlrn.Class_instance_key]"}
+	{html {size 60}}
+	{help_text "[_ dotlrn.Class_instance_key_help]"}
+    }
+	
+    {referer:text(hidden)
+	{label "[_ dotlrn.Referer]"}
+	{value "$referer"}
+    }
 
-element create add_class_instance class_instance_key \
-    -label [_ dotlrn.Class_instance_key] \
-    -datatype text \
-    -widget text \
-    -html {size 60} \
-    -value "" \
-    -optional
-
-element create add_class_instance referer \
-    -label [_ dotlrn.Referer] \
-    -datatype text \
-    -widget hidden \
-    -value $referer
-
-if {[form is_valid add_class_instance]} {
-    form get_values add_class_instance \
-        class_key term pretty_name description join_policy add_instructor referer class_instance_key
+} -on_request {
+    if {![db_0or1row select_class_info {}]} {
+	set pretty_name ""
+	set description ""
+    }
+} -on_submit {
 
     set class_instance_id [dotlrn_class::new_instance \
         -class_instance_key $class_instance_key \
@@ -102,6 +105,17 @@ if {[form is_valid add_class_instance]} {
         -description $description \
         -join_policy $join_policy \
     ]
+
+    # Update the time
+    # This should go into the dotlrn_club::new procedure and the dotlrn_community::new
+    # But this would involve too much code changes at the moment, so we stick with this for 
+    # the time being :-) MS (openacs@sussdorff.de)
+
+    db_dml update_community_info {update dotlrn_communities_all
+	set active_start_date = :active_start_date,
+	active_end_date = :active_end_date
+	where community_id = :class_instance_id
+    }
 
     if {[empty_string_p $referer]} {
         set referer "class?class_key=$class_key"
@@ -121,6 +135,7 @@ set class_instances_pretty_name [parameter::get -localize -parameter class_insta
 
 set context_bar [list \
                      [list classes [parameter::get -localize -parameter classes_pretty_plural]] \
-                     [list "class?class_key=$class_key" $class_name] \
+                     [list "class?class_key=$class_key" $pretty_name] \
                      [_ dotlrn.new_class_instance]]
 
+set class_name $pretty_name

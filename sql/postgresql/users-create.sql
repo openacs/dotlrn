@@ -35,7 +35,10 @@ create table dotlrn_user_profile_rels (
     theme_id                    integer
 				constraint dotlrn_user_p_rels_theme_id_fk
                                 references portal_element_themes (theme_id),
-    id                          varchar(100)
+    id                          varchar(100),
+    site_template_id		integer
+			        constraint dotlrn_user_p_rels_site_template_id_fk
+				references dotlrn_site_templates(site_template_id)
 );
 
 create table dotlrn_user_types (
@@ -66,6 +69,7 @@ as
            dotlrn_user_profile_rels.portal_id,
            dotlrn_user_profile_rels.theme_id,
            dotlrn_user_profile_rels.id,
+           dotlrn_user_profile_rels.site_template_id,
            users.user_id,
            persons.first_names,
            persons.last_name,
@@ -102,3 +106,4 @@ as
 
 -- create external users
 \i externals-create.sql
+

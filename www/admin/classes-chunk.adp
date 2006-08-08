@@ -18,7 +18,7 @@
 
   %>
 
-
+  <center>
     <table bgcolor="#cccccc" cellpadding="5" width="95%">
       <tr bgcolor="#eeeeee">
 	<th align="left" width="50%">
@@ -58,4 +58,4 @@
       </else>
 
       <br>
-
+  </center>

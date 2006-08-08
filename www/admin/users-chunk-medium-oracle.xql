@@ -86,7 +86,7 @@
                                  dotlrn_user_types
                             where a.object_id_one = dotlrn_user_types.group_id
                             and a.object_id_two = acs_rels.object_id_two)
-            and upper(substr(person.last_name, 1, 1)) not in ('[join $dimension_list "\', \'"]')
+            and upper(substr(persons.last_name, 1, 1)) not in ('[join $dimension_list "\', \'"]')
             order by persons.last_name
         </querytext>
     </fullquery>
@@ -134,7 +134,7 @@
             and acs_rels.object_id_one = acs.magic_object_id('registered_users')
             and acs_rels.rel_id = membership_rels.rel_id
             and membership_rels.member_state = 'banned'
-            and upper(substr(person.last_name, 1, 1)) not in ('[join $dimension_list "\', \'"]')
+            and upper(substr(persons.last_name, 1, 1)) not in ('[join $dimension_list "\', \'"]')
             order by persons.last_name
         </querytext>
     </fullquery>

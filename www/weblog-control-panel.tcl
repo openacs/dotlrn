@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 }
 
-set user_id [auth::require_login]
+set user_id [ad_maybe_redirect_for_registration]
 
 
 set dotlrn_package_id [dotlrn::get_package_id]

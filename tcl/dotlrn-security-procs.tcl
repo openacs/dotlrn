@@ -162,6 +162,10 @@ namespace eval dotlrn {
         # always flush when creating a new user
         util_memoize_flush "dotlrn::get_portal_id_not_cached -user_id $user_id"
 
+	#Site Template Customization
+	dotlrn::set_site_template_id -user_id $user_id \
+	    -site_template_id [parameter::get -package_id [dotlrn::get_package_id] -parameter "UserDefaultSiteTemplate_p"]
+
         return $rel_id
     }
 
@@ -191,28 +195,41 @@ namespace eval dotlrn {
 
     ad_proc -public remove_user_completely {
         {-user_id:required}
+        {-on_fail soft_delete}
     } {
-        Remove the user from ACS as well
+        Remove the user from ACS as well.  Chances are pretty good that
+        this will fail because it's hard to chase down every piece
+        of content the user has ever put into the system.  The net result is
+        that there may be stray referential integrity contraints that
+        will throw errors when we try to remove the user record permanently.
+
+        @param on_fail indicates what we do if the permanent removal fails. Setting to
+         <code>soft_delete</code> will result in a repeat call to <code>acs_user::delete</code>
+         but this time without the <code>-permanent</code> flag.  Setting to <code>error</code>
+         (or anything else) will result in re-throwing the original error.
     } {
-        # DEDS: for now let us not remove users with historical data.
-        # we assume this by looking at last_visit which is lame but
-        # the safest for now.  the consortium might want to decide on
-        # whether we also want nuking of users with data present
-        set last_visit [acs_user::get_element -user_id $user_id -element last_visit]
-        if {[empty_string_p $last_visit]} {
-            if {[user_p -user_id $user_id]} {
-                user_remove -user_id $user_id
-            }
-            
-            # cycle through the applets and invoke their RemoveUser procs
-            foreach applet_key [dotlrn_applet::list_mounted_applets] {
-                dotlrn_community::applet_call \
-                    $applet_key \
-                    RemoveUser \
-                    [list $user_id]
-            }
-            
+        if {[user_p -user_id $user_id]} {
+            user_remove -user_id $user_id
+        }
+        
+        # cycle through the applets and invoke their RemoveUser procs
+        foreach applet_key [dotlrn_applet::list_mounted_applets] {
+            ns_log Debug "dotlrn::remove_user_completely: invoking RemoveUser for applet $applet_key"
+            dotlrn_community::applet_call \
+                $applet_key \
+                RemoveUser \
+                [list $user_id]
+        }
+        
+        if { [catch {
             acs_user::delete -user_id $user_id -permanent
+        } errMsg] } {
+            ns_log Notice "dotlrn::remove_user_completely: permanent removal failed for user $user_id.  Invoking on_fail option '$on_fail'"
+            if { [string equal $on_fail soft_delete] } {
+                acs_user::delete -user_id $user_id
+            } else {
+                error $errMsg
+            }
         }
     }
 

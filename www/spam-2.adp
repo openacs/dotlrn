@@ -18,7 +18,7 @@
 
 <master>
 <property name="title">@spam_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context;noquote@</property>
 
 <p>
  #dotlrn.lt_Are_you_sure_you_want_to_send#?
@@ -53,4 +53,3 @@
  @confirm_data;noquote@
   <input type="submit" value="#dotlrn.Confirm#"></input>
 </form>
-

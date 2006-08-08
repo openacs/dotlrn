@@ -225,8 +225,10 @@ namespace eval dotlrn {
             set link [dotlrn_community::get_community_url $community_id]
 	    set control_panel_url "$link/$control_panel_name"
 
-	    # add the my space tab, which isn't part of the class portal but is super useful for the end user
-	    append navbar "<li><a href=\"$dotlrn_url\">My Space</a></li>"
+            if { ![parameter::get -parameter hide_personal_portal_p -package_id [dotlrn::get_package_id] -default 0] } {
+                # add the my space tab, which isn't part of the class portal but is super useful for the end user
+                append navbar "<li><a href=\"$dotlrn_url\">#dotlrn.user_portal_page_home_title#</a></li>"
+            }
 
             # figure out what this privs this user has on the community
             set admin_p [dotlrn::user_can_admin_community_p \

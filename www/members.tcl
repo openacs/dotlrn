@@ -33,12 +33,26 @@ set community_id [dotlrn_community::get_community_id]
 set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_get_user_id] -community_id $community_id]
 set referer [ns_conn url]
 set return_url "[ns_conn url]?[ns_conn query]"
+
 set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
 
 if {!$site_wide_admin_p} {
     set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id -community_id $community_id]
 } else {
     set admin_p 1
+}
+
+# make it so that only course admins 
+# and site wide admins can read this page 
+# if { !$admin_p } {
+#        ad_return_forbidden  "Permission Denied"  "<blockquote>
+#    You don't have permission to view this page.
+#    </blockquote>"
+#        ad_script_abort
+#}
+
+if {$admin_p} {
+    set add_member_url [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }]
 }
 
 if {![exists_and_not_null referer]} {
@@ -64,7 +78,8 @@ if {$admin_p} {
     set bulk_actions_export_vars [list "user_id" "rel_type" "referer" "reset"]
     set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
     foreach role $rel_types {
-		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+		# lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "member-confirm?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
     }
 
 } else {
@@ -84,6 +99,10 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 		<img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" border="0">
 		</a>
 		</if>
+		<if @members.update_bio_p@ eq 1>
+                <br><a href=bio-update?user_id=@members.user_id@&return_url=$return_url>Update bio</a>
+		</if>
+
             }
         } last_name {
             label "[_ acs-subsite.Last_name]"
@@ -101,7 +120,7 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	    label "[_ dotlrn.Email_1]"
 	    html "align left"
 	    display_template {
-		@members.user_email;noquote@
+		<a href="mailto:@members.email@">@members.email@</a>
 	    }
 	} role {
 	    label "[_ dotlrn.Role]"
@@ -111,8 +130,8 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	    html "align left"
 	    display_template {
 		<if @members.user_id@ ne "">
-		<a href="deregister?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.Drop_Membership#</a> | 
-		<a href="member-add-2?user_id=@members.user_id@&referer=@members.referer@">#dotlrn.User_Admin_Page#</a>
+		<a href="member-confirm?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
+		<a href="member-add-2?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
 		</if>
 	    }
 	}
@@ -129,10 +148,11 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 
 set member_page [acs_community_member_page]
 
-db_multirow -extend { member_url referer user_email } members select_current_members {} {
+db_multirow -extend { update_bio_p member_url member_referer } members select_current_members {} {
     set member_url "$member_page?user_id=$user_id"
-    set user_email [email_image::get_user_email -user_id $user_id]
-    set referer $referer
+    set member_referer $referer
+
+    set update_bio_p $admin_p
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
@@ -153,13 +173,12 @@ if { $size > 0 } {
     multirow append members "" "" "" "" "" $selection
 }
 
-
 set user_ids ""
-db_multirow -extend { member_url referer } pending_users select_pending_users {} {
+db_multirow -extend { member_url pending_user_referer } pending_users select_pending_users {} {
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
     append user_ids "user_id=$user_id&"
     set member_url "$member_page?user_id=$user_id"
-    set referer $referer
+    set pending_user_referer $referer
 }
 
 
@@ -200,8 +219,8 @@ template::list::create -name pending_users -multirow pending_users -key user_id 
 	label "[_ dotlrn.Actions]"
             html "align left"
 	display_template {
-                <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.referer@">#dotlrn.Approve#</a> |
-                <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.referer@">#dotlrn.Reject#</a>
+                <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Approve#</a> |
+                <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Reject#</a>
 	}
     }
 }

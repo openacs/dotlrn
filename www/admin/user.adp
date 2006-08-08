@@ -28,42 +28,42 @@
 
   <li>
     #dotlrn.Person_name#
-    @first_names@ @last_name@
-  <if @oacs_site_wide_admin_p@ true> 
+    <strong>@first_names@ @last_name@</strong>
+  <if @site_wide_admin_p@ true> 
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if>
   </li>
 
   <li>
     #dotlrn.Email#
-    <a href="mailto:@email@">@email@</a>
-  <if @oacs_site_wide_admin_p@ true>
+    <strong><a href="mailto:@email@">@email@</a></strong>
+  <if @site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if> 
   </li>
 
   <li>
     #dotlrn.Screen_name#
-    @screen_name@
-  <if @oacs_site_wide_admin_p@ true>
+    <strong>@screen_name@</strong>
+  <if @site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
   </if>
   </li>
 
   <li>
     #dotlrn.User_ID#
-    @user_id@
+    <strong>@user_id@</strong>
   </li>
 
   <li>
     #dotlrn.Registration_date#
-    @registration_date@
+    <strong>@registration_date@</strong>
   </li>
 
 <if @last_visit@ not nil>
   <li>
     #dotlrn.Last_Visit#
-    @last_visit@
+    <strong>@last_visit@</strong>
   </li>
 </if>
 <else>
@@ -74,14 +74,14 @@
 
 <if @portrait_p@ eq 1>
   <li>
-    #dotlrn.Portrait# <a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a>
+    #dotlrn.Portrait# <strong><a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a></strong>
   </li>
 </if>
 
   <li>
     #dotlrn.Member_state#
-    @member_state@
-  <if @oacs_site_wide_admin_p@ true> 
+    <strong>@member_state@</strong>
+  <if @site_wide_admin_p@ true> 
     @change_state_links;noquote@
   </if>
   </li>
@@ -96,23 +96,23 @@
 
   <li>
     #dotlrn.User_type#
-    <%= [lang::util::localize @pretty_type@] %>
+    <strong><%= [lang::util::localize @pretty_type@] %></strong>
   </li>
 
   <li>
     #dotlrn.Access_level#
-    <if @can_browse_p@>#dotlrn.Full# [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else>#dotlrn.Limited# [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
-se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
+    <if @can_browse_p@><strong>#dotlrn.Full#</strong> [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else><strong>#dotlrn.Limited#</strong> [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
+se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
   </li>
 
   <li>
     #dotlrn.Guest#
-    <if @guest_p@ eq t>#dotlrn.Yes# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else>#dotlrn.No# [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
+    <if @guest_p@ eq t><strong>#dotlrn.Yes#</strong> [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else><strong>#dotlrn.No#</strong> [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
   </li>
 
   <li>
     #dotlrn.ID#
-    <if @id@ nil>#dotlrn.ltnone_set_upgt#</if><else>@id@</else>
+    <if @id@ nil><strong>#dotlrn.ltnone_set_upgt#</strong></if><else><strong>@id@</strong></else>
   </li>
 
   <br>
@@ -187,17 +187,19 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a> </small>]</else>
 </p>
 </else>
 
+<if @portrait_p@ true or @administrative_action_p@ true>
 <h3>#dotlrn.lt_Administrative_Action#</h3>
 
 <ul>
-  <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
   <if @portrait_p@>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
- <if @oacs_site_wide_admin_p@ true>
+ <if @site_wide_admin_p@ true>
   <li><a href="@toggle_swa_url;noquote@">@toggle_text;noquote@</a></li>
  </if>
- <if @oacs_site_wide_admin_p@ true or @dotlrn_admin_p@ true>
+ <if @site_wide_admin_p@ true or @dotlrn_admin_p@ true>
+  <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
   <li><a href="become?user_id=@user_id@">#dotlrn.Become_this_user#</a></li>
  </if> 
 </ul>
+</if>

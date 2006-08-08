@@ -44,8 +44,6 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
-
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
 set export_edit_vars "user_id=$user_id&return_url=$return_url"
 
@@ -56,7 +54,7 @@ if {![db_0or1row select_user_info {}]} {
     ad_script_abort
 }
 if {[empty_string_p $screen_name]} {
-    set screen_name "&lt;[_ dotlrn.none_set_up]&gt;"
+    set screen_name "([_ dotlrn.none_set_up])"
 }
 set registration_date [lc_time_fmt $registration_date "%q"]
 if {![empty_string_p $last_visit]} {
@@ -75,7 +73,7 @@ if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info 
     set portrait_p 1
 }
 
-set change_state_links "\[<small>[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]</small>\]"
+set change_state_links "\[ <small>[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]</small> \]"
 
 db_multirow member_classes select_member_classes {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]
@@ -87,13 +85,13 @@ db_multirow member_subgroups select_member_subgroups {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-set site_wide_admin_p [permission::permission_p \
-        -party_id $user_id \
-        -object_id [acs_magic_object "security_context_root"] \
-        -privilege admin \
-        ]
-
+set site_wide_admin_p [acs_user::site_wide_admin_p]
 set dotlrn_admin_p [dotlrn::admin_p]
+
+set administrative_action_p 0
+if { ($oacs_site_wide_admin_p && $site_wide_admin_p) || (!$site_wide_admin_p && ($oacs_site_wide_admin_p || $dotlrn_admin_p))} {
+	set administrative_action_p 1
+}
 
 set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 

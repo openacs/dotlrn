@@ -29,5 +29,16 @@ set community_type [dotlrn_community::get_community_type]
 
 db_multirow community_types select_community_types {}
 
+if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] && [template::multirow size community_types] == 0 } {
+    set redirect_to [parameter::get -parameter SelfRegistrationRedirectTo -package_id [dotlrn::get_package_id] -default ""]
+
+    if { $redirect_to ne "" } {
+	ad_returnredirect $redirect_to
+    } else {
+	ad_returnredirect "not-allowed"
+    }
+    ad_script_abort
+}
+
 ad_return_template
 

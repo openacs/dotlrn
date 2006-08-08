@@ -34,8 +34,9 @@ if { ![acs_user::site_wide_admin_p] } {
         ad_return_forbidden \
                "Permission Denied" \
                "<blockquote>
-                You don't have permission to see this page.
+	            [_ acs-admin.lt_You_dont_have_permiss]
                </blockquote>"
+	return
 }
 
 if {[string equal $value "grant"] == 1} {

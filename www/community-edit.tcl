@@ -29,50 +29,46 @@ ad_page_contract {
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
-set description [dotlrn_community::get_community_description -community_id $community_id]
-set pretty_name [dotlrn_community::get_community_name $community_id]
-set community_type [dotlrn_community::get_community_type_from_community_id $community_id]
 
-form create edit_community_info
-
-element create edit_community_info pretty_name \
-    -label [_ dotlrn.Name] \
-    -datatype text \
-    -widget text \
-    -html {size 60} \
-    -value $pretty_name
-
-element create edit_community_info description \
-    -label [_ dotlrn.Description] \
-    -datatype text \
-    -widget textarea \
-    -html {rows 5 cols 60 wrap soft} \
-    -value $description \
-    -optional
-
-element create edit_community_info community_type \
-    -label "[_ dotlrn.Community_Type]" \
-    -datatype text \
-    -widget select \
-    -options [linsert [db_list_of_lists community_types { *SQL* }] 0 {{} {}}] \
-    -value $community_type \
-    -optional
-
-if {[form is_valid edit_community_info]} {
-    form get_values edit_community_info pretty_name description community_type
+ad_form -name edit_community_info -form {
     
+    {pretty_name:text(text)
+	{label "#dotlrn.Name#"}
+	{html {size 60}}
+    }
+
+    {description:text(textarea),optional
+	{label "#dotlrn.Description#"}
+	{html {rows 5 cols 60 wrap soft}}
+	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
+    }	
+    
+    {active_start_date:date(date),to_sql(ansi),from_sql(ansi)
+	{label "#dotlrn.Start_date#"}
+    }
+
+    {active_end_date:date(date),to_sql(ansi),from_sql(ansi)
+	{label "#dotlrn.End_date#"}
+    }
+
+} -on_request {
+
+    db_1row get_community_info {select pretty_name, description, active_start_date, active_end_date from dotlrn_communities_all where community_id = :community_id} 
+
+} -on_submit {
+
+    db_dml update_community_info {update dotlrn_communities_all
+	set pretty_name = :pretty_name,
+	description = :description,
+	active_start_date = to_date(:active_start_date , 'YYYY-MM-DD HH24:MI:SS'),
+	active_end_date = to_date(:active_end_date , 'YYYY-MM-DD HH24:MI:SS')
+	where community_id = :community_id
+    }
+
     dotlrn_community::set_community_name \
         -community_id $community_id \
-        -pretty_name $pretty_name
-
-    dotlrn_community::set_community_description \
-        -community_id $community_id \
-        -description $description
-
-    dotlrn_community::set_community_type \
-        -community_id $community_id \
-        -community_type $community_type
-
+        -pretty_name $pretty_name    
+    
     ad_returnredirect $referer
     ad_script_abort
 }
@@ -181,7 +177,7 @@ if {[empty_string_p $revision_id]} {
 }
  
 set title [_ dotlrn.Edit_Properties]
-set context_bar [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
+set context [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
 
 ad_return_template
 

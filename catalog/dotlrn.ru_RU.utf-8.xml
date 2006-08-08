@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.1.0b3" locale="ru_RU" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="ru_RU" charset="utf-8">
 
   <msg key="A_copy_of">Копия</msg>
   <msg key="Access">Доступ</msg>
@@ -200,7 +200,7 @@
   <msg key="lt_Key_a_short_name_no_s">Ключ (короткое название, без пробелов)</msg>
   <msg key="lt_Pre-approved_Email_Se">Авторизованный сервер электронной почты</msg>
   <msg key="lt_Update_this_users_pas">Изменить пароль пользователя</msg>
-  <msg key="ltnone_set_upgt">&lt;не определен&gt;</msg>
+  <msg key="ltnone_set_upgt">&amp;lt;не определен&amp;gt;</msg>
   <msg key="maroon">малиновый</msg>
   <msg key="Member_state">Статус:</msg>
   <msg key="Members">Кол-во членов</msg>
@@ -268,14 +268,14 @@
   <msg key="term">Семестр</msg>
   <msg key="Terms">Семестры</msg>
   <msg key="terms">Семестры</msg>
-  <msg key="the_format_of_email_domains">Перечислите все желаемые шаблоны адресов через запятую.  Как правило, вы можете исползовать *@ конструкцию, которая равносильна &lt;кто угодно&gt;@&lt;email-domain&gt;.  Например, вы могли бы использовать:</msg>
+  <msg key="the_format_of_email_domains">Перечислите все желаемые шаблоны адресов через запятую.  Как правило, вы можете исползовать *@ конструкцию, которая равносильна &amp;lt;кто угодно&amp;gt;@&amp;lt;email-domain&amp;gt;.  Например, вы могли бы использовать:</msg>
   <msg key="this_user_is_deleted">этот пользователь удален</msg>
   <msg key="Unknown_Term">Семестр не орпеделен</msg>
   <msg key="User">Пользователь</msg>
   <msg key="User_ID">Код Пользователя:</msg>
   <msg key="User_ID_1">Код Пользователя:</msg>
   <msg key="User_Management">Управление Пользователями</msg>
-  <msg key="user_portal_page_calendar_title">Календарь</msg>
+  <msg key="user_portal_page_calendar_title">Мой календарь</msg>
   <msg key="user_portal_page_file_storage_title">Мои документы</msg>
   <msg key="user_portal_page_home_title">Моя рабочая область</msg>
   <msg key="user_portal_pretty_name">Пользователь</msg>

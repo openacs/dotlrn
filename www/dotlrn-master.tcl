@@ -65,7 +65,7 @@ set header_img_url "/resources/dotlrn/logo"
 set header_img_file "[acs_root_dir]/packages/dotlrn/www/resources/logo"
 set header_img_alt_text "Header Logo"
 
-set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" alt=\"\" border=0 width=15>"
+set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
 
@@ -82,6 +82,16 @@ set show_navbar_p 1
 if {[exists_and_not_null no_navbar_p] && $no_navbar_p} {
     set show_navbar_p 0
 } 
+
+if { [empty_string_p $community_id] && \
+         [parameter::get \
+              -parameter hide_personal_portal_p \
+              -package_id [dotlrn::get_package_id] \
+              -default 0] } {
+    #We're not in a community portal, and we've been asked to
+    #hide the personal portal.
+    set show_navbar_p 0
+}
 
 if {![info exists link_all]} {
     set link_all 0
@@ -359,7 +369,7 @@ set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_
 set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
 
 if { [info exists context] } {
-    set context_bar [eval ad_context_bar $context]
+    set context_bar [eval ad_context_bar -- $context]
 }
 
 set acs_lang_url [apm_package_url_from_key "acs-lang"]
@@ -370,7 +380,7 @@ set lang_admin_p [permission::permission_p \
 set toggle_translator_mode_url [export_vars -base "${acs_lang_url}admin/translator-mode-toggle" { { return_url [ad_return_url] } }]
 
 # Curriculum bar
-set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
+#set curriculum_bar_p [llength [site_node::get_children -all -filters { package_key "curriculum" } -node_id $community_id]]
 
 #################################
 # CLASS/COMMUNITY-SPECIFIC COLORS
@@ -575,3 +585,10 @@ $recolor_css
 </STYLE>
 
 "
+
+# Bring in header stuff from portlets, e.g. dhtml tree javascript
+# from dotlrn-main-portlet.
+global dotlrn_master__header_stuff
+if { ![info exists dotlrn_master__header_stuff] } {
+    set dotlrn_master__header_stuff ""
+}

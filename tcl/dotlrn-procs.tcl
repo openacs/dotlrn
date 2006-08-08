@@ -410,4 +410,123 @@ namespace eval dotlrn {
         }
     }
 
+    ad_proc -public set_site_template_id {
+        {-user_id:required}
+        {-site_template_id:required}
+    } {
+        Sets a given Site Template for a User
+	
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+	
+	@param community_id The id of the User that will change his Site Template 
+	@param site_template_id The id of the Site Template that will be used by the User
+  
+    } {
+        set portal_id [dotlrn::get_portal_id -user_id $user_id]
+        set new_theme_id [db_string select_portal_theme {}]
+        db_dml update_portal_theme {}
+        db_dml update_user_site_template {}
+        util_memoize_flush [list dotlrn::get_site_template_id_not_cached -user_id $user_id]
+        util_memoize_flush [list dotlrn::get_dotlrn_master_not_cached -user_id $user_id]
+    }
+
+    ad_proc -public get_dotlrn_master {
+        {-user_id:required}
+    } {
+        Returns the master configured for a given User
+	
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+	
+	@param community_id The id of the User in order to obtain the master template configured for him
+	
+	@returns The path of the master template that will be used.
+
+    } {
+	set site_template_id [get_site_template_id -user_id $user_id]
+        return [get_master_from_site_template_id -site_template_id $site_template_id]
+    }
+
+    ad_proc -public get_site_template_id {
+	{-user_id:required}
+    } {
+	Gets the id of a User's site template
+	
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+	
+	@param community_id The id of the User of whom we want to abtain the Site Template
+	
+	@returns The id of the Site Template assigned to the User
+
+    } {
+        return [util_memoize [list dotlrn::get_site_template_id_not_cached -user_id $user_id] ]
+    }
+
+    ad_proc -private get_site_template_id_not_cached {
+        {-user_id:required}
+    } {
+	Gets the id of the user's site template - not cached
+    } {
+	set dotlrn_package_id [dotlrn::get_package_id]
+	set user_site_template_id [db_string select_site_template_id {} -default "0"]
+	if {[parameter::get -package_id $dotlrn_package_id -parameter UserChangeSiteTemplate_p]} {
+	    set site_template_id $user_site_template_id
+	} else {
+	    set site_template_id [parameter::get -package_id $dotlrn_package_id -parameter UserDefaultSiteTemplate_p]
+	    if {$site_template_id != $user_site_template_id} {
+		set_site_template_id -user_id $user_id -site_template_id $site_template_id
+	    }
+	}
+	return $site_template_id
+    }
+    
+    
+    ad_proc -public get_master_from_site_template_id {
+	{-site_template_id:required}
+    } {
+	Returns the master template associated to a given Site Template
+	
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+	
+	@param site_template_id The id of The Site Template to obtain the master template
+	
+	@return The path of the master template associated to the Site Template
+	
+    } {
+	return [util_memoize [list dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id]]
+    }
+    
+    ad_proc -private get_master_from_site_template_id_not_cached {
+	{-site_template_id:required}
+    } {
+	Returns the master template for a given site template
+    } {
+	return [db_string select_site_template_master {} \
+		    -default [parameter::get -package_id [dotlrn::get_package_id] \
+				  -parameter DefaultMaster_p]]
+    }
+    
+    ad_proc -public assign_default_sitetemplate {
+	{-site_template_id:required}
+    } {
+	Assigns a portal theme associated to a Site Template
+	to all users
+	
+	@author Victor Guerra ( guerra@galileo.edu )
+	@creation-date 2006-03-11
+	
+	@param site_template_id The id of The Site Template to obtain the portal theme to be assigned
+
+    } {
+	
+	# We need to update the portal theme before the first hit!
+	set new_theme_id [db_string select_portal_theme {}]
+        db_dml update_portal_themes {update }
+
+	util_memoize_flush_regexp "dotlrn::get_site_template_id_not_cached *" 
+    }
+
 }

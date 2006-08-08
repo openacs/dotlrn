@@ -36,7 +36,7 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_script_abort
 }
 
-set user_id [auth::require_login]
+set user_id [ad_maybe_redirect_for_registration]
 
 if {![dotlrn::user_p -user_id $user_id]} {
     ad_returnredirect "index-not-a-user"
