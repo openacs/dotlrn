@@ -374,6 +374,7 @@ namespace eval dotlrn_community {
         Update the node ID for the community
     } {
         db_dml update_package_id {}
+	util_memoize_flush "dotlrn_community::get_package_id_not_cached $community_id"
     }
 
     ad_proc admin_access_p {
@@ -1318,7 +1319,17 @@ namespace eval dotlrn_community {
         return [db_string select_package_id {} -default [dotlrn::get_package_id]]
     }
 
+
     ad_proc -public get_package_id {
+        community_id
+    } {
+        get the package ID for a particular community.
+	This is cached as the package ID is not going to change
+    } {
+        return [util_memoize [list dotlrn_community::get_package_id_not_cached $community_id]]
+    }
+
+    ad_proc -public get_package_id_not_cached {
         community_id
     } {
         get the package ID for a particular community

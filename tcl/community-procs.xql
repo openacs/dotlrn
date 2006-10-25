@@ -295,7 +295,7 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_package_id.select_package_id">
+    <fullquery name="dotlrn_community::get_package_id_not_cached.select_package_id">
         <querytext>
             select package_id
             from dotlrn_communities_all
