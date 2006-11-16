@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -218,6 +218,7 @@ notify this user.</msg>
   <msg key="Full_Access">Full Access</msg>
   <msg key="General_Information">General Information</msg>
   <msg key="General_Site_Help">General Site Help</msg>
+  <msg key="goto_communities_pretty_name_portal">Go to %communities.pretty_name% portal</msg>
   <msg key="Grant_site_wide_admin">Grant site-wide administrative privileges.</msg>
   <msg key="gray">gray</msg>
   <msg key="green">green</msg>
