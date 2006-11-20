@@ -17,15 +17,15 @@
     #
 
 %>
-
+ 
   <master src="dotlrn-admin-master">
     <property name="title">@title@</property>
     <property name="context_bar">@context_bar@</property>
     <center>
       <form action="departments" method="GET">
-	Search departments with : 
-	<input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
-	  <input type="submit" value="Go">
+        #dotlrn.Search_departments_with# 
+        #dotlrn.Please_type_a_keyword# 
+          <input type="submit" value="#dotlrn.Go#">
       </form>
     </center>
     <if @departments:rowcount@ gt 0>

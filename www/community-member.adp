@@ -51,7 +51,7 @@
         </multiple>
         </if>
     <if @bio@ not nil>
-      <p> <em>#dotlrn.Biography#</em> @bio@
+      <p> <em>#dotlrn.Biography#</em> @bio;noquote@
     </if>
   </ul>
 </if>

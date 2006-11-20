@@ -27,7 +27,7 @@
 
     <div class="portlet-wrapper">
       <div class="portlet-title">
-        <span><h2> #acs-subsite.My_Account# </h2></span>
+        <span><h3> #acs-subsite.My_Account# </h3></span>
       </div>
       <div class="portlet">
         <include src="/packages/acs-subsite/lib/user-info" />
@@ -63,7 +63,7 @@
     <if @portrait_state@ eq upload>
       <div class="portlet-wrapper">
         <div class="portlet-title">
-          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
+          <span><h3>#acs-subsite.Your_Portrait#</h3></span>
         </div>
         <div class="portlet">
           <p>
@@ -76,7 +76,7 @@
     <if @portrait_state@ eq show>
       <div class="portlet-wrapper">  
         <div class="portlet-title">
-          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
+          <span><h3>#acs-subsite.Your_Portrait#</h3></span>
         </div>
         <div class="portlet">
           <p>
@@ -96,9 +96,9 @@
 
     <div class="portlet-wrapper">
       <div class="portlet-title">
-        <span><h2>#acs-subsite.Privacy#<h2></span>
+        <span><h3>#acs-subsite.Privacy#<h3></span>
       </div>
-      <div class="portlet">
+      <div class="portlet"><small>
         <ul>
           <li><a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a></li>
           <li><a href="../user/email-privacy-level">#acs-subsite.Change_my_email_P#</a></li>
@@ -115,19 +115,19 @@
           <ul>
             <li><a href="@make_invisible_url@">#acs-subsite.Make_yourself_invisible_label#</a></li>
           </ul>
-        </else>
+        </else></small>
       </div>
     </div>
 
     <div class="portlet-wrapper">
       <div class="portlet-title">
-        <span><h2>#dotlrn.General_Site_Help#</h2></span>
+        <span><h3>#dotlrn.General_Site_Help#</h3></span>
       </div>
-      <div class="portlet">
+      <div class="portlet"><small>
         <ul>
           <li><a href="@dotlrn_url@/help">#dotlrn.help#</a></li>
           <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a></li>
-        </ul>
+        </ul></small>
       </div>
     </div>
 

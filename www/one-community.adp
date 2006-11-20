@@ -24,5 +24,3 @@
 <p></p>
 
 @rendered_page;noquote@
-
-

@@ -9,6 +9,7 @@
     and  ci.item_id = a.object_id_two
     and a.object_id_one = :user_id
     and a.rel_type = 'user_portrait_rel'
+    limit 1
   </querytext>
 </fullquery>
  

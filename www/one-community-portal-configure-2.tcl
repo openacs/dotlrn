@@ -31,5 +31,5 @@ ns_log warning "about to call dispatch"
 
 portal::configure_dispatch -portal_id $portal_id -form [ns_getform]
 
-ad_returnredirect "one-community-portal-configure?portal_id=$portal_id&referer=$return_url#$anchor"
+ad_returnredirect "one-community-portal-configure?portal_id=$portal_id&referer=$return_url"
 

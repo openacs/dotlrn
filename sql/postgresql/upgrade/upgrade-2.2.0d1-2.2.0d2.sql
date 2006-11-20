@@ -25,6 +25,9 @@ create table dotlrn_site_templates (
 alter table dotlrn_communities_all add column site_template_id integer;
 alter table dotlrn_communities_all add constraint dotlrn_c_site_template_id_fk foreign key (site_template_id) references dotlrn_site_templates(site_template_id);
 
+-- Altering dotlrn communities table in order to have a maximum members field
+alter table dotlrn_communities_all add column max_members integer;
+ALTER TABLE dotlrn_communities_all ALTER COLUMN max_members SET DEFAULT 0;
 
 -- Altering Users Profile table and dotlrn users view in order to have
 -- which site teemplate is going to be using the user
