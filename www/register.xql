@@ -19,12 +19,4 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="select_max_members">
-        <querytext>
-           select max_members
-           from dotlrn_communities_all
-           where community_id = :community_id
-        </querytext>
-    </fullquery>
-
 </queryset>

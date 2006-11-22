@@ -4,7 +4,7 @@ ad_page_contract {
     {referer "control-panel"}
 }
 
-set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam]]
+set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
 set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
 if { ![exists_and_not_null community_id] } {

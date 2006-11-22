@@ -27,7 +27,6 @@
 <if @communities:rowcount@ gt 0>
 
 <multiple name="communities">
-<small>
 @communities.previous_type_ul_tags;noquote@
 
 <ul class="mktree" style="padding-left: 5px;"><li id="dotlrn-main-@communities.simple_community_type@" remember="1">
@@ -63,7 +62,7 @@
 
 </group>
 </li></ul></li></ul>
-</small>
+
 </multiple>
 
 @final_ul_tags;noquote@

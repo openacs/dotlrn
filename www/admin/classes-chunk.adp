@@ -32,11 +32,11 @@
 
 	<div style="text-align:center;">
 	  <form action="classes" method="GET">
-	    #dotlrn.Search_subjects_with#
-	    #dotlrn.Please_type_a_keyword#
+	    Search subjects with : 
+	    <input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
             <input type="hidden" name="department_key" value="@department_key@" />
             <input type="hidden" name="page" value="@page@" />
-            <input type="submit" value="#dotlrn.Go#" />
+            <input type="submit" value="Go" />
 	  </form>
 	</div>
       

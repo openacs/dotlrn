@@ -26,6 +26,3 @@ begin
 end;
 /
 
--- Altering dotlrn communities table in order to have a maximum members field
-alter table dotlrn_communities_all add column max_members integer;
-ALTER TABLE dotlrn_communities_all ALTER COLUMN max_members SET DEFAULT 0;

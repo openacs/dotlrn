@@ -92,7 +92,6 @@ create table dotlrn_communities_all (
 				default '',
     tree_sortkey		varbit,
     max_child_sortkey		varbit,
-    max_members                 integer default 0,
     site_template_id		integer
 				constraint dotlrn_c_site_template_id_fk
                                 references dotlrn_site_templates(site_template_id)

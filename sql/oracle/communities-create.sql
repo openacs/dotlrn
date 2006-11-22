@@ -80,7 +80,6 @@ create table dotlrn_communities_all (
                                 references apm_packages (package_id),
     tree_sortkey                raw(240),
     max_child_sortkey           raw(3),
-    max_members                 integer default '0',
 	site_template_id			integer
 				constraint dotlrn_c_site_template_id_fk
                                 references dotlrn_site_templates(site_template_id)

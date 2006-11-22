@@ -738,41 +738,6 @@ namespace eval dotlrn_community {
         return [db_list_of_lists select_users_in_role {}]
     }
 
-    ad_proc -public members_count {
-        -community_id
-        {-join_policy "open"}
-    } {
-        Count members given the join policy.
-    } {
-        return [db_string select_count {}]
-    }
-
-    ad_proc -public max_members {
-        -community_id
-    } {
-        Returns the max members setting for the community
-    } {
-        return [db_string select_max_members {}]
-    }
-
-    ad_proc -public max_members_p {
-        -community_id
-    } {
-        Have we reached maximum members
-    } {
-        set max_members [db_string select_max_members {}]
-        if {$max_members == 0} {
-            return 0
-        } else {
-            set size [members_count -community_id $community_id]
-            if {$size < $max_members} {
-                return 0
-            } else {
-                return 1
-            }
-        }
-    }
-
     ad_proc -public member_p {
         community_id
         user_id
@@ -960,18 +925,6 @@ namespace eval dotlrn_community {
             if { [member_p $community_id $user_id] } {
                 dotlrn_community::remove_user $community_id $user_id
             }
-        }
-    }
-
-    ad_proc -public remove_banned_users_from_all {
-    } {
-        Remove all banned users from all communities (if they are members)
-    } {
-        db_foreach get_banned_users_with_membership {} {
-            dotlrn_community::remove_user_from_all -user_id $user_id
-            ns_log Debug "User $user_id is banned and was removed from all communities"
-        } if_no_rows {
-            ns_log Debug "No banned user needed to be removed from a community"
         }
     }
 
@@ -1323,12 +1276,7 @@ namespace eval dotlrn_community {
                       } elseif {[needs_approval_p -community_id $sc_id]} {
                           append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Request_Membership]</a>\n"
                       } else {
-			  set max_members_p [max_members_p -community_id $sc_id]
-			  if {$max_members_p} {
-			      append chunk "([_ dotlrn.full])\n"
-			  } else {
-			      append chunk "(<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Join]</a>)\n"
-			  }
+                          append chunk "(<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\">[_ dotlrn.Join]</a>)\n"
                       }
 
                       append chunk "\n"

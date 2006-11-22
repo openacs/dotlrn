@@ -47,7 +47,6 @@
     <strong>@screen_name@</strong>
   <if @oacs_site_wide_admin_p@ true>
     [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
-    [<small> <a href="update-screennames?@export_edit_vars@">#dotlrn.set_all_screennames_where_null#</a> </small>]
   </if>
   </li>
 

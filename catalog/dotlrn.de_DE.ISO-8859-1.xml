@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0" locale="de_DE" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="de_DE" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Eine Kopie von</msg>
   <msg key="Access">Zugriff</msg>
@@ -34,7 +34,6 @@
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt; </msg>
-  <msg key="Administration">Administration</msg>
   <msg key="Administration_Cockpit">.LRN-Administration</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
@@ -200,11 +199,9 @@
   <msg key="From">Von</msg>
   <msg key="fuchsia">Fuchsie</msg>
   <msg key="Full">Unbeschränkt</msg>
-  <msg key="full">voll</msg>
   <msg key="Full_Access">Unbeschränkter Zugriff</msg>
   <msg key="General_Information">Allgemeine Informationen</msg>
   <msg key="General_Site_Help">Hilfe</msg>
-  <msg key="goto_communities_pretty_name_portal">Link zu %communities.pretty_name% </msg>
   <msg key="Grant_site_wide_admin">Systemadministrationsrechte erteilen</msg>
   <msg key="gray">Grau</msg>
   <msg key="green">Grün</msg>
@@ -225,7 +222,6 @@
   <msg key="Header_Logo_Item_ID">Kopfzeilenlogo-ID</msg>
   <msg key="help">Hilfe</msg>
   <msg key="hide_lrn_toolbar">.LRN toolbar verstecken</msg>
-  <msg key="Home">Home</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">Interne ID</msg>
   <msg key="ID_1">ID</msg>
@@ -263,7 +259,6 @@
   <msg key="lt_Are_you_sure_you_want_nuke_users">Wollen Sie diese Benutzer wirklich
 löschen? Hinweis: das System wird nur
 versuchen, diese Benutzer zu entfernen, und es könnte Probleme für andere Benutzer bekommen.</msg>
-  <msg key="lt_Are_you_sure_you_want_to_send">Sind Sie sicher, dass Sie die nachfolgende Email verschicken wollen?</msg>
   <msg key="lt_Be_sure_that_the_pers">Stellen Sie sicher, dass die Person nicht bereits für eine andere E-Mail-Adresse ein Benutzerkonto bei dotLRN besitzt, da doppelte Benutzerkonten Probeme verursachen. Um eine Person mit einem bestehenden Benutzerkonto hinzuzufügen, benutzen Sie die Option &lt;a href=members&gt;Teilnehmer verwalten&lt;/a&gt;. </msg>
   <msg key="lt_Class_Key_a_short_nam">Kursschlüssel (eine kurze Bezeichnung ohne Leerzeichen)</msg>
   <msg key="lt_Communitys_Web_Addres">Web-Adresse der Gruppe</msg>
@@ -493,9 +488,6 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Send_Date">Versenden am</msg>
   <msg key="send_email">E-Mail senden</msg>
   <msg key="Send_to_all">An die ganze Gruppe senden</msg>
-  <msg key="Send_to_the_following_members">An die folgenden Mitglieder senden:</msg>
-  <msg key="Send_to_the_following_roles">An die folgenden Gruppen senden:</msg>
-  <msg key="set_all_screennames_where_null">Setze für alle Benutzer screennames, die noch keinen haben</msg>
   <msg key="Shared_Files">Freigegebene Dateien</msg>
   <msg key="show_lrn_toolbar">.LRN Toolbar anzeigen</msg>
   <msg key="silver">Silber</msg>
@@ -521,7 +513,6 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Site_Templates_Template_AdminParams">Administration der Parameter</msg>
   <msg key="Small">Klein</msg>
   <msg key="Sorry">&amp;nbsp;</msg>
-  <msg key="Spam">Rundmail</msg>
   <msg key="Spam_">Gruppen-E-Mail...</msg>
   <msg key="Spam_Community">Gruppen-E-Mail senden</msg>
   <msg key="Spam_Users">Gruppen-E-Mail an Benutzer senden</msg>
@@ -594,9 +585,7 @@ Beispiel:</msg>
   <msg key="Yes">Ja</msg>
   <msg key="yes">Ja</msg>
   <msg key="Yes_delete">Ja, löschen</msg>
-  <msg key="Yes_delete_members">Ja, Mitgliedschaften löschen</msg>
   <msg key="Yes_Im_sure">Ja, wirklich</msg>
-  <msg key="Yes_keep_members">Ja, Mitgliedschaften beibehalten</msg>
   <msg key="You_can_specify_colors_by_name">Sie können Farben mit Hilfe von Farbnamen</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Hinweis:&lt;/b&gt; Sie müssen &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; erstellen, um %class_instances_pretty_plural% anlegen zu können, denn diese müssen %terms_pretty_plural%n zugeordnet sein.</msg>
   <msg key="your_icon_is_too_large">Ihr Logo ist zu groß. Die zulässige Maximalgröße für Anhänge beträgt innerhalb von %system_name% %max_attachments_bytes% Bytes.\n </msg>

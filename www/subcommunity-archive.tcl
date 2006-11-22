@@ -39,8 +39,7 @@ set title [_ dotlrn.arhive_group_name [list group_name $pretty_name]]
 form create archive_form
 
 # this is lame, but I don't have a better way yet
-set yes_label "[_ dotlrn.Yes_keep_members]"
-set yes_delete_label "[_ dotlrn.Yes_delete_members]"
+set yes_label "[_ dotlrn.Yes_Im_sure]"
 set no_label "[_ dotlrn.lt_No_I_dont_want_to_arc]"
 
 element create archive_form no_button \
@@ -49,13 +48,8 @@ element create archive_form no_button \
     -widget submit \
     -value "1"
 
-element create archive_form yes_keep_button \
+element create archive_form yes_button \
     -label $yes_label  \
-    -datatype text \
-    -widget submit
-
-element create archive_form yes_delete_button \
-    -label $yes_delete_label  \
     -datatype text \
     -widget submit
 
@@ -72,30 +66,18 @@ element create archive_form referer \
     -value $referer
 
 if {[form is_valid archive_form]} {
-    form get_values archive_form community_id referer no_button yes_keep_button yes_delete_button
+    form get_values archive_form community_id referer no_button yes_button
 
-    if {[string equal $yes_keep_button $yes_label]} {
-        #keep all memberships and archive this community
+    if {[string equal $yes_button $yes_label]} {
+
         db_transaction {
             set subcomm_id [dotlrn_community::archive \
-                                -community_id $community_id
-			    ]
+                    -community_id $community_id
+            ]
         }
     }
 
-    if {[string equal $yes_delete_button $yes_delete_label]} {
-        #delete all memberships ...
-        db_foreach get_list_of_members {} {
-            dotlrn_community::remove_user $community_id $user_id
-        }
-        #... and archive community
-        db_transaction {
-            set subcomm_id [dotlrn_community::archive \
-                                -community_id $community_id
-			    ]
-        }
-
-    }
     ad_returnredirect "$referer"
     ad_script_abort
-}
+} 
+

@@ -191,13 +191,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::members_count.select_count">
-        <querytext>
-           select count(*) from dotlrn_member_rels_approved where community_id
-      = :community_id
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::member_p.select_count_membership">
         <querytext>
             select count(*)
@@ -206,20 +199,6 @@
                           from dotlrn_member_rels_approved
                           where community_id = :community_id
                           and user_id = :user_id)
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::max_members_p.select_max_members">
-        <querytext>
-            select max_members from dotlrn_communities_all
-            where community_id = :community_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::max_members.select_max_members">
-        <querytext>
-            select max_members from dotlrn_communities_all
-            where community_id = :community_id
         </querytext>
     </fullquery>
 
