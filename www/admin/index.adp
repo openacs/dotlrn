@@ -29,23 +29,23 @@
 <property name="context_bar">@context_bar@</property>
 
 <ul>
-  <li><a href="dotlrn-admins">#dotlrn.Administrators#</a></li> 
-  <li><a href="users">#dotlrn.users#</a></li>
-  <li><a href="terms">#dotlrn.terms#</a></li>
-  <li><a href="departments"><%= [parameter::get -localize -parameter departments_pretty_plural] %></a></li>
-  <li><a href="classes"><%= [parameter::get -localize -parameter classes_pretty_plural] %></a></li>
-  <li><a href="term?term_id=-1"><%= [parameter::get -localize -parameter class_instances_pretty_plural] %></a></li>
-  <li><a href="clubs"><%= [parameter::get -localize -parameter clubs_pretty_plural] %></a></li> 
-  <li><a href="portal-templates">#dotlrn.portal_templates#</a></li>
-  <li><a href="site-templates">#dotlrn.site_templates#</a></li>
-  <li><a href="archived-communities">#dotlrn.archived_classes_and_communities#</a></li>
-  <li><a href="edit-preapproved-emails">#dotlrn.edit_approved_email_servers#</a></li>
-  <li><a href="@parameters_url@">#dotlrn.edit_parameters#</a></li>
-  <li><a href="@parameters_d_url@">#dotlrn.edit_community_parameters#</a></li>
-  <li><a href="toolbar-actions?action=@action@&return_url=@return_url@">@dotlrn_toolbar_action@</a></li>
+  <li><a href="dotlrn-admins" title="#dotlrn.Administrators#">#dotlrn.Administrators#</a></li> 
+  <li><a href="users" title="#dotlrn.users#">#dotlrn.users#</a></li>
+  <li><a href="terms" title="#dotlrn.terms#">#dotlrn.terms#</a></li>
+  <li><a href="departments" title="@departments_pretty_plural@">@departments_pretty_plural@</a></li>
+  <li><a href="classes" title="@subjects_pretty_plural@">@subjects_pretty_plural@</a></li>
+  <li><a href="term?term_id=-1" title="@class_instances_pretty_plural@">@class_instances_pretty_plural@</a></li>
+  <li><a href="clubs" title="@clubs_pretty_plural@">@clubs_pretty_plural@</a></li> 
+  <li><a href="portal-templates" title="#dotlrn.portal_templates#">#dotlrn.portal_templates#</a></li>
+  <li><a href="site-templates" title="#dotlrn.site_templates#">#dotlrn.site_templates#</a></li>
+  <li><a href="archived-communities" title="#dotlrn.archived_classes_and_communities#">#dotlrn.archived_classes_and_communities#</a></li>
+  <li><a href="edit-preapproved-emails" title="#dotlrn.edit_approved_email_servers#">#dotlrn.edit_approved_email_servers#</a></li>
+  <li><a href="@parameters_url@" title="#dotlrn.edit_parameters#">#dotlrn.edit_parameters#</a></li>
+  <li><a href="@parameters_d_url@" title="#dotlrn.edit_community_parameters#">#dotlrn.edit_community_parameters#</a></li>
+  <li><a href="toolbar-actions?action=@action@&return_url=@return_url@" title="@dotlrn_toolbar_action@">@dotlrn_toolbar_action@</a></li>
   <p>
   <if @oacs_site_wide_admin_p@ true>
-    <li><a href="/acs-admin/">OpenACS Site-Wide Administration</a></li>
+    <li><a href="/acs-admin/" title="#dotlrn.goto_oacs_swa#">OpenACS Site-Wide Administration</a></li>
   </if>
   </p>
 </ul>
