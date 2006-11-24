@@ -221,6 +221,11 @@ notify this user.</msg>
   <msg key="General_Site_Help">General Site Help</msg>
   <msg key="goto_admin_pretty_name">Go to %admin_pretty_name%</msg>
   <msg key="goto_communities_pretty_name_portal">Go to %communities.pretty_name% portal</msg>
+  <msg key="goto_current_clubs">Go to current communities</msg>
+  <msg key="goto_join_class">Go to Join a class</msg>
+  <msg key="goto_join_clubs">Go to Join a community</msg>
+  <msg key="goto_member_classes_pretty_name">Go to %member_classes.pretty_name% portal</msg>
+  <msg key="goto_member_clubs_pretty_name">Go to %member_clubs.pretty_name% portal</msg>
   <msg key="goto_oacs_swa">Goto OpenACS Site Wide Administration</msg>
   <msg key="goto_subgroup_name">Go to subgroup %subgroup_name%</msg>
   <msg key="Grant_site_wide_admin">Grant site-wide administrative privileges.</msg>
@@ -538,7 +543,7 @@ Thank you
   <msg key="Remove_all">Remove all</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="Request_Membership_for_subgroup_name">Request membership for %subgroup_name%</msg>
-  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="required">Required field</msg>
   <msg key="Results">Results</msg>
   <msg key="Return_URL">Return URL</msg>

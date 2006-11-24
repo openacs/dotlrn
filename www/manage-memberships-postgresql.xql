@@ -110,7 +110,7 @@
             select dotlrn_class_instances_full.*
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.join_policy <> 'closed'
-	    and active_end_date > (select sysdate from dual)
+	    and (active_end_date > (select sysdate from dual) or active_end_date is null)
             and not exists (select 1
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
