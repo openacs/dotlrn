@@ -226,6 +226,8 @@ notify this user.</msg>
   <msg key="goto_join_clubs">Go to Join a community</msg>
   <msg key="goto_member_classes_pretty_name">Go to %member_classes.pretty_name% portal</msg>
   <msg key="goto_member_clubs_pretty_name">Go to %member_clubs.pretty_name% portal</msg>
+  <msg key="goto_non_member_classes">Go to class %non_member_classes.pretty_name% portal</msg>
+  <msg key="goto_non_member_clubs">Go to community %non_member_clubs.pretty_name% portal</msg>
   <msg key="goto_oacs_swa">Goto OpenACS Site Wide Administration</msg>
   <msg key="goto_subgroup_name">Go to subgroup %subgroup_name%</msg>
   <msg key="Grant_site_wide_admin">Grant site-wide administrative privileges.</msg>
