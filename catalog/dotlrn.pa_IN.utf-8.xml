@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="pa_IN" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.2.0" locale="pa_IN" charset="utf-8">
 
   <msg key="A_copy_of">ਇਸ ਦੀ ਨਕਲ</msg>
   <msg key="Access">ਪਹੁੰਚ</msg>
