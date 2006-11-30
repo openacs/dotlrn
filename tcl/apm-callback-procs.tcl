@@ -55,22 +55,18 @@ ad_proc -private dotlrn::apm::after_instantiate {
             -privilege "admin"
 
         }
-       #Setting the default Site Template
+       # Get the default Site Template
        set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
        
-       #for communities
+       # for communities
        parameter::set_value -package_id $package_id \
 	   -parameter  "CommDefaultSiteTemplate_p" \
 	   -value $site_template_id
 	   
-       #for users
+       # for users
        parameter::set_value -package_id $package_id \
 	   -parameter  "UserDefaultSiteTemplate_p" \
 	   -value $site_template_id
-
-       parameter::set_from_package_key -package_key "acs-subsite" \
-	   -parameter "DefaultMaster" \
-	   -value "/packages/dotlrn/www/dotlrn-master-custom"
 
        # Make sure that privacy is turned on
        acs_privacy::privacy_control_set 1
