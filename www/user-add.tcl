@@ -43,10 +43,10 @@ dotlrn_portlet::is_allowed -parameter limiteduser
 set current_user_id [ad_maybe_redirect_for_registration]
 set community_id [dotlrn_community::get_community_id]
 
-# If can_browse_p is 0, this means the new user would be able to join 
-# all communities.  It requires a site-wide administrator to add such a user.
+# If can_browse_p is 1, this means the new user would be able to join 
+# all communities. 
     
-if {![empty_string_p $community_id] && $can_browse_p == 0} {
+if {![empty_string_p $community_id]} {
     dotlrn::require_user_admin_community -community_id [dotlrn_community::get_community_id]
     set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
     set community_p 1
