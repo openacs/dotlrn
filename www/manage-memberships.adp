@@ -57,7 +57,7 @@
 
 <if @member_classes:rowcount@ gt 0>
     <table cellpadding="0" cellspacing="0" width="100%">
-      <tr class="table-title">
+      <tr class="list-header">
         <th id="name" align="left" width="55%">#dotlrn.class_name_header#</th>
         <th id="term" align="left" width="15%">#dotlrn.Term#</th>
         <th id="role" align="left" width="15%">#dotlrn.Role#</th>
@@ -67,10 +67,10 @@
 <multiple name="member_classes">
 
     <if @member_classes.rownum@ odd>
-      <tr class="odd">
+      <tr class="list-odd">
     </if>
     <else>
-      <tr class="even">
+      <tr class="list-even">
     </else>
         <td headers="name"><a href="@member_classes.url@" title="#dotlrn.goto_member_classes_pretty_name#">@member_classes.pretty_name@</a></td>
         <td headers="term">@member_classes.term_name@ @member_classes.term_year@</td>
@@ -96,7 +96,7 @@
 
 <if @member_clubs:rowcount@ gt 0>
     <table cellpadding="0" cellspacing="0" width="100%">
-      <tr class="table-title">
+      <tr class="list-header">
         <th id="name" align="left" colspan="2" width="70%">#dotlrn.clubs_name_header#</th>
         <th id="role" align="left" width="15%">#dotlrn.Role#</th>
         <th id="actions" align="center" width="15%">#dotlrn.Actions#</th>
@@ -105,10 +105,10 @@
 <multiple name="member_clubs">
 
     <if @member_clubs.rownum@ odd>
-      <tr class="odd">
+      <tr class="list-odd">
     </if>
     <else>
-      <tr class="even">
+      <tr class="list-even">
     </else>
         <td headers="name" colspan="2"><a href="@member_clubs.url@" title="#dotlrn.goto_member_clubs_pretty_name#">@member_clubs.pretty_name@</td>
         <td headers="role">@member_clubs.role@</td>
@@ -153,7 +153,7 @@
 
 <if @non_member_classes:rowcount@ gt 0>
     <table celladding="0" cellspacing="0" width="100%">
-      <tr class="table-title">
+      <tr class="list-header">
         <th id="name" align="left" width="25%">#dotlrn.class_name_header#</th>
 	<th id="descrip" align="left" width="30%">#dotlrn.Description#</th>
         <th id="term" align="left" width="15%">#dotlrn.Term#</th>
@@ -164,10 +164,10 @@
 <multiple name="non_member_classes">
 
     <if @non_member_classes.rownum@ odd>
-      <tr class="odd">
+      <tr class="list-odd">
     </if>
     <else>
-      <tr class="even">
+      <tr class="list-even">
     </else>
 <if @non_member_classes.join_policy@ eq "open">
         <td headers="name">
@@ -199,7 +199,7 @@
 <if @non_member_clubs:rowcount@ gt 0>
 <a name="join_club"><p></a>
     <table cellpadding="0" cellspacing="0" width="100%">
-      <tr class="table-title">
+      <tr class="list-header">
         <th id="name" align="left" width="25%">#dotlrn.clubs_name_header#</th>
         <th id="descrip" align="left" width="45%">#dotlrn.Description#</th>
         <th id="startdate" align="left" width="15%">#dotlrn.Start_date#</th>
@@ -209,10 +209,10 @@
 <multiple name="non_member_clubs">
 
     <if @non_member_clubs.rownum@ odd>
-      <tr class="odd">
+      <tr class="list-odd">
     </if>
     <else>
-      <tr class="even">
+      <tr class="list-even">
     </else>
 <if @non_member_clubs.join_policy@ eq "open">
         <td headers="name">
