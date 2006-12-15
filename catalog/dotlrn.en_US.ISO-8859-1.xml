@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
@@ -179,6 +179,7 @@
   <msg key="dotlrn_member_rel_pretty_name">dotLRN Community Membership</msg>
   <msg key="dotlrn_member_rel_pretty_plural">dotLRN Community Memberships</msg>
   <msg key="Drop">Drop</msg>
+  <msg key="Drop_from_subgroup_name">Drop from subgroup %subgroup_name%</msg>
   <msg key="Drop_Membership">Drop Membership</msg>
   <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Drop Membership&quot; border=0&gt;</msg>
   <msg key="Drop_selected_members">Drop selected members</msg>
@@ -221,6 +222,17 @@ notify this user.</msg>
   <msg key="Full_Access">Full Access</msg>
   <msg key="General_Information">General Information</msg>
   <msg key="General_Site_Help">General Site Help</msg>
+  <msg key="goto_admin_pretty_name">Go to %admin_pretty_name%</msg>
+  <msg key="goto_communities_pretty_name_portal">Go to %communities.pretty_name% portal</msg>
+  <msg key="goto_current_clubs">Go to current communities</msg>
+  <msg key="goto_join_class">Go to Join a class</msg>
+  <msg key="goto_join_clubs">Go to Join a community</msg>
+  <msg key="goto_member_classes_pretty_name">Go to %member_classes.pretty_name% portal</msg>
+  <msg key="goto_member_clubs_pretty_name">Go to %member_clubs.pretty_name% portal</msg>
+  <msg key="goto_non_member_classes">Go to class %non_member_classes.pretty_name% portal</msg>
+  <msg key="goto_non_member_clubs">Go to community %non_member_clubs.pretty_name% portal</msg>
+  <msg key="goto_oacs_swa">Goto OpenACS Site Wide Administration</msg>
+  <msg key="goto_subgroup_name">Go to subgroup %subgroup_name%</msg>
   <msg key="Grant_site_wide_admin">Grant site-wide administrative privileges.</msg>
   <msg key="gray">gray</msg>
   <msg key="green">green</msg>
@@ -254,6 +266,7 @@ notify this user.</msg>
   <msg key="join_link">&lt;img src=&quot;/resources/dotlrn/join.gif&quot; alt=&quot;Join&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="Join_Policy">Join Policy</msg>
   <msg key="Join_Policy_help">Join policy that is being applied</msg>
+  <msg key="Join_subgroup_name">Join subgroup %subgroup_name%</msg>
   <msg key="Key">Key</msg>
   <msg key="Large">Large</msg>
   <msg key="Last_Name">Last Name</msg>
@@ -537,7 +550,8 @@ Thank you
   <msg key="Reject_all">Reject all</msg>
   <msg key="Remove_all">Remove all</msg>
   <msg key="Request_Membership">Request Membership</msg>
-  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot; title=&quot;Request Membership&quot;&gt;</msg>
+  <msg key="Request_Membership_for_subgroup_name">Request membership for %subgroup_name%</msg>
+  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="required">Required field</msg>
   <msg key="Results">Results</msg>
   <msg key="Return_URL">Return URL</msg>
@@ -555,7 +569,7 @@ Thank you
   <msg key="send_email">Send Email</msg>
   <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Shared_Files">Shared Files</msg>
-  <msg key="show_lrn_toolbar">.LRN Toolbar anzeigen</msg>
+  <msg key="show_lrn_toolbar">Show .LRN Toolbar</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
   <msg key="Site_Template_Add">Add New Site Template</msg>

@@ -20,7 +20,7 @@
 
 
 <if @user_can_browse_p@ and @self_registration_p@>
-  <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
+  <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships" title="#dotlrn.lt_JoinDrop_a_Class_or_C#">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
   <br></br>
 </if>
 
@@ -45,7 +45,7 @@
 
 @communities.intra_type_ul_tags;noquote@
 
-          <a href="@communities.url@">@communities.pretty_name@</a>
+          <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
 	<if @communities.archived_p@><font color=red>Archived</font></if>
 	<if @show_buttons_p@ eq 1>
            <if @show_drop_button_p@ eq 1>

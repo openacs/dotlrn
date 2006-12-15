@@ -35,26 +35,26 @@
     	  #acs-subsite.Account_closed_workspace_msg#
   	</if>
         <ul>
-          <li><a href="configure">#dotlrn.Customize_Layout#</a></li>
+          <li><a href="configure" title="#dotlrn.Customize_Layout#">#dotlrn.Customize_Layout#</a></li>
           <if @allowed_to_change_site_template_p@>
-            <li><a href="change-site-template?referer=@dotlrn_url@/control-panel">#dotlrn.Customize_Template#</a></li>
+            <li><a href="change-site-template?referer=@dotlrn_url@/control-panel" title="#dotlrn.Customize_Template#">#dotlrn.Customize_Template#</a></li>
           </if>
-          <li><a href="../user/password-update">#acs-subsite.Change_my_Password#</a></li>
+          <li><a href="../user/password-update" title="#acs-subsite.Change_my_Password#">#acs-subsite.Change_my_Password#</a></li>
 
           <if @change_locale_url@ not nil>
-            <li><a href="@change_locale_url@">#acs-subsite.Change_locale_label#</a></li>
+            <li><a href="@change_locale_url@" title="acs-subsite.Change_locale_label#">#acs-subsite.Change_locale_label#</a></li>
           </if>
 
           <if @notifications_url@ not nil>
-            <li><a href="@notifications_url@">#acs-subsite.Manage_your_notifications#</a></li>
+            <li><a href="@notifications_url@" title="#acs-subsite.Manage_your_notifications#">#acs-subsite.Manage_your_notifications#</a></li>
           </if>
 
           <if @account_status@ ne "closed">
-            <li><a href="unsubscribe">#acs-subsite.Close_your_account#</a></li>
+            <li><a href="unsubscribe" title="#acs-subsite.Close_your_account#">#acs-subsite.Close_your_account#</a></li>
           </if>
 
           <if @admin_p@>
-            <li><a href="@admin_url@">@admin_pretty_name@</a></li>
+            <li><a href="@admin_url@" title="#dotlrn.goto_admin_pretty_name#">@admin_pretty_name@</a></li>
           </if>
         </ul>
       </div>
@@ -67,7 +67,7 @@
         </div>
         <div class="portlet">
           <p>
-            #acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@">#acs-subsite.upload_a_portrait#</a>
+            #acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@" title="#acs-subsite.upload_a_portrait#">#acs-subsite.upload_a_portrait#</a>
           </p>
         </div>
       </div>
@@ -83,8 +83,8 @@
             #acs-subsite.lt_On_portrait_publish_d#.
           </p>
           <table><tr valign="top"><td>
-            <img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="Portrait"><p>
-            <a href="/user/portrait/?return_url=/pvt/home">#acs-subsite.Edit#</a>
+            <img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="#acs-subsite.Portrait#"><p>
+            <a href="/user/portrait/?return_url=/pvt/home" title="#acs-subsite.Edit#">#acs-subsite.Edit#</a>
             </td><td>@portrait_description@</td></tr>
           </table>
         </div>
@@ -100,20 +100,20 @@
       </div>
       <div class="portlet">
         <ul>
-          <li><a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a></li>
-          <li><a href="../user/email-privacy-level">#acs-subsite.Change_my_email_P#</a></li>
+          <li><a href="@whos_online_url@" title="#acs-subsite.Whos_Online_link_label#">#acs-subsite.Whos_Online_link_label#</a></li>
+          <li><a href="../user/email-privacy-level" title="#acs-subsite.Change_my_email_P#">#acs-subsite.Change_my_email_P#</a></li>
         </ul>
 
         <if @invisible_p@ true>
           #acs-subsite.Currently_invisible_msg#
           <ul>
-            <li><a href="@make_visible_url@">#acs-subsite.Make_yourself_visible_label#</a></li>
+            <li><a href="@make_visible_url@" title="#acs-subsite.Make_yourself_visible_label#">#acs-subsite.Make_yourself_visible_label#</a></li>
           </ul>
         </if>
         <else>
           #acs-subsite.Currently_visible_msg#
           <ul>
-            <li><a href="@make_invisible_url@">#acs-subsite.Make_yourself_invisible_label#</a></li>
+            <li><a href="@make_invisible_url@" title="#acs-subsite.Make_yourself_invisible_label#">#acs-subsite.Make_yourself_invisible_label#</a></li>
           </ul>
         </else>
       </div>
@@ -125,8 +125,8 @@
       </div>
       <div class="portlet">
         <ul>
-          <li><a href="@dotlrn_url@/help">#dotlrn.help#</a></li>
-          <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@">@system_owner@</a></li>
+          <li><a href="@dotlrn_url@/help" title="#dotlrn.help#">#dotlrn.help#</a></li>
+          <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@" title="#dotlrn.Ask_a_question#">@system_owner@</a></li>
         </ul>
       </div>
     </div>

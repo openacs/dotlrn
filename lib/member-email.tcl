@@ -98,7 +98,7 @@ ad_form -extend -name "member_email" -form {
             from dotlrn_member_emails
             where email_id = :email_id
         }
-        set email [list $email ""]
+        set email [list $email "text/html"]
     } -on_submit {
         set email [template::util::richtext::get_property contents $email]
     } -new_data {

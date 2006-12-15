@@ -73,6 +73,7 @@ set departments [db_list_of_lists select_departments_for_select_widget {
              dotlrn_departments_full.department_key
 }]
 set departments [linsert $departments 0 {All ""}]
+set departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]
 
 set terms [db_list_of_lists select_terms_for_select_widget {
     select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,

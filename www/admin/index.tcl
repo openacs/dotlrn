@@ -32,6 +32,8 @@ set context_bar {}
 # Some en_US messages reuse these configurable pretty names
 set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
 set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
+set departments_pretty_plural [parameter::get -localize -parameter departments_pretty_plural]
+set subjects_pretty_plural [parameter::get -localize -parameter classes_pretty_plural]
 
 set parameters_url [export_vars -base /shared/parameters { { package_id {[dotlrn::get_package_id]} } { return_url [ad_return_url] } }] 
 

@@ -111,11 +111,7 @@ ad_form -name add_class_instance -form {
     # But this would involve too much code changes at the moment, so we stick with this for 
     # the time being :-) MS (openacs@sussdorff.de)
 
-    db_dml update_community_info {update dotlrn_communities_all
-	set active_start_date = :active_start_date,
-	active_end_date = :active_end_date
-	where community_id = :class_instance_id
-    }
+    db_dml update_community_info {}
 
     if {[empty_string_p $referer]} {
         set referer "class?class_key=$class_key"

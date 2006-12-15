@@ -22,7 +22,7 @@
     <install package="theme-selva"/>
 
     <mount package="dotlrn" mount-point="/dotlrn" instance-name="dotLRN"/>
-    <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master"/>
+    <set-parameter url="/" name="DefaultMaster" value="/packages/dotlrn/www/dotlrn-master-custom"/>
     <set-parameter package-key="acs-kernel" name="IndexRedirectUrl" value="/dotlrn/index"/>
     <set-parameter package-key="acs-kernel" name="CommunityMemberURL" value="/dotlrn/community-member"/>
     <set-parameter package-key="acs-kernel" name="CommunityMemberAdminURL" value="/dotlrn/admin/user"/>

@@ -43,11 +43,11 @@ ad_form -name edit_community_info -form {
 	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
     }	
     
-    {active_start_date:date(date),to_sql(ansi),from_sql(ansi)
+    {active_start_date:date(date),to_sql(ansi),from_sql(ansi),optional
 	{label "#dotlrn.Start_date#"}
     }
 
-    {active_end_date:date(date),to_sql(ansi),from_sql(ansi)
+    {active_end_date:date(date),to_sql(ansi),from_sql(ansi),optional
 	{label "#dotlrn.End_date#"}
     }
 

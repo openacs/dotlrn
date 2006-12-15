@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0b2" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.2.0" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
   <msg key="Access">Acceso</msg>
@@ -166,6 +166,7 @@
   <msg key="dotlrn_member_rel_pretty_name">Miembro de comunidades</msg>
   <msg key="dotlrn_member_rel_pretty_plural">Miembro de comunidades</msg>
   <msg key="Drop">Borrar</msg>
+  <msg key="Drop_from_subgroup_name">Darse de baja del subgrupo %subgroup_name%</msg>
   <msg key="Drop_Membership">Dar de baja</msg>
   <msg key="drop_membership_link">Darse de Baja</msg>
   <msg key="Drop_selected_members">Eliminar los usuarios seleccionados</msg>
@@ -206,6 +207,17 @@
   <msg key="Full_Access">Acceso ilimitado</msg>
   <msg key="General_Information">Información general</msg>
   <msg key="General_Site_Help">Ayuda general</msg>
+  <msg key="goto_admin_pretty_name">Ir a %admin_pretty_name%</msg>
+  <msg key="goto_communities_pretty_name_portal">Ir al portal de %communities.pretty_name%</msg>
+  <msg key="goto_current_clubs">Ir a mis comunidades</msg>
+  <msg key="goto_join_class">Ir a Darse de alta en un curso</msg>
+  <msg key="goto_join_clubs">Ir a Darse de alta en una comunidad</msg>
+  <msg key="goto_member_classes_pretty_name">Ir al portal del curso %member_classes.pretty_name%</msg>
+  <msg key="goto_member_clubs_pretty_name">Ir al portal de %member_clubs.pretty_name%</msg>
+  <msg key="goto_non_member_classes">Ir al portal del curso %non_member_classes.pretty_name%</msg>
+  <msg key="goto_non_member_clubs">Ir al portal de %non_member_clubs.pretty_name%</msg>
+  <msg key="goto_oacs_swa">Ir a la administración general de OpenACS</msg>
+  <msg key="goto_subgroup_name">Ir al subgrupo %subgroup_name%</msg>
   <msg key="Grant_site_wide_admin">Dar permisos de administración general</msg>
   <msg key="gray">gris</msg>
   <msg key="green">verde</msg>
@@ -239,6 +251,7 @@
   <msg key="join_link">Darse de alta</msg>
   <msg key="Join_Policy">Política de suscripción</msg>
   <msg key="Join_Policy_help">Política de subscripción que está siendo aplicada</msg>
+  <msg key="Join_subgroup_name">Darse de alta en el subgrupo %subgroup_name%</msg>
   <msg key="Key">Clave</msg>
   <msg key="Large">Grande</msg>
   <msg key="Last_Name">Apellidos</msg>
@@ -474,6 +487,7 @@
   <msg key="Reject_all">Rechazar a todos</msg>
   <msg key="Remove_all">Borrar todos</msg>
   <msg key="Request_Membership">Solicitar alta</msg>
+  <msg key="Request_Membership_for_subgroup_name">Solicitar el alta en %subgroup_name%</msg>
   <msg key="request_membership_link">Solicitar alta</msg>
   <msg key="required">requerido</msg>
   <msg key="Results">Resultados</msg>
