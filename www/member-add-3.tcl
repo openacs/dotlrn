@@ -29,6 +29,7 @@ ad_page_contract {
 
 set community_id [dotlrn_community::get_community_id]
 # See if the user is already in the group
+set user_ids_to_email [list]
 foreach uid $user_id {
     set member_p [dotlrn_community::member_p $community_id $uid]
 
@@ -39,6 +40,12 @@ foreach uid $user_id {
     
     # Add the relation
     dotlrn_community::add_user -rel_type $rel_type $community_id $uid
+    lappend user_ids_to_email $uid
+
+}
+
+if {[llength $user_ids_to_email]} {
+    set referer [export_vars -base member-email-confirm {{user_id $user_ids_to_email} community_id {return_url $referer}}]
 }
 ad_returnredirect $referer
 

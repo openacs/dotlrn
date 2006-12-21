@@ -40,5 +40,5 @@ if {!${is_dotlrn_user}} {
 # Add the relation
 dotlrn_community::add_user -rel_type dotlrn_instructor_rel $community_id $user_id
 
-ad_returnredirect $referer
+ad_returnredirect [export_vars -base ../member-email-confirm {{return_url $referer} community_id user_id}]
 

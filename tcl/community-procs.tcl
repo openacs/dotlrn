@@ -863,8 +863,6 @@ namespace eval dotlrn_community {
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
 
-	    # Send membership email
-            send_member_email -community_id $community_id -to_user $user_id -type "on join"
         }
     }
 
@@ -2344,7 +2342,6 @@ namespace eval dotlrn_community {
                     -subject $subject \
                     -body $message \
                     -extraheaders $extra_headers
-                
                 set return_val 1
             } else {
                 set return_val 0

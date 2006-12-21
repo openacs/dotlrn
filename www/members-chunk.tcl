@@ -96,12 +96,17 @@ if {$subcomm_p} {
 
     if {[form is_valid parent_users_form]} {
         set selected_users [element get_values parent_users_form selected_users]
-
+	set user_ids_to_email [list]
         foreach selected_user $selected_users {
             dotlrn_community::add_user -rel_type $parent_user_role($selected_user) $community_id $selected_user
+	    lappend user_ids_to_email $selected_user
         }
-
-        ad_returnredirect [ns_conn url]
+	if {[llength $user_ids_to_email]} {
+	    set return_url [export_vars -base member-email-confirm {{user_id $user_ids_to_email} community_id}]
+	} else {
+	    set return_url [ns_conn url]
+	}
+        ad_returnredirect $return_url
     }
 
     set selected_users_options [list]

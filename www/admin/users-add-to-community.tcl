@@ -32,8 +32,7 @@ dotlrn::require_admin
 
 set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Add_Users_to_Group]]
 
-form create select_community
-
+form create select_community -html {action select_community action users-add-to-community-email}
 element create select_community users \
     -label "&nbsp;" \
     -datatype text \
@@ -61,6 +60,7 @@ if {[llength $communities]} {
         -datatype text \
         -widget select \
         -options "{{} {}} $communities"
+
 } else {
     element create select_community community_id \
         -label "[_ dotlrn.No_groups_to_add_to]" \
@@ -73,37 +73,20 @@ if {[form is_valid select_community]} {
     form get_values select_community \
         users community_id
 
-    if {![empty_string_p $community_id]} {
+
+     if {![empty_string_p $community_id]} {
         db_transaction {
             foreach user $users {
                 dotlrn_community::add_user $community_id $user
             }
         }
+     }
+    set message "Users added to community. "
 
-        # Now notify the users that they've been added to the community.
+    ad_returnredirect [export_vars \
+			   -base ../member-email-confirm \
+			   {{user_id $users} community_id}]
 
-        set sender_email [cc_email_from_party [ad_conn user_id]]
-        foreach {community} $communities {
-            if { $community_id == [lindex $community 1] } {
-                set community_name [lindex $community 0]
-                break
-            }
-        }
-
-        set package [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]
-        set subject [_ dotlrn.added_community_subject]
-        set message [_ dotlrn.added_community_message]
-
-        spam::send \
-          -recepients $users \
-          -from $sender_email \
-          -real_from $sender_email \
-          -subject $subject \
-          -message $message \
-          -message_values [list]
-    }
-
-    ad_returnredirect $referer
     ad_script_abort
 }
 

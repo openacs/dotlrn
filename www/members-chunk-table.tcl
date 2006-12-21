@@ -162,16 +162,21 @@ if {$subcomm_p} {
     }
 
     if {[form is_valid parent_users_form]} {
-
+	set user_ids_to_email [list]
         foreach user $parent_user_list {
             set rel [element get_value parent_users_form "selected_user.[ns_set get $user user_id]"]
 
             if {![string match $rel none]} {
                 dotlrn_community::add_user -rel_type $rel $community_id [ns_set get $user user_id]
+		lappend user_ids_to_email [ns_set get $user user_id]
             }
         }
-
-        ad_returnredirect [ns_conn url]
+	if {[llength $user_ids_to_email]} {
+	    set return_url [export_vars -base member-email-confirm {{user_id $user_ids_to_email} community_id}]
+	} else {
+	    set return_url [ns_conn url]
+	}
+        ad_returnredirect $return_url
     }
 
 }
