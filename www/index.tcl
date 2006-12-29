@@ -47,10 +47,7 @@ if {![dotlrn::user_can_browse_p -user_id $user_id]} {
 
     set communities [dotlrn_community::get_all_communities_by_user $user_id]
 
-    if {[llength $communities] == 0} {
-        ad_returnredirect "index-not-a-user"
-        ad_script_abort
-    } elseif {[llength $communities] == 1} {
+    if {[llength $communities] == 1} {
         ad_returnredirect [ns_set get [lindex $communities 0] url]
         ad_script_abort
     }
@@ -58,6 +55,12 @@ if {![dotlrn::user_can_browse_p -user_id $user_id]} {
 }
 
 set portal_id [dotlrn::get_portal_id -user_id $user_id]
+set title [db_string get_title {
+    select pretty_name
+    from portal_pages
+    where portal_id = :portal_id
+    and sort_key = :page_num
+} -default ""]
 set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p t $portal_id]
 
 ad_return_template
