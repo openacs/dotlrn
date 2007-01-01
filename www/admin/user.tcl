@@ -88,10 +88,7 @@ db_multirow member_subgroups select_member_subgroups {} {
 set site_wide_admin_p [acs_user::site_wide_admin_p]
 set dotlrn_admin_p [dotlrn::admin_p]
 
-set administrative_action_p 0
-if { ($oacs_site_wide_admin_p && $site_wide_admin_p) || (!$site_wide_admin_p && ($oacs_site_wide_admin_p || $dotlrn_admin_p))} {
-	set administrative_action_p 1
-}
+set administrative_action_p [expr {$site_wide_admin_p || $dotlrn_admin_p}]
 
 set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
 
