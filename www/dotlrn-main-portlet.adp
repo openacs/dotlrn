@@ -50,7 +50,7 @@
 	<if @show_buttons_p@ eq 1>
            <if @show_drop_button_p@ eq 1>
 		&nbsp; <small> 
-                        <a href="@communities.url@deregister?referer=@referer@">#dotlrn.drop_membership_link#</a>
+                        <a href="@communities.url@deregister-self-confirm?referer=@referer@">#dotlrn.drop_membership_link#</a>
                       </small>
            </if>
            <if @communities.admin_p@ eq 1>
