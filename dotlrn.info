@@ -7,19 +7,19 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.2.1a1" url="http://openacs.org/repository/download/apm/dotlrn-2.2.1a1">
+    <version name="2.3.0d1" url="http://openacs.org/repository/download/apm/dotlrn-2.3.0d1.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
-        <release-date>2006-12-02</release-date>
+        <release-date>2006-12-31</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.2.1a1"/>
-        <requires url="acs-kernel" version="5.2.2"/>
-        <requires url="acs-lang" version="5.1.2d1"/>
-        <requires url="attachments" version="0.5"/>
-        <requires url="new-portal" version="0.1a"/>
-        <requires url="user-profile" version="0.1d"/>
+        <provides url="dotlrn" version="2.3.0d1"/>
+        <requires url="acs-kernel" version="5.3.0b2"/>
+        <requires url="acs-lang" version="5.3.0b2"/>
+        <requires url="attachments" version="0.10"/>
+        <requires url="new-portal" version="2.3.0d1"/>
+        <requires url="user-profile" version="2.1.2"/>
 
         <callbacks>
             <callback type="after-install"  proc="dotlrn::apm::after_install"/>
