@@ -27,6 +27,6 @@
 <div class="portlet-title"><span>@portlet_title@</span>
 </div> <!-- class : portlet-title -->
 <div class="portlet">
-  <include src="/packages/dotlrn/www/dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@dotlrn_url@/control-panel" community_filter = "communities">
+  <include src="/packages/dotlrn/www/dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@dotlrn_url@/communities" community_filter = "communities">
  </div> <!-- class : portlet -->
 <br>
