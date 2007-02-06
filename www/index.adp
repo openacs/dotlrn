@@ -19,5 +19,6 @@
 %>
 
 <master>
+  <property name="portal_page_p">1</property>
 
 @rendered_page;noquote@

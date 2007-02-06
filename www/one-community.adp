@@ -20,6 +20,7 @@
 
 <master>
   <property name="title">@title;noquote@</property>
+  <property name="portal_page_p">1</property>
 
 <p></p>
 
