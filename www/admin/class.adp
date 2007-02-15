@@ -74,13 +74,13 @@
       </table>
 
       <br>
-
 	  <form action="class" method="GET">
-	    Search classes  with : 
-	    <input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
+            #dotlrn.Search_classes_with#
+            
+		  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#" />
             <input type="hidden" name="class_key" value="@class_key@" />
             <input type="hidden" name="term_id" value="@term_id@" />
-	    <input type="submit" value="Go" />
+            <input type="submit" value="#dotlrn.Go#" />
 	  </form>
 
 	<if @class_instances:rowcount@ gt 0>
