@@ -38,6 +38,7 @@
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
   <msg key="Administration">Administration</msg>
+  <msg key="Administration_Accesskey">a</msg>
   <msg key="Administration_Cockpit">Administration Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administrators</msg>
@@ -104,6 +105,7 @@
   <msg key="Cockpit">Cockpit</msg>
   <msg key="Comma_Separated_Values">Comma Separated Values</msg>
   <msg key="Communities">Communities</msg>
+  <msg key="Communities_Accesskey">m</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">%clubs_pretty_name% Name</msg>
   <msg key="Community_ID">Community ID</msg>
@@ -125,6 +127,7 @@
   <msg key="Confirm_Drop">Confirm Drop</msg>
   <msg key="Confirmation">Confirmation</msg>
   <msg key="control_panel">Control Panel</msg>
+  <msg key="control_panel_accesskey">p</msg>
   <msg key="Copy">Copy</msg>
   <msg key="couldnt_find_user_id">We couldn't find user #%user_id%; perhaps this person was deleted?</msg>
   <msg key="course_admin_role_pretty_name">Course Administrator</msg>
@@ -132,6 +135,7 @@
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
   <msg key="Courses">Courses</msg>
+  <msg key="Courses_Accesskey">r</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
   <msg key="Create_Club">Create Club</msg>
@@ -254,6 +258,7 @@ notify this user.</msg>
   <msg key="help">Help</msg>
   <msg key="hide_lrn_toolbar">Hide .LRN toolbar</msg>
   <msg key="Home">Home</msg>
+  <msg key="Home_Accesskey">h</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
