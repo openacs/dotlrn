@@ -38,7 +38,6 @@
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
   <msg key="Administration">Administration</msg>
-  <msg key="Administration_Accesskey">a</msg>
   <msg key="Administration_Cockpit">Administration Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administrators</msg>
@@ -105,7 +104,6 @@
   <msg key="Cockpit">Cockpit</msg>
   <msg key="Comma_Separated_Values">Comma Separated Values</msg>
   <msg key="Communities">Communities</msg>
-  <msg key="Communities_Accesskey">m</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">%clubs_pretty_name% Name</msg>
   <msg key="Community_ID">Community ID</msg>
@@ -127,7 +125,6 @@
   <msg key="Confirm_Drop">Confirm Drop</msg>
   <msg key="Confirmation">Confirmation</msg>
   <msg key="control_panel">Control Panel</msg>
-  <msg key="control_panel_accesskey">p</msg>
   <msg key="Copy">Copy</msg>
   <msg key="couldnt_find_user_id">We couldn't find user #%user_id%; perhaps this person was deleted?</msg>
   <msg key="course_admin_role_pretty_name">Course Administrator</msg>
@@ -135,7 +132,6 @@
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
   <msg key="Courses">Courses</msg>
-  <msg key="Courses_Accesskey">r</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
   <msg key="Create_Club">Create Club</msg>
@@ -223,6 +219,7 @@ notify this user.</msg>
   <msg key="From">From</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Full</msg>
+  <msg key="full">full</msg>
   <msg key="Full_Access">Full Access</msg>
   <msg key="General_Information">General Information</msg>
   <msg key="General_Site_Help">General Site Help</msg>
@@ -258,7 +255,6 @@ notify this user.</msg>
   <msg key="help">Help</msg>
   <msg key="hide_lrn_toolbar">Hide .LRN toolbar</msg>
   <msg key="Home">Home</msg>
-  <msg key="Home_Accesskey">h</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
@@ -573,6 +569,9 @@ Thank you
   <msg key="Send_Date">Send Date</msg>
   <msg key="send_email">Send Email</msg>
   <msg key="Send_to_all">Send to everyone in the group</msg>
+  <msg key="Send_to_the_following_members">In addition, send to the following people (if you have not selected &quot;Send to Everyone&quot; above):</msg>
+  <msg key="Send_to_the_following_roles">Send to the following roles:</msg>
+  <msg key="set_all_screennames_where_null">Set all screenames where no screenname is set</msg>
   <msg key="Shared_Files">Shared Files</msg>
   <msg key="show_lrn_toolbar">Show .LRN Toolbar</msg>
   <msg key="silver">silver</msg>
@@ -598,6 +597,7 @@ Thank you
   <msg key="Site_Templates_Template_AdminParams">Parameters Administration</msg>
   <msg key="Small">Small</msg>
   <msg key="Sorry">Sorry!</msg>
+  <msg key="Spam">Spam</msg>
   <msg key="Spam_">Spam ...</msg>
   <msg key="Spam_Community">Spam Community</msg>
   <msg key="Spam_Users">Spam Users</msg>
@@ -674,7 +674,9 @@ Thank you
   <msg key="Yes">Yes</msg>
   <msg key="yes">yes</msg>
   <msg key="Yes_delete">Yes, delete</msg>
+  <msg key="Yes_delete_members">Yes, delete memberships</msg>
   <msg key="Yes_Im_sure">Yes, I'm sure.</msg>
+  <msg key="Yes_keep_members">Yes, keep memberships</msg>
   <msg key="You_can_specify_colors_by_name">You can specify colors by name</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Note:&lt;/b&gt; You must create &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; to be able to create %class_instances_pretty_plural%, since these must be associated with %terms_pretty_plural%.</msg>
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
