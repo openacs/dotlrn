@@ -24,7 +24,7 @@ ad_page_contract {
     {community_id ""}
     {rel_types:multiple "" }
     {rel_types_str ""}
-    {referer "control-panel"}
+    {referer ""}
     {spam_all 0}
 } -validate {
 
