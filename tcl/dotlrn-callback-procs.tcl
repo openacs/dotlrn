@@ -15,6 +15,7 @@ ad_proc -callback merge::MergeShowUserInfo -impl dotlrn {
 } {
     Show dotlrn items 	
 } {
+    ns_log notice "Starting MergeShowUserInfo for dotLRN"
     set msg "dotLRN items for $user_id"
     ns_log Notice $msg
     set result [list $msg]
@@ -45,12 +46,22 @@ ad_proc -callback merge::MergePackageUser -impl dotlrn {
 } {
     ns_log Notice "Merging dotlrn"
 
+
+  set from_fs_root_folder [dotlrn_fs::get_user_root_folder -user_id $from_user_id ] 
+  set to_fs_root_folder [dotlrn_fs::get_user_root_folder -user_id $to_user_id ] 
+
+  set from_fs_shared_folder [dotlrn_fs::get_user_shared_folder -user_id $from_user_id ] 
+  set to_fs_shared_folder [dotlrn_fs::get_user_shared_folder -user_id $to_user_id ] 
+
+
+
     db_transaction {
-	
+
 	# select the communities where from_user_id belongs to and
 	# to_user_id does not belong.
+
 	set from_rel_ids [db_list_of_lists get_from_rel_ids { *SQL* } ]	    
-	
+
 	foreach rel $from_rel_ids {
 	    set l_rel_id [lindex $rel 0]
 	    set l_rel_type [lindex $rel 1]
@@ -60,12 +71,26 @@ ad_proc -callback merge::MergePackageUser -impl dotlrn {
 	    # where from_user_id is with the same role
 	    # Add the relation
 	    dotlrn_community::add_user -rel_type $l_rel_type $l_community_id $to_user_id
-
 	}
 
 	# remove the user
-	dotlrn::user_remove -user_id $from_user_id
-	
+	dotlrn::user_remove -user_id $from_user_id     
+
+
+
+#change the name on duplicate files, this is to preserve the unique names constraint
+	db_foreach merge_dotlrn_fs_get_duplicates " " {
+
+         set newname $from_user_id$name
+	 db_dml change_names "update cr_items set name = :newname where item_id = :item_id"
+
+	}
+	ns_log notice "duplicate names changed"
+        db_dml merge_dotlrn_fs_shared_folder " "
+	ns_log notice "shared folder merges, done"
+        db_dml merge_dotlrn_fs " "
+	ns_log notice "root folder merges, done"
+      	ns_log notice ".LRN merge is done"
 	set result ".LRN merge is done"
     } 
     
