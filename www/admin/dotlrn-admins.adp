@@ -27,18 +27,14 @@
 <property name="title">#dotlrn.Administrators#</property>
 <property name="context_bar">@context_bar@</property>
 
+<h1>#dotlrn.Administrators#</h1>
 
  <form method="get" action="admin-add">
-   #dotlrn.Add_A_Member# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
+   #dotlrn.Add_an_Admin# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
    <input type="hidden" name="referer" value="@referer@">
 </form>
 
-
-<blockquote>
-    <center>
-         <listtemplate name="dotlrn_admins"></listtemplate>
-    </center>
-</blockquote>
+<listtemplate name="dotlrn_admins"></listtemplate>
 
 
 
