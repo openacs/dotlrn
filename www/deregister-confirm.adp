@@ -21,7 +21,9 @@
 <master>
 <property name="title">#dotlrn.Confirm_Drop#</property>
 
-#dotlrn.lt_You_are_about_to_dele#
+<h1>#dotlrn.Confirm_Drop#</h1>
+
+<p>#dotlrn.lt_You_are_about_to_dele#</p>
 
 <if @num_users@ lt 30>
 	#dotlrn.lt_Note_This_process_is_#  
@@ -37,8 +39,8 @@
 <else>
    #dotlrn.lt_Do_you_really_want_to_1#
 </else>
-
-<form method="post" action="deregister">
+</p>
+<form method="post" action="deregister" class="form-inline">
 <input type=hidden name=referer value="@referer@">
 @hidden_user_ids;noquote@
 <ul>
@@ -48,9 +50,12 @@
  </multiple>
 </if>
 </ul>
-
-<input type="submit" value="#dotlrn.Yes#"></form><form method="post" action="@referer@" style="margin-top: 0px;"><input type=submit value="#dotlrn.No#"></form>
+	<input type="submit" value="#dotlrn.Yes#">
+</form>
+<form method="post" class="form-inline" action="@referer@" style="margin-top: 0px;">
+	<input type=submit value="#dotlrn.No#">
+</form>
 
 <p>
 #dotlrn.lt_Note_The_script_will_#
-
+</p>
