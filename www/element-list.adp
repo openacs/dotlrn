@@ -2,9 +2,8 @@
 <property name="title">Portlet Names</property>
 <property name="context">"Portlet Names"</property>
 
-<p></p>
+<br>
 
-<center>
 <table class="list" cellpadding="3" cellspacing="1">
      <tr class="list-header" >
        <td class="list">ID</td>
@@ -24,11 +23,7 @@
      </tr>
   </multiple>
 </table>
-</center>
 
-
-
-<p> 
 
     
     

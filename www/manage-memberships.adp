@@ -22,7 +22,7 @@
 <property name="title">#dotlrn.Manage_Memberships#</property>
 <property name="context_bar">#dotlrn.Manage_Memberships#</property>
 
-<h3>#dotlrn.AddDrop_Memberships#</h3>
+<h1>#dotlrn.AddDrop_Memberships#</h1>
 
 <p>
   <small>
@@ -37,7 +37,7 @@
 <if @n_member_classes@ gt 0 or @member_clubs:rowcount@ gt 0>
   <hr>
 
-  <h4><a name="current">#dotlrn.lt_Your_Current_Membersh#</a></h4>
+  <h2><a name="current">#dotlrn.lt_Your_Current_Membersh#</a></h2>
 
 <if @n_member_classes@ gt 0>
 
@@ -134,7 +134,7 @@
 <if @n_non_member_classes@ gt 0 or @non_member_clubs:rowcount@ gt 0>
 <hr>
 
-  <h4><a name="join_class">#dotlrn.Join_A_Group#</a></h4>
+  <h2><a name="join_class">#dotlrn.Join_A_Group#</a></h2>
 
 <if @n_non_member_classes@ gt 0>
 
