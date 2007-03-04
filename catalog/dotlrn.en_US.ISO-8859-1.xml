@@ -687,4 +687,5 @@ Thank you
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">You're editing</msg>
   <msg key="Youve_chosen_to_add">You've chosen to add</msg>
+  <msg key="Page">Page</msg>
 </message_catalog>

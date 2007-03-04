@@ -16,6 +16,23 @@ dotlrn::require_user_admin_community \
 
 set id_portal [dotlrn_community::get_portal_id]
 
+template::list::create -name portal_elements -multirow portal_elements -elements {
+    id {
+        label "\#dotlrn.ID\#"
+	display_template {
+	    <a href=element-rename?element_id=@portal_elements.element_id@>@portal_elements.element_id@</a>
+	}
+    }
+    name {
+        label "\#dotlrn.Type\#"
+    }
+    pretty_name {
+        label "\#dotlrn.Name\#"
+    }
+    sort_key {
+        label "\#dotlrn.Page\#"
+    }
+}
 
 db_multirow portal_elements itens {
 
