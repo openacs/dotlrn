@@ -22,87 +22,101 @@
 <property name="title">@title@</property>
 <property name="link_control_panel">0</property>
 
-<table width="100%">
-  <tr><td width="50%" valign="top">
+
+<div id="main-content-sim">
+	<div class="main-content-padding">
 
     <div class="portlet-wrapper">
-      <div class="portlet-title">
-        <span><h2> #acs-subsite.My_Account# </h2></span>
-      </div>
-      <div class="portlet">
-        <include src="/packages/acs-subsite/lib/user-info" />
-  	<if @account_status@ eq "closed">
-    	  #acs-subsite.Account_closed_workspace_msg#
-  	</if>
-        <ul>
-          <li><a href="configure" title="#dotlrn.Customize_Layout#">#dotlrn.Customize_Layout#</a></li>
-          <if @allowed_to_change_site_template_p@>
-            <li><a href="change-site-template?referer=@dotlrn_url@/control-panel" title="#dotlrn.Customize_Template#">#dotlrn.Customize_Template#</a></li>
-          </if>
-          <li><a href="../user/password-update" title="#acs-subsite.Change_my_Password#">#acs-subsite.Change_my_Password#</a></li>
+		<div class="portlet-header">
+			<div class="portlet-title-no-controls">
+				<h1> #acs-subsite.My_Account# </h1>
+      		</div>
+		</div>
+		<div class="portlet">
+			<include src="/packages/acs-subsite/lib/user-info" />
+			<if @account_status@ eq "closed">
+				#acs-subsite.Account_closed_workspace_msg#
+			</if>
+				<if @allowed_to_change_site_template_p@>
+					<a href="change-site-template?referer=@dotlrn_url@/control-panel" title="#dotlrn.Customize_Template#" class="button">#dotlrn.Customize_Template#</a>
+				</if>
+				
+				<if @change_locale_url@ not nil>
+					<a href="@change_locale_url@" title="acs-subsite.Change_locale_label#" class="button">#acs-subsite.Change_locale_label#</a>
+				</if>
 
-          <if @change_locale_url@ not nil>
-            <li><a href="@change_locale_url@" title="acs-subsite.Change_locale_label#">#acs-subsite.Change_locale_label#</a></li>
-          </if>
+				<if @notifications_url@ not nil>
+					<a href="@notifications_url@" title="#acs-subsite.Manage_your_notifications#" class="button">#acs-subsite.Manage_your_notifications#</a>
+				</if>
 
-          <if @notifications_url@ not nil>
-            <li><a href="@notifications_url@" title="#acs-subsite.Manage_your_notifications#">#acs-subsite.Manage_your_notifications#</a></li>
-          </if>
+				<a href="configure" title="#dotlrn.Customize_Layout#" class="button">#dotlrn.Customize_Layout#</a>
 
-          <if @account_status@ ne "closed">
-            <li><a href="unsubscribe" title="#acs-subsite.Close_your_account#">#acs-subsite.Close_your_account#</a></li>
-          </if>
+				<a href="../user/password-update" title="#acs-subsite.Change_my_Password#" class="button">#acs-subsite.Change_my_Password#</a>
 
-          <if @admin_p@>
-            <li><a href="@admin_url@" title="#dotlrn.goto_admin_pretty_name#">@admin_pretty_name@</a></li>
-          </if>
-        </ul>
-      </div>
-    </div>
+				<if @account_status@ ne "closed">
+					<a href="unsubscribe" title="#acs-subsite.Close_your_account#" class="button">#acs-subsite.Close_your_account#</a>
+				</if>
+
+				<if @admin_p@>
+					<a href="@admin_url@" title="#dotlrn.goto_admin_pretty_name#" class="button">@admin_pretty_name@</a>
+				</if>
+		</div> <!-- /portlet -->
+	</div><!-- /portlet-wrapper -->
 
     <if @portrait_state@ eq upload>
-      <div class="portlet-wrapper">
-        <div class="portlet-title">
-          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
-        </div>
-        <div class="portlet">
-          <p>
-            #acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@" title="#acs-subsite.upload_a_portrait#">#acs-subsite.upload_a_portrait#</a>
-          </p>
-        </div>
-      </div>
+		<div class="portlet-wrapper">
+        	<div class="portlet-header">
+				<div class="portlet-title-no-controls">
+          			<h1>#acs-subsite.Your_Portrait#</h1>
+        		</div>
+			</div>
+		
+        	<div class="portlet">
+				<p>#acs-subsite.lt_Show_everyone_else_at#  <a href="@portrait_upload_url@" title="#acs-subsite.upload_a_portrait#">#acs-subsite.upload_a_portrait#</a></p>
+			</div> <!-- /portlet -->
+		</div><!-- /portlet-wrapper -->
     </if>
 
     <if @portrait_state@ eq show>
-      <div class="portlet-wrapper">  
-        <div class="portlet-title">
-          <span><h2>#acs-subsite.Your_Portrait#</h2></span>
-        </div>
-        <div class="portlet">
-          <p>
-            #acs-subsite.lt_On_portrait_publish_d#.
-          </p>
-          <table><tr valign="top"><td>
-            <img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="#acs-subsite.Portrait#"><p>
-            <a href="/user/portrait/?return_url=/pvt/home" title="#acs-subsite.Edit#">#acs-subsite.Edit#</a>
-            </td><td>@portrait_description@</td></tr>
-          </table>
-        </div>
-      </div>
+		<div class="portlet-wrapper">
+        	<div class="portlet-header">
+				<div class="portlet-title-no-controls">
+          			<h1>#acs-subsite.Your_Portrait#</h1>
+        		</div>
+			</div>
+        	<div class="portlet">
+          		<p>#acs-subsite.lt_On_portrait_publish_d#.</p>
+          		<table>
+					<tr valign="top">
+						<td>
+            				<img height=100 src="/shared/portrait-bits.tcl?user_id=@user_id@" alt="#acs-subsite.Portrait#"><p>
+            				<a href="/user/portrait/?return_url=/pvt/home" title="#acs-subsite.Edit#">#acs-subsite.Edit#</a>
+            			</td>
+						<td>@portrait_description@</td>
+					</tr>
+          		</table>
+			</div> <!-- /portlet -->
+		</div><!-- /portlet-wrapper -->
     </if>
 
-  </td>
-  <td width="50%" valign="top">
+</div>
+</div>
+
+<div id="sidebar-1-sim">
+	<div class="sidebar-1-padding">
 
     <div class="portlet-wrapper">
-      <div class="portlet-title">
-        <span><h2>#acs-subsite.Privacy#<h2></span>
-      </div>
-      <div class="portlet">
-        <ul>
-          <li><a href="@whos_online_url@" title="#acs-subsite.Whos_Online_link_label#">#acs-subsite.Whos_Online_link_label#</a></li>
-          <li><a href="../user/email-privacy-level" title="#acs-subsite.Change_my_email_P#">#acs-subsite.Change_my_email_P#</a></li>
-        </ul>
+    	<div class="portlet-header">
+			<div class="portlet-title-no-controls">
+				<h1>#acs-subsite.Privacy#</h1>
+			</div>
+		</div>
+		<div class="portlet">
+			<ul>
+				<li><a href="@community_member_url@">#acs-subsite.lt_What_other_people_see#</a></li>
+				<li><a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a></li>
+				<li><a href="../user/email-privacy-level">#acs-subsite.Change_my_email_P#</a></li>
+			</ul>
 
         <if @invisible_p@ true>
           #acs-subsite.Currently_invisible_msg#
@@ -116,20 +130,22 @@
             <li><a href="@make_invisible_url@" title="#acs-subsite.Make_yourself_invisible_label#">#acs-subsite.Make_yourself_invisible_label#</a></li>
           </ul>
         </else>
-      </div>
-    </div>
+		</div> <!-- /portlet -->
+	</div><!-- /portlet-wrapper -->
 
-    <div class="portlet-wrapper">
-      <div class="portlet-title">
-        <span><h2>#dotlrn.General_Site_Help#</h2></span>
-      </div>
-      <div class="portlet">
-        <ul>
-          <li><a href="@dotlrn_url@/help" title="#dotlrn.help#">#dotlrn.help#</a></li>
-          <li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@" title="#dotlrn.Ask_a_question#">@system_owner@</a></li>
-        </ul>
-      </div>
-    </div>
+	<div class="portlet-wrapper">
+    	<div class="portlet-header">
+			<div class="portlet-title-no-controls">
+				<h1>#dotlrn.General_Site_Help#</h1>
+			</div>
+		</div>
+		<div class="portlet">
+			<ul>
+				<li><a href="@dotlrn_url@/help" title="#dotlrn.help#">#dotlrn.help#</a></li>
+				<li>#dotlrn.Ask_a_question# <a href="mailto:@system_owner@" title="#dotlrn.Ask_a_question#">@system_owner@</a></li>
+			</ul>
+		</div> <!-- /portlet -->
+	</div><!-- /portlet-wrapper -->
 
-  </td></tr>
-</table>
+</div>
+</div>

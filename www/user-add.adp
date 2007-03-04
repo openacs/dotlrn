@@ -23,7 +23,7 @@
 <property name="context">@context;noquote@</property>
 <property name="focus">register.email</property>
 
-<h3>#dotlrn.lt_Add_a_new_user_to_Slo#</h3>
+<h1>#dotlrn.lt_Add_a_new_user_to_Slo#</h1>
 <if @community_p@ eq 1>
 <blockquote>
  #dotlrn.lt_Note_use_this_feature#

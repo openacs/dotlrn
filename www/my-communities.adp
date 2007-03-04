@@ -18,21 +18,15 @@
 
 %>
 
-<h3><if @title@ nil>#dotlrn.My_Communities#</if><else>@title@</else></h3>
+<h1><if @title@ nil>#dotlrn.My_Communities#</if><else>@title@</else></h1>
 
 <table>
 <multiple name="communities">
   <tr>
     <td><a href="@communities.url@">@communities.pretty_name@</a></td>
     <td>@communities.role_pretty_name@</td>
-    <td>
-      <small>
-<if @communities.admin_p@ eq 1>
-   <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a> </td>
-</if>
-<td>        <include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@"></td>
-      </small>
-    </td>
+    <td><if @communities.admin_p@ eq 1><a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a></if></td>
+    <td><include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@"></td>
   </tr>
 </multiple>
 <if @user_can_browse_p@ eq 1>
