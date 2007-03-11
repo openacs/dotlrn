@@ -42,7 +42,7 @@
 				</if>
 				
 				<if @change_locale_url@ not nil>
-					<a href="@change_locale_url@" title="acs-subsite.Change_locale_label#" class="button">#acs-subsite.Change_locale_label#</a>
+					<a href="@change_locale_url@" title="#acs-subsite.Change_locale_label#" class="button">#acs-subsite.Change_locale_label#</a>
 				</if>
 
 				<if @notifications_url@ not nil>
