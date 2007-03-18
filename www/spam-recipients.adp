@@ -22,8 +22,7 @@
 <property name="title">@spam_name@</property>
 <property name="context">@context_bar@</property>
 
-
-<h3>#dotlrn.Choose_members_to_receive#</h3>
+<h1>#dotlrn.Choose_members_to_receive#</h1>
 
 <form method="post" action="spam">
 
@@ -38,5 +37,7 @@
 </form>
 
 <listtemplate name="current_members"></listtemplate>
+
+
 
 
