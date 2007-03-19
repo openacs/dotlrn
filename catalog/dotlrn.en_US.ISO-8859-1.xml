@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.3.0d1" locale="en_US" charset="ISO-8859-1">
+
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
   <msg key="Access_Level">Access Level</msg>
@@ -74,6 +75,7 @@
   <msg key="Bulk_Approving">Bulk approving in progress.</msg>
   <msg key="Bulk_Upload">Bulk Upload</msg>
   <msg key="Bulk_Uploading">Bulk uploading in progress.</msg>
+  <msg key="Cancel_Dont_Send_email">Cancel, don't send email</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
   <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
@@ -205,6 +207,7 @@ notify this user.</msg>
   <msg key="Email">Email:</msg>
   <msg key="email">E-mail</msg>
   <msg key="Email_1">Email</msg>
+  <msg key="Email_Cancelled">Email Cancelled</msg>
   <msg key="Email_Members">Email Members</msg>
   <msg key="email_message">Message</msg>
   <msg key="email_sent">email sent</msg>
@@ -507,12 +510,14 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Nuke_">Nuke ...</msg>
   <msg key="Nuke_Users">Nuke Users</msg>
   <msg key="Number_of_db_objects">Number of database objects created by this user</msg>
+  <msg key="OK_Send_Email">OK, Send email</msg>
   <msg key="olive">olive</msg>
   <msg key="Open">Open</msg>
   <msg key="optional_defaults_to">Optional field that defaults to the following value:</msg>
   <msg key="Or">Or</msg>
   <msg key="or_by_RGB_number">or by RGB number</msg>
   <msg key="or_return_to">or, return to</msg>
+  <msg key="Page">Page</msg>
   <msg key="Parent">Parent</msg>
   <msg key="Parent_Type">Parent Type</msg>
   <msg key="Pending">Pending</msg>
@@ -577,6 +582,7 @@ Thank you
   <msg key="Send_to_all">Send to everyone in the group</msg>
   <msg key="Send_to_the_following_members">In addition, send to the following people (if you have not selected &quot;Send to Everyone&quot; above):</msg>
   <msg key="Send_to_the_following_roles">Send to the following roles:</msg>
+  <msg key="Send_Welcome_Message">Send Welcome Message</msg>
   <msg key="set_all_screennames_where_null">Set all screenames where no screenname is set</msg>
   <msg key="Shared_Files">Shared Files</msg>
   <msg key="show_lrn_toolbar">Show .LRN Toolbar</msg>
@@ -689,5 +695,4 @@ Thank you
   <msg key="your_icon_is_too_large">Your icon is too large. The publisher of %system_name% has chosen to limit attachments to %max_attachments_bytes% bytes.\n</msg>
   <msg key="Youre_editing">You're editing</msg>
   <msg key="Youve_chosen_to_add">You've chosen to add</msg>
-  <msg key="Page">Page</msg>
 </message_catalog>
