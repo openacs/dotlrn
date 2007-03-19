@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="dotlrn" package_version="2.2.0" locale="en_US" charset="ISO-8859-1">
-
   <msg key="A_copy_of">A copy of</msg>
   <msg key="Access">Access</msg>
   <msg key="Access_Level">Access Level</msg>
@@ -95,6 +94,7 @@
   <msg key="classes_pretty_name">Subject</msg>
   <msg key="classes_pretty_plural">Subjects</msg>
   <msg key="Closed">Closed</msg>
+  <msg key="club_access_key">c</msg>
   <msg key="club_page_calendar_title">Calendar</msg>
   <msg key="club_page_file_storage_title">File Storage</msg>
   <msg key="club_page_home_title">Community Home</msg>
@@ -169,6 +169,7 @@
   <msg key="dotlrn_admin_pretty_name">.LRN Site Wide Administration</msg>
   <msg key="dotlrn_admin_rel_pretty_name">.LRN Community Membership for Administrators</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin Community Memberships</msg>
+  <msg key="dotlrn_class_instance_access_key">c</msg>
   <msg key="dotlrn_class_instance_description">e.g. 6.001</msg>
   <msg key="dotlrn_class_instance_pretty_name">Class</msg>
   <msg key="dotlrn_class_instance_pretty_plural">Classes</msg>
@@ -615,6 +616,7 @@ Thank you
   <msg key="subcomm_page_file_storage_title">Files</msg>
   <msg key="subcomm_page_home_title">Subgroup Home</msg>
   <msg key="subcomm_page_info_title">Subgroup Info</msg>
+  <msg key="subcommunities_access_key">c</msg>
   <msg key="subcommunities_pretty_name">Subgroup</msg>
   <msg key="subcommunities_pretty_plural">Subgroups</msg>
   <msg key="subcommunity_memberships">%subcommunities_pretty_name% Memberships</msg>
