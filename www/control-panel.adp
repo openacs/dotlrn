@@ -54,7 +54,7 @@
 				<a href="../user/password-update" title="#acs-subsite.Change_my_Password#" class="button">#acs-subsite.Change_my_Password#</a>
 
 				<if @account_status@ ne "closed">
-					<a href="unsubscribe" title="#acs-subsite.Close_your_account#" class="button">#acs-subsite.Close_your_account#</a>
+					<a href="/pvt/unsubscribe" title="#acs-subsite.Close_your_account#" class="button">#acs-subsite.Close_your_account#</a>
 				</if>
 
 				<if @admin_p@>
