@@ -2,6 +2,7 @@
 <message_catalog package_key="dotlrn" package_version="2.3.0d1" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
+  <msg key="A_dotlrn_Site">A &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;The .LRN Project Homepage&quot;&gt;.LRN&lt;/a&gt; Site</msg>
   <msg key="Access">Access</msg>
   <msg key="Access_Level">Access Level</msg>
   <msg key="Access_level">Access level:</msg>
