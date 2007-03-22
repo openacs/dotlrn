@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.3.0d1" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
+  <msg key="A_dotlrn_Site">A &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;The .LRN Project Homepage&quot;&gt;.LRN&lt;/a&gt; Site</msg>
   <msg key="Access">Acceso</msg>
   <msg key="Access_Level">Nivel de acceso</msg>
   <msg key="Access_level">Nivel de acceso:</msg>
@@ -36,6 +37,7 @@
   <msg key="Administer">Administrar</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
   <msg key="Administration">Administración</msg>
+  <msg key="Administration_Accesskey">a</msg>
   <msg key="Administration_Cockpit">Administración Cockpit</msg>
   <msg key="Administrator">Administrador</msg>
   <msg key="Administrators">Administradores</msg>
@@ -68,6 +70,7 @@
   <msg key="Bulk_Approving">Aprobación por lote en proceso.</msg>
   <msg key="Bulk_Upload">Subir en bloque</msg>
   <msg key="Bulk_Uploading">Subiendo...</msg>
+  <msg key="Cancel_Dont_Send_email">Cancelar, no enviar el correo</msg>
   <msg key="cannot_be_removed">no puede ser borrado</msg>
   <msg key="Change_Locale">Cambiar idioma</msg>
   <msg key="Choose_members_to_receive">Escoja a los miembros de %community_name% que recibirán este mensaje:</msg>
@@ -88,6 +91,7 @@
   <msg key="classes_pretty_name">Asignatura</msg>
   <msg key="classes_pretty_plural">Asignaturas</msg>
   <msg key="Closed">Cerrado</msg>
+  <msg key="club_access_key">c</msg>
   <msg key="club_page_calendar_title">Calendario</msg>
   <msg key="club_page_file_storage_title">Documentos</msg>
   <msg key="club_page_home_title">Comunidad</msg>
@@ -98,6 +102,7 @@
   <msg key="Cockpit">Cockpit</msg>
   <msg key="Comma_Separated_Values">Exportar en formato CSV</msg>
   <msg key="Communities">Comunidades</msg>
+  <msg key="Communities_Accesskey">c</msg>
   <msg key="Community">Comunidad</msg>
   <msg key="community_header_name">Título de %clubs_pretty_name%</msg>
   <msg key="Community_ID">Identificador de la comunidad</msg>
@@ -105,6 +110,7 @@
   <msg key="community_memberships">Miembro de %clubs_pretty_name%</msg>
   <msg key="community_name_already_in_use">El título &lt;strong&gt;%community_key%&lt;/strong&gt; está siendo utilizado por otro grupo. \n Por favor, vuelva a la página anterior e introduzca otro título.</msg>
   <msg key="Community_Type">Tipo de comunidad</msg>
+  <msg key="community_type_exists">Este tipo de comunidad ya existe</msg>
   <msg key="Community_Types">Tipos de comunidad</msg>
   <msg key="Communitys_Name">Título de la comunidad</msg>
   <msg key="Compose_bulk_message">Escribir el mensaje</msg>
@@ -115,6 +121,7 @@
   <msg key="Confirm_Drop">Confirmar borrado</msg>
   <msg key="Confirmation">Confirmación</msg>
   <msg key="control_panel">Panel de control</msg>
+  <msg key="control_panel_accesskey">p</msg>
   <msg key="Copy">Copiar</msg>
   <msg key="couldnt_find_user_id">El usuario %user_id% no ha podido ser encontrado. Es posible que haya sido borrado.</msg>
   <msg key="course_admin_role_pretty_name">Administrador del curso</msg>
@@ -122,8 +129,10 @@
   <msg key="course_assistant_role_pretty_name">Tutor</msg>
   <msg key="course_assistant_role_pretty_plural">Tutores</msg>
   <msg key="Courses">Cursos</msg>
+  <msg key="Courses_Accesskey">r</msg>
   <msg key="Create_A_New_User">Crear un nuevo usuario</msg>
   <msg key="Create_a_Web_Log">Crear un weblog</msg>
+  <msg key="Create_Club">Crear comunidad</msg>
   <msg key="Created">Creado</msg>
   <msg key="CSV_File_Format">Formato CSV</msg>
   <msg key="Customize_Layout">Personalizar este portal</msg>
@@ -152,6 +161,7 @@
   <msg key="dotlrn_admin_pretty_name">Administración del sitio</msg>
   <msg key="dotlrn_admin_rel_pretty_name">Miembro de comunidad</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">Miembro de comunidades</msg>
+  <msg key="dotlrn_class_instance_access_key">c</msg>
   <msg key="dotlrn_class_instance_description">p.e. 6.001</msg>
   <msg key="dotlrn_class_instance_pretty_name">Curso</msg>
   <msg key="dotlrn_class_instance_pretty_plural">Cursos</msg>
@@ -175,6 +185,7 @@
   <msg key="edit_approved_email_servers">Editar dominios pre-aprobados</msg>
   <msg key="Edit_Biography">Editar biografía</msg>
   <msg key="edit_community_parameters">Editar los parámetros de la comunidad</msg>
+  <msg key="edit_community_type">Editar tipo de comunidad</msg>
   <msg key="edit_message_and_hit_send">Edite el mensaje a continuación y pulse &quot;Enviar correo&quot; para notificar al usuario.</msg>
   <msg key="edit_parameters">Editar parámetros</msg>
   <msg key="Edit_Properties">Editar propiedades</msg>
@@ -185,6 +196,7 @@
   <msg key="Email">Correo electrónico:</msg>
   <msg key="email">Correo electrónico</msg>
   <msg key="Email_1">Correo electrónico</msg>
+  <msg key="Email_Cancelled">Correo cancelado</msg>
   <msg key="Email_Members">Escribir a los miembros</msg>
   <msg key="email_message">Mensaje</msg>
   <msg key="email_sent">Correo enviado</msg>
@@ -204,6 +216,7 @@
   <msg key="From">Desde</msg>
   <msg key="fuchsia">fucsia</msg>
   <msg key="Full">Ilimitado</msg>
+  <msg key="full">lleno</msg>
   <msg key="Full_Access">Acceso ilimitado</msg>
   <msg key="General_Information">Información general</msg>
   <msg key="General_Site_Help">Ayuda general</msg>
@@ -239,6 +252,7 @@
   <msg key="help">Ayuda</msg>
   <msg key="hide_lrn_toolbar">Esconder la barra de .LRN</msg>
   <msg key="Home">Inicio</msg>
+  <msg key="Home_Accesskey">h</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">Identificador:</msg>
   <msg key="ID_1">Identificador</msg>
@@ -415,6 +429,7 @@
   <msg key="new_class_navbar_name">Nuevo</msg>
   <msg key="new_class_of_type_class_name">Nuevo %class_instances_pretty_name% de tipo %class_name%</msg>
   <msg key="new_community">%clubs_pretty_name% nuevo</msg>
+  <msg key="new_community_type">Nuevo tipo de comunidad</msg>
   <msg key="new_department">%departments_pretty_name% nuevo</msg>
   <msg key="New_Password">Contraseña nueva:</msg>
   <msg key="New_Term">Período nuevo</msg>
@@ -428,6 +443,7 @@
   <msg key="no_clubs">Sin %clubs_pretty_plural%</msg>
   <msg key="no_communities">Sin %clubs_pretty_plural%</msg>
   <msg key="no_community_member_with_id">No existe ningún miembro con el identificador %user_id%</msg>
+  <msg key="no_community_types">Sin %Community_Types%</msg>
   <msg key="no_departments">Sin %departments_pretty_plural%</msg>
   <msg key="no_description">ninguno</msg>
   <msg key="No_dont_delete_it">No borrarlo</msg>
@@ -450,13 +466,16 @@
   <msg key="Nuke_">Borrar ...</msg>
   <msg key="Nuke_Users">Borrar usuarios</msg>
   <msg key="Number_of_db_objects">Número de objetos en la base de datos creados por este usuario</msg>
+  <msg key="OK_Send_Email">Aceptar, Enviar correo</msg>
   <msg key="olive">oliva</msg>
   <msg key="Open">Abierto</msg>
   <msg key="optional_defaults_to">opcional, configuración por defecto </msg>
   <msg key="Or">o</msg>
   <msg key="or_by_RGB_number">o por números RGB</msg>
   <msg key="or_return_to">o, volver a</msg>
+  <msg key="Page">Página</msg>
   <msg key="Parent">Padre</msg>
+  <msg key="Parent_Type">Tipo del padre</msg>
   <msg key="Pending">Pendiente</msg>
   <msg key="Pending_Approval">Esperando aprobación</msg>
   <msg key="Person_name">Nombre</msg>
@@ -505,6 +524,9 @@
   <msg key="Send_Date">Fecha de envío</msg>
   <msg key="send_email">Enviar correo</msg>
   <msg key="Send_to_all">Enviar a todos los miembros del grupo</msg>
+  <msg key="Send_to_the_following_members">Además, enviar a las siguientes personas (si no ha seleccionado &quot;Enviar a todos&quot;):</msg>
+  <msg key="Send_to_the_following_roles">Enviar a los roles siguientes:</msg>
+  <msg key="Send_Welcome_Message">Enviar mensaje de bienvenida</msg>
   <msg key="Shared_Files">Archivos Compartidos</msg>
   <msg key="show_lrn_toolbar">Mostrar bara .LRN</msg>
   <msg key="silver">plateado</msg>
@@ -530,6 +552,7 @@
   <msg key="Site_Templates_Template_AdminParams">Administración de parámetros</msg>
   <msg key="Small">Pequeño</msg>
   <msg key="Sorry">¡Lo sentimos!</msg>
+  <msg key="Spam">Spam</msg>
   <msg key="Spam_">Enviar correo ...</msg>
   <msg key="Spam_Community">Enviar correo a comunidad</msg>
   <msg key="Spam_Users">Enviar correo a usuarios</msg>
@@ -542,6 +565,7 @@
   <msg key="subcomm_page_file_storage_title">Archivos</msg>
   <msg key="subcomm_page_home_title">Subgrupo</msg>
   <msg key="subcomm_page_info_title">Información del subgrupo</msg>
+  <msg key="subcommunities_access_key">c</msg>
   <msg key="subcommunities_pretty_name">Subgrupo</msg>
   <msg key="subcommunities_pretty_plural">Subgrupos</msg>
   <msg key="subcommunity_memberships">Miembros de %subcommunities_pretty_name%</msg>
@@ -603,7 +627,9 @@
   <msg key="Yes">Sí</msg>
   <msg key="yes">sí</msg>
   <msg key="Yes_delete">Si, borrar</msg>
+  <msg key="Yes_delete_members">Sí, borrar miembros</msg>
   <msg key="Yes_Im_sure">Sí, estoy seguro.</msg>
+  <msg key="Yes_keep_members">Sí, guardar miembros</msg>
   <msg key="You_can_specify_colors_by_name">Puede indicar los colores mediante sus nombres</msg>
   <msg key="you_need_to_create_terms_to_create_classes">&lt;b&gt;Nota:&lt;/b&gt; Debe crear &lt;a href=&quot;%terms_url%&quot;&gt;%terms_pretty_plural%&lt;/a&gt; para poder crear  %class_instances_pretty_plural%, ya que deberán ser asociados a %terms_pretty_plural%.</msg>
   <msg key="your_icon_is_too_large">El icono es demasiado grande. El administrador de %system_name% ha limitado el tamaño de los adjuntos a %max_attachments_bytes% bytes.\n</msg>
