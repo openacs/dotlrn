@@ -21,7 +21,7 @@
 
 <if @user_can_browse_p@ and @self_registration_p@>
   <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships" title="#dotlrn.lt_JoinDrop_a_Class_or_C#">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
-  <br></br>
+  <br>
 </if>
 
 <if @communities:rowcount@ gt 0>
@@ -29,7 +29,7 @@
 <multiple name="communities">
 @communities.previous_type_ul_tags;noquote@
 
-<ul class="mktree" style="padding-left: 5px;"><li id="dotlrn-main-@communities.simple_community_type@" remember="1">
+<ul class="mktree" style="padding-left: 5px;"><li id="dotlrn-main-@communities.simple_community_type@">
 <h3 style="display: inline; margin: 5px 0 0 0;">
   <if @communities.simple_community_type@ eq "dotlrn_class_instance">
     <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>

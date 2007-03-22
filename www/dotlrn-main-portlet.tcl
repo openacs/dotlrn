@@ -109,7 +109,7 @@ set dotlrn_url [dotlrn::get_url]
 # Add the dhtml tree javascript to the HEAD.
 global dotlrn_master__header_stuff
 append dotlrn_master__header_stuff {
-     <script src="/resources/acs-templating/mktree.js" language="javascript"></SCRIPT>
+     <script type="text/javascript" src="/resources/acs-templating/mktree.js" language="javascript"></SCRIPT>
      <link rel="stylesheet" href="/resources/acs-templating/mktree.css" media="all">
 }
 

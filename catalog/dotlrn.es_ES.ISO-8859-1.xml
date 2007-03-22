@@ -220,6 +220,7 @@
   <msg key="Full_Access">Acceso ilimitado</msg>
   <msg key="General_Information">Información general</msg>
   <msg key="General_Site_Help">Ayuda general</msg>
+  <msg key="Go">Buscar</msg>
   <msg key="goto_admin_pretty_name">Ir a %admin_pretty_name%</msg>
   <msg key="goto_communities_pretty_name_portal">Ir al portal de %communities.pretty_name%</msg>
   <msg key="goto_current_clubs">Ir a mis comunidades</msg>
@@ -482,6 +483,7 @@
   <msg key="Personal_home_page">Página personal:</msg>
   <msg key="Personal_Options">Opciones personales</msg>
   <msg key="Plain_Text">Texto plano</msg>
+  <msg key="Please_type_a_keyword">Entrar cadena a buscar</msg>
   <msg key="portal_templates">Plantillas de portales</msg>
   <msg key="Portrait">Foto:</msg>
   <msg key="Portrait_1">Portaretrato</msg>
@@ -518,6 +520,9 @@
   <msg key="Screen_name">Nick:</msg>
   <msg key="Search">Buscar</msg>
   <msg key="search">buscar</msg>
+  <msg key="Search_departments_with">Buscar departamento que contenga</msg>
+  <msg key="Search_subjects_with">Buscar asignaturas que contengan
+</msg>
   <msg key="Search_Text">Cadena a buscar:</msg>
   <msg key="Search_Users">Buscar usuarios</msg>
   <msg key="seconds">segundos.</msg>
