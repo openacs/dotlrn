@@ -110,7 +110,7 @@ set dotlrn_url [dotlrn::get_url]
 global dotlrn_master__header_stuff
 append dotlrn_master__header_stuff {
      <script type="text/javascript" src="/resources/acs-templating/mktree.js" language="javascript"></SCRIPT>
-     <link rel="stylesheet" href="/resources/acs-templating/mktree.css" media="all">
+     <link rel="stylesheet" type="text/css" href="/resources/acs-templating/mktree.css" media="all">
 }
 
 set self_registration_p [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1]
