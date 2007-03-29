@@ -7,18 +7,18 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.3.0d1" url="http://openacs.org/repository/download/apm/dotlrn-2.3.0d1.apm">
+    <version name="2.3.0d2" url="http://openacs.org/repository/download/apm/dotlrn-2.3.0d2.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
         <release-date>2006-12-31</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.3.0d1"/>
+        <provides url="dotlrn" version="2.3.0d2"/>
         <requires url="acs-kernel" version="5.3.0b2"/>
         <requires url="acs-lang" version="5.3.0b2"/>
         <requires url="attachments" version="0.10"/>
-        <requires url="new-portal" version="2.3.0d1"/>
+        <requires url="new-portal" version="2.3.0d4"/>
         <requires url="user-profile" version="2.1.2"/>
 
         <callbacks>
@@ -39,12 +39,12 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_name"  default="#dotlrn.classes_pretty_name#" description="used to display everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="classes_pretty_plural"  default="#dotlrn.classes_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_group_type_key"  default="dotlrn_class" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="#dotlrn.class_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.class_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.class_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="cvs list of the page_name/layout to create"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_pages_csv"  default="#dotlrn.class_page_home_title#,#new-portal.simple_2column_layout_name#,#dotlrn.class_page_home_accesskey#;#dotlrn.class_page_calendar_title#,#new-portal.simple_1column_layout_name#,#dotlrn.class_page_calendar_accesskey#;#dotlrn.class_page_file_storage_title#,#new-portal.simple_1column_layout_name#,#dotlrn.class_page_file_storage_accesskey#" description="cvs list of the page_name/layout to create"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instance_portal_pretty_name"  default="#dotlrn.class_instance_portal_pretty_name#" description="the nice name for the class instance portal template"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_name"  default="#dotlrn.class_instances_pretty_name#" description="used to display everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="class_instances_pretty_plural"  default="#dotlrn.class_instances_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_group_type_key"  default="dotlrn_club" description="Class Group Type"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="#dotlrn.club_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.club_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_file_storage_title#,#new-portal.simple_1column_layout_name#;#dotlrn.club_page_people_title#,#new-portal.simple_1column_layout_name#" description="same"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="club_pages_csv"  default="#dotlrn.club_page_home_title#,#new-portal.simple_2column_layout_name#,#dotlrn.club_page_home_accesskey#;#dotlrn.club_page_calendar_title#,#new-portal.simple_1column_layout_name#,#dotlrn.club_page_calendar_accesskey#;#dotlrn.club_page_file_storage_title#,#new-portal.simple_1column_layout_name#,#dotlrn.club_page_file_storage_accesskey#;#dotlrn.club_page_people_title#,#new-portal.simple_1column_layout_name#,#dotlrn.club_page_people_accesskey#" description="same"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_name"  default="#dotlrn.clubs_pretty_name#" description="used everywhere in the ui"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="clubs_pretty_plural"  default="#dotlrn.clubs_pretty_plural#" description="used everywhere in the ui"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="CommDefaultSiteTemplate_p"  default="0" description="This is the site_template_id used by default when creating a community. If you want to change this parameter go to Dotlrn Admin and Click in Site Templates; then Choose wich is the Site Template for default when creating users." section_name=".LRN Portal Types"/>
@@ -71,13 +71,13 @@
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="hide_personal_portal_p"  default="0" description="Some systems may wish to keep the personal portal hidden.  Setting this value to 1 will cause dotlrn to exclude navigation to the personal portal from community portals, and disable the entire navbar on non-community portal pages."/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_page_name"  default="#dotlrn.non_member_page_name#" description="The name of the not a member page"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="show_portrait_p"  default="1" description="Should we show and solicit user portraits? 1=Yes, 0=No"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="#dotlrn.subcomm_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.subcomm_page_info_title#,#new-portal.simple_1column_layout_name#;#dotlrn.subcomm_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.subcomm_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="default page names and layouts for subcomms"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcomm_pages_csv"  default="#dotlrn.subcomm_page_home_title,#new-portal.simple_2column_layout_name#,#dotlrn.subcomm_page_home_accesskey#;#dotlrn.subcomm_page_info_title#,#new-portal.simple_1column_layout_name#,#dotlrn.subcomm_page_info_accesskey#;#dotlrn.subcomm_page_calendar_title#,#new-portal.simple_1column_layout_name#,#dotlrn.subcomm_page_calendar_accesskey#;#dotlrn.subcomm_page_file_storage_title#,#new-portal.simple_1column_layout_name#,#dotlrn.subcomm_page_file_storage_accesskey#" description="default page names and layouts for subcomms"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_name"  default="#dotlrn.subcommunities_pretty_name#" description="what subcomms are called"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="subcommunities_pretty_plural"  default="#dotlrn.subcommunities_pretty_plural#" description="the plural"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="user"  default="user" description="Defines which subtype of dotlrn portal type is going to be used by default when creating a new User portal." section_name=".LRN Portal Types"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="UserChangeSiteTemplate_p"  default="0" description="Indicates if all users are able to change their Site Template. A value of 0 indicates that users cannot change it. A value of 1 indicates that users can." section_name=".LRN Portal Types"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="UserDefaultSiteTemplate_p"  default="0" description="This is the site_template_id used by default when creating a user. If you want to change this parameter go to Dotlrn Admin and Click in Site Templates; then Choose wich is the Site Template for default when creating users." section_name=".LRN Portal Types"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#" description="a csv list of the other pages to create on the user wsp by default"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#,#dotlrn.user_portal_page_home_accesskey#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#,#dotlrn.user_portal_page_calendar_accesskey#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#,#dotlrn.user_portal_page_file_storage_accesskey#" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityJoinMailP" default="0" description="If there is no welcome mail for new members in the database, should a default one be send?" section_name="Communities"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="SelfRegistrationP"  default="1" description="Allow a user to join/leave communities or classes."/>
