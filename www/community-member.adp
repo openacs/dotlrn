@@ -47,7 +47,7 @@
     </if>
 	<if @forums_p@ true>
 	<multiple name="forumss">
-	<li><a href=@forums_url@?forum_id=@forums.forum_id@>@forums.name@</a> - #dotlrn.Latest_post# @forums.lastest_post@
+	<li><a href="@forums_url@?forum_id=@forums.forum_id@">@forums.name@</a> - #dotlrn.Latest_post# @forums.lastest_post@
         </multiple>
         </if>
     <if @bio@ not nil>

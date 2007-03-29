@@ -17,17 +17,5 @@
     #
 
 %>
-<a class="button" href="
-    <if @url@ nil>register?community_id=@community_id@&</if>
-    <else>@url@?</else>
-    <if @referer@ not nil>referer=@referer@</if>
-    <if @label@ nil>" title="#dotlrn.Join#">#dotlrn.Join#</if>
-    <else>
-      <if @label@ eq "Request Membership">
-	" title="#dotlrn.Request_Membership#">#dotlrn.Request_Membership#
-      </if>
-      <else>
-	">@label@
-      </else>
-    </else>
-</a>
+
+<a class="button" href="@url@" title="@label@">@label@</a>

@@ -23,17 +23,12 @@
 <property name="context_bar">@context_bar;noquote@</property>
 
 
-[<small>
-  <a href="../user-add?add_membership_p=f&dotlrn_interactive_p=1&referer=@referer@"><small>#dotlrn.Create_A_New_User#</small></a> 
-  |
-  <a href="users-search"><small>#dotlrn.Search_Users#</small></a>
-  |
-  <a href="users-bulk-upload"><small>#dotlrn.Bulk_Upload#</small></a>
-  |
-  <a href="users-bulk-approve"><small>#dotlrn.Bulk_Approve#</small></a>
-</small>]
-
-<p></p>
+<p>
+  <a href="@add_user_url@" class="button">#dotlrn.Create_A_New_User#</a> 
+  <a href="users-search" class="button">#dotlrn.Search_Users#</a>
+  <a href="users-bulk-upload" class="button">#dotlrn.Bulk_Upload#</a>
+  <a href="users-bulk-approve" class="button">#dotlrn.Bulk_Approve#</a>
+    </p>
 
 <form method="get" action="users-search">
   #dotlrn.lt_Search_dotLRN_users_f# <input type="text" name="name"><input type="submit" value="#dotlrn.search#">

@@ -16,6 +16,8 @@
   <msg key="Add_a_Professor_2">Add a Professor:</msg>
   <msg key="Add_A_User">Add A User</msg>
   <msg key="Add_a_User">Add a User</msg>
+  <msg key="Add_an_Admin">Add an admin
+</msg>
   <msg key="Add_New_Members">Add New Members</msg>
   <msg key="Add_Professor">Add Professor</msg>
   <msg key="Add_Professor_help">Shall a professor be added to this class (this will open a query box on the next page)</msg>
@@ -189,7 +191,7 @@
   <msg key="Drop">Drop</msg>
   <msg key="Drop_from_subgroup_name">Drop from subgroup %subgroup_name%</msg>
   <msg key="Drop_Membership">Drop Membership</msg>
-  <msg key="drop_membership_link">&lt;img src=/resources/dotlrn/drop.gif alt=&quot;Drop Membership&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=&quot;/resources/dotlrn/drop.gif&quot; alt=&quot;Drop Membership&quot; border=0&gt;</msg>
   <msg key="Drop_selected_members">Drop selected members</msg>
   <msg key="Edit">Edit</msg>
   <msg key="Edit_a_User">Edit a User</msg>
@@ -493,6 +495,8 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="no_departments">No %departments_pretty_plural%</msg>
   <msg key="no_description">none set up</msg>
   <msg key="No_dont_delete_it">No, don't delete it</msg>
+  <msg key="No_dotlrn-admins">No dotlrn admins
+</msg>
   <msg key="No_groups_to_add_to">No groups to add to</msg>
   <msg key="No_notification_requested">No notification requested.</msg>
   <msg key="No_Site_Templates_data">No Site Templates data</msg>
@@ -564,10 +568,12 @@ Thank you
   <msg key="Reject">Reject</msg>
   <msg key="reject">reject</msg>
   <msg key="Reject_all">Reject all</msg>
+  <msg key="Remove">Remove
+</msg>
   <msg key="Remove_all">Remove all</msg>
   <msg key="Request_Membership">Request Membership</msg>
   <msg key="Request_Membership_for_subgroup_name">Request membership for %subgroup_name%</msg>
-  <msg key="request_membership_link">&lt;img src=/resources/dotlrn/request.gif alt=&quot;%label%&quot; border=&quot;0&quot;&gt;</msg>
+  <msg key="request_membership_link">&lt;img src=&quot;/resources/dotlrn/request.gif&quot; alt=&quot;%label%&quot; border=&quot;0&quot;&gt;</msg>
   <msg key="required">Required field</msg>
   <msg key="Results">Results</msg>
   <msg key="Return_URL">Return URL</msg>
