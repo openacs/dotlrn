@@ -21,7 +21,6 @@
     <install package="dotlrn-evaluation"/>
 
     <install package="theme-zen"/>
-    <install package="acs-developer-support"/>
 
     <set-parameter package-key="acs-subsite" name="DefaultMaster" value="/packages/theme-zen/lib/lrn-master"/>
 
