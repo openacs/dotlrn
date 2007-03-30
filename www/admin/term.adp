@@ -45,15 +45,15 @@
 	  @end_date@
 	</li>
 
-	<br>
+      </ul>
+      <ul>
 
 	  <li>
-	    <a href="term-edit?term_id=@term_id@&referer=@referer@">#dotlrn.Edit#</a> #dotlrn.term_properties#
+	    <a href="@term_edit_url@">#dotlrn.Edit#</a> #dotlrn.term_properties#
 	  </li>
 
       </ul>
 
-      <br>
     </if>
 
     <center>
@@ -86,7 +86,7 @@
               <input type="submit" value="#dotlrn.Go#" />
 	    </form>
 	  </div>
-
+      <br>
 	  <listtemplate name="classes"></listtemplate>
 
 	</if>

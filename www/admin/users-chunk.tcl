@@ -31,5 +31,15 @@ if {![exists_and_not_null referer]} {
     set referer "[dotlrn::get_admin_url]/users"
 }
 
+template::multirow extend users state_change_url nuke_url swa_grant_url swa_revoke_url
+
+template::multirow foreach users {
+    set return_url "[dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$referer"
+    set state_change_url [export_vars -base "/acs-admin/users/member-state-change" {{member_state approved} user_id return_url}] 
+    set nuke_url [export_vars -base user-nuke {user_id referer}]
+    set swa_grant_url [export_vars -base site-wide-admin-toggle {{value grant} user_id referer}]
+    set swa_revoke_url [export_vars -base site-wide-admin-toggle {{value revoke} user_id referer}]
+}
+
 ad_return_template
 

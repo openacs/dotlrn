@@ -28,7 +28,7 @@
   <a href="users-search" class="button">#dotlrn.Search_Users#</a>
   <a href="users-bulk-upload" class="button">#dotlrn.Bulk_Upload#</a>
   <a href="users-bulk-approve" class="button">#dotlrn.Bulk_Approve#</a>
-    </p>
+</p>
 
 <form method="get" action="users-search">
   #dotlrn.lt_Search_dotLRN_users_f# <input type="text" name="name"><input type="submit" value="#dotlrn.search#">
@@ -43,16 +43,16 @@
 
 <p></p>
 
-<p>@control_bar;noquote@</p>
+@control_bar;noquote@
 
 <if @n_users@ gt 500>
-  <include src="users-chunk-large" type=@type@ referer="@referer@?type=@type@">
+  <include src="users-chunk-large" type=@type@ referer="@referer;noquote@">
 </if>
 <else>
   <if @n_users@ gt 50>
-    <include src="users-chunk-medium" type=@type@ referer="@referer@?type=@type@">
+    <include src="users-chunk-medium" type=@type@ referer="@referer;noquote@">
   </if>
   <else>
-    <include src="users-chunk-small" type=@type@ referer="@referer@?type=@type@">
+    <include src="users-chunk-small" type=@type@ referer="@referer;noquote@">
   </else>
 </else>

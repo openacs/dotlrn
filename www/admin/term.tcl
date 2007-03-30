@@ -162,11 +162,9 @@ lappend elements action \
     [list label "[_ dotlrn.Actions]" \
 	 display_template {
 	     <center>
-	     <nobr>
 	     <small>
 	     <a href="@classes.url@one-community-admin">[_ dotlrn.administer_link]</a>
 	     </small>
-	     </nobr>
 	     </center>
 	 }]
 
@@ -183,4 +181,5 @@ template::list::create \
 
 db_multirow classes $query {}
 
+set term_edit_url [export_vars -base term-edit {term_id referer}]
 ad_return_template

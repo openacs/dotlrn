@@ -21,6 +21,7 @@
   <master src="dotlrn-admin-master">
     <property name="title">@title@</property>
     <property name="context_bar">@context_bar@</property>
+    <br>
     <center>
       <form action="departments" method="GET">
         #dotlrn.Search_departments_with# 
@@ -29,6 +30,7 @@
       </form>
     </center>
     <if @departments:rowcount@ gt 0>
+        <br>
       <center>
 	<listtemplate name="departments"></listtemplate>
       </center>

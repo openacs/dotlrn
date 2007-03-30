@@ -34,7 +34,7 @@
 	</p>
 
 
-	  <a href="class-edit?class_key=@class_key@&referer=@referer@" class="button">#dotlrn.edit_subject_properties#</a>
+	  <a href="@class_edit_url@" class="button">#dotlrn.edit_subject_properties#</a>
 
 	<br><br>
 
