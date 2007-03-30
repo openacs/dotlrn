@@ -56,7 +56,10 @@ ad_proc -private dotlrn::apm::after_instantiate {
 
         }
        # Get the default Site Template
-       set site_template_id [db_string select_st_id "select site_template_id from dotlrn_site_templates where pretty_name = '#new-portal.sloan_theme_name#'"]
+       set default_template_name [parameter::get \
+                                     -package_id $package_id \
+                                     -parameter DefaultSiteTemplate]
+       set site_template_id [db_string select_st_id {}]
        
        # for communities
        parameter::set_value -package_id $package_id \

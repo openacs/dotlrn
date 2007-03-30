@@ -2,6 +2,14 @@
 
 <queryset>
 
+  <fullquery name="dotlrn::apm::after_instantiate.select_st_id">
+    <querytext>
+       select site_template_id
+       from dotlrn_site_templates
+       where pretty_name = :default_template_name
+    </querytext>
+  </fullquery>
+
   <fullquery name="dotlrn::apm::after_upgrade.get_default_values">
     <querytext>
       select default_value
