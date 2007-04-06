@@ -2,7 +2,7 @@ ad_page_contract {
     Ask admin to confirm email and if so
     let the admin edit the email before sending
 } {
-    user_id:integer,multiple
+    user_id
     {type "on join"}
     {return_url ""}
 }
@@ -13,14 +13,15 @@ permission::require_permission \
     -privilege admin
 
 # FIXME list/unlist user_id since hidden vars can't be multiple
+set user_id [split $user_id]
 
 ad_form -name member-email-confirm \
     -export { user_id community_id return_url type } \
-    -has_submit 1 \
+s    -has_submit 1 \
     -form {
-	{from_addr:text }
-	{subject:text }
-	{email:richtext }
+	{from_addr:text {label "\#dotlrn.From\#"}}
+	{subject:text {label "\#dotlrn.Subject\#"}}
+	{email:richtext {label "\#dotlrn.Email_1\#"}}
 	{btn_ok:text(submit) {label "[_ dotlrn.OK_Send_Email]"}}
 	{btn_cancel:text(submit) {label "[_ dotlrn.Cancel_Dont_Send_email]"}}
     } -on_request {
