@@ -17,7 +17,7 @@ set user_id [split $user_id]
 
 ad_form -name member-email-confirm \
     -export { user_id community_id return_url type } \
-s    -has_submit 1 \
+    -has_submit 1 \
     -form {
 	{from_addr:text {label "\#dotlrn.From\#"}}
 	{subject:text {label "\#dotlrn.Subject\#"}}
