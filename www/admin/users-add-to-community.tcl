@@ -32,7 +32,7 @@ dotlrn::require_admin
 
 set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Add_Users_to_Group]]
 
-form create select_community -html {action select_community action users-add-to-community-email}
+form create select_community -html {action select_community} -cancel_url $referer
 element create select_community users \
     -label "&nbsp;" \
     -datatype text \
@@ -70,6 +70,7 @@ if {[llength $communities]} {
 }
 
 if {[form is_valid select_community]} {
+
     form get_values select_community \
         users community_id
 
@@ -85,7 +86,7 @@ if {[form is_valid select_community]} {
 
     ad_returnredirect [export_vars \
 			   -base ../member-email-confirm \
-			   {{user_id $users} community_id}]
+			   {{user_id $users} {return_url $referer} community_id}]
 
     ad_script_abort
 }
