@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.3.0d1" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" package_version="2.3.0a2" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
   <msg key="A_dotlrn_Site">A &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;The .LRN Project Homepage&quot;&gt;.LRN&lt;/a&gt; Site</msg>
@@ -16,6 +16,7 @@
   <msg key="Add_a_Professor_2">Añadir un profesor:</msg>
   <msg key="Add_A_User">Añadir un usuario</msg>
   <msg key="Add_a_User">Añadir un usuario</msg>
+  <msg key="Add_an_Admin">Añadir un administrador</msg>
   <msg key="Add_New_Members">Añadir nuevos miembros</msg>
   <msg key="Add_Professor">Añadir profesor</msg>
   <msg key="Add_Professor_help">¿Debería añadirse un profesor a este curso? (Esto añdirá un formulario en la siguiente página)</msg>
@@ -84,17 +85,24 @@
   <msg key="class_memberships">Miembro de %class_instances_pretty_name%</msg>
   <msg key="class_name">Título de %classes_pretty_name%</msg>
   <msg key="class_name_header">Nombre del %class_instances_pretty_name%</msg>
+  <msg key="class_page_calendar_accesskey">C</msg>
   <msg key="class_page_calendar_title">Calendario</msg>
+  <msg key="class_page_file_storage_accesskey">F</msg>
   <msg key="class_page_file_storage_title">Documentos</msg>
+  <msg key="class_page_home_accesskey">H</msg>
   <msg key="class_page_home_title">Curso</msg>
   <msg key="Classes">Cursos</msg>
   <msg key="classes_pretty_name">Asignatura</msg>
   <msg key="classes_pretty_plural">Asignaturas</msg>
   <msg key="Closed">Cerrado</msg>
   <msg key="club_access_key">c</msg>
+  <msg key="club_page_calendar_accesskey">C</msg>
   <msg key="club_page_calendar_title">Calendario</msg>
+  <msg key="club_page_file_storage_accesskey">F</msg>
   <msg key="club_page_file_storage_title">Documentos</msg>
+  <msg key="club_page_home_accesskey">H</msg>
   <msg key="club_page_home_title">Comunidad</msg>
+  <msg key="club_page_people_accesskey">P</msg>
   <msg key="club_page_people_title">Miembros</msg>
   <msg key="clubs_name_header">Nombre de la %clubs_pretty_name%</msg>
   <msg key="clubs_pretty_name">Comunidad</msg>
@@ -199,6 +207,7 @@
   <msg key="Email_Cancelled">Correo cancelado</msg>
   <msg key="Email_Members">Escribir a los miembros</msg>
   <msg key="email_message">Mensaje</msg>
+  <msg key="Email_Sent">Email enviado</msg>
   <msg key="email_sent">Correo enviado</msg>
   <msg key="email_sent_to">&lt;p&gt;Correo electrónico enviado a %email%.</msg>
   <msg key="End_Date">Fecha fin</msg>
@@ -448,6 +457,7 @@
   <msg key="no_departments">Sin %departments_pretty_plural%</msg>
   <msg key="no_description">ninguno</msg>
   <msg key="No_dont_delete_it">No borrarlo</msg>
+  <msg key="No_dotlrn-admins">Sin administradores de dotLRN</msg>
   <msg key="No_groups_to_add_to">No hay grupos donde añadir</msg>
   <msg key="No_notification_requested">Sin notificaciones</msg>
   <msg key="No_Site_Templates_data">Sin plantillas</msg>
@@ -506,6 +516,7 @@
   <msg key="Reject">Rechazar</msg>
   <msg key="reject">rechazar</msg>
   <msg key="Reject_all">Rechazar a todos</msg>
+  <msg key="Remove">Borrar</msg>
   <msg key="Remove_all">Borrar todos</msg>
   <msg key="Request_Membership">Solicitar alta</msg>
   <msg key="Request_Membership_for_subgroup_name">Solicitar el alta en %subgroup_name%</msg>
@@ -520,6 +531,7 @@
   <msg key="Screen_name">Nick:</msg>
   <msg key="Search">Buscar</msg>
   <msg key="search">buscar</msg>
+  <msg key="Search_classes_with">Buscar cursos con</msg>
   <msg key="Search_departments_with">Buscar departamento que contenga</msg>
   <msg key="Search_subjects_with">Buscar asignaturas que contengan
 </msg>
@@ -532,6 +544,7 @@
   <msg key="Send_to_the_following_members">Además, enviar a las siguientes personas (si no ha seleccionado &quot;Enviar a todos&quot;):</msg>
   <msg key="Send_to_the_following_roles">Enviar a los roles siguientes:</msg>
   <msg key="Send_Welcome_Message">Enviar mensaje de bienvenida</msg>
+  <msg key="set_all_screennames_where_null">Establecer todos los screenames</msg>
   <msg key="Shared_Files">Archivos Compartidos</msg>
   <msg key="show_lrn_toolbar">Mostrar bara .LRN</msg>
   <msg key="silver">plateado</msg>
@@ -566,9 +579,13 @@
   <msg key="Start_date_help">Fecha de comienzo actual</msg>
   <msg key="student_role_pretty_name">Alumno</msg>
   <msg key="student_role_pretty_plural">Alumnos</msg>
+  <msg key="subcomm_page_calendar_accesskey">C</msg>
   <msg key="subcomm_page_calendar_title">Calendario</msg>
+  <msg key="subcomm_page_file_storage_accesskey">F</msg>
   <msg key="subcomm_page_file_storage_title">Archivos</msg>
+  <msg key="subcomm_page_home_accesskey">H</msg>
   <msg key="subcomm_page_home_title">Subgrupo</msg>
+  <msg key="subcomm_page_info_accesskey">I</msg>
   <msg key="subcomm_page_info_title">Información del subgrupo</msg>
   <msg key="subcommunities_access_key">c</msg>
   <msg key="subcommunities_pretty_name">Subgrupo</msg>
@@ -613,8 +630,11 @@
   <msg key="User_ID">Identificador de usuario:</msg>
   <msg key="User_ID_1">Identificador de usuario</msg>
   <msg key="User_Management">Administración de usuarios</msg>
+  <msg key="user_portal_page_calendar_accesskey">C</msg>
   <msg key="user_portal_page_calendar_title">Calendario</msg>
+  <msg key="user_portal_page_file_storage_accesskey">F</msg>
   <msg key="user_portal_page_file_storage_title">Mis documentos</msg>
+  <msg key="user_portal_page_home_accesskey">H</msg>
   <msg key="user_portal_page_home_title">Mi portal</msg>
   <msg key="user_portal_pretty_name">Usuario</msg>
   <msg key="User_Search">Buscar usuario</msg>
