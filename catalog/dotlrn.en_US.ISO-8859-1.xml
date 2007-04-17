@@ -214,7 +214,7 @@ notify this user.</msg>
   <msg key="edit_subject_properties">Edit %classes_pretty_name% properties.</msg>
   <msg key="Edit_Term">Edit Term</msg>
   <msg key="emacs_subject">Subject</msg>
-  <msg key="Email">Email:</msg>
+  <msg key="Email">Email</msg>
   <msg key="email">E-mail</msg>
   <msg key="Email_1">Email</msg>
   <msg key="Email_Cancelled">Email Cancelled</msg>
