@@ -23,7 +23,6 @@
 <property name="link_control_panel">0</property>
 
 
-
 <div class="portlet-title"><span>@portlet_title@</span>
 </div> <!-- class : portlet-title -->
 <div class="portlet">

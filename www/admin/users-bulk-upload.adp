@@ -22,63 +22,59 @@
 <property name="title">#dotlrn.Users_Bulk_Upload#</property>
 <property name="context_bar">@context_bar@</property>
 
-#dotlrn.lt_Here_you_can_create_s#
+<p>#dotlrn.lt_Here_you_can_create_s#</p>
 
 <p>
-
 <strong>#dotlrn.Be_sure#</strong> #dotlrn.lt_to_use_vaild_email_ad#
-
 </p>
 
 
 <div style="font-size: large; font-weight: bold;">#dotlrn.CSV_File_Format#</div>
 
-<p style="text-indent: 1em">
+<div style="text-indent: 1em">
   
   <strong>#dotlrn.First_Line#</strong>
 
   <p style="text-indent: 2em">
-  
     #dotlrn.first_line_of_file_must_be#
-    
+  </p>
+
     <div style="text-indent: 3em; font-family: monospace">
       first_names,last_name,email,username,password,type,access_level,guest,notify
     </div>
-   
-  </p>
 
-</p>
+</div>
 
 <p style="text-indent: 1em">
-
   <strong>#dotlrn.Fields#</strong>
+</p>
   
   <ul>
-    <li><tt>first_names</tt> - <em>#dotlrn.required#</em>
-    <li><tt>last_name</tt> - <em>#dotlrn.required#</em>
-    <li><tt>email</tt> - <em>#dotlrn.required#</em>
-    <li><tt>username</tt> - <em>#dotlrn.optional_defaults_to# email</em>
-    <li><tt>password</tt> - <em><em>#dotlrn.optional_defaults_to# random value</em>
+    <li><tt>first_names</tt> - <em>#dotlrn.required#</em></li>
+    <li><tt>last_name</tt> - <em>#dotlrn.required#</em></li>
+    <li><tt>email</tt> - <em>#dotlrn.required#</em></li>
+    <li><tt>username</tt> - <em>#dotlrn.optional_defaults_to# email</em></li>
+    <li><tt>password</tt> - <em>#dotlrn.optional_defaults_to# random value</em></li>
     <li><tt>type</tt> - <em>#dotlrn.required#</em> #dotlrn.must_have_values# 
       <ul>
-        <li>professor
-        <li>student
-        <li>admin
-        <li>external
+        <li>professor</li>
+        <li>student</li>
+        <li>admin</li>
+        <li>external</li>
       </ul>
+    </li>
     <li><tt>access_level</tt> - <em>#dotlrn.optional_defaults_to# full</em> - 
-        <em>#dotlrn.must_have_values#</em> <tt>full</tt>, <tt>limited</tt>
+        <em>#dotlrn.must_have_values#</em> <tt>full</tt>, <tt>limited</tt></li>
     <li><tt>guest</tt> - <em>#dotlrn.optional_defaults_to# f</em> -
-        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt>
+        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt></li>
     <li><tt>notify</tt> - <em>#dotlrn.optional_defaults_to# f</em>    
-        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt>
+        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt></li>
   </ul>
   
-</p>
 
 <p style="text-indent: 1em">
-
   <strong>#dotlrn.Example_File#</strong>
+</p>
   
   <pre>
     first_names,last_name,email,username,password,type,access_level,guest,notify
@@ -88,17 +84,13 @@
     Intersted,Onlooker,onlooker@_somewhere_.net,,,external,limited,t,t
   </pre>
   
-</p>
-
 <p style="text-indent: 1em">
-
 #dotlrn.lt_Note_you_will_have_th#
-
 </p>
 
 <div style="padding-left: 1em">
 
-  <FORM enctype=multipart/form-data method=post action=users-bulk-upload-2>
+  <FORM enctype="multipart/form-data" method=post action="users-bulk-upload-2">
   <INPUT TYPE=file name=users_csv_file>
   <br>
   <br>

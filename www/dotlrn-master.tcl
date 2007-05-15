@@ -1,3 +1,4 @@
+ns_log notice "start dotlrn master url=[ad_conn url]"
 #  Copyright (C) 2001, 2002 MIT
 #
 #  This file is part of dotLRN.
@@ -592,3 +593,4 @@ global dotlrn_master__header_stuff
 if { ![info exists dotlrn_master__header_stuff] } {
     set dotlrn_master__header_stuff ""
 }
+

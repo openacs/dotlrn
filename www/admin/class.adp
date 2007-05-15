@@ -22,66 +22,46 @@
     <property name="title">@pretty_name@</property>
     <property name="context_bar">@context_bar@</property>
 
-    <ul>
-
-      <li>
-	#dotlrn.description#:
+	<h1>#dotlrn.Subject# : @pretty_name@</h1>
+	<p>#dotlrn.description#:
+	
 	<if @description@ not nil>
 	  @description@
 	</if>
 	<else>
 	  &lt;#dotlrn.no_description#&gt;
 	</else>
-      </li>
+	</p>
 
-      <br>
 
-	<li>
-	  <a href="class-edit?class_key=@class_key@&referer=@referer@">#dotlrn.edit_subject_properties#</a>
-	</li>
+	  <a href="@class_edit_url@" class="button">#dotlrn.edit_subject_properties#</a>
 
-    </ul>
+	<br><br>
 
-    <center>
-
-      <if @can_instantiate@>
-	<table cellpadding="5" width="95%">
-	  <tr>
-	    <td align="left">
-	      <nobr>
-		<small>[
-		  <a href="class-instance-new?class_key=@class_key@">#dotlrn.new_class_instance#</a>
-		  ]</small>
-	      </nobr>
-	    </td>
-	  </tr>
-	</table>
-
+	  <formtemplate id="term_form">
+	      #dotlrn.term#:&nbsp;<formwidget id="term_id">
+	  </formtemplate>
+	 
 	<br>
+
+	<if @can_instantiate@>
+		  <a href="class-instance-new?class_key=@class_key@" class="button">#dotlrn.new_class_instance#</a> 
       </if>
       <else>
-	<include src="need-term-note">
+		<include src="need-term-note">
       </else>
 
-      <table bgcolor="#cccccc" cellpadding="5" width="95%">
-	<tr bgcolor="#eeeeee">
-	  <th align="left" width="50%">
-	    <formtemplate id="term_form">
-	      #dotlrn.term#:&nbsp;<formwidget id="term_id">
-	    </formtemplate>
-	  </th>
-	</tr>
-      </table>
-
-      <br>
-
+      <br><br>
 	  <form action="class" method="GET">
-	    Search classes  with : 
-	    <input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
+            #dotlrn.Search_classes_with#
+            
+		  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#" />
             <input type="hidden" name="class_key" value="@class_key@" />
             <input type="hidden" name="term_id" value="@term_id@" />
-	    <input type="submit" value="Go" />
+            <input type="submit" value="#dotlrn.Go#" />
 	  </form>
+
+<br>
 
 	<if @class_instances:rowcount@ gt 0>
 	  <listtemplate name="class_instances"></listtemplate>
@@ -97,7 +77,6 @@
 	  </table>
 	</else>
 
-    </center>
 
 
 

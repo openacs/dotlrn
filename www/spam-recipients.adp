@@ -22,66 +22,22 @@
 <property name="title">@spam_name@</property>
 <property name="context">@context_bar@</property>
 
-
-<h3>#dotlrn.Choose_members_to_receive#</h3>
+<h1>#dotlrn.Choose_members_to_receive#</h1>
 
 <form method="post" action="spam">
-<p>
-
-
 
 <input type=checkbox name=spam_all> #dotlrn.Send_to_all#
 <p>
-Send to the following roles: <p>
+#dotlrn.Send_to_the_following_roles# <p>
 @rel_types_html;noquote@
 
-<p>
-
-In addition, send to the following people (if you have not selected "Send to Everyone" above):<p>
-
-<table  width="85%" class="table-display" cellpadding="5" cellspacing="0">
-    <tr class="table-header">
-      <td>&nbsp;</td>
-      <td>#dotlrn.First_Name#</td>	
-      <td>#dotlrn.Last_Name#</td>
-      <td>#dotlrn.Email_1#</td>
-    </tr>
-<multiple name="current_members">
-<if @current_members.rownum@ odd>
-    <tr class="odd">
-</if>
-<else>
-    <tr class="even">
-</else>
-  <td>
-    <input type=checkbox name=recipients value=@current_members.user_id@>
-  </td>
-  <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.first_names@] %></td>
-  <td><%=[acs_community_member_link -user_id  @current_members.user_id@ -label @current_members.last_name@]%></td>
-  <td>
-    <if @read_private_data_p@ eq 1>
-        <a href="mailto:@current_members.email@">
-	@current_members.email@</a>	
-    </if>
-    <else>
-	<if @my_user_id@ eq @current_members.user_id@>
-    	    <a href="mailto:@current_members.email@">
-	@current_members.email@</a>
-	</if>
-        <else>
-           &nbsp;
-        </else>
-    </else>
-   </td>
-</tr>
-</multiple>
-</table>
-
 @exported_vars;noquote@
-<center>
-<input type=submit value="#dotlrn.Compose_bulk_message#">
-</center>
+<p><input type=submit value="#dotlrn.Compose_bulk_message#"></p>
+#dotlrn.Send_to_the_following_members#:<p>
 </form>
 
-<p>
+<listtemplate name="current_members"></listtemplate>
+
+
+
 

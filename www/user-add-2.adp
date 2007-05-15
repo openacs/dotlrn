@@ -22,10 +22,12 @@
 <property name="title">#dotlrn.Add_A_User#</property>
 <property name="context_bar">@context_bar@</property>
 
+<h1></h1>
+
 @first_names@ @last_name@ #dotlrn.has_been_added_to# @system_name@.
 #dotlrn.edit_message_and_hit_send#
 
-<p></p>
+<p>#dotlrn.Add_A_User#</p>
 
 <form method="post" action="user-add-3">
   @export_vars;noquote@

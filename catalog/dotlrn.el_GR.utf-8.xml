@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.2.0" locale="el_GR" charset="utf-8">
+<message_catalog package_key="dotlrn" package_version="2.3.0" locale="el_GR" charset="utf-8">
 
   <msg key="Access">Πρόσβαση</msg>
   <msg key="Access_Level">Επίπεδο πρόσβασης</msg>
@@ -13,6 +13,7 @@
   <msg key="Add_Professor">Προσθήκη καθηγητή</msg>
   <msg key="Admin">Διαχείριση</msg>
   <msg key="admin">διαχείριση</msg>
+  <msg key="admin_page_name">Πίνακας Ελέγχου</msg>
   <msg key="Administer">Διαχείριση</msg>
   <msg key="Administrator">Διαχειριστής</msg>
   <msg key="All">Όλα</msg>
@@ -27,6 +28,7 @@
   <msg key="classes_pretty_plural">Θέματα</msg>
   <msg key="clubs_pretty_name">Κοινότητα</msg>
   <msg key="clubs_pretty_plural">Κοινότητες</msg>
+  <msg key="Configure_name">Ρυθμίσεις για %name%</msg>
   <msg key="control_panel">Πίνακας Ελέγχου</msg>
   <msg key="Delete">Διαγραφή</msg>
   <msg key="departments_pretty_name">Τμήμα</msg>

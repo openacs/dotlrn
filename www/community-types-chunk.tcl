@@ -27,6 +27,15 @@ ad_page_contract {
 
 set community_type [dotlrn_community::get_community_type]
 
+template::list::create -name community_types -multirow community_types -elements {
+    type {
+	label ""
+	display_template {
+	<a href="@community_types.url@">@community_types.pretty_name@</a>
+	}
+    }
+}
+
 db_multirow community_types select_community_types {}
 
 if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] && [template::multirow size community_types] == 0 } {

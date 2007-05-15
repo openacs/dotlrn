@@ -25,13 +25,13 @@
   Groups</a> | <a href="#RequestGroup">Requesting a New Group</a> | <a href="#BulkEmail">Sending Bulk Email</a> 
   | <a href="#Alerts">Modifying Your Forum Email Alerts</a>| <a href="#Help">Additional Help</a></p> 
 
-<a name="EditPersonalInfo"><h1>Editing Personal Information</h1></a>
+<h1><a name="EditPersonalInfo">Editing Personal Information</a></h1>
 <p>
   You can change your personal information at any time. This enables you to protect 
   your password, correct or change your full name, publish a URL for a your website, 
   and change your login name/email address. If you do not keep this login name 
   the same as your current email address or a forwarding address, you will not 
-  receive group emails and forum alerts from .LRN. </p>
+  receive group emails and forum alerts from .LRN.
 </p>
 
 <h2>To Change Password:</h2>
@@ -56,7 +56,7 @@
   <li> Click &quot;Update.&quot;</li>
 	</ul>
 
-<a name="JoinDrop"><h1>Joining/Dropping Groups</h1></a>
+<h1><a name="JoinDrop">Joining/Dropping Groups</a></h1>
 
 <p>There are three types of groups: classes, communities and subgroups (of classes 
     and communities). Limited Access users (non-affiliated) cannot join 
@@ -93,7 +93,7 @@
   <li> Then, return to the Subgroup Home page or My Space to continue.</li>
 	</ul>
 
-<a name="RequestGroup"><h1>Requesting a New Class or Community</h1></a>
+<h1><a name="RequestGroup">Requesting a New Class or Community</a></h1>
 
 <p>The Site Wide Administrator handles class and community requests. </p>
 <p>To request a new class or to copy and reuse a class from a previous semester:<br>
@@ -110,9 +110,10 @@
     Send email to  <%=[ad_host_administrator]%>. Include the name of the community, 
     a brief description of its purpose, the faculty or staff sponsor, the name(s) 
     of any persons who will need to be administrators of this community. You will 
-    be notified by email when the community shell has been created. </p>
+    be notified by email when the community shell has been created. 
+</p>
 
-<a name="BulkEmail"><h1>Bulk Mail</h1></a>
+<h1><a name="BulkEmail">Bulk Mail</a></h1>
 
 <p>Class and community administrators can send group emails through the group administration
  page. If enabled, class and community members can send group emails through 
@@ -133,12 +134,13 @@
   the bulk mail history from the group administration page.</li>
 	</ul>
   
-<a name="Alerts"><h1>Modifying Your Forum Email Alerts</h1></a>
+<h1><a name="Alerts">Modifying Your Forum Email Alerts</a></h1>
 <p>
     You can subscribe and unsubscribe to email alerts for any forum open to you 
     through the "Edit My Forum Email Alerts" link on the My Account page. 
     Limited Access users can access their My Account page through the Help icon 
-    in the group banner.</p>
+    in the group banner.
+</p>
 
-<a name="Help"><h1>Additional Help</h1></a>
+<h1><a name="Help">Additional Help</a></h1>
 <p><a href="dotlrn-user-faq">User FAQ</a></p>

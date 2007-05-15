@@ -45,15 +45,15 @@
 	  @end_date@
 	</li>
 
-	<br>
+      </ul>
+      <ul>
 
 	  <li>
-	    <a href="term-edit?term_id=@term_id@&referer=@referer@">#dotlrn.Edit#</a> #dotlrn.term_properties#
+	    <a href="@term_edit_url@">#dotlrn.Edit#</a> #dotlrn.term_properties#
 	  </li>
 
       </ul>
 
-      <br>
     </if>
 
     <center>
@@ -79,14 +79,14 @@
 	  
 	  <div style="text-align:center;">
 	    <form action="term" method="GET">
-	      Search classes with : 
-	      <input name="keyword" onfocus="if(this.value=='Please type a keyword')this.value='';" onblur="if(this.value=='')this.value='Please type a keyword';" value="Please type a keyword" />
+	      #dotlrn.Search_classes_with# 
+			  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#" />
               <input type="hidden" name="term_id" value="@term_id@" />
 	      <input type="hidden" name="department_key" value="@department_key@" />
-              <input type="submit" value="Go" />
+              <input type="submit" value="#dotlrn.Go#" />
 	    </form>
 	  </div>
-
+      <br>
 	  <listtemplate name="classes"></listtemplate>
 
 	</if>

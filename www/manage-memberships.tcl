@@ -132,8 +132,69 @@ if {$member_term_id != -1} {
 
 set n_member_classes [db_string select_n_member_classes {}]
 
+template::list::create -name member_classes -multirow member_classes -pass_properties { show_drop_button_p referer } -html {width 100%} -elements {
+    name {
+        html {align left width 55%}
+        label "[_ dotlrn.class_instances_pretty_name]"
+	display_template {
+	    <a href="@member_classes.url@" title="\#dotlrn.goto_member_classes_pretty_name\#">@member_classes.pretty_name@</a>
+	}
+    }
+    term {
+	html {width 20%}
+        label "\#dotlrn.Term\#"
+	display_template {@member_classes.term_name@ @member_classes.term_year@}
+    }
+    role {
+	html {width 20%}
+        label "\#dotlrn.Role\#"
+    }
+    actions {
+        label "\#dotlrn.Actions\#"
+        html {align right width 5%}
+	display_template {
+	    <if @member_classes.member_state@ eq "needs approval">
+	    \[<small> #dotlrn.Pending_Approval# </small>\]
+	    </if>
+	    <else>
+	     <if @show_drop_button_p@ eq 1>
+	      <small><include src="/packages/dotlrn/www/deregister-link" url="@member_classes.url@deregister" referer=@referer@></small>
+	     </if>
+            </else>
+	}
+    }
+}
+
 db_multirow member_classes $member_query {} {
     set role [template::util::nvl [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type] [_ dotlrn.student_role_pretty_name]]
+}
+
+template::list::create -name member_clubs -multirow member_clubs -pass_properties { show_drop_button_p referer } -html {width 100%} -elements {
+    name {
+        html {align left width 75%}
+        label "[_ dotlrn.clubs_pretty_name]"
+        display_template {
+	    <a href="@member_clubs.url@" title="\#dotlrn.goto_member_clubs_pretty_name\#">@member_clubs.pretty_name@</a>
+        }
+    }
+    role {
+        label "\#dotlrn.Role\#"
+	html {width 20%}
+    }
+    actions {
+        label "\#dotlrn.Actions\#"
+        html {align right width 5%}
+        display_template {
+	    <if @member_clubs.member_state@ eq "needs approval">
+	     \[<small> \#dotlrn.Pending_Approval\# </small>\]
+	    </if>
+	    <else>
+	     <if @show_drop_button_p@ eq 1>
+              <small><include src="/packages/dotlrn/www/deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small></td>
+             </if>
+	    </else>
+        }
+    }
 }
 
 db_multirow member_clubs select_member_clubs {} {
@@ -193,8 +254,89 @@ if {!$swa_p} {
 }
 
 set n_non_member_classes [db_string select_n_non_member_classes {}]
+
+template::list::create -name non_member_classes -multirow non_member_classes -pass_properties { show_drop_button_p referer swa_p} -html {width 100%} -elements {
+    name {
+        html {align left width 30%}
+        label "[_ dotlrn.classes_pretty_name]"
+        display_template {
+	    <if @non_member_classes.join_policy@ eq "open">
+              <if @swa_p@ eq 1><a href="@non_member_classes.url@" title="\\#dotlrn.goto_non_member_classes\\#">@non_member_classes.pretty_name@</a></if>
+              <else>@non_member_classes.pretty_name@</else>
+	    </if>
+	    <else>
+	    @non_member_classes.pretty_name@
+	    </else>
+        }
+    }
+    descrption {
+        html {align left width 30%}
+        label "\#dotlrn.Description\#"
+	display_template {@non_member_classes.description;noquote@}
+    }
+    term {
+        label "\#dotlrn.Term\#"
+	display_template {@non_member_classes.term_name@ @non_member_classes.term_year@}
+    }
+    start_date {
+	html {align right}
+        label "\#dotlrn.Start_date\#"
+	display_template {@non_member_classes.active_start_date@ - @non_member_classes.active_end_date@}
+    }
+    actions {
+        label "\#dotlrn.Actions\#"
+        html {align right width 5%}
+        display_template {
+	    <if @non_member_classes.join_policy@ eq "open">
+	    <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small>
+	    </if>
+	    <else>
+	    <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small>
+	    </else>
+        }
+    }
+}
+
 db_multirow non_member_classes $non_member_query {} {
     regsub -all {<p>} $description {<br />} description
+}
+
+template::list::create -name non_member_clubs -multirow non_member_clubs -pass_properties { show_drop_button_p referer swa_p} -html {width 100%} -elements {
+    name {
+        html {align left width 30%}
+        label "[_ dotlrn.clubs_pretty_name]"
+        display_template {
+            <if @non_member_clubs.join_policy@ eq "open">
+              <if @swa_p@ eq 1><a href="@non_member_clubs.url@" title="\\#dotlrn.goto_non_member_clubs\\#">@non_member_clubs.pretty_name@</a></if>
+              <else>@non_member_clubs.pretty_name@</else>
+            </if>
+            <else>
+            @non_member_clubs.pretty_name@
+            </else>
+        }
+    }
+    descrption {
+        html {align left width 30%}
+        label "\#dotlrn.Description\#"
+        display_template {@non_member_clubs.description;noquote@}
+    }
+    start_date {
+	html {align right}
+        label "\#dotlrn.Start_date\#"
+        display_template {@non_member_clubs.active_start_date@ - @non_member_clubs.active_end_date@}
+    }
+    actions {
+        label "\#dotlrn.Actions\#"
+        html {align right width 5%}
+        display_template {
+            <if @non_member_clubs.join_policy@ eq "open">
+            <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small>
+            </if>
+            <else>
+            <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership">
+            </else>
+        }
+    }
 }
 
 db_multirow non_member_clubs select_non_member_clubs {} {

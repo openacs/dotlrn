@@ -1,5 +1,5 @@
 ad_page_contract {
-    Confirm an email to be sent
+    Send word of welcome
 } -query {
     community_id
 } -validate {
@@ -15,6 +15,6 @@ permission::require_permission \
     -object_id $community_id \
     -privilege admin
 
-set page_title "Confirm Email"
+set page_title "[_ dotlrn.Send_Welcome_Message]"
 set context [list $page_title]
 

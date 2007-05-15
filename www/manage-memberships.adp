@@ -22,7 +22,7 @@
 <property name="title">#dotlrn.Manage_Memberships#</property>
 <property name="context_bar">#dotlrn.Manage_Memberships#</property>
 
-<h3>#dotlrn.AddDrop_Memberships#</h3>
+<h1>#dotlrn.AddDrop_Memberships#</h1>
 
 <p>
   <small>
@@ -65,7 +65,8 @@
 
 <if @n_non_member_classes@ gt 0 or @non_member_clubs:rowcount@ gt 0>
 <hr>
-  <h4>#dotlrn.Join_A_Group#</h4>
+
+  <h2><a name="join_class">#dotlrn.Join_A_Group#</a></h2>
 
 <if @n_non_member_classes@ gt 0>
 <formtemplate id="non_member_form">

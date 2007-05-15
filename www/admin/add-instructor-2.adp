@@ -22,6 +22,8 @@
 <property name="title">#dotlrn.dotLRN_Admin#</property>
 <property name="context_bar">@context_bar@</property>
 
+<h1>#dotlrn.Add_a_Professor#</h1>
+
 <p>#dotlrn.lt_The_results_of_your_s#</p>
 <ul>
   <multiple name="users">

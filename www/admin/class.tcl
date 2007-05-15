@@ -120,15 +120,15 @@ template::list::create \
         actions {
             label "[_ dotlrn.actions]"
 	    display_template {
-		<nobr>
 		<small>
 		<a href="@class_instances.url@one-community-admin">[_ dotlrn.administer_link]</a> 
 		</small>
-		</nobr>
 	    }
         }
     }
 
 db_multirow class_instances $query {}
+
+set class_edit_url [export_vars -base class-edit {class_key referer}]
 
 ad_return_template

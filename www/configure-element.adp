@@ -21,8 +21,8 @@
 <master>
 <property name="title">#dotlrn.Configure_Element#</property>
 
+<h1>#dotlrn.Configure_Element#</h1>
 
-<p></p>
 
 @rendered_page@
 

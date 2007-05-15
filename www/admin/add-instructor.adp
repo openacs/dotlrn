@@ -22,7 +22,7 @@
 <property name="title">#dotlrn.dotLRN_Admin#</property>
 <property name="context_bar">@context_bar@</property>
 
-<h3>#dotlrn.Add_a_Professor#</h3>
+<h1>#dotlrn.Add_a_Professor#</h1>
 
 <form method="get" action="add-instructor-2">
   <input type="hidden" name="referer" value="@referer@"></input>

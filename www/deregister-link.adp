@@ -17,7 +17,7 @@
     #
 
 %>
-<a href="<if @url@ nil>#dotlrn.deregister#<if @referer@ not nil>?referer=@referer@</if></if><else>@url@<if @referer@ not nil>?referer=@referer@</if></else>" title="#dotlrn.Drop_Membership#">
-    <if @label@ nil>#dotlrn.drop_membership_link#</if>
+<a href="<if @url@ nil>#dotlrn.deregister#<if @referer@ not nil>?referer=@referer@</if></if><else>@url@<if @referer@ not nil>?referer=@referer@</if></else>" title="#dotlrn.Drop_Membership#" class="button">
+    <if @label@ nil>#dotlrn.Drop_Membership#</if>
     <else>@label@</else>
 </a>

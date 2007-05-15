@@ -34,10 +34,10 @@ set dotlrn_admins_group [db_string group_id_from_name "
 set admin_id [ad_verify_and_get_user_id]
 
 set elements [list user \
-		  [list label "User" \
+		  [list label "[_ dotlrn.User]"\
                    link_url_col user_url ] \
                    remove \
-                  [list label "Remove" \
+                  [list label "[_ dotlrn.Remove]" \
                    link_url_col remove_url \
 		       display_template { <if @dotlrn_admins.no_auto_remove@ true><center><img src="/resources/acs-subsite/Delete16.gif" width="16" height="16" border="0"></center></if> } \
                        sub_class narrow ] \
@@ -50,7 +50,7 @@ template::list::create \
      -name dotlrn_admins \
      -multirow $multirow_name \
      -actions $actions \
-     -no_data "No dotlrn-admins." \
+    -no_data "[_ dotlrn.No_dotlrn-admins]" \
      -elements $elements
 
 db_multirow \

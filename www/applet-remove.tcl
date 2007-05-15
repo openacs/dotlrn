@@ -26,7 +26,7 @@ ad_page_contract {
 
 # Check access
 if {![dotlrn_community::admin_access_p $community_id]} {
-    ns_returnredirect /
+    ad_returnredirect /
     return
 }
 
@@ -34,5 +34,5 @@ if {![dotlrn_community::admin_access_p $community_id]} {
 dotlrn_community::remove_applet $community_id $applet_key
 
 # Get back to where you once belonged
-ns_returnredirect community-applets?community_id=$community_id
+ad_returnredirect community-applets?community_id=$community_id
 

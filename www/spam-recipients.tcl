@@ -1,10 +1,10 @@
 ad_page_contract {
 } -query {
     {community_id ""}
-    {referer "control-panel"}
+    {referer ""}
 }
 
-set spam_name [bulk_mail::parameter -parameter PrettyName -default Spam]
+set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam]]
 set context_bar [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
 if { ![exists_and_not_null community_id] } {
@@ -50,7 +50,37 @@ foreach {rel_type role pretty_name pretty_plural} [eval concat $roles] {
 
 }
 
-db_multirow current_members select_current_members {}
+db_multirow -extend {recipients url} current_members select_current_members {} {
+    set url "/dotlrn/admin/user?user_id=$user_id"
+    set recipients $user_id
+}
+
+template::list::create \
+    -name current_members \
+    -multirow current_members \
+    -key recipients \
+    -bulk_actions {
+            "\#dotlrn.Compose_bulk_message\#" "spam" "\#dotlrn.Compose_bulk_message\#"
+    } \
+    -elements {
+        first_names {
+            label "\\#dotlrn.First_Name\\#"
+            html { width 200 }
+            link_url_eval {$url}
+        }
+        last_name {
+            label "\\#dotlrn.Last_Name\\#"
+            html { width 200 }
+            link_url_eval {$url}
+        }
+        email {
+            label "\\#dotlrn.Email_1\\#"
+            html { width 200 }
+            display_template {
+                <a href="mailto:@current_members.email@">@current_members.email@</a>
+            }
+        }
+    }
 
 set exported_vars [export_vars -form { referer }]
 

@@ -2,7 +2,7 @@
 
 <queryset>
 
-    <fullquery name="callback::MergePackageUser::impl::dotlrn.get_from_rel_ids">
+    <fullquery name="callback::merge::MergePackageUser::impl::dotlrn.get_from_rel_ids">
         <querytext>	
         select rel_id, rel_type, object_id_one
 	from acs_rels 
@@ -13,7 +13,39 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="callback::MergeShowUserInfo::impl::dotlrn.get_from_rel_ids">
+
+  <fullquery name="callback::merge::MergePackageUser::impl::dotlrn.merge_dotlrn_fs">
+        <querytext>	
+       UPDATE cr_items 
+       SET parent_id = :to_fs_root_folder
+       WHERE parent_id = :from_fs_root_folder
+        </querytext>
+    </fullquery>
+
+  <fullquery name="callback::merge::MergePackageUser::impl::dotlrn.merge_dotlrn_fs_shared_folder">
+        <querytext>	
+       UPDATE cr_items 
+       SET parent_id = :to_fs_shared_folder
+       WHERE parent_id = :from_fs_shared_folder
+        </querytext>
+    </fullquery>
+
+
+  <fullquery name="callback::merge::MergePackageUser::impl::dotlrn.merge_dotlrn_fs_get_duplicates">
+        <querytext>
+
+	select item_id, name
+	from cr_items
+	where parent_id = :from_fs_root_folder and name in (select name
+	from cr_items
+	where parent_id = :to_fs_root_folder);
+
+        </querytext>
+    </fullquery>
+
+
+
+    <fullquery name="callback::merge::MergeShowUserInfo::impl::dotlrn.get_from_rel_ids">
         <querytext>	
         select rel_id, rel_type, object_id_one
 	from acs_rels 

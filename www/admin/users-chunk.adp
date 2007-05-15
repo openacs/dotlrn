@@ -77,8 +77,8 @@
 
     <if @oacs_site_wide_admin_p@ true>
     <% # We had to escape to Tcl to get the desired behavior. AG %>
-    <small><a href="/acs-admin/users/member-state-change?user_id=@users.user_id@&member_state=approved&return_url=<%= [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$users(user_id)&referer=$referer] %>">#dotlrn.lt_approve_and_add_to_do#</a> | </if>
-    <a href="user-nuke?user_id=@users.user_id@&referer=@referer@">#acs-kernel.common_delete#</small>
+    <small><a href="@users.state_change_url@">#dotlrn.lt_approve_and_add_to_do#</a> | </if>
+    <a href="@users.nuke_url@">#acs-kernel.common_delete#</a></small>
     </td>
 </if>
 <else>
@@ -96,10 +96,10 @@
  <td align="center">
   <if @user_id@ ne @users.user_id@>
     <if @users.site_wide_admin_p@ true>
-      <b>#dotlrn.Yes#</b> | <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=revoke&referer=@referer@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
+      <b>#dotlrn.Yes#</b> | <a href="@users.swa_revoke_url@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
     </if>
     <else>
-      <a href="site-wide-admin-toggle?user_id=@users.user_id@&value=grant&referer=@referer@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <b>#dotlrn.No#</b>
+      <a href="@users.swa_grant_url@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <b>#dotlrn.No#</b>
     </else>
   </if>
       <else>#dotlrn.Yes#</else>

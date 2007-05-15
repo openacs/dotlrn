@@ -19,14 +19,8 @@
 %>
 
 <if @community_types:rowcount@ gt 0>
-  <h3><if @title@ nil>#dotlrn.Community_Types#</if><else>@title@</else></h3>
-  <table cellpadding="5" cellspacing="5">
-<multiple name="community_types">
-    <tr>
-      <td><a href="@community_types.url@">@community_types.pretty_name@</a></td>
-    </tr>
-</multiple>
-  </table>
+  <h2><if @title@ nil>#dotlrn.Community_Types#</if><else>@title@</else></h2>
+  <listtemplate name="community_types"></listtemplate>
 </if>
 
 

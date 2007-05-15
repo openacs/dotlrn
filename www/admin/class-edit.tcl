@@ -57,7 +57,7 @@ element create edit_class description \
     -label [_ dotlrn.Description] \
     -datatype text \
     -widget textarea \
-    -html {rows 5 cols 60 wrap soft} \
+    -html {rows 5 cols 60} \
     -optional
 
 element create edit_class referer \

@@ -1,4 +1,4 @@
-<master src="/www/site-master">
+<master src="/www/site-compat">
   <property name="header_stuff">
     <link rel="stylesheet" type="text/css" href="/resources/dotlrn/dotlrn-master.css" media="all">
     <link rel="stylesheet" type="text/css" href="/resources/calendar/calendar.css" media="all">

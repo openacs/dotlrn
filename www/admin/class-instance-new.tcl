@@ -47,7 +47,7 @@ ad_form -name add_class_instance -form {
 
     {description:text(textarea),optional
 	{label "#dotlrn.Description#"}
-	{html {rows 5 cols 60 wrap soft}}
+	{html {rows 5 cols 60}}
 	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
     }	
     
@@ -114,11 +114,12 @@ ad_form -name add_class_instance -form {
     db_dml update_community_info {}
 
     if {[empty_string_p $referer]} {
-        set referer "class?class_key=$class_key"
+        set referer "admin/class?[export_url_vars class_key]"
     }
 
     if {${add_instructor}} {
-        ad_returnredirect "add-instructor?community_id=$class_instance_id&referer=$referer"
+	set community_id $class_instance_id 
+        ad_returnredirect "add-instructor?[export_url_vars community_id referer]"
         ad_script_abort
     }
 

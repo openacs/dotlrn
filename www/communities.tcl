@@ -35,7 +35,7 @@ set portal_id [dotlrn::get_portal_id -user_id [ad_get_user_id]]
 set dotlrn_url [dotlrn::get_url] 
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
-set portlet_title [_ theme-selva.Communities]
+set portlet_title [_ dotlrn.Communities]
 set title [parameter::get -localize -parameter admin_page_name]
 set admin_p [dotlrn::admin_p]
 set admin_url "[dotlrn::get_url]/admin"

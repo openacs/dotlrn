@@ -49,4 +49,6 @@ if { ![parameter::get -localize -package_id [dotlrn::get_package_id] -parameter 
 
 set return_url [ad_conn url]
 
+set toolbar_actions_url [export_vars -base toolbar-actions {action return_url}]
+
 ad_return_template

@@ -22,6 +22,8 @@
 <property name="title">#dotlrn.Add_A_Member#</property>
 <property name="context_bar">@context_bar@</property>
 
+<h1>#dotlrn.Add_an_Admin#</h1>
+
 <if @users:rowcount@ eq 0>
      #dotlrn.there_are_no_users_matching#
   </tr>

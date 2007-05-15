@@ -22,8 +22,14 @@
 <property name="title">@title@</property>
 <property name="context_bar">@context_bar@</property>
 
+<h1>@title@</h1>
+
 <if @archived_comms:rowcount@ gt 0>
-<p><small><font color="red">#dotlrn.Note_the_term_column#</font></small></p>
+	<div id="alert-message">
+		<div class="alert">
+			#dotlrn.Note_the_term_column#
+		</div>
+	</div>
 <table width="100%">
   <tr>
     <th align="left" width="25%">#dotlrn.Parent#</th>

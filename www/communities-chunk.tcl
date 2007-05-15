@@ -49,11 +49,38 @@ if {![empty_string_p $community_type]} {
     append filter "_by_type"
 }
 
-if {![exists_and_not_null referer]} {
-    set referer "./"
+db_multirow -extend {query referer} communities $filter {} {
+    if {![exists_and_not_null referer]} {
+	set referer "./"
+    }
+    set query $filter
 }
 
-db_multirow communities $filter {}
+
+template::list::create \
+    -name communities \
+    -multirow communities \
+    -elements {
+        pretty_name {
+	    label "\#dotlrn.clubs_pretty_plural\#"
+	    link_url_eval {$url}
+	}
+	member_p {
+	    label "\#dotlrn.Actions\#"
+	    display_template {
+		<if @communities.member_p@ eq 0>
+		   <center>
+		   <include src="/packages/dotlrn/www/register-link" url="register?community_id=@communities.community_id@&referer=@communities.referer@">
+                   </center>
+		</if>
+		<else>
+		   <center>
+		   <include src="/packages/dotlrn/www/deregister-link" url="deregister?community_id=@communities.community_id@&referer=@communities.referer@">
+		   </center>
+		</else>
+	    }
+	}
+    } 
 
 ad_return_template
 

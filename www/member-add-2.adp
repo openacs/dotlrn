@@ -21,6 +21,9 @@
 <master>
 <property name="title">#dotlrn.Add_A_Member#</property>
 <property name="context">#dotlrn.Add_A_Member#</property>
+
+<h1>#dotlrn.Add_A_Member#</h1>
+
 <if @member_p@ eq 1>
 
 #dotlrn.lt_strongfirst_names_las#

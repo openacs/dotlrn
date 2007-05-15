@@ -22,6 +22,8 @@
 <property name="title">@spam_name@</property>
 <property name="context">@context;noquote@</property>
 
+<h1>@spam_name@</h1>
+
 <formtemplate id="spam_message"></formtemplate>
 
 <include src="spam-variables">
