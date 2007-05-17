@@ -21,7 +21,7 @@ ad_form -name member-email-confirm \
     -form {
 	{from_addr:text {label "\#dotlrn.From\#"}}
 	{subject:text {label "\#dotlrn.Subject\#"}}
-	{email:richtext {label "\#dotlrn.Email_1\#"}}
+	{email:richtext {label "\#dotlrn.Email_1\#"} {html {rows 20 cols 80 style width:100%}}}
 	{btn_ok:text(submit) {label "[_ dotlrn.OK_Send_Email]"}}
 	{btn_cancel:text(submit) {label "[_ dotlrn.Cancel_Dont_Send_email]"}}
     } -on_request {
