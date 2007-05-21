@@ -25,23 +25,21 @@
 
 <p>
   <a href="@add_user_url@" class="button">#dotlrn.Create_A_New_User#</a> 
-  <a href="users-search" class="button">#dotlrn.Search_Users#</a>
+  <a href="../member-search?return_url=./admin/users" class="button">#dotlrn.Search_Users#</a>
   <a href="users-bulk-upload" class="button">#dotlrn.Bulk_Upload#</a>
   <a href="users-bulk-approve" class="button">#dotlrn.Bulk_Approve#</a>
 </p>
 
-<form method="get" action="users-search">
-  #dotlrn.lt_Search_dotLRN_users_f# <input type="text" name="name"><input type="submit" value="#dotlrn.search#">
-
+<form method="get" action="../member-search">
+  #dotlrn.lt_Search_dotLRN_users_f# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
   <input type="hidden" name="form:id" value="user_search">
-
+  <input type="hidden" name="return_url" value="./admin/users">
 </form>
 
-<form method="get" action="user-new">
+<form method="get" action="../member-search">
   #dotlrn.lt_Add_a_new_dotLRN_user# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
+  <input type="hidden" name="return_url" value="./admin/users">
 </form>
-
-<p></p>
 
 @control_bar;noquote@
 
