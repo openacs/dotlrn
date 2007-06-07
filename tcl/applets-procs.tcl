@@ -31,7 +31,8 @@ namespace eval dotlrn_applet {
     ad_proc -public get_applet_url {
         {-applet_key:required}
     } {
-        return [site_nodes::get_info -return url -package_key $applet_key]
+        set applets_node_id [site_node::get_node_id -url [get_url]]
+        return [site_node::get_children -package_key $applet_key -node_id $applets_node_id]
     }
 
     ad_proc -public is_initalized {} {
