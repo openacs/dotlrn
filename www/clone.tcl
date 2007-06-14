@@ -75,7 +75,7 @@ element create clone_form description \
     -label [_ dotlrn.Description] \
     -datatype text \
     -widget textarea \
-    -html {rows 5 cols 60 wrap soft} \
+    -html {rows 5 cols 60} \
     -optional \
     -value "[_ dotlrn.A_copy_of] $community_name"
 

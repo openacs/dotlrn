@@ -71,7 +71,7 @@ element create spam_message message \
     -label [_ dotlrn.Message] \
     -datatype text \
     -widget textarea \
-    -html {rows 10 cols 80 wrap soft}
+    -html {rows 10 cols 80}
 
 element create spam_message referer \
     -label [_ dotlrn.Referer] \

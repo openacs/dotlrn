@@ -42,7 +42,7 @@ set context_bar [list [list community-types "[_ dotlrn.Community_Types]"] $title
 
 ad_form -extend -name "new_community_type" -form {
     {pretty_name:text {label "[_ dotlrn.Pretty_Name]"} {html {size 60 maxlength 100}}}
-    {description:text(textarea),optional {label "[_ dotlrn.Description]"} {html {rows 5 cols 60 wrap soft}}}
+    {description:text(textarea),optional {label "[_ dotlrn.Description]"} {html {rows 5 cols 60}}}
 } -validate {
     {community_type
 	{ ![dotlrn_community::type_exists $community_type] || 
