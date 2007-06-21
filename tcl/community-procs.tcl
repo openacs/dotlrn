@@ -864,6 +864,9 @@ namespace eval dotlrn_community {
                 -list_args [list $community_id $user_id]
 
         }
+
+        callback dotlrn_community::membership_approve -user_id $user_id -community_id $community_id
+
     }
 
     ad_proc -public membership_reject {

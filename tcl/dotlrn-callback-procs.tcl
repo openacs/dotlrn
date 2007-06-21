@@ -141,6 +141,14 @@ ad_proc -callback dotlrn_community::add_members {
     This callback will allow other packages to add members to a community
 } -
 
+ad_proc -callback dotlrn_community::membership_approve {
+    -user_id
+    -community_id
+} {
+    This callback allows other packages to perform actions when a user
+    is approved for dotlrn community membership
+} -
+
 ad_proc -public -callback contact::person_new -impl dotlrn_user {
     {-package_id:required}
     {-contact_id:required}
