@@ -84,3 +84,5 @@ set pvt_home_url [ad_pvt_home]
 
 set allowed_to_change_site_template_p [parameter::get -package_id $dotlrn_package_id -parameter "UserChangeSiteTemplate_p" \
 			      -default 0]
+
+set user_info_template [parameter::get -package_id [ad_conn subsite_id] -parameter UserInfoTemplate -default "/packages/acs-subsite/lib/user-info"]
