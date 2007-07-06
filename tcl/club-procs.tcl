@@ -170,7 +170,7 @@ ad_proc -public -callback contact::contact_form -impl dotlrn_club {
 	    ad_form -extend -name $form -form {
 		{create_club_p:text(radio) \
 		     {label "[_ dotlrn.Create_Club]"} \
-		     {options {{[_ acs-kernel.common_Yes] "t"} {[_ acs-kernel.common_no] "f"}}} \
+		     {options {{[_ acs-kernel.common_Yes] "t"} {[_ acs-kernel.common_No] "f"}}} \
 		     {values "f"}
 		}
 	    }
