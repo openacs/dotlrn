@@ -231,6 +231,7 @@ namespace eval dotlrn_community {
             set non_member_portal_id [portal::create \
                 -name "$pretty_name Non-Member Portal" \
                 -default_page_name [dotlrn::parameter -name non_member_page_name] \
+                -layout_name [dotlrn::parameter -name non_member_layout_name] \
                 -context_id $community_id \
                 $user_id \
             ]
@@ -239,6 +240,7 @@ namespace eval dotlrn_community {
             set admin_portal_id [portal::create \
                 -name "$pretty_name Administration Portal" \
                 -default_page_name [dotlrn::parameter -name admin_page_name] \
+                -layout_name [dotlrn::parameter -name admin_layout_name] \
                 -context_id $community_id \
                 $user_id \
             ]
