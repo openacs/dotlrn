@@ -43,8 +43,10 @@
 <listtemplate name="members"></listtemplate>
 
 <if @admin_p@ eq 1>
-  <h1>#dotlrn.Membership_Requests#</h1>
-  <listtemplate name="pending_users"></listtemplate>
+  <if @pending_users:rowcount@ gt 0 or @approval_policy_p@ eq 1>
+    <h1>#dotlrn.Membership_Requests#</h1>
+    <listtemplate name="pending_users"></listtemplate>
+  </if>
 </if>
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
