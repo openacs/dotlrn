@@ -73,23 +73,22 @@ set bio_attribute_id [db_string bio_attribute_id {
 # Actions for Removing Members according to their role
 set rel_types [dotlrn_community::get_roles -community_id $community_id]
 
+set bulk_actions ""
+set bulk_actions_export_vars ""
+set actions ""
+
 if {$admin_p} {
-    set bulk_actions [list "[_ dotlrn.User_Admin_Page]" "member-add-3" "[_ dotlrn.User_Admin_Page]" "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]"]
-    set bulk_actions_export_vars [list "user_id" "rel_type" "referer" "reset"]
+    set bulk_actions [list "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]"]
+    set bulk_actions_export_vars [list "user_id" "referer" "reset"]
     set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
     foreach role $rel_types {
 		# lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
 		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "member-confirm?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
     }
-
-} else {
-    set bulk_actions ""
-    set actions ""
-    set bulk_actions_export_vars ""
 }
 
-# Build the list-builder list
-template::list::create -name members -multirow members -key user_id -actions $actions -bulk_actions $bulk_actions -bulk_action_export_vars $bulk_actions_export_vars -elements {
+# Set the elements list
+set elm_list {
         portrait {
             label ""
             html "align right"
@@ -125,24 +124,31 @@ template::list::create -name members -multirow members -key user_id -actions $ac
 	} role {
 	    label "[_ dotlrn.Role]"
 	    html "align left"
-	} action {
+	} 
+}
+
+if {$admin_p} {
+    lappend elm_list {action} {
 	    label "[_ dotlrn.Actions]"
 	    html "align left"
 	    display_template {
-		<if @members.user_id@ ne "">
+		<if @members.user_id@ ne \"\">
 		<a href="member-confirm?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
 		<a href="member-add-2?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
 		</if>
 	    }
 	}
-    } -orderby {
+}
+
+# Build the list-builder list
+template::list::create -name members -multirow members -key user_id -actions $actions -bulk_actions $bulk_actions -bulk_action_export_vars $bulk_actions_export_vars -elements $elm_list -orderby {
 	last_name {orderby last_name}
 	first_names {orderby first_names}
 	email {orderby email}
 	role {orderby role}
-    } -selected_format csv -formats {
+} -selected_format csv -formats {
 	csv { output csv }
-    }
+}
 
 set orderby [template::list::orderby_clause -name "members" -orderby]
 
@@ -160,18 +166,18 @@ if { [exists_and_not_null csv] } {
     template::list::write_output -name members
 }
 
-# Bulk action User Admin Page
-# Depending on the community_type, we have allowable rel_types
-set rel_types [dotlrn_community::get_roles -community_id $community_id]
-set selection "<select name=\"rel_type\">"
-foreach role $rel_types {
-    append selection "<option value=\"[lindex $role 0]\">[lang::util::localize [lindex $role 2]]</option>"
-}
-append selection "</select>"
-set size [multirow size members]
-if { $size > 0 } {
-    multirow append members "" "" "" "" "" $selection
-}
+# # Bulk action User Admin Page
+# # Depending on the community_type, we have allowable rel_types
+# set rel_types [dotlrn_community::get_roles -community_id $community_id]
+# set selection "<select name=\"rel_type\">"
+# foreach role $rel_types {
+#     append selection "<option value=\"[lindex $role 0]\">[lang::util::localize [lindex $role 2]]</option>"
+# }
+# append selection "</select>"
+# set size [multirow size members]
+# if { $size > 0 } {
+#     multirow append members "" "" "" "" "" $selection
+# }
 
 set user_ids ""
 db_multirow -extend { member_url pending_user_referer } pending_users select_pending_users {} {

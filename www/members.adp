@@ -42,9 +42,10 @@
 
 <listtemplate name="members"></listtemplate>
 
-<h1>#dotlrn.Membership_Requests#</h1>
-
-<listtemplate name="pending_users"></listtemplate>
+<if @admin_p@ eq 1>
+  <h1>#dotlrn.Membership_Requests#</h1>
+  <listtemplate name="pending_users"></listtemplate>
+</if>
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
 
