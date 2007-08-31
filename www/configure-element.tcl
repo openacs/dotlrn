@@ -23,7 +23,10 @@ ad_page_contract {
 } -query {
     element_id:naturalnum,notnull
     op:notnull
+    {page_num:naturalnum 0}
 }
+
+set page_num [ad_get_client_property dotlrn page_num]
 
 if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
@@ -34,21 +37,23 @@ set user_id [ad_maybe_redirect_for_registration]
 
 if {[parameter::get -parameter community_level_p] == 1} {
 
+
     set community_id [dotlrn_community::get_community_id]
     set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
 
     if {[dotlrn_community::member_p $community_id $user_id] || $admin_p} {
-	portal::configure_element $element_id $op "one-community"
+        portal::configure_element $element_id $op "one-community?page_num=$page_num"
     } else {
-        ad_returnredirect "one-community"
+        ad_returnredirect "one-community?page_num=$page_num"
     }
 } else {
+
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
     if {[empty_string_p $portal_id]} {
-	# do something
-	ad_returnredirect "/."
+        # do something
+        ad_returnredirect "/."
     } else {
-	set rendered_page [portal::configure_element $element_id $op "index"]
+        set rendered_page [portal::configure_element $element_id $op "index"]
     }
 }
 
