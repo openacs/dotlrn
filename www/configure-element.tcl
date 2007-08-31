@@ -53,7 +53,7 @@ if {[parameter::get -parameter community_level_p] == 1} {
         # do something
         ad_returnredirect "/."
     } else {
-        set rendered_page [portal::configure_element $element_id $op "index"]
+        set rendered_page [portal::configure_element $element_id $op "index?page_num=$page_num"]
     }
 }
 
