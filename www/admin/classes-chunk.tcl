@@ -55,7 +55,7 @@ if {[form is_valid department_form]} {
 }
 
 if {![exists_and_not_null referer]} {
-    set referer "classes?[export_vars department_key]"
+    set referer "classes"
 }
 
 set query select_classes
@@ -82,7 +82,7 @@ set class_instances_pretty_name [parameter::get -localize -parameter class_insta
 set actions ""
 
 if { $can_create } {
-    set actions [list "[_ dotlrn.new_class_1]" "[export_vars -base "class-new" -url { department_key referer }]"]
+    set actions [list "[_ dotlrn.new_class_1]" "[export_vars -base "class-new" -url { department_key referer }]" "[_ dotlrn.new_class_1]"]
 }
 
 template::list::create \
@@ -117,18 +117,14 @@ template::list::create \
             label "[_ dotlrn.Actions]"
 	    display_template {
 		<if @can_instantiate@>
-		<nobr>
 		<small>\[
-		<a href="class-instance-new?class_key=@classes.class_key@">[_ dotlrn.new_class_instance]</a>
+            <a href="class-instance-new?class_key=@classes.class_key@&amp;referer=$referer" title="[_ dotlrn.new_class_instance]">[_ dotlrn.new_class_instance]</a>
 		       \]</small>
-		</nobr>
 		</if>
         <if @classes.n_instances@ eq 0>
-		<nobr>
 		<small>\[
-		<a href="class-delete?class_key=@classes.class_key@">[_ dotlrn.lt_Delete_class]</a>
+            <a href="class-delete?class_key=@classes.class_key@" title="[_ dotlrn.lt_Delete_class]">[_ dotlrn.lt_Delete_class]</a>
 		       \]</small>
-		</nobr>
         </if>
 	    }
         }
