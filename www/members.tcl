@@ -21,7 +21,7 @@ ad_page_contract {
     @version $Id$
 
 } {
-    {orderby:optional}
+    {orderby:optional "last_name,asc"}
     {csv:optional}
     {reset:optional}
     {reltype:optional}
