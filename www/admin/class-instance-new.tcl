@@ -118,7 +118,7 @@ ad_form -name add_class_instance -form {
     }
 
     if {${add_instructor}} {
-	set community_id $class_instance_id 
+        set community_id $class_instance_id 
         ad_returnredirect "add-instructor?[export_url_vars community_id referer]"
         ad_script_abort
     }

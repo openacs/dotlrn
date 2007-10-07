@@ -24,7 +24,7 @@ ad_form -name "member_email" -form {
     {email_id:key}
     {from_addr:text {label "From Address"} {html {size 40}}}
     {subject:text {label "Subject"} {html {size 40}}}
-    {email:richtext,optional {label "Message"} {html {rows 30 cols 80 wrap soft}} {htmlarea_p 1}}
+    {email:richtext,optional {label "Message"} {html {rows 30 cols 80}}}
 } -on_request {
 
     set from_addr [cc_email_from_party [ad_conn user_id]]

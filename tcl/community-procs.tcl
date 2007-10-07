@@ -231,6 +231,7 @@ namespace eval dotlrn_community {
             set non_member_portal_id [portal::create \
                 -name "$pretty_name Non-Member Portal" \
                 -default_page_name [dotlrn::parameter -name non_member_page_name] \
+                -layout_name [dotlrn::parameter -name non_member_layout_name] \
                 -context_id $community_id \
                 $user_id \
             ]
@@ -239,6 +240,7 @@ namespace eval dotlrn_community {
             set admin_portal_id [portal::create \
                 -name "$pretty_name Administration Portal" \
                 -default_page_name [dotlrn::parameter -name admin_page_name] \
+                -layout_name [dotlrn::parameter -name admin_layout_name] \
                 -context_id $community_id \
                 $user_id \
             ]
@@ -1035,13 +1037,22 @@ namespace eval dotlrn_community {
         {-package_id ""}
     } {
         Returns the community id depending on the package_id
-        we're at, or the package_id passed in
+        we're at, or the package_id passed in.
+
+	If no community_id found, return empty_string
+
+	@param package_id PackageID for which to search the community_id for
+	@return community_id of the community where the package is mounted, empty string if not found
     } {
         if {[empty_string_p $package_id]} {
             set package_id [site_node_closest_ancestor_package -default [ad_conn package_id] dotlrn]
         }
 
-        return [util_memoize "dotlrn_community::get_community_id_not_cached -package_id $package_id"]
+	if {$package_id ne ""} {
+	    return [util_memoize "dotlrn_community::get_community_id_not_cached -package_id $package_id"]
+	} else {
+	    return ""
+	}
     }
 
     ad_proc -private get_community_id_not_cached {

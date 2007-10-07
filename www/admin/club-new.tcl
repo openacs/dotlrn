@@ -42,7 +42,7 @@ ad_form -name add_club -form {
 
     {description:text(textarea),optional
 	{label "#dotlrn.Description#"}
-	{html {rows 5 cols 60 wrap soft}}
+	{html {rows 5 cols 60}}
 	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
     }	
     
