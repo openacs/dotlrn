@@ -50,6 +50,7 @@ foreach uid $user_id {
             # as that removes subgroup rels as well
             relation_remove $rel_id
             util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
+	    set change_rel_p 1
         }
     } else {
 	# if the user is not a member
