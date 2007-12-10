@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.3.0" locale="es_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" locale="es_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Una copia de</msg>
-  <msg key="A_dotlrn_Site">A &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;The .LRN Project Homepage&quot;&gt;.LRN&lt;/a&gt; Site</msg>
+  <msg key="A_dotlrn_Site">Un sitio &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;The .LRN Project Homepage&quot;&gt;.LRN&lt;/a&gt;</msg>
   <msg key="Access">Acceso</msg>
   <msg key="Access_Level">Nivel de acceso</msg>
   <msg key="Access_level">Nivel de acceso:</msg>
@@ -74,6 +74,7 @@
   <msg key="Cancel_Dont_Send_email">Cancelar, no enviar el correo</msg>
   <msg key="cannot_be_removed">no puede ser borrado</msg>
   <msg key="Change_Locale">Cambiar idioma</msg>
+  <msg key="Change_role">Cambiar rol</msg>
   <msg key="Choose_members_to_receive">Escoja a los miembros de %community_name% que recibirán este mensaje:</msg>
   <msg key="Class_instance_key">Llave de la clase</msg>
   <msg key="Class_instance_key_help">Use la clave del curso como alternativa</msg>
@@ -145,7 +146,7 @@
   <msg key="CSV_File_Format">Formato CSV</msg>
   <msg key="Customize_Layout">Personalizar este portal</msg>
   <msg key="Customize_Template">Personalizar plantilla</msg>
-  <msg key="database_choked">&amp;lt;p&amp;gt;¡Ha ocurrido un error en la base de datos mientras se intentaba crear al ultimo usuario de la lista!&amp;lt;br&amp;gt;La transacción ha sido abortada, no se ha añadido ningún usuario y no se ha enviado ningún correo.&amp;lt;p&amp;gt;</msg>
+  <msg key="database_choked">&lt;p&gt;¡Ha ocurrido un error en la base de datos mientras se intentaba crear al ultimo usuario de la lista!&amp;&lt;br&gt;La transacción ha sido abortada, no se ha añadido ningún usuario y no se ha enviado ningún correo.&lt;/p&gt;</msg>
   <msg key="datafile_must">&lt;p&gt;El archivo de datos debe de incluir al menos los campos &quot;emails, first_names, last_name&quot;.&lt;p&gt;</msg>
   <msg key="Deactivate_">Desactivar...</msg>
   <msg key="Deactivate_Users">Desactivar usuarios</msg>
@@ -298,7 +299,7 @@
   <msg key="lt_An_error_occured_whil">Ha ocurrido un error al intentar añadir el usuario a una comunidad. El error ha sido archivado.</msg>
   <msg key="lt_An_error_occured_whil_1">Ha ocurrido un error al dar de baja el usuario de la comunidad. El error ha sido archivado.</msg>
   <msg key="lt_approve_and_add_to_do">aprobar y añadir a dotLRN</msg>
-  <msg key="lt_Are_you_sure_you_want">Desea realmente borrar este departamento</msg>
+  <msg key="lt_Are_you_sure_you_want">¿Desea realmente borrar el grupo &lt;strong&gt;%pretty_name%&lt;/strong&gt; y todos sus subgrupos (si tiene)?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">¿Está seguro de querer borrar estos usuarios completamente? Note que pueden ocurrir errores mientras se trata de borrar los mismos.</msg>
   <msg key="lt_Are_you_sure_you_want_to_send">¿Está seguro de que quiere enviar el siguiente correo electrónico?</msg>
   <msg key="lt_Be_sure_that_the_pers">Asegurese de que el usuario no tenga otra cuenta en SloanSpace con otra dirección de correo. El duplicar cuenta es un problema para todos. Para añadir una persona que ya dispone de una cuenta, diríjase a &lt;a href=members&gt;Administrar miembros&lt;/a&gt;.</msg>
@@ -306,7 +307,7 @@
   <msg key="lt_Communitys_Web_Addres">Dirección web de la comunidad</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% actuales</msg>
   <msg key="lt_Delete_class">Borrar asignatura</msg>
-  <msg key="lt_do_not_use_p_tags">&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;No use etiquetas P para los párrafos&amp;lt;/font&amp;gt;</msg>
+  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;No use etiquetas P para los párrafos&lt;/font&gt;</msg>
   <msg key="lt_Do_you_really_want_to">¿Desea realmente borrar los miembros siguientes?</msg>
   <msg key="lt_Do_you_really_want_to_1">¿Desea realmente borrar estos %num_users% usuarios?</msg>
   <msg key="lt_dotLRN_properties_for">Propiedades dotLRN para este usuario.</msg>
@@ -320,7 +321,7 @@
   <msg key="lt_Error_sending_email_t">Error al enviar correo a %email% desde password-update-2.tcl</msg>
   <msg key="lt_First_check_the_box_o">Primero, debe marcar los usuarios que desea añadir, después seleccionar su rol, y por último, validar el formulario.</msg>
   <msg key="lt_Go_back_and_try_again">Vuelva atrás e inténtelo de nuevo</msg>
-  <msg key="lt_having_trouble">¿ Tiene problemas en conseguir el aspecto deseado? Algunas sugerencias</msg>
+  <msg key="lt_having_trouble">¿Tiene problemas en conseguir el aspecto deseado? Algunas sugerencias</msg>
   <msg key="lt_Help_and_Personal_Con">Ayuda y preferencias</msg>
   <msg key="lt_Here_is_the_actual_er">Mensaje de error actual:</msg>
   <msg key="lt_Here_you_can_create_s">Puede crear varios usuarios a la vez mediante un archivo con formato CSV (valores separados por comas). Puede crear un hoja de cálculo y guardarla en formato CSV para importarla aquí.</msg>
@@ -434,15 +435,15 @@
   <msg key="New">Añadir</msg>
   <msg key="new">nuevo</msg>
   <msg key="new_class">Nuevo</msg>
-  <msg key="new_class_1">%classes_pretty_name% nuevo</msg>
-  <msg key="new_class_instance">%class_instances_pretty_name% nuevo</msg>
+  <msg key="new_class_1">Nueva %classes_pretty_name%</msg>
+  <msg key="new_class_instance">Nuevo %class_instances_pretty_name%</msg>
   <msg key="new_class_navbar_name">Nuevo</msg>
   <msg key="new_class_of_type_class_name">Nuevo %class_instances_pretty_name% de tipo %class_name%</msg>
-  <msg key="new_community">%clubs_pretty_name% nuevo</msg>
+  <msg key="new_community">Nueva %clubs_pretty_name%</msg>
   <msg key="new_community_type">Nuevo tipo de comunidad</msg>
-  <msg key="new_department">%departments_pretty_name% nuevo</msg>
+  <msg key="new_department">Nuevo %departments_pretty_name%</msg>
   <msg key="New_Password">Contraseña nueva:</msg>
-  <msg key="New_Term">Período nuevo</msg>
+  <msg key="New_Term">Nuevo período</msg>
   <msg key="New_User">Usuario nuevo</msg>
   <msg key="No">No</msg>
   <msg key="no">no</msg>
@@ -505,7 +506,7 @@
   <msg key="prv_policy_must_be_one_of">La regla de privacidad debe ser &quot;Si&quot; o &quot;No&quot;.</msg>
   <msg key="Public_Web_Log">Bitácora Web pública</msg>
   <msg key="purple">púrpura</msg>
-  <msg key="pvt_home_name">Mi Cuenta</msg>
+  <msg key="pvt_home_name">Mi cuenta</msg>
   <msg key="Recipients_Email">Dirección de correo del remitente</msg>
   <msg key="Recipients_Last_Name">Apellidos del remitente</msg>
   <msg key="red">rojo</msg>
@@ -577,12 +578,12 @@
   <msg key="Start_Date">Fecha inicio</msg>
   <msg key="Start_date">Fecha inicio:</msg>
   <msg key="Start_date_help">Fecha de comienzo actual</msg>
-  <msg key="student_role_pretty_name">Alumno</msg>
-  <msg key="student_role_pretty_plural">Alumnos</msg>
+  <msg key="student_role_pretty_name">Estudiante</msg>
+  <msg key="student_role_pretty_plural">Estudiantes</msg>
   <msg key="subcomm_page_calendar_accesskey">C</msg>
   <msg key="subcomm_page_calendar_title">Calendario</msg>
   <msg key="subcomm_page_file_storage_accesskey">F</msg>
-  <msg key="subcomm_page_file_storage_title">Archivos</msg>
+  <msg key="subcomm_page_file_storage_title">Documentos</msg>
   <msg key="subcomm_page_home_accesskey">H</msg>
   <msg key="subcomm_page_home_title">Subgrupo</msg>
   <msg key="subcomm_page_info_accesskey">I</msg>
@@ -631,7 +632,7 @@
   <msg key="User_ID_1">Identificador de usuario</msg>
   <msg key="User_Management">Administración de usuarios</msg>
   <msg key="user_portal_page_calendar_accesskey">C</msg>
-  <msg key="user_portal_page_calendar_title">Calendario</msg>
+  <msg key="user_portal_page_calendar_title">Mi calendario</msg>
   <msg key="user_portal_page_file_storage_accesskey">F</msg>
   <msg key="user_portal_page_file_storage_title">Mis documentos</msg>
   <msg key="user_portal_page_home_accesskey">H</msg>

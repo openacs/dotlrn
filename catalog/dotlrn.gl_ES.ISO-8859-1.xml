@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.3.0" locale="gl_ES" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" locale="gl_ES" charset="ISO-8859-1">
 
   <msg key="A_copy_of">Unha copia de</msg>
   <msg key="Access">Acceso</msg>

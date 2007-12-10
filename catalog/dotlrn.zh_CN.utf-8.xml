@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.3.0" locale="zh_CN" charset="utf-8">
+<message_catalog package_key="dotlrn" locale="zh_CN" charset="utf-8">
 
   <msg key="A_copy_of">拷贝</msg>
   <msg key="Access">访问</msg>

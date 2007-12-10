@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<message_catalog package_key="dotlrn" package_version="2.3.1" locale="el_GR" charset="utf-8">
+<message_catalog package_key="dotlrn" locale="el_GR" charset="utf-8">
 
   <msg key="A_dotlrn_Site">Τοποθεσία του &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;Η αρχική σελίδα του έργου .LRN &quot;&gt;.LRN&lt;/a&gt;</msg>
   <msg key="Access">Πρόσβαση</msg>
@@ -24,7 +24,6 @@
   <msg key="All_Terms">Όλες οι περίοδοι</msg>
   <msg key="And">Και</msg>
   <msg key="archived">Παλαιότερα</msg>
-  <msg key="Are_you_sure_you_want_to_drop">Είστε σίγουροι για το κλείσιμο;</msg>
   <msg key="Ask_a_question">Υποβάλετε μια ερώτηση:</msg>
   <msg key="Change_Locale">Αλλαγή Γλώσσας</msg>
   <msg key="class_instances_pretty_name">Τάξη</msg>
@@ -63,8 +62,6 @@
   <msg key="Edit_Biography">Επεξεργασία Βιογραφικού</msg>
   <msg key="edit_subject">Επεξεργασία</msg>
   <msg key="email">E-mail:</msg>
-  <msg key="first_time_user_portlet_text">&lt;p&gt;Χρήστης για πρώτη φορά στο ALPE;&lt;/p&gt;&lt;p&gt;Διαβάστε το &lt;a href=&quot;help/GuidedTour&quot;&gt; γρήγορη επίσκεψη - περιήγηση&lt;/a&gt; στην πλατφόρμα του ALPE για να αποκτήσετε μια επαφή με τις περιοχές της.&lt;/p&gt;&lt;p&gt;Καλως ήρθατε και ελπίζουμε να περάσετε καλά.&lt;/p&gt;</msg>
-  <msg key="first_time_user_portlet_title">Χρήστης για πρώτη φορά</msg>
   <msg key="General_Site_Help">Βοήθεια γενικά για τον ιστοχώρο</msg>
   <msg key="goto_admin_pretty_name">Μετάβαση σε %admin_pretty_name%</msg>
   <msg key="goto_communities_pretty_name_portal">Μετάβαση στο portal %communities.pretty_name%</msg>

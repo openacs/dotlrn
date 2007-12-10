@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<message_catalog package_key="dotlrn" package_version="2.3.0" locale="en_US" charset="ISO-8859-1">
+<message_catalog package_key="dotlrn" locale="en_US" charset="ISO-8859-1">
 
   <msg key="A_copy_of">A copy of</msg>
   <msg key="A_dotlrn_Site">A &lt;a href=&quot;http://dotlrn.org&quot; title=&quot;The .LRN Project Homepage&quot;&gt;.LRN&lt;/a&gt; Site</msg>
@@ -81,6 +81,7 @@
   <msg key="Cancel_Dont_Send_email">Cancel, don't send email</msg>
   <msg key="cannot_be_removed">cannot be removed</msg>
   <msg key="Change_Locale">Change Locale</msg>
+  <msg key="Change_role">Change role</msg>
   <msg key="Choose_members_to_receive">Choose the members of %community_name% to receive this message:</msg>
   <msg key="Class_instance_key">Class key</msg>
   <msg key="Class_instance_key_help">Alternatively use the class key.</msg>
