@@ -4,7 +4,6 @@
      <link rel="stylesheet" type="text/css" href="/resources/calendar/calendar.css" media="all">
      @header_stuff;noquote@
      @header_customized_css;noquote@ 
-     @dotlrn_master__header_stuff;noquote@
   </property>
   <if @context@ not nil>
      <property name="context">@context;noquote@</property>

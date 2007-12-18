@@ -586,11 +586,3 @@ $recolor_css
 </STYLE>
 
 "
-
-# Bring in header stuff from portlets, e.g. dhtml tree javascript
-# from dotlrn-main-portlet.
-global dotlrn_master__header_stuff
-if { ![info exists dotlrn_master__header_stuff] } {
-    set dotlrn_master__header_stuff ""
-}
-
