@@ -1,10 +1,4 @@
 <master src="/www/site-compat">
-  <property name="header_stuff">
-    <link rel="stylesheet" type="text/css" href="/resources/dotlrn/dotlrn-master.css" media="all">
-    <link rel="stylesheet" type="text/css" href="/resources/calendar/calendar.css" media="all">
-    @header_stuff;noquote@
-    @header_customized_css;noquote@
-  </property>
   <if @context@ not nil><property name="context">@context;noquote@</property></if>
     <else><if @context_bar@ not nil><property name="context_bar">@context_bar;noquote@</property></if></else>
   <if @focus@ not nil><property name="focus">@focus;noquote@</property></if>
