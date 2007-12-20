@@ -36,7 +36,7 @@ set dotlrn_url [dotlrn::get_url]
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]
 set portlet_title [_ dotlrn.Courses]
-set title [parameter::get -localize -parameter admin_page_name]
+set title [_ dotlrn.Courses]
 set admin_p [dotlrn::admin_p]
 set admin_url "[dotlrn::get_url]/admin"
 set cockpit_url "[dotlrn::get_url]/admin/cockpit"
