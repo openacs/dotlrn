@@ -28,6 +28,13 @@
 <property name="title">@admin_pretty_name@</property>
 <property name="context_bar">@context_bar@</property>
 
+<div class="portlet-wrapper">
+	<div class="portlet-header">
+		<div class="portlet-title-no-controls">
+			@admin_pretty_name@
+		</div>
+	</div>
+	<div class="portlet">
 <ul>
   <li><a href="dotlrn-admins" title="#dotlrn.Administrators#">#dotlrn.Administrators#</a></li> 
   <li><a href="users" title="#dotlrn.users#">#dotlrn.users#</a></li>
@@ -50,5 +57,7 @@
         <li><a href="/acs-admin/" title="#dotlrn.goto_oacs_swa#">OpenACS Site-Wide Administration</a></li>
       </ul>
   </if>
+      </div>
+    </div>
 
 
