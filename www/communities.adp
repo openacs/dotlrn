@@ -23,9 +23,13 @@
 <property name="link_control_panel">0</property>
 
 
-<div class="portlet-title"><span>@portlet_title@</span>
-</div> <!-- class : portlet-title -->
-<div class="portlet">
-  <include src="/packages/dotlrn/www/dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@referer@" community_filter = "communities">
- </div> <!-- class : portlet -->
-<br>
+<div class="portlet-wrapper">
+  <div class="portlet-header">
+	<div class="portlet-title-no-controls">
+      @portlet_title@
+    </div> <!-- portlet-title -->
+  </div>
+  <div class="portlet">
+    <include src="/packages/dotlrn/www/dotlrn-main-portlet" show_buttons_p="1" show_archived_p=0 title="Groups" referer="@referer@" community_filter = "communities">
+   </div> <!-- portlet -->
+</div>

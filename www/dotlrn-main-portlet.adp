@@ -20,8 +20,9 @@
 
 
 <if @user_can_browse_p@ and @self_registration_p@>
-  <small>[&nbsp;<a href="@dotlrn_url@/manage-memberships" title="#dotlrn.lt_JoinDrop_a_Class_or_C#">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>&nbsp;]</small>
-  <br>
+    <div style="text-align: right">
+  <a href="@dotlrn_url@/manage-memberships" title="#dotlrn.lt_JoinDrop_a_Class_or_C#" class="button">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>
+    </div>
 </if>
 
 <if @communities:rowcount@ gt 0>
