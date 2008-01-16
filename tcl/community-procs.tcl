@@ -2249,13 +2249,13 @@ namespace eval dotlrn_community {
     ad_proc -public send_member_email {
         {-community_id:required}
         {-to_user:required}
-	{-type "on join"}
-	{-var_list ""}
-	{-override_email ""}
-	{-override_subject ""}
-	{-email_send_to ""}
-	{-override_enabled:boolean}
-	{-message_only:boolean}
+        {-type "on join"}
+        {-var_list ""}
+        {-override_email ""}
+        {-override_subject ""}
+        {-email_send_to ""}
+        {-override_enabled:boolean}
+        {-message_only:boolean}
     } {
         Send a membership email to the user
 
@@ -2271,10 +2271,10 @@ namespace eval dotlrn_community {
         @error
     } {
 
-	ns_log debug "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
+        ns_log debug "dotlrn_community::send_member_email \n community_id '${community_id}' to_user '${to_user}' type '${type}'"
 
-	set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
-	array set vars $var_list
+        set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
+        array set vars $var_list
         if {![db_0or1row member_email {*SQL*}] }  {
 
             # Only use the default mail if this is set in a parameter (off by default).
@@ -2294,7 +2294,7 @@ namespace eval dotlrn_community {
             }
         }
 
-	#This is a trick. If the subject is set, send the mail. Otherwise don't. 
+        #This is a trick. If the subject is set, send the mail. Otherwise don't. 
         # We gracefully assume that the subject will be empty if no mail should be send. Otherwise why
         # bother to create the welcome message in the first place (will be spam filtered...) MalteS
         if { ([info exists subject] && $subject ne "") || $override_subject ne "" } {
@@ -2335,27 +2335,18 @@ namespace eval dotlrn_community {
                 
                 set extra_headers [ns_set create]
                 
-                set message_html [ad_html_text_convert -from text/enhanced -to text/html $email]
-                #set message_html [ad_html_text_convert -from html -to html $email]
-                # some mailers are chopping off the last few characters.
-                append message_html "   "
-                set message_text [ad_html_text_convert -from text/html -to text/plain $message_html]
+                set message [ad_html_text_convert -from text/enhanced -to text/html $email]
+                set mime_type "text/html"
                 
-                # Send email in iso8859-1 charset
-                set message_data [build_mime_message $message_text $message_html]
-                ns_set put $extra_headers MIME-Version [ns_set get $message_data MIME-Version]
-                ns_set put $extra_headers Content-ID [ns_set get $message_data Content-ID]
-                ns_set put $extra_headers Content-Type [ns_set get $message_data Content-Type]
-                set message [ns_set get $message_data body]
-                
-                # both html and plain messages can now be sent the same way
-
                 acs_mail_lite::send \
                     -to_addr $to_addr \
                     -from_addr $from_addr \
                     -subject $subject \
                     -body $message \
-                    -extraheaders $extra_headers
+                    -mime_type $mime_type \
+                    -extraheaders $extra_headers \
+                    -use_sender
+
                 set return_val 1
             } else {
                 set return_val 0
@@ -2364,7 +2355,7 @@ namespace eval dotlrn_community {
             # We did not send the mail so we still succeed :). MS
             set return_val 1
         }
-	return $return_val
+        return $return_val
     }
     
     ad_proc -public set_site_template_id {
