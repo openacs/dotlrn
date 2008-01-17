@@ -190,7 +190,7 @@ ad_form -extend -name user_info -form {
                 }
             }
 
-            set convert_path [parameter::get -parameter ConvertBinPath -package_id [dotlrn::get_package_id] -default "/usr/local/bin/convert"]
+            set convert_path [parameter::get -parameter ConvertBinPath -package_id [dotlrn::get_package_id] -default "/usr/bin/convert"]
 
             if { [file exists $convert_path] } {
                 if { [catch {exec $convert_path -type [lindex [split $guessed_file_type /] 1] -scale 135 $tmp_filename $tmp_filename} errmsg] } {
