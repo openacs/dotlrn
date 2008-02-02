@@ -627,7 +627,7 @@ Thank you
   <msg key="Site_Template_Sitemaster">Master Template</msg>
   <msg key="Site_Template_Sitemaster_help">Provide the entire path for the master template (i.e. /packages/dotlrn/www/dotlrn-master )</msg>
   <msg key="Site_Template_Userchange">Can users change their Site Template?</msg>
-  <msg key="Site_Template_Userdefault">Defautl Site Template for users</msg>
+  <msg key="Site_Template_Userdefault">Default Site Template for users</msg>
   <msg key="Site_Templates">Site Templates</msg>
   <msg key="site_templates">Site Templates</msg>
   <msg key="Site_Templates_Template_AdminParams">Parameters Administration</msg>
