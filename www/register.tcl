@@ -72,6 +72,7 @@ if {[catch {
     switch -exact $join_policy {
         "open" {
             dotlrn_community::add_user -member_state approved $community_id $user_id
+	    dotlrn_community::send_member_email -community_id $community_id -to_user $user_id
         }
         "needs approval" {
             dotlrn_community::add_user -member_state "needs approval" $community_id $user_id
