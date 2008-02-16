@@ -20,8 +20,7 @@
                    tree_level(dotlrn_communities_all.tree_sortkey) as tree_level,
                    coalesce((select tree_level(dotlrn_community_types.tree_sortkey)
                         from dotlrn_community_types
-                        where dotlrn_community_types.community_type = dotlrn_communities_all.community_type), 0) as community_type_level,
-                   acs_permission__permission_p(dotlrn_communities_all.community_id, :user_id, 'admin') as admin_p
+                        where dotlrn_community_types.community_type = dotlrn_communities_all.community_type), 0) as community_type_level
             from dotlrn_communities_all,
                  dotlrn_member_rels_approved
             where dotlrn_communities_all.community_id = dotlrn_member_rels_approved.community_id

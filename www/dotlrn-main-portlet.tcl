@@ -60,7 +60,8 @@ if { $show_archived_p } {
 set comm_type ""
 set old_depth 0
 set depth 0
-db_multirow -extend {intra_type_ul_tags previous_type_ul_tags} communities select_communities {} {
+db_multirow -extend {admin_p intra_type_ul_tags previous_type_ul_tags} communities select_communities {} {
+    set admin_p [permission::permission_p -object_id $community_id -privilege admin]
     set intra_type_ul_tags ""
     set previous_type_ul_tags ""
     set new_type_p 0
