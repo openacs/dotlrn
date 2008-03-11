@@ -76,6 +76,8 @@ if {[form is_valid edit_class]} {
         class_key pretty_name description referer
 
     db_dml update_community_type {}
+    db_dml update_package_name {}
+    db_dml update_object_title {}
 
     ad_returnredirect $referer
     ad_script_abort

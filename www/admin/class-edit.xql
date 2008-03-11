@@ -20,4 +20,24 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="update_package_name">
+        <querytext>
+            update apm_packages
+                set instance_name = :pretty_name
+                where package_id = ( select package_id
+                        from dotlrn_classes_full
+                        where class_key = :class_key)
+        </querytext>
+    </fullquery>
+
+    <fullquery name="update_object_title">
+        <querytext>
+            update acs_objects
+                set title = :pretty_name
+                where object_id = ( select package_id
+                        from dotlrn_classes_full
+                        where class_key = :class_key)
+        </querytext>
+    </fullquery>
+
 </queryset>

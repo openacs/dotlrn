@@ -86,6 +86,8 @@ if {[form is_valid edit_department]} {
     db_transaction {
         db_dml update_department {}
         db_dml update_community_type {}
+        db_dml update_package_name {}
+        db_dml update_object_title {}
     }
 
     ad_returnredirect $referer
