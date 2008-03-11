@@ -46,7 +46,7 @@ set roles [dotlrn_community::get_roles -community_id $community_id]
 set rel_types_html ""
 
 foreach {rel_type role pretty_name pretty_plural} [eval concat $roles] {
-    append rel_types_html "<input type=checkbox value=$rel_type name=rel_types>  [lang::util::localize $pretty_plural] <br>"
+    append rel_types_html "<div><label for=\"rel_types_$role\"><input type=checkbox value=$rel_type name=rel_types id=\"rel_types_$role\">  [lang::util::localize $pretty_plural]</label></div>"
 
 }
 
@@ -65,17 +65,17 @@ template::list::create \
     -elements {
         first_names {
             label "\\#dotlrn.First_Name\\#"
-            html { width 200 }
+            html { style "width:200" }
             link_url_eval {$url}
         }
         last_name {
             label "\\#dotlrn.Last_Name\\#"
-            html { width 200 }
+            html { style "width:200" }
             link_url_eval {$url}
         }
         email {
             label "\\#dotlrn.Email_1\\#"
-            html { width 200 }
+            html { style "width:200" }
             display_template {
                 <a href="mailto:@current_members.email@">@current_members.email@</a>
             }
