@@ -29,24 +29,13 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="update_package_name">
+    <fullquery name="get_package_id">
         <querytext>
-            update apm_packages
-                set instance_name = :pretty_name
-                where package_id = ( select package_id
+                select package_id
                         from dotlrn_departments_full
-                        where department_key = :department_key)
+                        where department_key = :department_key
         </querytext>
     </fullquery>
 
-    <fullquery name="update_object_title">
-        <querytext>
-            update acs_objects
-                set title = :pretty_name
-                where object_id = ( select package_id
-                        from dotlrn_departments_full
-                        where department_key = :department_key)
-        </querytext>
-    </fullquery>
 
 </queryset>
