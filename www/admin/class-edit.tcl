@@ -77,10 +77,9 @@ if {[form is_valid edit_class]} {
 
     db_dml update_community_type {}
 
-    # renaming package and site nodes also
+    # renaming package
     set package_id [db_string get_package_id {}]
     apm_package_rename -instance_name $pretty_name -package_id $package_id
-    site_node::rename -node_id $package_id -name $pretty_name
 
     ad_returnredirect $referer
     ad_script_abort
