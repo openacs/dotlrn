@@ -40,6 +40,7 @@ set portal_id [dotlrn::get_portal_id -user_id [ad_get_user_id]]
 set user_id [auth::require_login -account_status closed]
 
 set title [parameter::get -localize -parameter admin_page_name]
+set context [list [parameter::get -localize -parameter admin_page_name]]
 set admin_p [dotlrn::admin_p]
 set admin_url "[dotlrn::get_url]/admin"
 set cockpit_url "[dotlrn::get_url]/admin/cockpit"

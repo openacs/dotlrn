@@ -37,6 +37,7 @@ set dotlrn_url [dotlrn::get_url]
 set user_id [ad_maybe_redirect_for_registration]
 set portlet_title [_ dotlrn.Courses]
 set title [_ dotlrn.Courses]
+set context [list [_ dotlrn.Courses]]
 set admin_p [dotlrn::admin_p]
 set admin_url "[dotlrn::get_url]/admin"
 set cockpit_url "[dotlrn::get_url]/admin/cockpit"

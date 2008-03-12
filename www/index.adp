@@ -20,5 +20,7 @@
 
 <master>
   <property name="portal_page_p">1</property>
+  <property name="title">@title@</property>
+  <property name="context">@context;noquote@</property>
 
 @rendered_page;noquote@

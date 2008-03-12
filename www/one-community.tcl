@@ -56,6 +56,12 @@ if {![dotlrn_community::member_p $community_id $user_id] && !$admin_p} {
     ]
 }
 
+set page_id [portal::get_page_id -portal_id $portal_id -sort_key $page_num]
+set page_name [portal::get_page_pretty_name -page_id $page_id]
+if { $page_num ne 0} {
+    set context [list [lang::util::localize $page_name]]
+}
+
 set rendered_page [dotlrn::render_page \
     -hide_links_p t \
     -page_num $page_num \

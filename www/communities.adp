@@ -21,7 +21,7 @@
 <master>
 <property name="title">@title@</property>
 <property name="link_control_panel">0</property>
-
+<property name="context">@context;noquote@</property>
 
 <div class="portlet-wrapper">
   <div class="portlet-header">

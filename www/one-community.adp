@@ -21,6 +21,9 @@
 <master>
   <property name="title">@title;noquote@</property>
   <property name="portal_page_p">1</property>
+  <if @context@ defined>
+    <property name="context">@context;noquote@</property>
+  </if>
 
 <p></p>
 

@@ -61,6 +61,7 @@ set title [db_string get_title {
     where portal_id = :portal_id
     and sort_key = :page_num
 } -default ""]
+set context [list [lang::util::localize $title]]
 set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p t $portal_id]
 
 ad_return_template
