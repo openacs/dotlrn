@@ -20,7 +20,7 @@
 
 <master>
 <property name="title">#dotlrn.Customize_Layout#</property>
-
+<property name="context">@context;noquote@</property>
 <p></p>
 
 @rendered_page;noquote@

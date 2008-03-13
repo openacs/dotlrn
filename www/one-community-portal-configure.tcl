@@ -41,7 +41,9 @@ set portal_id  [dotlrn_community::get_portal_id]
 
 # we are in a community
 set community_name [dotlrn_community::get_community_name $community_id]
-
+set context [list \
+                 [list "one-community-admin" [_ dotlrn.Admin]] \
+                 [_ dotlrn.Customize_Layout]]
 set rendered_page [portal::configure \
     -allow_theme_change_p 1 \
     [dotlrn_community::get_portal_id] \

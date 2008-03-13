@@ -28,7 +28,7 @@ ad_page_contract {
     @version $Id$
 
 }
-    
+
 if {[parameter::get -parameter community_type_level_p] == 1} {
 
     # at a community type level, redirect
@@ -58,6 +58,9 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
     
     set name [portal::get_name $portal_id]
+    set context [list \
+                     [list "control-panel" [parameter::get -localize -parameter admin_page_name]] \
+                     [_ dotlrn.Customize_Layout]]
     set rendered_page [portal::configure -allow_theme_change_p 0 $portal_id "index"]
 }
 
