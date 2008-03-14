@@ -31,5 +31,5 @@ set community_id [dotlrn_community::get_community_id]
 set user_id [ad_get_user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
-set context [list [list "one-community-admin" [_ dotlrn.control_panel]] [_ dotlrn.Manage_Applets]]
+set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Applets]]
 
