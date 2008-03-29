@@ -199,7 +199,7 @@
   <msg key="Drop">Drop</msg>
   <msg key="Drop_from_subgroup_name">Drop from subgroup %subgroup_name%</msg>
   <msg key="Drop_Membership">Drop Membership</msg>
-  <msg key="drop_membership_link">&lt;img src=&quot;/resources/dotlrn/drop.gif&quot; alt=&quot;Drop Membership&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=&quot;/resources/dotlrn/drop.gif&quot; alt=&quot;Drop Membership&quot; style=&quot;border:0&quot;&gt;</msg>
   <msg key="Drop_selected_members">Drop selected members</msg>
   <msg key="Edit">Edit</msg>
   <msg key="Edit_a_User">Edit a User</msg>
