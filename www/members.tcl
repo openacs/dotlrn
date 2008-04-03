@@ -97,7 +97,7 @@ set elm_list {
             display_template {
 		<if @members.portrait_p@ true or @members.bio_p@ true>
 		<a href="@members.member_url@">
-		<img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" border="0">
+		<img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" style="border:0">
 		</a>
 		</if>
 		<if @members.update_bio_p@ eq 1>
@@ -120,9 +120,7 @@ set elm_list {
         } email {
 	    label "[_ dotlrn.Email_1]"
 	    html "align left"
-	    display_template {
-		<a href="mailto:@members.email@">@members.email@</a>
-	    }
+            display_template {@members.email;noquote@}
 	} role {
 	    label "[_ dotlrn.Role]"
 	    html "align left"
@@ -157,6 +155,8 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 set member_page [acs_community_member_page]
 
 db_multirow -extend { update_bio_p member_url member_referer } members select_current_members {} {
+
+    set email [email_image::get_user_email -user_id $user_id -return_url $return_url]
     set member_url "$member_page?user_id=$user_id"
     set member_referer $referer
 
