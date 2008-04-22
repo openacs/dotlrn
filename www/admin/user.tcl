@@ -85,8 +85,10 @@ db_multirow member_subgroups select_member_subgroups {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-set site_wide_admin_p [acs_user::site_wide_admin_p -user_id $user_id]
-set dotlrn_admin_p [dotlrn::admin_p -user_id $user_id]
+set site_wide_admin_p [acs_user::site_wide_admin_p]
+# ER: this is silly, user has to be at least dotlrn admin to get 
+# to this page and dotlrn admin right is checked above
+set dotlrn_admin_p [dotlrn::admin_p]
 
 set administrative_action_p [expr {$site_wide_admin_p || $dotlrn_admin_p}]
 
@@ -105,7 +107,7 @@ set subcommunities_pretty_name [parameter::get -localize -parameter subcommuniti
 
 set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
 
-if {$site_wide_admin_p} {
+if { [acs_user::site_wide_admin_p -user_id $user_id] } {
     set toggle_value revoke
     set toggle_text [_ dotlrn.Revoke_site_wide_admin]
 } else {
