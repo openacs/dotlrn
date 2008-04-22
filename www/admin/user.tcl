@@ -85,8 +85,8 @@ db_multirow member_subgroups select_member_subgroups {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-set site_wide_admin_p [acs_user::site_wide_admin_p]
-set dotlrn_admin_p [dotlrn::admin_p]
+set site_wide_admin_p [acs_user::site_wide_admin_p -user_id $user_id]
+set dotlrn_admin_p [dotlrn::admin_p -user_id $user_id]
 
 set administrative_action_p [expr {$site_wide_admin_p || $dotlrn_admin_p}]
 
