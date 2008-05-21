@@ -34,7 +34,7 @@ set join_options [list [list [_ dotlrn.Open] open] [list "[_ dotlrn.Needs_Approv
 
 ad_form -name add_club -form {
     
-    {pretty_name:text(text),optional
+    {pretty_name:text(text)
 	{label "#dotlrn.Name#"}
 	{html {size 60 maxlength 100}}
 	{help_text "[_ dotlrn.Name_help]"}
