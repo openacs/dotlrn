@@ -116,6 +116,7 @@
   <msg key="clubs_pretty_name">Community</msg>
   <msg key="clubs_pretty_plural">Communities</msg>
   <msg key="Cockpit">Cockpit</msg>
+  <msg key="Collapse_list">Collapse list</msg>
   <msg key="Comma_Separated_Values">Comma Separated Values</msg>
   <msg key="Communities">Communities</msg>
   <msg key="Communities_Accesskey">6</msg>
@@ -229,6 +230,7 @@ notify this user.</msg>
   <msg key="End_date_help">Actual end date</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
   <msg key="Example_File">Example File</msg>
+  <msg key="Expand_list">Expand list</msg>
   <msg key="External_URL">External URL</msg>
   <msg key="External_URL_1">External URL:</msg>
   <msg key="Extra_Large">Extra Large</msg>

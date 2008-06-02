@@ -109,6 +109,7 @@
   <msg key="clubs_pretty_name">Comunidad</msg>
   <msg key="clubs_pretty_plural">Comunidades</msg>
   <msg key="Cockpit">Cockpit</msg>
+  <msg key="Collapse_list">Colapsar lista</msg>
   <msg key="Comma_Separated_Values">Exportar en formato CSV</msg>
   <msg key="Communities">Comunidades</msg>
   <msg key="Communities_Accesskey">6</msg>
@@ -216,6 +217,7 @@
   <msg key="End_date_help">Fecha de finalización actual</msg>
   <msg key="Error_sending_mail">Error al enviar el correo</msg>
   <msg key="Example_File">Archivo ejemplo</msg>
+  <msg key="Expand_list">Expandir lista</msg>
   <msg key="External_URL">Servidor web propio</msg>
   <msg key="External_URL_1">Servidor propio:</msg>
   <msg key="Extra_Large">Muy grande</msg>
