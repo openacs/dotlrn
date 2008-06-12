@@ -269,7 +269,7 @@ template::list::create -name non_member_classes -multirow non_member_classes -pa
             </else>
         }
     }
-    descrption {
+    description {
         html {align left style "width:30%"}
         label "\#dotlrn.Description\#"
         display_template {@non_member_classes.description;noquote@}
