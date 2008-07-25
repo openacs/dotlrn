@@ -15,16 +15,16 @@
 	  <a href="@dotlrn_admin_url@/departments" title="#dotlrn.departments_pretty_plural#">#dotlrn.departments_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
 	  
-	  <a href="@dotlrn_admin_url@/classes" title=""#dotlrn.classes_pretty_plural#">#dotlrn.classes_pretty_plural#</a>
+	  <a href="@dotlrn_admin_url@/classes" title="#dotlrn.classes_pretty_plural#">#dotlrn.classes_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
 	  
-	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="#dotlrn.Classes#">#dotlrn.Classes#
+	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="#dotlrn.Classes#">#dotlrn.Classes#</a>
 	  <span style="color: #cccccc;">|</span>
 	  
 	  <a href="@dotlrn_admin_url@/clubs" title="#dotlrn.clubs_pretty_plural#">#dotlrn.clubs_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
 
-	  <a href="@dotlrn_admin_url@/users" title=""#dotlrn.Users#">#dotlrn.Users#</a>
+	  <a href="@dotlrn_admin_url@/users" title="#dotlrn.Users#">#dotlrn.Users#</a>
 	  <span style="color: #cccccc;">|</span>
 
 	  <a href="@dotlrn_admin_url@/" title="Dotlrn admin">#dotlrn.Admin#</a>
