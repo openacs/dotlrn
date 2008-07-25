@@ -32,16 +32,16 @@
   
 	  <a href="@dotlrn_admin_url@/toolbar-actions?action=@info_action@&return_url=@return_url@" title="@info_title@">@info_title@</a>
 	</td>
-	
-	<form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
-	  <input type="hidden" name="action" value="search" />
-	    <td id="search">
-	      Search:
-	      <input name="keyword" onfocus="if(this.value=='.LRN Search')this.value='';" onblur="if(this.value=='')this.value='.LRN Search';" value=".LRN Search" />
-		in:<select name="search_type"><option value="users">Users</option><option value="departments">Departments</option><option value="subjects">Subjects</option><option value="classes">Classes</option></select>
-		<input type="submit" value="Search" />
-	    </td>
-	</form>
+    
+    <form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
+      <input type="hidden" name="action" value="search" />
+        <td id="search">
+          Search:
+          <input name="keyword" onfocus="if(this.value=='.LRN Search')this.value='';" onblur="if(this.value=='')this.value='.LRN Search';" value=".LRN Search" />
+        in:<select name="search_type"><option value="users">Users</option><option value="departments">Departments</option><option value="subjects">Subjects</option><option value="classes">Classes</option></select>
+        <input type="submit" value="Search" />
+        </td>
+    </form>
 
 	<td>
 	  <a href="@dotlrn_admin_url@/toolbar-actions?action=hide&return_url=@return_url@" style="font-size:80%;" title="Hide me">Hide me</a>
