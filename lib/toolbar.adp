@@ -35,10 +35,10 @@
         <td id="search">
             <form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
               <input type="hidden" name="action" value="search" />
-              Search:
-              <input name="keyword" onfocus="if(this.value=='.LRN Search')this.value='';" onblur="if(this.value=='')this.value='.LRN Search';" value=".LRN Search" />
-            in:<select name="search_type"><option value="users">Users</option><option value="departments">Departments</option><option value="subjects">Subjects</option><option value="classes">Classes</option></select>
-                <input type="submit" value="Search" />
+              <label for="keyword">#dotlrn.Search#</label>
+              <input name="keyword" onfocus="if(this.value=='#dotlrn.Search_Text#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Search_Text#';" value="#dotlrn.Search_Text#" />
+            in:<select name="search_type"><option value="users">#dotlrn.Users#</option><option value="departments">#dotlrn.departments_pretty_plural#</option><option value="subjects">#dotlrn.classes_pretty_plural#</option><option value="classes">#dotlrn.Classes#</option></select>
+                <input type="submit" value="#dotlrn.Search#" />
             </form>
         </td>
 	<td>
