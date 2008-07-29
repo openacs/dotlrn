@@ -133,7 +133,7 @@
 				      <form action="/api-doc/proc-search" method="get">
 				      <td valign="top">
 				       <b>OpenACS Tcl API Search</b>
-				       <input type="text" size="16" name="query_string" value=""/><br />
+				       <input type="text" size="16" name="query_string" value=""/><br>
 				       <input type="submit" value="All" name="search_type" />
 				       <input type="submit" value="Best" name="search_type" />
 				       <p><a href="/api-doc/proc-browse">Browse OpenACS Tcl API</a></p>
@@ -160,8 +160,8 @@
 				   <td colspan="2">
 				    <b>AOLserver Tcl API Search</b>
 				    <input type="text" size="6" name="tcl_proc" />
-				    <input type="submit" value="Go" /><br />
-				    (enter <em>exact</em> procedure name)<br />
+				    <input type="submit" value="Go" /><br>
+				    (enter <em>exact</em> procedure name)<br>
 				    <a href="http://www.aolserver.com/docs/devel/tcl/api/">Browse AOLserver Tcl API</a>
 				   </td>
 				   </form>
@@ -171,8 +171,8 @@
 				   <td colspan="2">
 				    <b>Tcl Documentation Search</b>
 				    <input type="text" size="6" name="tcl_proc" />
-				    <input type="submit" value="Go" /><br />
-				    (enter <em>exact</em> procedure name)<br />
+				    <input type="submit" value="Go" /><br>
+				    (enter <em>exact</em> procedure name)<br>
 				    <a href="http://tcl.tk/man/tcl8.3/TclCmd/contents.htm">Browse the Tcl documentation</a>
 				   </td>
 				   </form>
@@ -183,7 +183,7 @@
 				       <b>PostgreSQL 7.3 Search</b>
 				       <input type="hidden" name="ul" value="http://www.postgresql.org/docs/7.3/static/" />
 				       <input type="text" size="6" name="q" />
-				       <input type="submit" value="Go" /><br />
+				       <input type="submit" value="Go" /><br>
 				     	<a href="http://www.postgresql.org/docs/7.3/interactive/index.html">Browse the PostgreSQL 7.3 documentation</a>
 				    </td>
 				    </form>

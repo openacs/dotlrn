@@ -50,7 +50,7 @@ if {[empty_string_p $community_id]} {
 array set available_vars [lindex [callback dotlrn::member_email_available_vars -type $type -community_id $community_id] 0]
 set available_vars_help ""
 foreach var [array names available_vars] {
-    append available_vars_help "$var $available_vars($var) <br />"
+    append available_vars_help "$var $available_vars($var) <br>"
 }
 
 ad_form \

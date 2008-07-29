@@ -298,7 +298,7 @@ template::list::create -name non_member_classes -multirow non_member_classes -pa
 }
 
 db_multirow non_member_classes $non_member_query {} {
-    regsub -all {<p>} $description {<br />} description
+    regsub -all {<p>} $description {<br>} description
 }
 
 template::list::create -name non_member_clubs -multirow non_member_clubs -pass_properties { show_drop_button_p referer swa_p} -html {width 100%} -elements {
@@ -340,7 +340,7 @@ template::list::create -name non_member_clubs -multirow non_member_clubs -pass_p
 }
 
 db_multirow non_member_clubs select_non_member_clubs {} {
-    regsub -all {<p>} $description {<br />} description
+    regsub -all {<p>} $description {<br>} description
 }
     
 

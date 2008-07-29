@@ -28,7 +28,7 @@
 	</th>
       </tr>
     </table>
-    <br/>
+    <br>
 
 	<div style="text-align:center;">
 	  <form action="classes" method="GET">
@@ -43,7 +43,7 @@
       
       <if @classes:rowcount@ gt 0>
 
-	<br />
+	<br>
 
 	<listtemplate name="classes"></listtemplate>
       </if>
