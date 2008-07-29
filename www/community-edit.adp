@@ -41,7 +41,7 @@
       <table bgcolor=#99CCFF cellspacing=0 cellpadding=2 border=0>
       <tr>
         <td><b>#dotlrn.Header_Font#</b>&nbsp;&nbsp;</td>
-        <td nowrap><input type="text" name="header_font" size="50" value="@header_font@" /></td>
+        <td nowrap><input type="text" name="header_font" size="50" value="@header_font@"></td>
       </tr>
       
       <tr>
@@ -56,12 +56,12 @@
       <tr>
         <td><b>#dotlrn.Header_Font_Color#</b>&nbsp;&nbsp;</td>
         <td nowrap>
-        <input type="text" name="header_font_color" value="@header_font_color@" size="50" /></td>
+        <input type="text" name="header_font_color" value="@header_font_color@" size="50"></td>
       </tr>
 
      <tr>
            <td><b>#dotlrn.header_logo#</b>&nbsp;&nbsp;</td>
-           <td><img src=@header_url@></tr>
+           <td><img src="@header_url@"></tr>
       </tr>
 
      <tr>
@@ -72,11 +72,11 @@
       <tr>
         <td><b>#dotlrn.Header_Alternate_Text#</b>&nbsp;&nbsp;</td>
         <td nowrap>
-        <input type="text" name="header_alt_text" value="@header_alt_text@" size="50" /></td>
+        <input type="text" name="header_alt_text" value="@header_alt_text@" size="50"></td>
       </tr>
 
       <tr><td align=center colspan=2>
-          <input type="submit" name="preview_button" value="#dotlrn.Preview#" /></td>
+          <input type="submit" name="preview_button" value="#dotlrn.Preview#"></td>
       </tr>
     
     </table>

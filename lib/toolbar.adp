@@ -34,12 +34,12 @@
 	</td>
 	
 	<form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
-	  <input type="hidden" name="action" value="search" />
+	  <input type="hidden" name="action" value="search">
 	    <td id="search">
 	      Search:
-	      <input name="keyword" onfocus="if(this.value=='.LRN Search')this.value='';" onblur="if(this.value=='')this.value='.LRN Search';" value=".LRN Search" />
+	      <input name="keyword" onfocus="if(this.value=='.LRN Search')this.value='';" onblur="if(this.value=='')this.value='.LRN Search';" value=".LRN Search">
 		in:<select name="search_type"><option value="users">Users</option><option value="departments">Departments</option><option value="subjects">Subjects</option><option value="classes">Classes</option></select>
-		<input type="submit" value="Search" />
+		<input type="submit" value="Search">
 	    </td>
 	</form>
 
