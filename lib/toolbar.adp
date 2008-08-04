@@ -56,6 +56,7 @@
 	      <li><i>context_id:</i> <span> @package_id@ </span></li>
 	      <li><i>community_id:</i> <span> @community_id@  </span> </li>
 	      <li><i>portal_id:</i> <span> @portal_id@ </span> </li>
+          <li><i>package_id:</i> <span>@package_id@</span> </li>
 	    </ul>
 	  </td>
 	</tr>
