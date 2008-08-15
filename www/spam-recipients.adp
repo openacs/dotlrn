@@ -25,21 +25,19 @@
 <h1>#dotlrn.Choose_members_to_receive#</h1>
 
 <form method="post" action="spam">
-<div>
-<label for="spam_all">
-<input type=checkbox name=spam_all id="spam_all"> #dotlrn.Send_to_all#
-</label>
-</div>
-<p>#dotlrn.Send_to_the_following_roles#</p>
-@rel_types_html;noquote@
+  <div>
+    <label for="spam_all">
+    <input type=checkbox name=spam_all id="spam_all"> #dotlrn.Send_to_all#
+    </label>
+  </div>
+  <p>#dotlrn.Send_to_the_following_roles#</p>
+  @rel_types_html;noquote@
 
-@exported_vars;noquote@
-<p><input type=submit value="#dotlrn.Compose_bulk_message#"></p>
-<p>#dotlrn.Send_to_the_following_members#:</p>
+  @exported_vars;noquote@
+  <p><input type=submit value="#dotlrn.Compose_bulk_message#"></p>
+  <p>#dotlrn.Send_to_the_following_members#:</p>
 </form>
 
 <listtemplate name="current_members"></listtemplate>
-
-
 
 
