@@ -125,12 +125,15 @@ element create spam_message message \
     -widget textarea \
     -html {rows 10 cols 80}
 
+set format_options [list [list "[_ dotlrn.Preformatted_Text]" "pre"] \
+                         [list "[_ dotlrn.Plain_Text]" "plain"] \
+                         [list "[_ dotlrn.HTML]" "html"]]
 
 element create spam_message format \
-    -label "Format" \
+    -label [_ dotlrn.Format] \
     -datatype text \
     -widget select \
-    -options {{"Preformatted Text" "pre"} {"Plain Text" "plain"} {HTML "html"}}
+    -options $format_options
 
 
 element create spam_message send_date \
