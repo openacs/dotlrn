@@ -54,8 +54,8 @@ template::list::create \
     -elements {
         pretty_name {
             label "[_ dotlrn.community_header_name]"
-	    orderby_asc {pretty_name asc}
-	    orderby_desc {pretty_name desc}
+        orderby_asc {pretty_name asc}
+        orderby_desc {pretty_name desc}
             link_url_col url
         }
         description {
@@ -63,22 +63,22 @@ template::list::create \
         }
         n_members {
             label "[_ dotlrn.Members]"
-	    orderby_asc {n_members asc}
-	    orderby_desc {n_members desc}
+        orderby_asc {n_members asc}
+        orderby_desc {n_members desc}
         }
         actions {
             label "[_ dotlrn.Actions]"
-	    display_template {
-		<center>
-		<nobr>
-		<small>
-		<a href="@clubs.url@one-community-admin">#dotlrn.administer_link#</a> 
-		</small>
-		</nobr>
-		</center>
-	    }
-	}
-	
+            display_template {
+            <center>
+            <nobr>
+            <small>
+            <a href="@clubs.url@one-community-admin">#dotlrn.administer_link#</a> 
+            </small>
+            </nobr>
+            </center>
+            }
+        }
+    
     }
 
 db_multirow clubs select_clubs {} {
