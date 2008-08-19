@@ -120,7 +120,7 @@ set elm_list {
     } email {
         label "[_ dotlrn.Email_1]"
         html "align left"
-        display_template {@members.email;noquote@}
+        display_template {@members.email_pretty;noquote@}
     } role {
         label "[_ dotlrn.Role]"
         html "align left"
@@ -154,9 +154,9 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 
 set member_page [acs_community_member_page]
 
-db_multirow -extend { update_bio_p member_url member_referer } members select_current_members {} {
+db_multirow -extend { update_bio_p member_url member_referer email_pretty } members select_current_members {} {
 
-    set email [email_image::get_user_email -user_id $user_id -return_url $return_url]
+    set email_pretty [email_image::get_user_email -user_id $user_id -return_url $return_url]
     set member_url "$member_page?user_id=$user_id"
     set member_referer $referer
 
