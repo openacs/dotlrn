@@ -66,10 +66,10 @@ if {![exists_and_not_null referer]} {
 }
 
 set bio_attribute_id [db_string bio_attribute_id {
-    select attribute_id                           
-    from acs_attributes                           
-    where object_type = 'person'                  
-    and attribute_name = 'bio'                    
+    select attribute_id
+    from acs_attributes
+    where object_type = 'person'
+    and attribute_name = 'bio'
 }]    
 
 # Actions for Removing Members according to their role
@@ -84,70 +84,70 @@ if {$admin_p} {
     set bulk_actions_export_vars [list "user_id" "referer" "reset"]
     set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
     foreach role $rel_types {
-		# lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
-		lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "member-confirm?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+        # lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+        lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "member-confirm?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
     }
 }
 
 # Set the elements list
 set elm_list {
-        portrait {
-            label ""
-            html "align right"
-            display_template {
-		<if @members.portrait_p@ true or @members.bio_p@ true>
-		<a href="@members.member_url@">
-		<img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" style="border:0">
-		</a>
-		</if>
-		<if @members.update_bio_p@ eq 1>
-                <br><a href=bio-update?user_id=@members.user_id@&return_url=$return_url>Update bio</a>
-		</if>
+    portrait {
+        label ""
+        html "align right"
+        display_template {
+        <if @members.portrait_p@ true or @members.bio_p@ true>
+            <a href="@members.member_url@">
+                <img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" style="border:0">
+            </a>
+        </if>
+        <if @members.update_bio_p@ eq 1>
+            <br><a href=bio-update?user_id=@members.user_id@&return_url=$return_url>Update bio</a>
+        </if>
 
-            }
-        } last_name {
-            label "[_ acs-subsite.Last_name]"
-            html "align left"
-	    display_template {
-		<a href="@members.member_url@">@members.last_name;noquote@</a>
-	    }
-        } first_names {
-            label "[_ acs-subsite.First_names]"
-            html "align left"
-	    display_template {
-		<a href="@members.member_url@">@members.first_names@</a>
-	    }
-        } email {
-	    label "[_ dotlrn.Email_1]"
-	    html "align left"
-            display_template {@members.email;noquote@}
-	} role {
-	    label "[_ dotlrn.Role]"
-	    html "align left"
-	} 
+        }
+    } last_name {
+        label "[_ acs-subsite.Last_name]"
+        html "align left"
+        display_template {
+            <a href="@members.member_url@">@members.last_name;noquote@</a>
+        }
+    } first_names {
+        label "[_ acs-subsite.First_names]"
+        html "align left"
+        display_template {
+            <a href="@members.member_url@">@members.first_names@</a>
+        }
+    } email {
+        label "[_ dotlrn.Email_1]"
+        html "align left"
+        display_template {@members.email;noquote@}
+    } role {
+        label "[_ dotlrn.Role]"
+        html "align left"
+    } 
 }
 
 if {$admin_p} {
     lappend elm_list {action} {
-	    label "[_ dotlrn.Actions]"
-	    html "align left"
-	    display_template {
-		<if @members.user_id@ ne \"\">
-		<a href="member-confirm?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
-		<a href="member-add-2?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
-		</if>
-	    }
-	}
+        label "[_ dotlrn.Actions]"
+        html "align left"
+        display_template {
+        <if @members.user_id@ ne \"\">
+            <a href="member-confirm?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
+            <a href="member-add-2?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
+        </if>
+        }
+    }
 }
 
 # Build the list-builder list
 template::list::create -name members -multirow members -key user_id -actions $actions -bulk_actions $bulk_actions -bulk_action_export_vars $bulk_actions_export_vars -elements $elm_list -orderby {
-	last_name {orderby last_name}
-	first_names {orderby first_names}
-	email {orderby email}
-	role {orderby role}
+    last_name {orderby last_name}
+    first_names {orderby first_names}
+    email {orderby email}
+    role {orderby role}
 } -selected_format csv -formats {
-	csv { output csv }
+    csv { output csv }
 }
 
 set orderby [template::list::orderby_clause -name "members" -orderby]
@@ -192,10 +192,10 @@ db_multirow -extend { member_url pending_user_referer } pending_users select_pen
 
 if {$admin_p} {
     if { [template::multirow size pending_users] > 0 } {
-	set pend_actions [list "[_ dotlrn.Approve_all]" "approve?${user_ids}referer=$referer" "[_ dotlrn.Approve_all]" \
-			      "[_ dotlrn.Reject_all]" "reject?${user_ids}referer=$referer" "[_ dotlrn.Reject_all]"]
+        set pend_actions [list "[_ dotlrn.Approve_all]" "approve?${user_ids}referer=$referer" "[_ dotlrn.Approve_all]" \
+                "[_ dotlrn.Reject_all]" "reject?${user_ids}referer=$referer" "[_ dotlrn.Reject_all]"]
     } else {
-	set pend_actions ""
+        set pend_actions ""
     }
 } else {
     set pend_actions ""
@@ -203,33 +203,33 @@ if {$admin_p} {
 
 template::list::create -name pending_users -multirow pending_users -key user_id -actions $pend_actions -elements {
     last_name {
-	label "[_ acs-subsite.Last_name]"
-            html "align left"
-	display_template {
-	    <a href="@pending_users.member_url@">@pending_users.last_name;noquote@</a>
-	}
+        label "[_ acs-subsite.Last_name]"
+        html "align left"
+        display_template {
+            <a href="@pending_users.member_url@">@pending_users.last_name;noquote@</a>
+        }
     } first_names {
-	label "[_ acs-subsite.First_names]"
-            html "align left"
-	display_template {
-                <a href="@pending_users.member_url@">@pending_users.first_names@</a>
-	}
+        label "[_ acs-subsite.First_names]"
+        html "align left"
+        display_template {
+            <a href="@pending_users.member_url@">@pending_users.first_names@</a>
+        }
     } email {
-	label "[_ dotlrn.Email_1]"
-            html "align left"
-	display_template {
-                <a href="mailto:@pending_users.email@">@pending_users.email@</a>
-	}
+        label "[_ dotlrn.Email_1]"
+        html "align left"
+        display_template {
+            <a href="mailto:@pending_users.email@">@pending_users.email@</a>
+        }
     } role {
-	label "[_ dotlrn.Role]"
-            html "align left"
+        label "[_ dotlrn.Role]"
+        html "align left"
     } action {
-	label "[_ dotlrn.Actions]"
-            html "align left"
-	display_template {
-                <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Approve#</a> |
-                <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Reject#</a>
-	}
+        label "[_ dotlrn.Actions]"
+        html "align left"
+        display_template {
+            <a href="approve?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Approve#</a> |
+            <a href="reject?user_id=@pending_users.user_id@&referer=@pending_users.pending_user_referer@">#dotlrn.Reject#</a>
+        }
     }
 }
 
@@ -247,29 +247,29 @@ if {$subcomm_p} {
     }
 
     if {[form is_valid parent_users_form]} {
-	set user_ids_to_email [list]
+        set user_ids_to_email [list]
         foreach user $parent_user_list {
             set rel [element get_value parent_users_form "selected_user.[ns_set get $user user_id]"]
 
             if {![string match $rel none]} {
                 dotlrn_community::add_user -rel_type $rel $community_id [ns_set get $user user_id]
-		lappend user_ids_to_email [ns_set get $user user_id]
+                lappend user_ids_to_email [ns_set get $user user_id]
             }
         }
-	if {[llength $user_ids_to_email]} {
-	    set return_url [export_vars -base member-email-confirm {{user_id $user_ids_to_email} community_id}]
-	} else {
-	    set return_url [ns_conn url]
-	}
+        if {[llength $user_ids_to_email]} {
+            set return_url [export_vars -base member-email-confirm {{user_id $user_ids_to_email} community_id}]
+        } else {
+            set return_url [ns_conn url]
+        }
         ad_returnredirect $return_url
     }
 
 }
 
 if {[exists_and_not_null reset] && [exists_and_not_null reltype]} {
-set result ""
+    set result ""
     db_multirow reset_members select_members {} {
-	rp_form_put user_id $member_id
+        rp_form_put user_id $member_id
     }
     rp_form_put referer "one-community"
     rp_form_put community_id $community_id
