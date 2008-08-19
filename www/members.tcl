@@ -36,6 +36,8 @@ set approval_policy_p [string eq [group::join_policy -group_id $community_id] "n
 set referer [ns_conn url]
 set return_url "[ns_conn url]?[ns_conn query]"
 
+set csv_p [exists_and_not_null csv]
+
 set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
 
 if {!$site_wide_admin_p} {
@@ -79,7 +81,7 @@ set bulk_actions ""
 set bulk_actions_export_vars ""
 set actions ""
 
-if {$admin_p} {
+if {$admin_p && !$csv_p} {
     set bulk_actions [list "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]"]
     set bulk_actions_export_vars [list "user_id" "referer" "reset"]
     set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
@@ -105,6 +107,7 @@ set elm_list {
         </if>
 
         }
+        hide_p $csv_p
     } last_name {
         label "[_ acs-subsite.Last_name]"
         html "align left"
@@ -127,7 +130,7 @@ set elm_list {
     } 
 }
 
-if {$admin_p} {
+if {$admin_p && !$csv_p} {
     lappend elm_list {action} {
         label "[_ dotlrn.Actions]"
         html "align left"
@@ -164,7 +167,7 @@ db_multirow -extend { update_bio_p member_url member_referer email_pretty } memb
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-if { [exists_and_not_null csv] } {
+if { $csv_p } {
     template::list::write_output -name members
 }
 
