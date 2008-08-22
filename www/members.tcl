@@ -67,13 +67,6 @@ if {![exists_and_not_null referer]} {
     }
 }
 
-set bio_attribute_id [db_string bio_attribute_id {
-    select attribute_id
-    from acs_attributes
-    where object_type = 'person'
-    and attribute_name = 'bio'
-}]    
-
 # Actions for Removing Members according to their role
 set rel_types [dotlrn_community::get_roles -community_id $community_id]
 
@@ -97,15 +90,11 @@ set elm_list {
         label ""
         html "align right"
         display_template {
-        <if @members.portrait_p@ true or @members.bio_p@ true>
+        <if @members.portrait_p@ true>
             <a href="@members.member_url@">
                 <img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" title="#acs-subsite.lt_User_has_portrait_title#" style="border:0">
             </a>
         </if>
-        <if @members.update_bio_p@ eq 1>
-            <br><a href=bio-update?user_id=@members.user_id@&return_url=$return_url>Update bio</a>
-        </if>
-
         }
         hide_p $csv_p
     } last_name {
@@ -157,13 +146,12 @@ set orderby [template::list::orderby_clause -name "members" -orderby]
 
 set member_page [acs_community_member_page]
 
-db_multirow -extend { update_bio_p member_url member_referer email_pretty } members select_current_members {} {
+db_multirow -extend { member_url member_referer email_pretty } members select_current_members {} {
 
     set email_pretty [email_image::get_user_email -user_id $user_id -return_url $return_url]
     set member_url "$member_page?user_id=$user_id"
     set member_referer $referer
 
-    set update_bio_p $admin_p
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
