@@ -23,20 +23,23 @@
 <property name="link_all">1</property>
 <property name="context">@context;noquote@</property>
 
-<if @spam_p@ true>
-<p>
-  <a href="spam-recipients?community_id=@community_id@">#dotlrn.Email_Members#</a>
-</p>
-</if>
+<h1>#dotlrn.Manage_Membership#</h1>
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 0>
-<form method="get" action="member-add">
-   #dotlrn.Add_A_Member# <input type="text" name="search_text"><input
-   type="submit" value="#dotlrn.search#">
-   <input type="hidden" name="referer" value="@return_url@">
-</form>
-<a href="@add_member_url;noquote@" class="button">Create and add a member</a>
-<p />
+  <div style="padding: 5px 0px;">
+  <form method="get" action="member-add" class="inline-form">
+    <div><input type="hidden" name="referer" value="@return_url@"></div>
+    <div class="form-item-wrapper">      
+      <label for="search_text">
+        #dotlrn.Add_A_Member# 
+        <input type="text" name="search_text" id="search_text">
+      </label>
+    </div>
+    <div class="form-button">
+      <input type="submit" value="#dotlrn.search#">
+    </div>
+  </form>
+  </div>
 </if>
 
 
@@ -44,18 +47,15 @@
 
 <if @admin_p@ eq 1>
   <if @pending_users:rowcount@ gt 0 or @approval_policy_p@ eq 1>
-    <h1>#dotlrn.Membership_Requests#</h1>
+    <h2>#dotlrn.Membership_Requests#</h2>
     <listtemplate name="pending_users"></listtemplate>
   </if>
 </if>
 
 <if @admin_p@ eq 1 and @subcomm_p@ eq 1 and @n_parent_users@ gt 0>
 
-  <hr>
+  <h2>#dotlrn.Add_New_Members#</h2>
 
-  <h1>#dotlrn.Add_New_Members#</h1>
-
-  <blockquote>
     <p>
       #dotlrn.lt_The_following_members#
     </p>
@@ -63,17 +63,19 @@
     <p>
       #dotlrn.lt_First_check_the_box_o#
     </p>
-  </blockquote>
 
 <formtemplate id="parent_users_form">
-  <table width="75%" border="0">
+  <table>
 
-    <tr>
-      <td width="15%" align="center"><strong>#dotlrn.Dont_Add#</strong></td>
-      <td width="15%" align="center"><strong>#dotlrn.Member#</strong></td>
-      <td width="15%" align="center"><strong>#dotlrn.Administrator#</strong></td>
-      <td>&nbsp;</td>
-    </tr>
+    <thead>
+      <tr>
+        <th>#dotlrn.Dont_Add#</th>
+        <th>#dotlrn.Member#</th>
+        <th>#dotlrn.Administrator#</th>
+        <th>#dotlrn.Users#</th>
+      </tr>
+    </thead>
+    <tbody>
 
 <%
     foreach user $parent_user_list {
@@ -84,8 +86,8 @@
 %>
 
     <tr>
-<formgroup id="selected_user.@this_user_id@" cols="3">
-      <td width="15%" align="center">@formgroup.widget;noquote@</td>
+<formgroup id="selected_user.@this_user_id@">
+      <td align="center">@formgroup.widget;noquote@</td>
 </formgroup>
       <td>@this_last_name@, @this_first_names@</td>
     </tr>
@@ -94,13 +96,10 @@
     }
 %>
 
-    <tr><td colspan="4">&nbsp;</td></tr>
-
     <tr>
-      <td><input type="submit" value="#dotlrn.add_selected_members#"></td>
-      <td colspan="3">&nbsp;</td>
+      <td colspan="4" align="center"><input type="submit" value="#dotlrn.add_selected_members#"></td>
     </tr>
-
+    </tbody>
   </table>
 </formtemplate>
 

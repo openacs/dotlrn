@@ -152,6 +152,7 @@
   <msg key="Courses_Accesskey">5</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
+  <msg key="Create_and_add_a_member">Create and add a member</msg>
   <msg key="Create_Club">Create Club</msg>
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
@@ -231,6 +232,7 @@ notify this user.</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
   <msg key="Example_File">Example File</msg>
   <msg key="Expand_list">Expand list</msg>
+  <msg key="Export_members_list_to_CSV">Export members list to a CSV file</msg>
   <msg key="External_URL">External URL</msg>
   <msg key="External_URL_1">External URL:</msg>
   <msg key="Extra_Large">Extra Large</msg>

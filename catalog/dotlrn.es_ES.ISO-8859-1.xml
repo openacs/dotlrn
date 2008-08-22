@@ -142,6 +142,7 @@
   <msg key="Courses_Accesskey">5</msg>
   <msg key="Create_A_New_User">Crear un nuevo usuario</msg>
   <msg key="Create_a_Web_Log">Crear un weblog</msg>
+  <msg key="Create_and_add_a_member">Crear y añadir usuario</msg>
   <msg key="Create_Club">Crear comunidad</msg>
   <msg key="Created">Creado</msg>
   <msg key="CSV_File_Format">Formato CSV</msg>
@@ -218,6 +219,7 @@
   <msg key="Error_sending_mail">Error al enviar el correo</msg>
   <msg key="Example_File">Archivo ejemplo</msg>
   <msg key="Expand_list">Expandir lista</msg>
+  <msg key="Export_members_list_to_CSV">Exportar lista de usuarios a un fichero CSV</msg>
   <msg key="External_URL">Servidor web propio</msg>
   <msg key="External_URL_1">Servidor propio:</msg>
   <msg key="Extra_Large">Muy grande</msg>

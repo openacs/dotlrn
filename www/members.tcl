@@ -32,6 +32,7 @@ set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage
 set community_id [dotlrn_community::get_community_id]
 set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_get_user_id] -community_id $community_id]
 set approval_policy_p [string eq [group::join_policy -group_id $community_id] "needs approval"]
+set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 
 set referer [ns_conn url]
 set return_url "[ns_conn url]?[ns_conn query]"
@@ -44,19 +45,6 @@ if {!$site_wide_admin_p} {
     set admin_p [dotlrn::user_can_admin_community_p -user_id $my_user_id -community_id $community_id]
 } else {
     set admin_p 1
-}
-
-# make it so that only course admins 
-# and site wide admins can read this page 
-# if { !$admin_p } {
-#        ad_return_forbidden  "Permission Denied"  "<blockquote>
-#    You don't have permission to view this page.
-#    </blockquote>"
-#        ad_script_abort
-#}
-
-if {$admin_p} {
-    set add_member_url [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }]
 }
 
 if {![exists_and_not_null referer]} {
@@ -77,10 +65,20 @@ set actions ""
 if {$admin_p && !$csv_p} {
     set bulk_actions [list "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]"]
     set bulk_actions_export_vars [list "user_id" "referer" "reset"]
-    set actions [list "CSV" "members?csv=yes" "[_ dotlrn.Comma_Separated_Values]"]
+
+    if { !$subcomm_p } {
+        lappend actions [_ dotlrn.Create_and_add_a_member] [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }] [_ dotlrn.Create_and_add_a_member]
+    }
+
+    if { $spam_p } {
+        lappend actions [_ dotlrn.Email_Members] [export_vars -base "spam-recipients" {community_id}] [_ dotlrn.Email_Members]
+    }
+
+    lappend actions "CSV" "members?csv=yes" [_ dotlrn.Export_members_list_to_CSV]
+
     foreach role $rel_types {
-        # lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "members?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
-        lappend actions "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" "member-confirm?reset=1&reltype=[lindex $role 0]" "[lang::util::localize [lindex $role 2]]"
+        set action_label "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" 
+        lappend actions  $action_label "member-confirm?reset=1&reltype=[lindex $role 0]" $action_label
     }
 }
 
@@ -125,8 +123,8 @@ if {$admin_p && !$csv_p} {
         html "align left"
         display_template {
         <if @members.user_id@ ne \"\">
-            <a href="member-confirm?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
-            <a href="member-add-2?user_id=@members.user_id@&referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
+            <a href="member-confirm?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
+            <a href="member-add-2?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
         </if>
         }
     }
@@ -158,19 +156,6 @@ db_multirow -extend { member_url member_referer email_pretty } members select_cu
 if { $csv_p } {
     template::list::write_output -name members
 }
-
-# # Bulk action User Admin Page
-# # Depending on the community_type, we have allowable rel_types
-# set rel_types [dotlrn_community::get_roles -community_id $community_id]
-# set selection "<select name=\"rel_type\">"
-# foreach role $rel_types {
-#     append selection "<option value=\"[lindex $role 0]\">[lang::util::localize [lindex $role 2]]</option>"
-# }
-# append selection "</select>"
-# set size [multirow size members]
-# if { $size > 0 } {
-#     multirow append members "" "" "" "" "" $selection
-# }
 
 set user_ids ""
 db_multirow -extend { member_url pending_user_referer } pending_users select_pending_users {} {
@@ -223,8 +208,6 @@ template::list::create -name pending_users -multirow pending_users -key user_id 
         }
     }
 }
-
-set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 
 if {$subcomm_p} {
 
