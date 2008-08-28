@@ -40,6 +40,11 @@ foreach applet_key $list_of_active_applets {
     template::multirow append active_applets $applet_key [dotlrn_community::applet_call $applet_key GetPrettyName]
 }
 
+set active_applets_list [template::util::multirow_to_list active_applets]
+set active_applets_list_localized [lang::util::localize_list_of_lists -list $active_applets_list]
+template::util::list_to_multirow active_applets $active_applets_list_localized
+template::multirow sort active_applets -ascii -increasing applet_pretty_name
+
 # List all applets
 set list_of_applets [dotlrn_applet::list_applets]
 
@@ -50,6 +55,10 @@ foreach applet_key $list_of_applets {
 	template::multirow append all_applets $applet_key [dotlrn_community::applet_call $applet_key GetPrettyName]
     }
 }
+set all_applets_list [template::util::multirow_to_list all_applets]
+set all_applets_list_localized [lang::util::localize_list_of_lists -list $all_applets_list]
+template::util::list_to_multirow all_applets $all_applets_list_localized
+template::multirow sort all_applets -ascii -increasing applet_pretty_name
 
 ad_return_template
 
