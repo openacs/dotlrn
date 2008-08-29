@@ -35,54 +35,53 @@ foreach uid $user_id {
 
     set skip_p 0
     if {$member_p} {
-	# get the rel_info
-	db_1row get_rel_info ""
-        
+        # get the rel_info
+        db_1row get_rel_info ""
+
         # if new rel type is same as old then
         # no sense in doing anything
-	if {$rel_type eq $old_rel_type} {
+        if {$rel_type eq $old_rel_type} {
             set skip_p 1
         }
-        
+
         if {!$skip_p} {
             # this is just a change rel
             # so we do not want to call remove_user
             # as that removes subgroup rels as well
             relation_remove $rel_id
             util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
-	    set change_rel_p 1
+            set change_rel_p 1
         }
     } else {
-	# if the user is not a member
-	# then we could not possibly be
-	# changing the rel_type so set to 0
-	set change_rel_p 0
+        # if the user is not a member
+        # then we could not possibly be
+        # changing the rel_type so set to 0
+        set change_rel_p 0
     }
-    
+
     # Add the relation
     if {!$skip_p} {
-	if {$change_rel_p} {
-	    # if this is just a change rel then
-	    # no need to call add_user as the user
-	    # has already been added before and
-	    # add_user_to_community should have
-	    # taken care of everything
-	    set extra_vars [ns_set create]
-            ns_set put $extra_vars user_id $uid
-            ns_set put $extra_vars community_id $community_id
-	    ns_set put $extra_vars class_instance_id $community_id
+        if {$change_rel_p} {
+            # if this is just a change rel then
+            # no need to call add_user as the user
+            # has already been added before and
+            # add_user_to_community should have
+            # taken care of everything
+            set extra_vars [ns_set create]
+                ns_set put $extra_vars user_id $uid
+                ns_set put $extra_vars community_id $community_id
+            ns_set put $extra_vars class_instance_id $community_id
 
-	    relation_add \
-		    -member_state "approved" \
-		    -extra_vars $extra_vars \
-		    $rel_type \
-		    $community_id \
-		    $uid
-	    util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
-	} else {
-	    dotlrn_community::add_user -rel_type $rel_type $community_id $uid
-	}
+            relation_add \
+                -member_state "approved" \
+                -extra_vars $extra_vars \
+                $rel_type \
+                $community_id \
+                $uid
+            util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
+        } else {
+            dotlrn_community::add_user -rel_type $rel_type $community_id $uid
+        }
     }
 }
 ad_returnredirect $referer
-
