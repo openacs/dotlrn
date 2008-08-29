@@ -30,8 +30,8 @@ ad_page_contract {
 set community_id [dotlrn_community::get_community_id]
 # See if the user is already in the group
 
-foreach uid $user_id {
-    set member_p [dotlrn_community::member_p $community_id $uid]
+foreach member_id $user_id {
+    set member_p [dotlrn_community::member_p $community_id $member_id]
 
     set skip_p 0
     if {$member_p} {
@@ -68,7 +68,7 @@ foreach uid $user_id {
             # add_user_to_community should have
             # taken care of everything
             set extra_vars [ns_set create]
-                ns_set put $extra_vars user_id $uid
+                ns_set put $extra_vars user_id $member_id
                 ns_set put $extra_vars community_id $community_id
             ns_set put $extra_vars class_instance_id $community_id
 
@@ -77,10 +77,10 @@ foreach uid $user_id {
                 -extra_vars $extra_vars \
                 $rel_type \
                 $community_id \
-                $uid
+                $member_id
             util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         } else {
-            dotlrn_community::add_user -rel_type $rel_type $community_id $uid
+            dotlrn_community::add_user -rel_type $rel_type $community_id $member_id
         }
     }
 }
