@@ -30,7 +30,7 @@
 	  <a href="@dotlrn_admin_url@/" title="Dotlrn admin">#dotlrn.Admin#</a>
 	  <span style="color: #cccccc;">|</span>
   
-	  <a href="@dotlrn_admin_url@/<% export_vars -base "toolbar-actions" {{action $info_action} return_url} %>" title="@info_title@">@info_title@</a>
+	  <a href="@info_url@" title="@info_title@">@info_title@</a>
 	</td>
     <td id="search">
         <form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
@@ -42,7 +42,7 @@
         </form>
     </td>
 	<td>
-	  <a href="@dotlrn_admin_url@/<% export_vars -base "toolbar-actions" {{action hide} return_url} %>" style="font-size:80%;" title="Hide me">Hide me</a>
+	  <a href="@hide_me_url@" style="font-size:80%;" title="Hide me">Hide me</a>
 	</td>	
       </tr>
       
