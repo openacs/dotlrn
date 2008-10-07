@@ -31,7 +31,7 @@
 <div class="portlet-wrapper">
 	<div class="portlet-header">
 		<div class="portlet-title-no-controls">
-			@admin_pretty_name@
+			<h1>@admin_pretty_name@</h1>
 		</div>
 	</div>
 	<div class="portlet">
