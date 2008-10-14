@@ -22,11 +22,9 @@
 <property name="title">#dotlrn.Edit_a_User#</property>
 <property name="context_bar">@context_bar@</property>
 
-#dotlrn.Youre_editing# <strong>@first_names@ @last_name@</strong>.
-<p>
-<font color=red>#dotlrn.Note_if_you_make#</font>
+<p>#dotlrn.Youre_editing# <strong>@first_names@ @last_name@</strong>.</p>
 
-<p></p>
+<p style="color:red">#dotlrn.Note_if_you_make#</p>
 
 <formtemplate id="edit_user"></formtemplate>
 

@@ -22,10 +22,8 @@
 <property name="title">#dotlrn.lt_Add_community_name_Me#</property>
 <property name="context_bar">@context_bar@</property>
 
-<strong><font color=red>#dotlrn.Note#</font></strong> 
+<p style="color:red"><strong>#dotlrn.Note#</strong></p>
 
-#dotlrn.lt_This_action_will_take_1#
-
-<p></p>
+<p>#dotlrn.lt_This_action_will_take_1#</p>
 
 <formtemplate id="select_community"></formtemplate>

@@ -47,7 +47,7 @@
 @communities.intra_type_ul_tags;noquote@
 
           <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
-	<if @communities.archived_p@><font color=red>Archived</font></if>
+	<if @communities.archived_p@><span style="color:red">Archived</span></if>
 	<if @show_buttons_p@ eq 1>
            <if @show_drop_button_p@ eq 1>
 		&nbsp; <small> 

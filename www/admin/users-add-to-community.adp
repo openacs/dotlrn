@@ -23,10 +23,9 @@
 <property name="context_bar">@context_bar@</property>
 
 
-<strong><font color=red>#dotlrn.Note#</font></strong> 
-#dotlrn.lt_This_action_will_take# <strong><%= [expr [llength $users] * 3] %></strong> #dotlrn.seconds#
+<p style="color:red"><strong>#dotlrn.Note#</strong></p>
 
-<p></p>
+<p>#dotlrn.lt_This_action_will_take# <strong><%= [expr [llength $users] * 3] %></strong> #dotlrn.seconds#</p>
 
 <formtemplate id="select_community"></formtemplate>
 
