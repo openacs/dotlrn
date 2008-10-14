@@ -614,6 +614,7 @@
   <msg key="the_format_of_email_domains">Introducir una lista de dominios separados por comas. Por ejemplo:
 </msg>
   <msg key="The_name">El nombre</msg>
+  <msg key="The_users_have_been_added_">El usuario ha sido añadido a la comunidad seleccionada. Puede enviarle un correo electrónico para darle la bienvenida a la mencionada comunidad.</msg>
   <msg key="there_are_no_users_matching">No hay usuarios que coincidan con %search_text%.</msg>
   <msg key="this_user_is_deleted">este usuario ha sido borrado</msg>
   <msg key="To">A</msg>
