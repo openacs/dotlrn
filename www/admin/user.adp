@@ -124,7 +124,6 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
 </ul>
 
 <if @member_classes:rowcount@ gt 0>
-  <blockquote>
     <h4>#dotlrn.class_memberships#</h4>
 
     <ul>
@@ -136,11 +135,9 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
       </li>
 </multiple>
     </ul>
-  </blockquote>
 </if>
 
 <if @member_clubs:rowcount@ gt 0>
-  <blockquote>
     <h4>#dotlrn.community_memberships#</h4>
 
     <ul>
@@ -151,11 +148,9 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
       </li>
 </multiple>
     </ul>
-  </blockquote>
 </if>
 
 <if @member_subgroups:rowcount@ gt 0>
-  <blockquote>
     <h4>#dotlrn.subcommunity_memberships#</h4>
 
     <ul>
@@ -166,7 +161,6 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
       </li>
 </multiple>
     </ul>
-  </blockquote>
 </if>
 
   <ul>

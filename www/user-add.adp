@@ -25,8 +25,9 @@
 
 <h1>#dotlrn.lt_Add_a_new_user_to_Slo#</h1>
 <if @community_p@ eq 1>
-<blockquote>
+<p>
  #dotlrn.lt_Note_use_this_feature#
+</p>
 <ol>
 	<li>#dotlrn.lt_If_this_person_is_a_M#
 	<li>#dotlrn.lt_Be_sure_that_the_pers#
@@ -44,7 +45,6 @@
 </else>      
 </ul>
 </ol>
-</blockquote>
 </if>
 
 <include src="/packages/acs-subsite/lib/user-new" next_url="@next_url;noquote@" self_register_p="0"/>

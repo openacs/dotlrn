@@ -29,12 +29,12 @@
 
 <if @member_state@ eq "deleted">
 
-  <blockquote><font color="red">#dotlrn.this_user_is_deleted#</font></blockquote>
+  <p><strong>#dotlrn.this_user_is_deleted#</strong></p>
 
 </if>
 <else><if @member_state@ eq "banned">
 
-  <blockquote><font color="red">#dotlrn.lt_this_user_is_deleted_#</font></blockquote>
+  <p><strong>#dotlrn.lt_this_user_is_deleted_#</strong></p>
 
 </if></else>
 

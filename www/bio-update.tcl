@@ -48,7 +48,7 @@ ns_log Notice " HAM : $user_id "
 if { [exists_and_not_null user_id ] } {
 	if { ![acs_user::site_wide_admin_p -user_id [ad_conn user_id] ] } {
 		if { $user_id != [ad_conn user_id] } {
-			ad_return_forbidden  "Permission Denied"  "<blockquote> You don't have permission to view this page. </blockquote>"
+			ad_return_forbidden  "Permission Denied"  "<p> You don't have permission to view this page. </p>"
         		ad_script_abort
 		} else {
 			acs_user::get -user_id $user_id -array user -include_bio	
