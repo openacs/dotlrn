@@ -311,7 +311,7 @@
   <msg key="lt_Communitys_Web_Addres">Dirección web de la comunidad</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% actuales</msg>
   <msg key="lt_Delete_class">Borrar asignatura</msg>
-  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;No use etiquetas P para los párrafos&lt;/font&gt;</msg>
+  <msg key="lt_do_not_use_p_tags">No use etiquetas P para los párrafos</msg>
   <msg key="lt_Do_you_really_want_to">¿Desea realmente borrar los miembros siguientes?</msg>
   <msg key="lt_Do_you_really_want_to_1">¿Desea realmente borrar estos %num_users% usuarios?</msg>
   <msg key="lt_dotLRN_properties_for">Propiedades dotLRN para este usuario.</msg>

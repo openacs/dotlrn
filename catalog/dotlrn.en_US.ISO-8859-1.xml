@@ -329,7 +329,7 @@ notify this user.</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
   <msg key="lt_Delete_class">Delete subject</msg>
-  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;Do not use P tags for paragraphs&lt;/font&gt;</msg>
+  <msg key="lt_do_not_use_p_tags">Do not use P tags for paragraphs</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
@@ -676,8 +676,8 @@ Thank you
   <msg key="the_format_of_email_domains">The format of this value is a comma-separated list of domains (usually
   preceded by the *@ string which match
   &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). For example, you might use:</msg>
-  <msg key="The_users_have_been_added_">The user(s) have been added to the selected community. You can send an email to welcome the users to the community.</msg>
   <msg key="The_name">The name</msg>
+  <msg key="The_users_have_been_added_">The user(s) have been added to the selected community. You can send an email to welcome the users to the community.</msg>
   <msg key="there_are_no_users_matching">There are no users matching %search_text%.</msg>
   <msg key="this_user_is_deleted">this user is deleted</msg>
   <msg key="To">Member types to email:</msg>
