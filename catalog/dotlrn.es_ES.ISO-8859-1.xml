@@ -554,6 +554,8 @@
   <msg key="show_lrn_toolbar">Mostrar bara .LRN</msg>
   <msg key="silver">plateado</msg>
   <msg key="Site-wide_Admin">¿Administrador del sitio?</msg>
+  <msg key="Site_Map">Mapa del sitio</msg>
+  <msg key="Site_Map_Title">Ir al Mapa del Sitio</msg>
   <msg key="Site_Template_Add">Añadir una nueva plantilla</msg>
   <msg key="Site_Template_Adding">Añadir plantilla general</msg>
   <msg key="Site_Template_AdminParams">Parámetros de administración para plantillas generales</msg>

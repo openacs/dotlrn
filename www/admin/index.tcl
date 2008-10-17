@@ -26,7 +26,7 @@ dotlrn::require_admin
 
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
-set admin_pretty_name [parameter::get -localize -parameter dotlrn_admin_pretty_name]
+set admin_pretty_name [_ dotlrn.Administration]
 set context_bar {}
 
 # Some en_US messages reuse these configurable pretty names

@@ -61,9 +61,7 @@ set notifications_url [lindex [site_node::get_children -node_id [subsite::get_el
 
 set system_name [ad_system_name]
 
-if { [llength [lang::system::get_locales]] > 1 } { 
-    set change_locale_url [apm_package_url_from_key "acs-lang"]
-}
+set change_locale_url [apm_package_url_from_key "acs-lang"]
 
 set whos_online_url "[subsite::get_element -element url]shared/whos-online"
 set make_visible_url "[subsite::get_element -element url]shared/make-visible"

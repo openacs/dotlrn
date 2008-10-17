@@ -37,19 +37,20 @@
 			<if @account_status@ eq "closed">
 				#acs-subsite.Account_closed_workspace_msg#
 			</if>
-				<if @allowed_to_change_site_template_p@>
-					<a href="change-site-template?referer=@dotlrn_url@/control-panel" title="#dotlrn.Customize_Template#" class="button">#dotlrn.Customize_Template#</a>
-				</if>
-				
-				<if @change_locale_url@ not nil>
-					<a href="@change_locale_url@" title="#acs-subsite.Change_locale_label#" class="button">#acs-subsite.Change_locale_label#</a>
-				</if>
 
 				<if @notifications_url@ not nil>
 					<a href="@notifications_url@" title="#acs-subsite.Manage_your_notifications#" class="button">#acs-subsite.Manage_your_notifications#</a>
 				</if>
 
+				<if @allowed_to_change_site_template_p@>
+					<a href="change-site-template?referer=@dotlrn_url@/control-panel" title="#dotlrn.Customize_Template#" class="button">#dotlrn.Customize_Template#</a>
+				</if>
+				
 				<a href="configure" title="#dotlrn.Customize_Layout#" class="button">#dotlrn.Customize_Layout#</a>
+
+				<if @change_locale_url@ not nil>
+					<a href="@change_locale_url@" title="#acs-subsite.Change_locale_label#" class="button">#acs-subsite.Change_locale_label#</a>
+				</if>
 
 				<a href="../user/password-update" title="#acs-subsite.Change_my_Password#" class="button">#acs-subsite.Change_my_Password#</a>
 
@@ -57,9 +58,6 @@
 					<a href="/pvt/unsubscribe" title="#acs-subsite.Close_your_account#" class="button">#acs-subsite.Close_your_account#</a>
 				</if>
 
-				<if @admin_p@>
-					<a href="@admin_url@" title="#dotlrn.goto_admin_pretty_name#" class="button">@admin_pretty_name@</a>
-				</if>
 		</div> <!-- /portlet -->
 	</div><!-- /portlet-wrapper -->
 

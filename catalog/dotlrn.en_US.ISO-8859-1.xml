@@ -616,6 +616,8 @@ Thank you
   <msg key="show_lrn_toolbar">Show .LRN Toolbar</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
+  <msg key="Site_Map">Site Map</msg>
+  <msg key="Site_Map_Title">Go to the Site Map</msg>
   <msg key="Site_Template_Add">Add New Site Template</msg>
   <msg key="Site_Template_Adding">Add Site Template</msg>
   <msg key="Site_Template_AdminParams">Admin Parameters for Site Templating</msg>
