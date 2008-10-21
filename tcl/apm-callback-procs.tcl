@@ -35,6 +35,10 @@ ad_proc -private dotlrn::apm::after_install {
         -package_key acs-kernel \
         -parameter HomeURL \
         -value /dotlrn/control-panel
+
+       # Make sure that privacy is turned on
+       acs_privacy::privacy_control_set 1
+	
 }
 
 
@@ -70,10 +74,6 @@ ad_proc -private dotlrn::apm::after_instantiate {
        parameter::set_value -package_id $package_id \
 	   -parameter  "UserDefaultSiteTemplate_p" \
 	   -value $site_template_id
-
-       # Make sure that privacy is turned on
-       acs_privacy::privacy_control_set 1
-	
 }
 
 
