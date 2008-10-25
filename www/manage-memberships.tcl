@@ -72,7 +72,7 @@ set departments [db_list_of_lists select_departments_for_select_widget {
     order by dotlrn_departments_full.pretty_name,
              dotlrn_departments_full.department_key
 }]
-set departments [linsert $departments 0 {All ""}]
+set departments [linsert $departments 0 [list [_ dotlrn.All] ""]]
 set departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]
 
 set terms [db_list_of_lists select_terms_for_select_widget {
@@ -82,7 +82,7 @@ set terms [db_list_of_lists select_terms_for_select_widget {
     order by dotlrn_terms.start_date,
              dotlrn_terms.end_date
 }]
-set terms [linsert $terms 0 {All -1}]
+set terms [linsert $terms 0 [list [_ dotlrn.All] -1]]
 
 form create member_form
 
@@ -359,5 +359,9 @@ set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key mem
 set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
 set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
+
+# Page properties
+set doc(title) [_ dotlrn.Manage_Memberships]
+set context [list $doc(title)]
 
 ad_return_template

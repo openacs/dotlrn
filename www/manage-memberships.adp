@@ -19,8 +19,8 @@
 %>
 
   <master>
-    <property name="title">#dotlrn.Manage_Memberships#</property>
-    <property name="context_bar">#dotlrn.Manage_Memberships#</property>
+    <property name="&doc">doc</property>
+    <property name="context">@context@</property>
 
     <h1>#dotlrn.AddDrop_Memberships#</h1>
 
@@ -87,5 +87,4 @@
       <else>
         <p><small>#dotlrn.no_clubs#</small></p>
       </else>
-
     </if>
