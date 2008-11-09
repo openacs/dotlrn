@@ -21,6 +21,7 @@
 <master>
 <property name="title">#dotlrn.Add_A_Member#</property>
 <property name="context">#dotlrn.Add_A_Member#</property>
+<property name="focus">member-add-2.rel_type</property>
 
 <h1>#dotlrn.Add_A_Member#</h1>
 
@@ -33,10 +34,10 @@
 #dotlrn.lt_You_are_adding_strong#<p>
 </else>
 
-<form method="get" action="member-add-3">
+<form method="get" action="member-add-3" name="member-add-2">
   <input type="hidden" name="user_id" value="@user_id@">
   <input type="hidden" name="referer" value="@referer@">
-  #dotlrn.Role#
+  <label for="rel_type">#dotlrn.Role#</label>
   <select name="rel_type">
  
   <if @allowed_to_add_student@ false and @dotlrn_admin@ false>

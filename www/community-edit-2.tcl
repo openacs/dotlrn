@@ -122,13 +122,10 @@ if { $tmp_size > 0 } {
               <li>[_ dotlrn.lt_You_tried_to_upload_a]
               <li>[_ dotlrn.lt_You_double-clicked_th]
             </ul>
-           <p>
-            [_ dotlrn.lt_Here_is_the_actual_er]
-              <blockquote>
+           <p>[_ dotlrn.lt_Here_is_the_actual_er]</p>
                 <pre>
                   $errmsg
-                </pre>
-              </blockquote>"
+                </pre>"
         ad_script_abort
     }
 } else {

@@ -26,7 +26,7 @@
 <div class="portlet-wrapper">
 	<div class="portlet-header">
 		<div class="portlet-title-no-controls">
-			@portlet_title@
+			<h1>@portlet_title@</h1>
 		</div>
 	</div>
 	<div class="portlet">

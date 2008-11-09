@@ -17,6 +17,10 @@ if { $show_p } {
 	set info_action "info_show"
 	set info_title "Show Xtra Info"
     }
+    set info_url [export_vars -base "$dotlrn_admin_url/toolbar-actions" {{action $info_action} return_url}]
+
+    # hide/show dotlrn toolbar
+    set hide_me_url [export_vars -base "$dotlrn_admin_url/toolbar-actions" {{action hide} return_url}]
 
     if { [empty_string_p $community_id ] } {
 	set portal_id [dotlrn::get_portal_id -user_id $user_id]

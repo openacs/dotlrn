@@ -11,6 +11,12 @@ if {![empty_string_p $community_id]} {
 			    -default "/packages/dotlrn/www/dotlrn-master"]
 }
 
-if {![exists_and_not_null title]} {
+# Set page title
+if { ![info exists doc(title)] && [exists_and_not_null title] } {
+    set doc(title) $title
+} elseif { [info exists doc(title)] && ![exists_and_not_null title] } {
+    set title $doc(title)
+} elseif { ![info exists doc(title)] && [exists_and_not_null title] } {
     set title [ad_system_name]
+    set doc(title) $title
 }

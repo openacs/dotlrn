@@ -146,7 +146,6 @@
 
   <h3>#dotlrn.Add_New_Members#</h3>
 
-  <blockquote>
     <p>
       #dotlrn.lt_The_following_members# 
     </p>
@@ -154,7 +153,6 @@
     <p>
       #dotlrn.lt_First_check_the_box_o#
     </p>
-  </blockquote>
 
 <formtemplate id="parent_users_form">
   <table width="75%" border="0">

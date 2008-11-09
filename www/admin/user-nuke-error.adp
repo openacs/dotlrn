@@ -6,12 +6,12 @@
 
 <p>
 
-#dotlrn.lt_Well_we_tried_to_nuke#
 <p>
-<blockquote>
+#dotlrn.lt_Well_we_tried_to_nuke#
+</p>
 <pre>
 @error_msg@
 </pre>
-</blockquote>
 <p>
 <a href="@referer@">#dotlrn.lt_Return_to_where_you_w#</a>
+</p>

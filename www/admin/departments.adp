@@ -25,7 +25,7 @@
     <center>
       <form action="departments" method="GET">
         #dotlrn.Search_departments_with# 
-		  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#" />
+		  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#">
           <input type="submit" value="#dotlrn.Go#">
       </form>
     </center>

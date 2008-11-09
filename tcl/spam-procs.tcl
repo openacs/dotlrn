@@ -88,9 +88,7 @@ namespace eval spam {
                 append errors "
 <p>
 Failed to deliver to $email because:
-<blockquote>
     [ad_quotehtml $errmsg]
-</blockquote>
 </p>
             "
             }

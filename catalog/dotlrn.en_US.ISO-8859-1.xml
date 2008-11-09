@@ -41,7 +41,7 @@
   <msg key="Administer">Administer</msg>
   <msg key="administer_link">&lt;img border=0 src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Administer&quot;&gt;</msg>
   <msg key="Administration">Administration</msg>
-  <msg key="Administration_Accesskey">a</msg>
+  <msg key="Administration_Accesskey">9</msg>
   <msg key="Administration_Cockpit">Administration Cockpit</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administrators</msg>
@@ -116,9 +116,10 @@
   <msg key="clubs_pretty_name">Community</msg>
   <msg key="clubs_pretty_plural">Communities</msg>
   <msg key="Cockpit">Cockpit</msg>
+  <msg key="Collapse_list">Collapse list</msg>
   <msg key="Comma_Separated_Values">Comma Separated Values</msg>
   <msg key="Communities">Communities</msg>
-  <msg key="Communities_Accesskey">m</msg>
+  <msg key="Communities_Accesskey">6</msg>
   <msg key="Community">Community</msg>
   <msg key="community_header_name">%clubs_pretty_name% Name</msg>
   <msg key="Community_ID">Community ID</msg>
@@ -140,7 +141,7 @@
   <msg key="Confirm_Drop">Confirm Drop</msg>
   <msg key="Confirmation">Confirmation</msg>
   <msg key="control_panel">Control Panel</msg>
-  <msg key="control_panel_accesskey">p</msg>
+  <msg key="control_panel_accesskey">7</msg>
   <msg key="Copy">Copy</msg>
   <msg key="couldnt_find_user_id">We couldn't find user #%user_id%; perhaps this person was deleted?</msg>
   <msg key="course_admin_role_pretty_name">Course Administrator</msg>
@@ -148,9 +149,10 @@
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
   <msg key="Courses">Courses</msg>
-  <msg key="Courses_Accesskey">r</msg>
+  <msg key="Courses_Accesskey">5</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
+  <msg key="Create_and_add_a_member">Create and add a member</msg>
   <msg key="Create_Club">Create Club</msg>
   <msg key="Created">Created</msg>
   <msg key="CSV_File_Format">CSV File Format</msg>
@@ -199,7 +201,7 @@
   <msg key="Drop">Drop</msg>
   <msg key="Drop_from_subgroup_name">Drop from subgroup %subgroup_name%</msg>
   <msg key="Drop_Membership">Drop Membership</msg>
-  <msg key="drop_membership_link">&lt;img src=&quot;/resources/dotlrn/drop.gif&quot; alt=&quot;Drop Membership&quot; border=0&gt;</msg>
+  <msg key="drop_membership_link">&lt;img src=&quot;/resources/dotlrn/drop.gif&quot; alt=&quot;Drop Membership&quot; style=&quot;border:0&quot;&gt;</msg>
   <msg key="Drop_selected_members">Drop selected members</msg>
   <msg key="Edit">Edit</msg>
   <msg key="Edit_a_User">Edit a User</msg>
@@ -229,6 +231,8 @@ notify this user.</msg>
   <msg key="End_date_help">Actual end date</msg>
   <msg key="Error_sending_mail">Error sending mail</msg>
   <msg key="Example_File">Example File</msg>
+  <msg key="Expand_list">Expand list</msg>
+  <msg key="Export_members_list_to_CSV">Export members list to a CSV file</msg>
   <msg key="External_URL">External URL</msg>
   <msg key="External_URL_1">External URL:</msg>
   <msg key="Extra_Large">Extra Large</msg>
@@ -276,7 +280,7 @@ notify this user.</msg>
   <msg key="help">Help</msg>
   <msg key="hide_lrn_toolbar">Hide .LRN toolbar</msg>
   <msg key="Home">Home</msg>
-  <msg key="Home_Accesskey">h</msg>
+  <msg key="Home_Accesskey">1</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">ID:</msg>
   <msg key="ID_1">ID</msg>
@@ -325,7 +329,7 @@ notify this user.</msg>
   <msg key="lt_Communitys_Web_Addres">Community's Web Address</msg>
   <msg key="lt_Current_clubs_pretty_">Current %clubs_pretty_plural%</msg>
   <msg key="lt_Delete_class">Delete subject</msg>
-  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;Do not use P tags for paragraphs&lt;/font&gt;</msg>
+  <msg key="lt_do_not_use_p_tags">Do not use P tags for paragraphs</msg>
   <msg key="lt_Do_you_really_want_to">Do you really want to remove the following members?</msg>
   <msg key="lt_Do_you_really_want_to_1">Do you really want to remove %num_users% users?</msg>
   <msg key="lt_dotLRN_properties_for">dotLRN properties for this user.</msg>
@@ -612,6 +616,8 @@ Thank you
   <msg key="show_lrn_toolbar">Show .LRN Toolbar</msg>
   <msg key="silver">silver</msg>
   <msg key="Site-wide_Admin">Site-wide Admin?</msg>
+  <msg key="Site_Map">Site Map</msg>
+  <msg key="Site_Map_Title">Go to the Site Map</msg>
   <msg key="Site_Template_Add">Add New Site Template</msg>
   <msg key="Site_Template_Adding">Add Site Template</msg>
   <msg key="Site_Template_AdminParams">Admin Parameters for Site Templating</msg>
@@ -673,6 +679,7 @@ Thank you
   preceded by the *@ string which match
   &amp;lt;anything&amp;gt;@&amp;lt;email-domain&amp;gt;). For example, you might use:</msg>
   <msg key="The_name">The name</msg>
+  <msg key="The_users_have_been_added_">The user(s) have been added to the selected community. You can send an email to welcome the users to the community.</msg>
   <msg key="there_are_no_users_matching">There are no users matching %search_text%.</msg>
   <msg key="this_user_is_deleted">this user is deleted</msg>
   <msg key="To">Member types to email:</msg>

@@ -38,7 +38,7 @@
   <msg key="Administer">Administrar</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;graphics/admin.gif&quot; alt=&quot;Administrar&quot;&gt;</msg>
   <msg key="Administration">Administración</msg>
-  <msg key="Administration_Accesskey">a</msg>
+  <msg key="Administration_Accesskey">9</msg>
   <msg key="Administration_Cockpit">Administración Cockpit</msg>
   <msg key="Administrator">Administrador</msg>
   <msg key="Administrators">Administradores</msg>
@@ -109,9 +109,10 @@
   <msg key="clubs_pretty_name">Comunidad</msg>
   <msg key="clubs_pretty_plural">Comunidades</msg>
   <msg key="Cockpit">Cockpit</msg>
+  <msg key="Collapse_list">Colapsar lista</msg>
   <msg key="Comma_Separated_Values">Exportar en formato CSV</msg>
   <msg key="Communities">Comunidades</msg>
-  <msg key="Communities_Accesskey">c</msg>
+  <msg key="Communities_Accesskey">6</msg>
   <msg key="Community">Comunidad</msg>
   <msg key="community_header_name">Título de %clubs_pretty_name%</msg>
   <msg key="Community_ID">Identificador de la comunidad</msg>
@@ -130,7 +131,7 @@
   <msg key="Confirm_Drop">Confirmar borrado</msg>
   <msg key="Confirmation">Confirmación</msg>
   <msg key="control_panel">Panel de control</msg>
-  <msg key="control_panel_accesskey">p</msg>
+  <msg key="control_panel_accesskey">7</msg>
   <msg key="Copy">Copiar</msg>
   <msg key="couldnt_find_user_id">El usuario %user_id% no ha podido ser encontrado. Es posible que haya sido borrado.</msg>
   <msg key="course_admin_role_pretty_name">Administrador del curso</msg>
@@ -138,9 +139,10 @@
   <msg key="course_assistant_role_pretty_name">Tutor</msg>
   <msg key="course_assistant_role_pretty_plural">Tutores</msg>
   <msg key="Courses">Cursos</msg>
-  <msg key="Courses_Accesskey">r</msg>
+  <msg key="Courses_Accesskey">5</msg>
   <msg key="Create_A_New_User">Crear un nuevo usuario</msg>
   <msg key="Create_a_Web_Log">Crear un weblog</msg>
+  <msg key="Create_and_add_a_member">Crear y añadir usuario</msg>
   <msg key="Create_Club">Crear comunidad</msg>
   <msg key="Created">Creado</msg>
   <msg key="CSV_File_Format">Formato CSV</msg>
@@ -216,6 +218,8 @@
   <msg key="End_date_help">Fecha de finalización actual</msg>
   <msg key="Error_sending_mail">Error al enviar el correo</msg>
   <msg key="Example_File">Archivo ejemplo</msg>
+  <msg key="Expand_list">Expandir lista</msg>
+  <msg key="Export_members_list_to_CSV">Exportar lista de usuarios a un fichero CSV</msg>
   <msg key="External_URL">Servidor web propio</msg>
   <msg key="External_URL_1">Servidor propio:</msg>
   <msg key="Extra_Large">Muy grande</msg>
@@ -263,7 +267,7 @@
   <msg key="help">Ayuda</msg>
   <msg key="hide_lrn_toolbar">Esconder la barra de .LRN</msg>
   <msg key="Home">Inicio</msg>
-  <msg key="Home_Accesskey">h</msg>
+  <msg key="Home_Accesskey">1</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">Identificador:</msg>
   <msg key="ID_1">Identificador</msg>
@@ -307,7 +311,7 @@
   <msg key="lt_Communitys_Web_Addres">Dirección web de la comunidad</msg>
   <msg key="lt_Current_clubs_pretty_">%clubs_pretty_plural% actuales</msg>
   <msg key="lt_Delete_class">Borrar asignatura</msg>
-  <msg key="lt_do_not_use_p_tags">&lt;font color=&quot;red&quot;&gt;No use etiquetas P para los párrafos&lt;/font&gt;</msg>
+  <msg key="lt_do_not_use_p_tags">No use etiquetas P para los párrafos</msg>
   <msg key="lt_Do_you_really_want_to">¿Desea realmente borrar los miembros siguientes?</msg>
   <msg key="lt_Do_you_really_want_to_1">¿Desea realmente borrar estos %num_users% usuarios?</msg>
   <msg key="lt_dotLRN_properties_for">Propiedades dotLRN para este usuario.</msg>
@@ -550,6 +554,8 @@
   <msg key="show_lrn_toolbar">Mostrar bara .LRN</msg>
   <msg key="silver">plateado</msg>
   <msg key="Site-wide_Admin">¿Administrador del sitio?</msg>
+  <msg key="Site_Map">Mapa del sitio</msg>
+  <msg key="Site_Map_Title">Ir al Mapa del Sitio</msg>
   <msg key="Site_Template_Add">Añadir una nueva plantilla</msg>
   <msg key="Site_Template_Adding">Añadir plantilla general</msg>
   <msg key="Site_Template_AdminParams">Parámetros de administración para plantillas generales</msg>
@@ -610,6 +616,7 @@
   <msg key="the_format_of_email_domains">Introducir una lista de dominios separados por comas. Por ejemplo:
 </msg>
   <msg key="The_name">El nombre</msg>
+  <msg key="The_users_have_been_added_">El usuario ha sido añadido a la comunidad seleccionada. Puede enviarle un correo electrónico para darle la bienvenida a la mencionada comunidad.</msg>
   <msg key="there_are_no_users_matching">No hay usuarios que coincidan con %search_text%.</msg>
   <msg key="this_user_is_deleted">este usuario ha sido borrado</msg>
   <msg key="To">A</msg>

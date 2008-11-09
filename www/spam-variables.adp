@@ -18,8 +18,6 @@
 
 %>
 
-<blockquote>
-
   <table>
 
     <tr>
@@ -64,7 +62,6 @@
 
   </table>
 
-</blockquote>
 
 
 

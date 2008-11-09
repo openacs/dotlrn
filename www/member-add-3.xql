@@ -10,7 +10,7 @@
       select rel_id, rel_type as old_rel_type
       from dotlrn_member_rels_full
       where community_id = :community_id
-      and user_id = :uid
+      and user_id = :member_id
     </querytext>
   </fullquery>
 </queryset>

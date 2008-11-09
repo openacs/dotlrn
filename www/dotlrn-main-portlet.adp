@@ -31,7 +31,7 @@
 @communities.previous_type_ul_tags;noquote@
 
 <ul class="mktree" style="padding-left: 5px;"><li id="dotlrn-main-@communities.simple_community_type@">
-<h3 style="display: inline; margin: 5px 0 0 0;">
+<h2 style="display: inline; margin: 5px 0 0 0;">
   <if @communities.simple_community_type@ eq "dotlrn_class_instance">
     <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>
   </if>
@@ -39,7 +39,7 @@
     <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
   </else>
 
-</h3><small>( <a href="#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )</small>
+</h2><small>( <a href="#" title="#dotlrn.Expand_list#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" title="#dotlrn.Collapse_list#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )</small>
 
 <ul id="tree-@communities.simple_community_type@"><li>
 <group column="simple_community_type">
@@ -47,7 +47,7 @@
 @communities.intra_type_ul_tags;noquote@
 
           <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
-	<if @communities.archived_p@><font color=red>Archived</font></if>
+	<if @communities.archived_p@><span style="color:red">Archived</span></if>
 	<if @show_buttons_p@ eq 1>
            <if @show_drop_button_p@ eq 1>
 		&nbsp; <small> 

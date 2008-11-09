@@ -56,16 +56,16 @@
 	<tr>
 		<td width="50%">
 			<form method="post" action="/acs-admin/users/one">
-			<input type="text" size="6" name="user_id" value="" />
-			<input type="submit" name="formbutton:ok" value="OK" />
+			<input type="text" size="6" name="user_id" value="">
+			<input type="submit" name="formbutton:ok" value="OK">
 			</form>
 		</td>
 		<td width="50%">
 			<FORM METHOD="get" ACTION="/acs-admin/users/search">
-    			<input type="hidden" name="target" value="one" />
-    			<input type="hidden" name="only_authorized_p" value="0" />
-    			<input type="text" size="6" name="keyword" />
-                  	<input type="submit" value="Find" />
+    			<input type="hidden" name="target" value="one">
+    			<input type="hidden" name="only_authorized_p" value="0">
+    			<input type="text" size="6" name="keyword">
+                  	<input type="submit" value="Find">
   			</FORM>
 		</td>
 	</tr>
@@ -75,8 +75,8 @@
 	<tr>
 		<td>
 			<form method="post" action="/dotlrn/admin/user">
-			<input type="text" size="6" name="user_id" value="" />
-			<input type="submit" name="formbutton:ok" value="OK" />
+			<input type="text" size="6" name="user_id" value="">
+			<input type="submit" name="formbutton:ok" value="OK">
 			</form>
 		</td>
 	</tr>
@@ -99,12 +99,14 @@
 	<li>Watch Errors - Last
 		<table><tr><td>
 		<FORM ACTION=@monitor_url@watchdog/index>    
-		<INPUT NAME=kbytes SIZE=4 value="200"><INPUT TYPE=SUBMIT VALUE="KB">
+		  <INPUT NAME=kbytes SIZE=4 value="200">
+          <INPUT TYPE=SUBMIT VALUE="KB">
 		</FORM>
 		</td>
 		<td>
 		<FORM ACTION=@monitor_url@watchdog/index>
-		<INPUT NAME=num_minutes SIZE=4 value=""><INPUT TYPE=SUBMIT VALUE="min">
+		  <INPUT NAME=num_minutes SIZE=4 value="">
+          <INPUT TYPE=SUBMIT VALUE="min">
 		</FORM>
 		</td></tr></table>
 <li><a href="@monitor_url@filters">Filters</a>
@@ -133,24 +135,24 @@
 				      <form action="/api-doc/proc-search" method="get">
 				      <td valign="top">
 				       <b>OpenACS Tcl API Search</b>
-				       <input type="text" size="16" name="query_string" value=""/><br />
-				       <input type="submit" value="All" name="search_type" />
-				       <input type="submit" value="Best" name="search_type" />
+				       <input type="text" size="16" name="query_string" value=""><br>
+				       <input type="submit" value="All" name="search_type">
+				       <input type="submit" value="Best" name="search_type">
 				       <p><a href="/api-doc/proc-browse">Browse OpenACS Tcl API</a></p>
 				      </td>
 				      <td>       
 				       <table cellspacing="0" cellpadding="0">
 				         <tr><td align="right">Name contains:</td>
-				           <td><input type="radio" name="name_weight" value="5" checked="checked" /> </td></tr>
+				           <td><input type="radio" name="name_weight" value="5" checked="checked"> </td></tr>
 				         <tr><td align="right">Exact name:</td>
-				           <td><input type="radio" name="name_weight" value="exact" /></td></tr>
+				           <td><input type="radio" name="name_weight" value="exact"></td></tr>
 				         <tr><td align="right">&nbsp;</td><td>&nbsp;</td></tr>
 				         <tr><td align="right">Parameters:</td>
-				           <td><input type="checkbox" name="param_weight" value="3" checked="checked" /></td></tr>
+				           <td><input type="checkbox" name="param_weight" value="3" checked="checked"></td></tr>
 				         <tr><td align="right">Documentation:</td>
-				           <td><input type="checkbox" name="doc_weight" value="2" checked="checked" /></td></tr>
+				           <td><input type="checkbox" name="doc_weight" value="2" checked="checked"></td></tr>
 				         <tr><td align="right">Source:</td>
-				           <td><input type="checkbox" name="source_weight" value="1" /></td></tr>
+				           <td><input type="checkbox" name="source_weight" value="1"></td></tr>
 				       </table>
 				      </td>
 				      </form>
@@ -159,9 +161,9 @@
 				   <form action="/api-doc/tcl-proc-view" method="get">
 				   <td colspan="2">
 				    <b>AOLserver Tcl API Search</b>
-				    <input type="text" size="6" name="tcl_proc" />
-				    <input type="submit" value="Go" /><br />
-				    (enter <em>exact</em> procedure name)<br />
+				    <input type="text" size="6" name="tcl_proc">
+				    <input type="submit" value="Go"><br>
+				    (enter <em>exact</em> procedure name)<br>
 				    <a href="http://www.aolserver.com/docs/devel/tcl/api/">Browse AOLserver Tcl API</a>
 				   </td>
 				   </form>
@@ -170,9 +172,9 @@
 				  <form action="/api-doc/tcl-doc-search" method="get">
 				   <td colspan="2">
 				    <b>Tcl Documentation Search</b>
-				    <input type="text" size="6" name="tcl_proc" />
-				    <input type="submit" value="Go" /><br />
-				    (enter <em>exact</em> procedure name)<br />
+				    <input type="text" size="6" name="tcl_proc">
+				    <input type="submit" value="Go"><br>
+				    (enter <em>exact</em> procedure name)<br>
 				    <a href="http://tcl.tk/man/tcl8.3/TclCmd/contents.htm">Browse the Tcl documentation</a>
 				   </td>
 				   </form>
@@ -181,9 +183,9 @@
 				   <form action="http://www.postgresql.org/search.cgi" method="get">
 				    <td colspan="2">
 				       <b>PostgreSQL 7.3 Search</b>
-				       <input type="hidden" name="ul" value="http://www.postgresql.org/docs/7.3/static/" />
-				       <input type="text" size="6" name="q" />
-				       <input type="submit" value="Go" /><br />
+				       <input type="hidden" name="ul" value="http://www.postgresql.org/docs/7.3/static/">
+				       <input type="text" size="6" name="q">
+				       <input type="submit" value="Go"><br>
 				     	<a href="http://www.postgresql.org/docs/7.3/interactive/index.html">Browse the PostgreSQL 7.3 documentation</a>
 				    </td>
 				    </form>

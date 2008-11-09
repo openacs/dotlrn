@@ -21,24 +21,21 @@
 <master>
 <property name="title">#dotlrn.help#</property>
 
-<font face="Verdana, Arial, Helvetica, sans-serif"> 
 <H1> 
-  <center>
     Group Administrator FAQ 
-  </center>
 </H1>
+
 <p> 
-  <center>
     (For user information, please read the Help page in your Control Panel) 
-  </center>
 <p>This FAQ contains these sections: 
 <p><a href="../Members"><b>Dealing with Members</b></a><br>
   <a href="../Content"><b>Managing Content</b></a><br>
   <b><a href="../Next%20Term">Preparing for Next Term </a></b> 
 <p>
 If your question is not answered, please email your site administrator.
-<p>
+
 <H2><a name="Members">Dealing with Members</a></H2>
+<p>
 <b>Q. Who will have access to my dotlearn class?</b><br>
 A. The default enrollment policy setting for new classes is "open" and any registered 
 user can join the class.  If you are concerned about who 
@@ -104,9 +101,9 @@ so they cannot see information about other members, or participate in forums
   Limited Access users and Limited Access Guests (cross-registered students and 
   non-institution people) can access their Control Panel page through the Help icon in 
   the page banner.</p>
-<p>
+
 <H2><a name="Members">Managing Content</a></H2>
-<br>
+<p>
 <b>Q. Do all the administrators of the class have the same privileges?</b> <br>
 A. Yes, all administrator roles have full control over the content and membership 
 of the community.<br>
@@ -134,8 +131,9 @@ of the community.<br>
   all their forum email alerts before going away. If this happens while they are 
   away, you will have to remove the user from your group to stop the looping. 
 </p>
+
 <H2><a name="Next Term">Preparing for Next Term</a></H2>
-<br>
+<p>
   <b>Q. What happens to my class at the end of the semester?</b><br>
   A. At the end of the semester, all classes are closed to further enrollment, 
   but the student and administrator members are left in place. Because you are 
@@ -172,4 +170,3 @@ of the community.<br>
   Type" window. Choose "Pick App" and click "OK" when the "Configure External Viewer" window appears. 
   The user is then prompted to "Open" or "Save" the file. Outlook does not need to be 
   open before these steps are executed. </p>
-</font> 

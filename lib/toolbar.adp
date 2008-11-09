@@ -30,19 +30,19 @@
 	  <a href="@dotlrn_admin_url@/" title="Dotlrn admin">#dotlrn.Admin#</a>
 	  <span style="color: #cccccc;">|</span>
   
-	  <a href="@dotlrn_admin_url@/toolbar-actions?action=@info_action@&return_url=@return_url@" title="@info_title@">@info_title@</a>
+	  <a href="@info_url@" title="@info_title@">@info_title@</a>
 	</td>
-        <td id="search">
-            <form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
-              <input type="hidden" name="action" value="search" />
-              <label for="keyword">#dotlrn.Search#</label>
-              <input name="keyword" onfocus="if(this.value=='#dotlrn.Search_Text#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Search_Text#';" value="#dotlrn.Search_Text#" />
-            in:<select name="search_type"><option value="users">#dotlrn.Users#</option><option value="departments">#dotlrn.departments_pretty_plural#</option><option value="subjects">#dotlrn.classes_pretty_plural#</option><option value="classes">#dotlrn.Classes#</option></select>
-                <input type="submit" value="#dotlrn.Search#" />
-            </form>
-        </td>
+    <td id="search">
+        <form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
+          <input type="hidden" name="action" value="search" />
+          <label for="keyword">#dotlrn.Search#</label>
+          <input id="keyword" name="keyword" onfocus="if(this.value=='#dotlrn.Search_Text#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Search_Text#';" value="#dotlrn.Search_Text#" />
+        in:<select name="search_type"><option value="users">#dotlrn.Users#</option><option value="departments">#dotlrn.departments_pretty_plural#</option><option value="subjects">#dotlrn.classes_pretty_plural#</option><option value="classes">#dotlrn.Classes#</option></select>
+            <input type="submit" value="#dotlrn.Search#" />
+        </form>
+    </td>
 	<td>
-	  <a href="@dotlrn_admin_url@/toolbar-actions?action=hide&return_url=@return_url@" style="font-size:80%;" title="Hide me">Hide me</a>
+	  <a href="@hide_me_url@" style="font-size:80%;" title="Hide me">Hide me</a>
 	</td>	
       </tr>
       
@@ -54,6 +54,7 @@
 	      <li><i>context_id:</i> <span> @package_id@ </span></li>
 	      <li><i>community_id:</i> <span> @community_id@  </span> </li>
 	      <li><i>portal_id:</i> <span> @portal_id@ </span> </li>
+          <li><i>package_id:</i> <span>@package_id@</span> </li>
 	    </ul>
 	  </td>
 	</tr>

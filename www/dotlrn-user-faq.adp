@@ -21,8 +21,8 @@
 <master>
 <property name="title">#dotlrn.help#</property>
 
-<font face="Verdana, Arial, Helvetica, sans-serif">
-<H1>dotlrn User FAQ</H1><br>
+<H1>dotlrn User FAQ</H1>
+<p>
 <b>Q: How do I change my password? </b><br>
 A: Go to your Control Panel page or to the Help icon in the page banner. Select 
 "Change Password."<br>
@@ -75,4 +75,3 @@ and then the Outlook New Appointment window will open to be saved.  Outlook does
 open before these steps are executed. 
 
 </p>
-</font>

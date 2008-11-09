@@ -1,5 +1,5 @@
-<br clear="all" />
-<br />
+<br>
+<br>
 <if @user_id@>
 <h3>@user.name;noquote@
 <if @edit_bio_url@ not nil>
@@ -7,9 +7,9 @@
 </if>
 </h3>
 
-<br />
+<br>
 <if @portrait_p@>
-<img @widthheight@ src="/shared/portrait-bits.tcl?@export_vars@" alt="Portrait of @user.name@" align="left" style="padding-right: 10px;">
+<img @widthheight@ src="/shared/portrait-bits.tcl?@export_vars@" alt="Portrait of @user.name@" style="padding-right: 10px;">
 </if>
 @user.bio;noquote@
 </if>

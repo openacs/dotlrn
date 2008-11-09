@@ -33,9 +33,9 @@ if { ![acs_user::site_wide_admin_p] } {
              ns_log notice "user has tried to site-wide-admin-toggle  without permission"
         ad_return_forbidden \
                "Permission Denied" \
-               "<blockquote>
+               "<p>
 	            [_ acs-admin.lt_You_dont_have_permiss]
-               </blockquote>"
+               </p>"
 	return
 }
 

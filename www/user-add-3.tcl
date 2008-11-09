@@ -42,9 +42,9 @@ set msg_subst_values [list system_name [ad_system_name] system_url [ad_parameter
 set email_subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_values]
 if [catch {ns_sendmail "$email" "$admin_email" "$email_subject" "$message"} errmsg] {
     ad_return_error "[_ dotlrn.Mail_Failed]" "[_ dotlrn.lt_The_system_was_unable]
-<blockquote><pre>
+<pre>
 [ad_quotehtml $errmsg]
-</pre></blockquote>"
+</pre>"
     ad_script_abort
 }
 
