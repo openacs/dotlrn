@@ -33,10 +33,7 @@ dotlrn_portlet::is_allowed -parameter manageapplets
 set community_id [dotlrn_community::get_community_id]
 
 # Check access
-if {![dotlrn_community::admin_access_p $community_id]} {
-    ad_returnredirect /
-    ad_script_abort
-}
+dotlrn::require_user_admin_community -user_id [ad_conn user_id] -community_id $community_id
 
 # Add the applet
 dotlrn_community::add_applet_to_community $community_id $applet_key
