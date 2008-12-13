@@ -379,15 +379,6 @@ namespace eval dotlrn_community {
 	util_memoize_flush "dotlrn_community::get_package_id_not_cached $community_id"
     }
 
-    ad_proc admin_access_p {
-        community_id
-    } {
-        Checks admin access to a community
-    } {
-        # HACK FOR NOW!! (ben) FIXIT
-        return 1
-    }
-
     ad_proc -public get_url {
         {-current_node_id ""}
         {-package_id ""}

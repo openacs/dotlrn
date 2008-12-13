@@ -25,10 +25,7 @@ ad_page_contract {
 }
 
 # Check access
-if {![dotlrn_community::admin_access_p $community_id]} {
-    ad_returnredirect /
-    return
-}
+dotlrn::require_user_admin_community -user_id [ad_conn user_id] -community_id $community_id
 
 # Add the applet
 dotlrn_community::remove_applet $community_id $applet_key
