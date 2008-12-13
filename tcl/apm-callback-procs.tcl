@@ -36,6 +36,11 @@ ad_proc -private dotlrn::apm::after_install {
         -parameter HomeURL \
         -value /dotlrn/control-panel
 
+    parameter::set_from_package_key \
+        -package_key acs-kernel \
+        -parameter HomeName \
+        -value "#dotlrn.control_panel#"
+
        # Make sure that privacy is turned on
        acs_privacy::privacy_control_set 1
 	
@@ -253,18 +258,24 @@ ad_proc -public dotlrn::apm::after_upgrade {
                     -value /dotlrn/control-panel
 	    }
 	    2.3.0d1 2.3.0d2 {     
-                # Set access keys for all pages that have known titles
-                set params [list]
-                db_foreach get_default_values {} {
-                    set params [concat $params [split [string trimright $default_value ";"] ";"]]
-                }
-                db_transaction {
-                    foreach param $params {
-                        foreach {title layout accesskey} [split $param ","] {
-                            db_dml set_accesskeys {}
-                        }
+            # Set access keys for all pages that have known titles
+            set params [list]
+            db_foreach get_default_values {} {
+                set params [concat $params [split [string trimright $default_value ";"] ";"]]
+            }
+            db_transaction {
+                foreach param $params {
+                    foreach {title layout accesskey} [split $param ","] {
+                        db_dml set_accesskeys {}
                     }
                 }
             }
+        }
+        2.5.0d1 2.5.0d2 {
+            parameter::set_from_package_key \
+                -package_key acs-kernel \
+                -parameter HomeName \
+                -value "#dotlrn.control_panel#"
+        }
     }
 }
