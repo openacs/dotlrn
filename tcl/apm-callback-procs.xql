@@ -27,4 +27,21 @@
     </querytext>
   </fullquery>
 
+  <fullquery name="dotlrn::apm::after_upgrade.update_community_supertype">
+    <querytext>
+      update acs_object_types
+      set supertype = 'application_group'
+      where object_type = 'dotlrn_community'
+    </querytext>
+  </fullquery>
+
+  <fullquery name="dotlrn::apm::after_upgrade.insert_application_group_rows">
+    <querytext>
+      insert into application_groups
+        (group_id, package_id)
+      select community_id, package_id
+      from dotlrn_communities
+    </querytext>
+  </fullquery>
+
 </queryset>
