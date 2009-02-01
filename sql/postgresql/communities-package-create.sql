@@ -31,7 +31,7 @@ select define_function_args ('dotlrn_community_type__delete','community_type');
 
 select define_function_args ('dotlrn_community_type__name','community_type');
 
-create function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar)
+create or replace function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar)
 returns varchar as '
 DECLARE
         p_community_type                       alias for $1;
@@ -55,7 +55,7 @@ BEGIN
 END;
 ' language 'plpgsql';
 
-create function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
+create or replace function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
 returns varchar as '
 DECLARE
         p_community_type                        alias for $1;
@@ -72,7 +72,7 @@ DECLARE
         v_unique_name acs_objects.object_id%TYPE;
 BEGIN
         if p_parent_type is null then
-            v_parent_object_type:= ''group'';
+            v_parent_object_type:= ''application_group'';
         else
             v_parent_object_type:= p_parent_type;
         end if;
@@ -158,7 +158,7 @@ END;
 
 select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,archived_p;f,portal_id,non_member_portal_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
 
-create function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
+create or replace function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
 returns integer as '
 DECLARE
         p_community_id                  alias for $1;
@@ -167,7 +167,7 @@ DECLARE
         p_community_key                 alias for $4;
         p_pretty_name                   alias for $5;
         p_description                   alias for $6;
-	p_archived_p			alias for $7;
+        p_archived_p                    alias for $7;
         p_portal_id                     alias for $8;
         p_non_member_portal_id          alias for $9;
         p_package_id                    alias for $10;
@@ -177,10 +177,10 @@ DECLARE
         p_creation_ip                   alias for $14;
         p_context_id                    alias for $15;
         c_id                            integer;
-
+        v_group_type_exists_p           integer;
 BEGIN
 
-        c_id := acs_group__new (
+        c_id := application_group__new (
             p_community_id,
             p_community_type,
             p_creation_date,
@@ -189,8 +189,9 @@ BEGIN
             null,
             null,
             p_community_key,
+            p_package_id,
             p_join_policy,
-	    p_context_id
+            p_context_id
         );
 
         insert into dotlrn_communities_all
@@ -213,13 +214,12 @@ BEGIN
            p_description,    
            p_package_id, 
            p_portal_id,
-	   p_archived_p,
+           p_archived_p,
            p_non_member_portal_id);
 
         return c_id;        
 END;
 ' language 'plpgsql';
-
 
 select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
 

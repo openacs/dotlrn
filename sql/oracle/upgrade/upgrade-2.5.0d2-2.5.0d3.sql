@@ -1,45 +1,3 @@
---
---  Copyright (C) 2001, 2002 MIT
---
---  This file is part of dotLRN.
---
---  dotLRN is free software; you can redistribute it and/or modify it under the
---  terms of the GNU General Public License as published by the Free Software
---  Foundation; either version 2 of the License, or (at your option) any later
---  version.
---
---  dotLRN is distributed in the hope that it will be useful, but WITHOUT ANY
---  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
---  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
---  details.
---
-
-create or replace package dotlrn_community_type
-is
-    function new (
-        community_type in dotlrn_community_types.community_type%TYPE,
-        parent_type in dotlrn_community_types.supertype%TYPE default 'dotlrn_community',
-        pretty_name in dotlrn_community_types.pretty_name%TYPE,
-        pretty_plural in dotlrn_community_types.pretty_name%TYPE default null,
-        description in dotlrn_community_types.description%TYPE,
-        package_id in dotlrn_community_types.package_id%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_community_types.community_type%TYPE;
-
-    procedure del (
-        community_type in dotlrn_community_types.community_type%TYPE
-    );
-
-    function name (
-        community_type in dotlrn_community_types.community_type%TYPE
-    ) return varchar;
-end;
-/
-show errors
-
 create or replace package body dotlrn_community_type
 is
     function new (
@@ -132,63 +90,6 @@ is
         return v_name;
     end;
 end;
-/
-show errors
-
-create or replace package dotlrn_community
-is
-
-    function new (
-        community_id in dotlrn_communities_all.community_id%TYPE default null,
-        parent_community_id in dotlrn_communities_all.parent_community_id%TYPE default null,
-        community_type in dotlrn_communities_all.community_type%TYPE,
-        community_key in dotlrn_communities_all.community_key%TYPE,
-        pretty_name in dotlrn_communities_all.pretty_name%TYPE,
-        description in dotlrn_communities_all.description%TYPE,
-        archived_p in dotlrn_communities_all.archived_p%TYPE default 'f',
-        portal_id in dotlrn_communities_all.portal_id%TYPE default null,
-        non_member_portal_id in dotlrn_communities_all.non_member_portal_id%TYPE default null,
-        package_id in dotlrn_communities_all.package_id%TYPE default null,
-        join_policy in groups.join_policy%TYPE default null,
-        creation_date in acs_objects.creation_date%TYPE default sysdate,
-        creation_user in acs_objects.creation_user%TYPE default null,
-        creation_ip in acs_objects.creation_ip%TYPE default null,
-        context_id in acs_objects.context_id%TYPE default null
-    ) return dotlrn_communities_all.community_id%TYPE;
-
-    procedure set_active_dates (
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        start_date in dotlrn_communities_all.active_start_date%TYPE,
-        end_date in dotlrn_communities_all.active_end_date%TYPE
-    );
-
-    procedure del (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    );
-
-    function name (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    ) return varchar; 
-
-    function member_p (
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        party_id in parties.party_id%TYPE
-    ) return char;
-
-    function admin_p (
-        community_id in dotlrn_communities_all.community_id%TYPE,
-        party_id in parties.party_id%TYPE
-    ) return char;
-
-    function url (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    ) return varchar2;
-
-    function has_subcomm_p (
-        community_id in dotlrn_communities_all.community_id%TYPE
-    ) return char;
-
-end dotlrn_community;
 /
 show errors
 
@@ -360,12 +261,3 @@ end;
 /
 show errors
 
-create or replace view dotlrn_communities_full
-as
-    select dotlrn_communities.*,
-           dotlrn_community.url(dotlrn_communities.community_id) as url,
-           groups.group_name,
-           groups.join_policy
-    from dotlrn_communities,
-         groups
-    where dotlrn_communities.community_id = groups.group_id;
