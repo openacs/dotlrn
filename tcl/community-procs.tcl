@@ -199,6 +199,7 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars pretty_plural $pretty_name
         ns_set put $extra_vars description $description
         ns_set put $extra_vars context_id $dotlrn_package_id
+        ns_set put $extra_vars package_id $dotlrn_package_id
 
         db_transaction {
             set user_id [ad_conn user_id]
