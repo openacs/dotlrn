@@ -277,7 +277,7 @@ ad_proc -public dotlrn::apm::after_upgrade {
                 -parameter HomeName \
                 -value "#dotlrn.control_panel#"
         }
-        2.5.0d2 2.5.1d3 {
+        2.5.0d2 2.5.0d3 {
             # make dotlrn community a subtype of application group
             db_dml update_community_supertype {}
             db_dml insert_application_group_rows {}
