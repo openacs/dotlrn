@@ -282,5 +282,8 @@ ad_proc -public dotlrn::apm::after_upgrade {
             db_dml update_community_supertype {}
             db_dml insert_application_group_rows {}
         }
+        2.5.0d3 2.5.0d4 {
+            db_dml insert_group_rels {}
+        }
     }
 }

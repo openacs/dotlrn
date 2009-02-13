@@ -32,6 +32,12 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_community::set_package_id.update_application_group_package_id">
+        <querytext>
+            update application_groups set package_id= :package_id where group_id= :community_id
+        </querytext>
+    </fullquery>
+    
     <fullquery name="dotlrn_community::get_parent_id_not_cached.select_parent_id">
         <querytext>
             select dotlrn_communities.parent_community_id

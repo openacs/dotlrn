@@ -199,7 +199,6 @@ namespace eval dotlrn_community {
         ns_set put $extra_vars pretty_plural $pretty_name
         ns_set put $extra_vars description $description
         ns_set put $extra_vars context_id $dotlrn_package_id
-        ns_set put $extra_vars package_id $dotlrn_package_id
 
         db_transaction {
             set user_id [ad_conn user_id]
@@ -272,7 +271,7 @@ namespace eval dotlrn_community {
 
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
-
+            
             # update the portal_id and non_member_portal_id
             db_dml update_portal_ids {}
 
@@ -377,6 +376,7 @@ namespace eval dotlrn_community {
         Update the node ID for the community
     } {
         db_dml update_package_id {}
+        db_dml update_application_group_package_id {}
 	util_memoize_flush "dotlrn_community::get_package_id_not_cached $community_id"
     }
 
