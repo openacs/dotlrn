@@ -23,7 +23,7 @@
        where group_rels.group_id = a.group_id
        and group_rels.rel_type = g.rel_type
      )
-    </querytxt>
+    </querytext>
   </fullquery>
 
 </queryset>

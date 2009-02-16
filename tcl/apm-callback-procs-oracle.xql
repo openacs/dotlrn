@@ -14,7 +14,7 @@
           where group_id = a.group_id
           and rel_type = g.rel_type
         )
-    </querytxt>
+    </querytext>
   </fullquery>
 
 </queryset>
