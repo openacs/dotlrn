@@ -60,45 +60,39 @@
         <ul>
           <li>#acs-subsite.My_Account#
             <ul>
-              <if @notifications_url@ not nil>
-                <li><a href="@notifications_url@" title="#acs-subsite.Manage_your_notifications#">#acs-subsite.Manage_your_notifications#</a></li>
-              </if>
-
-              <if @allowed_to_change_site_template_p@>
-                <li><a href="@site_template_url@" title="#dotlrn.Customize_Template#">#dotlrn.Customize_Template#</a>
-              </if>
-				
-              <li><a href="configure" title="#dotlrn.Customize_Layout#">#dotlrn.Customize_Layout#</a></li>
+              <li><a href="@community_member_url@">#acs-subsite.lt_What_other_people_see#</a></li>
+              <li><a href="@portrait_url@">#acs-subsite.Manage_Portrait#</a></li>
+              <li><a href="@bio_update_url@">#dotlrn.Edit_Biography#</a></li>
+              <li><a href="@email_privacy_url@">#acs-subsite.Change_my_email_P#</a></li>
 
               <li><a href="@change_locale_url@" title="#acs-subsite.Change_locale_label#">#acs-subsite.Change_locale_label#</a></li>
 
-              <li><a href="../user/password-update" title="#acs-subsite.Change_my_Password#">#acs-subsite.Change_my_Password#</a></li>
+              <li><a href="@password_update_url@" title="#acs-subsite.Change_my_Password#">#acs-subsite.Change_my_Password#</a></li>
 
               <if @account_status@ ne "closed">
                 <li><a href="/pvt/unsubscribe" title="#acs-subsite.Close_your_account#">#acs-subsite.Close_your_account#</a></li>
               </if>
             </ul>
           </li>
-          <li>
-            <a href="../user/portrait">#acs-subsite.Your_Portrait#</a>
-          </li>
-          <li>#acs-subsite.Privacy#
-			<ul>
-              <li>
-                <a href="@community_member_url@">#acs-subsite.lt_What_other_people_see#</a>
-              </li>
-              <li>
-                <a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a>
-              </li>
-              <li>
-                <a href="../user/email-privacy-level">#acs-subsite.Change_my_email_P#</a>
-              </li>
+          <li>#dotlrn.Preferences#
+            <ul>
+              <if @notifications_url@ not nil>
+                <li><a href="@notifications_url@" title="#acs-subsite.Manage_your_notifications#">#acs-subsite.Manage_your_notifications#</a></li>
+              </if>
+
+              <li><a href="configure" title="#dotlrn.Customize_Layout#">#dotlrn.Customize_Layout#</a></li>
+
+              <if @allowed_to_change_site_template_p@>
+                <li><a href="@site_template_url@" title="#dotlrn.Customize_Template#">#dotlrn.Customize_Template#</a>
+              </if>
+				
               <if @invisible_p@ true>
                 <li><a href="@make_visible_url@" title="#acs-subsite.Make_yourself_visible_label#">#acs-subsite.Make_yourself_visible_label#</a></li>
               </if>
               <else>
                 <li><a href="@make_invisible_url@" title="#acs-subsite.Make_yourself_invisible_label#">#acs-subsite.Make_yourself_invisible_label#</a></li>
               </else>
+              <li><a href="@whos_online_url@">#acs-subsite.Whos_Online_link_label#</a></li>
             </ul>
           </li>
           <li>

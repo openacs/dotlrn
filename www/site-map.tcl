@@ -42,18 +42,21 @@ db_multirow -extend { admin_p } communities select_communities {} {
 }
 
 # control panel
-
+set subsite_url [subsite::get_element -element url]
 set account_status [ad_conn account_status]
 
 set notifications_url [lindex [site_node::get_children -node_id [subsite::get_element -element node_id] -package_key "notifications"] 0]
 
+set portrait_url "${subsite_url}user/portrait"
 set change_locale_url [apm_package_url_from_key "acs-lang"]
 set community_member_url [acs_community_member_url -user_id $user_id]
+set bio_update_url [export_vars -base "bio-update" {return_url}]
+set email_privacy_url [export_vars -base "${subsite_url}user/email-privacy-level" {return_url}]
+set password_update_url [export_vars -base "${subsite_url}user/password-update" {return_url}]
 
-
-set whos_online_url "[subsite::get_element -element url]shared/whos-online"
-set make_visible_url "[subsite::get_element -element url]shared/make-visible"
-set make_invisible_url "[subsite::get_element -element url]shared/make-invisible"
+set whos_online_url "${subsite_url}shared/whos-online"
+set make_visible_url [export_vars -base "${subsite_url}shared/make-visible" {return_url}]
+set make_invisible_url [export_vars -base "${subsite_url}shared/make-invisible" {return_url}]
 set invisible_p [whos_online::user_invisible_p [ad_conn untrusted_user_id]]
 
 set allowed_to_change_site_template_p [parameter::get -package_id $dotlrn_package_id -parameter "UserChangeSiteTemplate_p" -default 0]
