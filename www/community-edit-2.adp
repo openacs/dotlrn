@@ -19,60 +19,17 @@
 %>
 
 <master>
-<property name="title">@page_title@</property>
+<property name="&doc">doc</property>
+<property name="context">@context;noquote@</property>
 
 <ul>
-  <li>#dotlrn.Header_Font#: @header_font_text@
-  <li>#dotlrn.Header_Font_Size#: @header_font_size_text@
-  <li>#dotlrn.Header_Font_Color#: @header_font_color_text@
   <li>#dotlrn.Header_Icon_Alt_Text#: @header_alt_text@
 </ul>
 
 
-#dotlrn.lt_this_is_what_the_header#:
-<hr>
-<table width="100%" cellpadding=0 cellspacing=0>
-  <tr>
-    <td width="10%" class="header-logo">
-     <img src=@header_url@ border=0 alt="@header_alt_text@">
-    </td>
-    <td>
-	<div style="@style_fragment@" class=header-text>
-	@header_text@
-	</div>
-    </td>
-  </tr>
-</table>
-<hr>
-
 <p>
-  <formtemplate id="header_form"></formtemplate>
+      #dotlrn.lt_this_is_what_the_header#
+      <img src="@header_url@" alt="@header_alt_text@">
 </p>
 
-<br>
-<p>
-#dotlrn.lt_having_trouble#:
-
-<ul>
-  <li>#dotlrn.lt_if_you_misspell#
-
-  <li>#dotlrn.You_can_specify_colors_by_name#
-  (<strong><span style="color: aqua; background: white">#dotlrn.aqua#</span>,
-  <span style="color: black; background: white">#dotlrn.black#</span>, 
-  <span style="color: blue; background: white">#dotlrn.blue#</span>,
-  <span style="color: fuchsia; background: white">#dotlrn.fuchsia#</span>,
-  <span style="color: gray; background: white">#dotlrn.gray#</span>,
-  <span style="color: green; background: white">#dotlrn.green#</span>,
-  <span style="color: lime; background: white">#dotlrn.lime#</span>,
-  <span style="color: maroon; background: white">#dotlrn.maroon#</span>,
-  <span style="color: navy; background: white">#dotlrn.navy#</span>,
-  <span style="color: olive; background: white">#dotlrn.olive#</span>,
-  <span style="color: purple; background: white">#dotlrn.purple#</span>,
-  <span style="color: red; background: white">#dotlrn.red#</span>,
-  <span style="color: silver; background: white">#dotlrn.silver#</span>,
-  <span style="color: teal; background: white">#dotlrn.teal#</span>) 
-  </strong>
-  <br>
-  #dotlrn.or_by_RGB_number# (<strong>##dotlrn.rrggbb#</strong>).
-</ul>
-
+    <formtemplate id="header_form"></formtemplate>

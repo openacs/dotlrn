@@ -256,9 +256,9 @@ if {![empty_string_p $community_id]} {
     ]
 
     if {![empty_string_p $header_logo_item_id]} {
-
-	# Need filename
-        set header_img_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$header_logo_item_id" 
+        # Need filename
+        set item_id [content::revision::item_id -revision_id $header_logo_item_id]
+        set header_img_url "[subsite::get_url]image/$item_id"
     }
 	
    

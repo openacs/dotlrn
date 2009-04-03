@@ -124,6 +124,7 @@
   <msg key="Community">Community</msg>
   <msg key="community_header_name">%clubs_pretty_name% Name</msg>
   <msg key="Community_ID">Community ID</msg>
+  <msg key="Community_info">Community Information</msg>
   <msg key="Community_member">Community member</msg>
   <msg key="community_memberships">%clubs_pretty_name% Memberships</msg>
   <msg key="community_name_already_in_use">The name &lt;strong&gt;%community_key%&lt;/strong&gt; is already in use either by an active or archived group. Please go back and select a different name.</msg>
@@ -281,6 +282,7 @@ notify this user.</msg>
   <msg key="Header_Icon_Alt_Text">Header Icon Alt text</msg>
   <msg key="header_logo">Header Logo</msg>
   <msg key="Header_Logo_Alt_Text">Header Logo Alt Text</msg>
+  <msg key="header_logo_file">Header logo file</msg>
   <msg key="Header_Logo_Item_ID">Header Logo Item ID</msg>
   <msg key="help">Help</msg>
   <msg key="hide_lrn_toolbar">Hide .LRN toolbar</msg>
@@ -601,6 +603,7 @@ Thank you
   <msg key="revoke">revoke</msg>
   <msg key="Revoke_site_wide_admin">Revoke site-wide administrative privileges.</msg>
   <msg key="Role">Role</msg>
+  <msg key="Roles">Roles</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Screen name:</msg>
   <msg key="Search">Search</msg>

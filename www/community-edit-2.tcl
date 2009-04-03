@@ -35,7 +35,13 @@ set user_id [ad_conn user_id]
 set creation_ip [ad_conn peeraddr]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
-set page_title [_ dotlrn.Preview]
+
+set doc(title) [_ dotlrn.Preview]
+set context [list \
+                 [list one-community-admin [_ dotlrn.Admin]] \
+                 [list community-edit [_ dotlrn.Edit_Properties]] \
+                 $doc(title)]
+
 set header_text [dotlrn_community::get_community_header_name $community_id]
 
 # Image stuff
@@ -89,6 +95,12 @@ if { $tmp_size > 0 } {
 	# if it's a new upload, create the item
 	if { [empty_string_p $item_id]} {
 	    set item_id [content::item::new -name $logo_name -parent_id $parent_id -content_type image]
+
+        # since it's just the header logo, which can't be accessed outside of
+        # the community anyway, let everyone have access to see it.  That way
+        # it won't cause any trouble later on when we try to implement
+        # try-before-you-buy for non-members.
+        permission::grant -party_id [acs_magic_object registered_users] -object_id $item_id -privilege read
 	}
 
 	# the last param is the title of the new file in the CR.
@@ -105,14 +117,6 @@ if { $tmp_size > 0 } {
             ]
 
         content::item::set_live_revision -revision_id $revision_id
-        # since it's just the header logo, which can't be accessed outside of
-
-        # the community anyway, let everyone have access to see it.  That way
-        # it won't cause any trouble later on when we try to implement
-        # try-before-you-buy for non-members.
-        permission::grant -party_id [acs_magic_object registered_users] -object_id $revision_id -privilege read
-
-        ns_log notice "aks1: new revision_id $revision_id"
 
     } on_error { 
         # most likely a duplicate name, double click, etc.
@@ -190,7 +194,8 @@ if {[empty_string_p $revision_id]} {
     set header_url "/resources/dotlrn/logo-$scope_name.gif"
 
 } else {
-    set header_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$revision_id"
+    set item_id [content::revision::item_id -revision_id $revision_id]
+    set header_url "[subsite::get_url]image/$item_id"
 }
 
 
@@ -268,4 +273,3 @@ if {[form is_valid header_form]} {
 }
 
 ad_return_template
-

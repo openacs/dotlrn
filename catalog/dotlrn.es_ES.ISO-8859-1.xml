@@ -117,6 +117,7 @@
   <msg key="Community">Comunidad</msg>
   <msg key="community_header_name">Título de %clubs_pretty_name%</msg>
   <msg key="Community_ID">Identificador de la comunidad</msg>
+  <msg key="Community_info">Information del grupo</msg>
   <msg key="Community_member">Miembro de la comunidad</msg>
   <msg key="community_memberships">Miembro de %clubs_pretty_name%</msg>
   <msg key="community_name_already_in_use">El título &lt;strong&gt;%community_key%&lt;/strong&gt; está siendo utilizado por otro grupo. \n Por favor, vuelva a la página anterior e introduzca otro título.</msg>
@@ -268,6 +269,7 @@
   <msg key="Header_Icon_Alt_Text">Texto alternativo del ícono del encabezado</msg>
   <msg key="header_logo">Logo del encabezado</msg>
   <msg key="Header_Logo_Alt_Text">Texto alternativo para el ícono del encabezado</msg>
+  <msg key="header_logo_file">Imagen del logo</msg>
   <msg key="Header_Logo_Item_ID">Identificador para el logo del encabezado</msg>
   <msg key="help">Ayuda</msg>
   <msg key="hide_lrn_toolbar">Esconder la barra de .LRN</msg>
@@ -540,6 +542,7 @@
   <msg key="revoke">revocar</msg>
   <msg key="Revoke_site_wide_admin">Revocar privilegios de administración a lo largo del sitio.</msg>
   <msg key="Role">Rol</msg>
+  <msg key="Roles">Roles</msg>
   <msg key="rrggbb">rrggbb</msg>
   <msg key="Screen_name">Nick:</msg>
   <msg key="Search">Buscar</msg>

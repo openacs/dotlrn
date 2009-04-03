@@ -170,14 +170,15 @@ if {[empty_string_p $revision_id]} {
 	set scope_name "course"
     }
     
-    set header_url "/resources/dotlrn/logo-$scope_name.gif"
+    set header_url ""
 
 } else {
-    set header_url "[dotlrn_community::get_community_url $community_id]/file-storage/download/?version_id=$revision_id"
+    set item_id [content::revision::item_id -revision_id $revision_id]
+    set header_url "[subsite::get_url]image/$item_id"
 }
  
-set title [_ dotlrn.Edit_Properties]
-set context [list [list one-community-admin [_ dotlrn.Administer]] [_ dotlrn.Edit_Properties]]
+set doc(title) [_ dotlrn.Edit_Properties]
+set context [list [list one-community-admin [_ dotlrn.Admin]] $doc(title)]
 
 ad_return_template
 
