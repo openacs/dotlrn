@@ -27,6 +27,7 @@
   <msg key="Add_User">Añadir usuario</msg>
   <msg key="Add_users_to">Añadir usuarios a</msg>
   <msg key="Add_Users_to_Group">Añadir usuarios al grupo</msg>
+  <msg key="Add_your_bio">Su biografía</msg>
   <msg key="AddDrop_Memberships">Alta/baja en grupos</msg>
   <msg key="added_community_message">Para visitar la página de la comunidad, vaya con su navegador al %package%, abra una sesión, pinche en el enlace   %community_name% dentro del portlet &amp;quot;Grupos&amp;quot;.</msg>
   <msg key="added_community_subject">Ha sido añadido a la comunidad &amp;quot;%community_name%&amp;quot; en %package%</msg>
@@ -130,6 +131,7 @@
   <msg key="Confirm_1">Confirmar:</msg>
   <msg key="Confirm_Drop">Confirmar borrado</msg>
   <msg key="Confirmation">Confirmación</msg>
+  <msg key="Contact_us">Contactar</msg>
   <msg key="control_panel">Panel de control</msg>
   <msg key="control_panel_accesskey">7</msg>
   <msg key="Copy">Copiar</msg>
@@ -148,6 +150,7 @@
   <msg key="CSV_File_Format">Formato CSV</msg>
   <msg key="Customize_Layout">Personalizar este portal</msg>
   <msg key="Customize_Template">Personalizar plantilla</msg>
+  <msg key="Cut_and_paste_or_type_your_bio_">Corte y pegue o escriba su biografía</msg>
   <msg key="database_choked">&lt;p&gt;¡Ha ocurrido un error en la base de datos mientras se intentaba crear al ultimo usuario de la lista!&amp;&lt;br&gt;La transacción ha sido abortada, no se ha añadido ningún usuario y no se ha enviado ningún correo.&lt;/p&gt;</msg>
   <msg key="datafile_must">&lt;p&gt;El archivo de datos debe de incluir al menos los campos &quot;emails, first_names, last_name&quot;.&lt;p&gt;</msg>
   <msg key="Deactivate_">Desactivar...</msg>
@@ -206,6 +209,7 @@
   <msg key="emacs_subject">Asignatura</msg>
   <msg key="Email">Correo electrónico:</msg>
   <msg key="email">Correo electrónico</msg>
+  <msg key="Email_">Email:</msg>
   <msg key="Email_1">Correo electrónico</msg>
   <msg key="Email_Cancelled">Correo cancelado</msg>
   <msg key="Email_Members">Escribir a los miembros</msg>
@@ -227,6 +231,7 @@
   <msg key="First_Line">Primera Línea</msg>
   <msg key="first_line_of_file_must_be">La primera línea del archivo debe contener el siguiente línea de título:</msg>
   <msg key="First_Name">Nombre</msg>
+  <msg key="First_names_">Nombre:</msg>
   <msg key="From">Desde</msg>
   <msg key="fuchsia">fucsia</msg>
   <msg key="Full">Ilimitado</msg>
@@ -284,6 +289,7 @@
   <msg key="Key">Clave</msg>
   <msg key="Large">Grande</msg>
   <msg key="Last_Name">Apellidos</msg>
+  <msg key="Last_name_">Apellidos:</msg>
   <msg key="Last_Visit">Última visita:</msg>
   <msg key="Last_visit_over">Última visita después de</msg>
   <msg key="Last_visit_under">Última visita antes de</msg>
@@ -489,6 +495,7 @@
   <msg key="Or">o</msg>
   <msg key="or_by_RGB_number">o por números RGB</msg>
   <msg key="or_return_to">o, volver a</msg>
+  <msg key="OR_upload_a_text_file">O suba un fichero de texto</msg>
   <msg key="Page">Página</msg>
   <msg key="Parent">Padre</msg>
   <msg key="Parent_Type">Tipo del padre</msg>
@@ -496,6 +503,7 @@
   <msg key="Pending_Approval">Esperando aprobación</msg>
   <msg key="Person_name">Nombre</msg>
   <msg key="Personal_home_page">Página personal:</msg>
+  <msg key="Personal_info">Información personal</msg>
   <msg key="Personal_Options">Opciones personales</msg>
   <msg key="Plain_Text">Texto plano</msg>
   <msg key="Please_type_a_keyword">Entrar cadena a buscar</msg>
@@ -600,6 +608,7 @@
   <msg key="subcommunity_memberships">Miembros de %subcommunities_pretty_name%</msg>
   <msg key="Subject">Asunto</msg>
   <msg key="Subject_key">Llave de Asignatura</msg>
+  <msg key="Support">Soporte</msg>
   <msg key="teaching_assistant_role_pretty_name">Profesor asociado</msg>
   <msg key="teaching_assistant_role_pretty_plural">Profesores asociados</msg>
   <msg key="teal">turquesa</msg>
@@ -627,6 +636,7 @@
   <msg key="Unknown_Term">Período desconocido</msg>
   <msg key="Update_Password">Actualizar contraseña</msg>
   <msg key="upload">subir</msg>
+  <msg key="Upload_file_format">Formato del fichero</msg>
   <msg key="User">Usuario</msg>
   <msg key="user_add_confirm_email_body">Ha sido registrado como usuario de %system_name% en %system_url%. Dirección de correo: %user_email% Contraseña: %user_password%</msg>
   <msg key="user_add_confirm_email_subject">Ha sido registrado como usuario de %system_name% en %system_url%</msg>

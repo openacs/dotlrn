@@ -19,60 +19,43 @@
 %>
 
 <master>
-<property name="title">@first_names@ @last_name@</property>
+<property name="title">@user.first_names@ @user.last_name@</property>
 <property name="context">@context;noquote@</property>
 
-<p>
-<a href="@return_url;noquote@" title="Go back" class="button">Go back</a>
-</p>
-#dotlrn.user_has_been_a_member_since#
-
-<if @member_state@ eq "deleted">
-
-  <p><strong>#dotlrn.this_user_is_deleted#</strong></p>
-
+<if @portrait_p@>
+  <div style="float: right;">
+    <a href="@portrait_url@" title="#acs-subsite.See_full_size#">
+      <img src="@img_src@" alt="#acs-subsite.lt_Portrait_of_first_last#">
+    </a>
+  </div>
 </if>
-<else><if @member_state@ eq "banned">
 
-  <p><strong>#dotlrn.lt_this_user_is_deleted_#</strong></p>
+<div>
+<h1>#dotlrn.Personal_info#</h1>
 
-</if></else>
-
-<if @show_email_p@ eq 1>
-  <ul>
-    <li>#dotlrn.email#: <a href="mailto:@email@">@email@</a></li>
-
-    <if @url@ not nil>
-      <li>#dotlrn.Personal_home_page# <a href="@homepage_url@">@homepage_url@</a></li>
-    </if>
-	<if @forums_p@ true>
-	<multiple name="forumss">
-	<li><a href="@forums_url@?forum_id=@forums.forum_id@">@forums.name@</a> - #dotlrn.Latest_post# @forums.lastest_post@
-        </multiple>
-        </if>
-    <if @bio@ not nil>
-      <p> <em>#dotlrn.Biography#</em> @bio;noquote@
-    </if>
-  </ul>
+<if @user.member_state@ eq "deleted">
+  <p><strong>#dotlrn.this_user_is_deleted#</strong></p>
 </if>
 <else>
-  <if @url@ not nil>
-    <ul><li>#dotlrn.Personal_home_page# <a href="@url@">@url@</a></li></ul>
+  <if @user.member_state@ eq "banned">
+    <p><strong>#dotlrn.lt_this_user_is_deleted_#</strong></p>
   </if>
 </else>
 
-<if @portrait_p@ eq 1>
+  <ul>
+    <li>#dotlrn.First_names_# @first_names@</li>
+    <li>#dotlrn.Last_name_# @last_name@</li>
+    <li>#dotlrn.Email_# @pretty_email;noquote@</li>
+    <li>#dotlrn.Registration_date# @pretty_creation_date@</li>
 
-  <if @inline_portrait_state@ eq "inline">
-  
-    <a href="/shared/portrait?@portrait_export_vars@"><img src="/shared/portrait-bits?@portrait_export_vars@" align="right" width="@width@" height="@height@"></a><br>
-  
-  </if>
-  <if @inline_portrait_state@ eq "link">
-  
-      <ul><li><a href="/shared/portrait?@portrait_export_vars@">#dotlrn.Portrait_1#</a></li></ul>
-  
-  </if>
+    <if @user.url@ not nil>
+      <li>#dotlrn.Personal_home_page# <a href="@user.url@">@user.url@</a></li>
+    </if>
+  </ul>
+
+<if @user.bio@ not nil>
+  <h1>#dotlrn.Biography#</h1>
+  @user.bio;noquote@
 </if>
 
-<include src="/packages/dotlrn/lib/bio" user_id="@user_id@" community_id="@community_id@" return_url="@return_url_2;noquote@">
+</div>

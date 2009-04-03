@@ -28,6 +28,7 @@
   <msg key="Add_User">Add User</msg>
   <msg key="Add_users_to">Add users to</msg>
   <msg key="Add_Users_to_Group">Add Users to Group</msg>
+  <msg key="Add_your_bio">Add your biography</msg>
   <msg key="AddDrop_Memberships">Add/Drop Memberships</msg>
   <msg key="added_community_message">To visit the community's home page, point your browser at %package%, log in, and click on the %community_name% link in the &quot;Groups&quot; portlet.</msg>
   <msg key="added_community_subject">You have been added to the &quot;%community_name%&quot; community at %package%</msg>
@@ -140,6 +141,7 @@
   <msg key="Confirm_1">Confirm:</msg>
   <msg key="Confirm_Drop">Confirm Drop</msg>
   <msg key="Confirmation">Confirmation</msg>
+  <msg key="Contact_us">Contact Us</msg>
   <msg key="control_panel">Control Panel</msg>
   <msg key="control_panel_accesskey">7</msg>
   <msg key="Copy">Copy</msg>
@@ -158,6 +160,7 @@
   <msg key="CSV_File_Format">CSV File Format</msg>
   <msg key="Customize_Layout">Customize Layout</msg>
   <msg key="Customize_Template">Customize Site Template</msg>
+  <msg key="Cut_and_paste_or_type_your_bio_">Cut and paste or type your biography</msg>
   <msg key="database_choked">&lt;p&gt;Database error while trying to create the last user in the list above!&lt;br&gt; The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.&lt;p&gt;</msg>
   <msg key="datafile_must">&lt;p&gt;Datafile must include at least the email, first_names, last_name fields.&lt;p&gt;</msg>
   <msg key="Deactivate_">Deactivate ...</msg>
@@ -219,6 +222,7 @@ notify this user.</msg>
   <msg key="emacs_subject">Subject</msg>
   <msg key="Email">Email</msg>
   <msg key="email">E-mail</msg>
+  <msg key="Email_">Email:</msg>
   <msg key="Email_1">Email</msg>
   <msg key="Email_Cancelled">Email Cancelled</msg>
   <msg key="Email_Members">Email Members</msg>
@@ -240,6 +244,7 @@ notify this user.</msg>
   <msg key="First_Line">First Line</msg>
   <msg key="first_line_of_file_must_be">The first line of the file must have the following header line:</msg>
   <msg key="First_Name">First Name</msg>
+  <msg key="First_names_">Firstnames:</msg>
   <msg key="From">From</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Full</msg>
@@ -297,6 +302,7 @@ notify this user.</msg>
   <msg key="Key">Key</msg>
   <msg key="Large">Large</msg>
   <msg key="Last_Name">Last Name</msg>
+  <msg key="Last_name_">Last name:</msg>
   <msg key="Last_Visit">Last Visit:</msg>
   <msg key="Last_visit_over">Number of days since last visit is more than:</msg>
   <description key="Last_visit_over">On the user search form. What follows the text is a select box for the number of days.</description>
@@ -536,6 +542,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Or">Or</msg>
   <msg key="or_by_RGB_number">or by RGB number</msg>
   <msg key="or_return_to">or, return to</msg>
+  <msg key="OR_upload_a_text_file">Or upload a text file</msg>
   <msg key="Page">Page</msg>
   <msg key="Parent">Parent</msg>
   <msg key="Parent_Type">Parent Type</msg>
@@ -543,6 +550,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Pending_Approval">Pending Approval</msg>
   <msg key="Person_name">Name:</msg>
   <msg key="Personal_home_page">Personal home page:</msg>
+  <msg key="Personal_info">Personal Information</msg>
   <msg key="Personal_Options">Personal Options</msg>
   <msg key="Plain_Text">Plain Text</msg>
   <msg key="Please_type_a_keyword">Please type a keyword
@@ -662,6 +670,7 @@ Thank you
   <msg key="subcommunity_memberships">%subcommunities_pretty_name% Memberships</msg>
   <msg key="Subject">Subject</msg>
   <msg key="Subject_key">Subject key</msg>
+  <msg key="Support">Support</msg>
   <msg key="teaching_assistant_role_pretty_name">Teaching Assistant</msg>
   <msg key="teaching_assistant_role_pretty_plural">Teaching Assistants</msg>
   <msg key="teal">teal</msg>
@@ -690,6 +699,7 @@ Thank you
   <msg key="Unknown_Term">Unknown Term</msg>
   <msg key="Update_Password">Update Password</msg>
   <msg key="upload">upload</msg>
+  <msg key="Upload_file_format">File format</msg>
   <msg key="User">User</msg>
   <msg key="user_add_confirm_email_body">You have been added as a user to %system_name% at %system_url%.
             Login: %user_email%
