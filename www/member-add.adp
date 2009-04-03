@@ -20,21 +20,27 @@
 
 <master>
 <property name="title">#dotlrn.Add_A_Member#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="context">@context;noquote@</property>
 
 <h1>#dotlrn.Add_A_Member#</h1>
 
 <if @users:rowcount@ eq 0>
-     #dotlrn.there_are_no_users_matching#
+  <p>#dotlrn.there_are_no_users_matching#</p>
 </if>
 <else>
-	#dotlrn.lt_The_results_of_your_s#
-</else>
 
-<ul>
-<multiple name="users">
-  <li>
-	<a href="member-add-2?user_id=@users.user_id@&referer=@referer@" title="#dotlrn.add# @users.last_name@, @users.first_names@">@users.last_name@, @users.first_names@ (@users.email@)</a>  
-  </li>
-</multiple>
-</ul>
+    #dotlrn.lt_The_results_of_your_s#
+
+    <ul>
+      <multiple name="users">
+        <li>
+        <if @users.member_p@ true>
+          #dotlrn.user_already_member#
+        </if>
+        <else>
+          <a href="@users.member_add_url@" title="#dotlrn.add# @users.last_name@, @users.first_names@">@users.last_name@, @users.first_names@</a>
+        </else>
+        </li>
+      </multiple>
+    </ul>
+</else>

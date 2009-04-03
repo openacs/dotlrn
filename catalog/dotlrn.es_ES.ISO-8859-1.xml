@@ -641,6 +641,7 @@
   <msg key="user_add_confirm_email_body">Ha sido registrado como usuario de %system_name% en %system_url%. Dirección de correo: %user_email% Contraseña: %user_password%</msg>
   <msg key="user_add_confirm_email_subject">Ha sido registrado como usuario de %system_name% en %system_url%</msg>
   <msg key="User_Admin_Page">Página de administración de usuarios</msg>
+  <msg key="user_already_member">%users.first_names% %users.last_name% ya es miembro</msg>
   <msg key="user_email_already_exists">El usuario %user_email% ya existe... guardando user_id</msg>
   <msg key="user_email_created">Usuario %user_email% creado...</msg>
   <msg key="user_has_been_a_member_since"> %first_names% %last_name% es miembro de %system_name% desde el día %pretty_creation_date%</msg>

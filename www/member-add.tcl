@@ -30,10 +30,10 @@ set search_text [string trim $search_text]
 set community_id [dotlrn_community::get_community_id]
 
 # Just search
-db_multirow users select_users {}
+db_multirow -extend {member_add_url} users select_users {} {
+    set member_add_url [export_vars -base "member-add-2" { user_id referer }]
+}
 
-set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
-
+set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
 
 ad_return_template
-

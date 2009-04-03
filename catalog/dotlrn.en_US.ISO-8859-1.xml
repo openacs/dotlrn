@@ -706,6 +706,7 @@ Thank you
             Password: %user_password%</msg>
   <msg key="user_add_confirm_email_subject">You have been added as a user to %system_name% at %system_url%</msg>
   <msg key="User_Admin_Page">User Admin Page</msg>
+  <msg key="user_already_member">%users.first_names% %users.last_name% is already a member</msg>
   <msg key="user_email_already_exists">User %user_email% already exists... storing user_id</msg>
   <msg key="user_email_created">User %user_email% created....</msg>
   <msg key="user_has_been_a_member_since">%first_names% %last_name% has been a member of %system_name% since %pretty_creation_date%</msg>
