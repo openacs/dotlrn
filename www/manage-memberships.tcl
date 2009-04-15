@@ -57,8 +57,8 @@ if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_pac
 set user_id [ad_conn user_id]
 
 set show_drop_button_p [parameter::get_from_package_key \
-                               -package_key dotlrn-portlet \
-			       -parameter AllowMembersDropGroups]
+                            -package_key dotlrn-portlet \
+                            -parameter AllowMembersDropGroups]
 
 if {![dotlrn::user_can_browse_p]} {
     ad_returnredirect "not-allowed"
@@ -140,6 +140,10 @@ template::list::create -name member_classes -multirow member_classes -pass_prope
             <a href="@member_classes.url@" title="\#dotlrn.goto_member_classes_pretty_name\#">@member_classes.pretty_name@</a>
         }
     }
+    description {
+        html {align left style "width:30%"}
+        label "\#dotlrn.Description\#"
+    }
     term {
         html {style "width:20%"}
         label "\#dotlrn.Term\#"
@@ -176,6 +180,10 @@ template::list::create -name member_clubs -multirow member_clubs -pass_propertie
         display_template {
             <a href="@member_clubs.url@" title="\#dotlrn.goto_member_clubs_pretty_name\#">@member_clubs.pretty_name@</a>
         }
+    }
+    description {
+        html {align left style "width:30%"}
+        label "\#dotlrn.Description\#"
     }
     role {
         label "\#dotlrn.Role\#"
@@ -260,13 +268,8 @@ template::list::create -name non_member_classes -multirow non_member_classes -pa
         html {align left style "width:30%"}
         label "[_ dotlrn.classes_pretty_name]"
         display_template {
-            <if @non_member_classes.join_policy@ eq "open">
             <if @swa_p@ eq 1><a href="@non_member_classes.url@" title="\\#dotlrn.goto_non_member_classes\\#">@non_member_classes.pretty_name@</a></if>
             <else>@non_member_classes.pretty_name@</else>
-            </if>
-            <else>
-            @non_member_classes.pretty_name@
-            </else>
         }
     }
     description {
@@ -306,13 +309,8 @@ template::list::create -name non_member_clubs -multirow non_member_clubs -pass_p
         html {align left style "width:30%"}
         label "[_ dotlrn.clubs_pretty_name]"
         display_template {
-            <if @non_member_clubs.join_policy@ eq "open">
             <if @swa_p@ eq 1><a href="@non_member_clubs.url@" title="\\#dotlrn.goto_non_member_clubs\\#">@non_member_clubs.pretty_name@</a></if>
             <else>@non_member_clubs.pretty_name@</else>
-            </if>
-            <else>
-            @non_member_clubs.pretty_name@
-            </else>
         }
     }
     description {
