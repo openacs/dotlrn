@@ -23,7 +23,7 @@ ad_page_contract {
 } {
     user_id:integer,notnull
 } -properties {
-    context_bar:onevalue
+    context:onevalue
     first_names:onevalue
     last_name:onevalue
     email:onevalue
@@ -45,7 +45,7 @@ ad_page_contract {
 dotlrn::require_admin 
 
 set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
-set export_edit_vars "user_id=$user_id&return_url=$return_url"
+set export_edit_vars [export_vars {user_id return_url}]
 
 set dotlrn_url [dotlrn::get_url]
 set root_object_id [acs_magic_object security_context_root]
@@ -73,7 +73,7 @@ if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info 
     set portrait_p 1
 }
 
-set change_state_links "\[ <small>[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]</small> \]"
+set change_state_links "\[[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]\]"
 
 db_multirow member_classes select_member_classes {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]
@@ -92,20 +92,19 @@ set dotlrn_admin_p [dotlrn::admin_p]
 
 set administrative_action_p [expr {$site_wide_admin_p || $dotlrn_admin_p}]
 
-set context_bar [list [list users [_ dotlrn.Users]] "$first_names $last_name"]
+set doc(title) "$first_names $last_name"
+set context [list [list users [_ dotlrn.Users]] $doc(title)]
 
-set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
+set dual_approve_return_url [export_vars -base "[dotlrn::get_admin_url]/user-new-2" {user_id {referer $return_url}}]
 
-set approve_user_url "/acs-admin/users/member-state-change?user_id=$user_id&member_state=approved&return_url=$dual_approve_return_url"
+set approve_user_url [export_vars -base "/acs-admin/users/member-state-change" {user_id {member_state approved} {return_url $dual_approve_return_url}}]
 
-set remove_user_url "\[<small><a href=\"[export_vars -base user-nuke {user_id}]\">Nuke</a></small>\]"
+set remove_user_url [export_vars -base user-nuke {user_id}]
 
 # Used in some en_US messages in the adp file
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
 set clubs_pretty_name [parameter::get -localize -parameter clubs_pretty_name]
 set subcommunities_pretty_name [parameter::get -localize -parameter subcommunities_pretty_name]
-
-set dual_approve_return_url [ns_urlencode [dotlrn::get_admin_url]/user-new-2?user_id=$user_id&referer=$return_url]
 
 if { [acs_user::site_wide_admin_p -user_id $user_id] } {
     set toggle_value revoke

@@ -18,11 +18,12 @@
 
 %>
 
-<master src="dotlrn-admin-master">
-<property name="title">@first_names@ @last_name@</property>
-<property name="context_bar">@context_bar@</property>
+<master>
 
-<h3>#dotlrn.General_Information#</h3>
+<property name="&doc">doc</property>
+<property name="context">@context;noquote@</property>
+
+<h1>#dotlrn.General_Information#</h1>
 
 <ul>
 
@@ -30,7 +31,7 @@
     #dotlrn.Person_name#
     <strong>@first_names@ @last_name@</strong>
   <if @site_wide_admin_p@ true> 
-    [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
+    [<a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a>]
   </if>
   </li>
 
@@ -38,7 +39,7 @@
     #dotlrn.Email#
     <strong><a href="mailto:@email@">@email@</a></strong>
   <if @site_wide_admin_p@ true>
-    [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
+    [<a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a>]
   </if> 
   </li>
 
@@ -46,7 +47,7 @@
     #dotlrn.Screen_name#
     <strong>@screen_name@</strong>
   <if @site_wide_admin_p@ true>
-    [<small> <a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a> </small>]
+    [<a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a>]
   </if>
   </li>
 
@@ -68,7 +69,8 @@
 </if>
 <else>
   <li>
-    #dotlrn.lt_Last_Visit_None_#: @remove_user_url;noquote@
+    #dotlrn.lt_Last_Visit_None_#: 
+    [<a href="@remove_user_url@">#dotlrn.Nuke#</a>]
   </li>
 </else>
 
@@ -88,7 +90,7 @@
 
 </ul>
 
-<h3>#dotlrn.dotLRN_Information#</h3>
+<h1>#dotlrn.dotLRN_Information#</h1>
 
 <if @dotlrn_user_p@>
 
@@ -101,21 +103,19 @@
 
   <li>
     #dotlrn.Access_level#
-    <if @can_browse_p@><strong>#dotlrn.Full#</strong> [ <small><a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a> </small>]</if><else><strong>#dotlrn.Limited#</strong> [ <small><a href="browse-toggle?user_id=@user_id@&can_brow
-se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
+    <if @can_browse_p@><strong>#dotlrn.Full#</strong> [<a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a>]</if><else><strong>#dotlrn.Limited#</strong> [<a href="browse-toggle?user_id=@user_id@&can_brow
+se_p=1&referer=@return_url@">#dotlrn.Full#</a>]</else>
   </li>
 
   <li>
     #dotlrn.Guest#
-    <if @guest_p@ eq t><strong>#dotlrn.Yes#</strong> [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a> </small>]</if><else><strong>#dotlrn.No#</strong> [ <small><a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a> </small>]</else>
+    <if @guest_p@ eq t><strong>#dotlrn.Yes#</strong> [<a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a>]</if><else><strong>#dotlrn.No#</strong> [<a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a>]</else>
   </li>
 
   <li>
     #dotlrn.ID#
     <if @id@ nil><strong>#dotlrn.ltnone_set_upgt#</strong></if><else><strong>@id@</strong></else>
   </li>
-
-  <br>
 
   <li>
     <a href="user-edit?@export_edit_vars@">#dotlrn.Edit#</a> #dotlrn.lt_dotLRN_properties_for#
@@ -124,7 +124,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
 </ul>
 
 <if @member_classes:rowcount@ gt 0>
-    <h4>#dotlrn.class_memberships#</h4>
+    <h2>#dotlrn.class_memberships#</h2>
 
     <ul>
 <multiple name="member_classes">
@@ -138,7 +138,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
 </if>
 
 <if @member_clubs:rowcount@ gt 0>
-    <h4>#dotlrn.community_memberships#</h4>
+    <h2>#dotlrn.community_memberships#</h2>
 
     <ul>
 <multiple name="member_clubs">
@@ -151,7 +151,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
 </if>
 
 <if @member_subgroups:rowcount@ gt 0>
-    <h4>#dotlrn.subcommunity_memberships#</h4>
+    <h2>#dotlrn.subcommunity_memberships#</h2>
 
     <ul>
 <multiple name="member_subgroups">
@@ -182,14 +182,14 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a></small> ]</else>
 </else>
 
 <if @portrait_p@ true or @administrative_action_p@ true>
-<h3>#dotlrn.lt_Administrative_Action#</h3>
+<h1>#dotlrn.lt_Administrative_Action#</h1>
 
 <ul>
   <if @portrait_p@>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
  <if @site_wide_admin_p@ true>
-  <li><a href="@toggle_swa_url;noquote@">@toggle_text;noquote@</a></li>
+  <li><a href="@toggle_swa_url@">@toggle_text@</a></li>
  </if>
  <if @site_wide_admin_p@ true or @dotlrn_admin_p@ true>
   <li><a href="password-update?@export_edit_vars@">#dotlrn.lt_Update_this_users_pas#</a></li>
