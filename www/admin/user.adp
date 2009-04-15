@@ -83,9 +83,14 @@
   <li>
     #dotlrn.Member_state#
     <strong>@member_state@</strong>
-  <if @site_wide_admin_p@ true> 
-    @change_state_links;noquote@
-  </if>
+        <if @site_wide_admin_p@ true>
+          [
+          <multiple name="change_state_links">
+            <if @change_state_links.rownum@ gt 1>|</if>
+            <a href="@change_state_links.url@">@change_state_links.label@</a>
+          </multiple>
+          ]
+        </if>
   </li>
 
 </ul>
@@ -102,14 +107,15 @@
   </li>
 
   <li>
-    #dotlrn.Access_level#
-    <if @can_browse_p@><strong>#dotlrn.Full#</strong> [<a href="browse-toggle?user_id=@user_id@&can_browse_p=0&referer=@return_url@">#dotlrn.Limited#</a>]</if><else><strong>#dotlrn.Limited#</strong> [<a href="browse-toggle?user_id=@user_id@&can_brow
-se_p=1&referer=@return_url@">#dotlrn.Full#</a>]</else>
+          #dotlrn.Access_level#
+          <strong>@browse_label@</strong> 
+          [<a href="@browse_toggle_url@">@browse_toggle_label@</a>]
   </li>
 
   <li>
-    #dotlrn.Guest#
-    <if @guest_p@ eq t><strong>#dotlrn.Yes#</strong> [<a href="guest-toggle?user_id=@user_id@&guest_p=f&referer=@return_url@">#dotlrn.No#</a>]</if><else><strong>#dotlrn.No#</strong> [<a href="guest-toggle?user_id=@user_id@&guest_p=t&referer=@return_url@">#dotlrn.Yes#</a>]</else>
+          #dotlrn.Guest#
+          <strong>@guest_label@</strong> 
+          [<a href="@guest_toggle_url@">@guest_toggle_label@</a>]
   </li>
 
   <li>
@@ -165,7 +171,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a>]</else>
 
   <ul>
     <li>
-      <a href="users-add-to-community?users=@user_id@&referer=@return_url@">#dotlrn.add_to_another_group#</a>
+      <a href="@add_to_comm_url@">#dotlrn.add_to_another_group#</a>
     </li>
   </ul>
 
@@ -173,7 +179,7 @@ se_p=1&referer=@return_url@">#dotlrn.Full#</a>]</else>
 <else>
 <p>
 <if @member_state@ eq "approved">
-  <a href="user-new-2?user_id=@user_id@&referer=@return_url@">#dotlrn.add_to_dotlrn#</a>
+  <a href="@add_to_dotlrn_url@">#dotlrn.add_to_dotlrn#</a>
 </if>
 <else>
 #dotlrn.lt_This_user_is_currentl#.

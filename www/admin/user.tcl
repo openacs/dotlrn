@@ -66,14 +66,38 @@ set dotlrn_user_p 0
 if {[db_0or1row select_dotlrn_user_info {}]} {
     set dotlrn_user_p 1
 }
-set can_browse_p [dotlrn::user_can_browse_p -user_id $user_id]
+
+# dotlrn Access level
+if { [dotlrn::user_can_browse_p -user_id $user_id] } {
+    set browse_label [_ dotlrn.Full]
+    set browse_toggle_url [export_vars -base "browse-toggle" {user_id {can_browse_p 0} {referer $return_url}}]
+    set browse_toggle_label [_ dotlrn.Limited]
+} else {
+    set browse_label [_ dotlrn.Limited]
+    set browse_toggle_url [export_vars -base "browse-toggle" {user_id {can_browse_p 1} {referer $return_url}}]
+    set browse_toggle_label [_ dotlrn.Full]
+}
+
+# dotlrn Guest status
+if { $guest_p } {
+    set guest_label [_ dotlrn.Yes]
+    set guest_toggle_url [export_vars -base "guest-toggle" {user_id {guest_p f} {referer $return_url}}]
+    set guest_toggle_label [_ dotlrn.No]
+} else {
+    set guest_label [_ dotlrn.No]
+    set guest_toggle_url [export_vars -base "guest-toggle" {user_id {guest_p t} {referer $return_url}}]
+    set guest_toggle_label [_ dotlrn.Yes]
+}
 
 set portrait_p 0
 if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info {}]} {
     set portrait_p 1
 }
 
-set change_state_links "\[[join [ad_registration_finite_state_machine_admin_links $member_state $email_verified_p $user_id $return_url] " | "]\]"
+template::multirow create change_state_links url label
+foreach elm [ad_registration_finite_state_machine_admin_links -nohtml -- $member_state $email_verified_p $user_id $return_url] {
+    template::multirow append change_state_links [lindex $elm 0] [lindex $elm 1]
+}
 
 db_multirow member_classes select_member_classes {} {
     set role_pretty_name [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type]
@@ -100,6 +124,9 @@ set dual_approve_return_url [export_vars -base "[dotlrn::get_admin_url]/user-new
 set approve_user_url [export_vars -base "/acs-admin/users/member-state-change" {user_id {member_state approved} {return_url $dual_approve_return_url}}]
 
 set remove_user_url [export_vars -base user-nuke {user_id}]
+
+set add_to_comm_url [export_vars -base "users-add-to-community" {{users $user_id} {referer $return_url}}]
+set add_to_dotlrn_url [export_vars -base "user-new-2" {user_id {referer $return_url}}]
 
 # Used in some en_US messages in the adp file
 set class_instances_pretty_name [parameter::get -localize -parameter class_instances_pretty_name]
