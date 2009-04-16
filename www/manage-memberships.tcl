@@ -266,7 +266,7 @@ set n_non_member_classes [db_string select_n_non_member_classes {}]
 template::list::create -name non_member_classes -multirow non_member_classes -pass_properties { show_drop_button_p referer swa_p} -html {width 100%} -elements {
     name {
         html {align left style "width:30%"}
-        label "[_ dotlrn.classes_pretty_name]"
+        label "[_ dotlrn.class_instances_pretty_name]"
         display_template {
             <if @swa_p@ eq 1><a href="@non_member_classes.url@" title="\\#dotlrn.goto_non_member_classes\\#">@non_member_classes.pretty_name@</a></if>
             <else>@non_member_classes.pretty_name@</else>

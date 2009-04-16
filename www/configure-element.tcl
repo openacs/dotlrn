@@ -43,19 +43,15 @@ if {[parameter::get -parameter community_level_p] == 1} {
 
     if {[dotlrn_community::member_p $community_id $user_id] || $admin_p} {
         portal::configure_element $element_id $op "one-community?page_num=$page_num"
-        # configure element redirects
-        ad_script_abort
     } else {
         ad_returnredirect "one-community?page_num=$page_num"
-        ad_script_abort
     }
 } else {
 
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
     if {[empty_string_p $portal_id]} {
         # do something
-        ad_returnredirect "/."
-        ad_script_abort
+        ad_returnredirect "./"
     } else {
         set rendered_page [portal::configure_element $element_id $op "index?page_num=$page_num"]
     }
