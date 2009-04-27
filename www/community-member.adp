@@ -54,7 +54,7 @@
   </ul>
 
 <if @user.bio@ not nil>
-  <h1>#dotlrn.Biography#</h1>
+  <h1>#acs-subsite.Biography#</h1>
   @user.bio;noquote@
 </if>
 
