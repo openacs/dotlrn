@@ -101,7 +101,7 @@ element create user_search type \
     -label "[_ dotlrn.Type]" \
     -datatype text \
     -widget select \
-    -options "[list [_ dotlrn.Any] any] [dotlrn::get_user_types_as_options]" \
+    -options "[concat [list [list [_ dotlrn.Any] any]] [dotlrn::get_user_types_as_options]]" \
     -value $type
 
 element create user_search can_browse_p \
@@ -251,7 +251,7 @@ if {[form is_valid user_search]} {
     if {[llength $wheres]} {
         append sql " where "
         append sql [join $wheres " $join_criteria "]
-	append sql "order by last_name, first_names"
+        append sql " order by last_name, first_names"
     }
 
     set referer [ns_conn url]
