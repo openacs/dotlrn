@@ -32,8 +32,8 @@ set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.New]]
 
 db_1row select_user_info {
     select email,
-           first_names,
-           last_name
+    first_names,
+    last_name
     from registered_users
     where user_id = :user_id
 }
@@ -103,17 +103,17 @@ if {[form is_valid add_user]} {
     }
     
     
-    if [catch {ns_sendmail $email $email_from $subject $message} errmsg] {
-	
-	ns_log Error "Error sending email from user-new-2.tcl" $errmsg
-	ad_return_error \
-        "Error sending mail" \
-        "There was an error sending email to $email."
+    if [catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg] {
+        
+        ns_log Error "Error sending email from user-new-2.tcl" $errmsg
+        ad_return_error \
+            "Error sending mail" \
+            "There was an error sending email to $email."
     } else {
 
-	set admin_subject "The following email was just sent from [ad_system_name]"
+        set admin_subject "The following email was just sent from [ad_system_name]"
 
-	set admin_message "The following email was just sent from [ad_system_name]
+        set admin_message "The following email was just sent from [ad_system_name]
 
 Sent by: $email_from
 Sent to: $email
@@ -121,13 +121,13 @@ Subject: $subject
 Message: $message"
 
 
-        if [catch {ns_sendmail $email_from $email_from $admin_subject $admin_message} errmsg] {
-	
-	    ns_log Error "Error sending email from user-new-2.tcl" $errmsg
-	    ad_return_error \
-		    "Error sending mail" \
-		    "There was an error sending email to $email."
-	}
+        if [catch {acs_mail_lite::send -send_immediately -to_addr $email_from -from_addr $email_from -subject $admin_subject -body $admin_message} errmsg] {
+            
+            ns_log Error "Error sending email from user-new-2.tcl" $errmsg
+            ad_return_error \
+                "Error sending mail" \
+                "There was an error sending email to $email."
+        }
 
     }
 

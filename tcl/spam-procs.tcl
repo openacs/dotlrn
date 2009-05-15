@@ -84,7 +84,7 @@ namespace eval spam {
             set message [interpolate -values $values -text $message]
 
             # send the email
-            if {[catch {ns_sendmail $email $from $subject $message} errmsg]} {
+            if {[catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $from -subject $subject -body $message} errmsg]} {
                 append errors "
 <p>
 Failed to deliver to $email because:
@@ -129,7 +129,7 @@ $errors
 </p>
             "
 
-            if {[catch {ns_sendmail $real_from $real_from $error_subject $error_message} errmsg]} {
+            if {[catch {acs_mail_lite::send -send_immediately -to_addr $real_from -from_addr $real_from -subject $error_subject -body $error_message} errmsg]} {
                 ad_return_error $error_subject $error_message
                 ad_script_abort
             }

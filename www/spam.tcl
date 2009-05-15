@@ -125,8 +125,7 @@ element create spam_message message \
     -widget textarea \
     -html {rows 10 cols 80}
 
-set format_options [list [list "[_ dotlrn.Preformatted_Text]" "pre"] \
-                         [list "[_ dotlrn.Plain_Text]" "plain"] \
+set format_options [list [list "[_ dotlrn.Plain_Text]" "plain"] \
                          [list "[_ dotlrn.HTML]" "html"]]
 
 element create spam_message format \

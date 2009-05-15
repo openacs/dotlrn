@@ -44,7 +44,7 @@
   <label for="rel_type">
     #dotlrn.Role#
 
-    <select id="rel_type">
+    <select name="rel_type" id="rel_type">
  
     <if @allowed_to_add_student@ false and @dotlrn_admin@ false>
       <multiple name="roles">

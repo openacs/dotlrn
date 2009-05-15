@@ -79,9 +79,9 @@ ad_form -name bulk_approve -action users-bulk-approve -form {
 	} else {
 
 	    # notify user of approval
-	    if [catch {ns_sendmail $email $email_from $subject $message} errmsg] {
+	    if [catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg] {
 	    
-		ns_log Error "Error sending email from user-new-2.tcl" $errmsg
+		ns_log Error "Error sending email from users-bulk-approve" $errmsg
 		ns_write "Error sending mail<br>"
 	    } else {
 		ns_write "Ok<br>"

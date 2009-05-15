@@ -79,6 +79,10 @@ if { [dotlrn::user_can_browse_p -user_id $user_id] } {
 }
 
 # dotlrn Guest status
+if { ![info exists guest_p] } {
+    set guest_p 0
+}
+
 if { $guest_p } {
     set guest_label [_ dotlrn.Yes]
     set guest_toggle_url [export_vars -base "guest-toggle" {user_id {guest_p f} {referer $return_url}}]

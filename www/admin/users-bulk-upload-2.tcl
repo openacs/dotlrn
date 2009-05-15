@@ -137,7 +137,7 @@ db_transaction {
             # Send note to new user
             if { $row(notify) == "t" } {
                 # Send note to new user
-                if [catch {ns_sendmail "$row(email)" "$admin_email" "$subject" "$message"} errmsg] {
+                if [catch {acs_mail_lite::send -send_immediately -to_addr $row(email) -from_addr $admin_email -subject $subject -body $message} errmsg] {
                     doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
                 set fail_p 1
                 } else {
