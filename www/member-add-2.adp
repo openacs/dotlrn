@@ -19,39 +19,50 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Add_A_Member#</property>
-<property name="context">#dotlrn.Add_A_Member#</property>
+<property name="&doc">doc</property>
+<property name="context">@context;noquote@</property>
 <property name="focus">member-add-2.rel_type</property>
 
 <h1>#dotlrn.Add_A_Member#</h1>
 
 <if @member_p@ eq 1>
 
-#dotlrn.lt_strongfirst_names_las#
+<p>#dotlrn.lt_strongfirst_names_las#</p>
 
 </if>
 <else>
-#dotlrn.lt_You_are_adding_strong#<p>
+<p>#dotlrn.lt_You_are_adding_strong#</p>
 </else>
 
 <form method="get" action="member-add-3" name="member-add-2">
+  <div>
   <input type="hidden" name="user_id" value="@user_id@">
   <input type="hidden" name="referer" value="@referer@">
-  <label for="rel_type">#dotlrn.Role#</label>
-  <select name="rel_type">
+  </div>
+
+  <div>
+  <label for="rel_type">
+    #dotlrn.Role#
+
+    <select id="rel_type">
  
-  <if @allowed_to_add_student@ false and @dotlrn_admin@ false>
-  <multiple name="roles">
-     <if @roles.rel_type@ ne "dotlrn_student_rel">
-       <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
-     </if>
-  </multiple>
-  </if>
+    <if @allowed_to_add_student@ false and @dotlrn_admin@ false>
+      <multiple name="roles">
+        <if @roles.rel_type@ ne "dotlrn_student_rel">
+          <option value="@roles.rel_type@">
+            <%= [lang::util::localize @roles.pretty_name@] %>
+          </option>
+        </if>
+      </multiple>
+    </if>
   <else> 
-  <multiple name="roles">
-       <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
-  </multiple>
+    <multiple name="roles">
+      <option value="@roles.rel_type@"><%= [lang::util::localize @roles.pretty_name@] %></option>
+    </multiple>
   </else>
   </select>
+  </label>
   <input type="submit" value="#acs-kernel.common_add#">
+  </div>
+
 </form>

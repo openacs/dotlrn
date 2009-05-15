@@ -31,6 +31,9 @@ ad_page_contract {
 #prevent to add new student, only admins can do this.
 # parameter  AllowManageMembership 
 
+set doc(title) [_ dotlrn.Add_A_Member]
+set context [list [list "one-community-admin" [_ dotlrn.Admin]] $doc(title)]
+
 set allowed_to_add_student [parameter::get_from_package_key \
                                        -package_key dotlrn-portlet \
 				       -parameter AllowManageMembership]
