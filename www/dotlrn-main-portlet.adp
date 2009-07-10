@@ -19,53 +19,55 @@
 %>
 
 
-<if @user_can_browse_p@ and @self_registration_p@>
+  <if @user_can_browse_p@ and @self_registration_p@>
     <div style="text-align: right">
-  <a href="@dotlrn_url@/manage-memberships" title="#dotlrn.lt_JoinDrop_a_Class_or_C#" class="button">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>
+      <a href="@dotlrn_url@/manage-memberships" title="#dotlrn.lt_JoinDrop_a_Class_or_C#" class="button">#dotlrn.lt_JoinDrop_a_Class_or_C#</a>
     </div>
-</if>
-
-<if @communities:rowcount@ gt 0>
-
-<multiple name="communities">
-@communities.previous_type_ul_tags;noquote@
-
-<ul class="mktree" style="padding-left: 5px;"><li id="dotlrn-main-@communities.simple_community_type@">
-<h2 style="display: inline; margin: 5px 0 0 0;">
-  <if @communities.simple_community_type@ eq "dotlrn_class_instance">
-    <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>
   </if>
-  <else>
-    <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
-  </else>
 
-</h2><small>( <a href="#" title="#dotlrn.Expand_list#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" title="#dotlrn.Collapse_list#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )</small>
+  <if @communities:rowcount@ gt 0>
 
-<ul id="tree-@communities.simple_community_type@"><li>
-<group column="simple_community_type">
+    <multiple name="communities">
+      @communities.previous_type_ul_tags;noquote@
 
-@communities.intra_type_ul_tags;noquote@
+      <ul class="mktree" style="padding-left: 5px;">
+        <li id="dotlrn-main-@communities.simple_community_type@">
+          <h2 style="display: inline; margin: 5px 0 0 0;">
+            <if @communities.simple_community_type@ eq "dotlrn_class_instance">
+              <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>
+            </if>
+            <else>
+              <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
+            </else>
 
-          <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
-	<if @communities.archived_p@><span style="color:red">Archived</span></if>
-	<if @show_buttons_p@ eq 1>
-           <if @show_drop_button_p@ eq 1>
-		&nbsp; <small> 
-                        <a href="@communities.url@deregister-self-confirm?referer=@referer@">#dotlrn.drop_membership_link#</a>
-                      </small>
-           </if>
-           <if @communities.admin_p@ eq 1>
-                  &nbsp; <small>
-                           <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a>
-                         </small>
-	   </if>
-	</if>
+          </h2>
 
-</group>
-</li></ul></li></ul>
+          ( <a href="#" title="#dotlrn.Expand_list#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" title="#dotlrn.Collapse_list#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )
 
-</multiple>
+          <ul id="tree-@communities.simple_community_type@">
+            <li>
+              <group column="simple_community_type">
 
-@final_ul_tags;noquote@
+                @communities.intra_type_ul_tags;noquote@
 
-</if>
+                <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
+                <if @communities.archived_p@><span style="color:red">Archived</span></if>
+                <if @show_buttons_p@ eq 1>
+                  <if @show_drop_button_p@ eq 1>
+                    <a href="@communities.url@deregister-self-confirm?referer=@referer@">#dotlrn.drop_membership_link#</a>
+                  </if>
+                  <if @communities.admin_p@ eq 1>
+                    <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a>
+                  </if>
+                </if>
+              </group>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </multiple>
+
+    @final_ul_tags;noquote@
+
+  </if>
