@@ -30,21 +30,26 @@
     <multiple name="communities">
       @communities.previous_type_ul_tags;noquote@
 
-      <ul class="mktree" style="padding-left: 5px;">
-        <li id="dotlrn-main-@communities.simple_community_type@">
-          <h2 style="display: inline; margin: 5px 0 0 0;">
-            <if @communities.simple_community_type@ eq "dotlrn_class_instance">
-              <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>
-            </if>
-            <else>
-              <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
-            </else>
+      <if @show_subtitle_p@>
+        <ul class="mktree" style="padding-left: 5px;">
+          <li id="dotlrn-main-@communities.simple_community_type@">
+            <h2 style="display: inline; margin: 5px 0 0 0;">
+              <if @communities.simple_community_type@ eq "dotlrn_class_instance">
+                <%= [parameter::get -localize -parameter class_instances_pretty_plural] %>
+              </if>
+              <else>
+                <%= [parameter::get -localize -parameter clubs_pretty_plural] %>
+              </else>
 
-          </h2>
+            </h2>
 
-          ( <a href="#" title="#dotlrn.Expand_list#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" title="#dotlrn.Collapse_list#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )
+            ( <a href="#" title="#dotlrn.Expand_list#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" title="#dotlrn.Collapse_list#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )
+            <ul id="tree-@communities.simple_community_type@">
+          </if>
+          <else>
+            <ul>
+          </else>
 
-          <ul id="tree-@communities.simple_community_type@">
             <li>
               <group column="simple_community_type">
 
@@ -63,8 +68,10 @@
               </group>
             </li>
           </ul>
+      <if @show_subtitle_p@>
         </li>
       </ul>
+      </if>
 
     </multiple>
 

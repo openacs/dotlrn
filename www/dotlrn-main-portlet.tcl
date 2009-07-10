@@ -37,11 +37,14 @@ if {![exists_and_not_null show_archived_p]} {
 
 set community_type_clause ""
 if { [exists_and_not_null community_filter] } {
+    set show_subtitle_p 0
     if { $community_filter eq "class_instances" } {
         set community_type_clause "and dotlrn_communities_all.community_type not in ('dotlrn_community', 'dotlrn_club', 'dotlrn_pers_community')"
     } elseif { $community_filter eq "communities" } {
         set community_type_clause "and dotlrn_communities_all.community_type in ('dotlrn_club', 'dotlrn_pers_community')"
     }
+} else {
+    set show_subtitle_p 1
 }
 
 set user_id [ad_conn user_id]
