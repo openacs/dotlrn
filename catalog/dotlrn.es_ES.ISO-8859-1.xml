@@ -59,6 +59,7 @@
   <msg key="archived_groups">%groups_pretty_plural% archivados</msg>
   <msg key="Are_you_sure">¿Está seguro?</msg>
   <msg key="Are_you_sure_del_class">Está seguro de querer borrar esta Asignatura</msg>
+  <msg key="Are_you_sure_you_want_to_drop">¿Está seguro de querer darse de baja de %community_name%?</msg>
   <msg key="are_you_sure_you_want_to_send">Desea realmente enviar lo siguiente</msg>
   <msg key="arhive_group_name">Archivar el grupo %group_name%</msg>
   <msg key="Ask_a_question">Consultas:</msg>
@@ -130,7 +131,7 @@
   <msg key="Configure_name">Configurar %name%</msg>
   <msg key="Confirm">Confirmar</msg>
   <msg key="Confirm_1">Confirmar:</msg>
-  <msg key="Confirm_Drop">Confirmar borrado</msg>
+  <msg key="Confirm_Drop">Confirmar Baja</msg>
   <msg key="Confirmation">Confirmación</msg>
   <msg key="Contact_us">Contactar</msg>
   <msg key="control_panel">Panel de control</msg>

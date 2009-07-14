@@ -1,4 +1,4 @@
 <master>
-<property name="title">@page_title@</property>
+<property name="&doc">doc</property>
 <property name="context">@context@</property>
 <formtemplate id="deregister-self-confirm"></formtemplate>

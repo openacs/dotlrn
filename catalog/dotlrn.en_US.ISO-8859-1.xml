@@ -64,6 +64,7 @@
   <msg key="archived_groups">Archived %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Are you sure?</msg>
   <msg key="Are_you_sure_del_class">Are you sure you want to delete subject</msg>
+  <msg key="Are_you_sure_you_want_to_drop">Are you sure you want to drop your membership from %community_name%</msg>
   <msg key="are_you_sure_you_want_to_send">Are you sure you want to send the following</msg>
   <description key="are_you_sure_you_want_to_send">Context?? the following what? Or is that the end of the phrase?</description>
 
