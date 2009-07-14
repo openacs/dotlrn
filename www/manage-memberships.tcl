@@ -47,9 +47,9 @@ if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_pac
     set redirect_to [parameter::get -parameter SelfRegistrationRedirectTo -package_id [dotlrn::get_package_id] -default ""]
 
     if { $redirect_to ne "" } {
-	ad_returnredirect $redirect_to
+        ad_returnredirect $redirect_to
     } else {
-	ad_returnredirect "not-allowed"
+        ad_returnredirect "not-allowed"
     }
     ad_script_abort
 }
@@ -67,20 +67,20 @@ if {![dotlrn::user_can_browse_p]} {
 
 set departments [db_list_of_lists select_departments_for_select_widget {
     select dotlrn_departments_full.pretty_name,
-           dotlrn_departments_full.department_key
+    dotlrn_departments_full.department_key
     from dotlrn_departments_full
     order by dotlrn_departments_full.pretty_name,
-             dotlrn_departments_full.department_key
+    dotlrn_departments_full.department_key
 }]
 set departments [linsert $departments 0 [list [_ dotlrn.All] ""]]
 set departments_pretty_name [parameter::get -localize -parameter departments_pretty_name]
 
 set terms [db_list_of_lists select_terms_for_select_widget {
     select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,
-           dotlrn_terms.term_id
+    dotlrn_terms.term_id
     from dotlrn_terms
     order by dotlrn_terms.start_date,
-             dotlrn_terms.end_date
+    dotlrn_terms.end_date
 }]
 set terms [linsert $terms 0 [list [_ dotlrn.All] -1]]
 
@@ -162,7 +162,7 @@ template::list::create -name member_classes -multirow member_classes -pass_prope
             </if>
             <else>
             <if @show_drop_button_p@ eq 1>
-            <small><include src="/packages/dotlrn/www/deregister-link" url="@member_classes.url@deregister" referer=@referer@></small>
+            <include src="/packages/dotlrn/www/deregister-link" url="@member_classes.url@deregister-self-confirm" referer=@referer@>
             </if>
             </else>
         }
@@ -198,7 +198,7 @@ template::list::create -name member_clubs -multirow member_clubs -pass_propertie
             </if>
             <else>
             <if @show_drop_button_p@ eq 1>
-            <small><include src="/packages/dotlrn/www/deregister-link" url="@member_clubs.url@deregister" referer=@referer@></small>
+            <small><include src="/packages/dotlrn/www/deregister-link" url="@member_clubs.url@deregister-self-confirm" referer=@referer@></small>
             </if>
             </else>
         }
@@ -340,15 +340,15 @@ template::list::create -name non_member_clubs -multirow non_member_clubs -pass_p
 db_multirow non_member_clubs select_non_member_clubs {} {
     regsub -all {<p>} $description {<br>} description
 }
-    
+
 
 # hack for eabis
 set non_member_club_ids [db_list non_member_club_ids {                select f.club_id
-                from dotlrn_clubs_full f
-                where f.join_policy <> 'closed'
-                  and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
-                                          from dotlrn_member_rels_full
-                                         where dotlrn_member_rels_full.user_id = :user_id)
+    from dotlrn_clubs_full f
+    where f.join_policy <> 'closed'
+    and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
+                          from dotlrn_member_rels_full
+                          where dotlrn_member_rels_full.user_id = :user_id)
 }]
 
 set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
