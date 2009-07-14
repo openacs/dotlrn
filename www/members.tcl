@@ -186,9 +186,7 @@ template::list::create -name pending_users -multirow pending_users -key user_id 
     } email {
         label "[_ dotlrn.Email_1]"
         html "align left"
-        display_template {
-            <a href="mailto:@pending_users.email@">@pending_users.email@</a>
-        }
+        display_template {@pending_users.email;noquote@}
     } role {
         label "[_ dotlrn.Role]"
         html "align left"
