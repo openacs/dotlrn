@@ -158,7 +158,7 @@ template::list::create -name member_classes -multirow member_classes -pass_prope
         html {align right style "width:5%"}
         display_template {
             <if @member_classes.member_state@ eq "needs approval">
-            \[<small> #dotlrn.Pending_Approval# </small>\]
+            #dotlrn.Pending_Approval#
             </if>
             <else>
             <if @show_drop_button_p@ eq 1>
@@ -194,11 +194,11 @@ template::list::create -name member_clubs -multirow member_clubs -pass_propertie
         html {align right style "width:5%"}
         display_template {
             <if @member_clubs.member_state@ eq "needs approval">
-            \[<small> \#dotlrn.Pending_Approval\# </small>\]
+            \[#dotlrn.Pending_Approval#\]
             </if>
             <else>
             <if @show_drop_button_p@ eq 1>
-            <small><include src="/packages/dotlrn/www/deregister-link" url="@member_clubs.url@deregister-self-confirm" referer=@referer@></small>
+            <include src="/packages/dotlrn/www/deregister-link" url="@member_clubs.url@deregister-self-confirm" referer=@referer@>
             </if>
             </else>
         }
@@ -291,10 +291,10 @@ template::list::create -name non_member_classes -multirow non_member_classes -pa
         html {align right style "width:5%"}
         display_template {
             <if @non_member_classes.join_policy@ eq "open">
-            <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_classes.community_id@" referer=@referer@></small>
+            <include src="/packages/dotlrn/www/register-link" community_id="@non_member_classes.community_id@" referer=@referer@>
             </if>
             <else>
-            <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="Request Membership" ></small>
+            <include src="/packages/dotlrn/www/register-link" community_id="@non_member_classes.community_id@" referer=@referer@ label="#dotlrn.Request_Membership#">
             </else>
         }
     }
@@ -328,10 +328,10 @@ template::list::create -name non_member_clubs -multirow non_member_clubs -pass_p
         html {align right style "width:5%"}
         display_template {
             <if @non_member_clubs.join_policy@ eq "open">
-            <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_clubs.community_id@" referer=@referer@></small>
+            <include src="/packages/dotlrn/www/register-link" community_id="@non_member_clubs.community_id@" referer=@referer@>
             </if>
             <else>
-            <small><include src="/packages/dotlrn/www/register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="Request Membership"></small>
+            <include src="/packages/dotlrn/www/register-link" community_id="@non_member_clubs.community_id@"referer=@referer@  label="#dotlrn.Request_Membership#">
             </else>
         }
     }
