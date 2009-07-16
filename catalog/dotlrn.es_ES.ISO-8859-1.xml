@@ -63,6 +63,7 @@
   <msg key="are_you_sure_you_want_to_send">Desea realmente enviar lo siguiente</msg>
   <msg key="arhive_group_name">Archivar el grupo %group_name%</msg>
   <msg key="Ask_a_question">Consultas:</msg>
+  <msg key="Back_to_index">Volver al Índice</msg>
   <msg key="Be_sure">Está seguro</msg>
   <msg key="Become_this_user">¡Convertirse en este usuario!</msg>
   <msg key="Biography">Biografía:</msg>

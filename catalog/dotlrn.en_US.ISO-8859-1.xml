@@ -70,6 +70,7 @@
 
   <msg key="arhive_group_name">Archive group %group_name%</msg>
   <msg key="Ask_a_question">Ask a question:</msg>
+  <msg key="Back_to_index">Back to Index</msg>
   <msg key="Be_sure">Be sure</msg>
   <msg key="Become_this_user">Become this user!</msg>
   <msg key="Biography">Biography:</msg>
@@ -152,7 +153,7 @@
   <msg key="course_admin_role_pretty_plural">Course Administrators</msg>
   <msg key="course_assistant_role_pretty_name">Course Assistant</msg>
   <msg key="course_assistant_role_pretty_plural">Course Assistants</msg>
-  <msg key="Courses">Courses</msg>
+  <msg key="Courses">Classes</msg>
   <msg key="Courses_Accesskey">5</msg>
   <msg key="Create_A_New_User">Create A New User</msg>
   <msg key="Create_a_Web_Log">Create a Web Log</msg>
