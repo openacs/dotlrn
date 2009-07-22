@@ -7,7 +7,7 @@
 	<h1>Login & Password</h1>
 
 	<h2>
-      <a href="accessing-system">Accessing <%=[ad_system_name]%></a>
+      <a name="accessing-system">Accessing <%=[ad_system_name]%></a>
     </h2>
 	<ul>
       <li>Open a browser (Netscape, Internet Explorer, Mozilla Firefox, Opera, etc.)</li>
@@ -16,7 +16,7 @@
     </ul>
 
 	<h2>
-      <a name="login-sytem">Log in to <%=[ad_system_name]%></a>
+      <a name="login-system">Log into <%=[ad_system_name]%></a>
     </h2>
 	<p>
       There are two fields that you need to fill up in order to enter the <%=[ad_system_name]%> platform:
