@@ -55,7 +55,7 @@
     </p>
       
     <h2>
-      <a name="navegar-comunidad">Navegar el contenido de la comunidad</a>
+      <a name="navegar-comunidad">Navegar por el contenido de la comunidad</a>
     </h2>
     <p>
       Las comunidades son grupos usados para diversos prop&oacute;sitos. Pueden agrupar miembros de diversas &aacute;reas, pero con los mismos intereses.

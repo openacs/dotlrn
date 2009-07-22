@@ -7,7 +7,7 @@
     <h1>Calendario</h1>
 
     <h2>
-      <a name="acceder-calendario">Acceder a Calendario</a>
+      <a name="acceder-calendario">Acceder al Calendario</a>
     </h2> 
     <p>
       El calendario aparece en el m&oacute;dulo Calendario (o Calendario Completo). Solamente ver&aacute; eventos de los calendarios los cursos y de las comunidades en los que est&aacute; registrado/a. El m&oacute;dulo del Calendario aparece en la p&aacute;gina Calendario por defecto. (Esto puede ser modificado: V&eacute;ase <a href="Personalizar" class="help-link">Personalizar <%=[ad_system_name]%></a>: <a href="Personalizar#personalizar-modulos" class="help-link">Mover, a&ntilde;adir o eliminar m&oacute;dulos en Inicio</a>)
