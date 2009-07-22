@@ -43,7 +43,6 @@
 
             </h2>
 
-            ( <a href="#" title="#dotlrn.Expand_list#" style="text-decoration: none; border: 0;" onClick="expandTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeOpenClass; return false;">++</a> | <a href="#" title="#dotlrn.Collapse_list#" style="text-decoration: none; border: 0;"  onClick="collapseTree('tree-@communities.simple_community_type@'); this.parentNode.parentNode.className = nodeClosedClass; return false;">--</a> )
             <ul id="tree-@communities.simple_community_type@">
           </if>
           <else>
@@ -56,7 +55,7 @@
                 @communities.intra_type_ul_tags;noquote@
 
                 <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
-                <if @communities.archived_p@><span style="color:red">Archived</span></if>
+                <if @communities.archived_p@><span style="color:red">#dotlrn.archived#</span></if>
                 <if @show_buttons_p@ eq 1>
                   <if @show_drop_button_p@ eq 1>
                     <a href="@communities.url@deregister-self-confirm?referer=@referer@">#dotlrn.drop_membership_link#</a>
