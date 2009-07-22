@@ -29,7 +29,7 @@
     <div class="portlet-wrapper">
 		<div class="portlet-header">
 			<div class="portlet-title-no-controls">
-				<h1>#acs-subsite.My_Account#</h1>
+				<h1>#acs-subsite.Your_Account#</h1>
       		</div>
 		</div>
 
