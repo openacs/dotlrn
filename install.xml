@@ -50,6 +50,8 @@
     <set-parameter package-key="new-portal" name="default_theme_name" value="#theme-zen.Zen_Theme#"/>
     <set-parameter package-key="new-portal" name="default_layout" value="#theme-zen.Zen_2_column#"/>
 
+    <set-parameter package-key="acs-templating" name="RichTextEditor" value="tinymce"/>
+
     <set-parameter package-key="acs-bootstrap-installer" name="post_installation_message" value="When the server restarts click <a href='/dotlrn'>here</a> to configure .LRN"/>
   </actions>
 

@@ -9,71 +9,72 @@
 	<ul>
       <li><a href="LoginPassword">Login &amp; Password</a>
         <ul>
-          <li>Accessing <%=[ad_system_name]%></li>
-          <li>Login in to <%=[ad_system_name]%></li>
-          <li>Forgotten Password</li>
-          <li>Changing Password</li>
+          <li><a href="LoginPassword#accessing-system">Accessing <%=[ad_system_name]%></a></li>
+          <li><a href="LoginPassword#login-system">Log into <%=[ad_system_name]%></a></li>
+          <li><a href="LoginPassword#forgotten-password">Forgotten Password</a></li>
+          <li><a href="LoginPassword#changing-password">Changing Password</a></li>
         </ul>
       </li>
 
       <li><a href="ManageAccount">Manage your account</a>
         <ul>
-          <li>Personal info</li>
-          <li>Photo</li>
-          <li>Language</li>
-          <li>Privacy level</li>
-          <li>Close your account</li>
+          <li><a href="ManageAccount#personal-info">Personal info</a></li>
+          <li><a href="ManageAccount#photo">Photo</a></li>
+          <li><a href="ManageAccount#language-timezone">Language and Timezone</a></li>
+          <li><a href="ManageAccount#privacy-level">Privacy level</a></li>
+          <li><a href="ManageAccount#close-account">Close your account</a></li>
         </ul>
       </li>
 
       <li><a href="Customize">Customize <%=[ad_system_name]%></a> 
         <ul>
-          <li>Accessibility Options</li> 
-          <li>Rename, hide, add or remove pages in Home</li>
-          <li>Move, add or remove modules in Home</li>
+          <li><a href="Customize#accessibility-options">Accessibility Options</a></li> 
+          <li><a href="Customize#customize-pages-home">Rename, hide, add or remove pages in Home</a></li>
+          <li><a href="Customize#customize-modules-home">Move, add or remove modules in Home</a></li>
         </ul>
       </li>
 
       <li><a href="ClassCourse">Class and course material</a>
         <ul>
-          <li>Join a class</li>
-          <li>Drop a class</li>
-          <li>Navigate class content</li>
-          <li>Access course material</li>
-          <li>Navigate course material</li>
+          <li><a href="ClassCourse#join-class">Join a class</a></li>
+          <li><a href="ClassCourse#drop-class">Drop a class</a></li>
+          <li><a href="ClassCourse#navigate-class">Navigate class content</a></li>
+          <li><a href="ClassCourse#access-course-material">Access course material</a></li>
+          <li><a href="ClassCourse#navigate-course-material">Navigate course material</a></li>
         </ul>
       </li>
 
       <li><a href="Comunities">Communities</a>
         <ul>
-          <li>Join a community</li>
-          <li>Drop a community</li>
-          <li>Navigate community content</li>
+          <li><a href="Comunities#join-community">Join a community</a></li>
+          <li><a href="Comunities#drop-community">Drop a community</a></li>
+          <li><a href="Comunities#navigate-community-content">Navigate community content</a></li>
         </ul>
       </li>
                 
       <li><a href="Forums">Forums</a>
         <ul>
-          <li>Access a Forum</li>
-          <li>Read messages</li>
-          <li>Reply to a message</li>
-          <li>Start a new thread</li>
+          <li><a href="Forums#access-forums">Access Forums</a></li>
+          <li><a href="Forums#read-message">Read messages</a></li>
+          <li><a href="Forums#reply-message">Reply to a message</a></li>
+          <li><a href="Forums#start-thread">Start a new thread</a></li>
         </ul>
       </li>
                   
       <li><a href="Calendar">Calendar</a>
         <ul>
-          <li>Access the calendar</li>
-          <li>View events</li>
-          <li>Create an event</li>
+          <li><a href="Calendar#access-calendar">Access a calendar</a></li>
+          <li><a href="Calendar#view-events">View events</a></li>
+          <li><a href="Calendar#create-event">Create an event</a></li>
         </ul>
       </li>
                     
       <li><a href="Files">Files</a>
         <ul>
-          <li>View files</li>
-          <li>Upload a file</li>
-          <li>Download a file</li>
+          <li><a href="Files#access-files">Access files</a></li>
+          <li><a href="Files#download-file">Download a file</a></li>
+          <li><a href="Files#download-folder">Download a folder</a></li>
+          <li><a href="Files#upload-file">Upload file</a></li>
         </ul>
       </li>
                       
