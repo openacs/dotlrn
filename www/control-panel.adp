@@ -57,8 +57,6 @@
                 </a>
               </li>
 
-              <li><a href="@edit_bio_url@">#dotlrn.Edit_Biography#</a></li>
-
 			  <li><a href="@email_privacy_url@">#acs-subsite.Change_my_email_P#</a></li>
 
               <if @change_locale_url@ not nil>
