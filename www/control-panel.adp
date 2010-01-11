@@ -59,10 +59,6 @@
 
 			  <li><a href="@email_privacy_url@">#acs-subsite.Change_my_email_P#</a></li>
 
-              <if @change_locale_url@ not nil>
-				 <li><a href="@change_locale_url@" title="#acs-subsite.Change_locale_label#">#acs-subsite.Change_locale_label#</a></li>
-			  </if>
-
 			  <li><a href="@change_password_url@" title="#acs-subsite.Change_my_Password#">#acs-subsite.Change_my_Password#</a></li>
             </ul>
 

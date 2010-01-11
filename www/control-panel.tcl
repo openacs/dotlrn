@@ -64,7 +64,6 @@ set user_info_template [parameter::get -package_id [ad_conn subsite_id] -paramet
 set community_member_url [acs_community_member_url -user_id $user_id]
 
 set email_privacy_url "${subsite_url}user/email-privacy-level"
-set change_locale_url [apm_package_url_from_key "acs-lang"]
 set change_password_url "${subsite_url}user/password-update"
 
 set close_account_url "${subsite_url}pvt/unsubscribe"
