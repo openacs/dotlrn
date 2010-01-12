@@ -62,10 +62,7 @@
             <ul>
               <li><a href="@community_member_url@">#acs-subsite.lt_What_other_people_see#</a></li>
               <li><a href="@portrait_url@">#acs-subsite.Manage_Portrait#</a></li>
-              <li><a href="@bio_update_url@">#dotlrn.Edit_Biography#</a></li>
               <li><a href="@email_privacy_url@">#acs-subsite.Change_my_email_P#</a></li>
-
-              <li><a href="@change_locale_url@" title="#acs-subsite.Change_locale_label#">#acs-subsite.Change_locale_label#</a></li>
 
               <li><a href="@password_update_url@" title="#acs-subsite.Change_my_Password#">#acs-subsite.Change_my_Password#</a></li>
 

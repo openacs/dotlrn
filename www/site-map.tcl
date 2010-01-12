@@ -48,9 +48,7 @@ set account_status [ad_conn account_status]
 set notifications_url [lindex [site_node::get_children -node_id [subsite::get_element -element node_id] -package_key "notifications"] 0]
 
 set portrait_url "${subsite_url}user/portrait"
-set change_locale_url [apm_package_url_from_key "acs-lang"]
 set community_member_url [acs_community_member_url -user_id $user_id]
-set bio_update_url [export_vars -base "bio-update" {return_url}]
 set email_privacy_url [export_vars -base "${subsite_url}user/email-privacy-level" {return_url}]
 set password_update_url [export_vars -base "${subsite_url}user/password-update" {return_url}]
 
