@@ -105,21 +105,10 @@ namespace eval dotlrn {
         {-package_key:required}
     } {
         returns 1 if package is mounted under dotlrn, 0 otherwise
-        FIXME: refactor
     } {
-        set dotlrn_ancestor_p 0
-        set package_list [nsv_array get site_nodes "[get_url]/${package_key}*"]
-
-        for {set i 1} {$i < [llength $package_list]} {incr i 2} {
-            array set package_info [lindex $package_list $i]
-
-            if {[site_node_closest_ancestor_package -default 0 -url $package_info(url) [package_key]] != 0} {
-                set dotlrn_ancestor_p 1
-                break
-            }
-        }
-
-        return $dotlrn_ancestor_p
+        set list [site_node::get_children -package_key $package_key \
+                      -node_id [get_node_id]]
+        return [expr [llength $list] > 0 ? 1 : 0]
     }
 
     ad_proc -public mount_package {
