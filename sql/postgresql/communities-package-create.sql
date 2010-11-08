@@ -77,7 +77,7 @@ BEGIN
             v_parent_object_type:= p_parent_type;
         end if;
 
-        select acs_object_id_seq.nextval
+        select nextval(''t_acs_object_id_seq'')
         into v_unique_name
         from dual;
 

@@ -9,7 +9,7 @@
             into dotlrn_terms
             (term_id, term_name, term_year, start_date, end_date)
             values
-            (acs_object_id_seq.nextval, :term_name, :term_year, to_date(:start_date, :date_format), to_date(:end_date, :date_format))
+            (:term_id, :term_name, :term_year, to_date(:start_date, :date_format), to_date(:end_date, :date_format))
         </querytext>
     </fullquery>
 

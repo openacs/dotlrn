@@ -69,6 +69,7 @@ namespace eval dotlrn_applet {
             return
         }
 
+        set applet_id [db_nextval acs_object_id_seq]
         db_dml insert {}
     }
 

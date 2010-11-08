@@ -75,7 +75,7 @@ begin
         from portal_element_themes 
 	where name = ''#new-portal.sloan_theme_name#''; 
 
-	select acs_object_id_seq.nextval 
+	select nextval(''t_acs_object_id_seq'')
         into v_site_template_id 
         from dual;
 

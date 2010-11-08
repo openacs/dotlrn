@@ -26,7 +26,7 @@
             into dotlrn_applets
             (applet_id, applet_key, package_key, active_p)
             values
-            (acs_object_id_seq.nextval, :applet_key, :package_key, :active_p)
+            (:applet_id, :applet_key, :package_key, :active_p)
         </querytext>
     </fullquery>
 

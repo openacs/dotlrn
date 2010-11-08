@@ -41,6 +41,7 @@ namespace eval dotlrn_term {
         set start_date "[template::util::date::get_property year $start_date] [template::util::date::get_property month $start_date] [template::util::date::get_property day $start_date]"
         set end_date "[template::util::date::get_property year $end_date] [template::util::date::get_property month $end_date] [template::util::date::get_property day $end_date]"
         set date_format [get_date_format]
+        set term_id [db_nextval acs_object_id_seq]
 
         db_dml insert_term {}
     }
