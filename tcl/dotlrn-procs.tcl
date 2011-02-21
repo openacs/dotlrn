@@ -430,7 +430,7 @@ namespace eval dotlrn {
 	
 	@param community_id The id of the User in order to obtain the master template configured for him
 	
-	@returns The path of the master template that will be used.
+	@return The path of the master template that will be used.
 
     } {
 	set site_template_id [get_site_template_id -user_id $user_id]
@@ -447,7 +447,7 @@ namespace eval dotlrn {
 	
 	@param community_id The id of the User of whom we want to abtain the Site Template
 	
-	@returns The id of the Site Template assigned to the User
+	@return The id of the Site Template assigned to the User
 
     } {
         return [util_memoize [list dotlrn::get_site_template_id_not_cached -user_id $user_id] ]

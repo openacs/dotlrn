@@ -2383,7 +2383,7 @@ namespace eval dotlrn_community {
 
 	@param community_id The id of the Community in order to obtain the master template configured for it
 
-	@returns The path of the master template that will be used.
+	@return The path of the master template that will be used.
 
     } {
         set site_template_id [get_site_template_id -community_id $community_id]
@@ -2400,7 +2400,7 @@ namespace eval dotlrn_community {
 
 	@param community_id The id of the Community of which we want to abtain the Site Template
    
-	@returns The id of the Site Template assigned to the Community
+	@return The id of the Site Template assigned to the Community
 
     } {
         return [util_memoize [list dotlrn_community::get_site_template_id_not_cached -community_id $community_id]]
