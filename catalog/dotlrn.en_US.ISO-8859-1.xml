@@ -248,6 +248,7 @@ notify this user.</msg>
   <msg key="first_line_of_file_must_be">The first line of the file must have the following header line:</msg>
   <msg key="First_Name">First Name</msg>
   <msg key="First_names_">Firstnames:</msg>
+  <msg key="Format">Format</msg>
   <msg key="From">From</msg>
   <msg key="fuchsia">fuchsia</msg>
   <msg key="Full">Full</msg>
