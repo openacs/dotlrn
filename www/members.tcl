@@ -30,7 +30,7 @@ ad_page_contract {
 set my_user_id [ad_conn user_id]
 set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Members]]
 set community_id [dotlrn_community::get_community_id]
-set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_get_user_id] -community_id $community_id]
+set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_conn user_id] -community_id $community_id]
 set approval_policy_p [string eq [group::join_policy -group_id $community_id] "needs approval"]
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 

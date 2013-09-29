@@ -87,7 +87,7 @@ if {[form is_valid add_user]} {
     set subject "Your [ad_system_name] membership has been approved"
     set message "Your [ad_system_name] membership has been approved. Please return to [ad_url] to log into [ad_system_name]."
 
-    set email_from [ad_parameter -package_id [ad_acs_kernel_id] SystemOwner]
+    set email_from [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemOwner]
 
     db_transaction {
 

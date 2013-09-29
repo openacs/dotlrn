@@ -83,7 +83,7 @@ if {[catch {
             
             set segment_id [db_string select_admin_rel_segment_id {}]
             set community_name [dotlrn_community::get_community_name $community_id]
-            set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
+            set community_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL][dotlrn_community::get_community_url $community_id]"
             
             set query [db_map bulk_mail_query]
 

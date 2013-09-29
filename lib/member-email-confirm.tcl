@@ -37,7 +37,7 @@ ad_form -name member-email-confirm \
 	    set subject [lindex $default_email 1]
 	    set email [lindex $default_email 2]
 	}
-        set package [ad_parameter -package_id [ad_acs_kernel_id] SystemURL]
+        set package [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL]
 	if {$subject eq ""} {
  	    set subject [_ dotlrn.added_community_subject]
 	}

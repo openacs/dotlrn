@@ -31,7 +31,7 @@ ad_page_contract {
     referer:onevalue
 }
 
-set portal_id [dotlrn::get_portal_id -user_id [ad_get_user_id]]
+set portal_id [dotlrn::get_portal_id -user_id [ad_conn user_id]]
 set dotlrn_url [dotlrn::get_url] 
 # Make sure user is logged in
 set user_id [ad_maybe_redirect_for_registration]

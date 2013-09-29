@@ -25,7 +25,7 @@ ad_page_contract {
     title:onevalue
 }
 
-set user_id [ad_get_user_id]
+set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 
 # this page must be restricted to admins of the community only

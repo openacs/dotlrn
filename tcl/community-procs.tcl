@@ -1229,7 +1229,7 @@ namespace eval dotlrn_community {
         set chunk ""
 
         if {[empty_string_p $user_id]} {
-            set user_id [ad_get_user_id]
+            set user_id [ad_conn user_id]
         }
 
         set show_drop_link_p [parameter::get_from_package_key \

@@ -114,12 +114,12 @@ ad_form -name add_class_instance -form {
     db_dml update_community_info {}
 
     if {[empty_string_p $referer]} {
-        set referer "[dotlrn::get_admin_url]/class?[export_url_vars class_key]"
+        set referer "[dotlrn::get_admin_url]/class?[export_vars -url {class_key}]"
     }
 
     if {${add_instructor}} {
         set community_id $class_instance_id 
-        ad_returnredirect "add-instructor?[export_url_vars community_id referer]"
+        ad_returnredirect "add-instructor?[export_vars -url {community_id referer}]"
         ad_script_abort
     }
 

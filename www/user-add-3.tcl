@@ -31,14 +31,14 @@ ad_page_contract {
 dotlrn_portlet::is_allowed -parameter guestuser
 dotlrn_portlet::is_allowed -parameter limiteduser
 
-set admin_user_id [ad_verify_and_get_user_id]
+set admin_user_id [ad_conn user_id]
 set admin_email [db_string select_admin_email {
     select email
     from parties
     where party_id = :admin_user_id
 }]
 
-set msg_subst_values [list system_name [ad_system_name] system_url [ad_parameter SystemUrl]]
+set msg_subst_values [list system_name [ad_system_name] system_url [parameter::get -parameter SystemUrl]]
 set email_subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_values]
 if [catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $admin_email -subject $email_subject -body $message} errmsg] {
     ad_return_error "[_ dotlrn.Mail_Failed]" "[_ dotlrn.lt_The_system_was_unable]

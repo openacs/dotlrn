@@ -31,7 +31,7 @@ if {[empty_string_p $community_id]} {
 }
 
 
-set user_id [ad_get_user_id]
+set user_id [ad_conn user_id]
 dotlrn::require_user_admin_community -community_id $community_id
 set pretty_name [dotlrn_community::get_community_name $community_id]
 set title [_ dotlrn.arhive_group_name [list group_name $pretty_name]]

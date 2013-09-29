@@ -44,7 +44,7 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-set return_url "[ad_parameter -package_id [ad_acs_kernel_id] CommunityMemberAdminURL]?user_id=$user_id"
+set return_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter CommunityMemberAdminURL]?user_id=$user_id"
 set export_edit_vars [export_vars {user_id return_url}]
 
 set dotlrn_url [dotlrn::get_url]

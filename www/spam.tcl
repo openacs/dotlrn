@@ -173,7 +173,7 @@ if { [ns_queryexists "form:confirm"] } {
     set who_will_receive_this_clause ""
 
     set community_name [dotlrn_community::get_community_name $community_id]
-    set community_url "[ad_parameter -package_id [ad_acs_kernel_id] SystemURL][dotlrn_community::get_community_url $community_id]"
+    set community_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL][dotlrn_community::get_community_url $community_id]"
 
     if { ![empty_string_p $recipients_str] } {
 	set recipients_str [join [split $recipients_str] ,]

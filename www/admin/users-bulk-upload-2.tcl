@@ -31,7 +31,7 @@ set file_location [ns_queryget users_csv_file.tmpfile]
 # Prepare stuff
 set headers {first_names last_name email username}
 
-set admin_user_id [ad_verify_and_get_user_id]
+set admin_user_id [ad_conn user_id]
 set admin_email [db_string select_admin_email {
     select email
     from parties
@@ -128,7 +128,7 @@ db_transaction {
 
             doc_body_append [_ dotlrn.user_email_created [list user_email $row(email)]]
             set msg_subst_list [list system_name [ad_system_name] \
-                                     system_url [ad_parameter -package_id [ad_acs_kernel_id] SystemURL] \
+                                     system_url [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL] \
                                      user_email $row(email) \
                                      user_password $password]
             set message [_ dotlrn.user_add_confirm_email_body $msg_subst_list] 

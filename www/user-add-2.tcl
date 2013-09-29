@@ -87,7 +87,7 @@ if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
 
 set context_bar [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
 
-set admin_user_id [ad_verify_and_get_user_id]
+set admin_user_id [ad_conn user_id]
 set administration_name [db_string select_admin_name {
     select first_names || ' ' || last_name
     from persons
@@ -96,4 +96,4 @@ set administration_name [db_string select_admin_name {
 
 set system_name [ad_system_name]
 set export_vars [export_vars -form {email referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]
-set system_url [ad_parameter -package_id [ad_acs_kernel_id] SystemURL ""]
+set system_url [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL -default ""]

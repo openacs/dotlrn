@@ -26,7 +26,7 @@ ad_page_contract {
     title:onevalue
 }
 
-set user_id [ad_get_user_id]
+set user_id [ad_conn user_id]
 set parent_community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $parent_community_id
 set title "[_ dotlrn.New] [parameter::get -localize -parameter subcommunities_pretty_name]"

@@ -37,7 +37,7 @@ ad_page_contract {
  ad_set_client_property dotlrn page_num "-1"
 
 set community_id [dotlrn_community::get_community_id]
-set user_id [ad_get_user_id]
+set user_id [ad_conn user_id]
 
 # Permissions
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
