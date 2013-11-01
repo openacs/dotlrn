@@ -80,8 +80,8 @@ if {[form is_valid add_subcomm]} {
     set extra_vars [ns_set create]
     ns_set put $extra_vars join_policy $join_policy
 
-    if {![string equal $parent_type [dotlrn_club::community_type]] &&
-        ![string equal $parent_type dotlrn_community]} {
+    if {$parent_type ne [dotlrn_club::community_type] &&
+        $parent_type ne "dotlrn_community" } {
             # we want to make a subgroup of a class instance
             # get the term_id, since the subgroup should not
             # outlive the class
@@ -110,8 +110,8 @@ if {[form is_valid add_subcomm]} {
             -privilege admin
 
         # for a subcomm of a "class instance" set the start and end dates
-        if {![string equal $parent_type [dotlrn_club::community_type]] &&
-            ![string equal $parent_type "dotlrn_community"]} {
+        if {$parent_type ne [dotlrn_club::community_type] &&
+            $parent_type ne "dotlrn_community" } {
 
             dotlrn_community::set_active_dates \
                 -community_id $subcomm_id \

@@ -41,8 +41,8 @@ if {!$site_wide_admin_p} {
     set read_private_data_p 1
 }
 
-if {![exists_and_not_null referer]} {
-    if {[string equal $admin_p "t"] == 1} {
+if {(![info exists referer] || $referer eq "")} {
+    if {$admin_p == "t"} {
         set referer "one-community-admin"
     } else {
         set referer "one-community"

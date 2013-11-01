@@ -24,7 +24,7 @@ set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 set dotlrn_package_id [dotlrn::get_package_id]
 
-if { [empty_string_p $community_id]} {
+if { $community_id eq ""} {
     set allowed_to_change [parameter::get -package_id $dotlrn_package_id -parameter "UserChangeSiteTemplate_p" \
 			      -default 0]
     set site_template_id [dotlrn::get_site_template_id -user_id $user_id]
@@ -48,8 +48,8 @@ ad_form -export {community_id user_id referer site_template_id} -cancel_url $ref
 	{value $site_template_id}
     }
 } -on_submit {
-    if {![empty_string_p $site_templates]} {
-	if {[empty_string_p $community_id]} {
+    if {$site_templates ne ""} {
+	if {$community_id eq ""} {
 	    dotlrn::set_site_template_id -user_id $user_id -site_template_id $site_templates
 	} else {
 	    dotlrn_community::set_site_template_id -community_id $community_id -site_template_id $site_templates

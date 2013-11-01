@@ -123,7 +123,7 @@ namespace eval dotlrn_term {
         set start_year [template::util::date::get_property year $start_date]
         set end_year [template::util::date::get_property year $end_date]
 
-        if {![string equal $start_year $end_year]} {
+        if {$start_year ne $end_year } {
             return "$start_year/$end_year"
         }
         

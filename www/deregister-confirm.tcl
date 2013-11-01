@@ -26,14 +26,14 @@ ad_page_contract {
     {referer ""}
 }
 
-ad_maybe_redirect_for_registration
+auth::require_login
 
 set time_per_user 15
 set num_users_display_limit 99
 
 set num_users [llength $user_id]
-set num_seconds [expr $time_per_user*$num_users]
-set num_minutes [expr $num_seconds/60]
+set num_seconds [expr {$time_per_user*$num_users}]
+set num_minutes [expr {$num_seconds/60}]
 
 # Note: This query will not work (in Oracle) 
 # if num_users_display_limit is over 100. 

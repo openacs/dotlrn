@@ -38,7 +38,7 @@ namespace eval dotlrn {
         return [util_text_to_url \
                 -replacement {} \
                 -existing_urls { members configure spam index not-allowed clone help } \
-                -no_resolve=[expr !$increment_p] \
+                -no_resolve=[expr {!$increment_p}] \
                 -- $name]
     }
 
@@ -96,7 +96,7 @@ namespace eval dotlrn {
         }
 
         # default ID to email address
-        if {[empty_string_p $id]} {
+        if {$id eq ""} {
             set id [cc_email_from_party $user_id]
         }
 
@@ -176,7 +176,7 @@ namespace eval dotlrn {
     } {
         set rel_id [db_string select_rel_id {} -default ""]
 
-        if {![empty_string_p $rel_id]} {
+        if {$rel_id ne ""} {
             relation_remove $rel_id
         }
     }
@@ -225,7 +225,7 @@ namespace eval dotlrn {
             acs_user::delete -user_id $user_id -permanent
         } errMsg] } {
             ns_log Notice "dotlrn::remove_user_completely: permanent removal failed for user $user_id.  Invoking on_fail option '$on_fail'"
-            if { [string equal $on_fail soft_delete] } {
+            if {$on_fail eq "soft_delete"} {
                 acs_user::delete -user_id $user_id
             } else {
                 error $errMsg
@@ -365,7 +365,7 @@ namespace eval dotlrn {
     } {
         check if a user is a member of a community
     } {
-        if {[empty_string_p $user_id]} {
+        if {$user_id eq ""} {
             set user_id [ad_conn user_id]
         }
 

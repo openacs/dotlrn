@@ -34,7 +34,7 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-if {[empty_string_p $department_key]} {
+if {$department_key eq ""} {
     ad_returnredirect "[dotlrn::get_admin_url]/classes"
     ad_script_abort
 }

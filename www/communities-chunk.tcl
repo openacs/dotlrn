@@ -33,7 +33,7 @@ if {![info exists community_type]} {
 
 set user_id [ad_conn user_id]
 
-if {![empty_string_p $community_type]} {
+if {$community_type ne ""} {
     set n_communities [db_string select_all_communities_count_by_type {}]
 } else {
     set n_communities [db_string select_all_communities_count {}]
@@ -45,12 +45,12 @@ set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" sel
             {select_all_non_memberships join {}}
         }]]]
 
-if {![empty_string_p $community_type]} {
+if {$community_type ne ""} {
     append filter "_by_type"
 }
 
 db_multirow -extend {query referer} communities $filter {} {
-    if {![exists_and_not_null referer]} {
+    if {(![info exists referer] || $referer eq "")} {
 	set referer "./"
     }
     set query $filter

@@ -71,7 +71,7 @@ element create delete_department referer \
 if {[form is_valid delete_department]} {
     form get_values delete_department department_key pretty_name referer no_button yes_button
 
-    if {[string equal $yes_button $yes_label]} {
+    if {$yes_button eq $yes_label} {
 
         db_transaction {
             set subcomm_id [dotlrn_department::delete \

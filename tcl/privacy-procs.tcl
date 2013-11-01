@@ -44,7 +44,7 @@ namespace eval dotlrn_privacy {
         action should be "grant" or "revoke"
         rel_type should be "dotlrn_guest_rel" or "dotlrn_non_guest_rel"
     } {
-        if { [string equal $action "grant"] } {
+        if {$action eq "grant"} {
             set db_proc "grant_rd_prv_dt_to_rel"
         } else {
             set db_proc "revoke_rd_prv_dt_from_rel"

@@ -28,7 +28,7 @@ ad_page_contract {
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
-if { [exists_and_not_null community_id] } {
+if { ([info exists community_id] && $community_id ne "") } {
     set is_archived_p [db_0or1row select_is_archived "select archived_p from dotlrn_communities_all where community_id = :community_id"]
     if { $is_archived_p } {
         ns_log Notice "Unarchiving $community_id"

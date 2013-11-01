@@ -27,7 +27,7 @@ ad_page_contract {
     {referer "./"}
 }
 
-if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {
+if { ![parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {
     set redirect_to [parameter::get -parameter SelfRegistrationRedirectTo -package_id [dotlrn::get_package_id] -default ""]
 
     if { $redirect_to ne "" } {
@@ -38,13 +38,13 @@ if { ! [parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_pac
     ad_script_abort
 }
 
-ad_maybe_redirect_for_registration
+auth::require_login
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 
-if {[empty_string_p $user_id]} {
+if {$user_id eq ""} {
     set user_id [ad_conn user_id]
 } else {
     dotlrn::require_user_admin_community -community_id $community_id
@@ -61,8 +61,11 @@ set join_policy [db_string select_join_policy {
 # This should prevent most double clicks, leaving
 # the catch below to trap the rest.
 
-if { [dotlrn_community::member_p $community_id $user_id] || \
-    ([string equal $join_policy "needs approval"] && [dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]) } {
+if { [dotlrn_community::member_p $community_id $user_id] || 
+     ($join_policy eq "needs approval" 
+      && [dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]
+      )
+ } {
     ad_returnredirect $referer
     ad_script_abort
 }

@@ -31,14 +31,22 @@ select define_function_args ('dotlrn_community_type__delete','community_type');
 
 select define_function_args ('dotlrn_community_type__name','community_type');
 
-create or replace function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar)
-returns varchar as '
+
+
+--
+-- procedure dotlrn_community_type__new/5
+--
+CREATE OR REPLACE FUNCTION dotlrn_community_type__new(
+   p_community_type varchar,
+   p_parent_type varchar,
+   p_pretty_name varchar,
+   p_pretty_plural varchar,
+   p_description varchar
+) RETURNS varchar AS $$
+--
+-- dotlrn_community_type__new/5 maybe obsolete, when we define proper defaults for /10
+--
 DECLARE
-        p_community_type                       alias for $1;
-        p_parent_type                          alias for $2;
-        p_pretty_name                          alias for $3;
-        p_pretty_plural                        alias for $4;
-        p_description                          alias for $5;
 BEGIN
         return dotlrn_community_type__new(
             p_community_type,
@@ -53,31 +61,38 @@ BEGIN
             null
         );
 END;
-' language 'plpgsql';
 
-create or replace function dotlrn_community_type__new (varchar,varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
-returns varchar as '
+$$ LANGUAGE plpgsql;
+
+
+
+--
+-- procedure dotlrn_community_type__new/10
+--
+CREATE OR REPLACE FUNCTION dotlrn_community_type__new(
+   p_community_type varchar,
+   p_parent_type varchar, -- default 'dotlrn_community'
+   p_pretty_name varchar,
+   p_pretty_plural varchar,
+   p_description varchar,
+   p_package_id integer,
+   p_creation_date timestamptz,
+   p_creation_user integer,
+   p_creation_ip varchar,
+   p_context_id integer
+
+) RETURNS varchar AS $$
 DECLARE
-        p_community_type                        alias for $1;
-        p_parent_type                                alias for $2;
-        p_pretty_name                                alias for $3;
-        p_pretty_plural                                alias for $4;
-        p_description                                alias for $5;
-        p_package_id                                alias for $6;
-        p_creation_date                                alias for $7;
-        p_creation_user                                alias for $8;
-        p_creation_ip                                alias for $9;
-        p_context_id                                alias for $10;
         v_parent_object_type acs_object_types.object_type%TYPE;
         v_unique_name acs_objects.object_id%TYPE;
 BEGIN
         if p_parent_type is null then
-            v_parent_object_type:= ''application_group'';
+            v_parent_object_type:= 'application_group';
         else
             v_parent_object_type:= p_parent_type;
         end if;
 
-        select nextval(''t_acs_object_id_seq'')
+        select nextval('t_acs_object_id_seq')
         into v_unique_name
         from dual;
 
@@ -89,16 +104,16 @@ BEGIN
             cast(v_unique_name as varchar),
             cast(v_unique_name as varchar),
             cast(v_unique_name as varchar),
-	    ''f'',
+	    'f',
 	    null,
-            ''acs_group.name''
+            'acs_group.name'
         );
 
         insert
         into group_types
         (group_type, default_join_policy)
         values
-        (p_community_type, ''closed'');
+        (p_community_type, 'closed');
 
         insert
         into dotlrn_community_types
@@ -116,13 +131,19 @@ BEGIN
 
         return p_community_type;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_community_type__delete(varchar)
-returns integer as '
+
+
+--
+-- procedure dotlrn_community_type__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_community_type__delete(
+   p_community_type varchar
+) RETURNS integer AS $$
 DECLARE
-        p_community_type                alias for $1;
 BEGIN
         delete
         from dotlrn_community_types
@@ -132,16 +153,22 @@ BEGIN
         from group_types
         where group_type = p_community_type;
 
-        PERFORM acs_object_type__drop_type(p_community_type, ''f'');
+        PERFORM acs_object_type__drop_type(p_community_type, 'f');
         return 0;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_community_type__name(varchar)
-returns varchar as '
+
+
+--
+-- procedure dotlrn_community_type__name/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_community_type__name(
+   p_community_type varchar
+) RETURNS varchar AS $$
 DECLARE
-        p_community_type                alias for $1;
         v_name dotlrn_community_types.pretty_name%TYPE;
 BEGIN
         select dotlrn_community_types.pretty_name
@@ -151,31 +178,38 @@ BEGIN
 
         return v_name;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 -- dotlrn_community
 
 select define_function_args('dotlrn_community__new','community_id,parent_community_id,community_type,community_key,pretty_name,description,archived_p;f,portal_id,non_member_portal_id,package_id,join_policy,creation_date,creation_user,creation_ip,context_id');
 
-create or replace function dotlrn_community__new(integer,integer,varchar,varchar,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_community__new/15
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__new(
+   p_community_id integer,
+   p_parent_community_id integer,
+   p_community_type varchar,
+   p_community_key varchar,
+   p_pretty_name varchar,
+   p_description varchar,
+   p_archived_p varchar, -- default 'f'
+   p_portal_id integer,
+   p_non_member_portal_id integer,
+   p_package_id integer,
+   p_join_policy varchar,
+   p_creation_date timestamptz,
+   p_creation_user integer,
+   p_creation_ip varchar,
+   p_context_id integer
+
+) RETURNS integer AS $$
 DECLARE
-        p_community_id                  alias for $1;
-        p_parent_community_id           alias for $2;
-        p_community_type                alias for $3;
-        p_community_key                 alias for $4;
-        p_pretty_name                   alias for $5;
-        p_description                   alias for $6;
-        p_archived_p                    alias for $7;
-        p_portal_id                     alias for $8;
-        p_non_member_portal_id          alias for $9;
-        p_package_id                    alias for $10;
-        p_join_policy                   alias for $11;
-        p_creation_date                 alias for $12;
-        p_creation_user                 alias for $13;
-        p_creation_ip                   alias for $14;
-        p_context_id                    alias for $15;
         c_id                            integer;
         v_group_type_exists_p           integer;
 BEGIN
@@ -219,16 +253,22 @@ BEGIN
 
         return c_id;        
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
 
-create function dotlrn_community__set_active_dates(integer,date,date)
-returns integer as '
+
+
+--
+-- procedure dotlrn_community__set_active_dates/3
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__set_active_dates(
+   p_community_id integer,
+   p_start_date date,
+   p_end_date date
+) RETURNS integer AS $$
 DECLARE
-        p_community_id            alias for $1;
-        p_start_date              alias for $2;
-        p_end_date                alias for $3;
 BEGIN
         update dotlrn_communities_all
         set active_start_date = p_start_date,
@@ -237,14 +277,20 @@ BEGIN
 
         return p_community_id;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 select define_function_args('dotlrn_community__delete','community_id');
 
-create function dotlrn_community__delete(integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_community__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__delete(
+   p_community_id integer
+) RETURNS integer AS $$
 DECLARE
-        p_community_id                alias for $1;
 BEGIN
         delete
         from dotlrn_communities
@@ -253,34 +299,46 @@ BEGIN
         PERFORM acs_group__delete(p_community_id);
         return 0;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 select define_function_args('dotlrn_community__name','community_id');
 
-create function dotlrn_community__name(integer)
-returns varchar as '
+
+
+--
+-- procedure dotlrn_community__name/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__name(
+   p_community_id integer
+) RETURNS varchar AS $$
 DECLARE
-        p_community_id                alias for $1;
 BEGIN
         return acs_group__name(p_community_id);
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 select define_function_args('dotlrn_community__member_p','community_id,party_id');
 
-create function dotlrn_community__member_p(integer,integer)
-returns boolean as '
+
+
+--
+-- procedure dotlrn_community__member_p/2
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__member_p(
+   p_community_id integer,
+   p_party_id integer
+) RETURNS boolean AS $$
 DECLARE
-        p_community_id                    alias for $1;
-        p_party_id                        alias for $2;
         v_member_p			  char(1);
 BEGIN
        select CASE 
 		   WHEN count(*) = 0
-		   THEN ''f''
-		   ELSE ''t''
+		   THEN 'f'
+		   ELSE 't'
 	      END
         into v_member_p
         from dual
@@ -292,39 +350,51 @@ BEGIN
         return v_member_p;
 
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 select define_function_args('dotlrn_community__admin_p','community_id,party_id');
 
-create function dotlrn_community__admin_p(integer,integer)
-returns boolean as '
+
+
+--
+-- procedure dotlrn_community__admin_p/2
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__admin_p(
+   p_community_id integer,
+   p_party_id integer
+) RETURNS boolean AS $$
 DECLARE
-        p_community_id                    alias for $1;
-        p_party_id                        alias for $2;
         r_rv				  char(1);
 BEGIN
 	-- THIS NEEDS TO BE CHECKED!
 	-- chak, 2002-07-01
 	select CASE
-		WHEN acs_permission__permission_p(p_community_id, p_party_id, ''dotlrn_admin_community'') = ''f''
-		THEN acs_permission__permission_p(p_community_id,p_party_id,''admin'')
-		ELSE ''t''	
+		WHEN acs_permission__permission_p(p_community_id, p_party_id, 'dotlrn_admin_community') = 'f'
+		THEN acs_permission__permission_p(p_community_id,p_party_id,'admin')
+		ELSE 't'	
 	     END
 	   into r_rv
            from dual;
 
 	return r_rv;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 select define_function_args('dotlrn_community__url','community_id');
 
-create function dotlrn_community__url(integer)
-returns varchar as '
+
+
+--
+-- procedure dotlrn_community__url/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__url(
+   p_community_id integer
+) RETURNS varchar AS $$
 DECLARE
-        p_community_id                alias for $1;
         v_node_id		      site_nodes.node_id%TYPE;
 BEGIN
         select site_nodes.node_id into v_node_id
@@ -337,21 +407,30 @@ BEGIN
 
 --        exception
 --            when no_data_found then
---                return '';
+--                return ';
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_community__has_subcomm_p(integer)
-returns varchar as '
+
+
+-- added
+select define_function_args('dotlrn_community__has_subcomm_p','community_id');
+
+--
+-- procedure dotlrn_community__has_subcomm_p/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_community__has_subcomm_p(
+   p_community_id integer
+) RETURNS varchar AS $$
 DECLARE
-	p_community_id		alias for $1;
 	r_rv char(1);
 BEGIN
 	select CASE
 		WHEN count(*) = 0
-		THEN ''f''
-		ELSE ''t''
+		THEN 'f'
+		ELSE 't'
 	       END
 	  into r_rv
 	  from dual 
@@ -359,7 +438,8 @@ BEGIN
 	 
 	 return r_rv;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 create view dotlrn_communities_full
 as

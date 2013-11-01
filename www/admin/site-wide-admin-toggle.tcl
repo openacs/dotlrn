@@ -39,9 +39,9 @@ if { ![acs_user::site_wide_admin_p] } {
 	return
 }
 
-if {[string equal $value "grant"] == 1} {
+if {$value eq "grant"} {
     ad_permission_grant $user_id [acs_magic_object "security_context_root"] "admin"
-} elseif {[string equal $value "revoke"] == 1} {
+} elseif {$value eq "revoke"} {
     ad_permission_revoke $user_id [acs_magic_object "security_context_root"] "admin"
 }
 

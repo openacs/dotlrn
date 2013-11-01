@@ -63,30 +63,37 @@ create table dotlrn_site_templates (
 --     and users.user_id = persons.person_id;
 
 
---Creating default site tempaltes 
+--Creating default site templates 
 
-create function inline_0()
-returns integer as '
-declare 
+
+
+--
+-- procedure inline_0/0
+--
+CREATE OR REPLACE FUNCTION inline_0(
+
+) RETURNS integer AS $$
+DECLARE 
 	v_site_template_id	dotlrn_site_templates.site_template_id%TYPE;
 	v_theme_id		portal_element_themes.theme_id%TYPE;
-begin
+BEGIN
         select theme_id into v_theme_id 
         from portal_element_themes 
-	where name = ''#new-portal.sloan_theme_name#''; 
+	where name = '#new-portal.sloan_theme_name#'; 
 
-	select nextval(''t_acs_object_id_seq'')
+	select nextval('t_acs_object_id_seq')
         into v_site_template_id 
         from dual;
 
 	insert into dotlrn_site_templates
 	(site_template_id, pretty_name, site_master, portal_theme_id ) 
 	values 
-	(v_site_template_id, ''#new-portal.sloan_theme_name#'',''/packages/dotlrn/www/dotlrn-master'', v_theme_id);
+	(v_site_template_id, '#new-portal.sloan_theme_name#','/packages/dotlrn/www/dotlrn-master', v_theme_id);
 	
 	return v_site_template_id;
 
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 

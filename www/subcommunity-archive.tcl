@@ -26,7 +26,7 @@ ad_page_contract {
     title:onevalue
 }
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 
@@ -68,7 +68,7 @@ element create archive_form referer \
 if {[form is_valid archive_form]} {
     form get_values archive_form community_id referer no_button yes_button
 
-    if {[string equal $yes_button $yes_label]} {
+    if {$yes_button eq $yes_label} {
 
         db_transaction {
             set subcomm_id [dotlrn_community::archive \

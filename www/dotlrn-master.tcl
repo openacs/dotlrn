@@ -70,7 +70,7 @@ set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"
 set td_align "align=\"center\" valign=\"top\""
 
 
-if {![empty_string_p $community_id]} {
+if {$community_id ne ""} {
     set have_comm_id_p 1
 } else {
     set have_comm_id_p 0
@@ -80,15 +80,15 @@ if {![empty_string_p $community_id]} {
 
 # navbar vars
 set show_navbar_p 1
-if {[exists_and_not_null no_navbar_p] && $no_navbar_p} {
+if {[info exists no_navbar_p] && $no_navbar_p} {
     set show_navbar_p 0
 } 
 
-if { [empty_string_p $community_id] && \
-         [parameter::get \
-              -parameter hide_personal_portal_p \
-              -package_id [dotlrn::get_package_id] \
-              -default 0] } {
+if { $community_id eq "" && 
+     [parameter::get \
+	  -parameter hide_personal_portal_p \
+	  -package_id [dotlrn::get_package_id] \
+	  -default 0] } {
     #We're not in a community portal, and we've been asked to
     #hide the personal portal.
     set show_navbar_p 0
@@ -108,7 +108,7 @@ if {![info exists link_control_panel]} {
     set link_control_panel 1
 }
 
-if { ![string equal [ad_conn package_key] [dotlrn::package_key]] } {
+if { [ad_conn package_key] ne [dotlrn::package_key] } {
     # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance 
     # (i.e. in a news instance of a class)
     # and we want all links in the navbar to be active so the user can return easily to the class homepage
@@ -168,7 +168,7 @@ if { [ad_conn untrusted_user_id] == 0 } {
     set user_name [acs_user::get_element -user_id [ad_conn untrusted_user_id] -element name]
 }
 
-if {![exists_and_not_null title]} {
+if {![info exists title] || $title eq ""} {
     set title [ad_system_name]
 }
 
@@ -182,7 +182,7 @@ set community_id [dotlrn_community::get_community_id]
 
 set control_panel_text [_ "dotlrn.control_panel"]
 
-if {![empty_string_p $community_id]} {
+if {$community_id ne ""} {
     # in a community or just under one in a mounted package like /calendar 
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
     set control_panel_text [_ acs-subsite.Admin]
@@ -192,7 +192,7 @@ if {![empty_string_p $community_id]} {
 	set comm_type [dotlrn_community::get_community_type_from_community_id [dotlrn_community::get_parent_id -community_id $community_id]]
     }
 
-    if {$comm_type == "dotlrn_club"} {
+    if {$comm_type eq "dotlrn_club"} {
 	    #community colors
 	    set scope_name "comm"
 	    set scope_main_color "#CC6633"
@@ -234,7 +234,7 @@ if {![empty_string_p $community_id]} {
         -attribute_name header_font
     ]
 
-    if {![empty_string_p $community_header_font]} {
+    if {$community_header_font ne ""} {
 	set header_font "$community_header_font,$header_font"
     }
 
@@ -255,7 +255,7 @@ if {![empty_string_p $community_id]} {
         -attribute_name header_logo_item_id
     ]
 
-    if {![empty_string_p $header_logo_item_id]} {
+    if {$header_logo_item_id ne ""} {
         # Need filename
         set item_id [content::revision::item_id -revision_id $header_logo_item_id]
         set header_img_url "[subsite::get_url]image/$item_id"
@@ -267,13 +267,13 @@ if {![empty_string_p $community_id]} {
         -attribute_name header_logo_alt_text
     ]
 
-    if {![empty_string_p $header_logo_alt_text]} {
+    if {$header_logo_alt_text ne ""} {
         set header_img_alt_text $header_logo_alt_text
     } 
 
     set text [dotlrn::user_context_bar -community_id $community_id]
 
-    if { [string equal [ad_conn package_key] [dotlrn::package_key]] } {
+    if {[ad_conn package_key] eq [dotlrn::package_key]} {
         set text "<span class=\"header-text\">$text</span>"
     }
 
@@ -340,7 +340,7 @@ set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_
 
 # Hack for title and context bar outside of dotlrn
 
-set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
+set in_dotlrn_p [expr {[string match "[dotlrn::get_url]/*" [ad_conn url]]}]
 
 if { [info exists context] } {
     set context_bar [eval ad_context_bar -- $context]

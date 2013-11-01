@@ -149,7 +149,7 @@ set revision_id [dotlrn_community::get_attribute \
 # Customized logos are stored in the public file-storage folder
 # for the community.
  
-if {[empty_string_p $revision_id]} {
+if {$revision_id eq ""} {
 
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
 
@@ -163,7 +163,7 @@ if {[empty_string_p $revision_id]} {
  
     }
 
-    if {$comm_type == "dotlrn_club"} {
+    if {$comm_type eq "dotlrn_club"} {
 	#community colors
 	set scope_name "comm"
     } else {

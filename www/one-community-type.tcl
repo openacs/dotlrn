@@ -56,15 +56,15 @@ db_1row select_community_type_info {}
 
 set description [lang::util::localize $description]
 
-if {[string equal ${community_type} dotlrn_class_instance] != 0} {
+if {$community_type eq "dotlrn_class_instance"} {
     set community_type_title [parameter::get -localize -parameter classes_pretty_plural]
     set communities_title [parameter::get -localize -parameter class_instances_pretty_name]
     set title [parameter::get -localize -parameter classes_pretty_plural]
-} elseif {[string equal ${community_type} dotlrn_club] != 0} {
+} elseif {$community_type eq "dotlrn_club"} {
     set community_type_title [parameter::get -localize -parameter clubs_pretty_plural]
     set communities_title [parameter::get -localize -parameter clubs_pretty_plural]
     set title [parameter::get -localize -parameter clubs_pretty_plural]
-} elseif {[string equal ${ancestor_type} dotlrn_class_instance] != 0} {
+} elseif {$ancestor_type eq "dotlrn_class_instance"} {
     set community_type_title [parameter::get -localize -parameter classes_pretty_plural]
     set communities_title [parameter::get -localize -parameter class_instances_pretty_name]
     set title [lang::util::localize $pretty_name]

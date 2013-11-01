@@ -23,186 +23,186 @@
 -- @author dan chak (chak@openforce.net)
 -- porting to PG on 2002-07-01
 
-create function inline_0() 
-returns integer as '
-begin
+CREATE OR REPLACE FUNCTION inline_0()  RETURNS integer AS $$
+BEGIN
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''GetPrettyName''
+        'dotlrn_applet',
+        'GetPrettyName'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.GetPrettyName.InputType''
+        'dotlrn_applet.GetPrettyName.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.GetPrettyName.OutputType''
-    );
-
-    perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''AddApplet''
-    );
-
-    perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddApplet.InputType''
-    );
-
-    perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddApplet.OutputType''
+        'dotlrn_applet.GetPrettyName.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''RemoveApplet''
+        'dotlrn_applet',
+        'AddApplet'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveApplet.InputType''
+        'dotlrn_applet.AddApplet.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveApplet.OutputType''
+        'dotlrn_applet.AddApplet.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''AddAppletToCommunity''
+        'dotlrn_applet',
+        'RemoveApplet'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddAppletToCommunity.InputType''
+        'dotlrn_applet.RemoveApplet.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddAppletToCommunity.OutputType''
+        'dotlrn_applet.RemoveApplet.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''RemoveAppletFromCommunity''
+        'dotlrn_applet',
+        'AddAppletToCommunity'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveAppletFromCommunity.InputType''
+        'dotlrn_applet.AddAppletToCommunity.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveAppletFromCommunity.OutputType''
+        'dotlrn_applet.AddAppletToCommunity.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''AddUser''
+        'dotlrn_applet',
+        'RemoveAppletFromCommunity'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddUser.InputType''
+        'dotlrn_applet.RemoveAppletFromCommunity.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddUser.OutputType''
+        'dotlrn_applet.RemoveAppletFromCommunity.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''RemoveUser''
+        'dotlrn_applet',
+        'AddUser'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveUser.InputType''
+        'dotlrn_applet.AddUser.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveUser.OutputType''
+        'dotlrn_applet.AddUser.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''AddUserToCommunity''
+        'dotlrn_applet',
+        'RemoveUser'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddUserToCommunity.InputType''
+        'dotlrn_applet.RemoveUser.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddUserToCommunity.OutputType''
+        'dotlrn_applet.RemoveUser.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''RemoveUserFromCommunity''
+        'dotlrn_applet',
+        'AddUserToCommunity'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveUserFromCommunity.InputType''
+        'dotlrn_applet.AddUserToCommunity.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemoveUserFromCommunity.OutputType''
+        'dotlrn_applet.AddUserToCommunity.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''AddPortlet''
+        'dotlrn_applet',
+        'RemoveUserFromCommunity'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddPortlet.InputType''
+        'dotlrn_applet.RemoveUserFromCommunity.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.AddPortlet.OutputType''
+        'dotlrn_applet.RemoveUserFromCommunity.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''RemovePortlet''
+        'dotlrn_applet',
+        'AddPortlet'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemovePortlet.InputType''
+        'dotlrn_applet.AddPortlet.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.RemovePortlet.OutputType''
+        'dotlrn_applet.AddPortlet.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''Clone''
+        'dotlrn_applet',
+        'RemovePortlet'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.Clone.InputType''
+        'dotlrn_applet.RemovePortlet.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.Clone.OutputType''
+        'dotlrn_applet.RemovePortlet.OutputType'
     );
 
     perform acs_sc_operation__delete(
-        ''dotlrn_applet'',
-        ''ChangeEventHandler''
+        'dotlrn_applet',
+        'Clone'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.ChangeEventHandler.InputType''
+        'dotlrn_applet.Clone.InputType'
     );
 
     perform acs_sc_msg_type__delete(
-        ''dotlrn_applet.ChangeEventHandler.OutputType''
+        'dotlrn_applet.Clone.OutputType'
+    );
+
+    perform acs_sc_operation__delete(
+        'dotlrn_applet',
+        'ChangeEventHandler'
+    );
+
+    perform acs_sc_msg_type__delete(
+        'dotlrn_applet.ChangeEventHandler.InputType'
+    );
+
+    perform acs_sc_msg_type__delete(
+        'dotlrn_applet.ChangeEventHandler.OutputType'
     );
 
     perform acs_sc_contract__delete(
-        ''dotlrn_applet''
+        'dotlrn_applet'
     );
 
     return 0;
 
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();

@@ -26,11 +26,7 @@ ad_page_contract {
     {referer "one-community-admin"}
 } -validate {
     policy_ck -requires {policy:notnull} {
-        if {!(
-            [string equal $policy "open"] == 1 ||
-            [string equal $policy "needs approval"] == 1 ||
-            [string equal $policy "closed"] == 1
-        )} {
+        if {$policy ni {open needs approval closed}} {
             ad_complain [_ dotlrn.lt_policy_must_be_one_of]
         }
     }
@@ -40,7 +36,7 @@ ad_page_contract {
 # i.e. AllowChangeEnrollmentPolicy
 dotlrn_portlet::is_allowed -parameter cenrollment
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 

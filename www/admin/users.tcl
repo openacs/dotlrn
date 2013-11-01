@@ -58,9 +58,9 @@ lappend dotlrn_roles_localized [list deactivated "[_ dotlrn.Deactivated] ($n_dea
 
 set control_bar [ad_dimensional [list [list type "[_ dotlrn.User_Type]:" $type $dotlrn_roles_localized]]]
 
-if {[string equal $type "deactivated"] == 1} {
+if {$type eq "deactivated"} {
     set n_users $n_deactivated_users
-} elseif {[string equal $type "pending"] == 1} {
+} elseif {$type eq "pending"} {
     set n_users $n_pending_users
 } else {
     set n_users [db_string select_dotlrn_users_count {}]

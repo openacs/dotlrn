@@ -87,7 +87,7 @@ namespace eval dotlrn_applet {
         {-url ""}
         {-pretty_name ""}
     } {
-        if {[empty_string_p $url]} {
+        if {$url eq ""} {
             set url $package_key
         }
 
@@ -181,7 +181,7 @@ namespace eval dotlrn_applet {
     } {
         call a particular applet op
     } {
-        acs_sc_call dotlrn_applet $op $list_args $applet_key
+        acs_sc::invoke -contract dotlrn_applet -operation $op -call_args $list_args -impl $applet_key
     }
 
 }

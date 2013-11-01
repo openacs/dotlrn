@@ -98,7 +98,7 @@ namespace eval dotlrn_class {
         
     } {
 
-	if [empty_string_p $community_type_key] {
+	if {$community_type_key eq ""} {
 	    set community_type_key "$department_key.$class_key"
 	}
 
@@ -126,7 +126,7 @@ namespace eval dotlrn_class {
         This class can then be instantiated for a particular semester.
     } {
 
-	if [empty_string_p $class_key] {
+	if {$class_key eq ""} {
             set new_class_key $department_key.[dotlrn::generate_key -name $pretty_name]
         } else {
             set new_class_key $class_key
@@ -208,7 +208,7 @@ namespace eval dotlrn_class {
         ns_set put $extra_vars class_key $class_key
         ns_set put $extra_vars join_policy $join_policy
 
-        if {[empty_string_p $pretty_name]} {
+        if {$pretty_name eq ""} {
             set pretty_name  "[dotlrn_community::get_community_type_name $class_key]; $term $year"
         }
         db_transaction {
@@ -239,7 +239,7 @@ namespace eval dotlrn_class {
         Assigns a user to a particular role for that class. 
         Roles in dotLRN can be student, prof, ta, admin
     } {
-        if {[empty_string_p $rel_type]} {
+        if {$rel_type eq ""} {
             set rel_type "dotlrn_student_rel"
         }
 

@@ -161,23 +161,28 @@ select define_function_args ('dotlrn_department__new','department_key,pretty_nam
 select define_function_args ('dotlrn_department__delete', 'department_key');
 
 
-create function dotlrn_department__new(varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
-returns varchar as '
+
+
+--
+-- procedure dotlrn_department__new/9
+--
+CREATE OR REPLACE FUNCTION dotlrn_department__new(
+   p_department_key varchar,
+   p_pretty_name varchar,
+   p_pretty_plural varchar,
+   p_description varchar,
+   p_package_id integer,
+   p_creation_date timestamptz,
+   p_creation_user integer,
+   p_creation_ip varchar,
+   p_context_id integer
+) RETURNS varchar AS $$
 DECLARE
-        p_department_key                    alias for $1;
-        p_pretty_name                       alias for $2;
-        p_pretty_plural                     alias for $3;
-        p_description                       alias for $4;
-        p_package_id                        alias for $5;
-        p_creation_date                     alias for $6;
-        p_creation_user                     alias for $7;
-        p_creation_ip                       alias for $8;
-        p_context_id                        alias for $9;
         v_department_key dotlrn_departments.department_key%TYPE;
 BEGIN
         v_department_key := dotlrn_community_type__new (
             p_department_key,
-            ''dotlrn_class_instance'',
+            'dotlrn_class_instance',
             p_pretty_name,
             p_pretty_plural,
             p_description,
@@ -194,13 +199,19 @@ BEGIN
 
         return v_department_key;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_department__delete(varchar)
-returns integer as '
+
+
+--
+-- procedure dotlrn_department__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_department__delete(
+   p_department_key varchar
+) RETURNS integer AS $$
 DECLARE
-        p_department_key                alias for $1;
 BEGIN
         delete
         from dotlrn_departments
@@ -209,7 +220,8 @@ BEGIN
         PERFORM dotlrn_community_type__delete(p_department_key);
         return(0);
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 select define_function_args('dotlrn_class__new','class_key,department_key,pretty_name,pretty_plural,description,package_id,creation_date,creation_user,creation_ip,context_id');
@@ -217,19 +229,24 @@ select define_function_args('dotlrn_class__new','class_key,department_key,pretty
 select define_function_args('dotlrn_class__delete','class_key');
 
 
-create function dotlrn_class__new(varchar,varchar,varchar,varchar,varchar,integer,timestamptz,integer,varchar,integer)
-returns varchar as '
+
+
+--
+-- procedure dotlrn_class__new/10
+--
+CREATE OR REPLACE FUNCTION dotlrn_class__new(
+   p_class_key varchar,
+   p_department_key varchar,
+   p_pretty_name varchar,
+   p_pretty_plural varchar,
+   p_description varchar,
+   p_package_id integer,
+   p_creation_date timestamptz,
+   p_creation_user integer,
+   p_creation_ip varchar,
+   p_context_id integer
+) RETURNS varchar AS $$
 DECLARE
-        p_class_key                     alias for $1;
-        p_department_key                alias for $2;
-        p_pretty_name                   alias for $3;
-        p_pretty_plural                 alias for $4;
-        p_description                   alias for $5;
-        p_package_id                    alias for $6;
-        p_creation_date                 alias for $7;
-        p_creation_user                 alias for $8;
-        p_creation_ip                   alias for $9;
-        p_context_id                    alias for $10;
         v_class_key dotlrn_classes.class_key%TYPE;
 BEGIN
         v_class_key := dotlrn_community_type__new (
@@ -251,13 +268,19 @@ BEGIN
 
         return v_class_key;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_class__delete(varchar)
-returns integer as '
+
+
+--
+-- procedure dotlrn_class__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_class__delete(
+   p_class_key varchar
+) RETURNS integer AS $$
 DECLARE
-        p_class_key                alias for $1;
 BEGIN
         delete
         from dotlrn_classes
@@ -266,7 +289,8 @@ BEGIN
         PERFORM dotlrn_community_type__delete(p_class_key);
         return(0);
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
 
@@ -275,23 +299,28 @@ select define_function_args('dotlrn_class_instance__new','class_instance_id,clas
 select define_function_args('dotlrn_class_instance__delete','class_instance_id');
 
 
-create function dotlrn_class_instance__new(integer,varchar,integer,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_class_instance__new/14
+--
+CREATE OR REPLACE FUNCTION dotlrn_class_instance__new(
+   p_class_instance_id integer,
+   p_class_key varchar,
+   p_term_id integer,
+   p_community_key varchar,
+   p_pretty_name varchar,
+   p_description varchar,
+   p_package_id integer,
+   p_portal_id integer,
+   p_non_member_portal_id integer,
+   p_join_policy varchar,
+   p_creation_date timestamptz,
+   p_creation_user integer,
+   p_creation_ip varchar,
+   p_context_id integer
+) RETURNS integer AS $$
 DECLARE
-        p_class_instance_id                        alias for $1;
-        p_class_key                                alias for $2;
-        p_term_id                                alias for $3;
-        p_community_key                                alias for $4;
-        p_pretty_name                                alias for $5;
-        p_description                                alias for $6;
-        p_package_id                                alias for $7;
-        p_portal_id                                alias for $8;
-        p_non_member_portal_id                        alias for $9;
-        p_join_policy                                alias for $10;
-        p_creation_date                                alias for $11;
-        p_creation_user                                alias for $12;
-        p_creation_ip                                alias for $13;
-        p_context_id                                alias for $14;
         v_class_instance_id dotlrn_class_instances.class_instance_id%TYPE;
 BEGIN
         v_class_instance_id := dotlrn_community__new (
@@ -301,7 +330,7 @@ BEGIN
             p_community_key,
             p_pretty_name,
             p_description,
-            ''f'',
+            'f',
             p_portal_id,
             p_non_member_portal_id,
             p_package_id,
@@ -320,13 +349,19 @@ BEGIN
 
         return v_class_instance_id;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_class_instance__delete(integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_class_instance__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_class_instance__delete(
+   p_class_instance_id integer
+) RETURNS integer AS $$
 DECLARE
-        p_class_instance_id                alias for $1;
 BEGIN
         delete
         from dotlrn_class_instances
@@ -335,5 +370,6 @@ BEGIN
         PERFORM dotlrn_community__delete(p_class_instance_id);
         return(0);
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 

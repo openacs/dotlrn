@@ -108,7 +108,7 @@ namespace eval dotlrn {
     } {
         set list [site_node::get_children -package_key $package_key \
                       -node_id [get_node_id]]
-        return [expr [llength $list] > 0 ? 1 : 0]
+        return [expr {[llength $list] > 0 ? 1 : 0}]
     }
 
     ad_proc -public mount_package {
@@ -237,7 +237,7 @@ namespace eval dotlrn {
     } {
 	Mount an application under a particular community
     } {
-	if {[empty_string_p $mount_point]} {
+	if {$mount_point eq ""} {
 	    set mount_point $package_key
 	}
 
@@ -328,7 +328,7 @@ namespace eval dotlrn {
     } {
         set id [db_string select {} -default ""]
 
-        if {[empty_string_p $id]} {
+        if {$id eq ""} {
             set type dotlrn_class_instance
 	    # aks: this next line is necessary 
 	    # for dotlrn_class_instances, don't remove it!
@@ -356,13 +356,13 @@ namespace eval dotlrn {
         # based on the type:
         # 1. get the page_names and layouts
         # 2. the the list of default applets for this type
-        if {[string equal $type dotlrn_community]} {
+        if {$type eq "dotlrn_community"} {
             set csv_list [dotlrn::parameter -name subcomm_pages_csv]
             set default_applets [dotlrn::parameter -name default_subcomm_applets]
-        } elseif {[string equal $type dotlrn_club]} {
+        } elseif {$type eq "dotlrn_club"} {
             set csv_list [dotlrn::parameter -name club_pages_csv]
             set default_applets [dotlrn::parameter -name default_club_applets]
-        } elseif {[string equal $type user]} {
+        } elseif {$type eq "user"} {
             set csv_list [dotlrn::parameter -name user_portal_pages_csv]
             set default_applets [dotlrn::parameter -name default_user_portal_applets]
         } else {
@@ -494,8 +494,7 @@ namespace eval dotlrn {
 	Returns the master template for a given site template
     } {
 	return [db_string select_site_template_master {} \
-		    -default [parameter::get -package_id [dotlrn::get_package_id] \
-				  -parameter DefaultMaster_p]]
+		    -default [parameter::get -package_id [dotlrn::get_package_id] -parameter DefaultMaster_p]]
     }
     
     ad_proc -public assign_default_sitetemplate {

@@ -33,7 +33,7 @@ namespace eval dotlrn_department {
         Create a new department.
     } {
 
-	if [empty_string_p $department_key] {
+	if {$department_key eq ""} {
 	    set department_key [dotlrn::generate_key -name $pretty_name]
 	}
         

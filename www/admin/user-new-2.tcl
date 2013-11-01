@@ -103,7 +103,7 @@ if {[form is_valid add_user]} {
     }
     
     
-    if [catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg] {
+    if {[catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg]} {
         
         ns_log Error "Error sending email from user-new-2.tcl" $errmsg
         ad_return_error \
@@ -121,7 +121,7 @@ Subject: $subject
 Message: $message"
 
 
-        if [catch {acs_mail_lite::send -send_immediately -to_addr $email_from -from_addr $email_from -subject $admin_subject -body $admin_message} errmsg] {
+        if {[catch {acs_mail_lite::send -send_immediately -to_addr $email_from -from_addr $email_from -subject $admin_subject -body $admin_message} errmsg]} {
             
             ns_log Error "Error sending email from user-new-2.tcl" $errmsg
             ad_return_error \

@@ -53,7 +53,7 @@ set tmp_filename [ns_queryget header_img.tmpfile]
 set mime_type [ns_guesstype $header_img]
 
 
-if {[empty_string_p $tmp_filename]} {
+if {$tmp_filename eq ""} {
       set tmp_size 0
       set revision_id 0
 } else {
@@ -64,7 +64,7 @@ set title "$header_img-[db_nextval acs_object_id_seq]"
 
 #  # strip off the C:\directories... crud and just get the file name
 
-if ![regexp {([^/\\]+)$} $header_img match client_filename] {
+if {![regexp {([^/\\]+)$} $header_img match client_filename]} {
       set client_filename $header_img
 }
 
@@ -93,7 +93,7 @@ if { $tmp_size > 0 } {
         set item_id [content::item::get_id_by_name -name $logo_name -parent_id $parent_id]
 
 	# if it's a new upload, create the item
-	if { [empty_string_p $item_id]} {
+	if { $item_id eq ""} {
 	    set item_id [content::item::new -name $logo_name -parent_id $parent_id -content_type image]
 
         # since it's just the header logo, which can't be accessed outside of
@@ -145,7 +145,7 @@ if { $tmp_size > 0 } {
 # Font stuff 
 #
 
-if {[empty_string_p $header_font]} {
+if {$header_font eq ""} {
     set header_font_text "sans-serif (None chosen)"
     set header_font_fragment ""
 } else {
@@ -160,7 +160,7 @@ if {[empty_string_p $header_font]} {
 set header_font_size_text $header_font_size
 set style_fragment "font-family: $header_font_fragment Verdana, Arial, Helvetica, sans-serif; font-size: $header_font_size;"
 
-if {[empty_string_p $header_font_color]} {
+if {$header_font_color eq ""} {
     set header_font_color_text "[_ dotlrn.Black_None_chosen]"
     set header_font_color "black"
 } else {
@@ -170,7 +170,7 @@ if {[empty_string_p $header_font_color]} {
 append style_fragment " " "color: $header_font_color;"
 
 #logo stuff
-if {[empty_string_p $revision_id]} {
+if {$revision_id eq ""} {
 
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
 
@@ -184,7 +184,7 @@ if {[empty_string_p $revision_id]} {
  
     }
 
-    if {$comm_type == "dotlrn_club"} {
+    if {$comm_type eq "dotlrn_club"} {
 	#community colors
 	set scope_name "comm"
     } else {
@@ -251,7 +251,7 @@ if {[form is_valid header_form]} {
         header_logo_item_id \
         header_logo_alt_text
 
-    if {[string equal $yes_button $yes_label]} {
+    if {$yes_button eq $yes_label} {
 
         dotlrn_community::set_attributes \
             -community_id $community_id \

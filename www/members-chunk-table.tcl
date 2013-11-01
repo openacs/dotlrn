@@ -55,8 +55,8 @@ if {!$site_wide_admin_p} {
     set admin_p 1
 }
 
-if {![exists_and_not_null referer]} {
-    if {[string equal $admin_p t] == 1} {
+if {(![info exists referer] || $referer eq "")} {
+    if {$admin_p == "t"} {
         set referer "one-community-admin"
     } else {
         set referer "one-community"
@@ -67,7 +67,7 @@ if {![exists_and_not_null referer]} {
 set parent_community_name [dotlrn_community::get_parent_name -community_id $community_id]
 set community_name [dotlrn_community::get_community_name $community_id]
 
-if {[string compare $order_direction "asc"]==0} {
+if {$order_direction eq "asc" } {
     set order_html "<img src=\"/resources/dotlrn/down.gif\" height=15 width=15>"
     set opposite_order_direction "desc"
 } else {

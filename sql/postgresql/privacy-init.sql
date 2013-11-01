@@ -16,40 +16,46 @@
 -- private information such as the names of students taking a
 -- particular class.
 --
-create function inline_1()
-returns integer as '
-declare
+
+
+--
+-- procedure inline_1/0
+--
+CREATE OR REPLACE FUNCTION inline_1(
+
+) RETURNS integer AS $$
+DECLARE
     v_guest_segment_id integer;
     v_non_guest_segment_id integer;
     v_object_id integer;
-begin
+BEGIN
 
     --
     -- Guests
     --
 
     perform acs_rel_type__create_type(
-        ''dotlrn_guest_rel'',
-        ''.LRN Guest'',
-        ''.LRN Guests'',
-        ''membership_rel'',
-        ''dotlrn_guest_rels'',
-        ''rel_id'',
-        ''dotlrn_guest_rel'',
-        ''group'',
+        'dotlrn_guest_rel',
+        '.LRN Guest',
+        '.LRN Guests',
+        'membership_rel',
+        'dotlrn_guest_rels',
+        'rel_id',
+        'dotlrn_guest_rel',
+        'group',
         null,
         0,
         null,
-        ''user'',
+        'user',
         null,
         0,
         1
     );
 
     v_guest_segment_id := rel_segment__new(
-        ''Registered .LRN Guests'',
-        acs__magic_object_id(''registered_users''),
-        ''dotlrn_guest_rel''
+        'Registered .LRN Guests',
+        acs__magic_object_id('registered_users'),
+        'dotlrn_guest_rel'
     );
 
     --
@@ -57,32 +63,33 @@ begin
     --
 
     perform acs_rel_type__create_type(
-        ''dotlrn_non_guest_rel'',
-        ''.LRN Non-Guest'',
-        ''.LRN Non-Guests'',
-        ''membership_rel'',
-        ''dotlrn_non_guest_rels'',
-        ''rel_id'',
-        ''dotlrn_non_guest_rel'',
-        ''group'',
+        'dotlrn_non_guest_rel',
+        '.LRN Non-Guest',
+        '.LRN Non-Guests',
+        'membership_rel',
+        'dotlrn_non_guest_rels',
+        'rel_id',
+        'dotlrn_non_guest_rel',
+        'group',
         null,
         0,
         null,
-        ''user'',
+        'user',
         null,
         0,
         1
     );
 
     v_non_guest_segment_id := rel_segment__new(
-        ''Registered .LRN Non-Guests'',
-        acs__magic_object_id(''registered_users''),
-        ''dotlrn_non_guest_rel''
+        'Registered .LRN Non-Guests',
+        acs__magic_object_id('registered_users'),
+        'dotlrn_non_guest_rel'
     );
 
     return(0);
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_1();
 drop function inline_1();

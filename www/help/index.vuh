@@ -14,7 +14,7 @@ set user_language [ad_conn language]
 
 # redirect if possible
 set path_info [ad_conn path_info]
-if { [string eq $path_info ""] } {
+if {$path_info eq ""} {
     set path_info "index"
 }
 

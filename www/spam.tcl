@@ -43,20 +43,20 @@ ad_page_contract {
     recipients_specified {
 
 	set recipients_p 0	
-	if {[info exists rel_types] && ![empty_string_p $rel_types]} {
+	if {[info exists rel_types] && $rel_types ne ""} {
 	    set recipients_p 1
-	} elseif  {[info exists recipients] && ![empty_string_p $recipients]} {
+	} elseif  {[info exists recipients] && $recipients ne ""} {
 	    set recipients_p 1
 	} elseif {[info exists spam_all] && $spam_all != 0} {
 	    set recipients_p 1
-	} elseif { [info exists rel_types_str] && ![empty_string_p $rel_types_str] } {
+	} elseif { [info exists rel_types_str] && $rel_types_str ne "" } {
 	    set recipients_p 1
-	} elseif { [info exists recipients_str] && ![empty_string_p $recipients_str] } {
+	} elseif { [info exists recipients_str] && $recipients_str ne "" } {
 	    set recipients_p 1
 	} 
 	
 	if { $recipients_p == 0} {
-	    if {[exists_and_not_null community_id]} {
+	    if {([info exists community_id] && $community_id ne "")} {
 		# This is call using the old URL reference
 		ad_returnredirect "spam-recipients?referer=$referer"
 	    } else {
@@ -65,10 +65,10 @@ ad_page_contract {
 	}
     }
     if_bad_combination {
-	if { ![empty_string_p $rel_types] && ![empty_string_p $recipients] } {
+	if { $rel_types ne "" && $recipients ne "" } {
 	    ad_complain "If you select a role, you can't select people at the same time."
 	}
-	if { $spam_all && ( ![empty_string_p $rel_types] || ![empty_string_p $recipients] ) } {
+	if { $spam_all && ( $rel_types ne "" || $recipients ne "" ) } {
 	    ad_complain "You can't select roles or recipients if you have selected the \"send to everyone\" option"
 	}
     }
@@ -81,7 +81,7 @@ ad_page_contract {
 set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam_]]
 set context [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 
@@ -175,13 +175,13 @@ if { [ns_queryexists "form:confirm"] } {
     set community_name [dotlrn_community::get_community_name $community_id]
     set community_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL][dotlrn_community::get_community_url $community_id]"
 
-    if { ![empty_string_p $recipients_str] } {
+    if { $recipients_str ne "" } {
 	set recipients_str [join [split $recipients_str] ,]
  	append who_will_receive_this_clause [db_map recipients_clause]
     } 
 
 
-    if { ![empty_string_p $rel_types_str] } {
+    if { $rel_types_str ne "" } {
 	set rel_types_str "'[join [split $rel_types_str] ',']'"
  	append who_will_receive_this_clause [db_map rel_types_clause]
     }
@@ -201,10 +201,10 @@ if { [ns_queryexists "form:confirm"] } {
 
     set query [db_map sender_info]
 
-    if {$format == "html"} {
+    if {$format eq "html"} {
 	set message "$message"
 	set message_type "html"
-    } elseif {$format == "pre"} {
+    } elseif {$format eq "pre"} {
 	set message [ad_text_to_html $message]
 	set message_type "html"
     } else {
@@ -230,7 +230,7 @@ if {[form is_valid spam_message]} {
 
     set confirm_data [form export]
     append confirm_data {<input type="hidden" name="form:confirm" value="confirm">}
-    template::set_file "[file dir $__adp_stub]/spam-2"
+    template::set_file "[file dirname $__adp_stub]/spam-2"
 
 }
 

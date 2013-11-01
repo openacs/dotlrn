@@ -40,7 +40,7 @@ set admin_email [db_string select_admin_email {
 
 set msg_subst_values [list system_name [ad_system_name] system_url [parameter::get -parameter SystemUrl]]
 set email_subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_values]
-if [catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $admin_email -subject $email_subject -body $message} errmsg] {
+if {[catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $admin_email -subject $email_subject -body $message} errmsg]} {
     ad_return_error "[_ dotlrn.Mail_Failed]" "[_ dotlrn.lt_The_system_was_unable]
 <pre>
 [ad_quotehtml $errmsg]

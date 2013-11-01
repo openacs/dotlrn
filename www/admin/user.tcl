@@ -53,11 +53,11 @@ if {![db_0or1row select_user_info {}]} {
     ad_return_complaint 1 "<li>[_ dotlrn.couldnt_find_user_id [list user_id $user_id]]</li>"
     ad_script_abort
 }
-if {[empty_string_p $screen_name]} {
+if {$screen_name eq ""} {
     set screen_name "([_ dotlrn.none_set_up])"
 }
 set registration_date [lc_time_fmt $registration_date "%q"]
-if {![empty_string_p $last_visit]} {
+if {$last_visit ne ""} {
     set last_visit [lc_time_fmt $last_visit "%q"]
 }
 

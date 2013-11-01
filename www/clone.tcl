@@ -39,8 +39,8 @@ set title "[_ dotlrn.Copy] $community_name"
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 set top_community_type [dotlrn_community::get_toplevel_community_type_from_community_id $community_id]
 
-if { $top_community_type != "dotlrn_club" 
-     && $top_community_type != "dotlrn_community" } {
+if { $top_community_type ne "dotlrn_club" 
+     && $top_community_type ne "dotlrn_community" } {
 
     set class_instance_p 1
     set term_id [dotlrn_class::get_term_id -class_instance_id $community_id]

@@ -23,12 +23,20 @@
 -- above assumptions, rewrite this function.
 
 
-create or replace function dotlrn_community_admin_p (integer, integer)
-returns char as '
-  declare 
-       p_group_id alias for $1;
-       p_party_id alias for $2;
-  begin
+
+
+-- added
+select define_function_args('dotlrn_community_admin_p','group_id,party_id');
+
+--
+-- procedure dotlrn_community_admin_p/2
+--
+CREATE OR REPLACE FUNCTION dotlrn_community_admin_p(
+   p_group_id integer,
+   p_party_id integer
+) RETURNS char AS $$
+DECLARE 
+  BEGIN
     --
     -- direct permissions
     if exists (
@@ -36,9 +44,9 @@ returns char as '
           from acs_object_grantee_priv_map
          where object_id = p_group_id
            and grantee_id =  p_party_id
-           and privilege = ''admin'')
+           and privilege = 'admin')
     then 
-        return ''t'';
+        return 't';
     end if;       
 
     -- check to see if the user belongs to a rel seg that has
@@ -51,12 +59,13 @@ returns char as '
           rel_seg_approved_member_map rs
         where rs.group_id = p_group_id
           and ogpm.object_id = rs.group_id
-          and ogpm.privilege = ''admin''
+          and ogpm.privilege = 'admin'
           and ogpm.grantee_id = rs.segment_id
           and rs.member_id = p_party_id)
     then
-        return ''t'';
+        return 't';
     end if;
 
-    return ''f'';
-end;' language 'plpgsql';
+    return 'f';
+END;
+$$ LANGUAGE plpgsql;

@@ -74,7 +74,7 @@ if {$term_id == -1} {
     set page_query select_all_class_instances_paginator
 }
 
-if { ![empty_string_p $keyword] } {
+if { $keyword ne "" } {
     set keyword_clause [db_map class_instances_keyword]
 } else {
     set keyword_clause ""

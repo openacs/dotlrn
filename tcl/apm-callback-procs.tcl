@@ -41,8 +41,8 @@ ad_proc -private dotlrn::apm::after_install {
         -parameter HomeName \
         -value "#dotlrn.control_panel#"
 
-       # Make sure that privacy is turned on
-       acs_privacy::privacy_control_set 1
+    # Make sure that privacy is turned on
+    acs_privacy::privacy_control_set 1
         
 }
 
@@ -55,7 +55,7 @@ ad_proc -private dotlrn::apm::after_instantiate {
 
        set group_id [db_string group_id_from_name "
             select group_id from groups where group_name='dotlrn-admin'" -default ""]
-        if {![empty_string_p $group_id] } {
+        if {$group_id ne "" } {
    
         #Admin privs
         permission::grant \
@@ -64,10 +64,16 @@ ad_proc -private dotlrn::apm::after_instantiate {
             -privilege "admin"
 
         }
-       # Get the default Site Template
+       #
+       # Get the default Site Template; Use here
+       # #new-portal.sloan_theme_name# rather than the zen version,
+       # since the sloan varian is part of the dotlrn-package, and
+       # *zen* part of the zen-theme.
+       #
        set default_template_name [parameter::get \
                                      -package_id $package_id \
-                                     -parameter DefaultSiteTemplate]
+                                     -parameter DefaultSiteTemplate \
+				     -default "#theme-zen.Zen_Theme#"]
        set site_template_id [db_string select_st_id {}]
        
        # for communities
@@ -90,7 +96,7 @@ ad_proc -private dotlrn::apm::before_uninstall {
 
       set group_id [db_string group_id_from_name "
             select group_id from groups where group_name='dotlrn-admin'" -default ""]
-      if {![empty_string_p $group_id] } {
+      if {$group_id ne "" } {
 
            permission::revoke \
                  -party_id $group_id \

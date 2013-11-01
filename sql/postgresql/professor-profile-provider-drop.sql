@@ -22,51 +22,58 @@
 -- @version $Id$
 --
 
-create function inline_0()
-returns integer as '
-declare
+
+
+--
+-- procedure inline_0/0
+--
+CREATE OR REPLACE FUNCTION inline_0(
+
+) RETURNS integer AS $$
+DECLARE
     foo                         integer;
-begin
+BEGIN
 
     -- drop the binding between this implementation and the interface it
     -- implements.
     perform acs_sc_binding__delete(
-        ''profile_provider'',
-        ''dotlrn_professor_profile_provider''
+        'profile_provider',
+        'dotlrn_professor_profile_provider'
     );
 
     -- drop the bindings to the method implementations
 
         -- name method
         perform acs_sc_impl_alias__delete(
-            ''profile_provider'',
-            ''dotlrn_professor_profile_provider'',
-            ''name''
+            'profile_provider',
+            'dotlrn_professor_profile_provider',
+            'name'
         );
 
         -- prettyName method
         perform acs_sc_impl_alias__delete(
-            ''profile_provider'',
-            ''dotlrn_professor_profile_provider'',
-            ''prettyName''
+            'profile_provider',
+            'dotlrn_professor_profile_provider',
+            'prettyName'
         );
 
         -- render method
         perform acs_sc_impl_alias__delete(
-            ''profile_provider'',
-            ''dotlrn_professor_profile_provider'',
-            ''render''
+            'profile_provider',
+            'dotlrn_professor_profile_provider',
+            'render'
         );
 
     -- drop the implementation
     perform acs_sc_impl__delete(
-        ''profile_provider'',
-        ''dotlrn_professor_profile_provider''
+        'profile_provider',
+        'dotlrn_professor_profile_provider'
     );
 
     return 0;
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();

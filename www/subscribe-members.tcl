@@ -37,7 +37,7 @@ db_transaction {
     foreach user $users {
         # Add notification for this user if they're not already subscribed for an instant alert
         set user_id [ns_set get $user user_id]
-        if {[string equal [notification::request::get_request_id -user_id $user_id -type_id $type_id -object_id $forum_id] ""] } {
+        if {[notification::request::get_request_id -user_id $user_id -type_id $type_id -object_id $forum_id] eq ""} {
             notification::request::new -type_id $type_id -user_id $user_id -object_id $forum_id -interval_id $interval_id \
                 -delivery_method_id $delivery_method_id
         }

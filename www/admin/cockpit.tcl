@@ -35,7 +35,7 @@ if { [site_node::exists_p -url "/ds"] } {
    set ds_exists_p 1
 } else {
    set url [site_node::get_package_url -package_key "acs-developer-support"]
-   if { $url != "" } {
+   if { $url ne "" } {
        set ds_exists_p 1
    }
 }
@@ -48,7 +48,7 @@ if { [site_node::exists_p -url "/monitor"] } {
    set monitor_exists_p 1
 } else {
    set monitor_url [site_node::get_package_url -package_key "monitoring"]
-   if { $monitor_url != "" } {
+   if { $monitor_url ne "" } {
        set monitor_exists_p 1
    }
 }
@@ -89,7 +89,7 @@ set count 0
 foreach user_id [whos_online::user_ids] {
     acs_user::get -user_id $user_id -array user
 
-    set first_request_minutes [expr [whos_online::seconds_since_first_request $user_id] / 60]
+    set first_request_minutes [expr {[whos_online::seconds_since_first_request $user_id] / 60}]
     lappend users [list \
                        "$user(first_names) $user(last_name)" \
                        [acs_community_member_url -user_id $user_id] \

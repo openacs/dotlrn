@@ -175,7 +175,7 @@ namespace eval dotlrn_community {
         create a new community
     } {
 
-        if {[empty_string_p $community_key]} {
+        if {$community_key eq ""} {
             set community_key [dotlrn_community::generate_key -name $pretty_name]
         }
 
@@ -188,7 +188,7 @@ namespace eval dotlrn_community {
 	set dotlrn_package_id $package_id
 
         # Set up extra vars
-        if {[empty_string_p $extra_vars]} {
+        if {$extra_vars eq ""} {
             set extra_vars [ns_set create]
         }
 
@@ -249,7 +249,7 @@ namespace eval dotlrn_community {
             dotlrn_community::create_rel_segments -community_id $community_id
 
             # Set up the node
-            if {[empty_string_p $parent_community_id]} {
+            if {$parent_community_id eq ""} {
                 set parent_node_id [get_type_node_id $community_type]
             } else {
                 set parent_node_id [get_community_node_id $parent_community_id]
@@ -277,17 +277,17 @@ namespace eval dotlrn_community {
 
             # Add the default applets based on the community type
             # 2. the the list of default applets for this type
-            if {[string equal $community_type dotlrn_community]} {
+            if {$community_type eq "dotlrn_community"} {
                 set default_applets [parameter::get \
                     -package_id $dotlrn_package_id \
                     -parameter default_subcomm_applets \
                 ]
-            } elseif {[string equal $community_type dotlrn_club]} {
+            } elseif {$community_type eq "dotlrn_club"} {
                 set default_applets [parameter::get \
                     -package_id $dotlrn_package_id \
                     -parameter default_club_applets \
                 ]
-            } elseif {[string equal $community_type user]} {
+            } elseif {$community_type eq "user"} {
                 set default_applets [parameter::get \
                     -package_id $dotlrn_package_id \
                     -parameter default_user_portal_applets \
@@ -326,7 +326,7 @@ namespace eval dotlrn_community {
 
         set dotlrn_admin_group_id [db_string group_id_from_name "
              select group_id from groups where group_name='dotlrn-admin'" -default ""]
-        if {![empty_string_p $dotlrn_admin_group_id] } {
+        if {$dotlrn_admin_group_id ne "" } {
 
              permission::grant \
                   -party_id $dotlrn_admin_group_id  \
@@ -341,7 +341,7 @@ namespace eval dotlrn_community {
         
         #this block sets permissions for subcommunities
         while {1} {
-            if {![empty_string_p $parent_community_id]} {
+            if {$parent_community_id ne ""} {
                 #admin of the parent need admin on the subcommunity.
                 set parent_admin_party [db_string "parent_admin_party" "select segment_id from rel_segments where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'"]
                 permission::grant -party_id $parent_admin_party -object_id $community_id -privilege "admin"
@@ -386,7 +386,7 @@ namespace eval dotlrn_community {
     } {
         This gets the relative URL for a package_id under a particular node_id
     } {
-        if {[empty_string_p $current_node_id]} {
+        if {$current_node_id eq ""} {
             set current_node_id [site_node::get_node_id -url [ad_conn url]]
         }
 
@@ -398,7 +398,7 @@ namespace eval dotlrn_community {
     } {
         get default rel_type data for this community
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
         set community_type [get_community_type_from_community_id $community_id]
@@ -421,7 +421,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_roles {
         {-community_id ""}
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
         set default_roles [eval concat [get_default_roles -community_id $community_id]]
@@ -436,14 +436,14 @@ namespace eval dotlrn_community {
 
             set i [lsearch -exact $attributes "${role}_pretty_name"]
             if {$i > -1} {
-                lappend new_role [lindex $attributes [expr $i + 1]]
+                lappend new_role [lindex $attributes $i+1]
             } else {
                 lappend new_role $pretty_name
             }
 
             set i [lsearch -exact $attributes "${role}_pretty_plural"]
             if {$i > -1} {
-                lappend new_role [lindex $attributes [expr $i + 1]]
+                lappend new_role [lindex $attributes $i+1]
             } else {
                 lappend new_role $pretty_plural
             }
@@ -460,7 +460,7 @@ namespace eval dotlrn_community {
     } {
         get the pretty name for the role associated with this rel_type
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -469,7 +469,7 @@ namespace eval dotlrn_community {
         set pretty_name ""
 
         if {$i > -1} {
-            set pretty_name [lindex $roles [expr $i + 2]]
+            set pretty_name [lindex $roles $i+2]
         }
 
         return [lang::util::localize $pretty_name]
@@ -481,7 +481,7 @@ namespace eval dotlrn_community {
     } {
         get the pretty plural for the role associated with this rel_type
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -490,7 +490,7 @@ namespace eval dotlrn_community {
         set pretty_plural ""
 
         if {$i > -1} {
-            set pretty_plural [lindex $roles [expr $i + 3]]
+            set pretty_plural [lindex $roles $i+3]
         }
 
         return [lang::util::localize $pretty_plural]
@@ -524,7 +524,7 @@ namespace eval dotlrn_community {
     } {
         set the pretty_name and pretty_plural for several roles
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -547,7 +547,7 @@ namespace eval dotlrn_community {
     } {
         set the pretty_name and pretty_plural of a role for a community
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -555,7 +555,7 @@ namespace eval dotlrn_community {
         set i [lsearch -exact $roles $rel_type]
 
         if {$i > -1} {
-            set old_pretty_name [lindex $roles [expr $i + 2]]
+            set old_pretty_name [lindex $roles $i+2]
             if {![string match $pretty_name $old_pretty_name]} {
                 set_attribute \
                     -community_id $community_id \
@@ -563,7 +563,7 @@ namespace eval dotlrn_community {
                     -attribute_value $pretty_name
             }
 
-            set old_pretty_plural [lindex $roles [expr $i + 3]]
+            set old_pretty_plural [lindex $roles $i+3]
             if {![string match $pretty_plural $old_pretty_plural]} {
                 set_attribute \
                     -community_id $community_id \
@@ -763,8 +763,8 @@ namespace eval dotlrn_community {
         set toplevel_community_type \
                 [get_toplevel_community_type_from_community_id $community_id]
 
-        if {[string equal $toplevel_community_type dotlrn_class_instance]} {
-            if {$rel_type == "dotlrn_member_rel"} {
+        if {$toplevel_community_type eq "dotlrn_class_instance"} {
+            if {$rel_type eq "dotlrn_member_rel"} {
                 set rel_type "dotlrn_student_rel"
             }
             dotlrn_class::add_user \
@@ -772,7 +772,7 @@ namespace eval dotlrn_community {
                 -community_id $community_id \
                 -user_id $user_id \
                 -member_state $member_state
-        } elseif {[string equal $toplevel_community_type dotlrn_club]} {
+        } elseif {$toplevel_community_type eq "dotlrn_club"} {
             dotlrn_club::add_user \
                 -rel_type $rel_type \
                 -community_id $community_id \
@@ -808,7 +808,7 @@ namespace eval dotlrn_community {
 
         db_transaction {
             # Create the form
-            if {[empty_string_p $extra_vars]} {
+            if {$extra_vars eq ""} {
                 set extra_vars [ns_set create]
             }
 
@@ -834,7 +834,7 @@ namespace eval dotlrn_community {
                 }
             }
 
-            if {[string equal $member_state approved]} {
+            if {$member_state eq "approved"} {
                 membership_approve -user_id $user_id -community_id $community_id
             }
         }
@@ -972,7 +972,7 @@ namespace eval dotlrn_community {
     } {
         set type [get_community_type_from_community_id $community_id]
 
-        if {[string equal $type dotlrn_community] == 1} {
+        if {$type eq "dotlrn_community"} {
             return $type
         }
 
@@ -1016,11 +1016,11 @@ namespace eval dotlrn_community {
     } {
         returns the community from a URL
     } {
-        if {[empty_string_p $url]} {
+        if {$url eq ""} {
             set url [ad_conn url]
         }
 
-        set package_id [site_node_closest_ancestor_package -url $url dotlrn]
+        set package_id [site_node::closest_ancestor_package -include_self -url $url -package_key dotlrn]
 
         return [get_community_id -package_id $package_id]
     }
@@ -1036,8 +1036,11 @@ namespace eval dotlrn_community {
 	@param package_id PackageID for which to search the community_id for
 	@return community_id of the community where the package is mounted, empty string if not found
     } {
-        if {[empty_string_p $package_id]} {
-            set package_id [site_node_closest_ancestor_package -default [ad_conn package_id] dotlrn]
+        if {$package_id eq ""} {
+            set package_id [site_node::closest_ancestor_package -include_self -package_key dotlrn]
+	    if {$package_id eq ""} {
+		set package_id [ad_conn package_id]
+	    }
         }
 
 	if {$package_id ne ""} {
@@ -1064,7 +1067,7 @@ namespace eval dotlrn_community {
         under a dotlrn community, such as workflow panels, that cannot
         be passed their community_id.
     } {
-        if {[empty_string_p $package_id]} {
+        if {$package_id eq ""} {
             set package_id [ad_conn package_id]
         }
 
@@ -1107,7 +1110,7 @@ namespace eval dotlrn_community {
     } {
         set parent_id [get_parent_id -community_id $community_id]
 
-        if {[empty_string_p $parent_id]} {
+        if {$parent_id eq ""} {
             return ""
         } else {
             return [get_community_name $parent_id]
@@ -1139,7 +1142,7 @@ namespace eval dotlrn_community {
         community by checking that it's not the same as an existing (possible)
         sibling's name.
     } {
-        if {![empty_string_p $parent_community_id]} {
+        if {$parent_community_id ne ""} {
             set valid_p [ad_decode [db_string collision_check_with_parent {}] 0 1 0]
         } else {
             # LARS 2003-10-21: Should this check only against communities with null parent_id?
@@ -1228,7 +1231,7 @@ namespace eval dotlrn_community {
     } {
         set chunk ""
 
-        if {[empty_string_p $user_id]} {
+        if {$user_id eq ""} {
             set user_id [ad_conn user_id]
         }
 
@@ -1494,7 +1497,7 @@ namespace eval dotlrn_community {
     } {
         get the id of the comm's portal
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -1514,7 +1517,7 @@ namespace eval dotlrn_community {
     } {
         Get the community portal_id for non-members
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -1534,7 +1537,7 @@ namespace eval dotlrn_community {
     } {
         Get the community Admin portal_id
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -1649,17 +1652,17 @@ namespace eval dotlrn_community {
             set extra_vars [ns_set create]
 
             # there is some special stuff for cloning subcomms
-            if {[string equal "dotlrn_community" $community_type]} {
+            if {"dotlrn_community" eq $community_type} {
                 set subcomm_p 1
                 
                 # we need this here in case we are being called from ourself
-                if {[empty_string_p $parent_community_id]} {
+                if {$parent_community_id eq ""} {
                     set parent_community_id [get_parent_id -community_id $community_id]
                 }
                 set parent_type [dotlrn_community::get_community_type_from_community_id $parent_community_id]
 
-                if {![string equal $parent_type [dotlrn_club::community_type]] &&
-                    ![string equal $parent_type dotlrn_community]} {
+                if {$parent_type ne [dotlrn_club::community_type] &&
+                    $parent_type ne "dotlrn_community" } {
                     # we want to make a subgroup of a class instance
                     # get the term_id, since the subgroup should not
                     # outlive the class
@@ -1679,7 +1682,7 @@ namespace eval dotlrn_community {
                     -complain_if_invalid \
                     -community_key $key
                 
-                if {![empty_string_p $term_id]} {
+                if {$term_id ne ""} {
                     # it's a class instance that we're cloning
                     ns_set put $extra_vars class_key [db_string get_class_key {
                         select class_key 
@@ -1693,7 +1696,7 @@ namespace eval dotlrn_community {
                 }
             }
 
-            if {[empty_string_p $pretty_name]} {
+            if {$pretty_name eq ""} {
                 set pretty_name $key
             }
 
@@ -1795,8 +1798,8 @@ namespace eval dotlrn_community {
                     -privilege admin
 
                 # for a subcomm of a "class instance" set the start and end dates
-                if {![string equal $parent_type [dotlrn_club::community_type]] &&
-                    ![string equal $parent_type "dotlrn_community"]} {
+                if {$parent_type ne [dotlrn_club::community_type] &&
+                    $parent_type ne "dotlrn_community" } {
 
                     dotlrn_community::set_active_dates \
                         -community_id $clone_id \
@@ -1964,15 +1967,15 @@ namespace eval dotlrn_community {
             delete_rel_segments -community_id $community_id
 
 
-            if {![empty_string_p $admin_portal_id]} {
+            if {$admin_portal_id ne ""} {
                 portal::delete $admin_portal_id
             }
 
-            if {![empty_string_p $non_member_portal_id]} {
+            if {$non_member_portal_id ne ""} {
                 portal::delete $non_member_portal_id
             }
 
-            if {![empty_string_p $portal_id]} {
+            if {$portal_id ne ""} {
                 portal::delete $portal_id
             }
 
@@ -2032,7 +2035,7 @@ namespace eval dotlrn_community {
     } {
         call a particular applet op
     } {
-        acs_sc_call dotlrn_applet $op $list_args $applet_key
+        acs_sc::invoke -contract dotlrn_applet -operation $op -call_args $list_args -impl $applet_key
     }
 
     ad_proc -public get_available_attributes {} {
@@ -2054,7 +2057,7 @@ namespace eval dotlrn_community {
     } {
         get the attributes of a given community
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -2105,17 +2108,17 @@ namespace eval dotlrn_community {
         # this is serious, we are trying to set an attribute that doesn't
         # exist
         set attribute_id [get_attribute_id -attribute_name $attribute_name]
-        if {[empty_string_p $attribute_id]} {
+        if {$attribute_id eq ""} {
             error "dotlrn_community::set_attribute: invalid attribute $attribute_name"
         }
 
         # we don't accept empty values (essentially, we are making the
         # acs_attribute_values.attr_value not null, which it is not in the db).
-        if {[empty_string_p $attribute_value]} {
+        if {$attribute_value eq ""} {
             return
         }
 
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
@@ -2140,14 +2143,14 @@ namespace eval dotlrn_community {
     } {
         ussets an attribute of this community
     } {
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             set community_id [get_community_id]
         }
 
         # this is serious, we are trying to unset an attribute that doesn't
         # exist
         set attribute_id [get_attribute_id -attribute_name $attribute_name]
-        if {[empty_string_p $attribute_id]} {
+        if {$attribute_id eq ""} {
             error "dotlrn_community::set_attribute: invalid attribute $attribute_name"
         }
         # remove the row
@@ -2291,13 +2294,13 @@ namespace eval dotlrn_community {
         # bother to create the welcome message in the first place (will be spam filtered...) MalteS
         if { ([info exists subject] && $subject ne "") || $override_subject ne "" } {
             ns_log Debug "DAVEB override email '${override_email}' override_subject '${override_subject}'"
-            if {[exists_and_not_null override_email]} {
+            if {([info exists override_email] && $override_email ne "")} {
                 set email $override_email
             }
-            if {[exists_and_not_null override_subject]} {
+            if {([info exists override_subject] && $override_subject ne "")} {
                 set subject $override_subject
             }
-            if {[info exists email] && ![string equal "" [string trim $email]]} {
+            if {[info exists email] && "" ne [string trim $email] } {
                 
                 # user %varname% to substitute variables in email
                 set subject_vars [lang::message::get_embedded_vars $subject]
@@ -2315,11 +2318,11 @@ namespace eval dotlrn_community {
                     return [list $subject $email]
                 }
                 # Shamelessly cut & pasted from bulk mail
-                if { ![exists_and_not_null from_addr] } {
+                if { (![info exists from_addr] || $from_addr eq "") } {
                     set from_addr [ad_system_owner]
                 }
                 
-                if {[empty_string_p $email_send_to]} {
+                if {$email_send_to eq ""} {
                     set to_addr [cc_email_from_party $to_user]
                 }  else {
                     set to_addr [cc_email_from_party $email_send_to]

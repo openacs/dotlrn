@@ -31,13 +31,13 @@ set my_user_id [ad_conn user_id]
 set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Members]]
 set community_id [dotlrn_community::get_community_id]
 set spam_p [dotlrn::user_can_spam_community_p -user_id [ad_conn user_id] -community_id $community_id]
-set approval_policy_p [string eq [group::join_policy -group_id $community_id] "needs approval"]
+set approval_policy_p [string equal [group::join_policy -group_id $community_id] "needs approval"]
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 
 set referer [ns_conn url]
 set return_url "[ns_conn url]?[ns_conn query]"
 
-set csv_p [exists_and_not_null csv]
+set csv_p ([info exists csv] && $csv ne "")
 
 set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
 
@@ -47,8 +47,8 @@ if {!$site_wide_admin_p} {
     set admin_p 1
 }
 
-if {![exists_and_not_null referer]} {
-    if {[string equal $admin_p t] == 1} {
+if {(![info exists referer] || $referer eq "")} {
+    if {$admin_p == "t"} {
         set referer "one-community-admin"
     } else {
         set referer "one-community"
@@ -231,7 +231,7 @@ if {$subcomm_p} {
 
 }
 
-if {[exists_and_not_null reset] && [exists_and_not_null reltype]} {
+if {([info exists reset] && $reset ne "") && ([info exists reltype] && $reltype ne "")} {
     set result ""
     db_multirow reset_members select_members {} {
         rp_form_put user_id $member_id

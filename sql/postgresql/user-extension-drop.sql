@@ -24,54 +24,54 @@
 -- 
 --
 
-create function inline_0() 
-returns integer as '
-begin
+CREATE OR REPLACE FUNCTION inline_0()  RETURNS integer AS $$
+BEGIN
 
     perform acs_sc_binding__delete (
-        ''UserData'',
-        ''dotlrn_user_extension''
+        'UserData',
+        'dotlrn_user_extension'
     );
 
     perform acs_sc_impl_alias__delete (
-        ''UserData'',
-        ''dotlrn_user_extension'',
-        ''UserNew''
+        'UserData',
+        'dotlrn_user_extension',
+        'UserNew'
     );
 
     perform acs_sc_impl_alias__delete (
-        ''UserData'',
-        ''dotlrn_user_extension'',
-        ''UserApprove''
+        'UserData',
+        'dotlrn_user_extension',
+        'UserApprove'
     );
 
     perform acs_sc_impl_alias__delete (
-        ''UserData'',
-        ''dotlrn_user_extension'',
-        ''UserDeapprove''
+        'UserData',
+        'dotlrn_user_extension',
+        'UserDeapprove'
     );
 
     perform acs_sc_impl_alias__delete (
-        ''UserData'',
-        ''dotlrn_user_extension'',
-        ''UserModify''
+        'UserData',
+        'dotlrn_user_extension',
+        'UserModify'
     );
 
     perform acs_sc_impl_alias__delete (
-        ''UserData'',
-        ''dotlrn_user_extension'',
-        ''UserDelete''
+        'UserData',
+        'dotlrn_user_extension',
+        'UserDelete'
     );
 
     -- create the implementation
     perform acs_sc_impl__delete(
-        ''UserData'',
-        ''dotlrn_user_extension''
+        'UserData',
+        'dotlrn_user_extension'
     );
 
     return 0;
 
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();

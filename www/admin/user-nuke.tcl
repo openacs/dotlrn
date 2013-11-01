@@ -34,10 +34,10 @@ element create confirm_delete confirmed_p \
 
 set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Nuke]]
 
-if [form is_valid confirm_delete] {
+if {[form is_valid confirm_delete]} {
     form get_values confirm_delete user_id confirmed_p
-    if [string equal $confirmed_p t] {
-	if [catch { dotlrn::remove_user_completely -user_id $user_id } errMsg ] {
+    if {$confirmed_p == "t"} {
+	if {[catch { dotlrn::remove_user_completely -user_id $user_id } errMsg ]} {
         set error_msg $errMsg
 	    ad_return_template user-nuke-error
 	} else {

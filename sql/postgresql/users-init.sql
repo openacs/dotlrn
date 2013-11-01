@@ -21,25 +21,31 @@
 -- @version $Id$
 --
 
-create function inline_1()
-returns integer as '
-declare
+
+
+--
+-- procedure inline_1/0
+--
+CREATE OR REPLACE FUNCTION inline_1(
+
+) RETURNS integer AS $$
+DECLARE
     foo                         integer;
-begin
+BEGIN
 
     perform acs_rel_type__create_type(
-        ''dotlrn_user_profile_rel'',
-        ''dotLRN Profile User'',
-        ''dotLRN Profile Users'',
-        ''user_profile_rel'',
-        ''dotlrn_user_profile_rels'',
-        ''rel_id'',
-        ''dotlrn_user_profile_rel'',
-        ''profiled_group'',
+        'dotlrn_user_profile_rel',
+        'dotLRN Profile User',
+        'dotLRN Profile Users',
+        'user_profile_rel',
+        'dotlrn_user_profile_rels',
+        'rel_id',
+        'dotlrn_user_profile_rel',
+        'profiled_group',
         null,
         0,
         null,
-        ''user'',
+        'user',
         null,
         0,
         1
@@ -48,22 +54,23 @@ begin
     select min(impl_id)
     into foo
     from acs_sc_impls
-    where impl_name = ''dotlrn_user_profile_provider'';
+    where impl_name = 'dotlrn_user_profile_provider';
 
     foo := profiled_group__new(
         foo,
-        ''dotLRN Users''
+        'dotLRN Users'
     );
 
     foo := rel_segment__new(
-        ''dotLRN Users'',
+        'dotLRN Users',
         foo,
-        ''dotlrn_user_profile_rel''
+        'dotlrn_user_profile_rel'
     );
 
     return(0);
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_1();
 drop function inline_1();

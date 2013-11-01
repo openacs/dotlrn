@@ -13,7 +13,7 @@ ad_page_contract {
 
 set community_id [dotlrn_community::get_community_id]
 
-if { [exists_and_not_null user_id] } {
+if { ([info exists user_id] && $user_id ne "") } {
 	# we're dropping just one user
 	set page_title "Drop Membership"
 	set confirm_message "Are you sure you want to remove this user from this community ?"
@@ -22,7 +22,7 @@ if { [exists_and_not_null user_id] } {
 	# we're dropping a group of members
 	set rel_types [dotlrn_community::get_roles -community_id $community_id]
 	foreach role $rel_types {
-		if { [string equal $reltype [lindex $role 0]] } { 
+		if {$reltype eq [lindex $role 0]} { 
 			set role_shortname [lang::util::localize [lindex $role 0]]
 			set role_prettyname [lang::util::localize [lindex $role 2]] 
 		}

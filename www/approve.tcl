@@ -26,14 +26,14 @@ ad_page_contract {
     {referer "./"}
 }
 
-ad_maybe_redirect_for_registration
+auth::require_login
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 
 foreach uid $user_id {
-    if {[empty_string_p $uid]} {
+    if {$uid eq ""} {
 	    set uid [ad_conn user_id]
     } else {
 	    dotlrn::require_user_admin_community -community_id $community_id

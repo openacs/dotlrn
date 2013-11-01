@@ -25,11 +25,11 @@ ad_page_contract {
     users:multirow
 }
 
-if {![exists_and_not_null type]} {
+if {![info exists type] || $type eq ""} {
     set type admin
 }
 
-if {![exists_and_not_null referer]} {
+if {![info exists referer] || $referer eq ""} {
     set referer "[dotlrn::get_admin_url]/users"
 }
 
@@ -63,12 +63,12 @@ if {[form is_valid user_search]} {
     set root_object_id [acs_magic_object security_context_root]
     set i 1
 
-    if {[string equal $type deactivated] == 1} {
+    if {$type eq "deactivated"} {
         db_multirow users select_deactivated_users {} {
             set users:${i}(access_level) Limited
             incr i
         }
-    } elseif {[string equal $type pending] == 1} {
+    } elseif {$type eq "pending"} {
         db_multirow users select_non_dotlrn_users {} {
             set users:${i}(access_level) N/A
             incr i

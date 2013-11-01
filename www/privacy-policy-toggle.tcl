@@ -26,16 +26,13 @@ ad_page_contract {
     {referer "one-community-admin"}
 } -validate {
     policy_ck -requires {policy:notnull} {
-        if {!(
-            [string equal $policy "yes"] == 1 ||
-            [string equal $policy "no"] == 1
-        )} {
+        if {$policy ni {yes no}} {
             ad_complain [_ dotlrn.prv_policy_must_be_one_of]
         }
     }
 }
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 
@@ -43,7 +40,7 @@ if {[empty_string_p $community_id]} {
 #per discussion with Dee.  -AG
 dotlrn::require_admin
 
-if { [string equal $policy "yes"] } {
+if {$policy eq "yes"} {
     dotlrn_privacy::grant_read_private_data_to_guests -object_id $community_id
 } else {
     dotlrn_privacy::revoke_read_private_data_from_guests -object_id $community_id

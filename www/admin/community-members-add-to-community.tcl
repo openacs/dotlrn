@@ -77,7 +77,7 @@ if {[form is_valid select_community]} {
     form get_values select_community \
         source_community_id community_id
 
-    if {![empty_string_p $community_id]} {
+    if {$community_id ne ""} {
         db_transaction {
             foreach user $users {
 		set user_id [ns_set get $user user_id]
@@ -114,6 +114,6 @@ if {[form is_valid select_community]} {
     ad_script_abort
 }
 
-set estimated_number_of_seconds [expr [llength $users] * 3]
+set estimated_number_of_seconds [expr {[llength $users] * 3}]
 
 ad_return_template

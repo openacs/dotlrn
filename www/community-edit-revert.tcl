@@ -30,7 +30,7 @@ set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
 
-if {![empty_string_p $header_logo_only]} {
+if {$header_logo_only ne ""} {
     # just blow away the header logo stuff
     dotlrn_community::unset_attribute \
         -community_id $community_id \
@@ -49,7 +49,7 @@ if {![empty_string_p $header_logo_only]} {
 set parent_id [db_string get_root_folder {}]
 set logo_name "community_logo_$community_id"
 set item_id [db_string get_item_id "" -default ""]
-if { ![empty_string_p $item_id] }  {
+if { $item_id ne "" }  {
     db_exec_plsql delete_cr_item ""
 }
 

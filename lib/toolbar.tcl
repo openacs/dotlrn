@@ -22,7 +22,7 @@ if { $show_p } {
     # hide/show dotlrn toolbar
     set hide_me_url [export_vars -base "$dotlrn_admin_url/toolbar-actions" {{action hide} return_url}]
 
-    if { [empty_string_p $community_id ] } {
+    if { $community_id eq "" } {
 	set portal_id [dotlrn::get_portal_id -user_id $user_id]
     } else {
 	set portal_id [dotlrn_community::get_portal_id -community_id $community_id]

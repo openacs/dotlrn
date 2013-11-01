@@ -69,7 +69,7 @@ if {!$dotlrn_user_p} {
 }
 
 set redirect "user-add-2?[export_vars {user_id password referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]"
-if { [string equal $add_membership_p t] && [string equal $referer "/acs-admin/users"] } {
+if { $add_membership_p == "t" && $referer eq "/acs-admin/users" } {
     set redirect "one-community-admin"
 } else {
     set redirect $referer
@@ -80,7 +80,7 @@ if {${dotlrn_interactive_p} && !$dotlrn_user_p} {
     # set redirect "../${redirect}"
     ad_returnredirect "admin/user-new-2?[export_vars {user_id {referer $redirect}}]"
     ad_script_abort
-} elseif { [string equal $add_membership_p t] } {
+} elseif {$add_membership_p == "t"} {
     ad_returnredirect "member-add-2?[export_vars {user_id {referer $redirect}}]"
     ad_script_abort
 }

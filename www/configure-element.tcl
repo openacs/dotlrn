@@ -33,7 +33,7 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_script_abort
 }
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 
 if {[parameter::get -parameter community_level_p] == 1} {
 
@@ -49,7 +49,7 @@ if {[parameter::get -parameter community_level_p] == 1} {
 } else {
 
     set portal_id [dotlrn::get_portal_id -user_id $user_id]
-    if {[empty_string_p $portal_id]} {
+    if {$portal_id eq ""} {
         # do something
         ad_returnredirect "./"
     } else {

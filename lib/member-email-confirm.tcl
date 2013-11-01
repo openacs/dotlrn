@@ -51,7 +51,7 @@ ad_form -name member-email-confirm \
     } -on_submit {
 	if {![info exists btn_cancel] || $btn_cancel eq ""} {
 	    set email [template::util::richtext::get_property content $email]
-	    if {![empty_string_p $community_id]} {
+	    if {$community_id ne ""} {
 
 		foreach one_user_id $user_id {
 		    dotlrn_community::send_member_email \

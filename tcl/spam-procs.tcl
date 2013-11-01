@@ -96,7 +96,7 @@ Failed to deliver to $email because:
 
         # if there were any errors sending the emails, then send an email to the
         # sender letting them know.
-        if {![empty_string_p $errors]} {
+        if {$errors ne ""} {
             set error_subject "There were errors with this spam"
             set error_message "
 <p>

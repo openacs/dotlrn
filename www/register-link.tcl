@@ -14,18 +14,18 @@ ad_page_contract {
 } -errors {
 }
 
-if { ![exists_and_not_null url] } {
+if { (![info exists url] || $url eq "") } {
     set base_url "register"
 } else {
     set base_url $url
 }
 
-if { [exists_and_not_null referer] } {
+if { ([info exists referer] && $referer ne "") } {
     set url "[export_vars -base $base_url {community_id}]&referer=$referer"
 } else {
     set url [export_vars -base $base_url {community_id}]
 }
     
-if { ![exists_and_not_null label] } {
+if { (![info exists label] || $label eq "") } {
     set label [_ dotlrn.Join]
 }

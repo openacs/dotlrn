@@ -112,7 +112,7 @@ namespace eval dotlrn_club {
     } {
         Assigns a user to a particular role for that club.
     } {
-        if [empty_string_p $rel_type] {
+        if {$rel_type eq ""} {
             set rel_type "dotlrn_member_rel"
         }
 
@@ -131,7 +131,7 @@ namespace eval dotlrn_club {
     } {
         Assigns a user to a particular role for these clubs.
     } {
-        if [empty_string_p $rel_type] {
+        if {$rel_type eq ""} {
             set rel_type "dotlrn_member_rel"
         }
 
@@ -150,18 +150,18 @@ ad_proc -public -callback contact::contact_form -impl dotlrn_club {
     {-package_id:required}
     {-form:required}
     {-object_type:required}
-    {-party_id}
+    {-party_id ""}
 } {
     If organisation, ask to create new club
 } {
-    if {$object_type != "person" } {
+    if {$object_type ne "person" } {
 	
 	set already_linked_p "f"
-	if {[exists_and_not_null party_id]} {
+	if {$party_id ne ""} {
 
 	    # if we are in edit mode we need to make that we are not
 	    # already linked to a community
-	    if {[application_data_link::get_linked -from_object_id $party_id -to_object_type "dotlrn_club"] != ""} {
+	    if {[application_data_link::get_linked -from_object_id $party_id -to_object_type "dotlrn_club"] ne ""} {
 		set already_linked_p "t"
 	    }
 	}
@@ -187,7 +187,7 @@ ad_proc -public -callback contact::organization_new -impl dotlrn_club {
 } {
     upvar create_club_p create_club_p
     
-    if {[exists_and_not_null create_club_p]
+    if {([info exists create_club_p] && $create_club_p ne "")
 	&& $create_club_p == "t"} {
 	# Create the new club and create a link between it and
 	# the new contact.

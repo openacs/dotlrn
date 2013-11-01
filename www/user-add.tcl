@@ -40,13 +40,13 @@ dotlrn_portlet::is_allowed -parameter limiteduser
 
 # Set read_private_data_p and can_browse_p to me the most restrictive defaults.
 
-set current_user_id [ad_maybe_redirect_for_registration]
+set current_user_id [auth::require_login]
 set community_id [dotlrn_community::get_community_id]
 
 # If can_browse_p is 1, this means the new user would be able to join 
 # all communities. 
     
-if {![empty_string_p $community_id]} {
+if {$community_id ne ""} {
     dotlrn::require_user_admin_community -community_id [dotlrn_community::get_community_id]
     set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Add_User]]
     set community_p 1

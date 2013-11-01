@@ -22,55 +22,55 @@
 -- @version $Id$
 --
 
-create function inline_0()
-returns integer as '
-begin
+CREATE OR REPLACE FUNCTION inline_0() RETURNS integer AS $$
+BEGIN
 
     -- create the implementation
     perform acs_sc_impl__new(
-        ''profile_provider'',
-        ''dotlrn_professor_profile_provider'',
-        ''dotlrn_professor_profile_provider''
+        'profile_provider',
+        'dotlrn_professor_profile_provider',
+        'dotlrn_professor_profile_provider'
     );
 
     -- add the bindings to the method implementations
 
         -- name method
         perform acs_sc_impl_alias__new(
-            ''profile_provider'',
-            ''dotlrn_professor_profile_provider'',
-            ''name'',
-            ''dotlrn_professor_profile_provider::name'',
-            ''TCL''
+            'profile_provider',
+            'dotlrn_professor_profile_provider',
+            'name',
+            'dotlrn_professor_profile_provider::name',
+            'TCL'
         );
 
         -- prettyName method
         perform acs_sc_impl_alias__new(
-            ''profile_provider'',
-            ''dotlrn_professor_profile_provider'',
-            ''prettyName'',
-            ''dotlrn_professor_profile_provider::prettyName'',
-            ''TCL''
+            'profile_provider',
+            'dotlrn_professor_profile_provider',
+            'prettyName',
+            'dotlrn_professor_profile_provider::prettyName',
+            'TCL'
         );
 
         -- render method
         perform acs_sc_impl_alias__new(
-            ''profile_provider'',
-            ''dotlrn_professor_profile_provider'',
-            ''render'',
-            ''dotlrn_professor_profile_provider::render'',
-            ''TCL''
+            'profile_provider',
+            'dotlrn_professor_profile_provider',
+            'render',
+            'dotlrn_professor_profile_provider::render',
+            'TCL'
         );
 
     -- bind this implementation to the interface it implements
     perform acs_sc_binding__new(
-        ''profile_provider'',
-        ''dotlrn_professor_profile_provider''
+        'profile_provider',
+        'dotlrn_professor_profile_provider'
     );
     
     return 0;
 
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();

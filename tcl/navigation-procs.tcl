@@ -75,13 +75,13 @@ namespace eval dotlrn {
             set application_name $node_array(instance_name)
             set application_url $node_array(url)
     
-            if { [string match admin/* [ad_conn extra_url]] } {
+            if { [string match "admin/*" [ad_conn extra_url]] } {
                 set application_admin_context [list [list "${application_url}admin/" "Administration"]]
             } else {
                 set application_admin_context [list]
             }
     
-            if { ![string equal $node_array(package_key) "dotlrn"] } {
+            if { $node_array(package_key) ne "dotlrn" } {
                 set application_context [list [list $application_url $application_name]]
             } else {
                 set application_context [list]
@@ -91,11 +91,11 @@ namespace eval dotlrn {
                 set application_context [concat $application_context $application_admin_context] 
             }
     
-            if { ![empty_string_p $context] } {
+            if { $context ne "" } {
                 set application_context [concat $application_context $context]
             } else {
                 # Make last entry be just the label
-                set application_context [lreplace $application_context end end [lindex [lindex $application_context end] 1]]
+                set application_context [lreplace $application_context end end [lindex $application_context end 1]]
             }
         } else {
             set application_context [list]
@@ -128,28 +128,28 @@ namespace eval dotlrn {
         Creates a Navigation Bar for dotLRN
     } {
         # Fetch community_id and community_type if they're not there
-        if {[empty_string_p $community_id] && [empty_string_p $community_type]} {
+        if {$community_id eq "" && $community_type eq ""} {
             set community_id [dotlrn_community::get_community_id]
             set community_type [dotlrn_community::get_community_type]
         }
 
-        if {![empty_string_p $community_id]} {
+        if {$community_id ne ""} {
             set community_type [dotlrn_community::get_community_type_from_community_id $community_id]
         }
 
         set first_args []
         lappend first_args [list [get_url] dotLRN]
 
-        if {[string equal ${community_type} "dotlrn_class_instance"] != 0} {
+        if {$community_type eq "dotlrn_class_instance"} {
             lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [parameter::get -localize -parameter classes_pretty_plural]]
-        } elseif {[string equal ${community_type} "dotlrn_club"] != 0} {
+        } elseif {$community_type eq "dotlrn_club"} {
             lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [parameter::get -localize -parameter clubs_pretty_plural]]
-        } elseif {[string equal ${community_type} "dotlrn_community"] != 0} {
+        } elseif {$community_type eq "dotlrn_community"} {
         } else {
             lappend first_args [list [dotlrn_community::get_community_type_url $community_type] [dotlrn_community::get_community_type_name $community_type]]
         }
 
-        if {![empty_string_p $community_id]} {
+        if {$community_id ne ""} {
             lappend first_args [list [dotlrn_community::get_community_url $community_id] [dotlrn_community::get_community_name $community_id]]
         }
 
@@ -197,7 +197,7 @@ namespace eval dotlrn {
         set control_panel_name control-panel
 	set control_panel_url "$dotlrn_url/$control_panel_name"
            
-        if {[empty_string_p $community_id]} {
+        if {$community_id eq ""} {
             # We are not under a dotlrn community. However we could be
             # under /dotlrn (i.e. in the user's portal) or anywhere
             # else on the site
@@ -271,7 +271,7 @@ namespace eval dotlrn {
 	regsub -all {[^0-9]} $page_num {} page_num
 
 	db_foreach list_page_nums_select {} {
-	    if { ("$dotlrn_url/" == [ad_conn url] || "$dotlrn_url/index" == [ad_conn url]) && $sort_key == 0 && $page_num == ""} {
+	    if { ("$dotlrn_url/" == [ad_conn url] || "$dotlrn_url/index" == [ad_conn url]) && $sort_key == 0 && $page_num eq ""} {
 		# active tab is  first tab and page_num may be ""
 		append navbar "<li class=\"current\"><a href=\"#\">$pretty_name</a></li>"
 	     } elseif {$page_num == $sort_key} {

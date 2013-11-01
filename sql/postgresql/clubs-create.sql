@@ -51,31 +51,36 @@ select define_function_args ('dotlrn_club__new','club_id,community_key,pretty_na
 select define_function_args ('dotlrn_club__delete','club_id');
 
 
-create function dotlrn_club__new(integer,varchar,varchar,varchar,integer,integer,integer,varchar,timestamptz,integer,varchar,integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_club__new/12
+--
+CREATE OR REPLACE FUNCTION dotlrn_club__new(
+   p_club_id integer,
+   p_community_key varchar,
+   p_pretty_name varchar,
+   p_description varchar,
+   p_package_id integer,
+   p_portal_id integer,
+   p_non_member_portal_id integer,
+   p_join_policy varchar,
+   p_creation_date timestamptz,
+   p_creation_user integer,
+   p_creation_ip varchar,
+   p_context_id integer
+) RETURNS integer AS $$
 DECLARE
-        p_club_id                        alias for $1;
-        p_community_key                  alias for $2;
-        p_pretty_name                    alias for $3;
-        p_description                    alias for $4;
-        p_package_id                     alias for $5;
-        p_portal_id                      alias for $6;
-        p_non_member_portal_id           alias for $7;
-        p_join_policy                    alias for $8;
-        p_creation_date                  alias for $9;
-        p_creation_user                  alias for $10;
-        p_creation_ip                    alias for $11;
-        p_context_id                     alias for $12;
         v_club_id                        integer;
 BEGIN
         v_club_id := dotlrn_community__new(
             p_club_id,
             null,
-            ''dotlrn_club'',
+            'dotlrn_club',
             p_community_key,
             p_pretty_name,
             p_description,
-            ''f'',
+            'f',
             p_portal_id,
             p_non_member_portal_id,
             p_package_id,
@@ -92,13 +97,19 @@ BEGIN
 
         return v_club_id;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_club__delete(integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_club__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_club__delete(
+   p_club_id integer
+) RETURNS integer AS $$
 DECLARE
-        p_club_id                alias for $1;
 BEGIN
         delete
         from dotlrn_clubs
@@ -107,5 +118,6 @@ BEGIN
         PERFORM dotlrn_community__delete(p_club_id);
         return(0);
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 

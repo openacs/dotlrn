@@ -65,15 +65,21 @@ as
 
 --Creating default site tempaltes 
 
-create function inline_0()
-returns integer as '
-declare 
+
+
+--
+-- procedure inline_0/0
+--
+CREATE OR REPLACE FUNCTION inline_0(
+
+) RETURNS integer AS $$
+DECLARE 
 	v_site_template_id	dotlrn_site_templates.site_template_id%TYPE;
 	v_theme_id		portal_element_themes.theme_id%TYPE;
-begin
+BEGIN
 	select theme_id into v_theme_id 
         from portal_element_themes 
-	where name = ''#new-portal.sloan_theme_name#''; 
+	where name = '#new-portal.sloan_theme_name#'; 
 	
 	select acs_object_id_seq.nextval 
         into   v_site_template_id 
@@ -82,7 +88,7 @@ begin
 	insert into dotlrn_site_templates
 	(site_template_id, pretty_name, site_master, portal_theme_id ) 
 	values 
-	(v_site_template_id, ''#new-portal.sloan_theme_name#'',''/packages/dotlrn/www/dotlrn-master'', v_theme_id);
+	(v_site_template_id, '#new-portal.sloan_theme_name#','/packages/dotlrn/www/dotlrn-master', v_theme_id);
 	
 
 	update dotlrn_communities_all set site_template_id = v_site_template_id;
@@ -92,13 +98,14 @@ begin
         set attr_value = v_site_template_id
 	where parameter_id in ( select parameter_id 
 				from apm_parameters 
-				where parameter_name = ''CommDefaultSiteTemplate_p'' or parameter_name = ''UserDefaultSiteTemplate_p'');
+				where parameter_name = 'CommDefaultSiteTemplate_p' or parameter_name = 'UserDefaultSiteTemplate_p');
 
 	
 
 	return v_site_template_id;
 
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 

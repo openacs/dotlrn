@@ -122,7 +122,7 @@ if {[form is_valid member_form]} {
 
 set member_query "select_member_classes"
 
-if {![empty_string_p $member_department_key]} {
+if {$member_department_key ne ""} {
     append member_query "_by_department"
 }
 
@@ -247,7 +247,7 @@ if {[form is_valid non_member_form]} {
 
 set non_member_query "select_non_member_classes"
 
-if {![empty_string_p $non_member_department_key]} {
+if {$non_member_department_key ne ""} {
     append non_member_query "_by_department"
 }
 

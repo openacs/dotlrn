@@ -14,19 +14,25 @@
 --  details.
 --
 
-create function dotlrn_community_types_in_tr()
-returns opaque as '
-declare
+
+
+--
+-- procedure dotlrn_community_types_in_tr/0
+--
+CREATE OR REPLACE FUNCTION dotlrn_community_types_in_tr(
+
+) RETURNS trigger AS $$
+DECLARE
     v_parent_sortkey                dotlrn_community_types.tree_sortkey%TYPE;
     v_max_child_sortkey             dotlrn_community_types.max_child_sortkey%TYPE;
-begin
+BEGIN
 
     if new.supertype is null then
-        -- if this is the root community_type we leave it''s sortkey as null
+        -- if this is the root community_type we leave it's sortkey as null
         return new;
     else
         -- else get the max_child_sortkey of the parent community_type
-        select coalesce(tree_sortkey, ''''), max_child_sortkey
+        select coalesce(tree_sortkey, ''), max_child_sortkey
         into v_parent_sortkey, v_max_child_sortkey
         from dotlrn_community_types
         where community_type = new.supertype
@@ -44,7 +50,8 @@ begin
     new.tree_sortkey := v_parent_sortkey || v_max_child_sortkey;
 
     return new;
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 create trigger dotlrn_community_types_in_tr
 before insert on dotlrn_community_types
@@ -52,16 +59,22 @@ for each row
 execute procedure dotlrn_community_types_in_tr();
 
 
-create function dotlrn_communities_in_tr()
-returns opaque as '
-declare
+
+
+--
+-- procedure dotlrn_communities_in_tr/0
+--
+CREATE OR REPLACE FUNCTION dotlrn_communities_in_tr(
+
+) RETURNS trigger AS $$
+DECLARE
     v_parent_sortkey                dotlrn_communities_all.tree_sortkey%TYPE;
     v_max_child_sortkey             dotlrn_communities_all.max_child_sortkey%TYPE;
-begin
+BEGIN
 
     if new.parent_community_id is null then
 
-        select coalesce(tree_sortkey, ''''), max_child_sortkey
+        select coalesce(tree_sortkey, ''), max_child_sortkey
         into v_parent_sortkey, v_max_child_sortkey
         from dotlrn_community_types
         where community_type = new.community_type
@@ -75,7 +88,7 @@ begin
 
     else
 
-        select coalesce(tree_sortkey, ''''), max_child_sortkey
+        select coalesce(tree_sortkey, ''), max_child_sortkey
         into v_parent_sortkey, v_max_child_sortkey
         from dotlrn_communities_all
         where community_id = new.parent_community_id
@@ -93,7 +106,8 @@ begin
 
     return new;
 
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 create trigger dotlrn_communities_in_tr
 before insert on dotlrn_communities_all

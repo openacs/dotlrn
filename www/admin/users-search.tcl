@@ -152,7 +152,7 @@ if {[form is_valid user_search]} {
     form get_values user_search \
         id type can_browse_p guest_p last_visit_greater last_visit_less name join_criteria
 
-    if {([string equal "and" $join_criteria] == 0) && ([string equal "or" $join_criteria] == 0)} {
+    if { $join_criteria ni {and or} } {
         ad_return_error \
             "[_ dotlrn.lt_There_was_a_bug_in_th]" \
             "[_ dotlrn.lt_There_was_a_bug_in_th_1]"
@@ -171,16 +171,16 @@ if {[form is_valid user_search]} {
     ]
     set wheres [list]
 
-    if {![empty_string_p $name]} {
+    if {$name ne ""} {
         lappend wheres "(lower(dotlrn_users.last_name) like lower('%' || :name || '%') or lower(dotlrn_users.first_names) like lower('%' || :name || '%') or lower(dotlrn_users.email) like lower('%' || :name || '%'))"
     }
 
-    if {![empty_string_p $id]} {
+    if {$id ne ""} {
         lappend wheres "(lower(dotlrn_users.id) like lower('%' || :id || '%'))"
     }
 
-    if {![empty_string_p $type]} {
-        if {[string equal "any" $type] == 1} {
+    if {$type ne ""} {
+        if {"any" eq $type} {
             lappend wheres "dotlrn_users.type in (\'[join [dotlrn::get_user_types] \',\']\')"
         } else {
             lappend wheres "dotlrn_users.type = :type"
@@ -207,15 +207,15 @@ if {[form is_valid user_search]} {
         }
     }
 
-    if {![empty_string_p $last_visit_greater]} {
-        if {[lsearch -exact $tables "users"] == -1} {
+    if {$last_visit_greater ne ""} {
+        if {"users" ni $tables} {
             lappend tables "users"
         }
         lappend wheres [db_map last_visit_g]
     }
 
-    if {![empty_string_p $last_visit_less]} {
-        if {[lsearch -exact $tables "users"] == -1} {
+    if {$last_visit_less ne ""} {
+        if {"users" ni $tables} {
             lappend tables "users"
         }
         lappend wheres [db_map last_visit_l]
@@ -225,7 +225,7 @@ if {[form is_valid user_search]} {
     set role_list_length [llength $role_list]
 
     if {$role_list_length} {
-        if {[lsearch -exact $tables "acs_rels"] == -1} {
+        if {"acs_rels" ni $tables} {
             lappend tables "acs_rels"
         }
         set in_clause "(dotlrn_users.user_id = acs_rels.object_id_two and acs_rels.rel_type in ("

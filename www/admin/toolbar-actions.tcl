@@ -7,7 +7,7 @@ ad_page_contract {
     {return_url ""}
 } -validate {
     if_search {
-	if { [string equal $action "search"] && ( [empty_string_p $search_type] || [empty_string_p $keyword] ) } {
+	if { $action eq "search" && ( $search_type eq "" || $keyword eq "" ) } {
 	    ad_complain "If you want to search please type some keyword and in where to search"
 	}
     }

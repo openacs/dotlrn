@@ -24,38 +24,38 @@
 -- @version $Id$
 --
 
-create function inline_0()
-returns integer as '
-begin
+CREATE OR REPLACE FUNCTION inline_0() RETURNS integer AS $$
+BEGIN
 
     perform acs_rel_type__drop_type (
-        ''dotlrn_student_rel'',
-        ''t''
+        'dotlrn_student_rel',
+        't'
     );
 
     perform acs_rel_type__drop_type (
-        ''dotlrn_ta_rel'',
-        ''t''
+        'dotlrn_ta_rel',
+        't'
     );
 
     perform acs_rel_type__drop_type (
-        ''dotlrn_ca_rel'',
-        ''t''
+        'dotlrn_ca_rel',
+        't'
     );
 
     perform acs_rel_type__drop_type (
-        ''dotlrn_cadmin_rel'',
-        ''t''
+        'dotlrn_cadmin_rel',
+        't'
     );
 
     perform acs_rel_type__drop_type (
-        ''dotlrn_instructor_rel'',
-        ''t''
+        'dotlrn_instructor_rel',
+        't'
     );
 
     return 0;
     
-end;' language 'plpgsql';
+END;
+$$ LANGUAGE plpgsql;
 
 select  inline_0();
 drop function inline_0();

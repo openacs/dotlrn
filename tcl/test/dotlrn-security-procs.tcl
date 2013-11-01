@@ -26,6 +26,6 @@ aa_register_case -cats {api} \
                 
                 aa_log "now calling dotlrn::remove_user_completely to try and remove this user"
                 dotlrn::remove_user_completely -user_id $creation_info(user_id)
-                aa_true "user_must_not_exist" [string equal [db_string check_user "select count(*) from users where user_id = $creation_info(user_id)"] 0]
+                aa_true "user_must_not_exist" [string equal [db_string check_user "select count(*) from users where user_id = $creation_info(user_id)"] "0"]
         }
     }

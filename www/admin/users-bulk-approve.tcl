@@ -29,8 +29,8 @@ set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Bulk_Approve]]
 
 set pending_user_count [db_string count_pending_users {}]
 
-set hours [expr int($pending_user_count / 120)]
-set minutes [expr int($pending_user_count / 2) % 60]
+set hours [expr {int($pending_user_count / 120)}]
+set minutes [expr {int($pending_user_count / 2) % 60}]
 
 set browse_options [list [list "[_ dotlrn.Full_Access]" 1] [list "[_ dotlrn.Limited_Access]" 0]]
 set guest_options [list [list [_ dotlrn.No] f] [list [_ dotlrn.Yes] t]]
@@ -79,7 +79,7 @@ ad_form -name bulk_approve -action users-bulk-approve -form {
 	} else {
 
 	    # notify user of approval
-	    if [catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg] {
+	    if {[catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $email_from -subject $subject -body $message} errmsg]} {
 	    
 		ns_log Error "Error sending email from users-bulk-approve" $errmsg
 		ns_write "Error sending mail<br>"

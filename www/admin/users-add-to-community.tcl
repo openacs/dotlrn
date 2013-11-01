@@ -75,7 +75,7 @@ if {[form is_valid select_community]} {
         users community_id
 
 
-     if {![empty_string_p $community_id]} {
+     if {$community_id ne ""} {
         db_transaction {
             foreach user $users {
                 dotlrn_community::add_user $community_id $user

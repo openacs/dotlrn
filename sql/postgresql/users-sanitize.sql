@@ -22,29 +22,36 @@
 -- @version $Id$
 --
 
-create function inline_0() 
-returns integer as '
-declare
+
+
+--
+-- procedure inline_0/0
+--
+CREATE OR REPLACE FUNCTION inline_0(
+
+) RETURNS integer AS $$
+DECLARE
     foo                         integer;
-begin
+BEGIN
 
     select min(segment_id)
     into foo
     from rel_segments
-    where segment_name = ''dotLRN Full Profiled Users'';
+    where segment_name = 'dotLRN Full Profiled Users';
 
     perform rel_segment__delete(
         foo
     );
 
     perform acs_rel_type__drop_type(
-        ''dotlrn_full_user_profile_rel'',
-        ''t''
+        'dotlrn_full_user_profile_rel',
+        't'
     );
 
     return 0;
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();
@@ -59,7 +66,7 @@ begin
     select min(segment_id)
     into foo
     from rel_segments
-    where segment_name = ''Profiled Users'';
+    where segment_name = 'Profiled Users';
 
     perform rel_segment__delete(
         foo
@@ -70,20 +77,21 @@ begin
     from profiled_groups
     where profile_provider = (select min(impl_id)
                               from acs_sc_impls
-                              where impl_name = ''dotlrn_user_profile_provider'');
+                              where impl_name = 'dotlrn_user_profile_provider');
 
     perform profiled_group__delete(
         foo
     );
 
     perform acs_rel_type__drop_type(
-        ''dotlrn_user_profile_rel'',
-        ''t''
+        'dotlrn_user_profile_rel',
+        't'
     );
 
     return 0;
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_1();
 drop function inline_1();

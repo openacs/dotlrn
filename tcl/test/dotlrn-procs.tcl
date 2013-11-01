@@ -23,7 +23,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest  tclwebtest_dotlrn_new_
 	    set date [template::util::date::today]
                 
 	    set year [template::util::date::get_property year $date]
-            set next_year [expr $year+1]
+            set next_year [expr {$year+1}]
             set day [template::util::date::get_property day $date]
             set month [template::util::date::get_property month $date]
                 
@@ -60,7 +60,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_edit_
 	    set date [template::util::date::today]
 		
 	    set year [template::util::date::get_property year $date]
-	    set next_year [expr $year+1]
+	    set next_year [expr {$year+1}]
 	    set day [template::util::date::get_property day $date]
 	    set month [template::util::date::get_property month $date]
 		

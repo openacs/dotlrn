@@ -32,7 +32,7 @@ if {$community_id eq ""} {
     dotlrn::require_user_admin_community -community_id $community_id
 }
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     db_0or1row member_email {
 	select email_id from
 	dotlrn_member_emails
@@ -61,7 +61,7 @@ ad_form \
         {email_id:key}
     }
 
-if {![string equal "" $available_vars_help]} {
+if {$available_vars_help ne ""} {
     ad_form -extend -name "member_email" -form {
 	{help:text(inform) {label "Available variables"} {value $available_vars_help}}
     }

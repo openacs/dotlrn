@@ -26,7 +26,7 @@ ad_page_contract {
 
 set oacs_site_wide_admin_p [acs_user::site_wide_admin_p]
 
-if {![exists_and_not_null referer]} {
+if {![info exists referer] || $referer eq ""} {
     set referer "[dotlrn::get_admin_url]/users"
 }
 

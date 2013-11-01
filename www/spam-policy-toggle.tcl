@@ -23,22 +23,19 @@ ad_page_contract {
     {referer "one-community-admin"}
 } -validate {
     policy_ck -requires {policy:notnull} {
-        if {!(
-            [string equal $policy "all"] == 1 ||
-            [string equal $policy "admins"] == 1
-        )} {
+        if { $policy ni {all admins} } {
             ad_complain [_ dotlrn.lt_spam_policy_must_be_o]
         }
     }
 }
 
-if {[empty_string_p $community_id]} {
+if {$community_id eq ""} {
     set community_id [dotlrn_community::get_community_id]
 }
 
 dotlrn::require_user_admin_community -community_id $community_id
 
-if { [string equal $policy all] } {
+if {$policy eq "all"} {
     set action "grant"
 } else {
     set action "revoke"

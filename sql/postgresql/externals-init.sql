@@ -22,28 +22,34 @@
 --
 
 
-create function inline_1()
-returns integer as '
-declare
+
+
+--
+-- procedure inline_1/0
+--
+CREATE OR REPLACE FUNCTION inline_1(
+
+) RETURNS integer AS $$
+DECLARE
     foo                         integer;
     gid				integer;
     sid				integer;
     dotlrn_users_group_id       integer;
-begin
+BEGIN
 
     PERFORM acs_rel_type__create_type(
-	''dotlrn_external_profile_rel'',
-        ''dotLRN Profile External'',
-        ''dotLRN External Externals'',
-	''dotlrn_user_profile_rel'',
-        ''dotlrn_external_profile_rels'',
-        ''rel_id'',
-        ''dotlrn_external_profile_rel'',
-        ''profiled_group'',
+	'dotlrn_external_profile_rel',
+        'dotLRN Profile External',
+        'dotLRN External Externals',
+	'dotlrn_user_profile_rel',
+        'dotlrn_external_profile_rels',
+        'rel_id',
+        'dotlrn_external_profile_rel',
+        'profiled_group',
         null,
         0,
         null,
-        ''user'',
+        'user',
         null,
         0,
         1
@@ -52,29 +58,29 @@ begin
     select min(impl_id)
     into foo
     from acs_sc_impls
-    where impl_name = ''dotlrn_external_profile_provider'';
+    where impl_name = 'dotlrn_external_profile_provider';
 
     gid := profiled_group__new(
         foo,
-        ''dotLRN Externals''
+        'dotLRN Externals'
     );
 
     sid := rel_segment__new(
-        ''dotLRN Externals'',
+        'dotLRN Externals',
         gid,
-        ''dotlrn_external_profile_rel''
+        'dotlrn_external_profile_rel'
     );
 
     insert
     into dotlrn_user_types
     (type, pretty_name, rel_type, group_id, segment_id)
     values
-    (''external'', ''#dotlrn.user_type_external_pretty_name#'', ''dotlrn_external_profile_rel'', gid, sid);
+    ('external', '#dotlrn.user_type_external_pretty_name#', 'dotlrn_external_profile_rel', gid, sid);
 
     select group_id
     into dotlrn_users_group_id
     from groups
-    where group_name = ''dotLRN Users'';
+    where group_name = 'dotLRN Users';
 
     foo := composition_rel__new(
         dotlrn_users_group_id,
@@ -83,8 +89,9 @@ begin
 
     return 0;
 
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_1();
 drop function inline_1();

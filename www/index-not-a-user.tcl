@@ -45,13 +45,13 @@ if { [ad_conn user_id] != 0 && $auto_add_p } {
                                    -default {}] ","]
 
     # A star is enough
-    if { [lsearch -exact $auth_add_auths "*"] == -1 } {
+    if {"*" ni $auth_add_auths} {
         # No star
         set authority_id [acs_user::get_element -user_id [ad_conn user_id] -element authority_id]
         set authority_short_name [auth::authority::get_element -authority_id $authority_id -element short_name]
 
         # If not a star, then this user's authority needs to be named
-        if { [lsearch -exact $auth_add_auths $authority_short_name] == -1 } {
+        if {$authority_short_name ni $auth_add_auths} {
             # Nope, authority not listed, either
             set auto_add_p 0
         }

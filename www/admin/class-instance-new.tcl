@@ -113,7 +113,7 @@ ad_form -name add_class_instance -form {
 
     db_dml update_community_info {}
 
-    if {[empty_string_p $referer]} {
+    if {$referer eq ""} {
         set referer "[dotlrn::get_admin_url]/class?[export_vars -url {class_key}]"
     }
 

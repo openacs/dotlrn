@@ -95,7 +95,7 @@ if {[form is_valid term_form]} {
     }
 }
 
-if {![exists_and_not_null referer]} {
+if {(![info exists referer] || $referer eq "")} {
     set referer "terms"
 }
 
@@ -106,12 +106,12 @@ if {$term_id == -1} {
     set paginator_query "select_all_classes_paginator"
 }
 
-if {![empty_string_p $department_key]} {
+if {$department_key ne ""} {
     append query "_by_department"
     append paginator_query "_by_department"
 }
 
-if { ![empty_string_p $keyword] } {
+if { $keyword ne "" } {
     set keyword_clause [db_map select_all_instances_keyword]
 } else {
     set keyword_clause [db_map select_all_instances_without_keyword]

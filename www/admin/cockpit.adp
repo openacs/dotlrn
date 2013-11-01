@@ -1,5 +1,5 @@
 <master>
-<% set user_id [ad_maybe_redirect_for_registration] %>
+<% set user_id [auth::require_login] %>
 <% permission::require_permission -object_id $user_id -privilege admin %>
 <h2>#dotlrn.Administration_Cockpit#</h2>
 <table width="90%" id="context-bar">

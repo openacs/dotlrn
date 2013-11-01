@@ -60,7 +60,7 @@ set member_p [dotlrn_community::member_p $community_id $user_id]
 
 if {$member_p} {
     set existing_role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type [db_string select_role {}]]
-    if {[empty_string_p $existing_role]} {
+    if {$existing_role eq ""} {
 	set existing_role "member"
     }
 }

@@ -13,7 +13,7 @@
 #  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
 #  details.
 #
-ad_maybe_redirect_for_registration
+auth::require_login
 ad_page_contract {
     Remove dotLRN Administrators 
 
@@ -29,7 +29,7 @@ dotlrn::require_admin
 
 set group_id [db_string group_id_from_name "
             select group_id from groups where group_name='dotlrn-admin'" -default ""]
-        if {![empty_string_p $group_id] } {
+        if {$group_id ne "" } {
            group::remove_member -group_id $group_id -user_id $user_id
         }
 

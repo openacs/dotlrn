@@ -43,7 +43,7 @@ set classes_pretty_name [parameter::get -localize -parameter classes_pretty_name
 
 set actions [list "[_ dotlrn.new_department]" "[export_vars -base "department-new" -url { referer }]"]
 
-if { ![empty_string_p $keyword] } {
+if { $keyword ne "" } {
     set keyword_clause [db_map departments_keyword]
 } {
     set keyword_clause [db_map departments_without_keyword]

@@ -30,11 +30,11 @@ set user_id [ad_conn user_id]
 set dotlrn_package_id [dotlrn::get_package_id]
 set root_object_id [acs_magic_object security_context_root]
 
-if {![exists_and_not_null type]} {
+if {(![info exists type] || $type eq "")} {
     set type admin
 }
 
-if {![exists_and_not_null referer]} {
+if {(![info exists referer] || $referer eq "")} {
     set referer "[dotlrn::get_admin_url]/users"
 }
 
@@ -47,18 +47,18 @@ lappend dimensions [list Other Other {}]
 set control_bar [portal::dimensional -no_bars [list [list section {} $section $dimensions]]]
 
 set i 1
-if {[string equal $type deactivated] == 1} {
+if {$type eq "deactivated"} {
     set query select_deactivated_users
-    if {[string match Other $section]} {
+    if {"Other" eq $section} {
         append query "_other"
     }
     db_multirow users $query {} {
         set users:${i}(access_level) Limited
         incr i
     }
-} elseif {[string equal $type pending] == 1} {
+} elseif {$type eq "pending"} {
     set query select_non_dotlrn_users
-    if {[string match Other $section]} {
+    if {"Other" eq $section} {
         append query "_other"
     }
     db_multirow users $query {} {
@@ -67,7 +67,7 @@ if {[string equal $type deactivated] == 1} {
     }
 } else {
     set query select_dotlrn_users
-    if {[string match Other $section]} {
+    if {"Other" eq $section} {
         append query "_other"
     }
     db_multirow users $query {} {

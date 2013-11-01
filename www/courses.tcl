@@ -34,7 +34,7 @@ ad_page_contract {
 set portal_id [dotlrn::get_portal_id -user_id [ad_conn user_id]]
 set dotlrn_url [dotlrn::get_url] 
 # Make sure user is logged in
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set portlet_title [_ dotlrn.Courses]
 set title [_ dotlrn.Courses]
 set context [list [_ dotlrn.Courses]]

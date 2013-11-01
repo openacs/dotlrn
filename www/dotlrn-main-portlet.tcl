@@ -24,11 +24,11 @@ ad_page_contract {
 } {
 }
 
-if {![exists_and_not_null show_buttons_p]} {
+if {(![info exists show_buttons_p] || $show_buttons_p eq "")} {
     set show_buttons_p 0
 }
 
-if {![exists_and_not_null show_archived_p]} {
+if {(![info exists show_archived_p] || $show_archived_p eq "")} {
     set show_archived_p 0
 }
 
@@ -36,7 +36,7 @@ if {![exists_and_not_null show_archived_p]} {
 #theme-selva for .LRN 2.2.
 
 set community_type_clause ""
-if { [exists_and_not_null community_filter] } {
+if { ([info exists community_filter] && $community_filter ne "") } {
     set show_subtitle_p 0
     if { $community_filter eq "class_instances" } {
         set community_type_clause "and dotlrn_communities_all.community_type not in ('dotlrn_community', 'dotlrn_club', 'dotlrn_pers_community')"
@@ -67,7 +67,7 @@ db_multirow -extend {intra_type_ul_tags previous_type_ul_tags} communities selec
     set intra_type_ul_tags ""
     set previous_type_ul_tags ""
     set new_type_p 0
-    if {![string equal $simple_community_type dotlrn_community]} {
+    if {$simple_community_type ne "dotlrn_community" } {
         set comm_type $simple_community_type
     } else {
         set simple_community_type $comm_type
@@ -75,22 +75,22 @@ db_multirow -extend {intra_type_ul_tags previous_type_ul_tags} communities selec
     #Checking for existence of old_simple_community_type gives us an
     #easy way to detect the first row.  Don't pre-define it!
     if { ![info exists old_simple_community_type] ||
-         ![string equal $old_simple_community_type $simple_community_type] } {
+         $old_simple_community_type ne $simple_community_type } {
         set base_level $tree_level
         set new_type_p 1
     }
     if { [info exists old_simple_community_type] &&
-         ![string equal $old_simple_community_type $simple_community_type] } {
+         $old_simple_community_type ne $simple_community_type } {
         append previous_type_ul_tags [string repeat "</li></ul>" $old_depth]
         set old_depth 0
     }
 
-    set depth [expr $tree_level - $base_level]
+    set depth [expr {$tree_level - $base_level}]
     if { $depth > $old_depth } {
-        append intra_type_ul_tags [string repeat "<ul><li>" [expr $depth - $old_depth]]
+        append intra_type_ul_tags [string repeat "<ul><li>" [expr {$depth - $old_depth}]]
     }
     if { $old_depth > $depth } {
-        append intra_type_ul_tags [string repeat "</li></ul>" [expr $old_depth - $depth]]
+        append intra_type_ul_tags [string repeat "</li></ul>" [expr {$old_depth - $depth}]]
         append intra_type_ul_tags "</li><li>"
     }
     if { $depth == $old_depth && !$new_type_p } {

@@ -31,17 +31,23 @@
 -- License version 2 or higher.  Full text of the license is available
 -- from the GNU Project: http://www.fsf.org/copyleft/gpl.html
 
-create function inline_0 ()
-returns integer as '
-declare
+
+
+--
+-- procedure inline_0/0
+--
+CREATE OR REPLACE FUNCTION inline_0(
+
+) RETURNS integer AS $$
+DECLARE
     ds_id portal_datasources.datasource_id%TYPE;
     foo integer;
-begin
+BEGIN
     ds_id := portal_datasource__new(
         null,
-        ''dotlrn_main_portlet'',
-        ''Displays the list of communities a user belongs to'',
-	''portal_datasource'',
+        'dotlrn_main_portlet',
+        'Displays the list of communities a user belongs to',
+	'portal_datasource',
 	now(),
 	null,
 	null,
@@ -52,103 +58,104 @@ begin
 
     -- shadeable_p
     perform portal_datasource__set_def_param(
-        ds_id, ''t'', ''t'', ''shadeable_p'', ''f''
+        ds_id, 't', 't', 'shadeable_p', 'f'
     );
 
     -- hideable_p
     perform portal_datasource__set_def_param(
-        ds_id, ''t'', ''t'', ''hideable_p'', ''f''
+        ds_id, 't', 't', 'hideable_p', 'f'
     );
 
     -- user_editable_p
     perform portal_datasource__set_def_param(
-        ds_id, ''t'', ''t'', ''user_editable_p'', ''f''
+        ds_id, 't', 't', 'user_editable_p', 'f'
     );
 
     -- shaded_p
     perform portal_datasource__set_def_param(
-        ds_id, ''t'', ''t'', ''shaded_p'', ''f''
+        ds_id, 't', 't', 'shaded_p', 'f'
     );
 
     -- link_hideable_p
     perform portal_datasource__set_def_param(
-        ds_id, ''t'', ''t'', ''link_hideable_p'', ''t''
+        ds_id, 't', 't', 'link_hideable_p', 't'
     );
 
     -- create the implementation
     perform acs_sc_impl__new(
-        ''portal_datasource'',
-        ''dotlrn_main_portlet'',
-        ''dotlrn_main_portlet''
+        'portal_datasource',
+        'dotlrn_main_portlet',
+        'dotlrn_main_portlet'
     );
 
         -- add all the hooks
     perform acs_sc_impl_alias__new (
-           ''portal_datasource'',
-           ''dotlrn_main_portlet'',
-           ''GetMyName'',
-           ''dotlrn_main_portlet::get_my_name'',
-           ''TCL''
+           'portal_datasource',
+           'dotlrn_main_portlet',
+           'GetMyName',
+           'dotlrn_main_portlet::get_my_name',
+           'TCL'
     );
 
     perform acs_sc_impl_alias__new (
-           ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''GetPrettyName'',
-               ''dotlrn_main_portlet::get_pretty_name'',
-               ''TCL''
+           'portal_datasource',
+               'dotlrn_main_portlet',
+               'GetPrettyName',
+               'dotlrn_main_portlet::get_pretty_name',
+               'TCL'
         );
 
         perform acs_sc_impl_alias__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''Link'',
-               ''dotlrn_main_portlet::link'',
-               ''TCL''
+               'portal_datasource',
+               'dotlrn_main_portlet',
+               'Link',
+               'dotlrn_main_portlet::link',
+               'TCL'
         );
 
         perform acs_sc_impl_alias__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''AddSelfToPage'',
-               ''dotlrn_main_portlet::add_self_to_page'',
-               ''TCL''
+               'portal_datasource',
+               'dotlrn_main_portlet',
+               'AddSelfToPage',
+               'dotlrn_main_portlet::add_self_to_page',
+               'TCL'
         );
 
         perform acs_sc_impl_alias__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''RemoveSelfFromPage'',
-               ''dotlrn_main_portlet::remove_self_from_page'',
-               ''TCL''
+               'portal_datasource',
+               'dotlrn_main_portlet',
+               'RemoveSelfFromPage',
+               'dotlrn_main_portlet::remove_self_from_page',
+               'TCL'
         );
 
         perform acs_sc_impl_alias__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''Show'',
-               ''dotlrn_main_portlet::show'',
-               ''TCL''
+               'portal_datasource',
+               'dotlrn_main_portlet',
+               'Show',
+               'dotlrn_main_portlet::show',
+               'TCL'
         );
 
         perform acs_sc_impl_alias__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet'',
-               ''Edit'',
-               ''dotlrn_main_portlet::edit'',
-               ''TCL''
+               'portal_datasource',
+               'dotlrn_main_portlet',
+               'Edit',
+               'dotlrn_main_portlet::edit',
+               'TCL'
         );
 
         -- Add the binding
         perform acs_sc_binding__new (
-               ''portal_datasource'',
-               ''dotlrn_main_portlet''
+               'portal_datasource',
+               'dotlrn_main_portlet'
         );
 
 	return 0;
 
-end;
-' language 'plpgsql';
+END;
+
+$$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();

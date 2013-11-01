@@ -26,18 +26,24 @@ select define_function_args ('dotlrn_student_profile_rel__new','rel_id,user_id,p
 select define_function_args ('dotlrn_student_profile_rel__delete','rel_id');
 
 
-create function dotlrn_student_profile_rel__new(integer,integer,integer,integer,varchar,varchar,integer,integer,varchar)
-returns integer as '
+
+
+--
+-- procedure dotlrn_student_profile_rel__new/9
+--
+CREATE OR REPLACE FUNCTION dotlrn_student_profile_rel__new(
+   p_rel_id integer,
+   p_user_id integer,
+   p_portal_id integer,
+   p_theme_id integer,
+   p_id varchar,
+   p_rel_type varchar, -- default 'dotlrn_student_profile_rel'
+   p_group_id integer,
+   p_creation_user integer,
+   p_creation_ip varchar
+
+) RETURNS integer AS $$
 DECLARE
-        p_rel_id                alias for $1;
-        p_user_id               alias for $2;
-	p_portal_id		alias for $3;
-	p_theme_id		alias for $4;
-        p_id                    alias for $5;
-        p_rel_type              alias for $6;
-        p_group_id              alias for $7;
-        p_creation_user         alias for $8;
-        p_creation_ip           alias for $9;
         v_rel_id                dotlrn_user_profile_rels.rel_id%TYPE;
         v_group_id              groups.group_id%TYPE;
 BEGIN
@@ -47,7 +53,7 @@ BEGIN
             from profiled_groups
             where profile_provider = (select min(impl_id)
                                       from acs_sc_impls
-                                      where impl_name = ''dotlrn_student_profile_provider'');
+                                      where impl_name = 'dotlrn_student_profile_provider');
         else
              v_group_id := p_group_id;
         end if;
@@ -81,13 +87,19 @@ BEGIN
 
         return v_rel_id;
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
-create function dotlrn_student_profile_rel__delete(integer)
-returns integer as '
+
+
+--
+-- procedure dotlrn_student_profile_rel__delete/1
+--
+CREATE OR REPLACE FUNCTION dotlrn_student_profile_rel__delete(
+   p_rel_id integer
+) RETURNS integer AS $$
 DECLARE
-        p_rel_id                alias for $1;
 BEGIN
         delete
         from dotlrn_student_profile_rels
@@ -96,6 +108,7 @@ BEGIN
         PERFORM dotlrn_user_profile_rel__delete(p_rel_id);        
         return (0);
 END;
-' language 'plpgsql';
+
+$$ LANGUAGE plpgsql;
 
 
