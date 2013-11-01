@@ -72,12 +72,13 @@ if {![regexp {([^/\\]+)$} $header_img match client_filename]} {
 # in the CR root folder (-100).
 set logo_name "community_logo_$community_id"
 
-if { ![empty_string_p [parameter::get -parameter MaximumFileSize]] 
-       && $tmp_size > 0
-      && $tmp_size > [parameter::get -parameter MaximumFileSize] } {
-
+set maxFileSize [parameter::get -parameter MaximumFileSize]
+if { $maxFileSize ne "" 
+     && $tmp_size > 0
+     && $tmp_size > $maxFileSize 
+ } {
     set msg_subst_list [list system_name [ad_system_name] \
-                             max_attachments_bytes [util_commify_number [parameter::get -parameter MaximumFileSize]]]
+                             max_attachments_bytes [util_commify_number $maxFileSize]]
     ad_return_complaint 1 "<li>[_ dotlrn.your_icon_is_too_large $msg_subst_list]"
     ad_script_abort
 }

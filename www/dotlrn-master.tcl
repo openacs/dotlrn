@@ -172,7 +172,7 @@ if {![info exists title] || $title eq ""} {
     set title [ad_system_name]
 }
 
-if {[empty_string_p [dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]]]} {
+if {[dotlrn_community::get_parent_community_id -package_id [ad_conn package_id]] eq ""} {
     set parent_comm_p 0
 } else {
     set parent_comm_p 1

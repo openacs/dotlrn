@@ -1165,7 +1165,7 @@ namespace eval dotlrn_community {
     } {
         Returns 1 if the community is a subcommunity, else 0
     } {
-        if {[empty_string_p [get_parent_id -community_id $community_id]]} {
+        if {[get_parent_id -community_id $community_id] eq ""} {
             return 0
         } else {
             return 1
@@ -2128,7 +2128,7 @@ namespace eval dotlrn_community {
         # acs_attribute_values.attr_value column does not have a "not null"
         # constraint but we will enforce it via our api. if someone circumvents
         # our api then they can die and rot in hell.
-        if {[empty_string_p [get_attribute -community_id $community_id -attribute_name $attribute_name]]} {
+        if {[get_attribute -community_id $community_id -attribute_name $attribute_name] eq ""} {
             db_dml insert_attribute {}
         } else {
             db_dml update_attribute_value {}
@@ -2195,7 +2195,7 @@ namespace eval dotlrn_community {
     } {
         set valid_p 0
 
-        if {![empty_string_p [get_attribute_id -attribute_name $attribute_name]]} {
+        if {[get_attribute_id -attribute_name $attribute_name] ne ""} {
             set valid_p 1
         }
 

@@ -65,7 +65,7 @@ namespace eval dotlrn_applet {
         proc to tell dotlrn to register and/or activate itself. This _must_
         be able to be run multiple times!
     } {
-        if {![empty_string_p [get_applet_id_from_key -applet_key $applet_key]]} {
+        if {[get_applet_id_from_key -applet_key $applet_key] ne ""} {
             return
         }
 
