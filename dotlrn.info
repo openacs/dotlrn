@@ -7,14 +7,14 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.8.1" url="http://openacs.org/repository/download/apm/dotlrn-2.8.1.apm">
+    <version name="2.8.1a1" url="http://openacs.org/repository/download/apm/dotlrn-2.8.1a1.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
         <release-date>2011-10-30</release-date>
         <vendor url="http://openacs.org">OpenACS</vendor>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.8.1"/>
+        <provides url="dotlrn" version="2.8.1a1"/>
         <requires url="acs-kernel" version="5.8.0"/>
         <requires url="acs-subsite" version="5.5.0"/>
         <requires url="acs-admin" version="5.5.0"/>
