@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     {keyword ""}
     {orderby "department_name,asc"}
-    page:optional
+    page:naturalnum,optional
 } -properties {
     title:onevalue
     context_bar:onevalue

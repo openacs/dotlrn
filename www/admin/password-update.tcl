@@ -4,7 +4,7 @@ ad_page_contract {
 
     @version $Id$
 } {
-    {user_id:integer}
+    {user_id:naturalnum,notnull}
     {return_url ""}
     {password_old ""}
 }  -validate {

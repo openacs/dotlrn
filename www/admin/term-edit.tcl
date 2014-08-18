@@ -25,7 +25,7 @@ ad_page_contract {
     @version $Id$
 
 } -query {
-    term_id:integer,notnull
+    term_id:naturalnum,notnull
 } -properties {
     context_bar:onevalue
 }

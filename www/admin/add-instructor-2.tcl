@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date Jan 10, 2002
     @version $Id$
 } -query {
-    community_id:integer,notnull
+    community_id:naturalnum,notnull
     {search_text ""}
     {referer ""}
 } -properties {

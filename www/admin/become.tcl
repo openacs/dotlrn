@@ -5,5 +5,5 @@ ad_page_contract {
     @creation-date 27 Jan 2000
 
 } {
-    user_id
+    user_id:naturalnum,notnull
 }

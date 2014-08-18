@@ -5,7 +5,7 @@ ad_page_contract {
     @creation-date August 8,2005
 
 } {
-    {user_id:optional}
+    {user_id:naturalnum,optional}
     {reset:optional}
     {reltype:optional}
     {referer "./"}

@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2002-03-13
     @version $Id$
 } {
-    user_id:integer,notnull
+    user_id:naturalnum,notnull
 } -properties {
     context:onevalue
     first_names:onevalue

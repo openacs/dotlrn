@@ -21,8 +21,8 @@ ad_page_contract {
     @creation-date 2002-01-22
     @version $Id$
 } {
-    user_id:integer,notnull
-    {community_id ""}
+    user_id:naturalnum,notnull
+    {community_id:naturalnum ""}
     {return_url ""}
 } -properties {
     portal_id:onevalue
