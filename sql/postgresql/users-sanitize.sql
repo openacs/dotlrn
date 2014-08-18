@@ -28,7 +28,6 @@
 -- procedure inline_0/0
 --
 CREATE OR REPLACE FUNCTION inline_0(
-
 ) RETURNS integer AS $$
 DECLARE
     foo                         integer;
@@ -50,18 +49,16 @@ BEGIN
 
     return 0;
 END;
-
 $$ LANGUAGE plpgsql;
 
 select inline_0();
 drop function inline_0();
 
-create function inline_1()
-returns integer
-as '
-declare
+CREATE OR REPLACE FUNCTION inline_1(
+) RETURNS integer AS $$
+DECLARE
     foo                         integer;
-begin
+BEGIN
 
     select min(segment_id)
     into foo
@@ -90,7 +87,6 @@ begin
 
     return 0;
 END;
-
 $$ LANGUAGE plpgsql;
 
 select inline_1();
