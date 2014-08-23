@@ -12,7 +12,7 @@
         <summary>A Course Management System</summary>
         <release-date>2011-10-30</release-date>
         <vendor url="http://dotlrn.org">DotLRN Consortium</vendor>
-        <maturity>2</maturity>
+	<maturity>2</maturity>
         <description format="text/html">Course Management</description>
 
         <provides url="dotlrn" version="2.8.1a1"/>
@@ -53,7 +53,15 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="ConvertBinPath"  default="/usr/bin/convert" description="path to the ImageMagick convert binary"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityJoinMailP"  default="0" description="If there is no welcome mail for new members in the database, should a default one be send?" section_name="Communities"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultMaster_p"  default="/packages/dotlrn/www/dotlrn-master" description="Default master for public pages ( user_id = 0 )" section_name=".LRN Portal Types"/>
+<!--
+  
+*** THIS SHOULD BE INSTALLED BY THEME ZEN *****
+
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultSiteTemplate"  default="#theme-zen.Zen_Theme#" description="The name of the default site template"/>
+
+-->
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultSiteTemplate"  default="#new-portal.sloan_theme_name#" description="The name of the default site template"/>
+
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="SelfRegistrationP"  default="1" description="Allow a user to join/leave communities or classes."/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="SelfRegistrationRedirectTo"  default="/dotlrn" description="URL to redirect to if user is not allowed to join/leave a community or class instead of displaying the 'Not Allowed' page."/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="UserChangeSiteTemplate_p"  default="0" description="Indicates if all users are able to change their Site Template. A value of 0 indicates that users cannot change it. A value of 1 indicates that users can." section_name=".LRN Portal Types"/>
