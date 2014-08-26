@@ -94,7 +94,7 @@ if { $guest_p } {
 }
 
 set portrait_p 0
-if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info {}]} {
+if {[parameter::get -parameter "show_portrait_p"] && [db_0or1row select_portrait_info {}]} {
     set portrait_p 1
 }
 

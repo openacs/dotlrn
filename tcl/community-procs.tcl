@@ -265,9 +265,9 @@ namespace eval dotlrn_community {
             ]
 
             # Set the right parameters
-            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-            ad_parameter -package_id $package_id -set 0 community_type_level_p
-            ad_parameter -package_id $package_id -set 1 community_level_p
+            parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_level_p -value 1
 
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
