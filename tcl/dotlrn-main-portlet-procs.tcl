@@ -22,7 +22,7 @@ ad_library {
     and is only on community portals.
 
     @author ben@openforce.net, arjun@openforce.net
-    @version $Id$
+    @cvs-id $Id$
 
 }
 

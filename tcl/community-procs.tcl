@@ -22,7 +22,7 @@ ad_library {
     @author Arjun Sanyal (arjun@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-09-28
-    @version $Id$
+    @cvs-id $Id$
 
 }
 
