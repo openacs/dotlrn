@@ -38,7 +38,7 @@ set admin_email [db_string select_admin_email {
     where party_id = :admin_user_id
 }]
 
-doc_body_append "[_ dotlrn.Bulk_Uploading]<p>"
+append body "[_ dotlrn.Bulk_Uploading]<p>"
 
 set list_of_user_ids [list]
 set list_of_addresses_and_passwords [list]
@@ -53,7 +53,7 @@ db_transaction {
 
         # First make sure the required data is there
         if { ![info exists row(email)] || ![info exists row(first_names)] || ![info exists row(last_name)] } {
-            doc_body_append [_ dotlrn.datafile_must]
+            append body [_ dotlrn.datafile_must]
             db_abort_transaction
             return
         }
@@ -72,7 +72,7 @@ db_transaction {
         # Check if this user already exists
         set user_id [cc_lookup_email_user $row(email)]
         if { $user_id ne "" } {
-            doc_body_append [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
+            append body [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id
         } else {
 
@@ -126,7 +126,7 @@ db_transaction {
             # Set the privacy
             dotlrn_privacy::set_user_guest_p -user_id $user_id -value $row(guest)
 
-            doc_body_append [_ dotlrn.user_email_created [list user_email $row(email)]]
+            append body [_ dotlrn.user_email_created [list user_email $row(email)]]
             set msg_subst_list [list system_name [ad_system_name] \
                                      system_url [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL] \
                                      user_email $row(email) \
@@ -138,33 +138,33 @@ db_transaction {
             if { $row(notify) == "t" } {
                 # Send note to new user
                 if {[catch {acs_mail_lite::send -send_immediately -to_addr $row(email) -from_addr $admin_email -subject $subject -body $message} errmsg]} {
-                    doc_body_append "[_ dotlrn.lt_emailing_this_user_fa]"
+                    append body [_ dotlrn.lt_emailing_this_user_fa]
                 set fail_p 1
                 } else {
                     lappend list_of_addresses_and_passwords $row(email) $password
                 }
             } else {
-                doc_body_append "[_ dotlrn.No_notification_requested]"
+                append body [_ dotlrn.No_notification_requested]
             }
         }
 
-        doc_body_append "<br>"
+        append body "<br>\n"
         unset row
         
     }
 } on_error  {
     ns_log Error "The database choked while trying to create the last user in the list above! The transaction has been aborted, no users have been entered, and no e-mail notifications have been sent.\n
 $errmsg"
-    doc_body_append [_ dotlrn.database_choked]
+    append body [_ dotlrn.database_choked]
     ad_script_abort
 }
 
 if {$fail_p} {
-    doc_body_append "<p>[_ dotlrn.lt_Some_of_the_emails_fa]<p>"
+    append body "<p>[_ dotlrn.lt_Some_of_the_emails_fa]<p>"
 }
 
-doc_body_append "<FORM method=post action=users-add-to-community>
+append body  "<FORM method=post action=users-add-to-community>
 <INPUT TYPE=hidden name=users value=\"$list_of_user_ids\">
 <INPUT TYPE=hidden name=referer values=users>
 [_ dotlrn.lt_You_may_now_choose_to] <INPUT TYPE=submit value=\"[_ dotlrn.lt_Add_These_Users_To_A_]\"></FORM><p>"
-doc_body_append "[_ dotlrn.or_return_to] <a href=\"users\">[_ dotlrn.User_Management]</a>."
+append body "[_ dotlrn.or_return_to] <a href=\"users\">[_ dotlrn.User_Management]</a>."
