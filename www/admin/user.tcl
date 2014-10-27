@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2002-03-13
     @version $Id$
 } {
-    user_id:integer,notnull
+    user_id:naturalnum,notnull
 } -properties {
     context:onevalue
     first_names:onevalue
@@ -94,7 +94,7 @@ if { $guest_p } {
 }
 
 set portrait_p 0
-if {[ad_parameter "show_portrait_p" dotlrn] && [db_0or1row select_portrait_info {}]} {
+if {[parameter::get -parameter "show_portrait_p"] && [db_0or1row select_portrait_info {}]} {
     set portrait_p 1
 }
 

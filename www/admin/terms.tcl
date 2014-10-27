@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date Dec 13, 2001
     @version $Id$
 } -query {
-    page:optional
+    page:naturalnum,optional
     {orderby "start_date_pretty,desc"}
 } -properties {
     context_bar:onevalue

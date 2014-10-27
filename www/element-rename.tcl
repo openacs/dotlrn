@@ -6,7 +6,7 @@ ad_page_contract {
     @author Rodrigo Proenca (roop@terra.com.br)
     
 } {
-    element_id:notnull,integer
+    element_id:notnull,naturalnum
     pretty_name:optional,trim,html
 } 
 

@@ -21,7 +21,7 @@ ad_library {
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-10-30
-    @version $Id$
+    @cvs-id $Id$
 
 }
 

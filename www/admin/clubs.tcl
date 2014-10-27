@@ -24,7 +24,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {orderby "pretty_name,asc"}
-    page:optional
+    page:naturalnum,optional
 } -properties {
     title:onevalue
     context_bar:onevalue

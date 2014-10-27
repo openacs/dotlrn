@@ -9,7 +9,7 @@ ad_page_contract {
     @arch-tag: 9619249e-d7fb-4292-8af1-98b92ee33bba
     @cvs-id $Id$
 } {
-    site_template_id:optional
+    site_template_id:naturalnum,optional
     referer:notnull
     {pretty_name ""}
     {site_master ""}

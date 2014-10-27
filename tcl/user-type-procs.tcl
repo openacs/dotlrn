@@ -20,7 +20,7 @@ ad_library {
 
     @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
     @creation-date 2002-07-26
-    @version $Id$
+    @cvs-id $Id$
 
 }
 

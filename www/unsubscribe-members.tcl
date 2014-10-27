@@ -19,8 +19,8 @@ ad_page_contract {
     @author Don Baccus (dhogaza@pacifier.com)
     @cvs_id $Id$
 } {
-    forum_id:integer,notnull
-    community_id:integer,notnull
+    forum_id:naturalnum,notnull
+    community_id:naturalnum,notnull
     return_url:notnull
 }
 

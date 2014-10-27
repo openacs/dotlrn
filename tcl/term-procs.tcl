@@ -19,7 +19,7 @@
 ad_library {
     @author yon (yon@openforce.net)
     @creation-date Dec 12, 2001
-    @version $Id$
+    @cvs-id $Id$
 }
 
 namespace eval dotlrn_term {

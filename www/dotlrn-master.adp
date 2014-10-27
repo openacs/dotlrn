@@ -3,7 +3,7 @@
     <else><if @context_bar@ not nil><property name="context_bar">@context_bar;noquote@</property></if></else>
   <if @focus@ not nil><property name="focus">@focus;noquote@</property></if>
   <if @doc_type@ not nil><property name="doc_type">@doc_type;noquote@</property></if>
-  <if @title@ not nil><property name="title">@title;noquote@</property></if>
+  <if @title@ not nil><property name="doc(title)">@title;noquote@</property></if>
 
 <div id="pre-page-body">
 </div>

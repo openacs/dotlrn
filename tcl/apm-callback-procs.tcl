@@ -20,12 +20,12 @@ ad_proc -private dotlrn::apm::after_install {
   Create the new group, dotlrn-admin
 } {
 
-  # Create a new group, dotlrn-admin
+    # Create a new group, dotlrn-admin
     db_transaction {
         set group_id [group::new -group_name "dotlrn-admin" ] 
     }
 
-    #gran new-portal admin permission
+    # Grant new-portal admin permission
     permission::grant \
             -party_id $group_id \
             -object_id [apm_package_id_from_key new-portal] \
@@ -73,7 +73,8 @@ ad_proc -private dotlrn::apm::after_instantiate {
        set default_template_name [parameter::get \
                                      -package_id $package_id \
                                      -parameter DefaultSiteTemplate \
-				     -default "#theme-zen.Zen_Theme#"]
+				     -default "#new-portal.sloan_theme_name#"]
+       ns_log notice "Try to install default Site Template named '$default_template_name'"
        set site_template_id [db_string select_st_id {}]
        
        # for communities

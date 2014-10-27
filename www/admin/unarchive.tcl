@@ -34,9 +34,9 @@ if { ([info exists community_id] && $community_id ne "") } {
         ns_log Notice "Unarchiving $community_id"
         dotlrn_community::unarchive -community_id $community_id
     } else {
-        ad_return -code error "community must be archived to get unarchived"
+        return -code error "community must be archived to get unarchived"
     }
 } else {
-    ad_return -code error "community id expected to unarchive a community"
+    return -code error "community id expected to unarchive a community"
 }
 ad_returnredirect $referer

@@ -22,7 +22,7 @@ ad_library {
     @author Arjun Sanyal (arjun@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-09-28
-    @version $Id$
+    @cvs-id $Id$
 
 }
 
@@ -265,9 +265,9 @@ namespace eval dotlrn_community {
             ]
 
             # Set the right parameters
-            ad_parameter -package_id $package_id -set 0 dotlrn_level_p
-            ad_parameter -package_id $package_id -set 0 community_type_level_p
-            ad_parameter -package_id $package_id -set 1 community_level_p
+            parameter::set_value -package_id $package_id -parameter dotlrn_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_type_level_p -value 0
+            parameter::set_value -package_id $package_id -parameter community_level_p -value 1
 
             # Set up the node
             dotlrn_community::set_package_id $community_id $package_id
@@ -424,8 +424,8 @@ namespace eval dotlrn_community {
         if {$community_id eq ""} {
             set community_id [get_community_id]
         }
-        set default_roles [eval concat [get_default_roles -community_id $community_id]]
-        set attributes [eval concat [get_attributes -community_id $community_id]]
+        set default_roles [concat {*}[get_default_roles -community_id $community_id]]
+        set attributes [concat {*}[get_attributes -community_id $community_id]]
 
         set roles [list]
         foreach {rel_type role pretty_name pretty_plural} $default_roles {
@@ -464,15 +464,14 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        set roles [eval concat [get_roles -community_id $community_id]]
+        set roles [concat {*}[get_roles -community_id $community_id]]
         set i [lsearch -exact $roles $rel_type]
-        set pretty_name ""
-
         if {$i > -1} {
             set pretty_name [lindex $roles $i+2]
+	    return [lang::util::localize $pretty_name]
         }
 
-        return [lang::util::localize $pretty_name]
+        return ""
     }
 
     ad_proc -public get_role_pretty_plural {
@@ -485,15 +484,14 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        set roles [eval concat [get_roles -community_id $community_id]]
+        set roles [concat {*}[get_roles -community_id $community_id]]
         set i [lsearch -exact $roles $rel_type]
-        set pretty_plural ""
-
         if {$i > -1} {
             set pretty_plural [lindex $roles $i+3]
+	    return [lang::util::localize $pretty_plural]
         }
 
-        return [lang::util::localize $pretty_plural]
+	return ""
     }
 
     ad_proc -public get_all_roles {} {
@@ -511,7 +509,7 @@ namespace eval dotlrn_community {
     } {
         set role_options [list]
 
-        foreach {rel_type role pretty_name pretty_plural} [eval concat [get_all_roles]] {
+        foreach {rel_type role pretty_name pretty_plural} [concat {*}[get_all_roles]] {
             lappend role_options [list [lang::util::localize $pretty_name] $rel_type]
         }
 
@@ -528,7 +526,7 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        foreach {rel_type role pretty_name pretty_plural} [eval concat $roles_data] {
+        foreach {rel_type role pretty_name pretty_plural} [concat {*}$roles_data] {
             set_role_pretty_data \
                 -community_id $community_id \
                 -rel_type $rel_type \
@@ -551,7 +549,7 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        set roles [eval concat [get_roles -community_id $community_id]]
+        set roles [concat {*}[get_roles -community_id $community_id]]
         set i [lsearch -exact $roles $rel_type]
 
         if {$i > -1} {
@@ -2077,7 +2075,7 @@ namespace eval dotlrn_community {
         get the value for an attribute of this community
     } {
         set attribute_value ""
-        foreach {attr_name attr_value} [eval concat [get_attributes -community_id $community_id]] {
+        foreach {attr_name attr_value} [concat {*}[get_attributes -community_id $community_id]] {
             if {[string match $attribute_name $attr_name]} {
                 set attribute_value $attr_value
                 break
@@ -2093,7 +2091,7 @@ namespace eval dotlrn_community {
     } {
         set attributes for a certain community
     } {
-        foreach {attr_name attr_value} [eval concat $pairs] {
+        foreach {attr_name attr_value} [concat {*}$pairs] {
             set_attribute -community_id $community_id -attribute_name $attr_name -attribute_value $attr_value
         }
     }
@@ -2178,7 +2176,7 @@ namespace eval dotlrn_community {
     } {
         set attribute_id ""
 
-        foreach {attr_id attr_name} [eval concat [get_available_attributes]] {
+        foreach {attr_id attr_name} [concat {*}[get_available_attributes]] {
             if {[string match $attribute_name $attr_name]} {
                 set attribute_id $attr_id
                 break

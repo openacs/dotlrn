@@ -20,7 +20,7 @@ ad_page_contract {
     @author Arjun Sanyal (arjun@openforce.net)
     @version $Id$
 } {
-    portal_id:integer
+    portal_id:naturalnum,notnull
     return_url
     {anchor {}}
 }

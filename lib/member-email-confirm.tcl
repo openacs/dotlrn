@@ -2,7 +2,7 @@ ad_page_contract {
     Ask admin to confirm email and if so
     let the admin edit the email before sending
 } {
-    user_id
+    user_id:naturalnum,notnull
     {type "on join"}
     {return_url ""}
 }

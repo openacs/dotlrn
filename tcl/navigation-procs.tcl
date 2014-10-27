@@ -20,7 +20,7 @@ ad_library {
 
     @author ben@openforce.net
     @author arjun@openforce.net
-    @version $Id$
+    @cvs-id $Id$
 
 }
 

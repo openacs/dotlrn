@@ -83,7 +83,7 @@ namespace eval dotlrn_class_applets {
 
 	foreach callback $list_of_callbacks {
 	    if {[lindex $callback 0] eq $callback_name} {
-		eval [lindex $callback 1] $args
+		[lindex $callback 1] {*}$args
 	    }
 	}
     }

@@ -20,7 +20,7 @@ ad_library {
 
     @author Enrique Catalan (quio@galileo.edu)
     @creation-date 2004-11-10
-    @version $Id$
+    @cvs-id $Id$
 }
 
 namespace eval dotlrn_toolbar {

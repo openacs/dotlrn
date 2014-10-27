@@ -30,22 +30,23 @@ ad_page_contract {
 dotlrn::require_admin 
 
 if { ![acs_user::site_wide_admin_p] } {
-             ns_log notice "user has tried to site-wide-admin-toggle  without permission"
-        ad_return_forbidden \
+    ns_log notice "user has tried to site-wide-admin-toggle  without permission"
+    ad_return_forbidden \
                "Permission Denied" \
                "<p>
 	            [_ acs-admin.lt_You_dont_have_permiss]
                </p>"
-	return
+    return
 }
 
+set object_id [acs_magic_object "security_context_root"]
 if {$value eq "grant"} {
-    ad_permission_grant $user_id [acs_magic_object "security_context_root"] "admin"
+    permission::grant -party_id $user_id -object_id $object_id -privilege admin
 } elseif {$value eq "revoke"} {
-    ad_permission_revoke $user_id [acs_magic_object "security_context_root"] "admin"
+    permission::revoke -party_id $user_id -object_id $object_id -privilege admin
 }
 
-util_memoize_flush_regexp  $user_id
+util_memoize_flush_regexp $user_id
 ad_returnredirect $referer
 
 
