@@ -34,13 +34,13 @@
     <tr class="table-header">
       <td>&nbsp;</td>
       <td>&nbsp;</td>
-      <td><a href=@referer@?order=first_names&order_direction=@first_names_order_direction@>
+      <td><a href="@referer@?order=first_names&amp;order_direction=@first_names_order_direction@">
 	#dotlrn.First_Name#</a> @first_names_order_html;noquote@
       </td>	
-      <td><a href=@referer@?order=last_name&order_direction=@last_name_order_direction@>
+      <td><a href="@referer@?order=last_name&amp;order_direction=@last_name_order_direction@">
 	#dotlrn.Last_Name#</a> @last_name_order_html;noquote@
       </td>
-      <td><a href=@referer@?order=email&order_direction=@email_order_direction@>
+      <td><a href="@referer@?order=email&amp;order_direction=@email_order_direction@">
 	#dotlrn.Email_1#</a> @email_order_html;noquote@
       </td>
       <td>#dotlrn.Role#</td>
@@ -71,14 +71,14 @@
    </td>
   <td><%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @current_members.rel_type@] "Student"]%>
   </td>
-  <td align=center>
+  <td align="center">
   <if @admin_p@ eq 1>
-     &nbsp; <a href="deregister?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.Drop_Membership#</a> | <a href="member-add-2?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.User_Admin_Page#</a>
+     &nbsp; <a href="deregister?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.Drop_Membership#</a> | <a href="member-add-2?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.User_Admin_Page#</a>
   </if>
   <else> 
      <if @show_drop_button_p@ eq 1> 
        <if @my_user_id@ eq @current_members.user_id@>
-	  <a href="deregister?user_id=@current_members.user_id@&referer=@referer@">#dotlrn.Drop_Membership#</a>
+	  <a href="deregister?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.Drop_Membership#</a>
       </if>
     </if> 
       <else>
@@ -109,7 +109,7 @@
 <% set dotlrn_admin_url [dotlrn::get_admin_url] %>
   <br>
   <li>
-    <a href="@dotlrn_admin_url@/community-members-add-to-community?source_community_id=@community_id@&referer=@referer@">
+    <a href="@dotlrn_admin_url@/community-members-add-to-community?source_community_id=@community_id@&amp;referer=@referer@">
       #dotlrn.lt_Add_members_to_anothe#
     </a>
   </li>
@@ -130,9 +130,9 @@
     <i>@pending_users.role@</i>
     &nbsp;
     [<small>
-      <include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@">
+      <include src="approve-link" url="approve?user_id=@pending_users.user_id@&amp;referer=@referer@">
       |
-      <include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@">
+      <include src="reject-link" url="reject?user_id=@pending_users.user_id@&amp;referer=@referer@">
     </small>]
   </li>
 </multiple>

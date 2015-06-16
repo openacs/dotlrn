@@ -2,7 +2,7 @@
 <property name="title">dotLRN Roles, Sections, and Permissions</property>
 
 <h2>dotLRN Permission API</h2>
-by <a href=mailto:ben@openforce.net>Ben Adida</a>.
+by <a href="mailto:ben@openforce.net">Ben Adida</a>.
 <hr><P>
 
 The dotLRN access control mechanism will rely on OpenACS's permissions

@@ -26,7 +26,7 @@
     <td><a href="@communities.url@">@communities.pretty_name@</a></td>
     <td>@communities.role_pretty_name@</td>
     <td><if @communities.admin_p@ eq 1><a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a></if></td>
-    <td><include src="deregister-link" url="deregister?community_id=@communities.community_id@&referer=@referer@"></td>
+    <td><include src="deregister-link" url="deregister?community_id=@communities.community_id@&amp;referer=@referer@"></td>
   </tr>
 </multiple>
 <if @user_can_browse_p@ eq 1>

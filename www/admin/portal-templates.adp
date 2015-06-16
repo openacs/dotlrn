@@ -30,11 +30,11 @@
 <multiple name=templates>
   <tr>
     <td>
-      <a href="@url@/portal-show.tcl?portal_id=@templates.portal_id@&referer=@referer@">@templates.name@</a>
+      <a href="@url@/portal-show.tcl?portal_id=@templates.portal_id@&amp;referer=@referer@">@templates.name@</a>
     </td>
     <td>
       [<small>
-        <a href="@url@/portal-config?portal_id=@templates.portal_id@&referer=@referer@">#dotlrn.Edit#</a>
+        <a href="@url@/portal-config?portal_id=@templates.portal_id@&amp;referer=@referer@">#dotlrn.Edit#</a>
       </small>]
     </td>
   </tr>

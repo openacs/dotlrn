@@ -25,7 +25,7 @@
 #dotlrn.lt_The_results_of_your_s#
 <ul>
 <multiple name="users">
-  <li><a href=user-new-2?user_id=@users.user_id@>@users.last_name@, @users.first_names@ (@users.email@)</li>
+  <li><a href="user-new-2?user_id=@users.user_id@">@users.last_name@, @users.first_names@ (@users.email@)</li>
 </multiple>
 </ul>
 

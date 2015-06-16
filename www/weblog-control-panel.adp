@@ -19,11 +19,11 @@
 %>
 
 <if @weblogs:rowcount@ eq 0>
-<a href=weblog-new>#dotlrn.Create_a_Web_Log#</a>
+<a href="weblog-new">#dotlrn.Create_a_Web_Log#</a>
 </if>
 <else>
 <multiple name="weblogs">
 
-	<li>#dotlrn.Post_to# <a href=@weblog_url@?forum_id=@weblogs.forum_id@>@weblogs.name@</a>	
+	<li>#dotlrn.Post_to# <a href="@weblog_url@?forum_id=@weblogs.forum_id@">@weblogs.name@</a>	
 </multiple>
 </else>

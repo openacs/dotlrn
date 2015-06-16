@@ -2,7 +2,7 @@
 <property name="title">Writing a dotLRN Package</property>
 
 <h2>Writing a dotLRN Package</h2>
-by <a href=mailto:ben@openforce.net>Ben Adida</a>.
+by <a href="mailto:ben@openforce.net">Ben Adida</a>.
 <hr><P>
 
 Writing a dotLRN package is a task that is meant to hook generic
@@ -85,7 +85,7 @@ be able to query parameter information from the NPA (such as the
 <p>
 
 For more details on creating a portlet package, check the <a
-href=npa/>New Portals Architecture</a>
+href="npa/">New Portals Architecture</a>
 
 <h3>dotLRN Applet</h3>
 

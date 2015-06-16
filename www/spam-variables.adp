@@ -21,7 +21,7 @@
   <table>
 
     <tr>
-      <th colspan=3>#dotlrn.lt_The_following_variabl#</th>
+      <th colspan="3">#dotlrn.lt_The_following_variabl#</th>
     </tr>
 
     <tr>

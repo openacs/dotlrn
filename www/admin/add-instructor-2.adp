@@ -28,7 +28,7 @@
 <ul>
   <multiple name="users">
     <li>
-      <a href="add-instructor-3?user_id=@users.user_id@&community_id=@community_id@&referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)
+      <a href="add-instructor-3?user_id=@users.user_id@&amp;community_id=@community_id@&amp;referer=@referer@">@users.last_name@, @users.first_names@ (@users.email@)
     </li>
   </multiple>
 </ul>

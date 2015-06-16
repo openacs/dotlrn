@@ -2,7 +2,7 @@
 <property name="title">dotLRN Roles, Sections, and Permissions</property>
 
 <h2>dotLRN Roles, Sections, and Permissions</h2>
-by <a href=mailto:ben@openforce.net>Ben Adida</a>, part of <a href=./>dotLRN Documentation</a>.
+by <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a href="./">dotLRN Documentation</a>.
 <hr><P>
 
 dotLRN includes significant components of functionality and an

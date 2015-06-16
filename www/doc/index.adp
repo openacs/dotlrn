@@ -1,7 +1,7 @@
 <master src="master">
 <property name="title">dotLRN Documentation</property>
 <h2>dotLRN Documentation</h2>
-part of <a href=../>dotLRN</a>
+part of <a href="../">dotLRN</a>
 <hr><p>
 
 <ul>

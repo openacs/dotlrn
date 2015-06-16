@@ -2,7 +2,7 @@
 <property name="title">dotLRN Portal Permissions</property>
 
 <h2>dotLRN Portal Permissions</h2>
-by <a href=mailto:arjun@openforce.net>Arjun Sanyal</a> and <a href=mailto:ben@openforce.net>Ben Adida</a>, part of <a href=./>dotLRN Documentation</a>.
+by <a href="mailto:arjun@openforce.net">Arjun Sanyal</a> and <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a href="./">dotLRN Documentation</a>.
 <hr><P>
 
 dotLRN presents itself to users by way of portals, i.e. pages that
@@ -18,7 +18,7 @@ required features.
 <P>
 Also, the scope of this document is the permissions system related to
 the portal-based parts of dotLRN, for more documentation on the
-general permission scheme of dotLRN, see <a href=permission-overview.adp>dotLRN Roles, Sections, and Permissions</a>
+general permission scheme of dotLRN, see <a href="permission-overview.adp">dotLRN Roles, Sections, and Permissions</a>
 
 <h2>Some General Portal Ideas</h2>
 

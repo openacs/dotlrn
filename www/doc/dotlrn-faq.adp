@@ -15,7 +15,7 @@
 
     <h1>The dotLRN FAQ</h1>
 
-    <p>part of <a href=../>dotLRN</a></p>
+    <p>part of <a href="../">dotLRN</a></p>
 
 	<p><small>Last updated: $Date$</small></p>
 
@@ -37,7 +37,7 @@
 	  dotLRN is a full-featured application for rapidly developing
 	  web-based learning communities, specifically in the context of
 	  Course Management. The dotLRN software relies on a development
-	  version of <a href=http://openacs.org>OpenACS v5.2</a> and includes data model,
+	  version of <a href="http://openacs.org">OpenACS v5.2</a> and includes data model,
 	  application logic, and templates to get you up and running very
 	  quickly.
     </p>

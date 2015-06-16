@@ -1,7 +1,7 @@
 <master src="master">
 <property name="title">dotLRN Architecture</property>
 <h2>dotLRN Architecture</h2>
-by <a href=mailto:ben@openforce.net>Ben Adida</a> and <a href=arjun@openforce.net>Arjun Sanyal</a>, part of <a href=./>dotLRN Documentation</a>.
+by <a href="mailto:ben@openforce.net">Ben Adida</a> and <a href="arjun@openforce.net">Arjun Sanyal</a>, part of <a href="./">dotLRN Documentation</a>.
 <hr><p>
 
 
@@ -142,7 +142,7 @@ previous two components. (e.g. dotlrn-bboard).
 <h3>NPA Interactions</h3>
 
 The relationship between the NPA and the portlet functionality is
-explored in the <a href=npa-architecture.adp>NPA Architecture Manual</a>.
+explored in the <a href="npa-architecture.adp">NPA Architecture Manual</a>.
 
 <p>
 
@@ -183,4 +183,4 @@ and thus clean up the actions of AddUserToCommunity.
 <p>
 
 The specifics of creating a dotLRN package are described in the <a
-href=writing-a-dotlrn-package.adp>dotLRN Package Creation Guide</a>.
+href="writing-a-dotlrn-package.adp">dotLRN Package Creation Guide</a>.

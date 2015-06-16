@@ -32,7 +32,7 @@
     <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
       &nbsp;
       [<small>
-        <include src="deregister-link" url="deregister?user_id=@users.user_id@&referer=@referer@" label="#dotlrn.Drop_Membership#">
+        <include src="deregister-link" url="deregister?user_id=@users.user_id@&amp;referer=@referer@" label="#dotlrn.Drop_Membership#">
       </small>]
     </if>
   </li>
@@ -56,7 +56,7 @@
 <if @site_wide_admin_p@ eq 1>
   <br>
   <li>
-    <a href="@dotlrn_admin_url@/users-add-to-community?users=@user_list@&referer=@referer@">
+    <a href="@dotlrn_admin_url@/users-add-to-community?users=@user_list@&amp;referer=@referer@">
       #dotlrn.lt_Add_members_to_anothe#
     </a>
   </li>
@@ -79,9 +79,9 @@
     <i>@pending_users.role@</i>
     &nbsp;
     [<small>
-      <include src="approve-link" url="approve?user_id=@pending_users.user_id@&referer=@referer@">
+      <include src="approve-link" url="approve?user_id=@pending_users.user_id@&amp;referer=@referer@">
       |
-      <include src="reject-link" url="reject?user_id=@pending_users.user_id@&referer=@referer@">
+      <include src="reject-link" url="reject?user_id=@pending_users.user_id@&amp;referer=@referer@">
     </small>]
   </li>
 </multiple>

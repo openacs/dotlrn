@@ -2,8 +2,8 @@
 <property name="title">dotLRN Nomenclature</property>
 
 <h1>dotLRN Nomenclature: a dotLRN Primer</h1>
-by <a href=mailto:ben@openforce.net>Ben Adida</a>, part of <a
-href=./>dotLRN Documentation</a>. (last updated: <i>28 February 2002</i>)
+by <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a
+href="./">dotLRN Documentation</a>. (last updated: <i>28 February 2002</i>)
 <hr><P>
 
 dotLRN is a <strong>Learning Community Management System</strong>

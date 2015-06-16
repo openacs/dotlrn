@@ -48,7 +48,7 @@
 
   <li>
     <a
-    href="department-edit?department_key=@department_key@&referer=@referer@">#dotlrn.lt_Edit_department_prope#</a>
+    href="department-edit?department_key=@department_key@&amp;referer=@referer@">#dotlrn.lt_Edit_department_prope#</a>
   </li>
 
 </ul>
