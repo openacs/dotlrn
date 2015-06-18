@@ -1410,7 +1410,7 @@ namespace eval dotlrn_community {
         if {[subcommunity_p -community_id $community_id]} {
             set parent_name [get_parent_name -community_id $community_id]
             set parent_url [get_community_url [get_parent_id -community_id $community_id]]
-            return [concat "<a href=$parent_url>$parent_name</a> : [get_community_name $community_id]"]
+            return [subst {<a href=[ns_quotehtml $parent_url]>$parent_name</a>: [get_community_name $community_id]}]
         } else {
             return [get_community_name $community_id]
         }
