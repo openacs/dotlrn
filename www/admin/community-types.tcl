@@ -39,6 +39,6 @@ template::list::create -name community_types -multirow community_types -no_data 
 db_multirow -extend { 
     edit_url 
 } community_types select_community_types { *SQL* } {
-    set edit_url "community-type?[export_vars -url {community_type}]"
+    set edit_url [export_vars -base community-type {community_type}]
 }
 

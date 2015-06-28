@@ -91,7 +91,7 @@ if {[form is_valid term_form]} {
     form get_values term_form term_id department_key
 
     if {$term_id != -1} {
-        ad_returnredirect "term?[export_vars {term_id department_key}]"
+        ad_returnredirect [export_vars -base term {term_id department_key}]
     }
 }
 

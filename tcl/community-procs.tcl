@@ -1243,14 +1243,19 @@ namespace eval dotlrn_community {
 	    set url [get_community_url $sc_id]
 	    set subgroup_name [get_community_name $sc_id]
 
-            if {[has_subcommunity_p -community_id $sc_id] \
-                    && [member_p $sc_id $user_id]} {
+            if {[has_subcommunity_p -community_id $sc_id] 
+		&& [member_p $sc_id $user_id]} {
                 # Shows the subcomms of this subcomm ONLY IF I'm a
                 # member of the current comm
-                append chunk "$pretext <a href=\"$url\" title=\"[_ dotlrn.goto_subgroup_name]\">$subgroup_name</a>\n"
+                append chunk [subst {$pretext
+		    <a href="[ns_quotehtml $url]" title="[_ dotlrn.goto_subgroup_name]">$subgroup_name</a>
+		}]
 
                 if {$show_drop_link_p} {
-                    append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\" title=\"[_ dotlrn.Drop_from_subgroup_name]\">[_ dotlrn.Drop]</a>)\n"
+		    set href [export_vars -base ${url}${drop_target} {{referer {[ad_conn url]}}}]
+                    append chunk [subst {
+			(<a href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
+		    }]
                 }
 
                 append chunk "<ul>\n[get_subcomm_chunk -community_id $sc_id -user_id $user_id -only_member_p $only_member_p]</ul>\n"
@@ -1274,7 +1279,9 @@ namespace eval dotlrn_community {
                 # illicit registrations if the group is closed.
                 set parent_url [get_community_url $community_id]
 
-                append chunk "$pretext <a href=\"$url\" title=\"[_ dotlrn.goto_subgroup_name]\">$subgroup_name</a>\n"
+                append chunk [subst {$pretext
+		    <a href="[ns_quotehtml $url]" title="[_ dotlrn.goto_subgroup_name]">$subgroup_name</a>
+		}]
 
                 if {![member_p $sc_id $user_id] && [not_closed_p -community_id $sc_id]} {
                       append chunk "<nobr>"
@@ -1282,9 +1289,15 @@ namespace eval dotlrn_community {
                       if {[member_pending_p -community_id $sc_id -user_id $user_id]} {
                           append chunk "[_ dotlrn.Pending_Approval]"
                       } elseif {[needs_approval_p -community_id $sc_id]} {
-                          append chunk "<a href=\"${parent_url}${join_target}?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\" title=\"[_ dotlrn.Request_Membership_for_subgroup_name]\">[_ dotlrn.Request_Membership]</a>\n"
+			  set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
+                          append chunk [subst {
+			      <a href="[ns_quotehtml $href]" title="[_ dotlrn.Request_Membership_for_subgroup_name]">[_ dotlrn.Request_Membership]</a>
+			  }]
                       } else {
-                          append chunk "(<a href=\"${parent_url}${join_target}\?[export_vars {{community_id $sc_id} {referer {[ad_conn url]}}}]\" title=\"[_ dotlrn.Join_subgroup_name]\">[_ dotlrn.Join]</a>)\n"
+			  set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
+                          append chunk [subst {
+			      (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Join_subgroup_name]">[_ dotlrn.Join]</a>)
+			  }
                       }
 
                       append chunk "\n"
@@ -1292,7 +1305,10 @@ namespace eval dotlrn_community {
 
                     # User is a member.
                     if {$show_drop_link_p} {
-                        append chunk "(<a href=\"${url}${drop_target}?referer=[ad_conn url]\" title=\"[_ dotlrn.Drop_from_subgroup_name]\">[_ dotlrn.Drop]</a>)\n"
+			set href [export_vars -base ${url}${drop_target} {{referer {[ad_conn url]}}}]
+                        append chunk [subst {
+			    (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
+			}]
                     }
                 }
             }
@@ -1410,7 +1426,7 @@ namespace eval dotlrn_community {
         if {[subcommunity_p -community_id $community_id]} {
             set parent_name [get_parent_name -community_id $community_id]
             set parent_url [get_community_url [get_parent_id -community_id $community_id]]
-            return [subst {<a href=[ns_quotehtml $parent_url]>$parent_name</a>: [get_community_name $community_id]}]
+            return [subst {<a href="[ns_quotehtml $parent_url]">$parent_name</a>: [get_community_name $community_id]}]
         } else {
             return [get_community_name $community_id]
         }

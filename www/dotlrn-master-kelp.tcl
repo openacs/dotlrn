@@ -291,12 +291,12 @@ if { $make_navbar_p } {
     } else {
 	set link_control_panel 0
     }
-    set extra_spaces "<img src=\"/resources/dotlrn/spacer.gif\" border=0 width=15>"    
+    set extra_spaces [subst {<img src="/resources/dotlrn/spacer.gif" border="0" width="15">]
     set navbar [dotlrn::portal_navbar \
         -user_id $user_id \
         -link_control_panel $link_control_panel \
         -control_panel_text $control_panel_text \
-	-pre_html "$extra_spaces" \
+	-pre_html  $extra_spaces \
 	-post_html $extra_spaces \
         -link_all $link_all
     ]
@@ -324,11 +324,11 @@ if {$ds_enabled_p} {
     set ds_link {}
 }
 
-set change_locale_url "/acs-lang/?[export_vars { { package_id "[ad_conn package_id]" } }]"
+set change_locale_url [export_vars -base /acs-lang { { package_id "[ad_conn package_id]" } }]
 
 # Hack for title and context bar outside of dotlrn
 
-set in_dotlrn_p [expr [string match "[dotlrn::get_url]/*" [ad_conn url]]]
+set in_dotlrn_p [string match "[dotlrn::get_url]/*" [ad_conn url]]
 
 if { [info exists context] } {
     set context_bar [eval ad_context_bar -- $context]

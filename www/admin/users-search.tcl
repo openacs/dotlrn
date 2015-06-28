@@ -67,16 +67,16 @@ if {[form is_valid user_search_results]} {
 
     switch -exact $search_action {
         "spam" {
-            ad_returnredirect "users-spam?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-spam {{users $selected_users}}]
         }
         "add_to_community" {
-            ad_returnredirect "users-add-to-community?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-add-to-community {{users $selected_users}}]
         }
         "deactivate" {
-            ad_returnredirect "users-deactivate?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-deactivate {{users $selected_users}}]
         }
         "delete" {
-            ad_returnredirect "users-delete?[export_vars {{users $selected_users}}]"
+            ad_returnredirect [export_vars -base users-delete {{users $selected_users}}]
         }
     }
 }
@@ -258,7 +258,8 @@ if {[form is_valid user_search]} {
     set selected_users_options [list]
     set selected_users_values [list]
     db_foreach select_users $sql {
-        lappend selected_users_options [list "<a href=\"user?[export_vars user_id]\">$last_name, $first_names</a> ($email)" $user_id]
+	set href [export_vars -base user user_id]
+        lappend selected_users_options [list [subst {<a href="[ns_quotehtml $href]">$last_name, $first_names</a> ($email)}] $user_id]
         lappend selected_users_values $user_id
     }
 

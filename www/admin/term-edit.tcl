@@ -38,7 +38,7 @@ if {![db_0or1row select_term_info {}]} {
     ad_script_abort
 }
 
-set referer "term?[export_vars {term_id}]"
+set referer [export_vars -base term {term_id}]
 set context_bar [list [list terms [_ dotlrn.Terms]] [list $referer "$term_name $term_year"] [_ dotlrn.Edit]]
 
 ad_form -name edit_term -export term_pretty_name -select_query_name select_term_info -form {

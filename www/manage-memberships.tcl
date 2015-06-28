@@ -351,7 +351,9 @@ set non_member_club_ids [db_list non_member_club_ids {                select f.c
                           where dotlrn_member_rels_full.user_id = :user_id)
 }]
 
-set referer [ns_urlencode "[ns_conn url]?[export_vars {member_department_key member_term_id non_member_department_key non_member_term_id}]"]
+set referer [ns_urlencode [export_vars -base [ns_conn url] {
+    member_department_key member_term_id non_member_department_key non_member_term_id
+}]]
 
 # en_US messages make use of these configurable pretty names
 set clubs_pretty_plural [parameter::get -localize -parameter clubs_pretty_plural]

@@ -36,10 +36,10 @@ ad_form -name delete_class -form {
     #here's where we actually do the delete.
     dotlrn_class::delete -class_key $class_key
 } -after_submit {
-    ad_returnredirect classes?[export_vars {department_key}]
+    ad_returnredirect [export_vars -base classes {department_key}]
     ad_script_abort
-} -cancel_url classes?[export_vars {department_key}]
+} -cancel_url [export_vars -base classes {department_key}]
 
 
 set title "[_ dotlrn.Delete_Empty_Class]"
-set context_bar [list [list classes?[export_vars {department_key}] [parameter::get -localize -parameter classes_pretty_plural]] Delete]
+set context_bar [list [[export_vars -base classes {department_key}] [parameter::get -localize -parameter classes_pretty_plural]] Delete]
