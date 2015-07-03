@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">Writing a dotLRN Package</property>
+<property name="doc(title)">Writing a dotLRN Package</property>
 
 <h2>Writing a dotLRN Package</h2>
 by <a href="mailto:ben@openforce.net">Ben Adida</a>.

@@ -2,7 +2,7 @@
 
     <property name="context">{index "Ayuda"} "Registro y contraseña"</property>
     <property name="show_button">1</property>
-    <property name="title">Ayuda - Registro y contrasena</property>
+    <property name="doc(title)">Ayuda - Registro y contrasena</property>
 
     <h1>Registro (Login) y contrase&ntilde;a</h1> 
     

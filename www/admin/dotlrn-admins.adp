@@ -24,8 +24,8 @@
 -->
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Administrators#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Administrators#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <h1>#dotlrn.Administrators#</h1>
 

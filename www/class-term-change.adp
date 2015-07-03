@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="title">#dotlrn.change_class_term#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.change_class_term#</property>
+<property name="context_bar">@context_bar;literal@</property>
 <property name="focus">change_class_term.term_id</property>
 
 <formtemplate id="change_class_term"></formtemplate>

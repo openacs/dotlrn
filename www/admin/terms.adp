@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Terms#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Terms#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <center>
 

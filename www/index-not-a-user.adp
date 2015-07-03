@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="title">#dotlrn.not_a_user#</property>
+<property name="doc(title)">#dotlrn.not_a_user#</property>
 
 #dotlrn.registration_request_sent#
 

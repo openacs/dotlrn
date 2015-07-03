@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Nomenclature</property>
+<property name="doc(title)">dotLRN Nomenclature</property>
 
 <h1>dotLRN Nomenclature: a dotLRN Primer</h1>
 by <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a

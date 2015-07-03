@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="context_bar">@context_bar@</property>
-<property name="title">dotLRN: @pretty_name@</property>
+<property name="context_bar">@context_bar;literal@</property>
+<property name="doc(title)">dotLRN: @pretty_name@</property>
 
 <h1>dotLRN: @pretty_name@</h1>
 

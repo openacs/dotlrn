@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Bulk_Approve#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Bulk_Approve#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 #dotlrn.Youve_chosen_to_add# <strong>@pending_user_count@ #dotlrn.Users# (#dotlrn.Pending#)</strong>.
 

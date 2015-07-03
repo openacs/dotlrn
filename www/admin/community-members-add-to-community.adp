@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.lt_Add_community_name_Me#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.lt_Add_community_name_Me#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <p style="color:red"><strong>#dotlrn.Note#</strong></p>
 

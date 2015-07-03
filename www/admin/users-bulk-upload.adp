@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Users_Bulk_Upload#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Users_Bulk_Upload#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <p>#dotlrn.lt_Here_you_can_create_s#</p>
 

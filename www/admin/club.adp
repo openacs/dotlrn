@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">@pretty_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">@pretty_name;literal@</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 @pretty_name@ - <pre>@description@</pre>
 

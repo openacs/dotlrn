@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Portal Permissions</property>
+<property name="doc(title)">dotLRN Portal Permissions</property>
 
 <h2>dotLRN Portal Permissions</h2>
 by <a href="mailto:arjun@openforce.net">Arjun Sanyal</a> and <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a href="./">dotLRN Documentation</a>.

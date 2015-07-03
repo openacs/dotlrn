@@ -21,7 +21,7 @@
 <master>
 <property name="&doc">doc</property>
 <property name="link_control_panel">0</property>
-<property name="context">@context;noquote@</property>
+<property name="context">@context;literal@</property>
 
 <div id="main-content-sim">
 	<div class="main-content-padding">

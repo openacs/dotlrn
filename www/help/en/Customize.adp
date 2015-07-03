@@ -2,7 +2,7 @@
 
     <property name="context">{index "Help"} Customize</property>
     <property name="show_button">1</property>
-    <property name="title">Help - Customize</property>
+    <property name="doc(title)">Help - Customize</property>
 
 	<h1>Customize <%=[ad_system_name]%></h1>
 

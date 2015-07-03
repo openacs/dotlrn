@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Add_Users_to_Group#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Add_Users_to_Group#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 
 <p style="color:red"><strong>#dotlrn.Note#</strong></p>

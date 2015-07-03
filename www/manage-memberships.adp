@@ -20,7 +20,7 @@
 
   <master>
     <property name="&doc">doc</property>
-    <property name="context">@context@</property>
+    <property name="context">@context;literal@</property>
 
     <h1>#dotlrn.AddDrop_Memberships#</h1>
 

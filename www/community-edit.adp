@@ -18,7 +18,7 @@
 
 <master>
 <property name="&doc">doc</property>
-<property name="context">@context;noquote@</property>
+<property name="context">@context;literal@</property>
 
 <h1>#dotlrn.Community_info#</h1>
   <formtemplate id="edit_community_info"></formtemplate>

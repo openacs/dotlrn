@@ -2,7 +2,7 @@
 
     <property name="context">{Ayuda}</property>
     <property name="show_button">0</property>
-    <property name="title">Ayuda</property>
+    <property name="doc(title)">Ayuda</property>
 
     <h1>Bienvenido/a a la AYUDA de <%=[ad_system_name]%></h1>
 

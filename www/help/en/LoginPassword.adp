@@ -2,7 +2,7 @@
 
     <property name="context">{index "Help"} "Login and Password"</property>
     <property name="show_button">1</property>
-    <property name="title">Help - Login and Password</property>
+    <property name="doc(title)">Help - Login and Password</property>
 
 	<h1>Login & Password</h1>
 

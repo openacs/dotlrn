@@ -17,8 +17,8 @@
 %>
 
 <master>
-<property name="title">@spam_name@</property>
-<property name="context">@context;noquote@</property>
+<property name="doc(title)">@spam_name;literal@</property>
+<property name="context">@context;literal@</property>
 
 <p>
  #dotlrn.lt_Are_you_sure_you_want_to_send#?

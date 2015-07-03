@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="title">@title@</property>
+<property name="doc(title)">@title;literal@</property>
 
 
 

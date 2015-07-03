@@ -19,13 +19,13 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Customize_Layout#</property>
-<property name="portal_id">@portal_id@</property>
+<property name="doc(title)">#dotlrn.Customize_Layout#</property>
+<property name="portal_id">@portal_id;literal@</property>
 <property name="link_all">1</property>
 <property name="show_control_panel">1</property>
 <property name="link_control_panel">1</property>
 <property name="return_url">./</property>
-<property name="context">@context;noquote@</property>
+<property name="context">@context;literal@</property>
 <p></p>
 
 @rendered_page;noquote@

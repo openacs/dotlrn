@@ -19,6 +19,6 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Add_A_Member#</property>
+<property name="doc(title)">#dotlrn.Add_A_Member#</property>
 <property name="context">#dotlrn.Add_A_Member#</property>
 

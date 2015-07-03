@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="title">@spam_name@</property>
-<property name="context">@context;noquote@</property>
+<property name="doc(title)">@spam_name;literal@</property>
+<property name="context">@context;literal@</property>
 
 <h1>@spam_name@</h1>
 

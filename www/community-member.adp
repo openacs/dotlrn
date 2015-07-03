@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="title">@user.first_names@ @user.last_name@</property>
-<property name="context">@context;noquote@</property>
+<property name="doc(title)">@user.first_names@ @user.last_name@</property>
+<property name="context">@context;literal@</property>
 
 <if @portrait_p@>
   <div style="float: right;">

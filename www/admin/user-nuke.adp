@@ -1,6 +1,6 @@
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.lt_Nuke_first_names_last#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.lt_Nuke_first_names_last#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <h3>#dotlrn.Confirmation#</h3>
 

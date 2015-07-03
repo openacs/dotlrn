@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Add_A_User#</property>
-<property name="context">@context;noquote@</property>
+<property name="doc(title)">#dotlrn.Add_A_User#</property>
+<property name="context">@context;literal@</property>
 <property name="focus">register.email</property>
 
 <h1>#dotlrn.lt_Add_a_new_user_to_Slo#</h1>

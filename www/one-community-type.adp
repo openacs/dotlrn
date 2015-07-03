@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="context_bar">@context_bar@</property>
-<property name="title">@title@</property>
+<property name="context_bar">@context_bar;literal@</property>
+<property name="doc(title)">@title;literal@</property>
 
 <p>
   @description@

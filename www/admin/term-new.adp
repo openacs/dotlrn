@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.New_Term#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.New_Term#</property>
+<property name="context_bar">@context_bar;literal@</property>
 <property name="focus">add_term.term_name</property>
 
 <formtemplate id="add_term"></formtemplate>

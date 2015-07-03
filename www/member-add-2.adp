@@ -20,7 +20,7 @@
 
 <master>
 <property name="&doc">doc</property>
-<property name="context">@context;noquote@</property>
+<property name="context">@context;literal@</property>
 <property name="focus">member-add-2.rel_type</property>
 
 <h1>#dotlrn.Add_A_Member#</h1>

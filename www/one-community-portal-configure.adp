@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Customize_Layout#</property>
-<property name="context">@context;noquote@</property>
+<property name="doc(title)">#dotlrn.Customize_Layout#</property>
+<property name="context">@context;literal@</property>
 <p></p>
 
 @rendered_page;noquote@

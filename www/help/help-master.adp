@@ -1,6 +1,6 @@
   <master>
 
-    <property name="context">@context;noquote@</property>
+    <property name="context">@context;literal@</property>
     <property name="&doc">doc</property>
 
     <if @show_button@ true>

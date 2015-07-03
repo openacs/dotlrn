@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Not_Allowed#</property>
+<property name="doc(title)">#dotlrn.Not_Allowed#</property>
 
 <p>
   #dotlrn.lt_You_are_not_allowed_t#

@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Users_Search#</property>
-<property name="context_bar">@context_bar;noquote@</property>
+<property name="doc(title)">#dotlrn.Users_Search#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <p></p>
 

@@ -2,7 +2,7 @@
 
     <property name="context">{index "Help"} Calendar</property>
     <property name="show_button">1</property>
-    <property name="title">Help - Calendar</property>
+    <property name="doc(title)">Help - Calendar</property>
 
 	<h1>Calendar</h1> 
 

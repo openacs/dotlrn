@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Edit_a_User#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Edit_a_User#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 #dotlrn.Youre_editing# <strong>@first_names@ @last_name@</strong>.
 

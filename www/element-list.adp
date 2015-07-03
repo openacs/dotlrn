@@ -1,5 +1,5 @@
 <master>
-<property name="title">Portlet Names</property>
+<property name="doc(title)">Portlet Names</property>
 <property name="context">"Portlet Names"</property>
 
 <br>

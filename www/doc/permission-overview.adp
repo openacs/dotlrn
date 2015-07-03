@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Roles, Sections, and Permissions</property>
+<property name="doc(title)">dotLRN Roles, Sections, and Permissions</property>
 
 <h2>dotLRN Roles, Sections, and Permissions</h2>
 by <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a href="./">dotLRN Documentation</a>.

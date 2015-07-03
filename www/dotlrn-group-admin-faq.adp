@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="title">#dotlrn.help#</property>
+<property name="doc(title)">#dotlrn.help#</property>
 
 <H1> 
     Group Administrator FAQ 

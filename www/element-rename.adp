@@ -1,5 +1,5 @@
 <master>
-<property name=title>Rename Portlet</property>
+<property name="doc(title)">Rename Portlet</property>
 <property name="context">"Rename Portlet"</property>
 
 

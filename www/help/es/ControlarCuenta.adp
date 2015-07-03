@@ -2,7 +2,7 @@
 
     <property name="context">{index "Ayuda"} "Controlar su cuenta"</property>
     <property name="show_button">1</property>
-    <property name="title">Ayuda - Controlar su cuenta</property>
+    <property name="doc(title)">Ayuda - Controlar su cuenta</property>
 
     <h1>Controlar su cuenta</h1>
 

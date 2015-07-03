@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN Architecture</property>
+<property name="doc(title)">dotLRN Architecture</property>
 <h2>dotLRN Architecture</h2>
 by <a href="mailto:ben@openforce.net">Ben Adida</a> and <a href="arjun@openforce.net">Arjun Sanyal</a>, part of <a href="./">dotLRN Documentation</a>.
 <hr><p>

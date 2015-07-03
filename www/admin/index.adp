@@ -25,8 +25,8 @@
 -->
 
 <master>
-<property name="doc(title)">@admin_pretty_name@</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">@admin_pretty_name;literal@</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <div class="portlet-wrapper">
 	<div class="portlet-header">

@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">Installing dotLRN - OpenForce</property>
+<property name="doc(title)">Installing dotLRN - OpenForce</property>
 
 
     <h1>Installing dotLRN</h1>

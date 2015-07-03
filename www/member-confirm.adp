@@ -1,5 +1,5 @@
 <master>
-<property name="title">@page_title@</property>
+<property name="doc(title)">@page_title;literal@</property>
 <property name="context">"@page_title@"</property>
 
 <h1>@page_title@</h1>

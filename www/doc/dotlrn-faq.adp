@@ -1,5 +1,5 @@
 <master src="master">
-<property name="title">dotLRN FAQ</property>
+<property name="doc(title)">dotLRN FAQ</property>
 
 <STYLE TYPE="text/css">
 .question {

@@ -19,9 +19,9 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Manage_Membership#</property>
+<property name="doc(title)">#dotlrn.Manage_Membership#</property>
 <property name="link_all">1</property>
-<property name="context">@context;noquote@</property>
+<property name="context">@context;literal@</property>
 
 <h1>#dotlrn.Manage_Membership#</h1>
 

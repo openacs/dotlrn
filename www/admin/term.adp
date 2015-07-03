@@ -19,8 +19,8 @@
   %>
 
   <master src="dotlrn-admin-master">
-    <property name="title">@title@</property>
-    <property name="context_bar">@context_bar@</property>
+    <property name="doc(title)">@title;literal@</property>
+    <property name="context_bar">@context_bar;literal@</property>
 
     <if @term_id@ ne -1>
       <ul>

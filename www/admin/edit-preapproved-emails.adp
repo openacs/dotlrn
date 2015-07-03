@@ -37,7 +37,7 @@
 -->
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.lt_Edit_Pre-approved_Ema#</property>
+<property name="doc(title)">#dotlrn.lt_Edit_Pre-approved_Ema#</property>
 <property name="context_bar">{#dotlrn.lt_Edit_Pre-approved_Ema#}</property>
 
 <p>

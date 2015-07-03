@@ -21,7 +21,7 @@
 <master>
 
 <property name="&doc">doc</property>
-<property name="context">@context;noquote@</property>
+<property name="context">@context;literal@</property>
 
 <h1>#dotlrn.General_Information#</h1>
 

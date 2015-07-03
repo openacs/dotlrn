@@ -1,9 +1,9 @@
 <master src="/www/site-compat">
-  <if @context@ not nil><property name="context">@context;noquote@</property></if>
-    <else><if @context_bar@ not nil><property name="context_bar">@context_bar;noquote@</property></if></else>
-  <if @focus@ not nil><property name="focus">@focus;noquote@</property></if>
-  <if @doc_type@ not nil><property name="doc_type">@doc_type;noquote@</property></if>
-  <if @title@ not nil><property name="doc(title)">@title;noquote@</property></if>
+  <if @context@ not nil><property name="context">@context;literal@</property></if>
+    <else><if @context_bar@ not nil><property name="context_bar">@context_bar;literal@</property></if></else>
+  <if @focus@ not nil><property name="focus">@focus;literal@</property></if>
+  <if @doc_type@ not nil><property name="doc_type">@doc_type;literal@</property></if>
+  <if @title@ not nil><property name="doc(title)">@title;literal@</property></if>
 
 <div id="pre-page-body">
 </div>

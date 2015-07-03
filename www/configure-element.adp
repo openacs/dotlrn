@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Configure_Element#</property>
+<property name="doc(title)">#dotlrn.Configure_Element#</property>
 
 <h1>#dotlrn.Configure_Element#</h1>
 

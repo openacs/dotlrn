@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="title">@spam_name@</property>
-<property name="context">@context_bar@</property>
+<property name="doc(title)">@spam_name;literal@</property>
+<property name="context">@context_bar;literal@</property>
 
 <h1>#dotlrn.Choose_members_to_receive#</h1>
 

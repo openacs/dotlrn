@@ -2,7 +2,7 @@
 
     <property name="context">{index "Help"} "Classes and Course Material"</property>
     <property name="show_button">1</property>
-    <property name="title">Help - Classes and Courses Material</property>
+    <property name="doc(title)">Help - Classes and Courses Material</property>
 
 	<h1>Classes and Course Material</h1>
 

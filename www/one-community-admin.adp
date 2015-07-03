@@ -19,8 +19,8 @@
 %>
 
 <master>
-<property name="context">@context;noquote@</property>
-<property name="title">@pretty_name@ #dotlrn.Admin#</property>
+<property name="context">@context;literal@</property>
+<property name="doc(title)">@pretty_name@ #dotlrn.Admin#</property>
 <property name="link_control_panel">0</property>
 <property name="portal_page_p">1</property>
 

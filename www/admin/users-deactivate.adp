@@ -19,8 +19,8 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="title">#dotlrn.Deactivate_Users#</property>
-<property name="context_bar">@context_bar@</property>
+<property name="doc(title)">#dotlrn.Deactivate_Users#</property>
+<property name="context_bar">@context_bar;literal@</property>
 
 <p>
   #dotlrn.lt_Are_you_sure_you_want#

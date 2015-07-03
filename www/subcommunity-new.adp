@@ -19,9 +19,9 @@
 %>
 
 <master>
-  <property name="title">@title;noquote@</property>
+  <property name="doc(title)">@title;literal@</property>
   <property name="focus">add_subcomm.pretty_name</property>
-  <property name="context">@context;noquote@</property>
+  <property name="context">@context;literal@</property>
 
 <formtemplate id="add_subcomm"></formtemplate>
 

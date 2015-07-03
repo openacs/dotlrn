@@ -19,9 +19,9 @@
 %>
 
 <master src="dotlrn-admin-master">
-<property name="context_bar">@context_bar@</property>
+<property name="context_bar">@context_bar;literal@</property>
 
-<property name="title">@title@</property>
+<property name="doc(title)">@title;literal@</property>
 
 #dotlrn.lt_Are_you_sure_you_want# <strong>@pretty_name@</strong>?
 <br>

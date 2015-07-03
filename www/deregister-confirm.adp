@@ -19,7 +19,7 @@
 %>
 
 <master>
-<property name="title">#dotlrn.Confirm_Drop#</property>
+<property name="doc(title)">#dotlrn.Confirm_Drop#</property>
 
 <h1>#dotlrn.Confirm_Drop#</h1>
 
