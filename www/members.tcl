@@ -37,7 +37,7 @@ set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]
 set referer [ns_conn url]
 set return_url "[ns_conn url]?[ns_conn query]"
 
-set csv_p ([info exists csv] && $csv ne "")
+set csv_p [expr {[info exists csv] && $csv ne ""}]
 
 set site_wide_admin_p [permission::permission_p -object_id [acs_magic_object security_context_root]  -privilege admin]
 
