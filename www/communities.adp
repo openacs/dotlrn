@@ -30,6 +30,6 @@
     </div> <!-- portlet-title -->
   </div>
   <div class="portlet">
-    <include src="/packages/dotlrn/www/dotlrn-main-portlet" show_buttons_p="0" show_archived_p=0 title="Groups" referer="@referer@" community_filter = "communities">
+    <include src="/packages/dotlrn/www/dotlrn-main-portlet" show_buttons_p="0" show_archived_p=0 title="Groups" referer="@referer@" community_filter="communities">
    </div> <!-- portlet -->
 </div>
