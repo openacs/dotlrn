@@ -46,13 +46,13 @@
 @control_bar;noquote@
 
 <if @n_users@ gt 500>
-  <include src="users-chunk-large" type=@type@ referer="@referer;noquote@">
+  <include src="users-chunk-large" type="@type;literal@" referer="@referer;literal@">
 </if>
 <else>
   <if @n_users@ gt 50>
-    <include src="users-chunk-medium" type=@type@ referer="@referer;noquote@">
+    <include src="users-chunk-medium" type="@type;literal@" referer="@referer;literal@">
   </if>
   <else>
-    <include src="users-chunk-small" type=@type@ referer="@referer;noquote@">
+    <include src="users-chunk-small" type="@type;literal@" referer="@referer;literal@">
   </else>
 </else>

@@ -42,7 +42,7 @@
             </div>
           </if>
 
-          <include src="@user_info_template@" />
+          <include src="@user_info_template;literal@" />
 
           <div style="clear: both;">
             <ul>

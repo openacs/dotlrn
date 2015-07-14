@@ -26,9 +26,9 @@
   @description@
 </p>
 
-  <include src="community-types-chunk" title="@community_type_title@">
+  <include src="community-types-chunk" title="@community_type_title;literal@">
 
 <if @self_registration_p@>
-  <include src="communities-chunk" title="@communities_title@" community_type="@community_type@">
+  <include src="communities-chunk" title="@communities_title;literal@" community_type="@community_type;literal@">
 </if>
 

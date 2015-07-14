@@ -22,7 +22,7 @@
     <property name="doc(title)">@title;literal@</property>
     <property name="context_bar">@context_bar;literal@</property>
    
-    <include src="classes-chunk" page=@page@ keyword=@keyword@ department_key=@department_key@>
+    <include src="classes-chunk" page="@page;literal@" keyword="@keyword;literal@" department_key="@department_key;literal@">
 
 
 

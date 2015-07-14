@@ -20,6 +20,6 @@
 
 <p>@control_bar;noquote@</p>
 
-<include src="users-chunk" type=@type@ &users="users" referer=@referer;noquote@>
+<include src="users-chunk" type="@type;literal@" &users="users" referer="@referer;literal@">
 
 
