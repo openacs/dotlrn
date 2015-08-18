@@ -123,8 +123,7 @@ $community_url/members
         ad_returnredirect $referer
         ad_script_abort
     } else {
-        global errorInfo
-        ns_log Error "register.tcl failed: $errmsg\n$errorInfo"
+        ns_log Error "register.tcl failed: $errmsg\n$::errorInfo"
         
         ad_return_error "Error adding user to community"  "An error occured while trying to add a user to a community.  This error has been logged."
     }

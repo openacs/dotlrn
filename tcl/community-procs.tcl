@@ -822,8 +822,7 @@ namespace eval dotlrn_community {
                 $community_id \
                 $user_id \
             ]} errmsg]} {
-                global errorInfo
-                set savedInfo $errorInfo
+                set savedInfo $::errorInfo
 
                 if {[string match -nocase {acs_object_rels_un} $errmsg]} {
                     return
