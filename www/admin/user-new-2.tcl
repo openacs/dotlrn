@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
-    user_id
+    user_id:naturalnum
     {referer "[dotlrn::get_admin_url]/users" }
 }
 
