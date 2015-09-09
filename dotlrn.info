@@ -38,7 +38,7 @@
 	<install package="dotlrn-static"/>
 	<install package="dotlrn-assessment"/>
 	<install package="dotlrn-evaluation"/>
-	<install package="theme-zen"/>
+	<install package="theme-zen" />
 
         <callbacks>
 	  <callback type="after-install"  proc="dotlrn::apm::after_install"/>
