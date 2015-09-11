@@ -2462,3 +2462,9 @@ namespace eval dotlrn_community {
     }
 
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -132,3 +132,9 @@ db_multirow class_instances $query {}
 set class_edit_url [export_vars -base class-edit {class_key referer}]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

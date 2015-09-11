@@ -33,3 +33,9 @@ dotlrn_community::remove_applet $community_id $applet_key
 # Get back to where you once belonged
 ad_returnredirect community-applets?community_id=$community_id
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

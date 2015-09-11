@@ -78,3 +78,9 @@ set invisible_p [whos_online::user_invisible_p [ad_conn untrusted_user_id]]
 set make_visible_url "${subsite_url}shared/make-visible"
 set make_invisible_url "${subsite_url}shared/make-invisible"
 set whos_online_url "${subsite_url}shared/whos-online"
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

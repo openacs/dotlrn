@@ -39,3 +39,9 @@ portal::set_element_param $element_id $key $value
 
 ad_returnredirect "."
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

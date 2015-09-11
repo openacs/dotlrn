@@ -29,3 +29,9 @@ if { ([info exists referer] && $referer ne "") } {
 if { (![info exists label] || $label eq "") } {
     set label [_ dotlrn.Join]
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

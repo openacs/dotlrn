@@ -5,3 +5,9 @@ dotlrn::require_admin
 set terms_url "terms"
 set terms_pretty_plural [_ dotlrn.terms]
 set class_instances_pretty_plural [parameter::get -localize -parameter class_instances_pretty_plural]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

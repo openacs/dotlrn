@@ -41,3 +41,9 @@ db_multirow -extend { unarchive_url } archived_comms select_archived_comms {} {
 
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

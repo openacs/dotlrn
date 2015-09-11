@@ -33,3 +33,9 @@ set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
 set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.Manage_Applets]]
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

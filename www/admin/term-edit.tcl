@@ -106,3 +106,9 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

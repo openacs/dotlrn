@@ -37,3 +37,9 @@ db_multirow -extend {member_add_url} users select_users {} {
 set context [list [list "one-community-admin" [_ dotlrn.Admin]] [_ dotlrn.New_User]]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

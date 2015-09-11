@@ -69,3 +69,9 @@ set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p t $port
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

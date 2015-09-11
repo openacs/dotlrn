@@ -242,3 +242,9 @@ if {([info exists reset] && $reset ne "") && ([info exists reltype] && $reltype 
 }
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

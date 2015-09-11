@@ -46,3 +46,9 @@ db_dml update_join_policy {}
 
 ad_returnredirect $referer
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

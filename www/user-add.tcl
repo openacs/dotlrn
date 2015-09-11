@@ -58,3 +58,9 @@ if {$community_id ne ""} {
 
 # Export dotlrn-specific vars in the next_url
 set next_url [export_vars -base user-add-2 {type can_browse_p read_private_data_p add_membership_p dotlrn_interactive_p referer}]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

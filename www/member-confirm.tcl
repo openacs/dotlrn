@@ -32,3 +32,8 @@ if { ([info exists user_id] && $user_id ne "") } {
 	set action_url "members?reset=1&reltype=$role_shortname"
 
 }
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

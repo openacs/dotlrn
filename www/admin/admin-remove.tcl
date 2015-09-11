@@ -35,3 +35,9 @@ set group_id [db_string group_id_from_name "
 
 template::forward dotlrn-admins
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -67,3 +67,9 @@ ad_form -extend -name "new_community_type" -form {
     ad_returnredirect "community-types"
     ad_script_abort
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

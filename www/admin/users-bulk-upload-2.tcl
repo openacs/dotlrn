@@ -170,3 +170,9 @@ append body  "<FORM method=post action=users-add-to-community>
 <INPUT TYPE=hidden name=referer values=users>
 [_ dotlrn.lt_You_may_now_choose_to] <INPUT TYPE=submit value=\"[_ dotlrn.lt_Add_These_Users_To_A_]\"></FORM><p>"
 append body "[_ dotlrn.or_return_to] <a href=\"users\">[_ dotlrn.User_Management]</a>."
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

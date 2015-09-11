@@ -34,3 +34,9 @@ db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mo
 
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

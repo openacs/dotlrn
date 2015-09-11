@@ -200,3 +200,9 @@ ad_proc -public -callback contact::organization_new -impl dotlrn_club {
 	application_data_link::new -this_object_id $contact_id -target_object_id $fs_id
     }
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

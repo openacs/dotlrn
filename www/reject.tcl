@@ -43,3 +43,9 @@ foreach uid $user_id {
 }
 ad_returnredirect $referer
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

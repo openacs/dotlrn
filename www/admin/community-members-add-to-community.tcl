@@ -117,3 +117,9 @@ if {[form is_valid select_community]} {
 set estimated_number_of_seconds [expr {[llength $users] * 3}]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

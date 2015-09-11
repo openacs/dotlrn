@@ -42,3 +42,9 @@ dotlrn_community::add_user -rel_type dotlrn_instructor_rel $community_id $user_i
 
 ad_returnredirect [export_vars -base ../member-email-confirm {{return_url $referer} community_id user_id}]
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

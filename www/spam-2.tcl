@@ -44,3 +44,9 @@ if {$format eq "html"} {
 set context [list [list $referer Admin] "[_ dotlrn.Spam_Community]"]
 set community_id [dotlrn_community::get_community_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

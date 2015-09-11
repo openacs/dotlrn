@@ -75,3 +75,9 @@ ad_returnredirect "[dotlrn_community::get_url -package_id $weblog_package_id]/fo
 
 
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

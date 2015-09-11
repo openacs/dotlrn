@@ -32,3 +32,9 @@ set context_bar [list [_ dotlrn.Add_a_Professor]]
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

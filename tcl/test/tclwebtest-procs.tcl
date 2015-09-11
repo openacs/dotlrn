@@ -337,3 +337,9 @@ ad_proc dotlrn::twt::community_new { community_name description } {
 
 	return $response
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

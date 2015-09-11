@@ -69,3 +69,9 @@ db_multirow \
             set no_auto_remove 1
 	}  
  }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

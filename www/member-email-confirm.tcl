@@ -18,3 +18,9 @@ permission::require_permission \
 set page_title "[_ dotlrn.Send_Welcome_Message]"
 set context [list $page_title]
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -60,3 +60,8 @@ ad_form -export {community_id user_id referer site_template_id} -cancel_url $ref
 	template::form::set_error site_templates site_templates "You must select a Site Template!!"
     } 
 }
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
