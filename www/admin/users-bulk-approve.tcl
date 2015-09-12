@@ -45,9 +45,10 @@ ad_form -name bulk_approve -action users-bulk-approve -form {
 
     set title [_ dotlrn.Bulk_Approving]
     set context $context_bar
-    set template [parameter::get -package_id [ad_conn subsite_id] -parameter StreamingHead] 
 
-    ad_return_top_of_page [ad_parse_template -params [list context title] $template]
+    ad_return_top_of_page [ad_parse_template \
+                               -params [list context title] \
+                               [template::streaming_template]]
 
     set subject "Your [ad_system_name] membership has been approved"
     set message "Your [ad_system_name] membership has been approved. Please return to [ad_url] to log into [ad_system_name]."
