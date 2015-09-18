@@ -38,7 +38,7 @@ if {$format eq "html"} {
 } elseif {$format eq "pre"} {
     set preview_message [ad_text_to_html $message]
 } else {
-    set preview_message [ad_quotehtml $message]
+    set preview_message [ns_quotehtml $message]
 }
 
 set context [list [list $referer Admin] "[_ dotlrn.Spam_Community]"]

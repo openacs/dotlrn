@@ -88,7 +88,7 @@ namespace eval spam {
                 append errors "
 <p>
 Failed to deliver to $email because:
-    [ad_quotehtml $errmsg]
+    [ns_quotehtml $errmsg]
 </p>
             "
             }

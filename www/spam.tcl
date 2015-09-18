@@ -208,7 +208,7 @@ if { [ns_queryexists "form:confirm"] } {
 	set message [ad_text_to_html $message]
 	set message_type "html"
     } else {
-	set message [ad_quotehtml $message]
+	set message [ns_quotehtml $message]
 	set message_type "text"
     }
 

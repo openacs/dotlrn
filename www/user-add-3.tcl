@@ -43,7 +43,7 @@ set email_subject [_ dotlrn.user_add_confirm_email_subject $msg_subst_values]
 if {[catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $admin_email -subject $email_subject -body $message} errmsg]} {
     ad_return_error "[_ dotlrn.Mail_Failed]" "[_ dotlrn.lt_The_system_was_unable]
 <pre>
-[ad_quotehtml $errmsg]
+[ns_quotehtml $errmsg]
 </pre>"
     ad_script_abort
 }

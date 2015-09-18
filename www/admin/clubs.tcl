@@ -76,7 +76,7 @@ template::list::create \
     }
 
 db_multirow clubs select_clubs {} {
-    set description [ad_quotehtml $description]
+    set description [ns_quotehtml $description]
 }
 
 ad_return_template
