@@ -343,7 +343,11 @@ namespace eval dotlrn_community {
         while {1} {
             if {$parent_community_id ne ""} {
                 #admin of the parent need admin on the subcommunity.
-                set parent_admin_party [db_string "parent_admin_party" "select segment_id from rel_segments where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'"]
+                set parent_admin_party [db_string parent_admin_party {
+                    select segment_id
+                    from rel_segments
+                    where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'
+                }]
                 permission::grant -party_id $parent_admin_party -object_id $community_id -privilege "admin"
                 
                 #if this community has a parent we need to work up the chain.
