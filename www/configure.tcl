@@ -43,7 +43,7 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
 } else {
 
-    set user_id [ad_conn user_id]
+    set user_id [auth::require_login]
 
     # I don't see under what circumstance we wouldn't want users to
     # customize thier own portal. -Caroline.
