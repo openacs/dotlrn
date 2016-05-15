@@ -36,10 +36,8 @@ create table dotlrn_applets (
     package_key                     varchar(100)
                                     constraint dotlrn_applets_package_key_fk
                                     references apm_package_types (package_key),
-    active_p                        char(1)
-                                    default 't'
-                                    constraint dotlrn_applets_active_p_ck
-                                    check (active_p in ('t', 'f'))
+    active_p                        boolean
+                                    default true
                                     constraint dotlrn_applets_active_p_nn
                                     not null
 );
@@ -57,10 +55,8 @@ create table dotlrn_community_applets (
                                     not null,
     -- this is the package_id of the package this applet represents
     package_id                      integer,
-    active_p                        char(1)
-                                    default 't'
-                                    constraint dotlrn_ca_active_p_ck
-                                    check (active_p in ('t', 'f'))
+    active_p                        boolean
+                                    default true
                                     constraint dotlrn_ca_active_p_nn
                                     not null,
     constraint dotlrn_community_applets_pk
