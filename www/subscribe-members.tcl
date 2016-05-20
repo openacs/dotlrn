@@ -21,7 +21,7 @@ ad_page_contract {
 } {
     forum_id:naturalnum,notnull
     community_id:naturalnum,notnull
-    return_url:notnull
+    return_url:localurl,notnull
 }
 
 set users [dotlrn_community::list_users $community_id]

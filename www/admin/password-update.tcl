@@ -5,7 +5,7 @@ ad_page_contract {
     @version $Id$
 } {
     {user_id:naturalnum,notnull}
-    {return_url ""}
+    {return_url:localurl ""}
     {password_old ""}
 }  -validate {
     dotlrn_cannot_become_wide_admin {

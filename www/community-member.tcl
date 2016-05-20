@@ -23,7 +23,7 @@ ad_page_contract {
 } {
     user_id:naturalnum,notnull
     {community_id:naturalnum ""}
-    {return_url ""}
+    {return_url:localurl ""}
 } -properties {
     portal_id:onevalue
     member_state:onevalue

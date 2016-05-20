@@ -4,7 +4,7 @@ ad_page_contract {
 } {
     user_id:naturalnum,notnull
     {type "on join"}
-    {return_url ""}
+    {return_url:localurl ""}
 }
 
 permission::require_permission \

@@ -21,7 +21,7 @@ ad_page_contract {
     @version $Id$
 } {
     portal_id:naturalnum,notnull
-    return_url
+    return_url:localurl
     {anchor {}}
 }
 

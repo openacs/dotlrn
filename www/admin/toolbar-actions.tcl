@@ -4,7 +4,7 @@ ad_page_contract {
     action:notnull
     {search_type ""}
     {keyword ""}
-    {return_url ""}
+    {return_url:localurl ""}
 } -validate {
     if_search {
 	if { $action eq "search" && ( $search_type eq "" || $keyword eq "" ) } {
