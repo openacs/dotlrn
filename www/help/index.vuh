@@ -27,3 +27,9 @@ if { [file exists "[acs_root_dir]/packages/dotlrn/www/help/$user_language/${path
 } else {
     ns_returnnotfound
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
