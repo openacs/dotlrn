@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2002-03-07
     @version $Id$
 } -query {
-    term_id:naturalnum,notnull
+    term_id:integer,notnull
     {department_key ""}
     {orderby "department_name,asc"}
     page:naturalnum,optional

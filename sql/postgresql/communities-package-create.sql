@@ -28,7 +28,6 @@
 select define_function_args ('dotlrn_community_type__new','community_type,parent_type;dotlrn_community,pretty_name,pretty_plural,description,package_id,creation_date,creation_user,creation_ip,context_id');
 
 select define_function_args ('dotlrn_community_type__delete','community_type');
-
 select define_function_args ('dotlrn_community_type__name','community_type');
 
 
@@ -198,7 +197,7 @@ CREATE OR REPLACE FUNCTION dotlrn_community__new(
    p_community_key varchar,
    p_pretty_name varchar,
    p_description varchar,
-   p_archived_p varchar, -- default 'f'
+   p_archived_p boolean, -- default 'f'
    p_portal_id integer,
    p_non_member_portal_id integer,
    p_package_id integer,
@@ -253,7 +252,6 @@ BEGIN
 
         return c_id;        
 END;
-
 $$ LANGUAGE plpgsql;
 
 select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
