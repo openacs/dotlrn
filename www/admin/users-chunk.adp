@@ -96,10 +96,10 @@
  <td align="center">
   <if @user_id@ ne @users.user_id@>
     <if @users.site_wide_admin_p@ true>
-      <b>#dotlrn.Yes#</b> | <a href="@users.swa_revoke_url@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
+      <strong>#dotlrn.Yes#</strong> | <a href="@users.swa_revoke_url@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
     </if>
     <else>
-      <a href="@users.swa_grant_url@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <b>#dotlrn.No#</b>
+      <a href="@users.swa_grant_url@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <strong>#dotlrn.No#</strong>
     </else>
   </if>
       <else>#dotlrn.Yes#</else>
@@ -112,7 +112,7 @@
 </if>
 <else>
   <tr bgcolor="#eeeeee">
-    <td align="left" colspan="4"><i>#dotlrn.No_Users#</i></td>
+    <td align="left" colspan="4"><em>#dotlrn.No_Users#</em></td>
   </tr>
 </else>
 

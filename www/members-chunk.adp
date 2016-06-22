@@ -28,7 +28,7 @@
       (<a href="mailto:@users.email@">@users.email@</a>)
     </if>
     &nbsp;
-    <i>@users.role@</i>
+    <em>@users.role@</em>
     <if @admin_p@ eq 1 or @user_id@ eq @users.user_id@>
       &nbsp;
       [<small>
@@ -76,7 +76,7 @@
     (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
 </if>
     &nbsp;
-    <i>@pending_users.role@</i>
+    <em>@pending_users.role@</em>
     &nbsp;
     [<small>
       <include src="approve-link" url="approve?user_id=@pending_users.user_id@&amp;referer=@referer@">

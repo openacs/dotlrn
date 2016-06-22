@@ -71,7 +71,7 @@
 	  <table>
 	    <tr bgcolor="#eeeeee">
 	      <td align="left" colspan="4">
-		<i>#dotlrn.no_class_instances#</i>
+		<em>#dotlrn.no_class_instances#</em>
 	      </td>
 	    </tr>
 	  </table>

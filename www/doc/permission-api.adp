@@ -23,7 +23,7 @@ permissions are naturally extended in appropriate ways.
 <p>
 
 For this to work, the actual privileges used throughout dotLRN and all
-of its modules must be <b>consistent</b>. Since permissions follow an
+of its modules must be <strong>consistent</strong>. Since permissions follow an
 inheritance path, we must make sure everything bootstraps off the
 basic read, write, create, delete, admin privileges.
 
@@ -32,19 +32,19 @@ basic read, write, create, delete, admin privileges.
 To better explain the situation, we want the following to happen:
 <ul>
 <li> Hal is a member of "Intro to Computer Science Spring 2002" group, with relationship
-type <tt>dotlrn_instructor_rel</tt> to that group.
+type <kbd>dotlrn_instructor_rel</kbd> to that group.
 <li> An FAQ about the Computer Science Program is created for "Intro
-to Computer Science Spring 2002", with <tt>context_id</tt> pointing to
+to Computer Science Spring 2002", with <kbd>context_id</kbd> pointing to
 the course.
 <li> A relational segment "Intro to CS Spring 2002 Instructors" is
 created on the "Intro to CS Spring 2002" group and
-<tt>dotlrn_instructor_rel</tt> relationship type.
-<li> The privilege <tt>faq_admin</tt> exists, inheriting from
-the core OpenACS <tt>admin</tt> privilege.
+<kbd>dotlrn_instructor_rel</kbd> relationship type.
+<li> The privilege <kbd>faq_admin</kbd> exists, inheriting from
+the core OpenACS <kbd>admin</kbd> privilege.
 <li> A permission is granted: "Intro to CS Spring 2002 Instructors"
-are given the <tt>admin</tt> privilege on the course "Intro to
+are given the <kbd>admin</kbd> privilege on the course "Intro to
 CS Spring 2002".
-<li> <b>Thus</b>, automatically, Hal has the right to admin the FAQ,
+<li> <strong>Thus</strong>, automatically, Hal has the right to admin the FAQ,
 because the admin privilege translates to the faq_admin privilege by
 inheritance, Hal is part of the relational segment in question, and
 the FAQ in question has a context_id pointing to the course. It's BEAUTIFUL!
@@ -54,36 +54,36 @@ the FAQ in question has a context_id pointing to the course. It's BEAUTIFUL!
 
 These are fairly straight-forward:
 <ul>
-<li> <tt>dotlrn::user_add user_id</tt>
-<li> <tt>dotlrn::user_remove user_id</tt>
+<li> <kbd>dotlrn::user_add user_id</kbd>
+<li> <kbd>dotlrn::user_remove user_id</kbd>
 <p>
-<li> <tt>dotlrn::guest_add community_id user_id</tt>
-<li> <tt>dotlrn::guest_remove community_id user_id</tt>
+<li> <kbd>dotlrn::guest_add community_id user_id</kbd>
+<li> <kbd>dotlrn::guest_remove community_id user_id</kbd>
 </ul>
 
 <h3>Access Control API</h3>
 
 <ul>
-<li> <tt>dotlrn::user_can_browse_p ?user_id?</tt>
-<li> <tt>dotlrn::require_user_browse ?user_id?</tt>
+<li> <kbd>dotlrn::user_can_browse_p ?user_id?</kbd>
+<li> <kbd>dotlrn::require_user_browse ?user_id?</kbd>
 <p>
-<li> <tt>dotlrn::user_can_read_sensitive_data ?user_id?</tt>
-<li> <tt>dotlrn::require_user_read_sensitive_data ?user_id?</tt>
+<li> <kbd>dotlrn::user_can_read_sensitive_data ?user_id?</kbd>
+<li> <kbd>dotlrn::require_user_read_sensitive_data ?user_id?</kbd>
 <p>
-<li> <tt>dotlrn::user_can_read_community_type_p community_type ?user_id?</tt>
-<li> <tt>dotlrn::require_user_read_community_type community_type
-?user_id?</tt>
+<li> <kbd>dotlrn::user_can_read_community_type_p community_type ?user_id?</kbd>
+<li> <kbd>dotlrn::require_user_read_community_type community_type
+?user_id?</kbd>
 <p>
-<li> <tt>dotlrn::user_can_read_community_p community_id ?user_id?</tt>
-<li> <tt>dotlrn::require_user_read_community community_id
-?user_id?</tt>
+<li> <kbd>dotlrn::user_can_read_community_p community_id ?user_id?</kbd>
+<li> <kbd>dotlrn::require_user_read_community community_id
+?user_id?</kbd>
 <p>
-<li> <tt>dotlrn::user_community_member_p community_id ?user_id?</tt>
-<li> <tt>dotlrn::require_user_community_member community_id
-?user_id?</tt>
+<li> <kbd>dotlrn::user_community_member_p community_id ?user_id?</kbd>
+<li> <kbd>dotlrn::require_user_community_member community_id
+?user_id?</kbd>
 <p>
-<li> <tt>dotlrn::user_can_admin_community_p community_id
-?user_id?</tt>
-<li> <tt>dotlrn::require_user_admin_community community_id ?user_id?</tt>
+<li> <kbd>dotlrn::user_can_admin_community_p community_id
+?user_id?</kbd>
+<li> <kbd>dotlrn::require_user_admin_community community_id ?user_id?</kbd>
 
 </ul>

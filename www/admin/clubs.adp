@@ -38,7 +38,7 @@
  <table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
-      <i>#dotlrn.no_communities#</i>
+      <em>#dotlrn.no_communities#</em>
     </td>
   </tr>
  </table>

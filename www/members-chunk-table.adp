@@ -55,7 +55,7 @@
 </else>
   <td>
    <if @admin_p@ eq 1>
-	<input type=checkbox name=user_id value=@current_members.user_id@>
+	<input type="checkbox" name="user_id" value="@current_members.user_id@">
    </if>
  </td>
   <td>
@@ -93,8 +93,8 @@
 <p>
 
 <if @admin_p@ eq 1>
-<input type=hidden name=referer value="@referer@">
-<input type=submit value="#dotlrn.Drop_selected_members#">
+<input type="hidden" name="referer" value="@referer@">
+<input type="submit" value="#dotlrn.Drop_selected_members#">
 </form>
 </if>
 
@@ -127,7 +127,7 @@
     <%= [acs_community_member_link -user_id $pending_users(user_id) -label "$pending_users(first_names) $pending_users(last_name)"] %>
     (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
     &nbsp;
-    <i>@pending_users.role@</i>
+    <em>@pending_users.role@</em>
     &nbsp;
     [<small>
       <include src="approve-link" url="approve?user_id=@pending_users.user_id@&amp;referer=@referer@">

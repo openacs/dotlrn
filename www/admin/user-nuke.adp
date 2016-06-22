@@ -12,8 +12,8 @@
 
 <p>
 
-#dotlrn.Last_Visit# <b><if @last_visit@ eq "">#dotlrn.Never_visited#</if><else>@pretty_last_visit@</else></b><br>
-#dotlrn.Number_of_db_objects#: <b>@n_objects@</b>
+#dotlrn.Last_Visit# <strong><if @last_visit@ eq "">#dotlrn.Never_visited#</if><else>@pretty_last_visit@</else></strong><br>
+#dotlrn.Number_of_db_objects#: <strong>@n_objects@</strong>
 
 </p>
 

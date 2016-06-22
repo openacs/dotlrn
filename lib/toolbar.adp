@@ -50,11 +50,11 @@
 	<tr>
 	  <td colspan="4" class="general-info">
 	    <ul>
-	      <li><i>my user_id:</i> <span> @user_id@ </span> </li>
-	      <li><i>context_id:</i> <span> @package_id@ </span></li>
-	      <li><i>community_id:</i> <span> @community_id@  </span> </li>
-	      <li><i>portal_id:</i> <span> @portal_id@ </span> </li>
-          <li><i>package_id:</i> <span>@package_id@</span> </li>
+	      <li><em>my user_id:</em> <span> @user_id@ </span> </li>
+	      <li><em>context_id:</em> <span> @package_id@ </span></li>
+	      <li><em>community_id:</em> <span> @community_id@  </span> </li>
+	      <li><em>portal_id:</em> <span> @portal_id@ </span> </li>
+          <li><em>package_id:</em> <span>@package_id@</span> </li>
 	    </ul>
 	  </td>
 	</tr>

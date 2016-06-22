@@ -52,7 +52,7 @@
 	<table>
 	  <tr bgcolor="#eeeeee">
 	    <td align="left" colspan="4">
-	      <i>#dotlrn.no_classes#</i>
+	      <em>#dotlrn.no_classes#</em>
 	    </td>
 	  </tr>
 	</table>

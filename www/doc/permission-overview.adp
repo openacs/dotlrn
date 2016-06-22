@@ -109,7 +109,7 @@ with links to the proper instance-specific sections.
 <h4>Permissions</h4>
 <ul>
 <li> All registered dotLRN users can access this section
-<li> All guests of <b>that</b> class can access this section
+<li> All guests of <strong>that</strong> class can access this section
 <li> Registered users associated with a class instance of this class
 will see specific links to the proper class instances
 </ul>

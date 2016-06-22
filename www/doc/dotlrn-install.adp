@@ -56,7 +56,7 @@
 
     <p>
       dotLRN requires some more modules that are not in
-      <tt>acs-core</tt>, but not all of the packages in the OpenACS
+      <kbd>acs-core</kbd>, but not all of the packages in the OpenACS
       source tree. Next are the commands to get these modules.
 	</p>
 
@@ -68,15 +68,15 @@
       </pre>
 	</p>
     <p>
-       <em>Installation timesaver: In the <tt>/packages/ref-timezones/sql/common/</tt>
-       directory, cut down the files to a few <tt>insert</tt> statements apiece.
+       <em>Installation timesaver: In the <kbd>/packages/ref-timezones/sql/common/</kbd>
+       directory, cut down the files to a few <kbd>insert</kbd> statements apiece.
        This is fine for test system, and will save you a lot of time in the
        installation process.</em>
 	</p>
     <p>
-      You will now have an <tt>/openacs-4</tt> directory with all of
+      You will now have an <kbd>/openacs-4</kbd> directory with all of
       OpenACS required by dotLRN. To double check, your
-      <tt>/openacs-4/packages</tt> directory should look similar to this:
+      <kbd>/openacs-4/packages</kbd> directory should look similar to this:
 	</p>
     <pre>
 	  $ ls
@@ -103,9 +103,9 @@
 
 
     <p>
-      Next, copy the <tt>/openacs-4</tt> directory to where ever you
+      Next, copy the <kbd>/openacs-4</kbd> directory to where ever you
       prefer your webserver root to be, traditionally
-      <tt>/web</tt>. Now you can continue with the OACS <a
+      <kbd>/web</kbd>. Now you can continue with the OACS <a
       href="http://openacs.org/doc/openacs-5-2/openacs.html">installation
       document</a> at the third point "Prepare the database" of the 2nd section 
 	  "Installation option 2". Continue with the

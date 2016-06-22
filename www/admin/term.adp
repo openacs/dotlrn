@@ -94,7 +94,7 @@
 	  <table>
 	    <tr bgcolor="#eeeeee">
 	      <td>
-		<i>#dotlrn.no_class_instances#</i>
+		<em>#dotlrn.no_class_instances#</em>
 	      </td>
 	    </tr>
 	  </table>
