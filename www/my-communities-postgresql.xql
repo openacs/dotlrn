@@ -16,10 +16,9 @@
                    '' as role_pretty_name,
                    CASE 
                       WHEN
-                         dotlrn_community_admin_p(dotlrn_communities.community_id, 
-                                                   dotlrn_member_rels_approved.user_id) = 'f'
-                      THEN 0
-                      ELSE 1
+                         acs_permission.permission_p(dotlrn_communities.community_id, :user_id, 'admin')
+                      THEN 1
+                      ELSE 0
                    END as admin_p
             from dotlrn_communities,
                  dotlrn_member_rels_approved
