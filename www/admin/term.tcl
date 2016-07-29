@@ -42,7 +42,7 @@ set departments [db_list_of_lists select_departments_for_select_widget {
 }]
 set departments [linsert $departments 0 {All ""}]
 
-form create department_form
+form create department_form  -has_submit 1
 
 element create department_form department_key \
     -label "[_ dotlrn.Department]" \
@@ -71,7 +71,7 @@ set terms [db_list_of_lists select_terms_for_select_widget {
 }]
 set terms [linsert $terms 0 {All -1}]
 
-form create term_form
+form create term_form -has_submit 1
 
 element create term_form term_id \
     -label "[_ dotlrn.Term]" \

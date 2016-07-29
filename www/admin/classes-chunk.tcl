@@ -40,7 +40,7 @@ set departments [db_list_of_lists select_departments_for_select_widget {
 }]
 set departments [linsert $departments 0 [list [_ dotlrn.All] ""]]
 
-form create department_form
+form create department_form  -has_submit 1
 
 element create department_form department_key \
     -label [_ dotlrn.Department] \
