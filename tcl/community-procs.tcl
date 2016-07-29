@@ -1038,14 +1038,17 @@ namespace eval dotlrn_community {
 	@return community_id of the community where the package is mounted, empty string if not found
     } {
         if {$package_id eq ""} {
-            set package_id [site_node::closest_ancestor_package -include_self -package_key dotlrn]
+            set package_id [site_node::closest_ancestor_package \
+                                -url [ad_conn url] \
+                                -include_self \
+                                -package_key dotlrn]
 	    if {$package_id eq ""} {
 		set package_id [ad_conn package_id]
 	    }
         }
 
 	if {$package_id ne ""} {
-	    return [util_memoize "dotlrn_community::get_community_id_not_cached -package_id $package_id"]
+	    return [util_memoize [list dotlrn_community::get_community_id_not_cached -package_id $package_id]]
 	} else {
 	    return ""
 	}
@@ -1151,7 +1154,7 @@ namespace eval dotlrn_community {
         }
 
         if {$complain_if_invalid_p && !$valid_p} {
-            ns_log notice "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
+            ns_log notice "The name '$community_key' is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_return_complaint 1 \
                 [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
 
