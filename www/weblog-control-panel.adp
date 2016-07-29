@@ -22,8 +22,10 @@
 <a href="weblog-new">#dotlrn.Create_a_Web_Log#</a>
 </if>
 <else>
+<ul>
 <multiple name="weblogs">
 
 	<li>#dotlrn.Post_to# <a href="@weblog_url@?forum_id=@weblogs.forum_id@">@weblogs.name@</a>	
 </multiple>
+</ul>
 </else>
