@@ -97,7 +97,7 @@ drop function inline_1();
 create or replace view dotlrn_guest_status
 as
 select r.object_id_two as user_id,
-       case when r.rel_type = 'dotlrn_guest_rel' then 't' else 'f' end as guest_p
+       case when r.rel_type = 'dotlrn_guest_rel' then true else false end as guest_p
   from acs_rels r, 
        membership_rels m 
 where m.rel_id = r.rel_id 

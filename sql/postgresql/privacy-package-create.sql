@@ -16,10 +16,10 @@ select define_function_args('dotlrn_privacy__revoke_rd_prv_dt_from_rel','object_
 --
 CREATE OR REPLACE FUNCTION dotlrn_privacy__guest_p(
    p_user_id integer
-) RETURNS char AS $$
+) RETURNS boolean AS $$
 DECLARE
   v_count integer;
-  v_guest_p char(1);
+  v_guest_p boolean;
 BEGIN
   select count(*) into v_count from dotlrn_guest_status where user_id = p_user_id;
   if v_count > 1 then
