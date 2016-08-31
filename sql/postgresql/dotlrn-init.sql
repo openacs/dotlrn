@@ -338,21 +338,21 @@ BEGIN
     -- create basic rel_types
 
     perform acs_rel_type__create_type (
-	   'dotlrn_member_rel',
-	   '#dotlrn.dotlrn_member_rel_pretty_name#',
-	   '#dotlrn.dotlrn_member_rel_pretty_plural#',
-	   'membership_rel',
-	   'dotlrn_member_rels',
-	   'rel_id',
-	   'dotlrn_member_rel',
-	   'dotlrn_community',
-	   null,
-	   0,
-	   null,
-	   'user',
-	   'member',
-	   0,
-	   null
+	   'dotlrn_member_rel',                        -- rel_type
+	   '#dotlrn.dotlrn_member_rel_pretty_name#',   -- pretty_name
+	   '#dotlrn.dotlrn_member_rel_pretty_plural#', -- pretty_plural
+	   'membership_rel',                           -- supertype
+	   'dotlrn_member_rels',                       -- table_name
+	   'rel_id',                                   -- id_column
+	   'dotlrn_member_rel',                        -- package_name
+	   'dotlrn_community',                         -- object_type_one
+	   null,                                       -- role_one
+	   0,                                          -- min_n_rels_one
+	   null::integer,                              -- max_n_rels_one
+	   'user',                                     -- object_type_two
+	   'member',                                   -- role_two
+	   0,                                          -- min_n_rels_two
+	   null::integer                               -- max_n_rels_two
     );
 
     perform acs_rel_type__create_type (
@@ -366,11 +366,11 @@ BEGIN
 	   'dotlrn_community',
 	   null,
 	   0,
-	   null,
+	   null::integer,
 	   'user',
 	   'admin',
 	   0,
-	   null
+	   null::integer
     );
 
     -- all rels to communities must have a portal_id

@@ -138,11 +138,11 @@ BEGIN
         'dotlrn_class_instance', 
 	null, 
         0, 
-	null,
+	null::integer,
         'user',
 	'student',
         0, 
-	null
+	null::integer
     );
 
     perform acs_rel_type__create_type (
@@ -156,11 +156,11 @@ BEGIN
         'dotlrn_class_instance', 
 	null, 
         0,
-	null,
+	null::integer,
         'user',
 	'teaching_assistant',
         0,
-	null
+	null::integer
     );
 
     perform acs_rel_type__create_type (
@@ -173,11 +173,11 @@ BEGIN
         'dotlrn_ca_rel',
         'dotlrn_class_instance', null, 
         0, 
-	null,
+	null::integer,
         'user',
 	'course_assistant',
         0, 
-	null
+	null::integer
     );
 
     perform acs_rel_type__create_type (
@@ -191,11 +191,11 @@ BEGIN
         'dotlrn_class_instance', 
 	null, 
         0, 
-	null,
+	null::integer,
         'user',	
 	'course_admin',
         0, 
-	null
+	null::integer
     );
 
     perform acs_rel_type__create_type (
@@ -208,11 +208,11 @@ BEGIN
         'dotlrn_instructor_rel',
         'dotlrn_class_instance', null, 
         0, 
-	null,
+	null::integer,
         'user', 
 	'instructor',
         0, 
-	null
+	null::integer
     );
     
     return 0;
