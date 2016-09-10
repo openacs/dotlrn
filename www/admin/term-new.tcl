@@ -52,10 +52,12 @@ ad_form -name add_term -export referer -form {
 
 } -on_request {
     template::add_body_script -script [subst {
-        document.getElementById('start_date').addEventListener('click', function () {
+        document.getElementById('start_date').addEventListener('click', function (event) {
+            event.preventDefault();
             showCalendar('start_date', 'yyyy-mm-dd');
         });
-        document.getElementById('end_date').addEventListener('click', function () {
+        document.getElementById('end_date').addEventListener('click', function (event) {
+            event.preventDefault();
             showCalendar('end_date', 'yyyy-mm-dd');
         });
     }]
