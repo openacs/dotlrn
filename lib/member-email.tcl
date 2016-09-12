@@ -84,7 +84,7 @@ ad_form -extend -name "member_email" -form {
 
         set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -type $type -var_list [list course_name $community_name community_name $community_name]] 0]
         if {![llength $default_email]} {
-            set from_addr [cc_email_from_party [ad_conn user_id]]
+            set from_addr [party::email -party_id [ad_conn user_id]]
             set subject "Welcome to ${community_name}!"
         }
         set from_addr [lindex $default_email 0]

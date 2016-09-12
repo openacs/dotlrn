@@ -2343,9 +2343,9 @@ namespace eval dotlrn_community {
                 }
                 
                 if {$email_send_to eq ""} {
-                    set to_addr [cc_email_from_party $to_user]
+                    set to_addr [party::email -party_id $to_user]
                 }  else {
-                    set to_addr [cc_email_from_party $email_send_to]
+                    set to_addr [party::email -party_id $email_send_to]
                 }
                 
                 set extra_headers [ns_set create]

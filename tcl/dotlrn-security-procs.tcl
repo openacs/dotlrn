@@ -97,7 +97,7 @@ namespace eval dotlrn {
 
         # default ID to email address
         if {$id eq ""} {
-            set id [cc_email_from_party $user_id]
+            set id [party::email -party_id $user_id]
         }
 
         # set up extra vars
