@@ -91,7 +91,7 @@ if {[catch {
             set query [db_map bulk_mail_query]
 
             set full_name [acs_user::get_element -user_id $user_id -element name]
-            set email "[cc_email_from_party $user_id]"
+            set email [party::email -party_id $user_id]
             set subject "$full_name ($email) has requested to join $community_name."
             
             set message "$full_name ($email) has requested to join $community_name.

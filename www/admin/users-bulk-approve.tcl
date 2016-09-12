@@ -59,7 +59,7 @@ ad_form -name bulk_approve -action users-bulk-approve -form {
     set i 0
     foreach user_id $pending_users {
 	incr i
-	set email [cc_email_from_party $user_id]
+	set email [party::email -party_id $user_id]
 	ns_write "$i, $email : ..."
 
 	# approve user in dotlrn
