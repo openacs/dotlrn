@@ -6,4 +6,6 @@
 
 <p>@confirm_message;noquote@
 <br><br>
-<input type="button" value="Yes" onClick="window.location='@action_url;noquote@'">&nbsp;<input type="button" value="No" onClick="javascript: history.go(-1)">
+<input id="member-confirm-button-yes" type="button" value="#dotlrn.Yes#">
+&nbsp;
+<input id="member-confirm-button-no" type="button" value="#dotlrn.No#">
