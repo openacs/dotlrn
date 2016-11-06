@@ -36,7 +36,7 @@
         <form action="@dotlrn_admin_url@/toolbar-actions" method="POST">
           <input type="hidden" name="action" value="search" />
           <label for="keyword">#dotlrn.Search#</label>
-          <input id="keyword" name="keyword" onfocus="if(this.value=='#dotlrn.Search_Text#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Search_Text#';" value="#dotlrn.Search_Text#" />
+          <input id="keyword" name="keyword" placeholder="#dotlrn.Search_Text#" />
         in:<select name="search_type"><option value="users">#dotlrn.Users#</option><option value="departments">#dotlrn.departments_pretty_plural#</option><option value="subjects">#dotlrn.classes_pretty_plural#</option><option value="classes">#dotlrn.Classes#</option></select>
             <input type="submit" value="#dotlrn.Search#" />
         </form>

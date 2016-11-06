@@ -54,8 +54,7 @@
       <br><br>
 	  <form action="class" method="GET">
             #dotlrn.Search_classes_with#
-            
-		  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#">
+            <input name="keyword" placeholder="#dotlrn.Please_type_a_keyword#">
             <input type="hidden" name="class_key" value="@class_key@">
             <input type="hidden" name="term_id" value="@term_id@">
             <input type="submit" value="#dotlrn.Go#">
