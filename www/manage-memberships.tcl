@@ -84,14 +84,15 @@ set terms [db_list_of_lists select_terms_for_select_widget {
 }]
 set terms [linsert $terms 0 [list [_ dotlrn.All] -1]]
 
-form create member_form
+form create member_form \
+    -has_submit 1
 
 element create member_form member_department_key \
     -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget select \
     -options $departments \
-    -html {onChange document.member_form.submit()} \
+    -html {class auto-member-form-submit} \
     -value $member_department_key
 
 element create member_form member_term_id \
@@ -99,8 +100,9 @@ element create member_form member_term_id \
     -datatype integer \
     -widget select \
     -options $terms \
-    -html {onChange document.member_form.submit()} \
+    -html {class auto-member-form-submit} \
     -value $member_term_id
+template::add_event_listener -CSSclass auto-member-form-submit -event change -script {document.member_form.submit();}
 
 element create member_form non_member_department_key \
     -label "[_ dotlrn.Department]" \
@@ -113,6 +115,8 @@ element create member_form non_member_term_id \
     -datatype text \
     -widget hidden \
     -value $non_member_term_id
+
+
 
 if {[form is_valid member_form]} {
     form get_values member_form \
@@ -132,7 +136,12 @@ if {$member_term_id != -1} {
 
 set n_member_classes [db_string select_n_member_classes {}]
 
-template::list::create -name member_classes -multirow member_classes -pass_properties { show_drop_button_p referer } -html {width 100%} -elements {
+template::list::create \
+    -name member_classes \
+    -multirow member_classes \
+    -pass_properties { show_drop_button_p referer } \
+    -html {width 100%} \
+    -elements {
     name {
         html {align left style "width:55%"}
         label "[_ dotlrn.class_instances_pretty_name]"
@@ -209,14 +218,15 @@ db_multirow member_clubs select_member_clubs {} {
     set role [dotlrn_community::get_role_pretty_name -community_id $club_id -rel_type $rel_type]
 }
 
-form create non_member_form
+form create non_member_form \
+    -has_submit 1
 
 element create non_member_form non_member_department_key \
     -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget select \
     -options $departments \
-    -html {onChange document.non_member_form.submit()} \
+    -html {class auto-non_member-form-submit} \
     -value $non_member_department_key
 
 element create non_member_form non_member_term_id \
@@ -224,8 +234,9 @@ element create non_member_form non_member_term_id \
     -datatype integer \
     -widget select \
     -options $terms \
-    -html {onChange document.non_member_form.submit()} \
+    -html {class auto-non_member-form-submit} \
     -value $non_member_term_id
+template::add_event_listener -CSSclass auto-non_member-form-submit -event change -script {document.non_member_form.submit();}
 
 element create non_member_form member_department_key \
     -label "[_ dotlrn.Department]" \

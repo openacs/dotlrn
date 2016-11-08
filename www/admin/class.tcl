@@ -47,14 +47,15 @@ set description [ns_quotehtml $description]
 set terms [db_list_of_lists select_terms_for_select_widget {}]
 set terms [linsert $terms 0 {All -1}]
 
-form create term_form
+form create term_form \
+    -has_submit 1
 
 element create term_form term_id \
     -label [_ dotlrn.Term] \
     -datatype integer \
     -widget select \
     -options $terms \
-    -html {onChange document.term_form.submit()} \
+    -html {class auto-term-form-submit} \
     -value $term_id
 
 element create term_form class_key \
@@ -62,6 +63,8 @@ element create term_form class_key \
     -datatype text \
     -widget hidden \
     -value $class_key
+
+template::add_event_listener -CSSclass auto-term-form-submit -event change -script {document.term_form.submit();}
 
 if {[form is_valid term_form]} {
     form get_values term_form term_id class_key

@@ -27,7 +27,7 @@ ad_page_contract {
 }
 
 
-if {(![info exists department_key] || $department_key eq "")} {
+if {![info exists department_key] || $department_key eq ""} {
     set department_key ""
 }
 
@@ -47,16 +47,20 @@ element create department_form department_key \
     -datatype text \
     -widget select \
     -options $departments \
-    -html {onChange document.department_form.submit()} \
+    -html {id department_form-department_key} \
     -value $department_key
+
+template::add_event_listener -id "department_form-department_key" -event change -script {document.department_form.submit();}
 
 if {[form is_valid department_form]} {
     form get_values department_form department_key
 }
 
-if {(![info exists referer] || $referer eq "")} {
+if {![info exists referer] || $referer eq ""} {
     set referer "classes"
 }
+
+
 
 set query select_classes
 set page_query select_classes_paginator

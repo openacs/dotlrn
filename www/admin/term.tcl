@@ -26,6 +26,7 @@ ad_page_contract {
     {orderby "department_name,asc"}
     page:naturalnum,optional
     {keyword ""}
+    {referer "terms"}
 } -properties {
     classes:multirow
 }
@@ -49,7 +50,7 @@ element create department_form department_key \
     -datatype text \
     -widget select \
     -options $departments \
-    -html {onChange document.department_form.submit()} \
+    -html {id department_form-department_key} \
     -value $department_key
 
 element create department_form term_id \
@@ -78,7 +79,7 @@ element create term_form term_id \
     -datatype integer \
     -widget select \
     -options $terms \
-    -html {onChange document.term_form.submit()} \
+    -html {id term_form-term_id} \
     -value $term_id
 
 element create term_form department_key \
@@ -92,12 +93,12 @@ if {[form is_valid term_form]} {
 
     if {$term_id != -1} {
         ad_returnredirect [export_vars -base term {term_id department_key}]
+        ad_script_abort
     }
 }
 
-if {(![info exists referer] || $referer eq "")} {
-    set referer "terms"
-}
+template::add_event_listener -id "term_form-term_id" -event change -script {document.term_form.submit();}
+template::add_event_listener -id "department_form-department_key" -event change -script {document.department_form.submit();}
 
 set query "select_classes"
 set paginator_query "select_classes_paginator"
