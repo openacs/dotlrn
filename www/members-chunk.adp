@@ -53,7 +53,7 @@
 
 <% set dotlrn_admin_url [dotlrn::get_admin_url] %>
 
-<if @site_wide_admin_p@ eq 1>
+<if @site_wide_admin_p;literal@ true>
   <br>
   <li>
     <a href="@dotlrn_admin_url@/users-add-to-community?users=@user_list@&amp;referer=@referer@">

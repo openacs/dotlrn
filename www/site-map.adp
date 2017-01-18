@@ -23,7 +23,7 @@
                       <a href="@courses.url@?page_num=@courses.sort_key@">@courses.page_name@</a>
                     </li>
                   </group>
-                  <if @courses.admin_p@>
+                  <if @courses.admin_p;literal@ true>
                     <li>
                       <a href="@courses.url@one-community-admin">#dotlrn.Admin#</a>
                     </li>
@@ -45,7 +45,7 @@
                       <a href="@communities.url@?page_num=@communities.sort_key@">@communities.page_name@</a>
                     </li>
                   </group>
-                  <if @communities.admin_p@>
+                  <if @communities.admin_p;literal@ true>
                     <li>
                       <a href="@communities.url@one-community-admin">#dotlrn.Admin#</a>
                     </li>
@@ -79,11 +79,11 @@
 
               <li><a href="configure" title="#dotlrn.Customize_Layout#">#dotlrn.Customize_Layout#</a></li>
 
-              <if @allowed_to_change_site_template_p@>
+              <if @allowed_to_change_site_template_p;literal@ true>
                 <li><a href="@site_template_url@" title="#dotlrn.Customize_Template#">#dotlrn.Customize_Template#</a>
               </if>
 				
-              <if @invisible_p@ true>
+              <if @invisible_p;literal@ true>
                 <li><a href="@make_visible_url@" title="#acs-subsite.Make_yourself_visible_label#">#acs-subsite.Make_yourself_visible_label#</a></li>
               </if>
               <else>

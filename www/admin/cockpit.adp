@@ -94,7 +94,7 @@
 <li><a href="/acs-admin/cache">Cache Info</a>
 <li><a href="/acs-admin/cache/index">Util Memoize Caches</a>
 <li><a href="/acs-service-contract/">Service Contracts</a>
-<if @monitor_exists_p@>
+<if @monitor_exists_p;literal@ true>
 	<li><a href="@monitor_url@scheduled-procs">Scheduled Procs</a>
 	<li>Watch Errors - Last
 		<table><tr><td>
@@ -121,7 +121,7 @@
 <ul>
 <li><h2>Development</h2>
 <ul>
-<if @ds_exists_p@>
+<if @ds_exists_p;literal@ true>
 	<li><a href="@ds_url@">Developer Support</a>(<a href="@ds_url@shell">Shell</a>)
 </if>
 <li><a href="http://openacs.org/bugtracker/openacs/">Bug Tracker</a>

@@ -34,7 +34,7 @@
     <ul>
       <multiple name="users">
         <li>
-        <if @users.member_p@ true>
+        <if @users.member_p;literal@ true>
           #dotlrn.user_already_member#
         </if>
         <else>

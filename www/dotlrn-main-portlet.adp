@@ -30,7 +30,7 @@
     <multiple name="communities">
       @communities.previous_type_ul_tags;noquote@
 
-      <if @show_subtitle_p@>
+      <if @show_subtitle_p;literal@ true>
         <ul class="mktree" style="padding-left: 5px;">
           <li id="dotlrn-main-@communities.simple_community_type@">
             <h2 style="display: inline; margin: 5px 0 0 0;">
@@ -55,19 +55,19 @@
                 @communities.intra_type_ul_tags;noquote@
 
                 <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
-                <if @communities.archived_p@><span style="color:red">#dotlrn.archived#</span></if>
-                <if @show_buttons_p@ eq 1>
-                  <if @show_drop_button_p@ eq 1>
+                <if @communities.archived_p;literal@ true><span style="color:red">#dotlrn.archived#</span></if>
+                <if @show_buttons_p;literal@ true>
+                  <if @show_drop_button_p;literal@ true>
                     <a href="@communities.url@deregister-self-confirm?referer=@referer@">#dotlrn.drop_membership_link#</a>
                   </if>
-                  <if @communities.admin_p@ eq 1>
+                  <if @communities.admin_p;literal@ true>
                     <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a>
                   </if>
                 </if>
               </group>
             </li>
           </ul>
-      <if @show_subtitle_p@>
+      <if @show_subtitle_p;literal@ true>
         </li>
       </ul>
       </if>

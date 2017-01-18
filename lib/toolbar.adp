@@ -1,4 +1,4 @@
-  <if @show_p@ true>
+  <if @show_p;literal@ true>
     <table id="dotlrn-toolbar" cellspacing="0" cellpadding="0" width="100%" border="0" >
       <tr>
 	<td id="title">
@@ -46,7 +46,7 @@
 	</td>	
       </tr>
       
-      <if @info_show_p@ eq 1>
+      <if @info_show_p;literal@ true>
 	<tr>
 	  <td colspan="4" class="general-info">
 	    <ul>
