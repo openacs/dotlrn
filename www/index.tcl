@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {filter ""}
-    {page_num 0}
+    {page_num:naturalnum,notnull 0}
 }
 
 # Used to keep track of navigation links

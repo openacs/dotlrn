@@ -23,7 +23,7 @@ ad_page_contract {
     @creation-date 2001-10-04
     @version $Id$
 } -query {
-    {page_num 0}
+    {page_num:naturalnum,notnull 0}
 }
 
 # Check that this is a community type
