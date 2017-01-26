@@ -23,7 +23,7 @@ ad_page_contract {
     @creation-date 2001-12-03
     @version $Id$
 } -query {
-    {orderby "pretty_name,asc"}
+    {orderby:token "pretty_name,asc"}
     page:naturalnum,optional
 } -properties {
     title:onevalue

@@ -23,7 +23,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {department_key ""}
-    {orderby "department_name,asc"}
+    {orderby:token "department_name,asc"}
     {keyword ""}
     {page ""}
 } -properties {

@@ -21,7 +21,7 @@ ad_page_contract {
 } -query {
     {recipients:integer,multiple ""}
     {recipients_str ""}
-    {community_id ""}
+    {community_id:integer ""}
     {rel_types:multiple "" }
     {rel_types_str ""}
     {referer ""}

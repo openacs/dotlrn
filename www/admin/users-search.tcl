@@ -22,8 +22,8 @@ ad_page_contract {
     @version $Id$
 } -query {
     {type "any"}
-    {can_browse_p "any"}
-    {guest_p "any"}
+    {can_browse_p:word "any"}
+    {guest_p:word "any"}
     {join_criteria "and"}
     {n_users 0}
     {action "none"}

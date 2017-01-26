@@ -21,8 +21,8 @@ ad_page_contract {
     @creation-date 2002-03-15
     @version $Id$
 } -query {
-    {user_id:multiple ""}
-    {community_id ""}
+    {user_id:integer,multiple ""}
+    {community_id:integer ""}
     {referer "./"}
 }
 

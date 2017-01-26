@@ -21,8 +21,8 @@ ad_page_contract {
     @creation-date November 19, 2002
     @version $Id$
 } -query {
-    user_id
-    guest_p
+    user_id:naturalnum,notnull
+    guest_p:boolean
     {referer "users"}
 }
 

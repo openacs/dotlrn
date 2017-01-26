@@ -1,7 +1,7 @@
 ad_page_contract {
     Send word of welcome
 } -query {
-    community_id
+    community_id:naturalnum,notnull
 } -validate {
     community_id_is_dotlrn_community {
 	if {[dotlrn_community::get_community_key -community_id $community_id] eq ""} {

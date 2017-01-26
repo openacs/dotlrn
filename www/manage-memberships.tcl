@@ -38,8 +38,8 @@ ad_page_contract {
 } -query {
     {member_department_key ""}
     {non_member_department_key ""}
-    {member_term_id -1}
-    {non_member_term_id -1}
+    {member_term_id:integer -1}
+    {non_member_term_id:integer -1}
 } -properties {
 }
 

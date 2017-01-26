@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     page:naturalnum,optional
-    {orderby "start_date_pretty,desc"}
+    {orderby:token "start_date_pretty,desc"}
 } -properties {
     context_bar:onevalue
     terms:multirow

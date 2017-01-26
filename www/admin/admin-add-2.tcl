@@ -23,7 +23,7 @@ ad_page_contract {
     @creation-date 2004-07-02
     @cvs-id $Id$
 } -query {
-    user_id
+    user_id:naturalnum,notnull
     {referer "dotlrn-admins"}
 } -properties {
 

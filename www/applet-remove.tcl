@@ -20,7 +20,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-08
 } -query {
-    community_id
+    community_id:naturalnum,notnull
     applet_key
 }
 

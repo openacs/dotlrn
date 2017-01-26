@@ -2,7 +2,7 @@ ad_page_contract {
     Form to confirm a user dropping a single membership for themselves
 } -query {
     {user_id:multiple,integer ""}
-    {community_id ""}
+    {community_id:integer ""}
     {referer "./"}
 }
 

@@ -1,6 +1,6 @@
 ad_page_contract {
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     {referer ""}
 }
 

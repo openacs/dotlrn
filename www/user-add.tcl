@@ -24,10 +24,10 @@ ad_page_contract {
     @version $Id$
 } -query {
     {type student}
-    {can_browse_p 0}
-    {read_private_data_p f}
-    {add_membership_p t}
-    {dotlrn_interactive_p 0}
+    {can_browse_p:boolean 0}
+    {read_private_data_p:boolean f}
+    {add_membership_p:boolean t}
+    {dotlrn_interactive_p:boolean 0}
     {referer members}
 } -properties {
     context_bar:onevalue

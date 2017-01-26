@@ -20,7 +20,7 @@ ad_page_contract {
     @author arjun (arjun@openforce.net)
     @version $Id$
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     {referer "one-community-admin"}
 } -properties {
     title:onevalue

@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$ 
 } -query {
     {user_id:naturalnum,multiple,notnull}
-    {community_id ""}
+    {community_id:integer ""}
     {referer ""}
 }
 

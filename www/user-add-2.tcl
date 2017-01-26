@@ -21,14 +21,14 @@ ad_page_contract {
     @creation-date 2002-01-20
     @version $Id$
 } -query {
-    user_id
+    user_id:naturalnum,notnull
     password
     {referer "/acs-admin/users"}
     type
-    can_browse_p
-    read_private_data_p
-    dotlrn_interactive_p
-    add_membership_p
+    can_browse_p:boolean
+    read_private_data_p:boolean
+    dotlrn_interactive_p:boolean
+    add_membership_p:boolean
 } -properties {
     context_bar:onevalue
     export_vars:onevalue

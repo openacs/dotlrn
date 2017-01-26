@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2004-04-25
     @version $Id: unarchive.tcl
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     {referer "."}
 }
 

@@ -22,7 +22,7 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
-    user_id:multiple
+    user_id:naturalnum,multiple,notnull
     rel_type
     {referer "one-community-admin"}
 }

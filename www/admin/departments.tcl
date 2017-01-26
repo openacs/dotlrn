@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {keyword ""}
-    {orderby "department_name,asc"}
+    {orderby:token "department_name,asc"}
     page:naturalnum,optional
 } -properties {
     title:onevalue

@@ -23,8 +23,8 @@ ad_page_contract {
     @version $Id$
 } -query {
     class_key:notnull
-    {term_id -1}
-    {orderby "term_name,asc"}
+    {term_id:integer -1}
+    {orderby:token "term_name,asc"}
     {keyword ""}
 } -properties {
     pretty_name:onevalue

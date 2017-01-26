@@ -18,7 +18,7 @@ ad_page_contract {
     @creation-date 2002-01-18
     @version $Id$
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     policy:notnull
     {referer "one-community-admin"}
 } -validate {

@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     term_id:integer,notnull
     {department_key ""}
-    {orderby "department_name,asc"}
+    {orderby:token "department_name,asc"}
     page:naturalnum,optional
     {keyword ""}
     {referer "terms"}

@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date Jan 12, 2002
     @version $Id$
 } -query {
-    user_id
+    user_id:naturalnum,notnull
     value
     {referer "users"}
 }
