@@ -21,12 +21,12 @@ ad_page_contract {
     @creation-date 2002-02-10
     @version $Id$
 } -query {
-    {type "any"}
+    {type:word "any"}
     {can_browse_p:word "any"}
     {guest_p:word "any"}
-    {join_criteria "and"}
-    {n_users 0}
-    {action "none"}
+    {join_criteria:word "and"}
+    {n_users:integer 0}
+    {action:word "none"}
 } -properties {
     context_bar:onevalue
     is_request:onevalue
