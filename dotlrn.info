@@ -7,25 +7,25 @@
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
     
-    <version name="2.9.1d4" url="http://openacs.org/repository/download/apm/dotlrn-2.9.1d4.apm">
+    <version name="2.9.1a3" url="http://openacs.org/repository/download/apm/dotlrn-2.9.1a3.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
-        <release-date>2015-10-04</release-date>
+        <release-date>2016-08-03</release-date>
         <vendor url="http://dotlrn.org">DotLRN Consortium</vendor>
 	<maturity>2</maturity>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.9.1d4"/>
-        <requires url="acs-kernel" version="5.9.0"/>
-	<requires url="acs-tcl" version="5.9.1d7"/>
-        <requires url="acs-subsite" version="5.9.0"/>
-	<requires url="acs-admin" version="5.9.1d2"/>
-        <requires url="acs-mail-lite" version="5.9.0"/>
-        <requires url="acs-lang" version="5.9.0"/>
+        <provides url="dotlrn" version="2.9.1a3"/>
+        <requires url="acs-kernel" version="5.9.1b1"/>
+	<requires url="acs-tcl" version="5.9.1b1"/>
+        <requires url="acs-subsite" version="5.9.1b1"/>
+	<requires url="acs-admin" version="5.9.1b1"/>
+        <requires url="acs-mail-lite" version="5.9.1b1"/>
+        <requires url="acs-lang" version="5.9.1b1"/>
         <requires url="attachments" version="0.10"/>
-        <requires url="new-portal" version="2.9.0"/>
-        <requires url="profile-provider" version="2.9.0"/>
-        <requires url="user-profile" version="2.9.0"/>
+        <requires url="new-portal" version="2.9.1b1"/>
+        <requires url="profile-provider" version="2.9.1b1"/>
+        <requires url="user-profile" version="2.9.1b1"/>
 
 	<install package="dotlrn-bm"/>
 	<install package="dotlrn-calendar"/>
