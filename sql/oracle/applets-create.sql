@@ -53,7 +53,9 @@ create table dotlrn_community_applets (
                                     constraint dotlrn_ca_applet_key_nn
                                     not null,
     -- this is the package_id of the package this applet represents
-    package_id                      integer,
+    package_id                      integer
+                                    constraint dotlrn_ca_package_id_fk
+                                    references apm_packages (package_id),
     active_p                        char(1)
                                     default 't'
                                     constraint dotlrn_ca_active_p_ck
