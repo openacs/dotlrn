@@ -46,7 +46,7 @@ namespace eval dotlrn {
         do an abort if security violation
     } {
         ad_returnredirect "not-allowed"
-        return -code error
+        ad_script_abort
     }
 
     ad_proc -public get_user_types {} {
