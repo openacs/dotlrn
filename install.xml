@@ -8,7 +8,7 @@
     <!-- Installing all applets gives us what we need as applets depend on both dotlrn, the portlets
          and the respective applications (i.e. forums file-storage etc.) -->
 <!--
-
+        *** deactivated for the time being (while working on incrementation installation) *** -->
     <install package="dotlrn-bm"/>
     <install package="dotlrn-calendar"/>
     <install package="dotlrn-dotlrn"/>
@@ -21,7 +21,6 @@
     <install package="dotlrn-static"/>
     <install package="dotlrn-assessment"/>
     <install package="dotlrn-evaluation"/>
-        *** deactivated for the time being (while working on incrementation installation) *** -->
     <install package="theme-zen"/>
 <!--
     <set-parameter package-key="acs-subsite" name="DefaultMaster" value="/packages/theme-zen/lib/lrn-master"/> 
