@@ -101,7 +101,7 @@ BEGIN
     end;
 
   if ds_id is not null then
-    portal_datasource__delete(ds_id);
+    select portal_datasource__delete(ds_id);
   end if;
   
   return 0;
