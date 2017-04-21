@@ -226,8 +226,8 @@
   <msg key="lt_Add_members_to_anothe">将会员加入到另一组</msg>
   <msg key="lt_Add_These_Users_To_A_">将用户加入到组</msg>
   <msg key="lt_Administrative_Action">管理操作</msg>
-  <msg key="lt_An_error_occured_whil">给团体添加用户时出错。此错误已被记录下来。</msg>
-  <msg key="lt_An_error_occured_whil_1">给团体删除用户时出错。此错误已被记录下来。</msg>
+  <msg key="lt_An_error_occurred_whil">给团体添加用户时出错。此错误已被记录下来。</msg>
+  <msg key="lt_An_error_occurred_whil_1">给团体删除用户时出错。此错误已被记录下来。</msg>
   <msg key="lt_approve_and_add_to_do">批准加入到dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">确实要删除空部门吗</msg>
   <msg key="lt_Be_sure_that_the_pers">确信一个人没有另外一个email地址的帐户存在。重复帐户会引起问题。增加一个已经存在帐户的人用&lt;a href=members&gt;管理会员&lt;/a&gt;。</msg>

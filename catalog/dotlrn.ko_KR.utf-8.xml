@@ -226,8 +226,8 @@
   <msg key="lt_Add_members_to_anothe">다른 그룹에 회원 추가</msg>
   <msg key="lt_Add_These_Users_To_A_">그룹에 이 회원들 추가</msg>
   <msg key="lt_Administrative_Action">관리 활동</msg>
-  <msg key="lt_An_error_occured_whil">커뮤니티에 사용자를 추가하는 동안에 오류가 발생하였습니다. 이 오류는 기록되었습니다. </msg>
-  <msg key="lt_An_error_occured_whil_1">사용자를 커뮤니티에서 삭제하는 동안에 오류가 발생했습니다. 이 오류는 기록되었습니다.</msg>
+  <msg key="lt_An_error_occurred_whil">커뮤니티에 사용자를 추가하는 동안에 오류가 발생하였습니다. 이 오류는 기록되었습니다. </msg>
+  <msg key="lt_An_error_occurred_whil_1">사용자를 커뮤니티에서 삭제하는 동안에 오류가 발생했습니다. 이 오류는 기록되었습니다.</msg>
   <msg key="lt_approve_and_add_to_do">dotLRN에 추가 및 승인</msg>
   <msg key="lt_Are_you_sure_you_want">빈 학과를 삭제하기를 원하십니까?</msg>
   <msg key="lt_Be_sure_that_the_pers">다른 전자우편 주소로 Sloan영역의 계정을 가지고 있지 않는 것이 확실합니다. 계정을 복사하는 것이 문제의 원인이 됩니다. &lt;a href=members&gt;회원자격 관리&lt;/a&gt;.를 이용하여 존재하는 계정을 가지고 추가합니다. </msg>

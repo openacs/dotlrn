@@ -225,8 +225,8 @@ Data Końcowa:</msg>
   <msg key="lt_Add_members_to_anothe">Dodaj członków do innej grupy</msg>
   <msg key="lt_Add_These_Users_To_A_">Doday Tych Użytkowników do Grupy</msg>
   <msg key="lt_Administrative_Action">Czynności Administracyjne</msg>
-  <msg key="lt_An_error_occured_whil">W czasie dodawania użytkownika do społeczności wystąpił błąd. Awaria zostałą odnotowana.</msg>
-  <msg key="lt_An_error_occured_whil_1">Podczas usuwania użytkownika wystąpił błąd. Usterka została odnotowana.</msg>
+  <msg key="lt_An_error_occurred_whil">W czasie dodawania użytkownika do społeczności wystąpił błąd. Awaria zostałą odnotowana.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Podczas usuwania użytkownika wystąpił błąd. Usterka została odnotowana.</msg>
   <msg key="lt_approve_and_add_to_do">zatwierdź i dodaj do dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Czy na pewno usunąć pusty wydział</msg>
   <msg key="lt_Be_sure_that_the_pers">Upewnij się, że ta osoba nie posiada już konta z innym adresem email w SloanSpace. Podwójna adresy sprawiają problemy wszystkim. Proszę użyć &lt;a href=members&gt;Zarządznia Użytkownikami&lt;/a&gt;, aby dodać osobę z istniejącym kontem.</msg>

@@ -258,8 +258,8 @@
   <msg key="lt_Add_members_to_anothe">Adicionar membros para um outro grupo</msg>
   <msg key="lt_Add_These_Users_To_A_">Adicionar Estes Usuários a um Grupo</msg>
   <msg key="lt_Administrative_Action">Ações Administrativas</msg>
-  <msg key="lt_An_error_occured_whil">Um erro ocorreu enquanto tentava adicionar um usuário a uma comunidade. Este erro foi arquivado.</msg>
-  <msg key="lt_An_error_occured_whil_1">Um erro ocorreu enquanto tentava remover um usuário de uma comunidade. Este erro foi arquivado.</msg>
+  <msg key="lt_An_error_occurred_whil">Um erro ocorreu enquanto tentava adicionar um usuário a uma comunidade. Este erro foi arquivado.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Um erro ocorreu enquanto tentava remover um usuário de uma comunidade. Este erro foi arquivado.</msg>
   <msg key="lt_approve_and_add_to_do">aprovar e adicionar ao dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Você tem certeza que quer remover o departamento vazio</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Você tem certeza de que deseja remover estes usuários completamente? Note que erros podem ocorrer na tentativa de remover alguns destes usuários.</msg>

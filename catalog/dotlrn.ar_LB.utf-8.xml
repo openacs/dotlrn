@@ -242,8 +242,8 @@
   <msg key="lt_Add_members_to_anothe">أضف أعضاء لمجموعة أخرى</msg>
   <msg key="lt_Add_These_Users_To_A_">أضفْ هؤلاء المستخدمين لمجموعة</msg>
   <msg key="lt_Administrative_Action">الأعمالُ الإداريةُ</msg>
-  <msg key="lt_An_error_occured_whil">حَدثَ خطأ أثناء محاولة إضافة مستخدم لجمعية. هذا الخطأ قد سُجل.</msg>
-  <msg key="lt_An_error_occured_whil_1">حَدثَ خطأ أثناء محاولة حذف مستخدم لجمعية. هذا الخطأ قد سُجل. </msg>
+  <msg key="lt_An_error_occurred_whil">حَدثَ خطأ أثناء محاولة إضافة مستخدم لجمعية. هذا الخطأ قد سُجل.</msg>
+  <msg key="lt_An_error_occurred_whil_1">حَدثَ خطأ أثناء محاولة حذف مستخدم لجمعية. هذا الخطأ قد سُجل. </msg>
   <msg key="lt_approve_and_add_to_do">وافق وأضفْ إلى دوتلرن</msg>
   <msg key="lt_Are_you_sure_you_want">هل أنت متأكّد أنّك تريد حذف القسم الفارغ</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>

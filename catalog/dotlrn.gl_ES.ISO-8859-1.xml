@@ -220,8 +220,8 @@
   <msg key="lt_Add_members_to_anothe">Adicionar membros a outro grupo</msg>
   <msg key="lt_Add_These_Users_To_A_">Adicionar estes usuarios a un grupo</msg>
   <msg key="lt_Administrative_Action">Accións administrativas</msg>
-  <msg key="lt_An_error_occured_whil">Ocorreu un erro ao tentar adicionar un utilizador a unha comunidade. Este erro foi rexistrado.</msg>
-  <msg key="lt_An_error_occured_whil_1">Ocorreu un erro ao tentar eliminar un utilizador de unha comunidade. Este erro foi rexistrado.</msg>
+  <msg key="lt_An_error_occurred_whil">Ocorreu un erro ao tentar adicionar un utilizador a unha comunidade. Este erro foi rexistrado.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Ocorreu un erro ao tentar eliminar un utilizador de unha comunidade. Este erro foi rexistrado.</msg>
   <msg key="lt_approve_and_add_to_do">aprobar e adicionar ao dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Tes a certeza de que queres eliminar o departamento vacío</msg>
   <msg key="lt_Be_sure_that_the_pers">Certifícate de que a persoa non ten xa unha conta no SloanSpace con outro enderezo de correo. Contas duplicadas causan problemas a toda a xente. Para adicionar unha persoa con unha conta existente utiliza &lt;a href=members&gt;Xerenciar Associacións&lt;/a&gt;.</msg>

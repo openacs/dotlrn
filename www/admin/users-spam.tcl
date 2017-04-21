@@ -90,7 +90,7 @@ if {[form is_valid spam_message]} {
     lappend message_values [list {<sender_email>} $from]
 
     spam::send \
-        -recepients $users \
+        -recipients $users \
         -from $from \
         -real_from $sender_email \
         -subject $subject \

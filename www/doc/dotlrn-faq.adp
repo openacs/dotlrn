@@ -89,5 +89,5 @@
 	  capitalization <kbd>dotLRN</kbd> is preferred. hackers who type a
 	  lot usually write <kbd>dotlrn</kbd>. <kbd>dotLRN</kbd> is pronounced
 	  &quot;daught-learn&quot; We are currently accepting voice
-	  applications for the dotLRN MP3 pronounciation file.
+	  applications for the dotLRN MP3 pronunciation file.
     </p>

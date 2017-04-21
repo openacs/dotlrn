@@ -239,8 +239,8 @@ notify this user.</msg>
   <msg key="lt_Add_members_to_anothe">Add members to another group</msg>
   <msg key="lt_Add_These_Users_To_A_">Add These Users To A Group</msg>
   <msg key="lt_Administrative_Action">Administrative Actions</msg>
-  <msg key="lt_An_error_occured_whil">An error occured while trying to add a user to a community.  This error has been logged.</msg>
-  <msg key="lt_An_error_occured_whil_1">An error occured while trying to remove a user to a community.  This error has been logged.</msg>
+  <msg key="lt_An_error_occurred_whil">An error occurred while trying to add a user to a community.  This error has been logged.</msg>
+  <msg key="lt_An_error_occurred_whil_1">An error occurred while trying to remove a user to a community.  This error has been logged.</msg>
   <msg key="lt_approve_and_add_to_do">approve and add to dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Are you sure you want to archive group &lt;strong&gt;%pretty_name%&lt;/strong&gt; and all its subgroups (if any)?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Are you sure you want to remove these users completely?  Note that we only attempt to remove these users and may encounter errors for some of the users.</msg>

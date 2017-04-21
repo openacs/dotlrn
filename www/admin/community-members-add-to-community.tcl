@@ -98,7 +98,7 @@ if {[form is_valid select_community]} {
                             } else {
                                 ns_log Error "community-members-add-to_community.tcl failed: $errmsg"
                                 ReturnHeaders
-                                ad_return_error "[_ dotlrn.lt_Error_adding_user_to_]"  "[_ dotlrn.lt_An_error_occured_whil]"
+                                ad_return_error "[_ dotlrn.lt_Error_adding_user_to_]"  "[_ dotlrn.lt_An_error_occurred_whil]"
                             }
                         }
                     } else {

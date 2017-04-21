@@ -224,8 +224,8 @@
   <msg key="lt_Add_members_to_anothe">Lägg till medlemmar till en annan grupp</msg>
   <msg key="lt_Add_These_Users_To_A_">Lägg till dessa användare till en grupp</msg>
   <msg key="lt_Administrative_Action">Administrativa åtgärder</msg>
-  <msg key="lt_An_error_occured_whil">Ett fel inträffade vid försöket att lägga till en användare till en grupp. Detta fel har loggats.</msg>
-  <msg key="lt_An_error_occured_whil_1">Ett fel inträffade vid försöket att ta bort en användare till en grupp. Detta fel har loggats.</msg>
+  <msg key="lt_An_error_occurred_whil">Ett fel inträffade vid försöket att lägga till en användare till en grupp. Detta fel har loggats.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Ett fel inträffade vid försöket att ta bort en användare till en grupp. Detta fel har loggats.</msg>
   <msg key="lt_approve_and_add_to_do">godkänn och lägg till till dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Är du säker på att du vill ta bort den tomma institutionen</msg>
   <msg key="lt_Be_sure_that_the_pers">Var säker på att personen inte redan har ett SloanSpacekonto knutet till en annan e-postadress. Dubbla konton skapar problem för alla. För att lägga till en person med ett existerande konto använd &lt;a href=members&gt;Hantera medlemsskap&lt;/a&gt;.</msg>

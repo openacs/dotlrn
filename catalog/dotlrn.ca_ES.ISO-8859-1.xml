@@ -237,8 +237,8 @@
   <msg key="lt_Add_members_to_anothe">Afegir membres a un altre grup </msg>
   <msg key="lt_Add_These_Users_To_A_">Afegir aquests usuaris a un grup </msg>
   <msg key="lt_Administrative_Action">Accions d'administració </msg>
-  <msg key="lt_An_error_occured_whil">S'ha produït un error en intentar afegir un usuari a una comunitat. L'error s'ha arxivat. </msg>
-  <msg key="lt_An_error_occured_whil_1">S'ha produït un error en intentar eliminar un usuari d'una comunitat. L'error s'ha arxivat. </msg>
+  <msg key="lt_An_error_occurred_whil">S'ha produït un error en intentar afegir un usuari a una comunitat. L'error s'ha arxivat. </msg>
+  <msg key="lt_An_error_occurred_whil_1">S'ha produït un error en intentar eliminar un usuari d'una comunitat. L'error s'ha arxivat. </msg>
   <msg key="lt_approve_and_add_to_do">aprovar i afegir a dotLRN </msg>
   <msg key="lt_Are_you_sure_you_want">¿Desitja realment esborrar este departament ?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Esteu segur que voleu eliminar aquests usuaris completament? Tingueu en compte que només intentem eliiminar aquests usuaris i potser alguns usuaris hi trobaran errors.</msg>

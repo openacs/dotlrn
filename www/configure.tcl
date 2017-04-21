@@ -46,7 +46,7 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
     set user_id [auth::require_login]
 
     # I don't see under what circumstance we wouldn't want users to
-    # customize thier own portal. -Caroline.
+    # customize their own portal. -Caroline.
 
     #    dotlrn::require_user_browse -user_id $user_id
 

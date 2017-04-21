@@ -216,8 +216,8 @@
   <msg key="lt_Add_members_to_anothe">他のグループへのメンバー追加</msg>
   <msg key="lt_Add_These_Users_To_A_">これらのユーザをグループに追加</msg>
   <msg key="lt_Administrative_Action">管理操作</msg>
-  <msg key="lt_An_error_occured_whil">コミュニティへのユーザの追加でエラーが発生しました。このエラーは記録されました。</msg>
-  <msg key="lt_An_error_occured_whil_1">コミュニティからのユーザの削除でエラーが発生しました。このエラーは記録されました。</msg>
+  <msg key="lt_An_error_occurred_whil">コミュニティへのユーザの追加でエラーが発生しました。このエラーは記録されました。</msg>
+  <msg key="lt_An_error_occurred_whil_1">コミュニティからのユーザの削除でエラーが発生しました。このエラーは記録されました。</msg>
   <msg key="lt_approve_and_add_to_do">dotLRNへの承認及び追加</msg>
   <msg key="lt_Are_you_sure_you_want">空の学部を削除してもよろしいですか</msg>
   <msg key="lt_Be_sure_that_the_pers">この方が他のメールアドレスでSloanSpaceアカウントを持っていないことを確認して下さい。アカウントの重複はユーザ全員への問題となります。既存のアカウントとして追加するには、&lt;a href=members&gt;メンバー管理&lt;/a&gt; を使用して下さい。</msg>

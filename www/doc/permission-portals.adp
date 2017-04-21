@@ -52,7 +52,7 @@ destroy portals for scenarios such as the one given above.
 
 <h3>DELETE</h3>
 <ul>
-<li>User can destory this portal. Not granted to non-admin users.
+<li>User can destroy this portal. Not granted to non-admin users.
 <li>Granted to: Admin users who have CREATE
 </ul>
 

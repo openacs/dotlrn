@@ -125,7 +125,7 @@ $community_url/members
     } else {
         ns_log Error "register.tcl failed: $errmsg\n$::errorInfo"
         
-        ad_return_error "Error adding user to community"  "An error occured while trying to add a user to a community.  This error has been logged."
+        ad_return_error "Error adding user to community"  "An error occurred while trying to add a user to a community.  This error has been logged."
     }
 }
 

@@ -63,7 +63,7 @@ as
     and users.user_id = persons.person_id;
 
 
---Creating default site tempaltes 
+--Creating default site templates 
 
 
 

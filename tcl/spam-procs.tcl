@@ -48,7 +48,7 @@ namespace eval spam {
     }
 
     ad_proc -public send {
-        {-recepients:required}
+        {-recipients:required}
         {-from:required}
         {-real_from:required}
         {-subject:required}
@@ -57,7 +57,7 @@ namespace eval spam {
     } {
         Send a spam to a set of users.
 
-        @param recepients a list of party_id's; the recepients.
+        @param recipients a list of party_id's; the recipients.
         @param from email address to set as "From"
         @param real_from real address of the sender to use in case of
                             errors.
@@ -70,9 +70,9 @@ namespace eval spam {
         set subject [interpolate -values $message_values -text $subject]
         set message [interpolate -values $message_values -text $message]
 
-        # loop through all the recepients and send them the spam
+        # loop through all the recipients and send them the spam
         set errors ""
-        db_foreach select_recepient_info {} {
+        db_foreach select_recipient_info {} {
             # replace some values in the subject and the message
             set values [list]
             lappend values [list \{email\} $email]

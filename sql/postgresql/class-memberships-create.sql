@@ -165,8 +165,8 @@ BEGIN
 
     perform acs_rel_type__create_type (
         'dotlrn_ca_rel',
-        'dotLRN Course Assitant Community Membership',
-        'dotLRN Course Assitant Community Memberships',
+        'dotLRN Course Assistant Community Membership',
+        'dotLRN Course Assistant Community Memberships',
         'dotlrn_admin_rel',
         'dotlrn_ca_rels',        
         'rel_id',

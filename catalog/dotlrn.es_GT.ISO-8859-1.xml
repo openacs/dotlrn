@@ -238,8 +238,8 @@
   <msg key="lt_Add_members_to_anothe">Agregar miembros a otro grupo</msg>
   <msg key="lt_Add_These_Users_To_A_">Agregar Estos Usuarios a un Grupo</msg>
   <msg key="lt_Administrative_Action">Opciones de Administración</msg>
-  <msg key="lt_An_error_occured_whil">Ha ocurrido un error al intentar agregar el usuario a una comunidad. El error ha sido archivado.</msg>
-  <msg key="lt_An_error_occured_whil_1">Ha ocurrido un error al dar de baja el usuario de la comunidad. El error ha sido archivado.</msg>
+  <msg key="lt_An_error_occurred_whil">Ha ocurrido un error al intentar agregar el usuario a una comunidad. El error ha sido archivado.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Ha ocurrido un error al dar de baja el usuario de la comunidad. El error ha sido archivado.</msg>
   <msg key="lt_approve_and_add_to_do">aprobar y agregar a dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">¿Desea realmente borrar este departamento?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Estas seguro que quieres eliminar estos usuarios? Note que solo tratamos de borrar estos usuarios y se pueden presentar errores para algunos de ellos.</msg>

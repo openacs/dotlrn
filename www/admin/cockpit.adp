@@ -48,7 +48,7 @@
 <li><a href="http://openacs.org/doc/openacs-HEAD/">CVS Head</a>
 <li><a href="http://openacs.org/packages/">Packages</a>
 </ul>
-<li><h2>User Managment</h2>
+<li><h2>User Management</h2>
 <ul>
 <li><a href="/acs-admin/auth">Authorities</a>
 <li><a href="/acs-admin/users/">ACS Users</a>

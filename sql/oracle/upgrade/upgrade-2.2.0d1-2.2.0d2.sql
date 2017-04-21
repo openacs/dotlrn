@@ -60,7 +60,7 @@ as
     and users.user_id = persons.person_id;
 
 
---Creating default site tempaltes 
+--Creating default site templates 
 
 declare 
 	v_site_template_id	dotlrn_site_templates.site_template_id%TYPE;

@@ -242,8 +242,8 @@
   <msg key="lt_Add_members_to_anothe">Legg til medlemmer til en annen sammenslutning</msg>
   <msg key="lt_Add_These_Users_To_A_">Legg disse brukerene til en sammenslutning</msg>
   <msg key="lt_Administrative_Action">Administrative oppgaver</msg>
-  <msg key="lt_An_error_occured_whil">En feil oppstod under innlegging av en bruker i en gruppe. Denne feilen har blitt logget.</msg>
-  <msg key="lt_An_error_occured_whil_1">En feil oppstod under forsøk på å fjerne en bruker i en gruppe. Feilen har blitt logget.</msg>
+  <msg key="lt_An_error_occurred_whil">En feil oppstod under innlegging av en bruker i en gruppe. Denne feilen har blitt logget.</msg>
+  <msg key="lt_An_error_occurred_whil_1">En feil oppstod under forsøk på å fjerne en bruker i en gruppe. Feilen har blitt logget.</msg>
   <msg key="lt_approve_and_add_to_do">godkjenn en innlegging i dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på at du vil slette den tomme avdelingen</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Er du sikker på at du vil fjerne disse brukerene for godt? Legg merke til at vi bare prøver å fjerne disse brukerene, og  kan muligens møte feil for noen av brukerene.</msg>

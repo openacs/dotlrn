@@ -55,7 +55,7 @@ if {![llength $existing_forum_ids]} {
 	forum::new_questions_deny -forum_id $forum_id
 	forum::new_questions_allow -forum_id $forum_id -party_id $user_id
 
-	#Everyone should be subscribed to thier weblog!
+	#Everyone should be subscribed to their weblog!
 
 	notification::request::new -object_id $forum_id \
 		-type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
@@ -65,7 +65,7 @@ if {![llength $existing_forum_ids]} {
     }
 } else {
     set forum_id [lindex $existing_forum_ids 0]
-    #Probably a double click, send them to thier first existing enabled weblog.
+    #Probably a double click, send them to their first existing enabled weblog.
 }
 
 ad_returnredirect "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view?forum_id=$forum_id"
