@@ -21,7 +21,7 @@ ns_log notice "start dotlrn master url=[ad_conn url]"
 # Instructions:
 #
 # 1. Put this file and it's .adp file into the server's /www directory.
-# That's the one with the "default-master" tcl and adp files. You don't
+# That's the one with the "default-master" Tcl and adp files. You don't
 # have to edit or remove the "default-master" files, since they will be
 # ignored by the next step.
 # 

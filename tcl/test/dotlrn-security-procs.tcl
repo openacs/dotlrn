@@ -2,7 +2,7 @@
 
 ad_library {
     
-    dotlrn tcl helper procs for acs-automated-testing
+    dotlrn Tcl helper procs for acs-automated-testing
     
     @author Deds Castillo (deds@i-manila.com.ph)
     @creation-date 2004-08-11

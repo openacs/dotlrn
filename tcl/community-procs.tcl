@@ -1195,7 +1195,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_subcomm_list {
         {-community_id:required}
     } {
-        Returns a tcl list of the subcommunities of this community or
+        Returns a Tcl list of the subcommunities of this community or
         if none, the empty list
     } {
         return [db_list select_subcomms {}]
@@ -1204,7 +1204,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_subcomm_info_list {
         {-community_id:required}
     } {
-        Returns a tcl list of ns_sets with info about each subcomm. The keys
+        Returns a Tcl list of ns_sets with info about each subcomm. The keys
         are: community_id, community_key, pretty_name, archived_p and url. Returns both archived and unarchived subcommunities.
     } {
         return [db_list_of_ns_sets select_subcomms_info {}]
