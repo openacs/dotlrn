@@ -43,10 +43,10 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
 } else {
 
-    set user_id [ad_conn user_id]
+    set user_id [auth::require_login]
 
     # I don't see under what circumstance we wouldn't want users to
-    # customize thier own portal. -Caroline.
+    # customize their own portal. -Caroline.
 
     #    dotlrn::require_user_browse -user_id $user_id
 
@@ -66,3 +66,9 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -5,7 +5,7 @@ ad_page_contract {
     @version $Id$
 } {
     {user_id:naturalnum,notnull}
-    {return_url ""}
+    {return_url:localurl ""}
     {password_old ""}
 }  -validate {
     dotlrn_cannot_become_wide_admin {
@@ -23,3 +23,9 @@ set context_bar [list [list users Users] [list "user.tcl?user_id=$user_id" "usua
 set site_link [ad_site_home_link]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -23,7 +23,7 @@ ad_page_contract {
     @creation-date 2001-12-03
     @version $Id$
 } -query {
-    {orderby "pretty_name,asc"}
+    {orderby:token "pretty_name,asc"}
     page:naturalnum,optional
 } -properties {
     title:onevalue
@@ -76,7 +76,13 @@ template::list::create \
     }
 
 db_multirow clubs select_clubs {} {
-    set description [ad_quotehtml $description]
+    set description [ns_quotehtml $description]
 }
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

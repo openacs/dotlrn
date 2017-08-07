@@ -21,8 +21,8 @@ ad_page_contract {
     @creation-date November 19, 2002
     @version $Id$
 } -query {
-    user_id
-    can_browse_p
+    user_id:naturalnum,notnull
+    can_browse_p:boolean
     {referer "users"}
 }
 
@@ -36,3 +36,9 @@ util_memoize_flush_regexp  $user_id
 ad_returnredirect $referer
 
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -17,3 +17,9 @@ ad_page_contract {
 template::head::add_css -href "/resources/dotlrn/help.css" -media "screen"
 
 set doc(title) $title
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

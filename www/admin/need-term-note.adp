@@ -18,6 +18,6 @@
 
 %>
 
-<i>
+<em>
   #dotlrn.you_need_to_create_terms_to_create_classes#
-</i>
+</em>

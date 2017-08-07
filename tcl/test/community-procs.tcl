@@ -50,3 +50,9 @@ aa_register_case -cats { db security_risk } \
 		}		
 	    }
     }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

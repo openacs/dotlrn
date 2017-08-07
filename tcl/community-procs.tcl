@@ -343,7 +343,11 @@ namespace eval dotlrn_community {
         while {1} {
             if {$parent_community_id ne ""} {
                 #admin of the parent need admin on the subcommunity.
-                set parent_admin_party [db_string "parent_admin_party" "select segment_id from rel_segments where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'"]
+                set parent_admin_party [db_string parent_admin_party {
+                    select segment_id
+                    from rel_segments
+                    where group_id = :parent_community_id and rel_type='dotlrn_admin_rel'
+                }]
                 permission::grant -party_id $parent_admin_party -object_id $community_id -privilege "admin"
                 
                 #if this community has a parent we need to work up the chain.
@@ -822,8 +826,7 @@ namespace eval dotlrn_community {
                 $community_id \
                 $user_id \
             ]} errmsg]} {
-                global errorInfo
-                set savedInfo $errorInfo
+                set savedInfo $::errorInfo
 
                 if {[string match -nocase {acs_object_rels_un} $errmsg]} {
                     return
@@ -1035,14 +1038,17 @@ namespace eval dotlrn_community {
 	@return community_id of the community where the package is mounted, empty string if not found
     } {
         if {$package_id eq ""} {
-            set package_id [site_node::closest_ancestor_package -include_self -package_key dotlrn]
+            set package_id [site_node::closest_ancestor_package \
+                                -url [ad_conn url] \
+                                -include_self \
+                                -package_key dotlrn]
 	    if {$package_id eq ""} {
 		set package_id [ad_conn package_id]
 	    }
         }
 
 	if {$package_id ne ""} {
-	    return [util_memoize "dotlrn_community::get_community_id_not_cached -package_id $package_id"]
+	    return [util_memoize [list dotlrn_community::get_community_id_not_cached -package_id $package_id]]
 	} else {
 	    return ""
 	}
@@ -1148,7 +1154,7 @@ namespace eval dotlrn_community {
         }
 
         if {$complain_if_invalid_p && !$valid_p} {
-            ns_log notice "The name <strong>$community_key</strong> is already in use either by an active or archived group. \n Please go back and select a different name."
+            ns_log notice "The name '$community_key' is already in use either by an active or archived group. \n Please go back and select a different name."
             ad_return_complaint 1 \
                 [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
 
@@ -1189,7 +1195,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_subcomm_list {
         {-community_id:required}
     } {
-        Returns a tcl list of the subcommunities of this community or
+        Returns a Tcl list of the subcommunities of this community or
         if none, the empty list
     } {
         return [db_list select_subcomms {}]
@@ -1198,7 +1204,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_subcomm_info_list {
         {-community_id:required}
     } {
-        Returns a tcl list of ns_sets with info about each subcomm. The keys
+        Returns a Tcl list of ns_sets with info about each subcomm. The keys
         are: community_id, community_key, pretty_name, archived_p and url. Returns both archived and unarchived subcommunities.
     } {
         return [db_list_of_ns_sets select_subcomms_info {}]
@@ -2337,9 +2343,9 @@ namespace eval dotlrn_community {
                 }
                 
                 if {$email_send_to eq ""} {
-                    set to_addr [cc_email_from_party $to_user]
+                    set to_addr [party::email -party_id $to_user]
                 }  else {
-                    set to_addr [cc_email_from_party $email_send_to]
+                    set to_addr [party::email -party_id $email_send_to]
                 }
                 
                 set extra_headers [ns_set create]
@@ -2463,3 +2469,9 @@ namespace eval dotlrn_community {
     }
 
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

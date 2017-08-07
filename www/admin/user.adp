@@ -30,7 +30,7 @@
   <li>
     #dotlrn.Person_name#
     <strong>@first_names@ @last_name@</strong>
-  <if @site_wide_admin_p@ true> 
+  <if @site_wide_admin_p;literal@ true> 
     [<a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a>]
   </if>
   </li>
@@ -38,7 +38,7 @@
   <li>
     #dotlrn.Email#
     <strong><a href="mailto:@email@">@email@</a></strong>
-  <if @site_wide_admin_p@ true>
+  <if @site_wide_admin_p;literal@ true>
     [<a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a>]
   </if> 
   </li>
@@ -46,7 +46,7 @@
   <li>
     #dotlrn.Screen_name#
     <strong>@screen_name@</strong>
-  <if @site_wide_admin_p@ true>
+  <if @site_wide_admin_p;literal@ true>
     [<a href="/user/basic-info-update?@export_edit_vars@">#dotlrn.Edit#</a>]
   </if>
   </li>
@@ -74,7 +74,7 @@
   </li>
 </else>
 
-<if @portrait_p@ eq 1>
+<if @portrait_p;literal@ true>
   <li>
     #dotlrn.Portrait# <strong><a href="/shared/portrait?user_id=@user_id@">@portrait_title@</a></strong>
   </li>
@@ -83,7 +83,7 @@
   <li>
     #dotlrn.Member_state#
     <strong>@member_state@</strong>
-        <if @site_wide_admin_p@ true>
+        <if @site_wide_admin_p;literal@ true>
           [
           <multiple name="change_state_links">
             <if @change_state_links.rownum@ gt 1>|</if>
@@ -97,7 +97,7 @@
 
 <h1>#dotlrn.dotLRN_Information#</h1>
 
-<if @dotlrn_user_p@>
+<if @dotlrn_user_p;literal@ true>
 
 <ul>
 
@@ -191,10 +191,10 @@
 <h1>#dotlrn.lt_Administrative_Action#</h1>
 
 <ul>
-  <if @portrait_p@>
+  <if @portrait_p;literal@ true>
     <li><a href="/user/portrait/index.tcl?@export_edit_vars@">#dotlrn.lt_Manage_this_users_por#</a></li>
   </if>
- <if @site_wide_admin_p@ true>
+ <if @site_wide_admin_p;literal@ true>
   <li><a href="@toggle_swa_url@">@toggle_text@</a></li>
  </if>
  <if @site_wide_admin_p@ true or @dotlrn_admin_p@ true>

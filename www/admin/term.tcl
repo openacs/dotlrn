@@ -21,11 +21,12 @@ ad_page_contract {
     @creation-date 2002-03-07
     @version $Id$
 } -query {
-    term_id:naturalnum,notnull
+    term_id:integer,notnull
     {department_key ""}
-    {orderby "department_name,asc"}
+    {orderby:token "department_name,asc"}
     page:naturalnum,optional
     {keyword ""}
+    {referer "terms"}
 } -properties {
     classes:multirow
 }
@@ -42,14 +43,14 @@ set departments [db_list_of_lists select_departments_for_select_widget {
 }]
 set departments [linsert $departments 0 {All ""}]
 
-form create department_form
+form create department_form  -has_submit 1
 
 element create department_form department_key \
     -label "[_ dotlrn.Department]" \
     -datatype text \
     -widget select \
     -options $departments \
-    -html {onChange document.department_form.submit()} \
+    -html {id department_form-department_key} \
     -value $department_key
 
 element create department_form term_id \
@@ -71,14 +72,14 @@ set terms [db_list_of_lists select_terms_for_select_widget {
 }]
 set terms [linsert $terms 0 {All -1}]
 
-form create term_form
+form create term_form -has_submit 1
 
 element create term_form term_id \
     -label "[_ dotlrn.Term]" \
     -datatype integer \
     -widget select \
     -options $terms \
-    -html {onChange document.term_form.submit()} \
+    -html {id term_form-term_id} \
     -value $term_id
 
 element create term_form department_key \
@@ -92,12 +93,12 @@ if {[form is_valid term_form]} {
 
     if {$term_id != -1} {
         ad_returnredirect [export_vars -base term {term_id department_key}]
+        ad_script_abort
     }
 }
 
-if {(![info exists referer] || $referer eq "")} {
-    set referer "terms"
-}
+template::add_event_listener -id "term_form-term_id" -event change -script {document.term_form.submit();}
+template::add_event_listener -id "department_form-department_key" -event change -script {document.department_form.submit();}
 
 set query "select_classes"
 set paginator_query "select_classes_paginator"
@@ -183,3 +184,9 @@ db_multirow classes $query {}
 
 set term_edit_url [export_vars -base term-edit {term_id referer}]
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

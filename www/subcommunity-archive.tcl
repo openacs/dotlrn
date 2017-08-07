@@ -20,7 +20,7 @@ ad_page_contract {
     @author arjun (arjun@openforce.net)
     @version $Id$
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     {referer "one-community-admin"}
 } -properties {
     title:onevalue
@@ -81,3 +81,9 @@ if {[form is_valid archive_form]} {
     ad_script_abort
 } 
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -21,3 +21,9 @@ if { ![parameter::get -localize -package_id [dotlrn::get_package_id] -parameter 
     set action "hide"
 }
 set toolbar_actions_url [export_vars -base $dotlrn_admin_url/toolbar-actions {action return_url}]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -28,3 +28,8 @@ if { $show_p } {
 	set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
     }
 }
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

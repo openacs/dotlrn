@@ -21,7 +21,7 @@ ad_page_contract {
 } {
     forum_id:naturalnum,notnull
     community_id:naturalnum,notnull
-    return_url:notnull
+    return_url:localurl,notnull
 }
 
 db_transaction {
@@ -30,3 +30,9 @@ db_transaction {
 }
 
 ad_returnredirect $return_url
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

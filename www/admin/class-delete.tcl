@@ -43,3 +43,9 @@ ad_form -name delete_class -form {
 
 set title "[_ dotlrn.Delete_Empty_Class]"
 set context_bar [list [[export_vars -base classes {department_key}] [parameter::get -localize -parameter classes_pretty_plural]] Delete]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

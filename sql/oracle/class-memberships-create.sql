@@ -153,8 +153,8 @@ begin
     acs_rel_type.create_type (
         rel_type => 'dotlrn_ca_rel',
         supertype => 'dotlrn_admin_rel',
-        pretty_name => 'dotLRN Course Assitant Community Membership',
-        pretty_plural => 'dotLRN Course Assitant Community Memberships',
+        pretty_name => 'dotLRN Course Assistant Community Membership',
+        pretty_plural => 'dotLRN Course Assistant Community Memberships',
         package_name => 'dotlrn_ca_rel',
         table_name => 'dotlrn_ca_rels',        
         id_column => 'rel_id',

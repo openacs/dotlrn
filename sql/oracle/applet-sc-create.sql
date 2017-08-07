@@ -82,7 +82,7 @@ begin
     );
 
     -- RemoveApplet: Removes the applet from dotlrn(used for one-time destroy)
-    -- ** Not yet implimented **
+    -- ** Not yet implemented **
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.RemoveApplet.InputType',
         msg_type_spec => ''
@@ -105,7 +105,7 @@ begin
 
     -- AddAppletToCommunity: Adds the applet to a community
     -- Called at community creation time. Adding applets after creation time
-    -- is ** not implimented yet **
+    -- is ** not implemented yet **
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.AddAppletToCommunity.InputType',
         msg_type_spec => 'community_id:integer'
@@ -128,7 +128,7 @@ begin
 
     -- RemoveAppletFromCommunity: Removes the applet from a community
     -- Called at community delete time. Deleting applets before that time
-    -- ** not implimented yet **
+    -- ** not implemented yet **
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.RemoveAppletFromCommunity.InputType',
         msg_type_spec => 'community_id:integer'
@@ -195,9 +195,9 @@ begin
         operation_outputtype => 'dotlrn_applet.RemoveUser.OutputType'
     );
 
-    -- AddUserToCommunity: Adds a user to the a specfic dotlrn community.
+    -- AddUserToCommunity: Adds a user to the a specific dotlrn community.
     -- An example of this is to make the community's calendar items
-    -- visable on user's personal calendar
+    -- visible on user's personal calendar
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.AddUserToCommunity.InputType',
         msg_type_spec => 'community_id:integer,user_id:integer'
@@ -218,7 +218,7 @@ begin
         operation_outputtype => 'dotlrn_applet.AddUserToCommunity.OutputType'
     );
 
-    -- RemoveUserFromCommunity: Removes a user from a specfic dotlrn
+    -- RemoveUserFromCommunity: Removes a user from a specific dotlrn
     -- community. Just like above, but removal.
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.RemoveUserFromCommunity.InputType',

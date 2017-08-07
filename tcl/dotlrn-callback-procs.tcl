@@ -170,3 +170,9 @@ ad_proc -public -callback contact::person_new -impl dotlrn_user {
     
     
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

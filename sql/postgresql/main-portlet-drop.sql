@@ -94,14 +94,14 @@ BEGIN
     select datasource_id into ds_id
       from portal_datasources
      where name = 'dotlrn-main-portlet';
--- cant seem to get the exception working properly.. 
+-- can't seem to get the exception working properly.. 
 -- is it really necessary here?  look into it later.  -dan chak 2002-07-02
 --    exception when no_data_found then
 --        ds_id := null;
     end;
 
   if ds_id is not null then
-    portal_datasource__delete(ds_id);
+    select portal_datasource__delete(ds_id);
   end if;
   
   return 0;

@@ -43,7 +43,7 @@ ad_proc -private dotlrn::apm::after_install {
 
     # Make sure that privacy is turned on
     acs_privacy::privacy_control_set 1
-        
+
 }
 
 
@@ -294,3 +294,9 @@ ad_proc -public dotlrn::apm::after_upgrade {
         }
     }
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -43,7 +43,7 @@
     </li>
   </ul>
   
-  <if @swa_p@>
+  <if @swa_p;literal@ true>
     <ul>
       <li><a href="/acs-admin/" title="#dotlrn.goto_oacs_swa#">#acs-subsite.Site_Wide_Admin#</a></li>
     </ul>

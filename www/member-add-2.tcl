@@ -22,7 +22,7 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
-    user_id
+    user_id:naturalnum,notnull
     {referer "one-community-admin"}
 } -properties {
     roles:multirow
@@ -76,3 +76,9 @@ foreach role $rel_types {
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

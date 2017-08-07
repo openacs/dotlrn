@@ -23,7 +23,7 @@ ad_page_contract {
     @creation-date 2001-10-04
     @version $Id$
 } -query {
-    {page_num 0}
+    {page_num:naturalnum,notnull 0}
 }
 
 # Check that this is a community type
@@ -70,3 +70,9 @@ set rendered_page [dotlrn::render_page \
 
 ad_return_template 
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

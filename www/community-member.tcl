@@ -23,7 +23,7 @@ ad_page_contract {
 } {
     user_id:naturalnum,notnull
     {community_id:naturalnum ""}
-    {return_url ""}
+    {return_url:localurl ""}
 } -properties {
     portal_id:onevalue
     member_state:onevalue
@@ -85,3 +85,9 @@ if { $portrait_p } {
 }
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

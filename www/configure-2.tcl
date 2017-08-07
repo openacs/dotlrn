@@ -38,3 +38,9 @@ portal::configure_dispatch -portal_id $portal_id -form $form
 
 ad_returnredirect "configure#$anchor"
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -2,7 +2,7 @@ ad_page_contract {
     Form to confirm a user dropping a single membership for themselves
 } -query {
     {user_id:multiple,integer ""}
-    {community_id ""}
+    {community_id:integer ""}
     {referer "./"}
 }
 
@@ -35,3 +35,9 @@ ad_form -name deregister-self-confirm \
     }
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -85,9 +85,9 @@
     
     <p class="question">Q: How is dotLRN spelled and pronounced?</p>
     <p class="answer">
-	  It's sometimes written as <tt>.LRN</tt>, but the spelling and
-	  capitalization <tt>dotLRN</tt> is preferred. hackers who type a
-	  lot usually write <tt>dotlrn</tt>. <tt>dotLRN</tt> is pronounced
+	  It's sometimes written as <kbd>.LRN</kbd>, but the spelling and
+	  capitalization <kbd>dotLRN</kbd> is preferred. hackers who type a
+	  lot usually write <kbd>dotlrn</kbd>. <kbd>dotLRN</kbd> is pronounced
 	  &quot;daught-learn&quot; We are currently accepting voice
-	  applications for the dotLRN MP3 pronounciation file.
+	  applications for the dotLRN MP3 pronunciation file.
     </p>

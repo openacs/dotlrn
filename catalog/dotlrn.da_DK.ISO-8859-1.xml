@@ -245,8 +245,8 @@ Vælg venligst et andet navn.</msg>
   <msg key="lt_Add_members_to_anothe">Tilføj medlemmer til en anden brugergruppe</msg>
   <msg key="lt_Add_These_Users_To_A_">Tilføj disse brugere til en brugergruppe</msg>
   <msg key="lt_Administrative_Action">Administrative Handlinger</msg>
-  <msg key="lt_An_error_occured_whil">Der opstod en fejl under tilmeldingen af en bruger til en gruppe. Fejlen er blevet logget.</msg>
-  <msg key="lt_An_error_occured_whil_1">Der opstod en fejl under frameldingen af brugeren fra en gruppe. Fejlen er blevet logget.</msg>
+  <msg key="lt_An_error_occurred_whil">Der opstod en fejl under tilmeldingen af en bruger til en gruppe. Fejlen er blevet logget.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Der opstod en fejl under frameldingen af brugeren fra en gruppe. Fejlen er blevet logget.</msg>
   <msg key="lt_approve_and_add_to_do">godkend og tilføj til dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på at du ønsker at slette den tomme afdeling</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Er du sikker på at du ønsker at fjerne disse brugere fuldstændigt? Bemærk at at vi kun forsøger at fjerne disse brugere. Og der kan opstaa fejl for nogle af brugerne.  </msg>

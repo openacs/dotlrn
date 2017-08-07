@@ -80,7 +80,7 @@
 	  <div style="text-align:center;">
 	    <form action="term" method="GET">
 	      #dotlrn.Search_classes_with# 
-			  <input name="keyword" onfocus="if(this.value=='#dotlrn.Please_type_a_keyword#')this.value='';" onblur="if(this.value=='')this.value='#dotlrn.Please_type_a_keyword#';" value="#dotlrn.Please_type_a_keyword#">
+              <input name="keyword" placeholder="#dotlrn.Please_type_a_keyword#">
               <input type="hidden" name="term_id" value="@term_id@">
 	      <input type="hidden" name="department_key" value="@department_key@">
               <input type="submit" value="#dotlrn.Go#">
@@ -94,7 +94,7 @@
 	  <table>
 	    <tr bgcolor="#eeeeee">
 	      <td>
-		<i>#dotlrn.no_class_instances#</i>
+		<em>#dotlrn.no_class_instances#</em>
 	      </td>
 	    </tr>
 	  </table>

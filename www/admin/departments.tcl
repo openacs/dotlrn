@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {keyword ""}
-    {orderby "department_name,asc"}
+    {orderby:token "department_name,asc"}
     page:naturalnum,optional
 } -properties {
     title:onevalue
@@ -88,3 +88,9 @@ db_multirow departments select_departments {}
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -44,7 +44,7 @@
     <else>
     <th align="left">#dotlrn.Access#</th>
     <th align="left">#dotlrn.Guest#</th>
-    <if @oacs_site_wide_admin_p@ true>
+    <if @oacs_site_wide_admin_p;literal@ true>
     <th align="left">#dotlrn.Site-wide_Admin#</th>
     </if>
     </else>
@@ -75,7 +75,7 @@
 <if @type@ eq "pending">
     <td align="left">
 
-    <if @oacs_site_wide_admin_p@ true>
+    <if @oacs_site_wide_admin_p;literal@ true>
     <% # We had to escape to Tcl to get the desired behavior. AG %>
     <small><a href="@users.state_change_url@">#dotlrn.lt_approve_and_add_to_do#</a> | </if>
     <a href="@users.nuke_url@">#acs-kernel.common_delete#</a></small>
@@ -88,18 +88,18 @@
      #dotlrn.NA#
      </if>
      <else>
-     <if @users.guest_p@ eq t>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
+     <if @users.guest_p;literal@ true>#dotlrn.Yes#</if><else>#dotlrn.No#</else>
      </else>
     </td>
 
-<if @oacs_site_wide_admin_p@ true>
+<if @oacs_site_wide_admin_p;literal@ true>
  <td align="center">
   <if @user_id@ ne @users.user_id@>
-    <if @users.site_wide_admin_p@ true>
-      <b>#dotlrn.Yes#</b> | <a href="@users.swa_revoke_url@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
+    <if @users.site_wide_admin_p;literal@ true>
+      <strong>#dotlrn.Yes#</strong> | <a href="@users.swa_revoke_url@" title="#dotlrn.Revoke_site_wide_admin#">#dotlrn.No#</a>
     </if>
     <else>
-      <a href="@users.swa_grant_url@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <b>#dotlrn.No#</b>
+      <a href="@users.swa_grant_url@" title="#dotlrn.Grant_site_wide_admin#">#dotlrn.Yes#</a> | <strong>#dotlrn.No#</strong>
     </else>
   </if>
       <else>#dotlrn.Yes#</else>
@@ -112,7 +112,7 @@
 </if>
 <else>
   <tr bgcolor="#eeeeee">
-    <td align="left" colspan="4"><i>#dotlrn.No_Users#</i></td>
+    <td align="left" colspan="4"><em>#dotlrn.No_Users#</em></td>
   </tr>
 </else>
 

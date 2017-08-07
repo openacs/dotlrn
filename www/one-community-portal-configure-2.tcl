@@ -21,7 +21,7 @@ ad_page_contract {
     @version $Id$
 } {
     portal_id:naturalnum,notnull
-    return_url
+    return_url:localurl
     {anchor {}}
 }
 
@@ -33,3 +33,9 @@ portal::configure_dispatch -portal_id $portal_id -form [ns_getform]
 
 ad_returnredirect "one-community-portal-configure?portal_id=$portal_id&referer=$return_url#$anchor"
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

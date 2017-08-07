@@ -46,7 +46,7 @@ namespace eval dotlrn {
         do an abort if security violation
     } {
         ad_returnredirect "not-allowed"
-        return -code error
+        ad_script_abort
     }
 
     ad_proc -public get_user_types {} {
@@ -97,7 +97,7 @@ namespace eval dotlrn {
 
         # default ID to email address
         if {$id eq ""} {
-            set id [cc_email_from_party $user_id]
+            set id [party::email -party_id $user_id]
         }
 
         # set up extra vars
@@ -443,3 +443,9 @@ namespace eval dotlrn {
 
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -39,7 +39,7 @@ namespace eval dotlrn_user_extension {
         A new user has been added: process dotLRN specific stuff
     } {
         # Get the user's email address
-        set email [cc_email_from_party $user_id]
+        set email [party::email -party_id $user_id]
 
         # Loop through patterns
         foreach pattern [automatic_email_patterns] {
@@ -109,3 +109,9 @@ namespace eval dotlrn_user_extension {
 
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

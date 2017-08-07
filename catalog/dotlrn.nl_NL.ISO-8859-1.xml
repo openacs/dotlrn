@@ -243,8 +243,8 @@ Klik daarna op &quot;E-mail verzenden&quot; om de gebruiker te informeren. </msg
   <msg key="lt_Add_members_to_anothe">Leden aan andere groep toevoegen</msg>
   <msg key="lt_Add_These_Users_To_A_">Deze gebruikers aan een groep toevoegen</msg>
   <msg key="lt_Administrative_Action">Administratieve acties</msg>
-  <msg key="lt_An_error_occured_whil">Er is een fout opgetreden bij het toevoegen van een gebruiker aan een groep. De fout is geregistreerd.</msg>
-  <msg key="lt_An_error_occured_whil_1">Er is een fout opgetreden bij het verwijderen van een gebruiker uit een groep. De fout is geregistreerd.</msg>
+  <msg key="lt_An_error_occurred_whil">Er is een fout opgetreden bij het toevoegen van een gebruiker aan een groep. De fout is geregistreerd.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Er is een fout opgetreden bij het verwijderen van een gebruiker uit een groep. De fout is geregistreerd.</msg>
   <msg key="lt_approve_and_add_to_do">Goedkeuren en toevoegen aan .LRN</msg>
   <msg key="lt_Are_you_sure_you_want">Dit lege vakgebied echt verwijderen?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Deze gebruikers echt geheel verwijderen? Bericht: we zullen deze gebruikers trachten te verwijderen maar er kunnen bij sommingen foutmeldingen ontstaan.</msg>

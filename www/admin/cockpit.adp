@@ -48,7 +48,7 @@
 <li><a href="http://openacs.org/doc/openacs-HEAD/">CVS Head</a>
 <li><a href="http://openacs.org/packages/">Packages</a>
 </ul>
-<li><h2>User Managment</h2>
+<li><h2>User Management</h2>
 <ul>
 <li><a href="/acs-admin/auth">Authorities</a>
 <li><a href="/acs-admin/users/">ACS Users</a>
@@ -94,7 +94,7 @@
 <li><a href="/acs-admin/cache">Cache Info</a>
 <li><a href="/acs-admin/cache/index">Util Memoize Caches</a>
 <li><a href="/acs-service-contract/">Service Contracts</a>
-<if @monitor_exists_p@>
+<if @monitor_exists_p;literal@ true>
 	<li><a href="@monitor_url@scheduled-procs">Scheduled Procs</a>
 	<li>Watch Errors - Last
 		<table><tr><td>
@@ -121,7 +121,7 @@
 <ul>
 <li><h2>Development</h2>
 <ul>
-<if @ds_exists_p@>
+<if @ds_exists_p;literal@ true>
 	<li><a href="@ds_url@">Developer Support</a>(<a href="@ds_url@shell">Shell</a>)
 </if>
 <li><a href="http://openacs.org/bugtracker/openacs/">Bug Tracker</a>
@@ -134,7 +134,7 @@
 				     <tr bgcolor="#DDDDDD">
 				      <form action="/api-doc/proc-search" method="get">
 				      <td valign="top">
-				       <b>OpenACS Tcl API Search</b>
+				       <strong>OpenACS Tcl API Search</strong>
 				       <input type="text" size="16" name="query_string" value=""><br>
 				       <input type="submit" value="All" name="search_type">
 				       <input type="submit" value="Best" name="search_type">
@@ -160,7 +160,7 @@
 				  <tr bgcolor="#DDDDDD">
 				   <form action="/api-doc/tcl-proc-view" method="get">
 				   <td colspan="2">
-				    <b>AOLserver Tcl API Search</b>
+				    <strong>AOLserver Tcl API Search</strong>
 				    <input type="text" size="6" name="tcl_proc">
 				    <input type="submit" value="Go"><br>
 				    (enter <em>exact</em> procedure name)<br>
@@ -171,7 +171,7 @@
 				  <tr bgcolor="#DDDDDD">
 				  <form action="/api-doc/tcl-doc-search" method="get">
 				   <td colspan="2">
-				    <b>Tcl Documentation Search</b>
+				    <strong>Tcl Documentation Search</strong>
 				    <input type="text" size="6" name="tcl_proc">
 				    <input type="submit" value="Go"><br>
 				    (enter <em>exact</em> procedure name)<br>
@@ -182,7 +182,7 @@
 				   <tr bgcolor="#DDDDDD">
 				   <form action="http://www.postgresql.org/search.cgi" method="get">
 				    <td colspan="2">
-				       <b>PostgreSQL 7.3 Search</b>
+				       <strong>PostgreSQL 7.3 Search</strong>
 				       <input type="hidden" name="ul" value="http://www.postgresql.org/docs/7.3/static/">
 				       <input type="text" size="6" name="q">
 				       <input type="submit" value="Go"><br>

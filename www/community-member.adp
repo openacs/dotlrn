@@ -22,7 +22,7 @@
 <property name="doc(title)">@user.first_names@ @user.last_name@</property>
 <property name="context">@context;literal@</property>
 
-<if @portrait_p@>
+<if @portrait_p;literal@ true>
   <div style="float: right;">
     <a href="@portrait_url@" title="#acs-subsite.See_full_size#">
       <img src="@img_src@" alt="#acs-subsite.lt_Portrait_of_first_last#">

@@ -38,7 +38,7 @@ ad_form -name add_term -export referer -form {
 	{label "[_ dotlrn.Start_Date]"}
 	#{format {[lc_get formbuilder_date_format]}}
 	{html {id start_date}}
-	{after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('start_date', 'yyyy-mm-dd');\"> \[<b>yyyy-mm-dd </b>\]
+	{after_html {<input type='reset' value=' ... '> \[<b>yyyy-mm-dd </b>\]
         }}
     }
 
@@ -46,10 +46,21 @@ ad_form -name add_term -export referer -form {
 	{label "[_ dotlrn.End_Date]"}
 	#{format {[lc_get formbuilder_date_format]}}
 	{html {id end_date}}
-	{after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('end_date', 'yyyy-mm-dd');\"> \[<b>yyyy-mm-dd </b>\]
+	{after_html {<input type='reset' value=' ... '> \[<b>yyyy-mm-dd </b>\]
         }}
     }
 
+} -on_request {
+    template::add_body_script -script [subst {
+        document.getElementById('start_date').addEventListener('click', function (event) {
+            event.preventDefault();
+            showCalendar('start_date', 'yyyy-mm-dd');
+        });
+        document.getElementById('end_date').addEventListener('click', function (event) {
+            event.preventDefault();
+            showCalendar('end_date', 'yyyy-mm-dd');
+        });
+    }]
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }
@@ -97,3 +108,9 @@ set context_bar [list [list terms [_ dotlrn.Terms]] [_ dotlrn.New]]
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

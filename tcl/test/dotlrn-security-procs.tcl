@@ -2,7 +2,7 @@
 
 ad_library {
     
-    dotlrn tcl helper procs for acs-automated-testing
+    dotlrn Tcl helper procs for acs-automated-testing
     
     @author Deds Castillo (deds@i-manila.com.ph)
     @creation-date 2004-08-11
@@ -29,3 +29,9 @@ aa_register_case -cats {api} \
                 aa_true "user_must_not_exist" [string equal [db_string check_user "select count(*) from users where user_id = $creation_info(user_id)"] "0"]
         }
     }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

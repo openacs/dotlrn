@@ -66,10 +66,8 @@ create table dotlrn_communities_all (
     description                 varchar(4000),
     active_start_date           date,
     active_end_date             date,
-    archived_p                  char(1)
-                                default 'f'
-                                constraint dotlrn_c_archived_p_ck
-                                check (archived_p in ('t', 'f'))
+    archived_p                  boolean
+                                default false
                                 constraint dotlrn_c_archived_p_nn
                                 not null,
     portal_id                   integer 
@@ -104,7 +102,7 @@ create view dotlrn_communities
 as
     select dotlrn_communities_all.*
     from dotlrn_communities_all
-    where dotlrn_communities_all.archived_p = 'f';
+    where dotlrn_communities_all.archived_p = false;
 
 
 

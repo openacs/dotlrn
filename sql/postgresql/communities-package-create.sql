@@ -28,7 +28,6 @@
 select define_function_args ('dotlrn_community_type__new','community_type,parent_type;dotlrn_community,pretty_name,pretty_plural,description,package_id,creation_date,creation_user,creation_ip,context_id');
 
 select define_function_args ('dotlrn_community_type__delete','community_type');
-
 select define_function_args ('dotlrn_community_type__name','community_type');
 
 
@@ -198,7 +197,7 @@ CREATE OR REPLACE FUNCTION dotlrn_community__new(
    p_community_key varchar,
    p_pretty_name varchar,
    p_description varchar,
-   p_archived_p varchar, -- default 'f'
+   p_archived_p boolean, -- default 'f'
    p_portal_id integer,
    p_non_member_portal_id integer,
    p_package_id integer,
@@ -253,7 +252,6 @@ BEGIN
 
         return c_id;        
 END;
-
 $$ LANGUAGE plpgsql;
 
 select define_function_args('dotlrn_community__set_active_dates','community_id,start_date,end_date');
@@ -333,13 +331,9 @@ CREATE OR REPLACE FUNCTION dotlrn_community__member_p(
    p_party_id integer
 ) RETURNS boolean AS $$
 DECLARE
-        v_member_p			  char(1);
+        v_member_p			  boolean;
 BEGIN
-       select CASE 
-		   WHEN count(*) = 0
-		   THEN 'f'
-		   ELSE 't'
-	      END
+       select (count(*) = 0)
         into v_member_p
         from dual
         where exists (select 1
@@ -350,7 +344,6 @@ BEGIN
         return v_member_p;
 
 END;
-
 $$ LANGUAGE plpgsql;
 
 
@@ -366,21 +359,20 @@ CREATE OR REPLACE FUNCTION dotlrn_community__admin_p(
    p_party_id integer
 ) RETURNS boolean AS $$
 DECLARE
-        r_rv				  char(1);
+        r_rv				  boolean;
 BEGIN
 	-- THIS NEEDS TO BE CHECKED!
 	-- chak, 2002-07-01
 	select CASE
-		WHEN acs_permission__permission_p(p_community_id, p_party_id, 'dotlrn_admin_community') = 'f'
+		WHEN acs_permission__permission_p(p_community_id, p_party_id, 'dotlrn_admin_community') is false
 		THEN acs_permission__permission_p(p_community_id,p_party_id,'admin')
-		ELSE 't'	
+		ELSE true
 	     END
 	   into r_rv
            from dual;
 
 	return r_rv;
 END;
-
 $$ LANGUAGE plpgsql;
 
 
@@ -423,22 +415,17 @@ select define_function_args('dotlrn_community__has_subcomm_p','community_id');
 --
 CREATE OR REPLACE FUNCTION dotlrn_community__has_subcomm_p(
    p_community_id integer
-) RETURNS varchar AS $$
+) RETURNS boolean AS $$
 DECLARE
-	r_rv char(1);
+	r_rv boolean;
 BEGIN
-	select CASE
-		WHEN count(*) = 0
-		THEN 'f'
-		ELSE 't'
-	       END
+	select (count(*) = 0)
 	  into r_rv
-	  from dual 
+	  from dotlrn_communities_all 
          where dotlrn_communities_all.community_id = p_community_id;
 	 
 	 return r_rv;
 END;
-
 $$ LANGUAGE plpgsql;
 
 create view dotlrn_communities_full

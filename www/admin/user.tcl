@@ -147,3 +147,9 @@ if { [acs_user::site_wide_admin_p -user_id $user_id] } {
 set toggle_swa_url [export_vars -base "site-wide-admin-toggle" {user_id {value $toggle_value} {referer $return_url}}]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

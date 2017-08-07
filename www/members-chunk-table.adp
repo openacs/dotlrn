@@ -54,8 +54,8 @@
     <tr class="even">
 </else>
   <td>
-   <if @admin_p@ eq 1>
-	<input type=checkbox name=user_id value=@current_members.user_id@>
+   <if @admin_p;literal@ true>
+	<input type="checkbox" name="user_id" value="@current_members.user_id@">
    </if>
  </td>
   <td>
@@ -72,11 +72,11 @@
   <td><%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @current_members.rel_type@] "Student"]%>
   </td>
   <td align="center">
-  <if @admin_p@ eq 1>
+  <if @admin_p;literal@ true>
      &nbsp; <a href="deregister?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.Drop_Membership#</a> | <a href="member-add-2?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.User_Admin_Page#</a>
   </if>
   <else> 
-     <if @show_drop_button_p@ eq 1> 
+     <if @show_drop_button_p;literal@ true> 
        <if @my_user_id@ eq @current_members.user_id@>
 	  <a href="deregister?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.Drop_Membership#</a>
       </if>
@@ -92,9 +92,9 @@
 
 <p>
 
-<if @admin_p@ eq 1>
-<input type=hidden name=referer value="@referer@">
-<input type=submit value="#dotlrn.Drop_selected_members#">
+<if @admin_p;literal@ true>
+<input type="hidden" name="referer" value="@referer@">
+<input type="submit" value="#dotlrn.Drop_selected_members#">
 </form>
 </if>
 
@@ -105,7 +105,7 @@
 
   </li>
 </if>
-<if @site_wide_admin_p@ eq 1>
+<if @site_wide_admin_p;literal@ true>
 <% set dotlrn_admin_url [dotlrn::get_admin_url] %>
   <br>
   <li>
@@ -127,7 +127,7 @@
     <%= [acs_community_member_link -user_id $pending_users(user_id) -label "$pending_users(first_names) $pending_users(last_name)"] %>
     (<a href="mailto:@pending_users.email@">@pending_users.email@</a>)
     &nbsp;
-    <i>@pending_users.role@</i>
+    <em>@pending_users.role@</em>
     &nbsp;
     [<small>
       <include src="approve-link" url="approve?user_id=@pending_users.user_id@&amp;referer=@referer@">

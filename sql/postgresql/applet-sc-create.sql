@@ -84,7 +84,7 @@ BEGIN
     );
 
     -- RemoveApplet: Removes the applet from dotlrn (used for one-time destroy)
-    -- ** Not yet implimented **
+    -- ** Not yet implemented **
     perform acs_sc_msg_type__new(
         'dotlrn_applet.RemoveApplet.InputType',
         ''
@@ -107,7 +107,7 @@ BEGIN
 
     -- Add the applet to a community
     -- Called at community creation time. Adding applets after creation time
-    -- is ** not implimented yet **
+    -- is ** not implemented yet **
     perform acs_sc_msg_type__new(
         'dotlrn_applet.AddAppletToCommunity.InputType',
         'community_id:integer'
@@ -130,7 +130,7 @@ BEGIN
 
     -- RemoveAppletFromCommunity: Removes the appletl from a community
     -- Called at community delete time. Deleting applets before that time
-    -- ** not implimented yet **
+    -- ** not implemented yet **
     perform acs_sc_msg_type__new(
         'dotlrn_applet.RemoveAppletFromCommunity.InputType',
         'community_id:integer'
@@ -197,9 +197,9 @@ BEGIN
         'dotlrn_applet.RemoveUser.OutputType'
     );
   
-    -- AddUserToCommunity: Adds a user to the a specfic dotlrn community. 
+    -- AddUserToCommunity: Adds a user to the a specific dotlrn community. 
     -- An example of this is to make the community's calendar items 
-    -- visable on user's personal calendar
+    -- visible on user's personal calendar
     perform acs_sc_msg_type__new(
         'dotlrn_applet.AddUserToCommunity.InputType',
         'community_id:integer,user_id:integer'
@@ -220,7 +220,7 @@ BEGIN
         'dotlrn_applet.AddUserToCommunity.OutputType'
     );
 
-    -- RemoveUserFromCommunity: Removes a user from a specfic dotlrn
+    -- RemoveUserFromCommunity: Removes a user from a specific dotlrn
     -- community. Just like above, but removal.
     perform acs_sc_msg_type__new(
         'dotlrn_applet.RemoveUserFromCommunity.InputType',

@@ -64,3 +64,9 @@ set site_template_url [export_vars -base change-site-template {{referer $return_
 # .LRN administration
 
 set dotlrn_admin_p [dotlrn::admin_p]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

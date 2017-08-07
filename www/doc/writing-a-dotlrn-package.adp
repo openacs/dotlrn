@@ -19,7 +19,7 @@ straight-forward.
 As far as dotLRN is concerned, a dotLRN package is an
 <strong>applet</strong> (literally a "small application," nothing to
 do with Java applets) that must provide a simple
-API under the <tt>acs-service-contract</tt> mechanism. This API allows
+API under the <kbd>acs-service-contract</kbd> mechanism. This API allows
 the dotLRN core to generically dispatch calls to each dotLRN applet
 when certain events happen.
 
@@ -44,8 +44,8 @@ Most dotLRN applets will want to offer an interface to their users (although
 it's very possible that some won't). To do so, the dotLRN core will
 use the New Portal Architecture of OpenACS 4. A dotLRN applet can
 simply add itself to the appropriate portal pages by providing an
-<strong>NPA portlet</strong>. <i>Note that the architecture of this
-portlet is dotLRN-independent!</i> The contents of the portlet may
+<strong>NPA portlet</strong>. <em>Note that the architecture of this
+portlet is dotLRN-independent!</em> The contents of the portlet may
 rely on dotLRN functionality, but the means by which the portlet is
 added to portal pages does not!
 
@@ -80,7 +80,7 @@ The portlet should be created in line with the New Portal
 Architecture. We want to strongly discourage developers from making
 this portlet package dependent on dotLRN functionality: portlets will
 be able to query parameter information from the NPA (such as the
-<tt>package_id</tt>), independently of any dotLRN functionality.
+<kbd>package_id</kbd>), independently of any dotLRN functionality.
 
 <p>
 

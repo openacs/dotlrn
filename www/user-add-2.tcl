@@ -21,14 +21,14 @@ ad_page_contract {
     @creation-date 2002-01-20
     @version $Id$
 } -query {
-    user_id
+    user_id:naturalnum,notnull
     password
     {referer "/acs-admin/users"}
     type
-    can_browse_p
-    read_private_data_p
-    dotlrn_interactive_p
-    add_membership_p
+    can_browse_p:boolean
+    read_private_data_p:boolean
+    dotlrn_interactive_p:boolean
+    add_membership_p:boolean
 } -properties {
     context_bar:onevalue
     export_vars:onevalue
@@ -97,3 +97,9 @@ set administration_name [db_string select_admin_name {
 set system_name [ad_system_name]
 set export_vars [export_vars -form {email referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]
 set system_url [parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL -default ""]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

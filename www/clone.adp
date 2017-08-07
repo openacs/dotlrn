@@ -21,7 +21,7 @@
 <master>
 <property name="doc(title)">@title;literal@</property>
 
-<i><strong>#dotlrn.Note#</strong> #dotlrn.lt_this_may_take_some_time#</i>
+<em><strong>#dotlrn.Note#</strong> #dotlrn.lt_this_may_take_some_time#</em>
 <formtemplate id="clone_form"></formtemplate>
 
 

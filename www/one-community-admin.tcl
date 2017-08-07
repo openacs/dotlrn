@@ -48,3 +48,9 @@ db_1row select_community_info {}
 set rendered_page [dotlrn::render_page -render_style all_in_one $admin_portal_id]
 
 set context [list [_ dotlrn.Admin]]
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

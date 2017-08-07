@@ -72,7 +72,7 @@ db_transaction {
         }
  
         # Check if this user already exists
-        set user_id [cc_lookup_email_user $row(email)]
+        set user_id [party::get_by_email -email $row(email)]
         if { $user_id ne "" } {
             append body [_ dotlrn.user_email_already_exists [list user_email $row(email)]]
             lappend list_of_user_ids $user_id
@@ -170,3 +170,9 @@ append body  "<FORM method=post action=users-add-to-community>
 <INPUT TYPE=hidden name=referer values=users>
 [_ dotlrn.lt_You_may_now_choose_to] <INPUT TYPE=submit value=\"[_ dotlrn.lt_Add_These_Users_To_A_]\"></FORM><p>"
 append body "[_ dotlrn.or_return_to] <a href=\"users\">[_ dotlrn.User_Management]</a>."
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

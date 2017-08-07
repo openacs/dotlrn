@@ -9,7 +9,7 @@ ad_page_contract {
     @arch-tag: f5015caa-41c8-4f82-bbef-44450f1c6ffc
     @cvs-id $Id$
 } {
-    return_url:notnull
+    return_url:localurl,notnull
 } -properties {
     title:onevalue
     contex_bar:onevalue
@@ -91,3 +91,9 @@ ad_form -cancel_url $return_url -export { dotlrn_package_id return_url } -name a
     ad_returnredirect $return_url
     ad_script_abort
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

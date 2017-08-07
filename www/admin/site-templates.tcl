@@ -60,3 +60,8 @@ template::list::create \
 
 db_multirow -extend {actions} site_templates select_site_templates { *SQL* } {
 }
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -37,9 +37,15 @@ dotlrn::require_admin
 
 db_1row select_club {}
 
-set description [ad_quotehtml $description]
+set description [ns_quotehtml $description]
 
 set context_bar [list [list clubs [parameter::get -localize -parameter clubs_pretty_plural]] $pretty_name]
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

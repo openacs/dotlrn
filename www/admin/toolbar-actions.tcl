@@ -4,7 +4,7 @@ ad_page_contract {
     action:notnull
     {search_type ""}
     {keyword ""}
-    {return_url ""}
+    {return_url:localurl ""}
 } -validate {
     if_search {
 	if { $action eq "search" && ( $search_type eq "" || $keyword eq "" ) } {
@@ -55,3 +55,8 @@ switch $action {
 
 
 ad_returnredirect $url
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -258,8 +258,8 @@
   <msg key="lt_Add_members_to_anothe">Teilnehmer zu einer weiteren Gruppe hinzufügen</msg>
   <msg key="lt_Add_These_Users_To_A_">Diese Benutzer zu einer Gruppe hinzufügen</msg>
   <msg key="lt_Administrative_Action">Verwaltungsaktionen</msg>
-  <msg key="lt_An_error_occured_whil">Bei dem Versuch, einen neuen Benutzer zur Gruppe hinzuzufügen, ist ein Fehler aufgetreten. Der Fehler wurde protokolliert.</msg>
-  <msg key="lt_An_error_occured_whil_1">Bei dem Versuch, einen Benutzer aus der Gruppe zu entfernen, ist ein Fehler aufgetreten. Der Fehler wurde protokolliert.</msg>
+  <msg key="lt_An_error_occurred_whil">Bei dem Versuch, einen neuen Benutzer zur Gruppe hinzuzufügen, ist ein Fehler aufgetreten. Der Fehler wurde protokolliert.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Bei dem Versuch, einen Benutzer aus der Gruppe zu entfernen, ist ein Fehler aufgetreten. Der Fehler wurde protokolliert.</msg>
   <msg key="lt_approve_and_add_to_do">Freischalten und zu dotLRN hinzufügen</msg>
   <msg key="lt_Are_you_sure_you_want">Möchten Sie dieses leere Fachgebiet wirklich löschen:</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Wollen Sie diese Benutzer wirklich

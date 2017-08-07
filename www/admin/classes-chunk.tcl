@@ -27,7 +27,7 @@ ad_page_contract {
 }
 
 
-if {(![info exists department_key] || $department_key eq "")} {
+if {![info exists department_key] || $department_key eq ""} {
     set department_key ""
 }
 
@@ -40,23 +40,27 @@ set departments [db_list_of_lists select_departments_for_select_widget {
 }]
 set departments [linsert $departments 0 [list [_ dotlrn.All] ""]]
 
-form create department_form
+form create department_form  -has_submit 1
 
 element create department_form department_key \
     -label [_ dotlrn.Department] \
     -datatype text \
     -widget select \
     -options $departments \
-    -html {onChange document.department_form.submit()} \
+    -html {id department_form-department_key} \
     -value $department_key
+
+template::add_event_listener -id "department_form-department_key" -event change -script {document.department_form.submit();}
 
 if {[form is_valid department_form]} {
     form get_values department_form department_key
 }
 
-if {(![info exists referer] || $referer eq "")} {
+if {![info exists referer] || $referer eq ""} {
     set referer "classes"
 }
+
+
 
 set query select_classes
 set page_query select_classes_paginator
@@ -133,3 +137,9 @@ template::list::create \
 db_multirow classes $query {}
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

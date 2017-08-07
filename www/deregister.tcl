@@ -23,7 +23,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {user_id:multiple,integer ""}
-    {community_id ""}
+    {community_id:integer ""}
     {referer "./"}
 }
 
@@ -65,7 +65,7 @@ foreach member_id $user_id {
 	    } else {
 		ns_log Error "deregister.tcl failed: $errmsg"
 		ReturnHeaders
-		ad_return_error "[_ dotlrn.lt_Error_removing_user_c]"  "[_ dotlrn.lt_An_error_occured_whil_1]"
+		ad_return_error "[_ dotlrn.lt_Error_removing_user_c]"  "[_ dotlrn.lt_An_error_occurred_whil_1]"
 	    }
 	}
     }
@@ -73,3 +73,9 @@ foreach member_id $user_id {
 
 ad_returnredirect $referer
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

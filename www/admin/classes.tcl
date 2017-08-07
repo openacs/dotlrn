@@ -23,7 +23,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {department_key ""}
-    {orderby "department_name,asc"}
+    {orderby:token "department_name,asc"}
     {keyword ""}
     {page ""}
 } -properties {
@@ -39,3 +39,9 @@ set context_bar $title
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

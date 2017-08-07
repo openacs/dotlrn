@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2002-01-18
     @version $Id$
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     policy:notnull
     {referer "one-community-admin"}
 } -validate {
@@ -46,3 +46,9 @@ db_dml update_join_policy {}
 
 ad_returnredirect $referer
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

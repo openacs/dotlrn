@@ -106,3 +106,9 @@ if {[dotlrn::is_instantiated]} {
     ns_log notice "dotlrn-init: done"
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

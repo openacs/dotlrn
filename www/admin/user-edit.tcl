@@ -22,8 +22,8 @@ ad_page_contract {
     @creation-date 2001-12-10
     @version $Id$
 } -query {
-    {return_url "[dotlrn::get_admin_url]/users"}
-    user_id
+    {return_url:localurl "[dotlrn::get_admin_url]/users"}
+    user_id:naturalnum,notnull
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.
@@ -106,3 +106,9 @@ if {[form is_valid edit_user]} {
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

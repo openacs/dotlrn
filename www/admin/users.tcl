@@ -69,3 +69,9 @@ set referer [ad_return_url]
 set add_user_url [export_vars -base "../user-add" {{add_membership_p f} {dotlrn_interactive_p 1} referer}]
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

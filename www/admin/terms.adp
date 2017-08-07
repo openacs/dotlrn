@@ -35,7 +35,7 @@
 <table>
   <tr bgcolor="#eeeeee">
     <td align="left" colspan="4">
-      <i>#dotlrn.No_Terms#</i>
+      <em>#dotlrn.No_Terms#</em>
     </td>
   </tr>
 </table>

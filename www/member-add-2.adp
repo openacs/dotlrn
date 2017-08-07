@@ -25,7 +25,7 @@
 
 <h1>#dotlrn.Add_A_Member#</h1>
 
-<if @member_p@ eq 1>
+<if @member_p;literal@ true>
 
 <p>#dotlrn.lt_strongfirst_names_las#</p>
 

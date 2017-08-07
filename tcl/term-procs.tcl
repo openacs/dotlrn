@@ -118,7 +118,7 @@ namespace eval dotlrn_term {
     } {
         generate a "term year" string from the start and end dates
         a "term year" is either a 4-digit year like "2002" or 
-        two different 4-digit year seperated by a / like "2002/2004"
+        two different 4-digit year separated by a / like "2002/2004"
     } {
         set start_year [template::util::date::get_property year $start_date]
         set end_year [template::util::date::get_property year $end_date]
@@ -139,3 +139,9 @@ namespace eval dotlrn_term {
 
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

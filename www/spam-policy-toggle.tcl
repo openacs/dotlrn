@@ -18,7 +18,7 @@ ad_page_contract {
     @creation-date 2002-01-18
     @version $Id$
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     policy:notnull
     {referer "one-community-admin"}
 } -validate {
@@ -48,3 +48,9 @@ permission::$action -party_id [dotlrn_community::get_members_rel_id -community_i
 util_memoize_flush_regexp "${community_id}(.*)dotlrn_spam_community"
 
 ad_returnredirect $referer
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

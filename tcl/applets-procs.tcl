@@ -36,11 +36,7 @@ namespace eval dotlrn_applet {
     }
 
     ad_proc -public is_initalized {} {
-        if {[site_node::exists_p -url "[get_url]/"]} {
-            return 1
-        } else {
-            return 0
-        }
+        return [site_node::exists_p -url "[get_url]/"]
     }
 
     ad_proc -public init {} {
@@ -186,3 +182,9 @@ namespace eval dotlrn_applet {
 
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

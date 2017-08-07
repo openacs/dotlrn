@@ -243,7 +243,7 @@ namespace eval dotlrn {
                 set show_control_panel 0
             } else {
                 # admins always get the control_panel_link, unless it's
-                # explictly turned off
+                # explicitly turned off
                 set show_control_panel 1
             }
         
@@ -302,3 +302,9 @@ namespace eval dotlrn {
 
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

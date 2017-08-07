@@ -1,6 +1,6 @@
 ad_page_contract {
 } -query {
-    {community_id ""}
+    {community_id:integer ""}
     {referer ""}
 }
 
@@ -85,3 +85,9 @@ template::list::create \
 set exported_vars [export_vars -form { referer }]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -242,8 +242,8 @@
   <msg key="lt_Add_members_to_anothe">Adaugă membrii unui alt grup</msg>
   <msg key="lt_Add_These_Users_To_A_">Adaugă Aceşti Utilizatori la Un Grup</msg>
   <msg key="lt_Administrative_Action">Acţiuni Administrative</msg>
-  <msg key="lt_An_error_occured_whil">O eroare a apărut în timp ce un utilizator a fost adăugat la o comunitate. Eroarea a fost înregistrată</msg>
-  <msg key="lt_An_error_occured_whil_1">O eroare s-a petrecut în timp scoaterii unui utilizator dintr-o comunitate. Eroarea a fost înregistrată</msg>
+  <msg key="lt_An_error_occurred_whil">O eroare a apărut în timp ce un utilizator a fost adăugat la o comunitate. Eroarea a fost înregistrată</msg>
+  <msg key="lt_An_error_occurred_whil_1">O eroare s-a petrecut în timp scoaterii unui utilizator dintr-o comunitate. Eroarea a fost înregistrată</msg>
   <msg key="lt_approve_and_add_to_do">aprobă si adaugă la dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Sunteţi sigur că vreţi sa arhivaţi grupul &lt;strong&gt;%pretty_name%&lt;/strong&gt; şi subgrupele sale (dacă există) ?</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Sunteţi sigur ca vreţi să eliminaţi de tot aceşti utilizatori? De reţinut că doar vom încerca să eliminăm aceşti utilizatori şi e posibil sa apară erori în cazul unor dintre ei.</msg>

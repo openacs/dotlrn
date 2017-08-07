@@ -20,7 +20,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-08
 } -query {
-    community_id
+    community_id:naturalnum,notnull
     applet_key
 }
 
@@ -33,3 +33,9 @@ dotlrn_community::remove_applet $community_id $applet_key
 # Get back to where you once belonged
 ad_returnredirect community-applets?community_id=$community_id
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

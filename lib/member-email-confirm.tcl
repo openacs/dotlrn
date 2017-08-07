@@ -4,7 +4,7 @@ ad_page_contract {
 } {
     user_id:naturalnum,notnull
     {type "on join"}
-    {return_url ""}
+    {return_url:localurl ""}
 }
 
 permission::require_permission \
@@ -30,7 +30,7 @@ ad_form -name member-email-confirm \
         if {![db_0or1row member_email {}]} {
 	    set default_email [lindex [callback dotlrn::default_member_email -community_id $community_id -type $type -var_list [list course_name $community_name community_name $community_name]] 0]
 	    if {![llength $default_email]} {
-		set from_addr [cc_email_from_party [ad_conn user_id]]
+		set from_addr [party::email -party_id [ad_conn user_id]]
 		set subject "Welcome to ${community_name}!"
 	    }
 	    set from_addr [lindex $default_email 0]
@@ -45,7 +45,7 @@ ad_form -name member-email-confirm \
  	    set email [_ dotlrn.added_community_message]
 	}
 	if {$from_addr eq ""} {
-	    set from_addr [cc_email_from_party [ad_conn user_id]]
+	    set from_addr [party::email -party_id [ad_conn user_id]]
 	}
         set email [template::util::richtext::create $email text/html]
     } -on_submit {
@@ -76,3 +76,9 @@ ad_form -name member-email-confirm \
 ad_return_template
 
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

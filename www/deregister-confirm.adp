@@ -41,7 +41,7 @@
 </else>
 </p>
 <form method="post" action="deregister" class="form-inline">
-<input type=hidden name=referer value="@referer@">
+<input type="hidden" name="referer" value="@referer@">
 @hidden_user_ids;noquote@
 <ul>
 <if @num_users@ lt 99>
@@ -53,7 +53,7 @@
 	<input type="submit" value="#dotlrn.Yes#">
 </form>
 <form method="post" class="form-inline" action="@referer@" style="margin-top: 0px;">
-	<input type=submit value="#dotlrn.No#">
+	<input type="submit" value="#dotlrn.No#">
 </form>
 
 <p>

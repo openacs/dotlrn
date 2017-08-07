@@ -21,7 +21,7 @@ ns_log notice "start dotlrn master url=[ad_conn url]"
 # Instructions:
 #
 # 1. Put this file and it's .adp file into the server's /www directory.
-# That's the one with the "default-master" tcl and adp files. You don't
+# That's the one with the "default-master" Tcl and adp files. You don't
 # have to edit or remove the "default-master" files, since they will be
 # ignored by the next step.
 # 
@@ -35,7 +35,7 @@ ns_log notice "start dotlrn master url=[ad_conn url]"
 # at the top of the page, the title of the pages, the fonts of the portlets, etc.
 #
 # WARNING: All current portlet themes (table, deco, nada, etc) depend on some
-# of the CSS defined below. Be carefull when you edit the CSS below, 
+# of the CSS defined below. Be careful when you edit the CSS below, 
 # and check how themes use it.
 #
 #
@@ -218,7 +218,7 @@ if {$community_id ne ""} {
     }
   
     # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
-    # be replaced by custom gifs if prefered (as is done by SloanSpace)
+    # be replaced by custom gifs if preferred (as is done by SloanSpace)
 
     if { [file exists "$header_img_file-$scope_name.jpg"] } {
         set header_img_url "$header_img_url-$scope_name.jpg"
@@ -285,7 +285,7 @@ if {$community_id ne ""} {
     # under /dotlrn
 
     # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
-    # be replaced by custom gifs if prefered (as is done by SloanSpace)
+    # be replaced by custom gifs if preferred (as is done by SloanSpace)
 
     if { [file exists "$header_img_file-$scope_name.jpg"] } {
         set header_img_url "$header_img_url-$scope_name.jpg"
@@ -552,3 +552,9 @@ $recolor_css
     FONT-FAMILY: $header_font;
 }
 "
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -40,3 +40,9 @@ dotlrn_community::add_applet_to_community $community_id $applet_key
 
 ad_returnredirect $referer
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

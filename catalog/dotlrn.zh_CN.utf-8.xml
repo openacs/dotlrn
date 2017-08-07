@@ -242,8 +242,8 @@
   <msg key="lt_Add_members_to_anothe">将会员加入到另一组</msg>
   <msg key="lt_Add_These_Users_To_A_">将用户加入到组</msg>
   <msg key="lt_Administrative_Action">管理操作</msg>
-  <msg key="lt_An_error_occured_whil">给社团添加用户时出错。此错误已被记录下来。</msg>
-  <msg key="lt_An_error_occured_whil_1">给社团删除用户时出错。此错误已被记录下来。</msg>
+  <msg key="lt_An_error_occurred_whil">给社团添加用户时出错。此错误已被记录下来。</msg>
+  <msg key="lt_An_error_occurred_whil_1">给社团删除用户时出错。此错误已被记录下来。</msg>
   <msg key="lt_approve_and_add_to_do">批准加入到dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">确实要删除空组吗</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">确认彻底清除这些用户吗？注：清除用户时可能会发生错误。</msg>

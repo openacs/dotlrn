@@ -92,3 +92,8 @@ namespace eval dotlrn_privacy {
         return [db_string guests_granted_read_private_data_p {}]
     }
 }
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

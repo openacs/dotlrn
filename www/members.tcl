@@ -67,7 +67,10 @@ if {$admin_p && !$csv_p} {
     set bulk_actions_export_vars [list "user_id" "referer" "reset"]
 
     if { !$subcomm_p } {
-        lappend actions [_ dotlrn.Create_and_add_a_member] [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }] [_ dotlrn.Create_and_add_a_member]
+        lappend actions \
+            [_ dotlrn.Create_and_add_a_member] \
+            [export_vars -base user-add { {can_browse_p 1} {read_private_data_p t} {referer $return_url} }] \
+            [_ dotlrn.Create_and_add_a_member]
     }
 
     if { $spam_p } {
@@ -107,17 +110,17 @@ set elm_list {
         label "[_ dotlrn.Email_1]"
         html "align left"
         display_template {@members.email_pretty;noquote@}
-	} role {
-	    label "[_ dotlrn.Role]"
-	    html "align left"
-	} 
+    } role {
+        label "[_ dotlrn.Role]"
+        html "align left"
+    } 
 }
 
 if {$admin_p && !$csv_p} {
     lappend elm_list {action} {
-	    label "[_ dotlrn.Actions]"
-	    html "align left"
-	    display_template {
+        label "[_ dotlrn.Actions]"
+        html "align left"
+        display_template {
             <if @members.user_id@ ne \"\">
             <a href="member-confirm?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
             <a href="member-add-2?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
@@ -127,14 +130,21 @@ if {$admin_p && !$csv_p} {
 }
 
 # Build the list-builder list
-template::list::create -name members -multirow members -key user_id -actions $actions -bulk_actions $bulk_actions -bulk_action_export_vars $bulk_actions_export_vars -elements $elm_list -orderby {
-    last_name {orderby last_name}
-    first_names {orderby first_names}
-    email {orderby email}
-    role {orderby role}
-} -selected_format csv -formats {
-    csv { output csv }
-}
+template::list::create \
+    -name members \
+    -multirow members \
+    -key user_id \
+    -actions $actions \
+    -bulk_actions $bulk_actions \
+    -bulk_action_export_vars $bulk_actions_export_vars \
+    -elements $elm_list -orderby {
+        last_name {orderby last_name}
+        first_names {orderby first_names}
+        email {orderby email}
+        role {orderby role}
+    } -selected_format csv -formats {
+        csv { output csv }
+    }
 
 set orderby [template::list::orderby_clause -name "members" -orderby]
 
@@ -242,3 +252,9 @@ if {([info exists reset] && $reset ne "") && ([info exists reltype] && $reltype 
 }
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

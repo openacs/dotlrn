@@ -22,7 +22,7 @@ ad_page_contract {
     @creation-date 2001-11-04
     @version $Id$
 } -query {
-    user_id:multiple
+    user_id:naturalnum,multiple,notnull
     rel_type
     {referer "one-community-admin"}
 }
@@ -85,3 +85,9 @@ foreach member_id $user_id {
     }
 }
 ad_returnredirect $referer
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

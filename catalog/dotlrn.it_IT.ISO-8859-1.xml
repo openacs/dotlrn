@@ -242,8 +242,8 @@
   <msg key="lt_Add_members_to_anothe">Aggiungi i membri a un altro gruppo</msg>
   <msg key="lt_Add_These_Users_To_A_">Aggiungere questo/i utente/i a un gruppo</msg>
   <msg key="lt_Administrative_Action">Azioni Amministrative</msg>
-  <msg key="lt_An_error_occured_whil">Si è verificato un errore durante l'aggiunta di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
-  <msg key="lt_An_error_occured_whil_1">Si è verificato un errore durante la rimozione di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
+  <msg key="lt_An_error_occurred_whil">Si è verificato un errore durante l'aggiunta di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Si è verificato un errore durante la rimozione di un utente a una comunità. Questo inconveniente è stato registrato.</msg>
   <msg key="lt_approve_and_add_to_do">approva e aggiungi a dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Sei sicuro di voler cancellare il dipartimento vuoto</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Sei sicuro di voler rimuovere questi utenti? Tieni conto che per alcuni utenti potremo avere degli errori.</msg>

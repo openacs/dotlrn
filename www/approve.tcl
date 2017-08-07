@@ -21,8 +21,8 @@ ad_page_contract {
     @creation-date 2002-03-15
     @version $Id$
 } -query {
-    {user_id:multiple ""}
-    {community_id ""}
+    {user_id:integer,multiple ""}
+    {community_id:integer ""}
     {referer "./"}
 }
 
@@ -44,3 +44,9 @@ foreach uid $user_id {
 
 ad_returnredirect $referer
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

@@ -3,7 +3,7 @@
 
 <h1>dotLRN Nomenclature: a dotLRN Primer</h1>
 by <a href="mailto:ben@openforce.net">Ben Adida</a>, part of <a
-href="./">dotLRN Documentation</a>. (last updated: <i>28 February 2002</i>)
+href="./">dotLRN Documentation</a>. (last updated: <em>28 February 2002</em>)
 <hr><P>
 
 dotLRN is a <strong>Learning Community Management System</strong>
@@ -15,7 +15,7 @@ dotLRN's primary use: that of a Course Management System.
 
 <p>
 <h2>1. dotLRN Communities</h2>
-The core concept within dotLRN is the <b>dotLRN User Community</b>.
+The core concept within dotLRN is the <strong>dotLRN User Community</strong>.
 
 <h3>Community</h3> 
 
@@ -28,8 +28,8 @@ and community ID.
 
 <h3>Class</h3>
 
-A <b>class</b> is a topic of instruction, such as "Finance 101." A
-class is <b><i>not</i></b> a community (this will become clearer
+A <strong>class</strong> is a topic of instruction, such as "Finance 101." A
+class is <strong><em>not</em></strong> a community (this will become clearer
 soon).
 
 <p>
@@ -37,7 +37,7 @@ soon).
 <h3>Class Instances and Clubs</h3>
 
 Two basic types of communities implemented in core dotLRN are
-<b>Class Instances</b> and <b>Clubs</b>. Class Instances are
+<strong>Class Instances</strong> and <strong>Clubs</strong>. Class Instances are
 for structured groups of students, while Clubs are for unstructured
 student activities. A Class Instance, as its name indicates, is a
 specific instance of a Class. "Finance 101 - Spring 2002" is an
@@ -50,38 +50,38 @@ with on another apart from teaching approximately the same material.
 
 <h3>Open, Wait, Closed Communities</h3>
 
-Communities can have one of three <b>Join Policies</b>. A join policy
+Communities can have one of three <strong>Join Policies</strong>. A join policy
 defines the process by which a dotLRN User can become a member of the
-community. For now, we will consider only <b>dotLRN Full Access
-Users</b> (see below for more information on other types of dotLRN
+community. For now, we will consider only <strong>dotLRN Full Access
+Users</strong> (see below for more information on other types of dotLRN
 users).
 
 <p>
 
-A  community with <b>open join policy</b> is visible in read-only
+A  community with <strong>open join policy</strong> is visible in read-only
 state to non-members. Any full-access user can join the community at
 will, without the intervention of any other user.
 
 <p>
 
-A community with <b>wait join policy</b> is visible in read-only state
+A community with <strong>wait join policy</strong> is visible in read-only state
 to non-members. A full-access user can apply to join the
 community. The application must be approved by an administrator of the
 community.
 
 <p>
 
-A communty with <b>closed join policy</b> is not visible to
+A communty with <strong>closed join policy</strong> is not visible to
 non-members. Users become members only when explicitly added by the
 community administrator.
 
 <p>
 
-<h3><i>in MIT SloanSpace</i>: Class Instances and Communities</h3>
+<h3><em>in MIT SloanSpace</em>: Class Instances and Communities</h3>
 
-In MIT SloanSpace, dotLRN Communities are referred to as <b>SloanSpace
-Groups</b>, while dotLRN Clubs are referred to as <b>SloanSpace
-Communities</b>.
+In MIT SloanSpace, dotLRN Communities are referred to as <strong>SloanSpace
+Groups</strong>, while dotLRN Clubs are referred to as <strong>SloanSpace
+Communities</strong>.
 
 <p>
 
@@ -98,18 +98,18 @@ entirely configurable by the user using global parameters.
 
 <h2>2. dotLRN Users</h2>
 
-A <b>dotLRN User</b> is an individual with an email address username and a
+A <strong>dotLRN User</strong> is an individual with an email address username and a
 password to the dotLRN system. Each user is uniquely identified by
 email address.
 
 <h3>Access Level: Limited or Full</h3>
 
-dotLRN users can have either <b>Limited Access</b> or <b>Full
-Access</b>.
+dotLRN users can have either <strong>Limited Access</strong> or <strong>Full
+Access</strong>.
 
 <p>
 
-A <b>limited-access user</b> is one who has access only to class instances
+A <strong>limited-access user</strong> is one who has access only to class instances
 and communities she is registered for and has no ability to
 browse any other section of the dotLRN application. This applies even
 to open communities: if a limited-access user is not a member of a
@@ -118,7 +118,7 @@ enable her to become a member.
 
 <p>
 
-A <b>full-access user</b> is one who has access to all browsing
+A <strong>full-access user</strong> is one who has access to all browsing
 sections of the dotLRN application. A full-access user can surf around
 and register for open communities, apply to be accepted into wait
 communities, etc... A full-access user also has the ability to store
@@ -128,7 +128,7 @@ user-specific information, like personal files and personal calendar events.
 
 <h3>Access to Private Information</h3>
 
-Certain users of the system may be <b>dotLRN Guests</b>, meaning that
+Certain users of the system may be <strong>dotLRN Guests</strong>, meaning that
 they do not belong to the parent organization that runs the dotLRN
 instance. These guests may participate in the community as
 full-fledged members but, for certain legal or privacy reasons, may
@@ -143,7 +143,7 @@ etc...) can be read by these guests.
 
 dotLRN users have system-wide profile information. For example, in the
 context of a Course Management System like MIT SloanSpace, they may be
-<b>Professors</b>, <b>Students</b>, or <b>Administrative Staff</b>.
+<strong>Professors</strong>, <strong>Students</strong>, or <strong>Administrative Staff</strong>.
 These system-wide roles define the user's specific profile in the
 system as a whole, without regards to community-specific roles.
 
@@ -152,12 +152,12 @@ system as a whole, without regards to community-specific roles.
 <h3>Community-Specific Roles</h3>
 
 dotLRN users have specific roles within the communities they belong
-to. These roles are classified in two main categories: <b>dotLRN
-Community Members</b> and <b>dotLRN Community Admins</b>.
+to. These roles are classified in two main categories: <strong>dotLRN
+Community Members</strong> and <strong>dotLRN Community Admins</strong>.
 
 <p>
 
-<b>dotLRN Community Members</b> of a given community have normal
+<strong>dotLRN Community Members</strong> of a given community have normal
 read/write access to a community. They cannot perform administrative
 functions, like create a new forum, add group calendar events, create
 a new survey, etc... However, they can contribute to existing
@@ -165,8 +165,8 @@ discussion forums, view calendar events, and respond to surveys.
 
 <p>
 
-<b>dotLRN Community Admins</b> have all the privileges of normal
-community members <i>plus</i> complete administrative rights over all
+<strong>dotLRN Community Admins</strong> have all the privileges of normal
+community members <em>plus</em> complete administrative rights over all
 components of the community. dotLRN Community Admins completely
 control a community: they need no further help from any other users to
 add data, applications, or users to their workspace.
@@ -175,28 +175,28 @@ add data, applications, or users to their workspace.
 <h2>3. dotLRN Applets</h2>
 
 A dotLRN community is mostly a container of users and applets. A
-<b>dotLRN Applet</b> (nothing to do with a Java applet) is a small
+<strong>dotLRN Applet</strong> (nothing to do with a Java applet) is a small
 application that can be added to the community to enable new
 functionality.
 
 <p>
 
 Examples of existing applets include: Discussion Forums, Surveys,
-FAQs, News, Calendaring. These applets are <b>scoped</b> in order to
+FAQs, News, Calendaring. These applets are <strong>scoped</strong> in order to
 correctly segment communities from one another. Data that belongs to
 one community is not viewable by another: it is as if it doesn't exist
 unless you are in the appropriate community.
 
 <p>
 
-Certain applets are <b>community-centric</b> in that they offer
+Certain applets are <strong>community-centric</strong> in that they offer
 functionality that makes sense only in the context of a given
 community. Discussion Forums is one solid example of this: a
 discussion forum must pertain to a given community.
 
 <p>
 
-Other applets are <b>user-centric</b> in that they also manage data
+Other applets are <strong>user-centric</strong> in that they also manage data
 that is user-related, not linked to any given community. Calendaring
 is one such applet: although there are community events, there are
 also personal events.
@@ -205,8 +205,8 @@ also personal events.
 
 <h2>4. Portals</h2>
 
-The entire dotLRN architecture is based on the <b>New Portal
-Architecture</b>. The design and specifics of this architecture are
+The entire dotLRN architecture is based on the <strong>New Portal
+Architecture</strong>. The design and specifics of this architecture are
 described in another document, but the basic terminology and concepts
 are as follows.
 
@@ -214,8 +214,8 @@ are as follows.
 
 <h3>Portal Page</h3>
 
-A <b>Portal Page</b> is a single page display of portal boxes. A
-portal page has a <b>Portal Layout</b> that defines how the boxes are
+A <strong>Portal Page</strong> is a single page display of portal boxes. A
+portal page has a <strong>Portal Layout</strong> that defines how the boxes are
 arranged on the page. Common layout schemes include 2-column,
 3-column, 3-column-with-header. New portal layouts can be implemented
 at will.
@@ -227,23 +227,23 @@ around the page by someone with appropriate permissions.
 
 <h3>Portal</h3>
 
-A <b>Portal</b> is a set of portal pages that are tied together so
+A <strong>Portal</strong> is a set of portal pages that are tied together so
 that a browser may navigate easily between the various portal
 pages. This is particularly useful when portal boxes need to be
 organized by functionality theme.
 
 <h3>Portlet or Portal Datasource</h3>
 
-A <b>Portlet</b> or <b>Portal Datasource</b> is a set of functionality
+A <strong>Portlet</strong> or <strong>Portal Datasource</strong> is a set of functionality
 that is presented in the form of a portal box. A bboard portlet, for
 example, is functionality that displays discussion forums inside a
 portal box.
 
 <h3>Portal Element</h3>
 
-A <b>Portal Element</b> is a single box on a given portal page. A box
+A <strong>Portal Element</strong> is a single box on a given portal page. A box
 that display discussion forum information on Jane Doe's personal
-portal page #2 is <b><i>one</i></b> portal element that corresponds to
+portal page #2 is <strong><em>one</em></strong> portal element that corresponds to
 the instantiation of portlet within a portal page.
 
 <p>
@@ -258,24 +258,24 @@ one place, a new instance of the portlet would have to be instantiated.
 
 <h3>Portal Themes</h3>
 
-A portal page can be rendered in a given <b>Portal Theme</b> that
-determines the look-and-feel of each box. The layout is <b>NOT</b>
+A portal page can be rendered in a given <strong>Portal Theme</strong> that
+determines the look-and-feel of each box. The layout is <strong>NOT</strong>
 determined here, only the specific look-and-feel of portal element
 borders, buttons, and internals.
 
 <h3>Portlet Parameters; Portal Element Parameter Values</h3>
 
-For each portlet, there is a set of <b>Portlet Parameters</b>. For
-example, the calendar portlet has a <tt>calendar_view</tt> parameter
+For each portlet, there is a set of <strong>Portlet Parameters</strong>. For
+example, the calendar portlet has a <kbd>calendar_view</kbd> parameter
 that indicates whether the portlet should display data in the form of
 a list, day-, week-, or month- view.
 
 <p>
 
-Each Portal Element has <b>Portal Element Parameter Values</b> for
+Each Portal Element has <strong>Portal Element Parameter Values</strong> for
 each parameter of the portlet it instantiates. For example, the
 calendar portal element on Jane Doe's personal portal may have a value
-of "day" for the <tt>calendar_view</tt> parameter.
+of "day" for the <kbd>calendar_view</kbd> parameter.
 
 <p>
 

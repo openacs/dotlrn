@@ -21,7 +21,7 @@ ad_page_contract {
 } -query {
     {recipients:integer,multiple ""}
     {recipients_str ""}
-    {community_id ""}
+    {community_id:integer ""}
     {rel_types:multiple "" }
     {rel_types_str ""}
     {referer ""}
@@ -208,7 +208,7 @@ if { [ns_queryexists "form:confirm"] } {
 	set message [ad_text_to_html $message]
 	set message_type "html"
     } else {
-	set message [ad_quotehtml $message]
+	set message [ns_quotehtml $message]
 	set message_type "text"
     }
 
@@ -236,3 +236,9 @@ if {[form is_valid spam_message]} {
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

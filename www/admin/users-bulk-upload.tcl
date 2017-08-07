@@ -29,3 +29,9 @@ set context_bar [list [list users [_ dotlrn.Users]] [_ dotlrn.Bulk_Upload]]
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

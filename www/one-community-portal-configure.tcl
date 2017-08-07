@@ -52,3 +52,9 @@ set rendered_page [portal::configure \
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

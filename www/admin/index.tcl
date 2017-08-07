@@ -52,3 +52,9 @@ set return_url [ad_conn url]
 set toolbar_actions_url [export_vars -base toolbar-actions {action return_url}]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

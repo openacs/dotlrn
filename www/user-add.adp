@@ -24,7 +24,7 @@
 <property name="focus">register.email</property>
 
 <h1>#dotlrn.lt_Add_a_new_user_to_Slo#</h1>
-<if @community_p@ eq 1>
+<if @community_p;literal@ true>
 <p>
  #dotlrn.lt_Note_use_this_feature#
 </p>
@@ -32,7 +32,7 @@
 	<li>#dotlrn.lt_If_this_person_is_a_M#
 	<li>#dotlrn.lt_Be_sure_that_the_pers#
 
-<if @read_private_data_p@ eq t>
+<if @read_private_data_p;literal@ true>
 	<li>#dotlrn.lt_Use_this_only_for_an_#
 
 </if>
@@ -47,4 +47,4 @@
 </ol>
 </if>
 
-<include src="/packages/acs-subsite/lib/user-new" next_url="@next_url;literal@" self_register_p="0"/>
+<include src="/packages/acs-subsite/lib/user-new" next_url="@next_url;literal@" self_register_p="0">

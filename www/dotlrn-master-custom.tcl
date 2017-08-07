@@ -20,3 +20,9 @@ if { ![info exists doc(title)] && [info exists title] && $title ne "" } {
     set title [ad_system_name]
     set doc(title) $title
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

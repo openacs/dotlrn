@@ -19,7 +19,7 @@
 %>
 
 <master>
-  <property name="doc(title)">@title;literal@</property>
+  <property name="&doc">doc</property>
   <property name="link_all">1</property>
   <if @focus@ not nil><property name="focus">@focus;literal@</property></if>
   <if @context@ not nil><property name="context">@context;literal@</property></if>

@@ -36,13 +36,13 @@
 
 		<div class="portlet" style="position:relative;">
 
-          <if @portrait_p@ true>
+          <if @portrait_p;literal@ true>
             <div style="position: absolute; top: 10px; left: 10px;">
               <img src="@portrait_image_src@" alt="#acs-subsite.Your_Portrait#">
             </div>
           </if>
 
-          <include src="@user_info_template;literal@" />
+          <include src="@user_info_template;literal@" >
 
           <div style="clear: both;">
             <ul>
@@ -52,7 +52,7 @@
             <ul>
               <li>
                 <a href="@portrait_url@">
-                  <if @portrait_p@ true>#acs-subsite.Manage_Portrait#</if>
+                  <if @portrait_p;literal@ true>#acs-subsite.Manage_Portrait#</if>
                   <else>#acs-subsite.Upload_Portrait#</else>
                 </a>
               </li>
@@ -95,14 +95,14 @@
         <ul>
           <li><a href="configure" title="#dotlrn.Customize_Layout#">#dotlrn.Customize_Layout#</a></li>
 
-          <if @allowed_to_change_site_template_p@>
+          <if @allowed_to_change_site_template_p;literal@ true>
             <li><a href="@site_template_url@" title="#dotlrn.Customize_Template#">#dotlrn.Customize_Template#</a></li>
           </if>
         </ul>
 
 
         <!-- who's online -->
-        <if @invisible_p@ true>
+        <if @invisible_p;literal@ true>
           <p>#acs-subsite.Currently_invisible_msg#</p>
           <ul>
             <li><a href="@make_visible_url@" title="#acs-subsite.Make_yourself_visible_label#">#acs-subsite.Make_yourself_visible_label#</a></li>

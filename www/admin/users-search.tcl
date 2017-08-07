@@ -21,12 +21,12 @@ ad_page_contract {
     @creation-date 2002-02-10
     @version $Id$
 } -query {
-    {type "any"}
-    {can_browse_p "any"}
-    {guest_p "any"}
-    {join_criteria "and"}
-    {n_users 0}
-    {action "none"}
+    {type:word "any"}
+    {can_browse_p:word "any"}
+    {guest_p:word "any"}
+    {join_criteria:word "and"}
+    {n_users:integer 0}
+    {action:word "none"}
 } -properties {
     context_bar:onevalue
     is_request:onevalue
@@ -272,3 +272,9 @@ if {[form is_valid user_search]} {
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

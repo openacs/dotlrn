@@ -242,8 +242,8 @@
   <msg key="lt_Add_members_to_anothe">Legg medlemer til ei anna gruppe</msg>
   <msg key="lt_Add_These_Users_To_A_">Legg desse brukarane til ei gruppe</msg>
   <msg key="lt_Administrative_Action">Administrative oppgåver</msg>
-  <msg key="lt_An_error_occured_whil">Det kom ein feil når vi prøvde å leggje ein brukar til ei gruppe. Feilen er logga.</msg>
-  <msg key="lt_An_error_occured_whil_1">Det kom ein feil når vi prøvde å fjerne ein brukar frå ei gruppe. Feilen er logga.</msg>
+  <msg key="lt_An_error_occurred_whil">Det kom ein feil når vi prøvde å leggje ein brukar til ei gruppe. Feilen er logga.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Det kom ein feil når vi prøvde å fjerne ein brukar frå ei gruppe. Feilen er logga.</msg>
   <msg key="lt_approve_and_add_to_do">godkjenn og legg inn i dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Er du sikker på at du vil slette den tomme avdelinga</msg>
   <msg key="lt_Are_you_sure_you_want_nuke_users">Er du sikker på at du vil fjerne desse brukarane heilt? Legg merke til at vi berre prøver å fjerne desse brukarane, og det kan skje feil for nokon av brukarane.</msg>

@@ -55,7 +55,7 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 	{label "[_ dotlrn.Start_Date]"}
 	#{format {[lc_get formbuilder_date_format]}}
         {html {id start_date}}
-        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('start_date', 'yyyy-mm-dd');\"> \[<b>yyyy-mm-dd </b>\]
+        {after_html {<input type="reset" id="start_date-control" value=" ... "> \[<b>yyyy-mm-dd </b>\]
         }}
     }
 
@@ -63,7 +63,7 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 	{label "[_ dotlrn.End_Date]"}
 	#{format {[lc_get formbuilder_date_format]}}
 	{html {id end_date}}
-        {after_html {<input type='reset' value=' ... ' onclick=\"return showCalendar('end_date', 'yyyy-mm-dd');\"> \[<b>yyyy-mm-dd </b>\]
+        {after_html {<input type="reset" id="end_date-control" value=" ... "> \[<b>yyyy-mm-dd </b>\]
         }}
     }
     
@@ -78,20 +78,15 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
     }
 } -edit_data {
 
-    # Setting the rigth format to send to the procedures
+    # Setting the right format to send to the procedures
     # dotlrn_term::start_end_dates_to_term_year  and
     # dotlrn_term::new
 
     set start_date [split $start_date "-"]
-    lappend start_date ""
-    lappend start_date ""
-    lappend start_date ""
-    lappend start_date "MONTH DD YYYY"
+    lappend start_date "" "" "" "MONTH DD YYYY"
+    
     set end_date [split $end_date "-"]
-    lappend end_date ""
-    lappend end_date ""
-    lappend end_date ""
-    lappend end_date "MONTH DD YYYY"
+    lappend end_date "" "" "" "MONTH DD YYYY"
 
     dotlrn_term::edit \
         -term_id $term_id \
@@ -102,7 +97,16 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 
     ad_returnredirect $referer
     ad_script_abort
+} -on_request {
+    template::add_event_listener -id start_date-control -script {showCalendar('start_date', 'yyyy-mm-dd');}
+    template::add_event_listener -id end_date-control   -script {showCalendar('end_date', 'yyyy-mm-dd');}
 }
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

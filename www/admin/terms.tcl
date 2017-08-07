@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     page:naturalnum,optional
-    {orderby "start_date_pretty,desc"}
+    {orderby:token "start_date_pretty,desc"}
 } -properties {
     context_bar:onevalue
     terms:multirow
@@ -74,3 +74,9 @@ db_multirow -extend { start_date_pretty end_date_pretty } terms select_terms {} 
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

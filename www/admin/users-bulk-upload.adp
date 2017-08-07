@@ -50,12 +50,12 @@
 </p>
   
   <ul>
-    <li><tt>first_names</tt> - <em>#dotlrn.required#</em></li>
-    <li><tt>last_name</tt> - <em>#dotlrn.required#</em></li>
-    <li><tt>email</tt> - <em>#dotlrn.required#</em></li>
-    <li><tt>username</tt> - <em>#dotlrn.optional_defaults_to# email</em></li>
-    <li><tt>password</tt> - <em>#dotlrn.optional_defaults_to# random value</em></li>
-    <li><tt>type</tt> - <em>#dotlrn.required#</em> #dotlrn.must_have_values# 
+    <li><kbd>first_names</kbd> - <em>#dotlrn.required#</em></li>
+    <li><kbd>last_name</kbd> - <em>#dotlrn.required#</em></li>
+    <li><kbd>email</kbd> - <em>#dotlrn.required#</em></li>
+    <li><kbd>username</kbd> - <em>#dotlrn.optional_defaults_to# email</em></li>
+    <li><kbd>password</kbd> - <em>#dotlrn.optional_defaults_to# random value</em></li>
+    <li><kbd>type</kbd> - <em>#dotlrn.required#</em> #dotlrn.must_have_values# 
       <ul>
         <li>professor</li>
         <li>student</li>
@@ -63,12 +63,12 @@
         <li>external</li>
       </ul>
     </li>
-    <li><tt>access_level</tt> - <em>#dotlrn.optional_defaults_to# full</em> - 
-        <em>#dotlrn.must_have_values#</em> <tt>full</tt>, <tt>limited</tt></li>
-    <li><tt>guest</tt> - <em>#dotlrn.optional_defaults_to# f</em> -
-        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt></li>
-    <li><tt>notify</tt> - <em>#dotlrn.optional_defaults_to# f</em>    
-        <em>#dotlrn.must_have_values#</em> <tt>t</tt>, <tt>f</tt></li>
+    <li><kbd>access_level</kbd> - <em>#dotlrn.optional_defaults_to# full</em> - 
+        <em>#dotlrn.must_have_values#</em> <kbd>full</kbd>, <kbd>limited</kbd></li>
+    <li><kbd>guest</kbd> - <em>#dotlrn.optional_defaults_to# f</em> -
+        <em>#dotlrn.must_have_values#</em> <kbd>t</kbd>, <kbd>f</kbd></li>
+    <li><kbd>notify</kbd> - <em>#dotlrn.optional_defaults_to# f</em>    
+        <em>#dotlrn.must_have_values#</em> <kbd>t</kbd>, <kbd>f</kbd></li>
   </ul>
   
 

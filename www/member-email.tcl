@@ -27,7 +27,7 @@ ad_form -name "member_email" -form {
     {email:richtext,optional {label "Message"} {html {rows 30 cols 80}}}
 } -on_request {
 
-    set from_addr [cc_email_from_party [ad_conn user_id]]
+    set from_addr [party::email -party_id [ad_conn user_id]]
     set subject "Welcome to [dotlrn_community::get_community_name $community_id]!"
 
 } -on_submit {
@@ -54,3 +54,9 @@ ad_form -name "member_email" -form {
     ad_script_abort
 
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

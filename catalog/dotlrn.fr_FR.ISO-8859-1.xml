@@ -228,8 +228,8 @@
   <msg key="lt_Add_members_to_anothe">Ajouter les membres à un autre groupe</msg>
   <msg key="lt_Add_These_Users_To_A_">Ajouter ces utilisateurs à un groupe</msg>
   <msg key="lt_Administrative_Action">Administration</msg>
-  <msg key="lt_An_error_occured_whil">Erreur en ajoutant un utilisateur à une communauté. L'erreur a été enregistrée.</msg>
-  <msg key="lt_An_error_occured_whil_1">Une erreur s'est produite en essayant de retirer un utilisateur d'une communauté. Cette erreur a été archivée.</msg>
+  <msg key="lt_An_error_occurred_whil">Erreur en ajoutant un utilisateur à une communauté. L'erreur a été enregistrée.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Une erreur s'est produite en essayant de retirer un utilisateur d'une communauté. Cette erreur a été archivée.</msg>
   <msg key="lt_approve_and_add_to_do">approuver et ajouter à dotLRN</msg>
   <msg key="lt_Are_you_sure_you_want">Etes-vous sûr de vouloir effacer ce département</msg>
   <msg key="lt_Be_sure_that_the_pers">Soyez sûr que la personne n'a pas déjà un compte sur SloanSpace sous une autre adresse email. Les double comptes posent des problèmes.  Pour ajouter une personne qui a déjà un compte, utilisez &lt;a href=members&gt;Gérer les membres&lt;/a &gt;.</msg>

@@ -42,3 +42,9 @@ db_multirow -extend {
     set edit_url [export_vars -base community-type {community_type}]
 }
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

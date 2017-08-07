@@ -22,8 +22,8 @@ ad_page_contract {
     @creation-date 2001-10-06
     @version $Id$
 } -query {
-    {user_id ""}
-    {community_id ""}
+    {user_id:integer ""}
+    {community_id:integer ""}
     {referer "./"}
 }
 
@@ -91,7 +91,7 @@ if {[catch {
             set query [db_map bulk_mail_query]
 
             set full_name [acs_user::get_element -user_id $user_id -element name]
-            set email "[cc_email_from_party $user_id]"
+            set email [party::email -party_id $user_id]
             set subject "$full_name ($email) has requested to join $community_name."
             
             set message "$full_name ($email) has requested to join $community_name.
@@ -123,11 +123,16 @@ $community_url/members
         ad_returnredirect $referer
         ad_script_abort
     } else {
-        global errorInfo
-        ns_log Error "register.tcl failed: $errmsg\n$errorInfo"
+        ns_log Error "register.tcl failed: $errmsg\n$::errorInfo"
         
-        ad_return_error "Error adding user to community"  "An error occured while trying to add a user to a community.  This error has been logged."
+        ad_return_error "Error adding user to community"  "An error occurred while trying to add a user to a community.  This error has been logged."
     }
 }
 
 ad_returnredirect $referer
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

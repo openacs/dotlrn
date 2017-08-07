@@ -22,7 +22,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {filter ""}
-    {page_num 0}
+    {page_num:naturalnum,notnull 0}
 }
 
 # Used to keep track of navigation links
@@ -69,3 +69,9 @@ set rendered_page [dotlrn::render_page -page_num $page_num -hide_links_p t $port
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

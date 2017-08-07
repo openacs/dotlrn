@@ -136,3 +136,9 @@ set context_bar [list \
                      [_ dotlrn.new_class_instance]]
 
 set class_name $pretty_name
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

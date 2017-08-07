@@ -23,8 +23,8 @@ ad_page_contract {
     @version $Id$
 } -query {
     class_key:notnull
-    {term_id -1}
-    {orderby "term_name,asc"}
+    {term_id:integer -1}
+    {orderby:token "term_name,asc"}
     {keyword ""}
 } -properties {
     pretty_name:onevalue
@@ -42,19 +42,20 @@ if {![db_0or1row select_class_info {}]} {
     ad_script_abort
 }
 
-set description [ad_quotehtml $description]
+set description [ns_quotehtml $description]
 
 set terms [db_list_of_lists select_terms_for_select_widget {}]
 set terms [linsert $terms 0 {All -1}]
 
-form create term_form
+form create term_form \
+    -has_submit 1
 
 element create term_form term_id \
     -label [_ dotlrn.Term] \
     -datatype integer \
     -widget select \
     -options $terms \
-    -html {onChange document.term_form.submit()} \
+    -html {class auto-term-form-submit} \
     -value $term_id
 
 element create term_form class_key \
@@ -62,6 +63,8 @@ element create term_form class_key \
     -datatype text \
     -widget hidden \
     -value $class_key
+
+template::add_event_listener -CSSclass auto-term-form-submit -event change -script {document.term_form.submit();}
 
 if {[form is_valid term_form]} {
     form get_values term_form term_id class_key
@@ -132,3 +135,9 @@ db_multirow class_instances $query {}
 set class_edit_url [export_vars -base class-edit {class_key referer}]
 
 ad_return_template
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:

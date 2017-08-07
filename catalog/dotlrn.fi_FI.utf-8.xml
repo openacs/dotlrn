@@ -223,8 +223,8 @@ Ole hyvä ja valitse toinen nimi.</msg>
   <msg key="lt_Add_members_to_anothe">Lisää tämän ryhmän jäsenet muuhun ryhmään tai toiselle kurssille</msg>
   <msg key="lt_Add_These_Users_To_A_">Lisää nämä käyttäjät ryhmään</msg>
   <msg key="lt_Administrative_Action">Ylläpidolliset toiminnot</msg>
-  <msg key="lt_An_error_occured_whil">Lisättäessä käyttäjää järjestelmään tapahtui virhe. Virheilmoitus välitetään ylläpitäjälle.</msg>
-  <msg key="lt_An_error_occured_whil_1">Poistettaessa käyttäjää järjestelmästä tapahtui virhe. Virheilmoitus on välitetty ylläpitäjälle.</msg>
+  <msg key="lt_An_error_occurred_whil">Lisättäessä käyttäjää järjestelmään tapahtui virhe. Virheilmoitus välitetään ylläpitäjälle.</msg>
+  <msg key="lt_An_error_occurred_whil_1">Poistettaessa käyttäjää järjestelmästä tapahtui virhe. Virheilmoitus on välitetty ylläpitäjälle.</msg>
   <msg key="lt_approve_and_add_to_do">hyväksy ja lisää dotLRNiin</msg>
   <msg key="lt_Are_you_sure_you_want">Oletko varma, että haluat poistaa tyhjän osaston</msg>
   <msg key="lt_Be_sure_that_the_pers">Varmista, ettei käyttäjällä ole jo dotLRN-tunnusta toisella sähköpostiosoitteella. Kaksinkertaiset tunnukset aiheuttavat ongelmia kaikille. Lisätäksesi dotLRNiin käyttäjän, jolla on jo tunnus, käytä &lt;a href=&quot;members&quot;&gt;jäsenyyksien hallintaa&lt;/a&gt;.</msg>

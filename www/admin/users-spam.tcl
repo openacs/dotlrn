@@ -90,7 +90,7 @@ if {[form is_valid spam_message]} {
     lappend message_values [list {<sender_email>} $from]
 
     spam::send \
-        -recepients $users \
+        -recipients $users \
         -from $from \
         -real_from $sender_email \
         -subject $subject \
@@ -103,3 +103,9 @@ if {[form is_valid spam_message]} {
 
 ad_return_template
 
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
