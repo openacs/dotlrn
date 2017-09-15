@@ -68,7 +68,7 @@ template::list::create \
 	member_p {
 	    label "\#dotlrn.Actions\#"
 	    display_template {
-		<if @communities.member_p@ eq 0>
+		<if @communities.member_p;literal@ false>
 		   <center>
 		   <include src="/packages/dotlrn/www/register-link" url="register?community_id=@communities.community_id@&referer=@communities.referer@">
                    </center>

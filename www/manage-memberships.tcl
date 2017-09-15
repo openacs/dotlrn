@@ -170,7 +170,7 @@ template::list::create \
             #dotlrn.Pending_Approval#
             </if>
             <else>
-            <if @show_drop_button_p@ eq 1>
+            <if @show_drop_button_p;literal@ true>
             <include src="/packages/dotlrn/www/deregister-link" url="@member_classes.url@deregister-self-confirm" referer=@referer@>
             </if>
             </else>
@@ -206,7 +206,7 @@ template::list::create -name member_clubs -multirow member_clubs -pass_propertie
             \[#dotlrn.Pending_Approval#\]
             </if>
             <else>
-            <if @show_drop_button_p@ eq 1>
+            <if @show_drop_button_p;literal@ true>
             <include src="/packages/dotlrn/www/deregister-link" url="@member_clubs.url@deregister-self-confirm" referer=@referer@>
             </if>
             </else>
@@ -279,7 +279,7 @@ template::list::create -name non_member_classes -multirow non_member_classes -pa
         html {align left style "width:30%"}
         label "[_ dotlrn.class_instances_pretty_name]"
         display_template {
-            <if @swa_p@ eq 1><a href="@non_member_classes.url@" title="\\#dotlrn.goto_non_member_classes\\#">@non_member_classes.pretty_name@</a></if>
+            <if @swa_p;literal@ true><a href="@non_member_classes.url@" title="\\#dotlrn.goto_non_member_classes\\#">@non_member_classes.pretty_name@</a></if>
             <else>@non_member_classes.pretty_name@</else>
         }
     }
@@ -320,7 +320,7 @@ template::list::create -name non_member_clubs -multirow non_member_clubs -pass_p
         html {align left style "width:30%"}
         label "[_ dotlrn.clubs_pretty_name]"
         display_template {
-            <if @swa_p@ eq 1><a href="@non_member_clubs.url@" title="\\#dotlrn.goto_non_member_clubs\\#">@non_member_clubs.pretty_name@</a></if>
+            <if @swa_p;literal@ true><a href="@non_member_clubs.url@" title="\\#dotlrn.goto_non_member_clubs\\#">@non_member_clubs.pretty_name@</a></if>
             <else>@non_member_clubs.pretty_name@</else>
         }
     }

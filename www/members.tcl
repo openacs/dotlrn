@@ -91,7 +91,7 @@ set elm_list {
         label ""
         html "align right"
         display_template {
-            <if @members.portrait_p@ true>
+            <if @members.portrait_p;literal@ true>
               <a href="@members.member_url@" title="#acs-subsite.lt_User_has_portrait_title#">
                 <img src="/resources/acs-subsite/profile-16.png" height="16" width="16" alt="#acs-subsite.Profile#" style="border:0">
               </a>
