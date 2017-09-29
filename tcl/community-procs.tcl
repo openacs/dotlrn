@@ -1406,6 +1406,10 @@ namespace eval dotlrn_community {
             -event rename \
             -old_value $old_value \
             -new_value $pretty_name
+        
+        callback dotlrn_community::set_community_name \
+            -community_id $community_id \
+            -pretty_name  $pretty_name        
     }
 
     ad_proc -public get_community_name {

@@ -10,6 +10,22 @@ ad_library {
     @cvs-id $Id$
 }
 
+
+#### Callback Hooks
+
+ad_proc -public -callback dotlrn_community::set_community_name {
+    -community_id
+    -pretty_name
+} {
+
+    Actions to be performed by other packages when a community changes
+    name. Note that dotlrn-specific packages (as applets) already
+    implement a way to react to actions.    
+
+} -
+
+
+#### Callbacks
 ad_proc -callback merge::MergeShowUserInfo -impl dotlrn {
     -user_id:required
 } {
