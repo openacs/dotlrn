@@ -36,7 +36,7 @@ form get_values spam_message subject message format
 if {$format eq "html"} {
     set preview_message "$message"
 } elseif {$format eq "pre"} {
-    set preview_message [ad_text_to_html $message]
+    set preview_message [ad_text_to_html -- $message]
 } else {
     set preview_message [ns_quotehtml $message]
 }
