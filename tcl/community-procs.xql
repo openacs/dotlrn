@@ -61,26 +61,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_type_node_id.select_node_id">
-        <querytext>
-            select node_id
-            from site_nodes
-            where object_id = (select package_id
-                               from dotlrn_community_types
-                               where community_type = :community_type)
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::get_community_node_id.select_node_id">
-        <querytext>
-            select node_id
-            from site_nodes
-            where object_id = (select package_id
-                               from dotlrn_communities
-                               where community_id = :community_id)
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::new.update_portal_ids">
         <querytext>
             update dotlrn_communities_all

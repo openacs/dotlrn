@@ -152,7 +152,9 @@ namespace eval dotlrn_community {
     } {
         get the node ID of a community type
     } {
-        return [db_string select_node_id {}]
+        set package_id [dotlrn_community::get_type_package_id $community_type]
+        array set node [site_node::get_from_object_id -object_id $package_id]
+        return $node(node_id)
     }
 
     ad_proc -public get_community_node_id {
@@ -160,7 +162,9 @@ namespace eval dotlrn_community {
     } {
         get the node ID of a community
     } {
-        return [db_string select_node_id {}]
+        set package_id [dotlrn_community::get_package_id $community_id]
+        array set node [site_node::get_from_object_id -object_id $package_id]
+        return $node(node_id)
     }
 
     ad_proc -public new {
