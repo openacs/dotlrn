@@ -1146,12 +1146,7 @@ namespace eval dotlrn_community {
         community by checking that it's not the same as an existing (possible)
         sibling's name.
     } {
-        if {$parent_community_id ne ""} {
-            set valid_p [ad_decode [db_string collision_check_with_parent {}] 0 1 0]
-        } else {
-            # LARS 2003-10-21: Should this check only against communities with null parent_id?
-            set valid_p [ad_decode [db_string collision_check_simple {}] 0 1 0]
-        }
+        set valid_p [expr {![db_0or1row collision_check {}]}]
 
         if {$complain_if_invalid_p && !$valid_p} {
             ns_log notice "The name '$community_key' is already in use either by an active or archived group. \n Please go back and select a different name."

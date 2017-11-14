@@ -52,20 +52,12 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check_with_parent">
+    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check">
         <querytext>
-            select count(*)
-            from dotlrn_communities_all
-            where :parent_community_id in (select dc.parent_community_id
-                                           from dotlrn_communities_all dc
-                                           where dc.community_key = :community_key)
-        </querytext>
-    </fullquery>
-
-
-    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check_simple">
-        <querytext>
-            select count(*) from dotlrn_communities_all where community_key = :community_key
+          select 1 from dotlrn_communities_all
+           where (:parent_community_id is null or parent_community_id = :parent_community_id)
+             and community_key = :community_key
+           limit 1
         </querytext>
     </fullquery>
 
