@@ -54,10 +54,10 @@
 
     <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check">
         <querytext>
-          select 1 from dotlrn_communities_all
-           where (:parent_community_id is null or parent_community_id = :parent_community_id)
-             and community_key = :community_key
-           limit 1
+          select 1 where exists (
+            select 1 from dotlrn_communities_all
+             where (:parent_community_id is null or parent_community_id = :parent_community_id)
+               and community_key = :community_key)
         </querytext>
     </fullquery>
 
