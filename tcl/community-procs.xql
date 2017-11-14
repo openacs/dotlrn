@@ -4,10 +4,9 @@
 
     <fullquery name="dotlrn_community::membership_approve.select_rel_info">
         <querytext>
-            select *
-            from dotlrn_member_rels_full
-            where user_id = :user_id
-            and community_id = :community_id
+          select rel_id from dotlrn_member_rels_full
+           where user_id      = :user_id
+             and community_id = :community_id
         </querytext>
     </fullquery>
 

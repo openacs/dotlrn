@@ -848,7 +848,7 @@ namespace eval dotlrn_community {
     } {
         Approve membership to a community
     } {
-        db_1row select_rel_info {}
+        set rel_id [db_string select_rel_info {}]
 
         db_transaction {
             membership_rel::approve -rel_id $rel_id
