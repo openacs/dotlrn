@@ -190,9 +190,7 @@
 
     <fullquery name="dotlrn_community::member_p.select_count_membership">
         <querytext>
-            select count(*)
-            from dual
-            where exists (select 1
+            select 1 where exists (select 1
                           from dotlrn_member_rels_approved
                           where community_id = :community_id
                           and user_id = :user_id)
@@ -201,9 +199,7 @@
 
     <fullquery name="dotlrn_community::member_pending_p.is_pending_membership">
         <querytext>
-            select count(*)
-            from dual
-            where exists (select 1
+            select 1 where exists (select 1
                           from dotlrn_member_rels_full
                           where community_id = :community_id
                           and user_id = :user_id
@@ -267,9 +263,7 @@
 
     <fullquery name="dotlrn_community::has_subcommunity_p_not_cached.select_subcomm_check">
         <querytext>
-            select 1
-            from dual
-            where exists (select 1
+            select 1 where exists (select 1
                           from dotlrn_communities
                           where parent_community_id = :community_id)
         </querytext>
