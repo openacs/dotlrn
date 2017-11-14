@@ -524,14 +524,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::is_supertype.is_supertype">
-        <querytext>
-            select count(*)
-            from dotlrn_community_types
-            where supertype = :community_type
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::get_available_attributes_not_cached.select_available_attributes">
         <querytext>
             select attribute_id,
