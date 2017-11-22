@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
-
 <queryset>
-    <rdbms><type>oracle</type><version>8.1.6</version></rdbms>
 
     <fullquery name="select_n_member_classes">
         <querytext>
@@ -23,7 +21,8 @@
                  dotlrn_member_rels_full
             where dotlrn_member_rels_full.user_id = :user_id
             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id
-            order by dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.active_start_date,
+		     dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -109,12 +108,15 @@
             select dotlrn_class_instances_full.*
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.join_policy <> 'closed'
+	    and (active_end_date > current_timestamp or active_end_date is null)
             and not exists (select 1
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.active_start_date,
+		     dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
+
         </querytext>
     </fullquery>
 
@@ -124,11 +126,13 @@
             from dotlrn_class_instances_full
             where dotlrn_class_instances_full.department_key = :non_member_department_key
             and dotlrn_class_instances_full.join_policy <> 'closed'
+	    and active_end_date > current_timestamp
             and not exists (select 1
                             from dotlrn_member_rels_full
                             where dotlrn_member_rels_full.user_id = :user_id
                             and dotlrn_member_rels_full.community_id = dotlrn_class_instances_full.class_instance_id)
-            order by dotlrn_class_instances_full.pretty_name,
+            order by dotlrn_class_instances_full.active_start_date,
+            	     dotlrn_class_instances_full.pretty_name,
                      dotlrn_class_instances_full.community_key
         </querytext>
     </fullquery>
@@ -168,18 +172,26 @@
         <querytext>
           select dotlrn_clubs_full.*
             from dotlrn_clubs_full,
-                (
-                select f.club_id
+                (select f.club_id
                 from dotlrn_clubs_full f
                 where f.join_policy <> 'closed'
-                MINUS
-                select dotlrn_member_rels_full.community_id club_id
-                from dotlrn_member_rels_full
-                where dotlrn_member_rels_full.user_id = :user_id
-                ) non_member_clubs
+                  and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
+                                          from dotlrn_member_rels_full
+                                         where dotlrn_member_rels_full.user_id = :user_id)) non_member_clubs
             where dotlrn_clubs_full.club_id = non_member_clubs.club_id   
             order by dotlrn_clubs_full.pretty_name,
                      dotlrn_clubs_full.community_key
+        </querytext>
+    </fullquery>
+
+    <fullquery name="select_non_member_club_ids">
+        <querytext>
+                select f.club_id
+                from dotlrn_clubs_full f
+                where f.join_policy <> 'closed'
+                  and f.club_id not in (select dotlrn_member_rels_full.community_id as club_id
+                                          from dotlrn_member_rels_full
+                                         where dotlrn_member_rels_full.user_id = :user_id)
         </querytext>
     </fullquery>
 
