@@ -61,4 +61,14 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_class::can_instantiate.can_instantiate">
+        <querytext>
+            select count(*)
+            from dual
+            where exists (select 1
+                          from dotlrn_terms
+                          where dotlrn_terms.end_date > current_timestamp)
+        </querytext>
+    </fullquery>
+    
 </queryset>
