@@ -106,8 +106,8 @@
     select dotlrn_terms.term_name || ' ' || dotlrn_terms.term_year,
            dotlrn_terms.term_id
     from dotlrn_terms
-    where dotlrn_terms.end_date > current_date - 360)
-      and dotlrn_terms.start_date < current_date + 360)
+    where dotlrn_terms.end_date > (current_date - 360)
+      and dotlrn_terms.start_date < (current_date + 360)
     order by dotlrn_terms.start_date,
              dotlrn_terms.end_date
         </querytext>
