@@ -152,7 +152,7 @@ namespace eval dotlrn_community {
     } {
         get the node ID of a community type
     } {
-        set package_id [dotlrn_community::get_type_package_id $community_type]
+        set package_id [dotlrn_community::get_type_package_id -community_type $community_type]
         array set node [site_node::get_from_object_id -object_id $package_id]
         return $node(node_id)
     }
