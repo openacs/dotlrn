@@ -746,7 +746,7 @@ namespace eval dotlrn_community {
     } {
         check membership
     } {
-        return [db_string select_count_membership {}]
+        return [db_string select_count_membership {} -default 0]
     }
 
     ad_proc -public member_pending_p {
