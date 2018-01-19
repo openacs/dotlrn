@@ -46,7 +46,10 @@ ad_page_contract {
 }
 
 if {[dotlrn_community::get_community_id] != $community_id} {
-    ad_returnredirect [export_vars -base "[dotlrn_community::get_community_url $community_id]community-member" {user_id community_id}]
+    ad_returnredirect [export_vars -base "[dotlrn_community::get_community_url $community_id]community-member" {
+        user_id community_id
+    }]
+    ad_script_abort
 }
 
 auth::require_login

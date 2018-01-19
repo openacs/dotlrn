@@ -42,7 +42,7 @@ foreach uid $user_id {
     dotlrn_community::membership_reject -community_id $community_id -user_id $uid
 }
 ad_returnredirect $referer
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

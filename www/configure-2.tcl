@@ -31,13 +31,13 @@ set anchor [ns_set get $form anchor]
 # Check if this is a community type level thing
 if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
-    return
+    ad_script_abort
 }
 
 portal::configure_dispatch -portal_id $portal_id -form $form
 
 ad_returnredirect "configure#$anchor"
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

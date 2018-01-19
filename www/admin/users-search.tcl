@@ -68,15 +68,19 @@ if {[form is_valid user_search_results]} {
     switch -exact $search_action {
         "spam" {
             ad_returnredirect [export_vars -base users-spam {{users $selected_users}}]
+            ad_script_abort
         }
         "add_to_community" {
             ad_returnredirect [export_vars -base users-add-to-community {{users $selected_users}}]
+            ad_script_abort
         }
         "deactivate" {
             ad_returnredirect [export_vars -base users-deactivate {{users $selected_users}}]
+            ad_script_abort
         }
         "delete" {
             ad_returnredirect [export_vars -base users-delete {{users $selected_users}}]
+            ad_script_abort
         }
     }
 }

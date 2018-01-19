@@ -39,7 +39,9 @@ if { ([info exists community_id] && $community_id ne "") } {
 } else {
     return -code error "community id expected to unarchive a community"
 }
+
 ad_returnredirect $referer
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

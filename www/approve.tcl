@@ -43,7 +43,7 @@ foreach uid $user_id {
 }
 
 ad_returnredirect $referer
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

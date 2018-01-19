@@ -54,7 +54,7 @@ if { $item_id ne "" }  {
 }
 
 ad_returnredirect $referer
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

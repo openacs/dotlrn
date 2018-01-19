@@ -39,7 +39,7 @@ dotlrn::require_user_admin_community -user_id [ad_conn user_id] -community_id $c
 dotlrn_community::add_applet_to_community $community_id $applet_key
 
 ad_returnredirect $referer
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

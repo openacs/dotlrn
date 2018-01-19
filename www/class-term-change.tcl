@@ -52,6 +52,7 @@ ad_form -name change_class_term -form {
     db_dml update_term_info "update dotlrn_class_instances set term_id = :term_id where class_instance_id = :class_instance_id"
     
     ad_returnredirect "$referer"
+    ad_script_abort
 }
 
 set class_name $pretty_name

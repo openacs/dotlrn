@@ -29,7 +29,7 @@ ad_page_contract {
 # Check if this is a community type level thing
 if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_returnredirect "one-community-type"
-    return
+    ad_script_abort
 }
 
 # Make sure user is logged in
@@ -38,7 +38,7 @@ set user_id [auth::require_login]
 portal::set_element_param $element_id $key $value
 
 ad_returnredirect "."
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

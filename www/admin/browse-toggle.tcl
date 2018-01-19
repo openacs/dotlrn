@@ -33,9 +33,9 @@ dotlrn::require_admin
 dotlrn::set_can_browse -user_id $user_id -can_browse\=$can_browse_p
 
 util_memoize_flush_regexp  $user_id
+
 ad_returnredirect $referer
-
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

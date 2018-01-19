@@ -19,9 +19,10 @@ dotlrn::require_user_admin_community \
 template::form create element_rename
 
 if {[template::form is_valid element_rename]} {
-       ns_log notice "-element_id $element_id  -pretty_name $pretty_name"
-       portal::set_pretty_name -element_id $element_id  -pretty_name $pretty_name
-       ad_returnredirect "element-list"
+    ns_log notice "-element_id $element_id  -pretty_name $pretty_name"
+    portal::set_pretty_name -element_id $element_id  -pretty_name $pretty_name
+    ad_returnredirect "element-list"
+    ad_script_abort
 }
 
 

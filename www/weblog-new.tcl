@@ -69,12 +69,7 @@ if {![llength $existing_forum_ids]} {
 }
 
 ad_returnredirect "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view?forum_id=$forum_id"
-
-
-
-
-
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

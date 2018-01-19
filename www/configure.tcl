@@ -33,13 +33,13 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
     # at a community type level, redirect
     ad_returnredirect "one-community-type"
-    return
+    ad_script_abort
 
 } elseif {[parameter::get -parameter community_level_p] == 1} {
 
     # at a community, only admins can configure a comm's portal
     ad_returnredirect "one-community"
-    return
+    ad_script_abort
 
 } else {
 

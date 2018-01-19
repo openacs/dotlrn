@@ -37,8 +37,7 @@ dotlrn_privacy::set_user_guest_p \
 
 util_memoize_flush_regexp  $user_id
 ad_returnredirect $referer
-
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl

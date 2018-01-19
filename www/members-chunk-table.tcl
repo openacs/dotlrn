@@ -177,6 +177,7 @@ if {$subcomm_p} {
 	    set return_url [ns_conn url]
 	}
         ad_returnredirect $return_url
+        ad_script_abort
     }
 
 }

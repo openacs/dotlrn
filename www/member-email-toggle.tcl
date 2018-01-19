@@ -20,6 +20,8 @@ set community_id [dotlrn_community::get_community_id]
 db_dml toggle_member_email { }
 
 ad_returnredirect "one-community-admin"
+ad_script_abort
+
 # Local variables:
 #    mode: tcl
 #    tcl-indent-level: 4

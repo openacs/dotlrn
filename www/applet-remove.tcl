@@ -32,7 +32,7 @@ dotlrn_community::remove_applet $community_id $applet_key
 
 # Get back to where you once belonged
 ad_returnredirect community-applets?community_id=$community_id
-
+ad_script_abort
 
 # Local variables:
 #    mode: tcl
