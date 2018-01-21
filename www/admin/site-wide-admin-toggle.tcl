@@ -30,13 +30,11 @@ ad_page_contract {
 dotlrn::require_admin 
 
 if { ![acs_user::site_wide_admin_p] } {
-    ns_log notice "user has tried to site-wide-admin-toggle  without permission"
+    ns_log notice "user has tried to site-wide-admin-toggle without permission"
     ad_return_forbidden \
                "Permission Denied" \
-               "<p>
-	            [_ acs-admin.lt_You_dont_have_permiss]
-               </p>"
-    return
+               "<p>[_ acs-admin.lt_You_dont_have_permiss]</p>"
+    ad_script_abort
 }
 
 set object_id [acs_magic_object "security_context_root"]
