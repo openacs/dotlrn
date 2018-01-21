@@ -109,6 +109,8 @@ if {[form is_valid add_user]} {
         ad_return_error \
             "Error sending mail" \
             "There was an error sending email to $email."
+        ad_script_abort
+        
     } else {
 
         set admin_subject "The following email was just sent from [ad_system_name]"

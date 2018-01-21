@@ -158,8 +158,9 @@ if {[form is_valid user_search]} {
 
     if { $join_criteria ni {and or} } {
         ad_return_error \
-            "[_ dotlrn.lt_There_was_a_bug_in_th]" \
-            "[_ dotlrn.lt_There_was_a_bug_in_th_1]"
+            [_ dotlrn.lt_There_was_a_bug_in_th] \
+            [_ dotlrn.lt_There_was_a_bug_in_th_1]
+        ad_script_abort
     }
 
     set context_bar [list [list users [_ dotlrn.Users]] [list users-search [_ dotlrn.User_Search]] [_ dotlrn.Results]]
