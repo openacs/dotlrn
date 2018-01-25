@@ -80,7 +80,7 @@ namespace eval dotlrn_department {
     ad_proc -public count_classes {
         {-department_key:required}
     } {
-        retuns the number of classes under this department
+        returns the number of classes under this department
     } {
         return [db_string select_count_classes {} -default 0]
     }
