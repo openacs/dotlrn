@@ -31,18 +31,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::new.create_community">
-        <querytext>
-                select dotlrn_community__new(
-                    :community_type,
-                    :name
-                    :pretty_name,
-                    :pretty_name,
-                    :description
-                );
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::set_active_dates.set_active_dates">
         <querytext>
                 select dotlrn_community__set_active_dates(

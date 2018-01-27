@@ -2293,7 +2293,7 @@ namespace eval dotlrn_community {
 
         set var_list [lindex [callback dotlrn::member_email_var_list -community_id $community_id -to_user $to_user -type $type] 0]
         array set vars $var_list
-        if {![db_0or1row member_email {*SQL*}] }  {
+        if {![db_0or1row member_email {}] }  {
 
             # Only use the default mail if this is set in a parameter (off by default).
 

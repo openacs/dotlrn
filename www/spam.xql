@@ -14,13 +14,4 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="select_rel_segment_ids">
-        <querytext>
-            select rel_segments.segment_id
-            from rel_segments
-            where rel_segments.group_id = :community_id
-            and rel_segments.rel_type in (:rel_types_str)
-        </querytext>
-    </fullquery>
-
 </queryset>

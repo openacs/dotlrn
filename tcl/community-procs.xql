@@ -440,27 +440,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::remove_applet.delete_applet_from_community">
-        <querytext>
-            delete
-            from dotlrn_community_applets 
-            where community_id = :community_id
-            and applet_id = :applet_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::list_applets.select_all_applets">
-        <querytext>
-            select impl_name
-            from acs_sc_impls,
-                 acs_sc_bindings,
-                 acs_sc_contracts
-            where acs_sc_impls.impl_id = acs_sc_bindings.impl_id
-            and acs_sc_contracts.contract_id = acs_sc_bindings.contract_id
-            and acs_sc_contracts.contract_name = 'dotlrn_applet'
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::list_applets.select_community_applets">
         <querytext>
             select dotlrn_applets.applet_key
@@ -468,14 +447,6 @@
                  dotlrn_applets
             where dotlrn_community_applets.community_id = :community_id
             and dotlrn_community_applets.applet_id = dotlrn_applets.applet_id
-        </querytext>
-    </fullquery>
-
-    <fullquery name="dotlrn_community::list_active_applets.select_all_active_applets">
-        <querytext>
-            select applet_key
-            from dotlrn_applets
-            where active_p = 't'
         </querytext>
     </fullquery>
 
@@ -623,14 +594,5 @@
             where community_id = :community_id
         </querytext>
     </fullquery>
-
-   <fullquery name="dotlrn_community::get_dotlrn_master_not_cached.select_dotlrn_master">
-        <querytext>
-            select dst.site_master
-            from dotlrn_site_templates dst, dotlrn_communities_all dca
-            where dca.community_id = :community_id
-            and dca.site_template_id = dst.site_template_id
-        </querytext>
-   </fullquery>
 
 </queryset>

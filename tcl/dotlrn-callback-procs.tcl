@@ -36,7 +36,7 @@ ad_proc -callback merge::MergeShowUserInfo -impl dotlrn {
     ns_log Notice $msg
     set result [list $msg]
     
-    set from_rel_ids [db_list_of_lists get_from_rel_ids { *SQL* } ]	    
+    set from_rel_ids [db_list_of_lists get_from_rel_ids {} ]	    
     
     foreach rel $from_rel_ids {
 	set l_rel_id [lindex $rel 0]
@@ -76,7 +76,7 @@ ad_proc -callback merge::MergePackageUser -impl dotlrn {
 	# select the communities where from_user_id belongs to and
 	# to_user_id does not belong.
 
-	set from_rel_ids [db_list_of_lists get_from_rel_ids { *SQL* } ]	    
+	set from_rel_ids [db_list_of_lists get_from_rel_ids {} ]	    
 
 	foreach rel $from_rel_ids {
 	    set l_rel_id [lindex $rel 0]
@@ -175,7 +175,7 @@ ad_proc -public -callback contact::person_new -impl dotlrn_user {
 } {
     
     
-    db_1row get_community_id { }
+    db_1row get_community_id {}
     
     
     dotlrn_privacy::set_user_guest_p -user_id $party_id -value "t"

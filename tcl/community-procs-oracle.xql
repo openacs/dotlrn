@@ -37,21 +37,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::new.create_community">
-        <querytext>
-            declare
-            begin
-                :1 := dotlrn_community.new(
-                    community_type => :community_type,
-                    community_key => :name
-                    pretty_name => :pretty_name,
-                    pretty_plural => :pretty_name,
-                    description => :description
-                );
-            end;
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::set_active_dates.set_active_dates">
         <querytext>
             declare

@@ -30,7 +30,7 @@ if {![info exists site_template_id]} {
 
 set context_bar [list [list site-templates "[_ dotlrn.Site_Templates]"] "$title"]
 
-set options [db_list_of_lists select_portal_themes { *SQL* }]
+set options [db_list_of_lists select_portal_themes {}]
 ad_form -cancel_url $referer -export {referer} -name site_template -form {
     site_template_id:key
     {pretty_name:text(text)
@@ -50,9 +50,9 @@ ad_form -cancel_url $referer -export {referer} -name site_template -form {
     }    
 } -select_query_name select_site_template_info -new_data {
     set site_template_id [db_nextval acs_object_id_seq]
-    db_dml insert_site_template { *SQL* }
+    db_dml insert_site_template {}
 } -edit_data {
-    db_dml update_site_template { *SQL* }
+    db_dml update_site_template {}
     util_memoize_flush [list dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id]
 } -new_request {
     set pretty_name ""

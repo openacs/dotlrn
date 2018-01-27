@@ -51,7 +51,7 @@ ad_form -extend -name "new_community_type" -form {
     }
 } -on_request {
     if { $edit_p } {
-	db_1row get_community_type { *SQL* }
+	db_1row get_community_type {}
     }
 } -on_submit {
     if { ![info exists original_community_type] } {
@@ -61,7 +61,7 @@ ad_form -extend -name "new_community_type" -form {
 	    -pretty_name $pretty_name
     } else {
 	# Update type
-	db_dml set_community_type { *SQL* }	
+	db_dml set_community_type {}	
     }
 } -after_submit {
     ad_returnredirect "community-types"

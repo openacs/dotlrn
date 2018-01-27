@@ -18,7 +18,7 @@ ad_page_contract {
 set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -community_id $community_id
 
-db_0or1row member_email { }
+db_0or1row member_email {}
 
 ad_form -name "member_email" -form {
     {email_id:key}
@@ -36,17 +36,17 @@ ad_form -name "member_email" -form {
 
 } -new_data {
     
-    db_dml new_email { }
+    db_dml new_email {}
 
 } -edit_request {
 
-    db_1row member_email_values { }
+    db_1row member_email_values {}
 
     set email [list $email ""]
 
 } -edit_data {
 
-    db_dml update_email { }
+    db_dml update_email {}
 
 } -after_submit {
     

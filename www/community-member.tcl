@@ -42,7 +42,6 @@ ad_page_contract {
     bio:onevalue
     verified_user_id:onevalue
     folder_id:onevalue
-    user_contributions:multirow
 }
 
 if {[dotlrn_community::get_community_id] != $community_id} {
@@ -83,8 +82,9 @@ set portrait_p [db_0or1row get_item_id {
       and cr.revision_id = c.live_revision}]
 
 if { $portrait_p } {
-    set img_src [export_vars -base "[subsite::get_element -element url]shared/portrait-bits.tcl" { user_id item_id {size thumbnail}}]
-    set portrait_url [export_vars -base "[subsite::get_element -element url]shared/portrait" { user_id return_url }]
+    set url [subsite::get_element -element url]
+    set img_src [export_vars -base "${url}shared/portrait-bits.tcl" { user_id item_id {size thumbnail} }]
+    set portrait_url [export_vars -base "${url}shared/portrait" { user_id return_url }]
 }
 
 ad_return_template
