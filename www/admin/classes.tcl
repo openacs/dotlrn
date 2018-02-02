@@ -25,7 +25,7 @@ ad_page_contract {
     {department_key ""}
     {orderby:token "department_name,asc"}
     {keyword ""}
-    {page ""}
+    {page:naturalnum ""}
 } -properties {
     title:onevalue
     context_bar:onevalue

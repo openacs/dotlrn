@@ -23,7 +23,7 @@ ad_page_contract {
     @version $Id$
 } -query {
     {department_key ""}
-    {page ""}
+    {page:naturalnum ""}
 } -properties {
     pretty_name:onevalue
     external_url:onevalue
