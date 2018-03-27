@@ -10,11 +10,11 @@ aggregate data from disparate sources, shown as "boxes" on the page,
 and allow these sources to be added, removed, and altered in various
 ways. Permissioning issues arise frequently: "Is a student allowed to
 remove the "Class Announcements" element of her portal?" is an example
-of a permissioning issue. 
+of a permissioning issue.
 <P>
 In general the system of permissions should be simple enough for the
-users to understand, but flexible enought to support all of the
-required features. 
+users to understand, but flexible enough to support all of the
+required features.
 <P>
 Also, the scope of this document is the permissions system related to
 the portal-based parts of dotLRN, for more documentation on the
@@ -56,7 +56,7 @@ destroy portals for scenarios such as the one given above.
 <li>Granted to: Admin users who have CREATE
 </ul>
 
-<h2>Portal-level Permissons for Non-Admin Users</h2>
+<h2>Portal-level Permissions for Non-Admin Users</h2>
 
 These permissions are at the level of individual portals for users
 such as students.

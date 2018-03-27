@@ -189,7 +189,7 @@ ad_proc -public dotlrn::apm::after_upgrade {
                     -parameter "DefaultMaster" \
                     -value "/packages/dotlrn/www/dotlrn-master-custom"
                
-               # This fixes parameter reseting from dotlrn
+               # This fixes parameter resetting from dotlrn
                set community_level_p_param_id [db_string select_clevel_id { 
                                                   select parameter_id
                                                   from apm_parameters 

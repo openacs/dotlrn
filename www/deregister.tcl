@@ -34,7 +34,7 @@ ad_page_contract {
 # The parameter "user_id" was kept so that other entry points (both current
 # and those that might occur in the future from OpenACS and other changes)
 # wouldn't break.  This does have the unfortunate consequence that the name
-# user_id is not intuative when it is a list of many user_ids. (teadams@alum.mit.edu)
+# user_id is not intuitive when it is a list of many user_ids. (teadams@alum.mit.edu)
 
 auth::require_login
 

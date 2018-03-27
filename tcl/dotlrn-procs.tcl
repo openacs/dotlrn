@@ -371,7 +371,7 @@ namespace eval dotlrn {
         }
         
         # FIXME - if there's a proc to get the admin user_id w/o 
-        # a connection put it here. This needs to be a vaild
+        # a connection put it here. This needs to be a valid
         # grantee for the perms
         set user_id -1        
         

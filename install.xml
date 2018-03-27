@@ -44,7 +44,7 @@
 
 <!--
     The DefaultSiteTemplate is used very early, currently just the default from the .info file
-    is taken into account. Setting here the parameter or the paramter default does not change this.
+    is taken into account. Setting here the parameter or the parameter default does not change this.
 
     <set-parameter package-key="dotlrn" name="DefaultSiteTemplate" value="#theme-zen.Zen_Theme#"/>
     <set-parameter-default package-key="dotlrn" name="DefaultSiteTemplate" value="#theme-zen.Zen_Theme#"/>

@@ -439,7 +439,7 @@ Message: %body%</msg>
   <msg key="lt_This_user_is_currentl">This user is currently in state &lt;i&gt;%member_state%&lt;/i&gt;.  To allow this user access to dotLRN you must &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;approve and add to dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">this user is deleted and
   banned from the community.</msg>
-  <msg key="lt_to_use_vaild_email_ad">to use vaild email addresses since the process
+  <msg key="lt_to_use_valid_email_ad">to use valid email addresses since the process
 will send the new user's password to the given email address.</msg>
   <msg key="lt_Update_this_users_pas">Update this user's password</msg>
   <msg key="lt_Use_this_only_for_an_">Only use this for people you want to add who are &amp;lt;b&amp;gt;not&amp;lt;/b&amp;gt; institutional users.</msg>

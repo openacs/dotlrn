@@ -72,7 +72,7 @@ ad_form -name add_term -export referer -form {
     }
 } -on_submit {
     
-    # Setting the rigth format to send to the procedures
+    # Setting the right format to send to the procedures
     # dotlrn_term::start_end_dates_to_term_year  and
     # dotlrn_term::new
     

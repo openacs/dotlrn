@@ -133,7 +133,7 @@ namespace eval dotlrn {
             # if the user is a member of communities (from some previous
             # dotlrn relation) then we must remove them from the community and
             # re-add them so that all the portals will work properly.
-            # NOTE: we cannot do this in a db_foreach beacause of the table we
+            # NOTE: we cannot do this in a db_foreach because of the table we
             # are selecting from changes inside the loop causing all kinds of
             # dead lock issues.
             set current_memberships [db_list_of_ns_sets select_current_memberships {
@@ -200,7 +200,7 @@ namespace eval dotlrn {
         Remove the user from ACS as well.  Chances are pretty good that
         this will fail because it's hard to chase down every piece
         of content the user has ever put into the system.  The net result is
-        that there may be stray referential integrity contraints that
+        that there may be stray referential integrity constraints that
         will throw errors when we try to remove the user record permanently.
 
         @param on_fail indicates what we do if the permanent removal fails. Setting to

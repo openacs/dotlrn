@@ -1,7 +1,7 @@
 --
 -- Alter caveman style booleans (type character(1)) to real SQL boolean types.
 --
--- Unforunately, all attributes of the three tables affected are used
+-- Unfortunately, all attributes of the three tables affected are used
 -- (blindly) in a bunch of views, which are as well used in other
 -- views. So we have to drop and recreate many dotlrn views.  If your
 -- installation have modifications to these views, make sure to
