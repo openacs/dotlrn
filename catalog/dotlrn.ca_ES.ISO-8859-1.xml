@@ -321,7 +321,7 @@
   <msg key="lt_This_user_is_a_site-w">Aquest usuari és administrador del lloc. </msg>
   <msg key="lt_This_user_is_currentl">Aquest usuari està actualment en estat &lt;i&gt;%member_state%&lt;/i&gt;. Per a permetre-li accedir a dotLRN, heu de &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;aprovar-lo i donar-lo d'alta en dotLRN&lt;/a&gt; </msg>
   <msg key="lt_this_user_is_deleted_">aquest usuari ha sigut eliminat i expulsat de la comunitat. </msg>
-  <msg key="lt_to_use_vaild_email_ad">d'utilitzar una adreça electrònica vàlida, ja que aquest procés enviarà la nova contrasenya de l'usuari a l'adreça indicada. </msg>
+  <msg key="lt_to_use_valid_email_ad">d'utilitzar una adreça electrònica vàlida, ja que aquest procés enviarà la nova contrasenya de l'usuari a l'adreça indicada. </msg>
   <msg key="lt_Update_this_users_pas">Actualitzar la contrasenya d'aquest usuari </msg>
   <msg key="lt_Use_this_only_for_an_">Utilitzeu aquesta opció només per als estudiants registrats oficialment aquest curs que &lt;b&gt;no&lt;/b&gt; sigun alumnes de la UV. </msg>
   <msg key="lt_Web_Log_for_user_name">Diari interactiu per a %user_name% </msg>

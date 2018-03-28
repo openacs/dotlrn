@@ -397,7 +397,7 @@
   <msg key="lt_This_user_is_a_site-w">Este usuario es administrador del sitio.</msg>
   <msg key="lt_This_user_is_currentl">El usuario está actualmente en estado &lt;i&gt;%member_state%&lt;/i&gt;. Para autorizarle el acceso a dotLRN, debe &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;aprobarlo y darlo de alta en dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">este usuario ha sido borrado y expulsado de la comunidad.</msg>
-  <msg key="lt_to_use_vaild_email_ad">para utilizar une dirección de correo válida ya que este proceso enviará la nueva contraseña del usuario a la dirección indicada.</msg>
+  <msg key="lt_to_use_valid_email_ad">para utilizar une dirección de correo válida ya que este proceso enviará la nueva contraseña del usuario a la dirección indicada.</msg>
   <msg key="lt_Update_this_users_pas">Actualizar la contraseña de este usuario</msg>
   <msg key="lt_Use_this_only_for_an_">Utilizar esta opción sólo para los estudiantes oficialmente registrados en este curso que &lt;b&gt;no&lt;/b&gt; sean alumnos del MIT o de Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog de %user_name%</msg>

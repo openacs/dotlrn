@@ -307,7 +307,7 @@ Data Końcowa:</msg>
   <msg key="lt_This_user_is_a_site-w">Ten użytkownik jest Głównym Adminem.</msg>
   <msg key="lt_This_user_is_currentl">Stan tej osoby to: &lt;i&gt;%member_state%&lt;/i&gt;. Musisz br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;zatwierdzić  i dodać ją do dotLRN&lt;/a&gt;, aby umożliwić jej dostęp do dotLRN.</msg>
   <msg key="lt_this_user_is_deleted_">ten użytkownik jest usunięty ze wspólnoty</msg>
-  <msg key="lt_to_use_vaild_email_ad">użyć prawidłowego adresu email, ponieważ na ten adres zostanie wysłane hasło nowego użytkownika.</msg>
+  <msg key="lt_to_use_valid_email_ad">użyć prawidłowego adresu email, ponieważ na ten adres zostanie wysłane hasło nowego użytkownika.</msg>
   <msg key="lt_Update_this_users_pas">Zmień hasło tego użytkownika</msg>
   <msg key="lt_Use_this_only_for_an_">Użyj tego tylko dla zarejestrowanego studenta, który &lt;b&gt;nie&lt;/b&gt; jest studentem MIT ani Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Sieciowy Pamiętnik : %user_name% </msg>

@@ -335,7 +335,7 @@ Besked:
   <msg key="lt_This_user_is_a_site-w">Denne bruger er administrator for hele sitet.</msg>
   <msg key="lt_This_user_is_currentl">Denne bruger er i øjeblikket i tilstanden &lt;i&gt;%member_state%&lt;/i&gt;. For at give brugeren adgang til dotLRN skal du &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;godkende og tilføje til dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">denne bruger er slette og bandlyst fra fællesskabet.</msg>
-  <msg key="lt_to_use_vaild_email_ad">at bruge en gyldig mailadresse, eftersom denne proces vil sende den nye brugers adgangskode til den angivne adresse.</msg>
+  <msg key="lt_to_use_valid_email_ad">at bruge en gyldig mailadresse, eftersom denne proces vil sende den nye brugers adgangskode til den angivne adresse.</msg>
   <msg key="lt_Update_this_users_pas">Opdater brugerens adgangskode</msg>
   <msg key="lt_Use_this_only_for_an_">Brug kun dette for en officielt registreret studerende i klassen som &lt;b&gt;ikke&lt;/b&gt; er en MIT- eller Sloan-studerende.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog for %user_name%</msg>

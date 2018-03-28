@@ -25,7 +25,7 @@
 <p>#dotlrn.lt_Here_you_can_create_s#</p>
 
 <p>
-<strong>#dotlrn.Be_sure#</strong> #dotlrn.lt_to_use_vaild_email_ad#
+<strong>#dotlrn.Be_sure#</strong> #dotlrn.lt_to_use_valid_email_ad#
 </p>
 
 

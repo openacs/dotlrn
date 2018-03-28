@@ -337,7 +337,7 @@
   <msg key="lt_This_user_is_a_site-w">यह प्रयोक्ता पूर्ण प्रशास्क है</msg>
   <msg key="lt_This_user_is_currentl">यह प्रयोक्ता अभी &lt;i&gt;%member_state%&lt;/i&gt; स्थीति मे है। इस प्रयोक्ता को डाट-लर्न मे प्रवेश देने के लिये &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;अनुमोदन कर डाट-लर्न मे सम्मिलित करें&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">यह प्रयोक्ता BELED समुदाय से हटा कर प्रतिषिद्ध किया जा चुका है।</msg>
-  <msg key="lt_to_use_vaild_email_ad">मान्य ईमेल पतो का उपयोग करनी की प्रक्रिया मे दिये गये ईमेल पतो पर नये प्रयोक्ता का पासवर्ड भेज दिया जायेगा</msg>
+  <msg key="lt_to_use_valid_email_ad">मान्य ईमेल पतो का उपयोग करनी की प्रक्रिया मे दिये गये ईमेल पतो पर नये प्रयोक्ता का पासवर्ड भेज दिया जायेगा</msg>
   <msg key="lt_Update_this_users_pas">इस प्रयोक्ता का संकेत-शब्द बदलें</msg>
   <msg key="lt_Use_this_only_for_an_">इस कक्षा मे केवल औपचारिक रुप से पन्जीक्रत विधार्थी के लिये इसका उपयोग करे जो कि &lt;b&gt;not&lt;/b&gt; एम आई टी या स्लोअन का  विधार्थी नही है.</msg>
   <msg key="lt_Web_Log_for_user_name">%user_name% के लिये वेब लौग</msg>

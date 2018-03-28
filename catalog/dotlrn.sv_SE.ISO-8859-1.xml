@@ -306,7 +306,7 @@
   <msg key="lt_This_user_is_a_site-w">Denna användare är global admin.</msg>
   <msg key="lt_This_user_is_currentl">Denna användare är för närvarande i &lt;i&gt;%member_state%&lt;/i&gt; läge. För att ge användaren åtkomst till dotLRN måste du&lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;godkänna och lägga till i dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">denna användare är borttagen och avstängd från gruppen.</msg>
-  <msg key="lt_to_use_vaild_email_ad">att använda korrekta e-postadresser då processen kommer att skicka nya användarens lösenord till den angivna e-postadressen.</msg>
+  <msg key="lt_to_use_valid_email_ad">att använda korrekta e-postadresser då processen kommer att skicka nya användarens lösenord till den angivna e-postadressen.</msg>
   <msg key="lt_Update_this_users_pas">Uppdatera denna användares lösenord</msg>
   <msg key="lt_Use_this_only_for_an_">Använd endast detta för en officiellt registrerar student i denna kurs vilken &lt;b&gt;ej&lt;/b&gt; är en MIT eller Sloan student.</msg>
   <msg key="lt_Web_Log_for_user_name">Webblogg för %user_name%</msg>

@@ -302,7 +302,7 @@
   <msg key="lt_This_user_is_a_site-w">Este usuario é un administrador xeral do sitio</msg>
   <msg key="lt_This_user_is_currentl">Este usuario está actualmente en estado &lt;i&gt;%member_state%&lt;/i&gt;. Para dares acceso ao dotLRN a este usuario debes &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;aprobar e adicionar ao dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">este usuario está eliminado e banido da comunidade.</msg>
-  <msg key="lt_to_use_vaild_email_ad">para utilizar enderezos de correo válidos unha vez que o proceso irá enviar a seña do novo usuario para o enderezo de correo dado.</msg>
+  <msg key="lt_to_use_valid_email_ad">para utilizar enderezos de correo válidos unha vez que o proceso irá enviar a seña do novo usuario para o enderezo de correo dado.</msg>
   <msg key="lt_Update_this_users_pas">Actualizar a seña deste usuario</msg>
   <msg key="lt_Use_this_only_for_an_">Utiliza isto apenas para un estudante oficialmente rexistrado nesta disciplina que &lt;b&gt;non&lt;/b&gt; sexa un estudante do MIT ou do Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Rexistro web para %user_name%</msg>

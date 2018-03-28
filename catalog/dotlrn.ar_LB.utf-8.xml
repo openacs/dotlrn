@@ -327,7 +327,7 @@
   <msg key="lt_This_user_is_a_site-w">هذا المستخدم مدير في كافة أنحاءَ موقع.</msg>
   <msg key="lt_This_user_is_currentl">هذا المستعمل حاليا في الحالة &lt;i&gt;%member_state%&lt;/i&gt;. لسماح لهذا المستخدم الوصول لدوتلرن أنت يجب. &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;وافق وأضفْ لدوتلرن&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">هذا المستخدم حُذِفَ و حُظِرَ من الجمعية.</msg>
-  <msg key="lt_to_use_vaild_email_ad">لإسْتِعْمال عناوين بريد إلكتروني صالحة لأن كلمةَ سر المستخدم الجديدة سترسلْ إلى عنوان البريد الإلكتروني المُعطى.</msg>
+  <msg key="lt_to_use_valid_email_ad">لإسْتِعْمال عناوين بريد إلكتروني صالحة لأن كلمةَ سر المستخدم الجديدة سترسلْ إلى عنوان البريد الإلكتروني المُعطى.</msg>
   <msg key="lt_Update_this_users_pas">حدّث كلمة سرّ المستخدم هذا</msg>
   <msg key="lt_Use_this_only_for_an_">طالب إم آي تي أو سلون&lt;b&gt; ليس&lt;/b&gt; إستعمل هذا فقط لطالب مسجّل رسميا في هذا الصنف الذي ليس.</msg>
   <msg key="lt_Web_Log_for_user_name">ملف معلومات ويبُ لي %user_name%</msg>

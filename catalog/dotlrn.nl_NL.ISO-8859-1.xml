@@ -334,7 +334,7 @@ Dit was de foutmelding:</msg>
   <msg key="lt_This_user_is_a_site-w">Deze gebruiker is een hoofdbeheerder.</msg>
   <msg key="lt_This_user_is_currentl">De status van deze gebruiker is momenteel: &lt;i&gt;%member_state%&lt;/i&gt;. Om deze gebruiker toegang te geven tot .LRN dient eerst &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;goedkeuring en toevoeging aan .LRN&lt;/a&gt; plaats te vinden.  </msg>
   <msg key="lt_this_user_is_deleted_">deze gebruiker is uitgesloten van en verwijderd uit deze gemeenschap.</msg>
-  <msg key="lt_to_use_vaild_email_ad">om een geldig e-mailadres te gebruiken, omdat een nieuw wachtwoord moet kunnen worden toegestuurd aan de gebruiker via dit e-mailadres.</msg>
+  <msg key="lt_to_use_valid_email_ad">om een geldig e-mailadres te gebruiken, omdat een nieuw wachtwoord moet kunnen worden toegestuurd aan de gebruiker via dit e-mailadres.</msg>
   <msg key="lt_Update_this_users_pas">Wachtwoord van deze gebruiker bijwerken</msg>
   <msg key="lt_Use_this_only_for_an_">Dit alleen gebruiken voor officieel geregistreerde leerlingen in deze groep die &lt;b&gt;geen&lt;/b&gt; leerlingen van ons instituut zijn.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog voor %user_name% </msg>

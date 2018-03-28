@@ -306,7 +306,7 @@ Sent by: %system_owner% Sent to: %email% Subject: %subject% Message: %body%</msg
   <msg key="lt_This_user_is_a_site-w">Tämä käyttäjä on koko sivujen laajuinen ylläpitäjä.</msg>
   <msg key="lt_This_user_is_currentl">Tämä käyttäjätunnus on tällä hetkellä tilassa &lt;i&gt;%member_state%&lt;/i&gt;. Antaaksesi tälle käyttäjälle pääsyn dotLRNiin sinun täytyy &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;hyväksyä ja lisätä hänet dotLRNiin&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">käyttäjä on poistettu ja asetettu pannaan tästä yhteisöstä.</msg>
-  <msg key="lt_to_use_vaild_email_ad">toimivia sähköpostiosoitteita, koska prosessi lähettää käyttäjän salasanan annettuun osoitteeseen.</msg>
+  <msg key="lt_to_use_valid_email_ad">toimivia sähköpostiosoitteita, koska prosessi lähettää käyttäjän salasanan annettuun osoitteeseen.</msg>
   <msg key="lt_Update_this_users_pas">Päivitä käyttäjän salasana</msg>
   <msg key="lt_Use_this_only_for_an_">Käytä tätä vain tälle kurssille rekisteröityneen opiskelijan kohdalla, joka &lt;b&gt;ei&lt;/b&gt; ole oman koulun opiskelija.</msg>
   <msg key="lt_Web_Log_for_user_name">Weblog käyttäjälle %user_name%</msg>

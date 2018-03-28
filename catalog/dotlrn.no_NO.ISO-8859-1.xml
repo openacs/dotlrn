@@ -326,7 +326,7 @@
   <msg key="lt_This_user_is_a_site-w">Denne brukeren er en site-wide admin.</msg>
   <msg key="lt_This_user_is_currentl">Senne brukerens status er i øyeblikket &lt;i&gt;%member_state%&lt;/i&gt;. For å gi denne brukeren aksess til dotLRN, må du &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;Godkjenne og legg inn i dotLRN&lt;/a&gt; </msg>
   <msg key="lt_this_user_is_deleted_">denne brukeren er slettet og ikke tillatt tilgang til gruppen.</msg>
-  <msg key="lt_to_use_vaild_email_ad">til å bruke en gyldig e-postadresse, siden prosessen vil sende brukerens nye passord til e-postadressen som er brukt. </msg>
+  <msg key="lt_to_use_valid_email_ad">til å bruke en gyldig e-postadresse, siden prosessen vil sende brukerens nye passord til e-postadressen som er brukt. </msg>
   <msg key="lt_Update_this_users_pas">Oppdater denne brukerens passord</msg>
   <msg key="lt_Use_this_only_for_an_">Bruk denne bare for en offisielt registrert student i denne klassen som &lt;b&gt;ikke&lt;/b&gt; er en student ved institusjonen.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log for %user_name% </msg>

@@ -326,7 +326,7 @@
   <msg key="lt_This_user_is_a_site-w">此用户是网站管理员。</msg>
   <msg key="lt_This_user_is_currentl">此用户当前状态是&lt;i&gt;%member_state%&lt;/i&gt;。要让此用户访问dotLRN，必须&lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;批准并加入到dotLRN&lt;/a&gt; </msg>
   <msg key="lt_this_user_is_deleted_">此用户已删除，并被该社团禁止。</msg>
-  <msg key="lt_to_use_vaild_email_ad">请使用有效的email地址，因为新用户的密码将发送到这一email地址。</msg>
+  <msg key="lt_to_use_valid_email_ad">请使用有效的email地址，因为新用户的密码将发送到这一email地址。</msg>
   <msg key="lt_Update_this_users_pas">更新此用户密码</msg>
   <msg key="lt_Use_this_only_for_an_">仅用于正式注册该班级的非MIT或Sloan学生。</msg>
   <msg key="lt_Web_Log_for_user_name">%user_name%的Web记录</msg>

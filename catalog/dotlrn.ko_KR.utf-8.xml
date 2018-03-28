@@ -308,7 +308,7 @@
   <msg key="lt_This_user_is_a_site-w">이 사용자는 site-wide 관리자입니다.</msg>
   <msg key="lt_This_user_is_currentl">이 사용자는 현재의 상태가 &lt;i&gt;%member_state%&lt;/i&gt;입니다. 이 사용자가 dotLRN에 접속하는 것을 허락하기 위해서는&lt;br&gt; &lt;a href=&quot;%approve_user_url%&quot;&gt;dotLRN에 추가 및 승인&lt;/a&gt;을 해야만 합니다.</msg>
   <msg key="lt_this_user_is_deleted_">이 사용자는 이 커뮤니티로부터 금지당하고 삭제되었습니다.</msg>
-  <msg key="lt_to_use_vaild_email_ad">주어진 전자우편 주소에 사용자의 새로운 비밀번호를 보내기 때문에 유효한 전자우편 주소를 사용</msg>
+  <msg key="lt_to_use_valid_email_ad">주어진 전자우편 주소에 사용자의 새로운 비밀번호를 보내기 때문에 유효한 전자우편 주소를 사용</msg>
   <msg key="lt_Update_this_users_pas">이 사용자의 비밀번호를 업데이트</msg>
   <msg key="lt_Use_this_only_for_an_">이것은 a MIT or Sloan 학생이 아니라, 이 강의에 공식적으로 등록된 학생들만 이용할 수 있습니다.</msg>
   <msg key="lt_Web_Log_for_user_name">%user_name%에 대한 웹 로그</msg>

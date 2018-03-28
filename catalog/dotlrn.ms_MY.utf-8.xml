@@ -312,7 +312,7 @@
   <msg key="lt_This_user_is_a_site-w">Pengguna ini adalah seorang pentadbir tapak-lebar. </msg>
   <msg key="lt_This_user_is_currentl">Pengguna ini kini dalam keadaan &lt;i&gt;%member_state%&lt;/i&gt;. Untuk membolehkan pengguna ini mendapat akses ke dalam dotLRN anda mesti &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;luluskan dan tambahkan ke dalam dot LRN&lt;/a&gt; </msg>
   <msg key="lt_this_user_is_deleted_">pengguna ini telah dibuang dan tidak dibenarkan ke dalam komuniti ini.</msg>
-  <msg key="lt_to_use_vaild_email_ad">untuk menggunakan alamat-alamat emel yang sah kerana mengikut proses, kata laluan baru pengguna akan dihantar ke alamat emel yang diberi. </msg>
+  <msg key="lt_to_use_valid_email_ad">untuk menggunakan alamat-alamat emel yang sah kerana mengikut proses, kata laluan baru pengguna akan dihantar ke alamat emel yang diberi. </msg>
   <msg key="lt_Update_this_users_pas">Kemaskini kata laluan pengguna ini</msg>
   <msg key="lt_Use_this_only_for_an_">Gunakannya hanya untuk pelajar yang didaftar rasmi ke dalam kelas ini dimana beliau adalah &lt;b&gt;not&lt;/b&gt; seorang pelajar MIT atau Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Log Web untuk %user_name% </msg>

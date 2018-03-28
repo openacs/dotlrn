@@ -326,7 +326,7 @@
   <msg key="lt_This_user_is_a_site-w">Questo utente è un amministratore globale del sito</msg>
   <msg key="lt_This_user_is_currentl">Attualmente questo utente è nello stato &lt;i&gt;%member_state%&lt;/i&gt;. Per consentirne l'accesso di questo utente a dotLRN lo devi &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;approvare a agiungere al sistema &lt;/a&gt; </msg>
   <msg key="lt_this_user_is_deleted_">questo utente è stato cancellato ed bandito definitivamente da questa comunità.</msg>
-  <msg key="lt_to_use_vaild_email_ad">per usare un indirizzo email valido, perché il processo invierà la password del nuovo utente all'indirizzo fornito.</msg>
+  <msg key="lt_to_use_valid_email_ad">per usare un indirizzo email valido, perché il processo invierà la password del nuovo utente all'indirizzo fornito.</msg>
   <msg key="lt_Update_this_users_pas">Aggiorna la password di questo utente</msg>
   <msg key="lt_Use_this_only_for_an_">Usa questo solo per uno studente ufficialmente registrato in questa classe che &lt;b&gt;non&lt;/b&gt; sia uno studente del MIT o della Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log per %user_name%</msg>

@@ -347,7 +347,7 @@ versuchen, diese Benutzer zu entfernen, und es könnte Probleme für andere Benutz
   <msg key="lt_This_user_is_a_site-w">Dieser Benutzer ist ein Systemadministrator.</msg>
   <msg key="lt_This_user_is_currentl">Dieser Benutzer befindet sich derzeit im Status &lt;i&gt;%member_state%&lt;/i&gt;. Um dem Benutzer Zugang zu dotLRN zu erteilen, müssen Sie ihn &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt;freischalten und zu dotLRN hinzufügen&lt;/a&gt;.</msg>
   <msg key="lt_this_user_is_deleted_">Das Benutzerkonto dieses Benutzers wurde gelöscht.</msg>
-  <msg key="lt_to_use_vaild_email_ad">Geben Sie gültige E-Mail-Adressen an, da an diese die Passwörter der neuen Benutzer gesendet werden.</msg>
+  <msg key="lt_to_use_valid_email_ad">Geben Sie gültige E-Mail-Adressen an, da an diese die Passwörter der neuen Benutzer gesendet werden.</msg>
   <msg key="lt_Update_this_users_pas">Passwort dieses Benutzers aktualisieren</msg>
   <msg key="lt_Use_this_only_for_an_">Verwenden Sie diese Funktion also nur für Personen, die &lt;b&gt;keine&lt;/b&gt; regulären Studenten sind, aber dennoch Zugang zu dem Kurs haben sollen. </msg>
   <msg key="lt_Web_Log_for_user_name">Web-Tagebuch für %user_name%

@@ -300,7 +300,7 @@
   <msg key="lt_this_may_take_some_time">Ca peut durer un certain temps. Veuillez patientez s'il vous plaît.</msg>
   <msg key="lt_This_user_is_a_site-w">Cet utilisateur est un administrateur du site complet.</msg>
   <msg key="lt_this_user_is_deleted_">Cet utilisateur est effacé et banni de cette communauté.</msg>
-  <msg key="lt_to_use_vaild_email_ad">Veuillez utiliser une adresse email valide, parce que le système enverra le nouveau mot de passe de l'utilisateur à cette adresse.</msg>
+  <msg key="lt_to_use_valid_email_ad">Veuillez utiliser une adresse email valide, parce que le système enverra le nouveau mot de passe de l'utilisateur à cette adresse.</msg>
   <msg key="lt_Update_this_users_pas">Mettre à jour le mot de passe de l'utilisateur</msg>
   <msg key="lt_Use_this_only_for_an_">Veuillez utiliser cela uniquement pour un étudiant officiellement enregistré dans cette classe qui n'est &lt;b&gt;pas&lt;/b&gt; un étudiant du MIT ou du Sloan.</msg>
   <msg key="lt_Web_Log_for_user_name">Journal Web de %user_name%</msg>

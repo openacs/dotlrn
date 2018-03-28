@@ -327,7 +327,7 @@
   <msg key="lt_This_user_is_a_site-w">Acest utilizator este administrator pentru tot site-ul</msg>
   <msg key="lt_This_user_is_currentl">Acest utilizator este în starea &lt;i&gt;%member_state%&lt;/i&gt;. Pentru a permite acesteui utilizator acces la dotLRN trebuie să &lt;br&gt;&lt;a href=&quot;%approve_user_url%&quot;&gt; aprobaţi şi să-l adăugaţi la dotLRN&lt;/a&gt;</msg>
   <msg key="lt_this_user_is_deleted_">acest utilizator este şters şi banat din această comunitate</msg>
-  <msg key="lt_to_use_vaild_email_ad">să folosiţi adrese de email valabile, pentru că procesul va trimite parola noului utilizator la adresa de email dată</msg>
+  <msg key="lt_to_use_valid_email_ad">să folosiţi adrese de email valabile, pentru că procesul va trimite parola noului utilizator la adresa de email dată</msg>
   <msg key="lt_Update_this_users_pas">Actualizează parola acestui utilizator</msg>
   <msg key="lt_Use_this_only_for_an_">Foloseşte asta numai pentru un student înregistrat oficial în această clasă şi care &lt;b&gt;nu&lt;/b&gt; este un student MIT sau Sloan</msg>
   <msg key="lt_Web_Log_for_user_name">Web Log pentru %user_name%</msg>
