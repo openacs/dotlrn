@@ -80,7 +80,7 @@ such as students.
 permissions that a non-admin user will have, other than "READ". 
 </ul>
 
-<h2>Portal-level Permissons for Admin Users</h2>
+<h2>Portal-level Permissions for Admin Users</h2>
 
 Admin users with the CREATE permission will be granted the following
 permisson on the newly created portal.
