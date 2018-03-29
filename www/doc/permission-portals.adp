@@ -27,7 +27,7 @@ to the point specified by a class administrator. In the example given
 above, a class administrator could "lock" the "Class Announcements"
 element in student's personal portals so they would not have the power
 to remove it or alter its position. In this case, the administrator
-would have contol over <strong>more than one</strong> portal, i.e. her
+would have control over <strong>more than one</strong> portal, i.e. her
 own personal portal and a "default" portal that is "cloned", including
 the "lock", to create each student's portal when she registers for the
 class.
