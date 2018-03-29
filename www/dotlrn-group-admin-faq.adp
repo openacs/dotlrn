@@ -36,7 +36,7 @@ If your question is not answered, please email your site administrator.
 
 <H2><a name="Members">Dealing with Members</a></H2>
 <p>
-<strong>Q. Who will have access to my dotlearn class?</strong><br>
+<strong>Q. Who will have access to my dotlrn class?</strong><br>
 A. The default enrollment policy setting for new classes is "open" and any registered 
 user can join the class.  If you are concerned about who 
 is accessing your class, you have a couple of options: 1) "close" your enrollment 
@@ -46,8 +46,8 @@ You can then approve or deny access through the Manage Membership page (off the
 Control Panel). All class administrators will also receive an email notification 
 every time a user requests to join the class.<br>
 <p> <strong> Q: I am a TA and there are several cross-registered students in my class. 
-  How can they get access to the materials in dotlearn? </strong><br>
-  A: Non-institution students cannot have full access to dotlearn, but they can 
+  How can they get access to the materials in dotlrn? </strong><br>
+  A: Non-institution students cannot have full access to dotlrn, but they can 
   have access to the class materials. However, non-Sloan students should not self-register 
   for an account. You can create Limited Access user accounts for cross-registered 
   students through the "Create a Limited Access user" link in the Control Panel. 
@@ -55,7 +55,7 @@ every time a user requests to join the class.<br>
   that they are already in the system when you try to create an account for them. 
   In that case, add them to the class or community through the "Manage Membership" 
   page link.<br>
-<p> <strong>Q. How do institution students get access to dotlearn?</strong><br>
+<p> <strong>Q. How do institution students get access to dotlrn?</strong><br>
   A. Any current institution member can self-register for an account. Please tell your students 
   to register at the login page by entering their current email address and a password 
   of their choice. After they submit the login and complete the registration page, 
@@ -79,7 +79,7 @@ every time a user requests to join the class.<br>
   Panel).<br>
 <p> <strong>Q: How can I let non-institution people have access to my community? </strong><br>
   A: You can add them as Limited Access users or guests. Limited Access users 
-  have full access to the group, but cannot join other dotlearn groups; Limited 
+  have full access to the group, but cannot join other dotlrn groups; Limited 
   Access Guests have limited access to your group (they do not see other users' 
   personal information) and cannot join other groups. Assign non-institution students 
   Limited Access accounts and non-institution people (speakers, guest lecturers, 

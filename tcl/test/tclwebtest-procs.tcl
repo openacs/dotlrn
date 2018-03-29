@@ -146,7 +146,7 @@ ad_proc dotlrn::twt::department_delete { department_name department_key } {
 	    if { ![catch {tclwebtest::link find $department_name} errmsg] } { 
 		aa_error "dotlrn::twt::department_delete failed $errmsg : Didn't Delete a Department"
 	    } else {
-		aa_log "Dorlrn Department Deleted"
+		aa_log "Dotlrn Department Deleted"
 		set response 1
 	    }
 	} else {
