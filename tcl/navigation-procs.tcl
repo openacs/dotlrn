@@ -88,14 +88,14 @@ namespace eval dotlrn {
             }
     
             if { [llength $application_admin_context] > 0 } {
-                set application_context [concat $application_context $application_admin_context] 
+                lappend application_context {*}$application_admin_context
             }
     
             if { $context ne "" } {
-                set application_context [concat $application_context $context]
+                lappend application_context {*}$context
             } else {
                 # Make last entry be just the label
-                set application_context [lreplace $application_context end end [lindex $application_context end 1]]
+                lset application_context end [lindex $application_context end 1]
             }
         } else {
             set application_context [list]
