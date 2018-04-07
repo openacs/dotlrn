@@ -147,11 +147,12 @@ namespace eval dotlrn {
         just a nice wrapper for the dotrn-*-procs so they don't have to 
         deal with site_nodes and apm directly.
     } {
+        set node_id [site_node::get_node_id_from_object_id -object_id $package_id]
         db_transaction {
-            # site node del package instance
-            site_node_delete_package_instance \
-                -package_id $package_id \
-                -node_id [site_node::get_node_id_from_object_id -object_id $package_id]
+            site_node::unmount -node_id $node_id
+            apm_package_instance_delete $package_id
+        } on_error {
+             site_node::update_cache -node_id $node_id
         }
     }
 

@@ -43,7 +43,7 @@ if {[dotlrn::is_instantiated]} {
     if {[apm_num_instances $portal_package_key] == 0} {
         ns_log notice "dotlrn-init: $portal_package_key being automounted at /$portal_mount_point"
         dotlrn::mount_package \
-            -parent_node_id [site_node_id "/"] \
+            -parent_node_id [site_node::get_node_id -url /] \
             -package_key $portal_package_key \
             -url $portal_mount_point \
             -directory_p t
