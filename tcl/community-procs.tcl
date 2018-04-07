@@ -2319,10 +2319,10 @@ namespace eval dotlrn_community {
         # bother to create the welcome message in the first place (will be spam filtered...) MalteS
         if { ([info exists subject] && $subject ne "") || $override_subject ne "" } {
             ns_log Debug "DAVEB override email '${override_email}' override_subject '${override_subject}'"
-            if {([info exists override_email] && $override_email ne "")} {
+            if {$override_email ne ""} {
                 set email $override_email
             }
-            if {([info exists override_subject] && $override_subject ne "")} {
+            if {$override_subject ne ""} {
                 set subject $override_subject
             }
             if {[info exists email] && "" ne [string trim $email] } {

@@ -242,7 +242,8 @@ if {$subcomm_p} {
 
 }
 
-if {([info exists reset] && $reset ne "") && ([info exists reltype] && $reltype ne "")} {
+if {[info exists reset] && $reset ne ""
+    && [info exists reltype] && $reltype ne ""} {
     set result ""
     db_multirow reset_members select_members {} {
         rp_form_put user_id $member_id

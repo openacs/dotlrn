@@ -56,7 +56,7 @@ ad_page_contract {
 	} 
 	
 	if { $recipients_p == 0} {
-	    if {([info exists community_id] && $community_id ne "")} {
+	    if {$community_id ne ""} {
 		# This is call using the old URL reference
 		ad_returnredirect "spam-recipients?referer=$referer"
                 ad_script_abort
