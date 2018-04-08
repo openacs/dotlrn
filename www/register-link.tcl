@@ -14,19 +14,19 @@ ad_page_contract {
 } -errors {
 }
 
-if { (![info exists url] || $url eq "") } {
+if { ![info exists url] || $url eq "" } {
     set base_url "register"
 } else {
     set base_url $url
 }
 
-if { ([info exists referer] && $referer ne "") } {
-    set url "[export_vars -base $base_url {community_id}]&referer=$referer"
+if { [info exists referer] && $referer ne "" } {
+    set url [export_vars -base $base_url {community_id referer}]
 } else {
     set url [export_vars -base $base_url {community_id}]
 }
     
-if { (![info exists label] || $label eq "") } {
+if { ![info exists label] || $label eq "" } {
     set label [_ dotlrn.Join]
 }
 

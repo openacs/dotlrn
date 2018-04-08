@@ -24,11 +24,11 @@ ad_page_contract {
 } {
 }
 
-if {(![info exists show_buttons_p] || $show_buttons_p eq "")} {
+if {![info exists show_buttons_p] || $show_buttons_p eq ""} {
     set show_buttons_p 0
 }
 
-if {(![info exists show_archived_p] || $show_archived_p eq "")} {
+if {![info exists show_archived_p] || $show_archived_p eq ""} {
     set show_archived_p 0
 }
 
@@ -36,7 +36,7 @@ if {(![info exists show_archived_p] || $show_archived_p eq "")} {
 #theme-selva for .LRN 2.2.
 
 set community_type_clause ""
-if { ([info exists community_filter] && $community_filter ne "") } {
+if { [info exists community_filter] && $community_filter ne "" } {
     set show_subtitle_p 0
     if { $community_filter eq "class_instances" } {
         set community_type_clause "and dotlrn_communities_all.community_type not in ('dotlrn_community', 'dotlrn_club', 'dotlrn_pers_community')"
@@ -79,8 +79,9 @@ db_multirow -extend {intra_type_ul_tags previous_type_ul_tags} communities selec
         set base_level $tree_level
         set new_type_p 1
     }
-    if { [info exists old_simple_community_type] &&
-         $old_simple_community_type ne $simple_community_type } {
+    if { [info exists old_simple_community_type]
+         && $old_simple_community_type ne $simple_community_type
+     } {
         append previous_type_ul_tags [string repeat "</li></ul>" $old_depth]
         set old_depth 0
     }
@@ -88,8 +89,8 @@ db_multirow -extend {intra_type_ul_tags previous_type_ul_tags} communities selec
     set depth [expr {$tree_level - $base_level}]
     if { $depth > $old_depth } {
         append intra_type_ul_tags [string repeat "<ul><li>" [expr {$depth - $old_depth}]]
-    }
-    if { $old_depth > $depth } {
+
+    } elseif { $old_depth > $depth } {
         append intra_type_ul_tags [string repeat "</li></ul>" [expr {$old_depth - $depth}]]
         append intra_type_ul_tags "</li><li>"
     }

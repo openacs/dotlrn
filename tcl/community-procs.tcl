@@ -2330,7 +2330,7 @@ namespace eval dotlrn_community {
                 # user %varname% to substitute variables in email
                 set subject_vars [lang::message::get_embedded_vars $subject]
                 set email_vars [lang::message::get_embedded_vars $email]
-                foreach var [concat $subject_vars $email_vars] {
+                foreach var [list {*}$subject_vars {*}$email_vars] {
                     if {![info exists vars($var)]} {
                         set vars($var) ""
                     }

@@ -69,7 +69,7 @@ if {$department_key ne ""} {
     set page_query select_classes_by_department_paginator
 }
 
-if { ([info exists keyword] && $keyword ne "") } {
+if { [info exists keyword] && $keyword ne "" } {
     set keyword_clause [db_map classes_keyword]
 } else {
     set keyword_clause ""
@@ -86,7 +86,10 @@ set class_instances_pretty_name [parameter::get -localize -parameter class_insta
 set actions ""
 
 if { $can_create } {
-    set actions [list "[_ dotlrn.new_class_1]" "[export_vars -base "class-new" -url { department_key referer }]" "[_ dotlrn.new_class_1]"]
+    set actions [list \
+                     [_ dotlrn.new_class_1] \
+                     [export_vars -base "class-new" -url { department_key referer }] \
+                     [_ dotlrn.new_class_1]]
 }
 
 template::list::create \
