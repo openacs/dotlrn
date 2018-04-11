@@ -1053,8 +1053,11 @@ namespace eval dotlrn_community {
 
 	if {$package_id ne ""} {
             set key ::dotlrn::community_id($package_id)
-            if {[info exists $key]} {set $key}
-	    return [set $key [dotlrn_community::get_community_id_not_cached -package_id $package_id]]
+            if {[info exists $key]} {
+                return [set $key]
+            } else {
+                return [set $key [dotlrn_community::get_community_id_not_cached -package_id $package_id]]
+            }
 	} else {
 	    return ""
 	}
