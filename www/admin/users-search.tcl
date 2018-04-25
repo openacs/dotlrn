@@ -174,7 +174,7 @@ if {[form is_valid user_search]} {
         "dotlrn_users.email" \
         "dotlrn_users.type" \
     ]
-    set wheres [list]
+    set wheres {}
 
     if {$name ne ""} {
         lappend wheres "(lower(dotlrn_users.last_name) like lower('%' || :name || '%') or lower(dotlrn_users.first_names) like lower('%' || :name || '%') or lower(dotlrn_users.email) like lower('%' || :name || '%'))"
@@ -235,7 +235,7 @@ if {[form is_valid user_search]} {
         }
         set in_clause "(dotlrn_users.user_id = acs_rels.object_id_two and acs_rels.rel_type in ("
 
-        set in_elements [list]
+        set in_elements {}
         for {set i 0} {$i < $role_list_length} {incr i} {
             set in_element__${i} [lindex $role_list $i]
             lappend in_elements ":in_element__${i}"
@@ -260,8 +260,8 @@ if {[form is_valid user_search]} {
     }
 
     set referer [ns_conn url]
-    set selected_users_options [list]
-    set selected_users_values [list]
+    set selected_users_options {}
+    set selected_users_values {}
     db_foreach select_users $sql {
 	set href [export_vars -base user user_id]
         lappend selected_users_options [list [subst {<a href="[ns_quotehtml $href]">$last_name, $first_names</a> ($email)}] $user_id]
