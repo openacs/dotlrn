@@ -218,7 +218,7 @@ namespace eval dotlrn {
     ad_proc -public -deprecated get_user_name {
 	user_id
     } {
-	Get the names the the user.
+	Get the names the user.
         
         Deprectead. Use acs_user::get_element -element name instead.
 
@@ -356,7 +356,7 @@ namespace eval dotlrn {
     } {
         # based on the type:
         # 1. get the page_names and layouts
-        # 2. the the list of default applets for this type
+        # 2. the list of default applets for this type
         if {$type eq "dotlrn_community"} {
             set csv_list [dotlrn::parameter -name subcomm_pages_csv]
             set default_applets [dotlrn::parameter -name default_subcomm_applets]

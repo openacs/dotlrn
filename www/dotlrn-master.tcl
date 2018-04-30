@@ -29,7 +29,7 @@ ns_log notice "start dotlrn master url=[ad_conn url]"
 # from "/www/default-master" to "/www/dotlrn-master"
 # at http://yoursite.com/admin/site-map
 #
-# This tells OpenACS to to use these files instead of the "default-master"
+# This tells OpenACS to use these files instead of the "default-master"
 #
 # 3. Edit these files to chage the look of the site including the banner
 # at the top of the page, the title of the pages, the fonts of the portlets, etc.

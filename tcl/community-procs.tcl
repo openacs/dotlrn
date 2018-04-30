@@ -280,7 +280,7 @@ namespace eval dotlrn_community {
             db_dml update_portal_ids {}
 
             # Add the default applets based on the community type
-            # 2. the the list of default applets for this type
+            # 2. the list of default applets for this type
             if {$community_type eq "dotlrn_community"} {
                 set default_applets [parameter::get \
                     -package_id $dotlrn_package_id \

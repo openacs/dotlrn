@@ -283,7 +283,7 @@ namespace eval dotlrn {
 	 }
 
         #
-        # Common code for the the behavior of the control panel link (class administration
+        # Common code for the behavior of the control panel link (class administration
         # or my account)
         #
 
