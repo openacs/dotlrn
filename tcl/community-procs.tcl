@@ -435,9 +435,9 @@ namespace eval dotlrn_community {
         set default_roles [concat {*}[get_default_roles -community_id $community_id]]
         set attributes [concat {*}[get_attributes -community_id $community_id]]
 
-        set roles {}
+        set roles [list]
         foreach {rel_type role pretty_name pretty_plural} $default_roles {
-            set new_role {}
+            set new_role [list]
 
             lappend new_role $rel_type
             lappend new_role $role
@@ -515,7 +515,7 @@ namespace eval dotlrn_community {
     ad_proc -public get_all_roles_as_options {} {
         return the list of roles used in dotLRN
     } {
-        set role_options {}
+        set role_options [list]
 
         foreach {rel_type role pretty_name pretty_plural} [concat {*}[get_all_roles]] {
             lappend role_options [list [lang::util::localize $pretty_name] $rel_type]
@@ -944,7 +944,7 @@ namespace eval dotlrn_community {
     } {
         Return a datasource of the communities that a user belongs to in a particular type
     } {
-        set list_of_communities {}
+        set list_of_communities [list]
 
         db_foreach select_communities {} {
             lappend list_of_communities [list $community_id $community_type $pretty_name $description [get_url -package_id $package_id]]
@@ -1454,7 +1454,7 @@ namespace eval dotlrn_community {
 
         @author Peter Marklund
     } {
-        set context {}
+        set context [list]
 
         if {[subcommunity_p -community_id $community_id]} {
             set parent_name [get_parent_name -community_id $community_id]

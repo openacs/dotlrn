@@ -134,7 +134,7 @@ namespace eval dotlrn_applet {
     ad_proc -public list_mounted_applets {} {
         list all applets that are mounted
     } {
-        set applets {}
+        set applets [list]
 
         foreach applet [list_applets] {
             if {[is_applet_mounted -applet_key $applet]} {

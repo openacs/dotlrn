@@ -266,7 +266,7 @@ ad_proc -public dotlrn::apm::after_upgrade {
             }
             2.3.0d1 2.3.0d2 {     
             # Set access keys for all pages that have known titles
-            set params {}
+            set params [list]
             db_foreach get_default_values {} {
                 set params [concat $params [split [string trimright $default_value ";"] ";"]]
             }

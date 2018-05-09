@@ -74,7 +74,7 @@ namespace eval spam {
         set errors ""
         db_foreach select_recipient_info {} {
             # replace some values in the subject and the message
-            set values {}
+            set values [list]
             lappend values [list \{email\} $email]
             lappend values [list \{first_names\} $first_names]
             lappend values [list \{last_name\} $last_name]
