@@ -110,7 +110,7 @@ if { $old_depth > 0 } {
 
 set dotlrn_url [dotlrn::get_url]
 
-# Add the dhtml tree javascript to the HEAD.
+# Add the dhtml tree JavaScript to the HEAD.
 template::head::add_javascript -script "var mktree_remember = true;" -order 1
 template::head::add_javascript -src "/resources/acs-templating/mktree.js" -order 2
 template::head::add_css -href "/resources/acs-templating/mktree.css"
