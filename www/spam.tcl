@@ -79,6 +79,7 @@ ad_page_contract {
     portal_id:onevalue
 }
 
+set registered_users_id [acs_magic_object "registered_users"]
 
 set spam_name [bulk_mail::parameter -parameter PrettyName -default [_ dotlrn.Spam_]]
 set context [list [list $referer [_ dotlrn.Admin]] "$spam_name [_ dotlrn.Community]"]
@@ -92,7 +93,10 @@ dotlrn::require_user_spam_community -community_id $community_id
 set sender_id [ad_conn user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
-db_1row select_sender_info {}
+set user [dict create {*}[acs_user::get -user_id $sender_id]]
+set sender_email       [dict get $user email]
+set sender_first_names [dict get $user first_names]
+set sender_last_names  [dict get $user last_name]
 
 # names can have single quotes in them, and since they are being selected
 # from the database as literals down below, when the sender_info query is
