@@ -93,7 +93,7 @@ dotlrn::require_user_spam_community -community_id $community_id
 set sender_id [ad_conn user_id]
 set portal_id [dotlrn_community::get_portal_id -community_id $community_id]
 
-set user [dict create {*}[acs_user::get -user_id $sender_id]]
+set user [acs_user::get -user_id $sender_id]
 set sender_email       [dict get $user email]
 set sender_first_names [dict get $user first_names]
 set sender_last_names  [dict get $user last_name]
