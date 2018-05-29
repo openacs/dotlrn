@@ -98,12 +98,6 @@ set sender_email       [dict get $user email]
 set sender_first_names [dict get $user first_names]
 set sender_last_names  [dict get $user last_name]
 
-# names can have single quotes in them, and since they are being selected
-# from the database as literals down below, when the sender_info query is
-# passed to bulk_mail::new, we have to make sure they are properly quoted
-set sender_first_names [db_quote $sender_first_names]
-set sender_last_name [db_quote $sender_last_name]
-
 form create spam_message
 
 element create spam_message community_id \
@@ -203,8 +197,9 @@ if { [ns_queryexists "form:confirm"] } {
     # POSTGRES - change to plural
     # TODO - what if no rel_types
 
-    set safe_community_name [db_quote $community_name]
-
+    
+    set from_addr $from
+    
     set query [db_map sender_info]
 
     if {$format eq "html"} {

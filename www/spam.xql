@@ -4,10 +4,7 @@
 
       <fullquery name="sender_info">
         <querytext>
-        select :from as from_addr,
-               :sender_first_names as sender_first_names,
-               :sender_last_name as sender_last_name,
-               parties.email,
+        select parties.email,
                CASE
                   WHEN
                       acs_objects.object_type = 'user'
@@ -39,9 +36,7 @@
                        where person_id = parties.party_id)
                   ELSE 
                       ''
-               END as last_name,
-               '$safe_community_name' as community_name,
-               '$community_url' as community_url
+               END as last_name
             from acs_rels,
                  parties,
                  acs_objects
