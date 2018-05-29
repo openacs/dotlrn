@@ -29,7 +29,9 @@ ad_page_contract {
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.
-dotlrn::require_admin 
+dotlrn::require_admin
+
+set registered_users_id [acs_magic_object "registered_users"]
 
 set context_bar [_ dotlrn.Users]
 
