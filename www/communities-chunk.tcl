@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     {filter "select_all_memberships"}
 } -properties {
-    n_communities:onevalue
+    communities_p:onevalue
     communities:multirow
 }
 
@@ -33,11 +33,12 @@ if {![info exists community_type]} {
 
 set user_id [ad_conn user_id]
 
-if {$community_type ne ""} {
-    set n_communities [db_string select_all_communities_count_by_type {}]
-} else {
-    set n_communities [db_string select_all_communities_count {}]
-}
+set communities_p [db_string communities_p {
+    select exists (
+                   select 1 from dotlrn_communities_not_closed
+                   where (:community_type is null or community_type = :community_type)
+                   ) from dual
+}]
 
 set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" select_all_memberships \
         {
@@ -45,14 +46,9 @@ set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" sel
             {select_all_non_memberships join {}}
         }]]]
 
-if {$community_type ne ""} {
-    append filter "_by_type"
-}
-
-db_multirow -extend {query referer} communities $filter {} {
-    if {(![info exists referer] || $referer eq "")} {
-	set referer "./"
-    }
+db_multirow -extend {query url referer} communities $filter {} {
+    set referer "./"
+    set url [dotlrn_community::get_community_url $community_id]
     set query $filter
 }
 
@@ -81,9 +77,6 @@ template::list::create \
 	    }
 	}
     } 
-
-ad_return_template
-
 
 # Local variables:
 #    mode: tcl
