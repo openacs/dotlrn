@@ -16,12 +16,11 @@ ad_page_contract {
 } -validate {
 } -errors {
 }
- 
-if { [info exists community_type] } {
-    set edit_p [dotlrn_community::type_exists $community_type]
-} else {
-    set edit_p 0
-}
+
+set edit_p [expr {[info exists community_type] &&
+                  [db_0or1row type_exists {
+                      select 1 from dotlrn_community_types
+                      where community_type = :community_type}]}]
 
 if { $edit_p } {
     set title "[_ dotlrn.edit_community_type]"
@@ -61,7 +60,7 @@ ad_form -extend -name "new_community_type" -form {
 	    -pretty_name $pretty_name
     } else {
 	# Update type
-	db_dml set_community_type {}	
+	db_dml set_community_type {}
     }
 } -after_submit {
     ad_returnredirect "community-types"
