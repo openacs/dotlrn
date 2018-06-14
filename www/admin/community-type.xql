@@ -8,6 +8,13 @@
 
 <queryset>
 
+  <fullquery name="community_type_exists">
+    <querytext>
+      select 1 from dotlrn_community_types
+      where community_type = :community_type
+    </querytext>
+  </fullquery>
+
   <fullquery name="get_community_type">
     <querytext>
       select

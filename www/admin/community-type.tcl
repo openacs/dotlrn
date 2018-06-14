@@ -18,9 +18,7 @@ ad_page_contract {
 }
 
 set edit_p [expr {[info exists community_type] &&
-                  [db_0or1row type_exists {
-                      select 1 from dotlrn_community_types
-                      where community_type = :community_type}]}]
+                  [db_0or1row community_type_exists {}]}]
 
 if { $edit_p } {
     set title "[_ dotlrn.edit_community_type]"
@@ -44,13 +42,13 @@ ad_form -extend -name "new_community_type" -form {
     {description:text(textarea),optional {label "[_ dotlrn.Description]"} {html {rows 5 cols 60}}}
 } -validate {
     {community_type
-	{ ![dotlrn_community::type_exists $community_type] || 
+	{ ![db_0or1row community_type_exists {}] || 
 	    [info exists original_community_type] }
 	"[_ community_type_exists]"
     }
 } -on_request {
     if { $edit_p } {
-	db_1row get_community_type {}
+        db_1row get_community_type {}
     }
 } -on_submit {
     if { ![info exists original_community_type] } {
