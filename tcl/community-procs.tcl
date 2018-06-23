@@ -793,7 +793,22 @@ namespace eval dotlrn_community {
         }
 
         util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
-        util_memoize_flush_regexp  $user_id
+        
+        #
+        # Flush all permission checks pertaining to this user.
+        #
+        permission::cache_flush -party_id $user_id
+
+        #
+        # It is not clear, what the original
+        #
+        #     util_memoize_flush_regexp  $user_id
+        #
+        # was intended just to flush, just permissons or more. To
+        # improve latencies, the following flush command should be
+        # more precise (or removed)
+        #
+        util_memoize_flush_pattern -log *$user_id*
     }
 
     ad_proc -public add_user_to_community {
@@ -914,7 +929,21 @@ namespace eval dotlrn_community {
             # flush the list_users cache
             util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         }
-        util_memoize_flush_regexp $user_id
+        #
+        # Flush all permission checks pertaining to this user.
+        #
+        permission::cache_flush -party_id $user_id
+
+        #
+        # It is not clear, what the original
+        #
+        #     util_memoize_flush_regexp  $user_id
+        #
+        # was intended just to flush, just permissons or more. To
+        # improve latencies, the following flush command should be
+        # more precise (or removed)
+        #
+        util_memoize_flush_pattern -log *$user_id*
     }
 
     ad_proc -public remove_user_from_all {

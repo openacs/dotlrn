@@ -32,7 +32,10 @@ dotlrn::require_admin
 #update can_browse_p
 dotlrn::set_can_browse -user_id $user_id -can_browse\=$can_browse_p
 
-util_memoize_flush_regexp  $user_id
+#
+# Flush all permission checks pertaining to this user.
+#
+permission::cache_flush -party_id $user_id
 
 ad_returnredirect $referer
 ad_script_abort

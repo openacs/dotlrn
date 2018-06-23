@@ -43,8 +43,10 @@ if {$value eq "grant"} {
 } elseif {$value eq "revoke"} {
     permission::revoke -party_id $user_id -object_id $object_id -privilege admin
 }
-
-util_memoize_flush_regexp $user_id
+#
+# Flush all permission checks pertaining to this user.
+#
+permission::cache_flush -party_id $user_id
 
 ad_returnredirect $referer
 ad_script_abort

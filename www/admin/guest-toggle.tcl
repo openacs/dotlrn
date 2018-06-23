@@ -34,8 +34,11 @@ dotlrn_privacy::set_user_guest_p \
         -user_id $user_id \
         -value $guest_p
 
+#
+# Flush all permission checks pertaining to this user.
+#
+permission::cache_flush -party_id $user_id
 
-util_memoize_flush_regexp  $user_id
 ad_returnredirect $referer
 ad_script_abort
 
