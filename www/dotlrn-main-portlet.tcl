@@ -109,6 +109,7 @@ if { $old_depth > 0 } {
 }
 
 set dotlrn_url [dotlrn::get_url]
+set referer [ad_return_url]
 
 # Add the dhtml tree JavaScript to the HEAD.
 template::head::add_javascript -script "var mktree_remember = true;" -order 1
