@@ -219,15 +219,15 @@ namespace eval dotlrn {
 	user_id
     } {
 	Get the names the user.
-        
-        Deprectead. Use acs_user::get_element -element name instead.
 
-        @see acs_user::get_element.
+        Deprecated. Use person::name instead.
+
+        @see person::name.
     } {
         if { $user_id == 0 } {
             return {}
         } else {
-            return [acs_user::get_element -user_id $user_id -element name]
+            return [person::name -person_id $user_id]
         }
     }
 
