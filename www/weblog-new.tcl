@@ -34,7 +34,7 @@ set existing_forum_ids [db_list weblog_forum_id {select forum_id from forums_for
 if {![llength $existing_forum_ids]} {
     #No existing weblog lets make them one.
 
-    set user_name [acs_user::get_element -user_id $user_id -element name]
+    set user_name [person::name -user_id $user_id]
     set name "[_ dotlrn.lt_Web_Log_for_user_name]"
     set charter "[_ dotlrn.Public_Web_Log]"
     set presentation_type "weblog"

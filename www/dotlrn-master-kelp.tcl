@@ -154,7 +154,7 @@ set user_id [ad_conn user_id]
 if { [ad_conn untrusted_user_id] == 0 } {
     set user_name {}
 } else {
-    set user_name [acs_user::get_element -user_id [ad_conn untrusted_user_id] -element name]
+    set user_name [person::name -person_id [ad_conn untrusted_user_id]]
 }
 
 if {(![info exists title] || $title eq "")} {

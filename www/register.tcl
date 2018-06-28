@@ -79,21 +79,21 @@ if {[catch {
         }
         "needs approval" {
             dotlrn_community::add_user -member_state "needs approval" $community_id $user_id
-            
-            
+
+
             # Following the same process as spam.tcl to email
             # admins in bulk.
-            
+
             set segment_id [db_string select_admin_rel_segment_id {}]
             set community_name [dotlrn_community::get_community_name $community_id]
             set community_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL][dotlrn_community::get_community_url $community_id]"
-            
+
             set query [db_map bulk_mail_query]
 
-            set full_name [acs_user::get_element -user_id $user_id -element name]
+            set full_name [person::name -user_id $user_id]
             set email [party::email -party_id $user_id]
             set subject "$full_name ($email) has requested to join $community_name."
-            
+
             set message "$full_name ($email) has requested to join $community_name.
             
 Visit this link to approve or reject this request:
