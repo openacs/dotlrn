@@ -165,7 +165,7 @@ set user_id [ad_conn user_id]
 if { [ad_conn untrusted_user_id] == 0 } {
     set user_name {}
 } else {
-    set user_name [person::name -user_id [ad_conn untrusted_user_id]]
+    set user_name [person::name -person_id [ad_conn untrusted_user_id]]
 }
 
 if {![info exists title] || $title eq ""} {

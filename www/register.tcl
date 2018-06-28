@@ -90,7 +90,7 @@ if {[catch {
 
             set query [db_map bulk_mail_query]
 
-            set full_name [person::name -user_id $user_id]
+            set full_name [person::name -person_id $user_id]
             set email [party::email -party_id $user_id]
             set subject "$full_name ($email) has requested to join $community_name."
 
