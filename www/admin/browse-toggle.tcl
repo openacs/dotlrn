@@ -19,7 +19,7 @@
 ad_page_contract {
     @author Caroline Meeks (caroline@meekshome.com)
     @creation-date November 19, 2002
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     user_id:naturalnum,notnull
     can_browse_p:boolean

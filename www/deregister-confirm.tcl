@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author Tracy Adams (teadams@alum.mit.edu)
     @creation-date 2002-29-08
-    @version $Id$ 
+    @cvs-id $Id$ 
 } -query {
     {user_id:naturalnum,multiple,notnull}
     {community_id:integer ""}

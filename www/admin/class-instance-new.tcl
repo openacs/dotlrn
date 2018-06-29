@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-05
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     class_key:notnull
     {referer ""}

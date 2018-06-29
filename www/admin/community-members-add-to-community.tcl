@@ -20,7 +20,7 @@ ad_page_contract {
     @creation-date 2002-02-10
     @param source_community_id The community_id for the source community.  The members of the source community will be added to the target community the user selects.
     @param referer The url for the administration page of the source community.
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     source_community_id:integer
     referer 

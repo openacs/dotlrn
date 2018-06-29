@@ -25,7 +25,7 @@ ad_page_contract {
     @author Arjun Sanyal (arjun@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-10-24
-    @version $Id$
+    @cvs-id $Id$
 
 }
 

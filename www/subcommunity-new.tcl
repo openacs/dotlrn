@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author arjun (arjun@openforce.net)
     @creation-date 2001-02-12
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {referer "one-community-admin"}
 } -properties {

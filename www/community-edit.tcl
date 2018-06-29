@@ -20,7 +20,7 @@ ad_page_contract {
 
     @author <a href="mailto:yon@openforce.net">yon@openforce.net</a>
     @creation-date 2002-05-20
-    @version $Id$
+    @cvs-id $Id$
 
 } -query {
     {referer "one-community-admin"}

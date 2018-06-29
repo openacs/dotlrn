@@ -18,7 +18,7 @@ ad_page_contract {
     Form target for the Configuration page for an instance's portal template
 
     @author Arjun Sanyal (arjun@openforce.net)
-    @version $Id$
+    @cvs-id $Id$
 } {
     portal_id:naturalnum,notnull
     return_url:localurl

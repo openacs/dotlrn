@@ -15,7 +15,7 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date 2002-03-05
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {referer [dotlrn::get_admin_url]}
 } -properties {

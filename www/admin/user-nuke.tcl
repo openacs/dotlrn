@@ -4,7 +4,7 @@ ad_page_contract {
     
     @author Andrew Grumet (aegrumet@alum.mit.edu)
     @creation-date 2002-08-08
-    @version $Id$
+    @cvs-id $Id$
 } {
     user_id:naturalnum,notnull
     {referer "[dotlrn::get_admin_url]/users"}

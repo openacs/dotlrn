@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author Caroline Meeks (cmeeks@mit.edu)
     @creation-date 2002-09-13
-    @version $Id$
+    @cvs-id $Id$
 }
 
 set user_id [auth::require_login]

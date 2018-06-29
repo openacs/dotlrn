@@ -19,7 +19,7 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Jan 10, 2002
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     community_id:naturalnum,notnull
     {search_text ""}

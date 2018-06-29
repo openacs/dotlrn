@@ -18,7 +18,7 @@ ad_page_contract {
     clone a community
 
     @author arjun (arjun@openforce.net)
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {referer "one-community-admin"}
 } -properties {

@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author yon (yon@openforce.net)
     @creation-date 2002-03-07
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     term_id:integer,notnull
     {department_key ""}

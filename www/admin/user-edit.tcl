@@ -20,7 +20,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-12-10
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {return_url:localurl "[dotlrn::get_admin_url]/users"}
     user_id:naturalnum,notnull

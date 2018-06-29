@@ -18,7 +18,7 @@ ad_page_contract {
     Displays dotLRN portal templates admin page
 
     @author arjun (arjun@openforce.net)
-    @version $Id$
+    @cvs-id $Id$
 } -query {
 } -properties {
     title:onevalue

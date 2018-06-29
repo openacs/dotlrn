@@ -19,7 +19,7 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Dec 07, 2001
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {filter "select_all_memberships"}
 } -properties {

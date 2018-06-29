@@ -20,7 +20,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-11-07
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {department_key ""}
     {page:naturalnum ""}

@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author yon (yon@openforce.net)
     @creation-date 2002-01-30
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {type "pending"}
 } -properties {

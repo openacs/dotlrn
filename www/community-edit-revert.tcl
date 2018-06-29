@@ -19,7 +19,7 @@ ad_page_contract {
     Revert the properties for a community
 
     @author <a href="mailto:arjun@openforce.net">arjun@openforce.net</a>
-    @version $Id$
+    @cvs-id $Id$
 
 } -query {
     {referer "community-edit"}

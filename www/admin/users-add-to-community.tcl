@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author yon (yon@openforce.net)
     @creation-date 2002-02-10
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     users
     {referer "users-search"}

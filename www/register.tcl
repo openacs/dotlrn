@@ -20,7 +20,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2001-10-06
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {user_id:integer ""}
     {community_id:integer ""}

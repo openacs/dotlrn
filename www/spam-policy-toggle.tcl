@@ -16,7 +16,7 @@ ad_page_contract {
 
     @author Don Baccus (dhogaza@pacifier.com)
     @creation-date 2002-01-18
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {community_id:integer ""}
     policy:notnull

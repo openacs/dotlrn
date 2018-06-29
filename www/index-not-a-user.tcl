@@ -19,7 +19,7 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Dec 11, 2001
-    @version $Id$
+    @cvs-id $Id$
 }
 
 if { [dotlrn::user_p -user_id [ad_conn user_id]] } {

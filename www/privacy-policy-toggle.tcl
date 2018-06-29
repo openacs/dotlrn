@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author yon (aegrumet@alum.mit.edu)
     @creation-date 2004-02-17
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {community_id:integer ""}
     policy:notnull

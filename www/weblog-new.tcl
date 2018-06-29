@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author Caroline Meeks (cmeeks@mit.edu)
     @creation-date 2002-09-12
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {referer "control-panel"}
 } -validate {

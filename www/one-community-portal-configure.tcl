@@ -22,7 +22,7 @@ ad_page_contract {
     User portals are configured by the configure.tcl page.
 
     @author Arjun Sanyal (arjun@openforce.net)
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {referer "one-community-admin"}
 }

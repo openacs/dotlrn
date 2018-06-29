@@ -18,7 +18,7 @@ ad_page_contract {
     A preview page for editing the community's header
 
     @author Arjun Sanyal (arjun@openforce.net)
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {header_font ""}
     {header_font_color ""}

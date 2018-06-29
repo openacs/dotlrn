@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author yon (yon@openforce.net)
     @creation-date 2001-12-13
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {referer "terms"}
 } -properties {

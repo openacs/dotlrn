@@ -19,7 +19,7 @@
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Dec 13, 2001
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     page:naturalnum,optional
     {orderby:token "start_date_pretty,desc"}

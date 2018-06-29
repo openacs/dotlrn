@@ -18,7 +18,7 @@ ad_page_contract {
 
     @author nimam (mazloumi@uni-mannheim.de)
     @creation-date Oct 05, 2004
-    @version $Id$
+    @cvs-id $Id$
 
 } {
     {orderby:token,optional "last_name,asc"}

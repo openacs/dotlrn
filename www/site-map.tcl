@@ -4,7 +4,7 @@ ad_page_contract {
 
     @author Emmanuelle Raffenne (eraffenne@gmail.com)
     @creation-date 2008-10-16
-    @version $Id$
+    @cvs-id $Id$
 }
 
 # Make sure user is logged in

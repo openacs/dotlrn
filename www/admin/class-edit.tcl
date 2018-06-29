@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author yon (yon@openforce.net)
     @creation-date 2001-03-14
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     class_key:notnull
     {referer classes}

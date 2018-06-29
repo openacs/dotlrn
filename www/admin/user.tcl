@@ -19,7 +19,7 @@ ad_page_contract {
     
     @author yon (yon@openforce.net)
     @creation-date 2002-03-13
-    @version $Id$
+    @cvs-id $Id$
 } {
     user_id:naturalnum,notnull
 } -properties {

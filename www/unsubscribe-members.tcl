@@ -13,11 +13,11 @@
 #
 
 ad_page_contract {
-    
+
     Subscribe group members to a forum and set autosubscription mode
-    
+
     @author Don Baccus (dhogaza@pacifier.com)
-    @cvs_id $Id$
+    @cvs-id $Id$
 } {
     forum_id:naturalnum,notnull
     community_id:naturalnum,notnull

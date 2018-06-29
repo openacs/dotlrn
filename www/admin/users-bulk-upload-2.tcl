@@ -19,7 +19,7 @@ ad_page_contract {
 
     @author ben (ben@openforce.net)
     @creation-date 2002-03-05
-    @version $Id$
+    @cvs-id $Id$
 }
 
 set context [list [list users [_ dotlrn.Users]] [_ dotlrn.Bulk_Upload]]

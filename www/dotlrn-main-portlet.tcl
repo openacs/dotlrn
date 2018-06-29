@@ -20,7 +20,7 @@ ad_page_contract {
     The display logic for the dotlrn main (Groups) portlet
 
     @author Arjun Sanyal (arjun@openforce.net)
-    @version $Id$
+    @cvs-id $Id$
 } {
 }
 

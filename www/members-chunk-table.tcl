@@ -20,7 +20,7 @@ ad_page_contract {
     @author arjun (arjun@openforce.net)
     @author yon (yon@openforce.net)
     @creation-date 2002-01-08
-    @version $Id$
+    @cvs-id $Id$
 }  -query {
     {parent_user_role:multiple,array,optional}
     {order "last_name"}

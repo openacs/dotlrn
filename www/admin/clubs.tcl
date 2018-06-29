@@ -21,7 +21,7 @@ ad_page_contract {
 
     @author yon (yon@openforce.net)
     @creation-date 2001-12-03
-    @version $Id$
+    @cvs-id $Id$
 } -query {
     {orderby:token "pretty_name,asc"}
     page:naturalnum,optional
