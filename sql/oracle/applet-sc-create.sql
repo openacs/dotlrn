@@ -60,7 +60,7 @@ begin
     );
 
     -- AddApplet: Adds the applet to dotlrn(used for one-time initialization)
-    -- Call in the the dotlrn-init sequence
+    -- Call in the dotlrn-init sequence
     foo := acs_sc_msg_type.new(
         msg_type_name => 'dotlrn_applet.AddApplet.InputType',
         msg_type_spec => ''

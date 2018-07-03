@@ -128,12 +128,12 @@ other dotLRN components. (e.g. bboard)
 
 <li> <strong>OpenACS portlet</strong>, using the New Portal Architecture (NPA),
 to provide the ability to display the raw functionality in a portal
-interface. This obviously depends on the the NPA, but should otherwise
+interface. This obviously depends on the NPA, but should otherwise
 be as independent as possible from dotLRN. (e.g. bboard-portlet)
 
 <li> <strong>dotLRN functionality hooks</strong>, to link the raw functionality
 into the appropriate dotLRN structure. This obviously depends on
-dotLRN, but should be as thin a layer as possible on top of the the
+dotLRN, but should be as thin a layer as possible on top of the
 previous two components. (e.g. dotlrn-bboard).
 </ul>
 
