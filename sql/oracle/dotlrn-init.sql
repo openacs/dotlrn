@@ -330,15 +330,6 @@ begin
         min_n_rels_two => 0, max_n_rels_two => null
     );
 
-    -- all rels to communities must have a portal_id
-    bar := acs_attribute.create_attribute(
-        object_type => 'dotlrn_member_rel',
-        attribute_name => 'portal_id',
-        datatype => 'integer',
-        pretty_name => 'Page ID',
-        pretty_plural => 'Page IDs'
-    );
-
 end;
 /
 show errors

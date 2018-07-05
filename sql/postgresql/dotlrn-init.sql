@@ -373,21 +373,6 @@ BEGIN
 	   null::integer
     );
 
-    -- all rels to communities must have a portal_id
-    perform acs_attribute__create_attribute (
-	  'dotlrn_member_rel',
-	  'portal_id',
-	  'integer',
-	  'Page ID',
-	  'Page IDs',
-	  null, null, null,
-	  1,
-	  1,
-	  null,
-	  'type_specific',
-	  'f'
-    );
-
     return 0;
 END;
 $$ LANGUAGE plpgsql;

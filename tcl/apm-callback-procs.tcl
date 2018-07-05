@@ -292,6 +292,15 @@ ad_proc -public dotlrn::apm::after_upgrade {
         2.5.0d3 2.5.0d4 {
             db_dml insert_group_rels {}
         }
+        2.10.0d1 2.10.0d2 {
+            set attribute_id [db_string get_attribute {
+                select attribute_id from acs_attributes
+                where object_type = 'dotlrn_member_rel'
+                and attribute_name = 'portal_id'} -default ""]
+            if {$attribute_id ne ""} {
+                attribute::delete $attribute_id
+            }
+        }            
     }
 }
 
