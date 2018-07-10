@@ -41,15 +41,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::get_url.select_node_url">
-        <querytext>
-            select site_node__url(node_id)
-            from site_nodes
-            where parent_id = :current_node_id
-            and object_id = :package_id
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::get_community_type_from_community_id.select_community_type">
         <querytext>
             select community_type
