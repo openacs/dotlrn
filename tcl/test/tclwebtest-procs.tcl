@@ -8,7 +8,7 @@ ad_library {
 
 namespace eval dotlrn::twt {}
 
-ad_proc dotlrn::twt::term_new {term_name start_date end_date} {
+ad_proc -private dotlrn::twt::term_new {term_name start_date end_date} {
 
         set response 0
 	
@@ -45,7 +45,7 @@ ad_proc dotlrn::twt::term_new {term_name start_date end_date} {
 	return $response
 } 
 
-ad_proc dotlrn::twt::term_edit { term_name new_term_name term_year start_date end_date} {
+ad_proc -private dotlrn::twt::term_edit { term_name new_term_name term_year start_date end_date} {
 
         set response 0
 
@@ -85,7 +85,7 @@ ad_proc dotlrn::twt::term_edit { term_name new_term_name term_year start_date en
 	return $response
 }
   
-ad_proc dotlrn::twt::department_new  {department_name description external_url department_key } {
+ad_proc -private dotlrn::twt::department_new  {department_name description external_url department_key } {
 
         set response 0
 
@@ -124,7 +124,7 @@ ad_proc dotlrn::twt::department_new  {department_name description external_url d
 	return $response
 } 
 
-ad_proc dotlrn::twt::department_delete { department_name department_key } {
+ad_proc -private dotlrn::twt::department_delete { department_name department_key } {
 
         set response 0
 
@@ -156,7 +156,7 @@ ad_proc dotlrn::twt::department_delete { department_name department_key } {
 	return $response
 } 
 
-ad_proc dotlrn::twt::subject_new  { department_name subject_name description subject_key } {
+ad_proc -private dotlrn::twt::subject_new  { department_name subject_name description subject_key } {
         set response 0
 
 	# The admin dotlrn page url
@@ -193,7 +193,7 @@ ad_proc dotlrn::twt::subject_new  { department_name subject_name description sub
 	return $response
 } 
 
-ad_proc dotlrn::twt::subject_delete  { department_name } {
+ad_proc -private dotlrn::twt::subject_delete  { department_name } {
 
         set response 0
 
@@ -225,7 +225,7 @@ ad_proc dotlrn::twt::subject_delete  { department_name } {
 	return $response
 } 
 
-ad_proc dotlrn::twt::subject_edit  { department_name subject_name new_subject_name new_description } {
+ad_proc -private dotlrn::twt::subject_edit  { department_name subject_name new_subject_name new_description } {
 
         set response 0
 
@@ -262,7 +262,7 @@ ad_proc dotlrn::twt::subject_edit  { department_name subject_name new_subject_na
 	return $response
 }
 
-ad_proc dotlrn::twt::class_new  { department_name class_name description class_key } {
+ad_proc -private dotlrn::twt::class_new  { department_name class_name description class_key } {
 
         set response 0
 
@@ -302,7 +302,7 @@ ad_proc dotlrn::twt::class_new  { department_name class_name description class_k
 	return $response
 } 
 
-ad_proc dotlrn::twt::community_new { community_name description } {
+ad_proc -private dotlrn::twt::community_new { community_name description } {
 
         set response 0
 
