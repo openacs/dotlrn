@@ -17,7 +17,7 @@ namespace eval dotlrn::apm {}
 
 ad_proc -private dotlrn::apm::after_install {
 } {
-  Create the new group, dotlrn-admin
+    Create the new group, dotlrn-admin.
 } {
 
     # Create a new group, dotlrn-admin
@@ -50,7 +50,7 @@ ad_proc -private dotlrn::apm::after_install {
 ad_proc -private dotlrn::apm::after_instantiate {
      -package_id:required
 } {
-      grant permission, dotlrn-admin
+    Grant permission, dotlrn-admin.
 } {
 
        set group_id [db_string group_id_from_name "
@@ -92,7 +92,7 @@ ad_proc -private dotlrn::apm::after_instantiate {
 
 ad_proc -private dotlrn::apm::before_uninstall {
 } {
-  Drop the group, dotlrn-admin
+    Drop the group, dotlrn-admin.
 } {
 
       set group_id [db_string group_id_from_name "
@@ -116,6 +116,8 @@ ad_proc -private dotlrn::apm::before_uninstall {
 ad_proc -public dotlrn::apm::after_upgrade {
     {-from_version_name:required}
     {-to_version_name:required}
+} {
+    after-upgrade callback.
 } {
      apm_upgrade_logic \
         -from_version_name $from_version_name \
