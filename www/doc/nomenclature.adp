@@ -71,7 +71,7 @@ community.
 
 <p>
 
-A communty with <strong>closed join policy</strong> is not visible to
+A community with <strong>closed join policy</strong> is not visible to
 non-members. Users become members only when explicitly added by the
 community administrator.
 
