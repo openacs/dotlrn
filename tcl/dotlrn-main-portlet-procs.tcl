@@ -35,10 +35,14 @@ namespace eval dotlrn_main_portlet {
 
     ad_proc -public get_pretty_name {
     } {
+        Get the pretty name.
+    } {
         return [parameter::get -package_id [dotlrn::get_package_id] -parameter dotlrn_main_portlet_pretty_name]
     }
 
     ad_proc -public link {
+    } {
+        Get the link. This is currently empty.
     } {
         return ""
     }
@@ -61,7 +65,7 @@ namespace eval dotlrn_main_portlet {
     ad_proc -public remove_self_from_page {
         portal_id
     } {
-        Removes the dotlrn main PE from the portal
+        Removes the dotlrn main PE from the portal.
     } {
         portal::remove_element \
                 -portal_id $portal_id \
@@ -71,6 +75,7 @@ namespace eval dotlrn_main_portlet {
     ad_proc -public show {
         cf
     } {
+        Show dotlrn main portlet.
     } {
         portal::show_proc_helper \
                 -template_src "dotlrn-main-portlet" \
