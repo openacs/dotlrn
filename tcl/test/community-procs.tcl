@@ -21,7 +21,7 @@ aa_register_case -cats { api } \
 				      -pretty_name $community_name \
 				      -community_type "dotlrn_club"]
 		aa_log "created community: $community_name, $community_id"
-		aa_false "comunity_inherits_permissions" [permission::inherit_p \
+		aa_false "community_inherits_permissions" [permission::inherit_p \
 							      -object_id $community_id]
 
 		set clone_id [dotlrn_community::clone \
