@@ -142,7 +142,7 @@ namespace eval dotlrn_community {
         {-community_type:required}
         {-package_id:required}
     } {
-        Map the type's name to it's package_id.
+        Map the type's name to its package_id.
     } {
         db_dml update_package_id {}
     }
@@ -197,7 +197,7 @@ namespace eval dotlrn_community {
             -parent_community_id $parent_community_id
 
         set package_id [dotlrn::get_package_id]
-	set dotlrn_package_id $package_id
+        set dotlrn_package_id $package_id
 
         # Set up extra vars
         if {$extra_vars eq ""} {
@@ -1277,7 +1277,7 @@ namespace eval dotlrn_community {
         Returns a html fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
 
-        Brief notes: his proc always shows the subgroups of the
+        Brief notes: this proc always shows the subgroups of the
         passed-in group, but shows deeper groups _only if_ you are a
         member of all the supergroups to the leaf subgroup. Not even
         admins see the whole tree.
@@ -2205,7 +2205,7 @@ namespace eval dotlrn_community {
 
         # we assume that if the value of this attribute is null then we must
         # insert a new row for this attribute, if it's not null then we simply
-        # update it's value. this is not enforced in the database since the
+        # update its value. this is not enforced in the database since the
         # acs_attribute_values.attr_value column does not have a "not null"
         # constraint but we will enforce it via our api. if someone circumvents
         # our api then they can die and rot in hell.
@@ -2436,7 +2436,7 @@ namespace eval dotlrn_community {
         @author Victor Guerra ( guerra@galileo.edu )
         @creation-date 2006-03-11
 
-        @param community_id The id of the Community that will change it's Site Template
+        @param community_id The id of the Community that will change its Site Template
         @param site_template_id The id of the Site Template that will be used by the Community
 
     } {
