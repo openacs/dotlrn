@@ -112,9 +112,11 @@ begin
         description => '#dotlrn.dotlrn_club_description#'
     );
 
-    update acs_object_types set table_name = 'dotlrn_community', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
-    update acs_object_types set table_name = 'dotlrn_class_instance', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
-    update acs_object_types set table_name = 'dotlrn_club', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
+    -- dotlrn_communities is a view and cannot be used as
+    -- table_name.
+    update acs_object_types set table_name = 'dotlrn_communities_all', package_name = 'dotlrn_community' where object_type = 'dotlrn_community';
+    update acs_object_types set table_name = 'dotlrn_class_instances', package_name = 'dotlrn_class_instance' where object_type = 'dotlrn_class_instance';
+    update acs_object_types set table_name = 'dotlrn_clubs', package_name = 'dotlrn_club' where object_type = 'dotlrn_club';
 
     bar := acs_attribute.create_attribute(
         object_type => 'dotlrn_community',

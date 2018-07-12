@@ -39,8 +39,8 @@ BEGIN
         '.LRN Guest',
         '.LRN Guests',
         'membership_rel',
-        'dotlrn_guest_rels',
-        'rel_id',
+        cast(null as varchar), -- table_name
+        cast(null as varchar), -- id_column
         'dotlrn_guest_rel',
         'group',
         null,
@@ -67,8 +67,8 @@ BEGIN
         '.LRN Non-Guest',
         '.LRN Non-Guests',
         'membership_rel',
-        'dotlrn_non_guest_rels',
-        'rel_id',
+        cast(null as varchar), -- table_name
+        cast(null as varchar), -- id_column
         'dotlrn_non_guest_rel',
         'group',
         null,
