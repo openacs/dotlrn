@@ -2392,7 +2392,7 @@ namespace eval dotlrn_community {
                     return [list $subject $email]
                 }
                 # Shamelessly cut & pasted from bulk mail
-                if { (![info exists from_addr] || $from_addr eq "") } {
+                if { ![info exists from_addr] || $from_addr eq "" } {
                     set from_addr [ad_system_owner]
                 }
 
