@@ -62,7 +62,7 @@
 
 <br>
 
-	<if @class_instances:rowcount@ gt 0>
+	<if @class_instances:rowcount;literal@ gt 0>
 	  <listtemplate name="class_instances"></listtemplate>
 
 	</if>

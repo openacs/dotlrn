@@ -25,7 +25,7 @@
 <center>
 
 
-<if @terms:rowcount@ gt 0>
+<if @terms:rowcount;literal@ gt 0>
   <listtemplate name="terms"></listtemplate>
 </if>
 <else>

@@ -18,7 +18,7 @@
 
 %>
 
-<if @community_types:rowcount@ gt 0>
+<if @community_types:rowcount;literal@ gt 0>
   <h2><if @title@ nil>#dotlrn.Community_Types#</if><else>@title@</else></h2>
   <listtemplate name="community_types"></listtemplate>
 </if>

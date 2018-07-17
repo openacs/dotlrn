@@ -26,7 +26,7 @@
 
   <br>
 
-<if @clubs:rowcount@ gt 0>
+<if @clubs:rowcount;literal@ gt 0>
 
   <listtemplate name="clubs"></listtemplate>
 

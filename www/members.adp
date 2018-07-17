@@ -46,7 +46,7 @@
 <listtemplate name="members"></listtemplate>
 
 <if @admin_p;literal@ true>
-  <if @pending_users:rowcount@ gt 0 or @approval_policy_p@ eq 1>
+  <if @pending_users:rowcount;literal@ gt 0 or @approval_policy_p@ eq 1>
     <h2>#dotlrn.Membership_Requests#</h2>
     <listtemplate name="pending_users"></listtemplate>
   </if>

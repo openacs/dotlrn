@@ -40,7 +40,7 @@
 	  </form>
 	</div>
       
-      <if @classes:rowcount@ gt 0>
+      <if @classes:rowcount;literal@ gt 0>
 
 	<br>
 

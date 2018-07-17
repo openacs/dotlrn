@@ -75,7 +75,7 @@
 
       <br>
 
-	<if @classes:rowcount@ gt 0>
+	<if @classes:rowcount;literal@ gt 0>
 	  
 	  <div style="text-align:center;">
 	    <form action="term" method="GET">

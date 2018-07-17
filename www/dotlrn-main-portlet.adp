@@ -25,7 +25,7 @@
     </div>
   </if>
 
-  <if @communities:rowcount@ gt 0>
+  <if @communities:rowcount;literal@ gt 0>
 
     <multiple name="communities">
       @communities.previous_type_ul_tags;noquote@

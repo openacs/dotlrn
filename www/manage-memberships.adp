@@ -45,14 +45,14 @@
         </formtemplate>
       </if>
 
-      <if @member_classes:rowcount@ gt 0>
+      <if @member_classes:rowcount;literal@ gt 0>
         <listtemplate name="member_classes"></listtemplate>
       </if>
       <else>
         <p><small>#dotlrn.No_classes#</small></p>
       </else>
   
-      <if @member_clubs:rowcount@ gt 0>
+      <if @member_clubs:rowcount;literal@ gt 0>
         <listtemplate name="member_clubs"></listtemplate>
       </if>
       <else>
@@ -71,7 +71,7 @@
         </formtemplate>
 
         <a name="join_classes"></a>
-        <if @non_member_classes:rowcount@ gt 0>
+        <if @non_member_classes:rowcount;literal@ gt 0>
           <listtemplate name="non_member_classes"></listtemplate>
         </if>
         <else>
@@ -81,7 +81,7 @@
       </if>
 
       <a name="join_clubs"></a>
-      <if @non_member_clubs:rowcount@ gt 0>
+      <if @non_member_clubs:rowcount;literal@ gt 0>
         <listtemplate name="non_member_clubs"></listtemplate>
       </if>
       <else>

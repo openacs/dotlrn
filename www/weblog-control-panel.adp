@@ -18,7 +18,7 @@
 
 %>
 
-<if @weblogs:rowcount@ eq 0>
+<if @weblogs:rowcount;literal@ eq 0>
 <a href="weblog-new">#dotlrn.Create_a_Web_Log#</a>
 </if>
 <else>

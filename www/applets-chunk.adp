@@ -18,7 +18,7 @@
 
 %>
 
-<if @active_applets:rowcount@ gt 0>
+<if @active_applets:rowcount;literal@ gt 0>
 <h3>#dotlrn.Active_Applets#</h3>
 <ul>
 
@@ -28,7 +28,7 @@
 </ul>
 </if>
 
-<if @all_applets:rowcount@ gt 0>
+<if @all_applets:rowcount;literal@ gt 0>
 <p></p>
 
 <h3>#dotlrn.Applets_to_Add#</h3>

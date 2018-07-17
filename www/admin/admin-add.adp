@@ -24,7 +24,7 @@
 
 <h1>#dotlrn.Add_an_Admin#</h1>
 
-<if @users:rowcount@ eq 0>
+<if @users:rowcount;literal@ eq 0>
      #dotlrn.there_are_no_users_matching#
   </tr>
 </if>

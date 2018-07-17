@@ -29,7 +29,7 @@
           <input type="submit" value="#dotlrn.Go#">
       </form>
     </center>
-    <if @departments:rowcount@ gt 0>
+    <if @departments:rowcount;literal@ gt 0>
         <br>
       <center>
 	<listtemplate name="departments"></listtemplate>

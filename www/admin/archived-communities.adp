@@ -24,7 +24,7 @@
 
 <h1>@title@</h1>
 
-<if @archived_comms:rowcount@ gt 0>
+<if @archived_comms:rowcount;literal@ gt 0>
 	<div id="alert-message">
 		<div class="alert">
 			#dotlrn.Note_the_term_column#

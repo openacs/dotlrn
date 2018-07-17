@@ -129,7 +129,7 @@
 
 </ul>
 
-<if @member_classes:rowcount@ gt 0>
+<if @member_classes:rowcount;literal@ gt 0>
     <h2>#dotlrn.class_memberships#</h2>
 
     <ul>
@@ -143,7 +143,7 @@
     </ul>
 </if>
 
-<if @member_clubs:rowcount@ gt 0>
+<if @member_clubs:rowcount;literal@ gt 0>
     <h2>#dotlrn.community_memberships#</h2>
 
     <ul>
@@ -156,7 +156,7 @@
     </ul>
 </if>
 
-<if @member_subgroups:rowcount@ gt 0>
+<if @member_subgroups:rowcount;literal@ gt 0>
     <h2>#dotlrn.subcommunity_memberships#</h2>
 
     <ul>

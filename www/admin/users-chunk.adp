@@ -50,7 +50,7 @@
     </else>
   </tr>
 
-<if @users:rowcount@ gt 0>
+<if @users:rowcount;literal@ gt 0>
 <multiple name="users">
 
 <if @users.rownum@ odd>

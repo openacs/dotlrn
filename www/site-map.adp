@@ -13,7 +13,7 @@
         </ul>
       </li>
       <li><a href="@dotlrn_url@/courses">#dotlrn.Courses#</a>
-        <if @courses:rowcount@ gt 0>
+        <if @courses:rowcount;literal@ gt 0>
           <ul>
             <multiple name="courses">
               <li>@courses.pretty_name@
@@ -35,7 +35,7 @@
         </if>
       </li>
       <li><a href="@dotlrn_url@/communities">#dotlrn.Communities#</a>
-        <if @communities:rowcount@ gt 0>
+        <if @communities:rowcount;literal@ gt 0>
           <ul>
             <multiple name="communities">
               <li>@communities.pretty_name@

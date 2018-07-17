@@ -17,7 +17,7 @@
     <br>
     <listtemplate name="community_types"></listtemplate>
 
-    <if @community_types:rowcount@ gt 10>
+    <if @community_types:rowcount;literal@ gt 10>
       <br>
 
 	<table cellpadding="5" width="95%">
