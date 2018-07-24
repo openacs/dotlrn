@@ -15,7 +15,7 @@
 #
 
 ad_page_contract {
-    create a new subcommunity (aka subgroup)
+    create a new subcommunity (a.k.a. subgroup)
 
     @author arjun (arjun@openforce.net)
     @creation-date 2001-02-12

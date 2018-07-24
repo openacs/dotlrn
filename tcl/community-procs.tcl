@@ -317,7 +317,7 @@ namespace eval dotlrn_community {
             foreach applet_key $default_applets_list {
                 if {[dotlrn_applet::applet_exists_p -applet_key $applet_key]} {
                     dotlrn_community::add_applet_to_community $community_id $applet_key
-                ns_log Notice "Added applet:::: $applet_key"
+                    ns_log Notice "Added applet: $applet_key"
                 }
             }
         }
@@ -829,7 +829,7 @@ namespace eval dotlrn_community {
         #
         #     util_memoize_flush_regexp  $user_id
         #
-        # was intended just to flush, just permissons or more. To
+        # was intended just to flush, just permissions or more. To
         # improve latencies, the following flush command should be
         # more precise (or removed)
         #
@@ -964,7 +964,7 @@ namespace eval dotlrn_community {
         #
         #     util_memoize_flush_regexp  $user_id
         #
-        # was intended just to flush, just permissons or more. To
+        # was intended just to flush, just permissions or more. To
         # improve latencies, the following flush command should be
         # more precise (or removed)
         #
@@ -1568,7 +1568,7 @@ namespace eval dotlrn_community {
     ad_proc -public needs_approval_p {
         {-community_id:required}
     } {
-        Returns 1 if the community's join policy is 'needs approval' aka "request approval".
+        Returns 1 if the community's join policy is 'needs approval' a.k.a. "request approval".
     } {
         return [db_string check_community_needs_approval {} -default 0]
     }
