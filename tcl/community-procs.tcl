@@ -403,7 +403,7 @@ namespace eval dotlrn_community {
         Get URL of specified package under give node_id (assuming
         package_id is mounted under one of the children of this node).
 
-        @param node_id defaults to current node when not specified
+        @param current_node_id defaults to current node when not specified
     } {
         if {$package_id eq ""} {
             return

@@ -409,7 +409,7 @@ namespace eval dotlrn {
 	@author Victor Guerra ( guerra@galileo.edu )
 	@creation-date 2006-03-11
 	
-	@param community_id The id of the User that will change his Site Template 
+	@param user_id The id of the User that will change his Site Template 
 	@param site_template_id The id of the Site Template that will be used by the User
   
     } {
@@ -429,7 +429,7 @@ namespace eval dotlrn {
 	@author Victor Guerra ( guerra@galileo.edu )
 	@creation-date 2006-03-11
 	
-	@param community_id The id of the User in order to obtain the master template configured for him
+	@param user_id The id of the User in order to obtain the master template configured for him
 	
 	@return The path of the master template that will be used.
 
@@ -446,7 +446,7 @@ namespace eval dotlrn {
 	@author Victor Guerra ( guerra@galileo.edu )
 	@creation-date 2006-03-11
 	
-	@param community_id The id of the User of whom we want to abtain the Site Template
+	@param user_id The id of the User of whom we want to abtain the Site Template
 	
 	@return The id of the Site Template assigned to the User
 
