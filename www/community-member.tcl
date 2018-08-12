@@ -53,7 +53,7 @@ if {[dotlrn_community::get_community_id] != $community_id} {
 
 auth::require_login
 
-acs_user::get -user_id $user_id -array user -include_bio
+acs_user::get -user_id $user_id -array user
 
 foreach name {first_names last_name} {
     set $name $user($name)

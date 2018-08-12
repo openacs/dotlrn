@@ -28,7 +28,7 @@ ad_page_contract {
 
 # Make sure user is logged in
 set user_id [auth::require_login]
-acs_user::get -array user -include_bio -user_id $user_id
+acs_user::get -array user -user_id $user_id
 
 # General data
 set dotlrn_url [dotlrn::get_url]
