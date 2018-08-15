@@ -19,7 +19,6 @@ ad_page_contract {
 
     @author Nima Mazloumi
     @creation-date 2004-04-25
-    @cvs-id $Id$
 } -query {
     {community_id:integer ""}
     {referer "."}
