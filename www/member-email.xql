@@ -3,7 +3,6 @@
 <!-- packages/dotlrn/www/member-email.xql -->
 <!-- @author Roel Canicula (roelmc@pldtdsl.net) -->
 <!-- @creation-date 2005-07-22 -->
-<!-- @arch-tag: 168aeaa5-a52c-450f-9dbe-e436b14a91a7 -->
 <!-- @cvs-id $Id$ -->
 
 <queryset>

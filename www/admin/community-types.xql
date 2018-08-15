@@ -3,7 +3,6 @@
 <!-- packages/dotlrn/www/admin/community-types.xql -->
 <!-- @author Roel Canicula (roelmc@aristoi.biz) -->
 <!-- @creation-date 2004-06-26 -->
-<!-- @arch-tag: 4e729d57-1511-466a-a3a1-67a6f77feb41 -->
 <!-- @cvs-id $Id$ -->
 
 <queryset>

@@ -3,7 +3,6 @@
 <!--  -->
 <!-- @author Victor Guerra (guerra@galileo.edu) -->
 <!-- @creation-date 2005-05-25 -->
-<!-- @arch-tag: d023d173-cfd8-40dc-a928-c05dfe394d93 -->
 <!-- @cvs-id $Id$ -->
 
 <queryset>

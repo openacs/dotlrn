@@ -3,7 +3,6 @@
 <!-- packages/dotlrn/www/admin/users-search.xql -->
 <!-- @author Deds Castillo (deds@i-manila.com.ph) -->
 <!-- @creation-date 2005-09-13 -->
-<!-- @arch-tag: dff66e7e-e3d9-49f0-81e4-5979549a840c -->
 <!-- @cvs-id $Id$ -->
 <queryset>
 
