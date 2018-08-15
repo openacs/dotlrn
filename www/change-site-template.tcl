@@ -1,12 +1,9 @@
-# 
-
 ad_page_contract {
     
     Change the dotlrn site template for a given user or community
     
     @author Victor Guerra (guerra@galileo.edu)
     @creation-date 2005-05-25
-    @arch-tag: 71db35e8-e432-49b0-900c-6d8a5cdbdb16
     @cvs-id $Id$
 } {
     referer:notnull

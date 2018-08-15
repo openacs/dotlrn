@@ -1,12 +1,9 @@
-# 
-
 ad_page_contract {
     
     Add new | Edit Site Templates 
     
     @author Victor Guerra (guerra@galileo.edu)
     @creation-date 2005-05-20
-    @arch-tag: 9619249e-d7fb-4292-8af1-98b92ee33bba
     @cvs-id $Id$
 } {
     site_template_id:naturalnum,optional

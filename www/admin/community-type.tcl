@@ -1,12 +1,9 @@
-# packages/dotlrn/www/admin/community-type.tcl
-
 ad_page_contract {
     
     Add / Edit a community type
     
     @author Roel Canicula (roelmc@aristoi.biz)
     @creation-date 2004-06-26
-    @arch-tag: 371b5e20-5a3c-4669-b1d6-acfe381ad20e
     @cvs-id $Id$
 } {
     {community_type:notnull,optional}

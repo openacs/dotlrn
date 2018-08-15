@@ -5,7 +5,6 @@
 #
 # @author Deds Castillo (deds@i-manila.com.ph)
 # @creation-date 2005-07-20
-# @arch-tag: 7d4ddca7-20cd-4e7d-9fc1-d23cd8b2a712
 # @cvs-id $Id$
 
 foreach required_param {community_id type return_url} {

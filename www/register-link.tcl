@@ -1,12 +1,9 @@
-# packages/dotlrn/www/register-link.tcl
-
 ad_page_contract {
     
     Build link to register in a dotlrn community
     
     @author Emmanuelle Raffenne (eraffenne@dia.uned.es)
     @creation-date 2007-03-29
-    @arch-tag: a781edfd-415d-47e2-a7fe-fbb2f7ac4241
     @cvs-id $Id$
 } {
 } -properties {

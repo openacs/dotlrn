@@ -1,12 +1,9 @@
-# packages/dotlrn/tcl/dotlrn-callback-procs.tcl
-
 ad_library {
     
     Callback Procedures offered by the .LRN package
     
     @author Malte Sussdorff (sussdorff@sussdorff.de)
     @creation-date 2005-07-19
-    @arch-tag: 8a447ef7-85b1-4ef9-b342-49ca78f57e49
     @cvs-id $Id$
 }
 

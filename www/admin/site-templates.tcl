@@ -1,12 +1,9 @@
-# 
-
 ad_page_contract {
      
     Displays dotLRN Site templates admin page
     
     @author Victor Guerra (guerra@galileo.edu)
     @creation-date 2005-05-19
-    @arch-tag: 59d729de-a526-48af-8087-f81ee8cf0fda
     @cvs-id $Id$
 } {
 } -properties {

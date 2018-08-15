@@ -1,12 +1,9 @@
-# 
-
 ad_page_contract {
     
     Parameter Administration for Site Templates
     
     @author Victor Guerra (guerra@galileo.edu)
     @creation-date 2005-12-08
-    @arch-tag: f5015caa-41c8-4f82-bbef-44450f1c6ffc
     @cvs-id $Id$
 } {
     return_url:localurl,notnull

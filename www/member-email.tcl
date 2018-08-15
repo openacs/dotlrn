@@ -1,12 +1,9 @@
-# packages/dotlrn/www/member-email.tcl
-
 ad_page_contract {
     
     Email to send users when they join this community
     
     @author Roel Canicula (roel@solutiongrove.com)
     @creation-date 2004-09-05
-    @arch-tag: 64bff694-7a52-40ae-94f6-17d853356ccb
     @cvs-id $Id$
 } {
 

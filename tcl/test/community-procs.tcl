@@ -1,12 +1,9 @@
-# packages/dotlrn/tcl/test/community-procs.tcl
-
 ad_library {
     
     Automated tests for security hole found on cloned communities
     
     @author Roel Canicula (roel@solutiongrove.com)
     @creation-date 2006-02-08
-    @arch-tag: 0fe80025-b3ae-4e64-884c-4d8de30bdde5
     @cvs-id $Id$
 }
 
