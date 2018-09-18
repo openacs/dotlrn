@@ -123,7 +123,9 @@ namespace eval dotlrn_applet {
     ad_proc -public list_applets {} {
         List the applet_keys for all dotlrn applets.
     } {
-        return [util_memoize {dotlrn_applet::list_applets_not_cached}]
+        ::dotlrn::dotlrn_cache eval applets_list {
+            dotlrn_applet::list_applets_not_cached
+        }                
     }
 
     ad_proc -private list_applets_not_cached {} {
@@ -159,7 +161,9 @@ namespace eval dotlrn_applet {
     } {
         Get the package key associated with the given applet.
     } {
-        return [util_memoize "dotlrn_applet::get_package_key_not_cached -applet_key $applet_key"]
+        ::dotlrn::dotlrn_cache eval applet-package_key-$applet_key {
+            dotlrn_applet::get_package_key_not_cached -applet_key $applet_key
+        }  
     }
 
     ad_proc -private get_package_key_not_cached {

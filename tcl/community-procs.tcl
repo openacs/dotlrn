@@ -393,7 +393,9 @@ namespace eval dotlrn_community {
     } {
         db_dml update_package_id {}
         db_dml update_application_group_package_id {}
-        util_memoize_flush "dotlrn_community::get_package_id_not_cached $community_id"
+        
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
+            $community_id-package_id        
     }
 
     ad_proc -public get_url {
@@ -429,7 +431,10 @@ namespace eval dotlrn_community {
         }
         set community_type [get_community_type_from_community_id $community_id]
 
-        return [util_memoize "dotlrn_community::get_default_roles_not_cached -community_type $community_type"]
+        ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-default_roles {
+                dotlrn_community::get_default_roles_not_cached -community_type $community_type
+            }        
     }
 
     ad_proc -private get_default_roles_not_cached {
@@ -523,7 +528,10 @@ namespace eval dotlrn_community {
     ad_proc -public get_all_roles {} {
         Return the list of roles used in dotLRN.
     } {
-        return [util_memoize {dotlrn_community::get_all_roles_not_cached}]
+        
+        ::dotlrn::dotlrn_cache eval get_all_roles {
+            dotlrn_community::get_all_roles_not_cached
+        }            
     }
 
     ad_proc -private get_all_roles_not_cached {} {
@@ -771,7 +779,12 @@ namespace eval dotlrn_community {
     } {
         Check membership.
     } {
-        return [db_string select_count_membership {} -default 0]
+        
+        ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-member-$user_id {
+                db_string select_count_membership {} -default 0
+            }        
+        
     }
 
     ad_proc -public member_pending_p {
@@ -817,23 +830,9 @@ namespace eval dotlrn_community {
                 -member_state $member_state
         }
 
-        util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
-
-        #
-        # Flush all permission checks pertaining to this user.
-        #
-        permission::cache_flush -party_id $user_id
-
-        #
-        # It is not clear, what the original
-        #
-        #     util_memoize_flush_regexp  $user_id
-        #
-        # was intended just to flush, just permissions or more. To
-        # improve latencies, the following flush command should be
-        # more precise (or removed)
-        #
-        util_memoize_flush_pattern -log *$user_id*
+        # there is no such entry in the util_memoize cache
+        # we keep it as a reminder to add caching for it later
+        #util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
     }
 
     ad_proc -public add_user_to_community {
@@ -883,6 +882,14 @@ namespace eval dotlrn_community {
                 membership_approve -user_id $user_id -community_id $community_id
             }
         }
+        #
+        # Flush all permission checks pertaining to this user.
+        #
+        permission::cache_flush -party_id $user_id        
+        
+        # Remove record of this membership in the cache
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
+            $community_id-member-$user_id        
 
     }
 
@@ -951,24 +958,18 @@ namespace eval dotlrn_community {
             # Remove it
             relation_remove $rel_id
 
-            # flush the list_users cache
-            util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
+            # there is no such entry in the util_memoize cache
+            # we keep it as a reminder to add caching for it later
+            # util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         }
         #
         # Flush all permission checks pertaining to this user.
         #
         permission::cache_flush -party_id $user_id
 
-        #
-        # It is not clear, what the original
-        #
-        #     util_memoize_flush_regexp  $user_id
-        #
-        # was intended just to flush, just permissions or more. To
-        # improve latencies, the following flush command should be
-        # more precise (or removed)
-        #
-        util_memoize_flush_pattern -log *$user_id*
+        # Remove record of this membership in the cache
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
+            $community_id-member-$user_id
     }
 
     ad_proc -public remove_user_from_all {
@@ -1043,7 +1044,10 @@ namespace eval dotlrn_community {
     } {
         Returns the community type from community_id.
     } {
-        return [util_memoize "dotlrn_community::get_community_type_from_community_id_not_cached -community_id $community_id"]
+        ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-community_type {
+                dotlrn_community::get_community_type_from_community_id_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_community_type_from_community_id_not_cached {
@@ -1059,7 +1063,10 @@ namespace eval dotlrn_community {
         Returns the community type key depending on the node we're at.
     } {
         set package_id [ad_conn package_id]
-        return [util_memoize "dotlrn_community::get_community_type_not_cached -package_id $package_id"]
+        
+        ::dotlrn::dotlrn_cache eval pkg_id-$package_id-community_type {
+            dotlrn_community::get_community_type_not_cached -package_id $package_id
+        }        
     }
 
     ad_proc -private get_community_type_not_cached {
@@ -1138,7 +1145,9 @@ namespace eval dotlrn_community {
             set package_id [ad_conn package_id]
         }
 
-        return [util_memoize "dotlrn_community::get_parent_community_id_not_cached -package_id $package_id"]
+        ::dotlrn::dotlrn_cache eval pkg_id-$package_id-parent_community_id {
+            dotlrn_community::get_parent_community_id_not_cached -package_id $package_id
+        }           
     }
 
     ad_proc -private get_parent_community_id_not_cached {
@@ -1159,7 +1168,10 @@ namespace eval dotlrn_community {
     } {
         Returns the parent community's id or null.
     } {
-        return [util_memoize "dotlrn_community::get_parent_id_not_cached -community_id $community_id"]
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-parent_id {
+                dotlrn_community::get_parent_id_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_parent_id_not_cached {
@@ -1235,7 +1247,10 @@ namespace eval dotlrn_community {
     } {
         Returns 1 if the community has a subcommunity, memoized for 1 min.
     } {
-        return [util_memoize "dotlrn_community::has_subcommunity_p_not_cached -community_id $community_id" 60]
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-has_subcommunity_p {
+                dotlrn_community::has_subcommunity_p_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private has_subcommunity_p_not_cached {
@@ -1411,7 +1426,10 @@ namespace eval dotlrn_community {
         Get the package ID for a particular community.
         This is cached as the package ID is not going to change.
     } {
-        return [util_memoize [list dotlrn_community::get_package_id_not_cached $community_id]]
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-package_id {
+                dotlrn_community::get_package_id_not_cached $community_id
+            }
     }
 
     ad_proc -public get_package_id_not_cached {
@@ -1455,7 +1473,7 @@ namespace eval dotlrn_community {
         set package_id [dotlrn_community::get_package_id $community_id]
         apm_package_rename -package_id $package_id -instance_name $pretty_name
 
-        util_memoize_flush "dotlrn_community::get_community_name_not_cached $community_id"
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-name
 
         # generate "rename" event
         raise_change_event \
@@ -1474,7 +1492,10 @@ namespace eval dotlrn_community {
     } {
         Get the name for a community.
     } {
-        return [util_memoize "dotlrn_community::get_community_name_not_cached $community_id"]
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-name {
+                dotlrn_community::get_community_name_not_cached $community_id
+            }
     }
 
     ad_proc -private get_community_name_not_cached {
@@ -1581,8 +1602,10 @@ namespace eval dotlrn_community {
         if {$community_id eq ""} {
             set community_id [get_community_id]
         }
-
-        return [util_memoize "dotlrn_community::get_portal_id_not_cached -community_id $community_id"]
+       ::dotlrn::dotlrn_community_cache eval -partition_key  $community_id \
+            $community_id-portal_id {
+                dotlrn_community::get_portal_id_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_portal_id_not_cached {
@@ -1601,8 +1624,10 @@ namespace eval dotlrn_community {
         if {$community_id eq ""} {
             set community_id [get_community_id]
         }
-
-        return [util_memoize "dotlrn_community::get_non_member_portal_id_not_cached -community_id $community_id"]
+        ::dotlrn::dotlrn_community_cache eval -partition_key  $community_id \
+            $community_id-non_member_portal_id {
+                dotlrn_community::get_non_member_portal_id_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_non_member_portal_id_not_cached {
@@ -1621,8 +1646,10 @@ namespace eval dotlrn_community {
         if {$community_id eq ""} {
             set community_id [get_community_id]
         }
-
-        return [util_memoize "dotlrn_community::get_admin_portal_id_not_cached -community_id $community_id"]
+        ::dotlrn::dotlrn_community_cache eval -partition_key  $community_id \
+            $community_id-admin_portal_id {
+                dotlrn_community::get_admin_portal_id_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_admin_portal_id_not_cached {
@@ -2093,7 +2120,10 @@ namespace eval dotlrn_community {
         Is this applet active in this community? Does it do voulunteer work?
         Helps its neighbors? <joke> returns 1 or 0
     } {
-        return [db_0or1row select_active_applet_p {}]
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-applet_active-$applet_key {
+                db_0or1row select_active_applet_p {}
+            }
     }
 
     ad_proc -public applets_dispatch {
@@ -2122,7 +2152,10 @@ namespace eval dotlrn_community {
     ad_proc -public get_available_attributes {} {
         Get a list of the attributes that we can get/set for dotLRN communities.
     } {
-        return [util_memoize {dotlrn_community::get_available_attributes_not_cached}]
+        # candidate general cache
+        ::dotlrn::dotlrn_cache eval available_attributes {
+            dotlrn_community::get_available_attributes_not_cached
+        }               
     }
 
     ad_proc -private get_available_attributes_not_cached {} {
@@ -2130,7 +2163,7 @@ namespace eval dotlrn_community {
     }
 
     ad_proc -private get_available_attributes_flush {} {
-        util_memoize_flush {dotlrn_community::get_available_attributes_not_cached}
+        ::dotlrn::dotlrn_cache flush available_attributes
     }
 
     ad_proc -public get_attributes {
@@ -2141,8 +2174,10 @@ namespace eval dotlrn_community {
         if {$community_id eq ""} {
             set community_id [get_community_id]
         }
-
-        return [util_memoize "dotlrn_community::get_attributes_not_cached -community_id $community_id"]
+        ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-attributes {
+                dotlrn_community::get_attributes_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_attributes_not_cached {
@@ -2215,7 +2250,7 @@ namespace eval dotlrn_community {
             db_dml update_attribute_value {}
         }
 
-        util_memoize_flush "dotlrn_community::get_attributes_not_cached -community_id $community_id"
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes         
     }
 
     ad_proc -public unset_attribute {
@@ -2237,8 +2272,7 @@ namespace eval dotlrn_community {
         # remove the row
         db_dml delete_attribute_value {}
 
-        util_memoize_flush \
-            "dotlrn_community::get_attributes_not_cached -community_id $community_id"
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes
     }
 
     ad_proc -public unset_attributes {
@@ -2248,8 +2282,7 @@ namespace eval dotlrn_community {
     } {
         db_dml delete_attributes {}
 
-        util_memoize_flush \
-            "dotlrn_community::get_attributes_not_cached -community_id $community_id"
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes        
     }
 
     ad_proc -public get_attribute_id {
@@ -2446,8 +2479,7 @@ namespace eval dotlrn_community {
         db_dml update_portal_theme {}
         set portal_id [get_admin_portal_id -community_id $community_id]
         db_dml update_portal_theme {}
-        util_memoize_flush [list dotlrn_community::get_site_template_id_not_cached -community_id $community_id]
-        util_memoize_flush [list dotlrn_community::get_dotlrn_master_not_cached -community_id $community_id]
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-site_template 
     }
 
     ad_proc -public get_dotlrn_master {
@@ -2480,7 +2512,10 @@ namespace eval dotlrn_community {
         @return The id of the Site Template assigned to the Community
 
     } {
-        return [util_memoize [list dotlrn_community::get_site_template_id_not_cached -community_id $community_id]]
+        ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-site_template {
+                dotlrn_community::get_site_template_id_not_cached -community_id $community_id
+            }
     }
 
     ad_proc -private get_site_template_id_not_cached {
@@ -2518,8 +2553,10 @@ namespace eval dotlrn_community {
         set new_theme_id [db_string select_portal_theme {}]
         db_dml update_portal_themes {}
         db_dml update_portal_admin_themes {}
-
-        util_memoize_flush_regexp "dotlrn_community::get_site_template_id_not_cached *"
+        
+        foreach community_id [db_list affected_portals {}] {
+            ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-site_template
+        }
     }
 
 }

@@ -179,7 +179,11 @@ namespace eval dotlrn {
     } {
         Return the user default theme
     } {
-        return [util_memoize "dotlrn::get_user_theme_not_cached $user_id"]
+        
+        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+            $user_id-theme_id {
+                dotlrn::get_user_theme_not_cached $user_id
+            }        
     }
 
     ad_proc -private get_user_theme_not_cached {
@@ -204,7 +208,10 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
-        return [util_memoize "dotlrn::get_portal_id_not_cached -user_id $user_id"]
+        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+            $user_id-portal_id {
+                dotlrn::get_portal_id_not_cached -user_id $user_id
+            }            
     }
 
     ad_proc -private get_portal_id_not_cached {
@@ -417,8 +424,8 @@ namespace eval dotlrn {
         set new_theme_id [db_string select_portal_theme {}]
         db_dml update_portal_theme {}
         db_dml update_user_site_template {}
-        util_memoize_flush [list dotlrn::get_site_template_id_not_cached -user_id $user_id]
-        util_memoize_flush [list dotlrn::get_dotlrn_master_not_cached -user_id $user_id]
+        
+       ::dotlrn::dotlrn_user_cache flush -partition_key $user_id $user_id-site_template_id
     }
 
     ad_proc -public get_dotlrn_master {
@@ -451,7 +458,10 @@ namespace eval dotlrn {
         @return The id of the Site Template assigned to the User
 
     } {
-        return [util_memoize [list dotlrn::get_site_template_id_not_cached -user_id $user_id] ]
+        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+            $user_id-site_template_id {
+                dotlrn::get_site_template_id_not_cached -user_id $user_id
+            }            
     }
 
     ad_proc -private get_site_template_id_not_cached {
@@ -486,7 +496,9 @@ namespace eval dotlrn {
         @return The path of the master template associated to the Site Template
 
     } {
-        return [util_memoize [list dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id]]
+        ::dotlrn::dotlrn_cache eval master_from_site_template_id-${site_template_id} {
+                dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id
+            }        
     }
 
     ad_proc -private get_master_from_site_template_id_not_cached {
@@ -515,7 +527,10 @@ namespace eval dotlrn {
         set new_theme_id [db_string select_portal_theme {}]
         db_dml update_portal_themes {update }
 
-        util_memoize_flush_regexp "dotlrn::get_site_template_id_not_cached *"
+        
+        foreach user_id [db_list affected_users {}] {
+            ::dotlrn::dotlrn_user_cache flush -partition_key $user_id $user_id-site_template_id
+        }
     }
 }
 

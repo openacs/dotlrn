@@ -254,7 +254,7 @@
             select community_id as subcomm_id
             from dotlrn_communities
             where parent_community_id = :community_id
-	    order by pretty_name 
+        order by pretty_name 
         </querytext>
     </fullquery>
 
@@ -586,7 +586,14 @@
         </querytext>
     </fullquery>
 
-
+    <fullquery name="dotlrn_community::assign_default_sitetemplate.affected_portals">
+      <querytext>
+        select 
+            portal_id 
+        from dotlrn_communities_all
+        </querytext>
+    </fullquery>
+    
     <fullquery name="dotlrn_community::get_site_template_id_not_cached.select_site_template_id">
         <querytext>
             select site_template_id

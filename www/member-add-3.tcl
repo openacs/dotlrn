@@ -49,7 +49,6 @@ foreach member_id $user_id {
             # so we do not want to call remove_user
             # as that removes subgroup rels as well
             relation_remove $rel_id
-            util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
             set change_rel_p 1
         }
     } else {
@@ -78,7 +77,6 @@ foreach member_id $user_id {
                 $rel_type \
                 $community_id \
                 $member_id
-            util_memoize_flush "dotlrn_community::list_users_not_cached -rel_type $rel_type -community_id $community_id"
         } else {
             dotlrn_community::add_user -rel_type $rel_type $community_id $member_id
         }

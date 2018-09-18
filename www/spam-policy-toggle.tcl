@@ -44,9 +44,6 @@ if {$policy eq "all"} {
 permission::$action -party_id [dotlrn_community::get_members_rel_id -community_id $community_id] \
     -object_id $community_id -privilege dotlrn_spam_community
 
-# Make sure we flush everything that references this community and the spam privilege
-util_memoize_flush_regexp "${community_id}(.*)dotlrn_spam_community"
-
 ad_returnredirect $referer
 ad_script_abort
 

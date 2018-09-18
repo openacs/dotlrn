@@ -50,7 +50,7 @@ ad_form -cancel_url $referer -export {referer} -name site_template -form {
     db_dml insert_site_template {}
 } -edit_data {
     db_dml update_site_template {}
-    util_memoize_flush [list dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id]
+    ::dotlrn::dotlrn_cache flush master_from_site_template_id-${site_template_id}
 } -new_request {
     set pretty_name ""
     set site_master ""

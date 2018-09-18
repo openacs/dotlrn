@@ -31,7 +31,9 @@ namespace eval dotlrn::user::type {
     } {
         get the user type info for the given dotlrn_user_type (cached)
     } {
-        return [util_memoize "dotlrn::user::type::get_not_cached -type $type"]
+        ::dotlrn::dotlrn_cache eval usertype-$type {
+            dotlrn::user::type::get_not_cached -type $type
+        }          
     }
 
     ad_proc -public get_not_cached {

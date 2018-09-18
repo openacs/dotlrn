@@ -160,7 +160,7 @@ namespace eval dotlrn {
         }
         
         # always flush when creating a new user
-        util_memoize_flush "dotlrn::get_portal_id_not_cached -user_id $user_id"
+        ::dotlrn::dotlrn_user_cache flush -partition_key $user_id $user_id-portal_id
 
 	#Site Template Customization
 	dotlrn::set_site_template_id -user_id $user_id \

@@ -89,6 +89,14 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn::assign_default_sitetemplate.affected_users">
+        <querytext>
+            select
+                user_id
+            from dotlrn_users
+        </querytext>
+    </fullquery>    
+    
     <fullquery name="dotlrn::set_site_template_id.update_portal_theme">
         <querytext>
             update portals
