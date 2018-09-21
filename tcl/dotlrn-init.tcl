@@ -43,22 +43,22 @@ if {[dotlrn::is_instantiated]} {
        -package_key dotlrn \
        -parameter DotlrnCache \
        -default_size 2000000
-       
+
     # dotlrn-user_cache: user specific stuff
     ::acs::KeyPartitionedCache create ::dotlrn::dotlrn_user_cache \
        -package_key dotlrn \
        -parameter DotlrnUserCache \
-       -default_size 2000000       
-       
+       -default_size 2000000
+
     # dotlrn_community_cache: holds community specific stuff like
     # "package_id", "name", "portal_id" etc
     ::acs::KeyPartitionedCache create ::dotlrn::dotlrn_community_cache \
        -package_key dotlrn \
        -parameter DotlrnCommunityCache \
-       -default_size 2000000    
-    
-    
-    
+       -default_size 2000000
+
+
+
     set package_id [dotlrn::get_package_id]
 
     # make sure we aren't inheriting permissions from dotlrn's parent object
