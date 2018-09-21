@@ -50,7 +50,7 @@ if {[dotlrn::is_instantiated]} {
        -parameter DotlrnUserCache \
        -default_size 2000000       
        
-    # dotlrn_community_cache: holds community specfic stuff like
+    # dotlrn_community_cache: holds community specific stuff like
     # "package_id", "name", "portal_id" etc
     ::acs::KeyPartitionedCache create ::dotlrn::dotlrn_community_cache \
        -package_key dotlrn \
