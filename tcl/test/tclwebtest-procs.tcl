@@ -27,7 +27,7 @@ ad_proc -private dotlrn::twt::term_new {term_name start_date end_date} {
 	tclwebtest::field fill $end_date
 	tclwebtest::form submit
 	
-	aa_log "Add Term form submited"
+	aa_log "Add Term form submitted"
 
 	set response_url [tclwebtest::response url]
 
@@ -67,7 +67,7 @@ ad_proc -private dotlrn::twt::term_edit { term_name new_term_name term_year star
 	tclwebtest::field find ~n "end_date"
 	tclwebtest::field fill $end_date
 	tclwebtest::form submit
-	aa_log "Edit Term form submited"
+	aa_log "Edit Term form submitted"
 
 	set response_url [tclwebtest::response url]
 
@@ -106,7 +106,7 @@ ad_proc -private dotlrn::twt::department_new  {department_name description exter
 	tclwebtest::field find ~n "department_key"
 	tclwebtest::field fill $department_key			
 	tclwebtest::form submit
-	aa_log "Add Department form submited"
+	aa_log "Add Department form submitted"
 
 	set response_url [tclwebtest::response url]	
 	
@@ -138,7 +138,7 @@ ad_proc -private dotlrn::twt::department_delete { department_name department_key
 	
 	tclwebtest::form find ~n "delete_department"	
 	tclwebtest::form submit ~n "yes_button"
-	aa_log "Delete Department form submited"
+	aa_log "Delete Department form submitted"
 
 	set response_url [tclwebtest::response url]	
 
@@ -175,7 +175,7 @@ ad_proc -private dotlrn::twt::subject_new  { department_name subject_name descri
 	tclwebtest::field find ~n description 
 	tclwebtest::field fill $description
 	tclwebtest::form submit
-	aa_log "Add Subject Form submited"
+	aa_log "Add Subject Form submitted"
 
 	set response_url [tclwebtest::response url]	
 	
@@ -207,7 +207,7 @@ ad_proc -private dotlrn::twt::subject_delete  { department_name } {
 
 	tclwebtest::form find ~n "delete_class"	
 	tclwebtest::form submit ~n "formbutton:ok"
-	aa_log "Delete Subject Form submited"
+	aa_log "Delete Subject Form submitted"
 
 	set response_url [tclwebtest::response url]	
 	
@@ -244,7 +244,7 @@ ad_proc -private dotlrn::twt::subject_edit  { department_name subject_name new_s
 	tclwebtest::field find ~n description 
 	tclwebtest::field fill $new_description
 	tclwebtest::form submit
-	aa_log "Edit Subject Form submited"
+	aa_log "Edit Subject Form submitted"
 
         set response_url [tclwebtest::response url]
 
@@ -284,7 +284,7 @@ ad_proc -private dotlrn::twt::class_new  { department_name class_name descriptio
 	tclwebtest::field find ~n class_instance_key 
 	tclwebtest::field fill $class_key
 	tclwebtest::form submit
-	aa_log "Add Class Form submited"
+	aa_log "Add Class Form submitted"
 
 	set response_url [tclwebtest::response url]	
 	
@@ -320,7 +320,7 @@ ad_proc -private dotlrn::twt::community_new { community_name description } {
 	tclwebtest::field fill $description
 	tclwebtest::form submit	
 
-	aa_log "Add Community Form submited"		
+	aa_log "Add Community Form submitted"		
 
 	set response_url [tclwebtest::response url]	
 	

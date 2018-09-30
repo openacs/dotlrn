@@ -152,7 +152,7 @@ ad_proc -public -callback contact::contact_form -impl dotlrn_club {
     {-object_type:required}
     {-party_id ""}
 } {
-    If organisation, ask to create new club
+    If organization, ask to create new club
 } {
     if {$object_type ne "person" } {
 	
