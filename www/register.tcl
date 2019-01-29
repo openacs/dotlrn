@@ -65,7 +65,7 @@ if { [dotlrn_community::member_p $community_id $user_id] ||
      ($join_policy eq "needs approval"
       && [dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]
       )
- } {
+} {
     ad_returnredirect $referer
     ad_script_abort
 }
