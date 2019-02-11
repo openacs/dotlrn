@@ -1567,7 +1567,11 @@ namespace eval dotlrn_community {
     } {
         Get the key for a community.
     } {
-        return [db_string select_community_key {} -default ""]
+        
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-community_key {
+                db_string select_community_key {} -default 0
+            }               
     }
 
     ad_proc -public not_closed_p {
@@ -1729,6 +1733,11 @@ namespace eval dotlrn_community {
             # Delete from the DB
             set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
             db_dml delete_applet_from_community {}
+            
+            # flush "applet_active" entry from the cache
+            ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
+                $community_id-applet_active-$applet_key
+            
         }
     }
 
