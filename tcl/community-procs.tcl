@@ -1570,7 +1570,7 @@ namespace eval dotlrn_community {
 
        ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
             $community_id-community_key {
-                db_string select_community_key {} -default 0
+                db_string select_community_key {} -default ""
             }
     }
 
