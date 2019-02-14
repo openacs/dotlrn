@@ -393,9 +393,9 @@ namespace eval dotlrn_community {
     } {
         db_dml update_package_id {}
         db_dml update_application_group_package_id {}
-        
+
         ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
-            $community_id-package_id        
+            $community_id-package_id
     }
 
     ad_proc -public get_url {
@@ -434,7 +434,7 @@ namespace eval dotlrn_community {
         ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
             $community_id-default_roles {
                 dotlrn_community::get_default_roles_not_cached -community_type $community_type
-            }        
+            }
     }
 
     ad_proc -private get_default_roles_not_cached {
@@ -528,10 +528,10 @@ namespace eval dotlrn_community {
     ad_proc -public get_all_roles {} {
         Return the list of roles used in dotLRN.
     } {
-        
+
         ::dotlrn::dotlrn_cache eval get_all_roles {
             dotlrn_community::get_all_roles_not_cached
-        }            
+        }
     }
 
     ad_proc -private get_all_roles_not_cached {} {
@@ -779,12 +779,12 @@ namespace eval dotlrn_community {
     } {
         Check membership.
     } {
-        
+
         ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
             $community_id-member-$user_id {
                 db_string select_count_membership {} -default 0
-            }        
-        
+            }
+
     }
 
     ad_proc -public member_pending_p {
@@ -885,11 +885,11 @@ namespace eval dotlrn_community {
         #
         # Flush all permission checks pertaining to this user.
         #
-        permission::cache_flush -party_id $user_id        
-        
+        permission::cache_flush -party_id $user_id
+
         # Remove record of this membership in the cache
         ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
-            $community_id-member-$user_id        
+            $community_id-member-$user_id
 
     }
 
@@ -1063,10 +1063,10 @@ namespace eval dotlrn_community {
         Returns the community type key depending on the node we're at.
     } {
         set package_id [ad_conn package_id]
-        
+
         ::dotlrn::dotlrn_cache eval pkg_id-$package_id-community_type {
             dotlrn_community::get_community_type_not_cached -package_id $package_id
-        }        
+        }
     }
 
     ad_proc -private get_community_type_not_cached {
@@ -1147,7 +1147,7 @@ namespace eval dotlrn_community {
 
         ::dotlrn::dotlrn_cache eval pkg_id-$package_id-parent_community_id {
             dotlrn_community::get_parent_community_id_not_cached -package_id $package_id
-        }           
+        }
     }
 
     ad_proc -private get_parent_community_id_not_cached {
@@ -1567,7 +1567,11 @@ namespace eval dotlrn_community {
     } {
         Get the key for a community.
     } {
-        return [db_string select_community_key {} -default ""]
+
+       ::dotlrn::dotlrn_community_cache eval -partition_key $community_id \
+            $community_id-community_key {
+                db_string select_community_key {} -default ""
+            }
     }
 
     ad_proc -public not_closed_p {
@@ -1729,6 +1733,10 @@ namespace eval dotlrn_community {
             # Delete from the DB
             set applet_id [dotlrn_applet::get_applet_id_from_key -applet_key $applet_key]
             db_dml delete_applet_from_community {}
+
+            # flush "applet_active" entry from the cache
+            ::dotlrn::dotlrn_community_cache flush -partition_key $community_id \
+                $community_id-applet_active-$applet_key
         }
     }
 
@@ -2155,7 +2163,7 @@ namespace eval dotlrn_community {
         # candidate general cache
         ::dotlrn::dotlrn_cache eval available_attributes {
             dotlrn_community::get_available_attributes_not_cached
-        }               
+        }
     }
 
     ad_proc -private get_available_attributes_not_cached {} {
@@ -2250,7 +2258,7 @@ namespace eval dotlrn_community {
             db_dml update_attribute_value {}
         }
 
-        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes         
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes
     }
 
     ad_proc -public unset_attribute {
@@ -2282,7 +2290,7 @@ namespace eval dotlrn_community {
     } {
         db_dml delete_attributes {}
 
-        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes        
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-attributes
     }
 
     ad_proc -public get_attribute_id {
@@ -2479,7 +2487,7 @@ namespace eval dotlrn_community {
         db_dml update_portal_theme {}
         set portal_id [get_admin_portal_id -community_id $community_id]
         db_dml update_portal_theme {}
-        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-site_template 
+        ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-site_template
     }
 
     ad_proc -public get_dotlrn_master {
@@ -2553,12 +2561,11 @@ namespace eval dotlrn_community {
         set new_theme_id [db_string select_portal_theme {}]
         db_dml update_portal_themes {}
         db_dml update_portal_admin_themes {}
-        
+
         foreach community_id [db_list affected_portals {}] {
             ::dotlrn::dotlrn_community_cache flush -partition_key $community_id $community_id-site_template
         }
     }
-
 }
 
 # Local variables:
