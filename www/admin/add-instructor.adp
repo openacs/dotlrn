@@ -25,9 +25,9 @@
 <h1>#dotlrn.Add_a_Professor#</h1>
 
 <form method="get" action="add-instructor-2">
-  <input type="hidden" name="referer" value="@referer@"></input>
-  <input type="hidden" name="community_id" value="@community_id@"></input>
-  #dotlrn.Add_a_Professor_2# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#"></input>
+  <input type="hidden" name="referer" value="@referer@">
+  <input type="hidden" name="community_id" value="@community_id@">
+  #dotlrn.Add_a_Professor_2# <input type="text" name="search_text"><input type="submit" value="#dotlrn.search#">
 </form>
 
 
