@@ -66,7 +66,7 @@ namespace eval dotlrn {
     ad_proc -public is_instantiated {} {
         returns 1 if dotlrn is instantiated, 0 otherwise
     } {
-        return [ad_decode [apm_num_instances [package_key]] 0 0 1]
+        return [expr {[apm_num_instances [package_key]] > 0}]
     }
 
     ad_proc -public is_initialized {} {
@@ -120,7 +120,9 @@ namespace eval dotlrn {
     } {
         mount a package under dotlrn
     } {
-        set parent_node_id [ad_decode $parent_node_id "" [get_node_id] $parent_node_id]
+        if {$parent_node_id eq ""} {
+            set parent_node_id [get_node_id]
+        }
 
         db_transaction {
             array set parent_node [site_node::get -node_id $parent_node_id]

@@ -99,7 +99,7 @@ namespace eval dotlrn_community {
 
             set package_id [site_node::instantiate_and_mount \
                 -parent_node_id $parent_node_id \
-                -node_name [ad_decode $url_part "" $community_type_key $url_part] \
+                -node_name [expr {$url_part eq "" ? $community_type_key : $url_part}] \
                 -package_name $pretty_name \
                 -package_key [one_community_type_package_key] \
                 -context_id $parent_node(object_id)]
