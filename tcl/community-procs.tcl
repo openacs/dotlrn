@@ -1289,7 +1289,7 @@ namespace eval dotlrn_community {
         {-drop_target deregister}
         {-only_member_p 0}
     } {
-        Returns a html fragment of the subcommunity hierarchy of this
+        Returns a HTML fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
 
         Brief notes: this proc always shows the subgroups of the
