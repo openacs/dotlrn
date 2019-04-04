@@ -73,12 +73,11 @@ namespace eval dotlrn {
     } {
         check if a user is a dotLRN user
     } {
-        return [db_string select_count {
-            select count(*)
+        return [db_string select_exists {
+            select exists (select 1
+                           from dotlrn_users
+                           where user_id = :user_id)
             from dual
-            where exists (select 1
-                          from dotlrn_users
-                          where user_id = :user_id)
         }]
     }
 
