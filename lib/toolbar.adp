@@ -8,19 +8,19 @@
 	<td class="dt-action-list">
 	  <a href="@dotlrn_url@" title="Dotlrn Home">Home</a>
 	  <span style="color: #cccccc;">|</span>
-	  
+
 	  <a href="@dotlrn_admin_url@/terms" title="#dotlrn.Terms#">#dotlrn.Terms#</a>
 	  <span style="color: #cccccc;">|</span>
-	  
+
 	  <a href="@dotlrn_admin_url@/departments" title="#dotlrn.departments_pretty_plural#">#dotlrn.departments_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
-	  
+
 	  <a href="@dotlrn_admin_url@/classes" title="#dotlrn.classes_pretty_plural#">#dotlrn.classes_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
-	  
+
 	  <a href="@dotlrn_admin_url@/term?term_id=-1" title="#dotlrn.Classes#">#dotlrn.Classes#</a>
 	  <span style="color: #cccccc;">|</span>
-	  
+
 	  <a href="@dotlrn_admin_url@/clubs" title="#dotlrn.clubs_pretty_plural#">#dotlrn.clubs_pretty_plural#</a>
 	  <span style="color: #cccccc;">|</span>
 
@@ -29,7 +29,7 @@
 
 	  <a href="@dotlrn_admin_url@/" title="Dotlrn admin">#dotlrn.Admin#</a>
 	  <span style="color: #cccccc;">|</span>
-  
+
 	  <a href="@info_url@" title="@info_title@">@info_title@</a>
 	</td>
     <td id="search">
@@ -43,9 +43,9 @@
     </td>
 	<td>
 	  <a href="@hide_me_url@" style="font-size:80%;" title="Hide me">Hide me</a>
-	</td>	
+	</td>
       </tr>
-      
+
       <if @info_show_p;literal@ true>
 	<tr>
 	  <td colspan="4" class="general-info">
@@ -58,7 +58,7 @@
 	    </ul>
 	  </td>
 	</tr>
-	
+
       </if>
     </table>
   </if>
