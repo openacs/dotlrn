@@ -83,7 +83,7 @@ permissions that a non-admin user will have, other than "READ".
 <h2>Portal-level Permissions for Admin Users</h2>
 
 Admin users with the CREATE permission will be granted the following
-permisson on the newly created portal.
+permission on the newly created portal.
 
 <h3>ADMIN</h3>
 <ul>
@@ -94,5 +94,5 @@ permisson on the newly created portal.
 	<li>Set "non-user" parameters for elements
 	<li>Toggle portal element "availability"
 	</ul> 
-<li>Granted to: A portal created with the CREATE permisson.
+<li>Granted to: A portal created with the CREATE permission.
 </ul>
