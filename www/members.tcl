@@ -251,6 +251,7 @@ if {[info exists reset] && $reset ne ""
     rp_form_put referer "one-community"
     rp_form_put community_id $community_id
     rp_internal_redirect "deregister"
+    ad_script_abort
 }
 
 ad_return_template
