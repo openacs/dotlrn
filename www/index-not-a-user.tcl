@@ -14,8 +14,6 @@
 #  details.
 #
 
-# dotlrn/www/index-not-a-user.tcl
-
 ad_page_contract {
     @author yon (yon@openforce.net)
     @creation-date Dec 11, 2001
@@ -29,8 +27,12 @@ if { [dotlrn::user_p -user_id [ad_conn user_id]] } {
 } 
 
 if { [dotlrn::admin_p] } {
-    set return_url [export_vars -base "[dotlrn::get_admin_url]/user-new-2" { { user_id {[ad_conn user_id]} } { referer "[dotlrn::get_url]/"} }]
-    set self_approve_url [export_vars -base "[apm_package_url_from_key "acs-admin"]users/member-state-change" { { user_id {[ad_conn user_id]} } { member_state approved} return_url }]
+    set return_url [export_vars -base "[dotlrn::get_admin_url]/user-new-2" {
+        { user_id {[ad_conn user_id]} } { referer "[dotlrn::get_url]/"}
+    }]
+    set self_approve_url [export_vars -base "[apm_package_url_from_key acs-admin]users/member-state-change" {
+        { user_id {[ad_conn user_id]} } { member_state approved} return_url {pass_through 1}
+    }]
     ad_returnredirect $self_approve_url
     ad_script_abort
 }
