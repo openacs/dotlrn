@@ -1,6 +1,6 @@
 ad_page_contract {
 
-	return the page corresponding to the user language
+    return the page corresponding to the user language
 
     @author Emmanuelle Raffenne (eraffenne@gmail.com)
     @creation-date 2007-10-12
@@ -22,11 +22,13 @@ if { ![file exists [acs_root_dir]/packages/dotlrn/www/help/$user_language] } {
     set user_language $default_language
 }
 
-if { [file exists "[acs_root_dir]/packages/dotlrn/www/help/$user_language/${path_info}.adp"] || [file exists "[acs_root_dir]/packages/dotlrn/www/help/$user_language/${path_info}"]} {
+if { [file exists "[acs_root_dir]/packages/dotlrn/www/help/$user_language/${path_info}.adp"]
+     || [file exists "[acs_root_dir]/packages/dotlrn/www/help/$user_language/${path_info}"]} {
     rp_internal_redirect /packages/dotlrn/www/help/${user_language}/${path_info}
 } else {
     ns_returnnotfound
 }
+ad_script_abort
 
 # Local variables:
 #    mode: tcl
