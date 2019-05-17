@@ -6,7 +6,7 @@ ad_page_contract {
     @creation-date 2007-10-12
     @cvs-id $Id$
 
-} 
+}
 
 # set default variables
 set default_language "en"
