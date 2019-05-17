@@ -24,7 +24,7 @@ if { [dotlrn::user_p -user_id [ad_conn user_id]] } {
     # Already a user
     ad_returnredirect .
     ad_script_abort
-} 
+}
 
 if { [dotlrn::admin_p] } {
     set return_url [export_vars -base "[dotlrn::get_admin_url]/user-new-2" {
@@ -67,12 +67,12 @@ if { $auto_add_p } {
                   -parameter AutoUserType \
                   -package_id [dotlrn::get_package_id] \
                   -default "student"]
-    
+
     set can_browse_p [parameter::get \
                           -parameter AutoUserAccessLevel \
                           -package_id [dotlrn::get_package_id] \
                           -default 1]
-    
+
     set read_private_data_p [parameter::get \
                                  -parameter AutoUserReadPrivateDataP \
                                  -package_id [dotlrn::get_package_id] \
@@ -83,7 +83,7 @@ if { $auto_add_p } {
             -type $type \
             -can_browse=$can_browse_p \
             -user_id $user_id
-        
+
         dotlrn_privacy::set_user_is_non_guest \
             -user_id $user_id \
             -value $read_private_data_p
