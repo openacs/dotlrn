@@ -5,7 +5,7 @@
 --
 -- dotLRN supports a method of protecting private information about
 -- individuals.  This code is intended to help comply with privacy laws such
--- as the US -- Family Educational Right to Privacy Act aka the
+-- as the US -- Family Educational Right to Privacy Act a.k.a. the
 -- "Buckley Amendment"
 --
 --     http://www.cpsr.org/cpsr/privacy/ssn/ferpa.buckley.html

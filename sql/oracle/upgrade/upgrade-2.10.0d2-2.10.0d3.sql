@@ -16,7 +16,7 @@ begin;
 
     -- Tables defined for these objects don't really exist, as they
     -- are just plain relational segments without additional
-    -- meatadata.
+    -- metadata.
     update acs_object_types set
        table_name = null, id_column = null
      where object_type = 'dotlrn_guest_rel';

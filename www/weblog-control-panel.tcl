@@ -30,7 +30,7 @@ set dotlrn_package_id [dotlrn::get_package_id]
 set weblog_package_id [site_node_apm_integration::get_child_package_id  -package_key "forums"]
 
 set weblog_url "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view"
-db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}
+db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as latest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}
 
 
 ad_return_template
