@@ -575,7 +575,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
-  <msg key="Referer">Referer</msg>
+  <msg key="Referer">Referrer</msg>
   <msg key="registered_user_welcome_email_body">%first_names% %last_name%,
 
 You have been added as a user to %system_name%
