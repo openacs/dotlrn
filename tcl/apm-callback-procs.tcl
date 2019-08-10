@@ -67,7 +67,7 @@ ad_proc -private dotlrn::apm::after_instantiate {
        #
        # Get the default Site Template; Use here
        # #new-portal.sloan_theme_name# rather than the zen version,
-       # since the sloan varian is part of the dotlrn-package, and
+       # since the Sloan variant is part of the dotlrn-package, and
        # *zen* part of the zen-theme.
        #
        set default_template_name [parameter::get \
