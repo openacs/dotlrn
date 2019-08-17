@@ -81,7 +81,7 @@
     Joe,Student,joe@_somewhere_.net,joestue,4jfe3,student,full,f,f
     Albert,Einstein,al@_school_.edu,al,emc2,professor,full,f,t
     Systems,Hacker,syshacker@_company_.com,syshack,,admin
-    Intersted,Onlooker,onlooker@_somewhere_.net,,,external,limited,t,t
+    Interested,Onlooker,onlooker@_somewhere_.net,,,external,limited,t,t
   </pre>
   
 <p style="text-indent: 1em">
