@@ -1,3 +1,10 @@
+ad_include_contract {
+    Informative message when no term is available whilst creating
+    classes.
+
+    Mentioned by dotlrn/www/admin/class.adp
+}
+
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
