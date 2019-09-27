@@ -1,3 +1,7 @@
+ad_page_contract {
+    .LRN custom master
+}
+
 set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 set dotlrn_package_id [dotlrn::get_package_id]
