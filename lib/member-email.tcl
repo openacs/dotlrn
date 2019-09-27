@@ -1,28 +1,21 @@
-# packages/dotlrn/lib/member-email.tcl
-#
-# form for adding/editing a member email based on type
-# as includeletized from roelc's original code
-#
-# @author Deds Castillo (deds@i-manila.com.ph)
-# @creation-date 2005-07-20
-# @cvs-id $Id$
+ad_include_contract {
+    packages/dotlrn/lib/member-email.tcl
 
-foreach required_param {community_id type return_url} {
-    if {![info exists $required_param]} {
-        return -code error "$required_param is a required parameter."
-    }
-}
+    form for adding/editing a member email based on type
+    as includeletized from roelc's original code
 
-foreach optional_param {enabled_p extra_vars} {
-    if {![info exists $optional_param]} {
-        set $optional_param {}
-    }
-}
-ns_log notice "dedsman: $extra_vars"
-if {![template::util::is_true $enabled_p]} {
-    set enabled_p f
-} else {
-    set enabled_p t
+    As of 2019-09-27, seems like only dotlrn-ecommerce is using this
+    include
+
+    @author Deds Castillo (deds@i-manila.com.ph)
+    @creation-date 2005-07-20
+    @cvs-id $Id$
+} {
+    community_id:naturalnum
+    type:notnull
+    return_url:localurl,notnull
+    {enabled_p:boolean false}
+    {extra_vars ""}
 }
 
 if {$community_id eq ""} {
