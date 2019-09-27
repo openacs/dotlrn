@@ -13,36 +13,39 @@
 #  details.
 #
 #
-# /www/dotlrn-master.tcl
-#
-# This is the "default-master" template for dotlrn sites. 
-#
-# Instructions:
-#
-# 1. Put this file and it's .adp file into the server's /www directory.
-# That's the one with the "default-master" Tcl and adp files. You don't
-# have to edit or remove the "default-master" files, since they will be
-# ignored by the next step.
-# 
-# 2. Change the "Main Site"'s "DefaultMaster" parameter 
-# from "/www/default-master" to "/www/dotlrn-master"
-# at http://yoursite.com/admin/site-map
-#
-# This tells OpenACS to use these files instead of the "default-master"
-#
-# 3. Edit these files to change the look of the site including the banner
-# at the top of the page, the title of the pages, the fonts of the portlets, etc.
-#
-# WARNING: All current portlet themes (table, deco, nada, etc) depend on some
-# of the CSS defined below. Be careful when you edit the CSS below, 
-# and check how themes use it.
-#
-#
-# Author: Arjun Sanyal (arjun@openforce.net), yon@openforce.net
-#
-# $Id$
 
-set user_id [ad_conn user_id] 
+ad_page_contract {
+    /www/dotlrn-master.kelp.tcl
+
+    This is the "default-master-kelp" template for dotlrn sites.
+
+    Instructions:
+
+    1. Put this file and it's .adp file into the server's /www directory.
+    That's the one with the "default-master" Tcl and adp files. You don't
+    have to edit or remove the "default-master" files, since they will be
+    ignored by the next step.
+
+    2. Change the "Main Site"'s "DefaultMaster" parameter
+    from "/www/default-master" to "/www/dotlrn-master"
+    at http://yoursite.com/admin/site-map
+
+    This tells OpenACS to use these files instead of the "default-master"
+
+    3. Edit these files to change the look of the site including the banner
+    at the top of the page, the title of the pages, the fonts of the portlets, etc.
+
+    WARNING: All current portlet themes (table, deco, nada, etc) depend on some
+    of the CSS defined below. Be careful when you edit the CSS below,
+    and check how themes use it.
+
+
+    Author: Arjun Sanyal (arjun@openforce.net), yon@openforce.net
+
+    $Id$
+}
+
+set user_id [ad_conn user_id]
 set community_id [dotlrn_community::get_community_id]
 set dotlrn_url [dotlrn::get_url]
 
@@ -61,7 +64,7 @@ set header_font "Arial, Helvetica, sans-serif"
 set header_font_size "medium"
 set header_font_color "black"
 set header_logo_item_id ""
-set header_img_url "/resources/dotlrn/logo" 
+set header_img_url "/resources/dotlrn/logo"
 set header_img_file "[acs_root_dir]/packages/dotlrn/www/resources/logo"
 set header_img_alt_text "Header Logo"
 
@@ -81,7 +84,7 @@ if {$community_id ne ""} {
 set show_navbar_p 1
 if {[info exists no_navbar_p] && $no_navbar_p ne "" && $no_navbar_p} {
     set show_navbar_p 0
-} 
+}
 
 if {![info exists link_all]} {
     set link_all 0
@@ -98,7 +101,7 @@ if {![info exists link_control_panel]} {
 }
 
 if { [ad_conn package_key] ne [dotlrn::package_key] } {
-    # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance 
+    # Peter M: We are in a package (an application) that may or may not be under a dotlrn instance
     # (i.e. in a news instance of a class)
     # and we want all links in the navbar to be active so the user can return easily to the class homepage
     # or to the My Space page
@@ -106,11 +109,11 @@ if { [ad_conn package_key] ne [dotlrn::package_key] } {
 }
 
 if {$have_comm_id_p} {
-    # in a community or just under one in a mounted package like /calendar 
+    # in a community or just under one in a mounted package like /calendar
     # get this comm's info
     set control_panel_text "Administer"
 
-    set text [dotlrn_community::get_community_header_name $community_id] 
+    set text [dotlrn_community::get_community_header_name $community_id]
     set link [dotlrn_community::get_community_url $community_id]
     set admin_p [dotlrn::user_can_admin_community_p -user_id $user_id -community_id $community_id]
 
@@ -129,7 +132,7 @@ if {$have_comm_id_p} {
     # in a community type
     set text \
 	[dotlrn_community::get_community_type_name [dotlrn_community::get_community_type]]
-    
+
     if {$show_navbar_p} {
 	set make_navbar_p 1
     } else {
@@ -172,7 +175,7 @@ set community_id [dotlrn_community::get_community_id]
 set control_panel_text [_ "dotlrn.control_panel"]
 
 if {$community_id ne ""} {
-    # in a community or just under one in a mounted package like /calendar 
+    # in a community or just under one in a mounted package like /calendar
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
     set control_panel_text [_ acs-subsite.Admin]
 
@@ -206,7 +209,7 @@ if {$community_id ne ""} {
 	    set scope_z_light "#ECF3F0"
 	}
     }
-    
+
     # DRB: default logo for dotlrn is a JPEG provided by Collaboraid.  This can
     # be replaced by custom gifs if preferred (as is done by SloanSpace)
 
@@ -215,7 +218,7 @@ if {$community_id ne ""} {
     } elseif { [file exists "$header_img_file-$scope_name.gif"] } {
         set header_img_url "$header_img_url-$scope_name.gif"
     }
-    
+
     # set header_img_url "$header_img_url-$scope_name.gif"
 
     # font hack
@@ -239,7 +242,7 @@ if {$community_id ne ""} {
 			       -attribute_name header_font_color
 			  ]
 
-    # logo hack 
+    # logo hack
     set header_logo_item_id [dotlrn_community::get_attribute \
 				 -community_id $community_id \
 				 -attribute_name header_logo_item_id
@@ -250,8 +253,8 @@ if {$community_id ne ""} {
         set item_id [content::revision::item_id -revision_id $header_logo_item_id]
         set header_img_url "[subsite::get_url]image/$item_id"
     }
-    
-    
+
+
     set header_logo_alt_text [dotlrn_community::get_attribute \
 				  -community_id $community_id \
 				  -attribute_name header_logo_alt_text
@@ -259,7 +262,7 @@ if {$community_id ne ""} {
 
     if {$header_logo_alt_text ne ""} {
         set header_img_alt_text $header_logo_alt_text
-    } 
+    }
 
     set text [dotlrn::user_context_bar -community_id $community_id]
 
@@ -409,7 +412,7 @@ a:hover {
 /* $scope_name substitutions: 035156 -> ${color3} */
 
 a:link, a:visited {
-    border-bottom: 1px solid #${color3}; 
+    border-bottom: 1px solid #${color3};
     color: #${color3};
     text-decoration: none;
 }
@@ -461,7 +464,7 @@ h1 {
     color: #${color3};
     border-top: 1px solid #${color3};
     border-bottom: 1px solid #${color3};
-} 
+}
 
 .portlet ul ul li {
     color: #${color3};
