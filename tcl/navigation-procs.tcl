@@ -198,7 +198,7 @@ namespace eval dotlrn {
 	set control_panel_url "$dotlrn_url/$control_panel_name"
            
         if {$community_id eq ""} {
-            # We are not under a dotlrn community. However we could be
+            # We are not under a dotlrn community. However, we could be
             # under /dotlrn (i.e. in the user's portal) or anywhere
             # else on the site
             set link "[dotlrn::get_url]/"
