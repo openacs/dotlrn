@@ -151,7 +151,7 @@ if {$header_font eq ""} {
     set header_font_fragment ""
 } else {
     set header_font_text $header_font
-    # CSS requies quoting of font names with spaces
+    # CSS requires quoting of font names with spaces
     if {![regexp "^'.*'$" $header_font]} {
         set header_font "'$header_font'"
     }

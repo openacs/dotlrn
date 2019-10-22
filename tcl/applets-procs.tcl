@@ -84,7 +84,7 @@ namespace eval dotlrn_applet {
         {-applet_key:required}
     } {
         Get the id of the dotlrn applet from the applet key or the null
-        string if the key dosent exist.
+        string if the key does not exist.
     } {
         return [db_string select {} -default ""]
     }

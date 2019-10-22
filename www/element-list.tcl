@@ -34,7 +34,7 @@ template::list::create -name portal_elements -multirow portal_elements -elements
     }
 }
 
-db_multirow portal_elements itens {
+db_multirow portal_elements items {
 
 select portal_element_map.element_id,
        portal_element_map.name,
