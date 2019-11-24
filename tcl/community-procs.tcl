@@ -219,10 +219,10 @@ namespace eval dotlrn_community {
             # YON MAJOR HACK
             # acs_object.new() initializes the acs_attributes for us if the
             # object_type of this community matches the object_type of the
-            # acs_attributes. this screws us because we use dotlrn_community
+            # acs_attributes. This screws us because we use dotlrn_community
             # as the object_type for subgroups which means that their
             # attributes will be defaulted to empty strings but we will think
-            # that they are set. we must delete them.
+            # that they are set. We must delete them.
             db_dml delete_acs_attribute_values {
                 delete
                 from acs_attribute_values
@@ -1297,12 +1297,13 @@ namespace eval dotlrn_community {
         member of all the supergroups to the leaf subgroup. Not even
         admins see the whole tree.
 
-        FIXME: we want to be rid of this proc. it's only used in the dotlrn-portlet.
-        A better solution is to do a db_multirow like yon's in dotlrn-main-portlet.
+        FIXME: we want to be rid of this proc. It is only used in the
+        dotlrn-portlet.  A better solution is to do a db_multirow like
+        yon's in dotlrn-main-portlet.
 
-        things to get: has_subcom, member_p, url, name, admin_p, not_closed_p,
+        Things to get: has_subcom, member_p, url, name, admin_p, not_closed_p,
                        member_pending, needs_approval
-        things to send: user_id, sc_id,
+        Things to send: user_id, sc_id,
     } {
         set chunk ""
 
@@ -1467,7 +1468,7 @@ namespace eval dotlrn_community {
 
         db_dml update_community_name {}
 
-        # rename the package - this is used in the user interface. ie - context bar and
+        # rename the package - this is used in the user interface. i.e. - context bar and
         # in the portlets
 
         set package_id [dotlrn_community::get_package_id $community_id]
@@ -2236,7 +2237,7 @@ namespace eval dotlrn_community {
             error "dotlrn_community::set_attribute: invalid attribute $attribute_name"
         }
 
-        # we don't accept empty values (essentially, we are making the
+        # We don't accept empty values (essentially, we are making the
         # acs_attribute_values.attr_value not null, which it is not in the db).
         if {$attribute_value eq ""} {
             return
@@ -2246,12 +2247,12 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        # we assume that if the value of this attribute is null then we must
-        # insert a new row for this attribute, if it's not null then we simply
-        # update its value. this is not enforced in the database since the
+        # We assume that if the value of this attribute is null then we must
+        # insert a new row for this attribute, if it is not null then we simply
+        # update its value. This is not enforced in the database since the
         # acs_attribute_values.attr_value column does not have a "not null"
-        # constraint but we will enforce it via our api. if someone circumvents
-        # our api then they can die and rot in hell.
+        # constraint but we will enforce it via our API. If someone circumvents
+        # our API then they can die and rot in hell.
         if {[get_attribute -community_id $community_id -attribute_name $attribute_name] eq ""} {
             db_dml insert_attribute {}
         } else {

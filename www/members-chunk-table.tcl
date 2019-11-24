@@ -141,7 +141,7 @@ db_multirow pending_users select_pending_users {
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-# If we are in a subcomm. get the list of the users of the parent
+# If we are in a subcomm. Get the list of the users of the parent
 # comm that are not in the subcomm yet, and output them with radios
 # for roles, etc.
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]

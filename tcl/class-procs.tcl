@@ -88,7 +88,7 @@ namespace eval dotlrn_class {
         {-department_key:required}
     } {
         Checks if the class_key passed in is valid for the given dept name
-        i. e. there are no sibling classes with the same key
+        i.e. there are no sibling classes with the same key
 
         FIXME: Currently class keys must be globally unique
         (across all dept) since they are used to create acs_object
