@@ -71,9 +71,19 @@ if {!$dotlrn_user_p} {
 if {[info exists password]} {
     security::set_client_property_password $password
 }
-set redirect [export_vars -base user-add-2 {
-    user_id referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p
-}]
+if {$::acs::pass_password_as_query_variable} {
+    set redirect [export_vars -base user-add-2 {
+        user_id password referer type can_browse_p read_private_data_p
+        dotlrn_interactive_p add_membership_p
+    }]
+} else {
+    set redirect [export_vars -base user-add-2 {
+        user_id referer type can_browse_p read_private_data_p
+        dotlrn_interactive_p add_membership_p
+    }]    
+}
+
+
 if { $add_membership_p == "t" && $referer eq "/acs-admin/users" } {
     set redirect "one-community-admin"
 } else {
