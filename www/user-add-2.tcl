@@ -22,7 +22,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     user_id:naturalnum,notnull
-    password
+    password:optional
     {referer "/acs-admin/users"}
     type
     can_browse_p:boolean
