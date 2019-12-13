@@ -682,12 +682,12 @@ namespace eval dotlrn_community {
         set community_name [get_community_name $community_id]
 
         db_transaction {
-            set member_segment_id [rel_segments_new \
+            set member_segment_id [rel_segment::new \
                 $community_id \
                 dotlrn_member_rel \
                 "[_ dotlrn.Members_of] $community_name" \
             ]
-            set admin_segment_id [rel_segments_new \
+            set admin_segment_id [rel_segment::new \
                 $community_id \
                 dotlrn_admin_rel \
                 "[_ dotlrn.Admins_of] $community_name" \
@@ -705,8 +705,8 @@ namespace eval dotlrn_community {
         set admin_segment_id [get_admin_rel_id -community_id $community_id]
 
         rel_segments_revoke_permission -community_id $community_id
-        rel_segments_delete $admin_segment_id
-        rel_segments_delete $member_segment_id
+        rel_segment::delete $admin_segment_id
+        rel_segment::delete $member_segment_id
     }
 
     ad_proc -public list_admin_users {
