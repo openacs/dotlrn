@@ -96,7 +96,7 @@ if {[form is_valid select_community]} {
                                 ad_returnredirect $referer
                             } else {
                                 ns_log Error "community-members-add-to_community.tcl failed: $errmsg"
-                                #ReturnHeaders
+                                #util_return_headers
                                 ad_return_error "[_ dotlrn.lt_Error_adding_user_to_]"  "[_ dotlrn.lt_An_error_occurred_whil]"
                             }
                             ad_script_abort
