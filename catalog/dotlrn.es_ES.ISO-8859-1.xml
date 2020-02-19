@@ -235,6 +235,7 @@
   <msg key="first_line_of_file_must_be">La primera línea del archivo debe contener el siguiente línea de título:</msg>
   <msg key="First_Name">Nombre</msg>
   <msg key="First_names_">Nombre:</msg>
+  <msg key="Format">Formato</msg>
   <msg key="From">Desde</msg>
   <msg key="fuchsia">fucsia</msg>
   <msg key="Full">Ilimitado</msg>
