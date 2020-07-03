@@ -48,7 +48,7 @@
       Keep browsing until you find your file of interest.
     </p>
     <p>
-      Each file line includes a file icon, the file name, the file size, the date
+      Each file line includes a file icon, the filename, the file size, the date
       the file was last modified, a Property link, a New link and a Download link.
     </p>
     <p>

@@ -62,7 +62,7 @@ if {$tmp_filename eq ""} {
 
 set title "$header_img-[db_nextval acs_object_id_seq]"
 
-#  # strip off the C:\directories... crud and just get the file name
+#  # strip off the C:\directories... crud and just get the filename
 
 if {![regexp {([^/\\]+)$} $header_img match client_filename]} {
       set client_filename $header_img

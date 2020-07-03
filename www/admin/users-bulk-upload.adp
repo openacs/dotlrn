@@ -91,10 +91,10 @@
 <div style="padding-left: 1em">
 
   <FORM enctype="multipart/form-data" method=post action="users-bulk-upload-2">
-  <INPUT TYPE=file name=users_csv_file>
+  <INPUT TYPE="file" name="users_csv_file">
   <br>
   <br>
-  <INPUT TYPE=submit value="#dotlrn.upload#">
+  <INPUT TYPE="submit" value="#dotlrn.upload#">
   </FORM>
 </div>
 

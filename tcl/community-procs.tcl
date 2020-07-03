@@ -1594,7 +1594,7 @@ namespace eval dotlrn_community {
     ad_proc -public needs_approval_p {
         {-community_id:required}
     } {
-        Returns 1 if the community's join policy is 'needs approval' a.k.a. "request approval".
+        Returns 1 if the community's join policy is 'needs approval' aka "request approval".
     } {
         return [db_string check_community_needs_approval {} -default 0]
     }

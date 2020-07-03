@@ -143,7 +143,7 @@ set revision_id [dotlrn_community::get_attribute \
       -attribute_name header_logo_item_id
   ]
 
-# Default logos are served from known locations in the file system
+# Default logos are served from known locations in the filesystem
 # based on community type.
 
 # Customized logos are stored in the public file-storage folder
