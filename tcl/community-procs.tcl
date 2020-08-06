@@ -747,7 +747,7 @@ namespace eval dotlrn_community {
         }]
 
         # TODO: this query could be streamlined thanks to current
-        # api... on the other hand, returning a ns_set is not the
+        # API... on the other hand, returning an ns_set is not the
         # current best practice for returning values, so I don't know
         # if this is worth the effort.
         return [db_list_of_ns_sets select_users {}]
@@ -1289,7 +1289,7 @@ namespace eval dotlrn_community {
         {-drop_target deregister}
         {-only_member_p 0}
     } {
-        Returns a HTML fragment of the subcommunity hierarchy of this
+        Returns an HTML fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
 
         Brief notes: this proc always shows the subgroups of the
