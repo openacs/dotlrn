@@ -1,7 +1,7 @@
 ad_library {
-    
+
     Automated tests for security hole found on cloned communities
-    
+
     @author Roel Canicula (roel@solutiongrove.com)
     @creation-date 2006-02-08
     @cvs-id $Id$
@@ -44,7 +44,7 @@ aa_register_case -cats { db security_risk } \
 				  and o.security_inherit_p = 't')
 		} {
 		    aa_error "One or more communities inherit permissions, high probability of security risk"
-		}		
+		}
 	    }
     }
 
