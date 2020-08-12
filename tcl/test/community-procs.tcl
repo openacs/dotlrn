@@ -32,20 +32,16 @@ aa_register_case -cats { api } \
 
 aa_register_case -cats { db security_risk } \
     -procs { } \
-    communities_security_inherit { Test permission settings of all communities } {
-	aa_run_with_teardown \
-	    -rollback \
-	    -test_code {
-		db_foreach get_communities_with_inherit {
-		    select 1 from dual
-		    where exists (select *
-				  from dotlrn_communities_all c, acs_objects o
-				  where c.community_id = o.object_id
-				  and o.security_inherit_p = 't')
-		} {
-		    aa_error "One or more communities inherit permissions, high probability of security risk"
-		}
-	    }
+    communities_security_inherit {
+        Test permission settings of all communities
+    } {
+        aa_false "Communities do not inherit permissions (high probability of security risk)" [db_string get_communities_with_inherit {
+            select exists (select 1
+                           from dotlrn_communities_all c, acs_objects o
+                           where c.community_id = o.object_id
+                           and o.security_inherit_p = 't')
+            from dual
+        }]
     }
 
 # Local variables:
