@@ -195,6 +195,23 @@ namespace eval dotlrn_applet {
         acs_sc::invoke -contract dotlrn_applet -operation $op -call_args $list_args -impl $applet_key
     }
 
+    ad_proc -public remove_applet_from_dotlrn {
+        {-applet_key:required}
+    } {
+        Remove applet.
+
+        @param applet_key Applet key
+    } {
+        if {[get_applet_id_from_key -applet_key $applet_key] eq ""} {
+            return
+        }
+
+        db_transaction {
+            db_dml remove_community_applet {}
+            db_dml remove_applet {}
+        }
+    }
+
 }
 
 
