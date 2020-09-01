@@ -36,10 +36,10 @@ aa_register_case -cats { db security_risk } \
         Test permission settings of all communities
     } {
         aa_false "Communities inherit permissions (high probability of security risk)" [db_string get_communities_with_inherit {
-            select exists (select 1
-                           from dotlrn_communities_all c, acs_objects o
-                           where c.community_id = o.object_id
-                           and o.security_inherit_p = 't')
+            select case when exists (select 1
+                                     from dotlrn_communities_all c, acs_objects o
+                                     where c.community_id = o.object_id
+                                     and o.security_inherit_p = 't') then 1 else 0
             from dual
         }]
     }
