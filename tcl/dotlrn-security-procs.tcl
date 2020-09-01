@@ -76,7 +76,7 @@ namespace eval dotlrn {
         return [db_string select_exists {
             select case when exists (select 1
                                      from dotlrn_users
-                                     where user_id = :user_id) then 1 else 0
+                                     where user_id = :user_id) then 1 else 0 end
             from dual
         }]
     }

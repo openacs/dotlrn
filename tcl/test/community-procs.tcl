@@ -39,7 +39,7 @@ aa_register_case -cats { db security_risk } \
             select case when exists (select 1
                                      from dotlrn_communities_all c, acs_objects o
                                      where c.community_id = o.object_id
-                                     and o.security_inherit_p = 't') then 1 else 0
+                                     and o.security_inherit_p = 't') then 1 else 0 end
             from dual
         }]
     }
