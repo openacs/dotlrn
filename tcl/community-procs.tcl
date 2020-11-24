@@ -1211,23 +1211,57 @@ namespace eval dotlrn_community {
                     -- $name]
     }
 
+    ad_proc -private validate_community_key {
+        {-community_key:required}
+        {-parent_community_id ""}
+    } {
+        Checks if the community_key passed in is valid for creating a
+        new community by checking that the name does not contain
+        spaces and that it's not the same as an existing (possible)
+        sibling's name.
+
+        @return dict with fields 'valid_p' and 'errmsg'
+    } {
+        set errmsg ""
+        set valid_p true
+
+        if {[regexp {\s+} $community_key]} {
+            set valid_p false
+            set errmsg [_ acs-templating.Invalid_url_element [list value $community_key]]
+        } elseif {![db_0or1row collision_check {
+          select 1 from dual where exists (
+            select 1 from dotlrn_communities_all
+             where (:parent_community_id is null or parent_community_id = :parent_community_id)
+               and community_key = :community_key)
+        }]} {
+            set valid_p false
+            set errmsg [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
+        }
+
+        return [list \
+                    valid_p $valid_p \
+                    errmsg $errmsg]
+    }
 
     ad_proc -public check_community_key_valid_p {
         {-community_key:required}
         {-parent_community_id ""}
         {-complain_if_invalid:boolean}
     } {
-        Checks if the community_key passed in is valid for creating a new
-        community by checking that it's not the same as an existing (possible)
+        Checks if the community_key passed in is valid for creating a
+        new community by checking that the name does not contain
+        spaces and that it's not the same as an existing (possible)
         sibling's name.
+
+        @return boolean, or a complaint in the response if
+                complain_if_invalid is set
     } {
-        set valid_p [expr {![db_0or1row collision_check {}]}]
-
+        set validation [dotlrn_community::validate_community_key]
+        set valid_p [dict get $validation valid_p]
         if {$complain_if_invalid_p && !$valid_p} {
-            ns_log notice "The name '$community_key' is already in use either by an active or archived group. \n Please go back and select a different name."
-            ad_return_complaint 1 \
-                [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
-
+            set errmsg [dict get $validation errmsg]
+            ns_log notice $errmsg
+            ad_return_complaint 1 $errmsg
             ad_script_abort
         } else {
             return $valid_p

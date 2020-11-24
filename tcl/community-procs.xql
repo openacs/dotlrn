@@ -52,15 +52,6 @@
         </querytext>
     </fullquery>
 
-    <fullquery name="dotlrn_community::check_community_key_valid_p.collision_check">
-        <querytext>
-          select 1 from dual where exists (
-            select 1 from dotlrn_communities_all
-             where (:parent_community_id is null or parent_community_id = :parent_community_id)
-               and community_key = :community_key)
-        </querytext>
-    </fullquery>
-
     <fullquery name="dotlrn_community::new.update_portal_ids">
         <querytext>
             update dotlrn_communities_all
