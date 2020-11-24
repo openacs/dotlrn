@@ -1225,9 +1225,9 @@ namespace eval dotlrn_community {
         set errmsg ""
         set valid_p true
 
-        if {[regexp {\s+} $community_key]} {
+        if {![regexp {^(\w|_)+$} $community_key]} {
             set valid_p false
-            set errmsg [_ acs-templating.Invalid_url_element [list value $community_key]]
+            set errmsg [_ acs-tcl.lt_name_contains_invalid [list name $community_key]]
         } elseif {![db_0or1row collision_check {
           select 1 from dual where exists (
             select 1 from dotlrn_communities_all
