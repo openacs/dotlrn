@@ -1258,7 +1258,7 @@ namespace eval dotlrn_community {
     } {
         set validation [dotlrn_community::validate_community_key \
                             -community_key $community_key \
-                            -parent_id $parent_id]
+                            -parent_community_id $parent_community_id]
         set valid_p [dict get $validation valid_p]
         if {$complain_if_invalid_p && !$valid_p} {
             set errmsg [dict get $validation errmsg]
