@@ -1225,7 +1225,7 @@ namespace eval dotlrn_community {
         set errmsg ""
         set valid_p true
 
-        if {![regexp {^(\w|_)+$} $community_key]} {
+        if {![regexp {\s+} $community_key]} {
             set valid_p false
             set errmsg [_ acs-tcl.lt_name_contains_invalid [list name $community_key]]
         } elseif {![db_0or1row collision_check {
