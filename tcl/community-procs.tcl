@@ -1225,10 +1225,10 @@ namespace eval dotlrn_community {
         set errmsg ""
         set valid_p true
 
-        if {![regexp {\s+} $community_key]} {
+        if {[regexp {\s+} $community_key]} {
             set valid_p false
             set errmsg [_ acs-tcl.lt_name_contains_invalid [list name $community_key]]
-        } elseif {![db_0or1row collision_check {
+        } elseif {[db_0or1row collision_check {
           select 1 from dual where exists (
             select 1 from dotlrn_communities_all
              where (:parent_community_id is null or parent_community_id = :parent_community_id)
