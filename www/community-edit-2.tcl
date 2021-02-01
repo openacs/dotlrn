@@ -90,17 +90,17 @@ if { $tmp_size > 0 } {
         # We will store the image in the topmost root folder
         set parent_id [db_string get_root_folder {}]
 
-        # if this is a re-upload, pass along the item_id
+        # If this is a re-upload, pass along the item_id.
         set item_id [content::item::get_id_by_name -name $logo_name -parent_id $parent_id]
 
-	# if it's a new upload, create the item
+	# If it is a new upload, create the item.
 	if { $item_id eq ""} {
 	    set item_id [content::item::new -name $logo_name -parent_id $parent_id -content_type image]
 
-        # since it's just the header logo, which can't be accessed outside of
-        # the community anyway, let everyone have access to see it.  That way
-        # it won't cause any trouble later on when we try to implement
-        # try-before-you-buy for non-members.
+        # Since it is just the header logo, which can't be accessed
+        # outside of the community anyway, let everyone have access to
+        # see it.  That way it won't cause any trouble later on when
+        # we try to implement try-before-you-buy for non-members.
         permission::grant -party_id [acs_magic_object registered_users] -object_id $item_id -privilege read
 	}
 

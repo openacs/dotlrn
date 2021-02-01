@@ -33,8 +33,9 @@ set title "[_ dotlrn.New] [parameter::get -localize -parameter subcommunities_pr
 set context [list [list "one-community-admin" [_ dotlrn.Admin]] $title]
 set portal_id [dotlrn_community::get_portal_id -community_id $parent_community_id]
 
-# set the join policy widget to default to
-# the same as it's parent
+#
+# Set the join policy widget to default to the same as its parent.
+#
 if {[dotlrn_community::open_p -community_id $parent_community_id]} {
     set join_policy_list [list [list [_ dotlrn.Open] open] [list [_ dotlrn.Closed] closed] [list [_ dotlrn.Needs_Approval] "needs approval"]]
 } elseif {[dotlrn_community::needs_approval_p -community_id $parent_community_id]} {

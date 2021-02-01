@@ -326,13 +326,13 @@ namespace eval dotlrn_community {
         dotlrn_community::set_site_template_id -community_id $community_id \
             -site_template_id [parameter::get -package_id [dotlrn::get_package_id] -parameter "CommDefaultSiteTemplate_p"]
 
-        # This new community should _not_ inherit it's permissions
-        # from the root dotlrn instance. Why? All dotlrn users
-        # can read the root dotlrn instance, but only members of
-        # this community should be able to read this instance (and
-        # it's children)
+        #
+        # This new community should _not_ inherit its permissions from
+        # the root dotlrn instance. Why? All dotlrn users can read the
+        # root dotlrn instance, but only members of this community
+        # should be able to read this instance (and its children).
+        #
         permission::set_not_inherit -object_id $community_id
-
 
         # Grant permission to dotlrn-admin group
 
@@ -1217,7 +1217,7 @@ namespace eval dotlrn_community {
     } {
         Checks if the community_key passed in is valid for creating a
         new community by checking that the name does not contain
-        spaces and that it's not the same as an existing (possible)
+        spaces and that it is not the same as an existing (possible)
         sibling's name.
 
         @return dict with fields 'valid_p' and 'errmsg'
@@ -1250,7 +1250,7 @@ namespace eval dotlrn_community {
     } {
         Checks if the community_key passed in is valid for creating a
         new community by checking that the name does not contain
-        spaces and that it's not the same as an existing (possible)
+        spaces and that it is not the same as an existing (possible)
         sibling's name.
 
         @return boolean, or a complaint in the response if
@@ -1836,7 +1836,9 @@ namespace eval dotlrn_community {
                     -community_key $key
 
                 if {$term_id ne ""} {
-                    # it's a class instance that we're cloning
+                    #
+                    # It is a class instance that we're cloning.
+                    #
                     ns_set put $extra_vars class_key [db_string get_class_key {
                         select class_key
                         from dotlrn_class_instances_full
@@ -1966,11 +1968,11 @@ namespace eval dotlrn_community {
                 db_dml copy_customizations_if_any {}
             }
 
-            # This new community should _not_ inherit it's permissions
+            # This new community should _not_ inherit its permissions
             # from the root dotlrn instance. Why? All dotlrn users
             # can read the root dotlrn instance, but only members of
             # this community should be able to read this instance (and
-            # it's children)
+            # its children)
             permission::set_not_inherit -object_id $clone_id
 
             # Grant read_private_data permission to "non guest" users.
