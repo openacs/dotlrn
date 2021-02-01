@@ -268,7 +268,7 @@ namespace eval dotlrn {
 	#Strip out extra anchors and other crud.
 	#page_num will be empty_string for special pages like
 	#My Space and Control Panel
-	regsub -all {[^0-9]} $page_num {} page_num
+	regsub -all -- {[^0-9]} $page_num {} page_num
 
 	db_foreach list_page_nums_select {} {
 	    if { ("$dotlrn_url/" == [ad_conn url] || "$dotlrn_url/index" == [ad_conn url]) && $sort_key == 0 && $page_num eq ""} {

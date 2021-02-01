@@ -41,7 +41,7 @@ namespace eval spam {
         @return the interpolated string
     } {
         foreach tuple $values {
-            regsub -all [lindex $tuple 0] $text [lindex $tuple 1] text
+            regsub -all -- [lindex $tuple 0] $text [lindex $tuple 1] text
         }
 
         return $text
