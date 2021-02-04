@@ -1093,35 +1093,52 @@ namespace eval dotlrn_community {
 
     ad_proc -public get_community_id {
         {-package_id ""}
+        {-url ""}
     } {
-        Returns the community id depending on the package_id
-        we're at, or the package_id passed in.
+        Returns the community id depending on the dotlrn package_id.
 
-        If no community_id found, return empty_string.
+        If the package_id is not provided, but the url is passed in,
+        determine the community_id based on this. If no url is
+        provided, the url is taken from the current connection.
 
-        @param package_id PackageID for which to search the community_id for
-        @return community_id of the community where the package is mounted, empty string if not found
+        If no community_id is found, an empty string is returned.
+
+        @param package_id package_id of the dotlrn package for which
+               the community_id should be returned
+        @param url url used to identify the community id
+
+        @return community_id of the community where the package is
+                mounted, empty string if not found
+
+        @see get_community_id_from_url
     } {
         if {$package_id eq ""} {
+            if {$url eq ""} {
+                set url [ad_conn url]
+            }
             set package_id [site_node::closest_ancestor_package \
-                                -url [ad_conn url] \
+                                -url $url \
                                 -include_self \
                                 -package_key dotlrn]
-            if {$package_id eq ""} {
+            #
+            # In case, we have still no package_id, try to get it from
+            # the connection. GN: Actually, it is not clear to me,
+            # when this is actually needed; I would not be surprised,
+            # if this could be deleted.
+            #
+            if {$package_id eq "" && [ns_conn isconnected]} {
+                ad_log warning "get_community_id: could no find package_id so far." \
+                    "using connection package_id as last resort"
                 set package_id [ad_conn package_id]
             }
         }
 
         if {$package_id ne ""} {
-            set key ::dotlrn::community_id($package_id)
-            if {[info exists $key]} {
-                return [set $key]
-            } else {
-                return [set $key [dotlrn_community::get_community_id_not_cached -package_id $package_id]]
-            }
-        } else {
-            return ""
+            return [acs::per_thread_cache eval -key dotlrn.get_community_id($package_id) {
+                dotlrn_community::get_community_id_not_cached -package_id $package_id
+            }]
         }
+        return ""
     }
 
     ad_proc -private get_community_id_not_cached {
