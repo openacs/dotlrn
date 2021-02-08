@@ -1127,8 +1127,8 @@ namespace eval dotlrn_community {
             # if this could be deleted.
             #
             if {$package_id eq "" && [ns_conn isconnected]} {
-                ad_log warning "get_community_id: could no find package_id so far." \
-                    "using connection package_id as last resort"
+                ad_log Warning "get_community_id: could no find package_id so far. \
+                    Using connection package_id as last resort"
                 set package_id [ad_conn package_id]
             }
         }
