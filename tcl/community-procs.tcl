@@ -1083,13 +1083,13 @@ namespace eval dotlrn_community {
         Returns the community from a URL.
 
         @param url if no URL specified, the function will break when
-              called without connection        
+              called without connection
     } {
         if {$url eq ""} {
             set url [ad_conn url]
         }
         set package_id [site_node::closest_ancestor_package -include_self -url $url -package_key dotlrn]
-       
+
         return [expr {$package_id eq "" ? "" : [get_community_id -package_id $package_id]}]
     }
 
@@ -1115,22 +1115,39 @@ namespace eval dotlrn_community {
         @see get_community_id_from_url
     } {
         if {$package_id eq ""} {
+            set provided_url $url
             if {$url eq ""} {
-                set url [ad_conn url]
+                if {[ns_conn isconnected]} {
+                    set url [ad_conn url]
+                } else {
+                    error "either a package_id or a URL must be passed in"
+                }
             }
             set package_id [site_node::closest_ancestor_package \
                                 -url $url \
                                 -include_self \
                                 -package_key dotlrn]
             #
-            # In case, we have still no package_id, try to get it from
-            # the connection. GN: Actually, it is not clear to me,
-            # when this is actually needed; I would not be surprised,
-            # if this could be deleted.
+            # In case, we have still no package_id (i.e. the URL is
+            # NOT under /dotlrn), try to get a package_id from the
+            # connection.  This last-resource attempt makes only
+            # sense, when an incorrect URL was passed in, which is an
+            # error case. When we determined the package_id based on
+            # "ad_conn url", the result won't change, when we use
+            # "ad_conn package_id" (both require a connection and both
+            # should be consistent).
             #
-            if {$package_id eq "" && [ns_conn isconnected]} {
-                ad_log Warning "get_community_id: could no find package_id so far. \
-                    Using connection package_id as last resort"
+            # GN: The following clause is actually just needed, when
+            # the function was called incorrectly. Probably these
+            # cases should rise an error.
+            #
+            if {$package_id eq ""
+                && $provided_url ne ""
+                && [ns_conn isconnected]
+            } {
+                ad_log Warning "get_community_id: could no find" \
+                    "package_id based on url '$provided_url'." \
+                    "Using connection package_id as last resort."
                 set package_id [ad_conn package_id]
             }
         }
