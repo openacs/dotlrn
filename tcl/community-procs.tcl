@@ -1081,14 +1081,16 @@ namespace eval dotlrn_community {
         {-url ""}
     } {
         Returns the community from a URL.
+
+        @param url if no URL specified, the function will break when
+              called without connection        
     } {
         if {$url eq ""} {
             set url [ad_conn url]
         }
-
         set package_id [site_node::closest_ancestor_package -include_self -url $url -package_key dotlrn]
-
-        return [get_community_id -package_id $package_id]
+       
+        return [expr {$package_id eq "" ? "" : [get_community_id -package_id $package_id]}]
     }
 
     ad_proc -public get_community_id {
