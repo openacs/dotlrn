@@ -1685,7 +1685,7 @@ namespace eval dotlrn_community {
             }
     }
 
-    ad_proc -private get_portal_id_not_cached {
+    ad_proc -public get_portal_id_not_cached {
         {-community_id:required}
     } {
         Get the id of the comm's portal.
