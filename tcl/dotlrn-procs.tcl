@@ -216,7 +216,7 @@ namespace eval dotlrn {
             }            
     }
 
-    ad_proc -private get_portal_id_not_cached {
+    ad_proc -public get_portal_id_not_cached {
         {-user_id:required}
     } {
         Get the portal_id for a particular user
