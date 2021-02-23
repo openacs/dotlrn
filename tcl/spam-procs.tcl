@@ -28,11 +28,16 @@ ad_library {
 
 namespace eval spam {
 
-    ad_proc -public interpolate {
+    ad_proc -deprecated -public interpolate {
         {-values:required}
         {-text:required}
     } {
         Interpolates a set of values into a string.
+
+        DEPRECATED: code duplicated in bulk-mail and acs-mail-lite that can be
+                    replaced by "string map"
+
+        @see "string map"
 
         @param values a list of tuples, each one consisting of a target string
                       and the value it is to be replaced with.
