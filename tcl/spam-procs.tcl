@@ -71,22 +71,21 @@ namespace eval spam {
         @param message_values a list of tuples of key/value pairs to
                               interpolate into the email
     } {
-
-        set subject [interpolate -values $message_values -text $subject]
-        set message [interpolate -values $message_values -text $message]
+        set subject [string map $message_values $subject]
+        set message [string map $message_values $message]
 
         # loop through all the recipients and send them the spam
         set errors ""
         db_foreach select_recipient_info {} {
             # replace some values in the subject and the message
             set values [list]
-            lappend values [list \{email\} $email]
-            lappend values [list \{first_names\} $first_names]
-            lappend values [list \{last_name\} $last_name]
-            lappend values [list \{from\} $from]
+            lappend values \{email\} "$email"
+            lappend values \{first_names\} "$first_names"
+            lappend values \{last_name\} "$last_name"
+            lappend values \{from\} "$from"
 
-            set subject [interpolate -values $values -text $subject]
-            set message [interpolate -values $values -text $message]
+            set subject [string map $values $subject]
+            set message [string map $values $message]
 
             # send the email
             if {[catch {acs_mail_lite::send -send_immediately -to_addr $email -from_addr $from -subject $subject -body $message} errmsg]} {
