@@ -82,7 +82,7 @@ namespace eval spam {
             lappend values \{email\} "$email"
             lappend values \{first_names\} "$first_names"
             lappend values \{last_name\} "$last_name"
-            lappend values \{from\} "$from"
+            lappend values \{from_addr\} "$from"
 
             set subject [string map $values $subject]
             set message [string map $values $message]

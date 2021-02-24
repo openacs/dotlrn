@@ -87,7 +87,7 @@ if {[form is_valid spam_message]} {
     #      doesn't have to wait for the emails to get sent out.
 
     set message_values [list]
-    lappend message_values [list {<sender_email>} $from]
+    lappend message_values <sender_email> "$from"
 
     spam::send \
         -recipients $users \
