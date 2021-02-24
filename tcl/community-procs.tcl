@@ -614,14 +614,18 @@ namespace eval dotlrn_community {
         return [db_string select_rel_segment_id {} -default ""]
     }
 
-    ad_proc -private get_members_rel_id {
+    ad_proc -public get_members_rel_id {
         {-community_id:required}
+    } {
+        Get the relational segment ID for members of a community.
     } {
         return [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
     }
 
-    ad_proc -private get_admin_rel_id {
+    ad_proc -public get_admin_rel_id {
         {-community_id:required}
+    } {
+        Get the relational segment ID for admins of a community.
     } {
         return [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
     }
