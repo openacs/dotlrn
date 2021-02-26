@@ -32,3 +32,9 @@ aa_register_case -cats {
             "$club_type"
     }
 }
+
+# Local variables:
+#    mode: tcl
+#    tcl-indent-level: 4
+#    indent-tabs-mode: nil
+# End:
