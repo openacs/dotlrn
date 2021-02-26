@@ -269,6 +269,25 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_new_c
 	    twt::user::logout
 	}
 }
+
+aa_register_case -cats {
+    api
+    production_safe
+} -procs {
+    dotlrn::community_type
+    dotlrn_class::community_type
+    dotlrn_club::community_type
+} dotlrn_community_types {
+    Simple test for dotlrn community_types
+} {
+    aa_equals "dotlrn::community_type" [dotlrn::community_type] \
+        "dotlrn_community"
+    aa_equals "dotlrn_class::community_type" [dotlrn_class::community_type] \
+        "dotlrn_class_instance"
+    aa_equals "dotlrn_club::community_type" [dotlrn_club::community_type] \
+        "dotlrn_club"
+}
+
 # Local variables:
 #    mode: tcl
 #    tcl-indent-level: 4
