@@ -612,7 +612,7 @@ Grazie.
   <msg key="Term">Sessione</msg>
   <msg key="term">sessione</msg>
   <msg key="Term_eg_Spring_Fall">Semestre (es. Primavera, Autunno)</msg>
-  <msg key="Term_help">Periodo accademico per il quale questa classe viene generata</msg>
+  <msg key="Term_help">Sessione per la quale questa classe viene generata</msg>
   <msg key="Term_ID">Id Sessione</msg>
   <msg key="term_properties">proprietà della sessione.</msg>
   <msg key="Terms">Sessioni</msg>
