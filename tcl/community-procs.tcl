@@ -2085,6 +2085,10 @@ namespace eval dotlrn_community {
 
             # mark the community as archived
             db_dml update_archive_p {}
+
+            # execute package-specific code for this proc via callback
+            callback dotlrn_community::archive \
+                -community_id $community_id
         }
     }
 
@@ -2107,6 +2111,10 @@ namespace eval dotlrn_community {
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
         }
+
+        # execute package-specific code for this proc via callback
+        callback dotlrn_community::unarchive \
+            -community_id $community_id
     }
 
     ad_proc -public nuke {

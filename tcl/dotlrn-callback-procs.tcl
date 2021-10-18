@@ -21,6 +21,29 @@ ad_proc -public -callback dotlrn_community::set_community_name {
 
 } -
 
+ad_proc -public -callback dotlrn_community::archive {
+    -community_id
+} {
+
+    Actions to be performed by other packages when a community is archived.
+
+} -
+
+ad_proc -public -callback dotlrn_community::unarchive {
+    -community_id
+} {
+
+    Actions to be performed by other packages when a community is unarchived.
+
+} -
+
+ad_proc -public -callback dotlrn_community::delete {
+    -community_id
+} {
+
+    Actions to be performed by other packages when a community is deleted.
+
+} -
 
 #### Callbacks
 ad_proc -callback merge::MergeShowUserInfo -impl dotlrn {
@@ -183,6 +206,8 @@ ad_proc -public -callback contact::person_new -impl dotlrn_user {
     
     
 }
+
+
 
 # Local variables:
 #    mode: tcl
