@@ -176,13 +176,13 @@ if { [ns_queryexists "form:confirm"] } {
     set community_url "[parameter::get -package_id [ad_acs_kernel_id] -parameter SystemURL][dotlrn_community::get_community_url $community_id]"
 
     if { $recipients_str ne "" } {
-	set recipients_str [join [split $recipients_str] ,]
+	set recipients_str [ns_dbquotelist [split $recipients_str]]
  	append who_will_receive_this_clause [db_map recipients_clause]
     } 
 
 
     if { $rel_types_str ne "" } {
-	set rel_types_str "'[join [split $rel_types_str] ',']'"
+	set rel_types_str [ns_dbquotelist [split $rel_types_str]]
  	append who_will_receive_this_clause [db_map rel_types_clause]
     }
 
