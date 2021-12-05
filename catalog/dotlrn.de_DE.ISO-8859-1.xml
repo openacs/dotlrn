@@ -29,13 +29,13 @@
   <msg key="added_community_subject">Sie wurden zu der Community &quot;%community_name%&quot; bei %package% hinzugefügt.</msg>
   <msg key="Admin">Verwalten</msg>
   <msg key="admin">Verwalten</msg>
-  <msg key="Admin_help">Hilfe für .LRN Administratoren</msg>
+  <msg key="Admin_help">Hilfe für dotLRN Administratoren</msg>
   <msg key="admin_page_name">Verwalten</msg>
   <msg key="admin_pages_navbar_name">Verwalten</msg>
   <msg key="Administer">Verwalten</msg>
   <msg key="administer_link">&lt;img border=0 valign=&quot;bottom&quot; src=&quot;/resources/dotlrn/admin.gif&quot; alt=&quot;Verwalten&quot;&gt; </msg>
   <msg key="Administration">Administration</msg>
-  <msg key="Administration_Cockpit">.LRN-Administration</msg>
+  <msg key="Administration_Cockpit">dotLRN-Administration</msg>
   <msg key="Administrator">Administrator</msg>
   <msg key="Administrators">Administratoren</msg>
   <msg key="Admins_of">Administratoren von</msg>
@@ -150,7 +150,7 @@
   <msg key="Dont_Add">Nicht hinzufügen</msg>
   <msg key="dotLRN_Admin">dotLRN-Administrator</msg>
   <msg key="dotlrn_admin_pretty_name">dotLRN Systemadministration</msg>
-  <msg key="dotlrn_admin_rel_pretty_name">.LRN Community Membership for Administrators</msg>
+  <msg key="dotlrn_admin_rel_pretty_name">dotLRN Community Membership for Administrators</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin Community Memberships</msg>
   <msg key="dotlrn_class_instance_description">z.B. 6.001</msg>
   <msg key="dotlrn_class_instance_pretty_name">Kurs</msg>
@@ -174,7 +174,7 @@
   <msg key="edit_approved_email_servers">Vorgenehmigte E-Mail-Server bearbeiten</msg>
   <msg key="Edit_Biography">Biographie bearbeiten</msg>
   <msg key="edit_community_parameters">Community Parameter ändern</msg>
-  <msg key="edit_message_and_hit_send">Bearbeiten Sie folgende Nachricht und klicken Sie auf auf 'E-Mail senden', um diesen Benutzer zu benachrichtigen.</msg>
+  <msg key="edit_message_and_hit_send">Bearbeiten Sie folgende Nachricht und klicken Sie auf 'E-Mail senden', um diesen Benutzer zu benachrichtigen.</msg>
   <msg key="edit_parameters">Parameter bearbeiten</msg>
   <msg key="Edit_Properties">Eigenschaften bearbeiten</msg>
   <msg key="edit_subject">Bearbeiten</msg>
@@ -226,7 +226,7 @@
   <msg key="Header_Logo_Alt_Text">Alternativer Text für Kopfzeilenlogo</msg>
   <msg key="Header_Logo_Item_ID">Kopfzeilenlogo-ID</msg>
   <msg key="help">Hilfe</msg>
-  <msg key="hide_lrn_toolbar">.LRN toolbar verstecken</msg>
+  <msg key="hide_lrn_toolbar">dotLRN Toolbar verstecken</msg>
   <msg key="Home">Home</msg>
   <msg key="HTML">HTML</msg>
   <msg key="ID">Interne ID</msg>
@@ -266,7 +266,7 @@
 löschen? Hinweis: das System wird nur
 versuchen, diese Benutzer zu entfernen, und es könnte Probleme für andere Benutzer bekommen.</msg>
   <msg key="lt_Are_you_sure_you_want_to_send">Sind Sie sicher, dass Sie die nachfolgende Email verschicken wollen?</msg>
-  <msg key="lt_Be_sure_that_the_pers">Stellen Sie sicher, dass die Person nicht bereits für eine andere E-Mail-Adresse ein Benutzerkonto bei dotLRN besitzt, da doppelte Benutzerkonten Probeme verursachen. Um eine Person mit einem bestehenden Benutzerkonto hinzuzufügen, benutzen Sie die Option &lt;a href=members&gt;Teilnehmer verwalten&lt;/a&gt;. </msg>
+  <msg key="lt_Be_sure_that_the_pers">Stellen Sie sicher, dass die Person nicht bereits für eine andere E-Mail-Adresse ein Benutzerkonto bei dotLRN besitzt, da doppelte Benutzerkonten Probleme verursachen. Um eine Person mit einem bestehenden Benutzerkonto hinzuzufügen, benutzen Sie die Option &lt;a href=members&gt;Teilnehmer verwalten&lt;/a&gt;. </msg>
   <msg key="lt_Class_Key_a_short_nam">Kursschlüssel (eine kurze Bezeichnung ohne Leerzeichen)</msg>
   <msg key="lt_Communitys_Web_Addres">Web-Adresse der Gruppe</msg>
   <msg key="lt_Current_clubs_pretty_">Eigene %clubs_pretty_plural%</msg>
@@ -497,29 +497,29 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="Send_to_all">An die ganze Gruppe senden</msg>
   <msg key="Send_to_the_following_members">An die folgenden Mitglieder senden:</msg>
   <msg key="Send_to_the_following_roles">An die folgenden Gruppen senden:</msg>
-  <msg key="set_all_screennames_where_null">Setze für alle Benutzer screennames, die noch keinen haben</msg>
+  <msg key="set_all_screennames_where_null">Setze für alle Benutzer Screennames, die noch keinen haben</msg>
   <msg key="Shared_Files">Freigegebene Dateien</msg>
-  <msg key="show_lrn_toolbar">.LRN Toolbar anzeigen</msg>
+  <msg key="show_lrn_toolbar">dotLRN Toolbar anzeigen</msg>
   <msg key="silver">Silber</msg>
   <msg key="Site-wide_Admin">Systemadministrator?</msg>
-  <msg key="Site_Template_Add">Ein neues Site Template anlegen</msg>
-  <msg key="Site_Template_Adding">Ein Site Template hinzufügen</msg>
-  <msg key="Site_Template_AdminParams">Parameter für das Site Templating</msg>
-  <msg key="Site_Template_Commchange">Können community Administratoren das Site Template einer Community anpassen?</msg>
+  <msg key="Site_Template_Add">Ein neues Site-Template anlegen</msg>
+  <msg key="Site_Template_Adding">Ein Site-Template hinzufügen</msg>
+  <msg key="Site_Template_AdminParams">Parameter für das Site-Templating</msg>
+  <msg key="Site_Template_Commchange">Können community Administratoren das Site-Template einer Community anpassen?</msg>
   <msg key="Site_Template_Commdefault">Standard #dotlrn.site_templates# für communities</msg>
   <msg key="Site_Template_Editting">#dotlrn.site_templates# editieren</msg>
   <msg key="Site_Template_ID">#dotlrn.site_template# ID</msg>
   <msg key="Site_Template_Name">#dotlrn.site_template# Name</msg>
   <msg key="Site_Template_Name_help">Geben Sie einen sichtbaren Namen für dieses #dotlrn.site_template# an.</msg>
-  <msg key="Site_Template_Nonedefault">Master template welches für nicht registrierte Nutzer verwendet wird.</msg>
+  <msg key="Site_Template_Nonedefault">Master-Template für nicht registrierte Nutzer.</msg>
   <msg key="Site_Template_Portal_theme">Verknüpftes Portal</msg>
-  <msg key="Site_Template_Portal_theme_help">Wählen Sie ein Portal Theme aus. Dieses wird für das #dotlrn.site_template# benutzt werden.</msg>
+  <msg key="Site_Template_Portal_theme_help">Wählen Sie ein Theme für das Portal aus. Dieses wird für das #dotlrn.site_template# benutzt werden.</msg>
   <msg key="Site_Template_Sitemaster">Master Template</msg>
-  <msg key="Site_Template_Sitemaster_help">Geben sie den kompletten Pfad für das master template an (z.b. /packages/dotlrn/www/dotlrn-master )</msg>
+  <msg key="Site_Template_Sitemaster_help">Geben sie den kompletten Pfad für das master template an (z.B. /packages/dotlrn/www/dotlrn-master )</msg>
   <msg key="Site_Template_Userchange">Können User Ihre #dotlrn.site_templates# ändern?</msg>
   <msg key="Site_Template_Userdefault">Standard #dotlrn.site_templates# für Benutzer</msg>
-  <msg key="Site_Templates">Site Templates</msg>
-  <msg key="site_templates">Site Templates</msg>
+  <msg key="Site_Templates">Site-Templates</msg>
+  <msg key="site_templates">Site-Templates</msg>
   <msg key="Site_Templates_Template_AdminParams">Administration der Parameter</msg>
   <msg key="Small">Klein</msg>
   <msg key="Sorry">&amp;nbsp;</msg>
@@ -553,7 +553,7 @@ auf der vorhergehenden Seite doppelt angeklickt.</msg>
   <msg key="term_properties">Eigenschaften des Semesters</msg>
   <msg key="Terms">Semester</msg>
   <msg key="terms">Semester</msg>
-  <msg key="the_format_of_email_domains">Die genehmigten E-Mail-Server müssen als kommaseparierte Liste von Domains eingetragen werden, denen in der Regel die Zeichenfolge *@ vorangestellt ist,  so dass die Werte für irgendwas@emaildomain.de stehen.&lt;/p&gt;
+  <msg key="the_format_of_email_domains">Die genehmigten E-Mail-Server müssen als kommaseparierte Liste von Domains eingetragen werden, denen in der Regel die Zeichenfolge *@ vorangestellt ist, so dass die Werte für irgendwas@emaildomain.de stehen.&lt;/p&gt;
 Beispiel:</msg>
   <msg key="The_name">Die Bezeichnung</msg>
   <msg key="there_are_no_users_matching">Es wurden keine mit Ihrer Suchanfrage &quot;%search_text%&quot; übereinstimmenden Benutzer gefunden.</msg>
