@@ -22,7 +22,7 @@ ad_page_contract {
     @creation-date 2001-10-24
 } {
     portal_id:naturalnum,notnull
-    anchor
+    {anchor ""}
 }
 
 # Check if this is a community type level thing
