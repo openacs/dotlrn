@@ -20,13 +20,10 @@ ad_page_contract {
     @author Arjun Sanyal (arjun@openforce.net)
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-24
-} -query {
+} {
+    portal_id:naturalnum,notnull
+    anchor
 }
-
-
-set form [ns_getform]
-set portal_id [ns_set get $form portal_id]
-set anchor [ns_set get $form anchor]
 
 # Check if this is a community type level thing
 if {[parameter::get -parameter community_type_level_p] == 1} {
@@ -34,7 +31,7 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_script_abort
 }
 
-portal::configure_dispatch -portal_id $portal_id -form $form
+portal::configure_dispatch -portal_id $portal_id -form [ns_getform]
 
 ad_returnredirect "configure#$anchor"
 ad_script_abort
