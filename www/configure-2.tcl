@@ -21,7 +21,7 @@ ad_page_contract {
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-24
 } {
-    portal_id:naturalnum,notnull
+    portal_id:naturalnum,object_id,notnull
     {anchor ""}
 }
 
