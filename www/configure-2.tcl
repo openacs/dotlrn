@@ -22,6 +22,12 @@ ad_page_contract {
     @creation-date 2001-10-24
 } {
     portal_id:naturalnum,object_id,notnull
+    element_id:naturalnum,object_id,optional
+    page_id:naturalnum,object_id,optional
+    theme_id:naturalnum,object_id,optional
+    layout_id:naturalnum,object_id,optional
+    region:string_length(max|20),optional
+    direction:word,optional
     {anchor ""}
 }
 
