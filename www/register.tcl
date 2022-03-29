@@ -24,7 +24,7 @@ ad_page_contract {
 } -query {
     {user_id:integer ""}
     {community_id:integer ""}
-    {referer "./"}
+    {referer:localurl "./"}
 }
 
 if { ![parameter::get -parameter SelfRegistrationP -package_id [dotlrn::get_package_id] -default 1] } {

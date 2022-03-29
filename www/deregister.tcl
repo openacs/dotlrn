@@ -24,7 +24,7 @@ ad_page_contract {
 } -query {
     {user_id:multiple,integer ""}
     {community_id:integer ""}
-    {referer "./"}
+    {referer:localurl "./"}
 }
 
 
