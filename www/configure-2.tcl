@@ -28,6 +28,7 @@ ad_page_contract {
     layout_id:naturalnum,object_id,optional
     region:string_length(max|20),optional
     direction:word,optional
+    pretty_name:string_length(max|200),optional
     {anchor ""}
 }
 
@@ -39,7 +40,7 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
 
 portal::configure_dispatch -portal_id $portal_id -form [ns_getform]
 
-ad_returnredirect "configure#$anchor"
+ad_returnredirect [export_vars -base "configure" -anchor $anchor]
 ad_script_abort
 
 # Local variables:
