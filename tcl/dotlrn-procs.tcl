@@ -210,9 +210,11 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
-        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+        ::acs::try_cache ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
             $user_id-portal_id {
-                dotlrn::get_portal_id_not_cached -user_id $user_id
+                db_string select_user_portal_id {
+                    select portal_id from dotlrn_users where user_id = :user_id
+                } -default ""
             }
     }
 
