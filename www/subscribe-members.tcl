@@ -30,7 +30,7 @@ set users [dotlrn_community::list_users $community_id]
 
 set type_id  [notification::type::get_type_id -short_name forums_forum_notif]
 set interval_id [notification::interval::get_id_from_name -name instant]
-set delivery_method_id [notification::delivery::get_id -name email]
+set delivery_method_id [notification::delivery::get_id -short_name email]
 
 db_transaction {
 

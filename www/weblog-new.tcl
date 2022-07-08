@@ -61,7 +61,7 @@ if {![llength $existing_forum_ids]} {
 		-type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
 		-user_id $user_id \
 		-interval_id [notification::interval::get_id_from_name -name "instant"] \
-		-delivery_method_id [notification::delivery::get_id -name "email"]
+		-delivery_method_id [notification::delivery::get_id -short_name "email"]
     }
 } else {
     set forum_id [lindex $existing_forum_ids 0]
