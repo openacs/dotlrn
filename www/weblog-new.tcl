@@ -60,7 +60,7 @@ if {![llength $existing_forum_ids]} {
 	notification::request::new -object_id $forum_id \
 		-type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
 		-user_id $user_id \
-		-interval_id [notification::get_interval_id -name "instant"] \
+		-interval_id [notification::interval::get_id_from_name -name "instant"] \
 		-delivery_method_id [notification::get_delivery_method_id -name "email"]
     }
 } else {

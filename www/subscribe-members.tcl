@@ -29,7 +29,7 @@ set users [dotlrn_community::list_users $community_id]
 # Precompute these items rather than repeat them for each user
 
 set type_id  [notification::type::get_type_id -short_name forums_forum_notif]
-set interval_id [notification::get_interval_id -name instant]
+set interval_id [notification::interval::get_id_from_name -name instant]
 set delivery_method_id [notification::get_delivery_method_id -name email]
 
 db_transaction {
