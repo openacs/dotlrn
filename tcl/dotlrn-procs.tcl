@@ -210,12 +210,22 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
-        ::acs::try_cache ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
             $user_id-portal_id {
-                db_string select_user_portal_id {
-                    select portal_id from dotlrn_users where user_id = :user_id
-                } -default ""
+                dotlrn::get_portal_id_not_cached -user_id $user_id
             }
+        #
+        # acs::try_cache could improve caching here, but has
+        # intentionally been defined as a private interface, so the
+        # automated tests would complain. This requires further
+        # thinking.
+	#
+        # ::acs::try_cache ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+        #     $user_id-portal_id {
+        #         db_string select_user_portal_id {
+        #             select portal_id from dotlrn_users where user_id = :user_id
+        #         } -default ""
+        #     }
     }
 
     ad_proc -private get_portal_id_not_cached {
