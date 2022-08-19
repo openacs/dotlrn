@@ -210,7 +210,7 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
-        if {[::namespace::which ::dotlrn::dotlrn_user_cache] ne ""} {
+        if {[::namespace which ::dotlrn::dotlrn_user_cache] ne ""} {
             ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
                 $user_id-portal_id {
                     dotlrn::get_portal_id_not_cached -user_id $user_id
