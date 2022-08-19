@@ -210,6 +210,15 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
+        #
+        # TODO: the test with "namespace which" is a hack here, and
+        # hints to a larger issue concerning the loading order when
+        # install.xml files are used. The *-init files have to be
+        # evaluated (in this particular case dotlrn-init.tcl), before
+        # API calls are issued (here dotlrn::get_portal_id). If the
+        # code cannot trust on this, many more things will break on
+        # install-from-repository.
+        #
         if {[::namespace which ::dotlrn::dotlrn_user_cache] ne ""} {
             ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
                 $user_id-portal_id {
