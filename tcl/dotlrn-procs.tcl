@@ -210,10 +210,18 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
-        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
-            $user_id-portal_id {
-                dotlrn::get_portal_id_not_cached -user_id $user_id
-            }
+        if {[::namespace::which ::dotlrn::dotlrn_user_cache] ne ""} {
+            ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+                $user_id-portal_id {
+                    dotlrn::get_portal_id_not_cached -user_id $user_id
+                }
+        } else {
+            #
+            # Cache was not created yet, e.g. because the package is
+            # just being installed.
+            #
+            dotlrn::get_portal_id_not_cached -user_id $user_id
+        }
         #
         # acs::try_cache could improve caching here, but has
         # intentionally been defined as a private interface, so the
