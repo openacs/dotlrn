@@ -15,7 +15,7 @@ namespace eval dotlrn_privacy {
         't' adds the user to the guest relational segment
         'f' adds the user to the non-guest relational segment
     } {
-        if { [template::util::is_true $value] } {
+        if { [string is true -strict $value] } {
             #put the user in the dotlrn_guest_relseg and remove them
             #from the dotlrn_non_guest_relseg
             db_exec_plsql set_user_guest {}
@@ -33,7 +33,7 @@ namespace eval dotlrn_privacy {
         't' adds the user to the non-guest relational segment
         'f' adds the user to the guest relational segment
     } {
-        if { [template::util::is_true $value] } {
+        if { [string is true -strict $value] } {
             set_user_guest_p -user_id $user_id -value f
         } else {
             set_user_guest_p -user_id $user_id -value t
