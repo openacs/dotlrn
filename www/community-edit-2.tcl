@@ -78,7 +78,7 @@ if { $maxFileSize ne ""
      && $tmp_size > $maxFileSize 
  } {
     set msg_subst_list [list system_name [ad_system_name] \
-                             max_attachments_bytes [util_commify_number $maxFileSize]]
+                             max_attachments_bytes [lc_numeric $maxFileSize]]
     ad_return_complaint 1 "<li>[_ dotlrn.your_icon_is_too_large $msg_subst_list]"
     ad_script_abort
 }
