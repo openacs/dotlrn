@@ -15,7 +15,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest  tclwebtest_dotlrn_new_
 
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create new Term
@@ -46,7 +46,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_edit_
 
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create new Term
@@ -85,7 +85,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_new_d
 
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a new Department
@@ -108,7 +108,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_delet
     aa_run_with_teardown -test_code {
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a new Department
@@ -132,7 +132,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_new_s
     aa_run_with_teardown -test_code {
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a new Department
@@ -160,7 +160,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_delet
     aa_run_with_teardown -test_code {
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a new Department
@@ -191,7 +191,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_edit_
     aa_run_with_teardown -test_code {
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a new Department
@@ -223,7 +223,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_new_c
     aa_run_with_teardown -test_code {
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a new Department
@@ -258,7 +258,7 @@ aa_register_case -cats {web smoke} -libraries tclwebtest tclwebtest_dotlrn_new_c
     aa_run_with_teardown -test_code {
         tclwebtest::cookies clear
         # Login user
-        array set user_info [twt::user::create -admin]
+        array set user_info [acs::test::user::create -admin]
         twt::user::login $user_info(email) $user_info(password)
 
         # Create a New Community
