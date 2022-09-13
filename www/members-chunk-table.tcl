@@ -124,8 +124,17 @@ set bio_attribute_id [db_string bio_attribute_id {
 
 set order_by "$order $order_direction"
 
-db_multirow -extend { community_member_url } current_members select_current_members {} {
+db_multirow -extend {
+    community_member_url
+    role_pretty_name
+} current_members select_current_members {} {
     set community_member_url [acs_community_member_url -user_id $user_id]
+    set role_pretty_name [dotlrn_community::get_role_pretty_name \
+                              -community_id $community_id \
+                              -rel_type $rel_type]
+    if {$role_pretty_name eq ""} {
+        set role_pretty_name Student
+    }
 }
 
 db_multirow pending_users select_pending_users {
