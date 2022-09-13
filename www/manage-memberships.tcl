@@ -179,7 +179,12 @@ template::list::create \
 }
 
 db_multirow member_classes $member_query {} {
-    set role [template::util::nvl [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type] [_ dotlrn.student_role_pretty_name]]
+    set role [dotlrn_community::get_role_pretty_name \
+                  -community_id $class_instance_id \
+                  -rel_type $rel_type]
+    if {$role eq ""} {
+        set role [_ dotlrn.student_role_pretty_name]
+    }
 }
 
 template::list::create -name member_clubs -multirow member_clubs -pass_properties { show_drop_button_p referer } -html {width 100%} -elements {
