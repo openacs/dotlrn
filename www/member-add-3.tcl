@@ -24,7 +24,7 @@ ad_page_contract {
 } -query {
     user_id:naturalnum,multiple,notnull
     rel_type
-    {referer "one-community-admin"}
+    {referer:localurl "one-community-admin"}
 }
 
 set community_id [dotlrn_community::get_community_id]

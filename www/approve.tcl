@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     {user_id:integer,multiple ""}
     {community_id:integer ""}
-    {referer "./"}
+    {referer:localurl "./"}
 }
 
 auth::require_login

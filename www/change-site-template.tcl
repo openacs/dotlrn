@@ -6,7 +6,7 @@ ad_page_contract {
     @creation-date 2005-05-25
     @cvs-id $Id$
 } {
-    referer:notnull
+    referer:localurl,notnull
 } -properties {
 } -validate {
 } -errors {

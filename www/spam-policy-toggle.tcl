@@ -20,7 +20,7 @@ ad_page_contract {
 } -query {
     {community_id:integer ""}
     policy:notnull
-    {referer "one-community-admin"}
+    {referer:localurl "one-community-admin"}
 } -validate {
     policy_ck -requires {policy:notnull} {
         if { $policy ni {all admins} } {

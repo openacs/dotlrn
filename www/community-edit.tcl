@@ -23,7 +23,7 @@ ad_page_contract {
     @cvs-id $Id$
 
 } -query {
-    {referer "one-community-admin"}
+    {referer:localurl "one-community-admin"}
 }
 
 set user_id [ad_conn user_id]

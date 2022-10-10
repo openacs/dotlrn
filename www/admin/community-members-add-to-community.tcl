@@ -23,7 +23,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     source_community_id:integer
-    referer
+    referer:localurl
 } -properties {
     context_bar:onevalue
 }

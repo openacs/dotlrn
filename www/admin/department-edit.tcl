@@ -22,7 +22,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     department_key:notnull
-    {referer "departments"}
+    {referer:localurl "departments"}
 } -properties {
     title:onevalue
     context_bar:onevalue

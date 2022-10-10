@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     email
     message
-    {referer "/acs-admin/users"}
+    {referer:localurl "/acs-admin/users"}
 }
 
 #prevent this page from being called when it is not allowed

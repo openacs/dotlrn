@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2004-04-25
 } -query {
     {community_id:integer ""}
-    {referer "."}
+    {referer:localurl "."}
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.

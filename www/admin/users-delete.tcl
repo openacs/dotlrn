@@ -24,7 +24,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     users
-    {referer "users-search"}
+    {referer:localurl "users-search"}
 } -properties {
     context_bar:onevalue
 }

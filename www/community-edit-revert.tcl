@@ -22,7 +22,7 @@ ad_page_contract {
     @cvs-id $Id$
 
 } -query {
-    {referer "community-edit"}
+    {referer:localurl "community-edit"}
     {header_logo_only ""}
 }
 

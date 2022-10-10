@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     user_id:naturalnum,notnull
     value
-    {referer "users"}
+    {referer:localurl "users"}
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.

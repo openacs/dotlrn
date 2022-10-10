@@ -24,7 +24,7 @@ ad_page_contract {
     {community_id:integer ""}
     {rel_types:multiple "" }
     {rel_types_str ""}
-    {referer ""}
+    {referer:localurl ""}
     {spam_all 0}
 } -validate {
 
