@@ -1267,7 +1267,7 @@ namespace eval dotlrn_community {
 
         if {[regexp {\s+} $community_key]} {
             set valid_p false
-            set errmsg [_ acs-tcl.lt_name_contains_invalid [list name $community_key]]
+            set errmsg [_ acs-tcl.lt_name_contains_invalid [list name [ns_quotehtml $community_key]]]
         } elseif {[db_0or1row collision_check {
           select 1 from dual where exists (
             select 1 from dotlrn_communities_all
@@ -1275,7 +1275,7 @@ namespace eval dotlrn_community {
                and community_key = :community_key)
         }]} {
             set valid_p false
-            set errmsg [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
+            set errmsg [_ dotlrn.community_name_already_in_use [list community_key [ns_quotehtml $community_key]]]
         }
 
         return [list \
