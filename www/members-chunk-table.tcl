@@ -68,10 +68,10 @@ set parent_community_name [dotlrn_community::get_parent_name -community_id $comm
 set community_name [dotlrn_community::get_community_name $community_id]
 
 if {$order_direction eq "asc" } {
-    set order_html "<img src=\"/resources/dotlrn/down.gif\" height=15 width=15>"
+    set order_html "↓"
     set opposite_order_direction "desc"
 } else {
-    set order_html "<img src=\"/resources/dotlrn/up.gif\" height=15 width=15>"
+    set order_html "↑"
     set opposite_order_direction "asc"
 }
 
