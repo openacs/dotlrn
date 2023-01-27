@@ -31,7 +31,7 @@ set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
 
 ad_form -name edit_community_info -form {
-    
+
     {pretty_name:text(text)
 	{label "#dotlrn.Name#"}
 	{html {size 60}}
@@ -41,8 +41,8 @@ ad_form -name edit_community_info -form {
 	{label "#dotlrn.Description#"}
 	{html {rows 5 cols 60}}
 	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
-    }	
-    
+    }
+
     {active_start_date:date(date),to_sql(ansi),from_sql(ansi),optional
 	{label "#dotlrn.Start_date#"}
     }
@@ -53,7 +53,7 @@ ad_form -name edit_community_info -form {
 
 } -on_request {
 
-    db_1row get_community_info {select pretty_name, description, active_start_date, active_end_date from dotlrn_communities_all where community_id = :community_id} 
+    db_1row get_community_info {select pretty_name, description, active_start_date, active_end_date from dotlrn_communities_all where community_id = :community_id}
 
 } -on_submit {
 
@@ -67,8 +67,8 @@ ad_form -name edit_community_info -form {
 
     dotlrn_community::set_community_name \
         -community_id $community_id \
-        -pretty_name $pretty_name    
-    
+        -pretty_name $pretty_name
+
     ad_returnredirect $referer
     ad_script_abort
 }
@@ -148,7 +148,7 @@ set revision_id [dotlrn_community::get_attribute \
 
 # Customized logos are stored in the public file-storage folder
 # for the community.
- 
+
 if {$revision_id eq ""} {
 
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
@@ -160,7 +160,7 @@ if {$revision_id eq ""} {
 
 	set temp_community_id [dotlrn_community::get_parent_id -community_id $temp_community_id]
 	set comm_type [dotlrn_community::get_community_type_from_community_id $temp_community_id]
- 
+
     }
 
     if {$comm_type eq "dotlrn_club"} {
@@ -169,14 +169,14 @@ if {$revision_id eq ""} {
     } else {
 	set scope_name "course"
     }
-    
+
     set header_url ""
 
 } else {
     set item_id [content::revision::item_id -revision_id $revision_id]
     set header_url "[subsite::get_url]image/$item_id"
 }
- 
+
 set doc(title) [_ dotlrn.Edit_Properties]
 set context [list [list one-community-admin [_ dotlrn.Admin]] $doc(title)]
 
