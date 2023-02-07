@@ -40,10 +40,6 @@ ad_proc -private dotlrn::apm::after_install {
         -package_key acs-kernel \
         -parameter HomeName \
         -value "#dotlrn.control_panel#"
-
-    # Make sure that privacy is turned on
-    acs_privacy::privacy_control_set 1
-
 }
 
 
