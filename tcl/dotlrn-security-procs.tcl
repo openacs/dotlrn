@@ -292,10 +292,10 @@ namespace eval dotlrn {
         Check if a user can read sensitive data in dotLRN
     } {
         if { [parameter::get -parameter protect_private_data_p -default 1] } {
-            return [acs_privacy::user_can_read_private_data_p \
-                        -user_id $user_id \
-                        -object_id $object_id
-                   ]
+            return [permission::permission_p \
+                        -party_id $user_id \
+                        -object_id $object_id \
+                        -privilege read_private_data]
         } else {
             return 1
         }
