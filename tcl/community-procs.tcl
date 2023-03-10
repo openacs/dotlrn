@@ -797,7 +797,7 @@ namespace eval dotlrn_community {
     } {
         Is this user awaiting membership in this community?
     } {
-        return [db_string is_pending_membership {}]
+        return [db_string is_pending_membership {}  -default 0]
     }
 
     ad_proc -public add_user {
@@ -1451,7 +1451,7 @@ namespace eval dotlrn_community {
                           set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
                           append chunk [subst {
                               (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Join_subgroup_name]">[_ dotlrn.Join]</a>)
-                          }
+                          }]
                       }
 
                       append chunk "\n"
