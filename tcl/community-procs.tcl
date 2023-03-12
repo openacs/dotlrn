@@ -1408,7 +1408,7 @@ namespace eval dotlrn_community {
                 if {$show_drop_link_p} {
                     set href [export_vars -base ${url}${drop_target} {{referer {[ad_conn url]}}}]
                     append chunk [subst {
-                        (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
+                        (<a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
                     }]
                 }
 
@@ -1445,12 +1445,12 @@ namespace eval dotlrn_community {
                       } elseif {[needs_approval_p -community_id $sc_id]} {
                           set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
                           append chunk [subst {
-                              <a href="[ns_quotehtml $href]" title="[_ dotlrn.Request_Membership_for_subgroup_name]">[_ dotlrn.Request_Membership]</a>
+                              <a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Request_Membership_for_subgroup_name]">[_ dotlrn.Request_Membership]</a>
                           }]
                       } else {
                           set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
                           append chunk [subst {
-                              (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Join_subgroup_name]">[_ dotlrn.Join]</a>)
+                              (<a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Join_subgroup_name]">[_ dotlrn.Join]</a>)
                           }]
                       }
 
@@ -1461,7 +1461,7 @@ namespace eval dotlrn_community {
                     if {$show_drop_link_p} {
                         set href [export_vars -base ${url}${drop_target} {{referer {[ad_conn url]}}}]
                         append chunk [subst {
-                            (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
+                            (<a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
                         }]
                     }
                 }
