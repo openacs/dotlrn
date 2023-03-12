@@ -797,7 +797,7 @@ namespace eval dotlrn_community {
     } {
         Is this user awaiting membership in this community?
     } {
-        return [db_string is_pending_membership {}  -default 0]
+        return [db_0or1row is_pending_membership {}]
     }
 
     ad_proc -public add_user {
