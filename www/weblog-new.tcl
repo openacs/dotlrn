@@ -43,20 +43,19 @@ if {![llength $existing_forum_ids]} {
 
 
     db_transaction {
-	set forum_id [forum::new -name $name \
-		-charter $charter \
-		-presentation_type $presentation_type \
-		-posting_policy $posting_policy \
-		-package_id $weblog_package_id \
-		]
-
+	set forum_id [forum::new \
+                          -name $name \
+                          -charter $charter \
+                          -presentation_type $presentation_type \
+                          -posting_policy $posting_policy \
+                          -package_id $weblog_package_id \
+                          -new_questions_allowed_p f \
+                         ]
 
 	#Only this user can create new threads.
-	forum::new_questions_deny -forum_id $forum_id
-	forum::new_questions_allow -forum_id $forum_id -party_id $user_id
+	permission::grant -object_id $forum_id -party_id $user_id -privilege forum_moderate
 
 	#Everyone should be subscribed to their weblog!
-
 	notification::request::new -object_id $forum_id \
 		-type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
 		-user_id $user_id \
