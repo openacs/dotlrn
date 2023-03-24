@@ -23,7 +23,7 @@ ad_page_contract {
 } -query {
     {referer "control-panel"}
 } -validate {
-    
+
 }
 
 set user_id [auth::require_login]
@@ -43,7 +43,7 @@ if {![llength $existing_forum_ids]} {
 
 
     db_transaction {
-	set forum_id [forum::new \
+        set forum_id [forum::new \
                           -name $name \
                           -charter $charter \
                           -presentation_type $presentation_type \
@@ -52,15 +52,15 @@ if {![llength $existing_forum_ids]} {
                           -new_questions_allowed_p f \
                          ]
 
-	#Only this user can create new threads.
-	permission::grant -object_id $forum_id -party_id $user_id -privilege forum_moderate
+         #Only this user can create new threads.
+         permission::grant -object_id $forum_id -party_id $user_id -privilege forum_moderate
 
-	#Everyone should be subscribed to their weblog!
-	notification::request::new -object_id $forum_id \
-		-type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
-		-user_id $user_id \
-		-interval_id [notification::interval::get_id_from_name -name "instant"] \
-		-delivery_method_id [notification::delivery::get_id -short_name "email"]
+         #Everyone should be subscribed to their weblog!
+         notification::request::new -object_id $forum_id \
+             -type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
+             -user_id $user_id \
+             -interval_id [notification::interval::get_id_from_name -name "instant"] \
+             -delivery_method_id [notification::delivery::get_id -short_name "email"]
     }
 } else {
     set forum_id [lindex $existing_forum_ids 0]
