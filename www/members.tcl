@@ -23,8 +23,8 @@ ad_page_contract {
 } {
     {orderby:token,optional "last_name,asc"}
     {csv:optional}
-    {reset:optional}
-    {reltype:optional}
+    {reset ""}
+    {reltype ""}
 }
 
 set my_user_id [ad_conn user_id]
@@ -242,14 +242,14 @@ if {$subcomm_p} {
 
 }
 
-if {[info exists reset] && $reset ne ""
-    && [info exists reltype] && $reltype ne ""} {
+set form [ns_getform]
+if {$form ne "" && $reset ne "" && $reltype ne ""} {
     set result ""
     db_multirow reset_members select_members {} {
-        rp_form_put user_id $member_id
+        ns_set put $form user_id $member_id
     }
-    rp_form_put referer "one-community"
-    rp_form_put community_id $community_id
+    ns_set put $form referer "one-community"
+    ns_set put $form community_id $community_id
     rp_internal_redirect "deregister"
     ad_script_abort
 }
