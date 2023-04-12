@@ -1064,7 +1064,7 @@ namespace eval dotlrn_community {
 
     ad_proc -public get_community_type {
     } {
-        Returns the community type key depending on the node we're at.
+        Returns the community type key depending on the current package_id
     } {
         set package_id [ad_conn package_id]
 
@@ -1076,7 +1076,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_community_type_not_cached {
         {-package_id:required}
     } {
-        Returns the community type key depending on the node we're at.
+        Returns the community type key depending on the provided package_id.
     } {
         return [db_string select_community_type {} -default ""]
     }
