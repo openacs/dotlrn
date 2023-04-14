@@ -28,7 +28,10 @@ ad_page_contract {
 
 set user_id [auth::require_login]
 
-set weblog_package_id [site_node_apm_integration::get_child_package_id  -package_key "forums"]
+set weblog_package_id [lindex [site_node::get_children \
+                                   -package_key forums \
+                                   -element object_id \
+                                   -node_id [ad_conn node_id]] 0]
 set existing_forum_ids [db_list weblog_forum_id {select forum_id from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}]
 
 if {![llength $existing_forum_ids]} {
@@ -67,7 +70,7 @@ if {![llength $existing_forum_ids]} {
     #Probably a double click, send them to their first existing enabled weblog.
 }
 
-ad_returnredirect "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view?forum_id=$forum_id"
+ad_returnredirect [site_node::get_url_from_object_id -object_id $weblog_package_id]/forum-view?forum_id=$forum_id
 ad_script_abort
 
 # Local variables:

@@ -101,9 +101,11 @@ $community_url/members
 
         "
 
-            set package_id [site_node_apm_integration::get_child_package_id \
-                                -package_id [dotlrn_community::get_package_id $community_id] \
-                                -package_key [bulk_mail::package_key]]
+            set community_node_id [dotlrn_community::get_community_node_id $community_id]
+            set package_id [lindex [site_node::get_children \
+                                        -package_key [bulk_mail::package_key] \
+                                        -element object_id \
+                                        -node_id $community_node_id] 0]
 
             bulk_mail::new \
                     -package_id $package_id \

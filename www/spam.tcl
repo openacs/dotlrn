@@ -217,8 +217,13 @@ if { [ns_queryexists "form:confirm"] } {
 	set message_type "text"
     }
 
+    set bm_package_id [lindex [site_node::get_children \
+                                   -package_key [bulk_mail::package_key] \
+                                   -element object_id \
+                                   -node_id [ad_conn node_id]] 0]
+
     bulk_mail::new \
-        -package_id [site_node_apm_integration::get_child_package_id -package_key [bulk_mail::package_key]] \
+        -package_id $bm_package_id \
         -send_date [template::util::date::get_property linear_date $send_date] \
         -date_format "YYYY MM DD HH24 MI SS" \
         -from_addr $from \
