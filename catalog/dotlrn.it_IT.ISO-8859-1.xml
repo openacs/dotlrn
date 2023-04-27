@@ -60,7 +60,7 @@
   <msg key="Are_you_sure_del_class">Vuoi davvero eliminare questa materia</msg>
   <msg key="Are_you_sure_you_want_to_drop">Vuoi davvero abbandonare la comunità %community_name%</msg>
   <msg key="are_you_sure_you_want_to_send">Sei sicuro di voler inviare il seguente</msg>
-  <msg key="arhive_group_name">Archivia il gruppo %group_name%</msg>
+  <msg key="archive_group_name">Archivia il gruppo %group_name%</msg>
   <msg key="Ask_a_question">Rivolgi una domanda a</msg>
   <msg key="Back_to_index">Ritorna alla Pagina Principale</msg>
   <msg key="Be_sure">Assicurati</msg>

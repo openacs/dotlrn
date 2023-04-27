@@ -47,7 +47,7 @@
   <msg key="archived_groups">%groups_pretty_plural% archivés</msg>
   <msg key="Are_you_sure">Etes-vous sur?</msg>
   <msg key="are_you_sure_you_want_to_send">Etes-vous sur de vouloir envoyé ce qui suit</msg>
-  <msg key="arhive_group_name">Archiver le groupe %group_name%</msg>
+  <msg key="archive_group_name">Archiver le groupe %group_name%</msg>
   <msg key="Ask_a_question">Poser vos questions à: </msg>
   <msg key="Be_sure">Etre sur</msg>
   <msg key="Become_this_user">Devenir cet utilisateur!</msg>

@@ -52,7 +52,7 @@
   <msg key="archived_groups">Gearchiveerde %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Zeker weten?</msg>
   <msg key="are_you_sure_you_want_to_send">Het volgende echt verzenden?</msg>
-  <msg key="arhive_group_name">Groep %group_name% archiveren</msg>
+  <msg key="archive_group_name">Groep %group_name% archiveren</msg>
   <msg key="Ask_a_question">Stel een vraag:</msg>
   <msg key="Be_sure">Let op:</msg>
   <msg key="Become_this_user">Deze gebruiker worden!</msg>
