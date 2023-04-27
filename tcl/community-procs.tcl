@@ -1124,7 +1124,7 @@ namespace eval dotlrn_community {
                 if {[ns_conn isconnected]} {
                     set url [ad_conn url]
                 } else {
-                    error "either a package_id or a URL must be passed in"
+                    error "either a package_id or a URL must be passed in (no active connection)"
                 }
             }
             set package_id [site_node::closest_ancestor_package \
