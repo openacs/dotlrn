@@ -14,15 +14,13 @@
 #  details.
 #
 
-# dotlrn/www/admin/site-wide-admin-toggle.tcl
-
 ad_page_contract {
     @author Caroline Meeks (caroline@meekshome.com)
     @creation-date November 19, 2002
     @cvs-id $Id$
 } -query {
     user_id:naturalnum,notnull
-    guest_p:boolean
+    {guest_p:boolean,notnull 0}
     {referer:localurl "users"}
 }
 

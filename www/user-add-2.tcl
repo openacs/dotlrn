@@ -25,10 +25,10 @@ ad_page_contract {
     password:optional
     {referer "/acs-admin/users"}
     type
-    can_browse_p:boolean
-    read_private_data_p:boolean
-    dotlrn_interactive_p:boolean
-    add_membership_p:boolean
+    can_browse_p:boolean,notnull
+    read_private_data_p:boolean,notnull
+    dotlrn_interactive_p:boolean,notnull
+    add_membership_p:boolean,notnull
 } -properties {
     context_bar:onevalue
     export_vars:onevalue
@@ -63,7 +63,7 @@ if {!$dotlrn_user_p} {
 
         if {!${dotlrn_interactive_p}} {
             # make the user a dotLRN user
-            dotlrn::user_add -type $type -can_browse\=$can_browse_p -user_id $user_id
+            dotlrn::user_add -type $type -can_browse=$can_browse_p -user_id $user_id
         }
     }
 }
