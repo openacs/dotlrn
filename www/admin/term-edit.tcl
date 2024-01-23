@@ -51,20 +51,11 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
     {term_year:text               {label "[_ dotlrn.lt_Year_eg_2003_20032004]"}
                                   {html {size 9 maxlength 9}}}
 
-    {start_date:text(text)
+    {start_date:text(h5date)
 	{label "[_ dotlrn.Start_Date]"}
-	#{format {[lc_get formbuilder_date_format]}}
-        {html {id start_date}}
-        {after_html {<input type="reset" id="start_date-control" value=" ... "> \[<b>yyyy-mm-dd </b>\]
-        }}
     }
-
-    {end_date:text(text)
+    {end_date:text(h5date)
 	{label "[_ dotlrn.End_Date]"}
-	#{format {[lc_get formbuilder_date_format]}}
-	{html {id end_date}}
-        {after_html {<input type="reset" id="end_date-control" value=" ... "> \[<b>yyyy-mm-dd </b>\]
-        }}
     }
     
 } -validate {
@@ -97,9 +88,6 @@ ad_form -name edit_term -export term_pretty_name -select_query_name select_term_
 
     ad_returnredirect $referer
     ad_script_abort
-} -on_request {
-    template::add_event_listener -id start_date-control -script {showCalendar('start_date', 'yyyy-mm-dd');}
-    template::add_event_listener -id end_date-control   -script {showCalendar('end_date', 'yyyy-mm-dd');}
 }
 
 ad_return_template
