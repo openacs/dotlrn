@@ -22,8 +22,8 @@ ad_page_contract {
     @creation-date 2001-10-06
     @cvs-id $Id$
 } -query {
-    {user_id:integer ""}
-    {community_id:integer ""}
+    {user_id:object_id ""}
+    {community_id:object_id ""}
     {referer:localurl "./"}
 }
 
