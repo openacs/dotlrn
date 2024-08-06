@@ -134,7 +134,7 @@
   <msg key="Description_1">Description:</msg>
   <msg key="Dont_Add">Don't Add</msg>
   <msg key="dotLRN_Admin">dotLRN Admin</msg>
-  <msg key="dotlrn_admin_pretty_name">.LRN Site Wide Administration</msg>
+  <msg key="dotlrn_admin_pretty_name">.LRN Site-Wide Administration</msg>
   <msg key="dotlrn_admin_rel_pretty_name">.LRN Community Membership for Administrators</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin Community Memberships</msg>
   <msg key="dotlrn_class_instance_description">e.g. 6.001</msg>
@@ -285,7 +285,7 @@ a CSV file to import here.</msg>
   <msg key="lt_Last_Visit_None_">User has not visited yet</msg>
   <msg key="lt_Last_Visit_Over_in_da">Last Visit Over (in days)</msg>
   <msg key="lt_Last_Visit_Within_in_">Last Visit Within (in days)</msg>
-  <msg key="lt_Make_this_user_a_site">Make this user a site wide admin.</msg>
+  <msg key="lt_Make_this_user_a_site">Make this user a site-wide admin.</msg>
   <msg key="lt_Manage_this_users_por">Manage this user's portrait</msg>
   <msg key="lt_No_I_dont_want_to_arc">No, I don't want to archive this group.</msg>
   <msg key="lt_Note_The_script_will_">Note: The script will continue to run even if you 

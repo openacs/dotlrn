@@ -138,7 +138,7 @@
   <msg key="Description_1">Beskrivelse:</msg>
   <msg key="Dont_Add">Ikke legg til</msg>
   <msg key="dotLRN_Admin">dotLRN Admin</msg>
-  <msg key="dotlrn_admin_pretty_name">Site Wide Administration </msg>
+  <msg key="dotlrn_admin_pretty_name">Site-Wide Administration </msg>
   <msg key="dotlrn_admin_rel_pretty_name">dotLRN Admin-gruppe medlemskap</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin-gruppe medlemskap</msg>
   <msg key="dotlrn_class_instance_description">f. ex. 6.001</msg>

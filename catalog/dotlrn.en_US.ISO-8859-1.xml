@@ -187,7 +187,7 @@
   <msg key="Description_1">Description:</msg>
   <msg key="Dont_Add">Don't Add</msg>
   <msg key="dotLRN_Admin">dotLRN Admin</msg>
-  <msg key="dotlrn_admin_pretty_name">.LRN Site Wide Administration</msg>
+  <msg key="dotlrn_admin_pretty_name">.LRN Site-Wide Administration</msg>
   <msg key="dotlrn_admin_rel_pretty_name">.LRN Community Membership for Administrators</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin Community Memberships</msg>
   <msg key="dotlrn_class_instance_access_key">c</msg>
@@ -266,7 +266,7 @@ notify this user.</msg>
   <msg key="goto_member_clubs_pretty_name">Go to %member_clubs.pretty_name% portal</msg>
   <msg key="goto_non_member_classes">Go to class %non_member_classes.pretty_name% portal</msg>
   <msg key="goto_non_member_clubs">Go to community %non_member_clubs.pretty_name% portal</msg>
-  <msg key="goto_oacs_swa">Go to OpenACS Site Wide Administration</msg>
+  <msg key="goto_oacs_swa">Go to OpenACS Site-Wide Administration</msg>
   <msg key="goto_subgroup_name">Go to subgroup %subgroup_name%</msg>
   <msg key="Grant_site_wide_admin">Grant site-wide administrative privileges.</msg>
   <msg key="gray">gray</msg>
@@ -378,7 +378,7 @@ a CSV file to import here.</msg>
   <msg key="lt_Last_Visit_None_">User has not visited yet</msg>
   <msg key="lt_Last_Visit_Over_in_da">Last Visit Over (in days)</msg>
   <msg key="lt_Last_Visit_Within_in_">Last Visit Within (in days)</msg>
-  <msg key="lt_Make_this_user_a_site">Make this user a site wide admin.</msg>
+  <msg key="lt_Make_this_user_a_site">Make this user a site-wide admin.</msg>
   <msg key="lt_Manage_this_users_por">Manage this user's portrait</msg>
   <msg key="lt_No_I_dont_want_to_arc">No, I don't want to archive this group.</msg>
   <msg key="lt_Note_The_script_will_">Note: The script will continue to run even if you 
