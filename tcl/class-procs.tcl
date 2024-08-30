@@ -186,7 +186,7 @@ namespace eval dotlrn_class {
     } {
         returns the number of class instances with the given class key
     } {
-        return [db_string select_count_class_instaces {} -default 0]
+        return [db_string select_count_class_instances {} -default 0]
     }
 
     ad_proc -public new_instance {
