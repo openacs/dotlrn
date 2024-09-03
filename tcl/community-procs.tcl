@@ -99,7 +99,7 @@ namespace eval dotlrn_community {
 
             set package_id [site_node::instantiate_and_mount \
                 -parent_node_id $parent_node_id \
-                -node_name [ad_decode $url_part "" $community_type_key $url_part] \
+                -node_name [expr {$url_part eq "" ? $community_type_key : $url_part}] \
                 -package_name $pretty_name \
                 -package_key [one_community_type_package_key] \
                 -context_id $parent_node(object_id)]
@@ -219,10 +219,10 @@ namespace eval dotlrn_community {
             # YON MAJOR HACK
             # acs_object.new() initializes the acs_attributes for us if the
             # object_type of this community matches the object_type of the
-            # acs_attributes. this screws us because we use dotlrn_community
+            # acs_attributes. This screws us because we use dotlrn_community
             # as the object_type for subgroups which means that their
             # attributes will be defaulted to empty strings but we will think
-            # that they are set. we must delete them.
+            # that they are set. We must delete them.
             db_dml delete_acs_attribute_values {
                 delete
                 from acs_attribute_values
@@ -326,13 +326,13 @@ namespace eval dotlrn_community {
         dotlrn_community::set_site_template_id -community_id $community_id \
             -site_template_id [parameter::get -package_id [dotlrn::get_package_id] -parameter "CommDefaultSiteTemplate_p"]
 
-        # This new community should _not_ inherit it's permissions
-        # from the root dotlrn instance. Why? All dotlrn users
-        # can read the root dotlrn instance, but only members of
-        # this community should be able to read this instance (and
-        # it's children)
+        #
+        # This new community should _not_ inherit its permissions from
+        # the root dotlrn instance. Why? All dotlrn users can read the
+        # root dotlrn instance, but only members of this community
+        # should be able to read this instance (and its children).
+        #
         permission::set_not_inherit -object_id $community_id
-
 
         # Grant permission to dotlrn-admin group
 
@@ -614,14 +614,18 @@ namespace eval dotlrn_community {
         return [db_string select_rel_segment_id {} -default ""]
     }
 
-    ad_proc -private get_members_rel_id {
+    ad_proc -public get_members_rel_id {
         {-community_id:required}
+    } {
+        Get the relational segment ID for members of a community.
     } {
         return [get_rel_segment_id -community_id $community_id -rel_type dotlrn_member_rel]
     }
 
-    ad_proc -private get_admin_rel_id {
+    ad_proc -public get_admin_rel_id {
         {-community_id:required}
+    } {
+        Get the relational segment ID for admins of a community.
     } {
         return [get_rel_segment_id -community_id $community_id -rel_type dotlrn_admin_rel]
     }
@@ -682,12 +686,12 @@ namespace eval dotlrn_community {
         set community_name [get_community_name $community_id]
 
         db_transaction {
-            set member_segment_id [rel_segments_new \
+            set member_segment_id [rel_segment::new \
                 $community_id \
                 dotlrn_member_rel \
                 "[_ dotlrn.Members_of] $community_name" \
             ]
-            set admin_segment_id [rel_segments_new \
+            set admin_segment_id [rel_segment::new \
                 $community_id \
                 dotlrn_admin_rel \
                 "[_ dotlrn.Admins_of] $community_name" \
@@ -705,8 +709,8 @@ namespace eval dotlrn_community {
         set admin_segment_id [get_admin_rel_id -community_id $community_id]
 
         rel_segments_revoke_permission -community_id $community_id
-        rel_segments_delete $admin_segment_id
-        rel_segments_delete $member_segment_id
+        rel_segment::delete $admin_segment_id
+        rel_segment::delete $member_segment_id
     }
 
     ad_proc -public list_admin_users {
@@ -747,7 +751,7 @@ namespace eval dotlrn_community {
         }]
 
         # TODO: this query could be streamlined thanks to current
-        # api... on the other hand, returning a ns_set is not the
+        # API... on the other hand, returning an ns_set is not the
         # current best practice for returning values, so I don't know
         # if this is worth the effort.
         return [db_list_of_ns_sets select_users {}]
@@ -793,7 +797,7 @@ namespace eval dotlrn_community {
     } {
         Is this user awaiting membership in this community?
     } {
-        return [db_string is_pending_membership {}]
+        return [db_0or1row is_pending_membership {}]
     }
 
     ad_proc -public add_user {
@@ -1060,7 +1064,7 @@ namespace eval dotlrn_community {
 
     ad_proc -public get_community_type {
     } {
-        Returns the community type key depending on the node we're at.
+        Returns the community type key depending on the current package_id
     } {
         set package_id [ad_conn package_id]
 
@@ -1072,7 +1076,7 @@ namespace eval dotlrn_community {
     ad_proc -private get_community_type_not_cached {
         {-package_id:required}
     } {
-        Returns the community type key depending on the node we're at.
+        Returns the community type key depending on the provided package_id.
     } {
         return [db_string select_community_type {} -default ""]
     }
@@ -1081,47 +1085,83 @@ namespace eval dotlrn_community {
         {-url ""}
     } {
         Returns the community from a URL.
+
+        @param url if no URL specified, the function will break when
+              called without connection
     } {
         if {$url eq ""} {
             set url [ad_conn url]
         }
-
         set package_id [site_node::closest_ancestor_package -include_self -url $url -package_key dotlrn]
 
-        return [get_community_id -package_id $package_id]
+        return [expr {$package_id eq "" ? "" : [get_community_id -package_id $package_id]}]
     }
 
     ad_proc -public get_community_id {
         {-package_id ""}
+        {-url ""}
     } {
-        Returns the community id depending on the package_id
-        we're at, or the package_id passed in.
+        Returns the community id depending on the dotlrn package_id.
 
-        If no community_id found, return empty_string.
+        If the package_id is not provided, but the url is passed in,
+        determine the community_id based on this. If no url is
+        provided, the url is taken from the current connection.
 
-        @param package_id PackageID for which to search the community_id for
-        @return community_id of the community where the package is mounted, empty string if not found
+        If no community_id is found, an empty string is returned.
+
+        @param package_id package_id of the dotlrn package for which
+               the community_id should be returned
+        @param url url used to identify the community id
+
+        @return community_id of the community where the package is
+                mounted, empty string if not found
+
+        @see get_community_id_from_url
     } {
         if {$package_id eq ""} {
+            set provided_url $url
+            if {$url eq ""} {
+                if {[ns_conn isconnected]} {
+                    set url [ad_conn url]
+                } else {
+                    error "either a package_id or a URL must be passed in (no active connection)"
+                }
+            }
             set package_id [site_node::closest_ancestor_package \
-                                -url [ad_conn url] \
+                                -url $url \
                                 -include_self \
                                 -package_key dotlrn]
-            if {$package_id eq ""} {
+            #
+            # In case, we have still no package_id (i.e. the URL is
+            # NOT under /dotlrn), try to get a package_id from the
+            # connection.  This last-resource attempt makes only
+            # sense, when an incorrect URL was passed in, which is an
+            # error case. When we determined the package_id based on
+            # "ad_conn url", the result won't change, when we use
+            # "ad_conn package_id" (both require a connection and both
+            # should be consistent).
+            #
+            # GN: The following clause is actually just needed, when
+            # the function was called incorrectly. Probably these
+            # cases should rise an error.
+            #
+            if {$package_id eq ""
+                && $provided_url ne ""
+                && [ns_conn isconnected]
+            } {
+                ad_log Warning "get_community_id: could no find" \
+                    "package_id based on url '$provided_url'." \
+                    "Using connection package_id as last resort."
                 set package_id [ad_conn package_id]
             }
         }
 
         if {$package_id ne ""} {
-            set key ::dotlrn::community_id($package_id)
-            if {[info exists $key]} {
-                return [set $key]
-            } else {
-                return [set $key [dotlrn_community::get_community_id_not_cached -package_id $package_id]]
-            }
-        } else {
-            return ""
+            return [acs::per_thread_cache eval -key dotlrn.get_community_id($package_id) {
+                dotlrn_community::get_community_id_not_cached -package_id $package_id
+            }]
         }
+        return ""
     }
 
     ad_proc -private get_community_id_not_cached {
@@ -1211,23 +1251,59 @@ namespace eval dotlrn_community {
                     -- $name]
     }
 
+    ad_proc -private validate_community_key {
+        {-community_key:required}
+        {-parent_community_id ""}
+    } {
+        Checks if the community_key passed in is valid for creating a
+        new community by checking that the name does not contain
+        spaces and that it is not the same as an existing (possible)
+        sibling's name.
+
+        @return dict with fields 'valid_p' and 'errmsg'
+    } {
+        set errmsg ""
+        set valid_p true
+
+        if {[regexp {\s+} $community_key]} {
+            set valid_p false
+            set errmsg [_ acs-tcl.lt_name_contains_invalid [list name [ns_quotehtml $community_key]]]
+        } elseif {[db_0or1row collision_check {
+          select 1 from dual where exists (
+            select 1 from dotlrn_communities_all
+             where (:parent_community_id is null or parent_community_id = :parent_community_id)
+               and community_key = :community_key)
+        }]} {
+            set valid_p false
+            set errmsg [_ dotlrn.community_name_already_in_use [list community_key [ns_quotehtml $community_key]]]
+        }
+
+        return [list \
+                    valid_p $valid_p \
+                    errmsg $errmsg]
+    }
 
     ad_proc -public check_community_key_valid_p {
         {-community_key:required}
         {-parent_community_id ""}
         {-complain_if_invalid:boolean}
     } {
-        Checks if the community_key passed in is valid for creating a new
-        community by checking that it's not the same as an existing (possible)
+        Checks if the community_key passed in is valid for creating a
+        new community by checking that the name does not contain
+        spaces and that it is not the same as an existing (possible)
         sibling's name.
+
+        @return boolean, or a complaint in the response if
+                complain_if_invalid is set
     } {
-        set valid_p [expr {![db_0or1row collision_check {}]}]
-
+        set validation [dotlrn_community::validate_community_key \
+                            -community_key $community_key \
+                            -parent_community_id $parent_community_id]
+        set valid_p [dict get $validation valid_p]
         if {$complain_if_invalid_p && !$valid_p} {
-            ns_log notice "The name '$community_key' is already in use either by an active or archived group. \n Please go back and select a different name."
-            ad_return_complaint 1 \
-                [_ dotlrn.community_name_already_in_use [list community_key $community_key]]
-
+            set errmsg [dict get $validation errmsg]
+            ns_log notice $errmsg
+            ad_return_complaint 1 $errmsg
             ad_script_abort
         } else {
             return $valid_p
@@ -1289,7 +1365,7 @@ namespace eval dotlrn_community {
         {-drop_target deregister}
         {-only_member_p 0}
     } {
-        Returns a html fragment of the subcommunity hierarchy of this
+        Returns an HTML fragment of the subcommunity hierarchy of this
         community or if none, the empty list.
 
         Brief notes: this proc always shows the subgroups of the
@@ -1297,12 +1373,13 @@ namespace eval dotlrn_community {
         member of all the supergroups to the leaf subgroup. Not even
         admins see the whole tree.
 
-        FIXME: we want to be rid of this proc. it's only used in the dotlrn-portlet.
-        A better solution is to do a db_multirow like yon's in dotlrn-main-portlet.
+        FIXME: we want to be rid of this proc. It is only used in the
+        dotlrn-portlet.  A better solution is to do a db_multirow like
+        yon's in dotlrn-main-portlet.
 
-        things to get: has_subcom, member_p, url, name, admin_p, not_closed_p,
+        Things to get: has_subcom, member_p, url, name, admin_p, not_closed_p,
                        member_pending, needs_approval
-        things to send: user_id, sc_id,
+        Things to send: user_id, sc_id,
     } {
         set chunk ""
 
@@ -1331,7 +1408,7 @@ namespace eval dotlrn_community {
                 if {$show_drop_link_p} {
                     set href [export_vars -base ${url}${drop_target} {{referer {[ad_conn url]}}}]
                     append chunk [subst {
-                        (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
+                        (<a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
                     }]
                 }
 
@@ -1368,13 +1445,13 @@ namespace eval dotlrn_community {
                       } elseif {[needs_approval_p -community_id $sc_id]} {
                           set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
                           append chunk [subst {
-                              <a href="[ns_quotehtml $href]" title="[_ dotlrn.Request_Membership_for_subgroup_name]">[_ dotlrn.Request_Membership]</a>
+                              <a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Request_Membership_for_subgroup_name]">[_ dotlrn.Request_Membership]</a>
                           }]
                       } else {
                           set href [export_vars -base ${parent_url}${join_target} {{community_id $sc_id} {referer {[ad_conn url]}}}]
                           append chunk [subst {
-                              (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Join_subgroup_name]">[_ dotlrn.Join]</a>)
-                          }
+                              (<a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Join_subgroup_name]">[_ dotlrn.Join]</a>)
+                          }]
                       }
 
                       append chunk "\n"
@@ -1384,7 +1461,7 @@ namespace eval dotlrn_community {
                     if {$show_drop_link_p} {
                         set href [export_vars -base ${url}${drop_target} {{referer {[ad_conn url]}}}]
                         append chunk [subst {
-                            (<a href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
+                            (<a class='button' href="[ns_quotehtml $href]" title="[_ dotlrn.Drop_from_subgroup_name]">[_ dotlrn.Drop]</a>)
                         }]
                     }
                 }
@@ -1467,7 +1544,7 @@ namespace eval dotlrn_community {
 
         db_dml update_community_name {}
 
-        # rename the package - this is used in the user interface. ie - context bar and
+        # rename the package - this is used in the user interface. i.e. - context bar and
         # in the portlets
 
         set package_id [dotlrn_community::get_package_id $community_id]
@@ -1593,7 +1670,7 @@ namespace eval dotlrn_community {
     ad_proc -public needs_approval_p {
         {-community_id:required}
     } {
-        Returns 1 if the community's join policy is 'needs approval' a.k.a. "request approval".
+        Returns 1 if the community's join policy is 'needs approval' aka "request approval".
     } {
         return [db_string check_community_needs_approval {} -default 0]
     }
@@ -1799,7 +1876,9 @@ namespace eval dotlrn_community {
                     -community_key $key
 
                 if {$term_id ne ""} {
-                    # it's a class instance that we're cloning
+                    #
+                    # It is a class instance that we're cloning.
+                    #
                     ns_set put $extra_vars class_key [db_string get_class_key {
                         select class_key
                         from dotlrn_class_instances_full
@@ -1929,11 +2008,11 @@ namespace eval dotlrn_community {
                 db_dml copy_customizations_if_any {}
             }
 
-            # This new community should _not_ inherit it's permissions
+            # This new community should _not_ inherit its permissions
             # from the root dotlrn instance. Why? All dotlrn users
             # can read the root dotlrn instance, but only members of
             # this community should be able to read this instance (and
-            # it's children)
+            # its children)
             permission::set_not_inherit -object_id $clone_id
 
             # Grant read_private_data permission to "non guest" users.
@@ -2006,6 +2085,10 @@ namespace eval dotlrn_community {
 
             # mark the community as archived
             db_dml update_archive_p {}
+
+            # execute package-specific code for this proc via callback
+            callback dotlrn_community::archive \
+                -community_id $community_id
         }
     }
 
@@ -2028,6 +2111,10 @@ namespace eval dotlrn_community {
                 -op AddUserToCommunity \
                 -list_args [list $community_id $user_id]
         }
+
+        # execute package-specific code for this proc via callback
+        callback dotlrn_community::unarchive \
+            -community_id $community_id
     }
 
     ad_proc -public nuke {
@@ -2236,7 +2323,7 @@ namespace eval dotlrn_community {
             error "dotlrn_community::set_attribute: invalid attribute $attribute_name"
         }
 
-        # we don't accept empty values (essentially, we are making the
+        # We don't accept empty values (essentially, we are making the
         # acs_attribute_values.attr_value not null, which it is not in the db).
         if {$attribute_value eq ""} {
             return
@@ -2246,12 +2333,12 @@ namespace eval dotlrn_community {
             set community_id [get_community_id]
         }
 
-        # we assume that if the value of this attribute is null then we must
-        # insert a new row for this attribute, if it's not null then we simply
-        # update its value. this is not enforced in the database since the
+        # We assume that if the value of this attribute is null then we must
+        # insert a new row for this attribute, if it is not null then we simply
+        # update its value. This is not enforced in the database since the
         # acs_attribute_values.attr_value column does not have a "not null"
-        # constraint but we will enforce it via our api. if someone circumvents
-        # our api then they can die and rot in hell.
+        # constraint but we will enforce it via our API. If someone circumvents
+        # our API then they can die and rot in hell.
         if {[get_attribute -community_id $community_id -attribute_name $attribute_name] eq ""} {
             db_dml insert_attribute {}
         } else {

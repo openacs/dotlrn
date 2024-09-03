@@ -45,7 +45,7 @@
             and parties.party_id = acs_objects.object_id
             and parties.party_id in (select acs_rels.object_id_two  
                                      from acs_rels, membership_rels
-                                     where acs_rels.object_id_one = :registered_users_id
+                                     where acs_rels.object_id_one = [ns_dbquotevalue $registered_users_id]
                                      and acs_rels.rel_id = membership_rels.rel_id
                                      and membership_rels.member_state = 'approved' ))
 	    $who_will_receive_this_clause

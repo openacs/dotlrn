@@ -14,23 +14,21 @@
 #  details.
 #
 
-# dotlrn/www/admin/browse-toggle.tcl
-
 ad_page_contract {
     @author Caroline Meeks (caroline@meekshome.com)
     @creation-date November 19, 2002
     @cvs-id $Id$
 } -query {
     user_id:naturalnum,notnull
-    can_browse_p:boolean
-    {referer "users"}
+    {can_browse_p:boolean,notnull 0}
+    {referer:localurl "users"}
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.
 dotlrn::require_admin 
 
 #update can_browse_p
-dotlrn::set_can_browse -user_id $user_id -can_browse\=$can_browse_p
+dotlrn::set_can_browse -user_id $user_id -can_browse=$can_browse_p
 
 #
 # Flush all permission checks pertaining to this user.

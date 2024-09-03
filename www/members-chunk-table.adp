@@ -69,8 +69,7 @@
         <a href="mailto:@current_members.email@">
 	@current_members.email@</a>	
    </td>
-  <td><%=[template::util::nvl [dotlrn_community::get_role_pretty_name -community_id @community_id@ -rel_type @current_members.rel_type@] "Student"]%>
-  </td>
+  <td>@current_members.role_pretty_name</td>
   <td align="center">
   <if @admin_p;literal@ true>
      &nbsp; <a href="deregister?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.Drop_Membership#</a> | <a href="member-add-2?user_id=@current_members.user_id@&amp;referer=@referer@">#dotlrn.User_Admin_Page#</a>

@@ -61,7 +61,7 @@
   <msg key="Are_you_sure_del_class">Está seguro de querer borrar esta Asignatura</msg>
   <msg key="Are_you_sure_you_want_to_drop">¿Está seguro de querer darse de baja de %community_name%?</msg>
   <msg key="are_you_sure_you_want_to_send">Desea realmente enviar lo siguiente</msg>
-  <msg key="arhive_group_name">Archivar el grupo %group_name%</msg>
+  <msg key="archive_group_name">Archivar el grupo %group_name%</msg>
   <msg key="Ask_a_question">Consultas:</msg>
   <msg key="Back_to_index">Volver al Índice</msg>
   <msg key="Be_sure">Está seguro</msg>
@@ -235,6 +235,7 @@
   <msg key="first_line_of_file_must_be">La primera línea del archivo debe contener el siguiente línea de título:</msg>
   <msg key="First_Name">Nombre</msg>
   <msg key="First_names_">Nombre:</msg>
+  <msg key="Format">Formato</msg>
   <msg key="From">Desde</msg>
   <msg key="fuchsia">fucsia</msg>
   <msg key="Full">Ilimitado</msg>

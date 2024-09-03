@@ -66,7 +66,7 @@ namespace eval dotlrn {
     ad_proc -public is_instantiated {} {
         returns 1 if dotlrn is instantiated, 0 otherwise
     } {
-        return [ad_decode [apm_num_instances [package_key]] 0 0 1]
+        return [expr {[apm_num_instances [package_key]] > 0}]
     }
 
     ad_proc -public is_initialized {} {
@@ -120,7 +120,9 @@ namespace eval dotlrn {
     } {
         mount a package under dotlrn
     } {
-        set parent_node_id [ad_decode $parent_node_id "" [get_node_id] $parent_node_id]
+        if {$parent_node_id eq ""} {
+            set parent_node_id [get_node_id]
+        }
 
         db_transaction {
             array set parent_node [site_node::get -node_id $parent_node_id]
@@ -179,11 +181,11 @@ namespace eval dotlrn {
     } {
         Return the user default theme
     } {
-        
+
         ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
             $user_id-theme_id {
                 dotlrn::get_user_theme_not_cached $user_id
-            }        
+            }
     }
 
     ad_proc -private get_user_theme_not_cached {
@@ -208,10 +210,39 @@ namespace eval dotlrn {
     } {
         Get the portal_id for a particular user
     } {
-        ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
-            $user_id-portal_id {
-                dotlrn::get_portal_id_not_cached -user_id $user_id
-            }            
+        #
+        # TODO: the test with "namespace which" is a hack here, and
+        # hints to a larger issue concerning the loading order when
+        # install.xml files are used. The *-init files have to be
+        # evaluated (in this particular case dotlrn-init.tcl), before
+        # API calls are issued (here dotlrn::get_portal_id). If the
+        # code cannot trust on this, many more things will break on
+        # install-from-repository.
+        #
+        if {[::namespace which ::dotlrn::dotlrn_user_cache] ne ""} {
+            ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+                $user_id-portal_id {
+                    dotlrn::get_portal_id_not_cached -user_id $user_id
+                }
+        } else {
+            #
+            # Cache was not created yet, e.g. because the package is
+            # just being installed.
+            #
+            dotlrn::get_portal_id_not_cached -user_id $user_id
+        }
+        #
+        # acs::try_cache could improve caching here, but has
+        # intentionally been defined as a private interface, so the
+        # automated tests would complain. This requires further
+        # thinking.
+	#
+        # ::acs::try_cache ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
+        #     $user_id-portal_id {
+        #         db_string select_user_portal_id {
+        #             select portal_id from dotlrn_users where user_id = :user_id
+        #         } -default ""
+        #     }
     }
 
     ad_proc -private get_portal_id_not_cached {
@@ -424,7 +455,7 @@ namespace eval dotlrn {
         set new_theme_id [db_string select_portal_theme {}]
         db_dml update_portal_theme {}
         db_dml update_user_site_template {}
-        
+
        ::dotlrn::dotlrn_user_cache flush -partition_key $user_id $user_id-site_template_id
     }
 
@@ -461,7 +492,7 @@ namespace eval dotlrn {
         ::dotlrn::dotlrn_user_cache eval -partition_key $user_id \
             $user_id-site_template_id {
                 dotlrn::get_site_template_id_not_cached -user_id $user_id
-            }            
+            }
     }
 
     ad_proc -private get_site_template_id_not_cached {
@@ -498,7 +529,7 @@ namespace eval dotlrn {
     } {
         ::dotlrn::dotlrn_cache eval master_from_site_template_id-${site_template_id} {
                 dotlrn::get_master_from_site_template_id_not_cached -site_template_id $site_template_id
-            }        
+            }
     }
 
     ad_proc -private get_master_from_site_template_id_not_cached {
@@ -527,7 +558,7 @@ namespace eval dotlrn {
         set new_theme_id [db_string select_portal_theme {}]
         db_dml update_portal_themes {update }
 
-        
+
         foreach user_id [db_list affected_users {}] {
             ::dotlrn::dotlrn_user_cache flush -partition_key $user_id $user_id-site_template_id
         }

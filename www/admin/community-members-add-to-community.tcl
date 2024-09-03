@@ -23,13 +23,13 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     source_community_id:integer
-    referer 
+    referer:localurl
 } -properties {
     context_bar:onevalue
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.
-dotlrn::require_admin 
+dotlrn::require_admin
 
 set community_name [db_string select_community_info {}]
 set users [dotlrn_community::list_users $source_community_id]
@@ -80,8 +80,8 @@ if {[form is_valid select_community]} {
     if {$community_id ne ""} {
         db_transaction {
             foreach user $users {
-		set user_id [ns_set get $user user_id]
-		if {![dotlrn_community::member_p $community_id $user_id]} {
+                set user_id [ns_set get $user user_id]
+                if {![dotlrn_community::member_p $community_id $user_id]} {
                     # now we know user isn't an approved member of the new community
                     if {![dotlrn_community::member_pending_p -community_id $community_id -user_id $user_id]} {
 
@@ -96,7 +96,7 @@ if {[form is_valid select_community]} {
                                 ad_returnredirect $referer
                             } else {
                                 ns_log Error "community-members-add-to_community.tcl failed: $errmsg"
-                                #ReturnHeaders
+                                #util_return_headers
                                 ad_return_error "[_ dotlrn.lt_Error_adding_user_to_]"  "[_ dotlrn.lt_An_error_occurred_whil]"
                             }
                             ad_script_abort
@@ -105,7 +105,7 @@ if {[form is_valid select_community]} {
                         # they are already there and awaiting approval, so just approve them.
                         dotlrn_community::membership_approve -user_id $user_id -community_id $community_id
                     }
-		}
+                }
             }
         }
     }

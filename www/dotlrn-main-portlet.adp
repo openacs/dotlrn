@@ -54,14 +54,14 @@
 
                 @communities.intra_type_ul_tags;noquote@
 
-                <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#">@communities.pretty_name@</a>
+                <a href="@communities.url@" title="#dotlrn.goto_communities_pretty_name_portal#" class="prevent-double-click">@communities.pretty_name@</a>
                 <if @communities.archived_p;literal@ true><span style="color:red">#dotlrn.archived#</span></if>
                 <if @show_buttons_p;literal@ true>
                   <if @show_drop_button_p;literal@ true>
                     <a href="@communities.url@deregister-self-confirm?referer=@referer@">#dotlrn.drop_membership_link#</a>
                   </if>
                   <if @communities.admin_p;literal@ true>
-                    <a href="@communities.url@one-community-admin">#dotlrn.administer_link#</a>
+                    <a href="@communities.url@one-community-admin" class="prevent-double-click">#dotlrn.administer_link#</a>
                   </if>
                 </if>
               </group>

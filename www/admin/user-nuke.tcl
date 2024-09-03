@@ -7,7 +7,7 @@ ad_page_contract {
     @cvs-id $Id$
 } {
     user_id:naturalnum,notnull
-    {referer "[dotlrn::get_admin_url]/users"}
+    {referer:localurl "[dotlrn::get_admin_url]/users"}
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.

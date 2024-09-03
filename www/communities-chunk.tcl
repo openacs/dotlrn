@@ -34,10 +34,10 @@ if {![info exists community_type]} {
 set user_id [ad_conn user_id]
 
 set communities_p [db_string communities_p {
-    select exists (
-                   select 1 from dotlrn_communities_not_closed
-                   where (:community_type is null or community_type = :community_type)
-                   ) from dual
+    select case when exists (
+     select 1 from dotlrn_communities_not_closed
+     where (:community_type is null or community_type = :community_type)
+    ) then 1 else 0 end from dual
 }]
 
 set filter_bar [ad_dimensional [list [list filter "[_ dotlrn.Memberships_1]" select_all_memberships \

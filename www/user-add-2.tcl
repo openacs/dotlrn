@@ -22,13 +22,13 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     user_id:naturalnum,notnull
-    password
+    password:optional
     {referer "/acs-admin/users"}
     type
-    can_browse_p:boolean
-    read_private_data_p:boolean
-    dotlrn_interactive_p:boolean
-    add_membership_p:boolean
+    can_browse_p:boolean,notnull
+    read_private_data_p:boolean,notnull
+    dotlrn_interactive_p:boolean,notnull
+    add_membership_p:boolean,notnull
 } -properties {
     context_bar:onevalue
     export_vars:onevalue
@@ -63,12 +63,27 @@ if {!$dotlrn_user_p} {
 
         if {!${dotlrn_interactive_p}} {
             # make the user a dotLRN user
-            dotlrn::user_add -type $type -can_browse\=$can_browse_p -user_id $user_id
+            dotlrn::user_add -type $type -can_browse=$can_browse_p -user_id $user_id
         }
     }
 }
 
-set redirect [export_vars -base user-add-2 {user_id password referer type can_browse_p read_private_data_p dotlrn_interactive_p add_membership_p}]
+if {[info exists password]} {
+    security::set_client_property_password $password
+}
+if {$::acs::pass_password_as_query_variable} {
+    set redirect [export_vars -base user-add-2 {
+        user_id password referer type can_browse_p read_private_data_p
+        dotlrn_interactive_p add_membership_p
+    }]
+} else {
+    set redirect [export_vars -base user-add-2 {
+        user_id referer type can_browse_p read_private_data_p
+        dotlrn_interactive_p add_membership_p
+    }]    
+}
+
+
 if { $add_membership_p == "t" && $referer eq "/acs-admin/users" } {
     set redirect "one-community-admin"
 } else {

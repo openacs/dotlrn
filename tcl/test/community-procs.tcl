@@ -1,7 +1,7 @@
 ad_library {
-    
+
     Automated tests for security hole found on cloned communities
-    
+
     @author Roel Canicula (roel@solutiongrove.com)
     @creation-date 2006-02-08
     @cvs-id $Id$
@@ -32,20 +32,18 @@ aa_register_case -cats { api } \
 
 aa_register_case -cats { db security_risk } \
     -procs { } \
-    communities_security_inherit { Test permission settings of all communities } {
-	aa_run_with_teardown \
-	    -rollback \
-	    -test_code {
-		db_foreach get_communities_with_inherit {
-		    select 1 from dual
-		    where exists (select *
-				  from dotlrn_communities_all c, acs_objects o
-				  where c.community_id = o.object_id
-				  and o.security_inherit_p = 't')
-		} {
-		    aa_error "One or more communities inherit permissions, high probability of security risk"
-		}		
-	    }
+    communities_security_inherit {
+        Test permission settings of all communities
+    } {
+        aa_false "Communities inherit permissions (high probability of security risk)" \
+            [db_0or1row get_communities_with_inherit {
+                select 1 from dual where exists
+                (
+                 select 1 from dotlrn_communities_all c, acs_objects o
+                 where c.community_id = o.object_id
+                 and o.security_inherit_p = 't'
+                 )
+            }]
     }
 
 # Local variables:

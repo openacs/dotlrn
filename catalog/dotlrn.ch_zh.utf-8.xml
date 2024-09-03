@@ -47,7 +47,7 @@
   <msg key="archived_groups">存档的%groups_pretty_plural% </msg>
   <msg key="Are_you_sure">确定吗？</msg>
   <msg key="are_you_sure_you_want_to_send">确实要发送下面的信息吗？</msg>
-  <msg key="arhive_group_name">存档组%group_name%</msg>
+  <msg key="archive_group_name">存档组%group_name%</msg>
   <msg key="Ask_a_question">联系：</msg>
   <msg key="Be_sure">确定</msg>
   <msg key="Become_this_user">成为用户！</msg>

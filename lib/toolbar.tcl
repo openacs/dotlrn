@@ -1,3 +1,7 @@
+ad_include_contract {
+    .LRN Toolbar
+}
+
 set show_p [dotlrn_toolbar::show_p]
 
 if { $show_p } {

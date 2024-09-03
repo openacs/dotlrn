@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2001-01-20
     @cvs-id $Id$
 } -query {
-    {referer "departments"}
+    {referer:localurl "departments"}
 } -properties {
     title:onevalue
     context_bar:onevalue

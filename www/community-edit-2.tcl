@@ -62,7 +62,7 @@ if {$tmp_filename eq ""} {
 
 set title "$header_img-[db_nextval acs_object_id_seq]"
 
-#  # strip off the C:\directories... crud and just get the file name
+#  # strip off the C:\directories... crud and just get the filename
 
 if {![regexp {([^/\\]+)$} $header_img match client_filename]} {
       set client_filename $header_img
@@ -78,7 +78,7 @@ if { $maxFileSize ne ""
      && $tmp_size > $maxFileSize 
  } {
     set msg_subst_list [list system_name [ad_system_name] \
-                             max_attachments_bytes [util_commify_number $maxFileSize]]
+                             max_attachments_bytes [lc_numeric $maxFileSize]]
     ad_return_complaint 1 "<li>[_ dotlrn.your_icon_is_too_large $msg_subst_list]"
     ad_script_abort
 }
@@ -90,17 +90,17 @@ if { $tmp_size > 0 } {
         # We will store the image in the topmost root folder
         set parent_id [db_string get_root_folder {}]
 
-        # if this is a re-upload, pass along the item_id
+        # If this is a re-upload, pass along the item_id.
         set item_id [content::item::get_id_by_name -name $logo_name -parent_id $parent_id]
 
-	# if it's a new upload, create the item
+	# If it is a new upload, create the item.
 	if { $item_id eq ""} {
 	    set item_id [content::item::new -name $logo_name -parent_id $parent_id -content_type image]
 
-        # since it's just the header logo, which can't be accessed outside of
-        # the community anyway, let everyone have access to see it.  That way
-        # it won't cause any trouble later on when we try to implement
-        # try-before-you-buy for non-members.
+        # Since it is just the header logo, which can't be accessed
+        # outside of the community anyway, let everyone have access to
+        # see it.  That way it won't cause any trouble later on when
+        # we try to implement try-before-you-buy for non-members.
         permission::grant -party_id [acs_magic_object registered_users] -object_id $item_id -privilege read
 	}
 
@@ -151,7 +151,7 @@ if {$header_font eq ""} {
     set header_font_fragment ""
 } else {
     set header_font_text $header_font
-    # CSS requies quoting of font names with spaces
+    # CSS requires quoting of font names with spaces
     if {![regexp "^'.*'$" $header_font]} {
         set header_font "'$header_font'"
     }

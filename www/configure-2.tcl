@@ -20,13 +20,17 @@ ad_page_contract {
     @author Arjun Sanyal (arjun@openforce.net)
     @author Ben Adida (ben@openforce.net)
     @creation-date 2001-10-24
-} -query {
+} {
+    portal_id:naturalnum,object_id,notnull
+    element_id:naturalnum,object_id,optional
+    page_id:naturalnum,object_id,optional
+    theme_id:naturalnum,object_id,optional
+    layout_id:naturalnum,object_id,optional
+    region:string_length(max|20),optional
+    direction:word,optional
+    pretty_name:string_length(max|200),optional
+    {anchor ""}
 }
-
-
-set form [ns_getform]
-set portal_id [ns_set get $form portal_id]
-set anchor [ns_set get $form anchor]
 
 # Check if this is a community type level thing
 if {[parameter::get -parameter community_type_level_p] == 1} {
@@ -34,9 +38,9 @@ if {[parameter::get -parameter community_type_level_p] == 1} {
     ad_script_abort
 }
 
-portal::configure_dispatch -portal_id $portal_id -form $form
+portal::configure_dispatch -portal_id $portal_id -form [ns_getform]
 
-ad_returnredirect "configure#$anchor"
+ad_returnredirect [export_vars -base "configure" -anchor $anchor]
 ad_script_abort
 
 # Local variables:

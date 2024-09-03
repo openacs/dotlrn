@@ -23,7 +23,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     applet_key
-    {referer "applets"}
+    {referer:localurl "applets"}
 }
 
 #prevent this page from being called when it is not allowed

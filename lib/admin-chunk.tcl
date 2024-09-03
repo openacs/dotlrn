@@ -1,3 +1,7 @@
+ad_include_contract {
+    Administrator HTML chunk
+}
+
 set return_url [ad_return_url]
 
 set swa_p [acs_user::site_wide_admin_p]

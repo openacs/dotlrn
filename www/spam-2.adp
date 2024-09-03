@@ -51,5 +51,5 @@
 
 <form action="spam" method="post">
  @confirm_data;noquote@
-  <input type="submit" value="#dotlrn.Confirm#"></input>
+  <input type="submit" value="#dotlrn.Confirm#">
 </form>

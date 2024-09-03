@@ -56,7 +56,7 @@
   <msg key="Are_you_sure">Você tem certeza?</msg>
   <msg key="Are_you_sure_del_class">Tem certeza que deseja apagar o assunto?</msg>
   <msg key="are_you_sure_you_want_to_send">Você tem certeza que quer enviar</msg>
-  <msg key="arhive_group_name">Arquivar grupo %group_name%</msg>
+  <msg key="archive_group_name">Arquivar grupo %group_name%</msg>
   <msg key="Ask_a_question">Faça uma pergunta:</msg>
   <msg key="Be_sure">Tenha certeza</msg>
   <msg key="Become_this_user">Tornar-se este usuário!</msg>

@@ -44,11 +44,11 @@
         </ul>
       </li>
 
-      <li><a href="Comunities">Communities</a>
+      <li><a href="Communities">Communities</a>
         <ul>
-          <li><a href="Comunities#join-community">Join a community</a></li>
-          <li><a href="Comunities#drop-community">Drop a community</a></li>
-          <li><a href="Comunities#navigate-community-content">Navigate community content</a></li>
+          <li><a href="Communities#join-community">Join a community</a></li>
+          <li><a href="Communities#drop-community">Drop a community</a></li>
+          <li><a href="Communities#navigate-community-content">Navigate community content</a></li>
         </ul>
       </li>
                 

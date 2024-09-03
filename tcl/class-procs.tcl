@@ -88,7 +88,7 @@ namespace eval dotlrn_class {
         {-department_key:required}
     } {
         Checks if the class_key passed in is valid for the given dept name
-        i. e. there are no sibling classes with the same key
+        i.e. there are no sibling classes with the same key
 
         FIXME: Currently class keys must be globally unique
         (across all dept) since they are used to create acs_object
@@ -186,7 +186,7 @@ namespace eval dotlrn_class {
     } {
         returns the number of class instances with the given class key
     } {
-        return [db_string select_count_class_instaces {} -default 0]
+        return [db_string select_count_class_instances {} -default 0]
     }
 
     ad_proc -public new_instance {

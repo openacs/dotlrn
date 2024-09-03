@@ -51,7 +51,7 @@
   <msg key="All_Terms">All Terms</msg>
   <msg key="And">And</msg>
   <msg key="Any">Any</msg>
-  <description key="Any">Used in user search form in checkboxes to indicate that you want to search for user of any type, or users of any level of access etc, i.e. don't restrict the search with the given criteria.</description>
+  <description key="Any">Used in user search form in checkboxes to indicate that you want to search for user of any type, or users of any level of access etc., i.e., don't restrict the search with the given criteria.</description>
 
   <msg key="Applets_to_Add">Applets To Add</msg>
   <msg key="Approve">Approve</msg>
@@ -68,7 +68,7 @@
   <msg key="are_you_sure_you_want_to_send">Are you sure you want to send the following</msg>
   <description key="are_you_sure_you_want_to_send">Context?? the following what? Or is that the end of the phrase?</description>
 
-  <msg key="arhive_group_name">Archive group %group_name%</msg>
+  <msg key="archive_group_name">Archive group %group_name%</msg>
   <msg key="Ask_a_question">Ask a question:</msg>
   <msg key="Back_to_index">Back to Index</msg>
   <msg key="Be_sure">Be sure</msg>
@@ -136,7 +136,7 @@
   <msg key="Communitys_Name">Community's Name</msg>
   <msg key="Compose_bulk_message">Compose Bulk Message</msg>
   <msg key="Configure_Element">Configure Element</msg>
-  <description key="Configure_Element">Used in title on page for configuring a portal element, i.e. a portal application mini window.
+  <description key="Configure_Element">Used in title on page for configuring a portal element, i.e., a portal application mini window.
 </description>
 
   <msg key="Configure_name">Configure %name%</msg>
@@ -187,7 +187,7 @@
   <msg key="Description_1">Description:</msg>
   <msg key="Dont_Add">Don't Add</msg>
   <msg key="dotLRN_Admin">dotLRN Admin</msg>
-  <msg key="dotlrn_admin_pretty_name">.LRN Site Wide Administration</msg>
+  <msg key="dotlrn_admin_pretty_name">.LRN Site-Wide Administration</msg>
   <msg key="dotlrn_admin_rel_pretty_name">.LRN Community Membership for Administrators</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">dotLRN Admin Community Memberships</msg>
   <msg key="dotlrn_class_instance_access_key">c</msg>
@@ -247,7 +247,7 @@ notify this user.</msg>
   <msg key="First_Line">First Line</msg>
   <msg key="first_line_of_file_must_be">The first line of the file must have the following header line:</msg>
   <msg key="First_Name">First Name</msg>
-  <msg key="First_names_">Firstnames:</msg>
+  <msg key="First_names_">First Names:</msg>
   <msg key="Format">Format</msg>
   <msg key="From">From</msg>
   <msg key="fuchsia">fuchsia</msg>
@@ -266,7 +266,7 @@ notify this user.</msg>
   <msg key="goto_member_clubs_pretty_name">Go to %member_clubs.pretty_name% portal</msg>
   <msg key="goto_non_member_classes">Go to class %non_member_classes.pretty_name% portal</msg>
   <msg key="goto_non_member_clubs">Go to community %non_member_clubs.pretty_name% portal</msg>
-  <msg key="goto_oacs_swa">Goto OpenACS Site Wide Administration</msg>
+  <msg key="goto_oacs_swa">Go to OpenACS Site-Wide Administration</msg>
   <msg key="goto_subgroup_name">Go to subgroup %subgroup_name%</msg>
   <msg key="Grant_site_wide_admin">Grant site-wide administrative privileges.</msg>
   <msg key="gray">gray</msg>
@@ -327,7 +327,7 @@ notify this user.</msg>
   <msg key="lt_Add_community_name_Me">Add %community_name% Members to Another Community</msg>
   <msg key="lt_Add_Members_to_Anothe">Add Members to Another Community</msg>
   <msg key="lt_Add_members_to_anothe">Add members to another group</msg>
-  <msg key="lt_Add_These_Users_To_A_">Add These Users To A Group</msg>
+  <msg key="lt_Add_These_Users_To_A_">Add these users to a group</msg>
   <msg key="lt_Administrative_Action">Administrative Actions</msg>
   <msg key="lt_An_error_occurred_whil">An error occurred while trying to add a user to a community.  This error has been logged.</msg>
   <msg key="lt_An_error_occurred_whil_1">An error occurred while trying to remove a user to a community.  This error has been logged.</msg>
@@ -378,7 +378,7 @@ a CSV file to import here.</msg>
   <msg key="lt_Last_Visit_None_">User has not visited yet</msg>
   <msg key="lt_Last_Visit_Over_in_da">Last Visit Over (in days)</msg>
   <msg key="lt_Last_Visit_Within_in_">Last Visit Within (in days)</msg>
-  <msg key="lt_Make_this_user_a_site">Make this user a site wide admin.</msg>
+  <msg key="lt_Make_this_user_a_site">Make this user a site-wide admin.</msg>
   <msg key="lt_Manage_this_users_por">Manage this user's portrait</msg>
   <msg key="lt_No_I_dont_want_to_arc">No, I don't want to archive this group.</msg>
   <msg key="lt_Note_The_script_will_">Note: The script will continue to run even if you 
@@ -519,8 +519,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="no_departments">No %departments_pretty_plural%</msg>
   <msg key="no_description">none set up</msg>
   <msg key="No_dont_delete_it">No, don't delete it</msg>
-  <msg key="No_dotlrn-admins">No dotlrn admins
-</msg>
+  <msg key="No_dotlrn-admins">No dotLRN admins</msg>
   <msg key="No_groups_to_add_to">No groups to add to</msg>
   <msg key="No_notification_requested">No notification requested.</msg>
   <msg key="No_Site_Templates_data">No Site Templates data</msg>
@@ -575,7 +574,7 @@ This has strong repercussions. Are you user about this?</msg>
   <msg key="Recipients_Email">Recipient's Email</msg>
   <msg key="Recipients_Last_Name">Recipient's Last Name</msg>
   <msg key="red">red</msg>
-  <msg key="Referer">Referer</msg>
+  <msg key="Referer">Referrer</msg>
   <msg key="registered_user_welcome_email_body">%first_names% %last_name%,
 
 You have been added as a user to %system_name%
@@ -636,12 +635,12 @@ Thank you
   <msg key="Site_Template_Adding">Add Site Template</msg>
   <msg key="Site_Template_AdminParams">Admin Parameters for Site Templating</msg>
   <msg key="Site_Template_Commchange">Can community administrators change the Community's Site Template?</msg>
-  <msg key="Site_Template_Commdefault">Default Site Tamplate for communities</msg>
+  <msg key="Site_Template_Commdefault">Default Site Template for communities</msg>
   <msg key="Site_Template_Editting">Edit Site Template</msg>
   <msg key="Site_Template_ID">Site Template ID</msg>
   <msg key="Site_Template_Name">Site Template Name</msg>
   <msg key="Site_Template_Name_help">Provide a pretty name for this Site Template</msg>
-  <msg key="Site_Template_Nonedefault">Master Tempalate used for not registered visitors.</msg>
+  <msg key="Site_Template_Nonedefault">Master Template used for not registered visitors.</msg>
   <msg key="Site_Template_Portal_theme">Associated Portal Theme</msg>
   <msg key="Site_Template_Portal_theme_help">Select a portal theme. This portal theme is going to be used for the Site Template.</msg>
   <msg key="Site_Template_Sitemaster">Master Template</msg>

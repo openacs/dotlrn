@@ -136,13 +136,13 @@ BEGIN
         'rel_id',
         'dotlrn_student_rel',
         'dotlrn_class_instance', 
-	null, 
+        null, 
         0, 
-	null::integer,
+        null::integer,
         'user',
-	'student',
+        'student',
         0, 
-	null::integer
+        null::integer
     );
 
     perform acs_rel_type__create_type (

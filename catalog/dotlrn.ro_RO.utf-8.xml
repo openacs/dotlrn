@@ -52,7 +52,7 @@
   <msg key="archived_groups">Arhivat %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Are you sure?</msg>
   <msg key="are_you_sure_you_want_to_send">Sunteţi sigur că vreţi să trimiteţi următoarele</msg>
-  <msg key="arhive_group_name">Archive group %group_name%</msg>
+  <msg key="archive_group_name">Archive group %group_name%</msg>
   <msg key="Ask_a_question">Pune o întrebare</msg>
   <msg key="Be_sure">Fiţi sigur</msg>
   <msg key="Become_this_user">Deveniţi acest utilizator</msg>

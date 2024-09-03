@@ -179,7 +179,12 @@ template::list::create \
 }
 
 db_multirow member_classes $member_query {} {
-    set role [template::util::nvl [dotlrn_community::get_role_pretty_name -community_id $class_instance_id -rel_type $rel_type] [_ dotlrn.student_role_pretty_name]]
+    set role [dotlrn_community::get_role_pretty_name \
+                  -community_id $class_instance_id \
+                  -rel_type $rel_type]
+    if {$role eq ""} {
+        set role [_ dotlrn.student_role_pretty_name]
+    }
 }
 
 template::list::create -name member_clubs -multirow member_clubs -pass_properties { show_drop_button_p referer } -html {width 100%} -elements {
@@ -312,7 +317,7 @@ template::list::create -name non_member_classes -multirow non_member_classes -pa
 }
 
 db_multirow non_member_classes $non_member_query {} {
-    regsub -all {<p>} $description {<br>} description
+    regsub -all -- {<p>} $description {<br>} description
 }
 
 template::list::create -name non_member_clubs -multirow non_member_clubs -pass_properties { show_drop_button_p referer swa_p} -html {width 100%} -elements {
@@ -349,7 +354,7 @@ template::list::create -name non_member_clubs -multirow non_member_clubs -pass_p
 }
 
 db_multirow non_member_clubs select_non_member_clubs {} {
-    regsub -all {<p>} $description {<br>} description
+    regsub -all -- {<p>} $description {<br>} description
 }
 
 

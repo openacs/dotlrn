@@ -84,7 +84,7 @@ namespace eval dotlrn_applet {
         {-applet_key:required}
     } {
         Get the id of the dotlrn applet from the applet key or the null
-        string if the key dosent exist.
+        string if the key does not exist.
     } {
         return [db_string select {} -default ""]
     }
@@ -193,6 +193,23 @@ namespace eval dotlrn_applet {
         Call a particular applet op.
     } {
         acs_sc::invoke -contract dotlrn_applet -operation $op -call_args $list_args -impl $applet_key
+    }
+
+    ad_proc -public remove_applet_from_dotlrn {
+        {-applet_key:required}
+    } {
+        Remove applet.
+
+        @param applet_key Applet key
+    } {
+        if {[get_applet_id_from_key -applet_key $applet_key] eq ""} {
+            return
+        }
+
+        db_transaction {
+            db_dml remove_community_applet {}
+            db_dml remove_applet {}
+        }
     }
 
 }

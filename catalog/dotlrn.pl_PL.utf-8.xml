@@ -45,7 +45,7 @@
   <msg key="archived_groups">Zarchiwizowane %groups_pretty_plural% </msg>
   <msg key="Are_you_sure">Na pewno?</msg>
   <msg key="are_you_sure_you_want_to_send">Ale, czy na pewno chcesz wysłać następujący</msg>
-  <msg key="arhive_group_name">Archiwizuj grupę %group_name%</msg>
+  <msg key="archive_group_name">Archiwizuj grupę %group_name%</msg>
   <msg key="Ask_a_question">Zadaj pytanie:</msg>
   <msg key="Be_sure">Na pewno</msg>
   <msg key="Become_this_user">Podszyj się pod tego użytkownika!</msg>

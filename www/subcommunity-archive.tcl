@@ -34,7 +34,7 @@ if {$community_id eq ""} {
 set user_id [ad_conn user_id]
 dotlrn::require_user_admin_community -community_id $community_id
 set pretty_name [dotlrn_community::get_community_name $community_id]
-set title [_ dotlrn.arhive_group_name [list group_name $pretty_name]]
+set title [_ dotlrn.archive_group_name [list group_name $pretty_name]]
 
 form create archive_form
 

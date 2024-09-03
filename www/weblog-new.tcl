@@ -23,12 +23,15 @@ ad_page_contract {
 } -query {
     {referer "control-panel"}
 } -validate {
-    
+
 }
 
 set user_id [auth::require_login]
 
-set weblog_package_id [site_node_apm_integration::get_child_package_id  -package_key "forums"]
+set weblog_package_id [lindex [site_node::get_children \
+                                   -package_key forums \
+                                   -element object_id \
+                                   -node_id [ad_conn node_id]] 0]
 set existing_forum_ids [db_list weblog_forum_id {select forum_id from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}]
 
 if {![llength $existing_forum_ids]} {
@@ -43,32 +46,31 @@ if {![llength $existing_forum_ids]} {
 
 
     db_transaction {
-	set forum_id [forum::new -name $name \
-		-charter $charter \
-		-presentation_type $presentation_type \
-		-posting_policy $posting_policy \
-		-package_id $weblog_package_id \
-		]
+        set forum_id [forum::new \
+                          -name $name \
+                          -charter $charter \
+                          -presentation_type $presentation_type \
+                          -posting_policy $posting_policy \
+                          -package_id $weblog_package_id \
+                          -new_questions_allowed_p f \
+                         ]
 
+         #Only this user can create new threads.
+         permission::grant -object_id $forum_id -party_id $user_id -privilege forum_moderate
 
-	#Only this user can create new threads.
-	forum::new_questions_deny -forum_id $forum_id
-	forum::new_questions_allow -forum_id $forum_id -party_id $user_id
-
-	#Everyone should be subscribed to their weblog!
-
-	notification::request::new -object_id $forum_id \
-		-type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
-		-user_id $user_id \
-		-interval_id [notification::get_interval_id -name "instant"] \
-		-delivery_method_id [notification::get_delivery_method_id -name "email"]
+         #Everyone should be subscribed to their weblog!
+         notification::request::new -object_id $forum_id \
+             -type_id [notification::type::get_type_id -short_name "forums_forum_notif"] \
+             -user_id $user_id \
+             -interval_id [notification::interval::get_id_from_name -name "instant"] \
+             -delivery_method_id [notification::delivery::get_id -short_name "email"]
     }
 } else {
     set forum_id [lindex $existing_forum_ids 0]
     #Probably a double click, send them to their first existing enabled weblog.
 }
 
-ad_returnredirect "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view?forum_id=$forum_id"
+ad_returnredirect [site_node::get_url_from_object_id -object_id $weblog_package_id]/forum-view?forum_id=$forum_id
 ad_script_abort
 
 # Local variables:

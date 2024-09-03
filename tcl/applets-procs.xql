@@ -45,4 +45,23 @@
         </querytext>
     </fullquery>
 
+    <fullquery name="dotlrn_applet::remove_applet_from_dotlrn.remove_community_applet">
+        <querytext>
+            delete
+            from dotlrn_community_applets
+            where applet_id in
+                (select applet_id
+                   from dotlrn_applets
+                  where applet_key = :applet_key)
+        </querytext>
+    </fullquery>
+
+    <fullquery name="dotlrn_applet::remove_applet_from_dotlrn.remove_applet">
+        <querytext>
+            delete
+            from dotlrn_applets
+            where applet_key = :applet_key
+        </querytext>
+    </fullquery>
+
 </queryset>

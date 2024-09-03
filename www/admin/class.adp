@@ -44,7 +44,7 @@
 	 
 	<br>
 
-	<if @can_instantiate@>
+	<if @can_instantiate;literal@ true>
 		  <a href="class-instance-new?class_key=@class_key@" class="button">#dotlrn.new_class_instance#</a> 
       </if>
       <else>

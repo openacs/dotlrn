@@ -263,8 +263,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'course_admin_pretty_name',
         datatype => 'string',
-        pretty_name => 'Course Adminsitrator Pretty Name',
-        pretty_plural => 'Course Adminsitrator Pretty Name',
+        pretty_name => 'Course Administrator Pretty Name',
+        pretty_plural => 'Course Administrator Pretty Name',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'
@@ -274,8 +274,8 @@ begin
         object_type => 'dotlrn_community',
         attribute_name => 'course_admin_pretty_plural',
         datatype => 'string',
-        pretty_name => 'Course Adminsitrator Pretty Plural',
-        pretty_plural => 'Course Adminsitrator Pretty Plural',
+        pretty_name => 'Course Administrator Pretty Plural',
+        pretty_plural => 'Course Administrator Pretty Plural',
         min_n_values => 0,
         max_n_values => 1,
         storage => 'generic'

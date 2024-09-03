@@ -6,43 +6,42 @@
     <pretty-plural>dotLRN</pretty-plural>
     <initial-install-p>f</initial-install-p>
     <singleton-p>f</singleton-p>
-    
-    <version name="2.10.0d4" url="http://openacs.org/repository/download/apm/dotlrn-2.10.0d4.apm">
+
+    <version name="2.10.1"  url="http://openacs.org/repository/download/apm/dotlrn-2.10.1.apm">
         <owner url="http://openacs.org">OpenACS</owner>
         <summary>A Course Management System</summary>
-        <release-date>2017-08-06</release-date>
+        <release-date>2024-09-02</release-date>
         <vendor url="http://dotlrn.org">DotLRN Consortium</vendor>
-	<maturity>2</maturity>
+        <maturity>2</maturity>
         <description format="text/html">Course Management</description>
 
-        <provides url="dotlrn" version="2.10.0d4"/>
-        <requires url="acs-kernel" version="5.9.1"/>
-	<requires url="acs-tcl" version="5.10.0d10"/>
-        <requires url="acs-subsite" version="5.9.1"/>
-	<requires url="acs-admin" version="5.9.1"/>
-        <requires url="acs-mail-lite" version="5.9.1"/>
-        <requires url="acs-lang" version="5.9.1"/>
+        <provides url="dotlrn" version="2.10.1"/>
+        <requires url="acs-tcl" version="5.10.1"/>
+        <requires url="acs-subsite" version="5.10.1"/>
+        <requires url="acs-admin" version="5.10.1"/>
+        <requires url="acs-mail-lite" version="5.10.1"/>
+        <requires url="acs-lang" version="5.10.1"/>
         <requires url="attachments" version="0.11"/>
-        <requires url="new-portal" version="2.10.0d0"/>
-        <requires url="profile-provider" version="2.10.0d0"/>
-        <requires url="user-profile" version="2.10.0d0"/>
+        <requires url="new-portal" version="2.10.1"/>
+        <requires url="profile-provider" version="2.10.1"/>
+        <requires url="user-profile" version="2.10.1"/>
 
-	<install package="dotlrn-bm"/>
-	<install package="dotlrn-calendar"/>
-	<install package="dotlrn-dotlrn"/>
-	<install package="dotlrn-faq"/>
-	<install package="dotlrn-forums"/>
-	<install package="dotlrn-fs"/>
-	<install package="dotlrn-homework"/>
-	<install package="dotlrn-news"/>
-	<install package="dotlrn-portlet"/>
-	<install package="dotlrn-static"/>
-	<install package="dotlrn-assessment"/>
-	<install package="dotlrn-evaluation"/>
-	<install package="theme-zen" />
+        <install package="dotlrn-bm"/>
+        <install package="dotlrn-calendar"/>
+        <install package="dotlrn-dotlrn"/>
+        <install package="dotlrn-faq"/>
+        <install package="dotlrn-forums"/>
+        <install package="dotlrn-fs"/>
+        <install package="dotlrn-homework"/>
+        <install package="dotlrn-news"/>
+        <install package="dotlrn-portlet"/>
+        <install package="dotlrn-static"/>
+        <install package="dotlrn-assessment"/>
+        <install package="dotlrn-evaluation"/>
+        <install package="theme-zen" />
 
         <callbacks>
-	  <callback type="after-install"  proc="dotlrn::apm::after_install"/>
+            <callback type="after-install"  proc="dotlrn::apm::after_install"/>
             <callback type="after-instantiate"  proc="dotlrn::apm::after_instantiate"/>
             <callback type="after-upgrade"  proc="dotlrn::apm::after_upgrade"/>
             <callback type="before-uninstall"  proc="dotlrn::apm::before_uninstall"/>
@@ -59,7 +58,7 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultCommunityJoinMailP"  default="0" description="If there is no welcome mail for new members in the database, should a default one be send?" section_name="Communities"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultMaster_p"  default="/packages/dotlrn/www/dotlrn-master" description="Default master for public pages ( user_id = 0 )" section_name=".LRN Portal Types"/>
 <!--
-  
+
 *** THIS SHOULD BE INSTALLED BY THEME ZEN *****
 
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="DefaultSiteTemplate"  default="#theme-zen.Zen_Theme#" description="The name of the default site template"/>
@@ -98,10 +97,10 @@
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_club"  default="dotlrn_club" description="Defines which subtype of dotlrn portal type is going to be used by default when creating a new Subgruop portal." section_name=".LRN Portal Types"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_community"  default="dotlrn_community" description="Defines which subtype of dotlrn portal type is going to be used by default when creating a new Community portal.  	" section_name=".LRN Portal Types"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_level_p"  description="Whether this is the top-level instantiation of the DotLRN package"/>
-            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="#dotlrn.dotlrn_main_portlet_pretty_name#" description="The pretty name for the dotlrn main portlet (a.k.a. &quot;My Groups&quot;)"/>
+            <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_pretty_name"  default="#dotlrn.dotlrn_main_portlet_pretty_name#" description="The pretty name for the dotlrn main portlet (aka &quot;My Groups&quot;)"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="dotlrn_main_portlet_region"  default="2" description="The region of the user's workspace portal to put the dotlrn main portlet into. 1 is the leftmost. 2 is the next region to the left. etc."/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_toolbar_enabled_p"  default="0" description="Enable or disable the dotlrn toolbar" section_name="Toolbar"/>
-            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_toolbar_show_info_p"  default="0" description="Show relevant information to developpers." section_name="Toolbar"/>
+            <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="dotlrn_toolbar_show_info_p"  default="0" description="Show relevant information to developers." section_name="Toolbar"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="group_type_key"  default="dotlrn_community" description="Class Group Type"/>
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="hide_personal_portal_p"  default="0" description="Some systems may wish to keep the personal portal hidden.  Setting this value to 1 will cause dotlrn to exclude navigation to the personal portal from community portals, and disable the entire navbar on non-community portal pages."/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="non_member_layout_name"  default="#new-portal.simple_2column_layout_name#" description="The name of the not a member page"/>
@@ -113,7 +112,7 @@
             <parameter datatype="number"  min_n_values="1"  max_n_values="1"  name="user"  default="user" description="Defines which subtype of dotlrn portal type is going to be used by default when creating a new User portal." section_name=".LRN Portal Types"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pages_csv"  default="#dotlrn.user_portal_page_home_title#,#new-portal.simple_2column_layout_name#,#dotlrn.user_portal_page_home_accesskey#;#dotlrn.user_portal_page_calendar_title#,#new-portal.simple_1column_layout_name#,#dotlrn.user_portal_page_calendar_accesskey#;#dotlrn.user_portal_page_file_storage_title#,#new-portal.simple_1column_layout_name#,#dotlrn.user_portal_page_file_storage_accesskey#" description="a csv list of the other pages to create on the user wsp by default"/>
             <parameter datatype="string"  min_n_values="1"  max_n_values="1"  name="user_portal_pretty_name"  default="#dotlrn.user_portal_pretty_name#" description="the pretty name for the user portal"/>
-        </parameters>
+          </parameters>
 
     </version>
 </package>

@@ -23,7 +23,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     {department_key ""}
-    {referer classes}
+    {referer:localurl classes}
 } -properties {
     title:onevalue
     context_bar:onevalue

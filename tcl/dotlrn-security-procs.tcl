@@ -73,12 +73,11 @@ namespace eval dotlrn {
     } {
         check if a user is a dotLRN user
     } {
-        return [db_string select_count {
-            select count(*)
+        return [db_string select_exists {
+            select case when exists (select 1
+                                     from dotlrn_users
+                                     where user_id = :user_id) then 1 else 0 end
             from dual
-            where exists (select 1
-                          from dotlrn_users
-                          where user_id = :user_id)
         }]
     }
 
@@ -293,10 +292,10 @@ namespace eval dotlrn {
         Check if a user can read sensitive data in dotLRN
     } {
         if { [parameter::get -parameter protect_private_data_p -default 1] } {
-            return [acs_privacy::user_can_read_private_data_p \
-                        -user_id $user_id \
-                        -object_id $object_id
-                   ]
+            return [permission::permission_p \
+                        -party_id $user_id \
+                        -object_id $object_id \
+                        -privilege read_private_data]
         } else {
             return 1
         }

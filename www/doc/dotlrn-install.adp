@@ -115,7 +115,7 @@
 
   <h2>Install dotLRN on your system</h2>
   <p>
-     Go to the &quot;Site Wide Administration&quot; on your system
+     Go to the &quot;Site-Wide Administration&quot; on your system
      at <a href="/acs-admin">/acs-admin/</a> and hit the
      &quot;Install software&quot; link, then the "Install from local" one 
 	 and finally choose "Service" type. After the installer loads, you

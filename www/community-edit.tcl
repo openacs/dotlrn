@@ -23,7 +23,7 @@ ad_page_contract {
     @cvs-id $Id$
 
 } -query {
-    {referer "one-community-admin"}
+    {referer:localurl "one-community-admin"}
 }
 
 set user_id [ad_conn user_id]
@@ -31,44 +31,44 @@ set community_id [dotlrn_community::get_community_id]
 dotlrn::require_user_admin_community -user_id $user_id -community_id $community_id
 
 ad_form -name edit_community_info -form {
-    
+
     {pretty_name:text(text)
-	{label "#dotlrn.Name#"}
-	{html {size 60}}
+        {label "#dotlrn.Name#"}
+        {html {size 60}}
     }
 
     {description:text(textarea),optional
-	{label "#dotlrn.Description#"}
-	{html {rows 5 cols 60}}
-	{help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
-    }	
-    
+        {label "#dotlrn.Description#"}
+        {html {rows 5 cols 60}}
+        {help_text "[_ dotlrn.lt_do_not_use_p_tags]"}
+    }
+
     {active_start_date:date(date),to_sql(ansi),from_sql(ansi),optional
-	{label "#dotlrn.Start_date#"}
+        {label "#dotlrn.Start_date#"}
     }
 
     {active_end_date:date(date),to_sql(ansi),from_sql(ansi),optional
-	{label "#dotlrn.End_date#"}
+        {label "#dotlrn.End_date#"}
     }
 
 } -on_request {
 
-    db_1row get_community_info {select pretty_name, description, active_start_date, active_end_date from dotlrn_communities_all where community_id = :community_id} 
+    db_1row get_community_info {select pretty_name, description, active_start_date, active_end_date from dotlrn_communities_all where community_id = :community_id}
 
 } -on_submit {
 
     db_dml update_community_info {update dotlrn_communities_all
-	set pretty_name = :pretty_name,
-	description = :description,
-	active_start_date = to_date(:active_start_date , 'YYYY-MM-DD HH24:MI:SS'),
-	active_end_date = to_date(:active_end_date , 'YYYY-MM-DD HH24:MI:SS')
-	where community_id = :community_id
+        set pretty_name = :pretty_name,
+        description = :description,
+        active_start_date = to_date(:active_start_date , 'YYYY-MM-DD HH24:MI:SS'),
+        active_end_date = to_date(:active_end_date , 'YYYY-MM-DD HH24:MI:SS')
+        where community_id = :community_id
     }
 
     dotlrn_community::set_community_name \
         -community_id $community_id \
-        -pretty_name $pretty_name    
-    
+        -pretty_name $pretty_name
+
     ad_returnredirect $referer
     ad_script_abort
 }
@@ -141,53 +141,45 @@ set header_alt_text [dotlrn_community::get_attribute \
 set revision_id [dotlrn_community::get_attribute \
       -community_id $community_id \
       -attribute_name header_logo_item_id
-  ]
+]
 
-# Default logos are served from known locations in the file system
+# Default logos are served from known locations in the filesystem
 # based on community type.
 
 # Customized logos are stored in the public file-storage folder
 # for the community.
- 
+
 if {$revision_id eq ""} {
 
     set comm_type [dotlrn_community::get_community_type_from_community_id $community_id]
 
     set temp_community_id $community_id
     while {[dotlrn_community::subcommunity_p -community_id $temp_community_id]} {
-	# For a subcommunity, we use the logo of the
-	# the first ancestor that is not a sub_community
+        # For a subcommunity, we use the logo of the
+        # the first ancestor that is not a sub_community
 
-	set temp_community_id [dotlrn_community::get_parent_id -community_id $temp_community_id]
-	set comm_type [dotlrn_community::get_community_type_from_community_id $temp_community_id]
- 
+        set temp_community_id [dotlrn_community::get_parent_id -community_id $temp_community_id]
+        set comm_type [dotlrn_community::get_community_type_from_community_id $temp_community_id]
     }
 
     if {$comm_type eq "dotlrn_club"} {
-	#community colors
-	set scope_name "comm"
+        #community colors
+        set scope_name "comm"
     } else {
-	set scope_name "course"
+        set scope_name "course"
     }
-    
+
     set header_url ""
 
 } else {
     set item_id [content::revision::item_id -revision_id $revision_id]
     set header_url "[subsite::get_url]image/$item_id"
 }
- 
+
 set doc(title) [_ dotlrn.Edit_Properties]
 set context [list [list one-community-admin [_ dotlrn.Admin]] $doc(title)]
 
 ad_return_template
-
-
-
-
-
-
-
 
 # Local variables:
 #    mode: tcl

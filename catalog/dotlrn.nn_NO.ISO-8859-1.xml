@@ -52,7 +52,7 @@
   <msg key="archived_groups">Arkivert %groups_pretty_plural%</msg>
   <msg key="Are_you_sure">Er du sikker?</msg>
   <msg key="are_you_sure_you_want_to_send">Er du sikker på at du vil sende følgjande</msg>
-  <msg key="arhive_group_name">Arkiver gruppe %group_name%</msg>
+  <msg key="archive_group_name">Arkiver gruppe %group_name%</msg>
   <msg key="Ask_a_question">Spør eit spørsmål:</msg>
   <msg key="Be_sure">ver sikker</msg>
   <msg key="Become_this_user">Bli denne brukaren!</msg>
@@ -138,7 +138,7 @@
   <msg key="Description_1">Omtale:</msg>
   <msg key="Dont_Add">Ikkje legg til</msg>
   <msg key="dotLRN_Admin">dotLRN Admin</msg>
-  <msg key="dotlrn_admin_pretty_name">.LRN Site Wide Administration</msg>
+  <msg key="dotlrn_admin_pretty_name">.LRN Site-Wide Administration</msg>
   <msg key="dotlrn_admin_rel_pretty_name">.LRN Admin-gruppe medlemskap</msg>
   <msg key="dotlrn_admin_rel_pretty_plural">.LRN Admin-gruppe medlemskap</msg>
   <msg key="dotlrn_class_instance_description">f. ex. 6.001 </msg>
@@ -282,7 +282,7 @@
   <msg key="lt_Last_Visit_None_">Brukaren har ikkje vitja enno</msg>
   <msg key="lt_Last_Visit_Over_in_da">Siste besøk over (i dagar)</msg>
   <msg key="lt_Last_Visit_Within_in_">Siste besøk innan (i dagar)</msg>
-  <msg key="lt_Make_this_user_a_site">Gjer denne brukaren site wide admin.</msg>
+  <msg key="lt_Make_this_user_a_site">Gjer denne brukaren site-wide admin.</msg>
   <msg key="lt_Manage_this_users_por">Organiser bilete for denne brukaren</msg>
   <msg key="lt_No_I_dont_want_to_arc">Nei, eg vil ikkje arkivere denne gruppa</msg>
   <msg key="lt_Note_The_script_will_">Merk: Skriptet vil fortsetje å eksekvere sjølv om du vel å slå av web-lesaren.</msg>

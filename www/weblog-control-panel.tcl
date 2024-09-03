@@ -25,12 +25,14 @@ ad_page_contract {
 set user_id [auth::require_login]
 
 
-set dotlrn_package_id [dotlrn::get_package_id]
+set weblog_package_id [lindex [site_node::get_children \
+                                   -package_key forums \
+                                   -element object_id \
+                                   -node_id [ad_conn node_id]] 0]
 
-set weblog_package_id [site_node_apm_integration::get_child_package_id  -package_key "forums"]
+set weblog_url [site_node::get_url_from_object_id -object_id $weblog_package_id]/forum-view
 
-set weblog_url "[dotlrn_community::get_url -package_id $weblog_package_id]/forum-view"
-db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as lastest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}
+db_multirow weblogs weblogs {select name, forum_id, to_char(o.last_modified, 'Mon DD, YYYY') as latest_post from forums_forums_enabled f, acs_objects o where o.object_id = forum_id and o.creation_user = :user_id and f.package_id = :weblog_package_id}
 
 
 ad_return_template

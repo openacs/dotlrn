@@ -21,7 +21,7 @@ ad_page_contract {
     @creation-date 2001-12-13
     @cvs-id $Id$
 } -query {
-    {referer "terms"}
+    {referer:localurl "terms"}
 } -properties {
     context_bar:onevalue
 }
@@ -34,33 +34,13 @@ ad_form -name add_term -export referer -form {
     {term_name:text          {label "[_ dotlrn.Term_eg_Spring_Fall]"} {maxlength 20}
     {html {size 30}}}
 
-    {start_date:text(text)
+    {start_date:text(h5date)
 	{label "[_ dotlrn.Start_Date]"}
-	#{format {[lc_get formbuilder_date_format]}}
-	{html {id start_date}}
-	{after_html {<input type='reset' value=' ... '> \[<b>yyyy-mm-dd </b>\]
-        }}
     }
-
-    {end_date:text(text)
+    {end_date:text(h5date)
 	{label "[_ dotlrn.End_Date]"}
-	#{format {[lc_get formbuilder_date_format]}}
-	{html {id end_date}}
-	{after_html {<input type='reset' value=' ... '> \[<b>yyyy-mm-dd </b>\]
-        }}
     }
 
-} -on_request {
-    template::add_body_script -script [subst {
-        document.getElementById('start_date').addEventListener('click', function (event) {
-            event.preventDefault();
-            showCalendar('start_date', 'yyyy-mm-dd');
-        });
-        document.getElementById('end_date').addEventListener('click', function (event) {
-            event.preventDefault();
-            showCalendar('end_date', 'yyyy-mm-dd');
-        });
-    }]
 } -validate {
     {start_date
         { [template::util::date::compare $start_date $end_date] <= 0 }

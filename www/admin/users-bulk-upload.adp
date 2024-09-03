@@ -81,7 +81,7 @@
     Joe,Student,joe@_somewhere_.net,joestue,4jfe3,student,full,f,f
     Albert,Einstein,al@_school_.edu,al,emc2,professor,full,f,t
     Systems,Hacker,syshacker@_company_.com,syshack,,admin
-    Intersted,Onlooker,onlooker@_somewhere_.net,,,external,limited,t,t
+    Interested,Onlooker,onlooker@_somewhere_.net,,,external,limited,t,t
   </pre>
   
 <p style="text-indent: 1em">
@@ -91,10 +91,10 @@
 <div style="padding-left: 1em">
 
   <FORM enctype="multipart/form-data" method=post action="users-bulk-upload-2">
-  <INPUT TYPE=file name=users_csv_file>
+  <INPUT TYPE="file" name="users_csv_file">
   <br>
   <br>
-  <INPUT TYPE=submit value="#dotlrn.upload#">
+  <INPUT TYPE="submit" value="#dotlrn.upload#">
   </FORM>
 </div>
 

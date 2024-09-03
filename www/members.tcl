@@ -23,8 +23,8 @@ ad_page_contract {
 } {
     {orderby:token,optional "last_name,asc"}
     {csv:optional}
-    {reset:optional}
-    {reltype:optional}
+    {reset ""}
+    {reltype ""}
 }
 
 set my_user_id [ad_conn user_id]
@@ -64,7 +64,7 @@ set actions ""
 
 if {$admin_p && !$csv_p} {
     set bulk_actions [list "[_ dotlrn.Drop_Membership]" "deregister" "[_ dotlrn.Drop_Membership]"]
-    set bulk_actions_export_vars [list "user_id" "referer" "reset"]
+    set bulk_actions_export_vars {user_id referer reset}
 
     if { !$subcomm_p } {
         lappend actions \
@@ -80,7 +80,7 @@ if {$admin_p && !$csv_p} {
     lappend actions "CSV" "members?csv=yes" [_ dotlrn.Export_members_list_to_CSV]
 
     foreach role $rel_types {
-        set action_label "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]" 
+        set action_label "[_ dotlrn.Remove_all] [lang::util::localize [lindex $role 3]]"
         lappend actions  $action_label "member-confirm?reset=1&reltype=[lindex $role 0]" $action_label
     }
 }
@@ -113,7 +113,7 @@ set elm_list {
     } role {
         label "[_ dotlrn.Role]"
         html "align left"
-    } 
+    }
 }
 
 if {$admin_p && !$csv_p} {
@@ -122,7 +122,7 @@ if {$admin_p && !$csv_p} {
         html "align left"
         display_template {
             <if @members.user_id@ ne \"\">
-            <a href="member-confirm?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> | 
+            <a href="member-confirm?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.Drop_Membership#</a> |
             <a href="member-add-2?user_id=@members.user_id@&amp;referer=@members.member_referer@">#dotlrn.User_Admin_Page#</a>
             </if>
         }
@@ -242,15 +242,16 @@ if {$subcomm_p} {
 
 }
 
-if {[info exists reset] && $reset ne ""
-    && [info exists reltype] && $reltype ne ""} {
+set form [ns_getform]
+if {$form ne "" && $reset ne "" && $reltype ne ""} {
     set result ""
     db_multirow reset_members select_members {} {
-        rp_form_put user_id $member_id
+        ns_set put $form user_id $member_id
     }
-    rp_form_put referer "one-community"
-    rp_form_put community_id $community_id
+    ns_set put $form referer "one-community"
+    ns_set put $form community_id $community_id
     rp_internal_redirect "deregister"
+    ad_script_abort
 }
 
 ad_return_template

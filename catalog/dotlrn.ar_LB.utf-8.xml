@@ -52,7 +52,7 @@
   <msg key="archived_groups">%groups_pretty_plural% مؤرشفون</msg>
   <msg key="Are_you_sure">هَلْ أنت متأكّد؟</msg>
   <msg key="are_you_sure_you_want_to_send">هل أنت متأكّدة أنّك تُريدُ إرْسال التالي</msg>
-  <msg key="arhive_group_name">أرشيف مجموعة %group_name%</msg>
+  <msg key="archive_group_name">أرشيف مجموعة %group_name%</msg>
   <msg key="Ask_a_question">إسألْ سؤالاً:</msg>
   <msg key="Be_sure">كنْ متأكّداً</msg>
   <msg key="Become_this_user">أصبحْ هذا المستخدم!</msg>

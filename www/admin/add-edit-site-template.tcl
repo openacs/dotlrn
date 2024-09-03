@@ -7,7 +7,7 @@ ad_page_contract {
     @cvs-id $Id$
 } {
     site_template_id:naturalnum,optional
-    referer:notnull
+    referer:localurl,notnull
     {pretty_name ""}
     {site_master ""}
 } -properties {

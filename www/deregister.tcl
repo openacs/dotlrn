@@ -22,9 +22,9 @@ ad_page_contract {
     @creation-date 2001-10-06
     @cvs-id $Id$
 } -query {
-    {user_id:multiple,integer ""}
-    {community_id:integer ""}
-    {referer "./"}
+    {user_id:multiple,object_id ""}
+    {community_id:object_id ""}
+    {referer:localurl "./"}
 }
 
 
@@ -49,25 +49,25 @@ if {$user_id eq ""} {
 }
 
 foreach member_id $user_id {
- 
+
     # This is catch most double clicks.
     # The catch will take care of cases where the double click is too fast.
 
     if {[dotlrn_community::member_p $community_id $member_id]} {
-	if {[catch {
-	    dotlrn_community::remove_user $community_id $member_id
-	} errmsg]} {
+        if {[catch {
+            dotlrn_community::remove_user $community_id $member_id
+        } errmsg]} {
 
-	    if {![dotlrn_community::member_p $community_id $user_id]} {
-		# assume this was a double click
-		ad_returnredirect $referer
-		ad_script_abort
-	    } else {
-		ns_log Error "deregister.tcl failed: $errmsg"
-		ReturnHeaders
-		ad_return_error "[_ dotlrn.lt_Error_removing_user_c]"  "[_ dotlrn.lt_An_error_occurred_whil_1]"
-	    }
-	}
+            if {![dotlrn_community::member_p $community_id $user_id]} {
+            # assume this was a double click
+                ad_returnredirect $referer
+                ad_script_abort
+            } else {
+                ns_log Error "deregister.tcl failed: $errmsg"
+                util_return_headers
+                ad_return_error "[_ dotlrn.lt_Error_removing_user_c]"  "[_ dotlrn.lt_An_error_occurred_whil_1]"
+            }
+        }
     }
 }
 

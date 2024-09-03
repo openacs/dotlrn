@@ -60,7 +60,14 @@ namespace eval dotlrn_user_extension {
                                              -package_id [dotlrn::get_package_id] \
                                              -default 1]
 
-		set guest_p [ad_decode $read_private_data_p 1 0 0 1 $read_private_data_p]
+                # apisano: this was previous version of this
+                # line. Basically, if one would supply e.g. '57' as a
+                # value in the parameter, this would have taken over
+                # the guest_p value as well. I decided to normalize
+                # the boolean and the turn it, as seems a saner
+                # behavior.
+		# set guest_p [ad_decode $read_private_data_p 1 0 0 1 $read_private_data_p]
+                set guest_p [expr {![string is true -strict $read_private_data_p]}]
 
                 # create the dotLRN user now
                 db_transaction {

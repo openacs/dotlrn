@@ -22,7 +22,7 @@ ad_page_contract {
     @cvs-id $Id$
 } -query {
     class_key:notnull
-    {referer ""}
+    {referer:localurl ""}
 }
 
 #Pages in this directory are only runnable by dotlrn-wide admins.

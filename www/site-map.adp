@@ -98,7 +98,7 @@
         </ul>
       </li>
 
-      <if @dotlrn_admin_p>
+      <if @dotlrn_admin_p;literal@ true>
         <li>
           <a href="@dotlrn_admin_url@">#dotlrn.Administration#</a>
           <include src="/packages/dotlrn/lib/admin-chunk">

@@ -3,7 +3,7 @@ ad_page_contract {
 } -query {
     {user_id:multiple,integer ""}
     {community_id:integer ""}
-    {referer "./"}
+    {referer:localurl "./"}
 }
 
 set doc(title) [_ dotlrn.Confirm_Drop]
@@ -17,7 +17,8 @@ ad_form -name deregister-self-confirm \
     -has_submit 1 \
     -form {
         {confirm_message:text(inform) 
-            {label "[_ dotlrn.Are_you_sure_you_want_to_drop]"}
+            {label ""}
+            {value "[_ dotlrn.Are_you_sure_you_want_to_drop]"}
         }
         {drop_btn:text(submit) 
             {label "[_ dotlrn.Drop_Membership]"}

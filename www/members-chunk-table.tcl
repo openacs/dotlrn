@@ -68,10 +68,10 @@ set parent_community_name [dotlrn_community::get_parent_name -community_id $comm
 set community_name [dotlrn_community::get_community_name $community_id]
 
 if {$order_direction eq "asc" } {
-    set order_html "<img src=\"/resources/dotlrn/down.gif\" height=15 width=15>"
+    set order_html "↓"
     set opposite_order_direction "desc"
 } else {
-    set order_html "<img src=\"/resources/dotlrn/up.gif\" height=15 width=15>"
+    set order_html "↑"
     set opposite_order_direction "asc"
 }
 
@@ -124,8 +124,17 @@ set bio_attribute_id [db_string bio_attribute_id {
 
 set order_by "$order $order_direction"
 
-db_multirow -extend { community_member_url } current_members select_current_members {} {
+db_multirow -extend {
+    community_member_url
+    role_pretty_name
+} current_members select_current_members {} {
     set community_member_url [acs_community_member_url -user_id $user_id]
+    set role_pretty_name [dotlrn_community::get_role_pretty_name \
+                              -community_id $community_id \
+                              -rel_type $rel_type]
+    if {$role_pretty_name eq ""} {
+        set role_pretty_name Student
+    }
 }
 
 db_multirow pending_users select_pending_users {
@@ -141,7 +150,7 @@ db_multirow pending_users select_pending_users {
     set role [dotlrn_community::get_role_pretty_name -community_id $community_id -rel_type $rel_type]
 }
 
-# If we are in a subcomm. get the list of the users of the parent
+# If we are in a subcomm. Get the list of the users of the parent
 # comm that are not in the subcomm yet, and output them with radios
 # for roles, etc.
 set subcomm_p [dotlrn_community::subcommunity_p -community_id $community_id]

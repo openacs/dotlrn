@@ -96,9 +96,14 @@ if {[dotlrn::is_instantiated]} {
 
         ns_log notice "dotlrn-init: dotlrn is instantiated, about to call dotlrn_applet::init"
 
-        # this may seems strange, but init the applets first
-        # initialize the applets subsystem (ooh, I'm using big words - ben)
-        if {![dotlrn_applet::is_initialized]} { dotlrn_applet::init }
+        #
+        # This may seems strange, but init the applets first
+        # initialize the applets subsystem
+        # (ooh, I'm using big words - ben)
+        #
+        if {![dotlrn_applet::is_initialized]} {
+            dotlrn_applet::init
+        }
 
         # We go through all Applets and make sure they are added.
 
