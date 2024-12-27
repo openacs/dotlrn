@@ -70,7 +70,7 @@ ad_proc -private dotlrn::apm::after_instantiate {
                                      -package_id $package_id \
                                      -parameter DefaultSiteTemplate \
                                      -default "#new-portal.sloan_theme_name#"]
-       ns_log notice "Try to install default Site Template named '$default_template_name'"
+       ns_log notice "dotlrn::apm::after_instantiate: Try to install default Site Template named '$default_template_name'"
        set site_template_id [db_string select_st_id {}]
 
        # for communities
@@ -82,6 +82,7 @@ ad_proc -private dotlrn::apm::after_instantiate {
        parameter::set_value -package_id $package_id \
            -parameter  "UserDefaultSiteTemplate_p" \
            -value $site_template_id
+       ns_log notice "dotlrn::apm::after_instantiate done"
 }
 
 
