@@ -60,7 +60,7 @@
 
     <!-- <set-parameter package-key="acs-templating" name="RichTextEditor" value="tinymce"/> -->
 
-    <!-- <set-theme theme="dotlrn_bootstrap3" subsite="/" /> -->
+    <set-theme theme="dotlrn_bootstrap3" subsite="/" />
     
     <set-parameter package-key="acs-bootstrap-installer" name="post_installation_message" value="When the server restarts click <a href='/dotlrn'>here</a> to configure .LRN"/>
   </actions>
